@@ -1,0 +1,152 @@
+{{#if stakeholderSummary}}
+<div class="stakeholder">
+  <div class="section-group-header">
+    <h2 class="section-group-title">Summary</h2>
+    <div class="section-group-line"></div>
+  </div>
+  <p class="stakeholder-body">{{stakeholderSummary}}</p>
+</div>
+{{/if}}
+
+<div class="section-group activity-section">
+  <div class="section-group-header">
+    <h2 class="section-group-title">Activity</h2>
+    <div class="section-group-line"></div>
+  </div>
+
+  <div class="data-chips activity-stats">
+    <span class="chip"><span class="chip-label">PRs merged</span> <span class="chip-value chip-green">{{stats.prsMerged}}</span></span>
+    <span class="chip"><span class="chip-label">Lines</span> <span class="chip-value chip-green">+{{formatNumber stats.totalAdditions}}</span> <span class="chip-value chip-red">−{{formatNumber stats.totalDeletions}}</span></span>
+    {{#if hoursEstimate}}
+    <span class="chip"><span class="chip-label">Estimated hours</span> <span class="chip-value">~{{hoursEstimate.hours}}h</span></span>
+    {{else}}
+    {{#if stats.estimatedHours}}
+    <span class="chip"><span class="chip-label">Estimated hours</span> <span class="chip-value">~{{stats.estimatedHours}}h</span></span>
+    {{/if}}
+    {{/if}}
+  </div>
+
+  {{#if hoursEstimate}}
+  <p class="estimate-note"><em>Estimate only - not tracked time.</em></p>
+  {{/if}}
+
+  {{#if dailyCommits.length}}
+  <div class="mini-heatmap" aria-label="Weekday activity">
+    {{#each dailyCommits}}
+    <div class="mh-day">
+      <div class="mh-block mh-level-{{this.level}}">{{this.count}}</div>
+      <div class="mh-label">{{weekday this.date}}</div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+
+  {{#if repositories.length}}
+  <h3 class="activity-heading">Repositories &amp; projects</h3>
+  {{#each repositories}}
+  {{#if this.expandable}}
+  <details class="activity-block">
+    <summary class="activity-repo">
+      <span class="github-entity">
+        <a class="activity-repo-ext" href="{{this.url}}" target="_blank" rel="noopener nofollow" aria-label="Open {{this.name}} on GitHub">{{> github-mark}}</a>
+        <span class="activity-repo-name">{{this.name}}</span>
+      </span>
+      <span class="activity-count">{{this.commits}} commits, {{this.prsOpened}} PRs opened, {{this.prsMerged}} merged</span>
+    </summary>
+    <div class="activity-children">
+      {{#each this.pullRequests}}
+      <details class="activity-block activity-pr-block">
+        <summary class="activity-pr">
+          <span class="pr-state pr-{{this.state}}">{{this.state}}</span>
+          <a class="activity-pr-title" href="{{this.url}}" target="_blank" rel="noopener nofollow">{{this.title}}</a>
+          <span class="activity-count"><span class="activity-pr-add">+{{this.additions}}</span> <span class="activity-pr-del">−{{this.deletions}}</span></span>
+        </summary>
+        {{#if this.commitDetails.length}}
+        <ul class="activity-list">
+          {{#each this.commitDetails}}
+          <li><a href="{{this.url}}" target="_blank" rel="noopener nofollow">{{this.message}}</a></li>
+          {{/each}}
+        </ul>
+        {{else}}
+        {{#if this.commitTexts.length}}
+        <ul class="activity-list">
+          {{#each this.commitTexts}}
+          <li>{{this}}</li>
+          {{/each}}
+        </ul>
+        {{/if}}
+        {{/if}}
+      </details>
+      {{/each}}
+      {{#if this.hasOtherCommits}}
+      <details class="activity-block activity-pr-block activity-other-block">
+        <summary class="activity-pr">
+          <span class="activity-other-label">Direct commits</span>
+        </summary>
+        <ul class="activity-list">
+          {{#if this.otherCommits.commitDetails.length}}
+          {{#each this.otherCommits.commitDetails}}
+          <li><a href="{{this.url}}" target="_blank" rel="noopener nofollow">{{this.message}}</a></li>
+          {{/each}}
+          {{else}}
+          {{#each this.otherCommits.commitTexts}}
+          <li>{{this}}</li>
+          {{/each}}
+          {{/if}}
+        </ul>
+      </details>
+      {{/if}}
+    </div>
+  </details>
+  {{else}}
+  <div class="activity-block">
+    <div class="activity-repo activity-repo--static">
+      <span class="github-entity">
+        <a class="activity-repo-ext" href="{{this.url}}" target="_blank" rel="noopener nofollow" aria-label="Open {{this.name}} on GitHub">{{> github-mark}}</a>
+        <span class="activity-repo-name">{{this.name}}</span>
+      </span>
+      <span class="activity-count">{{this.commits}} commits, {{this.prsOpened}} PRs opened, {{this.prsMerged}} merged</span>
+    </div>
+  </div>
+  {{/if}}
+  {{/each}}
+  {{/if}}
+
+  {{#if pullRequests.length}}
+  <h3 class="activity-heading">Other pull requests</h3>
+  <ul class="activity-list">
+    {{#each pullRequests}}
+    <li>
+      <span class="pr-state pr-{{this.state}}">{{this.state}}</span>
+      <a href="{{this.url}}" target="_blank" rel="noopener nofollow">{{this.title}}</a>
+      <span class="activity-meta">{{this.repository}} · +{{this.additions}} −{{this.deletions}}</span>
+    </li>
+    {{/each}}
+  </ul>
+  {{/if}}
+
+  {{#if prsInProgress.length}}
+  <h3 class="activity-heading">Still in progress</h3>
+  <ul class="activity-list">
+    {{#each prsInProgress}}
+    <li>
+      <a href="{{this.url}}" target="_blank" rel="noopener nofollow">{{this.title}}</a>
+      <span class="activity-meta">{{this.repository}}</span>
+    </li>
+    {{/each}}
+  </ul>
+  {{/if}}
+
+  {{#if aiReviews.hasActivity}}
+  <h3 class="activity-heading">AI code reviews done</h3>
+  <p class="estimate-note"><em>Codex and Cursor reviews from GitHub PR data.</em></p>
+  <div class="data-chips ai-review-activity">
+    {{#if aiReviews.codex.hasActivity}}
+    <span class="chip"><span class="chip-label">Codex</span> <span class="chip-value">{{aiReviews.codex.summary}}</span></span>
+    {{/if}}
+    {{#if aiReviews.cursor.hasActivity}}
+    <span class="chip"><span class="chip-label">Cursor</span> <span class="chip-value">{{aiReviews.cursor.summary}}</span></span>
+    {{/if}}
+  </div>
+  {{/if}}
+</div>

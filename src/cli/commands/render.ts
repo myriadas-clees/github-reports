@@ -1,22 +1,26 @@
 // render command: read github-data.yaml + llm-data.yaml and produce HTML
 
 import { Command } from "commander";
-import { readFile, writeFile, readdir, mkdir, access } from "node:fs/promises";
-import { join } from "node:path";
+import { readFile, writeFile, readdir, mkdir, access, cp } from "node:fs/promises";
+import { join, dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import { parse as parseYaml } from "yaml";
 import { renderReport } from "../../renderer/index.js";
 import { renderIndexPage, buildReportEntry, type ReportEntry } from "../../deployer/index-page.js";
-import { getWeekId, isoWeekToMonday } from "../../deployer/week.js";
+import { getWeekId } from "../../deployer/week.js";
 import { parseLocalDate } from "../../collector/date-range.js";
 import { generateOGImage, generateIndexOGImage } from "../../renderer/og-image.js";
 import { generateCard, generateDarkCard } from "../../renderer/card.js";
 import { buildRSSFeed } from "../../renderer/rss.js";
+import { assertNoSecretsInHtml, loadConfigFile, resolveConfig } from "../../config.js";
 import type { WeeklyReportData, AIContent, Language, Theme } from "../../types.js";
 import { AVAILABLE_THEMES } from "../../renderer/themes/index.js";
 
 const env = (key: string): string | undefined => process.env[key];
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const brandAssetsSrc = resolve(__dirname, "../../../assets/brand");
 
-type RenderOptions = {
+export type RenderCommandOptions = {
   dataDir: string;
   outputDir: string;
   baseUrl: string;
@@ -82,7 +86,8 @@ const buildReportEntries = async (
   return entries.filter((e): e is ReportEntry => e !== null);
 };
 
-const run = async (options: RenderOptions): Promise<void> => {
+/** Render HTML for a week from github-data + llm-data. Throws if data is missing. */
+export const runRender = async (options: RenderCommandOptions): Promise<void> => {
   const weekId = getWeekId(options.date, options.timezone);
   const dataWeekDir = join(options.dataDir, weekId.path);
   const outputWeekDir = join(options.outputDir, weekId.path);
@@ -91,15 +96,13 @@ const run = async (options: RenderOptions): Promise<void> => {
   console.log(`Reading ${githubDataPath}...`);
   const githubData = await tryReadYaml<WeeklyReportData>(githubDataPath);
   if (!githubData) {
-    console.error(`GitHub data not found at ${githubDataPath}. Run 'fetch' first.`);
-    process.exit(1);
+    throw new Error(`GitHub data not found at ${githubDataPath}. Run 'fetch' or 'report' first.`);
   }
 
   const llmDataPath = join(dataWeekDir, "llm-data.yaml");
   const aiContent = await tryReadYaml<AIContent>(llmDataPath);
   if (!aiContent) {
-    console.error(`LLM data not found at ${llmDataPath}. Run 'generate' first.`);
-    process.exit(1);
+    throw new Error(`LLM data not found at ${llmDataPath}. Run 'generate' or 'report' first.`);
   }
   console.log("Loaded LLM data.");
 
@@ -115,6 +118,15 @@ const run = async (options: RenderOptions): Promise<void> => {
 
   const base = options.baseUrl.replace(/\/+$/, "");
 
+  // Brand assets for Myriad logo in nav (report pages use ../../assets/brand/…)
+  const brandOut = join(options.outputDir, "assets", "brand");
+  await mkdir(brandOut, { recursive: true });
+  try {
+    await cp(brandAssetsSrc, brandOut, { recursive: true });
+  } catch {
+    console.warn(`Brand assets not found at ${brandAssetsSrc}; logo may be missing.`);
+  }
+
   console.log(`Rendering report (lang: ${options.language}, theme: ${options.theme})...`);
   const html = renderReport(data, {
     language: options.language,
@@ -128,6 +140,7 @@ const run = async (options: RenderOptions): Promise<void> => {
   });
 
   await mkdir(outputWeekDir, { recursive: true });
+  assertNoSecretsInHtml(html);
   const reportPath = join(outputWeekDir, "index.html");
   await writeFile(reportPath, html, "utf-8");
   console.log(`Report written to ${reportPath}`);
@@ -174,12 +187,8 @@ const run = async (options: RenderOptions): Promise<void> => {
   console.log(`OG image written to ${ogPath}`);
 
   // Generate animated SVG summary cards (light + dark)
-  // Compute Mon-Sun date range from ISO week number (independent of data file)
-  const fmtShort = (d: Date): string =>
-    d.toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
-  const monday = isoWeekToMonday(weekId.year, weekId.week);
-  const sunday = new Date(monday.getTime() + 6 * 86_400_000);
-  const dateRange = `${fmtShort(monday)} - ${fmtShort(sunday)}, ${weekId.year}`;
+  // Work week is Thursday–Wednesday; use the report's stored date range.
+  const dateRange = `${githubData.dateRange.from} – ${githubData.dateRange.to}`;
   const cardData = {
     username: githubData.username,
     weekLabel: `Week ${weekId.path.split("/")[1].replace("W", "")}`,
@@ -281,27 +290,39 @@ export const registerRender = (program: Command): void => {
     .option("--timezone <tz>", "IANA timezone (env: TIMEZONE, default: UTC)")
     .option("--theme <name>", `Theme name: ${AVAILABLE_THEMES.join(", ")} (env: THEME, default: brutalist)`)
     .option("--date <date>", "Date within the target week (YYYY-MM-DD, default: today)")
+    .option("--config <path>", "Path to config.yaml (env: CONFIG_PATH)")
     .action(async (opts) => {
       try {
         const baseUrl = opts.baseUrl ?? env("BASE_URL");
         if (!baseUrl) throw new Error("Base URL required. Pass --base-url or set BASE_URL (e.g. https://user.github.io/repo).");
 
-        const theme = (opts.theme ?? env("THEME") ?? "brutalist") as Theme;
+        const fileCfg = await loadConfigFile(opts.config ?? env("CONFIG_PATH"));
+        const cfg = resolveConfig(fileCfg, {
+          username: env("GITHUB_USERNAME"),
+          timezone: opts.timezone ?? env("TIMEZONE"),
+          language: opts.language ?? env("LANGUAGE"),
+          theme: opts.theme ?? env("THEME"),
+          siteTitle: opts.siteTitle ?? env("SITE_TITLE"),
+          dataDir: opts.dataDir ?? env("DATA_DIR"),
+          outputDir: opts.outputDir ?? env("OUTPUT_DIR"),
+        });
+
+        const theme = cfg.theme;
         if (!AVAILABLE_THEMES.includes(theme)) {
           throw new Error(`Unknown theme "${theme}". Available: ${AVAILABLE_THEMES.join(", ")}`);
         }
 
-        const options: RenderOptions = {
-          dataDir: opts.dataDir ?? env("DATA_DIR") ?? "./data",
-          outputDir: opts.outputDir ?? env("OUTPUT_DIR") ?? "./output",
+        const options: RenderCommandOptions = {
+          dataDir: opts.dataDir ?? cfg.dataDir,
+          outputDir: opts.outputDir ?? cfg.outputDir,
           baseUrl,
-          siteTitle: opts.siteTitle ?? env("SITE_TITLE"),
-          language: (opts.language ?? env("LANGUAGE") ?? "en") as Language,
-          timezone: opts.timezone ?? env("TIMEZONE") ?? "UTC",
+          siteTitle: opts.siteTitle ?? env("SITE_TITLE") ?? cfg.siteTitle,
+          language: (opts.language ?? cfg.language) as Language,
+          timezone: opts.timezone ?? cfg.timezone,
           theme,
-          date: opts.date ? parseLocalDate(opts.date, opts.timezone ?? env("TIMEZONE") ?? "UTC") : undefined,
+          date: opts.date ? parseLocalDate(opts.date, opts.timezone ?? cfg.timezone) : undefined,
         };
-        await run(options);
+        await runRender(options);
       } catch (error) {
         console.error("Error:", error instanceof Error ? error.message : error);
         process.exit(1);

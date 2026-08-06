@@ -50,7 +50,7 @@ summaries:
         color: default
   - type: collaboration-summary
     heading: レビュー活動で他プロジェクトをサポート
-    body: 自分のプロジェクト開発と並行して48件のレビューを実施し、bitflyer-tools/cycle-flyerやunhappychoice/gitlogueなど複数のリポジトリでapprovedを出した。dependency更新PRのレビューも含め、開発コミュニティへの貢献も継続。一人スプリント開発をしながらも、他のプロジェクトのサポートを怠らなかった。
+    body: 自分のプロジェクト開発と並行して48件のレビューを実施し、bitflyer-tools/cycle-flyerやworklog-demo/gitlogueなど複数のリポジトリでapprovedを出した。dependency更新PRのレビューも含め、開発コミュニティへの貢献も継続。一人スプリント開発をしながらも、他のプロジェクトのサポートを怠らなかった。
     chips:
       - label: レビュー数
         value: 48件

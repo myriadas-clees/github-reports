@@ -13,9 +13,12 @@ const MOCK_DATA: WeeklyReportData = {
     totalDeletions: 300,
     prsOpened: 5,
     prsMerged: 3,
+    prsInProgress: 0,
     prsReviewed: 8,
+    reviewComments: 0,
     issuesOpened: 2,
     issuesClosed: 1,
+    estimatedHours: 0,
   },
   dailyCommits: [],
   repositories: [],
@@ -43,7 +46,7 @@ const MOCK_DATA: WeeklyReportData = {
         title: "feat: add OAuth flow",
         repo: "org/backend",
         meta: "merged Apr 2",
-        body: "Big PR.",
+        body: "## Why\n\nBig PR with `tokens` and a [link](https://example.com).",
       },
     ],
   },
@@ -73,7 +76,7 @@ describe("loadTheme", () => {
     expect(theme.buildCSS).toBeTypeOf("function");
     expect(theme.buildIndexCSS).toBeTypeOf("function");
     expect(theme.colors.bg).toBe("#050505");
-    expect(theme.colors.accent).toBe("#39d353");
+    expect(theme.colors.accent).toBe("#cc2647");
     expect(theme.templatesDir).toContain("themes/brutalist/templates");
   });
 
@@ -96,11 +99,13 @@ describe("loadTheme", () => {
     expect(css).toContain("var(--b-accent)");
   });
 
-  it("brutalist buildCSS includes light mode via prefers-color-scheme", () => {
+  it("brutalist buildCSS is dark-first with light via prefers-color-scheme", () => {
     const theme = loadTheme("brutalist");
     const css = theme.buildCSS("en");
+    expect(css).toContain("--b-bg: #050505");
     expect(css).toContain("prefers-color-scheme: light");
-    expect(css).toContain("--b-bg: #fafafa");
+    expect(css).toContain('html[data-theme="dark"]');
+    expect(theme.themeInitScript).toContain("data-theme");
   });
 
   it("brutalist buildCSS supports data-theme attribute override", () => {
@@ -108,6 +113,16 @@ describe("loadTheme", () => {
     const css = theme.buildCSS("en");
     expect(css).toContain('html[data-theme="light"]');
     expect(css).toContain('html[data-theme="dark"]');
+  });
+
+  it("brutalist buildCSS includes scoped markdown prose styles", () => {
+    const theme = loadTheme("brutalist");
+    const css = theme.buildCSS("en");
+    expect(css).toContain(".md a");
+    expect(css).toContain(".md h2");
+    expect(css).toContain(".md blockquote");
+    expect(css).toContain(".md pre");
+    expect(css).toContain(".md ul");
   });
 
   it("loads minimal theme", () => {
@@ -129,7 +144,8 @@ describe("loadTheme", () => {
     const css = theme.buildCSS("en");
     expect(css).toContain("body");
     expect(css).toContain("#050505");
-    expect(css).toContain("Schibsted");
+    expect(css).toContain("#cc2647");
+    expect(css).toContain("Schibsted Grotesk");
   });
 
   it("buildIndexCSS returns valid CSS string", () => {
@@ -181,6 +197,14 @@ describe("minimal theme", () => {
     const css = theme.buildCSS("en");
     expect(css).toContain('html[data-theme="light"]');
     expect(css).toContain('html[data-theme="dark"]');
+  });
+
+  it("buildCSS includes scoped markdown prose styles", () => {
+    const theme = loadTheme("minimal");
+    const css = theme.buildCSS("en");
+    expect(css).toContain(".md a");
+    expect(css).toContain(".md blockquote");
+    expect(css).toContain(".md pre");
   });
 
   it("provides theme init and toggle scripts", () => {
@@ -325,6 +349,14 @@ describe("editorial theme", () => {
     expect(css).toContain('html[data-theme="dark"]');
   });
 
+  it("buildCSS includes scoped markdown prose styles", () => {
+    const theme = loadTheme("editorial");
+    const css = theme.buildCSS("en");
+    expect(css).toContain(".md a");
+    expect(css).toContain(".md h3");
+    expect(css).toContain(".md blockquote");
+  });
+
   it("has theme toggle scripts", () => {
     const theme = loadTheme("editorial");
     expect(theme.themeInitScript).toContain("localStorage");
@@ -405,6 +437,14 @@ describe("swiss theme", () => {
     const css = theme.buildCSS("en");
     expect(css).toContain('html[data-theme="light"]');
     expect(css).toContain('html[data-theme="dark"]');
+  });
+
+  it("buildCSS includes scoped markdown prose styles", () => {
+    const theme = loadTheme("swiss");
+    const css = theme.buildCSS("en");
+    expect(css).toContain(".md a");
+    expect(css).toContain(".md pre");
+    expect(css).toContain(".md ul");
   });
 
   it("has theme toggle scripts", () => {

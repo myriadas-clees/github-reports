@@ -14,6 +14,7 @@ vi.mock("node:fs/promises", () => ({
   readdir: (...args: unknown[]) => mockReaddir(...args),
   mkdir: (...args: unknown[]) => mockMkdir(...args),
   access: (...args: unknown[]) => mockAccess(...args),
+  cp: vi.fn().mockResolvedValue(undefined),
 }));
 
 // Mock renderer
@@ -64,13 +65,16 @@ dateRange:
   to: "2026-04-03"
 stats:
   totalCommits: 42
-  totalAdditions: 1200
-  totalDeletions: 300
+  totalAdditions: 100
+  totalDeletions: 20
   prsOpened: 5
   prsMerged: 3
+  prsInProgress: 0
   prsReviewed: 8
-  issuesOpened: 2
-  issuesClosed: 1
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 0
 dailyCommits: []
 repositories: []
 pullRequests: []
@@ -172,16 +176,15 @@ describe("registerRender", () => {
     // Should generate index OG image
     expect(mockGenerateIndexOGImage).toHaveBeenCalled();
 
-    // Should write card SVGs with correct date range from weekId (2026 W14 = Mar 30 - Apr 5)
+    // Should write card SVGs with the report date range from github-data
     const cardCall = mockWriteFile.mock.calls.find(
       (call: unknown[]) => typeof call[0] === "string" && (call[0] as string).endsWith("card.svg"),
     );
     expect(cardCall).toBeDefined();
     const cardSvg = cardCall![1] as string;
     expect(cardSvg).toContain("Week 14");
-    expect(cardSvg).toContain("Mar 30");
-    expect(cardSvg).toContain("Apr 5");
-    expect(cardSvg).toContain("2026");
+    expect(cardSvg).toContain("2026-03-28");
+    expect(cardSvg).toContain("2026-04-03");
   });
 
   it("exits when github-data.yaml is missing", async () => {
@@ -610,7 +613,9 @@ describe("registerRender", () => {
       ]);
 
       // First readFile call should target ./data/2026/W14/github-data.yaml
-      const readPaths = mockReadFile.mock.calls.map((c: unknown[]) => c[0] as string);
+      const readPaths = mockReadFile.mock.calls
+        .map((c: unknown[]) => c[0] as string)
+        .filter((p): p is string => typeof p === "string");
       expect(readPaths.some((p) => p.startsWith("data/") || p.includes("/data/"))).toBe(true);
       // Output should land under ./output
       const writePaths = mockWriteFile.mock.calls.map((c: unknown[]) => c[0] as string);

@@ -2,14 +2,11 @@
 // GET /repos/{owner}/{repo}/commits?author={username}&since={from}&until={to}
 
 import type { DateRange } from "./date-range.js";
-
-export type RepoCommits = {
-  repo: string;
-  messages: string[];
-};
+import type { CommitDetail, RepoCommitMessages } from "../types.js";
 
 type RawCommit = {
   sha: string;
+  html_url: string;
   commit: {
     message: string;
     author: { date: string } | null;
@@ -25,7 +22,7 @@ const GITHUB_HEADERS = (token: string) => ({
   Authorization: `Bearer ${token}`,
   Accept: "application/vnd.github+json",
   "X-GitHub-Api-Version": "2022-11-28",
-  "User-Agent": "github-weekly-reporter",
+  "User-Agent": "worklog",
 });
 
 const sleep = (ms: number): Promise<void> => new Promise((r) => setTimeout(r, ms));
@@ -39,7 +36,6 @@ const parseRetryDelay = (response: Response): number => {
   return DEFAULT_RETRY_DELAY_MS;
 };
 
-// Parse Link header to find next page URL
 const parseNextUrl = (response: Response): string | null => {
   const link = response.headers.get("link");
   if (!link) return null;
@@ -47,7 +43,6 @@ const parseNextUrl = (response: Response): string | null => {
   return match?.[1] ?? null;
 };
 
-// Extract the first line of a commit message and truncate to MAX_MESSAGE_LENGTH
 const firstLine = (message: string): string => {
   const subject = message.split("\n")[0]?.trim() ?? message.trim();
   return subject.length > MAX_MESSAGE_LENGTH
@@ -89,7 +84,7 @@ const fetchRepoCommits = async (
   repo: string,
   author: string,
   range: DateRange,
-): Promise<string[]> => {
+): Promise<CommitDetail[]> => {
   const params = new URLSearchParams({
     author,
     since: range.from.toISOString(),
@@ -97,16 +92,23 @@ const fetchRepoCommits = async (
     per_page: String(PER_PAGE),
   });
   let url: string | null = `https://api.github.com/repos/${repo}/commits?${params}`;
-  const messages: string[] = [];
+  const commits: CommitDetail[] = [];
 
   while (url) {
     const result = await fetchPage(token, url);
     if (!result) break;
-    messages.push(...result.commits.map((c) => firstLine(c.commit.message)));
+    result.commits.forEach((c) => {
+      commits.push({
+        sha: c.sha,
+        message: firstLine(c.commit.message),
+        url: c.html_url,
+        authoredAt: c.commit.author?.date ?? "",
+      });
+    });
     url = result.nextUrl;
   }
 
-  return messages;
+  return commits;
 };
 
 const CONCURRENCY = 5;
@@ -129,18 +131,24 @@ const runWithConcurrency = async <T>(
   await Promise.all(workers);
 };
 
+export type RepoCommits = RepoCommitMessages;
+
 export const fetchCommitMessages = async (
   token: string,
   username: string,
   repos: string[],
   range: DateRange,
-): Promise<RepoCommits[]> => {
-  const results: RepoCommits[] = [];
+): Promise<RepoCommitMessages[]> => {
+  const results: RepoCommitMessages[] = [];
 
   await runWithConcurrency(repos, async (repo) => {
-    const messages = await fetchRepoCommits(token, repo, username, range);
-    if (messages.length > 0) {
-      results.push({ repo, messages });
+    const commits = await fetchRepoCommits(token, repo, username, range);
+    if (commits.length > 0) {
+      results.push({
+        repo,
+        messages: commits.map((c) => c.message),
+        commits,
+      });
     }
   });
 

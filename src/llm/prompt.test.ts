@@ -12,9 +12,12 @@ const MOCK_INPUT: NarrativeInput = {
     totalDeletions: 300,
     prsOpened: 5,
     prsMerged: 3,
+    prsInProgress: 0,
     prsReviewed: 8,
+    reviewComments: 0,
     issuesOpened: 2,
     issuesClosed: 1,
+    estimatedHours: 0,
   },
   dailyCommits: [],
   repositories: [

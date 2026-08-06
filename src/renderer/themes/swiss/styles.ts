@@ -148,6 +148,63 @@ export const buildCSS = (language: Language = "en"): string => {
       background: var(--s-code-bg);
     }
 
+    /* Markdown body — scoped prose styles */
+    .md > :first-child { margin-top: 0; }
+    .md > :last-child { margin-bottom: 0; }
+    .md p { margin: 0 0 0.75em; }
+    .md p:last-child { margin-bottom: 0; }
+    .md strong { color: var(--s-text); font-weight: 700; }
+    .md em { font-style: italic; }
+    .md a {
+      color: var(--s-accent);
+      text-decoration: underline;
+      text-underline-offset: 0.12em;
+    }
+    .md a:hover { color: var(--s-accent); }
+    .md h2, .md h3, .md h4 {
+      color: var(--s-text);
+      font-weight: 700;
+      line-height: 1.25;
+      margin: 0.9em 0 0.35em;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .md h2 { font-size: 0.9375em; }
+    .md h3 { font-size: 0.875em; }
+    .md h4 { font-size: 0.8125em; }
+    .md h2:first-child, .md h3:first-child, .md h4:first-child { margin-top: 0; }
+    .md ul, .md ol {
+      margin: 0.4em 0 0.75em;
+      padding-left: 1.2em;
+    }
+    .md li { margin: 0.2em 0; }
+    .md li::marker { color: var(--s-accent); }
+    .md blockquote {
+      margin: 0.75em 0;
+      padding: 0.1em 0 0.1em 0.85em;
+      border-left: 3px solid var(--s-accent);
+      color: var(--s-text-tertiary);
+    }
+    .md hr {
+      border: none;
+      border-top: 2px solid var(--s-border);
+      margin: 1em 0;
+    }
+    .md pre {
+      margin: 0.75em 0;
+      padding: 0.75em 0.9em;
+      overflow-x: auto;
+      background: var(--s-code-bg);
+      font-family: ${mono};
+      font-size: 0.75rem;
+      line-height: 1.5;
+    }
+    .md pre code {
+      padding: 0;
+      background: none;
+      font-size: inherit;
+    }
+
     /* ==================== LAYOUT: asymmetric grid ==================== */
     .swiss-layout {
       display: grid;
@@ -445,6 +502,92 @@ export const buildCSS = (language: Language = "en"): string => {
     .repo-bar-header { display: flex; justify-content: space-between; font-size: 0.6875rem; }
     .repo-bar-label { font-family: ${mono}; color: var(--s-text-secondary); }
     .repo-bar-value { font-family: ${mono}; color: var(--s-text-tertiary); }
+    .github-entity { display: inline-flex; align-items: center; gap: 0.35em; }
+    a.github-entity {
+      color: var(--s-text); text-decoration: none; transition: color 0.2s;
+    }
+    a.github-entity:hover { color: var(--s-accent); }
+    .activity-block { margin: 0.85rem 0 0.5rem; }
+    .activity-repo {
+      display: flex; align-items: center; gap: 0.65em;
+      font-weight: 600; color: var(--s-text); cursor: pointer;
+      list-style: none;
+    }
+    .activity-repo::-webkit-details-marker { display: none; }
+    .activity-repo::before {
+      content: "";
+      width: 0.4em; height: 0.4em;
+      border-right: 1.5px solid var(--s-text-tertiary);
+      border-bottom: 1.5px solid var(--s-text-tertiary);
+      transform: rotate(-45deg);
+      transition: transform 0.15s ease;
+      flex-shrink: 0;
+    }
+    .activity-block[open] > .activity-repo::before { transform: rotate(45deg); }
+    .activity-repo--static { cursor: default; }
+    .activity-repo--static::before { visibility: hidden; }
+    .activity-count {
+      font-weight: 400; font-size: 0.8125rem;
+      color: var(--s-text-tertiary);
+    }
+    a.activity-repo-ext {
+      display: inline-flex; color: inherit; text-decoration: none;
+      transition: color 0.2s;
+    }
+    a.activity-repo-ext:hover { color: var(--s-accent); }
+    .activity-children {
+      margin: 0.35rem 0 0.15rem 1.15rem;
+      padding-left: 0.65rem;
+      border-left: 1px solid var(--s-border-subtle);
+    }
+    .activity-pr-block { margin: 0.45rem 0; }
+    .activity-pr {
+      display: flex; align-items: center; gap: 0.55em; flex-wrap: wrap;
+      font-weight: 500; color: var(--s-text); cursor: pointer;
+      list-style: none;
+    }
+    .activity-pr::-webkit-details-marker { display: none; }
+    .activity-pr::before {
+      content: "";
+      width: 0.35em; height: 0.35em;
+      border-right: 1.5px solid var(--s-text-tertiary);
+      border-bottom: 1.5px solid var(--s-text-tertiary);
+      transform: rotate(-45deg);
+      transition: transform 0.15s ease;
+      flex-shrink: 0;
+    }
+    .activity-pr-block[open] > .activity-pr::before { transform: rotate(45deg); }
+    .activity-pr-title {
+      color: var(--s-text); text-decoration: none; font-weight: 600;
+    }
+    .activity-pr-title:hover { color: var(--s-accent); }
+    .activity-pr-add { color: var(--s-green); }
+    .activity-pr-del { color: var(--s-red); }
+    .activity-other-label {
+      font-weight: 600; color: var(--s-text-secondary); font-size: 0.875rem;
+    }
+    .activity-pr-block .activity-list { margin-left: 1.15rem; }
+    .activity-list { list-style: none; padding: 0; margin: 0.35rem 0 0; }
+    .activity-list a { color: var(--s-text); text-decoration: none; }
+    .activity-list a:hover { color: var(--s-accent); }
+    .activity-meta { color: var(--s-text-tertiary); font-size: 0.8125rem; margin-left: 0.35rem; }
+    .activity-heading {
+      font-size: 1rem; font-weight: 700; margin: 1.75rem 0 0.75rem;
+      color: var(--s-text);
+    }
+    .pr-state {
+      font-family: ${mono}; font-size: 0.6875rem;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      margin-right: 0.35rem; color: var(--s-text-tertiary);
+    }
+    .pr-state.pr-merged { color: var(--s-badge-pr, #1a7f37); }
+    .pr-state.pr-open { color: var(--s-accent); }
+    .pr-state.pr-closed { color: var(--s-badge-issue, #cf222e); }
+    .github-mark {
+      display: inline-flex; width: 0.875rem; height: 0.875rem;
+      flex-shrink: 0; color: currentColor; opacity: 0.85;
+    }
+    .github-mark svg { display: block; width: 100%; height: 100%; }
     .repo-bar-track { width: 100%; height: 3px; background: var(--s-border-subtle); overflow: hidden; }
     .repo-bar-fill { height: 100%; background: var(--s-accent); }
 
@@ -458,13 +601,19 @@ export const buildCSS = (language: Language = "en"): string => {
       padding-top: 1rem;
       border-top: 2px solid var(--s-border);
     }
+    .highlight-heading {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
     .highlight-badge {
       font-size: 0.5625rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.12em;
       display: inline-block;
-      margin-bottom: 0.4rem;
+      flex-shrink: 0;
     }
     .highlight-pr { color: var(--s-badge-pr); }
     .highlight-release { color: var(--s-badge-release); }
@@ -474,17 +623,36 @@ export const buildCSS = (language: Language = "en"): string => {
       font-size: 1rem;
       font-weight: 700;
       line-height: 1.25;
-      margin-bottom: 0.25rem;
+      min-width: 0;
     }
     .highlight-title a { color: var(--s-text); text-decoration: none; }
     .highlight-title a:hover { color: var(--s-accent); }
     .highlight-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.35em;
+      width: 100%;
+      min-width: 0;
       font-family: ${mono};
       font-size: 0.625rem;
       color: var(--s-text-tertiary);
-      margin-bottom: 0.35rem;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.03em;
+    }
+    .highlight-meta-repo {
+      flex: 0 1 auto;
+      min-width: 0;
+      overflow: hidden;
+    }
+    .highlight-meta-name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      min-width: 0;
+    }
+    .highlight-meta-tail {
+      flex-shrink: 0;
+      white-space: nowrap;
     }
     .highlight-body {
       font-size: 0.8125rem;

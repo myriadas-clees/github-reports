@@ -155,13 +155,13 @@ describe("buildWeeklyWorkflow", () => {
     expect(yaml).toContain("SITE_TITLE: 'DevPulse'");
   });
 
-  it("schedules on Monday (day 1)", () => {
+  it("schedules on Thursday (day 4)", () => {
     const yaml = buildWeeklyWorkflow(baseOpts);
-    // Cron should end with "1" for Monday
+    // Cron should end with "4" for Thursday (UTC)
     const cronMatch = yaml.match(/cron:\s*'([^']+)'/);
     expect(cronMatch).not.toBeNull();
     const parts = cronMatch![1].split(" ");
-    expect(parts[4]).toBe("1");
+    expect(parts[4]).toBe("4");
   });
 
   it("includes LLM inputs when provider, model, and secretName are provided", () => {

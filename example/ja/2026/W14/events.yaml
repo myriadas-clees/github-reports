@@ -1906,7 +1906,7 @@
     title: ""
 - id: "10161637988"
   type: PushEvent
-  repo: unhappychoice/gitlogue
+  repo: worklog-demo/gitlogue
   createdAt: 2026-04-03T14:54:47Z
   payload:
     kind: push
@@ -1929,14 +1929,14 @@
     commits: []
 - id: "10161636164"
   type: DeleteEvent
-  repo: unhappychoice/gitlogue
+  repo: worklog-demo/gitlogue
   createdAt: 2026-04-03T14:54:49Z
   payload:
     kind: generic
     action: ""
 - id: "10161632637"
   type: PushEvent
-  repo: unhappychoice/cycle-pusher
+  repo: worklog-demo/cycle-pusher
   createdAt: 2026-04-03T14:54:44Z
   payload:
     kind: push
@@ -1959,14 +1959,14 @@
     action: ""
 - id: "10161628112"
   type: DeleteEvent
-  repo: unhappychoice/mdts
+  repo: worklog-demo/mdts
   createdAt: 2026-04-03T14:54:36Z
   payload:
     kind: generic
     action: ""
 - id: "10161627760"
   type: PushEvent
-  repo: unhappychoice/mdts
+  repo: worklog-demo/mdts
   createdAt: 2026-04-03T14:54:35Z
   payload:
     kind: push
@@ -1984,7 +1984,7 @@
     state: approved
 - id: "8069875062"
   type: PullRequestReviewEvent
-  repo: unhappychoice/gitlogue
+  repo: worklog-demo/gitlogue
   createdAt: 2026-04-03T14:54:29Z
   payload:
     kind: review
@@ -1994,7 +1994,7 @@
     state: approved
 - id: "8069873559"
   type: PullRequestReviewEvent
-  repo: unhappychoice/cycle-pusher
+  repo: worklog-demo/cycle-pusher
   createdAt: 2026-04-03T14:54:26Z
   payload:
     kind: review
@@ -2014,7 +2014,7 @@
     state: approved
 - id: "8069870768"
   type: PullRequestReviewEvent
-  repo: unhappychoice/mdts
+  repo: worklog-demo/mdts
   createdAt: 2026-04-03T14:54:18Z
   payload:
     kind: review

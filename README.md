@@ -1,167 +1,112 @@
-# GitHub Weekly Reporter
+# Worklog
 
-[![CI](https://github.com/deariary/github-weekly-reporter/actions/workflows/ci.yml/badge.svg)](https://github.com/deariary/github-weekly-reporter/actions/workflows/ci.yml)
-[![codecov](https://codecov.io/gh/deariary/github-weekly-reporter/graph/badge.svg)](https://codecov.io/gh/deariary/github-weekly-reporter)
-[![npm](https://img.shields.io/npm/v/github-weekly-reporter)](https://www.npmjs.com/package/github-weekly-reporter)
+Private, self-hosted weekly GitHub status-page generator. Forked from [deariary/github-weekly-reporter](https://github.com/deariary/github-weekly-reporter) and extended for private repositories and Thursday–Wednesday reporting.
 
-**Your GitHub activity, turned into a beautiful weekly report. Automatically.**
+Every **Thursday morning**, Worklog reports activity from the **previous Thursday through Wednesday**: commits, pull requests (opened / merged / in progress), reviews, review comments, repositories, line changes, and **estimated hours** (clearly labeled as estimates). It publishes a clean static HTML report with weekly archives.
 
-<video src="https://github.com/user-attachments/assets/96828826-d694-4338-89b9-974094b0950d" autoplay loop muted playsinline></video>
+## Quick setup
 
-Every week, this tool looks at everything you did on GitHub (commits, pull requests, code reviews) and generates a polished, shareable report page with AI-written summaries. It runs as a GitHub Action, deploys to GitHub Pages, and costs nothing.
+See [`docs/setup.md`](docs/setup.md) for the full checklist. Short version:
 
-## What You Need
-
-Have these two things ready before running setup:
-
-1. **GitHub personal access token (PAT)**, either type works:
-
-   - **Fine-grained PAT** (recommended): `All repositories` access with permissions:
-     `Actions`, `Administration`, `Contents`, `Pages`, `Secrets`, `Workflows`
-     (all Read & Write).
-     ([Create one](https://github.com/settings/personal-access-tokens/new))
-   - **Classic PAT**: scopes `repo` and `workflow`.
-     ([Create one](https://github.com/settings/tokens/new?scopes=repo,workflow))
-     Use this if you hit 403 errors with fine-grained tokens (e.g. org policy restrictions).
-
-   > After setup, you can tighten the PAT to the minimum the Action actually needs. See [Security](docs/security.md#pat-permissions).
-
-2. **LLM API key** from any supported provider:
-
-   | Provider | Free Tier | Get API Key |
-   |---|---|---|
-   | **OpenRouter** | Yes (25+ free models) | https://openrouter.ai/settings/keys |
-   | **Groq** | Yes (generous limits) | https://console.groq.com/keys |
-   | **Google Gemini** | Yes | https://aistudio.google.com/apikey |
-   | OpenAI | No | https://platform.openai.com/api-keys |
-   | Anthropic | No | https://console.anthropic.com/settings/keys |
-   | Grok (xAI) | No | https://console.x.ai |
-
-   You also need a **model name**. Find available models on your provider's page:
-   [OpenRouter](https://openrouter.ai/models),
-   [Groq](https://console.groq.com/docs/models),
-   [Gemini](https://ai.google.dev/gemini-api/docs/models),
-   [OpenAI](https://platform.openai.com/docs/models),
-   [Anthropic](https://docs.anthropic.com/en/docs/about-claude/models),
-   [Grok](https://docs.x.ai/docs/models)
-
-## Quick Start
+1. Copy the sample config and edit it:
 
 ```bash
-npx github-weekly-reporter setup
+cp config.example.yaml config.yaml
 ```
 
-The setup command walks you through everything interactively:
+2. Create a fine-grained or classic PAT with access to the private repos you list (`repo` scope / Contents + Pull requests + Metadata).
 
-1. Creates a repository for your reports
-2. Adds workflow files (daily fetch + weekly report)
-3. Stores secrets (PAT and LLM API key)
-4. Enables GitHub Pages
-5. Triggers your first report
+3. Export secrets as environment variables (never put them in `config.yaml` or generated HTML):
 
-Your first report will be live within 5 minutes.
-
-See [Manual Setup](docs/manual-setup.md) if you prefer to configure everything yourself.
-
-> **Security tip:** The setup command uses `@main` in the generated workflow files. For production use, pin the action to a commit SHA and the CLI to a specific version. See [Security](docs/security.md#pinning-versions).
-
-## Cost
-
-**The entire stack runs at $0/month on a public repository.**
-
-| Component | Cost | Details |
-|---|---|---|
-| GitHub Actions | Free | ~80 min/month (30 daily runs + 4 weekly runs). Public repos have unlimited free minutes. |
-| LLM | Free | One API call per week. OpenRouter, Groq, and Gemini all offer free tiers. |
-| GitHub Pages | Free | Hosting and deployment included for public repos. |
-| npm package | Free | Runs via `npx`, no installation required. |
-
-On paid LLM providers (OpenAI, Anthropic, Grok), the cost is roughly $0.10-0.35/month (one call per week, ~4-8K tokens each).
-
-Private repositories work too. GitHub Free gives 2,000 Actions minutes/month (this tool uses ~4% of that), but GitHub Pages on private repos requires a paid GitHub plan.
-
-## Themes
-
-Four built-in themes, each with light/dark mode and responsive design.
-
-| Theme | Screenshot | Description |
-|---|---|---|
-| **brutalist** (default) | <img src="scripts/screenshots/brutalist-dark.png" width="400" /> | Bold, high-contrast dark theme with monospace typography. [Example](https://deariary.github.io/github-weekly-reporter/brutalist/en/2026/W14/) |
-| **minimal** | <img src="scripts/screenshots/minimal-light.png" width="400" /> | Clean lines, generous whitespace, understated elegance. [Example](https://deariary.github.io/github-weekly-reporter/minimal/en/2026/W14/) |
-| **editorial** | <img src="scripts/screenshots/editorial-light.png" width="400" /> | Horizontal-scroll magazine with serif typography and column layout. [Example](https://deariary.github.io/github-weekly-reporter/editorial/en/2026/W14/) |
-| **swiss** | <img src="scripts/screenshots/swiss-light.png" width="400" /> | International Typographic Style with asymmetric grid, Space Grotesk, and geometric motifs. [Example](https://deariary.github.io/github-weekly-reporter/swiss/en/2026/W14/) |
-
-Set the theme in your workflow or during `setup`:
-
-```yaml
-with:
-  theme: 'editorial'
+```bash
+export GITHUB_TOKEN=ghp_...
+export GITHUB_USERNAME=your-user
+# optional LLM for richer narrative:
+# export LLM_PROVIDER=openrouter
+# export OPENROUTER_API_KEY=...
+# export LLM_MODEL=...
 ```
 
-## Profile Card
+4. Install and build:
 
-Embed an animated news ticker in your GitHub Profile README. AI-generated headlines scroll with dramatic labels.
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://deariary.github.io/github-weekly-reporter/screenshots/card-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://deariary.github.io/github-weekly-reporter/screenshots/card.svg" />
-  <img alt="Weekly News Ticker" src="https://deariary.github.io/github-weekly-reporter/screenshots/card.svg" height="48" />
-</picture>
-
-Generated automatically as part of the `render` command. Add this to your profile README:
-
-```html
-<a href="https://github.com/{username}/{repo}">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://{username}.github.io/{repo}/card-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://{username}.github.io/{repo}/card.svg" />
-    <img alt="Weekly Report" src="https://{username}.github.io/{repo}/card.svg" height="48" />
-  </picture>
-</a>
+```bash
+bun install
+bun run build
 ```
 
-## Features
+5. Generate a report locally:
 
-- Weekly stats: commits, PRs opened/merged, reviews
-- Top repositories by activity
-- Language breakdown (CSS-only chart)
-- 7-day contribution heatmap
-- AI-generated narrative summary
-- Light/dark mode with responsive design
-- Self-contained HTML, no JavaScript
-- SEO optimized (OG images, JSON-LD, sitemap)
-- Deploys to GitHub Pages with weekly archive
-- 10 languages supported
+```bash
+bun run report
+# or:
+bun dist/cli/index.js report --config ./config.yaml
+```
 
-## Supported Languages
+HTML lands in `output/` (latest week under `output/YYYY/Wxx/`). Archives accumulate week by week.
 
-| Code | Language |
-|---|---|
-| `en` | English |
-| `ja` | Japanese |
-| `zh-CN` | Chinese (Simplified) |
-| `zh-TW` | Chinese (Traditional) |
-| `ko` | Korean |
-| `es` | Spanish |
-| `fr` | French |
-| `de` | German |
-| `pt` | Portuguese |
-| `ru` | Russian |
+## Configuration
 
-## Documentation
+See [`config.example.yaml`](config.example.yaml). Important fields:
 
-- [How It Works](docs/how-it-works.md): the pipeline, data flow, and what gets collected
-- [Manual Setup](docs/manual-setup.md): step-by-step guide without the setup command
-- [Customization](docs/customization.md): change language, timezone, LLM provider, custom domain, and more
-- [CLI Reference](docs/cli-reference.md): all commands and environment variables
-- [Security](docs/security.md): PAT permissions (setup vs runtime) and version pinning
-- [FAQ](docs/faq.md): common questions about cost, privacy, and limitations
-- [Troubleshooting](docs/troubleshooting.md): fixing workflow failures, missing data, and setup errors
+| Field | Purpose |
+|-------|---------|
+| `username` | GitHub user to report on |
+| `repositories` | Private/public repos to include (empty = discover from activity) |
+| `timezone` | IANA timezone for Thu–Wed window |
+| `session_gap_minutes` / `max_session_hours` | Hours-estimate clustering |
 
-## License
+Environment overrides: `GITHUB_TOKEN` / `GH_PAT`, `GITHUB_USERNAME`, `TIMEZONE`, `LANGUAGE`, `THEME`, `DATA_DIR`, `OUTPUT_DIR`, `REPOSITORIES` (comma-separated), `LLM_*`.
 
-See [LICENSE](./LICENSE) for details.
+## GitHub Actions
 
-- Commercial use: "Powered by deariary" footer link must be retained
-- Personal/non-commercial use: footer link may be removed
-- Derivative works: same conditions apply
+Workflows in `.github/workflows/`:
+
+- **Daily Fetch** — accumulates yesterday’s events (including private ones the PAT can see)
+- **Weekly Report** — runs Thursday morning: fetch → summarize → render → deploy to Pages
+
+Required repository secret: `GH_PAT`. Optional: LLM provider secrets. Repository variables: `GITHUB_USERNAME`, `TIMEZONE`, `BASE_URL`, etc.
+
+## CLI
+
+```bash
+worklog daily-fetch
+worklog weekly-fetch
+worklog generate          # LLM if configured, else stakeholder fallback
+worklog render
+worklog deploy
+worklog report            # weekly-fetch + generate + render
+worklog preview           # local server for output/ (watch + re-render)
+```
+
+## What the report includes
+
+- Plain-English **stakeholder summary**
+- Commit messages (linked)
+- PRs opened, merged, and still in progress (linked)
+- Code reviews and review comments (linked)
+- Repositories / projects worked on
+- Lines added / deleted
+- **Estimated hours** from activity timestamps (labeled as estimates)
+- Archived weekly static HTML (existing themes, OG images, index)
+
+## Security
+
+Tokens and API keys are read only from the environment / Actions secrets. Render refuses to write HTML if a configured secret value would appear in the output.
+
+## Development
+
+```bash
+bun run build && bun run lint && bun run test
+```
+
+Local preview of the generated site (serves `output/`, re-renders when themes or data change):
+
+```bash
+bun run build
+bun run report          # once, to populate data + output
+bun run preview         # http://127.0.0.1:4173 — use --no-open / --no-watch as needed
+```
+
+For theme TypeScript (`styles.ts`) changes, run `bun run dev` (`tsc --watch`) in another terminal so re-renders pick up compiled CSS.
+
+Upstream documentation for themes and LLM providers remains useful under `docs/`.

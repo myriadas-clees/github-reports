@@ -22,7 +22,7 @@ for theme in $THEMES; do
 
     dir="$OUT_DIR/$theme/$lang"
     echo "Generating $theme / $lang (data: $data_dir) ..."
-    node dist/cli/index.js render \
+    bun dist/cli/index.js render \
       --data-dir "$data_dir" \
       --output-dir "$dir" \
       --base-url "$BASE_URL/$theme/$lang" \
@@ -40,6 +40,6 @@ cp -r scripts/screenshots "$OUT_DIR/screenshots"
 cp scripts/screenshots/card.svg scripts/screenshots/card-dark.svg "$OUT_DIR/screenshots/"
 
 # Generate top-level index
-node scripts/generate-preview-index.js "$OUT_DIR" "$BASE_URL" "$THEMES" "$LANGS"
+bun scripts/generate-preview-index.js "$OUT_DIR" "$BASE_URL" "$THEMES" "$LANGS"
 
 echo "Preview site generated at $OUT_DIR/"

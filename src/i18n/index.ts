@@ -50,7 +50,7 @@ const BCP47: Record<Language, string> = {
 
 const en: Locale = {
   weekdaysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-  sectionSummary: "Summary",
+  sectionSummary: "Overview",
   sectionHighlights: "Highlights",
   allWeeks: "All weeks",
   prevWeek: "Previous week",
@@ -67,7 +67,7 @@ const en: Locale = {
 
 const ja: Locale = {
   weekdaysShort: ["日", "月", "火", "水", "木", "金", "土"],
-  sectionSummary: "サマリー",
+  sectionSummary: "概要",
   sectionHighlights: "ハイライト",
   allWeeks: "すべての週",
   prevWeek: "前の週",
@@ -84,7 +84,7 @@ const ja: Locale = {
 
 const zhCN: Locale = {
   weekdaysShort: ["日", "一", "二", "三", "四", "五", "六"],
-  sectionSummary: "摘要",
+  sectionSummary: "概览",
   sectionHighlights: "亮点",
   allWeeks: "所有周报",
   prevWeek: "上一周",
@@ -101,7 +101,7 @@ const zhCN: Locale = {
 
 const zhTW: Locale = {
   weekdaysShort: ["日", "一", "二", "三", "四", "五", "六"],
-  sectionSummary: "摘要",
+  sectionSummary: "概覽",
   sectionHighlights: "亮點",
   allWeeks: "所有週報",
   prevWeek: "上一週",
@@ -118,7 +118,7 @@ const zhTW: Locale = {
 
 const ko: Locale = {
   weekdaysShort: ["일", "월", "화", "수", "목", "금", "토"],
-  sectionSummary: "요약",
+  sectionSummary: "개요",
   sectionHighlights: "하이라이트",
   allWeeks: "모든 주",
   prevWeek: "이전 주",
@@ -135,7 +135,7 @@ const ko: Locale = {
 
 const es: Locale = {
   weekdaysShort: ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"],
-  sectionSummary: "Resumen",
+  sectionSummary: "Panorama",
   sectionHighlights: "Destacados",
   allWeeks: "Todas las semanas",
   prevWeek: "Semana anterior",
@@ -152,7 +152,7 @@ const es: Locale = {
 
 const fr: Locale = {
   weekdaysShort: ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"],
-  sectionSummary: "Résumé",
+  sectionSummary: "Aperçu",
   sectionHighlights: "Points forts",
   allWeeks: "Toutes les semaines",
   prevWeek: "Semaine précédente",
@@ -169,7 +169,7 @@ const fr: Locale = {
 
 const de: Locale = {
   weekdaysShort: ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
-  sectionSummary: "Zusammenfassung",
+  sectionSummary: "Überblick",
   sectionHighlights: "Highlights",
   allWeeks: "Alle Wochen",
   prevWeek: "Vorherige Woche",
@@ -186,7 +186,7 @@ const de: Locale = {
 
 const pt: Locale = {
   weekdaysShort: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"],
-  sectionSummary: "Resumo",
+  sectionSummary: "Visão geral",
   sectionHighlights: "Destaques",
   allWeeks: "Todas as semanas",
   prevWeek: "Semana anterior",
@@ -203,7 +203,7 @@ const pt: Locale = {
 
 const ru: Locale = {
   weekdaysShort: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
-  sectionSummary: "Итоги",
+  sectionSummary: "Обзор",
   sectionHighlights: "Основное",
   allWeeks: "Все недели",
   prevWeek: "Предыдущая неделя",

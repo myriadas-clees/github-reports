@@ -78,7 +78,7 @@ const buildSVG = async (data: OGImageData, font: ArrayBuffer): Promise<string> =
                 props: {
                   style: {
                     fontSize: "22px",
-                    color: "#39d353",
+                    color: "#cc2647",
                     letterSpacing: "0.15em",
                     textTransform: "uppercase",
                   },
@@ -128,7 +128,7 @@ const buildSVG = async (data: OGImageData, font: ArrayBuffer): Promise<string> =
                 props: {
                   style: { display: "flex", gap: "40px" },
                   children: [
-                    statChip(data.stats.commits, "commits", "#39d353"),
+                    statChip(data.stats.commits, "commits", "#cc2647"),
                     statChip(data.stats.prs, "PRs", "#8957e5"),
                     statChip(data.stats.reviews, "reviews", "#58a6ff"),
                   ],
@@ -245,7 +245,7 @@ const buildIndexSVG = async (
                     {
                       type: "span",
                       props: {
-                        style: { color: "#39d353", fontWeight: 600, fontSize: "36px" },
+                        style: { color: "#cc2647", fontWeight: 600, fontSize: "36px" },
                         children: String(data.reportCount),
                       },
                     },

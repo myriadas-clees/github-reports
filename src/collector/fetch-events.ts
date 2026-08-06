@@ -90,8 +90,8 @@ const fetchPage = async (
     Authorization: `Bearer ${token}`,
     Accept: "application/vnd.github+json",
     "X-GitHub-Api-Version": "2022-11-28",
-    "User-Agent": "github-weekly-reporter",
-  };
+          "User-Agent": "worklog",
+        };
 
   for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
     const response = await fetch(url, { headers });
@@ -103,7 +103,7 @@ const fetchPage = async (
     if (response.status === 401 || response.status === 403) {
       throw new Error(
         `GitHub API returned ${response.status} ${response.statusText}. ` +
-        "Check that your token (GH_PAT) is valid and not expired.",
+        "Check that your token (GH_PAT / GITHUB_TOKEN) is valid and not expired.",
       );
     }
 
@@ -130,7 +130,12 @@ export const fetchEvents = async (
   token: string,
   username: string,
   range: DateRange,
+  options: { includePrivate?: boolean; repos?: string[] } = {},
 ): Promise<GitHubEvent[]> => {
+  const includePrivate = options.includePrivate !== false;
+  const repoFilter = options.repos && options.repos.length > 0
+    ? new Set(options.repos.map((r) => r.toLowerCase()))
+    : null;
   const events: GitHubEvent[] = [];
 
   let lastPageSize = 0;
@@ -140,7 +145,8 @@ export const fetchEvents = async (
     if (raw.length === 0) break;
 
     raw
-      .filter((e) => e.public)
+      .filter((e) => includePrivate || e.public)
+      .filter((e) => !repoFilter || repoFilter.has(e.repo.name.toLowerCase()))
       .filter((e) => isInRange(e.created_at, range))
       .forEach((e) => {
         events.push({

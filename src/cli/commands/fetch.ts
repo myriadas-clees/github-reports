@@ -11,9 +11,13 @@ import { fetchContributions } from "../../collector/fetch-contributions.js";
 import { fetchPRsByRefs, type PRRef } from "../../collector/fetch-repo-prs.js";
 import { fetchCommitMessages } from "../../collector/fetch-commits.js";
 import { fetchReleases } from "../../collector/fetch-releases.js";
+import { fetchReviewsForRepos } from "../../collector/fetch-reviews.js";
 import { aggregateRepositories } from "../../collector/aggregate.js";
+import { estimateHours } from "../../collector/estimate-hours.js";
+import { buildStakeholderSummary } from "../../collector/stakeholder-summary.js";
 import { getWeekId, getCurrentWeekId } from "../../deployer/week.js";
-import type { GitHubEvent } from "../../types.js";
+import { loadConfigFile, resolveConfig } from "../../config.js";
+import type { GitHubEvent, WeeklyReportData } from "../../types.js";
 
 const env = (key: string): string | undefined => process.env[key];
 
@@ -23,18 +27,33 @@ export type BaseOptions = {
   dataDir: string;
   timezone: string;
   date?: Date;
+  repositories: string[];
+  sessionGapMinutes: number;
+  maxSessionHours: number;
 };
 
-export const resolveBaseOptions = (
+export const resolveBaseOptions = async (
   cli: Record<string, string | undefined>,
-): BaseOptions => {
-  const token = cli.token ?? env("GITHUB_TOKEN");
-  if (!token) throw new Error("GitHub token required. Pass --token or set GITHUB_TOKEN.");
-  const username = cli.username ?? env("GITHUB_USERNAME");
-  if (!username) throw new Error("GitHub username required. Pass --username or set GITHUB_USERNAME.");
-  const timezone = cli.timezone ?? env("TIMEZONE") ?? "UTC";
-  const date = cli.date ? parseLocalDate(cli.date, timezone) : undefined;
-  return { token, username, dataDir: cli.dataDir ?? env("DATA_DIR") ?? "./data", date, timezone };
+): Promise<BaseOptions> => {
+  const configPath = cli.config ?? env("CONFIG_PATH") ?? "./config.yaml";
+  const fileCfg = await loadConfigFile(configPath);
+  const cfg = resolveConfig(fileCfg, cli);
+
+  const token = cli.token ?? env("GITHUB_TOKEN") ?? env("GH_PAT");
+  if (!token) throw new Error("GitHub token required. Pass --token or set GITHUB_TOKEN / GH_PAT.");
+  if (!cfg.username) throw new Error("GitHub username required. Pass --username, set GITHUB_USERNAME, or set username in config.yaml.");
+
+  const date = cli.date ? parseLocalDate(cli.date, cfg.timezone) : undefined;
+  return {
+    token,
+    username: cfg.username,
+    dataDir: cfg.dataDir,
+    date,
+    timezone: cfg.timezone,
+    repositories: cfg.repositories,
+    sessionGapMinutes: cfg.sessionGapMinutes,
+    maxSessionHours: cfg.maxSessionHours,
+  };
 };
 
 const tryReadYaml = async <T>(path: string): Promise<T | null> => {
@@ -46,7 +65,6 @@ const tryReadYaml = async <T>(path: string): Promise<T | null> => {
   }
 };
 
-// Extract PR references from events
 export const extractPRRefs = (events: GitHubEvent[]): PRRef[] => {
   const refs: PRRef[] = [];
   events.forEach((e) => {
@@ -61,19 +79,15 @@ export const extractPRRefs = (events: GitHubEvent[]): PRRef[] => {
   return refs;
 };
 
-// Resolved parameters for a fetch operation.
-// Computed once from (now, timezone, dataDir) so that every downstream
-// consumer (logging, file I/O, commit message) uses the same values.
 export type FetchPlan = {
-  targetDate: string;  // YYYY-MM-DD in local timezone
-  rangeFrom: string;   // YYYY-MM-DD in local timezone
-  rangeTo: string;     // YYYY-MM-DD in local timezone
-  weekPath: string;    // e.g. "2026/W14"
-  reportDir: string;   // e.g. "./data/2026/W14"
-  range: DateRange;    // Date objects for API filtering
+  targetDate: string;
+  rangeFrom: string;
+  rangeTo: string;
+  weekPath: string;
+  reportDir: string;
+  range: DateRange;
 };
 
-// Compute yesterday's noon (safe for week-ID calculation) in the given timezone.
 const getYesterday = (now: Date, timezone: string): Date => {
   const { year, month, day } = localDateParts(now, timezone);
   const todayUTC = new Date(Date.UTC(year, month, day));
@@ -84,7 +98,6 @@ const getYesterday = (now: Date, timezone: string): Date => {
   return parseLocalDate(`${y}-${m}-${d}`, timezone);
 };
 
-// Build a daily-fetch plan: yesterday's events stored in yesterday's week folder.
 export const buildDailyPlan = (now: Date, timezone: string, dataDir: string): FetchPlan => {
   const yesterday = getYesterday(now, timezone);
   const weekId = getCurrentWeekId(yesterday, timezone);
@@ -99,7 +112,6 @@ export const buildDailyPlan = (now: Date, timezone: string, dataDir: string): Fe
   };
 };
 
-// Build a weekly-fetch plan: previous week's full Mon-Sun range.
 export const buildWeeklyPlan = (now: Date, timezone: string, dataDir: string): FetchPlan => {
   const weekId = getWeekId(now, timezone);
   const range = buildWeeklyRange(now, timezone);
@@ -116,20 +128,22 @@ export const buildWeeklyPlan = (now: Date, timezone: string, dataDir: string): F
 const logPlan = (command: string, username: string, timezone: string, plan: FetchPlan): void => {
   console.log(`${command}: user=${username} timezone=${timezone}`);
   console.log(`  target date : ${plan.targetDate}`);
-  console.log(`  date range  : ${plan.rangeFrom} .. ${plan.rangeTo}`);
+  console.log(`  date range  : ${plan.rangeFrom} .. ${plan.rangeTo} (Thu–Wed)`);
   console.log(`  week        : ${plan.weekPath}`);
   console.log(`  data dir    : ${plan.reportDir}`);
 };
 
-// daily-fetch: collect yesterday's events and store in yesterday's week folder.
 const runDailyFetch = async (options: BaseOptions): Promise<void> => {
   const now = options.date ?? new Date();
   const plan = buildDailyPlan(now, options.timezone, options.dataDir);
   await mkdir(plan.reportDir, { recursive: true });
 
   logPlan("daily-fetch", options.username, options.timezone, plan);
-  const newEvents = await fetchEvents(options.token, options.username, plan.range);
-  console.log(`Fetched ${newEvents.length} events.`);
+  const newEvents = await fetchEvents(options.token, options.username, plan.range, {
+    includePrivate: true,
+    repos: options.repositories.length > 0 ? options.repositories : undefined,
+  });
+  console.log(`Fetched ${newEvents.length} events (including private where authorized).`);
 
   const eventsPath = join(plan.reportDir, "events.yaml");
   const existing = await tryReadYaml<GitHubEvent[]>(eventsPath) ?? [];
@@ -139,153 +153,262 @@ const runDailyFetch = async (options: BaseOptions): Promise<void> => {
   console.log(`Events accumulated: ${merged.length} total (${eventsPath})`);
 };
 
-// Search PRs updated during the week via GitHub Search API (fallback for missing daily events)
+/** Search PRs (public + private the token can see). Optionally scope to configured repos. */
 const searchWeeklyPRs = async (
   token: string,
   username: string,
   range: DateRange,
+  repositories: string[],
 ): Promise<PRRef[]> => {
   const from = range.from.toISOString().split("T")[0];
   const to = range.to.toISOString().split("T")[0];
   const refs: PRRef[] = [];
 
-  // Search PRs authored by or involving the user, updated during the week
-  for (const qualifier of [`author:${username}`, `reviewed-by:${username}`]) {
-    let page = 1;
-    let hasMore = true;
-    while (hasMore) {
-      const q = encodeURIComponent(`is:pr is:public ${qualifier} updated:${from}..${to}`);
-      const url = `https://api.github.com/search/issues?q=${q}&per_page=100&page=${page}`;
-      const res = await fetch(url, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          Accept: "application/vnd.github+json",
-          "User-Agent": "github-weekly-reporter",
-        },
-      });
-      if (!res.ok) {
-        if (res.status === 401 || res.status === 403) {
-          throw new Error(
-            `GitHub Search API returned ${res.status}. Check that your token (GH_PAT) is valid.`,
-          );
-        }
-        console.warn(`  Search API error (${res.status}), some PRs may be missing.`);
-        break;
-      }
-      const data = (await res.json()) as {
-        items: { number: number; pull_request?: { url: string }; repository_url: string }[];
-        total_count: number;
-      };
-      data.items
-        .filter((item) => item.pull_request)
-        .forEach((item) => {
-          // repository_url is like "https://api.github.com/repos/owner/repo"
-          const repo = item.repository_url.replace("https://api.github.com/repos/", "");
-          refs.push({ repo, number: item.number });
+  const repoClauses =
+    repositories.length > 0
+      ? repositories.map((r) => `repo:${r}`)
+      : [""];
+
+  for (const repoClause of repoClauses) {
+    for (const qualifier of [`author:${username}`, `reviewed-by:${username}`, `commenter:${username}`]) {
+      let page = 1;
+      let hasMore = true;
+      while (hasMore) {
+        const parts = [`is:pr`, qualifier, `updated:${from}..${to}`];
+        if (repoClause) parts.push(repoClause);
+        const q = encodeURIComponent(parts.join(" "));
+        const url = `https://api.github.com/search/issues?q=${q}&per_page=100&page=${page}`;
+        const res = await fetch(url, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: "application/vnd.github+json",
+            "User-Agent": "worklog",
+          },
         });
-      hasMore = data.items.length === 100;
-      page++;
+        if (!res.ok) {
+          if (res.status === 401 || res.status === 403) {
+            throw new Error(
+              `GitHub Search API returned ${res.status}. Check that your token (GH_PAT) is valid and has repo access.`,
+            );
+          }
+          console.warn(`  Search API error (${res.status}), some PRs may be missing.`);
+          break;
+        }
+        const data = (await res.json()) as {
+          items: { number: number; pull_request?: { url: string }; repository_url: string }[];
+          total_count: number;
+        };
+        data.items
+          .filter((item) => item.pull_request)
+          .forEach((item) => {
+            const repo = item.repository_url.replace("https://api.github.com/repos/", "");
+            refs.push({ repo, number: item.number });
+          });
+        hasMore = data.items.length === 100;
+        page++;
+      }
     }
   }
   return refs;
 };
 
-// weekly-fetch: use accumulated events + search API to find PRs, fetch each individually
+const collectTimestamps = (
+  events: GitHubEvent[],
+  commitMessages: Awaited<ReturnType<typeof fetchCommitMessages>>,
+  pullRequests: Awaited<ReturnType<typeof fetchPRsByRefs>>,
+  reviews: Awaited<ReturnType<typeof fetchReviewsForRepos>>,
+): string[] => {
+  const stamps: string[] = [];
+  events.forEach((e) => stamps.push(e.createdAt));
+  commitMessages.forEach((cm) => {
+    cm.commits?.forEach((c) => {
+      if (c.authoredAt) stamps.push(c.authoredAt);
+    });
+  });
+  pullRequests.forEach((pr) => {
+    stamps.push(pr.createdAt);
+    if (pr.mergedAt) stamps.push(pr.mergedAt);
+  });
+  reviews.reviews.forEach((r) => {
+    if (r.submittedAt) stamps.push(r.submittedAt);
+  });
+  reviews.comments.forEach((c) => stamps.push(c.createdAt));
+  return stamps;
+};
+
 const runWeeklyFetch = async (options: BaseOptions): Promise<void> => {
   const now = options.date ?? new Date();
   const plan = buildWeeklyPlan(now, options.timezone, options.dataDir);
   await mkdir(plan.reportDir, { recursive: true });
 
   logPlan("weekly-fetch", options.username, options.timezone, plan);
+  if (options.repositories.length > 0) {
+    console.log(`  configured repos: ${options.repositories.join(", ")}`);
+  }
 
-  // Load accumulated events
   const eventsPath = join(plan.reportDir, "events.yaml");
-  const events = await tryReadYaml<GitHubEvent[]>(eventsPath) ?? [];
-  console.log(`Loaded ${events.length} accumulated events.`);
+  let events = await tryReadYaml<GitHubEvent[]>(eventsPath) ?? [];
 
-  // Extract PR refs from events
+  // Ensure we have events for the full week (useful when daily fetch was skipped)
+  console.log("Fetching events for the full week window...");
+  const weekEvents = await fetchEvents(options.token, options.username, plan.range, {
+    includePrivate: true,
+    repos: options.repositories.length > 0 ? options.repositories : undefined,
+  });
+  events = dedupeEvents([...events, ...weekEvents]);
+  await writeFile(eventsPath, toYaml(events, { lineWidth: 120 }), "utf-8");
+  console.log(`Loaded ${events.length} events.`);
+
   const eventRefs = extractPRRefs(events);
   console.log(`Found ${eventRefs.length} PR references from events.`);
 
-  // Search for PRs via GitHub Search API (catches PRs missed by daily fetch)
-  console.log("Searching for PRs updated this week...");
-  const searchRefs = await searchWeeklyPRs(options.token, options.username, plan.range);
+  console.log("Searching for PRs updated this week (includes private repos the token can access)...");
+  const searchRefs = await searchWeeklyPRs(
+    options.token,
+    options.username,
+    plan.range,
+    options.repositories,
+  );
   console.log(`Found ${searchRefs.length} PR references from search.`);
 
-  // Merge and dedupe
   const allRefs = [...eventRefs, ...searchRefs];
   const uniqueRefs = new Map<string, PRRef>();
   allRefs.forEach((ref) => uniqueRefs.set(`${ref.repo}#${ref.number}`, ref));
   console.log(`Total unique PRs: ${uniqueRefs.size}`);
 
-  // Fetch individual PRs
   console.log("Fetching PRs...");
   const pullRequests = await fetchPRsByRefs(options.token, [...uniqueRefs.values()]);
   console.log(`Fetched ${pullRequests.length} PRs.`);
 
-  // Fetch contributions (GraphQL)
+  const authored = pullRequests.filter(
+    (pr) => pr.author.toLowerCase() === options.username.toLowerCase(),
+  );
+  const prsOpened = authored.length;
+  const prsMerged = authored.filter((pr) => pr.state === "merged").length;
+  const prsInProgress = authored.filter((pr) => pr.state === "open");
+
   console.log("Fetching contribution stats...");
   const gql = graphql.defaults({ headers: { authorization: `token ${options.token}` } });
   const contributions = await fetchContributions(gql, options.username, plan.range, options.timezone);
 
-  const repositories = aggregateRepositories(pullRequests, []);
-  const totalAdditions = pullRequests.reduce((sum, pr) => sum + pr.additions, 0);
-  const totalDeletions = pullRequests.reduce((sum, pr) => sum + pr.deletions, 0);
+  // Repos to enrich: configured + discovered
+  const discoveredRepos = new Set<string>([
+    ...options.repositories,
+    ...pullRequests.map((pr) => pr.repository),
+    ...events.map((e) => e.repo),
+  ]);
+  const repoNames = [...discoveredRepos];
 
-  // Fetch commit messages per repository
-  const repoNames = repositories.map((r) => r.name);
   console.log(`Fetching commit messages for ${repoNames.length} repositories...`);
-  const commitMessages = await fetchCommitMessages(options.token, options.username, repoNames, plan.range);
+  const commitMessages = await fetchCommitMessages(
+    options.token,
+    options.username,
+    repoNames,
+    plan.range,
+  );
   const totalMsgs = commitMessages.reduce((sum, r) => sum + r.messages.length, 0);
   console.log(`Collected ${totalMsgs} commit messages from ${commitMessages.length} repositories.`);
 
-  // Fetch releases per repository
+  console.log(`Fetching reviews and review comments...`);
+  const reviewData = await fetchReviewsForRepos(
+    options.token,
+    options.username,
+    repoNames,
+    plan.range,
+  );
+  const ai = reviewData.aiReviews;
+  console.log(
+    `Collected ${reviewData.reviews.length} reviews and ${reviewData.comments.length} review comments` +
+      ` (AI done: Codex ${ai.codex.reviews} reviews / ${ai.codex.comments} comments / ${ai.codex.prsReviewed} PRs;` +
+      ` Cursor ${ai.cursor.reviews} reviews / ${ai.cursor.comments} comments / ${ai.cursor.prsReviewed} PRs).`,
+  );
+
   console.log(`Fetching releases for ${repoNames.length} repositories...`);
   const releases = await fetchReleases(options.token, repoNames, plan.range);
   console.log(`Collected ${releases.length} releases.`);
 
-  const githubData = {
+  const repositories = aggregateRepositories(pullRequests, [], commitMessages);
+  const totalAdditions = pullRequests.reduce((sum, pr) => sum + pr.additions, 0);
+  const totalDeletions = pullRequests.reduce((sum, pr) => sum + pr.deletions, 0);
+
+  const timestamps = collectTimestamps(events, commitMessages, pullRequests, reviewData);
+  const commitCountFromMessages = commitMessages.reduce(
+    (sum, r) => sum + (r.commits?.length ?? r.messages.length),
+    0,
+  );
+  const hoursEstimate = estimateHours(
+    timestamps,
+    {
+      pullRequests: authored.map((pr) => ({
+        additions: pr.additions,
+        deletions: pr.deletions,
+        state: pr.state,
+      })),
+      reviewCount: reviewData.reviews.length,
+      reviewCommentCount: reviewData.comments.length,
+      commitCount: commitCountFromMessages,
+    },
+    {
+      gapMinutes: options.sessionGapMinutes,
+      maxSessionHours: options.maxSessionHours,
+    },
+  );
+  console.log(
+    `Estimated hours: ~${hoursEstimate.hours}h ` +
+      `(sessions ~${hoursEstimate.sessionHours}h / volume ~${hoursEstimate.volumeHours}h; estimate only).`,
+  );
+
+  const partial: Omit<WeeklyReportData, "aiContent"> = {
     username: contributions.username,
     avatarUrl: contributions.avatarUrl,
     profile: contributions.profile,
     dateRange: { from: plan.rangeFrom, to: plan.rangeTo },
     stats: {
-      totalCommits: contributions.totalCommits,
+      totalCommits: Math.max(contributions.totalCommits, commitCountFromMessages),
       totalAdditions,
       totalDeletions,
-      prsOpened: pullRequests.filter((pr) => pr.author.toLowerCase() === options.username.toLowerCase()).length,
-      prsMerged: pullRequests.filter((pr) => pr.state === "merged" && pr.author.toLowerCase() === options.username.toLowerCase()).length,
-      prsReviewed: contributions.prsReviewed,
+      prsOpened,
+      prsMerged,
+      prsInProgress: prsInProgress.length,
+      prsReviewed: Math.max(contributions.prsReviewed, reviewData.reviews.length),
+      reviewComments: reviewData.comments.length,
       issuesOpened: 0,
       issuesClosed: 0,
+      estimatedHours: hoursEstimate.hours,
     },
     dailyCommits: contributions.dailyCommits,
     repositories,
     pullRequests,
+    prsInProgress,
     issues: [],
-    events: events.filter((e) => e.payload.kind === "review"),
+    events: events.filter((e) => e.payload.kind === "review" || e.payload.kind === "push"),
     commitMessages,
     releases,
     externalContributions: [],
+    codeReviews: reviewData.reviews,
+    reviewComments: reviewData.comments,
+    aiReviews: reviewData.aiReviews,
+    hoursEstimate,
   };
+
+  const stakeholderSummary = buildStakeholderSummary(partial);
+  const githubData = { ...partial, stakeholderSummary };
+
   const dataPath = join(plan.reportDir, "github-data.yaml");
   await writeFile(dataPath, toYaml(githubData, { lineWidth: 120 }), "utf-8");
   console.log(`GitHub data written to ${dataPath}`);
-  console.log(`Total: ${pullRequests.length} PRs`);
+  console.log(`Total: ${pullRequests.length} PRs (${prsInProgress.length} in progress), ~${hoursEstimate.hours}h estimated`);
 };
 
 const baseOptions = (cmd: Command): Command =>
   cmd
-    .option("-t, --token <token>", "GitHub token (env: GITHUB_TOKEN)")
+    .option("-t, --token <token>", "GitHub token (env: GITHUB_TOKEN / GH_PAT)")
     .option("-u, --username <username>", "GitHub username (env: GITHUB_USERNAME)")
     .option("--data-dir <dir>", "Data directory (env: DATA_DIR, default: ./data)")
     .option("--timezone <tz>", "IANA timezone (env: TIMEZONE, default: UTC)")
-    .option("--date <date>", "Date within the target week (YYYY-MM-DD, default: today)");
+    .option("--date <date>", "Date within the target week (YYYY-MM-DD, default: today)")
+    .option("--config <path>", "YAML config path (env: CONFIG_PATH, default: ./config.yaml)");
 
-// Format a commit message from a plan. Used by the commit-msg
-// subcommand so that action.yml produces consistent messages.
-// Includes the UTC range timestamps so the commit is unambiguous
-// regardless of the reader's timezone.
 export const formatCommitMsg = (mode: string, plan: FetchPlan): string =>
   mode === "daily"
     ? `data: daily ${plan.weekPath} ${plan.range.from.toISOString()}..${plan.range.to.toISOString()}`
@@ -298,7 +421,7 @@ export const registerFetch = (program: Command): void => {
       .description("Fetch yesterday's GitHub events and accumulate (run daily via cron at midnight)"),
   ).action(async (opts) => {
     try {
-      const options = resolveBaseOptions(opts);
+      const options = await resolveBaseOptions(opts);
       await runDailyFetch(options);
     } catch (error) {
       console.error("Error:", error instanceof Error ? error.message : error);
@@ -309,10 +432,10 @@ export const registerFetch = (program: Command): void => {
   baseOptions(
     program
       .command("weekly-fetch")
-      .description("Build full weekly data from accumulated events + individual PR fetches"),
+      .description("Build full Thu–Wed weekly data from events + PR/review/commit fetches"),
   ).action(async (opts) => {
     try {
-      const options = resolveBaseOptions(opts);
+      const options = await resolveBaseOptions(opts);
       await runWeeklyFetch(options);
     } catch (error) {
       console.error("Error:", error instanceof Error ? error.message : error);

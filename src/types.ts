@@ -104,9 +104,13 @@ export type WeeklyStats = {
   totalDeletions: number;
   prsOpened: number;
   prsMerged: number;
+  prsInProgress: number;
   prsReviewed: number;
+  reviewComments: number;
   issuesOpened: number;
   issuesClosed: number;
+  /** Estimated hours from activity timestamps — not tracked time. */
+  estimatedHours: number;
 };
 
 export type ExternalContribution = {
@@ -125,9 +129,84 @@ export type UserProfile = {
   publicRepos: number;
 };
 
+export type CommitDetail = {
+  sha: string;
+  message: string;
+  url: string;
+  authoredAt: string;
+};
+
 export type RepoCommitMessages = {
   repo: string;
   messages: string[];
+  commits?: CommitDetail[];
+};
+
+export type CodeReview = {
+  repository: string;
+  prNumber: number;
+  prTitle: string;
+  prUrl: string;
+  state: string;
+  submittedAt: string;
+  body: string | null;
+};
+
+export type ReviewComment = {
+  repository: string;
+  prNumber: number;
+  prUrl: string;
+  url: string;
+  body: string;
+  path: string | null;
+  createdAt: string;
+};
+
+/**
+ * Per-bot Codex/Cursor review stats from GitHub PR data (not Analytics).
+ * Primary = reviews **done** (reviews + comments + PRs), not Fixed/Addressed.
+ */
+export type AiReviewerStats = {
+  /** Distinct PRs with ≥1 in-range AI review or root comment. */
+  prsReviewed: number;
+  /** In-range AI root review comments (line-level findings) — part of “done”. */
+  comments: number;
+  /** In-range AI PR review submissions — primary “done” count when present. */
+  reviews: number;
+  /** Threads Fixed/Addressed by the reporter in-range (secondary; often omitted in UI). */
+  fixed: number;
+};
+
+/** Aggregated Codex + Cursor review activity for the work week. */
+export type AiReviewActivity = {
+  codex: AiReviewerStats;
+  cursor: AiReviewerStats;
+  prsReviewed: number;
+  comments: number;
+  reviews: number;
+  fixed: number;
+};
+
+/**
+ * @deprecated Legacy fixed-only counts. Prefer AiReviewActivity / aiReviews.
+ * Still accepted when reading older github-data.yaml files.
+ */
+export type AiReviewFixCounts = {
+  codex: number;
+  cursor: number;
+  total: number;
+};
+
+export type HoursEstimate = {
+  hours: number;
+  sessions: number;
+  /** Hours from timestamp session clustering alone. */
+  sessionHours?: number;
+  /** Hours from PR size / reviews / commits. */
+  volumeHours?: number;
+  gapMinutes: number;
+  maxSessionHours: number;
+  note: string;
 };
 
 export type Release = {
@@ -148,11 +227,24 @@ export type WeeklyReportData = {
   dailyCommits: DailyCommitCount[];
   repositories: RepositoryActivity[];
   pullRequests: PullRequest[];
+  /** PRs still open / in progress at end of the week. */
+  prsInProgress?: PullRequest[];
   issues: Issue[];
   events: GitHubEvent[];
   commitMessages: RepoCommitMessages[];
   releases: Release[];
   externalContributions: ExternalContribution[];
+  codeReviews?: CodeReview[];
+  reviewComments?: ReviewComment[];
+  /** Codex/Cursor reviews done this week (submissions, comments, PRs; fixed is secondary). */
+  aiReviews?: AiReviewActivity;
+  /**
+   * @deprecated Prefer aiReviews. Kept so older YAML still loads.
+   */
+  aiReviewFixes?: AiReviewFixCounts;
+  hoursEstimate?: HoursEstimate;
+  /** Plain-English summary for non-technical stakeholders. */
+  stakeholderSummary?: string;
   aiContent: AIContent;
 };
 
@@ -224,4 +316,5 @@ export type ReportConfig = {
   llmModel: string | null;
   language: Language;
   timezone: string; // IANA timezone (e.g. "Asia/Tokyo", "UTC")
+  repositories?: string[];
 };

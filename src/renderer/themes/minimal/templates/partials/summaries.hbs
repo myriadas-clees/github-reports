@@ -5,8 +5,8 @@
   {{#each aiContent.summaries}}
   <div class="section-summary">
     <div class="section-type">{{this.type}}</div>
-    <div class="section-heading">{{{mdInline this.heading}}}</div>
-    <div class="section-body">{{{mdInline this.body}}}</div>
+    <div class="section-heading md">{{{mdInline this.heading}}}</div>
+    <div class="section-body md">{{{md this.body}}}</div>
 
     {{#eq this.type "activity-pattern"}}
     {{#if @root.dailyCommits.length}}
@@ -40,7 +40,7 @@
       {{#each (sortReposDesc @root.repositories)}}
       <div class="repo-bar-item">
         <div class="repo-bar-header">
-          <span class="repo-bar-label">{{this.name}}</span>
+          <span class="repo-bar-label github-entity">{{> github-mark}}{{this.name}}</span>
           <span class="repo-bar-value">{{this.prsOpened}} PRs</span>
         </div>
         <div class="repo-bar-track">

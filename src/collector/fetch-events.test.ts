@@ -217,7 +217,23 @@ describe("fetchEvents", () => {
     expect(result[0].id).toBe("1");
   });
 
-  it("filters out non-public events", async () => {
+  it("filters private events when includePrivate is false", async () => {
+    const events = [
+      { ...makeRawEvent("1", "2026-04-03T12:00:00Z"), public: false },
+      makeRawEvent("2", "2026-04-03T12:00:00Z"),
+    ];
+    vi.spyOn(globalThis, "fetch").mockResolvedValueOnce(
+      new Response(JSON.stringify(events), { status: 200 }),
+    ).mockResolvedValueOnce(
+      new Response(JSON.stringify([]), { status: 200 }),
+    );
+
+    const result = await fetchEvents("token", "testuser", range, { includePrivate: false });
+    expect(result).toHaveLength(1);
+    expect(result[0].id).toBe("2");
+  });
+
+  it("includes private events by default for authenticated private reporting", async () => {
     const events = [
       { ...makeRawEvent("1", "2026-04-03T12:00:00Z"), public: false },
       makeRawEvent("2", "2026-04-03T12:00:00Z"),
@@ -229,8 +245,7 @@ describe("fetchEvents", () => {
     );
 
     const result = await fetchEvents("token", "testuser", range);
-    expect(result).toHaveLength(1);
-    expect(result[0].id).toBe("2");
+    expect(result).toHaveLength(2);
   });
 
   it("stops pagination when oldest event is before range", async () => {

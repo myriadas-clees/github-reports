@@ -9,6 +9,7 @@ const range: DateRange = {
 
 const makeRawCommit = (message: string) => ({
   sha: "abc123",
+  html_url: "https://github.com/org/repo/commit/abc123",
   commit: { message, author: { date: "2026-04-01T12:00:00Z" } },
 });
 
@@ -37,8 +38,11 @@ describe("fetchCommitMessages", () => {
     const result = await fetchCommitMessages("token", "user", ["org/repo-a", "org/repo-b"], range);
 
     expect(result).toHaveLength(2);
-    expect(result[0]).toEqual({ repo: "org/repo-a", messages: ["feat: add login", "fix: typo in header"] });
-    expect(result[1]).toEqual({ repo: "org/repo-b", messages: ["chore: update deps"] });
+    expect(result[0].repo).toBe("org/repo-a");
+    expect(result[0].messages).toEqual(["feat: add login", "fix: typo in header"]);
+    expect(result[0].commits?.length).toBe(2);
+    expect(result[1].repo).toBe("org/repo-b");
+    expect(result[1].messages).toEqual(["chore: update deps"]);
   });
 
   it("paginates through multiple pages", async () => {

@@ -145,6 +145,63 @@ export const buildCSS = (_language: Language = "en"): string => {
     border-radius: 3px;
   }
 
+  /* Markdown body — scoped prose styles */
+  .md > :first-child { margin-top: 0; }
+  .md > :last-child { margin-bottom: 0; }
+  .md p { margin: 0 0 0.75em; }
+  .md p:last-child { margin-bottom: 0; }
+  .md strong { color: var(--text); font-weight: 600; }
+  .md em { font-style: italic; }
+  .md a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 0.12em;
+  }
+  .md a:hover { text-decoration: none; }
+  .md h2, .md h3, .md h4 {
+    color: var(--text);
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0.9em 0 0.35em;
+  }
+  .md h2 { font-size: 1.05em; }
+  .md h3 { font-size: 1em; }
+  .md h4 { font-size: 0.95em; }
+  .md h2:first-child, .md h3:first-child, .md h4:first-child { margin-top: 0; }
+  .md ul, .md ol {
+    margin: 0.4em 0 0.75em;
+    padding-left: 1.25em;
+  }
+  .md li { margin: 0.2em 0; }
+  .md li::marker { color: var(--accent); }
+  .md blockquote {
+    margin: 0.75em 0;
+    padding: 0.1em 0 0.1em 0.85em;
+    border-left: 2px solid var(--accent);
+    color: var(--text-tertiary);
+  }
+  .md hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 1em 0;
+  }
+  .md pre {
+    margin: 0.75em 0;
+    padding: 0.75em 0.9em;
+    overflow-x: auto;
+    border-radius: 4px;
+    background: var(--code-bg);
+    font-family: ${MONO};
+    font-size: 0.8125rem;
+    line-height: 1.5;
+  }
+  .md pre code {
+    padding: 0;
+    background: none;
+    border-radius: 0;
+    font-size: inherit;
+  }
+
   /* NAV */
   nav { margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
   nav a { text-decoration: none; font-size: 0.875rem; }
@@ -206,6 +263,92 @@ export const buildCSS = (_language: Language = "en"): string => {
   .repo-bar-header { display: flex; justify-content: space-between; font-size: 0.75rem; }
   .repo-bar-label { font-family: ${MONO}; color: var(--text-secondary); }
   .repo-bar-value { font-family: ${MONO}; color: var(--text-tertiary); }
+  .github-entity { display: inline-flex; align-items: center; gap: 0.35em; }
+  a.github-entity {
+    color: var(--text); text-decoration: none; transition: color 0.2s;
+  }
+  a.github-entity:hover { color: var(--accent); }
+  .activity-block { margin: 0.85rem 0 0.5rem; }
+  .activity-repo {
+    display: flex; align-items: center; gap: 0.65em;
+    font-weight: 600; color: var(--text); cursor: pointer;
+    list-style: none;
+  }
+  .activity-repo::-webkit-details-marker { display: none; }
+  .activity-repo::before {
+    content: "";
+    width: 0.4em; height: 0.4em;
+    border-right: 1.5px solid var(--text-tertiary);
+    border-bottom: 1.5px solid var(--text-tertiary);
+    transform: rotate(-45deg);
+    transition: transform 0.15s ease;
+    flex-shrink: 0;
+  }
+  .activity-block[open] > .activity-repo::before { transform: rotate(45deg); }
+  .activity-repo--static { cursor: default; }
+  .activity-repo--static::before { visibility: hidden; }
+  .activity-count {
+    font-weight: 400; font-size: 0.8125rem;
+    color: var(--text-tertiary);
+  }
+  a.activity-repo-ext {
+    display: inline-flex; color: inherit; text-decoration: none;
+    transition: color 0.2s;
+  }
+  a.activity-repo-ext:hover { color: var(--accent); }
+  .activity-children {
+    margin: 0.35rem 0 0.15rem 1.15rem;
+    padding-left: 0.65rem;
+    border-left: 1px solid var(--border-subtle);
+  }
+  .activity-pr-block { margin: 0.45rem 0; }
+  .activity-pr {
+    display: flex; align-items: center; gap: 0.55em; flex-wrap: wrap;
+    font-weight: 500; color: var(--text); cursor: pointer;
+    list-style: none;
+  }
+  .activity-pr::-webkit-details-marker { display: none; }
+  .activity-pr::before {
+    content: "";
+    width: 0.35em; height: 0.35em;
+    border-right: 1.5px solid var(--text-tertiary);
+    border-bottom: 1.5px solid var(--text-tertiary);
+    transform: rotate(-45deg);
+    transition: transform 0.15s ease;
+    flex-shrink: 0;
+  }
+  .activity-pr-block[open] > .activity-pr::before { transform: rotate(45deg); }
+  .activity-pr-title {
+    color: var(--text); text-decoration: none; font-weight: 600;
+  }
+  .activity-pr-title:hover { color: var(--accent); }
+  .activity-pr-add { color: var(--green); }
+  .activity-pr-del { color: var(--red); }
+  .activity-other-label {
+    font-weight: 600; color: var(--text-secondary); font-size: 0.875rem;
+  }
+  .activity-pr-block .activity-list { margin-left: 1.15rem; }
+  .activity-list { list-style: none; padding: 0; margin: 0.35rem 0 0; }
+  .activity-list a { color: var(--text); text-decoration: none; }
+  .activity-list a:hover { color: var(--accent); }
+  .activity-meta { color: var(--text-tertiary); font-size: 0.8125rem; margin-left: 0.35rem; }
+  .activity-heading {
+    font-size: 1rem; font-weight: 700; margin: 1.75rem 0 0.75rem;
+    color: var(--text);
+  }
+  .pr-state {
+    font-family: ${MONO}; font-size: 0.6875rem;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-right: 0.35rem; color: var(--text-tertiary);
+  }
+  .pr-state.pr-merged { color: var(--green, #1a7f37); }
+  .pr-state.pr-open { color: var(--accent); }
+  .pr-state.pr-closed { color: var(--red, #cf222e); }
+  .github-mark {
+    display: inline-flex; width: 0.875rem; height: 0.875rem;
+    flex-shrink: 0; color: currentColor; opacity: 0.85;
+  }
+  .github-mark svg { display: block; width: 100%; height: 100%; }
   .repo-bar-track { width: 100%; height: 3px; border-radius: 2px; background: var(--border-subtle); overflow: hidden; }
   .repo-bar-fill { height: 100%; border-radius: 2px; background: var(--accent); }
 
@@ -213,14 +356,39 @@ export const buildCSS = (_language: Language = "en"): string => {
   .highlight-list { list-style: none; }
   .highlight-item { margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-subtle); }
   .highlight-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-  .highlight-badge { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; margin-right: 0.5rem; }
+  .highlight-heading { display: flex; align-items: baseline; gap: 0.5rem; }
+  .highlight-badge { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; flex-shrink: 0; }
   .highlight-pr { color: var(--badge-pr); }
   .highlight-release { color: var(--badge-release); }
   .highlight-issue { color: var(--badge-issue); }
   .highlight-discussion { color: var(--badge-discussion); }
-  .highlight-title { font-weight: 600; }
+  .highlight-title { font-weight: 600; min-width: 0; }
   .highlight-title a { color: var(--text); }
-  .highlight-meta { font-size: 0.75rem; color: var(--text-tertiary); margin-top: 0.125rem; }
+  .highlight-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    width: 100%;
+    min-width: 0;
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    margin-top: 0.125rem;
+  }
+  .highlight-meta-repo {
+    flex: 0 1 auto;
+    min-width: 0;
+    overflow: hidden;
+  }
+  .highlight-meta-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+  }
+  .highlight-meta-tail {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
   .highlight-body { color: var(--text-secondary); margin-top: 0.25rem; }
 
   /* SHARE */

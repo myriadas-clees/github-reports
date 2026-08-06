@@ -165,6 +165,67 @@ export const buildCSS = (language: Language = "en"): string => {
       background: var(--e-code-bg);
     }
 
+    /* Markdown body — scoped prose styles */
+    .md > :first-child { margin-top: 0; }
+    .md > :last-child { margin-bottom: 0; }
+    .md p { margin: 0 0 0.85em; }
+    .md p:last-child { margin-bottom: 0; }
+    .md strong { color: var(--e-heading); font-weight: 600; }
+    .md em { font-style: italic; }
+    .md a {
+      color: var(--e-accent);
+      text-decoration: underline;
+      text-decoration-color: var(--e-border);
+      text-underline-offset: 0.15em;
+    }
+    .md a:hover { text-decoration-color: var(--e-accent); }
+    .md h2, .md h3, .md h4 {
+      font-family: ${heading};
+      color: var(--e-heading);
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      margin: 0.95em 0 0.4em;
+    }
+    .md h2 { font-size: 1.125em; }
+    .md h3 { font-size: 1.05em; }
+    .md h4 { font-size: 1em; font-weight: 600; }
+    .md h2:first-child, .md h3:first-child, .md h4:first-child { margin-top: 0; }
+    .md ul, .md ol {
+      margin: 0.45em 0 0.85em;
+      padding-left: 1.25em;
+    }
+    .md li { margin: 0.25em 0; }
+    .md li::marker { color: var(--e-accent); }
+    .md blockquote {
+      margin: 0.85em 0;
+      padding: 0.15em 0 0.15em 1em;
+      border-left: 2px solid var(--e-accent);
+      color: var(--e-text-tertiary);
+      font-style: italic;
+    }
+    .md hr {
+      border: none;
+      border-top: 1px solid var(--e-border);
+      margin: 1.15em 0;
+    }
+    .md pre {
+      margin: 0.85em 0;
+      padding: 0.85em 1em;
+      overflow-x: auto;
+      border-radius: 4px;
+      background: var(--e-code-bg);
+      font-family: ${mono};
+      font-size: 0.8125rem;
+      line-height: 1.55;
+    }
+    .md pre code {
+      padding: 0;
+      background: none;
+      border-radius: 0;
+      font-size: inherit;
+    }
+
     /* ==================== SCROLL STRIP ==================== */
     .scroll-strip {
       display: flex;
@@ -274,11 +335,18 @@ export const buildCSS = (language: Language = "en"): string => {
       padding: 1rem 0 1.25rem;
       border-bottom: 1px solid var(--e-border-subtle);
     }
+    .highlight-heading {
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
     .stack-card h3 {
       font-family: ${heading};
       font-size: 1.0625rem; font-weight: 500;
       letter-spacing: -0.01em;
-      margin-bottom: 0.4rem;
+      margin: 0;
+      min-width: 0;
       color: var(--e-heading);
     }
     .stack-card h3 a { color: var(--e-heading); text-decoration: none; }
@@ -319,15 +387,44 @@ export const buildCSS = (language: Language = "en"): string => {
       text-transform: uppercase; letter-spacing: 0.1em;
       display: inline-flex; align-items: center;
       padding: 0.15rem 0.35rem; line-height: 1;
-      border-radius: 2px; margin-bottom: 0.4rem; color: #fff;
+      border-radius: 2px; flex-shrink: 0; color: #fff;
     }
+    .highlight-title {
+      font-family: ${heading};
+      font-size: 1.0625rem; font-weight: 500;
+      letter-spacing: -0.01em;
+      min-width: 0;
+      color: var(--e-heading);
+    }
+    .highlight-title a { color: var(--e-heading); text-decoration: none; }
+    .highlight-title a:hover { color: var(--e-accent); }
     .highlight-pr { background: var(--e-badge-pr); }
     .highlight-release { background: var(--e-badge-release); }
     .highlight-issue { background: var(--e-badge-issue); color: #000; }
     .highlight-discussion { background: var(--e-badge-discussion); }
     .highlight-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.35em;
+      width: 100%;
+      min-width: 0;
       font-family: ${mono}; font-size: 0.625rem;
-      color: var(--e-text-tertiary); margin-bottom: 0.4rem;
+      color: var(--e-text-tertiary);
+    }
+    .highlight-meta-repo {
+      flex: 0 1 auto;
+      min-width: 0;
+      overflow: hidden;
+    }
+    .highlight-meta-name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      min-width: 0;
+    }
+    .highlight-meta-tail {
+      flex-shrink: 0;
+      white-space: nowrap;
     }
 
     /* ==================== CHIPS ==================== */
@@ -369,6 +466,92 @@ export const buildCSS = (language: Language = "en"): string => {
     .repo-bar-header { display: flex; justify-content: space-between; font-size: 0.6875rem; }
     .repo-bar-label { font-family: ${mono}; color: var(--e-text-secondary); }
     .repo-bar-value { font-family: ${mono}; color: var(--e-text-tertiary); }
+    .github-entity { display: inline-flex; align-items: center; gap: 0.35em; }
+    a.github-entity {
+      color: var(--e-text); text-decoration: none; transition: color 0.2s;
+    }
+    a.github-entity:hover { color: var(--e-accent); }
+    .activity-block { margin: 0.85rem 0 0.5rem; }
+    .activity-repo {
+      display: flex; align-items: center; gap: 0.65em;
+      font-weight: 600; color: var(--e-text); cursor: pointer;
+      list-style: none;
+    }
+    .activity-repo::-webkit-details-marker { display: none; }
+    .activity-repo::before {
+      content: "";
+      width: 0.4em; height: 0.4em;
+      border-right: 1.5px solid var(--e-text-tertiary);
+      border-bottom: 1.5px solid var(--e-text-tertiary);
+      transform: rotate(-45deg);
+      transition: transform 0.15s ease;
+      flex-shrink: 0;
+    }
+    .activity-block[open] > .activity-repo::before { transform: rotate(45deg); }
+    .activity-repo--static { cursor: default; }
+    .activity-repo--static::before { visibility: hidden; }
+    .activity-count {
+      font-weight: 400; font-size: 0.8125rem;
+      color: var(--e-text-tertiary);
+    }
+    a.activity-repo-ext {
+      display: inline-flex; color: inherit; text-decoration: none;
+      transition: color 0.2s;
+    }
+    a.activity-repo-ext:hover { color: var(--e-accent); }
+    .activity-children {
+      margin: 0.35rem 0 0.15rem 1.15rem;
+      padding-left: 0.65rem;
+      border-left: 1px solid var(--e-border-subtle);
+    }
+    .activity-pr-block { margin: 0.45rem 0; }
+    .activity-pr {
+      display: flex; align-items: center; gap: 0.55em; flex-wrap: wrap;
+      font-weight: 500; color: var(--e-text); cursor: pointer;
+      list-style: none;
+    }
+    .activity-pr::-webkit-details-marker { display: none; }
+    .activity-pr::before {
+      content: "";
+      width: 0.35em; height: 0.35em;
+      border-right: 1.5px solid var(--e-text-tertiary);
+      border-bottom: 1.5px solid var(--e-text-tertiary);
+      transform: rotate(-45deg);
+      transition: transform 0.15s ease;
+      flex-shrink: 0;
+    }
+    .activity-pr-block[open] > .activity-pr::before { transform: rotate(45deg); }
+    .activity-pr-title {
+      color: var(--e-text); text-decoration: none; font-weight: 600;
+    }
+    .activity-pr-title:hover { color: var(--e-accent); }
+    .activity-pr-add { color: var(--e-green); }
+    .activity-pr-del { color: var(--e-red); }
+    .activity-other-label {
+      font-weight: 600; color: var(--e-text-secondary); font-size: 0.875rem;
+    }
+    .activity-pr-block .activity-list { margin-left: 1.15rem; }
+    .activity-list { list-style: none; padding: 0; margin: 0.35rem 0 0; }
+    .activity-list a { color: var(--e-text); text-decoration: none; }
+    .activity-list a:hover { color: var(--e-accent); }
+    .activity-meta { color: var(--e-text-tertiary); font-size: 0.8125rem; margin-left: 0.35rem; }
+    .activity-heading {
+      font-size: 1rem; font-weight: 700; margin: 1.75rem 0 0.75rem;
+      color: var(--e-text);
+    }
+    .pr-state {
+      font-family: ${mono}; font-size: 0.6875rem;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      margin-right: 0.35rem; color: var(--e-text-tertiary);
+    }
+    .pr-state.pr-merged { color: var(--e-badge-pr, #1a7f37); }
+    .pr-state.pr-open { color: var(--e-accent); }
+    .pr-state.pr-closed { color: var(--e-badge-issue, #cf222e); }
+    .github-mark {
+      display: inline-flex; width: 0.875rem; height: 0.875rem;
+      flex-shrink: 0; color: currentColor; opacity: 0.85;
+    }
+    .github-mark svg { display: block; width: 100%; height: 100%; }
     .repo-bar-track { width: 100%; height: 3px; border-radius: 2px; background: var(--e-border-subtle); overflow: hidden; }
     .repo-bar-fill { height: 100%; border-radius: 2px; background: var(--e-accent); }
 

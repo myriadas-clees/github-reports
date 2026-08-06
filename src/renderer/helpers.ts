@@ -9,11 +9,22 @@ import { parseLocalDate } from "../collector/date-range.js";
 
 const sanitize = (html: string): string =>
   sanitizeHtml(html, {
-    allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
+    // Marked output + img; keep defaults so headings/lists/pre/blockquote stay allowed
+    allowedTags: sanitizeHtml.defaults.allowedTags.concat([
+      "img",
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6",
+    ]),
     allowedAttributes: {
       ...sanitizeHtml.defaults.allowedAttributes,
       a: ["href", "target", "rel"],
       img: ["src", "alt"],
+      code: ["class"],
+      pre: ["class"],
     },
   });
 
@@ -25,6 +36,31 @@ const externalLinkRenderer = {
 };
 
 const marked = new Marked({ renderer: externalLinkRenderer });
+
+/** Match `+N -N` / `+N −N` line-change pairs in highlight meta strings. */
+const LINE_STATS_RE = /([+＋]\d+)\s+([−\-－]\d+)/g;
+
+/**
+ * Escape highlight meta and wrap `+N` / `−N` (or `-N`) pairs in activity
+ * add/del color classes so Highlights match Activity PR row styling.
+ */
+export const colorizeLineStats = (text: unknown): Handlebars.SafeString => {
+  if (typeof text !== "string" || !text) {
+    return new Handlebars.SafeString("");
+  }
+
+  let result = "";
+  let lastIndex = 0;
+  LINE_STATS_RE.lastIndex = 0;
+  let match: RegExpExecArray | null;
+  while ((match = LINE_STATS_RE.exec(text)) !== null) {
+    result += Handlebars.escapeExpression(text.slice(lastIndex, match.index));
+    result += `<span class="activity-pr-add">${Handlebars.escapeExpression(match[1])}</span> <span class="activity-pr-del">${Handlebars.escapeExpression(match[2])}</span>`;
+    lastIndex = match.index + match[0].length;
+  }
+  result += Handlebars.escapeExpression(text.slice(lastIndex));
+  return new Handlebars.SafeString(result);
+};
 
 export type HelperOptions = {
   language: Language;
@@ -100,6 +136,8 @@ export const registerHelpers = (
   hbs.registerHelper("mdInline", (text: string): Handlebars.SafeString =>
     new Handlebars.SafeString(sanitize(marked.parseInline(text ?? "") as string)),
   );
+
+  hbs.registerHelper("colorizeLineStats", colorizeLineStats);
 
   // Escape a string for safe embedding inside a JSON-LD <script> block.
   // Prevents breaking out of the JSON string or closing the script tag.

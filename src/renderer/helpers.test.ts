@@ -117,6 +117,45 @@ describe("registerHelpers", () => {
       expect(result).toContain("https://example.com/a");
       expect(result).toContain("rel=\"noopener nofollow\"");
     });
+
+    it("renders headings, lists, blockquotes, code fences, and hr", () => {
+      const hbs = createHbs();
+      const text = [
+        "### Section",
+        "",
+        "- item one",
+        "1. numbered",
+        "",
+        "> quoted",
+        "",
+        "```",
+        "const x = 1;",
+        "```",
+        "",
+        "---",
+        "",
+        "Use `inline` and *italic*.",
+      ].join("\n");
+      const result = compile(hbs, "{{{md text}}}", { text });
+      expect(result).toContain("<h3>");
+      expect(result).toContain("<ul>");
+      expect(result).toContain("<ol>");
+      expect(result).toContain("<blockquote>");
+      expect(result).toContain("<pre>");
+      expect(result).toContain("<hr");
+      expect(result).toContain("<code>");
+      expect(result).toContain("<em>");
+      expect(result).not.toContain("<script>");
+    });
+
+    it("strips raw HTML event handlers", () => {
+      const hbs = createHbs();
+      const result = compile(hbs, "{{{md text}}}", {
+        text: '<a href="https://example.com" onclick="alert(1)">x</a>',
+      });
+      expect(result).not.toContain("onclick");
+      expect(result).toContain("https://example.com");
+    });
   });
 
   describe("mdInline", () => {
@@ -124,6 +163,18 @@ describe("registerHelpers", () => {
       const hbs = createHbs();
       const result = compile(hbs, "{{{mdInline text}}}", { text: "*italic*" });
       expect(result).toContain("<em>italic</em>");
+    });
+
+    it("does not produce block headings from ##", () => {
+      const hbs = createHbs();
+      const result = compile(hbs, "{{{mdInline text}}}", { text: "## Why" });
+      expect(result).not.toContain("<h2>");
+    });
+
+    it("handles null input", () => {
+      const hbs = createHbs();
+      const result = compile(hbs, "{{{mdInline text}}}", { text: null });
+      expect(result).toBe("");
     });
   });
 
@@ -252,11 +303,41 @@ describe("registerHelpers", () => {
     });
   });
 
-  describe("mdInline", () => {
-    it("handles null input", () => {
+  describe("colorizeLineStats", () => {
+    it("wraps +N and −N in activity color classes", () => {
       const hbs = createHbs();
-      const result = compile(hbs, "{{{mdInline text}}}", { text: null });
-      expect(result).toBe("");
+      const result = compile(hbs, "{{{colorizeLineStats meta}}}", {
+        meta: "merged · +172 −19",
+      });
+      expect(result).toBe(
+        'merged · <span class="activity-pr-add">+172</span> <span class="activity-pr-del">−19</span>',
+      );
+    });
+
+    it("handles ASCII hyphen deletions and surrounding text", () => {
+      const hbs = createHbs();
+      const result = compile(hbs, "{{{colorizeLineStats meta}}}", {
+        meta: "merged Apr 2 · +320 -45 · 12 files",
+      });
+      expect(result).toContain('<span class="activity-pr-add">+320</span>');
+      expect(result).toContain('<span class="activity-pr-del">-45</span>');
+      expect(result).toContain(" · 12 files");
+    });
+
+    it("escapes non-stat portions of meta", () => {
+      const hbs = createHbs();
+      const result = compile(hbs, "{{{colorizeLineStats meta}}}", {
+        meta: "merged <script> · +1 -0",
+      });
+      expect(result).not.toContain("<script>");
+      expect(result).toContain("&lt;script&gt;");
+      expect(result).toContain('<span class="activity-pr-add">+1</span>');
+    });
+
+    it("returns empty for null/empty input", () => {
+      const hbs = createHbs();
+      expect(compile(hbs, "{{{colorizeLineStats meta}}}", { meta: null })).toBe("");
+      expect(compile(hbs, "{{{colorizeLineStats meta}}}", { meta: "" })).toBe("");
     });
   });
 });

@@ -1,4 +1,4 @@
-// generate command: read github-data.yaml and generate LLM content
+// generate command: read github-data.yaml and generate LLM content (or stakeholder fallback)
 
 import { Command } from "commander";
 import { readFile, writeFile } from "node:fs/promises";
@@ -7,53 +7,64 @@ import { parse as parseYaml, stringify as toYaml } from "yaml";
 import { generateContent } from "../../llm/index.js";
 import { getWeekId } from "../../deployer/week.js";
 import { parseLocalDate } from "../../collector/date-range.js";
+import { buildFallbackAIContent, buildStakeholderSummary } from "../../collector/stakeholder-summary.js";
+import { loadConfigFile, resolveConfig } from "../../config.js";
 import type { WeeklyReportData, LLMProvider, Language } from "../../types.js";
 
 const env = (key: string): string | undefined => process.env[key];
 
 export type GenerateOptions = {
   dataDir: string;
-  llmProvider: LLMProvider;
-  llmApiKey: string;
-  llmModel: string;
+  llmProvider: LLMProvider | null;
+  llmApiKey: string | null;
+  llmModel: string | null;
   language: Language;
   timezone: string;
   date?: Date;
+  allowFallback: boolean;
 };
 
-export const resolveOptions = (
+const providerKeyMap: Record<string, string> = {
+  openai: "OPENAI_API_KEY",
+  anthropic: "ANTHROPIC_API_KEY",
+  gemini: "GEMINI_API_KEY",
+  openrouter: "OPENROUTER_API_KEY",
+  groq: "GROQ_API_KEY",
+  grok: "GROK_API_KEY",
+};
+
+export const resolveOptions = async (
   cli: Record<string, string | undefined>,
-): GenerateOptions => {
-  const llmProvider = (cli.llmProvider ?? env("LLM_PROVIDER")) as LLMProvider | undefined;
-  if (!llmProvider) throw new Error("LLM provider required. Pass --llm-provider or set LLM_PROVIDER.");
+): Promise<GenerateOptions> => {
+  const configPath = cli.config ?? env("CONFIG_PATH") ?? "./config.yaml";
+  const fileCfg = await loadConfigFile(configPath);
+  const cfg = resolveConfig(fileCfg, cli);
 
-  const providerKeyMap: Record<string, string> = {
-    openai: "OPENAI_API_KEY",
-    anthropic: "ANTHROPIC_API_KEY",
-    gemini: "GEMINI_API_KEY",
-    openrouter: "OPENROUTER_API_KEY",
-    groq: "GROQ_API_KEY",
-    grok: "GROK_API_KEY",
-  };
-  const envVarName = providerKeyMap[llmProvider];
-  const llmApiKey = cli.llmApiKey ?? (envVarName ? env(envVarName) : undefined);
-  if (!llmApiKey) throw new Error(`LLM API key required. Pass --llm-api-key or set ${envVarName ?? "the provider's API key env var"}.`);
+  const llmProviderRaw = cli.llmProvider ?? cfg.llm.provider ?? env("LLM_PROVIDER") ?? null;
+  const llmProvider = (llmProviderRaw && String(llmProviderRaw).length > 0
+    ? llmProviderRaw
+    : null) as LLMProvider | null;
+  let llmApiKey: string | null = cli.llmApiKey ?? null;
+  if (!llmApiKey && llmProvider) {
+    const envVarName = providerKeyMap[llmProvider];
+    llmApiKey = envVarName ? env(envVarName) ?? null : null;
+  }
+  const llmModel = cli.llmModel ?? cfg.llm.model ?? env("LLM_MODEL") ?? null;
 
-  const llmModel = cli.llmModel ?? env("LLM_MODEL");
-  if (!llmModel) throw new Error("LLM model required. Pass --llm-model or set LLM_MODEL.");
-
-  const language = (cli.language ?? env("LANGUAGE") ?? "en") as Language;
-  const timezone = cli.timezone ?? env("TIMEZONE") ?? "UTC";
+  const language = cfg.language;
+  const timezone = cfg.timezone;
   const date = cli.date ? parseLocalDate(cli.date, timezone) : undefined;
+  const allowFallback = cli.requireLlm !== "true";
 
   return {
-    dataDir: cli.dataDir ?? env("DATA_DIR") ?? "./data",
+    dataDir: cfg.dataDir,
     llmProvider,
     llmApiKey,
     llmModel,
     language,
     timezone,
     date,
+    allowFallback,
   };
 };
 
@@ -66,36 +77,57 @@ const run = async (options: GenerateOptions): Promise<void> => {
   const raw = await readFile(dataPath, "utf-8");
   const data = parseYaml(raw) as WeeklyReportData;
 
-  console.log(`Generating AI content (${options.llmProvider}/${options.llmModel}, lang: ${options.language})...`);
-  const aiContent = await generateContent(
-    { ...data, language: options.language },
-    {
-      provider: options.llmProvider,
-      apiKey: options.llmApiKey,
-      model: options.llmModel,
-      language: options.language,
-    },
-  );
+  data.stakeholderSummary = buildStakeholderSummary(data);
+
+  const canUseLlm = Boolean(options.llmProvider && options.llmApiKey && options.llmModel);
+
+  let aiContent;
+  if (canUseLlm) {
+    console.log(`Generating AI content (${options.llmProvider}/${options.llmModel}, lang: ${options.language})...`);
+    aiContent = await generateContent(
+      { ...data, language: options.language },
+      {
+        provider: options.llmProvider!,
+        apiKey: options.llmApiKey!,
+        model: options.llmModel!,
+        language: options.language,
+      },
+    );
+    // Stakeholder blurb is a dedicated field; AI overview is only shown when it differs.
+  } else if (options.allowFallback) {
+    console.log("No LLM configured — generating report fallback content.");
+    aiContent = buildFallbackAIContent(data);
+  } else {
+    throw new Error(
+      "LLM provider, API key, and model are required. Pass flags/env vars, or omit --require-llm to use the stakeholder fallback.",
+    );
+  }
 
   const llmDataPath = join(dataDir, "llm-data.yaml");
   await writeFile(llmDataPath, toYaml(aiContent, { lineWidth: 120 }), "utf-8");
   console.log(`LLM data written to ${llmDataPath}`);
+
+  // Keep github-data stakeholderSummary in sync (default is empty — no stats dump).
+  await writeFile(dataPath, toYaml(data, { lineWidth: 120 }), "utf-8");
 };
 
 export const registerGenerate = (program: Command): void => {
   program
     .command("generate")
-    .description("Generate AI content from fetched GitHub data")
+    .description("Generate AI or stakeholder summary content from fetched GitHub data")
     .option("--data-dir <dir>", "Data directory (env: DATA_DIR, default: ./data)")
     .option("--llm-provider <provider>", "LLM provider (env: LLM_PROVIDER)")
-    .option("--llm-api-key <key>", "LLM API key (env: OPENROUTER_API_KEY / GROQ_API_KEY / GEMINI_API_KEY / OPENAI_API_KEY / ANTHROPIC_API_KEY / GROK_API_KEY)")
+    .option("--llm-api-key <key>", "LLM API key (env: OPENROUTER_API_KEY / …)")
     .option("--llm-model <model>", "LLM model name (env: LLM_MODEL)")
-    .option("--language <lang>", "Report language: en, ja, zh-CN, zh-TW, ko, es, fr, de, pt, ru (env: LANGUAGE, default: en)")
+    .option("--language <lang>", "Report language (env: LANGUAGE, default: en)")
     .option("--timezone <tz>", "IANA timezone (env: TIMEZONE, default: UTC)")
     .option("--date <date>", "Date within the target week (YYYY-MM-DD, default: today)")
+    .option("--config <path>", "YAML config path (env: CONFIG_PATH, default: ./config.yaml)")
+    .option("--require-llm", "Fail if LLM is not configured (default: allow stakeholder fallback)")
     .action(async (opts) => {
       try {
-        const options = resolveOptions(opts);
+        const options = await resolveOptions(opts);
+        if (opts.requireLlm) options.allowFallback = false;
         await run(options);
       } catch (error) {
         console.error("Error:", error instanceof Error ? error.message : error);

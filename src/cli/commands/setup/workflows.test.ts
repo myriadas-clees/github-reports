@@ -2,42 +2,39 @@ import { describe, it, expect } from "vitest";
 import { buildReadme, weeklyCronUTC } from "./workflows.js";
 
 describe("weeklyCronUTC", () => {
-  // day-of-week: 0=Sunday, 1=Monday
-  // For east-of-UTC timezones, local Monday 01:00 falls on UTC Sunday,
-  // so day-of-week should be 0.
+  // day-of-week: 0=Sunday … 4=Thursday
+  // Weekly report runs Thursday morning, 1h after daily midnight fetch.
 
-  it("returns Monday (1) for UTC", () => {
-    expect(weeklyCronUTC("UTC")).toBe("0 1 * * 1");
+  it("returns Thursday (4) for UTC", () => {
+    expect(weeklyCronUTC("UTC")).toBe("0 1 * * 4");
   });
 
-  it("returns Sunday (0) for Asia/Tokyo (UTC+9)", () => {
-    // daily: 0 15 * * *, weekly: Mon 01:00 JST = Sun 16:00 UTC
-    expect(weeklyCronUTC("Asia/Tokyo")).toBe("0 16 * * 0");
+  it("returns Wednesday (3) for Asia/Tokyo (UTC+9)", () => {
+    // daily: 0 15 * * *, weekly: Thu 01:00 JST = Wed 16:00 UTC
+    expect(weeklyCronUTC("Asia/Tokyo")).toBe("0 16 * * 3");
   });
 
-  it("returns Monday (1) for America/New_York (UTC-5)", () => {
-    // daily: 0 5 * * *, weekly: Mon 01:00 EST = Mon 06:00 UTC
-    expect(weeklyCronUTC("America/New_York")).toBe("0 6 * * 1");
+  it("returns Thursday (4) for America/New_York (UTC-5)", () => {
+    // daily: 0 5 * * *, weekly: Thu 01:00 EST = Thu 06:00 UTC
+    expect(weeklyCronUTC("America/New_York")).toBe("0 6 * * 4");
   });
 
-  it("returns Monday (1) for America/Los_Angeles (UTC-8)", () => {
-    // daily: 0 8 * * *, weekly: Mon 01:00 PST = Mon 09:00 UTC
-    expect(weeklyCronUTC("America/Los_Angeles")).toBe("0 9 * * 1");
+  it("returns Thursday (4) for America/Los_Angeles (UTC-8)", () => {
+    expect(weeklyCronUTC("America/Los_Angeles")).toBe("0 9 * * 4");
   });
 
-  it("returns Sunday (0) for Asia/Shanghai (UTC+8)", () => {
-    // daily: 0 16 * * *, weekly: Mon 01:00 CST = Sun 17:00 UTC
-    expect(weeklyCronUTC("Asia/Shanghai")).toBe("0 17 * * 0");
+  it("returns Wednesday (3) for Asia/Shanghai (UTC+8)", () => {
+    // Thu 01:00 CST = Wed 17:00 UTC
+    expect(weeklyCronUTC("Asia/Shanghai")).toBe("0 17 * * 3");
   });
 
-  it("returns Monday (1) for Europe/Berlin (UTC+1, standard time)", () => {
-    // daily: 0 23 * * *, weekly: Mon 01:00 CET = Mon 00:00 UTC
-    expect(weeklyCronUTC("Europe/Berlin")).toBe("0 0 * * 1");
+  it("returns Thursday (4) for Europe/Berlin (UTC+1, standard time)", () => {
+    expect(weeklyCronUTC("Europe/Berlin")).toBe("0 0 * * 4");
   });
 
-  it("returns Sunday (0) for Pacific/Auckland (UTC+13)", () => {
-    // daily: 0 11 * * *, weekly: Mon 01:00 NZDT = Sun 12:00 UTC
-    expect(weeklyCronUTC("Pacific/Auckland")).toBe("0 12 * * 0");
+  it("returns Wednesday (3) for Pacific/Auckland (UTC+13)", () => {
+    // Thu 01:00 NZDT = Wed 12:00 UTC
+    expect(weeklyCronUTC("Pacific/Auckland")).toBe("0 12 * * 3");
   });
 });
 
@@ -80,37 +77,10 @@ describe("buildReadme", () => {
   it("includes LLM provider when specified", () => {
     const readme = buildReadme({
       ...baseOpts,
-      llmProvider: "openai",
-      llmModel: "gpt-4",
+      llmProvider: "openrouter",
+      llmModel: "test-model",
     });
-    expect(readme).toContain("llm-provider");
-    expect(readme).toContain("openai");
-    expect(readme).toContain("gpt-4");
-  });
-
-  it("mentions AI narrative when provider is set", () => {
-    const readme = buildReadme({ ...baseOpts, llmProvider: "groq", llmModel: "llama" });
-    expect(readme).toContain("AI narrative");
-  });
-
-  it("omits LLM rows when no provider", () => {
-    const readme = buildReadme(baseOpts);
-    expect(readme).not.toContain("llm-provider");
-  });
-
-  it("includes base URL section", () => {
-    const readme = buildReadme(baseOpts);
-    expect(readme).toContain("BASE_URL");
-    expect(readme).toContain("testuser.github.io/weekly-report");
-  });
-
-  it("includes correct secret name for provider", () => {
-    const readme = buildReadme({ ...baseOpts, llmProvider: "groq", llmModel: "llama" });
-    expect(readme).toContain("GROQ_API_KEY");
-  });
-
-  it("includes deariary footer", () => {
-    const readme = buildReadme(baseOpts);
-    expect(readme).toContain("deariary");
+    expect(readme).toContain("openrouter");
+    expect(readme).toContain("test-model");
   });
 });

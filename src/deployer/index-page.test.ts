@@ -29,7 +29,8 @@ describe("renderIndexPage", () => {
 
   it("includes dofollow footer link", () => {
     const html = renderIndexPage(entries(["2026/W14"]));
-    expect(html).toContain("deariary.com?utm_source=github-weekly-reporter");
+    expect(html).toContain("myriadas.com");
+    expect(html).toContain("Myriad Advisor Solutions");
     expect(html).not.toContain('rel="nofollow"');
   });
 

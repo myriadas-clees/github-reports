@@ -1,9 +1,10 @@
 {
-  "name": "github-weekly-reporter",
-  "version": "0.8.5",
-  "description": "Generate beautiful weekly GitHub activity reports with optional AI narratives",
+  "name": "worklog",
+  "version": "1.0.0",
+  "description": "Private self-hosted weekly GitHub status-page generator (Thursday–Wednesday)",
   "type": "module",
   "bin": {
+    "worklog": "./dist/cli/index.js",
     "github-weekly-reporter": "./dist/cli/index.js"
   },
   "main": "./dist/index.js",
@@ -19,34 +20,32 @@
     "dist/",
     "!dist/**/*.test.*",
     "src/renderer/themes/",
-    "assets/"
+    "assets/",
+    "config.example.yaml"
   ],
   "scripts": {
     "build": "tsc && chmod +x dist/cli/index.js",
     "dev": "tsc --watch",
     "lint": "eslint src/",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "report": "bun dist/cli/index.js report",
+    "preview": "bun dist/cli/index.js preview"
   },
   "keywords": [
     "github",
     "weekly-report",
-    "activity",
-    "github-action",
-    "developer-tools"
+    "worklog",
+    "status-page",
+    "private",
+    "github-actions"
   ],
-  "author": "deariary",
+  "author": "worklog",
   "license": "SEE LICENSE IN LICENSE",
-  "homepage": "https://github.com/deariary/github-weekly-reporter#readme",
-  "bugs": {
-    "url": "https://github.com/deariary/github-weekly-reporter/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/deariary/github-weekly-reporter.git"
-  },
+  "packageManager": "bun@1.3.12",
   "engines": {
-    "node": ">=20"
+    "node": ">=20",
+    "bun": ">=1.1.0"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.115.0",
@@ -60,7 +59,7 @@
     "openai": "^7.1.0",
     "sanitize-html": "^2.17.2",
     "satori": "^0.29.0",
-    "sharp": "^0.35.2",
+    "sharp": "^0.35.3",
     "yaml": "^2.8.3"
   },
   "devDependencies": {

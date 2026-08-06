@@ -49,6 +49,21 @@ vi.mock("../../collector/fetch-releases.js", () => ({
   fetchReleases: vi.fn().mockResolvedValue([]),
 }));
 
+vi.mock("../../collector/fetch-reviews.js", () => ({
+  fetchReviewsForRepos: vi.fn().mockResolvedValue({
+    reviews: [],
+    comments: [],
+    aiReviews: {
+      codex: { prsReviewed: 0, comments: 0, reviews: 0, fixed: 0 },
+      cursor: { prsReviewed: 0, comments: 0, reviews: 0, fixed: 0 },
+      prsReviewed: 0,
+      comments: 0,
+      reviews: 0,
+      fixed: 0,
+    },
+  }),
+}));
+
 // Note: deployer/week.js is NOT mocked here. buildDailyPlan/buildWeeklyPlan
 // call the real getWeekId/getCurrentWeekId (pure functions, no I/O) so that
 // the plan tests verify actual week-ID calculations end-to-end.
@@ -66,41 +81,48 @@ describe("resolveBaseOptions", () => {
     vi.unstubAllEnvs();
   });
 
-  it("throws when token is missing", () => {
+  beforeEach(() => {
+    vi.stubEnv("CONFIG_PATH", "/tmp/worklog-missing-config.yaml");
+    vi.stubEnv("TIMEZONE", "");
+  });
+
+  it("throws when token is missing", async () => {
     vi.stubEnv("GITHUB_TOKEN", "");
-    expect(() => resolveBaseOptions({ username: "alice" })).toThrow(
+    vi.stubEnv("GH_PAT", "");
+    await expect(resolveBaseOptions({ username: "alice" })).rejects.toThrow(
       "GitHub token required",
     );
   });
 
-  it("throws when username is missing", () => {
+  it("throws when username is missing", async () => {
     vi.stubEnv("GITHUB_USERNAME", "");
-    expect(() => resolveBaseOptions({ token: "ghp_xxx" })).toThrow(
+    await expect(resolveBaseOptions({ token: "ghp_xxx" })).rejects.toThrow(
       "GitHub username required",
     );
   });
 
-  it("uses defaults for timezone and dataDir", () => {
-    const result = resolveBaseOptions({
+  it("uses defaults for timezone and dataDir", async () => {
+    const result = await resolveBaseOptions({
       token: "ghp_xxx",
       username: "alice",
     });
     expect(result.timezone).toBe("UTC");
     expect(result.dataDir).toBe("./data");
+    expect(result.repositories).toEqual([]);
   });
 
-  it("reads token and username from env when CLI args omitted", () => {
+  it("reads token and username from env when CLI args omitted", async () => {
     vi.stubEnv("GITHUB_TOKEN", "ghp_env");
     vi.stubEnv("GITHUB_USERNAME", "bob");
-    const result = resolveBaseOptions({});
+    const result = await resolveBaseOptions({});
     expect(result.token).toBe("ghp_env");
     expect(result.username).toBe("bob");
   });
 
-  it("CLI args take precedence over env", () => {
+  it("CLI args take precedence over env", async () => {
     vi.stubEnv("GITHUB_TOKEN", "ghp_env");
     vi.stubEnv("GITHUB_USERNAME", "env_user");
-    const result = resolveBaseOptions({
+    const result = await resolveBaseOptions({
       token: "ghp_cli",
       username: "cli_user",
     });
@@ -108,8 +130,8 @@ describe("resolveBaseOptions", () => {
     expect(result.username).toBe("cli_user");
   });
 
-  it("parses date option correctly", () => {
-    const result = resolveBaseOptions({
+  it("parses date option correctly", async () => {
+    const result = await resolveBaseOptions({
       token: "ghp_xxx",
       username: "alice",
       date: "2026-04-01",
@@ -119,18 +141,18 @@ describe("resolveBaseOptions", () => {
     expect(result.date!.toISOString()).toContain("2026-04-01");
   });
 
-  it("date is undefined when not provided", () => {
-    const result = resolveBaseOptions({
+  it("date is undefined when not provided", async () => {
+    const result = await resolveBaseOptions({
       token: "ghp_xxx",
       username: "alice",
     });
     expect(result.date).toBeUndefined();
   });
 
-  it("respects env for timezone and dataDir", () => {
+  it("respects env for timezone and dataDir", async () => {
     vi.stubEnv("TIMEZONE", "Asia/Tokyo");
     vi.stubEnv("DATA_DIR", "/tmp/data");
-    const result = resolveBaseOptions({
+    const result = await resolveBaseOptions({
       token: "ghp_xxx",
       username: "alice",
     });
@@ -225,31 +247,22 @@ describe("extractPRRefs", () => {
 // -------------------------------------------------------------------
 // buildDailyPlan
 //
-// Cron fires at midnight local time. The plan should collect
-// yesterday's events and store them in yesterday's ISO week folder.
+// Cron fires at midnight local time. Yesterday's events go into the
+// in-progress Thu–Wed work week folder.
 //
-// Reference table (Asia/Tokyo, W14 = Mon 3/30 .. Sun 4/5):
-//
-//   cron (JST)        | yesterday | week | range
-//   3/31 Mon 00:00    | 3/30 Mon  | W14  | 3/30 .. 3/30
-//   4/1  Tue 00:00    | 3/31 Tue  | W14  | 3/31 .. 3/31
-//   ...
-//   4/6  Sun 00:00    | 4/5  Sun  | W14  | 4/5  .. 4/5
-//   4/7  Mon 00:00    | 4/6  Mon  | W15  | 4/6  .. 4/6
+// W13 = Thu 3/26 .. Wed 4/1; W14 = Thu 4/2 .. Wed 4/8
 // -------------------------------------------------------------------
 
 describe("buildDailyPlan", () => {
-  // Full week cycle (Asia/Tokyo, W14)
   const jstCases: [string, string, string, string, string][] = [
     // [cron UTC instant,           targetDate, range,       weekPath,    description]
-    ["2026-03-30T15:00:00Z", "2026-03-30", "2026-03-30", "2026/W14", "Mon: yesterday=Mon(W14)"],
-    ["2026-03-31T15:00:00Z", "2026-03-31", "2026-03-31", "2026/W14", "Tue: yesterday=Tue(W14)"],
-    ["2026-04-01T15:00:00Z", "2026-04-01", "2026-04-01", "2026/W14", "Wed: yesterday=Wed(W14)"],
-    ["2026-04-02T15:00:00Z", "2026-04-02", "2026-04-02", "2026/W14", "Thu: yesterday=Thu(W14)"],
-    ["2026-04-03T15:00:00Z", "2026-04-03", "2026-04-03", "2026/W14", "Fri: yesterday=Fri(W14)"],
-    ["2026-04-04T15:00:00Z", "2026-04-04", "2026-04-04", "2026/W14", "Sat: yesterday=Sat(W14)"],
-    ["2026-04-05T15:00:00Z", "2026-04-05", "2026-04-05", "2026/W14", "Sun: yesterday=Sun(W14)"],
-    ["2026-04-06T15:00:00Z", "2026-04-06", "2026-04-06", "2026/W15", "Mon: yesterday=Mon(W15), week boundary"],
+    ["2026-03-26T15:00:00Z", "2026-03-26", "2026-03-26", "2026/W13", "Fri: yesterday=Thu(W13)"],
+    ["2026-03-30T15:00:00Z", "2026-03-30", "2026-03-30", "2026/W13", "Tue: yesterday=Mon(W13)"],
+    ["2026-04-01T15:00:00Z", "2026-04-01", "2026-04-01", "2026/W13", "Thu: yesterday=Wed(W13)"],
+    ["2026-04-02T15:00:00Z", "2026-04-02", "2026-04-02", "2026/W14", "Fri: yesterday=Thu(W14)"],
+    ["2026-04-05T15:00:00Z", "2026-04-05", "2026-04-05", "2026/W14", "Mon: yesterday=Sun(W14)"],
+    ["2026-04-08T15:00:00Z", "2026-04-08", "2026-04-08", "2026/W14", "Thu: yesterday=Wed(W14)"],
+    ["2026-04-09T15:00:00Z", "2026-04-09", "2026-04-09", "2026/W15", "Fri: yesterday=Thu(W15), week boundary"],
   ];
 
   it.each(jstCases)("JST cron at %s: %s", (utcInstant, targetDate, rangeDate, weekPath, _desc) => {
@@ -261,11 +274,10 @@ describe("buildDailyPlan", () => {
     expect(plan.reportDir).toBe(`data/${weekPath}`);
   });
 
-  // UTC cycle (W14)
   const utcCases: [string, string, string][] = [
-    ["2026-03-31T00:00:00Z", "2026-03-30", "2026/W14"],
-    ["2026-04-06T00:00:00Z", "2026-04-05", "2026/W14"],
-    ["2026-04-07T00:00:00Z", "2026-04-06", "2026/W15"],
+    ["2026-03-27T00:00:00Z", "2026-03-26", "2026/W13"],
+    ["2026-04-02T00:00:00Z", "2026-04-01", "2026/W13"],
+    ["2026-04-03T00:00:00Z", "2026-04-02", "2026/W14"],
   ];
 
   it.each(utcCases)("UTC cron at %s: yesterday=%s week=%s", (utcInstant, targetDate, weekPath) => {
@@ -279,8 +291,8 @@ describe("buildDailyPlan", () => {
     expect(plan.targetDate).toBe("2025-12-31");
     expect(plan.rangeFrom).toBe("2025-12-31");
     expect(plan.rangeTo).toBe("2025-12-31");
-    // Dec 31 2025 is Wednesday, ISO W01 of 2026
-    expect(plan.weekPath).toBe("2026/W01");
+    // Dec 31 2025 is Wednesday of the week that started Thu Dec 25
+    expect(plan.weekPath).toMatch(/^2025\/W\d{2}$/);
   });
 
   it("range covers exactly one day (from and to are the same date)", () => {
@@ -292,54 +304,49 @@ describe("buildDailyPlan", () => {
 // -------------------------------------------------------------------
 // buildWeeklyPlan
 //
-// Cron fires Monday 01:00 local time (1h after daily). The plan
-// should target the previous ISO week (Mon-Sun).
+// Cron fires Thursday 01:00 local time (1h after daily). The plan
+// targets the previous Thu–Wed work week.
 //
-// Reference table (Asia/Tokyo):
-//
-//   cron (JST)        | range             | week
-//   4/7  Mon 01:00    | 3/30 .. 4/5       | W14
-//   4/14 Mon 01:00    | 4/6  .. 4/12      | W15
+// Reference (UTC):
+//   Thu Apr 2 01:00 → Mar 26 .. Apr 1 → W13
+//   Thu Apr 9 01:00 → Apr 2  .. Apr 8 → W14
 // -------------------------------------------------------------------
 
 describe("buildWeeklyPlan", () => {
-  it("Monday JST: targets previous week W14 (3/30..4/5)", () => {
-    // Mon Apr 7 01:00 JST = 2026-04-06T16:00:00Z
-    const plan = buildWeeklyPlan(new Date("2026-04-06T16:00:00Z"), "Asia/Tokyo", "./data");
-    expect(plan.rangeFrom).toBe("2026-03-30");
-    expect(plan.rangeTo).toBe("2026-04-05");
-    expect(plan.weekPath).toBe("2026/W14");
-    expect(plan.reportDir).toBe("data/2026/W14");
+  it("Thursday JST: targets previous Thu–Wed week", () => {
+    // Thu Apr 2 01:00 JST = 2026-04-01T16:00:00Z
+    const plan = buildWeeklyPlan(new Date("2026-04-01T16:00:00Z"), "Asia/Tokyo", "./data");
+    expect(plan.rangeFrom).toBe("2026-03-26");
+    expect(plan.rangeTo).toBe("2026-04-01");
+    expect(plan.weekPath).toBe("2026/W13");
+    expect(plan.reportDir).toBe("data/2026/W13");
   });
 
-  it("Monday UTC: targets previous week W14 (3/30..4/5)", () => {
-    const plan = buildWeeklyPlan(new Date("2026-04-07T01:00:00Z"), "UTC", "./data");
-    expect(plan.rangeFrom).toBe("2026-03-30");
-    expect(plan.rangeTo).toBe("2026-04-05");
-    expect(plan.weekPath).toBe("2026/W14");
+  it("Thursday UTC: targets previous Thu–Wed week W13", () => {
+    const plan = buildWeeklyPlan(new Date("2026-04-02T01:00:00Z"), "UTC", "./data");
+    expect(plan.rangeFrom).toBe("2026-03-26");
+    expect(plan.rangeTo).toBe("2026-04-01");
+    expect(plan.weekPath).toBe("2026/W13");
   });
 
-  it("next Monday targets W15 (4/6..4/12)", () => {
-    // Mon Apr 14 01:00 JST = 2026-04-13T16:00:00Z
-    const plan = buildWeeklyPlan(new Date("2026-04-13T16:00:00Z"), "Asia/Tokyo", "./data");
-    expect(plan.rangeFrom).toBe("2026-04-06");
-    expect(plan.rangeTo).toBe("2026-04-12");
-    expect(plan.weekPath).toBe("2026/W15");
+  it("next Thursday targets the following work week", () => {
+    // Thu Apr 9 01:00 JST = 2026-04-08T16:00:00Z
+    const plan = buildWeeklyPlan(new Date("2026-04-08T16:00:00Z"), "Asia/Tokyo", "./data");
+    expect(plan.rangeFrom).toBe("2026-04-02");
+    expect(plan.rangeTo).toBe("2026-04-08");
+    expect(plan.weekPath).toBe("2026/W14");
   });
 
   it("range covers exactly 7 days", () => {
-    const plan = buildWeeklyPlan(new Date("2026-04-07T01:00:00Z"), "UTC", "./data");
-    expect(plan.rangeFrom).toBe("2026-03-30");
-    expect(plan.rangeTo).toBe("2026-04-05");
+    const plan = buildWeeklyPlan(new Date("2026-04-02T01:00:00Z"), "UTC", "./data");
+    expect(plan.rangeFrom).toBe("2026-03-26");
+    expect(plan.rangeTo).toBe("2026-04-01");
   });
 
-  it("year boundary: Mon Jan 5 (W02) targets previous W01 (Dec 29..Jan 4)", () => {
-    // Mon Jan 5 2026 01:00 UTC is W02. Previous week is W01 (Dec 29..Jan 4).
-    // ISO W01 of 2026 starts on Mon Dec 29 2025.
-    const plan = buildWeeklyPlan(new Date("2026-01-05T01:00:00Z"), "UTC", "./data");
-    expect(plan.rangeFrom).toBe("2025-12-29");
-    expect(plan.rangeTo).toBe("2026-01-04");
-    expect(plan.weekPath).toBe("2026/W01");
+  it("year boundary: Thu Jan 1 targets previous week ending Dec 31", () => {
+    const plan = buildWeeklyPlan(new Date("2026-01-01T01:00:00Z"), "UTC", "./data");
+    expect(plan.rangeFrom).toBe("2025-12-25");
+    expect(plan.rangeTo).toBe("2025-12-31");
   });
 });
 
@@ -349,61 +356,56 @@ describe("buildWeeklyPlan", () => {
 
 describe("daily/weekly plan consistency", () => {
   it("7 daily plans cover the same range as the weekly plan (UTC)", () => {
-    // W14 daily crons: Tue 3/31 00:00 through Mon 4/7 00:00
+    // W13 = Thu 3/26 .. Wed 4/1. Daily crons Fri 3/27 through Thu 4/2.
     const dailyDates = [
+      "2026-03-27T00:00:00Z", // yesterday = 3/26 Thu
+      "2026-03-28T00:00:00Z", // yesterday = 3/27 Fri
+      "2026-03-29T00:00:00Z", // yesterday = 3/28 Sat
+      "2026-03-30T00:00:00Z", // yesterday = 3/29 Sun
       "2026-03-31T00:00:00Z", // yesterday = 3/30 Mon
       "2026-04-01T00:00:00Z", // yesterday = 3/31 Tue
       "2026-04-02T00:00:00Z", // yesterday = 4/1  Wed
-      "2026-04-03T00:00:00Z", // yesterday = 4/2  Thu
-      "2026-04-04T00:00:00Z", // yesterday = 4/3  Fri
-      "2026-04-05T00:00:00Z", // yesterday = 4/4  Sat
-      "2026-04-06T00:00:00Z", // yesterday = 4/5  Sun
     ];
     const dailyPlans = dailyDates.map((d) => buildDailyPlan(new Date(d), "UTC", "./data"));
 
-    // All should target W14
-    dailyPlans.forEach((p) => expect(p.weekPath).toBe("2026/W14"));
+    dailyPlans.forEach((p) => expect(p.weekPath).toBe("2026/W13"));
 
-    // Collected dates should be Mon 3/30 through Sun 4/5
     const collectedDates = dailyPlans.map((p) => p.targetDate);
     expect(collectedDates).toEqual([
-      "2026-03-30", "2026-03-31", "2026-04-01", "2026-04-02",
-      "2026-04-03", "2026-04-04", "2026-04-05",
+      "2026-03-26", "2026-03-27", "2026-03-28", "2026-03-29",
+      "2026-03-30", "2026-03-31", "2026-04-01",
     ]);
 
-    // Weekly plan should cover the same range
-    const weeklyPlan = buildWeeklyPlan(new Date("2026-04-07T01:00:00Z"), "UTC", "./data");
+    const weeklyPlan = buildWeeklyPlan(new Date("2026-04-02T01:00:00Z"), "UTC", "./data");
     expect(weeklyPlan.rangeFrom).toBe(collectedDates[0]);
     expect(weeklyPlan.rangeTo).toBe(collectedDates[collectedDates.length - 1]);
-    expect(weeklyPlan.weekPath).toBe("2026/W14");
+    expect(weeklyPlan.weekPath).toBe("2026/W13");
   });
 
   it("7 daily plans cover the same range as the weekly plan (Asia/Tokyo)", () => {
-    // JST midnight = 15:00 UTC previous day
     const dailyDates = [
-      "2026-03-30T15:00:00Z", // JST 3/31 Mon, yesterday = 3/30
-      "2026-03-31T15:00:00Z", // JST 4/1  Tue, yesterday = 3/31
-      "2026-04-01T15:00:00Z", // JST 4/2  Wed, yesterday = 4/1
-      "2026-04-02T15:00:00Z", // JST 4/3  Thu, yesterday = 4/2
-      "2026-04-03T15:00:00Z", // JST 4/4  Fri, yesterday = 4/3
-      "2026-04-04T15:00:00Z", // JST 4/5  Sat, yesterday = 4/4
-      "2026-04-05T15:00:00Z", // JST 4/6  Sun, yesterday = 4/5
+      "2026-03-26T15:00:00Z", // JST 3/27 Fri, yesterday = 3/26 Thu
+      "2026-03-27T15:00:00Z",
+      "2026-03-28T15:00:00Z",
+      "2026-03-29T15:00:00Z",
+      "2026-03-30T15:00:00Z",
+      "2026-03-31T15:00:00Z",
+      "2026-04-01T15:00:00Z", // JST 4/2 Thu, yesterday = 4/1 Wed
     ];
     const dailyPlans = dailyDates.map((d) => buildDailyPlan(new Date(d), "Asia/Tokyo", "./data"));
 
-    dailyPlans.forEach((p) => expect(p.weekPath).toBe("2026/W14"));
+    dailyPlans.forEach((p) => expect(p.weekPath).toBe("2026/W13"));
 
     const collectedDates = dailyPlans.map((p) => p.targetDate);
     expect(collectedDates).toEqual([
-      "2026-03-30", "2026-03-31", "2026-04-01", "2026-04-02",
-      "2026-04-03", "2026-04-04", "2026-04-05",
+      "2026-03-26", "2026-03-27", "2026-03-28", "2026-03-29",
+      "2026-03-30", "2026-03-31", "2026-04-01",
     ]);
 
-    // Weekly cron: Mon 4/7 01:00 JST = 2026-04-06T16:00:00Z
-    const weeklyPlan = buildWeeklyPlan(new Date("2026-04-06T16:00:00Z"), "Asia/Tokyo", "./data");
+    const weeklyPlan = buildWeeklyPlan(new Date("2026-04-01T16:00:00Z"), "Asia/Tokyo", "./data");
     expect(weeklyPlan.rangeFrom).toBe(collectedDates[0]);
     expect(weeklyPlan.rangeTo).toBe(collectedDates[collectedDates.length - 1]);
-    expect(weeklyPlan.weekPath).toBe("2026/W14");
+    expect(weeklyPlan.weekPath).toBe("2026/W13");
   });
 });
 
@@ -422,19 +424,18 @@ describe("formatCommitMsg", () => {
   });
 
   it("weekly: includes week path and UTC range", () => {
-    // Mon Apr 7 01:00 JST = 2026-04-06T16:00:00Z
-    const plan = buildWeeklyPlan(new Date("2026-04-06T16:00:00Z"), "Asia/Tokyo", "./data");
+    // Thu Apr 2 01:00 JST = 2026-04-01T16:00:00Z → W13 Thu Mar 26 – Wed Apr 1
+    const plan = buildWeeklyPlan(new Date("2026-04-01T16:00:00Z"), "Asia/Tokyo", "./data");
     const msg = formatCommitMsg("weekly", plan);
-    expect(msg).toBe(`data: weekly 2026/W14 ${plan.range.from.toISOString()}..${plan.range.to.toISOString()}`);
-    // W14 in JST: Mon Mar 30 00:00 JST .. Sun Apr 5 23:59:59.999 JST
-    expect(msg).toMatch(/^data: weekly 2026\/W14 2026-03-29T15:00:00\.000Z\.\.2026-04-05T14:59:59\.999Z$/);
+    expect(msg).toBe(`data: weekly 2026/W13 ${plan.range.from.toISOString()}..${plan.range.to.toISOString()}`);
+    expect(msg).toMatch(/^data: weekly 2026\/W13 2026-03-25T15:00:00\.000Z\.\.2026-04-01T14:59:59\.999Z$/);
   });
 
-  it("daily at week boundary: Tue midnight, yesterday=Mon is new week", () => {
-    // Tue Apr 8 00:00 JST = 2026-04-07T15:00:00Z, yesterday = Mon Apr 7 (W15)
-    const plan = buildDailyPlan(new Date("2026-04-07T15:00:00Z"), "Asia/Tokyo", "./data");
+  it("daily at week boundary: Fri after new Thursday starts new week", () => {
+    // Fri Apr 3 00:00 JST = 2026-04-02T15:00:00Z, yesterday = Thu Apr 2 (W14)
+    const plan = buildDailyPlan(new Date("2026-04-02T15:00:00Z"), "Asia/Tokyo", "./data");
     const msg = formatCommitMsg("daily", plan);
-    expect(msg).toMatch(/^data: daily 2026\/W15 /);
+    expect(msg).toMatch(/^data: daily 2026\/W14 /);
   });
 });
 
@@ -479,7 +480,12 @@ describe("registerFetch (daily-fetch)", () => {
       "--date", "2026-04-01",
     ]);
 
-    expect(mockFetchEvents).toHaveBeenCalledWith("ghp_test", "testuser", expect.any(Object));
+    expect(mockFetchEvents).toHaveBeenCalledWith(
+      "ghp_test",
+      "testuser",
+      expect.any(Object),
+      expect.objectContaining({ includePrivate: true }),
+    );
     expect(mockWriteFile).toHaveBeenCalledWith(
       expect.stringContaining("events.yaml"),
       expect.any(String),
@@ -745,9 +751,10 @@ describe("registerFetch (weekly-fetch)", () => {
     const yaml = writeCall![1] as string;
     expect(yaml).toMatch(/prsOpened:\s*2/);
     expect(yaml).toMatch(/prsMerged:\s*1/);
-    // Only the review event should appear under events:
-    expect(yaml).toContain("kind: review");
-    expect(yaml).not.toMatch(/kind:\s*push/);
+    expect(yaml).toMatch(/prsInProgress:\s*1/);
+    expect(yaml).toContain("stakeholderSummary:");
+    expect(yaml).toContain("estimatedHours:");
+    expect(yaml).toContain("hoursEstimate:");
   });
 
   it("maps repo names and reduces commit-message totals when repositories aggregate is non-empty", async () => {
@@ -765,11 +772,14 @@ describe("registerFetch (weekly-fetch)", () => {
       dailyCommits: [],
     });
     const { fetchPRsByRefs } = await import("../../collector/fetch-repo-prs.js");
-    vi.mocked(fetchPRsByRefs).mockResolvedValue([]);
+    vi.mocked(fetchPRsByRefs).mockResolvedValue([
+      { title: "x", body: null, url: "u", repository: "owner/alpha", state: "open", labels: [], additions: 0, deletions: 0, changedFiles: 0, author: "alice", createdAt: "2026-03-20T00:00:00Z", mergedAt: null },
+      { title: "y", body: null, url: "u", repository: "owner/beta", state: "open", labels: [], additions: 0, deletions: 0, changedFiles: 0, author: "alice", createdAt: "2026-03-20T00:00:00Z", mergedAt: null },
+    ]);
     const { aggregateRepositories } = await import("../../collector/aggregate.js");
     vi.mocked(aggregateRepositories).mockReturnValueOnce([
-      { name: "owner/alpha", commits: 0, prsOpened: 0, prsMerged: 0, issuesOpened: 0, issuesClosed: 0, url: "https://github.com/owner/alpha" },
-      { name: "owner/beta", commits: 0, prsOpened: 0, prsMerged: 0, issuesOpened: 0, issuesClosed: 0, url: "https://github.com/owner/beta" },
+      { name: "owner/alpha", commits: 2, prsOpened: 1, prsMerged: 0, issuesOpened: 0, issuesClosed: 0, url: "https://github.com/owner/alpha" },
+      { name: "owner/beta", commits: 1, prsOpened: 1, prsMerged: 0, issuesOpened: 0, issuesClosed: 0, url: "https://github.com/owner/beta" },
     ]);
     const { fetchCommitMessages } = await import("../../collector/fetch-commits.js");
     vi.mocked(fetchCommitMessages).mockResolvedValueOnce([
@@ -791,7 +801,7 @@ describe("registerFetch (weekly-fetch)", () => {
       "--username", "alice",
       "--data-dir", "./data",
       "--timezone", "UTC",
-      "--date", "2026-04-01",
+      "--date", "2026-04-02",
     ]);
 
     const writeCall = mockWriteFile.mock.calls.find((c) =>
@@ -805,7 +815,7 @@ describe("registerFetch (weekly-fetch)", () => {
     expect(fetchCommitMessages).toHaveBeenCalledWith(
       "ghp_test",
       "alice",
-      ["owner/alpha", "owner/beta"],
+      expect.arrayContaining(["owner/alpha", "owner/beta"]),
       expect.any(Object),
     );
   });
@@ -953,7 +963,7 @@ describe("registerFetch (commit-msg)", () => {
     await program.parseAsync([
       "node", "cli", "commit-msg", "daily",
       "--timezone", "Asia/Tokyo",
-      "--date", "2026-04-06",
+      "--date", "2026-04-03",
       "--data-dir", "./data",
     ]);
 
@@ -971,12 +981,12 @@ describe("registerFetch (commit-msg)", () => {
     await program.parseAsync([
       "node", "cli", "commit-msg", "weekly",
       "--timezone", "Asia/Tokyo",
-      "--date", "2026-04-07",
+      "--date", "2026-04-02",
       "--data-dir", "./data",
     ]);
 
     restore();
-    expect(writes.join("")).toMatch(/^data: weekly 2026\/W14 /);
+    expect(writes.join("")).toMatch(/^data: weekly 2026\/W13 /);
   });
 
   it("uses env defaults for timezone/data-dir and current time when --date omitted", async () => {

@@ -1,10 +1,11 @@
-// Aggregate per-repository activity from PRs and issues
+// Aggregate per-repository activity from PRs, issues, and commits
 
-import type { PullRequest, Issue, RepositoryActivity } from "../types.js";
+import type { PullRequest, Issue, RepositoryActivity, RepoCommitMessages } from "../types.js";
 
 export const aggregateRepositories = (
   pullRequests: PullRequest[],
   issues: Issue[],
+  commitMessages: RepoCommitMessages[] = [],
 ): RepositoryActivity[] => {
   const repoMap = new Map<string, RepositoryActivity>();
 
@@ -36,8 +37,14 @@ export const aggregateRepositories = (
     if (issue.state === "closed") repo.issuesClosed += 1;
   });
 
+  commitMessages.forEach((cm) => {
+    const repo = getOrCreate(cm.repo);
+    repo.commits += cm.commits?.length ?? cm.messages.length;
+  });
+
   return [...repoMap.values()].sort(
     (a, b) =>
-      b.prsOpened + b.issuesOpened - (a.prsOpened + a.issuesOpened),
+      (b.prsOpened + b.issuesOpened + b.commits) -
+      (a.prsOpened + a.issuesOpened + a.commits),
   );
 };

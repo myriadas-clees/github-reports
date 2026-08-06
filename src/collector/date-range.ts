@@ -1,4 +1,4 @@
-// Compute the date range for the past 7 days, timezone-aware
+// Compute work-week date ranges (Thursday–Wednesday), timezone-aware
 
 export type DateRange = {
   from: Date;
@@ -118,30 +118,33 @@ export const parseLocalDate = (dateStr: string, timezone: string): Date => {
   return new Date(midnight.getTime() + 12 * 3_600_000);
 };
 
+/**
+ * Previous completed work week: Thursday 00:00 through Wednesday 23:59:59.999.
+ * When run Thursday morning, that is last Thursday through yesterday (Wednesday).
+ * On other days, reports the most recently completed Thu–Wed window.
+ */
 export const buildWeeklyRange = (
   now: Date = new Date(),
   timezone: string = "UTC",
 ): DateRange => {
   const { year, month, day } = localDateParts(now, timezone);
-
-  // Find the Monday of the current ISO week
   const d = new Date(Date.UTC(year, month, day));
-  const dow = d.getUTCDay() || 7; // 1=Mon..7=Sun
-  const thisMonday = new Date(Date.UTC(year, month, day - (dow - 1)));
+  const dow = d.getUTCDay(); // 0=Sun .. 6=Sat
 
-  // Previous ISO week: Monday to Sunday
-  const prevMonday = new Date(thisMonday.getTime() - 7 * 86_400_000);
-  const prevSunday = new Date(thisMonday.getTime() - 86_400_000);
+  // Most recently completed Wednesday (do not treat "today" as complete if Wed)
+  const daysBackToCompletedWed = dow === 3 ? 7 : ((dow - 3 + 7) % 7);
+  const lastWednesday = new Date(Date.UTC(year, month, day - daysBackToCompletedWed));
+  const prevThursday = new Date(lastWednesday.getTime() - 6 * 86_400_000);
 
   const fromParts = {
-    year: prevMonday.getUTCFullYear(),
-    month: prevMonday.getUTCMonth(),
-    day: prevMonday.getUTCDate(),
+    year: prevThursday.getUTCFullYear(),
+    month: prevThursday.getUTCMonth(),
+    day: prevThursday.getUTCDate(),
   };
   const from = midnightInTz(fromParts.year, fromParts.month, fromParts.day, timezone);
 
-  // "to" is end of Sunday (next day's midnight - 1ms)
-  const nextDay = new Date(prevSunday.getTime() + 86_400_000);
+  // "to" is end of Wednesday (next day's midnight - 1ms)
+  const nextDay = new Date(lastWednesday.getTime() + 86_400_000);
   const toParts = {
     year: nextDay.getUTCFullYear(),
     month: nextDay.getUTCMonth(),
@@ -150,6 +153,23 @@ export const buildWeeklyRange = (
   const to = new Date(midnightInTz(toParts.year, toParts.month, toParts.day, timezone).getTime() - 1);
 
   return { from, to };
+};
+
+/** Thursday that starts the in-progress work week containing `now`. */
+export const currentWeekThursday = (
+  now: Date = new Date(),
+  timezone: string = "UTC",
+): { year: number; month: number; day: number } => {
+  const { year, month, day } = localDateParts(now, timezone);
+  const d = new Date(Date.UTC(year, month, day));
+  const dow = d.getUTCDay(); // 0=Sun .. 6=Sat
+  const daysSinceThursday = (dow - 4 + 7) % 7;
+  const thu = new Date(Date.UTC(year, month, day - daysSinceThursday));
+  return {
+    year: thu.getUTCFullYear(),
+    month: thu.getUTCMonth(),
+    day: thu.getUTCDate(),
+  };
 };
 
 // Yesterday's full day (00:00:00.000 to 23:59:59.999 local time).

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{lang}}">
 <head>
-  <title>{{aiContent.title}} - {{dateRange.from}} - {{dateRange.to}}</title>
+  <title>{{aiContent.title}}</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="{{aiContent.subtitle}}" />
@@ -72,82 +72,36 @@
     </div>
   </article>
 
-  {{!-- OVERVIEW --}}
+  {{!-- OVERVIEW (skip when it duplicates stakeholder summary) --}}
+  {{#if aiContent.overview}}
+  {{#neq aiContent.overview stakeholderSummary}}
   <article class="panel panel-text">
-    <div class="text-inner">
+    <div class="text-inner md">
       {{{md aiContent.overview}}}
     </div>
   </article>
+  {{/neq}}
+  {{/if}}
 
-  {{!-- ALL SUMMARIES + HIGHLIGHTS: vertical columns flowing right --}}
-  {{#if aiContent.summaries.length}}
+  {{> activity}}
+
+  {{!-- HIGHLIGHTS (summaries dropped — duplicated Activity) --}}
+  {{#if aiContent.highlights.length}}
   <div class="column-stack">
-    {{#each aiContent.summaries}}
-    <article class="stack-card">
-      <div class="card-label">{{this.type}}</div>
-      <h3>{{{mdInline this.heading}}}</h3>
-      <p>{{{mdInline this.body}}}</p>
-      {{#eq this.type "repo-summary"}}
-      {{#if @root.repositories.length}}
-      <div class="repo-bars">
-        {{#each (sortReposDesc @root.repositories)}}
-        <div class="repo-bar-item">
-          <div class="repo-bar-header">
-            <span class="repo-bar-label">{{this.name}}</span>
-            <span class="repo-bar-value">{{this.prsOpened}} PRs</span>
-          </div>
-          <div class="repo-bar-track">
-            <div class="repo-bar-fill" style="width:{{repoBarWidth this.prsOpened @root.repositories}}%"></div>
-          </div>
-        </div>
-        {{/each}}
-      </div>
-      {{/if}}
-      {{/eq}}
-      {{#eq this.type "activity-pattern"}}
-      {{#if @root.dailyCommits.length}}
-      <div class="mini-heatmap">
-        {{#each @root.dailyCommits}}
-        <div class="mh-day">
-          <div class="mh-block mh-level-{{this.level}}">{{this.count}}</div>
-          <div class="mh-label">{{weekday this.date}}</div>
-        </div>
-        {{/each}}
-      </div>
-      {{/if}}
-      {{/eq}}
-      {{#eq this.type "commit-summary"}}
-      {{#if @root.stats.totalAdditions}}
-      <div class="diff-bar">
-        <div class="diff-add" style="flex:{{@root.stats.totalAdditions}}"></div>
-        <div class="diff-del" style="flex:{{@root.stats.totalDeletions}}"></div>
-      </div>
-      <div class="diff-labels">
-        <span class="diff-label-add">+{{formatNumber @root.stats.totalAdditions}}</span>
-        <span class="diff-label-del">-{{formatNumber @root.stats.totalDeletions}}</span>
-      </div>
-      {{/if}}
-      {{/eq}}
-      {{#if this.chips}}
-      <div class="data-chips">
-        {{#each this.chips}}
-        <span class="chip chip-{{this.color}}">{{this.label}}: {{this.value}}</span>
-        {{/each}}
-      </div>
-      {{/if}}
-    </article>
-    {{/each}}
-
     {{#each aiContent.highlights}}
     <article class="stack-card">
-      <span class="highlight-badge highlight-{{this.type}}">{{this.type}}</span>
-      {{#if this.url}}
-      <h3><a href="{{this.url}}" target="_blank" rel="noopener nofollow">{{this.title}}</a></h3>
-      {{else}}
-      <h3>{{this.title}}</h3>
-      {{/if}}
-      <div class="highlight-meta">{{this.repo}} &middot; {{this.meta}}</div>
-      <p>{{{mdInline this.body}}}</p>
+      <div class="highlight-heading">
+        <span class="highlight-badge highlight-{{this.type}}">{{this.type}}</span>
+        {{#if this.url}}
+        <h3><a href="{{this.url}}" target="_blank" rel="noopener nofollow">{{this.title}}</a></h3>
+        {{else}}
+        <h3>{{this.title}}</h3>
+        {{/if}}
+      </div>
+      <div class="highlight-meta">
+        <span class="github-entity highlight-meta-repo">{{> github-mark}}<span class="highlight-meta-name">{{this.repo}}</span></span>
+        <span class="highlight-meta-tail">&middot; {{{colorizeLineStats this.meta}}}</span>
+      </div>
     </article>
     {{/each}}
 

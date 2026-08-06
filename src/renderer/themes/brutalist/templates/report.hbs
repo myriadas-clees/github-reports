@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{lang}}">
 <head>
-  <title>{{aiContent.title}} - {{dateRange.from}} - {{dateRange.to}}</title>
+  <title>{{aiContent.title}}</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="{{aiContent.subtitle}}" />
@@ -63,13 +63,23 @@
 
 <nav aria-label="Site navigation">
   <div class="nav-inner">
-    <a href="../../" class="nav-site-title">{{siteTitleInline}}</a>
-    <a href="../../" class="nav-back">&larr; {{i18n.allWeeks}}</a>
+    <a href="../../" class="nav-brand">
+      <img class="nav-logo nav-logo-light" src="../../assets/brand/myriad-m-mark.png" alt="Myriad" width="22" height="22" />
+      <img class="nav-logo nav-logo-dark" src="../../assets/brand/myriad-m-mark-dark.png" alt="" width="22" height="22" />
+      <span class="nav-site-title">{{siteTitleInline}}</span>
+    </a>
+    <div class="nav-actions">
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+        <span class="theme-toggle-opt" data-mode="light" data-active="true"><span class="theme-toggle-glyph" aria-hidden="true">&#9728;&#65038;</span> Light</span>
+        <span class="theme-toggle-opt" data-mode="dark" data-active="false"><span class="theme-toggle-glyph" aria-hidden="true">&#9790;&#65038;</span> Dark</span>
+      </button>
+    </div>
   </div>
 </nav>
 
 <div class="report-hero">
   <div class="report-hero-inner">
+    <a href="../../" class="report-back">&larr; {{i18n.allWeeks}}</a>
     {{> header}}
   </div>
 </div>
@@ -77,19 +87,10 @@
 <main id="main-content">
 <article class="page">
   {{> overview}}
-  {{> summaries}}
+  {{> activity}}
   {{> highlights}}
 </article>
 </main>
-
-{{#if canonicalUrl}}
-<div class="share-bar">
-  <span class="share-label">{{i18n.share}}</span>
-  <a href="https://x.com/intent/tweet?url={{{canonicalUrl}}}&text={{urlEncode aiContent.title}}&hashtags=GHWeeklyReporter" target="_blank" rel="noopener nofollow" class="share-btn share-x" aria-label="Share on X">𝕏</a>
-  <a href="https://www.linkedin.com/sharing/share-offsite/?url={{{canonicalUrl}}}" target="_blank" rel="noopener nofollow" class="share-btn share-linkedin" aria-label="Share on LinkedIn">in</a>
-  <a href="https://bsky.app/intent/compose?text={{urlEncode aiContent.title}}%20{{{canonicalUrl}}}%20%23GHWeeklyReporter" target="_blank" rel="noopener nofollow" class="share-btn share-bsky" aria-label="Share on Bluesky">🦋</a>
-</div>
-{{/if}}
 
 {{#if prevWeek}}{{#if nextWeek}}
 <nav class="week-nav" aria-label="Week navigation">

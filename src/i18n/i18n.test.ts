@@ -7,32 +7,32 @@ const ALL_LANGUAGES: Language[] = ["en", "ja", "zh-CN", "zh-TW", "ko", "es", "fr
 describe("getLocale", () => {
   it("returns English locale by default", () => {
     const locale = getLocale("en");
-    expect(locale.sectionSummary).toBe("Summary");
+    expect(locale.sectionSummary).toBe("Overview");
     expect(locale.weekdaysShort).toEqual(["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]);
   });
 
   it("returns Japanese locale", () => {
     const locale = getLocale("ja");
-    expect(locale.sectionSummary).toBe("サマリー");
+    expect(locale.sectionSummary).toBe("概要");
     expect(locale.sectionHighlights).toBe("ハイライト");
     expect(locale.weekdaysShort).toEqual(["日", "月", "火", "水", "木", "金", "土"]);
   });
 
   it("returns Simplified Chinese locale", () => {
     const locale = getLocale("zh-CN");
-    expect(locale.sectionSummary).toBe("摘要");
+    expect(locale.sectionSummary).toBe("概览");
     expect(locale.weekdaysShort).toHaveLength(7);
   });
 
   it("returns Korean locale", () => {
     const locale = getLocale("ko");
-    expect(locale.sectionSummary).toBe("요약");
+    expect(locale.sectionSummary).toBe("개요");
     expect(locale.weekdaysShort).toEqual(["일", "월", "화", "수", "목", "금", "토"]);
   });
 
   it("returns Russian locale", () => {
     const locale = getLocale("ru");
-    expect(locale.sectionSummary).toBe("Итоги");
+    expect(locale.sectionSummary).toBe("Обзор");
     expect(locale.weekdaysShort[1]).toBe("Пн");
   });
 

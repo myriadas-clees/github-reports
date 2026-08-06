@@ -1,0 +1,28 @@
+# Worklog — private weekly GitHub status-page configuration
+#
+# Secrets (GITHUB_TOKEN / GH_PAT, LLM API keys) must come from environment
+# variables or CI secrets — never put them in this file.
+
+username: YOUR_GITHUB_USERNAME
+timezone: America/New_York
+language: en
+theme: brutalist
+site_title: devlog
+
+# Private (and public) repositories to include. Leave empty to discover
+# from authenticated activity the token can see.
+repositories:
+  - your-org/private-app
+  - your-org/another-repo
+
+# Hour estimation from activity timestamps (clearly labeled as estimates)
+session_gap_minutes: 90
+max_session_hours: 6
+
+data_dir: ./data
+output_dir: ./output
+
+# Optional — omit to use the built-in plain-English stakeholder summary
+# llm:
+#   provider: openrouter
+#   model: YOUR_MODEL_NAME

@@ -1,63 +1,28 @@
-# deariary/github-weekly-reporter
-
-Agent guide for the GitHub Weekly Reporter project.
+# Agent guide for Worklog (fork of deariary/github-weekly-reporter)
 
 ## Purpose
 
-A GitHub Action and CLI tool that generates weekly activity reports with AI-powered narratives, rendered as static HTML and deployed to GitHub Pages.
+Private, self-hosted weekly GitHub status-page generator. Reports **Thursday–Wednesday** activity every Thursday morning. Supports configured private repos, commit messages, PRs (opened/merged/in progress), reviews, review comments, line changes, estimated hours (labeled as estimates), and plain-English stakeholder summaries.
 
-## Repository Layout
+## Layout
 
-- `src/cli/` - CLI commands (setup, daily-fetch, weekly-fetch, generate, render, deploy)
-- `src/collector/` - GitHub API data collection (events, contributions, PRs)
-- `src/llm/` - LLM provider integrations (OpenRouter, Groq, Gemini, OpenAI, Anthropic, Grok)
-- `src/renderer/` - Handlebars templates and HTML rendering
-- `src/deployer/` - GitHub Pages deployment and index page generation
-- `src/i18n/` - Internationalization (10 languages)
-- `action.yml` - GitHub Action composite definition
-- `docs/` - User-facing documentation (manual-setup, cli-reference)
+- `src/cli/` — CLI (`daily-fetch`, `weekly-fetch`, `generate`, `render`, `deploy`, `report`, `preview`, `setup`)
+- `src/collector/` — GitHub API collection + hours estimate + stakeholder summary + AI review activity (Codex/Cursor comments, PRs, Fixed/Addressed)
+- `src/config.ts` — YAML config + env overrides (secrets never from HTML)
+- `src/llm/` — optional LLM narratives (fallback summary if unset)
+- `src/renderer/` — Handlebars themes + activity detail partial
+- `config.example.yaml` — sample configuration
+- `.github/workflows/` — daily fetch + Thursday weekly report
 
-## Current Stack
-
-- TypeScript (ESM, `"type": "module"`)
-- Commander.js for CLI
-- Handlebars for HTML templates
-- OpenAI SDK (used for OpenAI-compatible providers: OpenRouter, Groq, Grok)
-- Vitest for testing
-- ESLint for linting
-- Node.js 24+
-
-## Daily Commands
+## Commands
 
 ```bash
-npm run build          # compile TypeScript
-npm run lint           # lint
-npm test               # run tests
-npm run build && npm test  # full check
+bun run build && bun run lint && bun run test
+bun run report   # local: weekly-fetch → generate → render
 ```
+## Rules
 
-## Release Flow
-
-Releases are triggered via the **Publish** workflow (Actions > Publish > Run workflow).
-
-1. Select bump type: `patch`, `minor`, or `major`
-2. Workflow runs lint, test, then publishes to npm
-3. Automatically creates git tag and GitHub Release with generated notes
-
-## Delivery Rules For Agents
-
-- Run `npm run build && npm run lint && npm test` before committing.
-- Keep all 6 LLM providers consistent (types.ts, llm/index.ts, providers/, generate.ts, action.yml, docs).
-- OpenRouter should be listed first in all user-facing provider lists.
-- Do not hardcode model names in code or docs (models change frequently).
-- Workflows are split into `daily-fetch.yml` and `weekly-report.yml`.
-- `GITHUB_TOKEN` (automatic) is not sufficient for data collection. Use `GH_PAT` (user's PAT).
-- LLM content is required for report rendering, not optional.
-- Support both classic and fine-grained PATs.
-- Keep README concise. Detailed docs go in `docs/`.
-
-## Related Repositories
-
-- `deariary/frontend` - user application
-- `deariary/backend` - API and batch services
-- `deariary/docs` - specs and operational docs
+- Work week is **Thu–Wed**, not ISO Mon–Sun. Weekly Actions cron is Thursday morning.
+- `GITHUB_TOKEN` / `GH_PAT` required for private repo access. Never embed secrets in config committed to git or in generated HTML (`assertNoSecretsInHtml`).
+- LLM is optional; stakeholder fallback always works.
+- Prefer extending upstream collectors/renderer over rewriting.

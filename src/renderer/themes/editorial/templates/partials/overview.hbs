@@ -1,3 +1,7 @@
-<div class="overview">
+{{#if aiContent.overview}}
+{{#neq aiContent.overview stakeholderSummary}}
+<div class="overview md">
   {{{md aiContent.overview}}}
 </div>
+{{/neq}}
+{{/if}}
