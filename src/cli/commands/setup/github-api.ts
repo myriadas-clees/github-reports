@@ -26,6 +26,7 @@ const ghFetch = async (
 export const ghGet = (token: string, path: string) => ghFetch(token, "GET", path);
 export const ghPost = (token: string, path: string, body: unknown) => ghFetch(token, "POST", path, body);
 export const ghPut = (token: string, path: string, body: unknown) => ghFetch(token, "PUT", path, body);
+export const ghPatch = (token: string, path: string, body: unknown) => ghFetch(token, "PATCH", path, body);
 
 // ── Token validation ─────────────────────────────────────────
 
@@ -127,7 +128,16 @@ export const ensureRepo = async (
   fullRepo: string,
 ): Promise<boolean> => {
   const res = await ghGet(token, `/repos/${fullRepo}`);
-  if (res.ok) return false;
+  if (res.ok) {
+    const existing = await res.json().catch(() => null) as { private?: boolean } | null;
+    if (existing?.private === false) {
+      const updateRes = await ghPatch(token, `/repos/${fullRepo}`, { private: true });
+      if (!updateRes.ok) {
+        throw new Error(`Failed to make existing repository ${fullRepo} private: ${updateRes.status}`);
+      }
+    }
+    return false;
+  }
 
   const [owner, name] = fullRepo.split("/");
   const { login } = (await (await ghGet(token, "/user")).json()) as {
@@ -138,8 +148,8 @@ export const ensureRepo = async (
   const body = {
     name,
     auto_init: true,
-    private: false,
-    description: "Weekly GitHub activity reports",
+    private: true,
+    description: "Private daily GitHub activity reports",
     homepage,
   };
 
@@ -162,7 +172,7 @@ export const ensureRepo = async (
 
 const REPO_TOPICS = [
   "github-weekly-reporter",
-  "weekly-report",
+  "daily-report",
   "github-activity",
   "github-pages",
 ];

@@ -1,11 +1,11 @@
-// setup command: interactive one-command setup for GitHub Weekly Reporter
+// setup command: interactive one-command setup for Worklog Daily Reporter
 
 import { Command } from "commander";
 import { input, select, password, confirm } from "@inquirer/prompts";
 import type { LLMProvider, Language, Theme } from "../../types.js";
 import { AVAILABLE_THEMES } from "../../renderer/themes/index.js";
 import { validateToken, ensureRepo, setRepoTopics, addFileToRepo, enablePages, setRepoSecret, ghGet, ghPost, sleep } from "./setup/github-api.js";
-import { midnightCronUTC, buildDailyWorkflow, buildWeeklyWorkflow, buildReadme, LLM_SECRET_NAMES } from "./setup/workflows.js";
+import { midnightCronUTC, buildDailyWorkflow, buildReadme, LLM_SECRET_NAMES } from "./setup/workflows.js";
 import type { WorkflowOpts } from "./setup/workflows.js";
 import { TIMEZONE_CHOICES, LANGUAGE_CHOICES, MODEL_LIST_URLS } from "./setup/constants.js";
 import { validateModel } from "./setup/validate-model.js";
@@ -31,9 +31,9 @@ type SetupConfig = {
 };
 
 const collectInputs = async (cliRepo?: string): Promise<SetupConfig> => {
-  console.log("\n  GitHub Weekly Reporter - Interactive Setup\n");
+  console.log("\n  Worklog Daily Reporter - Interactive Setup\n");
   console.log("  This will create a repository, add a workflow, and configure");
-  console.log("  everything you need for automatic weekly reports.\n");
+  console.log("  everything you need for automatic daily reports.\n");
 
   // 1. Token
   console.log("  A personal access token (PAT) is required.\n");
@@ -61,7 +61,7 @@ const collectInputs = async (cliRepo?: string): Promise<SetupConfig> => {
   // 3. Repository
   const repo = cliRepo ?? await input({
     message: "Repository name (will be created if it doesn't exist):",
-    default: "weekly-report",
+    default: "daily-worklog",
     validate: (v) =>
       /^[a-zA-Z0-9._-]+$/.test(v) ? true : "Invalid repository name",
   });
@@ -282,19 +282,11 @@ const run = async (cliRepo?: string): Promise<void> => {
   await addFileToRepo(
     config.token,
     fullRepo,
-    ".github/workflows/daily-fetch.yml",
+    ".github/workflows/daily-report.yml",
     buildDailyWorkflow(workflowOpts),
-    "chore: add daily fetch workflow",
+    "chore: add daily report workflow",
   );
-  ok("daily-fetch.yml added.");
-  await addFileToRepo(
-    config.token,
-    fullRepo,
-    ".github/workflows/weekly-report.yml",
-    buildWeeklyWorkflow(workflowOpts),
-    "chore: add weekly report workflow",
-  );
-  ok("weekly-report.yml added.");
+  ok("daily-report.yml added.");
 
   // 5. README
   step("Adding README...");
@@ -328,22 +320,22 @@ const run = async (cliRepo?: string): Promise<void> => {
     ok(`Enable at: https://github.com/${fullRepo}/settings/pages`);
   }
 
-  // 7. Trigger first weekly report
-  step("Generating first weekly report...");
+  // 7. Trigger first daily report
+  step("Generating first daily report...");
   const dispatchRes = await ghPost(
     config.token,
-    `/repos/${fullRepo}/actions/workflows/weekly-report.yml/dispatches`,
+    `/repos/${fullRepo}/actions/workflows/daily-report.yml/dispatches`,
     { ref: "main" },
   );
 
   let runUrl = `https://github.com/${fullRepo}/actions`;
   if (dispatchRes.ok) {
-    ok("Weekly report workflow triggered.");
+    ok("Daily report workflow triggered.");
     // Wait briefly then fetch the latest run URL
     await sleep(3000);
     const runsRes = await ghGet(
       config.token,
-      `/repos/${fullRepo}/actions/workflows/weekly-report.yml/runs?per_page=1`,
+      `/repos/${fullRepo}/actions/workflows/daily-report.yml/runs?per_page=1`,
     );
     if (runsRes.ok) {
       const runs = (await runsRes.json()) as { workflow_runs: { html_url: string }[] };
@@ -354,7 +346,7 @@ const run = async (cliRepo?: string): Promise<void> => {
     ok(`Progress: ${runUrl}`);
   } else {
     ok("Could not auto-trigger. Run manually:");
-    ok(`${runUrl} > Weekly Report > Run workflow`);
+    ok(`${runUrl} > Daily Report > Run workflow`);
   }
 
   // Done
@@ -366,15 +358,14 @@ const run = async (cliRepo?: string): Promise<void> => {
   Repository:         https://github.com/${fullRepo}
   Triggered build:    ${runUrl}
 
-  Your first weekly report is being generated now.
+  Your first daily report is being generated now.
   Once complete, it will be available at:
     ${pagesUrl}
 
-  Daily fetches will run automatically at midnight ${config.timezone}.
+  Daily reports will run automatically every morning (${config.timezone}).
 
   To change settings, edit:
-    .github/workflows/daily-fetch.yml   (schedule, timezone)
-    .github/workflows/weekly-report.yml (LLM, language, site title)
+    .github/workflows/daily-report.yml (schedule, LLM, language, site title)
 `);
 
 

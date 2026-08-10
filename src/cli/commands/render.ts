@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 import { parse as parseYaml } from "yaml";
 import { renderReport } from "../../renderer/index.js";
 import { renderIndexPage, buildReportEntry, type ReportEntry } from "../../deployer/index-page.js";
-import { getWeekId } from "../../deployer/week.js";
+import { resolveDayId } from "../../deployer/day.js";
 import { parseLocalDate } from "../../collector/date-range.js";
 import { generateOGImage, generateIndexOGImage } from "../../renderer/og-image.js";
 import { generateCard, generateDarkCard } from "../../renderer/card.js";
@@ -44,10 +44,13 @@ const listCompletedReportDirs = async (dir: string): Promise<string[]> => {
     return paths;
   }
   for (const year of entries.filter((n) => /^\d{4}$/.test(n))) {
-    const weeks = await readdir(join(dir, year));
-    for (const w of weeks.filter((n) => /^W\d{2}$/.test(n))) {
-      if (await fileExists(join(dir, year, w, "llm-data.yaml"))) {
-        paths.push(`${year}/${w}`);
+    const months = await readdir(join(dir, year));
+    for (const month of months.filter((n) => /^\d{2}$/.test(n))) {
+      const days = await readdir(join(dir, year, month));
+      for (const day of days.filter((n) => /^\d{2}$/.test(n))) {
+        if (await fileExists(join(dir, year, month, day, "llm-data.yaml"))) {
+          paths.push(`${year}/${month}/${day}`);
+        }
       }
     }
   }
@@ -86,11 +89,11 @@ const buildReportEntries = async (
   return entries.filter((e): e is ReportEntry => e !== null);
 };
 
-/** Render HTML for a week from github-data + llm-data. Throws if data is missing. */
+/** Render HTML for a day from github-data + llm-data. Throws if data is missing. */
 export const runRender = async (options: RenderCommandOptions): Promise<void> => {
-  const weekId = getWeekId(options.date, options.timezone);
-  const dataWeekDir = join(options.dataDir, weekId.path);
-  const outputWeekDir = join(options.outputDir, weekId.path);
+  const dayId = resolveDayId(options.date, options.timezone);
+  const dataWeekDir = join(options.dataDir, dayId.path);
+  const outputWeekDir = join(options.outputDir, dayId.path);
 
   const githubDataPath = join(dataWeekDir, "github-data.yaml");
   console.log(`Reading ${githubDataPath}...`);
@@ -108,17 +111,19 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
 
   const data: WeeklyReportData = { ...githubData, aiContent };
 
-  // Determine prev/next week paths for internal linking
+  // Determine previous/next report paths for internal linking.
   const allPaths = (await listCompletedReportDirs(options.dataDir)).sort();
-  if (!allPaths.includes(weekId.path)) allPaths.push(weekId.path);
+  if (!allPaths.includes(dayId.path)) allPaths.push(dayId.path);
   allPaths.sort();
-  const currentIdx = allPaths.indexOf(weekId.path);
+  const currentIdx = allPaths.indexOf(dayId.path);
   const prevWeek = currentIdx > 0 ? allPaths[currentIdx - 1] : undefined;
   const nextWeek = currentIdx < allPaths.length - 1 ? allPaths[currentIdx + 1] : undefined;
 
   const base = options.baseUrl.replace(/\/+$/, "");
 
-  // Brand assets for Myriad logo in nav (report pages use ../../assets/brand/…)
+  const rootPrefix = "../".repeat(dayId.path.split("/").length);
+
+  // Brand assets for Myriad logo in nav.
   const brandOut = join(options.outputDir, "assets", "brand");
   await mkdir(brandOut, { recursive: true });
   try {
@@ -132,11 +137,11 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
     language: options.language,
     timezone: options.timezone,
     baseUrl: base,
-    weekPath: weekId.path,
+    weekPath: dayId.path,
     siteTitle: options.siteTitle,
     theme: options.theme,
-    prevWeek: prevWeek ? `../../${prevWeek}/` : undefined,
-    nextWeek: nextWeek ? `../../${nextWeek}/` : undefined,
+    prevWeek: prevWeek ? `${rootPrefix}${prevWeek}/` : undefined,
+    nextWeek: nextWeek ? `${rootPrefix}${nextWeek}/` : undefined,
   });
 
   await mkdir(outputWeekDir, { recursive: true });
@@ -145,7 +150,7 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
   await writeFile(reportPath, html, "utf-8");
   console.log(`Report written to ${reportPath}`);
 
-  // Re-render previous week's report so its "next week" link points here
+  // Re-render the previous report so its "next day" link points here.
   if (prevWeek) {
     const prevGhData = await tryReadYaml<WeeklyReportData>(join(options.dataDir, prevWeek, "github-data.yaml"));
     const prevAiContent = await tryReadYaml<AIContent>(join(options.dataDir, prevWeek, "llm-data.yaml"));
@@ -159,13 +164,13 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
         weekPath: prevWeek,
         siteTitle: options.siteTitle,
         theme: options.theme,
-        prevWeek: prevPrev ? `../../${prevPrev}/` : undefined,
-        nextWeek: `../../${weekId.path}/`,
+        prevWeek: prevPrev ? `${rootPrefix}${prevPrev}/` : undefined,
+        nextWeek: `${rootPrefix}${dayId.path}/`,
       });
       const prevOutputDir = join(options.outputDir, prevWeek);
       await mkdir(prevOutputDir, { recursive: true });
       await writeFile(join(prevOutputDir, "index.html"), prevHtml, "utf-8");
-      console.log(`Updated previous week (${prevWeek}) with next-week link.`);
+      console.log(`Updated previous report (${prevWeek}) with next-report link.`);
     }
   }
 
@@ -187,16 +192,15 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
   console.log(`OG image written to ${ogPath}`);
 
   // Generate animated SVG summary cards (light + dark)
-  // Work week is Thursday–Wednesday; use the report's stored date range.
   const dateRange = `${githubData.dateRange.from} – ${githubData.dateRange.to}`;
   const cardData = {
     username: githubData.username,
-    weekLabel: `Week ${weekId.path.split("/")[1].replace("W", "")}`,
+    weekLabel: dayId.date,
     dateRange,
     title: aiContent.title,
     summaries: aiContent.summaries,
     ticker: aiContent.ticker,
-    reportUrl: `${base}/${weekId.path}/`,
+    reportUrl: `${base}/${dayId.path}/`,
   };
   const cardSvg = generateCard(cardData);
   const cardDarkSvg = generateDarkCard(cardData);
@@ -208,7 +212,7 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
   ]);
   console.log(`SVG cards written to ${cardPath} and ${cardDarkPath}`);
 
-  // Write index page with titles from each week's LLM data
+  // Write index page with titles from each day's report data.
   const entries = await buildReportEntries(options.dataDir, allPaths);
   const ghRepo = env("GITHUB_REPOSITORY");
   const repoUrl = ghRepo ? `https://github.com/${ghRepo}` : undefined;
@@ -255,7 +259,7 @@ ${sitemapEntries}
   const rssFeed = buildRSSFeed(entries, {
     title: resolvedSiteTitle,
     link: base,
-    description: `Weekly reports by @${githubData.username}`,
+    description: `Daily reports by @${githubData.username}`,
     language: options.language,
     timezone: options.timezone,
   });
@@ -285,11 +289,11 @@ export const registerRender = (program: Command): void => {
     .option("--data-dir <dir>", "Data directory (env: DATA_DIR, default: ./data)")
     .option("-o, --output-dir <dir>", "Output directory for HTML (env: OUTPUT_DIR, default: ./output)")
     .option("--base-url <url>", "Base URL for absolute links in OG tags, sitemap, RSS feed, canonical (env: BASE_URL)")
-    .option("--site-title <title>", "Site title for nav header (env: SITE_TITLE, default: {username}'s Weekly Reports)")
+    .option("--site-title <title>", "Site title for nav header (env: SITE_TITLE, default: Worklog)")
     .option("--language <lang>", "Report language: en, ja, zh-CN, zh-TW, ko, es, fr, de, pt, ru (env: LANGUAGE, default: en)")
     .option("--timezone <tz>", "IANA timezone (env: TIMEZONE, default: UTC)")
     .option("--theme <name>", `Theme name: ${AVAILABLE_THEMES.join(", ")} (env: THEME, default: brutalist)`)
-    .option("--date <date>", "Date within the target week (YYYY-MM-DD, default: today)")
+    .option("--date <date>", "Report date (YYYY-MM-DD, default: previous workday)")
     .option("--config <path>", "Path to config.yaml (env: CONFIG_PATH)")
     .action(async (opts) => {
       try {

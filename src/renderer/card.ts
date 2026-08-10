@@ -63,11 +63,11 @@ const escapeXml = (s: string): string =>
     .replace(/'/g, "&apos;");
 
 const IDLE_ITEMS: TickerItem[] = [
-  { label: "STANDBY", text: "Developer is recharging. Weekly report will resume shortly." },
+  { label: "STANDBY", text: "Developer is recharging. Daily report will resume shortly." },
   { label: "SOURCES SAY", text: "Unnamed keyboard spotted resting peacefully on desk." },
   { label: "DEVELOPING", text: "Local developer reportedly seen outdoors. Authorities investigating." },
   { label: "JUST IN", text: "Coffee reserves holding steady. No commits at this time." },
-  { label: "EXCLUSIVE", text: "Anonymous sources confirm: sleep was had this week." },
+  { label: "EXCLUSIVE", text: "Anonymous sources confirm: sleep was had today." },
 ];
 
 const buildTickerItems = (data: CardData): TickerItem[] => {
@@ -142,7 +142,7 @@ const buildSVG = (data: CardData, colors: CardColors): string => {
 
   const topBar = [
     `<rect x="${labelX}" y="${labelY}" width="${labelW}" height="${labelH}" rx="2" fill="${colors.accentBg}"/>`,
-    `<text x="${labelX + labelW / 2}" y="${midY}" font-family="${font}" text-anchor="middle" font-size="9" font-weight="800" fill="#fff" letter-spacing="0.08em">WEEKLY NEWS</text>`,
+    `<text x="${labelX + labelW / 2}" y="${midY}" font-family="${font}" text-anchor="middle" font-size="9" font-weight="800" fill="#fff" letter-spacing="0.08em">DAILY NEWS</text>`,
     `<text x="${weekX}" y="${midY}" font-family="${font}" font-size="11" font-weight="700" fill="${colors.text}">${escapeXml(data.weekLabel)}</text>`,
     `<text x="${dateX}" y="${midY}" font-family="${font}" font-size="10" fill="${colors.textSecondary}">${escapeXml(data.dateRange)}</text>`,
     `<line x1="0" y1="${topH}" x2="10000" y2="${topH}" stroke="${colors.border}" stroke-width="0.5"/>`,

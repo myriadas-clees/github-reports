@@ -48,14 +48,14 @@ vi.mock("./setup/validate-model.js", () => ({
 // -------------------------------------------------------------------
 
 describe("midnightCronUTC", () => {
-  it("returns '0 0 * * *' for UTC (no offset)", () => {
-    expect(midnightCronUTC("UTC")).toBe("0 0 * * *");
+  it("returns a weekday-only schedule for UTC", () => {
+    expect(midnightCronUTC("UTC")).toBe("0 0 * * 1-5");
   });
 
   it("returns a valid cron expression for Asia/Tokyo (+9)", () => {
     // Midnight JST = 15:00 UTC previous day
     const cron = midnightCronUTC("Asia/Tokyo");
-    expect(cron).toBe("0 15 * * *");
+    expect(cron).toBe("0 15 * * 0-4");
   });
 
   it("returns a valid cron expression for America/New_York", () => {
@@ -65,7 +65,7 @@ describe("midnightCronUTC", () => {
     expect(parts).toHaveLength(5);
     expect(parts[2]).toBe("*");
     expect(parts[3]).toBe("*");
-    expect(parts[4]).toBe("*");
+    expect(parts[4]).toBe("1-5");
     // Minute and hour should be non-negative integers
     expect(Number(parts[0])).toBeGreaterThanOrEqual(0);
     expect(Number(parts[1])).toBeGreaterThanOrEqual(0);
@@ -75,7 +75,7 @@ describe("midnightCronUTC", () => {
   it("handles half-hour offset (Asia/Kolkata +5:30)", () => {
     // Midnight IST = 18:30 UTC previous day
     const cron = midnightCronUTC("Asia/Kolkata");
-    expect(cron).toBe("30 18 * * *");
+    expect(cron).toBe("30 18 * * 0-4");
   });
 });
 
@@ -94,7 +94,7 @@ describe("buildDailyWorkflow", () => {
 
   it("contains the workflow name", () => {
     const yaml = buildDailyWorkflow(baseOpts);
-    expect(yaml).toContain("name: Daily Fetch");
+    expect(yaml).toContain("name: Daily Report");
   });
 
   it("contains the username", () => {
@@ -112,7 +112,7 @@ describe("buildDailyWorkflow", () => {
   it("contains the cron schedule", () => {
     const yaml = buildDailyWorkflow(baseOpts);
     expect(yaml).toContain("cron:");
-    expect(yaml).toContain("0 0 * * *");
+    expect(yaml).toContain("0 0 * * 1-5");
   });
 
   it("contains the language", () => {
@@ -302,15 +302,11 @@ describe("registerSetup (full flow)", () => {
       "ghp_testtoken123", "testuser/my-reports", "OPENAI_API_KEY", "sk-llm-key",
     );
 
-    // Added 3 files: daily workflow, weekly workflow, README
-    expect(mockAddFileToRepo).toHaveBeenCalledTimes(3);
+    // Added the daily workflow and README.
+    expect(mockAddFileToRepo).toHaveBeenCalledTimes(2);
     expect(mockAddFileToRepo).toHaveBeenCalledWith(
       "ghp_testtoken123", "testuser/my-reports",
-      ".github/workflows/daily-fetch.yml", expect.any(String), expect.any(String),
-    );
-    expect(mockAddFileToRepo).toHaveBeenCalledWith(
-      "ghp_testtoken123", "testuser/my-reports",
-      ".github/workflows/weekly-report.yml", expect.any(String), expect.any(String),
+      ".github/workflows/daily-report.yml", expect.any(String), expect.any(String),
     );
     expect(mockAddFileToRepo).toHaveBeenCalledWith(
       "ghp_testtoken123", "testuser/my-reports",
@@ -323,7 +319,7 @@ describe("registerSetup (full flow)", () => {
     // Triggered workflow dispatch
     expect(mockGhPost).toHaveBeenCalledWith(
       "ghp_testtoken123",
-      "/repos/testuser/my-reports/actions/workflows/weekly-report.yml/dispatches",
+      "/repos/testuser/my-reports/actions/workflows/daily-report.yml/dispatches",
       { ref: "main" },
     );
   });
@@ -491,7 +487,7 @@ describe("registerSetup (full flow)", () => {
 
     // The daily workflow should use the custom timezone
     const dailyCall = mockAddFileToRepo.mock.calls.find(
-      (call: unknown[]) => (call[2] as string).includes("daily-fetch.yml"),
+      (call: unknown[]) => (call[2] as string).includes("daily-report.yml"),
     );
     expect(dailyCall).toBeDefined();
     expect(dailyCall![3]).toContain("Asia/Taipei");
@@ -729,9 +725,9 @@ describe("registerSetup (full flow)", () => {
       "GH_PAT",
       "ghp_token",
     );
-    // Weekly workflow built without llm-provider input
+    // Daily workflow built without llm-provider input
     const weeklyCall = mockAddFileToRepo.mock.calls.find(
-      (call: unknown[]) => (call[2] as string).includes("weekly-report.yml"),
+      (call: unknown[]) => (call[2] as string).includes("daily-report.yml"),
     );
     expect(weeklyCall).toBeDefined();
     expect(weeklyCall![3]).not.toContain("llm-provider:");

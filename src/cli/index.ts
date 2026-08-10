@@ -20,7 +20,7 @@ const pkg = JSON.parse(readFileSync(pkgPath, "utf-8")) as { version: string };
 
 const program = new Command()
   .name("worklog")
-  .description("Private self-hosted weekly GitHub status-page generator (Thu–Wed)")
+  .description("Private self-hosted daily GitHub status-page generator")
   .version(pkg.version);
 
 registerFetch(program);

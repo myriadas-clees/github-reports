@@ -34,9 +34,9 @@ type YearGroup = {
   reports: ReportEntry[];
 };
 
-const weekToDateLabel = (path: string): string => {
-  const [year, week] = path.split("/");
-  return `${year} ${week}`;
+const pathToDateLabel = (path: string): string => {
+  const [year, month, day] = path.split("/");
+  return month && day ? `${year}-${month}-${day}` : path.replace("/", " ");
 };
 
 const groupByYear = (reports: ReportEntry[]): YearGroup[] => {
@@ -67,7 +67,7 @@ export const renderIndexPage = (
   const resolvedSiteTitle = (siteTitle ?? "Dev\nPulse").replace(/\\n/g, "\n");
   const siteTitleInline = resolvedSiteTitle.replace(/\n/g, " ");
   const username = pageData?.username ?? "";
-  const description = `Weekly reports by @${username}`;
+  const description = `Daily reports by @${username}`;
   const ogImageUrl = baseUrl ? `${baseUrl}/og.png` : "og.png";
   const indexTemplate = readThemeTemplate(theme, "index-page.hbs");
   const template = Handlebars.compile(indexTemplate);
@@ -105,12 +105,12 @@ export const buildReportEntry = (
   overview?: string,
 ): ReportEntry => ({
   path,
-  week: path.split("/")[1] ?? path,
+  week: path.split("/").slice(1).join("-") || path,
   year: path.split("/")[0] ?? "",
   title,
   subtitle,
   overview,
-  dateLabel: weekToDateLabel(path),
+  dateLabel: pathToDateLabel(path),
   dateTo,
   stats,
 });

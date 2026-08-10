@@ -5,7 +5,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { parse as parseYaml, stringify as toYaml } from "yaml";
 import { generateContent } from "../../llm/index.js";
-import { getWeekId } from "../../deployer/week.js";
+import { resolveDayId } from "../../deployer/day.js";
 import { parseLocalDate } from "../../collector/date-range.js";
 import { buildFallbackAIContent, buildStakeholderSummary } from "../../collector/stakeholder-summary.js";
 import { loadConfigFile, resolveConfig } from "../../config.js";
@@ -69,8 +69,8 @@ export const resolveOptions = async (
 };
 
 const run = async (options: GenerateOptions): Promise<void> => {
-  const weekId = getWeekId(options.date, options.timezone);
-  const dataDir = join(options.dataDir, weekId.path);
+  const dayId = resolveDayId(options.date, options.timezone);
+  const dataDir = join(options.dataDir, dayId.path);
   const dataPath = join(dataDir, "github-data.yaml");
 
   console.log(`Reading ${dataPath}...`);
@@ -121,7 +121,7 @@ export const registerGenerate = (program: Command): void => {
     .option("--llm-model <model>", "LLM model name (env: LLM_MODEL)")
     .option("--language <lang>", "Report language (env: LANGUAGE, default: en)")
     .option("--timezone <tz>", "IANA timezone (env: TIMEZONE, default: UTC)")
-    .option("--date <date>", "Date within the target week (YYYY-MM-DD, default: today)")
+    .option("--date <date>", "Report date (YYYY-MM-DD, default: previous workday)")
     .option("--config <path>", "YAML config path (env: CONFIG_PATH, default: ./config.yaml)")
     .option("--require-llm", "Fail if LLM is not configured (default: allow stakeholder fallback)")
     .action(async (opts) => {

@@ -5,7 +5,7 @@ import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { join } from "node:path";
 import { parse as parseYaml, stringify as toYaml } from "yaml";
 import { graphql } from "@octokit/graphql";
-import { buildWeeklyRange, buildYesterdayRange, localDateParts, toISODate, parseLocalDate, type DateRange } from "../../collector/date-range.js";
+import { buildDayRange, buildPreviousWorkdayRange, buildWeeklyRange, toISODate, parseLocalDate, type DateRange } from "../../collector/date-range.js";
 import { fetchEvents, dedupeEvents } from "../../collector/fetch-events.js";
 import { fetchContributions } from "../../collector/fetch-contributions.js";
 import { fetchPRsByRefs, type PRRef } from "../../collector/fetch-repo-prs.js";
@@ -15,7 +15,8 @@ import { fetchReviewsForRepos } from "../../collector/fetch-reviews.js";
 import { aggregateRepositories } from "../../collector/aggregate.js";
 import { estimateHours } from "../../collector/estimate-hours.js";
 import { buildStakeholderSummary } from "../../collector/stakeholder-summary.js";
-import { getWeekId, getCurrentWeekId } from "../../deployer/week.js";
+import { getWeekId } from "../../deployer/week.js";
+import { getDayId, getPreviousDayId } from "../../deployer/day.js";
 import { loadConfigFile, resolveConfig } from "../../config.js";
 import type { GitHubEvent, WeeklyReportData } from "../../types.js";
 
@@ -88,26 +89,28 @@ export type FetchPlan = {
   range: DateRange;
 };
 
-const getYesterday = (now: Date, timezone: string): Date => {
-  const { year, month, day } = localDateParts(now, timezone);
-  const todayUTC = new Date(Date.UTC(year, month, day));
-  const yesterdayUTC = new Date(todayUTC.getTime() - 86_400_000);
-  const y = yesterdayUTC.getUTCFullYear();
-  const m = String(yesterdayUTC.getUTCMonth() + 1).padStart(2, "0");
-  const d = String(yesterdayUTC.getUTCDate()).padStart(2, "0");
-  return parseLocalDate(`${y}-${m}-${d}`, timezone);
-};
-
 export const buildDailyPlan = (now: Date, timezone: string, dataDir: string): FetchPlan => {
-  const yesterday = getYesterday(now, timezone);
-  const weekId = getCurrentWeekId(yesterday, timezone);
-  const range = buildYesterdayRange(now, timezone);
+  const dayId = getPreviousDayId(now, timezone);
+  const range = buildPreviousWorkdayRange(now, timezone);
   return {
-    targetDate: toISODate(yesterday, timezone),
+    targetDate: dayId.date,
     rangeFrom: toISODate(range.from, timezone),
     rangeTo: toISODate(range.to, timezone),
-    weekPath: weekId.path,
-    reportDir: join(dataDir, weekId.path),
+    weekPath: dayId.path,
+    reportDir: join(dataDir, dayId.path),
+    range,
+  };
+};
+
+const buildExactDayPlan = (date: Date, timezone: string, dataDir: string): FetchPlan => {
+  const dayId = getDayId(date, timezone);
+  const range = buildDayRange(date, timezone);
+  return {
+    targetDate: dayId.date,
+    rangeFrom: dayId.date,
+    rangeTo: dayId.date,
+    weekPath: dayId.path,
+    reportDir: join(dataDir, dayId.path),
     range,
   };
 };
@@ -128,29 +131,9 @@ export const buildWeeklyPlan = (now: Date, timezone: string, dataDir: string): F
 const logPlan = (command: string, username: string, timezone: string, plan: FetchPlan): void => {
   console.log(`${command}: user=${username} timezone=${timezone}`);
   console.log(`  target date : ${plan.targetDate}`);
-  console.log(`  date range  : ${plan.rangeFrom} .. ${plan.rangeTo} (Thu–Wed)`);
-  console.log(`  week        : ${plan.weekPath}`);
+  console.log(`  date range  : ${plan.rangeFrom} .. ${plan.rangeTo}`);
+  console.log(`  archive     : ${plan.weekPath}`);
   console.log(`  data dir    : ${plan.reportDir}`);
-};
-
-const runDailyFetch = async (options: BaseOptions): Promise<void> => {
-  const now = options.date ?? new Date();
-  const plan = buildDailyPlan(now, options.timezone, options.dataDir);
-  await mkdir(plan.reportDir, { recursive: true });
-
-  logPlan("daily-fetch", options.username, options.timezone, plan);
-  const newEvents = await fetchEvents(options.token, options.username, plan.range, {
-    includePrivate: true,
-    repos: options.repositories.length > 0 ? options.repositories : undefined,
-  });
-  console.log(`Fetched ${newEvents.length} events (including private where authorized).`);
-
-  const eventsPath = join(plan.reportDir, "events.yaml");
-  const existing = await tryReadYaml<GitHubEvent[]>(eventsPath) ?? [];
-  const merged = dedupeEvents([...existing, ...newEvents]);
-
-  await writeFile(eventsPath, toYaml(merged, { lineWidth: 120 }), "utf-8");
-  console.log(`Events accumulated: ${merged.length} total (${eventsPath})`);
 };
 
 /** Search PRs (public + private the token can see). Optionally scope to configured repos. */
@@ -236,12 +219,14 @@ const collectTimestamps = (
   return stamps;
 };
 
-const runWeeklyFetch = async (options: BaseOptions): Promise<void> => {
-  const now = options.date ?? new Date();
-  const plan = buildWeeklyPlan(now, options.timezone, options.dataDir);
+const runFullFetch = async (
+  options: BaseOptions,
+  plan: FetchPlan,
+  command: "daily-fetch" | "weekly-fetch",
+): Promise<void> => {
   await mkdir(plan.reportDir, { recursive: true });
 
-  logPlan("weekly-fetch", options.username, options.timezone, plan);
+  logPlan(command, options.username, options.timezone, plan);
   if (options.repositories.length > 0) {
     console.log(`  configured repos: ${options.repositories.join(", ")}`);
   }
@@ -249,20 +234,19 @@ const runWeeklyFetch = async (options: BaseOptions): Promise<void> => {
   const eventsPath = join(plan.reportDir, "events.yaml");
   let events = await tryReadYaml<GitHubEvent[]>(eventsPath) ?? [];
 
-  // Ensure we have events for the full week (useful when daily fetch was skipped)
-  console.log("Fetching events for the full week window...");
-  const weekEvents = await fetchEvents(options.token, options.username, plan.range, {
+  console.log("Fetching events for the report window...");
+  const reportEvents = await fetchEvents(options.token, options.username, plan.range, {
     includePrivate: true,
     repos: options.repositories.length > 0 ? options.repositories : undefined,
   });
-  events = dedupeEvents([...events, ...weekEvents]);
+  events = dedupeEvents([...events, ...reportEvents]);
   await writeFile(eventsPath, toYaml(events, { lineWidth: 120 }), "utf-8");
   console.log(`Loaded ${events.length} events.`);
 
   const eventRefs = extractPRRefs(events);
   console.log(`Found ${eventRefs.length} PR references from events.`);
 
-  console.log("Searching for PRs updated this week (includes private repos the token can access)...");
+  console.log("Searching for PRs updated in the report window (includes private repos the token can access)...");
   const searchRefs = await searchWeeklyPRs(
     options.token,
     options.username,
@@ -400,13 +384,29 @@ const runWeeklyFetch = async (options: BaseOptions): Promise<void> => {
   console.log(`Total: ${pullRequests.length} PRs (${prsInProgress.length} in progress), ~${hoursEstimate.hours}h estimated`);
 };
 
+const runDailyFetch = async (options: BaseOptions): Promise<void> => {
+  const plan = options.date
+    ? buildExactDayPlan(options.date, options.timezone, options.dataDir)
+    : buildDailyPlan(new Date(), options.timezone, options.dataDir);
+  await runFullFetch(options, plan, "daily-fetch");
+};
+
+const runWeeklyFetch = async (options: BaseOptions): Promise<void> => {
+  const now = options.date ?? new Date();
+  await runFullFetch(
+    options,
+    buildWeeklyPlan(now, options.timezone, options.dataDir),
+    "weekly-fetch",
+  );
+};
+
 const baseOptions = (cmd: Command): Command =>
   cmd
     .option("-t, --token <token>", "GitHub token (env: GITHUB_TOKEN / GH_PAT)")
     .option("-u, --username <username>", "GitHub username (env: GITHUB_USERNAME)")
     .option("--data-dir <dir>", "Data directory (env: DATA_DIR, default: ./data)")
     .option("--timezone <tz>", "IANA timezone (env: TIMEZONE, default: UTC)")
-    .option("--date <date>", "Date within the target week (YYYY-MM-DD, default: today)")
+    .option("--date <date>", "Report date (YYYY-MM-DD, default: previous workday)")
     .option("--config <path>", "YAML config path (env: CONFIG_PATH, default: ./config.yaml)");
 
 export const formatCommitMsg = (mode: string, plan: FetchPlan): string =>
@@ -418,7 +418,7 @@ export const registerFetch = (program: Command): void => {
   baseOptions(
     program
       .command("daily-fetch")
-      .description("Fetch yesterday's GitHub events and accumulate (run daily via cron at midnight)"),
+      .description("Build a complete report dataset for one day (default: previous workday)"),
   ).action(async (opts) => {
     try {
       const options = await resolveBaseOptions(opts);

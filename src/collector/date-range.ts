@@ -197,6 +197,38 @@ export const buildYesterdayRange = (
   return { from, to };
 };
 
+/** One exact local calendar day. */
+export const buildDayRange = (
+  date: Date,
+  timezone: string = "UTC",
+): DateRange => {
+  const { year, month, day } = localDateParts(date, timezone);
+  const from = midnightInTz(year, month, day, timezone);
+  const nextDate = new Date(Date.UTC(year, month, day + 1));
+  const to = new Date(midnightInTz(
+    nextDate.getUTCFullYear(),
+    nextDate.getUTCMonth(),
+    nextDate.getUTCDate(),
+    timezone,
+  ).getTime() - 1);
+  return { from, to };
+};
+
+/** Previous completed weekday; Monday resolves to the preceding Friday. */
+export const buildPreviousWorkdayRange = (
+  now: Date = new Date(),
+  timezone: string = "UTC",
+): DateRange => {
+  const { year, month, day } = localDateParts(now, timezone);
+  const localDay = new Date(Date.UTC(year, month, day)).getUTCDay();
+  const daysBack = localDay === 1 ? 3 : localDay === 0 ? 2 : localDay === 6 ? 1 : 1;
+  const target = new Date(Date.UTC(year, month, day - daysBack));
+  return buildDayRange(parseLocalDate(
+    `${target.getUTCFullYear()}-${String(target.getUTCMonth() + 1).padStart(2, "0")}-${String(target.getUTCDate()).padStart(2, "0")}`,
+    timezone,
+  ), timezone);
+};
+
 export const toISODate = (date: Date, timezone: string = "UTC"): string => {
   const fmt = new Intl.DateTimeFormat("en-CA", {
     timeZone: timezone,

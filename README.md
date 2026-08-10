@@ -1,8 +1,8 @@
 # Worklog
 
-Private, self-hosted weekly GitHub status-page generator. Forked from [deariary/github-weekly-reporter](https://github.com/deariary/github-weekly-reporter) and extended for private repositories and Thursday–Wednesday reporting.
+Private, self-hosted daily GitHub status-page generator. Forked from [deariary/github-weekly-reporter](https://github.com/deariary/github-weekly-reporter) and extended for private repositories and daily worklogs.
 
-Every **Thursday morning**, Worklog reports activity from the **previous Thursday through Wednesday**: commits, pull requests (opened / merged / in progress), reviews, review comments, repositories, line changes, and **estimated hours** (clearly labeled as estimates). It publishes a clean static HTML report with weekly archives.
+Every weekday morning, Worklog reports activity from the **previous completed workday** (Monday reports Friday): commits, pull requests (opened / merged / in progress), reviews, review comments, repositories, line changes, and **estimated hours** (clearly labeled as estimates). It publishes a clean static HTML report with daily archives.
 
 ## Quick setup
 
@@ -42,7 +42,7 @@ bun run report
 bun dist/cli/index.js report --config ./config.yaml
 ```
 
-HTML lands in `output/` (latest week under `output/YYYY/Wxx/`). Archives accumulate week by week.
+HTML lands in `output/` (daily reports under `output/YYYY/MM/DD/`).
 
 ## Configuration
 
@@ -52,7 +52,7 @@ See [`config.example.yaml`](config.example.yaml). Important fields:
 |-------|---------|
 | `username` | GitHub user to report on |
 | `repositories` | Private/public repos to include (empty = discover from activity) |
-| `timezone` | IANA timezone for Thu–Wed window |
+| `timezone` | IANA timezone used to determine calendar-day boundaries |
 | `session_gap_minutes` / `max_session_hours` | Hours-estimate clustering |
 
 Environment overrides: `GITHUB_TOKEN` / `GH_PAT`, `GITHUB_USERNAME`, `TIMEZONE`, `LANGUAGE`, `THEME`, `DATA_DIR`, `OUTPUT_DIR`, `REPOSITORIES` (comma-separated), `LLM_*`.
@@ -61,8 +61,7 @@ Environment overrides: `GITHUB_TOKEN` / `GH_PAT`, `GITHUB_USERNAME`, `TIMEZONE`,
 
 Workflows in `.github/workflows/`:
 
-- **Daily Fetch** — accumulates yesterday’s events (including private ones the PAT can see)
-- **Weekly Report** — runs Thursday morning: fetch → summarize → render → deploy to Pages
+- **Daily Report** — runs Monday–Friday: fetch previous workday → summarize → render → deploy to Pages
 
 Required repository secret: `GH_PAT`. Optional: LLM provider secrets. Repository variables: `GITHUB_USERNAME`, `TIMEZONE`, `BASE_URL`, etc.
 
@@ -70,11 +69,10 @@ Required repository secret: `GH_PAT`. Optional: LLM provider secrets. Repository
 
 ```bash
 worklog daily-fetch
-worklog weekly-fetch
 worklog generate          # LLM if configured, else stakeholder fallback
 worklog render
 worklog deploy
-worklog report            # weekly-fetch + generate + render
+worklog report            # daily-fetch + generate + render
 worklog preview           # local server for output/ (watch + re-render)
 ```
 
@@ -87,7 +85,7 @@ worklog preview           # local server for output/ (watch + re-render)
 - Repositories / projects worked on
 - Lines added / deleted
 - **Estimated hours** from activity timestamps (labeled as estimates)
-- Archived weekly static HTML (existing themes, OG images, index)
+- Archived daily static HTML (existing themes, OG images, index)
 
 ## Security
 

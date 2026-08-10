@@ -47,10 +47,10 @@ describe("renderIndexPage", () => {
     expect(html).toContain("Shipped the auth refactor");
   });
 
-  it("falls back to week number when no title", () => {
-    const report = [buildReportEntry("2026/W14")];
+  it("falls back to the report date when no title", () => {
+    const report = [buildReportEntry("2026/04/01")];
     const html = renderIndexPage(report);
-    expect(html).toContain("Week W14");
+    expect(html).toContain("2026-04-01");
   });
 
   it("shows profile when provided", () => {

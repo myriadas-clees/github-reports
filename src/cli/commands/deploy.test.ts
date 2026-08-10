@@ -98,7 +98,7 @@ describe("registerDeploy", () => {
     expect(mockDeploy).toHaveBeenCalledWith({
       repoUrl: expect.stringContaining("owner/repo"),
       directory: "./output",
-      message: "report: 2026/W14",
+      message: "report: 2026-04-01",
     });
   });
 

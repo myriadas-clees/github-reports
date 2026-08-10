@@ -1,4 +1,4 @@
-# Worklog — private weekly GitHub status-page configuration
+# Worklog — private daily GitHub status-page configuration
 #
 # Secrets (GITHUB_TOKEN / GH_PAT, LLM API keys) must come from environment
 # variables or CI secrets — never put them in this file.

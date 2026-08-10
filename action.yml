@@ -1,5 +1,5 @@
-name: 'GitHub Weekly Reporter'
-description: 'Generate a beautiful weekly GitHub activity report and deploy to GitHub Pages'
+name: 'Worklog Daily Reporter'
+description: 'Generate a private daily GitHub activity report and deploy to GitHub Pages'
 author: 'deariary'
 
 branding:
@@ -15,7 +15,7 @@ inputs:
     required: false
     default: ${{ github.actor }}
   mode:
-    description: 'Run mode: "daily" (accumulate events) or "weekly" (full report generation)'
+    description: 'Run mode: "daily" (full daily report) or legacy "weekly"'
     required: false
     default: 'daily'
   language:
@@ -51,11 +51,11 @@ inputs:
     required: false
     default: ''
   llm-provider:
-    description: 'LLM provider (openai, anthropic, gemini, openrouter, groq, grok). Required for weekly mode.'
+    description: 'Optional LLM provider (openai, anthropic, gemini, openrouter, groq, grok).'
     required: false
     default: ''
   llm-model:
-    description: 'LLM model name. Required for weekly mode.'
+    description: 'Optional LLM model name.'
     required: false
     default: ''
   theme:
@@ -63,7 +63,7 @@ inputs:
     required: false
     default: 'brutalist'
   date:
-    description: 'Target date within the week (YYYY-MM-DD). Defaults to today. Use to generate reports for past weeks.'
+    description: 'Report date (YYYY-MM-DD). Defaults to the previous workday.'
     required: false
     default: ''
   version:
@@ -86,9 +86,9 @@ runs:
         git config user.email "github-weekly-reporter[bot]@users.noreply.github.com"
         git pull --rebase || true
 
-    # --- Daily mode: fetch events and persist ---
+    # --- Daily mode: collect a complete one-day dataset ---
 
-    - name: Daily fetch (accumulate events)
+    - name: Daily fetch
       if: inputs.mode == 'daily'
       shell: bash
       env:
@@ -100,24 +100,7 @@ runs:
         INPUT_DATE: ${{ inputs.date }}
       run: npx "github-weekly-reporter@${INPUT_VERSION}" daily-fetch ${INPUT_DATE:+--date "$INPUT_DATE"}
 
-    - name: Commit and push data (daily)
-      if: inputs.mode == 'daily'
-      shell: bash
-      env:
-        TIMEZONE: ${{ inputs.timezone }}
-        INPUT_VERSION: ${{ inputs.version }}
-        INPUT_DATE: ${{ inputs.date }}
-      run: |
-        git add -f data/
-        if git diff --cached --quiet; then
-          echo "No new data to commit"
-        else
-          MSG=$(npx "github-weekly-reporter@${INPUT_VERSION}" commit-msg daily ${INPUT_DATE:+--date "$INPUT_DATE"})
-          git commit -m "${MSG}"
-          git push
-        fi
-
-    # --- Weekly mode: full pipeline ---
+    # --- Legacy weekly mode ---
 
     - name: Weekly fetch (build full data from accumulated events)
       if: inputs.mode == 'weekly'
@@ -132,7 +115,7 @@ runs:
       run: npx "github-weekly-reporter@${INPUT_VERSION}" weekly-fetch ${INPUT_DATE:+--date "$INPUT_DATE"}
 
     - name: Generate AI content
-      if: inputs.mode == 'weekly'
+      if: inputs.mode == 'daily' || inputs.mode == 'weekly'
       shell: bash
       env:
         OPENAI_API_KEY: ${{ inputs.openai-api-key }}
@@ -150,8 +133,8 @@ runs:
         INPUT_DATE: ${{ inputs.date }}
       run: npx "github-weekly-reporter@${INPUT_VERSION}" generate ${INPUT_DATE:+--date "$INPUT_DATE"}
 
-    - name: Commit and push data (weekly)
-      if: inputs.mode == 'weekly'
+    - name: Commit and push report data
+      if: inputs.mode == 'daily' || inputs.mode == 'weekly'
       shell: bash
       env:
         TIMEZONE: ${{ inputs.timezone }}
@@ -162,13 +145,13 @@ runs:
         if git diff --cached --quiet; then
           echo "No new data to commit"
         else
-          MSG=$(npx "github-weekly-reporter@${INPUT_VERSION}" commit-msg weekly ${INPUT_DATE:+--date "$INPUT_DATE"})
+          MSG=$(npx "github-weekly-reporter@${INPUT_VERSION}" commit-msg ${{ inputs.mode }} ${INPUT_DATE:+--date "$INPUT_DATE"})
           git commit -m "${MSG}"
           git push
         fi
 
     - name: Render HTML report
-      if: inputs.mode == 'weekly'
+      if: inputs.mode == 'daily' || inputs.mode == 'weekly'
       shell: bash
       env:
         LANGUAGE: ${{ inputs.language }}
@@ -183,7 +166,7 @@ runs:
       run: npx "github-weekly-reporter@${INPUT_VERSION}" render ${INPUT_DATE:+--date "$INPUT_DATE"}
 
     - name: Deploy to GitHub Pages
-      if: inputs.mode == 'weekly'
+      if: inputs.mode == 'daily' || inputs.mode == 'weekly'
       shell: bash
       env:
         GITHUB_TOKEN: ${{ inputs.github-token }}

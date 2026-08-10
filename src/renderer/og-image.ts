@@ -222,7 +222,7 @@ const buildIndexSVG = async (
                     fontSize: "40px",
                     color: "rgba(255,255,255,0.5)",
                   },
-                  children: `Weekly reports by @${data.username}`,
+                  children: `Daily reports by @${data.username}`,
                 },
               },
             ],

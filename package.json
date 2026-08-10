@@ -1,7 +1,7 @@
 {
   "name": "worklog",
   "version": "1.0.0",
-  "description": "Private self-hosted weekly GitHub status-page generator (Thursday–Wednesday)",
+  "description": "Private self-hosted daily GitHub status-page generator",
   "type": "module",
   "bin": {
     "worklog": "./dist/cli/index.js",
@@ -34,7 +34,7 @@
   },
   "keywords": [
     "github",
-    "weekly-report",
+    "daily-report",
     "worklog",
     "status-page",
     "private",

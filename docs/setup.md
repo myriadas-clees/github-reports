@@ -30,7 +30,7 @@ bun run build
 bun run report
 ```
 
-HTML lands in `output/` (latest week under `output/YYYY/Wxx/`). Archives accumulate week by week.
+HTML lands in `output/`, archived under `output/YYYY/MM/DD/`.
 
 To preview in a browser with live re-render when themes or data change:
 
@@ -51,8 +51,7 @@ Flags: `--no-open`, `--no-watch`, `--port 3000`.
 
 Workflows:
 
-- **Daily Fetch** — midnight local (adjust cron)
-- **Weekly Report** — Thursday morning — previous Thu through Wed
+- **Daily Report** — weekday mornings; collects the previous completed workday (Monday reports Friday)
 
 ## 5. Manual backfill
 
@@ -60,7 +59,7 @@ Workflows:
 bun dist/cli/index.js report --date 2026-04-09
 ```
 
-`--date` is any day in/after the week you want; the tool resolves the previous completed Thu–Wed window.
+`--date` is the exact calendar day to report in the configured timezone.
 
 ### Refresh AI review metrics (Codex / Cursor)
 
@@ -68,17 +67,17 @@ Activity chips for AI reviews come from GitHub PR review data in configured repo
 
 | Chip piece | Meaning |
 |---|---|
-| **comments** | Root review comments by Codex/Cursor in the work week (≈ findings) |
+| **comments** | Root review comments by Codex/Cursor during the report day (≈ findings) |
 | **PRs** | Distinct PRs those bots reviewed/commented on |
 | **fixed** | Threads where you replied starting with `Fixed` / `Fixed in` / `Addressed` |
 
 This is **not** the same as Codex Analytics “Issues found” / “PRs reviewed” (product dashboard, often a rolling 7D window across a broader scope).
 
-To refresh a week after fixing collection logic:
+To refresh a day after fixing collection logic:
 
 ```bash
 export GITHUB_TOKEN=ghp_...   # or GH_PAT — must reach private repos in config.yaml
-bun dist/cli/index.js weekly-fetch --date 2026-07-29
+bun dist/cli/index.js daily-fetch --date 2026-07-29
 bun dist/cli/index.js generate --date 2026-07-29
 bun dist/cli/index.js render --date 2026-07-29
 ```
