@@ -6,6 +6,7 @@ export const aggregateRepositories = (
   pullRequests: PullRequest[],
   issues: Issue[],
   commitMessages: RepoCommitMessages[] = [],
+  actions?: { opened: PullRequest[]; merged: PullRequest[] },
 ): RepositoryActivity[] => {
   const repoMap = new Map<string, RepositoryActivity>();
 
@@ -25,11 +26,17 @@ export const aggregateRepositories = (
     return repo;
   };
 
-  pullRequests.forEach((pr) => {
-    const repo = getOrCreate(pr.repository);
-    repo.prsOpened += 1;
-    if (pr.state === "merged") repo.prsMerged += 1;
-  });
+  if (actions) {
+    pullRequests.forEach((pr) => getOrCreate(pr.repository));
+    actions.opened.forEach((pr) => { getOrCreate(pr.repository).prsOpened += 1; });
+    actions.merged.forEach((pr) => { getOrCreate(pr.repository).prsMerged += 1; });
+  } else {
+    pullRequests.forEach((pr) => {
+      const repo = getOrCreate(pr.repository);
+      repo.prsOpened += 1;
+      if (pr.state === "merged") repo.prsMerged += 1;
+    });
+  }
 
   issues.forEach((issue) => {
     const repo = getOrCreate(issue.repository);

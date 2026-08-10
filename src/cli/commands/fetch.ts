@@ -126,11 +126,17 @@ export const classifyPullRequestsForRange = (
   merged.forEach((pr) => reportByUrl.set(pr.url, { ...pr, state: "merged" }));
 
   const report = [...reportByUrl.values()];
+  const activelyUpdated = authored.filter(
+    (pr) => pr.state === "open" && timestampInRange(pr.updatedAt ?? null, range),
+  );
+  const inProgressByUrl = new Map<string, PullRequest>();
+  [...report.filter((pr) => pr.state === "open"), ...activelyUpdated]
+    .forEach((pr) => inProgressByUrl.set(pr.url, pr));
   return {
     opened,
     merged,
     report,
-    inProgress: report.filter((pr) => pr.state === "open"),
+    inProgress: [...inProgressByUrl.values()],
   };
 };
 
@@ -254,6 +260,7 @@ const collectTimestamps = (
   commitMessages: Awaited<ReturnType<typeof fetchCommitMessages>>,
   pullRequests: Awaited<ReturnType<typeof fetchPRsByRefs>>,
   reviews: Awaited<ReturnType<typeof fetchReviewsForRepos>>,
+  range?: DateRange,
 ): string[] => {
   const stamps: string[] = [];
   events.forEach((e) => stamps.push(e.createdAt));
@@ -270,7 +277,7 @@ const collectTimestamps = (
     if (r.submittedAt) stamps.push(r.submittedAt);
   });
   reviews.comments.forEach((c) => stamps.push(c.createdAt));
-  return stamps;
+  return range ? stamps.filter((stamp) => timestampInRange(stamp, range)) : stamps;
 };
 
 const runFullFetch = async (
@@ -379,11 +386,16 @@ const runFullFetch = async (
   const releases = await fetchReleases(options.token, repoNames, plan.range);
   console.log(`Collected ${releases.length} releases.`);
 
-  const repositories = aggregateRepositories(prActions.report, [], commitMessages);
+  const repositories = command === "daily-fetch"
+    ? aggregateRepositories(prActions.report, [], commitMessages, {
+      opened: prActions.opened,
+      merged: prActions.merged,
+    })
+    : aggregateRepositories(prActions.report, [], commitMessages);
   const totalAdditions = prActions.report.reduce((sum, pr) => sum + pr.additions, 0);
   const totalDeletions = prActions.report.reduce((sum, pr) => sum + pr.deletions, 0);
 
-  const timestamps = collectTimestamps(events, commitMessages, prActions.report, reviewData);
+  const timestamps = collectTimestamps(events, commitMessages, prActions.report, reviewData, plan.range);
   const commitCountFromMessages = commitMessages.reduce(
     (sum, r) => sum + (r.commits?.length ?? r.messages.length),
     0,

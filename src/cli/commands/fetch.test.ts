@@ -322,6 +322,18 @@ describe("classifyPullRequestsForRange", () => {
     expect(result.report[0]?.state).toBe("open");
     expect(result.inProgress).toHaveLength(1);
   });
+
+  it("keeps an older open PR updated in the window as in progress only", () => {
+    const older = pr({
+      createdAt: "2026-08-01T12:00:00Z",
+      updatedAt: "2026-08-10T17:00:00Z",
+      state: "open",
+    });
+    const result = classifyPullRequestsForRange([older], "alice", range);
+    expect(result.opened).toEqual([]);
+    expect(result.report).toEqual([]);
+    expect(result.inProgress).toEqual([older]);
+  });
 });
 
 // -------------------------------------------------------------------

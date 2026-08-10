@@ -104,6 +104,13 @@ describe("renderIndexPage", () => {
     expect(html).toContain('<details class="month-group" open>');
     expect(html).toContain("--activity:");
   });
+
+  it("keeps legacy weekly entries in the brutalist archive", () => {
+    const html = renderIndexPage([buildReportEntry("2026/W14", "Weekly delivery")]);
+    expect(html).toContain("Weekly delivery");
+    expect(html).toContain('href="2026/W14/"');
+    expect(html).toContain("Weekly");
+  });
 });
 
 describe("buildReportEntry", () => {

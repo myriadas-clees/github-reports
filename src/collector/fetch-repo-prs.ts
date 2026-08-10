@@ -72,6 +72,7 @@ const toPullRequest = (pr: RawPR, repo: string): PullRequest => ({
   changedFiles: pr.changed_files,
   author: pr.user?.login ?? "unknown",
   createdAt: pr.created_at,
+  updatedAt: pr.updated_at,
   mergedAt: pr.merged_at,
 });
 

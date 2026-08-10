@@ -86,16 +86,20 @@ const groupByMonth = (reports: ReportEntry[], language: Language): MonthGroup[] 
   const groups = new Map<string, ReportEntry[]>();
   enrichActivity(
     [...reports]
-      .filter((report) => /^\d{4}\/\d{2}\/\d{2}$/.test(report.path))
+      .filter((report) => /^\d{4}\/(?:\d{2}\/\d{2}|W\d{2})$/.test(report.path))
       .sort((a, b) => b.path.localeCompare(a.path)),
   ).forEach((report) => {
-    const key = report.path.split("/").slice(0, 2).join("/");
+    const [year, segment] = report.path.split("/");
+    const key = segment.startsWith("W") ? `${year}/weekly` : `${year}/${segment}`;
     groups.set(key, [...(groups.get(key) ?? []), report]);
   });
   return [...groups.entries()].map(([key, monthReports]) => {
-    const [year, month] = key.split("/").map(Number);
-    const label = new Intl.DateTimeFormat(language, { month: "long", timeZone: "UTC" })
-      .format(new Date(Date.UTC(year, month - 1, 1)));
+    const [yearPart, monthPart] = key.split("/");
+    const year = Number(yearPart);
+    const label = monthPart === "weekly"
+      ? "Weekly"
+      : new Intl.DateTimeFormat(language, { month: "long", timeZone: "UTC" })
+        .format(new Date(Date.UTC(year, Number(monthPart) - 1, 1)));
     return {
       key,
       label,

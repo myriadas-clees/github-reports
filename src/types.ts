@@ -27,6 +27,7 @@ export type PullRequest = {
   changedFiles: number;
   author: string;
   createdAt: string;
+  updatedAt?: string;
   mergedAt: string | null;
 };
 
