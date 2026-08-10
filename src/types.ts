@@ -109,7 +109,7 @@ export type WeeklyStats = {
   reviewComments: number;
   issuesOpened: number;
   issuesClosed: number;
-  /** Estimated hours from activity timestamps — not tracked time. */
+  /** Estimated conventional engineering effort — not tracked, elapsed, or billed time. */
   estimatedHours: number;
 };
 

@@ -188,17 +188,13 @@ export const buildFallbackAIContent = (data: WeeklyReportData): AIContent => {
   if ((data.hoursEstimate?.hours ?? data.stats.estimatedHours) > 0) {
     summaries.push({
       type: "activity-pattern",
-      heading: "Estimated hours",
+      heading: "Estimated engineering hours",
       body: data.hoursEstimate?.note ??
-        "Estimated from GitHub activity timestamps. Not tracked time.",
+        "Estimated conventional engineering effort. Not tracked, elapsed, or billed time.",
       chips: [
         {
-          label: "Estimated hours",
+          label: "Estimated engineering hours",
           value: `~${data.hoursEstimate?.hours ?? data.stats.estimatedHours}h`,
-        },
-        {
-          label: "Sessions",
-          value: String(data.hoursEstimate?.sessions ?? "—"),
         },
       ],
     });

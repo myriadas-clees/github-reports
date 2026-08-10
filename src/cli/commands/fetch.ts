@@ -353,8 +353,8 @@ const runFullFetch = async (
     },
   );
   console.log(
-    `Estimated hours: ~${hoursEstimate.hours}h ` +
-      `(sessions ~${hoursEstimate.sessionHours}h / volume ~${hoursEstimate.volumeHours}h; estimate only).`,
+    `Estimated engineering hours: ~${hoursEstimate.hours}h ` +
+      `(conventional engineering effort estimate only).`,
   );
 
   const partial: Omit<WeeklyReportData, "aiContent"> = {

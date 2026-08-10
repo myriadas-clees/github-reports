@@ -135,7 +135,7 @@ describe("renderReport", () => {
     expect(statsBlock).toBeTruthy();
     expect(statsBlock).toContain("PRs merged");
     expect(statsBlock).toContain("Lines");
-    expect(statsBlock).toContain("Estimated hours");
+    expect(statsBlock).toContain("Estimated engineering hours");
     expect(statsBlock).toContain("~12.5h");
     expect(statsBlock).not.toContain("Commits");
     expect(statsBlock).not.toContain("PRs opened");
@@ -144,7 +144,7 @@ describe("renderReport", () => {
     expect(statsBlock).not.toContain("Review comments");
     expect(statsBlock).not.toContain("From timestamps");
     expect(statsBlock).not.toContain("From PR volume");
-    expect(html).toContain("Estimate only - not tracked time.");
+    expect(html).toContain("Conventional engineering effort estimate — not tracked, elapsed, or billed time.");
     expect(html).not.toContain("Combines timestamps and volume.");
   });
 

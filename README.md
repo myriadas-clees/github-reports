@@ -2,7 +2,7 @@
 
 Private, self-hosted daily GitHub status-page generator. Forked from [deariary/github-weekly-reporter](https://github.com/deariary/github-weekly-reporter) and extended for private repositories and daily worklogs.
 
-Every weekday morning, Worklog reports activity from the **previous completed workday** (Monday reports Friday): commits, pull requests (opened / merged / in progress), reviews, review comments, repositories, line changes, and **estimated hours** (clearly labeled as estimates). It publishes a clean static HTML report with daily archives.
+Every weekday morning, Worklog reports activity from the **previous completed workday** (Monday reports Friday): commits, pull requests (opened / merged / in progress), reviews, review comments, repositories, line changes, and **estimated engineering hours** (clearly labeled as conventional engineering effort, not tracked time). It publishes a clean static HTML report with daily archives.
 
 ## Quick setup
 
@@ -84,7 +84,7 @@ worklog preview           # local server for output/ (watch + re-render)
 - Code reviews and review comments (linked)
 - Repositories / projects worked on
 - Lines added / deleted
-- **Estimated hours** from activity timestamps (labeled as estimates)
+- **Estimated engineering hours** from delivered scope and GitHub activity (not tracked, elapsed, or billed time)
 - Archived daily static HTML (existing themes, OG images, index)
 
 ## Security
