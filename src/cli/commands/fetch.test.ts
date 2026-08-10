@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach, beforeEach } from "vitest";
-import { resolveBaseOptions, extractPRRefs, filterEventsToRepositories, classifyPullRequestsForRange, buildDailyPlan, buildWeeklyPlan, formatCommitMsg } from "./fetch.js";
+import { resolveBaseOptions, extractPRRefs, filterEventsToRepositories, classifyPullRequestsForRange, deriveContributionStats, buildDailyPlan, buildWeeklyPlan, formatCommitMsg } from "./fetch.js";
 import type { GitHubEvent, PullRequest } from "../../types.js";
 
 // Mock fs/promises
@@ -333,6 +333,52 @@ describe("classifyPullRequestsForRange", () => {
     expect(result.opened).toEqual([]);
     expect(result.report).toEqual([]);
     expect(result.inProgress).toEqual([older]);
+  });
+
+  it("preserves an unmerged PR closed during the window", () => {
+    const result = classifyPullRequestsForRange([
+      pr({ state: "closed", closedAt: "2026-08-10T20:00:00Z", updatedAt: "2026-08-10T20:00:00Z" }),
+    ], "alice", range);
+    expect(result.report[0]?.state).toBe("closed");
+    expect(result.inProgress).toEqual([]);
+  });
+
+  it("treats a PR closed after the window as open at day end", () => {
+    const result = classifyPullRequestsForRange([
+      pr({ state: "closed", closedAt: "2026-08-12T20:00:00Z", updatedAt: "2026-08-12T20:00:00Z" }),
+    ], "alice", range);
+    expect(result.report[0]?.state).toBe("open");
+    expect(result.inProgress).toHaveLength(1);
+  });
+});
+
+describe("deriveContributionStats", () => {
+  const contributions = {
+    username: "alice",
+    avatarUrl: "https://example.com/a.png",
+    profile: { name: null, bio: null, company: null, location: null, followers: 0, following: 0, publicRepos: 0 },
+    totalCommits: 99,
+    prsReviewed: 12,
+    dailyCommits: [{ date: "2026-08-10", count: 99 }],
+  };
+
+  it("derives scoped totals and heatmap values only from scoped collectors", () => {
+    const result = deriveContributionStats(contributions, [{
+      repo: "org/app",
+      messages: ["one", "two"],
+      commits: [
+        { sha: "1", message: "one", url: "u1", authoredAt: "2026-08-10T23:30:00Z" },
+        { sha: "2", message: "two", url: "u2", authoredAt: "2026-08-11T00:30:00Z" },
+      ],
+    }], 2, "America/New_York", true);
+    expect(result.totalCommits).toBe(2);
+    expect(result.prsReviewed).toBe(2);
+    expect(result.dailyCommits).toEqual([{ date: "2026-08-10", count: 2 }]);
+  });
+
+  it("retains account-wide contribution totals when no allowlist is configured", () => {
+    const result = deriveContributionStats(contributions, [], 2, "UTC", false);
+    expect(result).toEqual({ totalCommits: 99, prsReviewed: 12, dailyCommits: contributions.dailyCommits });
   });
 });
 

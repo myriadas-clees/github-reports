@@ -11,6 +11,7 @@ type RawPR = {
   body: string | null;
   created_at: string;
   updated_at: string;
+  closed_at: string | null;
   merged_at: string | null;
   additions: number;
   deletions: number;
@@ -73,6 +74,7 @@ const toPullRequest = (pr: RawPR, repo: string): PullRequest => ({
   author: pr.user?.login ?? "unknown",
   createdAt: pr.created_at,
   updatedAt: pr.updated_at,
+  closedAt: pr.closed_at,
   mergedAt: pr.merged_at,
 });
 

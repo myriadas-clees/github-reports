@@ -102,6 +102,39 @@ export type DailyPullRequestActions = {
   inProgress: PullRequest[];
 };
 
+export const deriveContributionStats = (
+  contributions: Awaited<ReturnType<typeof fetchContributions>>,
+  commitMessages: Awaited<ReturnType<typeof fetchCommitMessages>>,
+  reviewCount: number,
+  timezone: string,
+  repositoryScoped: boolean,
+): Pick<WeeklyReportData["stats"], "totalCommits" | "prsReviewed"> & { dailyCommits: WeeklyReportData["dailyCommits"] } => {
+  const commitCount = commitMessages.reduce(
+    (sum, repo) => sum + (repo.commits?.length ?? repo.messages.length),
+    0,
+  );
+  if (!repositoryScoped) {
+    return {
+      totalCommits: Math.max(contributions.totalCommits, commitCount),
+      prsReviewed: Math.max(contributions.prsReviewed, reviewCount),
+      dailyCommits: contributions.dailyCommits,
+    };
+  }
+  const byDate = new Map<string, number>();
+  commitMessages.forEach((repo) => repo.commits?.forEach((commit) => {
+    if (!commit.authoredAt) return;
+    const date = toISODate(new Date(commit.authoredAt), timezone);
+    byDate.set(date, (byDate.get(date) ?? 0) + 1);
+  }));
+  return {
+    totalCommits: commitCount,
+    prsReviewed: reviewCount,
+    dailyCommits: [...byDate.entries()]
+      .map(([date, count]) => ({ date, count }))
+      .sort((a, b) => a.date.localeCompare(b.date)),
+  };
+};
+
 /** Attribute authored PRs only to create/merge actions inside the exact report window. */
 export const classifyPullRequestsForRange = (
   pullRequests: PullRequest[],
@@ -117,17 +150,26 @@ export const classifyPullRequestsForRange = (
   const reportByUrl = new Map<string, PullRequest>();
 
   opened.forEach((pr) => {
+    const closedInRange = timestampInRange(pr.closedAt ?? null, range);
+    const closedAfterRange = pr.closedAt && new Date(pr.closedAt).getTime() > range.to.getTime();
     reportByUrl.set(pr.url, {
       ...pr,
-      // A PR merged after this report window was still open at the end of this day.
-      state: mergedUrls.has(pr.url) ? "merged" : "open",
+      // Preserve the PR's state at the end of this historical report window.
+      state: mergedUrls.has(pr.url)
+        ? "merged"
+        : closedInRange
+          ? "closed"
+          : (closedAfterRange || pr.state !== "closed") ? "open" : "closed",
     });
   });
   merged.forEach((pr) => reportByUrl.set(pr.url, { ...pr, state: "merged" }));
 
   const report = [...reportByUrl.values()];
   const activelyUpdated = authored.filter(
-    (pr) => pr.state === "open" && timestampInRange(pr.updatedAt ?? null, range),
+    (pr) => {
+      const closedAfterRange = pr.closedAt && new Date(pr.closedAt).getTime() > range.to.getTime();
+      return (pr.state === "open" || Boolean(closedAfterRange)) && timestampInRange(pr.updatedAt ?? null, range);
+    },
   );
   const inProgressByUrl = new Map<string, PullRequest>();
   [...report.filter((pr) => pr.state === "open"), ...activelyUpdated]
@@ -400,6 +442,14 @@ const runFullFetch = async (
     (sum, r) => sum + (r.commits?.length ?? r.messages.length),
     0,
   );
+  const hasRepositoryScope = options.repositories.length > 0;
+  const contributionStats = deriveContributionStats(
+    contributions,
+    commitMessages,
+    reviewData.reviews.length,
+    options.timezone,
+    hasRepositoryScope,
+  );
   const hoursEstimate = estimateHours(
     timestamps,
     {
@@ -428,19 +478,19 @@ const runFullFetch = async (
     profile: contributions.profile,
     dateRange: { from: plan.rangeFrom, to: plan.rangeTo },
     stats: {
-      totalCommits: Math.max(contributions.totalCommits, commitCountFromMessages),
+      totalCommits: contributionStats.totalCommits,
       totalAdditions,
       totalDeletions,
       prsOpened,
       prsMerged,
       prsInProgress: prsInProgress.length,
-      prsReviewed: Math.max(contributions.prsReviewed, reviewData.reviews.length),
+      prsReviewed: contributionStats.prsReviewed,
       reviewComments: reviewData.comments.length,
       issuesOpened: 0,
       issuesClosed: 0,
       estimatedHours: hoursEstimate.hours,
     },
-    dailyCommits: contributions.dailyCommits,
+    dailyCommits: contributionStats.dailyCommits,
     repositories,
     pullRequests: prActions.report,
     prsInProgress,
