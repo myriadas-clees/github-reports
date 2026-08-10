@@ -5,30 +5,30 @@ const entries = (paths: string[]) => paths.map((p) => buildReportEntry(p));
 
 describe("renderIndexPage", () => {
   it("produces valid HTML with report links", () => {
-    const html = renderIndexPage(entries(["2026/W13", "2026/W14"]));
+    const html = renderIndexPage(entries(["2026/04/01", "2026/04/02"]));
     expect(html).toContain("<!DOCTYPE html>");
-    expect(html).toContain("2026/W14/");
-    expect(html).toContain("2026/W13/");
+    expect(html).toContain("2026/04/02/");
+    expect(html).toContain("2026/04/01/");
   });
 
   it("lists reports in reverse chronological order", () => {
-    const html = renderIndexPage(entries(["2026/W12", "2026/W14", "2026/W13"]));
-    const w14Pos = html.indexOf("2026/W14");
-    const w13Pos = html.indexOf("2026/W13");
-    const w12Pos = html.indexOf("2026/W12");
+    const html = renderIndexPage(entries(["2026/04/01", "2026/04/03", "2026/04/02"]));
+    const w14Pos = html.indexOf("2026/04/03");
+    const w13Pos = html.indexOf("2026/04/02");
+    const w12Pos = html.indexOf("2026/04/01");
     expect(w14Pos).toBeLessThan(w13Pos);
     expect(w13Pos).toBeLessThan(w12Pos);
   });
 
   it("groups by year", () => {
-    const html = renderIndexPage(entries(["2025/W52", "2026/W01", "2026/W02"]));
-    const year2026Pos = html.indexOf("2026");
-    const year2025Pos = html.indexOf("2025");
+    const html = renderIndexPage(entries(["2025/12/31", "2026/01/01", "2026/01/02"]));
+    const year2026Pos = html.indexOf("2026/01/02/");
+    const year2025Pos = html.indexOf("2025/12/31/");
     expect(year2026Pos).toBeLessThan(year2025Pos);
   });
 
   it("includes dofollow footer link", () => {
-    const html = renderIndexPage(entries(["2026/W14"]));
+    const html = renderIndexPage(entries(["2026/04/01"]));
     expect(html).toContain("myriadas.com");
     expect(html).toContain("Myriad Advisor Solutions");
     expect(html).not.toContain('rel="nofollow"');
@@ -42,7 +42,7 @@ describe("renderIndexPage", () => {
   });
 
   it("shows AI title when provided", () => {
-    const report = [buildReportEntry("2026/W14", "Shipped the auth refactor")];
+    const report = [buildReportEntry("2026/04/01", "Shipped the auth refactor")];
     const html = renderIndexPage(report);
     expect(html).toContain("Shipped the auth refactor");
   });
@@ -54,7 +54,7 @@ describe("renderIndexPage", () => {
   });
 
   it("shows profile when provided", () => {
-    const html = renderIndexPage(entries(["2026/W14"]), {
+    const html = renderIndexPage(entries(["2026/04/01"]), {
       username: "testuser",
       avatarUrl: "https://example.com/avatar.png",
     });
@@ -63,33 +63,46 @@ describe("renderIndexPage", () => {
   });
 
   it("renders Japanese locale", () => {
-    const html = renderIndexPage(entries(["2026/W14"]), undefined, "ja");
+    const html = renderIndexPage(entries(["2026/04/01"]), undefined, "ja");
     expect(html).toContain('lang="ja"');
     expect(html).toContain("Dev");
     expect(html).toContain("Pulse");
   });
 
   it("defaults to English locale", () => {
-    const html = renderIndexPage(entries(["2026/W14"]));
+    const html = renderIndexPage(entries(["2026/04/01"]));
     expect(html).toContain('lang="en"');
     expect(html).toContain("Dev");
     expect(html).toContain("Pulse");
   });
 
   it("uses custom site title", () => {
-    const html = renderIndexPage(entries(["2026/W14"]), undefined, "en", "Weekly Reports");
-    expect(html).toContain("Weekly Reports");
+    const html = renderIndexPage(entries(["2026/04/01"]), undefined, "en", "Daily Worklog");
+    expect(html).toContain("Daily Worklog");
   });
 
   it("builds absolute og.png URL when baseUrl is provided", () => {
     const html = renderIndexPage(
-      entries(["2026/W14"]),
+      entries(["2026/04/01"]),
       undefined,
       "en",
       undefined,
       "https://user.github.io/repo",
     );
     expect(html).toContain("https://user.github.io/repo/og.png");
+  });
+
+  it("renders a collapsed monthly overhead with aggregate totals", () => {
+    const html = renderIndexPage([
+      buildReportEntry("2026/04/01", "Auth shipped", undefined, { commits: 4, prs: 1, reviews: 2 }),
+      buildReportEntry("2026/04/02", "Billing cleanup", undefined, { commits: 6, prs: 2, reviews: 1 }),
+    ]);
+    expect(html).toContain("Activity ledger");
+    expect(html).toContain("10</b> commits");
+    expect(html).toContain("3</b> PRs");
+    expect(html).toContain("April");
+    expect(html).toContain('<details class="month-group" open>');
+    expect(html).toContain("--activity:");
   });
 });
 

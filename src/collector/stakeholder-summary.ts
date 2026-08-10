@@ -27,6 +27,7 @@ export const formatShortWeekTitle = (from: string, to: string): string => {
   const [ty, tm, td] = to.split("-").map(Number);
   if (!fy || !fm || !fd || !ty || !tm || !td) return `Week of ${from}`;
   const fromLabel = `${MONTHS[fm - 1]} ${fd}`;
+  if (from === to) return fromLabel;
   if (fy === ty && fm === tm) return `${fromLabel}-${td}`;
   if (fy === ty) return `${fromLabel}-${MONTHS[tm - 1]} ${td}`;
   return `${fromLabel}, ${fy}-${MONTHS[tm - 1]} ${td}, ${ty}`;

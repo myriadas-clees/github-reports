@@ -8,7 +8,7 @@ type RawEvent = {
   id: string;
   type: string;
   public: boolean;
-  repo: { name: string };
+  repo?: { name: string } | null;
   created_at: string;
   payload: Record<string, unknown>;
 };
@@ -145,6 +145,8 @@ export const fetchEvents = async (
     if (raw.length === 0) break;
 
     raw
+      .filter((e): e is RawEvent & { repo: { name: string } } =>
+        typeof e.repo?.name === "string" && e.repo.name.length > 0)
       .filter((e) => includePrivate || e.public)
       .filter((e) => !repoFilter || repoFilter.has(e.repo.name.toLowerCase()))
       .filter((e) => isInRange(e.created_at, range))

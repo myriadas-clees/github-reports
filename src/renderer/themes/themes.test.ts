@@ -273,7 +273,7 @@ describe("readThemeTemplate", () => {
     const theme = loadTheme("brutalist");
     const content = readThemeTemplate(theme, "index-page.hbs");
     expect(content).toContain("<!DOCTYPE html>");
-    expect(content).toContain("hero-title");
+    expect(content).toContain("overhead-title");
   });
 
   it("reads report.hbs from minimal theme", () => {
