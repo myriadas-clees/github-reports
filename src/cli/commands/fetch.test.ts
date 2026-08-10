@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach, beforeEach } from "vitest";
-import { resolveBaseOptions, extractPRRefs, buildDailyPlan, buildWeeklyPlan, formatCommitMsg } from "./fetch.js";
+import { resolveBaseOptions, extractPRRefs, filterEventsToRepositories, buildDailyPlan, buildWeeklyPlan, formatCommitMsg } from "./fetch.js";
 import type { GitHubEvent } from "../../types.js";
 
 // Mock fs/promises
@@ -241,6 +241,26 @@ describe("extractPRRefs", () => {
       },
     ];
     expect(extractPRRefs(events)).toEqual([]);
+  });
+});
+
+describe("filterEventsToRepositories", () => {
+  const event = (id: string, repo: string): GitHubEvent => ({
+    id,
+    type: "PushEvent",
+    repo,
+    createdAt: "2026-08-10T12:00:00Z",
+    payload: { kind: "push", ref: "refs/heads/main", commits: [] },
+  });
+
+  it("removes cached events from repositories no longer configured", () => {
+    const events = [event("1", "org/app"), event("2", "org/old-app")];
+    expect(filterEventsToRepositories(events, ["ORG/APP"]).map((item) => item.id)).toEqual(["1"]);
+  });
+
+  it("preserves discovery behavior when no repositories are configured", () => {
+    const events = [event("1", "org/app"), event("2", "org/other")];
+    expect(filterEventsToRepositories(events, [])).toEqual(events);
   });
 });
 

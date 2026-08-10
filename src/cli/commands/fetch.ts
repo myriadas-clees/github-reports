@@ -80,6 +80,15 @@ export const extractPRRefs = (events: GitHubEvent[]): PRRef[] => {
   return refs;
 };
 
+export const filterEventsToRepositories = (
+  events: GitHubEvent[],
+  repositories: string[],
+): GitHubEvent[] => {
+  if (repositories.length === 0) return events;
+  const allowed = new Set(repositories.map((repo) => repo.toLowerCase()));
+  return events.filter((event) => allowed.has(event.repo.toLowerCase()));
+};
+
 export type FetchPlan = {
   targetDate: string;
   rangeFrom: string;
@@ -232,14 +241,20 @@ const runFullFetch = async (
   }
 
   const eventsPath = join(plan.reportDir, "events.yaml");
-  let events = await tryReadYaml<GitHubEvent[]>(eventsPath) ?? [];
+  let events = filterEventsToRepositories(
+    await tryReadYaml<GitHubEvent[]>(eventsPath) ?? [],
+    options.repositories,
+  );
 
   console.log("Fetching events for the report window...");
   const reportEvents = await fetchEvents(options.token, options.username, plan.range, {
     includePrivate: true,
     repos: options.repositories.length > 0 ? options.repositories : undefined,
   });
-  events = dedupeEvents([...events, ...reportEvents]);
+  events = filterEventsToRepositories(
+    dedupeEvents([...events, ...reportEvents]),
+    options.repositories,
+  );
   await writeFile(eventsPath, toYaml(events, { lineWidth: 120 }), "utf-8");
   console.log(`Loaded ${events.length} events.`);
 

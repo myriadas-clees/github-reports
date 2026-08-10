@@ -1,0 +1,10 @@
+username: myriadas-clees
+timezone: America/New_York
+language: en
+theme: brutalist
+site_title: Worklog
+repositories:
+  - Myriad-Advisor-Solutions/ohcpwm-apps
+  - Myriad-Advisor-Solutions/myriadas-apps
+data_dir: ./data
+output_dir: ./output
