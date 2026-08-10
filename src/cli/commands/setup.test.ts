@@ -49,13 +49,13 @@ vi.mock("./setup/validate-model.js", () => ({
 
 describe("midnightCronUTC", () => {
   it("returns a weekday-only schedule for UTC", () => {
-    expect(midnightCronUTC("UTC")).toBe("0 0 * * 1-5");
+    expect(midnightCronUTC("UTC")).toBe("0 1 * * 1-5");
   });
 
   it("returns a valid cron expression for Asia/Tokyo (+9)", () => {
-    // Midnight JST = 15:00 UTC previous day
+    // 01:00 JST = 16:00 UTC previous day
     const cron = midnightCronUTC("Asia/Tokyo");
-    expect(cron).toBe("0 15 * * 0-4");
+    expect(cron).toBe("0 16 * * 0-4");
   });
 
   it("returns a valid cron expression for America/New_York", () => {
@@ -73,9 +73,9 @@ describe("midnightCronUTC", () => {
   });
 
   it("handles half-hour offset (Asia/Kolkata +5:30)", () => {
-    // Midnight IST = 18:30 UTC previous day
+    // 01:00 IST = 19:30 UTC previous day
     const cron = midnightCronUTC("Asia/Kolkata");
-    expect(cron).toBe("30 18 * * 0-4");
+    expect(cron).toBe("30 19 * * 0-4");
   });
 });
 
@@ -112,7 +112,7 @@ describe("buildDailyWorkflow", () => {
   it("contains the cron schedule", () => {
     const yaml = buildDailyWorkflow(baseOpts);
     expect(yaml).toContain("cron:");
-    expect(yaml).toContain("0 0 * * 1-5");
+    expect(yaml).toContain("0 1 * * 1-5");
   });
 
   it("contains the language", () => {

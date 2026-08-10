@@ -6,6 +6,7 @@ import { join } from "node:path";
 import { parse as parseYaml, stringify as toYaml } from "yaml";
 import { generateContent } from "../../llm/index.js";
 import { resolveDayId } from "../../deployer/day.js";
+import { getWeekId } from "../../deployer/week.js";
 import { parseLocalDate } from "../../collector/date-range.js";
 import { buildFallbackAIContent, buildStakeholderSummary } from "../../collector/stakeholder-summary.js";
 import { loadConfigFile, resolveConfig } from "../../config.js";
@@ -22,6 +23,7 @@ export type GenerateOptions = {
   timezone: string;
   date?: Date;
   allowFallback: boolean;
+  mode: "daily" | "weekly";
 };
 
 const providerKeyMap: Record<string, string> = {
@@ -55,6 +57,8 @@ export const resolveOptions = async (
   const timezone = cfg.timezone;
   const date = cli.date ? parseLocalDate(cli.date, timezone) : undefined;
   const allowFallback = cli.requireLlm !== "true";
+  const mode = cli.mode ?? env("REPORT_MODE") ?? "daily";
+  if (mode !== "daily" && mode !== "weekly") throw new Error(`Unknown report mode "${mode}". Use daily or weekly.`);
 
   return {
     dataDir: cfg.dataDir,
@@ -65,11 +69,14 @@ export const resolveOptions = async (
     timezone,
     date,
     allowFallback,
+    mode,
   };
 };
 
 const run = async (options: GenerateOptions): Promise<void> => {
-  const dayId = resolveDayId(options.date, options.timezone);
+  const dayId = options.mode === "weekly"
+    ? getWeekId(options.date ?? new Date(), options.timezone)
+    : resolveDayId(options.date, options.timezone);
   const dataDir = join(options.dataDir, dayId.path);
   const dataPath = join(dataDir, "github-data.yaml");
 
@@ -122,6 +129,7 @@ export const registerGenerate = (program: Command): void => {
     .option("--language <lang>", "Report language (env: LANGUAGE, default: en)")
     .option("--timezone <tz>", "IANA timezone (env: TIMEZONE, default: UTC)")
     .option("--date <date>", "Report date (YYYY-MM-DD, default: previous workday)")
+    .option("--mode <mode>", "Archive mode: daily or weekly (env: REPORT_MODE, default: daily)")
     .option("--config <path>", "YAML config path (env: CONFIG_PATH, default: ./config.yaml)")
     .option("--require-llm", "Fail if LLM is not configured (default: allow stakeholder fallback)")
     .action(async (opts) => {

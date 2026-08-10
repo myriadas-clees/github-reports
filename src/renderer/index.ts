@@ -274,6 +274,7 @@ export type RenderOptions = {
   timezone?: string;
   baseUrl?: string;
   weekPath?: string;
+  rootPrefix?: string;
   siteTitle?: string;
   prevWeek?: string;
   nextWeek?: string;
@@ -306,6 +307,7 @@ export const renderReport = (
 
   const baseUrl = options.baseUrl?.replace(/\/+$/, "") ?? "";
   const weekPath = options.weekPath ?? "";
+  const rootPrefix = options.rootPrefix ?? "../".repeat(weekPath.split("/").filter(Boolean).length);
   const canonicalUrl = baseUrl && weekPath ? `${baseUrl}/${weekPath}/` : undefined;
   const ogImageUrl = baseUrl && weekPath ? `${baseUrl}/${weekPath}/og.png` : "og.png";
 
@@ -333,6 +335,7 @@ export const renderReport = (
     ogImageUrl,
     siteTitle,
     siteTitleInline,
+    rootPrefix,
     themeColor: theme.colors.bg,
     themeInitScript: theme.themeInitScript ?? "",
     themeToggleScript: theme.themeToggleScript ?? "",

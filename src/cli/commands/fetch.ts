@@ -18,7 +18,7 @@ import { buildStakeholderSummary } from "../../collector/stakeholder-summary.js"
 import { getWeekId } from "../../deployer/week.js";
 import { getDayId, getPreviousDayId } from "../../deployer/day.js";
 import { loadConfigFile, resolveConfig } from "../../config.js";
-import type { GitHubEvent, WeeklyReportData } from "../../types.js";
+import type { GitHubEvent, PullRequest, WeeklyReportData } from "../../types.js";
 
 const env = (key: string): string | undefined => process.env[key];
 
@@ -87,6 +87,51 @@ export const filterEventsToRepositories = (
   if (repositories.length === 0) return events;
   const allowed = new Set(repositories.map((repo) => repo.toLowerCase()));
   return events.filter((event) => allowed.has(event.repo.toLowerCase()));
+};
+
+const timestampInRange = (timestamp: string | null, range: DateRange): boolean => {
+  if (!timestamp) return false;
+  const time = new Date(timestamp).getTime();
+  return !Number.isNaN(time) && time >= range.from.getTime() && time <= range.to.getTime();
+};
+
+export type DailyPullRequestActions = {
+  opened: PullRequest[];
+  merged: PullRequest[];
+  report: PullRequest[];
+  inProgress: PullRequest[];
+};
+
+/** Attribute authored PRs only to create/merge actions inside the exact report window. */
+export const classifyPullRequestsForRange = (
+  pullRequests: PullRequest[],
+  username: string,
+  range: DateRange,
+): DailyPullRequestActions => {
+  const authored = pullRequests.filter(
+    (pr) => pr.author.toLowerCase() === username.toLowerCase(),
+  );
+  const opened = authored.filter((pr) => timestampInRange(pr.createdAt, range));
+  const merged = authored.filter((pr) => timestampInRange(pr.mergedAt, range));
+  const mergedUrls = new Set(merged.map((pr) => pr.url));
+  const reportByUrl = new Map<string, PullRequest>();
+
+  opened.forEach((pr) => {
+    reportByUrl.set(pr.url, {
+      ...pr,
+      // A PR merged after this report window was still open at the end of this day.
+      state: mergedUrls.has(pr.url) ? "merged" : "open",
+    });
+  });
+  merged.forEach((pr) => reportByUrl.set(pr.url, { ...pr, state: "merged" }));
+
+  const report = [...reportByUrl.values()];
+  return {
+    opened,
+    merged,
+    report,
+    inProgress: report.filter((pr) => pr.state === "open"),
+  };
 };
 
 export type FetchPlan = {
@@ -279,12 +324,20 @@ const runFullFetch = async (
   const pullRequests = await fetchPRsByRefs(options.token, [...uniqueRefs.values()]);
   console.log(`Fetched ${pullRequests.length} PRs.`);
 
-  const authored = pullRequests.filter(
-    (pr) => pr.author.toLowerCase() === options.username.toLowerCase(),
-  );
-  const prsOpened = authored.length;
-  const prsMerged = authored.filter((pr) => pr.state === "merged").length;
-  const prsInProgress = authored.filter((pr) => pr.state === "open");
+  const prActions = command === "daily-fetch"
+    ? classifyPullRequestsForRange(pullRequests, options.username, plan.range)
+    : (() => {
+      const report = pullRequests.filter((pr) => pr.author?.toLowerCase() === options.username.toLowerCase());
+      return {
+        opened: report,
+        merged: report.filter((pr) => pr.state === "merged"),
+        inProgress: report.filter((pr) => pr.state === "open"),
+        report,
+      };
+    })();
+  const prsOpened = prActions.opened.length;
+  const prsMerged = prActions.merged.length;
+  const prsInProgress = prActions.inProgress;
 
   console.log("Fetching contribution stats...");
   const gql = graphql.defaults({ headers: { authorization: `token ${options.token}` } });
@@ -326,11 +379,11 @@ const runFullFetch = async (
   const releases = await fetchReleases(options.token, repoNames, plan.range);
   console.log(`Collected ${releases.length} releases.`);
 
-  const repositories = aggregateRepositories(pullRequests, [], commitMessages);
-  const totalAdditions = pullRequests.reduce((sum, pr) => sum + pr.additions, 0);
-  const totalDeletions = pullRequests.reduce((sum, pr) => sum + pr.deletions, 0);
+  const repositories = aggregateRepositories(prActions.report, [], commitMessages);
+  const totalAdditions = prActions.report.reduce((sum, pr) => sum + pr.additions, 0);
+  const totalDeletions = prActions.report.reduce((sum, pr) => sum + pr.deletions, 0);
 
-  const timestamps = collectTimestamps(events, commitMessages, pullRequests, reviewData);
+  const timestamps = collectTimestamps(events, commitMessages, prActions.report, reviewData);
   const commitCountFromMessages = commitMessages.reduce(
     (sum, r) => sum + (r.commits?.length ?? r.messages.length),
     0,
@@ -338,7 +391,7 @@ const runFullFetch = async (
   const hoursEstimate = estimateHours(
     timestamps,
     {
-      pullRequests: authored.map((pr) => ({
+      pullRequests: prActions.report.map((pr) => ({
         additions: pr.additions,
         deletions: pr.deletions,
         state: pr.state,
@@ -377,7 +430,7 @@ const runFullFetch = async (
     },
     dailyCommits: contributions.dailyCommits,
     repositories,
-    pullRequests,
+    pullRequests: prActions.report,
     prsInProgress,
     issues: [],
     events: events.filter((e) => e.payload.kind === "review" || e.payload.kind === "push"),
@@ -396,7 +449,7 @@ const runFullFetch = async (
   const dataPath = join(plan.reportDir, "github-data.yaml");
   await writeFile(dataPath, toYaml(githubData, { lineWidth: 120 }), "utf-8");
   console.log(`GitHub data written to ${dataPath}`);
-  console.log(`Total: ${pullRequests.length} PRs (${prsInProgress.length} in progress), ~${hoursEstimate.hours}h estimated`);
+  console.log(`Total: ${prActions.report.length} PRs (${prsInProgress.length} in progress), ~${hoursEstimate.hours}h estimated`);
 };
 
 const runDailyFetch = async (options: BaseOptions): Promise<void> => {

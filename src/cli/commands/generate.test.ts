@@ -31,6 +31,12 @@ describe("resolveOptions", () => {
     const result = await resolveOptions({});
     expect(result.llmProvider).toBeNull();
     expect(result.allowFallback).toBe(true);
+    expect(result.mode).toBe("daily");
+  });
+
+  it("preserves weekly archive mode", async () => {
+    const result = await resolveOptions({ mode: "weekly" });
+    expect(result.mode).toBe("weekly");
   });
 
   it("maps openai provider to OPENAI_API_KEY env var", async () => {

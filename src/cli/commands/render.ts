@@ -8,6 +8,7 @@ import { parse as parseYaml } from "yaml";
 import { renderReport } from "../../renderer/index.js";
 import { renderIndexPage, buildReportEntry, type ReportEntry } from "../../deployer/index-page.js";
 import { resolveDayId } from "../../deployer/day.js";
+import { getWeekId } from "../../deployer/week.js";
 import { parseLocalDate } from "../../collector/date-range.js";
 import { generateOGImage, generateIndexOGImage } from "../../renderer/og-image.js";
 import { generateCard, generateDarkCard } from "../../renderer/card.js";
@@ -29,6 +30,7 @@ export type RenderCommandOptions = {
   timezone: string;
   theme: Theme;
   date?: Date;
+  mode?: "daily" | "weekly";
 };
 
 const fileExists = async (path: string): Promise<boolean> => {
@@ -45,6 +47,9 @@ const listCompletedReportDirs = async (dir: string): Promise<string[]> => {
   }
   for (const year of entries.filter((n) => /^\d{4}$/.test(n))) {
     const months = await readdir(join(dir, year));
+    for (const week of months.filter((n) => /^W\d{2}$/.test(n))) {
+      if (await fileExists(join(dir, year, week, "llm-data.yaml"))) paths.push(`${year}/${week}`);
+    }
     for (const month of months.filter((n) => /^\d{2}$/.test(n))) {
       const days = await readdir(join(dir, year, month));
       for (const day of days.filter((n) => /^\d{2}$/.test(n))) {
@@ -91,7 +96,9 @@ const buildReportEntries = async (
 
 /** Render HTML for a day from github-data + llm-data. Throws if data is missing. */
 export const runRender = async (options: RenderCommandOptions): Promise<void> => {
-  const dayId = resolveDayId(options.date, options.timezone);
+  const dayId = options.mode === "weekly"
+    ? getWeekId(options.date ?? new Date(), options.timezone)
+    : resolveDayId(options.date, options.timezone);
   const dataWeekDir = join(options.dataDir, dayId.path);
   const outputWeekDir = join(options.outputDir, dayId.path);
 
@@ -138,6 +145,7 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
     timezone: options.timezone,
     baseUrl: base,
     weekPath: dayId.path,
+    rootPrefix,
     siteTitle: options.siteTitle,
     theme: options.theme,
     prevWeek: prevWeek ? `${rootPrefix}${prevWeek}/` : undefined,
@@ -162,10 +170,11 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
         timezone: options.timezone,
         baseUrl: base,
         weekPath: prevWeek,
+        rootPrefix: "../".repeat(prevWeek.split("/").length),
         siteTitle: options.siteTitle,
         theme: options.theme,
-        prevWeek: prevPrev ? `${rootPrefix}${prevPrev}/` : undefined,
-        nextWeek: `${rootPrefix}${dayId.path}/`,
+        prevWeek: prevPrev ? `${"../".repeat(prevWeek.split("/").length)}${prevPrev}/` : undefined,
+        nextWeek: `${"../".repeat(prevWeek.split("/").length)}${dayId.path}/`,
       });
       const prevOutputDir = join(options.outputDir, prevWeek);
       await mkdir(prevOutputDir, { recursive: true });
@@ -195,7 +204,7 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
   const dateRange = `${githubData.dateRange.from} – ${githubData.dateRange.to}`;
   const cardData = {
     username: githubData.username,
-    weekLabel: dayId.date,
+    weekLabel: "date" in dayId ? dayId.date : dayId.path.split("/").at(-1)!,
     dateRange,
     title: aiContent.title,
     summaries: aiContent.summaries,
@@ -294,11 +303,14 @@ export const registerRender = (program: Command): void => {
     .option("--timezone <tz>", "IANA timezone (env: TIMEZONE, default: UTC)")
     .option("--theme <name>", `Theme name: ${AVAILABLE_THEMES.join(", ")} (env: THEME, default: brutalist)`)
     .option("--date <date>", "Report date (YYYY-MM-DD, default: previous workday)")
+    .option("--mode <mode>", "Archive mode: daily or weekly (env: REPORT_MODE, default: daily)")
     .option("--config <path>", "Path to config.yaml (env: CONFIG_PATH)")
     .action(async (opts) => {
       try {
         const baseUrl = opts.baseUrl ?? env("BASE_URL");
         if (!baseUrl) throw new Error("Base URL required. Pass --base-url or set BASE_URL (e.g. https://user.github.io/repo).");
+        const mode = opts.mode ?? env("REPORT_MODE") ?? "daily";
+        if (mode !== "daily" && mode !== "weekly") throw new Error(`Unknown report mode "${mode}". Use daily or weekly.`);
 
         const fileCfg = await loadConfigFile(opts.config ?? env("CONFIG_PATH"));
         const cfg = resolveConfig(fileCfg, {
@@ -325,6 +337,7 @@ export const registerRender = (program: Command): void => {
           timezone: opts.timezone ?? cfg.timezone,
           theme,
           date: opts.date ? parseLocalDate(opts.date, opts.timezone ?? cfg.timezone) : undefined,
+          mode,
         };
         await runRender(options);
       } catch (error) {

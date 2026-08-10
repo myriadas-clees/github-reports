@@ -594,6 +594,12 @@ describe("renderReport", () => {
     expect(html).toContain("https://user.github.io/repo/2026/W14/og.png");
   });
 
+  it("computes root and asset links from a daily archive depth", () => {
+    const html = renderReport(MOCK_DATA, { weekPath: "2026/08/10", theme: "brutalist" });
+    expect(html).toContain('href="../../../"');
+    expect(html).toContain('src="../../../assets/brand/myriad-m-mark.png"');
+  });
+
   it("uses custom site title", () => {
     const html = renderReport(MOCK_DATA, { siteTitle: "My Weekly" });
     expect(html).toContain("My Weekly");

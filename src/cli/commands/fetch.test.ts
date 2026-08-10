@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, afterEach, beforeEach } from "vitest";
-import { resolveBaseOptions, extractPRRefs, filterEventsToRepositories, buildDailyPlan, buildWeeklyPlan, formatCommitMsg } from "./fetch.js";
-import type { GitHubEvent } from "../../types.js";
+import { resolveBaseOptions, extractPRRefs, filterEventsToRepositories, classifyPullRequestsForRange, buildDailyPlan, buildWeeklyPlan, formatCommitMsg } from "./fetch.js";
+import type { GitHubEvent, PullRequest } from "../../types.js";
 
 // Mock fs/promises
 const mockReadFile = vi.fn();
@@ -261,6 +261,66 @@ describe("filterEventsToRepositories", () => {
   it("preserves discovery behavior when no repositories are configured", () => {
     const events = [event("1", "org/app"), event("2", "org/other")];
     expect(filterEventsToRepositories(events, [])).toEqual(events);
+  });
+});
+
+describe("classifyPullRequestsForRange", () => {
+  const range = {
+    from: new Date("2026-08-10T04:00:00Z"),
+    to: new Date("2026-08-11T03:59:59.999Z"),
+  };
+  const pr = (overrides: Partial<PullRequest>): PullRequest => ({
+    title: "PR",
+    body: null,
+    url: "https://github.com/org/app/pull/1",
+    repository: "org/app",
+    state: "open",
+    labels: [],
+    additions: 100,
+    deletions: 20,
+    changedFiles: 2,
+    author: "alice",
+    createdAt: "2026-08-10T12:00:00Z",
+    mergedAt: null,
+    ...overrides,
+  });
+
+  it("excludes older authored and review-only PRs from daily delivery totals", () => {
+    const older = pr({
+      url: "https://github.com/org/app/pull/2",
+      createdAt: "2026-08-01T12:00:00Z",
+    });
+    const reviewed = pr({
+      url: "https://github.com/org/app/pull/3",
+      author: "bob",
+    });
+    const result = classifyPullRequestsForRange([older, reviewed], "alice", range);
+    expect(result.report).toEqual([]);
+    expect(result.opened).toEqual([]);
+    expect(result.merged).toEqual([]);
+  });
+
+  it("classifies create and merge actions without double-counting a PR", () => {
+    const sameDay = pr({ mergedAt: "2026-08-10T18:00:00Z", state: "merged" });
+    const mergedToday = pr({
+      url: "https://github.com/org/app/pull/2",
+      createdAt: "2026-08-01T12:00:00Z",
+      mergedAt: "2026-08-10T20:00:00Z",
+      state: "merged",
+    });
+    const result = classifyPullRequestsForRange([sameDay, mergedToday], "ALICE", range);
+    expect(result.opened).toHaveLength(1);
+    expect(result.merged).toHaveLength(2);
+    expect(result.report).toHaveLength(2);
+    expect(result.inProgress).toHaveLength(0);
+  });
+
+  it("treats a PR merged after the window as in progress for the report day", () => {
+    const result = classifyPullRequestsForRange([
+      pr({ state: "merged", mergedAt: "2026-08-12T12:00:00Z" }),
+    ], "alice", range);
+    expect(result.report[0]?.state).toBe("open");
+    expect(result.inProgress).toHaveLength(1);
   });
 });
 
