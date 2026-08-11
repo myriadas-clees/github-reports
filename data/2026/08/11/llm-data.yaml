@@ -1,23 +1,69 @@
 title: Aug 11
-subtitle: Daily status
+subtitle: ofac, auth & streamline recruit
 overview: ""
 summaries:
   - type: repo-summary
     heading: Projects worked on
-    body: No repository activity recorded.
-    chips: []
+    body: Activity spanned Myriad-Advisor-Solutions/ohcpwm-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 0 PRs
   - type: commit-summary
     heading: Commits and line changes
-    body: 0 commits with +0 / −0 lines.
+    body: 3 commits with +107 / −29 lines.
     chips:
       - label: Commits
-        value: "0"
+        value: "3"
         color: green
       - label: Additions
-        value: "+0"
+        value: "+107"
         color: green
       - label: Deletions
-        value: −0
+        value: −29
         color: red
-highlights: []
-ticker: []
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 3 reviews, 7 comments, 3 PRs."
+    chips:
+      - label: Codex
+        value: 3 reviews · 7 comments · 3 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~5.5h
+highlights:
+  - type: pr
+    title: Streamline recruit editing and business mix UX in pricing
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +107 −29
+    body: >-
+      - Default local development role is now `admin` (`OHPWM_LOCAL_ROLE=admin` in env examples); set
+      `OHPWM_LOCAL_ROLE=officer` to exercise officer visibility and holdco economics boundaries.
+
+      - Recruit mod
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/111
+  - type: pr
+    title: "feat(auth): centralize Azure runtime auth"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +191 −115
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/79
+  - type: pr
+    title: "feat(ofac): add durable scheduled sync lease"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +685 −27
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/89
+  - type: pr
+    title: "refactor(ofac): migrate API routes to Azure Functions"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +1669 −547
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/85
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "Streamline recruit editing and business mix UX in pricing" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'

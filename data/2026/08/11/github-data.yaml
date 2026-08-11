@@ -12,48 +12,186 @@ dateRange:
   from: 2026-08-11
   to: 2026-08-11
 stats:
-  totalCommits: 0
-  totalAdditions: 0
-  totalDeletions: 0
+  totalCommits: 3
+  totalAdditions: 107
+  totalDeletions: 29
   prsOpened: 0
-  prsMerged: 0
-  prsInProgress: 0
+  prsMerged: 1
+  prsInProgress: 3
   prsReviewed: 0
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 0
-dailyCommits: []
-repositories: []
-pullRequests: []
-prsInProgress: []
+  estimatedHours: 5.5
+dailyCommits:
+  - date: 2026-08-11
+    count: 3
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 3
+    prsOpened: 0
+    prsMerged: 1
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests:
+  - title: Streamline recruit editing and business mix UX in pricing
+    body: >-
+      - Default local development role is now `admin` (`OHPWM_LOCAL_ROLE=admin` in env examples); set
+      `OHPWM_LOCAL_ROLE=officer` to exercise officer visibility and holdco economics boundaries.
+
+      - Recruit model header uses a single **Edit recruit** popover with focus management, `aria-controls`, and a
+      **Mod...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/111
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 107
+    deletions: 29
+    changedFiles: 19
+    author: myriadas-clees
+    createdAt: 2026-08-10T21:45:06Z
+    updatedAt: 2026-08-11T16:40:46Z
+    closedAt: 2026-08-11T16:40:33Z
+    mergedAt: 2026-08-11T16:40:33Z
+    workCommits:
+      - &a1
+        sha: 2065dea245ed60617a2d45a856a80fe0f9326586
+        message: "fix(pricing): clamp advisor percentage inputs to 0-100"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2065dea245ed60617a2d45a856a80fe0f9326586
+        authoredAt: 2026-08-11T13:07:43Z
+      - &a2
+        sha: db5c6bbdf44465923c565937797faa4eb0282ed8
+        message: "fix(pricing): hide AUM/revenue steppers and reconcile platform breakdown"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/db5c6bbdf44465923c565937797faa4eb0282ed8
+        authoredAt: 2026-08-11T13:41:37Z
+    workTimestamps:
+      - 2026-08-11T13:07:43Z
+      - 2026-08-11T13:41:37Z
+    workAdditions: 107
+    workDeletions: 29
+    workFiles:
+      - pricing/src/app/globals.css
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/stepper-number-input.tsx
+      - pricing/src/lib/__tests__/workstation.test.ts
+      - pricing/src/lib/workstation.ts
+prsInProgress:
+  - title: "feat(auth): centralize Azure runtime auth"
+    body: |-
+      - Centralizes Azure Static Web Apps principal parsing and app-role enforcement in `@ohpwm/auth`.
+      - Updates Pricing and OFAC Functions to consume the transport-neutral shared helper and preserve 401/403 behavior.
+      - Removes the obsolete `mode: "azure"` adapter option and adds malformed, role, and admi...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/79
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: []
+    additions: 191
+    deletions: 115
+    changedFiles: 6
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:31:59Z
+    updatedAt: 2026-08-11T14:06:36Z
+    closedAt: null
+    mergedAt: null
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "feat(ofac): add durable scheduled sync lease"
+    body: >-
+      Closes #38.
+
+
+      - Adds a Cosmos-backed atomic timer lease with conditional create, ETag-protected stale recovery, owner-safe
+      finalization, and explicit TTL/expiry.
+
+      - Routes both production timer and manual HTTP XML sync through the same durable Cosmos lease. A conflicting
+      manual run is audited and reje...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/89
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: []
+    additions: 685
+    deletions: 27
+    changedFiles: 11
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:36:06Z
+    updatedAt: 2026-08-11T14:12:11Z
+    closedAt: null
+    mergedAt: null
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "refactor(ofac): migrate API routes to Azure Functions"
+    body: >-
+      - migrate the OFAC production API surface to Azure Functions through transport-neutral handlers
+
+      - preserve SQLite-backed local development via documented local Next adapters while defaulting deployed Functions
+      to Cosmos persistence
+
+      - add search, audit, manual-sync, Function transport, static API-bas...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/85
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: []
+    additions: 1669
+    deletions: 547
+    changedFiles: 47
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:33:00Z
+    updatedAt: 2026-08-11T14:16:15Z
+    closedAt: null
+    mergedAt: null
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
 issues: []
 events: []
-commitMessages: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "fix(pricing): clamp advisor percentage inputs to 0-100"
+      - "fix(pricing): hide AUM/revenue steppers and reconcile platform breakdown"
+      - Streamline recruit editing and business mix UX in pricing (#111)
+    commits:
+      - *a1
+      - *a2
+      - sha: 726f1ae14f4a30add404abd2922eddb74dbeb57e
+        message: Streamline recruit editing and business mix UX in pricing (#111)
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/726f1ae14f4a30add404abd2922eddb74dbeb57e
+        authoredAt: 2026-08-11T16:40:32Z
 releases: []
 externalContributions: []
 codeReviews: []
 reviewComments: []
 aiReviews:
   codex:
-    prsReviewed: 0
-    comments: 0
-    reviews: 0
+    prsReviewed: 3
+    comments: 7
+    reviews: 3
     fixed: 0
   cursor:
     prsReviewed: 0
     comments: 0
     reviews: 0
     fixed: 0
-  prsReviewed: 0
-  comments: 0
-  reviews: 0
+  prsReviewed: 3
+  comments: 7
+  reviews: 3
   fixed: 0
 hoursEstimate:
-  hours: 0
-  sessions: 0
-  sessionHours: 0
-  volumeHours: 0
+  version: "2.0"
+  hours: 5.5
+  sessions: 2
+  sessionHours: 1.1
+  volumeHours: 5.5
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
