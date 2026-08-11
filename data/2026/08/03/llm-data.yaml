@@ -1,67 +1,23 @@
 title: Aug 3
-subtitle: pricing, ofac & auth
+subtitle: Daily status
 overview: ""
 summaries:
   - type: repo-summary
     heading: Projects worked on
-    body: Activity spanned Myriad-Advisor-Solutions/ohcpwm-apps.
-    chips:
-      - label: Myriad-Advisor-Solutions/ohcpwm-apps
-        value: 11 PRs
+    body: No repository activity recorded.
+    chips: []
   - type: commit-summary
     heading: Commits and line changes
-    body: 0 commits with +5,982 / −1,427 lines.
+    body: 0 commits with +0 / −0 lines.
     chips:
       - label: Commits
         value: "0"
         color: green
       - label: Additions
-        value: +5,982
+        value: "+0"
         color: green
       - label: Deletions
-        value: −1,427
+        value: −0
         color: red
-  - type: review-summary
-    heading: Reviews
-    body: 3 reviews with 3 comments.
-    chips:
-      - label: Reviews
-        value: "3"
-      - label: Comments
-        value: "3"
-  - type: review-summary
-    heading: AI code reviews
-    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 8 reviews, 14 comments, 8 PRs; Cursor: 2 reviews, 4
-      comments, 2 PRs."
-    chips:
-      - label: Codex
-        value: 8 reviews · 14 comments · 8 PRs
-      - label: Cursor
-        value: 2 reviews · 4 comments · 2 PRs
-  - type: activity-pattern
-    heading: Estimated engineering hours
-    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-      tracked, elapsed, or billed time.
-    chips:
-      - label: Estimated engineering hours
-        value: ~41.5h
-highlights:
-  - type: pr
-    title: "docs: publish #2/#37/#39 readiness runbooks"
-    repo: Myriad-Advisor-Solutions/ohcpwm-apps
-    meta: in progress · +639 −0
-    body: Still open at the end of the reporting window.
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/86
-  - type: pr
-    title: "feat(ofac): add durable scheduled sync lease"
-    repo: Myriad-Advisor-Solutions/ohcpwm-apps
-    meta: in progress · +685 −27
-    body: Still open at the end of the reporting window.
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/89
-  - type: pr
-    title: "docs: document Advisor Pricing architecture"
-    repo: Myriad-Advisor-Solutions/ohcpwm-apps
-    meta: in progress · +296 −0
-    body: Still open at the end of the reporting window.
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/84
+highlights: []
 ticker: []

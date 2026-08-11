@@ -1,106 +1,23 @@
 title: Jul 21
-subtitle: pricing, deploy & dependabot
+subtitle: Daily status
 overview: ""
 summaries:
   - type: repo-summary
     heading: Projects worked on
-    body: Activity spanned Myriad-Advisor-Solutions/ohcpwm-apps and Myriad-Advisor-Solutions/myriadas-apps.
-    chips:
-      - label: Myriad-Advisor-Solutions/ohcpwm-apps
-        value: 3 PRs
-      - label: Myriad-Advisor-Solutions/myriadas-apps
-        value: 2 PRs
+    body: No repository activity recorded.
+    chips: []
   - type: commit-summary
     heading: Commits and line changes
-    body: 8 commits with +623 / −445 lines.
+    body: 0 commits with +0 / −0 lines.
     chips:
       - label: Commits
-        value: "8"
+        value: "0"
         color: green
       - label: Additions
-        value: "+623"
+        value: "+0"
         color: green
       - label: Deletions
-        value: −445
+        value: −0
         color: red
-  - type: review-summary
-    heading: AI code reviews
-    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 4 reviews, 6 comments, 2 PRs."
-    chips:
-      - label: Codex
-        value: 4 reviews · 6 comments · 2 PRs
-  - type: activity-pattern
-    heading: Estimated engineering hours
-    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-      tracked, elapsed, or billed time.
-    chips:
-      - label: Estimated engineering hours
-        value: ~9.4h
-highlights:
-  - type: pr
-    title: "ci: enable Dependabot"
-    repo: Myriad-Advisor-Solutions/ohcpwm-apps
-    meta: merged · +20 −0
-    body: |-
-      Why
-
-      Keep Bun workspace dependencies and GitHub Actions current.
-
-      What changed
-
-      * Add weekly grouped Dependabot updates for Bun and GitHub Actions
-
-      Testing
-
-      * `git diff --check`
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/63
-  - type: pr
-    title: "fix(pricing): unblock expense edits"
-    repo: Myriad-Advisor-Solutions/ohcpwm-apps
-    meta: merged · +81 −2
-    body: |-
-      Why
-
-      Replacing a custom expense name reset its controlled input before users could finish typing.
-
-      What changed
-
-      * Commit custom expense names when the field loses focus
-      * Add a shared environment-var
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/62
-  - type: pr
-    title: "fix(dependabot): use bun ecosystem"
-    repo: Myriad-Advisor-Solutions/myriadas-apps
-    meta: merged · +1 −1
-    body: |-
-      Why
-
-      Dependabot was configured for npm although this workspace uses Bun and a text `bun.lock`.
-
-      What changed
-
-      * Use Dependabot's Bun ecosystem for workspace dependency updates.
-
-      Testing
-
-      * `bun test s
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/34
-  - type: pr
-    title: "fix(pricing): keep advisor links in app"
-    repo: Myriad-Advisor-Solutions/ohcpwm-apps
-    meta: in progress · +34 −1
-    body: Still open at the end of the reporting window.
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/67
-  - type: pr
-    title: "feat(deploy): ready apps for Cosmos"
-    repo: Myriad-Advisor-Solutions/myriadas-apps
-    meta: in progress · +389 −362
-    body: Still open at the end of the reporting window.
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/37
-ticker:
-  - label: SHIPPED
-    text: '@myriadas-clees merged "ci: enable Dependabot" in Myriad-Advisor-Solutions/ohcpwm-apps'
-  - label: SHIPPED
-    text: '@myriadas-clees merged "fix(pricing): unblock expense edits" in Myriad-Advisor-Solutions/ohcpwm-apps'
-  - label: SHIPPED
-    text: '@myriadas-clees merged "fix(dependabot): use bun ecosystem" in Myriad-Advisor-Solutions/myriadas-apps'
+highlights: []
+ticker: []

@@ -12,7 +12,7 @@ dateRange:
   from: 2026-07-10
   to: 2026-07-10
 stats:
-  totalCommits: 11
+  totalCommits: 0
   totalAdditions: 0
   totalDeletions: 0
   prsOpened: 0
@@ -22,91 +22,14 @@ stats:
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 4.1
-dailyCommits:
-  - date: 2026-07-10
-    count: 11
-repositories:
-  - name: Myriad-Advisor-Solutions/myriadas-apps
-    commits: 6
-    prsOpened: 0
-    prsMerged: 0
-    issuesOpened: 0
-    issuesClosed: 0
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
-  - name: Myriad-Advisor-Solutions/ohcpwm-apps
-    commits: 5
-    prsOpened: 0
-    prsMerged: 0
-    issuesOpened: 0
-    issuesClosed: 0
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+  estimatedHours: 0
+dailyCommits: []
+repositories: []
 pullRequests: []
 prsInProgress: []
 issues: []
 events: []
-commitMessages:
-  - repo: Myriad-Advisor-Solutions/myriadas-apps
-    messages:
-      - "ci: merge workflow caching"
-      - "ci: cache GitHub Actions intermediates"
-      - "ci(products): deploy linked Functions"
-      - "ci(products): restore integrated API deploy"
-      - "fix(platform): close merge-ready auth gaps"
-      - "feat(platform): harden workspace apps"
-    commits:
-      - sha: d3885cf1878a579786095a66cbc576c62664a903
-        message: "ci: merge workflow caching"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d3885cf1878a579786095a66cbc576c62664a903
-        authoredAt: 2026-07-10T19:22:42Z
-      - sha: 80ad3d258688dd8bd8dff85dd25f9fd7d4d8c7db
-        message: "ci: cache GitHub Actions intermediates"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/80ad3d258688dd8bd8dff85dd25f9fd7d4d8c7db
-        authoredAt: 2026-07-10T18:52:10Z
-      - sha: 8a4f966718b4c6823a8f1e234a590a6fe15adf7a
-        message: "ci(products): deploy linked Functions"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8a4f966718b4c6823a8f1e234a590a6fe15adf7a
-        authoredAt: 2026-07-10T18:48:14Z
-      - sha: 297d22879343866b24a202e67ff83a8b049d6a8c
-        message: "ci(products): restore integrated API deploy"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/297d22879343866b24a202e67ff83a8b049d6a8c
-        authoredAt: 2026-07-10T18:30:12Z
-      - sha: 0638639eb2246881873c7c396d93f80f99947c78
-        message: "fix(platform): close merge-ready auth gaps"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0638639eb2246881873c7c396d93f80f99947c78
-        authoredAt: 2026-07-10T16:57:59Z
-      - sha: a1bf6207525480ac87b17348ccc2729a36cc9322
-        message: "feat(platform): harden workspace apps"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a1bf6207525480ac87b17348ccc2729a36cc9322
-        authoredAt: 2026-07-10T13:37:25Z
-  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
-    messages:
-      - "fix(pricing): unblock CI typecheck and tests"
-      - "feat(pricing): expand reports and workbook export"
-      - "ci(pricing): remove remaining warnings"
-      - "ci(pricing): remove deployment warnings"
-      - "fix(pricing): recover expired sessions"
-    commits:
-      - sha: 99e90a670fe13f4b12fa249411422e8413019651
-        message: "fix(pricing): unblock CI typecheck and tests"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/99e90a670fe13f4b12fa249411422e8413019651
-        authoredAt: 2026-07-10T17:13:38Z
-      - sha: 2409c3e9b5880a883a865dadfc1a031518640989
-        message: "feat(pricing): expand reports and workbook export"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2409c3e9b5880a883a865dadfc1a031518640989
-        authoredAt: 2026-07-10T16:44:31Z
-      - sha: 4467df6b905e36f534877616843ed39465f09d7e
-        message: "ci(pricing): remove remaining warnings"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4467df6b905e36f534877616843ed39465f09d7e
-        authoredAt: 2026-07-10T12:50:25Z
-      - sha: 00a1988cd0b91091751d0a15154a698fae69e9ac
-        message: "ci(pricing): remove deployment warnings"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/00a1988cd0b91091751d0a15154a698fae69e9ac
-        authoredAt: 2026-07-10T12:30:21Z
-      - sha: f1f582f09ee92fa8b5675402f838177f8e492a42
-        message: "fix(pricing): recover expired sessions"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f1f582f09ee92fa8b5675402f838177f8e492a42
-        authoredAt: 2026-07-10T12:08:57Z
+commitMessages: []
 releases: []
 externalContributions: []
 codeReviews: []
@@ -127,10 +50,10 @@ aiReviews:
   reviews: 0
   fixed: 0
 hoursEstimate:
-  hours: 4.1
-  sessions: 2
-  sessionHours: 4.1
-  volumeHours: 2.2
+  hours: 0
+  sessions: 0
+  sessionHours: 0
+  volumeHours: 0
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

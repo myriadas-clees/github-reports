@@ -12,7 +12,7 @@ dateRange:
   from: 2026-07-08
   to: 2026-07-08
 stats:
-  totalCommits: 7
+  totalCommits: 0
   totalAdditions: 0
   totalDeletions: 0
   prsOpened: 0
@@ -22,71 +22,14 @@ stats:
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 2.9
-dailyCommits:
-  - date: 2026-07-08
-    count: 7
-repositories:
-  - name: Myriad-Advisor-Solutions/ohcpwm-apps
-    commits: 5
-    prsOpened: 0
-    prsMerged: 0
-    issuesOpened: 0
-    issuesClosed: 0
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
-  - name: Myriad-Advisor-Solutions/myriadas-apps
-    commits: 2
-    prsOpened: 0
-    prsMerged: 0
-    issuesOpened: 0
-    issuesClosed: 0
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+  estimatedHours: 0
+dailyCommits: []
+repositories: []
 pullRequests: []
 prsInProgress: []
 issues: []
 events: []
-commitMessages:
-  - repo: Myriad-Advisor-Solutions/myriadas-apps
-    messages:
-      - "chore: update local URLs for all apps to new port configuration"
-      - "fix(hub): simplify login page"
-    commits:
-      - sha: 107ca64357210663dd3034e7515f807a950df74a
-        message: "chore: update local URLs for all apps to new port configuration"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/107ca64357210663dd3034e7515f807a950df74a
-        authoredAt: 2026-07-08T21:01:56Z
-      - sha: 446e529afd341b918bd42aa428b8bb2331b65436
-        message: "fix(hub): simplify login page"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/446e529afd341b918bd42aa428b8bb2331b65436
-        authoredAt: 2026-07-08T20:20:37Z
-  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
-    messages:
-      - "feat: enhance recruit management with admin actions"
-      - "feat: implement recruit deletion functionality"
-      - "docs(ofac): add API integration notes"
-      - "feat: enhance branding and theme management in pricing app"
-      - "feat: expand app workflows and shared contracts"
-    commits:
-      - sha: f52e54df468ccad7bcc2e3a30ffa31f4a4997927
-        message: "feat: enhance recruit management with admin actions"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f52e54df468ccad7bcc2e3a30ffa31f4a4997927
-        authoredAt: 2026-07-08T19:22:59Z
-      - sha: db4f2b2aac1a4af53a5c75556f1dc35c59a1a949
-        message: "feat: implement recruit deletion functionality"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/db4f2b2aac1a4af53a5c75556f1dc35c59a1a949
-        authoredAt: 2026-07-08T19:02:21Z
-      - sha: aed8f9ee251ca89836ed86bd8e0f92aa592c88e0
-        message: "docs(ofac): add API integration notes"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/aed8f9ee251ca89836ed86bd8e0f92aa592c88e0
-        authoredAt: 2026-07-08T19:01:22Z
-      - sha: efc8d6e5fd4a0d78f3f41f79cad5086ffbb1ef9b
-        message: "feat: enhance branding and theme management in pricing app"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/efc8d6e5fd4a0d78f3f41f79cad5086ffbb1ef9b
-        authoredAt: 2026-07-08T16:40:40Z
-      - sha: 22cf9c88f38e9857265989f6706c0644d5bc5b46
-        message: "feat: expand app workflows and shared contracts"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/22cf9c88f38e9857265989f6706c0644d5bc5b46
-        authoredAt: 2026-07-08T15:45:07Z
+commitMessages: []
 releases: []
 externalContributions: []
 codeReviews: []
@@ -107,10 +50,10 @@ aiReviews:
   reviews: 0
   fixed: 0
 hoursEstimate:
-  hours: 2.9
-  sessions: 2
-  sessionHours: 2.9
-  volumeHours: 1.4
+  hours: 0
+  sessions: 0
+  sessionHours: 0
+  volumeHours: 0
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

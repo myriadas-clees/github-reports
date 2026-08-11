@@ -1,106 +1,23 @@
 title: Aug 10
-subtitle: redesign proforma, streamline recruit & agents
+subtitle: Daily status
 overview: ""
 summaries:
   - type: repo-summary
     heading: Projects worked on
-    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps and Myriad-Advisor-Solutions/ohcpwm-apps.
-    chips:
-      - label: Myriad-Advisor-Solutions/myriadas-apps
-        value: 3 PRs
-      - label: Myriad-Advisor-Solutions/ohcpwm-apps
-        value: 2 PRs
+    body: No repository activity recorded.
+    chips: []
   - type: commit-summary
     heading: Commits and line changes
-    body: 6 commits with +8,277 / −7,717 lines.
+    body: 0 commits with +0 / −0 lines.
     chips:
       - label: Commits
-        value: "6"
+        value: "0"
         color: green
       - label: Additions
-        value: +8,277
+        value: "+0"
         color: green
       - label: Deletions
-        value: −7,717
+        value: −0
         color: red
-  - type: review-summary
-    heading: AI code reviews
-    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 10 reviews, 24 comments, 5 PRs."
-    chips:
-      - label: Codex
-        value: 10 reviews · 24 comments · 5 PRs
-  - type: activity-pattern
-    heading: Estimated engineering hours
-    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-      tracked, elapsed, or billed time.
-    chips:
-      - label: Estimated engineering hours
-        value: ~38.2h
-highlights:
-  - type: pr
-    title: Render FiNet PDF logos from SVG
-    repo: Myriad-Advisor-Solutions/ohcpwm-apps
-    meta: merged · +284 −24
-    body: >-
-      - Switch FiNet pricing report branding from separate PNG cover/inline logos to a single `logo_finet.svg` wordmark
-      asset.
-
-      - Extend report asset loading to parse SVG files into react-pdf `Svg`/`Path` pr
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/109
-  - type: pr
-    title: Use shared AZURE_COSMOS settings for Proforma managed SWA
-    repo: Myriad-Advisor-Solutions/myriadas-apps
-    meta: merged · +79 −68
-    body: >-
-      ## Why
-
-
-      Proforma on the managed Hub SWA was configured with shared `AZURE_COSMOS_*` app settings (like PTO), but runtime
-      config only read `PROFORMA_COSMOS_*` variables. That mismatch prevented Cosmos-
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/83
-  - type: pr
-    title: "chore(proforma): Rename Pricing app to Proforma"
-    repo: Myriad-Advisor-Solutions/myriadas-apps
-    meta: merged · +3062 −3340
-    body: >-
-      ## Why
-
-
-      The recruit modeling product is user-facing and historically known as Proforma, but the codebase, routes,
-      packages, and infrastructure still used the internal name "Pricing." That mismatch mad
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/81
-  - type: pr
-    title: Add scoped Codex subtree agents and AGENTS.md guidance
-    repo: Myriad-Advisor-Solutions/ohcpwm-apps
-    meta: merged · +71 −0
-    body: >-
-      - Add `.codex/config.toml` with multi-agent support and subtree-scoped write permissions (`docs-write`,
-      `hub-write`, `ofac-write`, `packages-write`, `pricing-write`, `scripts-write`)
-
-      - Define six scop
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/108
-  - type: pr
-    title: "chore: trim stale documentation and dead artifact"
-    repo: Myriad-Advisor-Solutions/myriadas-apps
-    meta: merged · +0 −0
-    body: >-
-      - trim superseded implementation planning from the vendor-management discovery record while retaining source
-      provenance and architectural decisions
-
-      - correct the PTO documentation index now that the a
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/80
-ticker:
-  - label: SHIPPED
-    text: '@myriadas-clees merged "Render FiNet PDF logos from SVG" in Myriad-Advisor-Solutions/ohcpwm-apps'
-  - label: SHIPPED
-    text: '@myriadas-clees merged "Use shared AZURE_COSMOS settings for Proforma managed SWA" in
-      Myriad-Advisor-Solutions/myriadas-apps'
-  - label: SHIPPED
-    text: '@myriadas-clees merged "chore(proforma): Rename Pricing app to Proforma" in
-      Myriad-Advisor-Solutions/myriadas-apps'
-  - label: SHIPPED
-    text: '@myriadas-clees merged "Add scoped Codex subtree agents and AGENTS.md guidance" in
-      Myriad-Advisor-Solutions/ohcpwm-apps'
-  - label: SHIPPED
-    text: '@myriadas-clees merged "chore: trim stale documentation and dead artifact" in
-      Myriad-Advisor-Solutions/myriadas-apps'
+highlights: []
+ticker: []

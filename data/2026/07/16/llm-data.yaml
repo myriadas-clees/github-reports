@@ -1,68 +1,23 @@
 title: Jul 16
-subtitle: codex issue, onboarding & unify ohcpwm
+subtitle: Daily status
 overview: ""
 summaries:
   - type: repo-summary
     heading: Projects worked on
-    body: Activity spanned Myriad-Advisor-Solutions/ohcpwm-apps and Myriad-Advisor-Solutions/myriadas-apps.
-    chips:
-      - label: Myriad-Advisor-Solutions/ohcpwm-apps
-        value: 1 PRs
-      - label: Myriad-Advisor-Solutions/myriadas-apps
-        value: 1 PRs
+    body: No repository activity recorded.
+    chips: []
   - type: commit-summary
     heading: Commits and line changes
-    body: 14 commits with +916 / −72 lines.
+    body: 0 commits with +0 / −0 lines.
     chips:
       - label: Commits
-        value: "14"
+        value: "0"
         color: green
       - label: Additions
-        value: "+916"
+        value: "+0"
         color: green
       - label: Deletions
-        value: −72
+        value: −0
         color: red
-  - type: review-summary
-    heading: AI code reviews
-    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 1 review, 1 comment, 1 PR."
-    chips:
-      - label: Codex
-        value: 1 review · 1 comment · 1 PR
-  - type: activity-pattern
-    heading: Estimated engineering hours
-    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-      tracked, elapsed, or billed time.
-    chips:
-      - label: Estimated engineering hours
-        value: ~10.8h
-highlights:
-  - type: pr
-    title: "fix(onboarding): add first-run setup"
-    repo: Myriad-Advisor-Solutions/myriadas-apps
-    meta: merged · +537 −1
-    body: >-
-      ## Why
-
-
-      Production Onboarding workspaces can be empty, but the current UI only tells users to run a local seed command.
-      Signed-in users need a supported way to initialize the workspace.
-
-
-      ## What chang
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/30
-  - type: pr
-    title: "ci: add Codex issue PR workflow"
-    repo: Myriad-Advisor-Solutions/ohcpwm-apps
-    meta: in progress · +379 −71
-    body: Still open at the end of the reporting window.
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/61
-  - type: pr
-    title: Unify OHCPWM platform and OFAC
-    repo: Myriad-Advisor-Solutions/ohcpwm-apps
-    meta: in progress · +7616 −2416
-    body: Still open at the end of the reporting window.
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/58
-ticker:
-  - label: SHIPPED
-    text: '@myriadas-clees merged "fix(onboarding): add first-run setup" in Myriad-Advisor-Solutions/myriadas-apps'
+highlights: []
+ticker: []

@@ -4,18 +4,14 @@ overview: ""
 summaries:
   - type: repo-summary
     heading: Projects worked on
-    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps and Myriad-Advisor-Solutions/ohcpwm-apps.
-    chips:
-      - label: Myriad-Advisor-Solutions/myriadas-apps
-        value: 0 PRs
-      - label: Myriad-Advisor-Solutions/ohcpwm-apps
-        value: 0 PRs
+    body: No repository activity recorded.
+    chips: []
   - type: commit-summary
     heading: Commits and line changes
-    body: 20 commits with +0 / −0 lines.
+    body: 0 commits with +0 / −0 lines.
     chips:
       - label: Commits
-        value: "20"
+        value: "0"
         color: green
       - label: Additions
         value: "+0"
@@ -23,12 +19,5 @@ summaries:
       - label: Deletions
         value: −0
         color: red
-  - type: activity-pattern
-    heading: Estimated engineering hours
-    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-      tracked, elapsed, or billed time.
-    chips:
-      - label: Estimated engineering hours
-        value: ~4.6h
 highlights: []
 ticker: []

@@ -13,408 +13,20 @@ dateRange:
   to: 2026-07-28
 stats:
   totalCommits: 0
-  totalAdditions: 401
-  totalDeletions: 205
-  prsOpened: 6
+  totalAdditions: 0
+  totalDeletions: 0
+  prsOpened: 0
   prsMerged: 0
-  prsInProgress: 6
+  prsInProgress: 0
   prsReviewed: 0
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 8.8
+  estimatedHours: 0
 dailyCommits: []
-repositories:
-  - name: Myriad-Advisor-Solutions/myriadas-apps
-    commits: 0
-    prsOpened: 5
-    prsMerged: 0
-    issuesOpened: 0
-    issuesClosed: 0
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
-  - name: Myriad-Advisor-Solutions/ohcpwm-apps
-    commits: 0
-    prsOpened: 1
-    prsMerged: 0
-    issuesOpened: 0
-    issuesClosed: 0
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
-pullRequests:
-  - title: "fix(platform): repair API and navigation"
-    body: |-
-      Why
-
-      Excelerate dropped its route namespace when the configured API base was the deployed `/api` root.
-
-      What changed
-
-      - Normalize Excelerate API URLs for host-only, `/api`, and `/api/excelerate` base forms
-      - Document the optional Excelerate browser API root
-
-      Testing
-
-      - `bun run --cwd excelerate test...
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/63
-    repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: open
-    labels: &a1
-      - "app: onboarding"
-      - "app: pto-tracker"
-      - "app: proforma"
-      - "app: excelerate"
-      - "app: valuation"
-      - platform
-    additions: 36
-    deletions: 3
-    changedFiles: 3
-    author: myriadas-clees
-    createdAt: 2026-07-28T18:51:03Z
-    updatedAt: 2026-07-29T22:53:22Z
-    closedAt: 2026-07-29T22:53:22Z
-    mergedAt: 2026-07-29T22:53:22Z
-    workTimestamps: &a2
-      - 2026-07-28T18:50:30Z
-    workAdditions: 36
-    workDeletions: 3
-  - title: "fix(excelerate): reject missing templates"
-    body: >-
-      ## Why
-
-
-      Excelerate silently generated workbooks from hard-coded schemas when output templates were unavailable and copied
-      unidentified uploads into raw tabs. That could produce output without confirming the source or output template.
-
-
-      ## What changed
-
-
-      - Remove hard-coded full and simplified schema f...
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/57
-    repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: open
-    labels: &a3
-      - github-automation
-      - "app: excelerate"
-      - platform
-    additions: 91
-    deletions: 163
-    changedFiles: 13
-    author: myriadas-clees
-    createdAt: 2026-07-28T15:49:03Z
-    updatedAt: 2026-07-29T22:36:39Z
-    closedAt: 2026-07-29T22:36:39Z
-    mergedAt: 2026-07-29T22:36:38Z
-    workTimestamps: &a4
-      - 2026-07-28T15:48:30Z
-    workAdditions: 91
-    workDeletions: 163
-  - title: "fix(ofac): align browser and API behavior"
-    body: >-
-      ## Why
-
-
-      Browser-created screenings did not preserve the direct API request semantics. The UI flattened addresses and
-      forced an individual type, causing valid OFAC matches to disappear or differ from direct API results.
-
-
-      ## What changed
-
-
-      - Preserve structured screening addresses through contracts, CS...
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/73
-    repository: Myriad-Advisor-Solutions/ohcpwm-apps
-    state: open
-    labels: &a5 []
-    additions: 166
-    deletions: 19
-    changedFiles: 13
-    author: myriadas-clees
-    createdAt: 2026-07-28T14:12:10Z
-    updatedAt: 2026-07-29T22:41:36Z
-    closedAt: 2026-07-29T22:41:35Z
-    mergedAt: 2026-07-29T22:41:35Z
-    workTimestamps: &a6
-      - 2026-07-28T14:10:24Z
-      - 2026-07-28T14:24:14Z
-    workAdditions: 166
-    workDeletions: 19
-  - title: "fix(ui): persist navigation preference"
-    body: >-
-      Why
-
-
-      Navigation mode was stored under an app-specific key, so the user's sidebar or topbar choice reset when moving
-      between apps. The shared shell also centered the complete sidebar/content row, leaving the sidebar floating away
-      from the left edge on wide screens.
-
-
-      What changed
-
-
-      - Give the shared na...
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/62
-    repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: open
-    labels: &a7
-      - "app: onboarding"
-      - "app: pto-tracker"
-      - "app: proforma"
-      - "app: excelerate"
-      - "app: valuation"
-      - platform
-    additions: 108
-    deletions: 20
-    changedFiles: 9
-    author: myriadas-clees
-    createdAt: 2026-07-28T17:38:52Z
-    updatedAt: 2026-07-29T22:38:12Z
-    closedAt: 2026-07-29T22:38:12Z
-    mergedAt: 2026-07-29T22:38:12Z
-    workTimestamps: &a8
-      - 2026-07-28T17:38:22Z
-      - 2026-07-28T17:52:00Z
-    workAdditions: 108
-    workDeletions: 20
-  - title: "fix(github): align triage project fields"
-    body: |-
-      ## What changed
-
-      - use the non-reserved `Issue Type` project field
-      - initialize new project items in the existing `Backlog` status
-      - align repository reconciliation, tests, and documentation
-
-      ## Why
-
-      GitHub rejects custom project fields named `Type`, and the live project does not have the previously...
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/61
-    repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: open
-    labels: &a9
-      - documentation
-      - github-automation
-      - "app: hub"
-      - "app: onboarding"
-      - "app: pto-tracker"
-      - "app: excelerate"
-      - "app: valuation"
-      - platform
-      - infrastructure
-      - "app: pricing"
-    additions: 0
-    deletions: 0
-    changedFiles: 4
-    author: myriadas-clees
-    createdAt: 2026-07-28T17:05:24Z
-    updatedAt: 2026-07-30T20:35:06Z
-    closedAt: 2026-07-30T20:35:06Z
-    mergedAt: 2026-07-30T20:35:06Z
-    workTimestamps: &a10 []
-    workAdditions: 0
-    workDeletions: 0
-  - title: "fix(pto): remove production personas"
-    body: >-
-      Why
-
-
-      The product deployment workflow compiled PTO Tracker in demo authentication mode, exposing local test personas in
-      the production sign-in screen.
-
-
-      What changed
-
-
-      - Build PTO Tracker deployments with Microsoft Entra token authentication
-
-      - Require the Entra client ID and API scope before producing ...
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/56
-    repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: open
-    labels: &a11
-      - github-automation
-      - "app: pto-tracker"
-      - platform
-    additions: 0
-    deletions: 0
-    changedFiles: 6
-    author: myriadas-clees
-    createdAt: 2026-07-28T15:11:06Z
-    updatedAt: 2026-07-31T19:38:23Z
-    closedAt: 2026-07-31T19:38:23Z
-    mergedAt: 2026-07-31T19:38:22Z
-    workTimestamps: &a12 []
-    workAdditions: 0
-    workDeletions: 0
-prsInProgress:
-  - title: "fix(platform): repair API and navigation"
-    body: |-
-      Why
-
-      Excelerate dropped its route namespace when the configured API base was the deployed `/api` root.
-
-      What changed
-
-      - Normalize Excelerate API URLs for host-only, `/api`, and `/api/excelerate` base forms
-      - Document the optional Excelerate browser API root
-
-      Testing
-
-      - `bun run --cwd excelerate test...
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/63
-    repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: merged
-    labels: *a1
-    additions: 36
-    deletions: 3
-    changedFiles: 3
-    author: myriadas-clees
-    createdAt: 2026-07-28T18:51:03Z
-    updatedAt: 2026-07-29T22:53:22Z
-    closedAt: 2026-07-29T22:53:22Z
-    mergedAt: 2026-07-29T22:53:22Z
-    workTimestamps: *a2
-    workAdditions: 36
-    workDeletions: 3
-  - title: "fix(excelerate): reject missing templates"
-    body: >-
-      ## Why
-
-
-      Excelerate silently generated workbooks from hard-coded schemas when output templates were unavailable and copied
-      unidentified uploads into raw tabs. That could produce output without confirming the source or output template.
-
-
-      ## What changed
-
-
-      - Remove hard-coded full and simplified schema f...
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/57
-    repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: merged
-    labels: *a3
-    additions: 123
-    deletions: 160
-    changedFiles: 13
-    author: myriadas-clees
-    createdAt: 2026-07-28T15:49:03Z
-    updatedAt: 2026-07-29T22:36:39Z
-    closedAt: 2026-07-29T22:36:39Z
-    mergedAt: 2026-07-29T22:36:38Z
-    workTimestamps: *a4
-    workAdditions: 91
-    workDeletions: 163
-  - title: "fix(ofac): align browser and API behavior"
-    body: >-
-      ## Why
-
-
-      Browser-created screenings did not preserve the direct API request semantics. The UI flattened addresses and
-      forced an individual type, causing valid OFAC matches to disappear or differ from direct API results.
-
-
-      ## What changed
-
-
-      - Preserve structured screening addresses through contracts, CS...
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/73
-    repository: Myriad-Advisor-Solutions/ohcpwm-apps
-    state: merged
-    labels: *a5
-    additions: 172
-    deletions: 19
-    changedFiles: 13
-    author: myriadas-clees
-    createdAt: 2026-07-28T14:12:10Z
-    updatedAt: 2026-07-29T22:41:36Z
-    closedAt: 2026-07-29T22:41:35Z
-    mergedAt: 2026-07-29T22:41:35Z
-    workTimestamps: *a6
-    workAdditions: 166
-    workDeletions: 19
-  - title: "fix(ui): persist navigation preference"
-    body: >-
-      Why
-
-
-      Navigation mode was stored under an app-specific key, so the user's sidebar or topbar choice reset when moving
-      between apps. The shared shell also centered the complete sidebar/content row, leaving the sidebar floating away
-      from the left edge on wide screens.
-
-
-      What changed
-
-
-      - Give the shared na...
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/62
-    repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: merged
-    labels: *a7
-    additions: 104
-    deletions: 16
-    changedFiles: 9
-    author: myriadas-clees
-    createdAt: 2026-07-28T17:38:52Z
-    updatedAt: 2026-07-29T22:38:12Z
-    closedAt: 2026-07-29T22:38:12Z
-    mergedAt: 2026-07-29T22:38:12Z
-    workTimestamps: *a8
-    workAdditions: 108
-    workDeletions: 20
-  - title: "fix(github): align triage project fields"
-    body: |-
-      ## What changed
-
-      - use the non-reserved `Issue Type` project field
-      - initialize new project items in the existing `Backlog` status
-      - align repository reconciliation, tests, and documentation
-
-      ## Why
-
-      GitHub rejects custom project fields named `Type`, and the live project does not have the previously...
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/61
-    repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: open
-    labels: *a9
-    additions: 10
-    deletions: 10
-    changedFiles: 4
-    author: myriadas-clees
-    createdAt: 2026-07-28T17:05:24Z
-    updatedAt: 2026-07-30T20:35:06Z
-    closedAt: 2026-07-30T20:35:06Z
-    mergedAt: 2026-07-30T20:35:06Z
-    workTimestamps: *a10
-    workAdditions: 0
-    workDeletions: 0
-  - title: "fix(pto): remove production personas"
-    body: >-
-      Why
-
-
-      The product deployment workflow compiled PTO Tracker in demo authentication mode, exposing local test personas in
-      the production sign-in screen.
-
-
-      What changed
-
-
-      - Build PTO Tracker deployments with Microsoft Entra token authentication
-
-      - Require the Entra client ID and API scope before producing ...
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/56
-    repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: open
-    labels: *a11
-    additions: 65
-    deletions: 2
-    changedFiles: 6
-    author: myriadas-clees
-    createdAt: 2026-07-28T15:11:06Z
-    updatedAt: 2026-07-31T19:38:23Z
-    closedAt: 2026-07-31T19:38:23Z
-    mergedAt: 2026-07-31T19:38:22Z
-    workTimestamps: *a12
-    workAdditions: 0
-    workDeletions: 0
+repositories: []
+pullRequests: []
+prsInProgress: []
 issues: []
 events: []
 commitMessages: []
@@ -424,24 +36,24 @@ codeReviews: []
 reviewComments: []
 aiReviews:
   codex:
-    prsReviewed: 4
-    comments: 6
-    reviews: 4
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
     fixed: 0
   cursor:
     prsReviewed: 0
     comments: 0
     reviews: 0
     fixed: 0
-  prsReviewed: 4
-  comments: 6
-  reviews: 4
+  prsReviewed: 0
+  comments: 0
+  reviews: 0
   fixed: 0
 hoursEstimate:
-  hours: 8.8
-  sessions: 1
-  sessionHours: 4.7
-  volumeHours: 8.8
+  hours: 0
+  sessions: 0
+  sessionHours: 0
+  volumeHours: 0
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

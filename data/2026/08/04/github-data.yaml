@@ -12,289 +12,48 @@ dateRange:
   from: 2026-08-04
   to: 2026-08-04
 stats:
-  totalCommits: 1
-  totalAdditions: 436
-  totalDeletions: 502
-  prsOpened: 4
-  prsMerged: 1
-  prsInProgress: 5
+  totalCommits: 0
+  totalAdditions: 0
+  totalDeletions: 0
+  prsOpened: 0
+  prsMerged: 0
+  prsInProgress: 0
   prsReviewed: 0
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 10
-dailyCommits:
-  - date: 2026-08-04
-    count: 1
-repositories:
-  - name: Myriad-Advisor-Solutions/ohcpwm-apps
-    commits: 1
-    prsOpened: 4
-    prsMerged: 1
-    issuesOpened: 0
-    issuesClosed: 0
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
-pullRequests:
-  - title: "fix(pricing): focus executive dashboard metrics"
-    body: >-
-      - Limits the executive dashboard to **Pipeline AUM**, **Top-line revenue**, and permissioned **Revenue to
-      Holdco**.
-
-      - Removes the unrequested **Average net payout** and **Proposed net vs Current FiNet** dashboard cards.
-
-      - Retains payout and current-FiNet comparison detail in the recruit model and re...
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/97
-    repository: Myriad-Advisor-Solutions/ohcpwm-apps
-    state: open
-    labels: &a1 []
-    additions: 9
-    deletions: 167
-    changedFiles: 2
-    author: myriadas-clees
-    createdAt: 2026-08-04T18:34:28Z
-    updatedAt: 2026-08-05T12:37:49Z
-    closedAt: 2026-08-05T12:37:49Z
-    mergedAt: null
-    workTimestamps: &a2
-      - 2026-08-04T18:29:12Z
-    workAdditions: 9
-    workDeletions: 167
-  - title: "fix(pricing): add bottom save actions"
-    body: >-
-      - Adds a bottom **Save Changes** action to the advanced pricing workstation.
-
-      - Adds a bottom **Save Model** action to the recruit pricing view.
-
-      - Adds bottom **Review inputs** / **Review assumptions** actions so users can return to source data without
-      scrolling back through the workflow.
-
-      - Includes ...
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/98
-    repository: Myriad-Advisor-Solutions/ohcpwm-apps
-    state: merged
-    labels: []
-    additions: 188
-    deletions: 6
-    changedFiles: 5
-    author: myriadas-clees
-    createdAt: 2026-08-04T18:34:53Z
-    updatedAt: 2026-08-04T20:45:07Z
-    closedAt: 2026-08-04T20:45:07Z
-    mergedAt: 2026-08-04T20:45:07Z
-    workTimestamps:
-      - 2026-08-04T18:32:13Z
-      - 2026-08-04T18:57:28Z
-    workAdditions: 188
-    workDeletions: 6
-  - title: "fix(pricing): remove FINET advantage summary"
-    body: |-
-      ## What changed
-
-      - removes the ambiguous **OHC Advantage** card from the FINET-branded PDF Executive Summary
-      - keeps the three requested FINET summary values: OHC Net Payout, OHC Net Payout %, and Current FiNet Net
-      - adds a PDF regression test proving FINET reports do not contain that label
-
-      ## Veri...
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/99
-    repository: Myriad-Advisor-Solutions/ohcpwm-apps
-    state: open
-    labels: &a3 []
-    additions: 25
-    deletions: 5
-    changedFiles: 26
-    author: myriadas-clees
-    createdAt: 2026-08-04T18:48:11Z
-    updatedAt: 2026-08-05T12:37:51Z
-    closedAt: 2026-08-05T12:37:51Z
-    mergedAt: null
-    workTimestamps: &a4
-      - 2026-08-04T18:47:40Z
-      - 2026-08-04T19:05:15Z
-      - 2026-08-04T19:07:55Z
-    workAdditions: 25
-    workDeletions: 5
-  - title: "fix(pricing): give payout details room to breathe"
-    body: >-
-      - Reorganize the expanded recruit payout detail into a vertical proposed-payout calculation and a separate Current
-      FiNet benchmark.
-
-      - Preserve every financial figure while giving the primary Net Payout result and comparison room to scan.
-
-      - Add regression coverage for the semantic grouping.
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/100
-    repository: Myriad-Advisor-Solutions/ohcpwm-apps
-    state: open
-    labels: &a5 []
-    additions: 214
-    deletions: 324
-    changedFiles: 8
-    author: myriadas-clees
-    createdAt: 2026-08-04T19:22:39Z
-    updatedAt: 2026-08-05T12:42:53Z
-    closedAt: 2026-08-05T12:42:53Z
-    mergedAt: 2026-08-05T12:42:53Z
-    workTimestamps: &a6
-      - 2026-08-04T18:29:12Z
-      - 2026-08-04T18:47:40Z
-      - 2026-08-04T19:05:15Z
-      - 2026-08-04T19:07:55Z
-      - 2026-08-04T19:19:19Z
-      - 2026-08-04T19:39:18Z
-      - 2026-08-04T19:43:57Z
-      - 2026-08-04T19:47:23Z
-    workAdditions: 214
-    workDeletions: 324
-prsInProgress:
-  - title: "fix(pricing): focus executive dashboard metrics"
-    body: >-
-      - Limits the executive dashboard to **Pipeline AUM**, **Top-line revenue**, and permissioned **Revenue to
-      Holdco**.
-
-      - Removes the unrequested **Average net payout** and **Proposed net vs Current FiNet** dashboard cards.
-
-      - Retains payout and current-FiNet comparison detail in the recruit model and re...
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/97
-    repository: Myriad-Advisor-Solutions/ohcpwm-apps
-    state: closed
-    labels: *a1
-    additions: 9
-    deletions: 167
-    changedFiles: 2
-    author: myriadas-clees
-    createdAt: 2026-08-04T18:34:28Z
-    updatedAt: 2026-08-05T12:37:49Z
-    closedAt: 2026-08-05T12:37:49Z
-    mergedAt: null
-    workTimestamps: *a2
-    workAdditions: 9
-    workDeletions: 167
-  - title: "fix(pricing): remove FINET advantage summary"
-    body: |-
-      ## What changed
-
-      - removes the ambiguous **OHC Advantage** card from the FINET-branded PDF Executive Summary
-      - keeps the three requested FINET summary values: OHC Net Payout, OHC Net Payout %, and Current FiNet Net
-      - adds a PDF regression test proving FINET reports do not contain that label
-
-      ## Veri...
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/99
-    repository: Myriad-Advisor-Solutions/ohcpwm-apps
-    state: closed
-    labels: *a3
-    additions: 803
-    deletions: 129
-    changedFiles: 26
-    author: myriadas-clees
-    createdAt: 2026-08-04T18:48:11Z
-    updatedAt: 2026-08-05T12:37:51Z
-    closedAt: 2026-08-05T12:37:51Z
-    mergedAt: null
-    workTimestamps: *a4
-    workAdditions: 25
-    workDeletions: 5
-  - title: "fix(pricing): give payout details room to breathe"
-    body: >-
-      - Reorganize the expanded recruit payout detail into a vertical proposed-payout calculation and a separate Current
-      FiNet benchmark.
-
-      - Preserve every financial figure while giving the primary Net Payout result and comparison room to scan.
-
-      - Add regression coverage for the semantic grouping.
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/100
-    repository: Myriad-Advisor-Solutions/ohcpwm-apps
-    state: merged
-    labels: *a5
-    additions: 122
-    deletions: 232
-    changedFiles: 8
-    author: myriadas-clees
-    createdAt: 2026-08-04T19:22:39Z
-    updatedAt: 2026-08-05T12:42:53Z
-    closedAt: 2026-08-05T12:42:53Z
-    mergedAt: 2026-08-05T12:42:53Z
-    workTimestamps: *a6
-    workAdditions: 214
-    workDeletions: 324
-  - title: "fix(pricing): normalize duplicated recruit models"
-    body: |-
-      - Deep-copy and normalize duplicated pricing models so the copied recruit's advisor name is updated independently.
-      - Apply the shared behavior to SQLite, Graph, and Cosmos persistence adapters.
-      - Add persistence plus generated PDF/XLSX regression coverage.
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/82
-    repository: Myriad-Advisor-Solutions/ohcpwm-apps
-    state: merged
-    labels: []
-    additions: 199
-    deletions: 10
-    changedFiles: 8
-    author: myriadas-clees
-    createdAt: 2026-08-03T15:32:23Z
-    updatedAt: 2026-08-05T11:56:28Z
-    closedAt: 2026-08-05T11:56:28Z
-    mergedAt: 2026-08-05T11:56:28Z
-    workTimestamps:
-      - 2026-08-04T20:48:24Z
-    workAdditions: 185
-    workDeletions: 3
-  - title: "feat(pricing): add permissioned holdco revenue"
-    body: |-
-      Adds the requested AUM, Top Line Revenue, and Revenue to Holdco views to the Advisor Pricing pipeline.
-
-      - Renames the table labels to **AUM** and **Top Line Revenue**
-      - Adds an admin-only **Revenue to Holdco** column and dashboard metric
-      - Adds totals rows for the visible advisor/team rows
-      - Shapes ...
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/81
-    repository: Myriad-Advisor-Solutions/ohcpwm-apps
-    state: merged
-    labels: []
-    additions: 542
-    deletions: 95
-    changedFiles: 32
-    author: myriadas-clees
-    createdAt: 2026-08-03T15:32:18Z
-    updatedAt: 2026-08-05T12:33:36Z
-    closedAt: 2026-08-05T12:33:35Z
-    mergedAt: 2026-08-05T12:33:35Z
-    workTimestamps:
-      - 2026-08-04T20:49:23Z
-    workAdditions: 185
-    workDeletions: 3
+  estimatedHours: 0
+dailyCommits: []
+repositories: []
+pullRequests: []
+prsInProgress: []
 issues: []
 events: []
-commitMessages:
-  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
-    messages:
-      - "fix(pricing): add bottom save actions (#98) [skip ci]"
-    commits:
-      - sha: d8f118bab8d5ee46a3f4605a32a6fb84de960fba
-        message: "fix(pricing): add bottom save actions (#98) [skip ci]"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d8f118bab8d5ee46a3f4605a32a6fb84de960fba
-        authoredAt: 2026-08-04T20:45:07Z
+commitMessages: []
 releases: []
 externalContributions: []
 codeReviews: []
 reviewComments: []
 aiReviews:
   codex:
-    prsReviewed: 1
-    comments: 1
-    reviews: 1
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
     fixed: 0
   cursor:
     prsReviewed: 0
     comments: 0
     reviews: 0
     fixed: 0
-  prsReviewed: 1
-  comments: 1
-  reviews: 1
+  prsReviewed: 0
+  comments: 0
+  reviews: 0
   fixed: 0
 hoursEstimate:
-  hours: 10
-  sessions: 1
-  sessionHours: 2.3
-  volumeHours: 10
+  hours: 0
+  sessions: 0
+  sessionHours: 0
+  volumeHours: 0
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

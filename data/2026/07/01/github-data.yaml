@@ -12,7 +12,7 @@ dateRange:
   from: 2026-07-01
   to: 2026-07-01
 stats:
-  totalCommits: 55
+  totalCommits: 0
   totalAdditions: 0
   totalDeletions: 0
   prsOpened: 0
@@ -22,301 +22,14 @@ stats:
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 8
-dailyCommits:
-  - date: 2026-07-01
-    count: 55
-repositories:
-  - name: Myriad-Advisor-Solutions/ohcpwm-apps
-    commits: 55
-    prsOpened: 0
-    prsMerged: 0
-    issuesOpened: 0
-    issuesClosed: 0
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+  estimatedHours: 0
+dailyCommits: []
+repositories: []
 pullRequests: []
 prsInProgress: []
 issues: []
 events: []
-commitMessages:
-  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
-    messages:
-      - "fix(ci): stage azure function deps"
-      - "fix(ci): validate pricing function artifact"
-      - "fix(function): avoid sqlite in pricing api"
-      - "fix(function): emit pricing api commonjs"
-      - "fix(routing): use managed api paths"
-      - "fix(routing): narrow pricing auth routes"
-      - "fix(ci): verify pricing health json"
-      - "fix(routing): stop intercepting pricing api"
-      - "fix(ci): use managed pricing api path"
-      - "fix(function): use swa api route prefix"
-      - "fix(function): stage pricing api dependencies"
-      - "fix(function): bundle pricing functions runtime"
-      - "fix(function): use supported swa node runtime"
-      - "fix(ci): print pricing probe status"
-      - "fix(ci): report pricing live probe status"
-      - "fix(routing): remove duplicate pricing routes"
-      - "fix(routing): rewrite pricing static pages"
-      - "fix(ci): retry pricing live probe"
-      - "fix(build): emit directory static pricing pages"
-      - "fix(ci): verify pricing static web app live"
-      - "fix(build): remove legacy dynamic recruit routes"
-      - "fix(build): send graph blob body as array buffer"
-      - "fix(build): send graph blob body as blob"
-      - "fix(pricing): deploy serverless static app"
-      - "fix(build): remove pricing dynamic export flags"
-      - "fix(build): deploy pricing static output"
-      - "fix(build): copy pricing standalone assets at root"
-      - "fix(build): smoke pricing standalone server"
-      - "fix(build): make pricing standalone self-start"
-      - "fix(build): inspect pricing standalone size"
-      - "fix(build): load pricing standalone server sync"
-      - "fix(build): inspect pricing standalone output"
-      - "fix(build): shim pricing standalone server"
-      - "fix(build): avoid pricing startup env gaps"
-      - "fix(build): quote pricing hybrid config"
-      - "fix(build): keep pricing hybrid SWA config"
-      - "fix(build): add pricing SWA health probe"
-      - "fix(build): use pricing standalone output"
-      - "fix(build): remove SWA config for pricing hybrid"
-      - "fix(build): initialize pricing runtime storage"
-      - "fix(build): remove Bun artifacts before SWA"
-      - "fix(build): rewrite all SWA workspace deps"
-      - "fix(build): disable npm workspaces for SWA"
-      - "fix(build): rewrite nested SWA deps"
-      - "fix(build): rewrite generated SWA deps"
-      - "fix(build): prebuild pricing for SWA"
-      - "fix(build): trace SWA workspace deps"
-      - "fix(build): rewrite SWA workspace deps"
-      - "fix(build): use pricing Next hybrid deploy"
-      - "fix(build): skip Next routes for pricing SWA"
-      - "fix(build): route pricing SWA dispatch"
-      - "fix(build): add pricing SWA deploy"
-      - "docs(pricing): document scenario parity rules"
-      - "chore: update app workspace structure"
-      - "feat: add Azure Functions app wiring"
-    commits:
-      - sha: 60bb03a858823582c19561bcd09b51be7ae039ec
-        message: "fix(ci): stage azure function deps"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/60bb03a858823582c19561bcd09b51be7ae039ec
-        authoredAt: 2026-07-02T03:59:42Z
-      - sha: dba38c8b3b17e3d7b1c31eb263844ef7d2492287
-        message: "fix(ci): validate pricing function artifact"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/dba38c8b3b17e3d7b1c31eb263844ef7d2492287
-        authoredAt: 2026-07-02T03:55:51Z
-      - sha: 034faafc0cc6f0bb41949ad805fc4a7b91b6ca7d
-        message: "fix(function): avoid sqlite in pricing api"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/034faafc0cc6f0bb41949ad805fc4a7b91b6ca7d
-        authoredAt: 2026-07-02T03:52:09Z
-      - sha: 57b1f14ba7ad0b9d8cc2aa93676070a8bca51fa7
-        message: "fix(function): emit pricing api commonjs"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/57b1f14ba7ad0b9d8cc2aa93676070a8bca51fa7
-        authoredAt: 2026-07-02T03:47:31Z
-      - sha: 71b487eae5deb3645b7440d0cfb8777b7a682a43
-        message: "fix(routing): use managed api paths"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/71b487eae5deb3645b7440d0cfb8777b7a682a43
-        authoredAt: 2026-07-02T03:43:08Z
-      - sha: 8d24099055adc6eeb8c1e0ea0682ef55c749bd19
-        message: "fix(routing): narrow pricing auth routes"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8d24099055adc6eeb8c1e0ea0682ef55c749bd19
-        authoredAt: 2026-07-02T03:38:22Z
-      - sha: 8c1e5af2e35d8b71e977241abc01e4171d521923
-        message: "fix(ci): verify pricing health json"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8c1e5af2e35d8b71e977241abc01e4171d521923
-        authoredAt: 2026-07-02T03:34:00Z
-      - sha: fc456ecb6b2bb3da15264641609434e5c76310f1
-        message: "fix(routing): stop intercepting pricing api"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/fc456ecb6b2bb3da15264641609434e5c76310f1
-        authoredAt: 2026-07-02T03:29:53Z
-      - sha: ef901b9e0989193f4226a109038ad31ebe17568f
-        message: "fix(ci): use managed pricing api path"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ef901b9e0989193f4226a109038ad31ebe17568f
-        authoredAt: 2026-07-02T03:26:09Z
-      - sha: 48b42af03dd4071f0616e3a46ff20cc529a301e4
-        message: "fix(function): use swa api route prefix"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/48b42af03dd4071f0616e3a46ff20cc529a301e4
-        authoredAt: 2026-07-02T03:21:30Z
-      - sha: ad8525792cf8fb8f3ca9a57d1034b1d75c3f5721
-        message: "fix(function): stage pricing api dependencies"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ad8525792cf8fb8f3ca9a57d1034b1d75c3f5721
-        authoredAt: 2026-07-02T03:17:44Z
-      - sha: d177734ef838612600994348a954bdc8b93a6ad3
-        message: "fix(function): bundle pricing functions runtime"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d177734ef838612600994348a954bdc8b93a6ad3
-        authoredAt: 2026-07-02T03:11:59Z
-      - sha: cff4ab598a93be780f334625504fc9483eb5460f
-        message: "fix(function): use supported swa node runtime"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cff4ab598a93be780f334625504fc9483eb5460f
-        authoredAt: 2026-07-02T03:06:55Z
-      - sha: f13c060fe7f9f37209c5a8b3a45c546e7b2dd82c
-        message: "fix(ci): print pricing probe status"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f13c060fe7f9f37209c5a8b3a45c546e7b2dd82c
-        authoredAt: 2026-07-02T03:02:45Z
-      - sha: 93cbb6bdbd6397e24a2b9001b8f7a76a597b8527
-        message: "fix(ci): report pricing live probe status"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/93cbb6bdbd6397e24a2b9001b8f7a76a597b8527
-        authoredAt: 2026-07-02T02:59:13Z
-      - sha: fc4d8552f4db2cd39241b8c7a2597b0e20e7ca48
-        message: "fix(routing): remove duplicate pricing routes"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/fc4d8552f4db2cd39241b8c7a2597b0e20e7ca48
-        authoredAt: 2026-07-02T02:53:14Z
-      - sha: a30bd5978765099bcd925113fed630d950aa07ed
-        message: "fix(routing): rewrite pricing static pages"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a30bd5978765099bcd925113fed630d950aa07ed
-        authoredAt: 2026-07-02T02:50:14Z
-      - sha: 592c604c76f130e161bd4ea2fc40e52329fdf09c
-        message: "fix(ci): retry pricing live probe"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/592c604c76f130e161bd4ea2fc40e52329fdf09c
-        authoredAt: 2026-07-02T02:44:21Z
-      - sha: fe90b34c8e39cafcbfa3a9b43307772eec40f410
-        message: "fix(build): emit directory static pricing pages"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/fe90b34c8e39cafcbfa3a9b43307772eec40f410
-        authoredAt: 2026-07-02T02:40:38Z
-      - sha: d95b3babcf06de0b434e707e4ff832c6164025a8
-        message: "fix(ci): verify pricing static web app live"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d95b3babcf06de0b434e707e4ff832c6164025a8
-        authoredAt: 2026-07-02T02:36:40Z
-      - sha: c8e36e09af8303202067f46eb11e3248abbdd28d
-        message: "fix(build): remove legacy dynamic recruit routes"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c8e36e09af8303202067f46eb11e3248abbdd28d
-        authoredAt: 2026-07-02T02:29:55Z
-      - sha: 230efc64bd31053b765ea7793422b0a2318d135c
-        message: "fix(build): send graph blob body as array buffer"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/230efc64bd31053b765ea7793422b0a2318d135c
-        authoredAt: 2026-07-02T02:26:43Z
-      - sha: 64c2682da05f6b40ecfa44b5ed369dc8a8aae917
-        message: "fix(build): send graph blob body as blob"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/64c2682da05f6b40ecfa44b5ed369dc8a8aae917
-        authoredAt: 2026-07-02T02:23:02Z
-      - sha: 6280aac42f730218b9ecd64537ced310764dc6b2
-        message: "fix(pricing): deploy serverless static app"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6280aac42f730218b9ecd64537ced310764dc6b2
-        authoredAt: 2026-07-02T02:19:53Z
-      - sha: bec3e2fe1f2a1a94cb12a6655d3d015ec613c8ab
-        message: "fix(build): remove pricing dynamic export flags"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/bec3e2fe1f2a1a94cb12a6655d3d015ec613c8ab
-        authoredAt: 2026-07-02T01:33:10Z
-      - sha: 658402d80c9eef13781703d9f862dbfe624035b1
-        message: "fix(build): deploy pricing static output"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/658402d80c9eef13781703d9f862dbfe624035b1
-        authoredAt: 2026-07-02T01:25:57Z
-      - sha: 2949205330b63749d10d5ce60fa9f1b169e22973
-        message: "fix(build): copy pricing standalone assets at root"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2949205330b63749d10d5ce60fa9f1b169e22973
-        authoredAt: 2026-07-02T01:10:28Z
-      - sha: 4e721001c5d6d117f92e194f6e5a22c6afa3f6d2
-        message: "fix(build): smoke pricing standalone server"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4e721001c5d6d117f92e194f6e5a22c6afa3f6d2
-        authoredAt: 2026-07-02T00:52:50Z
-      - sha: 8a4e97cbb552662117e2d7c86d0c256c3725a99e
-        message: "fix(build): make pricing standalone self-start"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8a4e97cbb552662117e2d7c86d0c256c3725a99e
-        authoredAt: 2026-07-02T00:37:59Z
-      - sha: f6b9fe8ac12ea9208d89bddf5ac6e6ae3a058e11
-        message: "fix(build): inspect pricing standalone size"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f6b9fe8ac12ea9208d89bddf5ac6e6ae3a058e11
-        authoredAt: 2026-07-02T00:33:49Z
-      - sha: 495096d2c777e8ad55d1c3a6a604ee9afe13b84c
-        message: "fix(build): load pricing standalone server sync"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/495096d2c777e8ad55d1c3a6a604ee9afe13b84c
-        authoredAt: 2026-07-02T00:17:53Z
-      - sha: 8829b5347868152e0085ac38576740e595793951
-        message: "fix(build): inspect pricing standalone output"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8829b5347868152e0085ac38576740e595793951
-        authoredAt: 2026-07-02T00:14:26Z
-      - sha: a7c92f9f294f1ebfbe2c6d679639973ba3cfbbb8
-        message: "fix(build): shim pricing standalone server"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a7c92f9f294f1ebfbe2c6d679639973ba3cfbbb8
-        authoredAt: 2026-07-02T00:00:31Z
-      - sha: 5d1e12cc8c7e88bc46dda6f71435003fc2a95cd4
-        message: "fix(build): avoid pricing startup env gaps"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/5d1e12cc8c7e88bc46dda6f71435003fc2a95cd4
-        authoredAt: 2026-07-01T23:47:05Z
-      - sha: ff0cf5da8f0188088e86e676e4cdab34802020c8
-        message: "fix(build): quote pricing hybrid config"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ff0cf5da8f0188088e86e676e4cdab34802020c8
-        authoredAt: 2026-07-01T23:31:10Z
-      - sha: bee36b0e4773a2b5b9e2891ce35074a776d2a601
-        message: "fix(build): keep pricing hybrid SWA config"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/bee36b0e4773a2b5b9e2891ce35074a776d2a601
-        authoredAt: 2026-07-01T23:28:50Z
-      - sha: 3b81a64f126384b8a6a5af67871928133cfef6c4
-        message: "fix(build): add pricing SWA health probe"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3b81a64f126384b8a6a5af67871928133cfef6c4
-        authoredAt: 2026-07-01T23:14:53Z
-      - sha: d927fe04c11c1deea1cf3bee6e3f4fcfc048bd53
-        message: "fix(build): use pricing standalone output"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d927fe04c11c1deea1cf3bee6e3f4fcfc048bd53
-        authoredAt: 2026-07-01T22:58:13Z
-      - sha: 10a41aadd3257835e57bc5114a0a219c3e17903b
-        message: "fix(build): remove SWA config for pricing hybrid"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/10a41aadd3257835e57bc5114a0a219c3e17903b
-        authoredAt: 2026-07-01T22:40:07Z
-      - sha: 73982b44f6b9c16b2b4a2334cf3f06d36c659995
-        message: "fix(build): initialize pricing runtime storage"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/73982b44f6b9c16b2b4a2334cf3f06d36c659995
-        authoredAt: 2026-07-01T22:24:43Z
-      - sha: 9e89e8a4539b04429af5fcb3af76ea12888f96cb
-        message: "fix(build): remove Bun artifacts before SWA"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/9e89e8a4539b04429af5fcb3af76ea12888f96cb
-        authoredAt: 2026-07-01T22:08:35Z
-      - sha: 420135f98364f01b8593184d062204865ce16250
-        message: "fix(build): rewrite all SWA workspace deps"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/420135f98364f01b8593184d062204865ce16250
-        authoredAt: 2026-07-01T22:03:52Z
-      - sha: b0db1ecf037fd1ad64859c1907d3feb1e3242f5e
-        message: "fix(build): disable npm workspaces for SWA"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b0db1ecf037fd1ad64859c1907d3feb1e3242f5e
-        authoredAt: 2026-07-01T21:58:58Z
-      - sha: 472af6d5a43444d806e45cee7f23cfbe513ad3d8
-        message: "fix(build): rewrite nested SWA deps"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/472af6d5a43444d806e45cee7f23cfbe513ad3d8
-        authoredAt: 2026-07-01T21:54:11Z
-      - sha: 80596d747626634082c17d2915e8a1451e053914
-        message: "fix(build): rewrite generated SWA deps"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/80596d747626634082c17d2915e8a1451e053914
-        authoredAt: 2026-07-01T21:49:31Z
-      - sha: 7f30274303e217cc1307777d797591baa85b24fb
-        message: "fix(build): prebuild pricing for SWA"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7f30274303e217cc1307777d797591baa85b24fb
-        authoredAt: 2026-07-01T21:45:45Z
-      - sha: 7fb2876758dd2d78b325927a2756c02056c521a7
-        message: "fix(build): trace SWA workspace deps"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7fb2876758dd2d78b325927a2756c02056c521a7
-        authoredAt: 2026-07-01T21:42:46Z
-      - sha: 886a45f306a37ac45996a31e22413f924545f11b
-        message: "fix(build): rewrite SWA workspace deps"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/886a45f306a37ac45996a31e22413f924545f11b
-        authoredAt: 2026-07-01T21:40:23Z
-      - sha: 5702ec2a2fd35d2bd2a154d90f9aacd432dfdf9c
-        message: "fix(build): use pricing Next hybrid deploy"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/5702ec2a2fd35d2bd2a154d90f9aacd432dfdf9c
-        authoredAt: 2026-07-01T21:37:18Z
-      - sha: 7ca21d60e3e870ce320713234910ec25cd0ea169
-        message: "fix(build): skip Next routes for pricing SWA"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7ca21d60e3e870ce320713234910ec25cd0ea169
-        authoredAt: 2026-07-01T21:32:53Z
-      - sha: 4b2801b05c10dda1bba95f5e767db0e2aa0e4fa5
-        message: "fix(build): route pricing SWA dispatch"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4b2801b05c10dda1bba95f5e767db0e2aa0e4fa5
-        authoredAt: 2026-07-01T21:28:54Z
-      - sha: e6b9046170102c8fa0056f0008fd8b49bac0dca5
-        message: "fix(build): add pricing SWA deploy"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e6b9046170102c8fa0056f0008fd8b49bac0dca5
-        authoredAt: 2026-07-01T21:15:04Z
-      - sha: 040e7dc2936f654f7c6280714cf20d1cda744235
-        message: "docs(pricing): document scenario parity rules"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/040e7dc2936f654f7c6280714cf20d1cda744235
-        authoredAt: 2026-07-01T20:47:48Z
-      - sha: 3c09a93f0a1b5afb95936951927da8222c0bb3d6
-        message: "chore: update app workspace structure"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3c09a93f0a1b5afb95936951927da8222c0bb3d6
-        authoredAt: 2026-07-01T18:35:53Z
-      - sha: 26644fc75c0fc683bbe1a2a1db67cd99c7e81d6b
-        message: "feat: add Azure Functions app wiring"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/26644fc75c0fc683bbe1a2a1db67cd99c7e81d6b
-        authoredAt: 2026-07-01T14:38:01Z
+commitMessages: []
 releases: []
 externalContributions: []
 codeReviews: []
@@ -337,10 +50,10 @@ aiReviews:
   reviews: 0
   fixed: 0
 hoursEstimate:
-  hours: 8
-  sessions: 3
-  sessionHours: 7
-  volumeHours: 8
+  hours: 0
+  sessions: 0
+  sessionHours: 0
+  volumeHours: 0
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

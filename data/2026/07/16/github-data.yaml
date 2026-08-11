@@ -12,267 +12,48 @@ dateRange:
   from: 2026-07-16
   to: 2026-07-16
 stats:
-  totalCommits: 14
-  totalAdditions: 916
-  totalDeletions: 72
-  prsOpened: 2
-  prsMerged: 1
-  prsInProgress: 2
+  totalCommits: 0
+  totalAdditions: 0
+  totalDeletions: 0
+  prsOpened: 0
+  prsMerged: 0
+  prsInProgress: 0
   prsReviewed: 0
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 10.8
-dailyCommits:
-  - date: 2026-07-16
-    count: 14
-repositories:
-  - name: Myriad-Advisor-Solutions/ohcpwm-apps
-    commits: 12
-    prsOpened: 1
-    prsMerged: 0
-    issuesOpened: 0
-    issuesClosed: 0
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
-  - name: Myriad-Advisor-Solutions/myriadas-apps
-    commits: 2
-    prsOpened: 1
-    prsMerged: 1
-    issuesOpened: 0
-    issuesClosed: 0
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
-pullRequests:
-  - title: "fix(onboarding): add first-run setup"
-    body: >-
-      ## Why
-
-
-      Production Onboarding workspaces can be empty, but the current UI only tells users to run a local seed command.
-      Signed-in users need a supported way to initialize the workspace.
-
-
-      ## What changed
-
-
-      - Add an admin-only first employee setup flow
-
-      - Create the employee and all workflow-template ta...
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/30
-    repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: merged
-    labels: []
-    additions: 537
-    deletions: 1
-    changedFiles: 16
-    author: myriadas-clees
-    createdAt: 2026-07-16T19:04:26Z
-    updatedAt: 2026-07-16T19:54:49Z
-    closedAt: 2026-07-16T19:23:20Z
-    mergedAt: 2026-07-16T19:23:20Z
-    workTimestamps:
-      - 2026-07-16T19:00:30Z
-    workAdditions: 537
-    workDeletions: 1
-  - title: "ci: add Codex issue PR workflow"
-    body: >-
-      ## Why
-
-
-      New issues need a repeatable path into isolated Codex implementation work without bypassing human review and merge
-      control.
-
-
-      ## What changed
-
-
-      - Improve bug and feature forms with implementation-ready context and clearer business-impact priority guidance
-
-      - Add an idempotent manual canary work...
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/61
-    repository: Myriad-Advisor-Solutions/ohcpwm-apps
-    state: open
-    labels: &a1 []
-    additions: 379
-    deletions: 71
-    changedFiles: 4
-    author: myriadas-clees
-    createdAt: 2026-07-16T21:05:28Z
-    updatedAt: 2026-07-16T21:05:39Z
-    closedAt: null
-    mergedAt: null
-    workTimestamps: &a2
-      - 2026-07-16T21:04:36Z
-    workAdditions: 379
-    workDeletions: 71
-prsInProgress:
-  - title: "ci: add Codex issue PR workflow"
-    body: >-
-      ## Why
-
-
-      New issues need a repeatable path into isolated Codex implementation work without bypassing human review and merge
-      control.
-
-
-      ## What changed
-
-
-      - Improve bug and feature forms with implementation-ready context and clearer business-impact priority guidance
-
-      - Add an idempotent manual canary work...
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/61
-    repository: Myriad-Advisor-Solutions/ohcpwm-apps
-    state: open
-    labels: *a1
-    additions: 379
-    deletions: 71
-    changedFiles: 4
-    author: myriadas-clees
-    createdAt: 2026-07-16T21:05:28Z
-    updatedAt: 2026-07-16T21:05:39Z
-    closedAt: null
-    mergedAt: null
-    workTimestamps: *a2
-    workAdditions: 379
-    workDeletions: 71
-  - title: Unify OHCPWM platform and OFAC
-    body: >-
-      - publish the completed FINET Pricing model work alongside shared product-platform consolidation
-
-      - move OFAC production authentication to Azure Static Web Apps with the intentional SWA Principal bridge into
-      Azure Functions
-
-      - add the first authenticated Functions identity endpoint and static-safe OFA...
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/58
-    repository: Myriad-Advisor-Solutions/ohcpwm-apps
-    state: merged
-    labels: []
-    additions: 7616
-    deletions: 2416
-    changedFiles: 148
-    author: myriadas-clees
-    createdAt: 2026-07-14T20:21:25Z
-    updatedAt: 2026-07-22T20:23:04Z
-    closedAt: 2026-07-20T15:26:30Z
-    mergedAt: 2026-07-20T15:26:30Z
-    workTimestamps:
-      - 2026-07-16T15:50:56Z
-      - 2026-07-16T16:20:06Z
-      - 2026-07-16T16:26:16Z
-      - 2026-07-16T16:46:34Z
-      - 2026-07-16T16:49:43Z
-      - 2026-07-16T16:52:45Z
-      - 2026-07-16T17:02:41Z
-      - 2026-07-16T17:07:48Z
-      - 2026-07-16T17:11:26Z
-      - 2026-07-16T17:38:21Z
-      - 2026-07-16T19:21:14Z
-      - 2026-07-16T19:30:46Z
-    workAdditions: 2651
-    workDeletions: 1380
+  estimatedHours: 0
+dailyCommits: []
+repositories: []
+pullRequests: []
+prsInProgress: []
 issues: []
 events: []
-commitMessages:
-  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
-    messages:
-      - "ci: keep unified deployment workflow"
-      - "feat(suite): restore OFAC and refine hub"
-      - "fix(functions): use unique registrations"
-      - "fix(hub): export directory routes"
-      - "fix(hub): use Link for OFAC navigation"
-      - "feat(ofac): add static suite client"
-      - "fix(ci): exclude Next APIs from static build"
-      - "fix(ofac): remove static logout route"
-      - "feat(suite): mount apps under hub paths"
-      - "ci(hub): add stage deployment"
-      - "ci(hub): promote entry deployment"
-      - "feat: refine operational app workspace"
-    commits:
-      - sha: 408a606b2fc84f4adf4fbdfd60e4c3e05f7b4b8a
-        message: "ci: keep unified deployment workflow"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/408a606b2fc84f4adf4fbdfd60e4c3e05f7b4b8a
-        authoredAt: 2026-07-16T19:30:46Z
-      - sha: 4b0f87db857734302feed06e061d6e5de8c7ee6e
-        message: "feat(suite): restore OFAC and refine hub"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4b0f87db857734302feed06e061d6e5de8c7ee6e
-        authoredAt: 2026-07-16T19:21:14Z
-      - sha: b4eb7932d4d6ab7bbd541496b4dcbe701e68c695
-        message: "fix(functions): use unique registrations"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b4eb7932d4d6ab7bbd541496b4dcbe701e68c695
-        authoredAt: 2026-07-16T17:38:21Z
-      - sha: edd412a05be93862366248532e8c26b9cbd2b934
-        message: "fix(hub): export directory routes"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/edd412a05be93862366248532e8c26b9cbd2b934
-        authoredAt: 2026-07-16T17:11:26Z
-      - sha: d8f47823be66a95e70facb2927888ffe572bc18a
-        message: "fix(hub): use Link for OFAC navigation"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d8f47823be66a95e70facb2927888ffe572bc18a
-        authoredAt: 2026-07-16T17:07:48Z
-      - sha: 3261e9d5db33fe20aee9ce56272ab09f838375c3
-        message: "feat(ofac): add static suite client"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3261e9d5db33fe20aee9ce56272ab09f838375c3
-        authoredAt: 2026-07-16T17:02:41Z
-      - sha: b982cd6b8c3df3f1fafb72b5ee98a9b27b6f7d65
-        message: "fix(ci): exclude Next APIs from static build"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b982cd6b8c3df3f1fafb72b5ee98a9b27b6f7d65
-        authoredAt: 2026-07-16T16:52:45Z
-      - sha: c952c6e62927eab5710c24b8a976186eb7d740be
-        message: "fix(ofac): remove static logout route"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c952c6e62927eab5710c24b8a976186eb7d740be
-        authoredAt: 2026-07-16T16:49:43Z
-      - sha: f10a097ae911c460b360286f2c03d6ac28d49fe8
-        message: "feat(suite): mount apps under hub paths"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f10a097ae911c460b360286f2c03d6ac28d49fe8
-        authoredAt: 2026-07-16T16:46:34Z
-      - sha: d9366a6f033231434718e6ae482a825247e72eb7
-        message: "ci(hub): add stage deployment"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d9366a6f033231434718e6ae482a825247e72eb7
-        authoredAt: 2026-07-16T16:26:16Z
-      - sha: 271d535816fcb4efa8910c0e6be3ebf9e839509a
-        message: "ci(hub): promote entry deployment"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/271d535816fcb4efa8910c0e6be3ebf9e839509a
-        authoredAt: 2026-07-16T16:20:06Z
-      - sha: 49b143e3eb28194b1159fdeb036c87c55bafb329
-        message: "feat: refine operational app workspace"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/49b143e3eb28194b1159fdeb036c87c55bafb329
-        authoredAt: 2026-07-16T15:50:56Z
-  - repo: Myriad-Advisor-Solutions/myriadas-apps
-    messages:
-      - "fix(onboarding): add first-run setup"
-      - "fix(onboarding): add first-run setup"
-    commits:
-      - sha: a57024e2c73b3e13c6ef5a1590fd3f54ceaae441
-        message: "fix(onboarding): add first-run setup"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a57024e2c73b3e13c6ef5a1590fd3f54ceaae441
-        authoredAt: 2026-07-16T19:23:20Z
-      - sha: c811c95a91de620a8b18a94ba54231595f6034da
-        message: "fix(onboarding): add first-run setup"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c811c95a91de620a8b18a94ba54231595f6034da
-        authoredAt: 2026-07-16T19:00:30Z
+commitMessages: []
 releases: []
 externalContributions: []
 codeReviews: []
 reviewComments: []
 aiReviews:
   codex:
-    prsReviewed: 1
-    comments: 1
-    reviews: 1
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
     fixed: 0
   cursor:
     prsReviewed: 0
     comments: 0
     reviews: 0
     fixed: 0
-  prsReviewed: 1
-  comments: 1
-  reviews: 1
+  prsReviewed: 0
+  comments: 0
+  reviews: 0
   fixed: 0
 hoursEstimate:
-  hours: 10.8
-  sessions: 2
-  sessionHours: 4.2
-  volumeHours: 10.8
+  hours: 0
+  sessions: 0
+  sessionHours: 0
+  volumeHours: 0
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

@@ -12,7 +12,7 @@ dateRange:
   from: 2026-07-06
   to: 2026-07-06
 stats:
-  totalCommits: 12
+  totalCommits: 0
   totalAdditions: 0
   totalDeletions: 0
   prsOpened: 0
@@ -22,86 +22,14 @@ stats:
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 2.4
-dailyCommits:
-  - date: 2026-07-06
-    count: 12
-repositories:
-  - name: Myriad-Advisor-Solutions/ohcpwm-apps
-    commits: 12
-    prsOpened: 0
-    prsMerged: 0
-    issuesOpened: 0
-    issuesClosed: 0
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+  estimatedHours: 0
+dailyCommits: []
+repositories: []
 pullRequests: []
 prsInProgress: []
 issues: []
 events: []
-commitMessages:
-  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
-    messages:
-      - "ci(pricing): deploy on main push"
-      - "feat(pricing): add Cosmos DB adapter"
-      - "ci(pricing): keep API build skip"
-      - "ci(pricing): remove ignored deploy input"
-      - "ci(pricing): relax health smoke check"
-      - Prioritize pricing as the deployment target
-      - "docs: update Azure Cosmos DB guidance"
-      - "fix(pricing): use exact workbook outputs"
-      - "fix(pricing): restore SSR test imports"
-      - "fix(pricing): align verify fixtures"
-      - "fix(pricing): refine scenario copy and alignment"
-      - "fix(pricing): align recruit pricing flows"
-    commits:
-      - sha: 57a98cf3dcb244a3ff7a7b94a4bc82d9321e5418
-        message: "ci(pricing): deploy on main push"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/57a98cf3dcb244a3ff7a7b94a4bc82d9321e5418
-        authoredAt: 2026-07-06T23:24:20Z
-      - sha: c9dfe60934d18e8ce1b7a1c8d4d7752c450ad6ed
-        message: "feat(pricing): add Cosmos DB adapter"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c9dfe60934d18e8ce1b7a1c8d4d7752c450ad6ed
-        authoredAt: 2026-07-06T23:22:47Z
-      - sha: c51b570a47105e74e48d6d6e6d8fe4a82e290f27
-        message: "ci(pricing): keep API build skip"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c51b570a47105e74e48d6d6e6d8fe4a82e290f27
-        authoredAt: 2026-07-06T20:59:22Z
-      - sha: f72c342637afea444716fa1a4a8bb162198d8e3a
-        message: "ci(pricing): remove ignored deploy input"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f72c342637afea444716fa1a4a8bb162198d8e3a
-        authoredAt: 2026-07-06T20:56:11Z
-      - sha: cd9781fb4a46069716090101b6b44c668a466b3a
-        message: "ci(pricing): relax health smoke check"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cd9781fb4a46069716090101b6b44c668a466b3a
-        authoredAt: 2026-07-06T20:49:34Z
-      - sha: 5585835fb7e4e6d2a90b5e55f05600d2639f8848
-        message: Prioritize pricing as the deployment target
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/5585835fb7e4e6d2a90b5e55f05600d2639f8848
-        authoredAt: 2026-07-06T20:41:55Z
-      - sha: 587572d6ddbeb77056f1ac873c7ce93ab0e864f6
-        message: "docs: update Azure Cosmos DB guidance"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/587572d6ddbeb77056f1ac873c7ce93ab0e864f6
-        authoredAt: 2026-07-06T20:16:13Z
-      - sha: c16cfda8cd210176cc988458eec47f688a9b73b2
-        message: "fix(pricing): use exact workbook outputs"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c16cfda8cd210176cc988458eec47f688a9b73b2
-        authoredAt: 2026-07-06T16:40:45Z
-      - sha: 7697610a5f272d6bad3c3d4d6e7ee55a799d1e68
-        message: "fix(pricing): restore SSR test imports"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7697610a5f272d6bad3c3d4d6e7ee55a799d1e68
-        authoredAt: 2026-07-06T16:38:37Z
-      - sha: 068943277628309eccbce2c769113ddde5feff11
-        message: "fix(pricing): align verify fixtures"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/068943277628309eccbce2c769113ddde5feff11
-        authoredAt: 2026-07-06T16:34:34Z
-      - sha: 91a9ed62f4b6b9a067a6f72a7d11b3b47deec8b9
-        message: "fix(pricing): refine scenario copy and alignment"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/91a9ed62f4b6b9a067a6f72a7d11b3b47deec8b9
-        authoredAt: 2026-07-06T16:13:30Z
-      - sha: 43786542dcb1bd844d40e9afb7b423617e4a733a
-        message: "fix(pricing): align recruit pricing flows"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/43786542dcb1bd844d40e9afb7b423617e4a733a
-        authoredAt: 2026-07-06T15:40:23Z
+commitMessages: []
 releases: []
 externalContributions: []
 codeReviews: []
@@ -122,10 +50,10 @@ aiReviews:
   reviews: 0
   fixed: 0
 hoursEstimate:
-  hours: 2.4
-  sessions: 3
-  sessionHours: 2.2
-  volumeHours: 2.4
+  hours: 0
+  sessions: 0
+  sessionHours: 0
+  volumeHours: 0
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

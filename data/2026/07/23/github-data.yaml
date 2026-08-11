@@ -12,210 +12,48 @@ dateRange:
   from: 2026-07-23
   to: 2026-07-23
 stats:
-  totalCommits: 2
-  totalAdditions: 982
-  totalDeletions: 533
-  prsOpened: 3
-  prsMerged: 2
-  prsInProgress: 1
+  totalCommits: 0
+  totalAdditions: 0
+  totalDeletions: 0
+  prsOpened: 0
+  prsMerged: 0
+  prsInProgress: 0
   prsReviewed: 0
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 9.9
-dailyCommits:
-  - date: 2026-07-23
-    count: 2
-repositories:
-  - name: Myriad-Advisor-Solutions/myriadas-apps
-    commits: 2
-    prsOpened: 2
-    prsMerged: 2
-    issuesOpened: 0
-    issuesClosed: 0
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
-  - name: Myriad-Advisor-Solutions/ohcpwm-apps
-    commits: 0
-    prsOpened: 1
-    prsMerged: 0
-    issuesOpened: 0
-    issuesClosed: 0
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
-pullRequests:
-  - title: "revert(deploy): restore unified SWA"
-    body: >-
-      ## Why
-
-
-      PR #37 switched production to dedicated product Static Web Apps and Function Apps before those resources existed.
-      Azure currently has only `myriadas-hub` and no Function Apps, so Hub links target product routes whose artifacts
-      are no longer deployed.
-
-
-      ## What changed
-
-
-      - Revert PR #37's incom...
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/41
-    repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: merged
-    labels:
-      - documentation
-      - github-automation
-      - "app: hub"
-      - "app: pto-tracker"
-      - infrastructure
-    additions: 362
-    deletions: 389
-    changedFiles: 23
-    author: myriadas-clees
-    createdAt: 2026-07-23T16:00:31Z
-    updatedAt: 2026-07-23T16:06:32Z
-    closedAt: 2026-07-23T16:04:10Z
-    mergedAt: 2026-07-23T16:04:10Z
-    workTimestamps:
-      - 2026-07-23T15:59:56Z
-    workAdditions: 362
-    workDeletions: 389
-  - title: "fix(hub): route product app roots"
-    body: >-
-      ## Why
-
-
-      Extensionless product URLs such as `/pto` fell through to the Hub 404 because static exports place each entrypoint
-      at `<app>/index.html`.
-
-
-      ## What changed
-
-
-      - Rewrite each registered product root to its exported static entrypoint
-
-      - Add a registry-driven regression test covering every product ...
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/40
-    repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: merged
-    labels:
-      - github-automation
-      - "app: hub"
-      - platform
-    additions: 49
-    deletions: 10
-    changedFiles: 3
-    author: myriadas-clees
-    createdAt: 2026-07-23T15:24:22Z
-    updatedAt: 2026-07-23T15:32:37Z
-    closedAt: 2026-07-23T15:32:37Z
-    mergedAt: 2026-07-23T15:32:37Z
-    workTimestamps:
-      - 2026-07-23T15:21:19Z
-      - 2026-07-23T15:27:42Z
-    workAdditions: 49
-    workDeletions: 10
-  - title: "feat(pricing): add FiNet recruit workflow"
-    body: >-
-      ## Why
-
-
-      FiNet recruits follow a distinct pricing path and should not expose or apply non-FiNet business-mix and platform
-      assumptions. The recruit workflow also needs consistent fee precision and review layouts so entered values match
-      the pricing calculations.
-
-
-      ## What changed
-
-
-      - Add a FiNet recruit ...
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/70
-    repository: Myriad-Advisor-Solutions/ohcpwm-apps
-    state: open
-    labels: &a1
-      - deploy-preview
-    additions: 571
-    deletions: 134
-    changedFiles: 55
-    author: myriadas-clees
-    createdAt: 2026-07-23T16:44:11Z
-    updatedAt: 2026-07-27T21:31:24Z
-    closedAt: 2026-07-27T21:31:07Z
-    mergedAt: 2026-07-27T21:31:07Z
-    workTimestamps: &a2
-      - 2026-07-23T16:43:32Z
-      - 2026-07-23T16:50:46Z
-      - 2026-07-23T20:20:14Z
-      - 2026-07-23T20:27:30Z
-    workAdditions: 571
-    workDeletions: 134
-prsInProgress:
-  - title: "feat(pricing): add FiNet recruit workflow"
-    body: >-
-      ## Why
-
-
-      FiNet recruits follow a distinct pricing path and should not expose or apply non-FiNet business-mix and platform
-      assumptions. The recruit workflow also needs consistent fee precision and review layouts so entered values match
-      the pricing calculations.
-
-
-      ## What changed
-
-
-      - Add a FiNet recruit ...
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/70
-    repository: Myriad-Advisor-Solutions/ohcpwm-apps
-    state: merged
-    labels: *a1
-    additions: 1553
-    deletions: 277
-    changedFiles: 55
-    author: myriadas-clees
-    createdAt: 2026-07-23T16:44:11Z
-    updatedAt: 2026-07-27T21:31:24Z
-    closedAt: 2026-07-27T21:31:07Z
-    mergedAt: 2026-07-27T21:31:07Z
-    workTimestamps: *a2
-    workAdditions: 571
-    workDeletions: 134
+  estimatedHours: 0
+dailyCommits: []
+repositories: []
+pullRequests: []
+prsInProgress: []
 issues: []
 events: []
-commitMessages:
-  - repo: Myriad-Advisor-Solutions/myriadas-apps
-    messages:
-      - "revert(deploy): restore unified SWA"
-      - "fix(hub): route product app roots (#40)"
-    commits:
-      - sha: bf3c0c7d02cb9f24227362f4c49dcf22c1cd61e7
-        message: "revert(deploy): restore unified SWA"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/bf3c0c7d02cb9f24227362f4c49dcf22c1cd61e7
-        authoredAt: 2026-07-23T16:04:09Z
-      - sha: 74b0d02d981028e5773b295a68abf24142adf6cb
-        message: "fix(hub): route product app roots (#40)"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/74b0d02d981028e5773b295a68abf24142adf6cb
-        authoredAt: 2026-07-23T15:32:36Z
+commitMessages: []
 releases: []
 externalContributions: []
 codeReviews: []
 reviewComments: []
 aiReviews:
   codex:
-    prsReviewed: 2
-    comments: 6
-    reviews: 2
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
     fixed: 0
   cursor:
     prsReviewed: 0
     comments: 0
     reviews: 0
     fixed: 0
-  prsReviewed: 2
-  comments: 6
-  reviews: 2
+  prsReviewed: 0
+  comments: 0
+  reviews: 0
   fixed: 0
 hoursEstimate:
-  hours: 9.9
-  sessions: 2
-  sessionHours: 2
-  volumeHours: 9.9
+  hours: 0
+  sessions: 0
+  sessionHours: 0
+  volumeHours: 0
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

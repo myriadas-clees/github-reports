@@ -12,377 +12,48 @@ dateRange:
   from: 2026-08-10
   to: 2026-08-10
 stats:
-  totalCommits: 6
-  totalAdditions: 8277
-  totalDeletions: 7717
-  prsOpened: 5
-  prsMerged: 6
-  prsInProgress: 2
+  totalCommits: 0
+  totalAdditions: 0
+  totalDeletions: 0
+  prsOpened: 0
+  prsMerged: 0
+  prsInProgress: 0
   prsReviewed: 0
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 38.2
-dailyCommits:
-  - date: 2026-08-10
-    count: 6
-repositories:
-  - name: Myriad-Advisor-Solutions/myriadas-apps
-    commits: 4
-    prsOpened: 3
-    prsMerged: 4
-    issuesOpened: 0
-    issuesClosed: 0
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
-  - name: Myriad-Advisor-Solutions/ohcpwm-apps
-    commits: 2
-    prsOpened: 2
-    prsMerged: 2
-    issuesOpened: 0
-    issuesClosed: 0
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
-pullRequests:
-  - title: Streamline recruit editing and business mix UX in pricing
-    body: >-
-      - Default local development role is now `admin` (`OHPWM_LOCAL_ROLE=admin` in env examples); set
-      `OHPWM_LOCAL_ROLE=officer` to exercise officer visibility and holdco economics boundaries.
-
-      - Recruit model header uses a single **Edit recruit** popover with focus management, `aria-controls`, and a
-      **Mod...
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/111
-    repository: Myriad-Advisor-Solutions/ohcpwm-apps
-    state: open
-    labels: &a1 []
-    additions: 651
-    deletions: 183
-    changedFiles: 19
-    author: myriadas-clees
-    createdAt: 2026-08-10T21:45:06Z
-    updatedAt: 2026-08-11T13:41:41Z
-    closedAt: null
-    mergedAt: null
-    workTimestamps: &a2
-      - 2026-08-10T21:44:49Z
-    workAdditions: 651
-    workDeletions: 183
-  - title: Render FiNet PDF logos from SVG
-    body: >-
-      - Switch FiNet pricing report branding from separate PNG cover/inline logos to a single `logo_finet.svg` wordmark
-      asset.
-
-      - Extend report asset loading to parse SVG files into react-pdf `Svg`/`Path` primitives, while keeping PNG logos
-      for non-FiNet reports.
-
-      - Add a `ReportLogo` component in the PDF r...
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/109
-    repository: Myriad-Advisor-Solutions/ohcpwm-apps
-    state: merged
-    labels: []
-    additions: 284
-    deletions: 24
-    changedFiles: 8
-    author: myriadas-clees
-    createdAt: 2026-08-10T16:04:04Z
-    updatedAt: 2026-08-10T19:29:31Z
-    closedAt: 2026-08-10T19:29:27Z
-    mergedAt: 2026-08-10T19:29:27Z
-    workTimestamps:
-      - 2026-08-10T16:03:48Z
-      - 2026-08-10T16:11:30Z
-      - 2026-08-10T16:20:08Z
-      - 2026-08-10T16:43:01Z
-      - 2026-08-10T16:44:03Z
-    workAdditions: 284
-    workDeletions: 24
-  - title: Use shared AZURE_COSMOS settings for Proforma managed SWA
-    body: >-
-      ## Why
-
-
-      Proforma on the managed Hub SWA was configured with shared `AZURE_COSMOS_*` app settings (like PTO), but runtime
-      config only read `PROFORMA_COSMOS_*` variables. That mismatch prevented Cosmos-backed persistence from resolving
-      correctly on main deploys.
-
-
-      ## What changed
-
-
-      - Proforma runtime co...
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/83
-    repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: merged
-    labels:
-      - documentation
-      - "app: hub"
-      - "app: proforma"
-      - platform
-      - infrastructure
-    additions: 79
-    deletions: 68
-    changedFiles: 9
-    author: myriadas-clees
-    createdAt: 2026-08-10T16:45:06Z
-    updatedAt: 2026-08-10T18:49:00Z
-    closedAt: 2026-08-10T18:49:00Z
-    mergedAt: 2026-08-10T18:49:00Z
-    workTimestamps:
-      - 2026-08-10T16:44:47Z
-      - 2026-08-10T17:03:01Z
-      - 2026-08-10T18:00:31Z
-    workAdditions: 79
-    workDeletions: 68
-  - title: Redesign Proforma recruit intake with team-first step order
-    body: >-
-      ## Why
-
-
-      Recruit intake still followed an advisor-first flow that did not match how teams are modeled in practice. Platform
-      assumptions also carried legacy OHC and FiNet Wells/WFAFN fee inputs that are no longer part of the pricing model.
-
-
-      ## What changed
-
-
-      - Reordered the new-recruit wizard to **Firm...
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
-    repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: open
-    labels: &a3
-      - github-automation
-      - "app: proforma"
-      - platform
-      - deploy-preview
-    additions: 4102
-    deletions: 4096
-    changedFiles: 55
-    author: myriadas-clees
-    createdAt: 2026-08-10T18:50:49Z
-    updatedAt: 2026-08-10T19:11:32Z
-    closedAt: null
-    mergedAt: null
-    workTimestamps: &a4
-      - 2026-08-10T18:50:03Z
-      - 2026-08-10T18:59:37Z
-      - 2026-08-10T19:06:33Z
-    workAdditions: 4102
-    workDeletions: 4096
-  - title: "chore(proforma): Rename Pricing app to Proforma"
-    body: >-
-      ## Why
-
-
-      The recruit modeling product is user-facing and historically known as Proforma, but the codebase, routes,
-      packages, and infrastructure still used the internal name "Pricing." That mismatch made the app harder to navigate
-      in the monorepo and diverged from production configuration, which alrea...
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/81
-    repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: merged
-    labels:
-      - documentation
-      - github-automation
-      - "app: hub"
-      - "app: onboarding"
-      - "app: pto-tracker"
-      - platform
-      - infrastructure
-      - "app: pricing"
-    additions: 3062
-    deletions: 3340
-    changedFiles: 244
-    author: myriadas-clees
-    createdAt: 2026-08-10T15:22:48Z
-    updatedAt: 2026-08-10T16:08:02Z
-    closedAt: 2026-08-10T16:07:58Z
-    mergedAt: 2026-08-10T16:07:58Z
-    workTimestamps:
-      - 2026-08-10T15:21:38Z
-      - 2026-08-10T15:38:19Z
-      - 2026-08-10T16:00:53Z
-    workAdditions: 3062
-    workDeletions: 3340
-  - title: Add scoped Codex subtree agents and AGENTS.md guidance
-    body: >-
-      - Add `.codex/config.toml` with multi-agent support and subtree-scoped write permissions (`docs-write`,
-      `hub-write`, `ofac-write`, `packages-write`, `pricing-write`, `scripts-write`)
-
-      - Define six scoped Codex agents in `.codex/agents/` for `docs/`, `hub/`, `ofac/`, `packages/`, `pricing/`, and
-      `scri...
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/108
-    repository: Myriad-Advisor-Solutions/ohcpwm-apps
-    state: merged
-    labels: []
-    additions: 71
-    deletions: 0
-    changedFiles: 16
-    author: myriadas-clees
-    createdAt: 2026-08-07T18:22:42Z
-    updatedAt: 2026-08-10T16:22:09Z
-    closedAt: 2026-08-10T16:22:04Z
-    mergedAt: 2026-08-10T16:22:04Z
-    workTimestamps:
-      - 2026-08-10T16:17:25Z
-    workAdditions: 71
-    workDeletions: 0
-  - title: "chore: trim stale documentation and dead artifact"
-    body: >-
-      - trim superseded implementation planning from the vendor-management discovery record while retaining source
-      provenance and architectural decisions
-
-      - correct the PTO documentation index now that the application is implemented
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/80
-    repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: merged
-    labels:
-      - documentation
-      - "app: hub"
-      - "app: pto-tracker"
-    additions: 0
-    deletions: 0
-    changedFiles: 2
-    author: myriadas-clees
-    createdAt: 2026-08-07T19:30:38Z
-    updatedAt: 2026-08-10T15:57:44Z
-    closedAt: 2026-08-10T15:57:34Z
-    mergedAt: 2026-08-10T15:57:34Z
-    workTimestamps: []
-    workAdditions: 0
-    workDeletions: 0
-  - title: "docs(agents): require explorer and worker delegation"
-    body: |-
-      - require a concurrent Luna-high explorer and Terra-high worker for repository tasks
-      - define assignment, ownership, synthesis, validation, and fallback expectations
-      - retain specialist agents only for explicit or higher-priority routing
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/79
-    repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: merged
-    labels:
-      - documentation
-    additions: 28
-    deletions: 6
-    changedFiles: 4
-    author: myriadas-clees
-    createdAt: 2026-08-07T19:29:03Z
-    updatedAt: 2026-08-10T16:15:16Z
-    closedAt: 2026-08-10T16:15:13Z
-    mergedAt: 2026-08-10T16:15:13Z
-    workTimestamps:
-      - 2026-08-10T16:03:03Z
-    workAdditions: 28
-    workDeletions: 6
-prsInProgress:
-  - title: Streamline recruit editing and business mix UX in pricing
-    body: >-
-      - Default local development role is now `admin` (`OHPWM_LOCAL_ROLE=admin` in env examples); set
-      `OHPWM_LOCAL_ROLE=officer` to exercise officer visibility and holdco economics boundaries.
-
-      - Recruit model header uses a single **Edit recruit** popover with focus management, `aria-controls`, and a
-      **Mod...
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/111
-    repository: Myriad-Advisor-Solutions/ohcpwm-apps
-    state: open
-    labels: *a1
-    additions: 748
-    deletions: 202
-    changedFiles: 19
-    author: myriadas-clees
-    createdAt: 2026-08-10T21:45:06Z
-    updatedAt: 2026-08-11T13:41:41Z
-    closedAt: null
-    mergedAt: null
-    workTimestamps: *a2
-    workAdditions: 651
-    workDeletions: 183
-  - title: Redesign Proforma recruit intake with team-first step order
-    body: >-
-      ## Why
-
-
-      Recruit intake still followed an advisor-first flow that did not match how teams are modeled in practice. Platform
-      assumptions also carried legacy OHC and FiNet Wells/WFAFN fee inputs that are no longer part of the pricing model.
-
-
-      ## What changed
-
-
-      - Reordered the new-recruit wizard to **Firm...
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
-    repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: open
-    labels: *a3
-    additions: 1105
-    deletions: 860
-    changedFiles: 55
-    author: myriadas-clees
-    createdAt: 2026-08-10T18:50:49Z
-    updatedAt: 2026-08-10T19:11:32Z
-    closedAt: null
-    mergedAt: null
-    workTimestamps: *a4
-    workAdditions: 4102
-    workDeletions: 4096
+  estimatedHours: 0
+dailyCommits: []
+repositories: []
+pullRequests: []
+prsInProgress: []
 issues: []
 events: []
-commitMessages:
-  - repo: Myriad-Advisor-Solutions/myriadas-apps
-    messages:
-      - Use shared AZURE_COSMOS settings for Proforma managed SWA (#83)
-      - "docs(agents): require explorer and worker delegation (#79)"
-      - "chore(proforma): Rename Pricing app to Proforma (#81)"
-      - "chore: trim stale documentation and dead artifact (#80)"
-    commits:
-      - sha: 193609c11a50185b62b2e9eb5e93191a23603bd5
-        message: Use shared AZURE_COSMOS settings for Proforma managed SWA (#83)
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/193609c11a50185b62b2e9eb5e93191a23603bd5
-        authoredAt: 2026-08-10T18:49:00Z
-      - sha: 7cbe1df0ccd4bfd13295fef645069527fff8538b
-        message: "docs(agents): require explorer and worker delegation (#79)"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7cbe1df0ccd4bfd13295fef645069527fff8538b
-        authoredAt: 2026-08-10T16:15:13Z
-      - sha: 363b84ebf066ff9644b7196d94102c4bbb0be266
-        message: "chore(proforma): Rename Pricing app to Proforma (#81)"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/363b84ebf066ff9644b7196d94102c4bbb0be266
-        authoredAt: 2026-08-10T16:07:58Z
-      - sha: 22cf3ed5ce4441e86a1bc62b133e7914ab470395
-        message: "chore: trim stale documentation and dead artifact (#80)"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/22cf3ed5ce4441e86a1bc62b133e7914ab470395
-        authoredAt: 2026-08-10T15:57:34Z
-  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
-    messages:
-      - Render FiNet PDF logos from SVG (#109)
-      - "feat(codex): Add scoped Codex subtree agents and AGENTS.md guidance (#108)"
-    commits:
-      - sha: 8015ffae8be629c47a70f15a3029e554ccfa2efd
-        message: Render FiNet PDF logos from SVG (#109)
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8015ffae8be629c47a70f15a3029e554ccfa2efd
-        authoredAt: 2026-08-10T19:29:26Z
-      - sha: 41da63705f163a0edf201414160d7d0d5a1f2f79
-        message: "feat(codex): Add scoped Codex subtree agents and AGENTS.md guidance (#108)"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/41da63705f163a0edf201414160d7d0d5a1f2f79
-        authoredAt: 2026-08-10T16:22:04Z
+commitMessages: []
 releases: []
 externalContributions: []
 codeReviews: []
 reviewComments: []
 aiReviews:
   codex:
-    prsReviewed: 5
-    comments: 24
-    reviews: 10
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
     fixed: 0
   cursor:
     prsReviewed: 0
     comments: 0
     reviews: 0
     fixed: 0
-  prsReviewed: 5
-  comments: 24
-  reviews: 10
+  prsReviewed: 0
+  comments: 0
+  reviews: 0
   fixed: 0
 hoursEstimate:
-  hours: 38.2
-  sessions: 2
-  sessionHours: 4.6
-  volumeHours: 38.2
+  hours: 0
+  sessions: 0
+  sessionHours: 0
+  volumeHours: 0
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

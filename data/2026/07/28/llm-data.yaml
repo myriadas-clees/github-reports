@@ -1,58 +1,23 @@
 title: Jul 28
-subtitle: excelerate, github & ofac
+subtitle: Daily status
 overview: ""
 summaries:
   - type: repo-summary
     heading: Projects worked on
-    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps and Myriad-Advisor-Solutions/ohcpwm-apps.
-    chips:
-      - label: Myriad-Advisor-Solutions/myriadas-apps
-        value: 5 PRs
-      - label: Myriad-Advisor-Solutions/ohcpwm-apps
-        value: 1 PRs
+    body: No repository activity recorded.
+    chips: []
   - type: commit-summary
     heading: Commits and line changes
-    body: 0 commits with +401 / −205 lines.
+    body: 0 commits with +0 / −0 lines.
     chips:
       - label: Commits
         value: "0"
         color: green
       - label: Additions
-        value: "+401"
+        value: "+0"
         color: green
       - label: Deletions
-        value: −205
+        value: −0
         color: red
-  - type: review-summary
-    heading: AI code reviews
-    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 4 reviews, 6 comments, 4 PRs."
-    chips:
-      - label: Codex
-        value: 4 reviews · 6 comments · 4 PRs
-  - type: activity-pattern
-    heading: Estimated engineering hours
-    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-      tracked, elapsed, or billed time.
-    chips:
-      - label: Estimated engineering hours
-        value: ~8.8h
-highlights:
-  - type: pr
-    title: "fix(platform): repair API and navigation"
-    repo: Myriad-Advisor-Solutions/myriadas-apps
-    meta: in progress · +36 −3
-    body: Still open at the end of the reporting window.
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/63
-  - type: pr
-    title: "fix(excelerate): reject missing templates"
-    repo: Myriad-Advisor-Solutions/myriadas-apps
-    meta: in progress · +123 −160
-    body: Still open at the end of the reporting window.
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/57
-  - type: pr
-    title: "fix(ofac): align browser and API behavior"
-    repo: Myriad-Advisor-Solutions/ohcpwm-apps
-    meta: in progress · +172 −19
-    body: Still open at the end of the reporting window.
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/73
+highlights: []
 ticker: []
