@@ -1,0 +1,126 @@
+title: Jul 31
+subtitle: pricing, onboarding & pto
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 2 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 4 commits with +4,082 / −2,945 lines.
+    chips:
+      - label: Commits
+        value: "4"
+        color: green
+      - label: Additions
+        value: +4,082
+        color: green
+      - label: Deletions
+        value: −2,945
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 13 reviews with 13 comments.
+    chips:
+      - label: Reviews
+        value: "13"
+      - label: Comments
+        value: "13"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 4 reviews, 12 comments, 2 PRs; Cursor: 3 reviews, 5
+      comments, 1 PR."
+    chips:
+      - label: Codex
+        value: 4 reviews · 12 comments · 2 PRs
+      - label: Cursor
+        value: 3 reviews · 5 comments · 1 PR
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~34.3h
+highlights:
+  - type: pr
+    title: "feat(pricing): add entity and state costs"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +888 −18
+    body: |-
+      Why
+
+      Pricing is the proforma source of truth, but the supplied entity, state,
+      staffing, and setup-cost artifacts were not represented in the live
+      workflow or multi-year outputs.
+
+      What changed
+
+      - Add t
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
+  - type: pr
+    title: "fix(pricing): show yearly projections"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +1821 −1801
+    body: >-
+      Why
+
+
+      Issue #28 requires a visible three-to-five-year proposed budget. The Pricing model calculated these years, but the
+      recruit review only displayed the selected duration.
+
+
+      What changed
+
+
+      - Render the
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/71
+  - type: pr
+    title: "fix(pto): remove production personas"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +74 −68
+    body: >-
+      Why
+
+
+      The product deployment workflow compiled PTO Tracker in demo authentication mode, exposing local test personas in
+      the production sign-in screen.
+
+
+      What changed
+
+
+      - Build PTO Tracker deployments wit
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/56
+  - type: pr
+    title: "feat(onboarding): archive workstreams"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +1299 −1058
+    body: >-
+      Why
+
+
+      Alpha workspaces generate a workstream and task set, but the supported UI had no safe cleanup lifecycle.
+      Disposable test data therefore remained in active selectors after verification.
+
+
+      What chan
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/47
+  - type: pr
+    title: "feat(workflows): restore review integrity"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +633 −52
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/25
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(pricing): add entity and state costs" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(pricing): show yearly projections" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(pto): remove production personas" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(onboarding): archive workstreams" in Myriad-Advisor-Solutions/myriadas-apps'

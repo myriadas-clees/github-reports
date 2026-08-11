@@ -1,0 +1,118 @@
+title: Jul 29
+subtitle: pricing, dependabot & excelerate
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps and Myriad-Advisor-Solutions/ohcpwm-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 1 PRs
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 2 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 9 commits with +34,593 / −9,932 lines.
+    chips:
+      - label: Commits
+        value: "9"
+        color: green
+      - label: Additions
+        value: +34,593
+        color: green
+      - label: Deletions
+        value: −9,932
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 1 reviews with 1 comments.
+    chips:
+      - label: Reviews
+        value: "1"
+      - label: Comments
+        value: "1"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 35 reviews, 55 comments, 7 PRs; Cursor: 4 reviews,
+      5 comments, 4 PRs."
+    chips:
+      - label: Codex
+        value: 35 reviews · 55 comments · 7 PRs
+      - label: Cursor
+        value: 4 reviews · 5 comments · 4 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~41.6h
+highlights:
+  - type: pr
+    title: "fix(pricing): normalize expense label edits"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +103 −50
+    body: >-
+      Why
+
+
+      Clearing a custom-expense label put a temporarily empty string into the validated pricing model. Render-time
+      scenario calculations parsed that model and threw a ZodError before the user could typ
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/75
+  - type: pr
+    title: "feat(pricing): replace Proforma app"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +32367 −9023
+    body: >-
+      ## Why
+
+
+      Pricing is the future baseline for advisor pricing workflows. The existing Proforma runtime no longer matches the
+      source product or the monorepo's static frontend plus Azure Functions architec
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/64
+  - type: pr
+    title: "fix(pricing): align FiNet model with workbook"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +2065 −840
+    body: >-
+      Why
+
+
+      FiNet scenario assumptions and payout outputs had drifted from the approved workbook, producing discrepancies in
+      the pricing UI and generated reports. The assumptions and result presentation also
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/76
+  - type: pr
+    title: "fix(ofac): align browser and API behavior"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +12 −6
+    body: >-
+      ## Why
+
+
+      Browser-created screenings did not preserve the direct API request semantics. The UI flattened addresses and
+      forced an individual type, causing valid OFAC matches to disappear or differ from d
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/73
+  - type: pr
+    title: "fix(platform): repair API and navigation"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +0 −0
+    body: |-
+      Why
+
+      Excelerate dropped its route namespace when the configured API base was the deployed `/api` root.
+
+      What changed
+
+      - Normalize Excelerate API URLs for host-only, `/api`, and `/api/excelerate` base 
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/63
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(pricing): normalize expense label edits" in Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(pricing): replace Proforma app" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(pricing): align FiNet model with workbook" in Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(ofac): align browser and API behavior" in Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(platform): repair API and navigation" in Myriad-Advisor-Solutions/myriadas-apps'

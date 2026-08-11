@@ -1,0 +1,46 @@
+title: Jul 14
+subtitle: unify ohcpwm & workflows
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/ohcpwm-apps and Myriad-Advisor-Solutions/myriadas-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 1 PRs
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 1 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 12 commits with +2,681 / −706 lines.
+    chips:
+      - label: Commits
+        value: "12"
+        color: green
+      - label: Additions
+        value: +2,681
+        color: green
+      - label: Deletions
+        value: −706
+        color: red
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~12.2h
+highlights:
+  - type: pr
+    title: "feat(workflows): restore review integrity"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +633 −52
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/25
+  - type: pr
+    title: Unify OHCPWM platform and OFAC
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +7616 −2416
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/58
+ticker: []

@@ -1,0 +1,262 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-07-14
+  to: 2026-07-14
+stats:
+  totalCommits: 12
+  totalAdditions: 2681
+  totalDeletions: 706
+  prsOpened: 2
+  prsMerged: 0
+  prsInProgress: 2
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 12.2
+dailyCommits:
+  - date: 2026-07-14
+    count: 12
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 12
+    prsOpened: 1
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 0
+    prsOpened: 1
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests:
+  - title: "feat(workflows): restore review integrity"
+    body: >-
+      Why
+
+
+      Four app workflows had integrity gaps at their serverless boundaries: PTO cancellation and request policy were
+      incomplete, Excelerate review receipts were replayable, Pricing report snapshots lacked input identity, and
+      Valuation approvals lacked immutable provenance.
+
+
+      What changed
+
+
+      - Enforce PT...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/25
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a1
+      - documentation
+      - "app: pto-tracker"
+      - "app: excelerate"
+      - "app: valuation"
+      - platform
+      - "app: pricing"
+    additions: 0
+    deletions: 0
+    changedFiles: 43
+    author: myriadas-clees
+    createdAt: 2026-07-14T19:40:30Z
+    updatedAt: 2026-07-31T19:37:56Z
+    closedAt: null
+    mergedAt: null
+    workTimestamps: &a2 []
+    workAdditions: 0
+    workDeletions: 0
+  - title: Unify OHCPWM platform and OFAC
+    body: >-
+      - publish the completed FINET Pricing model work alongside shared product-platform consolidation
+
+      - move OFAC production authentication to Azure Static Web Apps with the intentional SWA Principal bridge into
+      Azure Functions
+
+      - add the first authenticated Functions identity endpoint and static-safe OFA...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/58
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a3 []
+    additions: 2681
+    deletions: 706
+    changedFiles: 148
+    author: myriadas-clees
+    createdAt: 2026-07-14T20:21:25Z
+    updatedAt: 2026-07-22T20:23:04Z
+    closedAt: 2026-07-20T15:26:30Z
+    mergedAt: 2026-07-20T15:26:30Z
+    workTimestamps: &a4
+      - 2026-07-14T20:20:53Z
+      - 2026-07-14T20:26:26Z
+      - 2026-07-14T20:28:00Z
+      - 2026-07-14T20:29:57Z
+      - 2026-07-14T20:34:22Z
+      - 2026-07-14T20:38:15Z
+      - 2026-07-14T20:42:43Z
+      - 2026-07-14T21:19:42Z
+      - 2026-07-14T21:26:20Z
+      - 2026-07-14T21:33:18Z
+      - 2026-07-14T21:38:01Z
+      - 2026-07-14T21:43:09Z
+    workAdditions: 2681
+    workDeletions: 706
+prsInProgress:
+  - title: "feat(workflows): restore review integrity"
+    body: >-
+      Why
+
+
+      Four app workflows had integrity gaps at their serverless boundaries: PTO cancellation and request policy were
+      incomplete, Excelerate review receipts were replayable, Pricing report snapshots lacked input identity, and
+      Valuation approvals lacked immutable provenance.
+
+
+      What changed
+
+
+      - Enforce PT...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/25
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a1
+    additions: 633
+    deletions: 52
+    changedFiles: 43
+    author: myriadas-clees
+    createdAt: 2026-07-14T19:40:30Z
+    updatedAt: 2026-07-31T19:37:56Z
+    closedAt: null
+    mergedAt: null
+    workTimestamps: *a2
+    workAdditions: 0
+    workDeletions: 0
+  - title: Unify OHCPWM platform and OFAC
+    body: >-
+      - publish the completed FINET Pricing model work alongside shared product-platform consolidation
+
+      - move OFAC production authentication to Azure Static Web Apps with the intentional SWA Principal bridge into
+      Azure Functions
+
+      - add the first authenticated Functions identity endpoint and static-safe OFA...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/58
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: *a3
+    additions: 7616
+    deletions: 2416
+    changedFiles: 148
+    author: myriadas-clees
+    createdAt: 2026-07-14T20:21:25Z
+    updatedAt: 2026-07-22T20:23:04Z
+    closedAt: 2026-07-20T15:26:30Z
+    mergedAt: 2026-07-20T15:26:30Z
+    workTimestamps: *a4
+    workAdditions: 2681
+    workDeletions: 706
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "test(ofac): handle timeout rejection promptly"
+      - "fix(pricing): respect selected review scenario"
+      - "fix(pricing): handle final FINET scenario"
+      - "fix(pricing): parse workbook model boundary"
+      - "fix(pricing): make model summaries explicit"
+      - "fix(pricing): type scenario and FINET state"
+      - "fix(pricing): separate model input from state"
+      - "fix(pricing): preserve optional FINET inputs"
+      - "fix(ofac): narrow screening fetch contract"
+      - "test(pricing): parse repository platform fixture"
+      - "fix(pricing): require parsed FINET defaults"
+      - "feat: unify OHCPWM platform and OFAC"
+    commits:
+      - sha: 2de609818934ede54c0ab6f87f7439d30f08d02d
+        message: "test(ofac): handle timeout rejection promptly"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2de609818934ede54c0ab6f87f7439d30f08d02d
+        authoredAt: 2026-07-14T21:43:09Z
+      - sha: c4012592948d7151e6c93caf521d86f3a9ed2965
+        message: "fix(pricing): respect selected review scenario"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c4012592948d7151e6c93caf521d86f3a9ed2965
+        authoredAt: 2026-07-14T21:38:01Z
+      - sha: 678a56c56e45e61cb1c73bec660421a4a277495e
+        message: "fix(pricing): handle final FINET scenario"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/678a56c56e45e61cb1c73bec660421a4a277495e
+        authoredAt: 2026-07-14T21:33:18Z
+      - sha: 80cf47cc19dbcf5c658db1b85b60933ba51f279a
+        message: "fix(pricing): parse workbook model boundary"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/80cf47cc19dbcf5c658db1b85b60933ba51f279a
+        authoredAt: 2026-07-14T21:26:20Z
+      - sha: 202997edb4c5b912e3ce81efabb44120d999e262
+        message: "fix(pricing): make model summaries explicit"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/202997edb4c5b912e3ce81efabb44120d999e262
+        authoredAt: 2026-07-14T21:19:42Z
+      - sha: a100e3117ffae6e0b420cc40717267b31e6fbaf2
+        message: "fix(pricing): type scenario and FINET state"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a100e3117ffae6e0b420cc40717267b31e6fbaf2
+        authoredAt: 2026-07-14T20:42:43Z
+      - sha: 07ce57858733f5124ae6a5e07ef5db48ceda5865
+        message: "fix(pricing): separate model input from state"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/07ce57858733f5124ae6a5e07ef5db48ceda5865
+        authoredAt: 2026-07-14T20:38:15Z
+      - sha: 88c18257df9df6d22f354cc9c232dd5c5ba70c5f
+        message: "fix(pricing): preserve optional FINET inputs"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/88c18257df9df6d22f354cc9c232dd5c5ba70c5f
+        authoredAt: 2026-07-14T20:34:22Z
+      - sha: bb2f7a2c9c8c2410032eecb0d4b717f1e21b5214
+        message: "fix(ofac): narrow screening fetch contract"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/bb2f7a2c9c8c2410032eecb0d4b717f1e21b5214
+        authoredAt: 2026-07-14T20:29:57Z
+      - sha: 757414932bb35df27a261b31dc305a81b5491c1c
+        message: "test(pricing): parse repository platform fixture"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/757414932bb35df27a261b31dc305a81b5491c1c
+        authoredAt: 2026-07-14T20:28:00Z
+      - sha: 16bd3ab07d6b9200a72db1743d271efeadb18ddf
+        message: "fix(pricing): require parsed FINET defaults"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/16bd3ab07d6b9200a72db1743d271efeadb18ddf
+        authoredAt: 2026-07-14T20:26:26Z
+      - sha: a75fce197499f03d7a7e19fe5dcfc8aa927bc627
+        message: "feat: unify OHCPWM platform and OFAC"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a75fce197499f03d7a7e19fe5dcfc8aa927bc627
+        authoredAt: 2026-07-14T20:20:53Z
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 0
+  comments: 0
+  reviews: 0
+  fixed: 0
+hoursEstimate:
+  hours: 12.2
+  sessions: 1
+  sessionHours: 2
+  volumeHours: 12.2
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""

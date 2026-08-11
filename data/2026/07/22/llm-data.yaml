@@ -1,0 +1,110 @@
+title: Jul 22
+subtitle: actions, benchmark uncached & deploy
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/ohcpwm-apps and Myriad-Advisor-Solutions/myriadas-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 2 PRs
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 1 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 4 commits with +224 / −179 lines.
+    chips:
+      - label: Commits
+        value: "4"
+        color: green
+      - label: Additions
+        value: "+224"
+        color: green
+      - label: Deletions
+        value: −179
+        color: red
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 2 reviews, 5 comments, 2 PRs."
+    chips:
+      - label: Codex
+        value: 2 reviews · 5 comments · 2 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~7.8h
+highlights:
+  - type: pr
+    title: "ci(actions): reduce automatic runtime"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +120 −95
+    body: >-
+      Why
+
+
+      Pull requests were spending runner minutes on duplicated validation, serialized builds, and automatic Azure
+      preview deployments that are not needed for every change.
+
+
+      What changed
+
+
+      - Run `verify`
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/68
+  - type: pr
+    title: "ci: gate previews behind PR label"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +65 −40
+    body: >-
+      Why
+
+
+      Unlabeled pull requests were consuming Azure preview runners on every update, while verification repeated
+      production build work.
+
+
+      What changed
+
+
+      * Keep the existing `Verify` workflow/job as the PR
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/38
+  - type: pr
+    title: "fix(pricing): keep advisor links in app"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +0 −0
+    body: >-
+      Why
+
+
+      Advisor-name links used root-relative `/recruits/...` URLs. In the static `/pricing` deployment, those URLs left
+      the pricing app and returned users to the hub.
+
+
+      What changed
+
+
+      - Route advisor-name
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/67
+  - type: pr
+    title: "feat(deploy): ready apps for Cosmos"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +3 −22
+    body: >-
+      Why
+
+
+      Stateful product deployments need a consistent Azure Static Web Apps and Cosmos DB path. PTO still targeted
+      Microsoft Lists, while the Hub deployment bundled product APIs into a shared runtime th
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/37
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "ci(actions): reduce automatic runtime" in Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "ci: gate previews behind PR label" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(pricing): keep advisor links in app" in Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(deploy): ready apps for Cosmos" in Myriad-Advisor-Solutions/myriadas-apps'

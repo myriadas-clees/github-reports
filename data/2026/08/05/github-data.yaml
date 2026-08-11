@@ -1,0 +1,241 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-08-05
+  to: 2026-08-05
+stats:
+  totalCommits: 6
+  totalAdditions: 1075
+  totalDeletions: 240
+  prsOpened: 0
+  prsMerged: 6
+  prsInProgress: 0
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 15.5
+dailyCommits:
+  - date: 2026-08-05
+    count: 6
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 6
+    prsOpened: 0
+    prsMerged: 6
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests:
+  - title: "fix(pricing): give payout details room to breathe"
+    body: >-
+      - Reorganize the expanded recruit payout detail into a vertical proposed-payout calculation and a separate Current
+      FiNet benchmark.
+
+      - Preserve every financial figure while giving the primary Net Payout result and comparison room to scan.
+
+      - Add regression coverage for the semantic grouping.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/100
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 0
+    deletions: 0
+    changedFiles: 8
+    author: myriadas-clees
+    createdAt: 2026-08-04T19:22:39Z
+    updatedAt: 2026-08-05T12:42:53Z
+    closedAt: 2026-08-05T12:42:53Z
+    mergedAt: 2026-08-05T12:42:53Z
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+  - title: "test(pricing): add auditable workbook fixtures (#20)"
+    body: |-
+      - add a checksum-pinned, auditable fixture for the checked-in pricing workbook template
+      - capture exact source cells, cached WFCS/Schwab values, and the approved B/D E&O reconciliation
+      - document that FINET is a schedule/current-baseline assumption because the template has no FINET output sheet
+      - re...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/88
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 361
+    deletions: 79
+    changedFiles: 10
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:35:20Z
+    updatedAt: 2026-08-05T12:33:38Z
+    closedAt: 2026-08-05T12:33:38Z
+    mergedAt: 2026-08-05T12:33:38Z
+    workTimestamps:
+      - 2026-08-05T12:02:12Z
+      - 2026-08-05T12:09:32Z
+    workAdditions: 361
+    workDeletions: 79
+  - title: "fix(pricing): align FINET reports"
+    body: >-
+      - Use FINET-specific logo assets in generated PDFs and cover branding regression coverage.
+
+      - Enforce the confirmed 92% FINET payout for every product, including fixed insurance.
+
+      - Remove unclear “OHC Advantage” wording; rename the advisory-platform basis to “Wells Advisory Platform Fee”;
+      present FIN...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/83
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 0
+    deletions: 0
+    changedFiles: 15
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:32:32Z
+    updatedAt: 2026-08-05T11:56:29Z
+    closedAt: 2026-08-05T11:56:29Z
+    mergedAt: 2026-08-05T11:56:29Z
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+  - title: "fix(pricing): normalize duplicated recruit models"
+    body: |-
+      - Deep-copy and normalize duplicated pricing models so the copied recruit's advisor name is updated independently.
+      - Apply the shared behavior to SQLite, Graph, and Cosmos persistence adapters.
+      - Add persistence plus generated PDF/XLSX regression coverage.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/82
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 0
+    deletions: 0
+    changedFiles: 8
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:32:23Z
+    updatedAt: 2026-08-05T11:56:28Z
+    closedAt: 2026-08-05T11:56:28Z
+    mergedAt: 2026-08-05T11:56:28Z
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+  - title: "feat(pricing): add permissioned holdco revenue"
+    body: |-
+      Adds the requested AUM, Top Line Revenue, and Revenue to Holdco views to the Advisor Pricing pipeline.
+
+      - Renames the table labels to **AUM** and **Top Line Revenue**
+      - Adds an admin-only **Revenue to Holdco** column and dashboard metric
+      - Adds totals rows for the visible advisor/team rows
+      - Shapes ...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/81
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 356
+    deletions: 82
+    changedFiles: 32
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:32:18Z
+    updatedAt: 2026-08-05T12:33:36Z
+    closedAt: 2026-08-05T12:33:35Z
+    mergedAt: 2026-08-05T12:33:35Z
+    workTimestamps:
+      - 2026-08-05T11:58:50Z
+    workAdditions: 356
+    workDeletions: 82
+  - title: "feat(pricing): compare Schwab and WFCS against current FiNet"
+    body: |-
+      Closes #22.
+
+      ## What changed
+      - Extends the shared current-FiNet comparison model to Schwab and WFCS proposals.
+      - Adds current-FiNet net payout, dollar delta, and percentage-point delta to dashboard, PDF, and XLSX outputs.
+      - Adds regression coverage for comparison math, dashboard presentation, and PD...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/87
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 358
+    deletions: 79
+    changedFiles: 26
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:33:33Z
+    updatedAt: 2026-08-05T12:33:37Z
+    closedAt: 2026-08-05T12:33:37Z
+    mergedAt: 2026-08-05T12:33:37Z
+    workTimestamps:
+      - 2026-08-05T12:01:25Z
+      - 2026-08-05T12:07:56Z
+    workAdditions: 358
+    workDeletions: 79
+prsInProgress: []
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "fix(pricing): give payout details room to breathe (#100)"
+      - "test(pricing): add auditable workbook fixtures (#88) [skip ci]"
+      - "feat(pricing): compare Schwab and WFCS against current FiNet (#87)"
+      - "feat(pricing): add permissioned holdco revenue (#81)"
+      - "fix(pricing): align FINET reports (#83) [skip ci]"
+      - "fix(pricing): normalize duplicated recruit models (#82)"
+    commits:
+      - sha: 0a42c98be7a1fccc360c8f610b92370b657c1608
+        message: "fix(pricing): give payout details room to breathe (#100)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0a42c98be7a1fccc360c8f610b92370b657c1608
+        authoredAt: 2026-08-05T12:42:53Z
+      - sha: aa9738508297342c39c3a8199ec1598f2c039369
+        message: "test(pricing): add auditable workbook fixtures (#88) [skip ci]"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/aa9738508297342c39c3a8199ec1598f2c039369
+        authoredAt: 2026-08-05T12:33:35Z
+      - sha: e1b50b63d4015781dbcd6106abc067b63283124b
+        message: "feat(pricing): compare Schwab and WFCS against current FiNet (#87)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e1b50b63d4015781dbcd6106abc067b63283124b
+        authoredAt: 2026-08-05T12:33:34Z
+      - sha: aa4609203282605983b9d97a45568e89b911031b
+        message: "feat(pricing): add permissioned holdco revenue (#81)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/aa4609203282605983b9d97a45568e89b911031b
+        authoredAt: 2026-08-05T12:33:34Z
+      - sha: 0ea04cd003dfba57d6edcc1cd013f12b77aae4de
+        message: "fix(pricing): align FINET reports (#83) [skip ci]"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0ea04cd003dfba57d6edcc1cd013f12b77aae4de
+        authoredAt: 2026-08-05T11:56:27Z
+      - sha: 70cd66185db3b6942e68ee57f3e63c16a91bd268
+        message: "fix(pricing): normalize duplicated recruit models (#82)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/70cd66185db3b6942e68ee57f3e63c16a91bd268
+        authoredAt: 2026-08-05T11:56:26Z
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 0
+  comments: 0
+  reviews: 0
+  fixed: 0
+hoursEstimate:
+  hours: 15.5
+  sessions: 1
+  sessionHours: 0.8
+  volumeHours: 15.5
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""

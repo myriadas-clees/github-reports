@@ -1,0 +1,47 @@
+title: Aug 11
+subtitle: ofac, auth & streamline recruit
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: No repository activity recorded.
+    chips: []
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 0 commits with +0 / −0 lines.
+    chips:
+      - label: Commits
+        value: "0"
+        color: green
+      - label: Additions
+        value: "+0"
+        color: green
+      - label: Deletions
+        value: −0
+        color: red
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 3 reviews, 7 comments, 3 PRs."
+    chips:
+      - label: Codex
+        value: 3 reviews · 7 comments · 3 PRs
+highlights:
+  - type: pr
+    title: "feat(ofac): add durable scheduled sync lease"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +685 −27
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/89
+  - type: pr
+    title: "feat(auth): centralize Azure runtime auth"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +191 −115
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/79
+  - type: pr
+    title: "refactor(ofac): migrate API routes to Azure Functions"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +1669 −547
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/85
+ticker: []

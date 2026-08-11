@@ -1,0 +1,85 @@
+title: Aug 6
+subtitle: pricing & hub home
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/ohcpwm-apps and Myriad-Advisor-Solutions/myriadas-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 2 PRs
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 1 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 3 commits with +1,060 / −222 lines.
+    chips:
+      - label: Commits
+        value: "3"
+        color: green
+      - label: Additions
+        value: +1,060
+        color: green
+      - label: Deletions
+        value: −222
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 2 reviews with 2 comments.
+    chips:
+      - label: Reviews
+        value: "2"
+      - label: Comments
+        value: "2"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 2 reviews, 4 comments, 1 PR."
+    chips:
+      - label: Codex
+        value: 2 reviews · 4 comments · 1 PR
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~10.6h
+highlights:
+  - type: pr
+    title: "fix(pricing): remove FiNet comparisons from PDFs"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +19 −115
+    body: |-
+      - remove the Net Difference card from Advisor Pricing PDFs
+      - remove Current FiNet values from the executive summary
+      - remove the dedicated Current FiNet Comparison PDF page
+      - preserve the underlying c
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/102
+  - type: pr
+    title: "fix(pricing): prevent work state selector crashes"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +343 −11
+    body: |-
+      - Replace free-text Work State fields with a native selector for all 50 states plus DC.
+      - Safely normalize incomplete new-recruit drafts and reject invalid new values at the API boundary.
+      - Preserve l
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/74
+  - type: pr
+    title: "feat: hub home, OFAC intake UX, and pricing architecture docs"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +698 −96
+    body: >-
+      - Return-to-Hub Home button in shared `AppShell` (myriadas-style), with `NEXT_PUBLIC_HUB_URL` injected by local
+      launchers and suite static builds
+
+      - OFAC intake defaults country to United States and au
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/107
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(pricing): remove FiNet comparisons from PDFs" in Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(pricing): prevent work state selector crashes" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat: hub home, OFAC intake UX, and pricing architecture docs" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'

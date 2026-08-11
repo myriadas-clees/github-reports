@@ -1,0 +1,90 @@
+title: Aug 7
+subtitle: agents, scoped codex & trim stale
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps and Myriad-Advisor-Solutions/ohcpwm-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 5 PRs
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 1 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 3 commits with +2,648 / −706 lines.
+    chips:
+      - label: Commits
+        value: "3"
+        color: green
+      - label: Additions
+        value: +2,648
+        color: green
+      - label: Deletions
+        value: −706
+        color: red
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 6 reviews, 24 comments, 3 PRs."
+    chips:
+      - label: Codex
+        value: 6 reviews · 24 comments · 3 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~18.4h
+highlights:
+  - type: pr
+    title: "fix(hub): keep bun:sqlite out of managed SWA Functions bundle"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +33 −15
+    body: >-
+      - Hub deploy after #75 reported success but every `/api/*/health` probe returned 404 because the managed Functions
+      worker crashed on load.
+
+      - Cause: onboarding `managed-swa.js` embedded `import … from 
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/77
+  - type: pr
+    title: "feat(agents): configure scoped Codex agents"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +354 −14
+    body: |-
+      - replace the root-only guidance with concise repository-wide instructions and scoped AGENTS.md files
+      - add application-specific Codex agents using gpt-5.6-luna with explicit reasoning levels
+      - apply 
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/78
+  - type: pr
+    title: "feat(onboarding): add vendor management workflows and dashboard"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +2018 −617
+    body: >-
+      ## Why
+
+
+      Onboarding needs a complete vendor-management workflow for intake, due diligence, contract review, approvals,
+      documents, lifecycle tracking, and follow-ups while preserving the existing client
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/75
+  - type: pr
+    title: "chore: trim stale documentation and dead artifact"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +7 −53
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/80
+  - type: pr
+    title: "docs(agents): require explorer and worker delegation"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +74 −0
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/79
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(hub): keep bun:sqlite out of managed SWA Functions bundle" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(agents): configure scoped Codex agents" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(onboarding): add vendor management workflows and dashboard" in
+      Myriad-Advisor-Solutions/myriadas-apps'

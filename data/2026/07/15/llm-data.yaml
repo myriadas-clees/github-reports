@@ -1,0 +1,103 @@
+title: Jul 15
+subtitle: static web, harden preview & scope preview
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps and Myriad-Advisor-Solutions/ohcpwm-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 2 PRs
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 2 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 16 commits with +822 / −839 lines.
+    chips:
+      - label: Commits
+        value: "16"
+        color: green
+      - label: Additions
+        value: "+822"
+        color: green
+      - label: Deletions
+        value: −839
+        color: red
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 2 reviews, 3 comments, 2 PRs."
+    chips:
+      - label: Codex
+        value: 2 reviews · 3 comments · 2 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~13.5h
+highlights:
+  - type: pr
+    title: "ci: harden PR preview credentials"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +58 −3
+    body: |-
+      ## What changed
+
+      - build Hub artifacts without Azure deployment credentials
+      - deploy from a fresh runner with PR-write permission scoped to that job
+      - cancel stale runs for the same PR preview
+
+      ## Why
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/27
+  - type: pr
+    title: "ci: scope PR preview permissions"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +6 −1
+    body: |-
+      ## What changed
+
+      - keep the workflow-level GitHub token read-only
+      - grant pull-request write access only to deploy and close-preview jobs
+
+      ## Why
+
+      PR-controlled build and test scripts previously ran w
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/60
+  - type: pr
+    title: "ci: add Static Web Apps PR previews"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +265 −710
+    body: |-
+      ## What changed
+
+      - Deploy the Pricing Azure Static Web App for pull request events.
+      - Close the Azure preview environment when the pull request closes.
+      - Allow the workflow to post the preview URL on 
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/59
+  - type: pr
+    title: "ci: add Static Web Apps PR previews"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +493 −125
+    body: |-
+      ## What changed
+
+      - Deploy the configured Hub Azure Static Web App for pull request events.
+      - Close the Hub preview environment when the pull request closes.
+      - Allow the workflow to post the preview UR
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/26
+  - type: pr
+    title: Unify OHCPWM platform and OFAC
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +7616 −2416
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/58
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "ci: harden PR preview credentials" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "ci: scope PR preview permissions" in Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "ci: add Static Web Apps PR previews" in Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "ci: add Static Web Apps PR previews" in Myriad-Advisor-Solutions/myriadas-apps'

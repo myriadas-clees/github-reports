@@ -1,0 +1,274 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-07-22
+  to: 2026-07-22
+stats:
+  totalCommits: 4
+  totalAdditions: 224
+  totalDeletions: 179
+  prsOpened: 3
+  prsMerged: 4
+  prsInProgress: 0
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 7.8
+dailyCommits:
+  - date: 2026-07-22
+    count: 4
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 2
+    prsOpened: 2
+    prsMerged: 2
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 2
+    prsOpened: 1
+    prsMerged: 2
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests:
+  - title: "ci: benchmark uncached runtime"
+    body: >-
+      Why
+
+
+      Measure runner-minute impact of the CI runtime optimizations from an identical `main` base without larger runners
+      or custom images.
+
+
+      What changed
+
+
+      - Run `verify` only for pull requests and manual dispatch
+
+      - Cancel superseded `verify` runs
+
+      - Run typecheck, lint, and tests concurrently after one ...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/69
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: closed
+    labels: []
+    additions: 36
+    deletions: 22
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-07-22T17:30:47Z
+    updatedAt: 2026-07-22T17:47:58Z
+    closedAt: 2026-07-22T17:47:46Z
+    mergedAt: null
+    workTimestamps:
+      - 2026-07-22T17:29:38Z
+    workAdditions: 36
+    workDeletions: 22
+  - title: "ci(actions): reduce automatic runtime"
+    body: >-
+      Why
+
+
+      Pull requests were spending runner minutes on duplicated validation, serialized builds, and automatic Azure
+      preview deployments that are not needed for every change.
+
+
+      What changed
+
+
+      - Run `verify` only for pull requests and manual dispatch
+
+      - Cancel superseded `verify` runs
+
+      - Run typecheck, lint,...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/68
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 120
+    deletions: 95
+    changedFiles: 3
+    author: myriadas-clees
+    createdAt: 2026-07-22T17:30:40Z
+    updatedAt: 2026-07-22T20:23:00Z
+    closedAt: 2026-07-22T20:16:10Z
+    mergedAt: 2026-07-22T20:16:10Z
+    workTimestamps:
+      - 2026-07-22T17:29:35Z
+      - 2026-07-22T17:47:18Z
+      - 2026-07-22T17:53:27Z
+      - 2026-07-22T19:05:06Z
+      - 2026-07-22T19:05:55Z
+      - 2026-07-22T19:09:58Z
+    workAdditions: 120
+    workDeletions: 95
+  - title: "ci: gate previews behind PR label"
+    body: >-
+      Why
+
+
+      Unlabeled pull requests were consuming Azure preview runners on every update, while verification repeated
+      production build work.
+
+
+      What changed
+
+
+      * Keep the existing `Verify` workflow/job as the PR gate, cancel superseded runs, and run typecheck, lint, and
+      tests concurrently with reported exit st...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/38
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - github-automation
+      - platform
+    additions: 65
+    deletions: 40
+    changedFiles: 5
+    author: myriadas-clees
+    createdAt: 2026-07-22T19:20:06Z
+    updatedAt: 2026-07-22T20:23:48Z
+    closedAt: 2026-07-22T20:16:32Z
+    mergedAt: 2026-07-22T20:16:32Z
+    workTimestamps:
+      - 2026-07-22T19:19:37Z
+      - 2026-07-22T19:20:58Z
+      - 2026-07-22T19:38:53Z
+    workAdditions: 65
+    workDeletions: 40
+  - title: "fix(pricing): keep advisor links in app"
+    body: >-
+      Why
+
+
+      Advisor-name links used root-relative `/recruits/...` URLs. In the static `/pricing` deployment, those URLs left
+      the pricing app and returned users to the hub.
+
+
+      What changed
+
+
+      - Route advisor-name links through the existing pricing base-path helper
+
+      - Add a regression test for the deployed `/pric...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/67
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 0
+    deletions: 0
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-07-21T18:27:02Z
+    updatedAt: 2026-07-22T20:23:02Z
+    closedAt: 2026-07-22T17:04:42Z
+    mergedAt: 2026-07-22T17:04:42Z
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+  - title: "feat(deploy): ready apps for Cosmos"
+    body: >-
+      Why
+
+
+      Stateful product deployments need a consistent Azure Static Web Apps and Cosmos DB path. PTO still targeted
+      Microsoft Lists, while the Hub deployment bundled product APIs into a shared runtime that could not use app-scoped
+      Cosmos identities.
+
+
+      What changed
+
+
+      - Provision PTO Cosmos storage, manage...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/37
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - github-automation
+      - "app: hub"
+      - "app: pto-tracker"
+      - infrastructure
+    additions: 3
+    deletions: 22
+    changedFiles: 23
+    author: myriadas-clees
+    createdAt: 2026-07-21T16:19:07Z
+    updatedAt: 2026-07-22T20:51:26Z
+    closedAt: 2026-07-22T20:51:09Z
+    mergedAt: 2026-07-22T20:51:08Z
+    workTimestamps:
+      - 2026-07-22T20:22:27Z
+    workAdditions: 3
+    workDeletions: 22
+prsInProgress: []
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "ci(actions): reduce automatic runtime (#68)"
+      - "fix(pricing): keep advisor links in app (#67)"
+    commits:
+      - sha: f3f128ff58423b6bba62864a073d6a374a40d276
+        message: "ci(actions): reduce automatic runtime (#68)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f3f128ff58423b6bba62864a073d6a374a40d276
+        authoredAt: 2026-07-22T20:16:10Z
+      - sha: 31abeced40aebca76e4e924ecf9d5cfcc2a66c1a
+        message: "fix(pricing): keep advisor links in app (#67)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/31abeced40aebca76e4e924ecf9d5cfcc2a66c1a
+        authoredAt: 2026-07-22T17:04:42Z
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "feat(deploy): ready apps for Cosmos (#37)"
+      - "ci: gate previews behind PR label (#38)"
+    commits:
+      - sha: 085bd47e42508cb8d60742f74d77a046e7349bfe
+        message: "feat(deploy): ready apps for Cosmos (#37)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/085bd47e42508cb8d60742f74d77a046e7349bfe
+        authoredAt: 2026-07-22T20:51:08Z
+      - sha: a3ed691f4fcc64ed87a3efd8a54ec9bf54c98d5b
+        message: "ci: gate previews behind PR label (#38)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a3ed691f4fcc64ed87a3efd8a54ec9bf54c98d5b
+        authoredAt: 2026-07-22T20:16:32Z
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 2
+    comments: 5
+    reviews: 2
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 2
+  comments: 5
+  reviews: 2
+  fixed: 0
+hoursEstimate:
+  hours: 7.8
+  sessions: 1
+  sessionHours: 3.8
+  volumeHours: 7.8
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""

@@ -13,8 +13,8 @@ dateRange:
   to: 2026-08-10
 stats:
   totalCommits: 6
-  totalAdditions: 5438
-  totalDeletions: 4378
+  totalAdditions: 8277
+  totalDeletions: 7717
   prsOpened: 5
   prsMerged: 6
   prsInProgress: 2
@@ -22,7 +22,7 @@ stats:
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 33.7
+  estimatedHours: 38.2
 dailyCommits:
   - date: 2026-08-10
     count: 6
@@ -53,8 +53,8 @@ pullRequests:
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
     labels: &a1 []
-    additions: 748
-    deletions: 202
+    additions: 651
+    deletions: 183
     changedFiles: 19
     author: myriadas-clees
     createdAt: 2026-08-10T21:45:06Z
@@ -152,8 +152,8 @@ pullRequests:
       - "app: proforma"
       - platform
       - deploy-preview
-    additions: 1105
-    deletions: 860
+    additions: 4102
+    deletions: 4096
     changedFiles: 55
     author: myriadas-clees
     createdAt: 2026-08-10T18:50:49Z
@@ -186,8 +186,8 @@ pullRequests:
       - platform
       - infrastructure
       - "app: pricing"
-    additions: 2893
-    deletions: 3171
+    additions: 3062
+    deletions: 3340
     changedFiles: 244
     author: myriadas-clees
     createdAt: 2026-08-10T15:22:48Z
@@ -211,7 +211,7 @@ pullRequests:
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: merged
     labels: []
-    additions: 248
+    additions: 71
     deletions: 0
     changedFiles: 16
     author: myriadas-clees
@@ -236,8 +236,8 @@ pullRequests:
       - documentation
       - "app: hub"
       - "app: pto-tracker"
-    additions: 7
-    deletions: 53
+    additions: 0
+    deletions: 0
     changedFiles: 2
     author: myriadas-clees
     createdAt: 2026-08-07T19:30:38Z
@@ -257,8 +257,8 @@ pullRequests:
     state: merged
     labels:
       - documentation
-    additions: 74
-    deletions: 0
+    additions: 28
+    deletions: 6
     changedFiles: 4
     author: myriadas-clees
     createdAt: 2026-08-07T19:29:03Z
@@ -323,19 +323,6 @@ prsInProgress:
 issues: []
 events: []
 commitMessages:
-  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
-    messages:
-      - Render FiNet PDF logos from SVG (#109)
-      - "feat(codex): Add scoped Codex subtree agents and AGENTS.md guidance (#108)"
-    commits:
-      - sha: 8015ffae8be629c47a70f15a3029e554ccfa2efd
-        message: Render FiNet PDF logos from SVG (#109)
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8015ffae8be629c47a70f15a3029e554ccfa2efd
-        authoredAt: 2026-08-10T19:29:26Z
-      - sha: 41da63705f163a0edf201414160d7d0d5a1f2f79
-        message: "feat(codex): Add scoped Codex subtree agents and AGENTS.md guidance (#108)"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/41da63705f163a0edf201414160d7d0d5a1f2f79
-        authoredAt: 2026-08-10T16:22:04Z
   - repo: Myriad-Advisor-Solutions/myriadas-apps
     messages:
       - Use shared AZURE_COSMOS settings for Proforma managed SWA (#83)
@@ -359,6 +346,19 @@ commitMessages:
         message: "chore: trim stale documentation and dead artifact (#80)"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/22cf3ed5ce4441e86a1bc62b133e7914ab470395
         authoredAt: 2026-08-10T15:57:34Z
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - Render FiNet PDF logos from SVG (#109)
+      - "feat(codex): Add scoped Codex subtree agents and AGENTS.md guidance (#108)"
+    commits:
+      - sha: 8015ffae8be629c47a70f15a3029e554ccfa2efd
+        message: Render FiNet PDF logos from SVG (#109)
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8015ffae8be629c47a70f15a3029e554ccfa2efd
+        authoredAt: 2026-08-10T19:29:26Z
+      - sha: 41da63705f163a0edf201414160d7d0d5a1f2f79
+        message: "feat(codex): Add scoped Codex subtree agents and AGENTS.md guidance (#108)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/41da63705f163a0edf201414160d7d0d5a1f2f79
+        authoredAt: 2026-08-10T16:22:04Z
 releases: []
 externalContributions: []
 codeReviews: []
@@ -379,10 +379,10 @@ aiReviews:
   reviews: 10
   fixed: 0
 hoursEstimate:
-  hours: 33.7
+  hours: 38.2
   sessions: 2
   sessionHours: 4.6
-  volumeHours: 33.7
+  volumeHours: 38.2
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

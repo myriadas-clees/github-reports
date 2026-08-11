@@ -1,0 +1,130 @@
+title: Jul 24
+subtitle: onboarding, excelerate & proforma
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 5 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 4 commits with +476 / −56 lines.
+    chips:
+      - label: Commits
+        value: "4"
+        color: green
+      - label: Additions
+        value: "+476"
+        color: green
+      - label: Deletions
+        value: −56
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 4 reviews with 4 comments.
+    chips:
+      - label: Reviews
+        value: "4"
+      - label: Comments
+        value: "4"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 5 reviews, 5 comments, 3 PRs."
+    chips:
+      - label: Codex
+        value: 5 reviews · 5 comments · 3 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~12.8h
+highlights:
+  - type: pr
+    title: "fix(excelerate): clarify request errors"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +47 −5
+    body: >-
+      Why
+
+
+      Browser-level fetch failures exposed only “Failed to fetch,” leaving operators without the endpoint or
+      configuration context needed to recover.
+
+
+      What changed
+
+
+      * Include HTTP status alongside serv
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/44
+  - type: pr
+    title: "feat(pto): add staff setup tools"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +258 −15
+    body: >-
+      Why
+
+
+      HR needs a starter file for bulk PTO setup and a faster path for adding one employee without preparing a
+      spreadsheet.
+
+
+      What changed
+
+
+      - Add a downloadable canonical staff CSV template
+
+      - Add the re
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/45
+  - type: pr
+    title: "fix(proforma): support multiple states"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +151 −14
+    body: >-
+      Why
+
+
+      The Pro Forma entity form stored only a registration-state count, so users could not identify or restore multiple
+      selected states.
+
+
+      What changed
+
+
+      - Add backward-compatible state-code storage whil
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/43
+  - type: pr
+    title: "fix(onboarding): complete workspace creation"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +20 −22
+    body: >-
+      ## Why
+
+
+      Client onboarding generated a browser-side client ID that conflicts with the production Cosmos tenant scope. The
+      create request failed before the workspace could open.
+
+
+      ## What changed
+
+
+      - Let 
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/46
+  - type: pr
+    title: "feat(onboarding): archive workstreams"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +676 −45
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/47
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(excelerate): clarify request errors" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(pto): add staff setup tools" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(proforma): support multiple states" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(onboarding): complete workspace creation" in Myriad-Advisor-Solutions/myriadas-apps'

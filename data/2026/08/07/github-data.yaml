@@ -1,0 +1,325 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-08-07
+  to: 2026-08-07
+stats:
+  totalCommits: 3
+  totalAdditions: 2648
+  totalDeletions: 706
+  prsOpened: 6
+  prsMerged: 3
+  prsInProgress: 3
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 18.4
+dailyCommits:
+  - date: 2026-08-07
+    count: 3
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 3
+    prsOpened: 5
+    prsMerged: 3
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 0
+    prsOpened: 1
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests:
+  - title: "fix(hub): keep bun:sqlite out of managed SWA Functions bundle"
+    body: >-
+      - Hub deploy after #75 reported success but every `/api/*/health` probe returned 404 because the managed Functions
+      worker crashed on load.
+
+      - Cause: onboarding `managed-swa.js` embedded `import … from "bun:sqlite"` via the VM SQLite/`cli-client` graph;
+      Azure Functions runs Node and cannot resolve `bu...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/77
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - github-automation
+      - platform
+    additions: 33
+    deletions: 15
+    changedFiles: 5
+    author: myriadas-clees
+    createdAt: 2026-08-07T17:49:13Z
+    updatedAt: 2026-08-07T18:01:38Z
+    closedAt: 2026-08-07T18:01:38Z
+    mergedAt: 2026-08-07T18:01:38Z
+    workTimestamps:
+      - 2026-08-07T17:49:05Z
+    workAdditions: 33
+    workDeletions: 15
+  - title: "feat(agents): configure scoped Codex agents"
+    body: |-
+      - replace the root-only guidance with concise repository-wide instructions and scoped AGENTS.md files
+      - add application-specific Codex agents using gpt-5.6-luna with explicit reasoning levels
+      - apply least-privilege permission profiles: repository read access with writes limited to each agent's subt...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/78
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - "app: hub"
+      - "app: onboarding"
+      - "app: pto-tracker"
+      - "app: excelerate"
+      - "app: valuation"
+      - platform
+      - infrastructure
+      - "app: pricing"
+    additions: 354
+    deletions: 14
+    changedFiles: 22
+    author: myriadas-clees
+    createdAt: 2026-08-07T17:54:32Z
+    updatedAt: 2026-08-07T18:25:16Z
+    closedAt: 2026-08-07T18:25:16Z
+    mergedAt: 2026-08-07T18:25:16Z
+    workTimestamps:
+      - 2026-08-07T17:54:17Z
+      - 2026-08-07T18:11:49Z
+    workAdditions: 354
+    workDeletions: 14
+  - title: "chore: trim stale documentation and dead artifact"
+    body: >-
+      - trim superseded implementation planning from the vendor-management discovery record while retaining source
+      provenance and architectural decisions
+
+      - correct the PTO documentation index now that the application is implemented
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/80
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a1
+      - documentation
+      - "app: hub"
+      - "app: pto-tracker"
+    additions: 13
+    deletions: 59
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-08-07T19:30:38Z
+    updatedAt: 2026-08-10T15:57:44Z
+    closedAt: 2026-08-10T15:57:34Z
+    mergedAt: 2026-08-10T15:57:34Z
+    workTimestamps: &a2
+      - 2026-08-07T19:30:26Z
+      - 2026-08-07T19:34:22Z
+    workAdditions: 13
+    workDeletions: 59
+  - title: "docs(agents): require explorer and worker delegation"
+    body: |-
+      - require a concurrent Luna-high explorer and Terra-high worker for repository tasks
+      - define assignment, ownership, synthesis, validation, and fallback expectations
+      - retain specialist agents only for explicit or higher-priority routing
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/79
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a3
+      - documentation
+    additions: 53
+    deletions: 1
+    changedFiles: 4
+    author: myriadas-clees
+    createdAt: 2026-08-07T19:29:03Z
+    updatedAt: 2026-08-10T16:15:16Z
+    closedAt: 2026-08-10T16:15:13Z
+    mergedAt: 2026-08-10T16:15:13Z
+    workTimestamps: &a4
+      - 2026-08-07T19:28:50Z
+      - 2026-08-07T19:45:58Z
+    workAdditions: 53
+    workDeletions: 1
+  - title: "feat(onboarding): add vendor management workflows and dashboard"
+    body: >-
+      ## Why
+
+
+      Onboarding needs a complete vendor-management workflow for intake, due diligence, contract review, approvals,
+      documents, lifecycle tracking, and follow-ups while preserving the existing client workstream experience.
+
+
+      ## What changed
+
+
+      - Added vendor-management contracts, SQLite/Cosmos persist...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/75
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - "app: hub"
+      - "app: onboarding"
+      - "app: pto-tracker"
+      - platform
+    additions: 2018
+    deletions: 617
+    changedFiles: 84
+    author: myriadas-clees
+    createdAt: 2026-08-07T15:50:16Z
+    updatedAt: 2026-08-07T17:21:16Z
+    closedAt: 2026-08-07T17:21:13Z
+    mergedAt: 2026-08-07T17:21:13Z
+    workTimestamps:
+      - 2026-08-07T14:06:36Z
+      - 2026-08-07T15:50:00Z
+      - 2026-08-07T16:12:48Z
+      - 2026-08-07T16:28:36Z
+      - 2026-08-07T16:40:46Z
+      - 2026-08-07T17:04:56Z
+    workAdditions: 2018
+    workDeletions: 617
+  - title: Add scoped Codex subtree agents and AGENTS.md guidance
+    body: >-
+      - Add `.codex/config.toml` with multi-agent support and subtree-scoped write permissions (`docs-write`,
+      `hub-write`, `ofac-write`, `packages-write`, `pricing-write`, `scripts-write`)
+
+      - Define six scoped Codex agents in `.codex/agents/` for `docs/`, `hub/`, `ofac/`, `packages/`, `pricing/`, and
+      `scri...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/108
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a5 []
+    additions: 177
+    deletions: 0
+    changedFiles: 16
+    author: myriadas-clees
+    createdAt: 2026-08-07T18:22:42Z
+    updatedAt: 2026-08-10T16:22:09Z
+    closedAt: 2026-08-10T16:22:04Z
+    mergedAt: 2026-08-10T16:22:04Z
+    workTimestamps: &a6
+      - 2026-08-07T18:22:27Z
+    workAdditions: 177
+    workDeletions: 0
+prsInProgress:
+  - title: "chore: trim stale documentation and dead artifact"
+    body: >-
+      - trim superseded implementation planning from the vendor-management discovery record while retaining source
+      provenance and architectural decisions
+
+      - correct the PTO documentation index now that the application is implemented
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/80
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels: *a1
+    additions: 7
+    deletions: 53
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-08-07T19:30:38Z
+    updatedAt: 2026-08-10T15:57:44Z
+    closedAt: 2026-08-10T15:57:34Z
+    mergedAt: 2026-08-10T15:57:34Z
+    workTimestamps: *a2
+    workAdditions: 13
+    workDeletions: 59
+  - title: "docs(agents): require explorer and worker delegation"
+    body: |-
+      - require a concurrent Luna-high explorer and Terra-high worker for repository tasks
+      - define assignment, ownership, synthesis, validation, and fallback expectations
+      - retain specialist agents only for explicit or higher-priority routing
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/79
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels: *a3
+    additions: 74
+    deletions: 0
+    changedFiles: 4
+    author: myriadas-clees
+    createdAt: 2026-08-07T19:29:03Z
+    updatedAt: 2026-08-10T16:15:16Z
+    closedAt: 2026-08-10T16:15:13Z
+    mergedAt: 2026-08-10T16:15:13Z
+    workTimestamps: *a4
+    workAdditions: 53
+    workDeletions: 1
+  - title: Add scoped Codex subtree agents and AGENTS.md guidance
+    body: >-
+      - Add `.codex/config.toml` with multi-agent support and subtree-scoped write permissions (`docs-write`,
+      `hub-write`, `ofac-write`, `packages-write`, `pricing-write`, `scripts-write`)
+
+      - Define six scoped Codex agents in `.codex/agents/` for `docs/`, `hub/`, `ofac/`, `packages/`, `pricing/`, and
+      `scri...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/108
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: *a5
+    additions: 248
+    deletions: 0
+    changedFiles: 16
+    author: myriadas-clees
+    createdAt: 2026-08-07T18:22:42Z
+    updatedAt: 2026-08-10T16:22:09Z
+    closedAt: 2026-08-10T16:22:04Z
+    mergedAt: 2026-08-10T16:22:04Z
+    workTimestamps: *a6
+    workAdditions: 177
+    workDeletions: 0
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "feat(agents): configure scoped Codex agents (#78)"
+      - "fix(hub): keep bun:sqlite out of managed SWA Functions bundle (#77)"
+      - "feat(onboarding): add vendor management workflows and dashboard (#75)"
+    commits:
+      - sha: 774ea85018ccfeaae2b88a902f535fefb33ed40d
+        message: "feat(agents): configure scoped Codex agents (#78)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/774ea85018ccfeaae2b88a902f535fefb33ed40d
+        authoredAt: 2026-08-07T18:25:15Z
+      - sha: 8b77374b14559563742095172c439571aa102fa9
+        message: "fix(hub): keep bun:sqlite out of managed SWA Functions bundle (#77)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8b77374b14559563742095172c439571aa102fa9
+        authoredAt: 2026-08-07T18:01:37Z
+      - sha: 945fa7b18be6f4660162587d4cf426e13ec43703
+        message: "feat(onboarding): add vendor management workflows and dashboard (#75)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/945fa7b18be6f4660162587d4cf426e13ec43703
+        authoredAt: 2026-08-07T17:21:12Z
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 3
+    comments: 24
+    reviews: 6
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 3
+  comments: 24
+  reviews: 6
+  fixed: 0
+hoursEstimate:
+  hours: 18.4
+  sessions: 2
+  sessionHours: 4.4
+  volumeHours: 18.4
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
