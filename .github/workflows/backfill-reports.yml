@@ -94,8 +94,7 @@ jobs:
           SITE_TITLE: ${{ env.SITE_TITLE }}
           BASE_URL: ${{ vars.BASE_URL || 'https://myriadas-clees.github.io/github-reports' }}
           CONFIG_PATH: ./config.yaml
-          END_DATE: ${{ inputs.end_date }}
-        run: bun dist/cli/index.js render --date "$END_DATE"
+        run: bash scripts/render-daily-archive.sh
 
       - name: Upload worklog site
         uses: actions/upload-pages-artifact@v5

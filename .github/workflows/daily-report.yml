@@ -104,13 +104,7 @@ jobs:
           SITE_TITLE: ${{ env.SITE_TITLE }}
           BASE_URL: ${{ vars.BASE_URL || 'https://myriadas-clees.github.io/github-reports' }}
           CONFIG_PATH: ./config.yaml
-          INPUT_DATE: ${{ inputs.date }}
-        run: |
-          if [ -n "$INPUT_DATE" ]; then
-            bun dist/cli/index.js render --date "$INPUT_DATE"
-          else
-            bun dist/cli/index.js render
-          fi
+        run: bash scripts/render-daily-archive.sh
 
       - name: Upload worklog site
         if: ${{ github.event_name == 'schedule' || inputs.publish }}
