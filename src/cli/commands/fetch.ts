@@ -18,7 +18,7 @@ import { buildStakeholderSummary } from "../../collector/stakeholder-summary.js"
 import { getWeekId } from "../../deployer/week.js";
 import { getDayId, getPreviousDayId } from "../../deployer/day.js";
 import { loadConfigFile, resolveConfig } from "../../config.js";
-import type { GitHubEvent, PullRequest, WeeklyReportData } from "../../types.js";
+import type { GitHubEvent, PullRequest, RepoCommitMessages, WeeklyReportData } from "../../types.js";
 
 const env = (key: string): string | undefined => process.env[key];
 
@@ -100,6 +100,8 @@ export type DailyPullRequestActions = {
   merged: PullRequest[];
   report: PullRequest[];
   inProgress: PullRequest[];
+  /** Authored PRs with reporting-user branch commits in the exact window. */
+  workedOn: PullRequest[];
 };
 
 export const deriveContributionStats = (
@@ -133,6 +135,20 @@ export const deriveContributionStats = (
       .map(([date, count]) => ({ date, count }))
       .sort((a, b) => a.date.localeCompare(b.date)),
   };
+};
+
+/** Count commits not already represented by reporting-user PR work. */
+export const countDirectCommits = (
+  commitMessages: RepoCommitMessages[],
+  workedOn: PullRequest[],
+): number => {
+  const prCommitShas = new Set(
+    workedOn.flatMap((pr) => (pr.workCommits ?? []).map((commit) => commit.sha)),
+  );
+  return commitMessages.reduce((sum, repo) => {
+    if (!repo.commits) return sum + repo.messages.length;
+    return sum + repo.commits.filter((commit) => !prCommitShas.has(commit.sha)).length;
+  }, 0);
 };
 
 /** Attribute authored PRs only to create/merge actions inside the exact report window. */
@@ -174,6 +190,10 @@ export const classifyPullRequestsForRange = (
       return openAtRangeEnd && (historicalWork || timestampInRange(pr.updatedAt ?? null, range));
     },
   );
+  const workedOn = authored.filter((pr) =>
+    (pr.workCommits?.length ?? 0) > 0 &&
+    (pr.workTimestamps?.some((timestamp) => timestampInRange(timestamp, range)) ?? false)
+  );
   const inProgressByUrl = new Map<string, PullRequest>();
   [...report.filter((pr) => pr.state === "open"), ...activelyUpdated]
     .forEach((pr) => inProgressByUrl.set(pr.url, pr));
@@ -182,6 +202,7 @@ export const classifyPullRequestsForRange = (
     merged,
     report,
     inProgress: [...inProgressByUrl.values()],
+    workedOn,
   };
 };
 
@@ -399,6 +420,7 @@ const runFullFetch = async (
         opened: report,
         merged: report.filter((pr) => pr.state === "merged"),
         inProgress: report.filter((pr) => pr.state === "open"),
+        workedOn: [],
         report,
       };
     })();
@@ -467,10 +489,27 @@ const runFullFetch = async (
   const totalDeletions = prActions.report.reduce((sum, pr) => sum + pr.deletions, 0);
 
   const timestamps = collectTimestamps(events, commitMessages, prActions.report, reviewData, plan.range);
-  const commitCountFromMessages = commitMessages.reduce(
-    (sum, r) => sum + (r.commits?.length ?? r.messages.length),
-    0,
-  );
+  const directCommitCount = countDirectCommits(commitMessages, prActions.workedOn);
+  const dailyPrUrls = new Set(prActions.workedOn.map((pr) => pr.url));
+  const hoursPullRequests = [
+    ...prActions.workedOn.map((pr) => {
+      const files = pr.workFiles ?? [];
+      return {
+        additions: pr.workAdditions ?? 0,
+        deletions: pr.workDeletions ?? 0,
+        state: pr.state,
+        dailyWork: true,
+        filesChanged: files.length,
+        testFilesChanged: files.filter((file) =>
+          /(^|\/)(__tests__|tests?)(\/|$)|\.(test|spec)\.[^/]+$/i.test(file)
+        ).length,
+        commitCount: pr.workCommits?.length ?? 0,
+      };
+    }),
+    ...prActions.report
+      .filter((pr) => !dailyPrUrls.has(pr.url))
+      .map((pr) => ({ additions: pr.additions, deletions: pr.deletions, state: pr.state })),
+  ];
   const hasRepositoryScope = options.repositories.length > 0;
   const contributionStats = deriveContributionStats(
     contributions,
@@ -482,14 +521,10 @@ const runFullFetch = async (
   const hoursEstimate = estimateHours(
     timestamps,
     {
-      pullRequests: prActions.report.map((pr) => ({
-        additions: pr.additions,
-        deletions: pr.deletions,
-        state: pr.state,
-      })),
+      pullRequests: hoursPullRequests,
       reviewCount: reviewData.reviews.length,
       reviewCommentCount: reviewData.comments.length,
-      commitCount: commitCountFromMessages,
+      commitCount: directCommitCount,
     },
     {
       gapMinutes: options.sessionGapMinutes,

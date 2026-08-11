@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach, beforeEach } from "vitest";
-import { resolveBaseOptions, extractPRRefs, filterEventsToRepositories, classifyPullRequestsForRange, deriveContributionStats, buildDailyPlan, buildWeeklyPlan, formatCommitMsg } from "./fetch.js";
+import { resolveBaseOptions, extractPRRefs, filterEventsToRepositories, classifyPullRequestsForRange, deriveContributionStats, countDirectCommits, buildDailyPlan, buildWeeklyPlan, formatCommitMsg } from "./fetch.js";
 import type { GitHubEvent, PullRequest } from "../../types.js";
 
 // Mock fs/promises
@@ -343,11 +343,13 @@ describe("classifyPullRequestsForRange", () => {
       createdAt: "2026-08-01T12:00:00Z",
       updatedAt: "2026-08-20T17:00:00Z",
       workTimestamps: ["2026-08-10T17:00:00Z"],
+      workCommits: [{ sha: "abc", message: "fix", url: "commit", authoredAt: "2026-08-10T17:00:00Z" }],
       state: "open",
     });
     const result = classifyPullRequestsForRange([older], "alice", range);
     expect(result.report).toEqual([]);
     expect(result.inProgress).toEqual([older]);
+    expect(result.workedOn).toEqual([older]);
   });
 
   it("preserves an unmerged PR closed during the window", () => {
@@ -364,6 +366,32 @@ describe("classifyPullRequestsForRange", () => {
     ], "alice", range);
     expect(result.report[0]?.state).toBe("open");
     expect(result.inProgress).toHaveLength(1);
+  });
+});
+
+describe("countDirectCommits", () => {
+  it("does not add commit credit for commits already weighted as PR work", () => {
+    const shared = { sha: "pr-sha", message: "PR work", url: "commit", authoredAt: "2026-08-11T13:00:00Z" };
+    const direct = { sha: "direct-sha", message: "Direct work", url: "direct", authoredAt: "2026-08-11T14:00:00Z" };
+    const workedOn = [{
+      title: "PR",
+      body: null,
+      url: "pull",
+      repository: "org/app",
+      state: "open" as const,
+      labels: [],
+      additions: 1,
+      deletions: 1,
+      changedFiles: 1,
+      author: "alice",
+      createdAt: "2026-08-10T00:00:00Z",
+      mergedAt: null,
+      workCommits: [shared],
+    }];
+    expect(countDirectCommits(
+      [{ repo: "org/app", messages: ["PR work", "Direct work"], commits: [shared, direct] }],
+      workedOn,
+    )).toBe(1);
   });
 });
 

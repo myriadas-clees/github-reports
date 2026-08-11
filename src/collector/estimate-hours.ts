@@ -6,6 +6,7 @@
 // and take the stronger signal. Always labeled as an estimate.
 
 export type HoursEstimateResult = {
+  version: string;
   hours: number;
   sessions: number;
   sessionHours: number;
@@ -16,8 +17,16 @@ export type HoursEstimateResult = {
 };
 
 export type VolumeInput = {
-  /** Authored PRs in the window (opened and/or merged). */
-  pullRequests?: { additions: number; deletions: number; state: string }[];
+  /** Authored PR delivery or reporting-user work performed on a PR in the window. */
+  pullRequests?: {
+    additions: number;
+    deletions: number;
+    state: string;
+    dailyWork?: boolean;
+    filesChanged?: number;
+    testFilesChanged?: number;
+    commitCount?: number;
+  }[];
   reviewCount?: number;
   reviewCommentCount?: number;
   commitCount?: number;
@@ -27,6 +36,13 @@ const DEFAULT_GAP_MINUTES = 90;
 const DEFAULT_MAX_SESSION_HOURS = 6;
 /** Minimum duration credited for a lone activity ping in a session (hours). */
 const MIN_ACTIVITY_HOURS = 0.5;
+export const ESTIMATOR_VERSION = "2.0";
+const DAILY_PR_CONTEXT_HOURS = 1.5;
+const FILE_BREADTH_HOURS = 0.2;
+const MAX_FILE_BREADTH_HOURS = 1.5;
+const TEST_CHANGE_HOURS = 0.75;
+const ITERATION_HOURS = 0.5;
+const MAX_ITERATION_HOURS = 1;
 
 /** Rough effort bands from PR churn (additions + deletions). */
 export const estimatePrHours = (additions: number, deletions: number): number => {
@@ -40,6 +56,21 @@ export const estimatePrHours = (additions: number, deletions: number): number =>
   if (churn < 15_000) return 13;
   if (churn < 30_000) return 18;
   return 22; // very large migrations / generated+hand edits
+};
+
+/** Estimate one day's attributable work on a PR from observable delivery signals. */
+export const estimateDailyPrWorkHours = (pr: NonNullable<VolumeInput["pullRequests"]>[number]): number => {
+  const churnHours = estimatePrHours(pr.additions, pr.deletions);
+  const breadthHours = Math.min(
+    Math.max(0, (pr.filesChanged ?? 0) - 1) * FILE_BREADTH_HOURS,
+    MAX_FILE_BREADTH_HOURS,
+  );
+  const testHours = (pr.testFilesChanged ?? 0) > 0 ? TEST_CHANGE_HOURS : 0;
+  const iterationHours = Math.min(
+    Math.max(0, (pr.commitCount ?? 0) - 1) * ITERATION_HOURS,
+    MAX_ITERATION_HOURS,
+  );
+  return round1(DAILY_PR_CONTEXT_HOURS + churnHours + breadthHours + testHours + iterationHours);
 };
 
 const round1 = (n: number): number => Math.round(n * 10) / 10;
@@ -97,7 +128,9 @@ export const estimateSessionHours = (
 export const estimateVolumeHours = (input: VolumeInput = {}): number => {
   const prs = input.pullRequests ?? [];
   const prHours = prs.reduce(
-    (sum, pr) => sum + estimatePrHours(pr.additions, pr.deletions),
+    (sum, pr) => sum + (pr.dailyWork
+      ? estimateDailyPrWorkHours(pr)
+      : estimatePrHours(pr.additions, pr.deletions)),
     0,
   );
   // Reviews / comments are real collaboration time not captured by PR size.
@@ -127,6 +160,7 @@ export const estimateHours = (
     "reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.";
 
   return {
+    version: ESTIMATOR_VERSION,
     hours,
     sessions: session.sessions,
     sessionHours: session.hours,

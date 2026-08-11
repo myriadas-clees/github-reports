@@ -33,6 +33,8 @@ export type PullRequest = {
   workCommits?: CommitDetail[];
   workAdditions?: number;
   workDeletions?: number;
+  /** Unique files touched by the reporting user's commits in the report window. */
+  workFiles?: string[];
   closedAt?: string | null;
   mergedAt: string | null;
 };
@@ -205,6 +207,8 @@ export type AiReviewFixCounts = {
 };
 
 export type HoursEstimate = {
+  /** Formula identifier so archived estimates remain reproducible. */
+  version?: string;
   hours: number;
   sessions: number;
   /** Hours from timestamp session clustering alone. */

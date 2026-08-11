@@ -106,7 +106,13 @@ describe("fetchPRsByRefs", () => {
         ]));
       }
       if (url.endsWith("/commits/alice-sha")) {
-        return new Response(JSON.stringify({ stats: { additions: 7, deletions: 3 } }));
+        return new Response(JSON.stringify({
+          stats: { additions: 7, deletions: 3 },
+          files: [
+            { filename: "src/app.ts" },
+            { filename: "src/app.test.ts" },
+          ],
+        }));
       }
       return new Response(JSON.stringify(makeRawPR(1)));
     });
@@ -128,6 +134,7 @@ describe("fetchPRsByRefs", () => {
       workTimestamps: ["2026-04-01T12:00:00Z"],
       workAdditions: 7,
       workDeletions: 3,
+      workFiles: ["src/app.test.ts", "src/app.ts"],
     });
   });
 

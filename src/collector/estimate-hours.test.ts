@@ -3,6 +3,7 @@ import {
   estimateHoursFromTimestamps,
   estimateHours,
   estimatePrHours,
+  estimateDailyPrWorkHours,
   estimateVolumeHours,
 } from "./estimate-hours.js";
 
@@ -13,6 +14,20 @@ describe("estimatePrHours", () => {
     expect(estimatePrHours(2000, 400)).toBe(6); // churn 2400 → < 2500 band
     expect(estimatePrHours(20000, 5000)).toBe(18); // churn 25000 → < 30000
     expect(estimatePrHours(40000, 10000)).toBe(22);
+  });
+});
+
+describe("estimateDailyPrWorkHours", () => {
+  it("credits daily PR context, breadth, tests, and iteration", () => {
+    expect(estimateDailyPrWorkHours({
+      additions: 107,
+      deletions: 29,
+      state: "open",
+      dailyWork: true,
+      filesChanged: 6,
+      testFilesChanged: 2,
+      commitCount: 2,
+    })).toBe(5.3);
   });
 });
 
@@ -51,6 +66,7 @@ describe("estimateHours hybrid", () => {
     expect(result.sessionHours).toBeLessThan(2);
     expect(result.volumeHours).toBeGreaterThanOrEqual(22);
     expect(result.hours).toBe(result.volumeHours);
+    expect(result.version).toBe("2.0");
     expect(result.note).toMatch(/conventional engineering effort/i);
     expect(result.note).toMatch(/not tracked, elapsed, or billed time/i);
   });

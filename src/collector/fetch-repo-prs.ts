@@ -125,7 +125,7 @@ const fetchPRWork = async (
   ref: PRRef,
   range: DateRange,
   activityAuthor?: string,
-): Promise<{ commits: CommitDetail[]; timestamps: string[]; additions: number; deletions: number }> => {
+): Promise<{ commits: CommitDetail[]; timestamps: string[]; additions: number; deletions: number; files: string[] }> => {
   const commits = await fetchPages<{
     sha: string;
     html_url: string;
@@ -148,6 +148,7 @@ const fetchPRWork = async (
   );
   let additions = 0;
   let deletions = 0;
+  const files = new Set<string>();
   for (const commit of relevant) {
     const response = await fetch(`https://api.github.com/repos/${ref.repo}/commits/${commit.sha}`, {
       headers: GITHUB_HEADERS(token),
@@ -156,9 +157,15 @@ const fetchPRWork = async (
       throwOnGitHubAccessError(response, `Commit detail fetch failed for ${ref.repo}@${commit.sha}`);
       continue;
     }
-    const detail = await response.json() as { stats?: { additions?: number; deletions?: number } };
+    const detail = await response.json() as {
+      stats?: { additions?: number; deletions?: number };
+      files?: Array<{ filename?: string }>;
+    };
     additions += detail.stats?.additions ?? 0;
     deletions += detail.stats?.deletions ?? 0;
+    detail.files?.forEach((file) => {
+      if (file.filename) files.add(file.filename);
+    });
   }
   return {
     commits: relevant.map((item) => ({
@@ -170,6 +177,7 @@ const fetchPRWork = async (
     timestamps: relevant.map((item) => item.timestamp),
     additions,
     deletions,
+    files: [...files].sort(),
   };
 };
 
@@ -232,6 +240,7 @@ const fetchSinglePR = async (
         pullRequest.workTimestamps = work.timestamps;
         pullRequest.workAdditions = work.additions;
         pullRequest.workDeletions = work.deletions;
+        pullRequest.workFiles = work.files;
       }
       return pullRequest;
     }
