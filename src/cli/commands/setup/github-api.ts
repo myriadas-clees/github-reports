@@ -26,6 +26,7 @@ const ghFetch = async (
 export const ghGet = (token: string, path: string) => ghFetch(token, "GET", path);
 export const ghPost = (token: string, path: string, body: unknown) => ghFetch(token, "POST", path, body);
 export const ghPut = (token: string, path: string, body: unknown) => ghFetch(token, "PUT", path, body);
+export const ghPatch = (token: string, path: string, body: unknown) => ghFetch(token, "PATCH", path, body);
 
 // ── Token validation ─────────────────────────────────────────
 
@@ -127,7 +128,16 @@ export const ensureRepo = async (
   fullRepo: string,
 ): Promise<boolean> => {
   const res = await ghGet(token, `/repos/${fullRepo}`);
-  if (res.ok) return false;
+  if (res.ok) {
+    const existing = await res.json().catch(() => null) as { private?: boolean } | null;
+    if (existing?.private === false) {
+      const updateRes = await ghPatch(token, `/repos/${fullRepo}`, { private: true });
+      if (!updateRes.ok) {
+        throw new Error(`Failed to make existing repository ${fullRepo} private: ${updateRes.status}`);
+      }
+    }
+    return false;
+  }
 
   const [owner, name] = fullRepo.split("/");
   const { login } = (await (await ghGet(token, "/user")).json()) as {
@@ -138,8 +148,8 @@ export const ensureRepo = async (
   const body = {
     name,
     auto_init: true,
-    private: false,
-    description: "Weekly GitHub activity reports",
+    private: true,
+    description: "Public daily activity reports sourced from private repositories",
     homepage,
   };
 
@@ -162,7 +172,7 @@ export const ensureRepo = async (
 
 const REPO_TOPICS = [
   "github-weekly-reporter",
-  "weekly-report",
+  "daily-report",
   "github-activity",
   "github-pages",
 ];
@@ -205,11 +215,50 @@ export const enablePages = async (
   token: string,
   repo: string,
 ): Promise<string> => {
-  // Enable Pages from main branch, /output directory (may already be enabled)
-  await ghPost(token, `/repos/${repo}/pages`, {
+  // Pages requires its configured source branch to exist. Seed an orphan branch
+  // with a harmless placeholder; the first deployment replaces its contents.
+  const branchRes = await ghGet(token, `/repos/${repo}/git/ref/heads/gh-pages`);
+  if (!branchRes.ok) {
+    if (branchRes.status !== 404) {
+      throw new Error(`Failed to inspect the gh-pages branch for ${repo}: ${branchRes.status}`);
+    }
+    const blobRes = await ghPost(token, `/repos/${repo}/git/blobs`, {
+      content: "<!doctype html><title>Report setup in progress</title>",
+      encoding: "utf-8",
+    });
+    if (!blobRes.ok) throw new Error(`Failed to create Pages placeholder: ${blobRes.status}`);
+    const { sha: blobSha } = await blobRes.json() as { sha: string };
+    const treeRes = await ghPost(token, `/repos/${repo}/git/trees`, {
+      tree: [{ path: "index.html", mode: "100644", type: "blob", sha: blobSha }],
+    });
+    if (!treeRes.ok) throw new Error(`Failed to create Pages tree: ${treeRes.status}`);
+    const { sha: treeSha } = await treeRes.json() as { sha: string };
+    const commitRes = await ghPost(token, `/repos/${repo}/git/commits`, {
+      message: "chore: initialize report site",
+      tree: treeSha,
+      parents: [],
+    });
+    if (!commitRes.ok) throw new Error(`Failed to create Pages commit: ${commitRes.status}`);
+    const { sha: commitSha } = await commitRes.json() as { sha: string };
+    const refRes = await ghPost(token, `/repos/${repo}/git/refs`, {
+      ref: "refs/heads/gh-pages",
+      sha: commitSha,
+    });
+    if (!refRes.ok) throw new Error(`Failed to create gh-pages branch: ${refRes.status}`);
+  }
+
+  const createRes = await ghPost(token, `/repos/${repo}/pages`, {
     source: { branch: "gh-pages", path: "/" },
   });
+  if (!createRes.ok && createRes.status !== 409) {
+    throw new Error(`Failed to enable Pages for ${repo}: ${createRes.status}`);
+  }
+
+  const pagesRes = await ghGet(token, `/repos/${repo}/pages`);
+  const pages = pagesRes.ok
+    ? await pagesRes.json().catch(() => null) as { html_url?: string } | null
+    : null;
 
   const [owner, name] = repo.split("/");
-  return `https://${owner}.github.io/${name}`;
+  return pages?.html_url ?? `https://${owner}.github.io/${name}`;
 };

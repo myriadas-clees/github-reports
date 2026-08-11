@@ -246,7 +246,7 @@ export const registerPreview = (program: Command): void => {
     .option("--language <lang>", "Report language (env: LANGUAGE, default: en)")
     .option("--timezone <tz>", "IANA timezone (env: TIMEZONE, default: UTC)")
     .option("--theme <name>", `Theme: ${AVAILABLE_THEMES.join(", ")} (env: THEME)`)
-    .option("--date <date>", "Date within the target week (YYYY-MM-DD)")
+    .option("--date <date>", "Report date (YYYY-MM-DD, default: previous workday)")
     .option("--config <path>", "Path to config.yaml (env: CONFIG_PATH)")
     .option("--no-open", "Do not open the browser")
     .option("--no-watch", "Serve only; do not watch or re-render on changes")

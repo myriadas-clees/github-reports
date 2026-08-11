@@ -217,6 +217,21 @@ describe("fetchEvents", () => {
     expect(result[0].id).toBe("1");
   });
 
+  it("ignores events without repository metadata", async () => {
+    const events = [
+      makeRawEvent("1", "2026-04-03T12:00:00Z"),
+      { ...makeRawEvent("2", "2026-04-03T13:00:00Z"), repo: null },
+    ];
+    vi.spyOn(globalThis, "fetch").mockResolvedValueOnce(
+      new Response(JSON.stringify(events), { status: 200 }),
+    ).mockResolvedValueOnce(
+      new Response(JSON.stringify([]), { status: 200 }),
+    );
+
+    const result = await fetchEvents("token", "testuser", range);
+    expect(result.map((event) => event.id)).toEqual(["1"]);
+  });
+
   it("filters private events when includePrivate is false", async () => {
     const events = [
       { ...makeRawEvent("1", "2026-04-03T12:00:00Z"), public: false },

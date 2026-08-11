@@ -135,7 +135,7 @@ describe("renderReport", () => {
     expect(statsBlock).toBeTruthy();
     expect(statsBlock).toContain("PRs merged");
     expect(statsBlock).toContain("Lines");
-    expect(statsBlock).toContain("Estimated hours");
+    expect(statsBlock).toContain("Estimated engineering hours");
     expect(statsBlock).toContain("~12.5h");
     expect(statsBlock).not.toContain("Commits");
     expect(statsBlock).not.toContain("PRs opened");
@@ -144,7 +144,7 @@ describe("renderReport", () => {
     expect(statsBlock).not.toContain("Review comments");
     expect(statsBlock).not.toContain("From timestamps");
     expect(statsBlock).not.toContain("From PR volume");
-    expect(html).toContain("Estimate only - not tracked time.");
+    expect(html).toContain("Conventional engineering effort estimate — not tracked, elapsed, or billed time.");
     expect(html).not.toContain("Combines timestamps and volume.");
   });
 
@@ -505,13 +505,13 @@ describe("renderReport", () => {
     const html = renderReport(MOCK_DATA, { language: "ja" });
     expect(html).toContain('lang="ja"');
     expect(html).toContain("ハイライト");
-    expect(html).toContain("すべての週");
+    expect(html).toContain("すべての日");
   });
 
   it("defaults to lang=en", () => {
     const html = renderReport(MOCK_DATA);
     expect(html).toContain('lang="en"');
-    expect(html).toContain("All weeks");
+    expect(html).toContain("All days");
   });
 
   it("uses Zen Kaku Gothic New for Japanese", () => {
@@ -549,14 +549,14 @@ describe("renderReport", () => {
     expect(html).toContain("Noto Sans SC");
   });
 
-  it("computes heatmap levels from daily commits and skips weekends", () => {
+  it("computes heatmap levels from daily commits including weekends", () => {
     const data: WeeklyReportData = {
       ...MOCK_DATA,
       dailyCommits: [
         { date: "2026-03-26", count: 0 }, // Thu
         { date: "2026-03-27", count: 1 }, // Fri
-        { date: "2026-03-28", count: 99 }, // Sat — excluded
-        { date: "2026-03-29", count: 99 }, // Sun — excluded
+        { date: "2026-03-28", count: 8 }, // Sat
+        { date: "2026-03-29", count: 9 }, // Sun
         { date: "2026-03-30", count: 5 }, // Mon
         { date: "2026-03-31", count: 7 }, // Tue
         { date: "2026-04-01", count: 10 }, // Wed
@@ -573,7 +573,7 @@ describe("renderReport", () => {
     expect(html).toContain("mh-level-3");
     expect(html).toContain("mh-level-4");
     const labels = [...html.matchAll(/class="mh-label">([^<]+)</g)].map((m) => m[1]);
-    expect(labels).toEqual(["Mon", "Tue", "Wed", "Thu", "Fri"]);
+    expect(labels).toEqual(["Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed"]);
   });
 
   it("renders navigation links when prevWeek/nextWeek provided", () => {
@@ -592,6 +592,12 @@ describe("renderReport", () => {
     });
     expect(html).toContain("https://user.github.io/repo/2026/W14/");
     expect(html).toContain("https://user.github.io/repo/2026/W14/og.png");
+  });
+
+  it("computes root and asset links from a daily archive depth", () => {
+    const html = renderReport(MOCK_DATA, { weekPath: "2026/08/10", theme: "brutalist" });
+    expect(html).toContain('href="../../../"');
+    expect(html).toContain('src="../../../assets/brand/myriad-m-mark.png"');
   });
 
   it("uses custom site title", () => {

@@ -1,5 +1,5 @@
-name: 'GitHub Weekly Reporter'
-description: 'Generate a beautiful weekly GitHub activity report and deploy to GitHub Pages'
+name: 'Worklog Daily Reporter'
+description: 'Generate a public daily activity report from private GitHub repositories'
 author: 'deariary'
 
 branding:
@@ -15,7 +15,7 @@ inputs:
     required: false
     default: ${{ github.actor }}
   mode:
-    description: 'Run mode: "daily" (accumulate events) or "weekly" (full report generation)'
+    description: 'Run mode: "daily" (full daily report) or legacy "weekly"'
     required: false
     default: 'daily'
   language:
@@ -51,11 +51,11 @@ inputs:
     required: false
     default: ''
   llm-provider:
-    description: 'LLM provider (openai, anthropic, gemini, openrouter, groq, grok). Required for weekly mode.'
+    description: 'Optional LLM provider (openai, anthropic, gemini, openrouter, groq, grok).'
     required: false
     default: ''
   llm-model:
-    description: 'LLM model name. Required for weekly mode.'
+    description: 'Optional LLM model name.'
     required: false
     default: ''
   theme:
@@ -63,21 +63,21 @@ inputs:
     required: false
     default: 'brutalist'
   date:
-    description: 'Target date within the week (YYYY-MM-DD). Defaults to today. Use to generate reports for past weeks.'
+    description: 'Report date (YYYY-MM-DD). Defaults to the previous workday.'
     required: false
     default: ''
-  version:
-    description: 'CLI version to use (e.g. "1.2.0", "latest")'
-    required: false
-    default: 'latest'
-
 runs:
   using: 'composite'
   steps:
-    - name: Setup Node.js
-      uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v6
-      with:
-        node-version: '24'
+    - name: Setup Bun
+      uses: oven-sh/setup-bun@735343b667d3e6f658f44d0eca948eb6282f2b76 # v2
+
+    - name: Build Worklog action
+      shell: bash
+      run: |
+        cd "$GITHUB_ACTION_PATH"
+        bun install --frozen-lockfile
+        bun run build
 
     - name: Configure git and sync
       shell: bash
@@ -86,9 +86,9 @@ runs:
         git config user.email "github-weekly-reporter[bot]@users.noreply.github.com"
         git pull --rebase || true
 
-    # --- Daily mode: fetch events and persist ---
+    # --- Daily mode: collect a complete one-day dataset ---
 
-    - name: Daily fetch (accumulate events)
+    - name: Daily fetch
       if: inputs.mode == 'daily'
       shell: bash
       env:
@@ -96,28 +96,10 @@ runs:
         GITHUB_USERNAME: ${{ inputs.username }}
         TIMEZONE: ${{ inputs.timezone }}
         DATA_DIR: ./data
-        INPUT_VERSION: ${{ inputs.version }}
         INPUT_DATE: ${{ inputs.date }}
-      run: npx "github-weekly-reporter@${INPUT_VERSION}" daily-fetch ${INPUT_DATE:+--date "$INPUT_DATE"}
+      run: bun "$GITHUB_ACTION_PATH/dist/cli/index.js" daily-fetch ${INPUT_DATE:+--date "$INPUT_DATE"}
 
-    - name: Commit and push data (daily)
-      if: inputs.mode == 'daily'
-      shell: bash
-      env:
-        TIMEZONE: ${{ inputs.timezone }}
-        INPUT_VERSION: ${{ inputs.version }}
-        INPUT_DATE: ${{ inputs.date }}
-      run: |
-        git add -f data/
-        if git diff --cached --quiet; then
-          echo "No new data to commit"
-        else
-          MSG=$(npx "github-weekly-reporter@${INPUT_VERSION}" commit-msg daily ${INPUT_DATE:+--date "$INPUT_DATE"})
-          git commit -m "${MSG}"
-          git push
-        fi
-
-    # --- Weekly mode: full pipeline ---
+    # --- Legacy weekly mode ---
 
     - name: Weekly fetch (build full data from accumulated events)
       if: inputs.mode == 'weekly'
@@ -127,12 +109,11 @@ runs:
         GITHUB_USERNAME: ${{ inputs.username }}
         TIMEZONE: ${{ inputs.timezone }}
         DATA_DIR: ./data
-        INPUT_VERSION: ${{ inputs.version }}
         INPUT_DATE: ${{ inputs.date }}
-      run: npx "github-weekly-reporter@${INPUT_VERSION}" weekly-fetch ${INPUT_DATE:+--date "$INPUT_DATE"}
+      run: bun "$GITHUB_ACTION_PATH/dist/cli/index.js" weekly-fetch ${INPUT_DATE:+--date "$INPUT_DATE"}
 
     - name: Generate AI content
-      if: inputs.mode == 'weekly'
+      if: inputs.mode == 'daily' || inputs.mode == 'weekly'
       shell: bash
       env:
         OPENAI_API_KEY: ${{ inputs.openai-api-key }}
@@ -146,29 +127,27 @@ runs:
         LANGUAGE: ${{ inputs.language }}
         TIMEZONE: ${{ inputs.timezone }}
         DATA_DIR: ./data
-        INPUT_VERSION: ${{ inputs.version }}
         INPUT_DATE: ${{ inputs.date }}
-      run: npx "github-weekly-reporter@${INPUT_VERSION}" generate ${INPUT_DATE:+--date "$INPUT_DATE"}
+      run: bun "$GITHUB_ACTION_PATH/dist/cli/index.js" generate --mode "${{ inputs.mode }}" ${INPUT_DATE:+--date "$INPUT_DATE"}
 
-    - name: Commit and push data (weekly)
-      if: inputs.mode == 'weekly'
+    - name: Commit and push report data
+      if: inputs.mode == 'daily' || inputs.mode == 'weekly'
       shell: bash
       env:
         TIMEZONE: ${{ inputs.timezone }}
-        INPUT_VERSION: ${{ inputs.version }}
         INPUT_DATE: ${{ inputs.date }}
       run: |
         git add -f data/
         if git diff --cached --quiet; then
           echo "No new data to commit"
         else
-          MSG=$(npx "github-weekly-reporter@${INPUT_VERSION}" commit-msg weekly ${INPUT_DATE:+--date "$INPUT_DATE"})
+          MSG=$(bun "$GITHUB_ACTION_PATH/dist/cli/index.js" commit-msg ${{ inputs.mode }} ${INPUT_DATE:+--date "$INPUT_DATE"})
           git commit -m "${MSG}"
           git push
         fi
 
     - name: Render HTML report
-      if: inputs.mode == 'weekly'
+      if: inputs.mode == 'daily' || inputs.mode == 'weekly'
       shell: bash
       env:
         LANGUAGE: ${{ inputs.language }}
@@ -178,17 +157,15 @@ runs:
         OUTPUT_DIR: ./output
         SITE_TITLE: ${{ env.SITE_TITLE }}
         BASE_URL: ${{ env.BASE_URL || format('https://{0}.github.io/{1}', github.repository_owner, github.event.repository.name) }}
-        INPUT_VERSION: ${{ inputs.version }}
         INPUT_DATE: ${{ inputs.date }}
-      run: npx "github-weekly-reporter@${INPUT_VERSION}" render ${INPUT_DATE:+--date "$INPUT_DATE"}
+      run: bun "$GITHUB_ACTION_PATH/dist/cli/index.js" render --mode "${{ inputs.mode }}" ${INPUT_DATE:+--date "$INPUT_DATE"}
 
     - name: Deploy to GitHub Pages
-      if: inputs.mode == 'weekly'
+      if: inputs.mode == 'daily' || inputs.mode == 'weekly'
       shell: bash
       env:
         GITHUB_TOKEN: ${{ inputs.github-token }}
         GITHUB_REPOSITORY: ${{ github.repository }}
         OUTPUT_DIR: ./output
-        INPUT_VERSION: ${{ inputs.version }}
         INPUT_DATE: ${{ inputs.date }}
-      run: npx "github-weekly-reporter@${INPUT_VERSION}" deploy ${INPUT_DATE:+--date "$INPUT_DATE"}
+      run: bun "$GITHUB_ACTION_PATH/dist/cli/index.js" deploy ${INPUT_DATE:+--date "$INPUT_DATE"}

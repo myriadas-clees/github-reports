@@ -9,28 +9,28 @@ export const buildPrompt = (input: NarrativeInput): string => {
   const langBlock = langInstruction ? `\n${langInstruction}\n` : "";
 
   return `
-You are generating structured content for a developer's personal weekly report.
+You are generating structured content for a developer's personal daily report.
 This is like a development diary: written from the developer's own perspective.
 ${langBlock}
 Read the GitHub activity data and produce a YAML response matching the schema below.
 
 Writing style:
-- First person. This is the developer's own weekly log.
+- First person. This is the developer's own daily log.
 - Specific: reference actual PR titles, repo names, concrete numbers. No generic filler.
 - Focus on WHAT was accomplished and WHY it matters, not just counting things.
-- Natural and conversational, like a developer writing a blog post about their week.
+- Natural and conversational, like a developer writing a short post about their day.
 - Notice patterns: focus shifts between projects, burst days, collaboration dynamics.
 
 Section requirements:
-- title: a specific one-line title that could ONLY describe THIS week.
+- title: a specific one-line title that could ONLY describe THIS day.
   MUST reference a concrete detail: a repo name, feature name, PR topic, or technical concept.
   BAD (too generic): "A Productive Week", "Lots of Progress", "Bug Fixes and Features"
   GOOD (specific): "OAuth2 PKCE lands in the auth service", "ecma262 editorial sprint", "Migrating the payment flow to Stripe v3"
 - subtitle: one sentence expanding on the title with additional concrete details
-- overview: 2-3 paragraphs. Set the scene, describe the main narrative arc of the week,
+- overview: 1-2 concise paragraphs. Set the scene and describe the main narrative arc of the day,
   and mention what made it interesting. Each paragraph should be 2-4 sentences.
   This is the reader's first impression, so make it engaging and substantive.
-- summaries: ORDER BY what's most interesting this week. Lead with the most compelling story.
+- summaries: ORDER BY what's most interesting today. Lead with the most compelling story.
   Skip types that would just repeat obvious stats with nothing insightful to say.
   Include 3-6 sections total. You can mix predefined types with custom free-form sections.
   Each summary has a heading (short, punchy) and body (2-4 sentences).
@@ -66,8 +66,8 @@ Predefined summary types (use when relevant):
 Custom summary types:
 You can also create free-form summary sections with any type name that fits the data.
 Examples: "deep-dive", "tech-debt", "learning", "debugging-story", "architecture",
-"testing", "devops", "content-creation", or anything else that captures a theme of the week.
-Use custom types when the predefined ones don't capture something interesting about the week.
+"testing", "devops", "content-creation", or anything else that captures a theme of the day.
+Use custom types when the predefined ones don't capture something interesting about the day.
 
 Available highlight types:
 - pr: a notable pull request. meta format: "merged Apr 2 · +320 -45 · 12 files"
@@ -86,7 +86,7 @@ Schema:
 title: "one-line title"
 subtitle: "one sentence"
 overview: |
-  First paragraph setting the scene and describing what drove the week.
+  A concise paragraph setting the scene and describing what drove the day.
 
   Second paragraph diving into the main narrative arc. What shifted, what was interesting.
 
@@ -132,7 +132,7 @@ ticker:
   - label: "EXPERTS BAFFLED"
     text: "@${input.username} reviews 8 PRs before lunch. Coworkers reportedly stunned."
   - label: "DEVELOPING"
-    text: "@${input.username} spotted pushing commits at an alarming rate. 42 this week alone."
+    text: "@${input.username} spotted pushing commits at an alarming rate today."
   - label: "UNPRECEDENTED"
     text: "@${input.username} migrates three repos to OAuth2 PKCE in what sources call a historic sprint"
 

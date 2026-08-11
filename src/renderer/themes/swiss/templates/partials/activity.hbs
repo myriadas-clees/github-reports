@@ -18,16 +18,16 @@
     <span class="chip"><span class="chip-label">PRs merged</span> <span class="chip-value chip-green">{{stats.prsMerged}}</span></span>
     <span class="chip"><span class="chip-label">Lines</span> <span class="chip-value chip-green">+{{formatNumber stats.totalAdditions}}</span> <span class="chip-value chip-red">−{{formatNumber stats.totalDeletions}}</span></span>
     {{#if hoursEstimate}}
-    <span class="chip"><span class="chip-label">Estimated hours</span> <span class="chip-value">~{{hoursEstimate.hours}}h</span></span>
+    <span class="chip"><span class="chip-label">Estimated engineering hours</span> <span class="chip-value">~{{hoursEstimate.hours}}h</span></span>
     {{else}}
     {{#if stats.estimatedHours}}
-    <span class="chip"><span class="chip-label">Estimated hours</span> <span class="chip-value">~{{stats.estimatedHours}}h</span></span>
+    <span class="chip"><span class="chip-label">Estimated engineering hours</span> <span class="chip-value">~{{stats.estimatedHours}}h</span></span>
     {{/if}}
     {{/if}}
   </div>
 
   {{#if hoursEstimate}}
-  <p class="estimate-note"><em>Estimate only - not tracked time.</em></p>
+  <p class="estimate-note"><em>Conventional engineering effort estimate — not tracked, elapsed, or billed time.</em></p>
   {{/if}}
 
   {{#if dailyCommits.length}}

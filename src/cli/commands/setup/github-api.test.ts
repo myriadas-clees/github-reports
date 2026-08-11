@@ -98,10 +98,25 @@ describe("github-api", () => {
   describe("ensureRepo", () => {
     it("returns false if repo already exists", async () => {
       vi.spyOn(globalThis, "fetch").mockResolvedValue(
-        new Response("ok", { status: 200 }),
+        new Response(JSON.stringify({ private: true }), { status: 200 }),
       );
       const result = await ensureRepo("token", "user/repo");
       expect(result).toBe(false);
+    });
+
+    it("makes an existing public repo private", async () => {
+      const fetchSpy = vi.spyOn(globalThis, "fetch")
+        .mockResolvedValueOnce(new Response(JSON.stringify({ private: false }), { status: 200 }))
+        .mockResolvedValueOnce(new Response("", { status: 200 }));
+
+      await expect(ensureRepo("token", "user/repo")).resolves.toBe(false);
+      expect(fetchSpy).toHaveBeenLastCalledWith(
+        "https://api.github.com/repos/user/repo",
+        expect.objectContaining({
+          method: "PATCH",
+          body: JSON.stringify({ private: true }),
+        }),
+      );
     });
 
     it("creates user repo when owner matches login", async () => {
@@ -117,6 +132,8 @@ describe("github-api", () => {
       const createCall = fetchSpy.mock.calls[2];
       const body = JSON.parse(createCall[1]!.body as string);
       expect(body.homepage).toBe("https://user.github.io/repo");
+      expect(body.private).toBe(true);
+      expect(body.description).toContain("Public daily");
     });
 
     it("creates org repo when owner differs from login", async () => {
@@ -158,7 +175,7 @@ describe("github-api", () => {
       const body = JSON.parse(fetchSpy.mock.calls[0][1]!.body as string);
       expect(body.names).toEqual(expect.arrayContaining([
         "github-weekly-reporter",
-        "weekly-report",
+        "daily-report",
         "github-activity",
         "github-pages",
       ]));
@@ -205,11 +222,31 @@ describe("github-api", () => {
 
   describe("enablePages", () => {
     it("returns the Pages URL", async () => {
-      vi.spyOn(globalThis, "fetch").mockResolvedValue(
-        new Response("", { status: 201 }),
-      );
+      vi.spyOn(globalThis, "fetch")
+        .mockResolvedValueOnce(new Response(JSON.stringify({ ref: "refs/heads/gh-pages" }), { status: 200 }))
+        .mockResolvedValueOnce(new Response("", { status: 201 }))
+        .mockResolvedValueOnce(new Response(JSON.stringify({
+          html_url: "https://user.github.io/repo",
+        }), { status: 200 }));
       const url = await enablePages("token", "user/repo");
       expect(url).toBe("https://user.github.io/repo");
+    });
+
+    it("creates an orphan source branch before enabling Pages", async () => {
+      vi.spyOn(globalThis, "fetch")
+        .mockResolvedValueOnce(new Response("", { status: 404 }))
+        .mockResolvedValueOnce(new Response(JSON.stringify({ sha: "blob" }), { status: 201 }))
+        .mockResolvedValueOnce(new Response(JSON.stringify({ sha: "tree" }), { status: 201 }))
+        .mockResolvedValueOnce(new Response(JSON.stringify({ sha: "commit" }), { status: 201 }))
+        .mockResolvedValueOnce(new Response("", { status: 201 }))
+        .mockResolvedValueOnce(new Response("", { status: 201 }))
+        .mockResolvedValueOnce(new Response(JSON.stringify({ html_url: "https://user.github.io/repo" })));
+      await expect(enablePages("token", "user/repo")).resolves.toBe("https://user.github.io/repo");
+      const calls = vi.mocked(fetch).mock.calls;
+      expect(JSON.parse(String(calls[4]?.[1]?.body))).toEqual({
+        ref: "refs/heads/gh-pages",
+        sha: "commit",
+      });
     });
   });
 

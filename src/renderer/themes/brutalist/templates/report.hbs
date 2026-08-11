@@ -14,7 +14,7 @@
   <meta property="og:image:height" content="630" />
   <meta property="og:type" content="article" />
   {{#if canonicalUrl}}<meta property="og:url" content="{{{canonicalUrl}}}" />
-  {{/if}}<meta property="og:site_name" content="{{username}} Weekly Reports" />
+  {{/if}}<meta property="og:site_name" content="{{username}} Daily Reports" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="{{aiContent.title}}" />
   <meta name="twitter:description" content="{{aiContent.subtitle}}" />
@@ -63,9 +63,9 @@
 
 <nav aria-label="Site navigation">
   <div class="nav-inner">
-    <a href="../../" class="nav-brand">
-      <img class="nav-logo nav-logo-light" src="../../assets/brand/myriad-m-mark.png" alt="Myriad" width="22" height="22" />
-      <img class="nav-logo nav-logo-dark" src="../../assets/brand/myriad-m-mark-dark.png" alt="" width="22" height="22" />
+    <a href="{{rootPrefix}}" class="nav-brand">
+      <img class="nav-logo nav-logo-light" src="{{rootPrefix}}assets/brand/myriad-m-mark.png" alt="Myriad" width="22" height="22" />
+      <img class="nav-logo nav-logo-dark" src="{{rootPrefix}}assets/brand/myriad-m-mark-dark.png" alt="" width="22" height="22" />
       <span class="nav-site-title">{{siteTitleInline}}</span>
     </a>
     <div class="nav-actions">
@@ -79,7 +79,7 @@
 
 <div class="report-hero">
   <div class="report-hero-inner">
-    <a href="../../" class="report-back">&larr; {{i18n.allWeeks}}</a>
+    <a href="{{rootPrefix}}" class="report-back">&larr; {{i18n.allWeeks}}</a>
     {{> header}}
   </div>
 </div>

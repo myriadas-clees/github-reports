@@ -23,8 +23,10 @@ const MAX_RETRIES = 3;
 const REQUEST_DELAY_MS = 100;
 const DEFAULT_RETRY_DELAY_MS = 5_000;
 const CONCURRENCY = 5;
-/** Max PRs per repo (updated in-range) to inspect for reviews/comments. */
+/** Max PRs per repo updated between the report start and collection to inspect for scheduled runs. */
 const MAX_PRS_PER_REPO = 100;
+/** Allow delayed scheduled runs without making historical backfills scan to today. */
+const MAX_COLLECTION_LAG_MS = 12 * 60 * 60 * 1000;
 
 const sleep = (ms: number): Promise<void> => new Promise((r) => setTimeout(r, ms));
 
@@ -128,29 +130,87 @@ export const fetchReviewsForRepos = async (
   username: string,
   repos: string[],
   range: DateRange,
+  collectedAt: Date = new Date(),
+  historicalBackfill: boolean = false,
+  knownCandidates: Array<{ repo: string; number: number }> = [],
 ): Promise<FetchReviewsResult> => {
   const reviews: CodeReview[] = [];
   const comments: ReviewComment[] = [];
   const threadInputs: ReviewCommentThreadInput[] = [];
   const aiReviewSubmissions: AiReviewSubmissionInput[] = [];
   const lower = username.toLowerCase();
+  const candidateEnd = Math.min(
+    collectedAt.getTime(),
+    range.to.getTime() + MAX_COLLECTION_LAG_MS,
+  );
+
+  const contributionCandidates = new Map<string, Set<number>>();
+  if (historicalBackfill) {
+    const response = await fetch("https://api.github.com/graphql", {
+      method: "POST",
+      headers: { ...GITHUB_HEADERS(token), "Content-Type": "application/json" },
+      body: JSON.stringify({
+        query: `query($login:String!,$from:DateTime!,$to:DateTime!){user(login:$login){contributionsCollection(from:$from,to:$to){pullRequestReviewContributions(first:100){nodes{pullRequest{number repository{nameWithOwner}}}}}}}`,
+        variables: { login: username, from: range.from.toISOString(), to: range.to.toISOString() },
+      }),
+    });
+    if (response.ok) {
+      const body = await response.json() as { data?: { user?: { contributionsCollection?: { pullRequestReviewContributions?: { nodes?: Array<{ pullRequest: { number: number; repository: { nameWithOwner: string } } }> } } } } };
+      for (const node of body.data?.user?.contributionsCollection?.pullRequestReviewContributions?.nodes ?? []) {
+        const repo = node.pullRequest.repository.nameWithOwner;
+        const set = contributionCandidates.get(repo) ?? new Set<number>();
+        set.add(node.pullRequest.number);
+        contributionCandidates.set(repo, set);
+      }
+    }
+  }
 
   await runWithConcurrency(repos, async (repo) => {
-    // Pull requests updated in range — then inspect reviews/comments
+    // Include PRs changed after the report day but before collection. Their
+    // individual reviews/comments are still filtered to the exact report range.
     const params = new URLSearchParams({
       state: "all",
       sort: "updated",
       direction: "desc",
       per_page: "50",
     });
-    const prs = await fetchJsonPages<{
+    type CandidatePR = {
       number: number;
       title: string;
       html_url: string;
+      created_at: string;
       updated_at: string;
-    }>(token, `https://api.github.com/repos/${repo}/pulls?${params}`);
+    };
+    let prs: CandidatePR[];
+    if (historicalBackfill) {
+      const numbers = new Set<number>([
+        ...knownCandidates.filter((candidate) => candidate.repo === repo).map((candidate) => candidate.number),
+        ...(contributionCandidates.get(repo) ?? []),
+      ]);
+      const activityComments = await fetchJsonPages<RawComment>(
+        token,
+        `https://api.github.com/repos/${repo}/pulls/comments?since=${encodeURIComponent(range.from.toISOString())}&per_page=100`,
+      );
+      for (const comment of activityComments.filter((comment) => inRange(comment.created_at, range))) {
+        const number = Number(comment.pull_request_url.split("/").at(-1));
+        if (Number.isInteger(number)) numbers.add(number);
+      }
+      prs = (await Promise.all([...numbers].map(async (number) => {
+        const response = await fetch(`https://api.github.com/repos/${repo}/pulls/${number}`, {
+          headers: GITHUB_HEADERS(token),
+        });
+        return response.ok ? await response.json() as CandidatePR : null;
+      }))).filter((pr): pr is CandidatePR => pr !== null);
+    } else {
+      prs = await fetchJsonPages<CandidatePR>(token, `https://api.github.com/repos/${repo}/pulls?${params}`);
+    }
 
-    const relevant = prs.filter((pr) => inRange(pr.updated_at, range)).slice(0, MAX_PRS_PER_REPO);
+    const relevant = historicalBackfill
+      ? prs
+      : prs.filter((pr) => {
+        const updated = new Date(pr.updated_at).getTime();
+        return updated >= range.from.getTime() && updated <= candidateEnd;
+      }).slice(0, MAX_PRS_PER_REPO);
 
     for (const pr of relevant) {
       const rawReviews = await fetchJsonPages<RawReview>(

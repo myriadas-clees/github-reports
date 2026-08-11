@@ -12,7 +12,7 @@
   <meta property="og:image:height" content="630" />
   <meta property="og:type" content="article" />
   {{#if canonicalUrl}}<meta property="og:url" content="{{{canonicalUrl}}}" />
-  {{/if}}<meta property="og:site_name" content="{{username}} Weekly Reports" />
+  {{/if}}<meta property="og:site_name" content="{{username}} Daily Reports" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="{{aiContent.title}}" />
   <meta name="twitter:description" content="{{aiContent.subtitle}}" />
@@ -128,7 +128,7 @@
 
 <footer class="fixed-footer">
   <nav class="footer-breadcrumb" aria-label="Breadcrumb">
-    <a href="../../">{{i18n.allWeeks}}</a>
+    <a href="{{rootPrefix}}">{{i18n.allWeeks}}</a>
     <span class="footer-sep">/</span>
     <span class="footer-current">{{weekLabel dateRange.from dateRange.to}}</span>
   </nav>

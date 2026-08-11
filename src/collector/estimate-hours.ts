@@ -123,10 +123,8 @@ export const estimateHours = (
   const hours = round1(Math.max(session.hours, volumeHours));
 
   const note =
-    "Estimated effort — not tracked time. Combines (1) active sessions inferred " +
-    "from GitHub timestamps and (2) volume from PR size / reviews / commits, " +
-    "then uses the higher signal. Large diffs and sparse event pings are easy to " +
-    "undercount with timestamps alone; treat this as an approximate range.";
+    "Estimated conventional engineering effort based on delivered PR scope, " +
+    "reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.";
 
   return {
     hours,

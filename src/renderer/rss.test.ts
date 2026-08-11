@@ -122,6 +122,13 @@ describe("buildRSSFeed", () => {
     expect(feed).toContain("Mon, 06 Apr 2026 05:00:00 GMT");
   });
 
+  it("publishes a Friday daily report on Monday", () => {
+    const entries = [makeEntry("2026/08/07", "Friday", "Sub", "2026-08-07")];
+    const feed = buildRSSFeed(entries, defaultChannel({ timezone: "America/New_York" }));
+    expect(feed).toContain("Mon, 10 Aug 2026 05:00:00 GMT");
+    expect(feed).not.toContain("Sat, 08 Aug 2026");
+  });
+
   it("computes pubDate when positive offset crosses a month boundary", () => {
     // dateRange.to = 2026-05-31 (Sunday). UTC midnight of (dateTo + 1 day)
     // is 2026-06-01 00:00 UTC, which in JST (UTC+9) is 2026-06-01 09:00.

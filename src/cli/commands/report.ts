@@ -1,4 +1,4 @@
-// report command: weekly-fetch → generate → render in one local invocation
+// report command: daily-fetch → generate → render in one local invocation
 
 import { Command } from "commander";
 import { spawn } from "node:child_process";
@@ -51,13 +51,13 @@ const forwardFlags = (opts: Record<string, string | boolean | undefined>): strin
 export const registerReport = (program: Command): void => {
   program
     .command("report")
-    .description("Generate a full weekly status report locally (fetch + summarize + render)")
+    .description("Generate a complete daily status report locally (fetch + summarize + render)")
     .option("-t, --token <token>", "GitHub token (env: GITHUB_TOKEN / GH_PAT)")
     .option("-u, --username <username>", "GitHub username (env: GITHUB_USERNAME)")
     .option("--data-dir <dir>", "Data directory (env: DATA_DIR)")
     .option("--output-dir <dir>", "HTML output directory (env: OUTPUT_DIR)")
     .option("--timezone <tz>", "IANA timezone (env: TIMEZONE)")
-    .option("--date <date>", "Date within the target week (YYYY-MM-DD)")
+    .option("--date <date>", "Report date (YYYY-MM-DD, default: previous workday)")
     .option("--config <path>", "YAML config path (default: ./config.yaml)")
     .option("--language <lang>", "Report language")
     .option("--theme <theme>", "Report theme")
@@ -70,13 +70,13 @@ export const registerReport = (program: Command): void => {
     .action(async (opts) => {
       try {
         const flags = forwardFlags(opts);
-        console.log("=== 1/3 weekly-fetch ===");
-        await runSub(["weekly-fetch", ...flags]);
+        console.log("=== 1/3 daily-fetch ===");
+        await runSub(["daily-fetch", ...flags]);
         console.log("=== 2/3 generate ===");
         await runSub(["generate", ...flags]);
         console.log("=== 3/3 render ===");
         await runSub(["render", ...flags]);
-        console.log("Report complete. Open the HTML under the output directory (archived by week path).");
+        console.log("Report complete. Open the HTML under the output directory (archived by date).");
       } catch (error) {
         console.error("Error:", error instanceof Error ? error.message : error);
         process.exit(1);

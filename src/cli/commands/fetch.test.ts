@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, afterEach, beforeEach } from "vitest";
-import { resolveBaseOptions, extractPRRefs, buildDailyPlan, buildWeeklyPlan, formatCommitMsg } from "./fetch.js";
-import type { GitHubEvent } from "../../types.js";
+import { resolveBaseOptions, extractPRRefs, filterEventsToRepositories, classifyPullRequestsForRange, deriveContributionStats, buildDailyPlan, buildWeeklyPlan, formatCommitMsg } from "./fetch.js";
+import type { GitHubEvent, PullRequest } from "../../types.js";
 
 // Mock fs/promises
 const mockReadFile = vi.fn();
@@ -22,6 +22,8 @@ vi.mock("../../collector/fetch-events.js", () => ({
 
 vi.mock("../../collector/fetch-repo-prs.js", () => ({
   fetchPRsByRefs: vi.fn().mockResolvedValue([]),
+  fetchAuthoredPRRefsForBackfill: vi.fn().mockResolvedValue([]),
+  searchAuthoredPRRefsForBackfill: vi.fn().mockResolvedValue([]),
   mapState: vi.fn(),
 }));
 
@@ -244,25 +246,173 @@ describe("extractPRRefs", () => {
   });
 });
 
+describe("filterEventsToRepositories", () => {
+  const event = (id: string, repo: string): GitHubEvent => ({
+    id,
+    type: "PushEvent",
+    repo,
+    createdAt: "2026-08-10T12:00:00Z",
+    payload: { kind: "push", ref: "refs/heads/main", commits: [] },
+  });
+
+  it("removes cached events from repositories no longer configured", () => {
+    const events = [event("1", "org/app"), event("2", "org/old-app")];
+    expect(filterEventsToRepositories(events, ["ORG/APP"]).map((item) => item.id)).toEqual(["1"]);
+  });
+
+  it("preserves discovery behavior when no repositories are configured", () => {
+    const events = [event("1", "org/app"), event("2", "org/other")];
+    expect(filterEventsToRepositories(events, [])).toEqual(events);
+  });
+});
+
+describe("classifyPullRequestsForRange", () => {
+  const range = {
+    from: new Date("2026-08-10T04:00:00Z"),
+    to: new Date("2026-08-11T03:59:59.999Z"),
+  };
+  const pr = (overrides: Partial<PullRequest>): PullRequest => ({
+    title: "PR",
+    body: null,
+    url: "https://github.com/org/app/pull/1",
+    repository: "org/app",
+    state: "open",
+    labels: [],
+    additions: 100,
+    deletions: 20,
+    changedFiles: 2,
+    author: "alice",
+    createdAt: "2026-08-10T12:00:00Z",
+    mergedAt: null,
+    ...overrides,
+  });
+
+  it("excludes older authored and review-only PRs from daily delivery totals", () => {
+    const older = pr({
+      url: "https://github.com/org/app/pull/2",
+      createdAt: "2026-08-01T12:00:00Z",
+    });
+    const reviewed = pr({
+      url: "https://github.com/org/app/pull/3",
+      author: "bob",
+    });
+    const result = classifyPullRequestsForRange([older, reviewed], "alice", range);
+    expect(result.report).toEqual([]);
+    expect(result.opened).toEqual([]);
+    expect(result.merged).toEqual([]);
+  });
+
+  it("classifies create and merge actions without double-counting a PR", () => {
+    const sameDay = pr({ mergedAt: "2026-08-10T18:00:00Z", state: "merged" });
+    const mergedToday = pr({
+      url: "https://github.com/org/app/pull/2",
+      createdAt: "2026-08-01T12:00:00Z",
+      mergedAt: "2026-08-10T20:00:00Z",
+      state: "merged",
+    });
+    const result = classifyPullRequestsForRange([sameDay, mergedToday], "ALICE", range);
+    expect(result.opened).toHaveLength(1);
+    expect(result.merged).toHaveLength(2);
+    expect(result.report).toHaveLength(2);
+    expect(result.inProgress).toHaveLength(0);
+  });
+
+  it("treats a PR merged after the window as in progress for the report day", () => {
+    const result = classifyPullRequestsForRange([
+      pr({ state: "merged", mergedAt: "2026-08-12T12:00:00Z" }),
+    ], "alice", range);
+    expect(result.report[0]?.state).toBe("open");
+    expect(result.inProgress).toHaveLength(1);
+  });
+
+  it("keeps an older open PR updated in the window as in progress only", () => {
+    const older = pr({
+      createdAt: "2026-08-01T12:00:00Z",
+      updatedAt: "2026-08-10T17:00:00Z",
+      state: "open",
+    });
+    const result = classifyPullRequestsForRange([older], "alice", range);
+    expect(result.opened).toEqual([]);
+    expect(result.report).toEqual([]);
+    expect(result.inProgress).toEqual([older]);
+  });
+
+  it("uses historical commit evidence after the PR is updated later", () => {
+    const older = pr({
+      createdAt: "2026-08-01T12:00:00Z",
+      updatedAt: "2026-08-20T17:00:00Z",
+      workTimestamps: ["2026-08-10T17:00:00Z"],
+      state: "open",
+    });
+    const result = classifyPullRequestsForRange([older], "alice", range);
+    expect(result.report).toEqual([]);
+    expect(result.inProgress).toEqual([older]);
+  });
+
+  it("preserves an unmerged PR closed during the window", () => {
+    const result = classifyPullRequestsForRange([
+      pr({ state: "closed", closedAt: "2026-08-10T20:00:00Z", updatedAt: "2026-08-10T20:00:00Z" }),
+    ], "alice", range);
+    expect(result.report[0]?.state).toBe("closed");
+    expect(result.inProgress).toEqual([]);
+  });
+
+  it("treats a PR closed after the window as open at day end", () => {
+    const result = classifyPullRequestsForRange([
+      pr({ state: "closed", closedAt: "2026-08-12T20:00:00Z", updatedAt: "2026-08-12T20:00:00Z" }),
+    ], "alice", range);
+    expect(result.report[0]?.state).toBe("open");
+    expect(result.inProgress).toHaveLength(1);
+  });
+});
+
+describe("deriveContributionStats", () => {
+  const contributions = {
+    username: "alice",
+    avatarUrl: "https://example.com/a.png",
+    profile: { name: null, bio: null, company: null, location: null, followers: 0, following: 0, publicRepos: 0 },
+    totalCommits: 99,
+    prsReviewed: 12,
+    dailyCommits: [{ date: "2026-08-10", count: 99 }],
+  };
+
+  it("derives scoped totals and heatmap values only from scoped collectors", () => {
+    const result = deriveContributionStats(contributions, [{
+      repo: "org/app",
+      messages: ["one", "two"],
+      commits: [
+        { sha: "1", message: "one", url: "u1", authoredAt: "2026-08-10T23:30:00Z" },
+        { sha: "2", message: "two", url: "u2", authoredAt: "2026-08-11T00:30:00Z" },
+      ],
+    }], 2, "America/New_York", true);
+    expect(result.totalCommits).toBe(2);
+    expect(result.prsReviewed).toBe(2);
+    expect(result.dailyCommits).toEqual([{ date: "2026-08-10", count: 2 }]);
+  });
+
+  it("retains account-wide contribution totals when no allowlist is configured", () => {
+    const result = deriveContributionStats(contributions, [], 2, "UTC", false);
+    expect(result).toEqual({ totalCommits: 99, prsReviewed: 12, dailyCommits: contributions.dailyCommits });
+  });
+});
+
 // -------------------------------------------------------------------
 // buildDailyPlan
 //
-// Cron fires at midnight local time. Yesterday's events go into the
-// in-progress Thu–Wed work week folder.
-//
-// W13 = Thu 3/26 .. Wed 4/1; W14 = Thu 4/2 .. Wed 4/8
+// Cron fires after midnight local time. Yesterday's complete activity goes
+// into a YYYY/MM/DD archive folder.
 // -------------------------------------------------------------------
 
 describe("buildDailyPlan", () => {
   const jstCases: [string, string, string, string, string][] = [
     // [cron UTC instant,           targetDate, range,       weekPath,    description]
-    ["2026-03-26T15:00:00Z", "2026-03-26", "2026-03-26", "2026/W13", "Fri: yesterday=Thu(W13)"],
-    ["2026-03-30T15:00:00Z", "2026-03-30", "2026-03-30", "2026/W13", "Tue: yesterday=Mon(W13)"],
-    ["2026-04-01T15:00:00Z", "2026-04-01", "2026-04-01", "2026/W13", "Thu: yesterday=Wed(W13)"],
-    ["2026-04-02T15:00:00Z", "2026-04-02", "2026-04-02", "2026/W14", "Fri: yesterday=Thu(W14)"],
-    ["2026-04-05T15:00:00Z", "2026-04-05", "2026-04-05", "2026/W14", "Mon: yesterday=Sun(W14)"],
-    ["2026-04-08T15:00:00Z", "2026-04-08", "2026-04-08", "2026/W14", "Thu: yesterday=Wed(W14)"],
-    ["2026-04-09T15:00:00Z", "2026-04-09", "2026-04-09", "2026/W15", "Fri: yesterday=Thu(W15), week boundary"],
+    ["2026-03-26T15:00:00Z", "2026-03-26", "2026-03-26", "2026/03/26", "yesterday"],
+    ["2026-03-30T15:00:00Z", "2026-03-30", "2026-03-30", "2026/03/30", "yesterday"],
+    ["2026-04-01T15:00:00Z", "2026-04-01", "2026-04-01", "2026/04/01", "yesterday"],
+    ["2026-04-02T15:00:00Z", "2026-04-02", "2026-04-02", "2026/04/02", "yesterday"],
+    ["2026-04-05T15:00:00Z", "2026-04-03", "2026-04-03", "2026/04/03", "Monday reports Friday"],
+    ["2026-04-08T15:00:00Z", "2026-04-08", "2026-04-08", "2026/04/08", "yesterday"],
+    ["2026-04-09T15:00:00Z", "2026-04-09", "2026-04-09", "2026/04/09", "yesterday"],
   ];
 
   it.each(jstCases)("JST cron at %s: %s", (utcInstant, targetDate, rangeDate, weekPath, _desc) => {
@@ -275,9 +425,9 @@ describe("buildDailyPlan", () => {
   });
 
   const utcCases: [string, string, string][] = [
-    ["2026-03-27T00:00:00Z", "2026-03-26", "2026/W13"],
-    ["2026-04-02T00:00:00Z", "2026-04-01", "2026/W13"],
-    ["2026-04-03T00:00:00Z", "2026-04-02", "2026/W14"],
+    ["2026-03-27T00:00:00Z", "2026-03-26", "2026/03/26"],
+    ["2026-04-02T00:00:00Z", "2026-04-01", "2026/04/01"],
+    ["2026-04-03T00:00:00Z", "2026-04-02", "2026/04/02"],
   ];
 
   it.each(utcCases)("UTC cron at %s: yesterday=%s week=%s", (utcInstant, targetDate, weekPath) => {
@@ -291,8 +441,7 @@ describe("buildDailyPlan", () => {
     expect(plan.targetDate).toBe("2025-12-31");
     expect(plan.rangeFrom).toBe("2025-12-31");
     expect(plan.rangeTo).toBe("2025-12-31");
-    // Dec 31 2025 is Wednesday of the week that started Thu Dec 25
-    expect(plan.weekPath).toMatch(/^2025\/W\d{2}$/);
+    expect(plan.weekPath).toBe("2025/12/31");
   });
 
   it("range covers exactly one day (from and to are the same date)", () => {
@@ -355,7 +504,7 @@ describe("buildWeeklyPlan", () => {
 // -------------------------------------------------------------------
 
 describe("daily/weekly plan consistency", () => {
-  it("7 daily plans cover the same range as the weekly plan (UTC)", () => {
+  it("weekday scheduling skips weekend report dates (UTC)", () => {
     // W13 = Thu 3/26 .. Wed 4/1. Daily crons Fri 3/27 through Thu 4/2.
     const dailyDates = [
       "2026-03-27T00:00:00Z", // yesterday = 3/26 Thu
@@ -368,11 +517,11 @@ describe("daily/weekly plan consistency", () => {
     ];
     const dailyPlans = dailyDates.map((d) => buildDailyPlan(new Date(d), "UTC", "./data"));
 
-    dailyPlans.forEach((p) => expect(p.weekPath).toBe("2026/W13"));
+    dailyPlans.forEach((p) => expect(p.weekPath).toBe(p.targetDate.replaceAll("-", "/")));
 
     const collectedDates = dailyPlans.map((p) => p.targetDate);
     expect(collectedDates).toEqual([
-      "2026-03-26", "2026-03-27", "2026-03-28", "2026-03-29",
+      "2026-03-26", "2026-03-27", "2026-03-27", "2026-03-27",
       "2026-03-30", "2026-03-31", "2026-04-01",
     ]);
 
@@ -382,7 +531,7 @@ describe("daily/weekly plan consistency", () => {
     expect(weeklyPlan.weekPath).toBe("2026/W13");
   });
 
-  it("7 daily plans cover the same range as the weekly plan (Asia/Tokyo)", () => {
+  it("weekday scheduling skips weekend report dates (Asia/Tokyo)", () => {
     const dailyDates = [
       "2026-03-26T15:00:00Z", // JST 3/27 Fri, yesterday = 3/26 Thu
       "2026-03-27T15:00:00Z",
@@ -394,11 +543,11 @@ describe("daily/weekly plan consistency", () => {
     ];
     const dailyPlans = dailyDates.map((d) => buildDailyPlan(new Date(d), "Asia/Tokyo", "./data"));
 
-    dailyPlans.forEach((p) => expect(p.weekPath).toBe("2026/W13"));
+    dailyPlans.forEach((p) => expect(p.weekPath).toBe(p.targetDate.replaceAll("-", "/")));
 
     const collectedDates = dailyPlans.map((p) => p.targetDate);
     expect(collectedDates).toEqual([
-      "2026-03-26", "2026-03-27", "2026-03-28", "2026-03-29",
+      "2026-03-26", "2026-03-27", "2026-03-27", "2026-03-27",
       "2026-03-30", "2026-03-31", "2026-04-01",
     ]);
 
@@ -414,13 +563,12 @@ describe("daily/weekly plan consistency", () => {
 // -------------------------------------------------------------------
 
 describe("formatCommitMsg", () => {
-  it("daily: includes week path and UTC range", () => {
-    // Sun Apr 6 00:00 JST = 2026-04-05T15:00:00Z, yesterday = Sat Apr 5 (W14)
+  it("daily: includes date path and UTC range", () => {
+    // Monday Apr 6 00:00 JST reports the preceding Friday Apr 3.
     const plan = buildDailyPlan(new Date("2026-04-05T15:00:00Z"), "Asia/Tokyo", "./data");
     const msg = formatCommitMsg("daily", plan);
-    // Apr 5 JST midnight = Apr 4 15:00 UTC, Apr 6 JST midnight - 1ms = Apr 5 14:59:59.999 UTC
-    expect(msg).toBe(`data: daily 2026/W14 ${plan.range.from.toISOString()}..${plan.range.to.toISOString()}`);
-    expect(msg).toMatch(/^data: daily 2026\/W14 2026-04-04T15:00:00\.000Z\.\.2026-04-05T14:59:59\.999Z$/);
+    expect(msg).toBe(`data: daily 2026/04/03 ${plan.range.from.toISOString()}..${plan.range.to.toISOString()}`);
+    expect(msg).toMatch(/^data: daily 2026\/04\/03 2026-04-02T15:00:00\.000Z\.\.2026-04-03T14:59:59\.999Z$/);
   });
 
   it("weekly: includes week path and UTC range", () => {
@@ -435,7 +583,7 @@ describe("formatCommitMsg", () => {
     // Fri Apr 3 00:00 JST = 2026-04-02T15:00:00Z, yesterday = Thu Apr 2 (W14)
     const plan = buildDailyPlan(new Date("2026-04-02T15:00:00Z"), "Asia/Tokyo", "./data");
     const msg = formatCommitMsg("daily", plan);
-    expect(msg).toMatch(/^data: daily 2026\/W14 /);
+    expect(msg).toMatch(/^data: daily 2026\/04\/02 /);
   });
 });
 
@@ -447,10 +595,15 @@ describe("registerFetch (daily-fetch)", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     mockReadFile.mockRejectedValue(new Error("not found")); // no existing events
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({ items: [], total_count: 0 }),
+    }));
   });
 
   afterEach(() => {
     vi.unstubAllEnvs();
+    vi.unstubAllGlobals();
   });
 
   it("calls fetchEvents and writes events.yaml", async () => {
@@ -968,7 +1121,7 @@ describe("registerFetch (commit-msg)", () => {
     ]);
 
     restore();
-    expect(writes.join("")).toMatch(/^data: daily 2026\/W14 /);
+    expect(writes.join("")).toMatch(/^data: daily 2026\/04\/02 /);
   });
 
   it("weekly mode: prints commit message for given date", async () => {
@@ -1001,7 +1154,7 @@ describe("registerFetch (commit-msg)", () => {
     await program.parseAsync(["node", "cli", "commit-msg", "daily"]);
 
     restore();
-    expect(writes.join("")).toMatch(/^data: daily \d{4}\/W\d{2} /);
+    expect(writes.join("")).toMatch(/^data: daily \d{4}\/\d{2}\/\d{2} /);
   });
 
   it("falls back to UTC and ./data when neither flags nor env are set", async () => {

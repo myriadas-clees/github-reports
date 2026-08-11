@@ -2,7 +2,7 @@
 
 import { Command } from "commander";
 import { deploy } from "../../deployer/index.js";
-import { getWeekId } from "../../deployer/week.js";
+import { resolveDayId } from "../../deployer/day.js";
 import { parseLocalDate } from "../../collector/date-range.js";
 
 type DeployCommandOptions = {
@@ -38,13 +38,13 @@ export const buildRepoUrl = (repo: string | undefined): string => {
 };
 
 const run = async (options: DeployCommandOptions): Promise<void> => {
-  const weekId = getWeekId(options.date, options.timezone);
+  const dayId = resolveDayId(options.date, options.timezone);
 
   console.log(`Deploying ${options.directory}...`);
   await deploy({
     repoUrl: options.repoUrl,
     directory: options.directory,
-    message: `report: ${weekId.path}`,
+    message: `report: ${dayId.date}`,
   });
   console.log("Deployed successfully!");
 };
@@ -56,7 +56,7 @@ export const registerDeploy = (program: Command): void => {
     .option("-d, --directory <dir>", "Directory containing generated HTML files (env: OUTPUT_DIR, default: ./output)")
     .option("-r, --repo <slug>", "Repository (owner/repo or full URL, env: GITHUB_REPOSITORY)")
     .option("--timezone <tz>", "IANA timezone (env: TIMEZONE, default: UTC)")
-    .option("--date <date>", "Date within the target week (YYYY-MM-DD, default: today)")
+    .option("--date <date>", "Report date (YYYY-MM-DD, default: previous workday)")
     .action(async (opts) => {
       try {
         const timezone = opts.timezone ?? env("TIMEZONE") ?? "UTC";

@@ -51,7 +51,8 @@ describe("estimateHours hybrid", () => {
     expect(result.sessionHours).toBeLessThan(2);
     expect(result.volumeHours).toBeGreaterThanOrEqual(22);
     expect(result.hours).toBe(result.volumeHours);
-    expect(result.note).toMatch(/volume/i);
+    expect(result.note).toMatch(/conventional engineering effort/i);
+    expect(result.note).toMatch(/not tracked, elapsed, or billed time/i);
   });
 
   it("uses session hours when they exceed volume", () => {

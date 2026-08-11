@@ -1,5 +1,6 @@
 node_modules/
 dist/
+coverage/
 *.tsbuildinfo
 .env
 .envrc
@@ -8,4 +9,3 @@ output/
 tmp/
 output-*/
 preview-site/
-config.yaml

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { buildStakeholderSummary, buildFallbackAIContent } from "./stakeholder-summary.js";
+import { buildStakeholderSummary, buildFallbackAIContent, formatShortWeekTitle } from "./stakeholder-summary.js";
 import type { WeeklyReportData } from "../types.js";
 
 const base = {
@@ -53,6 +53,12 @@ const base = {
     note: "Estimated from GitHub activity timestamps. Not tracked time.",
   },
 };
+
+describe("formatShortWeekTitle", () => {
+  it("uses one date for a daily report", () => {
+    expect(formatShortWeekTitle("2026-08-10", "2026-08-10")).toBe("Aug 10");
+  });
+});
 
 describe("buildStakeholderSummary", () => {
   it("returns empty — metrics and theme live elsewhere on the page", () => {
@@ -138,5 +144,8 @@ describe("buildFallbackAIContent", () => {
 
     expect(content.highlights[0]?.url).toContain("github.com");
     expect(content.summaries.length).toBeGreaterThan(0);
+    const effort = content.summaries.find((summary) => summary.heading === "Estimated engineering hours");
+    expect(effort?.chips?.some((chip) => chip.label === "Estimated engineering hours")).toBe(true);
+    expect(effort?.chips?.some((chip) => chip.label === "Sessions")).toBe(false);
   });
 });

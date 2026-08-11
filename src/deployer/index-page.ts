@@ -27,6 +27,9 @@ export type ReportEntry = {
   dateLabel: string;
   dateTo?: string; // ISO date (YYYY-MM-DD) of the week's last day
   stats?: ReportEntryStats;
+  dayLabel?: string;
+  weekdayLabel?: string;
+  activityPercent?: number;
 };
 
 type YearGroup = {
@@ -34,9 +37,25 @@ type YearGroup = {
   reports: ReportEntry[];
 };
 
-const weekToDateLabel = (path: string): string => {
-  const [year, week] = path.split("/");
-  return `${year} ${week}`;
+type MonthGroup = {
+  key: string;
+  label: string;
+  year: string;
+  reports: ReportEntry[];
+  stats: ReportEntryStats;
+};
+
+type ArchiveOverview = {
+  reportCount: number;
+  commits: number;
+  prs: number;
+  reviews: number;
+  rangeLabel: string;
+};
+
+const pathToDateLabel = (path: string): string => {
+  const [year, month, day] = path.split("/");
+  return month && day ? `${year}-${month}-${day}` : path.replace("/", " ");
 };
 
 const groupByYear = (reports: ReportEntry[]): YearGroup[] => {
@@ -50,6 +69,65 @@ const groupByYear = (reports: ReportEntry[]): YearGroup[] => {
   });
 
   return [...groups.entries()].map(([year, reps]) => ({ year, reports: reps }));
+};
+
+const reportActivity = (report: ReportEntry): number =>
+  (report.stats?.commits ?? 0) + (report.stats?.prs ?? 0) * 3 + (report.stats?.reviews ?? 0) * 2;
+
+const enrichActivity = (reports: ReportEntry[]): ReportEntry[] => {
+  const max = Math.max(...reports.map(reportActivity), 1);
+  return reports.map((report) => ({
+    ...report,
+    activityPercent: Math.max(4, Math.round((reportActivity(report) / max) * 100)),
+  }));
+};
+
+const groupByMonth = (reports: ReportEntry[], language: Language): MonthGroup[] => {
+  const groups = new Map<string, ReportEntry[]>();
+  enrichActivity(
+    [...reports]
+      .filter((report) => /^\d{4}\/(?:\d{2}\/\d{2}|W\d{2})$/.test(report.path))
+      .sort((a, b) => b.path.localeCompare(a.path)),
+  ).forEach((report) => {
+    const [year, segment] = report.path.split("/");
+    const key = segment.startsWith("W") ? `${year}/weekly` : `${year}/${segment}`;
+    groups.set(key, [...(groups.get(key) ?? []), report]);
+  });
+  return [...groups.entries()].map(([key, monthReports]) => {
+    const [yearPart, monthPart] = key.split("/");
+    const year = Number(yearPart);
+    const label = monthPart === "weekly"
+      ? "Weekly"
+      : new Intl.DateTimeFormat(language, { month: "long", timeZone: "UTC" })
+        .format(new Date(Date.UTC(year, Number(monthPart) - 1, 1)));
+    return {
+      key,
+      label,
+      year: String(year),
+      reports: monthReports,
+      stats: monthReports.reduce<ReportEntryStats>((total, report) => ({
+        commits: total.commits + (report.stats?.commits ?? 0),
+        prs: total.prs + (report.stats?.prs ?? 0),
+        reviews: total.reviews + (report.stats?.reviews ?? 0),
+      }), { commits: 0, prs: 0, reviews: 0 }),
+    };
+  });
+};
+
+const buildOverview = (reports: ReportEntry[]): ArchiveOverview => {
+  const sorted = [...reports].sort((a, b) => a.path.localeCompare(b.path));
+  const totals = reports.reduce((total, report) => ({
+    commits: total.commits + (report.stats?.commits ?? 0),
+    prs: total.prs + (report.stats?.prs ?? 0),
+    reviews: total.reviews + (report.stats?.reviews ?? 0),
+  }), { commits: 0, prs: 0, reviews: 0 });
+  return {
+    reportCount: reports.length,
+    ...totals,
+    rangeLabel: sorted.length > 0
+      ? `${sorted[0].dateLabel} — ${sorted[sorted.length - 1].dateLabel}`
+      : "No reports yet",
+  };
 };
 
 export const renderIndexPage = (
@@ -67,12 +145,14 @@ export const renderIndexPage = (
   const resolvedSiteTitle = (siteTitle ?? "Dev\nPulse").replace(/\\n/g, "\n");
   const siteTitleInline = resolvedSiteTitle.replace(/\n/g, " ");
   const username = pageData?.username ?? "";
-  const description = `Weekly reports by @${username}`;
+  const description = `Daily reports by @${username}`;
   const ogImageUrl = baseUrl ? `${baseUrl}/og.png` : "og.png";
   const indexTemplate = readThemeTemplate(theme, "index-page.hbs");
   const template = Handlebars.compile(indexTemplate);
   return template({
     yearGroups: groupByYear(reports),
+    monthGroups: groupByMonth(reports, language),
+    overview: buildOverview(reports),
     css: theme.buildCSS(language),
     indexCss: theme.buildIndexCSS(language),
     username,
@@ -103,14 +183,20 @@ export const buildReportEntry = (
   stats?: ReportEntryStats,
   dateTo?: string,
   overview?: string,
-): ReportEntry => ({
-  path,
-  week: path.split("/")[1] ?? path,
-  year: path.split("/")[0] ?? "",
-  title,
-  subtitle,
-  overview,
-  dateLabel: weekToDateLabel(path),
-  dateTo,
-  stats,
-});
+): ReportEntry => {
+  const [year, month, day] = path.split("/");
+  const date = year && month && day ? new Date(Date.UTC(Number(year), Number(month) - 1, Number(day))) : null;
+  return {
+    path,
+    week: path.split("/").slice(1).join("-") || path,
+    year: year ?? "",
+    title,
+    subtitle,
+    overview,
+    dateLabel: pathToDateLabel(path),
+    dateTo,
+    stats,
+    dayLabel: day,
+    weekdayLabel: date ? new Intl.DateTimeFormat("en", { weekday: "short", timeZone: "UTC" }).format(date) : undefined,
+  };
+};

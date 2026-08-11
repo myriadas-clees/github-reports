@@ -40,64 +40,82 @@
   </div>
 </nav>
 
-<section class="hero">
-  <div class="geo-circle geo-circle-1"></div>
-  <div class="geo-circle geo-circle-2"></div>
-  <div class="geo-circle geo-circle-3"></div>
-  <div class="geo-line geo-line-1"></div>
-  <div class="geo-line geo-line-2"></div>
-  <div class="geo-dot geo-dot-1"></div>
-  <div class="geo-dot geo-dot-2"></div>
-  <div class="geo-dot geo-dot-3"></div>
-
-  {{#if avatarUrl}}
-  <a href="https://github.com/{{username}}" class="hero-avatar-wrap" target="_blank" rel="noopener nofollow">
-    <img src="{{avatarUrl}}" alt="{{username}}" class="hero-avatar" width="180" height="180" />
-  </a>
-  {{/if}}
-
-  <div class="hero-inner">
-    <h1 class="hero-title">{{siteTitle}}</h1>
-
-    {{#if username}}
-    <a href="https://github.com/{{username}}" class="hero-profile" target="_blank" rel="noopener nofollow">
-      <div class="hero-name-block">
-        <div class="hero-display-name">{{displayName}}</div>
-        <div class="hero-handle">@{{username}}</div>
-        {{#if profile.company}}<div class="hero-bio">{{profile.company}}</div>{{/if}}
-        {{#if profile.location}}<div class="hero-bio">{{profile.location}}</div>{{/if}}
+<main class="overhead-shell">
+  <header class="overhead-header">
+    <div class="overhead-identity">
+      <div class="overhead-kicker">Daily worklog / overhead</div>
+      <h1 class="overhead-title">{{siteTitle}}</h1>
+      <div class="overhead-owner">
+        {{#if avatarUrl}}<img src="{{avatarUrl}}" alt="" class="overhead-avatar" width="32" height="32" />{{/if}}
+        <span>{{displayName}}</span>
+        {{#if username}}<a href="https://github.com/{{username}}" target="_blank" rel="noopener nofollow">@{{username}}</a>{{/if}}
       </div>
-    </a>
-    {{/if}}
-  </div>
-</section>
-
-<div class="index-content">
-  {{#each yearGroups}}
-  <div class="year-group">
-    <div class="year-label">{{this.year}}</div>
-    <div class="week-list">
-      {{#each this.reports}}
-      <a href="{{this.path}}/" class="week-item">
-        <div class="week-item-week">{{this.week}}</div>
-        <div class="week-item-content">
-          <div class="week-item-title">{{#if this.title}}{{this.title}}{{else}}Week {{this.week}}{{/if}}</div>
-          {{#if this.subtitle}}<div class="week-item-subtitle">{{this.subtitle}}</div>{{/if}}
-          <div class="week-item-date">{{this.dateLabel}}</div>
-        </div>
-        {{#if this.stats}}
-        <div class="week-item-stats">
-          <span class="week-item-stat stat-commits"><span class="week-item-stat-value">{{this.stats.commits}}</span> commits</span>
-          <span class="week-item-stat stat-prs"><span class="week-item-stat-value">{{this.stats.prs}}</span> PRs</span>
-          <span class="week-item-stat stat-reviews"><span class="week-item-stat-value">{{this.stats.reviews}}</span> reviews</span>
-        </div>
-        {{/if}}
-      </a>
-      {{/each}}
     </div>
-  </div>
-  {{/each}}
-</div>
+    <div class="overhead-window">
+      <span class="overhead-window-label">Reporting window</span>
+      <strong>{{overview.rangeLabel}}</strong>
+    </div>
+  </header>
+
+  <section class="overview-strip" aria-label="Archive totals">
+    <div class="overview-cell">
+      <span class="overview-value">{{overview.commits}}</span>
+      <span class="overview-label">commits</span>
+    </div>
+    <div class="overview-cell">
+      <span class="overview-value">{{overview.prs}}</span>
+      <span class="overview-label">pull requests</span>
+    </div>
+    <div class="overview-cell">
+      <span class="overview-value">{{overview.reviews}}</span>
+      <span class="overview-label">reviews</span>
+    </div>
+  </section>
+
+  <section class="ledger" aria-label="Daily report archive">
+    <div class="ledger-heading">
+      <span>Activity ledger</span>
+      <span>{{overview.reportCount}} reports</span>
+    </div>
+
+    {{#each monthGroups}}
+    <details class="month-group" {{#if @first}}open{{/if}}>
+      <summary class="month-summary">
+        <div class="month-name"><span>{{this.label}}</span><strong>{{this.year}}</strong></div>
+        <div class="month-tape" aria-hidden="true">
+          {{#each this.reports}}<i style="--activity: {{this.activityPercent}}%"></i>{{/each}}
+        </div>
+        <div class="month-totals">
+          <span><b>{{this.stats.commits}}</b> commits</span>
+          <span><b>{{this.stats.prs}}</b> PRs</span>
+          <span><b>{{this.stats.reviews}}</b> reviews</span>
+        </div>
+        <span class="month-count" aria-label="Expand or collapse month"></span>
+      </summary>
+
+      <div class="day-list">
+        {{#each this.reports}}
+        <a href="{{this.path}}/" class="day-row">
+          <div class="day-date"><strong>{{this.dayLabel}}</strong><span>{{this.weekdayLabel}}</span></div>
+          <div class="day-story">
+            <div class="day-title">{{#if this.title}}{{this.title}}{{else}}{{this.dateLabel}}{{/if}}</div>
+            {{#if this.subtitle}}<div class="day-subtitle">{{this.subtitle}}</div>{{/if}}
+          </div>
+          {{#if this.stats}}
+          <div class="day-stats">
+            <span><b>{{this.stats.commits}}</b> C</span>
+            <span><b>{{this.stats.prs}}</b> PR</span>
+            <span><b>{{this.stats.reviews}}</b> R</span>
+          </div>
+          {{/if}}
+          <span class="day-open" aria-hidden="true">↗</span>
+        </a>
+        {{/each}}
+      </div>
+    </details>
+    {{/each}}
+  </section>
+</main>
 
 <footer class="footer">
   <div class="theme-toggle-row">

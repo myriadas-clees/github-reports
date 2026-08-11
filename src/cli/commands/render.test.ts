@@ -1,5 +1,23 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { Command } from "commander";
+it("sorts weekly and daily archive paths by their report dates", async () => {
+  const { sortReportPathsChronologically } = await import("./render.js");
+  const dates = new Map([
+    ["2026/W14", "2026-04-05"],
+    ["2026/W15", "2026-04-12"],
+  ]);
+  expect(sortReportPathsChronologically([
+    "2026/04/08",
+    "2026/W15",
+    "2026/04/06",
+    "2026/W14",
+  ], dates)).toEqual([
+    "2026/W14",
+    "2026/04/06",
+    "2026/04/08",
+    "2026/W15",
+  ]);
+});
 
 // Mock fs/promises
 const mockReadFile = vi.fn();
@@ -48,12 +66,9 @@ vi.mock("../../renderer/rss.js", () => ({
   buildRSSFeed: (...args: unknown[]) => mockBuildRSSFeed(...args),
 }));
 
-// Mock week (keep real isoWeekToMonday)
-vi.mock("../../deployer/week.js", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("../../deployer/week.js")>();
+vi.mock("../../deployer/day.js", () => {
   return {
-    ...actual,
-    getWeekId: () => ({ year: 2026, week: 14, path: "2026/W14" }),
+    resolveDayId: () => ({ date: "2026-04-01", year: 2026, month: 4, day: 1, path: "2026/04/01" }),
   };
 });
 
@@ -182,7 +197,7 @@ describe("registerRender", () => {
     );
     expect(cardCall).toBeDefined();
     const cardSvg = cardCall![1] as string;
-    expect(cardSvg).toContain("Week 14");
+    expect(cardSvg).toContain("2026-04-01");
     expect(cardSvg).toContain("2026-03-28");
     expect(cardSvg).toContain("2026-04-03");
   });
@@ -306,17 +321,18 @@ describe("registerRender", () => {
     const PREV_LLM_YAML = LLM_DATA_YAML.replace("Weekly Summary", "Previous Week Summary");
 
     mockReadFile.mockImplementation((path: string) => {
-      if (path.includes("W13") && path.includes("github-data.yaml")) return Promise.resolve(PREV_GITHUB_YAML);
-      if (path.includes("W13") && path.includes("llm-data.yaml")) return Promise.resolve(PREV_LLM_YAML);
+      if (path.includes("2026/03/31") && path.includes("github-data.yaml")) return Promise.resolve(PREV_GITHUB_YAML);
+      if (path.includes("2026/03/31") && path.includes("llm-data.yaml")) return Promise.resolve(PREV_LLM_YAML);
       if (path.includes("github-data.yaml")) return Promise.resolve(GITHUB_DATA_YAML);
       if (path.includes("llm-data.yaml")) return Promise.resolve(LLM_DATA_YAML);
       return Promise.reject(new Error("not found"));
     });
 
-    // Two weeks exist: W13 and W14
     mockReaddir.mockImplementation((dir: string) => {
       if (dir.endsWith("data")) return Promise.resolve(["2026"]);
-      if (dir.includes("2026")) return Promise.resolve(["W13", "W14"]);
+      if (dir.endsWith("data/2026")) return Promise.resolve(["03", "04"]);
+      if (dir.endsWith("data/2026/03")) return Promise.resolve(["31"]);
+      if (dir.endsWith("data/2026/04")) return Promise.resolve(["01"]);
       return Promise.resolve([]);
     });
 
@@ -337,7 +353,7 @@ describe("registerRender", () => {
 
     // Second call should include nextWeek link
     const prevWeekCall = mockRenderReport.mock.calls[1];
-    expect(prevWeekCall[1]).toHaveProperty("nextWeek", "../../2026/W14/");
+    expect(prevWeekCall[1]).toHaveProperty("nextWeek", "../../../2026/04/01/");
   });
 
   it("links nextWeek and prevPrev when current week sits in the middle", async () => {
@@ -345,17 +361,18 @@ describe("registerRender", () => {
     const PREV_LLM_YAML = LLM_DATA_YAML.replace("Weekly Summary", "Previous Week Summary");
 
     mockReadFile.mockImplementation((path: string) => {
-      if (path.includes("W13") && path.includes("github-data.yaml")) return Promise.resolve(PREV_GITHUB_YAML);
-      if (path.includes("W13") && path.includes("llm-data.yaml")) return Promise.resolve(PREV_LLM_YAML);
+      if (path.includes("2026/03/31") && path.includes("github-data.yaml")) return Promise.resolve(PREV_GITHUB_YAML);
+      if (path.includes("2026/03/31") && path.includes("llm-data.yaml")) return Promise.resolve(PREV_LLM_YAML);
       if (path.includes("github-data.yaml")) return Promise.resolve(GITHUB_DATA_YAML);
       if (path.includes("llm-data.yaml")) return Promise.resolve(LLM_DATA_YAML);
       return Promise.reject(new Error("not found"));
     });
 
-    // Four weeks exist: W12, W13, W14 (current), W15 — current is not last and prev has its own predecessor
     mockReaddir.mockImplementation((dir: string) => {
       if (dir.endsWith("data")) return Promise.resolve(["2026"]);
-      if (dir.includes("2026")) return Promise.resolve(["W12", "W13", "W14", "W15"]);
+      if (dir.endsWith("data/2026")) return Promise.resolve(["03", "04"]);
+      if (dir.endsWith("data/2026/03")) return Promise.resolve(["30", "31"]);
+      if (dir.endsWith("data/2026/04")) return Promise.resolve(["01", "02"]);
       return Promise.resolve([]);
     });
 
@@ -375,13 +392,13 @@ describe("registerRender", () => {
 
     // Current call should reference nextWeek (W15) — covers `currentIdx < length-1` truthy branch
     const currentCall = mockRenderReport.mock.calls[0];
-    expect(currentCall[1]).toHaveProperty("nextWeek", "../../2026/W15/");
-    expect(currentCall[1]).toHaveProperty("prevWeek", "../../2026/W13/");
+    expect(currentCall[1]).toHaveProperty("nextWeek", "../../../2026/04/02/");
+    expect(currentCall[1]).toHaveProperty("prevWeek", "../../../2026/03/31/");
 
     // Prev re-render should reference prevPrev (W12) — covers `prevIdx > 0` and `prevPrev` truthy branches
     const prevWeekCall = mockRenderReport.mock.calls[1];
-    expect(prevWeekCall[1]).toHaveProperty("prevWeek", "../../2026/W12/");
-    expect(prevWeekCall[1]).toHaveProperty("nextWeek", "../../2026/W14/");
+    expect(prevWeekCall[1]).toHaveProperty("prevWeek", "../../../2026/03/30/");
+    expect(prevWeekCall[1]).toHaveProperty("nextWeek", "../../../2026/04/01/");
   });
 
   it("skips prev week re-render when prev week data is missing", async () => {
@@ -425,9 +442,9 @@ describe("registerRender", () => {
 
     mockReadFile.mockImplementation((path: string) => {
       // W13 has llm-data only; its github-data.yaml is missing.
-      if (path.includes("W13") && path.includes("github-data.yaml"))
+      if (path.includes("2026/03/31") && path.includes("github-data.yaml"))
         return Promise.reject(new Error("not found"));
-      if (path.includes("W13") && path.includes("llm-data.yaml"))
+      if (path.includes("2026/03/31") && path.includes("llm-data.yaml"))
         return Promise.resolve(PREV_LLM_YAML);
       if (path.includes("github-data.yaml")) return Promise.resolve(GITHUB_DATA_YAML);
       if (path.includes("llm-data.yaml")) return Promise.resolve(LLM_DATA_YAML);
@@ -437,7 +454,9 @@ describe("registerRender", () => {
     // mockAccess resolves for everything — W13 IS listed in allPaths via listCompletedReportDirs.
     mockReaddir.mockImplementation((dir: string) => {
       if (dir.endsWith("data")) return Promise.resolve(["2026"]);
-      if (dir.includes("2026")) return Promise.resolve(["W13", "W14"]);
+      if (dir.endsWith("data/2026")) return Promise.resolve(["03", "04"]);
+      if (dir.endsWith("data/2026/03")) return Promise.resolve(["31"]);
+      if (dir.endsWith("data/2026/04")) return Promise.resolve(["01"]);
       return Promise.resolve([]);
     });
 
@@ -460,7 +479,7 @@ describe("registerRender", () => {
     // buildReportEntry was invoked for W13 with stats=undefined
     // (covers `const stats = ghData ? {...} : undefined` false branch).
     const w13EntryCall = mockBuildReportEntry.mock.calls.find(
-      (call: unknown[]) => (call[0] as string) === "2026/W13",
+      (call: unknown[]) => (call[0] as string) === "2026/03/31",
     );
     expect(w13EntryCall).toBeDefined();
     expect(w13EntryCall![3]).toBeUndefined();

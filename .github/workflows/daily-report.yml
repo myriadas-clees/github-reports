@@ -1,15 +1,15 @@
-# Weekly Report — Thu–Wed status page every Thursday morning
+# Daily Worklog — publish the previous completed workday
 
-name: Weekly Report
+name: Daily Report
 
 on:
   schedule:
-    # Thursday ~01:00 America/New_York ≈ 06:00 UTC (adjust for your timezone)
-    - cron: '0 6 * * 4'
+    # 01:00 EST / 02:00 EDT; derived from the configured America/New_York timezone.
+    - cron: '0 6 * * 1-5'
   workflow_dispatch:
     inputs:
       date:
-        description: 'Target date (YYYY-MM-DD, default: today)'
+        description: 'Report date (YYYY-MM-DD, default: previous workday)'
         required: false
         type: string
 
@@ -19,9 +19,11 @@ permissions:
 
 env:
   SITE_TITLE: Worklog
+  # Keep this synchronized with config.yaml and the cron above.
+  TIMEZONE: America/New_York
 
 jobs:
-  weekly:
+  daily:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -36,24 +38,22 @@ jobs:
       - name: Build
         run: bun run build
 
-      - name: Weekly fetch
+      - name: Fetch daily activity
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           GITHUB_USERNAME: ${{ vars.GITHUB_USERNAME }}
-          TIMEZONE: ${{ vars.TIMEZONE || 'UTC' }}
           DATA_DIR: ./data
           CONFIG_PATH: ./config.yaml
           INPUT_DATE: ${{ inputs.date }}
         run: |
           if [ -n "$INPUT_DATE" ]; then
-            bun dist/cli/index.js weekly-fetch --date "$INPUT_DATE"
+            bun dist/cli/index.js daily-fetch --date "$INPUT_DATE"
           else
-            bun dist/cli/index.js weekly-fetch
+            bun dist/cli/index.js daily-fetch
           fi
 
       - name: Generate summary
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -63,7 +63,6 @@ jobs:
           LLM_PROVIDER: ${{ vars.LLM_PROVIDER }}
           LLM_MODEL: ${{ vars.LLM_MODEL }}
           LANGUAGE: ${{ vars.LANGUAGE || 'en' }}
-          TIMEZONE: ${{ vars.TIMEZONE || 'UTC' }}
           DATA_DIR: ./data
           CONFIG_PATH: ./config.yaml
           INPUT_DATE: ${{ inputs.date }}
@@ -74,7 +73,7 @@ jobs:
             bun dist/cli/index.js generate
           fi
 
-      - name: Commit data
+      - name: Commit report data
         run: |
           git config user.name "worklog[bot]"
           git config user.email "worklog[bot]@users.noreply.github.com"
@@ -82,14 +81,13 @@ jobs:
           if git diff --cached --quiet; then
             echo "No new data"
           else
-            git commit -m "data: weekly report"
+            git commit -m "data: daily report"
             git push
           fi
 
       - name: Render HTML
         env:
           LANGUAGE: ${{ vars.LANGUAGE || 'en' }}
-          TIMEZONE: ${{ vars.TIMEZONE || 'UTC' }}
           THEME: ${{ vars.THEME || 'brutalist' }}
           DATA_DIR: ./data
           OUTPUT_DIR: ./output

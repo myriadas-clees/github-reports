@@ -53,7 +53,7 @@
       {{#each this.reports}}
       <a href="{{this.path}}/" class="week-item">
         <div class="week-item-header">
-          <span class="week-item-title">{{#if this.title}}{{this.title}}{{else}}Week {{this.week}}{{/if}}</span>
+          <span class="week-item-title">{{#if this.title}}{{this.title}}{{else}}{{this.dateLabel}}{{/if}}</span>
           <span class="week-item-week">{{this.week}}</span>
         </div>
         {{#if this.subtitle}}<div class="week-item-subtitle">{{this.subtitle}}</div>{{/if}}

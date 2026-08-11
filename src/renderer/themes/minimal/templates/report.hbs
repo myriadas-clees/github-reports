@@ -12,7 +12,7 @@
   <meta property="og:image:height" content="630" />
   <meta property="og:type" content="article" />
   {{#if canonicalUrl}}<meta property="og:url" content="{{{canonicalUrl}}}" />
-  {{/if}}<meta property="og:site_name" content="{{username}} Weekly Reports" />
+  {{/if}}<meta property="og:site_name" content="{{username}} Daily Reports" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="{{aiContent.title}}" />
   <meta name="twitter:description" content="{{aiContent.subtitle}}" />
@@ -58,8 +58,8 @@
 <body>
 
 <nav>
-  <a href="../../" class="nav-site-title">{{siteTitleInline}}</a>
-  <a href="../../">&larr; {{i18n.allWeeks}}</a>
+  <a href="{{rootPrefix}}" class="nav-site-title">{{siteTitleInline}}</a>
+  <a href="{{rootPrefix}}">&larr; {{i18n.allWeeks}}</a>
 </nav>
 
 <div class="header">

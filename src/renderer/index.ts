@@ -256,25 +256,10 @@ export const buildAiReviewActivityView = (
   };
 };
 
-/** UTC weekday for a YYYY-MM-DD date: 0=Sun … 6=Sat. */
-const utcWeekday = (date: string): number => {
-  const [y, m, d] = date.split("-").map(Number);
-  return new Date(Date.UTC(y, m - 1, d)).getUTCDay();
-};
-
-/** Worklog weeks are Thu–Wed; weekend cells are noise in the mini heatmap. */
-const isWeekday = (date: string): boolean => {
-  const day = utcWeekday(date);
-  return day !== 0 && day !== 6;
-};
-
 export const computeHeatmapLevels = (dailyCommits: DailyCommitCount[]): DailyCommitWithLevel[] => {
-  // Display Mon–Fri (UTC weekday 1–5), not chronological Thu–Wed work-week order.
-  const weekdays = dailyCommits
-    .filter((d) => isWeekday(d.date))
-    .sort((a, b) => utcWeekday(a.date) - utcWeekday(b.date));
-  const max = Math.max(...weekdays.map((d) => d.count), 1);
-  return weekdays.map((d) => {
+  const days = [...dailyCommits].sort((a, b) => a.date.localeCompare(b.date));
+  const max = Math.max(...days.map((d) => d.count), 1);
+  return days.map((d) => {
     if (d.count === 0) return { ...d, level: 0 };
     const ratio = d.count / max;
     if (ratio <= 0.25) return { ...d, level: 1 };
@@ -289,6 +274,7 @@ export type RenderOptions = {
   timezone?: string;
   baseUrl?: string;
   weekPath?: string;
+  rootPrefix?: string;
   siteTitle?: string;
   prevWeek?: string;
   nextWeek?: string;
@@ -306,7 +292,7 @@ const createInstance = (language: Language, timezone: string, theme: ReturnType<
   return hbs;
 };
 
-/** Render a weekly report as a self-contained HTML string. */
+/** Render a daily report as a self-contained HTML string. */
 export const renderReport = (
   data: WeeklyReportData,
   options: RenderOptions = {},
@@ -321,6 +307,7 @@ export const renderReport = (
 
   const baseUrl = options.baseUrl?.replace(/\/+$/, "") ?? "";
   const weekPath = options.weekPath ?? "";
+  const rootPrefix = options.rootPrefix ?? "../".repeat(weekPath.split("/").filter(Boolean).length);
   const canonicalUrl = baseUrl && weekPath ? `${baseUrl}/${weekPath}/` : undefined;
   const ogImageUrl = baseUrl && weekPath ? `${baseUrl}/${weekPath}/og.png` : "og.png";
 
@@ -348,6 +335,7 @@ export const renderReport = (
     ogImageUrl,
     siteTitle,
     siteTitleInline,
+    rootPrefix,
     themeColor: theme.colors.bg,
     themeInitScript: theme.themeInitScript ?? "",
     themeToggleScript: theme.themeToggleScript ?? "",

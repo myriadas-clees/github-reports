@@ -30,9 +30,9 @@ describe("generateCard", () => {
     expect(svg).toContain("</svg>");
   });
 
-  it("includes WEEKLY NEWS badge", () => {
+  it("includes DAILY NEWS badge", () => {
     const svg = generateCard(data);
-    expect(svg).toContain("WEEKLY NEWS");
+    expect(svg).toContain("DAILY NEWS");
   });
 
   it("includes week label and date range", () => {

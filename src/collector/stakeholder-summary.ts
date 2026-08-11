@@ -27,6 +27,7 @@ export const formatShortWeekTitle = (from: string, to: string): string => {
   const [ty, tm, td] = to.split("-").map(Number);
   if (!fy || !fm || !fd || !ty || !tm || !td) return `Week of ${from}`;
   const fromLabel = `${MONTHS[fm - 1]} ${fd}`;
+  if (from === to) return fromLabel;
   if (fy === ty && fm === tm) return `${fromLabel}-${td}`;
   if (fy === ty) return `${fromLabel}-${MONTHS[tm - 1]} ${td}`;
   return `${fromLabel}, ${fy}-${MONTHS[tm - 1]} ${td}, ${ty}`;
@@ -60,7 +61,7 @@ export const buildWeekThemeLine = (pullRequests: PullRequest[]): string => {
     .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
     .slice(0, 3)
     .map(([k]) => k);
-  if (top.length === 0) return "Weekly status";
+  if (top.length === 0) return "Daily status";
   if (top.length === 1) return top[0];
   if (top.length === 2) return `${top[0]} & ${top[1]}`;
   return `${top[0]}, ${top[1]} & ${top[2]}`;
@@ -77,7 +78,7 @@ const repoList = (repos: RepositoryActivity[], limit = 5): string => {
 /**
  * Optional prose blurb above Activity detail.
  * Default is empty: chips, Overview, and Highlights already carry the numbers,
- * and the hero subtitle carries the week theme. Set a custom string in YAML
+ * and the hero subtitle carries the day's theme. Set a custom string in YAML
  * only when you want an explicit narrative without an LLM.
  */
 export const buildStakeholderSummary = (_data: {
@@ -175,7 +176,7 @@ export const buildFallbackAIContent = (data: WeeklyReportData): AIContent => {
               type: "review-summary" as const,
               heading: "AI code reviews",
               body:
-                `Codex/Cursor reviews done this week (from GitHub PR data): ` +
+                `Codex/Cursor reviews done today (from GitHub PR data): ` +
                 `${bodyParts.join("; ") || "activity recorded"}.`,
               chips,
             };
@@ -187,17 +188,13 @@ export const buildFallbackAIContent = (data: WeeklyReportData): AIContent => {
   if ((data.hoursEstimate?.hours ?? data.stats.estimatedHours) > 0) {
     summaries.push({
       type: "activity-pattern",
-      heading: "Estimated hours",
+      heading: "Estimated engineering hours",
       body: data.hoursEstimate?.note ??
-        "Estimated from GitHub activity timestamps. Not tracked time.",
+        "Estimated conventional engineering effort. Not tracked, elapsed, or billed time.",
       chips: [
         {
-          label: "Estimated hours",
+          label: "Estimated engineering hours",
           value: `~${data.hoursEstimate?.hours ?? data.stats.estimatedHours}h`,
-        },
-        {
-          label: "Sessions",
-          value: String(data.hoursEstimate?.sessions ?? "—"),
         },
       ],
     });

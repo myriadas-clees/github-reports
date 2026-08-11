@@ -75,6 +75,17 @@ describe("aggregateRepositories", () => {
     expect(aggregateRepositories([], [])).toEqual([]);
   });
 
+  it("uses explicit daily actions for repository PR counts", () => {
+    const opened = makePR({ repository: "org/repo", url: "open" });
+    const mergedEarlier = makePR({ repository: "org/repo", url: "merge", state: "merged" });
+    const result = aggregateRepositories([opened, mergedEarlier], [], [], {
+      opened: [opened],
+      merged: [mergedEarlier],
+    });
+    expect(result[0].prsOpened).toBe(1);
+    expect(result[0].prsMerged).toBe(1);
+  });
+
   it("does not increment issuesClosed for open issues", () => {
     const issues: Issue[] = [
       makeIssue({ repository: "org/repo-a", state: "open" }),
