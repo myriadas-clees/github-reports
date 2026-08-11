@@ -12,6 +12,11 @@ on:
         description: 'Report date (YYYY-MM-DD, default: previous workday)'
         required: false
         type: string
+      publish:
+        description: 'Deploy Pages after generating the report'
+        required: true
+        default: true
+        type: boolean
 
 permissions:
   contents: write
@@ -108,11 +113,13 @@ jobs:
           fi
 
       - name: Upload worklog site
+        if: ${{ github.event_name == 'schedule' || inputs.publish }}
         uses: actions/upload-pages-artifact@v5
         with:
           path: output
 
   deploy:
+    if: ${{ github.event_name == 'schedule' || inputs.publish }}
     needs: daily
     runs-on: ubuntu-latest
     environment:
