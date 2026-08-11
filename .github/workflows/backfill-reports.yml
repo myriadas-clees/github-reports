@@ -1,0 +1,111 @@
+name: Backfill Reports
+
+on:
+  workflow_dispatch:
+    inputs:
+      start_date:
+        description: 'First report date (YYYY-MM-DD)'
+        required: true
+        type: string
+      end_date:
+        description: 'Last report date (YYYY-MM-DD)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+env:
+  SITE_TITLE: Worklog
+  TIMEZONE: America/New_York
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.12
+
+      - name: Install
+        run: bun install --frozen-lockfile
+
+      - name: Build
+        run: bun run build
+
+      - name: Generate weekday reports
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          GITHUB_USERNAME: ${{ vars.GITHUB_USERNAME }}
+          DATA_DIR: ./data
+          CONFIG_PATH: ./config.yaml
+          START_DATE: ${{ inputs.start_date }}
+          END_DATE: ${{ inputs.end_date }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GROK_API_KEY: ${{ secrets.GROK_API_KEY }}
+          LLM_PROVIDER: ${{ vars.LLM_PROVIDER }}
+          LLM_MODEL: ${{ vars.LLM_MODEL }}
+          LANGUAGE: ${{ vars.LANGUAGE || 'en' }}
+        run: |
+          report_date="$START_DATE"
+          while [[ "$report_date" < "$END_DATE" || "$report_date" == "$END_DATE" ]]; do
+            day_of_week=$(date -u -d "$report_date" +%u)
+            if [ "$day_of_week" -le 5 ]; then
+              echo "Generating $report_date"
+              bun dist/cli/index.js daily-fetch --date "$report_date"
+              bun dist/cli/index.js generate --date "$report_date"
+            fi
+            report_date=$(date -u -d "$report_date + 1 day" +%F)
+          done
+
+      - name: Commit report data
+        run: |
+          git config user.name "worklog[bot]"
+          git config user.email "worklog[bot]@users.noreply.github.com"
+          git add -f data/
+          if git diff --cached --quiet; then
+            echo "No new data"
+          else
+            git commit -m "data: backfill weekday reports"
+            git push
+          fi
+
+      - name: Render complete archive
+        env:
+          LANGUAGE: ${{ vars.LANGUAGE || 'en' }}
+          THEME: ${{ vars.THEME || 'brutalist' }}
+          DATA_DIR: ./data
+          OUTPUT_DIR: ./output
+          SITE_TITLE: ${{ env.SITE_TITLE }}
+          BASE_URL: ${{ vars.BASE_URL || 'https://myriadas-clees.github.io/github-weekly-reporter' }}
+          CONFIG_PATH: ./config.yaml
+          END_DATE: ${{ inputs.end_date }}
+        run: bun dist/cli/index.js render --date "$END_DATE"
+
+      - name: Upload worklog site
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: output
+
+  deploy:
+    needs: backfill
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.pages.outputs.page_url }}
+    steps:
+      - name: Deploy worklog to GitHub Pages
+        id: pages
+        uses: actions/deploy-pages@v5
