@@ -12,7 +12,7 @@ dateRange:
   from: 2026-07-09
   to: 2026-07-09
 stats:
-  totalCommits: 0
+  totalCommits: 13
   totalAdditions: 0
   totalDeletions: 0
   prsOpened: 0
@@ -22,14 +22,101 @@ stats:
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 0
-dailyCommits: []
-repositories: []
+  estimatedHours: 5.4
+dailyCommits:
+  - date: 2026-07-09
+    count: 13
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 8
+    prsOpened: 0
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 5
+    prsOpened: 0
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
 pullRequests: []
 prsInProgress: []
 issues: []
 events: []
-commitMessages: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "fix(pricing): narrow workbook test cell"
+      - "fix(pricing): correct defaults, costs, and settings"
+      - "ci: default bug env to staging"
+      - "ci: narrow issue apps and default P3"
+      - "ci: add issue forms and project triage"
+      - "fix(pricing): allow ColumnDef any for dataframe table"
+      - "fix(pricing): align workbook tests with sample template"
+      - "feat(pricing): add Streamlit-parity recruit model UX"
+    commits:
+      - sha: 0b068a4d53a7c326957258354ccc3011cb74a7b0
+        message: "fix(pricing): narrow workbook test cell"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0b068a4d53a7c326957258354ccc3011cb74a7b0
+        authoredAt: 2026-07-10T01:24:46Z
+      - sha: f16c96d75d7d6f67519b13a2c4c72a9b5c56c04c
+        message: "fix(pricing): correct defaults, costs, and settings"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f16c96d75d7d6f67519b13a2c4c72a9b5c56c04c
+        authoredAt: 2026-07-09T22:30:40Z
+      - sha: c5493346be258f82cbaa5db03a9e678b83712291
+        message: "ci: default bug env to staging"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c5493346be258f82cbaa5db03a9e678b83712291
+        authoredAt: 2026-07-09T18:04:33Z
+      - sha: 186a805363ae235665273d678149dc2a30b2f5eb
+        message: "ci: narrow issue apps and default P3"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/186a805363ae235665273d678149dc2a30b2f5eb
+        authoredAt: 2026-07-09T17:55:19Z
+      - sha: 419a6987343e59fa2ea9654485bf72bb2ffb354c
+        message: "ci: add issue forms and project triage"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/419a6987343e59fa2ea9654485bf72bb2ffb354c
+        authoredAt: 2026-07-09T17:25:47Z
+      - sha: 0517440acc05f8acf59b7dabcf3c361c6cd5c735
+        message: "fix(pricing): allow ColumnDef any for dataframe table"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0517440acc05f8acf59b7dabcf3c361c6cd5c735
+        authoredAt: 2026-07-09T15:55:17Z
+      - sha: 49c568ad75413b9cb49503410f68d2c59798b283
+        message: "fix(pricing): align workbook tests with sample template"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/49c568ad75413b9cb49503410f68d2c59798b283
+        authoredAt: 2026-07-09T15:46:50Z
+      - sha: 81144da23d2b02255a53af1b36c7d14df5be4e66
+        message: "feat(pricing): add Streamlit-parity recruit model UX"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/81144da23d2b02255a53af1b36c7d14df5be4e66
+        authoredAt: 2026-07-09T14:13:10Z
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "fix(hub): update app URLs to relative paths for apps and services"
+      - "docs(brand): use Myriad name only"
+      - "fix(ci): align hub smoke root status"
+      - "fix(hub): remove duplicate SWA routes"
+      - "feat(hub): implement Myriadas Hub with authentication and app launcher"
+    commits:
+      - sha: a679028609e5eaafecc70b1cb6b131dad2c873ed
+        message: "fix(hub): update app URLs to relative paths for apps and services"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a679028609e5eaafecc70b1cb6b131dad2c873ed
+        authoredAt: 2026-07-09T20:48:37Z
+      - sha: fd79bc881c5b3dc75fb90b51a18c17c51563de86
+        message: "docs(brand): use Myriad name only"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/fd79bc881c5b3dc75fb90b51a18c17c51563de86
+        authoredAt: 2026-07-09T17:02:41Z
+      - sha: 36af5875cb4e89c8989f0b54c2bc1b41c44ebbdd
+        message: "fix(ci): align hub smoke root status"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/36af5875cb4e89c8989f0b54c2bc1b41c44ebbdd
+        authoredAt: 2026-07-09T14:52:20Z
+      - sha: 4d8b785bbe37d9a2ddb7634ead21a26c4fe771c9
+        message: "fix(hub): remove duplicate SWA routes"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4d8b785bbe37d9a2ddb7634ead21a26c4fe771c9
+        authoredAt: 2026-07-09T14:35:27Z
+      - sha: f028587600f49172d9aed078dd61171354b6ca3a
+        message: "feat(hub): implement Myriadas Hub with authentication and app launcher"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f028587600f49172d9aed078dd61171354b6ca3a
+        authoredAt: 2026-07-09T14:07:39Z
 releases: []
 externalContributions: []
 codeReviews: []
@@ -50,10 +137,10 @@ aiReviews:
   reviews: 0
   fixed: 0
 hoursEstimate:
-  hours: 0
-  sessions: 0
-  sessionHours: 0
-  volumeHours: 0
+  hours: 5.4
+  sessions: 4
+  sessionHours: 5.4
+  volumeHours: 2.6
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

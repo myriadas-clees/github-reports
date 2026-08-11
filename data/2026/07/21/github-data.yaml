@@ -12,48 +12,325 @@ dateRange:
   from: 2026-07-21
   to: 2026-07-21
 stats:
-  totalCommits: 0
-  totalAdditions: 0
-  totalDeletions: 0
-  prsOpened: 0
-  prsMerged: 0
-  prsInProgress: 0
+  totalCommits: 8
+  totalAdditions: 623
+  totalDeletions: 445
+  prsOpened: 5
+  prsMerged: 3
+  prsInProgress: 2
   prsReviewed: 0
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 0
-dailyCommits: []
-repositories: []
-pullRequests: []
-prsInProgress: []
+  estimatedHours: 9.4
+dailyCommits:
+  - date: 2026-07-21
+    count: 8
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 5
+    prsOpened: 3
+    prsMerged: 2
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 3
+    prsOpened: 2
+    prsMerged: 1
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests:
+  - title: "ci: enable Dependabot"
+    body: |-
+      Why
+
+      Keep Bun workspace dependencies and GitHub Actions current.
+
+      What changed
+
+      * Add weekly grouped Dependabot updates for Bun and GitHub Actions
+
+      Testing
+
+      * `git diff --check`
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/63
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 20
+    deletions: 0
+    changedFiles: 1
+    author: myriadas-clees
+    createdAt: 2026-07-21T15:10:40Z
+    updatedAt: 2026-07-22T20:23:03Z
+    closedAt: 2026-07-21T15:30:19Z
+    mergedAt: 2026-07-21T15:30:19Z
+    workTimestamps:
+      - 2026-07-21T15:08:36Z
+    workAdditions: 20
+    workDeletions: 0
+  - title: "fix(pricing): keep advisor links in app"
+    body: >-
+      Why
+
+
+      Advisor-name links used root-relative `/recruits/...` URLs. In the static `/pricing` deployment, those URLs left
+      the pricing app and returned users to the hub.
+
+
+      What changed
+
+
+      - Route advisor-name links through the existing pricing base-path helper
+
+      - Add a regression test for the deployed `/pric...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/67
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a1 []
+    additions: 34
+    deletions: 1
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-07-21T18:27:02Z
+    updatedAt: 2026-07-22T20:23:02Z
+    closedAt: 2026-07-22T17:04:42Z
+    mergedAt: 2026-07-22T17:04:42Z
+    workTimestamps: &a2
+      - 2026-07-21T18:27:45Z
+    workAdditions: 34
+    workDeletions: 1
+  - title: "fix(pricing): unblock expense edits"
+    body: |-
+      Why
+
+      Replacing a custom expense name reset its controlled input before users could finish typing.
+
+      What changed
+
+      * Commit custom expense names when the field loses focus
+      * Add a shared environment-variable template and document the trunk-based workflow
+      * Mark retired Microsoft Lists settings as supe...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/62
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 81
+    deletions: 2
+    changedFiles: 5
+    author: myriadas-clees
+    createdAt: 2026-07-21T14:37:26Z
+    updatedAt: 2026-07-22T20:23:03Z
+    closedAt: 2026-07-21T15:29:57Z
+    mergedAt: 2026-07-21T15:29:57Z
+    workTimestamps:
+      - 2026-07-21T14:33:57Z
+      - 2026-07-21T14:54:03Z
+    workAdditions: 81
+    workDeletions: 2
+  - title: "fix(dependabot): use bun ecosystem"
+    body: |-
+      Why
+
+      Dependabot was configured for npm although this workspace uses Bun and a text `bun.lock`.
+
+      What changed
+
+      * Use Dependabot's Bun ecosystem for workspace dependency updates.
+
+      Testing
+
+      * `bun test scripts/github`
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/34
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - github-automation
+    additions: 1
+    deletions: 1
+    changedFiles: 1
+    author: myriadas-clees
+    createdAt: 2026-07-21T15:20:53Z
+    updatedAt: 2026-07-22T20:23:49Z
+    closedAt: 2026-07-21T15:42:44Z
+    mergedAt: 2026-07-21T15:42:44Z
+    workTimestamps:
+      - 2026-07-21T15:19:31Z
+    workAdditions: 1
+    workDeletions: 1
+  - title: "feat(deploy): ready apps for Cosmos"
+    body: >-
+      Why
+
+
+      Stateful product deployments need a consistent Azure Static Web Apps and Cosmos DB path. PTO still targeted
+      Microsoft Lists, while the Hub deployment bundled product APIs into a shared runtime that could not use app-scoped
+      Cosmos identities.
+
+
+      What changed
+
+
+      - Provision PTO Cosmos storage, manage...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/37
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a3
+      - documentation
+      - github-automation
+      - "app: hub"
+      - "app: pto-tracker"
+      - infrastructure
+    additions: 487
+    deletions: 441
+    changedFiles: 23
+    author: myriadas-clees
+    createdAt: 2026-07-21T16:19:07Z
+    updatedAt: 2026-07-22T20:51:26Z
+    closedAt: 2026-07-22T20:51:09Z
+    mergedAt: 2026-07-22T20:51:08Z
+    workTimestamps: &a4
+      - 2026-07-21T16:09:28Z
+      - 2026-07-21T16:39:47Z
+      - 2026-07-21T17:04:54Z
+      - 2026-07-21T17:44:28Z
+    workAdditions: 487
+    workDeletions: 441
+prsInProgress:
+  - title: "fix(pricing): keep advisor links in app"
+    body: >-
+      Why
+
+
+      Advisor-name links used root-relative `/recruits/...` URLs. In the static `/pricing` deployment, those URLs left
+      the pricing app and returned users to the hub.
+
+
+      What changed
+
+
+      - Route advisor-name links through the existing pricing base-path helper
+
+      - Add a regression test for the deployed `/pric...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/67
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: *a1
+    additions: 34
+    deletions: 1
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-07-21T18:27:02Z
+    updatedAt: 2026-07-22T20:23:02Z
+    closedAt: 2026-07-22T17:04:42Z
+    mergedAt: 2026-07-22T17:04:42Z
+    workTimestamps: *a2
+    workAdditions: 34
+    workDeletions: 1
+  - title: "feat(deploy): ready apps for Cosmos"
+    body: >-
+      Why
+
+
+      Stateful product deployments need a consistent Azure Static Web Apps and Cosmos DB path. PTO still targeted
+      Microsoft Lists, while the Hub deployment bundled product APIs into a shared runtime that could not use app-scoped
+      Cosmos identities.
+
+
+      What changed
+
+
+      - Provision PTO Cosmos storage, manage...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/37
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels: *a3
+    additions: 389
+    deletions: 362
+    changedFiles: 23
+    author: myriadas-clees
+    createdAt: 2026-07-21T16:19:07Z
+    updatedAt: 2026-07-22T20:51:26Z
+    closedAt: 2026-07-22T20:51:09Z
+    mergedAt: 2026-07-22T20:51:08Z
+    workTimestamps: *a4
+    workAdditions: 487
+    workDeletions: 441
 issues: []
 events: []
-commitMessages: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "ci: enable Dependabot"
+      - "fix(pricing): unblock expense edits"
+      - "ci: enable Dependabot"
+      - "fix(auth): default local env mode"
+      - "fix(pricing): unblock expense edits"
+    commits:
+      - sha: d458e97418bb605e429c2d0b54e4c186ba9cf4aa
+        message: "ci: enable Dependabot"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d458e97418bb605e429c2d0b54e4c186ba9cf4aa
+        authoredAt: 2026-07-21T15:30:19Z
+      - sha: c02b9892d29f06fba1ddcf0a052e45b27ac809ce
+        message: "fix(pricing): unblock expense edits"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c02b9892d29f06fba1ddcf0a052e45b27ac809ce
+        authoredAt: 2026-07-21T15:29:57Z
+      - sha: 2ba1a4dff1916d91cc270a63f9ae99f02b829165
+        message: "ci: enable Dependabot"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2ba1a4dff1916d91cc270a63f9ae99f02b829165
+        authoredAt: 2026-07-21T15:08:36Z
+      - sha: 2986dca7046ab4835f26e075feafb6e722f8df45
+        message: "fix(auth): default local env mode"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2986dca7046ab4835f26e075feafb6e722f8df45
+        authoredAt: 2026-07-21T14:54:03Z
+      - sha: e8e9531339470c31f2d3629bbede3df40c48210f
+        message: "fix(pricing): unblock expense edits"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e8e9531339470c31f2d3629bbede3df40c48210f
+        authoredAt: 2026-07-21T14:33:57Z
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "fix(dependabot): use bun ecosystem"
+      - "fix(dependabot): use bun ecosystem"
+      - "Merge pull request #32 from Myriad-Advisor-Solutions/dependabot/github_actions/github-actions-901e349337"
+    commits:
+      - sha: 281d5087672e62a76df3721f1cd8df7e920cbfb9
+        message: "fix(dependabot): use bun ecosystem"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/281d5087672e62a76df3721f1cd8df7e920cbfb9
+        authoredAt: 2026-07-21T15:42:44Z
+      - sha: 1ef646bc5bcd01dae31df3a3422b119bded9f51d
+        message: "fix(dependabot): use bun ecosystem"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/1ef646bc5bcd01dae31df3a3422b119bded9f51d
+        authoredAt: 2026-07-21T15:19:31Z
+      - sha: b6980ce5922010d25ac0c44ca4a7c321572b98a0
+        message: "Merge pull request #32 from Myriad-Advisor-Solutions/dependabot/github_actions/github-actions-901e349337"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b6980ce5922010d25ac0c44ca4a7c321572b98a0
+        authoredAt: 2026-07-21T14:38:25Z
 releases: []
 externalContributions: []
 codeReviews: []
 reviewComments: []
 aiReviews:
   codex:
-    prsReviewed: 0
-    comments: 0
-    reviews: 0
+    prsReviewed: 2
+    comments: 6
+    reviews: 4
     fixed: 0
   cursor:
     prsReviewed: 0
     comments: 0
     reviews: 0
     fixed: 0
-  prsReviewed: 0
-  comments: 0
-  reviews: 0
+  prsReviewed: 2
+  comments: 6
+  reviews: 4
   fixed: 0
 hoursEstimate:
-  hours: 0
-  sessions: 0
-  sessionHours: 0
-  volumeHours: 0
+  hours: 9.4
+  sessions: 1
+  sessionHours: 3.9
+  volumeHours: 9.4
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

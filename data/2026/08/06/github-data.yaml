@@ -12,48 +12,188 @@ dateRange:
   from: 2026-08-06
   to: 2026-08-06
 stats:
-  totalCommits: 0
-  totalAdditions: 0
-  totalDeletions: 0
-  prsOpened: 0
-  prsMerged: 0
+  totalCommits: 3
+  totalAdditions: 1060
+  totalDeletions: 222
+  prsOpened: 3
+  prsMerged: 3
   prsInProgress: 0
-  prsReviewed: 0
-  reviewComments: 0
+  prsReviewed: 2
+  reviewComments: 2
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 0
-dailyCommits: []
-repositories: []
-pullRequests: []
+  estimatedHours: 10.6
+dailyCommits:
+  - date: 2026-08-06
+    count: 3
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 2
+    prsOpened: 2
+    prsMerged: 2
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 1
+    prsOpened: 1
+    prsMerged: 1
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests:
+  - title: "fix(pricing): remove FiNet comparisons from PDFs"
+    body: |-
+      - remove the Net Difference card from Advisor Pricing PDFs
+      - remove Current FiNet values from the executive summary
+      - remove the dedicated Current FiNet Comparison PDF page
+      - preserve the underlying calculation model and Excel workbook output
+      - add regression coverage for Schwab, WFCS, and FiNet PDF...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/102
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 19
+    deletions: 115
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-08-06T11:57:06Z
+    updatedAt: 2026-08-06T11:59:54Z
+    closedAt: 2026-08-06T11:59:54Z
+    mergedAt: 2026-08-06T11:59:54Z
+    workTimestamps:
+      - 2026-08-06T11:56:42Z
+    workAdditions: 19
+    workDeletions: 115
+  - title: "fix(pricing): prevent work state selector crashes"
+    body: |-
+      - Replace free-text Work State fields with a native selector for all 50 states plus DC.
+      - Safely normalize incomplete new-recruit drafts and reject invalid new values at the API boundary.
+      - Preserve legacy two-letter stored values until a user changes them.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/74
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - platform
+      - "app: pricing"
+    additions: 343
+    deletions: 11
+    changedFiles: 12
+    author: myriadas-clees
+    createdAt: 2026-08-06T14:32:05Z
+    updatedAt: 2026-08-06T14:37:42Z
+    closedAt: 2026-08-06T14:37:33Z
+    mergedAt: 2026-08-06T14:37:33Z
+    workTimestamps:
+      - 2026-08-06T14:30:21Z
+    workAdditions: 343
+    workDeletions: 11
+  - title: "feat: hub home, OFAC intake UX, and pricing architecture docs"
+    body: >-
+      - Return-to-Hub Home button in shared `AppShell` (myriadas-style), with `NEXT_PUBLIC_HUB_URL` injected by local
+      launchers and suite static builds
+
+      - OFAC intake defaults country to United States and auto-opens the new screening after create
+
+      - Document Advisor Pricing UI → API → persistence architectu...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/107
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 698
+    deletions: 96
+    changedFiles: 33
+    author: myriadas-clees
+    createdAt: 2026-08-06T16:40:00Z
+    updatedAt: 2026-08-07T01:45:16Z
+    closedAt: 2026-08-07T01:45:07Z
+    mergedAt: 2026-08-07T01:45:07Z
+    workTimestamps:
+      - 2026-08-06T16:39:35Z
+      - 2026-08-06T18:54:43Z
+      - 2026-08-06T19:22:59Z
+      - 2026-08-07T01:37:58Z
+    workAdditions: 698
+    workDeletions: 96
 prsInProgress: []
 issues: []
 events: []
-commitMessages: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "feat: hub home, OFAC intake UX, and pricing architecture docs (#107)"
+      - "fix(pricing): remove FiNet comparisons from PDFs (#102)"
+    commits:
+      - sha: 368db851644477c932418d1fe6352298829e8e64
+        message: "feat: hub home, OFAC intake UX, and pricing architecture docs (#107)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/368db851644477c932418d1fe6352298829e8e64
+        authoredAt: 2026-08-07T01:45:07Z
+      - sha: 9969696b2653ac162cddd68de3709bb34bf73b89
+        message: "fix(pricing): remove FiNet comparisons from PDFs (#102)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/9969696b2653ac162cddd68de3709bb34bf73b89
+        authoredAt: 2026-08-06T11:59:54Z
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "fix(proforma): add canonical work state selectors and validation (#74)"
+    commits:
+      - sha: f28ad9ad7331ae4ddc46f960d150bce1039fe37e
+        message: "fix(proforma): add canonical work state selectors and validation (#74)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f28ad9ad7331ae4ddc46f960d150bce1039fe37e
+        authoredAt: 2026-08-06T14:37:33Z
 releases: []
 externalContributions: []
-codeReviews: []
-reviewComments: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 107
+    prTitle: "feat: hub home, OFAC intake UX, and pricing architecture docs"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/107
+    state: commented
+    submittedAt: 2026-08-06T20:39:08Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 107
+    prTitle: "feat: hub home, OFAC intake UX, and pricing architecture docs"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/107
+    state: commented
+    submittedAt: 2026-08-06T20:39:09Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 107
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/107
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/107#discussion_r3731761288
+    body: Not actionable. The SVG viewBox matches the new wordmark’s ink bounds (wide mark). Comparing to the old 2111×490
+      PNG canvas is misleading; padding the viewBox would only add empty space, not enlarge the glyphs.
+    path: packages/brand/src/logo-paths.ts
+    createdAt: 2026-08-06T20:39:08Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 107
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/107
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/107#discussion_r3731761394
+    body: Not actionable. Source mark is navy Oxford/Harriman with a gold X accent; primary/accent path split matches that
+      artwork.
+    path: packages/ui/src/brand-logo.tsx
+    createdAt: 2026-08-06T20:39:09Z
 aiReviews:
   codex:
-    prsReviewed: 0
-    comments: 0
-    reviews: 0
+    prsReviewed: 1
+    comments: 4
+    reviews: 2
     fixed: 0
   cursor:
     prsReviewed: 0
     comments: 0
     reviews: 0
     fixed: 0
-  prsReviewed: 0
-  comments: 0
-  reviews: 0
+  prsReviewed: 1
+  comments: 4
+  reviews: 2
   fixed: 0
 hoursEstimate:
-  hours: 0
-  sessions: 0
-  sessionHours: 0
-  volumeHours: 0
+  hours: 10.6
+  sessions: 5
+  sessionHours: 3.7
+  volumeHours: 10.6
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

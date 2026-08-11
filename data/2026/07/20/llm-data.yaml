@@ -1,23 +1,69 @@
 title: Jul 20
-subtitle: Daily status
+subtitle: platform & unify ohcpwm
 overview: ""
 summaries:
   - type: repo-summary
     heading: Projects worked on
-    body: No repository activity recorded.
-    chips: []
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps and Myriad-Advisor-Solutions/ohcpwm-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 1 PRs
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 0 PRs
   - type: commit-summary
     heading: Commits and line changes
-    body: 0 commits with +0 / −0 lines.
+    body: 10 commits with +3,600 / −991 lines.
     chips:
       - label: Commits
-        value: "0"
+        value: "10"
         color: green
       - label: Additions
-        value: "+0"
+        value: +3,600
         color: green
       - label: Deletions
-        value: −0
+        value: −991
         color: red
-highlights: []
-ticker: []
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 1 review, 2 comments, 1 PR."
+    chips:
+      - label: Codex
+        value: 1 review · 2 comments · 1 PR
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~15h
+highlights:
+  - type: pr
+    title: "feat(platform): add repository operations"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +2786 −809
+    body: >-
+      ## Why
+
+
+      The monorepo needs one operating model for authentication, audit data, app metadata, verification,
+      distributed-write recovery, and GitHub governance.
+
+
+      ## What changed
+
+
+      - Add shared authenticat
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/31
+  - type: pr
+    title: Unify OHCPWM platform and OFAC
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +814 −182
+    body: |-
+      - publish the completed FINET Pricing model work alongside shared product-platform consolidation
+      - move OFAC production authentication to Azure Static Web Apps with the intentional SWA Principal bridg
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/58
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(platform): add repository operations" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "Unify OHCPWM platform and OFAC" in Myriad-Advisor-Solutions/ohcpwm-apps'

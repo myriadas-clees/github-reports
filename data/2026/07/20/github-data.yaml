@@ -12,48 +12,179 @@ dateRange:
   from: 2026-07-20
   to: 2026-07-20
 stats:
-  totalCommits: 0
-  totalAdditions: 0
-  totalDeletions: 0
-  prsOpened: 0
-  prsMerged: 0
+  totalCommits: 10
+  totalAdditions: 3600
+  totalDeletions: 991
+  prsOpened: 1
+  prsMerged: 2
   prsInProgress: 0
   prsReviewed: 0
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 0
-dailyCommits: []
-repositories: []
-pullRequests: []
+  estimatedHours: 15
+dailyCommits:
+  - date: 2026-07-20
+    count: 10
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 8
+    prsOpened: 1
+    prsMerged: 1
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 2
+    prsOpened: 0
+    prsMerged: 1
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests:
+  - title: "feat(platform): add repository operations"
+    body: >-
+      ## Why
+
+
+      The monorepo needs one operating model for authentication, audit data, app metadata, verification,
+      distributed-write recovery, and GitHub governance.
+
+
+      ## What changed
+
+
+      - Add shared authentication and audit contracts and implementations, preserving app-local role policy and
+      persisted audit fo...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/31
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels: []
+    additions: 2786
+    deletions: 809
+    changedFiles: 86
+    author: myriadas-clees
+    createdAt: 2026-07-20T20:02:06Z
+    updatedAt: 2026-07-22T20:23:50Z
+    closedAt: 2026-07-20T20:52:25Z
+    mergedAt: 2026-07-20T20:52:25Z
+    workTimestamps:
+      - 2026-07-20T19:49:13Z
+      - 2026-07-20T19:52:11Z
+      - 2026-07-20T19:53:07Z
+      - 2026-07-20T20:10:47Z
+      - 2026-07-20T20:16:07Z
+      - 2026-07-20T20:34:41Z
+    workAdditions: 2786
+    workDeletions: 809
+  - title: Unify OHCPWM platform and OFAC
+    body: >-
+      - publish the completed FINET Pricing model work alongside shared product-platform consolidation
+
+      - move OFAC production authentication to Azure Static Web Apps with the intentional SWA Principal bridge into
+      Azure Functions
+
+      - add the first authenticated Functions identity endpoint and static-safe OFA...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/58
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 814
+    deletions: 182
+    changedFiles: 148
+    author: myriadas-clees
+    createdAt: 2026-07-14T20:21:25Z
+    updatedAt: 2026-07-22T20:23:04Z
+    closedAt: 2026-07-20T15:26:30Z
+    mergedAt: 2026-07-20T15:26:30Z
+    workTimestamps:
+      - 2026-07-20T15:14:10Z
+    workAdditions: 814
+    workDeletions: 182
 prsInProgress: []
 issues: []
 events: []
-commitMessages: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "feat(hub): Unify OHCPWM platform and OFAC"
+      - "fix(suite): resolve merge blockers"
+    commits:
+      - sha: 4e589173dd7d3ddfdf562550fe350348ec0efebc
+        message: "feat(hub): Unify OHCPWM platform and OFAC"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4e589173dd7d3ddfdf562550fe350348ec0efebc
+        authoredAt: 2026-07-20T15:26:29Z
+      - sha: c996aa25c78197eee85de43da0b153d32d6e107c
+        message: "fix(suite): resolve merge blockers"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c996aa25c78197eee85de43da0b153d32d6e107c
+        authoredAt: 2026-07-20T15:14:10Z
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "feat(platform): add repository operations"
+      - "fix(platform): correct health and security reads"
+      - "ci(codeql): gate unsupported scanning"
+      - "ci(codeql): allow workflow reads"
+      - "ci(github): add repository operations"
+      - "feat(platform): unify app operations"
+      - "feat(platform): centralize auth and audit"
+      - "feat: add source-backed planning controls"
+    commits:
+      - sha: 70f3e9fba74a15885d05ded8137f5f2b9ebfe2c0
+        message: "feat(platform): add repository operations"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/70f3e9fba74a15885d05ded8137f5f2b9ebfe2c0
+        authoredAt: 2026-07-20T20:52:25Z
+      - sha: a7e52431b0209f51c3423ced41d7911d221f99c1
+        message: "fix(platform): correct health and security reads"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a7e52431b0209f51c3423ced41d7911d221f99c1
+        authoredAt: 2026-07-20T20:34:41Z
+      - sha: f9f4cabdacc32762f8e05add6854ab129b9fe99d
+        message: "ci(codeql): gate unsupported scanning"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f9f4cabdacc32762f8e05add6854ab129b9fe99d
+        authoredAt: 2026-07-20T20:16:07Z
+      - sha: f786a600313593490be973cd1629fa6de0d30045
+        message: "ci(codeql): allow workflow reads"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f786a600313593490be973cd1629fa6de0d30045
+        authoredAt: 2026-07-20T20:10:47Z
+      - sha: 56c5754aad849095c6977e9627596154da629b3a
+        message: "ci(github): add repository operations"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/56c5754aad849095c6977e9627596154da629b3a
+        authoredAt: 2026-07-20T19:53:07Z
+      - sha: 9b6b273de1b2a173b22f1e3472e2b82afb490dea
+        message: "feat(platform): unify app operations"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9b6b273de1b2a173b22f1e3472e2b82afb490dea
+        authoredAt: 2026-07-20T19:52:11Z
+      - sha: b01a65efea1061378bd46b752e027cf71a469a10
+        message: "feat(platform): centralize auth and audit"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b01a65efea1061378bd46b752e027cf71a469a10
+        authoredAt: 2026-07-20T19:49:13Z
+      - sha: 428a4b669e93d8b0425729bea41db9a8019dac78
+        message: "feat: add source-backed planning controls"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/428a4b669e93d8b0425729bea41db9a8019dac78
+        authoredAt: 2026-07-20T15:23:26Z
 releases: []
 externalContributions: []
 codeReviews: []
 reviewComments: []
 aiReviews:
   codex:
-    prsReviewed: 0
-    comments: 0
-    reviews: 0
+    prsReviewed: 1
+    comments: 2
+    reviews: 1
     fixed: 0
   cursor:
     prsReviewed: 0
     comments: 0
     reviews: 0
     fixed: 0
-  prsReviewed: 0
-  comments: 0
-  reviews: 0
+  prsReviewed: 1
+  comments: 2
+  reviews: 1
   fixed: 0
 hoursEstimate:
-  hours: 0
-  sessions: 0
-  sessionHours: 0
-  volumeHours: 0
+  hours: 15
+  sessions: 2
+  sessionHours: 1.6
+  volumeHours: 15
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

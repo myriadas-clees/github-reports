@@ -1,23 +1,67 @@
 title: Aug 4
-subtitle: Daily status
+subtitle: pricing
 overview: ""
 summaries:
   - type: repo-summary
     heading: Projects worked on
-    body: No repository activity recorded.
-    chips: []
+    body: Activity spanned Myriad-Advisor-Solutions/ohcpwm-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 4 PRs
   - type: commit-summary
     heading: Commits and line changes
-    body: 0 commits with +0 / −0 lines.
+    body: 1 commits with +436 / −502 lines.
     chips:
       - label: Commits
-        value: "0"
+        value: "1"
         color: green
       - label: Additions
-        value: "+0"
+        value: "+436"
         color: green
       - label: Deletions
-        value: −0
+        value: −502
         color: red
-highlights: []
-ticker: []
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 1 review, 1 comment, 1 PR."
+    chips:
+      - label: Codex
+        value: 1 review · 1 comment · 1 PR
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~10h
+highlights:
+  - type: pr
+    title: "fix(pricing): add bottom save actions"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +188 −6
+    body: |-
+      - Adds a bottom **Save Changes** action to the advanced pricing workstation.
+      - Adds a bottom **Save Model** action to the recruit pricing view.
+      - Adds bottom **Review inputs** / **Review assumptions**
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/98
+  - type: pr
+    title: "fix(pricing): focus executive dashboard metrics"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +9 −167
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/97
+  - type: pr
+    title: "fix(pricing): remove FINET advantage summary"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +803 −129
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/99
+  - type: pr
+    title: "fix(pricing): give payout details room to breathe"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +122 −232
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/100
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(pricing): add bottom save actions" in Myriad-Advisor-Solutions/ohcpwm-apps'

@@ -13,47 +13,606 @@ dateRange:
   to: 2026-08-03
 stats:
   totalCommits: 0
-  totalAdditions: 0
-  totalDeletions: 0
-  prsOpened: 0
+  totalAdditions: 5982
+  totalDeletions: 1427
+  prsOpened: 11
   prsMerged: 0
-  prsInProgress: 0
-  prsReviewed: 0
-  reviewComments: 0
+  prsInProgress: 10
+  prsReviewed: 3
+  reviewComments: 3
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 0
+  estimatedHours: 41.5
 dailyCommits: []
-repositories: []
-pullRequests: []
-prsInProgress: []
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 0
+    prsOpened: 11
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests:
+  - title: "docs: publish #2/#37/#39 readiness runbooks"
+    body: >-
+      - Add separate, evidence-backed readiness runbooks for #2 Cosmos production readiness, #37 Pricing monitoring, and
+      #39 monday.com sync discovery.
+
+      - Add the blank `APPLICATIONINSIGHTS_CONNECTION_STRING` setting name to the Pricing Functions example without
+      committing a secret.
+
+      - Preserve the current ...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/86
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a1 []
+    additions: 646
+    deletions: 7
+    changedFiles: 4
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:33:23Z
+    updatedAt: 2026-08-03T18:34:02Z
+    closedAt: null
+    mergedAt: null
+    workTimestamps: &a2
+      - 2026-08-03T14:39:14Z
+      - 2026-08-03T15:46:19Z
+    workAdditions: 646
+    workDeletions: 7
+  - title: "docs(pricing): decompose issue #48 workflow plan"
+    body: |-
+      Adds the implementation-ready planning artifact for pricing issue #48.
+
+      The plan covers:
+
+      - one standard Edit flow and bottom Save/Create actions;
+      - report-preview modernization;
+      - shared Schwab/WFCS vs Current FiNet comparison output;
+      - chart copy restoration;
+      - #20 parity fixtures and #22 economic...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/80
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: closed
+    labels: []
+    additions: 334
+    deletions: 13
+    changedFiles: 1
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:32:12Z
+    updatedAt: 2026-08-03T19:37:48Z
+    closedAt: 2026-08-03T19:37:48Z
+    mergedAt: null
+    workTimestamps:
+      - 2026-08-03T14:27:05Z
+      - 2026-08-03T15:45:32Z
+    workAdditions: 334
+    workDeletions: 13
+  - title: "feat(ofac): add durable scheduled sync lease"
+    body: >-
+      Closes #38.
+
+
+      - Adds a Cosmos-backed atomic timer lease with conditional create, ETag-protected stale recovery, owner-safe
+      finalization, and explicit TTL/expiry.
+
+      - Routes both production timer and manual HTTP XML sync through the same durable Cosmos lease. A conflicting
+      manual run is audited and reje...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/89
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a3 []
+    additions: 732
+    deletions: 74
+    changedFiles: 11
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:36:06Z
+    updatedAt: 2026-08-11T14:12:11Z
+    closedAt: null
+    mergedAt: null
+    workTimestamps: &a4
+      - 2026-08-03T15:13:23Z
+      - 2026-08-03T15:47:28Z
+      - 2026-08-03T16:16:58Z
+    workAdditions: 732
+    workDeletions: 74
+  - title: "docs: document Advisor Pricing architecture"
+    body: >-
+      ## What changed
+
+
+      - Added an end-to-end Advisor Pricing architecture document covering static pages, browser API/base URL behavior,
+      Azure Functions, transport seams, auth, auditing, calculations, persistence, and PDF/XLSX report snapshots.
+
+      - Added request/data-flow diagrams and documented local versu...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/84
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a5 []
+    additions: 298
+    deletions: 2
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:32:36Z
+    updatedAt: 2026-08-03T19:37:40Z
+    closedAt: null
+    mergedAt: null
+    workTimestamps: &a6
+      - 2026-08-03T14:26:19Z
+      - 2026-08-03T15:43:14Z
+    workAdditions: 298
+    workDeletions: 2
+  - title: "test(pricing): add auditable workbook fixtures (#20)"
+    body: |-
+      - add a checksum-pinned, auditable fixture for the checked-in pricing workbook template
+      - capture exact source cells, cached WFCS/Schwab values, and the approved B/D E&O reconciliation
+      - document that FINET is a schedule/current-baseline assumption because the template has no FINET output sheet
+      - re...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/88
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a7 []
+    additions: 360
+    deletions: 300
+    changedFiles: 10
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:35:20Z
+    updatedAt: 2026-08-05T12:33:38Z
+    closedAt: 2026-08-05T12:33:38Z
+    mergedAt: 2026-08-05T12:33:38Z
+    workTimestamps: &a8
+      - 2026-08-03T15:03:16Z
+      - 2026-08-03T16:33:11Z
+      - 2026-08-03T16:39:46Z
+    workAdditions: 360
+    workDeletions: 300
+  - title: "fix(pricing): align FINET reports"
+    body: >-
+      - Use FINET-specific logo assets in generated PDFs and cover branding regression coverage.
+
+      - Enforce the confirmed 92% FINET payout for every product, including fixed insurance.
+
+      - Remove unclear “OHC Advantage” wording; rename the advisory-platform basis to “Wells Advisory Platform Fee”;
+      present FIN...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/83
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a9 []
+    additions: 167
+    deletions: 78
+    changedFiles: 15
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:32:32Z
+    updatedAt: 2026-08-05T11:56:29Z
+    closedAt: 2026-08-05T11:56:29Z
+    mergedAt: 2026-08-05T11:56:29Z
+    workTimestamps: &a10
+      - 2026-08-03T14:30:21Z
+      - 2026-08-03T15:44:23Z
+    workAdditions: 167
+    workDeletions: 78
+  - title: "refactor(ofac): migrate API routes to Azure Functions"
+    body: >-
+      - migrate the OFAC production API surface to Azure Functions through transport-neutral handlers
+
+      - preserve SQLite-backed local development via documented local Next adapters while defaulting deployed Functions
+      to Cosmos persistence
+
+      - add search, audit, manual-sync, Function transport, static API-bas...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/85
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a11 []
+    additions: 1689
+    deletions: 567
+    changedFiles: 47
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:33:00Z
+    updatedAt: 2026-08-11T14:16:15Z
+    closedAt: null
+    mergedAt: null
+    workTimestamps: &a12
+      - 2026-08-03T14:58:45Z
+      - 2026-08-03T15:52:03Z
+      - 2026-08-03T16:15:58Z
+    workAdditions: 1689
+    workDeletions: 567
+  - title: "feat(pricing): compare Schwab and WFCS against current FiNet"
+    body: |-
+      Closes #22.
+
+      ## What changed
+      - Extends the shared current-FiNet comparison model to Schwab and WFCS proposals.
+      - Adds current-FiNet net payout, dollar delta, and percentage-point delta to dashboard, PDF, and XLSX outputs.
+      - Adds regression coverage for comparison math, dashboard presentation, and PD...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/87
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a13 []
+    additions: 796
+    deletions: 142
+    changedFiles: 26
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:33:33Z
+    updatedAt: 2026-08-05T12:33:37Z
+    closedAt: 2026-08-05T12:33:37Z
+    mergedAt: 2026-08-05T12:33:37Z
+    workTimestamps: &a14
+      - 2026-08-03T14:44:48Z
+      - 2026-08-03T15:48:47Z
+      - 2026-08-03T16:20:10Z
+      - 2026-08-03T18:04:51Z
+    workAdditions: 796
+    workDeletions: 142
+  - title: "fix(pricing): normalize duplicated recruit models"
+    body: |-
+      - Deep-copy and normalize duplicated pricing models so the copied recruit's advisor name is updated independently.
+      - Apply the shared behavior to SQLite, Graph, and Cosmos persistence adapters.
+      - Add persistence plus generated PDF/XLSX regression coverage.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/82
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a15 []
+    additions: 199
+    deletions: 10
+    changedFiles: 8
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:32:23Z
+    updatedAt: 2026-08-05T11:56:28Z
+    closedAt: 2026-08-05T11:56:28Z
+    mergedAt: 2026-08-05T11:56:28Z
+    workTimestamps: &a16
+      - 2026-08-03T14:26:31Z
+      - 2026-08-03T16:05:14Z
+    workAdditions: 199
+    workDeletions: 10
+  - title: "feat(pricing): add permissioned holdco revenue"
+    body: |-
+      Adds the requested AUM, Top Line Revenue, and Revenue to Holdco views to the Advisor Pricing pipeline.
+
+      - Renames the table labels to **AUM** and **Top Line Revenue**
+      - Adds an admin-only **Revenue to Holdco** column and dashboard metric
+      - Adds totals rows for the visible advisor/team rows
+      - Shapes ...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/81
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a17 []
+    additions: 570
+    deletions: 119
+    changedFiles: 32
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:32:18Z
+    updatedAt: 2026-08-05T12:33:36Z
+    closedAt: 2026-08-05T12:33:35Z
+    mergedAt: 2026-08-05T12:33:35Z
+    workTimestamps: &a18
+      - 2026-08-03T14:30:06Z
+      - 2026-08-03T15:50:50Z
+      - 2026-08-03T16:11:52Z
+    workAdditions: 570
+    workDeletions: 119
+  - title: "feat(auth): centralize Azure runtime auth"
+    body: |-
+      - Centralizes Azure Static Web Apps principal parsing and app-role enforcement in `@ohpwm/auth`.
+      - Updates Pricing and OFAC Functions to consume the transport-neutral shared helper and preserve 401/403 behavior.
+      - Removes the obsolete `mode: "azure"` adapter option and adds malformed, role, and admi...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/79
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a19 []
+    additions: 191
+    deletions: 115
+    changedFiles: 6
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:31:59Z
+    updatedAt: 2026-08-11T14:06:36Z
+    closedAt: null
+    mergedAt: null
+    workTimestamps: &a20
+      - 2026-08-03T14:26:39Z
+    workAdditions: 191
+    workDeletions: 115
+prsInProgress:
+  - title: "docs: publish #2/#37/#39 readiness runbooks"
+    body: >-
+      - Add separate, evidence-backed readiness runbooks for #2 Cosmos production readiness, #37 Pricing monitoring, and
+      #39 monday.com sync discovery.
+
+      - Add the blank `APPLICATIONINSIGHTS_CONNECTION_STRING` setting name to the Pricing Functions example without
+      committing a secret.
+
+      - Preserve the current ...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/86
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: *a1
+    additions: 639
+    deletions: 0
+    changedFiles: 4
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:33:23Z
+    updatedAt: 2026-08-03T18:34:02Z
+    closedAt: null
+    mergedAt: null
+    workTimestamps: *a2
+    workAdditions: 646
+    workDeletions: 7
+  - title: "feat(ofac): add durable scheduled sync lease"
+    body: >-
+      Closes #38.
+
+
+      - Adds a Cosmos-backed atomic timer lease with conditional create, ETag-protected stale recovery, owner-safe
+      finalization, and explicit TTL/expiry.
+
+      - Routes both production timer and manual HTTP XML sync through the same durable Cosmos lease. A conflicting
+      manual run is audited and reje...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/89
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: *a3
+    additions: 685
+    deletions: 27
+    changedFiles: 11
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:36:06Z
+    updatedAt: 2026-08-11T14:12:11Z
+    closedAt: null
+    mergedAt: null
+    workTimestamps: *a4
+    workAdditions: 732
+    workDeletions: 74
+  - title: "docs: document Advisor Pricing architecture"
+    body: >-
+      ## What changed
+
+
+      - Added an end-to-end Advisor Pricing architecture document covering static pages, browser API/base URL behavior,
+      Azure Functions, transport seams, auth, auditing, calculations, persistence, and PDF/XLSX report snapshots.
+
+      - Added request/data-flow diagrams and documented local versu...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/84
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: *a5
+    additions: 296
+    deletions: 0
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:32:36Z
+    updatedAt: 2026-08-03T19:37:40Z
+    closedAt: null
+    mergedAt: null
+    workTimestamps: *a6
+    workAdditions: 298
+    workDeletions: 2
+  - title: "test(pricing): add auditable workbook fixtures (#20)"
+    body: |-
+      - add a checksum-pinned, auditable fixture for the checked-in pricing workbook template
+      - capture exact source cells, cached WFCS/Schwab values, and the approved B/D E&O reconciliation
+      - document that FINET is a schedule/current-baseline assumption because the template has no FINET output sheet
+      - re...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/88
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: *a7
+    additions: 364
+    deletions: 301
+    changedFiles: 10
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:35:20Z
+    updatedAt: 2026-08-05T12:33:38Z
+    closedAt: 2026-08-05T12:33:38Z
+    mergedAt: 2026-08-05T12:33:38Z
+    workTimestamps: *a8
+    workAdditions: 360
+    workDeletions: 300
+  - title: "fix(pricing): align FINET reports"
+    body: >-
+      - Use FINET-specific logo assets in generated PDFs and cover branding regression coverage.
+
+      - Enforce the confirmed 92% FINET payout for every product, including fixed insurance.
+
+      - Remove unclear “OHC Advantage” wording; rename the advisory-platform basis to “Wells Advisory Platform Fee”;
+      present FIN...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/83
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: *a9
+    additions: 163
+    deletions: 74
+    changedFiles: 15
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:32:32Z
+    updatedAt: 2026-08-05T11:56:29Z
+    closedAt: 2026-08-05T11:56:29Z
+    mergedAt: 2026-08-05T11:56:29Z
+    workTimestamps: *a10
+    workAdditions: 167
+    workDeletions: 78
+  - title: "refactor(ofac): migrate API routes to Azure Functions"
+    body: >-
+      - migrate the OFAC production API surface to Azure Functions through transport-neutral handlers
+
+      - preserve SQLite-backed local development via documented local Next adapters while defaulting deployed Functions
+      to Cosmos persistence
+
+      - add search, audit, manual-sync, Function transport, static API-bas...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/85
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: *a11
+    additions: 1669
+    deletions: 547
+    changedFiles: 47
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:33:00Z
+    updatedAt: 2026-08-11T14:16:15Z
+    closedAt: null
+    mergedAt: null
+    workTimestamps: *a12
+    workAdditions: 1689
+    workDeletions: 567
+  - title: "feat(pricing): compare Schwab and WFCS against current FiNet"
+    body: |-
+      Closes #22.
+
+      ## What changed
+      - Extends the shared current-FiNet comparison model to Schwab and WFCS proposals.
+      - Adds current-FiNet net payout, dollar delta, and percentage-point delta to dashboard, PDF, and XLSX outputs.
+      - Adds regression coverage for comparison math, dashboard presentation, and PD...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/87
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: *a13
+    additions: 785
+    deletions: 126
+    changedFiles: 26
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:33:33Z
+    updatedAt: 2026-08-05T12:33:37Z
+    closedAt: 2026-08-05T12:33:37Z
+    mergedAt: 2026-08-05T12:33:37Z
+    workTimestamps: *a14
+    workAdditions: 796
+    workDeletions: 142
+  - title: "fix(pricing): normalize duplicated recruit models"
+    body: |-
+      - Deep-copy and normalize duplicated pricing models so the copied recruit's advisor name is updated independently.
+      - Apply the shared behavior to SQLite, Graph, and Cosmos persistence adapters.
+      - Add persistence plus generated PDF/XLSX regression coverage.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/82
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: *a15
+    additions: 199
+    deletions: 10
+    changedFiles: 8
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:32:23Z
+    updatedAt: 2026-08-05T11:56:28Z
+    closedAt: 2026-08-05T11:56:28Z
+    mergedAt: 2026-08-05T11:56:28Z
+    workTimestamps: *a16
+    workAdditions: 199
+    workDeletions: 10
+  - title: "feat(pricing): add permissioned holdco revenue"
+    body: |-
+      Adds the requested AUM, Top Line Revenue, and Revenue to Holdco views to the Advisor Pricing pipeline.
+
+      - Renames the table labels to **AUM** and **Top Line Revenue**
+      - Adds an admin-only **Revenue to Holdco** column and dashboard metric
+      - Adds totals rows for the visible advisor/team rows
+      - Shapes ...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/81
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: *a17
+    additions: 542
+    deletions: 95
+    changedFiles: 32
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:32:18Z
+    updatedAt: 2026-08-05T12:33:36Z
+    closedAt: 2026-08-05T12:33:35Z
+    mergedAt: 2026-08-05T12:33:35Z
+    workTimestamps: *a18
+    workAdditions: 570
+    workDeletions: 119
+  - title: "feat(auth): centralize Azure runtime auth"
+    body: |-
+      - Centralizes Azure Static Web Apps principal parsing and app-role enforcement in `@ohpwm/auth`.
+      - Updates Pricing and OFAC Functions to consume the transport-neutral shared helper and preserve 401/403 behavior.
+      - Removes the obsolete `mode: "azure"` adapter option and adds malformed, role, and admi...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/79
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: *a19
+    additions: 191
+    deletions: 115
+    changedFiles: 6
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:31:59Z
+    updatedAt: 2026-08-11T14:06:36Z
+    closedAt: null
+    mergedAt: null
+    workTimestamps: *a20
+    workAdditions: 191
+    workDeletions: 115
 issues: []
 events: []
 commitMessages: []
 releases: []
 externalContributions: []
-codeReviews: []
-reviewComments: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 86
+    prTitle: "docs: publish #2/#37/#39 readiness runbooks"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/86
+    state: commented
+    submittedAt: 2026-08-03T15:46:50Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 86
+    prTitle: "docs: publish #2/#37/#39 readiness runbooks"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/86
+    state: commented
+    submittedAt: 2026-08-03T15:46:53Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 86
+    prTitle: "docs: publish #2/#37/#39 readiness runbooks"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/86
+    state: commented
+    submittedAt: 2026-08-03T15:46:57Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 86
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/86
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/86#discussion_r3705507124
+    body: "Addressed in commit `73d7b7d`: the provisioning section now has separate serverless (`EnableServerless`, no
+      throughput flags), manual (`--throughput`), and autoscale (`--max-throughput`) command branches."
+    path: docs/issue-2-cosmos-production-readiness.md
+    createdAt: 2026-08-03T15:46:50Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 86
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/86
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/86#discussion_r3705507546
+    body: "Addressed in commit `73d7b7d`: existing-resource inspection now uses `az cosmosdb sql container throughput show`,
+      records manual/autoscale values, and explicitly records serverless as having no dedicated container throughput
+      offer."
+    path: docs/issue-2-cosmos-production-readiness.md
+    createdAt: 2026-08-03T15:46:53Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 86
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/86
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/86#discussion_r3705508077
+    body: "Addressed in commit `73d7b7d`: the executable smoke sequence now performs and asserts `DELETE` rejection before
+      archive, asserts archive success, then asserts successful `DELETE` after archive. The matrix row matches that
+      order."
+    path: docs/issue-2-cosmos-production-readiness.md
+    createdAt: 2026-08-03T15:46:57Z
 aiReviews:
   codex:
-    prsReviewed: 0
-    comments: 0
-    reviews: 0
-    fixed: 0
+    prsReviewed: 8
+    comments: 14
+    reviews: 8
+    fixed: 3
   cursor:
-    prsReviewed: 0
-    comments: 0
-    reviews: 0
+    prsReviewed: 2
+    comments: 4
+    reviews: 2
     fixed: 0
-  prsReviewed: 0
-  comments: 0
-  reviews: 0
-  fixed: 0
+  prsReviewed: 10
+  comments: 18
+  reviews: 10
+  fixed: 3
 hoursEstimate:
-  hours: 0
-  sessions: 0
-  sessionHours: 0
-  volumeHours: 0
+  hours: 41.5
+  sessions: 1
+  sessionHours: 3.6
+  volumeHours: 41.5
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

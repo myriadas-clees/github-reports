@@ -12,48 +12,473 @@ dateRange:
   from: 2026-07-31
   to: 2026-07-31
 stats:
-  totalCommits: 0
-  totalAdditions: 0
-  totalDeletions: 0
-  prsOpened: 0
-  prsMerged: 0
-  prsInProgress: 0
-  prsReviewed: 0
-  reviewComments: 0
+  totalCommits: 4
+  totalAdditions: 4082
+  totalDeletions: 2945
+  prsOpened: 2
+  prsMerged: 4
+  prsInProgress: 1
+  prsReviewed: 13
+  reviewComments: 13
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 0
-dailyCommits: []
-repositories: []
-pullRequests: []
-prsInProgress: []
+  estimatedHours: 34.3
+dailyCommits:
+  - date: 2026-07-31
+    count: 4
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 4
+    prsOpened: 2
+    prsMerged: 4
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests:
+  - title: "feat(pricing): add entity and state costs"
+    body: |-
+      Why
+
+      Pricing is the proforma source of truth, but the supplied entity, state,
+      staffing, and setup-cost artifacts were not represented in the live
+      workflow or multi-year outputs.
+
+      What changed
+
+      - Add the 2026 domestic LLC state rate card with exact recurring notes
+       and official state source links
+      - A...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - platform
+      - "app: pricing"
+    additions: 888
+    deletions: 18
+    changedFiles: 22
+    author: myriadas-clees
+    createdAt: 2026-07-31T14:59:05Z
+    updatedAt: 2026-07-31T16:17:27Z
+    closedAt: 2026-07-31T16:16:58Z
+    mergedAt: 2026-07-31T16:16:58Z
+    workTimestamps:
+      - 2026-07-31T16:11:25Z
+    workAdditions: 888
+    workDeletions: 18
+  - title: "fix(pricing): show yearly projections"
+    body: >-
+      Why
+
+
+      Issue #28 requires a visible three-to-five-year proposed budget. The Pricing model calculated these years, but the
+      recruit review only displayed the selected duration.
+
+
+      What changed
+
+
+      - Render the existing yearly projection in Review & Create
+
+      - Show revenue, payout, recurring and one-time costs,...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/71
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - "app: pricing"
+    additions: 1821
+    deletions: 1801
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-07-31T19:25:39Z
+    updatedAt: 2026-07-31T19:46:22Z
+    closedAt: 2026-07-31T19:46:22Z
+    mergedAt: 2026-07-31T19:46:22Z
+    workTimestamps:
+      - 2026-07-31T19:24:46Z
+      - 2026-07-31T19:25:25Z
+      - 2026-07-31T19:26:02Z
+      - 2026-07-31T19:26:08Z
+      - 2026-07-31T19:37:25Z
+      - 2026-07-31T19:37:30Z
+    workAdditions: 1821
+    workDeletions: 1801
+  - title: "fix(pto): remove production personas"
+    body: >-
+      Why
+
+
+      The product deployment workflow compiled PTO Tracker in demo authentication mode, exposing local test personas in
+      the production sign-in screen.
+
+
+      What changed
+
+
+      - Build PTO Tracker deployments with Microsoft Entra token authentication
+
+      - Require the Entra client ID and API scope before producing ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/56
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - github-automation
+      - "app: pto-tracker"
+      - platform
+    additions: 74
+    deletions: 68
+    changedFiles: 6
+    author: myriadas-clees
+    createdAt: 2026-07-28T15:11:06Z
+    updatedAt: 2026-07-31T19:38:23Z
+    closedAt: 2026-07-31T19:38:23Z
+    mergedAt: 2026-07-31T19:38:22Z
+    workTimestamps:
+      - 2026-07-31T19:20:46Z
+      - 2026-07-31T19:20:52Z
+      - 2026-07-31T19:27:18Z
+      - 2026-07-31T19:27:23Z
+    workAdditions: 74
+    workDeletions: 68
+  - title: "feat(onboarding): archive workstreams"
+    body: >-
+      Why
+
+
+      Alpha workspaces generate a workstream and task set, but the supported UI had no safe cleanup lifecycle.
+      Disposable test data therefore remained in active selectors after verification.
+
+
+      What changed
+
+
+      - Add an admin-only archive and restore endpoint for onboarding workstreams
+
+      - Hide archived wor...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/47
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - "app: onboarding"
+      - platform
+    additions: 1299
+    deletions: 1058
+    changedFiles: 21
+    author: myriadas-clees
+    createdAt: 2026-07-24T20:58:21Z
+    updatedAt: 2026-07-31T19:48:51Z
+    closedAt: 2026-07-31T19:44:23Z
+    mergedAt: 2026-07-31T19:44:23Z
+    workTimestamps:
+      - 2026-07-31T19:22:27Z
+      - 2026-07-31T19:22:32Z
+      - 2026-07-31T19:22:37Z
+      - 2026-07-31T19:22:41Z
+      - 2026-07-31T19:27:28Z
+      - 2026-07-31T19:27:33Z
+      - 2026-07-31T19:27:37Z
+      - 2026-07-31T19:27:41Z
+      - 2026-07-31T19:37:38Z
+    workAdditions: 1299
+    workDeletions: 1058
+prsInProgress:
+  - title: "feat(workflows): restore review integrity"
+    body: >-
+      Why
+
+
+      Four app workflows had integrity gaps at their serverless boundaries: PTO cancellation and request policy were
+      incomplete, Excelerate review receipts were replayable, Pricing report snapshots lacked input identity, and
+      Valuation approvals lacked immutable provenance.
+
+
+      What changed
+
+
+      - Enforce PT...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/25
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - documentation
+      - "app: pto-tracker"
+      - "app: excelerate"
+      - "app: valuation"
+      - platform
+      - "app: pricing"
+    additions: 633
+    deletions: 52
+    changedFiles: 43
+    author: myriadas-clees
+    createdAt: 2026-07-14T19:40:30Z
+    updatedAt: 2026-07-31T19:37:56Z
+    closedAt: null
+    mergedAt: null
+    workTimestamps:
+      - 2026-07-31T19:28:46Z
+      - 2026-07-31T19:28:52Z
+      - 2026-07-31T19:28:56Z
+      - 2026-07-31T19:29:01Z
+      - 2026-07-31T19:29:07Z
+      - 2026-07-31T19:29:13Z
+      - 2026-07-31T19:29:19Z
+      - 2026-07-31T19:29:23Z
+      - 2026-07-31T19:29:29Z
+      - 2026-07-31T19:29:34Z
+      - 2026-07-31T19:29:39Z
+      - 2026-07-31T19:37:46Z
+      - 2026-07-31T19:37:54Z
+    workAdditions: 120
+    workDeletions: 19
 issues: []
 events: []
-commitMessages: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "fix(pricing): show yearly projections"
+      - "feat(onboarding): archive workstreams"
+      - "fix(pto): remove production personas"
+      - "feat(pricing): add entity and state costs"
+    commits:
+      - sha: 8b771993f1b1a6f38a567df18daee02855e1e7b7
+        message: "fix(pricing): show yearly projections"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8b771993f1b1a6f38a567df18daee02855e1e7b7
+        authoredAt: 2026-07-31T19:46:22Z
+      - sha: be848e4816d6dacd90ae3d1b8f37afd331d8ebd5
+        message: "feat(onboarding): archive workstreams"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/be848e4816d6dacd90ae3d1b8f37afd331d8ebd5
+        authoredAt: 2026-07-31T19:44:23Z
+      - sha: e9ff7d26c098b798ef2a1cd77d9b224f435d849f
+        message: "fix(pto): remove production personas"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e9ff7d26c098b798ef2a1cd77d9b224f435d849f
+        authoredAt: 2026-07-31T19:38:22Z
+      - sha: 85df7119c5c0dd040049056923eb1f316ff0cdde
+        message: "feat(pricing): add entity and state costs"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/85df7119c5c0dd040049056923eb1f316ff0cdde
+        authoredAt: 2026-07-31T16:16:57Z
 releases: []
 externalContributions: []
-codeReviews: []
-reviewComments: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 70
+    prTitle: "feat(pricing): add entity and state costs"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
+    state: commented
+    submittedAt: 2026-07-31T15:41:26Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 70
+    prTitle: "feat(pricing): add entity and state costs"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
+    state: commented
+    submittedAt: 2026-07-31T15:41:29Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 70
+    prTitle: "feat(pricing): add entity and state costs"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
+    state: commented
+    submittedAt: 2026-07-31T15:41:33Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 70
+    prTitle: "feat(pricing): add entity and state costs"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
+    state: commented
+    submittedAt: 2026-07-31T15:41:36Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 70
+    prTitle: "feat(pricing): add entity and state costs"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
+    state: commented
+    submittedAt: 2026-07-31T15:41:41Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 70
+    prTitle: "feat(pricing): add entity and state costs"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
+    state: commented
+    submittedAt: 2026-07-31T15:59:51Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 70
+    prTitle: "feat(pricing): add entity and state costs"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
+    state: commented
+    submittedAt: 2026-07-31T16:00:29Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 70
+    prTitle: "feat(pricing): add entity and state costs"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
+    state: commented
+    submittedAt: 2026-07-31T16:00:32Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 70
+    prTitle: "feat(pricing): add entity and state costs"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
+    state: commented
+    submittedAt: 2026-07-31T16:00:36Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 70
+    prTitle: "feat(pricing): add entity and state costs"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
+    state: commented
+    submittedAt: 2026-07-31T16:02:13Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 70
+    prTitle: "feat(pricing): add entity and state costs"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
+    state: commented
+    submittedAt: 2026-07-31T16:11:54Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 70
+    prTitle: "feat(pricing): add entity and state costs"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
+    state: commented
+    submittedAt: 2026-07-31T16:11:59Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 70
+    prTitle: "feat(pricing): add entity and state costs"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
+    state: commented
+    submittedAt: 2026-07-31T16:12:02Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 70
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70#discussion_r3691581282
+    body: Fixed in 5e84ead. Projections now accept PricingOptions; the assumptions UI passes WFCS-full or FiNet, and reports
+      pass the selected scenario options. Regression coverage verifies WFCS and FiNet produce different scenario
+      baselines.
+    path: pricing/src/lib/setup-projection.ts
+    createdAt: 2026-07-31T15:41:26Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 70
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70#discussion_r3691581639
+    body: Fixed in 5e84ead. Live assumptions and every PDF/XLSX report projection now use the active scenario options
+      instead of the empty/default calculation path.
+    path: pricing/src/lib/setup-projection.ts
+    createdAt: 2026-07-31T15:41:29Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 70
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70#discussion_r3691581999
+    body: Fixed in 5e84ead. Manual formation cost overrides remain fully one-time, with recurring state costs added
+      separately. The Nevada regression asserts $1,000 one-time plus $350 recurring.
+    path: pricing/src/lib/setup-projection.ts
+    createdAt: 2026-07-31T15:41:33Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 70
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70#discussion_r3691582359
+    body: Fixed in 5e84ead. Domestic LLC card filing and recurring costs apply only to `llc`; unsupported entity types use
+      the required manual one-time override and receive $0 LLC recurring cost.
+    path: pricing/src/lib/setup-projection.ts
+    createdAt: 2026-07-31T15:41:36Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 70
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70#discussion_r3691582806
+    body: Fixed in 5e84ead without changing the source rate-card row. California adds the explicitly documented $800 tax to
+      the $20 recurring filing fee; regression proves $890 year one = $70 one-time + $820 recurring, with $820 in later
+      years.
+    path: pricing/src/lib/entity-state-costs.ts
+    createdAt: 2026-07-31T15:41:41Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 70
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70#discussion_r3691693491
+    body: Fixed in e4a7486. The wizard builds the current model and displays `calculateSetupCosts` values, with regressions
+      for California, a Nevada manual override, and a non-LLC entity.
+    path: pricing/src/components/new-recruit-wizard.tsx
+    createdAt: 2026-07-31T15:59:51Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 70
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70#discussion_r3691698057
+    body: Fixed in e4a7486. Only strictly positive formation overrides are active. Zero falls back to the LLC card and no
+      longer satisfies the unsupported-entity validation requirement.
+    path: pricing/src/lib/setup-projection.ts
+    createdAt: 2026-07-31T16:00:28Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 70
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70#discussion_r3691698454
+    body: Fixed in e4a7486. Rent, square-foot, and utility costs multiply the actual location count; zero locations costs
+      $0, and the assumptions UI now exposes an editable Locations control.
+    path: pricing/src/lib/setup-projection.ts
+    createdAt: 2026-07-31T16:00:32Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 70
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70#discussion_r3691698849
+    body: Fixed in e4a7486. Entity counts and projection years use integer formatting; only monetary cells use the currency
+      format. Workbook tests assert both formats.
+    path: pricing/src/lib/report/excel.ts
+    createdAt: 2026-07-31T16:00:36Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 70
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70#discussion_r3691709166
+    body: Already fixed in e4a7486. The Step 5 review now builds the current model and displays `calculateSetupCosts`
+      year-one and recurring values; tests cover California, a manual Nevada override, and non-LLC behavior.
+    path: pricing/src/components/new-recruit-wizard.tsx
+    createdAt: 2026-07-31T16:02:13Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 70
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70#discussion_r3691771066
+    body: Fixed in f15a5aa. Projections now separate revenue-sensitive gross/BD/OHC economics from fixed baseline expenses,
+      applying revenue growth and expense growth independently. Regression covers 10% revenue growth, 20% expense
+      growth, and fixed local software cost.
+    path: pricing/src/lib/setup-projection.ts
+    createdAt: 2026-07-31T16:11:54Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 70
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70#discussion_r3691771678
+    body: Fixed in f15a5aa. Source metadata now marks IN, IA, NE, and NY as raw biennial fees and schedules them in years
+      1/3/5; Alaska remains interval 1 because its source amount is explicitly annualized. Tests assert NY [9, 0, 9] and
+      AK [100, 100, 100].
+    path: pricing/src/lib/setup-projection.ts
+    createdAt: 2026-07-31T16:11:59Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 70
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70#discussion_r3691772160
+    body: Fixed in f15a5aa. The wizard builds its current model and reuses `validatePricingModelEconomics`; the untouched
+      LLC setup now shows the exact missing-state message and keeps Create disabled.
+    path: pricing/src/components/new-recruit-wizard.tsx
+    createdAt: 2026-07-31T16:12:02Z
 aiReviews:
   codex:
-    prsReviewed: 0
-    comments: 0
-    reviews: 0
-    fixed: 0
+    prsReviewed: 2
+    comments: 12
+    reviews: 4
+    fixed: 7
   cursor:
-    prsReviewed: 0
-    comments: 0
-    reviews: 0
-    fixed: 0
-  prsReviewed: 0
-  comments: 0
-  reviews: 0
-  fixed: 0
+    prsReviewed: 1
+    comments: 5
+    reviews: 3
+    fixed: 5
+  prsReviewed: 3
+  comments: 17
+  reviews: 7
+  fixed: 12
 hoursEstimate:
-  hours: 0
-  sessions: 0
-  sessionHours: 0
-  volumeHours: 0
+  hours: 34.3
+  sessions: 2
+  sessionHours: 1.8
+  volumeHours: 34.3
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

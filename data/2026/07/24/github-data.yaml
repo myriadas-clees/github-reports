@@ -12,48 +12,347 @@ dateRange:
   from: 2026-07-24
   to: 2026-07-24
 stats:
-  totalCommits: 0
-  totalAdditions: 0
-  totalDeletions: 0
-  prsOpened: 0
-  prsMerged: 0
-  prsInProgress: 0
-  prsReviewed: 0
-  reviewComments: 0
+  totalCommits: 4
+  totalAdditions: 476
+  totalDeletions: 56
+  prsOpened: 5
+  prsMerged: 4
+  prsInProgress: 1
+  prsReviewed: 4
+  reviewComments: 4
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 0
-dailyCommits: []
-repositories: []
-pullRequests: []
-prsInProgress: []
+  estimatedHours: 12.8
+dailyCommits:
+  - date: 2026-07-24
+    count: 4
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 4
+    prsOpened: 5
+    prsMerged: 4
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests:
+  - title: "feat(onboarding): archive workstreams"
+    body: >-
+      Why
+
+
+      Alpha workspaces generate a workstream and task set, but the supported UI had no safe cleanup lifecycle.
+      Disposable test data therefore remained in active selectors after verification.
+
+
+      What changed
+
+
+      - Add an admin-only archive and restore endpoint for onboarding workstreams
+
+      - Hide archived wor...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/47
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a1
+      - "app: onboarding"
+      - platform
+    additions: 0
+    deletions: 0
+    changedFiles: 21
+    author: myriadas-clees
+    createdAt: 2026-07-24T20:58:21Z
+    updatedAt: 2026-07-31T19:48:51Z
+    closedAt: 2026-07-31T19:44:23Z
+    mergedAt: 2026-07-31T19:44:23Z
+    workTimestamps: &a2 []
+    workAdditions: 0
+    workDeletions: 0
+  - title: "fix(excelerate): clarify request errors"
+    body: >-
+      Why
+
+
+      Browser-level fetch failures exposed only “Failed to fetch,” leaving operators without the endpoint or
+      configuration context needed to recover.
+
+
+      What changed
+
+
+      * Include HTTP status alongside server-provided error details
+
+      * Report the attempted Excelerate endpoint and API configuration guidance ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/44
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - "app: excelerate"
+    additions: 47
+    deletions: 5
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-07-24T18:17:41Z
+    updatedAt: 2026-07-24T18:57:31Z
+    closedAt: 2026-07-24T18:57:31Z
+    mergedAt: 2026-07-24T18:57:31Z
+    workTimestamps:
+      - 2026-07-24T18:17:10Z
+    workAdditions: 47
+    workDeletions: 5
+  - title: "feat(pto): add staff setup tools"
+    body: >-
+      Why
+
+
+      HR needs a starter file for bulk PTO setup and a faster path for adding one employee without preparing a
+      spreadsheet.
+
+
+      What changed
+
+
+      - Add a downloadable canonical staff CSV template
+
+      - Add the responsive individual-employee form to HR Administration
+
+      - Validate creation server-side, reject dupli...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/45
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - "app: pto-tracker"
+    additions: 258
+    deletions: 15
+    changedFiles: 8
+    author: myriadas-clees
+    createdAt: 2026-07-24T18:17:56Z
+    updatedAt: 2026-07-24T18:57:29Z
+    closedAt: 2026-07-24T18:57:29Z
+    mergedAt: 2026-07-24T18:57:29Z
+    workTimestamps:
+      - 2026-07-24T18:17:28Z
+      - 2026-07-24T18:37:00Z
+    workAdditions: 258
+    workDeletions: 15
+  - title: "fix(proforma): support multiple states"
+    body: >-
+      Why
+
+
+      The Pro Forma entity form stored only a registration-state count, so users could not identify or restore multiple
+      selected states.
+
+
+      What changed
+
+
+      - Add backward-compatible state-code storage while retaining the numeric calculation driver
+
+      - Replace the numeric field with an accessible, touch-fri...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/43
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - "app: proforma"
+      - platform
+    additions: 151
+    deletions: 14
+    changedFiles: 6
+    author: myriadas-clees
+    createdAt: 2026-07-24T18:17:36Z
+    updatedAt: 2026-07-24T18:58:02Z
+    closedAt: 2026-07-24T18:58:02Z
+    mergedAt: 2026-07-24T18:58:02Z
+    workTimestamps:
+      - 2026-07-24T18:17:08Z
+      - 2026-07-24T18:24:53Z
+      - 2026-07-24T18:30:05Z
+    workAdditions: 151
+    workDeletions: 14
+  - title: "fix(onboarding): complete workspace creation"
+    body: >-
+      ## Why
+
+
+      Client onboarding generated a browser-side client ID that conflicts with the production Cosmos tenant scope. The
+      create request failed before the workspace could open.
+
+
+      ## What changed
+
+
+      - Let the server assign the configured client scope
+
+      - Navigate directly to the created workstream without ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/46
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - "app: onboarding"
+      - platform
+    additions: 20
+    deletions: 22
+    changedFiles: 5
+    author: myriadas-clees
+    createdAt: 2026-07-24T18:18:31Z
+    updatedAt: 2026-07-24T18:56:41Z
+    closedAt: 2026-07-24T18:56:41Z
+    mergedAt: 2026-07-24T18:56:41Z
+    workTimestamps:
+      - 2026-07-24T18:18:15Z
+      - 2026-07-24T18:27:27Z
+      - 2026-07-24T18:27:30Z
+      - 2026-07-24T18:27:36Z
+      - 2026-07-24T18:27:41Z
+      - 2026-07-24T18:35:12Z
+      - 2026-07-24T18:35:16Z
+    workAdditions: 20
+    workDeletions: 22
+prsInProgress:
+  - title: "feat(onboarding): archive workstreams"
+    body: >-
+      Why
+
+
+      Alpha workspaces generate a workstream and task set, but the supported UI had no safe cleanup lifecycle.
+      Disposable test data therefore remained in active selectors after verification.
+
+
+      What changed
+
+
+      - Add an admin-only archive and restore endpoint for onboarding workstreams
+
+      - Hide archived wor...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/47
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a1
+    additions: 676
+    deletions: 45
+    changedFiles: 21
+    author: myriadas-clees
+    createdAt: 2026-07-24T20:58:21Z
+    updatedAt: 2026-07-31T19:48:51Z
+    closedAt: 2026-07-31T19:44:23Z
+    mergedAt: 2026-07-31T19:44:23Z
+    workTimestamps: *a2
+    workAdditions: 0
+    workDeletions: 0
 issues: []
 events: []
-commitMessages: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "fix(proforma): support multiple states [skip ci]"
+      - "fix(excelerate): clarify request errors [skip ci]"
+      - "feat(pto): add staff setup tools (#45)"
+      - "fix(onboarding): complete workspace creation [skip ci]"
+    commits:
+      - sha: e0cd56a89e27f29a81d57b5246430f6e6069247c
+        message: "fix(proforma): support multiple states [skip ci]"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e0cd56a89e27f29a81d57b5246430f6e6069247c
+        authoredAt: 2026-07-24T18:58:02Z
+      - sha: e18e20569687252d05880b9606e4e4856d0672e7
+        message: "fix(excelerate): clarify request errors [skip ci]"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e18e20569687252d05880b9606e4e4856d0672e7
+        authoredAt: 2026-07-24T18:57:30Z
+      - sha: 3ee543c80f48ada3db2a1e4a1d2bca40b0eba5ae
+        message: "feat(pto): add staff setup tools (#45)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3ee543c80f48ada3db2a1e4a1d2bca40b0eba5ae
+        authoredAt: 2026-07-24T18:57:28Z
+      - sha: bad72837d48b1df8e408e17f9fc27b6486e4c424
+        message: "fix(onboarding): complete workspace creation [skip ci]"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/bad72837d48b1df8e408e17f9fc27b6486e4c424
+        authoredAt: 2026-07-24T18:56:40Z
 releases: []
 externalContributions: []
-codeReviews: []
-reviewComments: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 46
+    prTitle: "fix(onboarding): complete workspace creation"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/46
+    state: commented
+    submittedAt: 2026-07-24T18:27:56Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 46
+    prTitle: "fix(onboarding): complete workspace creation"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/46
+    state: commented
+    submittedAt: 2026-07-24T18:35:34Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 43
+    prTitle: "fix(proforma): support multiple states"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/43
+    state: commented
+    submittedAt: 2026-07-24T18:25:17Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 43
+    prTitle: "fix(proforma): support multiple states"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/43
+    state: commented
+    submittedAt: 2026-07-24T18:30:31Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 46
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/46
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/46#discussion_r3647389745
+    body: Addressed. The create API now returns the server-resolved `clientId`, and the form includes both `client` and
+      `employee` in the redirect. Added API coverage for the returned client context; typecheck, lint, and all 20
+      dashboard tests pass.
+    path: onboarding/apps/dashboard/components/create-employee-form.tsx
+    createdAt: 2026-07-24T18:27:56Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 46
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/46
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/46#discussion_r3647427838
+    body: Addressed at the provider boundary. The form again proposes a unique client ID, SQLite retains it for distinct
+      workspaces, Cosmos uses its configured tenant ID instead of rejecting the proposal, and the API redirect uses the
+      server-resolved ID. Dashboard checks pass (20 tests); database typecheck an...
+    path: onboarding/apps/dashboard/components/create-employee-form.tsx
+    createdAt: 2026-07-24T18:35:34Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 43
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/43
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/43#discussion_r3647376116
+    body: "Fixed in 7d7f4df. Modern form submissions now carry an explicit picker marker, so an empty selection saves
+      `registeredStates: 0`; legacy submissions without the marker retain the prior numeric fallback. Added a focused
+      regression test for clearing all states."
+    path: proforma/src/lib/validation/scenario-form-values.ts
+    createdAt: 2026-07-24T18:25:17Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 43
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/43
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/43#discussion_r3647402705
+    body: "Fixed in 24d6935. The form now submits an explicit changed flag only after checkbox interaction: untouched legacy
+      scenarios retain their numeric count, selected states derive the count, and an intentional clear saves zero.
+      Focused tests cover both intentional clear and untouched legacy behavior."
+    path: proforma/src/lib/validation/scenario-form-values.ts
+    createdAt: 2026-07-24T18:30:31Z
 aiReviews:
   codex:
-    prsReviewed: 0
-    comments: 0
-    reviews: 0
-    fixed: 0
+    prsReviewed: 3
+    comments: 5
+    reviews: 5
+    fixed: 4
   cursor:
     prsReviewed: 0
     comments: 0
     reviews: 0
     fixed: 0
-  prsReviewed: 0
-  comments: 0
-  reviews: 0
-  fixed: 0
+  prsReviewed: 3
+  comments: 5
+  reviews: 5
+  fixed: 4
 hoursEstimate:
-  hours: 0
-  sessions: 0
-  sessionHours: 0
-  volumeHours: 0
+  hours: 12.8
+  sessions: 2
+  sessionHours: 1.2
+  volumeHours: 12.8
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

@@ -1,23 +1,115 @@
 title: Jul 27
-subtitle: Daily status
+subtitle: pto, dependabot & onboarding
 overview: ""
 summaries:
   - type: repo-summary
     heading: Projects worked on
-    body: No repository activity recorded.
-    chips: []
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps and Myriad-Advisor-Solutions/ohcpwm-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 7 PRs
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 1 PRs
   - type: commit-summary
     heading: Commits and line changes
-    body: 0 commits with +0 / −0 lines.
+    body: 7 commits with +3,517 / −963 lines.
     chips:
       - label: Commits
-        value: "0"
+        value: "7"
         color: green
       - label: Additions
-        value: "+0"
+        value: +3,517
         color: green
       - label: Deletions
-        value: −0
+        value: −963
         color: red
-highlights: []
-ticker: []
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 7 reviews, 11 comments, 7 PRs."
+    chips:
+      - label: Codex
+        value: 7 reviews · 11 comments · 7 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~28.9h
+highlights:
+  - type: pr
+    title: "feat(pto): edit team members"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +572 −56
+    body: >-
+      Why
+
+
+      Employee email is the canonical link between Microsoft sign-in and PTO records, but HR could not correct
+      team-member identity details from the team view.
+
+
+      What changed
+
+
+      - Resolve the signed-in em
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/52
+  - type: pr
+    title: "feat(pto): add calendar leave colors"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +897 −77
+    body: |-
+      ## Why
+
+      Managers and HR need to identify staff absences at a glance without opening each calendar entry.
+
+      ## What changed
+
+      - Add a validated ROYGBIV palette for every existing leave type
+      - Let manager
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/53
+  - type: pr
+    title: "fix(pricing): improve responsive pricing UI"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +700 −489
+    body: >-
+      ## Why
+
+
+      Recent recruits overflowed narrower viewports, hiding financial columns and row actions. The assumptions editor
+      also carried excess guidance and layout density that made pricing inputs harder 
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/72
+  - type: pr
+    title: "fix(pto): move calendar colors to settings"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +207 −147
+    body: >+
+      ## Why
+
+
+      Calendar color administration belongs with other appearance controls, not in the staff calendar workflow. The
+      saturated marker fills also competed with the restrained Myriad product palette.
+
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/55
+  - type: pr
+    title: "feat(ui): add suite home navigation"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +96 −11
+    body: >-
+      ## Why
+
+
+      Product apps need distinct paths back to their own home and to the suite Hub. The shared shell did not link the
+      Myriad mark to the product home or provide suite-level navigation, and the local
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/49
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(pto): edit team members" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(pto): add calendar leave colors" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(pricing): improve responsive pricing UI" in Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(pto): move calendar colors to settings" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(ui): add suite home navigation" in Myriad-Advisor-Solutions/myriadas-apps'

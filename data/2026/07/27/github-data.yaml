@@ -12,48 +12,468 @@ dateRange:
   from: 2026-07-27
   to: 2026-07-27
 stats:
-  totalCommits: 0
-  totalAdditions: 0
-  totalDeletions: 0
-  prsOpened: 0
-  prsMerged: 0
-  prsInProgress: 0
+  totalCommits: 7
+  totalAdditions: 3517
+  totalDeletions: 963
+  prsOpened: 8
+  prsMerged: 7
+  prsInProgress: 2
   prsReviewed: 0
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 0
-dailyCommits: []
-repositories: []
-pullRequests: []
-prsInProgress: []
+  estimatedHours: 28.9
+dailyCommits:
+  - date: 2026-07-27
+    count: 7
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 5
+    prsOpened: 7
+    prsMerged: 5
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 2
+    prsOpened: 1
+    prsMerged: 2
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests:
+  - title: "feat(pto): edit team members"
+    body: >-
+      Why
+
+
+      Employee email is the canonical link between Microsoft sign-in and PTO records, but HR could not correct
+      team-member identity details from the team view.
+
+
+      What changed
+
+
+      - Resolve the signed-in employee from normalized email and return the canonical staff record to self-service views
+
+      - Let HR ed...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/52
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - "app: pto-tracker"
+      - platform
+    additions: 572
+    deletions: 56
+    changedFiles: 23
+    author: myriadas-clees
+    createdAt: 2026-07-27T20:29:55Z
+    updatedAt: 2026-07-27T20:55:25Z
+    closedAt: 2026-07-27T20:55:21Z
+    mergedAt: 2026-07-27T20:55:21Z
+    workTimestamps:
+      - 2026-07-27T20:29:04Z
+      - 2026-07-27T20:45:41Z
+    workAdditions: 572
+    workDeletions: 56
+  - title: "feat(pto): add calendar leave colors"
+    body: |-
+      ## Why
+
+      Managers and HR need to identify staff absences at a glance without opening each calendar entry.
+
+      ## What changed
+
+      - Add a validated ROYGBIV palette for every existing leave type
+      - Let managers and HR save shared calendar color assignments
+      - Apply saved colors to calendar markers, the legend...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/53
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - "app: pto-tracker"
+      - platform
+    additions: 897
+    deletions: 77
+    changedFiles: 10
+    author: myriadas-clees
+    createdAt: 2026-07-27T20:57:56Z
+    updatedAt: 2026-07-27T21:17:01Z
+    closedAt: 2026-07-27T21:16:58Z
+    mergedAt: 2026-07-27T21:16:58Z
+    workTimestamps:
+      - 2026-07-27T20:57:15Z
+      - 2026-07-27T21:11:52Z
+    workAdditions: 897
+    workDeletions: 77
+  - title: "fix(pricing): improve responsive pricing UI"
+    body: >-
+      ## Why
+
+
+      Recent recruits overflowed narrower viewports, hiding financial columns and row actions. The assumptions editor
+      also carried excess guidance and layout density that made pricing inputs harder to scan.
+
+
+      ## What changed
+
+
+      - Make active and archived recruit tables adapt to available width withou...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/72
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 700
+    deletions: 489
+    changedFiles: 14
+    author: myriadas-clees
+    createdAt: 2026-07-27T22:02:01Z
+    updatedAt: 2026-07-27T22:18:59Z
+    closedAt: 2026-07-27T22:18:59Z
+    mergedAt: 2026-07-27T22:18:59Z
+    workTimestamps:
+      - 2026-07-27T21:58:55Z
+      - 2026-07-27T21:59:20Z
+      - 2026-07-27T22:16:29Z
+    workAdditions: 700
+    workDeletions: 489
+  - title: "fix(pto): move calendar colors to settings"
+    body: >-
+      ## Why
+
+
+      Calendar color administration belongs with other appearance controls, not in the staff calendar workflow. The
+      saturated marker fills also competed with the restrained Myriad product palette.
+
+
+      ## What changed
+
+
+      - Move the manager and HR calendar-color editor to Settings
+
+      - Keep Calendar focused...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/55
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - "app: pto-tracker"
+    additions: 207
+    deletions: 147
+    changedFiles: 5
+    author: myriadas-clees
+    createdAt: 2026-07-27T21:32:51Z
+    updatedAt: 2026-07-27T22:15:45Z
+    closedAt: 2026-07-27T22:15:45Z
+    mergedAt: 2026-07-27T22:15:45Z
+    workTimestamps:
+      - 2026-07-27T21:32:23Z
+      - 2026-07-27T21:57:10Z
+      - 2026-07-27T22:02:03Z
+      - 2026-07-27T22:06:02Z
+      - 2026-07-27T22:11:55Z
+    workAdditions: 207
+    workDeletions: 147
+  - title: "feat(ui): add suite home navigation"
+    body: >-
+      ## Why
+
+
+      Product apps need distinct paths back to their own home and to the suite Hub. The shared shell did not link the
+      Myriad mark to the product home or provide suite-level navigation, and the local supervisor's 60-second readiness
+      deadline could expire during cold multi-app compilation.
+
+
+      ## What ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/49
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - github-automation
+      - "app: onboarding"
+      - "app: pto-tracker"
+      - "app: proforma"
+      - "app: excelerate"
+      - "app: valuation"
+      - platform
+    additions: 96
+    deletions: 11
+    changedFiles: 14
+    author: myriadas-clees
+    createdAt: 2026-07-27T19:21:24Z
+    updatedAt: 2026-07-27T19:35:06Z
+    closedAt: 2026-07-27T19:34:59Z
+    mergedAt: 2026-07-27T19:34:59Z
+    workTimestamps:
+      - 2026-07-27T19:14:10Z
+      - 2026-07-27T19:29:57Z
+    workAdditions: 96
+    workDeletions: 11
+  - title: "fix(pto): repair staff setup flows"
+    body: >-
+      ## Why
+
+
+      CSV-backed staff imports replaced the full staff list, which removed manually entered employees. Staff setup also
+      required values the app can derive, and legacy Entra mode rendered no usable sign-in action.
+
+
+      ## What changed
+
+
+      - Merge staff imports by employee ID while preserving absent employ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/48
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - "app: pto-tracker"
+    additions: 479
+    deletions: 59
+    changedFiles: 17
+    author: myriadas-clees
+    createdAt: 2026-07-27T19:20:32Z
+    updatedAt: 2026-07-27T19:46:58Z
+    closedAt: 2026-07-27T19:46:08Z
+    mergedAt: 2026-07-27T19:46:08Z
+    workTimestamps:
+      - 2026-07-27T19:18:22Z
+      - 2026-07-27T19:28:19Z
+    workAdditions: 479
+    workDeletions: 59
+  - title: "fix(onboarding): show current workstream name"
+    body: >-
+      Why
+
+
+      The active-workstream description omitted the role portion of the selected workstream, so it could continue to
+      look like the previous workflow after switching.
+
+
+      What changed
+
+
+      - Show the same `employeeName - role` identity used by the workstream selector in the workspace description
+
+
+      Testing
+
+
+      - ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/54
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a1
+      - "app: onboarding"
+    additions: 1
+    deletions: 1
+    changedFiles: 1
+    author: myriadas-clees
+    createdAt: 2026-07-27T21:14:58Z
+    updatedAt: 2026-07-29T22:23:14Z
+    closedAt: 2026-07-29T22:23:14Z
+    mergedAt: 2026-07-29T22:23:14Z
+    workTimestamps: &a2
+      - 2026-07-27T21:14:31Z
+    workAdditions: 1
+    workDeletions: 1
+  - title: "fix(dependabot): reduce update frequency"
+    body: >-
+      Why
+
+
+      Weekly dependency update runs create more review churn than this repository needs. Grouping already limits PR
+      count per run, so reducing the schedule is the narrowest fix.
+
+
+      What changed
+
+
+      - Run Bun workspace updates monthly instead of weekly
+
+      - Run GitHub Actions updates monthly instead of weekly...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/51
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a3
+      - github-automation
+    additions: 2
+    deletions: 4
+    changedFiles: 1
+    author: myriadas-clees
+    createdAt: 2026-07-27T19:48:09Z
+    updatedAt: 2026-07-29T22:22:45Z
+    closedAt: 2026-07-29T22:22:45Z
+    mergedAt: 2026-07-29T22:22:45Z
+    workTimestamps: &a4
+      - 2026-07-27T19:45:21Z
+    workAdditions: 2
+    workDeletions: 4
+  - title: "feat(pricing): add FiNet recruit workflow"
+    body: >-
+      ## Why
+
+
+      FiNet recruits follow a distinct pricing path and should not expose or apply non-FiNet business-mix and platform
+      assumptions. The recruit workflow also needs consistent fee precision and review layouts so entered values match
+      the pricing calculations.
+
+
+      ## What changed
+
+
+      - Add a FiNet recruit ...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/70
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels:
+      - deploy-preview
+    additions: 563
+    deletions: 119
+    changedFiles: 55
+    author: myriadas-clees
+    createdAt: 2026-07-23T16:44:11Z
+    updatedAt: 2026-07-27T21:31:24Z
+    closedAt: 2026-07-27T21:31:07Z
+    mergedAt: 2026-07-27T21:31:07Z
+    workTimestamps:
+      - 2026-07-27T15:06:14Z
+      - 2026-07-27T15:47:39Z
+      - 2026-07-27T16:26:56Z
+    workAdditions: 563
+    workDeletions: 119
+prsInProgress:
+  - title: "fix(onboarding): show current workstream name"
+    body: >-
+      Why
+
+
+      The active-workstream description omitted the role portion of the selected workstream, so it could continue to
+      look like the previous workflow after switching.
+
+
+      What changed
+
+
+      - Show the same `employeeName - role` identity used by the workstream selector in the workspace description
+
+
+      Testing
+
+
+      - ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/54
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels: *a1
+    additions: 1
+    deletions: 1
+    changedFiles: 1
+    author: myriadas-clees
+    createdAt: 2026-07-27T21:14:58Z
+    updatedAt: 2026-07-29T22:23:14Z
+    closedAt: 2026-07-29T22:23:14Z
+    mergedAt: 2026-07-29T22:23:14Z
+    workTimestamps: *a2
+    workAdditions: 1
+    workDeletions: 1
+  - title: "fix(dependabot): reduce update frequency"
+    body: >-
+      Why
+
+
+      Weekly dependency update runs create more review churn than this repository needs. Grouping already limits PR
+      count per run, so reducing the schedule is the narrowest fix.
+
+
+      What changed
+
+
+      - Run Bun workspace updates monthly instead of weekly
+
+      - Run GitHub Actions updates monthly instead of weekly...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/51
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels: *a3
+    additions: 2
+    deletions: 4
+    changedFiles: 1
+    author: myriadas-clees
+    createdAt: 2026-07-27T19:48:09Z
+    updatedAt: 2026-07-29T22:22:45Z
+    closedAt: 2026-07-29T22:22:45Z
+    mergedAt: 2026-07-29T22:22:45Z
+    workTimestamps: *a4
+    workAdditions: 2
+    workDeletions: 4
 issues: []
 events: []
-commitMessages: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "fix(pricing): improve responsive pricing UI (#72)"
+      - "feat(pricing): add FiNet recruit workflow (#70)"
+    commits:
+      - sha: f9177966a87f3a8c90a424d7bb323ef90ff41dec
+        message: "fix(pricing): improve responsive pricing UI (#72)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f9177966a87f3a8c90a424d7bb323ef90ff41dec
+        authoredAt: 2026-07-27T22:18:58Z
+      - sha: 0d8640462f24ec95ab40721f586039ce0257ff68
+        message: "feat(pricing): add FiNet recruit workflow (#70)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0d8640462f24ec95ab40721f586039ce0257ff68
+        authoredAt: 2026-07-27T21:31:07Z
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "fix(pto): move calendar colors to settings"
+      - "feat(pto): add calendar leave colors (#53)"
+      - "feat(pto): edit team members (#52)"
+      - "fix(pto): repair staff setup flows (#48)"
+      - "feat(ui): add suite home navigation (#49)"
+    commits:
+      - sha: d3e51e0696055b6a6c202e8234c27a1f143062c3
+        message: "fix(pto): move calendar colors to settings"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d3e51e0696055b6a6c202e8234c27a1f143062c3
+        authoredAt: 2026-07-27T22:15:44Z
+      - sha: 9abd177136348d452e4f1d17fa2e7889baaa2a2c
+        message: "feat(pto): add calendar leave colors (#53)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9abd177136348d452e4f1d17fa2e7889baaa2a2c
+        authoredAt: 2026-07-27T21:16:57Z
+      - sha: bf23aa66b116bd8181a2da1b13b9f1776419951d
+        message: "feat(pto): edit team members (#52)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/bf23aa66b116bd8181a2da1b13b9f1776419951d
+        authoredAt: 2026-07-27T20:55:21Z
+      - sha: 4ff3ed67020471aee9139b1f0f1163bbe776f709
+        message: "fix(pto): repair staff setup flows (#48)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4ff3ed67020471aee9139b1f0f1163bbe776f709
+        authoredAt: 2026-07-27T19:46:08Z
+      - sha: b68ac2646b42c02b7e0b6d76c76951fae458bb74
+        message: "feat(ui): add suite home navigation (#49)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b68ac2646b42c02b7e0b6d76c76951fae458bb74
+        authoredAt: 2026-07-27T19:34:58Z
 releases: []
 externalContributions: []
 codeReviews: []
 reviewComments: []
 aiReviews:
   codex:
-    prsReviewed: 0
-    comments: 0
-    reviews: 0
+    prsReviewed: 7
+    comments: 11
+    reviews: 7
     fixed: 0
   cursor:
     prsReviewed: 0
     comments: 0
     reviews: 0
     fixed: 0
-  prsReviewed: 0
-  comments: 0
-  reviews: 0
+  prsReviewed: 7
+  comments: 11
+  reviews: 7
   fixed: 0
 hoursEstimate:
-  hours: 0
-  sessions: 0
-  sessionHours: 0
-  volumeHours: 0
+  hours: 28.9
+  sessions: 2
+  sessionHours: 4.4
+  volumeHours: 28.9
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

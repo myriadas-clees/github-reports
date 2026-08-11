@@ -1,23 +1,78 @@
 title: Jul 23
-subtitle: Daily status
+subtitle: pricing, deploy & hub
 overview: ""
 summaries:
   - type: repo-summary
     heading: Projects worked on
-    body: No repository activity recorded.
-    chips: []
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps and Myriad-Advisor-Solutions/ohcpwm-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 2 PRs
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 1 PRs
   - type: commit-summary
     heading: Commits and line changes
-    body: 0 commits with +0 / −0 lines.
+    body: 2 commits with +982 / −533 lines.
     chips:
       - label: Commits
-        value: "0"
+        value: "2"
         color: green
       - label: Additions
-        value: "+0"
+        value: "+982"
         color: green
       - label: Deletions
-        value: −0
+        value: −533
         color: red
-highlights: []
-ticker: []
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 2 reviews, 6 comments, 2 PRs."
+    chips:
+      - label: Codex
+        value: 2 reviews · 6 comments · 2 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~9.9h
+highlights:
+  - type: pr
+    title: "revert(deploy): restore unified SWA"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +362 −389
+    body: >-
+      ## Why
+
+
+      PR #37 switched production to dedicated product Static Web Apps and Function Apps before those resources existed.
+      Azure currently has only `myriadas-hub` and no Function Apps, so Hub links tar
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/41
+  - type: pr
+    title: "fix(hub): route product app roots"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +49 −10
+    body: >-
+      ## Why
+
+
+      Extensionless product URLs such as `/pto` fell through to the Hub 404 because static exports place each entrypoint
+      at `<app>/index.html`.
+
+
+      ## What changed
+
+
+      - Rewrite each registered product ro
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/40
+  - type: pr
+    title: "feat(pricing): add FiNet recruit workflow"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +1553 −277
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/70
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "revert(deploy): restore unified SWA" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(hub): route product app roots" in Myriad-Advisor-Solutions/myriadas-apps'

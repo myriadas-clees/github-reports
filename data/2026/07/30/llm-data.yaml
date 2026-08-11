@@ -1,23 +1,123 @@
 title: Jul 30
-subtitle: Daily status
+subtitle: deploy, pricing & github
 overview: ""
 summaries:
   - type: repo-summary
     heading: Projects worked on
-    body: No repository activity recorded.
-    chips: []
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 4 PRs
   - type: commit-summary
     heading: Commits and line changes
-    body: 0 commits with +0 / −0 lines.
+    body: 5 commits with +761 / −388 lines.
     chips:
       - label: Commits
-        value: "0"
+        value: "5"
         color: green
       - label: Additions
-        value: "+0"
+        value: "+761"
         color: green
       - label: Deletions
-        value: −0
+        value: −388
         color: red
-highlights: []
-ticker: []
+  - type: review-summary
+    heading: Reviews
+    body: 19 reviews with 19 comments.
+    chips:
+      - label: Reviews
+        value: "19"
+      - label: Comments
+        value: "19"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 22 reviews, 36 comments, 9 PRs; Cursor: 4 reviews,
+      7 comments, 4 PRs."
+    chips:
+      - label: Codex
+        value: 22 reviews · 36 comments · 9 PRs
+      - label: Cursor
+        value: 4 reviews · 7 comments · 4 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~30.3h
+highlights:
+  - type: pr
+    title: "docs(deploy): document app target matrix"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +50 −0
+    body: >-
+      Why
+
+
+      Issue #11 lacked an explicit production-target matrix and a safe redeploy/rollback procedure for the unified Hub
+      Static Web App.
+
+
+      What changed
+
+
+      - Map Hub, Onboarding, PTO, Pricing/legacy Proforma
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/69
+  - type: pr
+    title: "fix(pricing): preserve Cosmos key fallback"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +66 −32
+    body: >-
+      ## Why
+
+
+      The managed-SWA deployment reaches Pricing Cosmos configuration but returns 503 because Pricing explicitly
+      suppressed the shared client's existing `AZURE_COSMOS_KEY` fallback. Azure Static Web
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/68
+  - type: pr
+    title: "fix(pricing): accept legacy runtime settings"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +317 −40
+    body: >-
+      Why
+
+
+      The managed SWA deployment still has the established Proforma and Azure Cosmos app settings. After the Pricing
+      migration, the managed API read only `PRICING_*` names, causing `/api/pricing/health
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/67
+  - type: pr
+    title: "fix(deploy): restore managed SWA API"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +318 −306
+    body: >-
+      Why
+
+
+      PR #64 replaced the established single-SWA upload with a separate linked Function App, OIDC login, and new
+      infrastructure variables. Production still uses the existing Azure Static Web App, so th
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
+  - type: pr
+    title: "fix(github): align triage project fields"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +10 −10
+    body: |+
+      ## What changed
+
+      - use the non-reserved `Issue Type` project field
+      - initialize new project items in the existing `Backlog` status
+      - align repository reconciliation, tests, and documentation
+
+      ## Why
+
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/61
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "docs(deploy): document app target matrix" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(pricing): preserve Cosmos key fallback" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(pricing): accept legacy runtime settings" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(deploy): restore managed SWA API" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(github): align triage project fields" in Myriad-Advisor-Solutions/myriadas-apps'

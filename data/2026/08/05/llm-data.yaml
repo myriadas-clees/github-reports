@@ -1,23 +1,92 @@
 title: Aug 5
-subtitle: Daily status
+subtitle: pricing
 overview: ""
 summaries:
   - type: repo-summary
     heading: Projects worked on
-    body: No repository activity recorded.
-    chips: []
+    body: Activity spanned Myriad-Advisor-Solutions/ohcpwm-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 0 PRs
   - type: commit-summary
     heading: Commits and line changes
-    body: 0 commits with +0 / −0 lines.
+    body: 6 commits with +1,075 / −240 lines.
     chips:
       - label: Commits
-        value: "0"
+        value: "6"
         color: green
       - label: Additions
-        value: "+0"
+        value: +1,075
         color: green
       - label: Deletions
-        value: −0
+        value: −240
         color: red
-highlights: []
-ticker: []
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~15.5h
+highlights:
+  - type: pr
+    title: "fix(pricing): give payout details room to breathe"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +0 −0
+    body: >-
+      - Reorganize the expanded recruit payout detail into a vertical proposed-payout calculation and a separate Current
+      FiNet benchmark.
+
+      - Preserve every financial figure while giving the primary Net Payou
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/100
+  - type: pr
+    title: "test(pricing): add auditable workbook fixtures (#20)"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +361 −79
+    body: |-
+      - add a checksum-pinned, auditable fixture for the checked-in pricing workbook template
+      - capture exact source cells, cached WFCS/Schwab values, and the approved B/D E&O reconciliation
+      - document that
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/88
+  - type: pr
+    title: "fix(pricing): align FINET reports"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +0 −0
+    body: |-
+      - Use FINET-specific logo assets in generated PDFs and cover branding regression coverage.
+      - Enforce the confirmed 92% FINET payout for every product, including fixed insurance.
+      - Remove unclear “OHC 
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/83
+  - type: pr
+    title: "fix(pricing): normalize duplicated recruit models"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +0 −0
+    body: |-
+      - Deep-copy and normalize duplicated pricing models so the copied recruit's advisor name is updated independently.
+      - Apply the shared behavior to SQLite, Graph, and Cosmos persistence adapters.
+      - Add 
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/82
+  - type: pr
+    title: "feat(pricing): add permissioned holdco revenue"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +356 −82
+    body: |-
+      Adds the requested AUM, Top Line Revenue, and Revenue to Holdco views to the Advisor Pricing pipeline.
+
+      - Renames the table labels to **AUM** and **Top Line Revenue**
+      - Adds an admin-only **Revenue to
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/81
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(pricing): give payout details room to breathe" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "test(pricing): add auditable workbook fixtures (#20)" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(pricing): align FINET reports" in Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(pricing): normalize duplicated recruit models" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(pricing): add permissioned holdco revenue" in Myriad-Advisor-Solutions/ohcpwm-apps'
