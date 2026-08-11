@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { fetchCommitMessages } from "./fetch-commits.js";
+import { fetchCommitMessages, mergeCommitMessagesWithPRs } from "./fetch-commits.js";
 import type { DateRange } from "./date-range.js";
 
 const range: DateRange = {
@@ -220,5 +220,46 @@ describe("fetchCommitMessages", () => {
     expect(warnSpy).toHaveBeenCalledWith(
       expect.stringContaining("Failed to fetch commits: 500 Internal Server Error"),
     );
+  });
+});
+
+describe("mergeCommitMessagesWithPRs", () => {
+  it("adds PR-only commits and deduplicates commits already on the default branch", () => {
+    const shared = {
+      sha: "shared",
+      message: "feat: shared",
+      url: "https://github.com/org/repo/commit/shared",
+      authoredAt: "2026-04-01T10:00:00Z",
+    };
+    const prOnly = {
+      sha: "pr-only",
+      message: "fix: still on PR branch",
+      url: "https://github.com/org/repo/commit/pr-only",
+      authoredAt: "2026-04-01T11:00:00Z",
+    };
+    const merged = mergeCommitMessagesWithPRs(
+      [{ repo: "org/repo", messages: [shared.message], commits: [shared] }],
+      [{
+        title: "PR",
+        body: null,
+        url: "https://github.com/org/repo/pull/1",
+        repository: "org/repo",
+        state: "open",
+        labels: [],
+        additions: 1,
+        deletions: 0,
+        changedFiles: 1,
+        author: "alice",
+        createdAt: "2026-04-01T09:00:00Z",
+        mergedAt: null,
+        workCommits: [shared, prOnly],
+      }],
+    );
+
+    expect(merged).toEqual([{
+      repo: "org/repo",
+      messages: ["feat: shared", "fix: still on PR branch"],
+      commits: [shared, prOnly],
+    }]);
   });
 });

@@ -2,7 +2,7 @@
 
 import { cleanBody } from "./clean-body.js";
 import type { DateRange } from "./date-range.js";
-import type { PullRequest } from "../types.js";
+import type { CommitDetail, PullRequest } from "../types.js";
 
 type RawPR = {
   number: number;
@@ -121,15 +121,28 @@ const fetchPRWork = async (
   token: string,
   ref: PRRef,
   range: DateRange,
-): Promise<{ timestamps: string[]; additions: number; deletions: number }> => {
+  activityAuthor?: string,
+): Promise<{ commits: CommitDetail[]; timestamps: string[]; additions: number; deletions: number }> => {
   const commits = await fetchPages<{
     sha: string;
-    commit: { author?: { date?: string | null }; committer?: { date?: string | null } };
+    html_url: string;
+    author?: { login?: string | null } | null;
+    commit: {
+      message: string;
+      author?: { date?: string | null };
+      committer?: { date?: string | null };
+    };
   }>(token, `https://api.github.com/repos/${ref.repo}/pulls/${ref.number}/commits?per_page=100`);
+  const lowerAuthor = activityAuthor?.toLowerCase();
   const relevant = commits.map((item) => ({
     sha: item.sha,
+    message: item.commit.message?.split("\n")[0]?.trim() ?? "",
+    url: item.html_url,
+    login: item.author?.login?.toLowerCase() ?? null,
     timestamp: item.commit.author?.date ?? item.commit.committer?.date ?? null,
-  })).filter((item): item is { sha: string; timestamp: string } => inRange(item.timestamp, range));
+  })).filter((item): item is typeof item & { timestamp: string } =>
+    inRange(item.timestamp, range) && (!lowerAuthor || item.login === lowerAuthor)
+  );
   let additions = 0;
   let deletions = 0;
   for (const commit of relevant) {
@@ -141,7 +154,17 @@ const fetchPRWork = async (
     additions += detail.stats?.additions ?? 0;
     deletions += detail.stats?.deletions ?? 0;
   }
-  return { timestamps: relevant.map((item) => item.timestamp), additions, deletions };
+  return {
+    commits: relevant.map((item) => ({
+      sha: item.sha,
+      message: item.message,
+      url: item.url,
+      authoredAt: item.timestamp,
+    })),
+    timestamps: relevant.map((item) => item.timestamp),
+    additions,
+    deletions,
+  };
 };
 
 /** Enumerate authored PRs that already existed by a historical report day. */
@@ -188,6 +211,7 @@ const fetchSinglePR = async (
   token: string,
   ref: PRRef,
   activityRange?: DateRange,
+  activityAuthor?: string,
 ): Promise<PullRequest | null> => {
   const url = `https://api.github.com/repos/${ref.repo}/pulls/${ref.number}`;
 
@@ -197,7 +221,8 @@ const fetchSinglePR = async (
     if (response.ok) {
       const pullRequest = toPullRequest((await response.json()) as RawPR, ref.repo);
       if (activityRange) {
-        const work = await fetchPRWork(token, ref, activityRange);
+        const work = await fetchPRWork(token, ref, activityRange, activityAuthor);
+        pullRequest.workCommits = work.commits;
         pullRequest.workTimestamps = work.timestamps;
         pullRequest.workAdditions = work.additions;
         pullRequest.workDeletions = work.deletions;
@@ -244,6 +269,7 @@ export const fetchPRsByRefs = async (
   token: string,
   refs: PRRef[],
   activityRange?: DateRange,
+  activityAuthor?: string,
 ): Promise<PullRequest[]> => {
   const unique = new Map<string, PRRef>();
   refs.forEach((ref) => {
@@ -255,7 +281,7 @@ export const fetchPRsByRefs = async (
   let failed = 0;
 
   await runWithConcurrency([...unique.values()], async (ref) => {
-    const pr = await fetchSinglePR(token, ref, activityRange);
+    const pr = await fetchSinglePR(token, ref, activityRange, activityAuthor);
     if (pr) prs.push(pr);
     else failed++;
   });

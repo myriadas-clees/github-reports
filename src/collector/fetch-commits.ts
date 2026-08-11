@@ -2,7 +2,7 @@
 // GET /repos/{owner}/{repo}/commits?author={username}&since={from}&until={to}
 
 import type { DateRange } from "./date-range.js";
-import type { CommitDetail, RepoCommitMessages } from "../types.js";
+import type { CommitDetail, PullRequest, RepoCommitMessages } from "../types.js";
 
 type RawCommit = {
   sha: string;
@@ -132,6 +132,42 @@ const runWithConcurrency = async <T>(
 };
 
 export type RepoCommits = RepoCommitMessages;
+
+/** Merge default-branch commits with reporting-user commits found on PR branches. */
+export const mergeCommitMessagesWithPRs = (
+  base: RepoCommitMessages[],
+  pullRequests: PullRequest[],
+): RepoCommitMessages[] => {
+  const byRepo = new Map<string, { legacyMessages: string[]; commits: Map<string, CommitDetail> }>();
+  const ensureRepo = (repo: string) => {
+    const existing = byRepo.get(repo);
+    if (existing) return existing;
+    const created = { legacyMessages: [] as string[], commits: new Map<string, CommitDetail>() };
+    byRepo.set(repo, created);
+    return created;
+  };
+
+  for (const repo of base) {
+    const target = ensureRepo(repo.repo);
+    if (repo.commits) {
+      for (const commit of repo.commits) target.commits.set(commit.sha, commit);
+    } else {
+      target.legacyMessages.push(...repo.messages);
+    }
+  }
+  for (const pr of pullRequests) {
+    const target = ensureRepo(pr.repository);
+    for (const commit of pr.workCommits ?? []) {
+      if (!target.commits.has(commit.sha)) target.commits.set(commit.sha, commit);
+    }
+  }
+
+  return [...byRepo.entries()].flatMap(([repo, value]) => {
+    const commits = [...value.commits.values()].sort((a, b) => a.authoredAt.localeCompare(b.authoredAt));
+    const messages = [...value.legacyMessages, ...commits.map((commit) => commit.message)];
+    return messages.length > 0 ? [{ repo, messages, commits }] : [];
+  });
+};
 
 export const fetchCommitMessages = async (
   token: string,

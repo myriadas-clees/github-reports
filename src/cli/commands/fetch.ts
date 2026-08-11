@@ -9,7 +9,7 @@ import { buildDayRange, buildPreviousWorkdayRange, buildWeeklyRange, toISODate, 
 import { fetchEvents, dedupeEvents } from "../../collector/fetch-events.js";
 import { fetchContributions } from "../../collector/fetch-contributions.js";
 import { fetchAuthoredPRRefsForBackfill, fetchPRsByRefs, searchAuthoredPRRefsForBackfill, type PRRef } from "../../collector/fetch-repo-prs.js";
-import { fetchCommitMessages } from "../../collector/fetch-commits.js";
+import { fetchCommitMessages, mergeCommitMessagesWithPRs } from "../../collector/fetch-commits.js";
 import { fetchReleases } from "../../collector/fetch-releases.js";
 import { fetchReviewsForRepos } from "../../collector/fetch-reviews.js";
 import { aggregateRepositories } from "../../collector/aggregate.js";
@@ -387,6 +387,7 @@ const runFullFetch = async (
     options.token,
     [...uniqueRefs.values()],
     command === "daily-fetch" ? plan.range : undefined,
+    command === "daily-fetch" ? options.username : undefined,
   );
   console.log(`Fetched ${pullRequests.length} PRs.`);
 
@@ -425,12 +426,13 @@ const runFullFetch = async (
   const repoNames = [...discoveredRepos];
 
   console.log(`Fetching commit messages for ${repoNames.length} repositories...`);
-  const commitMessages = await fetchCommitMessages(
+  const defaultBranchCommits = await fetchCommitMessages(
     options.token,
     options.username,
     repoNames,
     plan.range,
   );
+  const commitMessages = mergeCommitMessagesWithPRs(defaultBranchCommits, pullRequests);
   const totalMsgs = commitMessages.reduce((sum, r) => sum + r.messages.length, 0);
   console.log(`Collected ${totalMsgs} commit messages from ${commitMessages.length} repositories.`);
 

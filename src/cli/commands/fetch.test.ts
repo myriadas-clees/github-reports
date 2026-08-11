@@ -45,6 +45,7 @@ vi.mock("../../collector/aggregate.js", () => ({
 
 vi.mock("../../collector/fetch-commits.js", () => ({
   fetchCommitMessages: vi.fn().mockResolvedValue([]),
+  mergeCommitMessagesWithPRs: vi.fn().mockImplementation((commits) => commits),
 }));
 
 vi.mock("../../collector/fetch-releases.js", () => ({

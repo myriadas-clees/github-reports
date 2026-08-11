@@ -86,6 +86,51 @@ describe("fetchPRsByRefs", () => {
     expect(result[0]).toMatchObject({ workAdditions: 4, workDeletions: 2 });
   });
 
+  it("keeps only the reporting user's in-range PR branch commits", async () => {
+    vi.spyOn(globalThis, "fetch").mockImplementation(async (input) => {
+      const url = String(input);
+      if (url.includes("/commits?")) {
+        return new Response(JSON.stringify([
+          {
+            sha: "alice-sha",
+            html_url: "https://github.com/owner/repo/commit/alice-sha",
+            author: { login: "Alice" },
+            commit: { message: "feat: private branch work", author: { date: "2026-04-01T12:00:00Z" } },
+          },
+          {
+            sha: "bob-sha",
+            html_url: "https://github.com/owner/repo/commit/bob-sha",
+            author: { login: "bob" },
+            commit: { message: "fix: collaborator work", author: { date: "2026-04-01T14:00:00Z" } },
+          },
+        ]));
+      }
+      if (url.endsWith("/commits/alice-sha")) {
+        return new Response(JSON.stringify({ stats: { additions: 7, deletions: 3 } }));
+      }
+      return new Response(JSON.stringify(makeRawPR(1)));
+    });
+
+    const result = await fetchPRsByRefs(
+      "token",
+      [{ repo: "owner/repo", number: 1 }],
+      { from: new Date("2026-04-01T00:00:00Z"), to: new Date("2026-04-01T23:59:59Z") },
+      "alice",
+    );
+
+    expect(result[0]?.workCommits).toEqual([{
+      sha: "alice-sha",
+      message: "feat: private branch work",
+      url: "https://github.com/owner/repo/commit/alice-sha",
+      authoredAt: "2026-04-01T12:00:00Z",
+    }]);
+    expect(result[0]).toMatchObject({
+      workTimestamps: ["2026-04-01T12:00:00Z"],
+      workAdditions: 7,
+      workDeletions: 3,
+    });
+  });
+
   it("discovers historical authored PRs across private repositories visible to the token", async () => {
     const fetchSpy = vi.spyOn(globalThis, "fetch").mockResolvedValue(new Response(JSON.stringify({
       items: [{ number: 9, repository_url: "https://api.github.com/repos/private-org/private-app" }],

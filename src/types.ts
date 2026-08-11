@@ -29,6 +29,8 @@ export type PullRequest = {
   createdAt: string;
   updatedAt?: string;
   workTimestamps?: string[];
+  /** Reporting user's commits on the PR branch during the report window. */
+  workCommits?: CommitDetail[];
   workAdditions?: number;
   workDeletions?: number;
   closedAt?: string | null;
