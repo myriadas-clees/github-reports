@@ -4,9 +4,11 @@ set -euo pipefail
 
 THEMES="brutalist minimal editorial swiss"
 LANGS="en ja"
-BASE_URL="${BASE_URL:-https://deariary.github.io/github-weekly-reporter}"
+BASE_URL="${BASE_URL:-https://myriadas-clees.github.io/github-weekly-reporter}"
 OUT_DIR="${OUT_DIR:-preview-site}"
-DATE="${DATE:-2026-04-06}"
+# The checked-in preview fixture is the legacy weekly report at 2026/W14.
+# 2026-04-09 resolves to that completed Thu-Wed work week.
+DATE="${DATE:-2026-04-09}"
 
 rm -rf "$OUT_DIR"
 mkdir -p "$OUT_DIR"
@@ -23,6 +25,7 @@ for theme in $THEMES; do
     dir="$OUT_DIR/$theme/$lang"
     echo "Generating $theme / $lang (data: $data_dir) ..."
     bun dist/cli/index.js render \
+      --mode weekly \
       --data-dir "$data_dir" \
       --output-dir "$dir" \
       --base-url "$BASE_URL/$theme/$lang" \

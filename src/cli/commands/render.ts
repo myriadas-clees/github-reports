@@ -94,6 +94,14 @@ const buildReportEntries = async (
   return entries.filter((e): e is ReportEntry => e !== null);
 };
 
+/** Keep legacy weekly fixtures and archives renderable after newer collectors add fields. */
+export const normalizeReportData = (data: WeeklyReportData): WeeklyReportData => ({
+  ...data,
+  commitMessages: data.commitMessages ?? [],
+  releases: data.releases ?? [],
+  externalContributions: data.externalContributions ?? [],
+});
+
 export const sortReportPathsChronologically = (
   paths: string[],
   reportDates: ReadonlyMap<string, string>,
@@ -129,7 +137,7 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
   }
   console.log("Loaded LLM data.");
 
-  const data: WeeklyReportData = { ...githubData, aiContent };
+  const data: WeeklyReportData = { ...normalizeReportData(githubData), aiContent };
 
   // Determine previous/next report paths for internal linking.
   let allPaths = await listCompletedReportDirs(options.dataDir);
@@ -183,7 +191,7 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
     if (prevGhData && prevAiContent) {
       const prevIdx = currentIdx - 1;
       const prevPrev = prevIdx > 0 ? allPaths[prevIdx - 1] : undefined;
-      const prevHtml = renderReport({ ...prevGhData, aiContent: prevAiContent }, {
+      const prevHtml = renderReport({ ...normalizeReportData(prevGhData), aiContent: prevAiContent }, {
         language: options.language,
         timezone: options.timezone,
         baseUrl: base,

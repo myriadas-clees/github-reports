@@ -30,7 +30,7 @@ jobs:
       - name: Generate preview site
         run: bash scripts/generate-preview.sh
         env:
-          BASE_URL: https://deariary.github.io/github-weekly-reporter
+          BASE_URL: https://myriadas-clees.github.io/github-weekly-reporter
 
       - uses: actions/upload-pages-artifact@v5
         with:
