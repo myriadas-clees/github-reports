@@ -16,6 +16,7 @@ describe("fetchReviewsForRepos", () => {
           number: 7,
           title: "Reviewed work",
           html_url: "https://github.com/org/app/pull/7",
+          created_at: "2026-08-01T12:00:00Z",
           updated_at: "2026-08-11T04:30:00Z",
         }]));
       }
@@ -49,6 +50,7 @@ describe("fetchReviewsForRepos", () => {
       number: 8,
       title: "Future update",
       html_url: "https://github.com/org/app/pull/8",
+      created_at: "2026-08-01T12:00:00Z",
       updated_at: "2026-08-11T06:00:00Z",
     }])));
     const result = await fetchReviewsForRepos(
@@ -62,21 +64,16 @@ describe("fetchReviewsForRepos", () => {
     expect(fetchSpy).toHaveBeenCalledTimes(1);
   });
 
-  it("bounds historical candidates before applying the per-repo cap", async () => {
-    const later = Array.from({ length: 101 }, (_, index) => ({
-      number: index + 100,
-      title: `Later ${index}`,
-      html_url: `https://github.com/org/app/pull/${index + 100}`,
-      updated_at: "2026-08-20T12:00:00Z",
-    }));
+  it("inspects historical candidates even when their latest update is much later", async () => {
     vi.spyOn(globalThis, "fetch").mockImplementation(async (input) => {
       const url = String(input);
       if (url.includes("/pulls?")) {
-        return new Response(JSON.stringify([...later, {
+        return new Response(JSON.stringify([{
           number: 7,
           title: "Historical review",
           html_url: "https://github.com/org/app/pull/7",
-          updated_at: "2026-08-10T20:00:00Z",
+          created_at: "2026-08-01T12:00:00Z",
+          updated_at: "2026-08-20T20:00:00Z",
         }]));
       }
       if (url.endsWith("/reviews")) {
@@ -97,6 +94,7 @@ describe("fetchReviewsForRepos", () => {
       ["org/app"],
       { from: new Date("2026-08-10T04:00:00Z"), to: new Date("2026-08-11T03:59:59.999Z") },
       new Date("2026-08-21T00:00:00Z"),
+      true,
     );
     expect(result.reviews).toHaveLength(1);
     expect(result.reviews[0]?.prNumber).toBe(7);

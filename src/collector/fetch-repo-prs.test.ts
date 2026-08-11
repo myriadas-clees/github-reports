@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { mapState, fetchPRsByRefs } from "./fetch-repo-prs.js";
+import { mapState, fetchAuthoredPRRefsForBackfill, fetchPRsByRefs } from "./fetch-repo-prs.js";
 import type { PRRef } from "./fetch-repo-prs.js";
 
 describe("mapState", () => {
@@ -61,6 +61,40 @@ describe("fetchPRsByRefs", () => {
     expect(result[0].additions).toBe(10);
     expect(result[0].deletions).toBe(5);
     expect(result[0].changedFiles).toBe(3);
+  });
+
+  it("hydrates in-range PR commit timestamps for historical work", async () => {
+    vi.spyOn(globalThis, "fetch").mockImplementation(async (input) => {
+      const url = String(input);
+      if (url.includes("/commits?")) {
+        return new Response(JSON.stringify([
+          { commit: { author: { date: "2026-04-01T12:00:00Z" } } },
+          { commit: { author: { date: "2026-04-03T12:00:00Z" } } },
+        ]));
+      }
+      return new Response(JSON.stringify(makeRawPR(1)));
+    });
+    const result = await fetchPRsByRefs(
+      "token",
+      [{ repo: "owner/repo", number: 1 }],
+      { from: new Date("2026-04-01T00:00:00Z"), to: new Date("2026-04-01T23:59:59Z") },
+    );
+    expect(result[0]?.workTimestamps).toEqual(["2026-04-01T12:00:00Z"]);
+  });
+
+  it("enumerates authored PRs that existed by a backfill day", async () => {
+    vi.spyOn(globalThis, "fetch").mockResolvedValue(new Response(JSON.stringify([
+      { number: 1, created_at: "2026-04-01T00:00:00Z", user: { login: "Alice" } },
+      { number: 2, created_at: "2026-04-03T00:00:00Z", user: { login: "alice" } },
+      { number: 3, created_at: "2026-04-01T00:00:00Z", user: { login: "bob" } },
+    ])));
+    const refs = await fetchAuthoredPRRefsForBackfill(
+      "token",
+      "alice",
+      ["owner/repo"],
+      { from: new Date("2026-04-01T00:00:00Z"), to: new Date("2026-04-01T23:59:59Z") },
+    );
+    expect(refs).toEqual([{ repo: "owner/repo", number: 1 }]);
   });
 
   it("deduplicates refs before fetching", async () => {

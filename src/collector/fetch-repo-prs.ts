@@ -1,6 +1,7 @@
 // Fetch individual PRs by repo + number via REST API
 
 import { cleanBody } from "./clean-body.js";
+import type { DateRange } from "./date-range.js";
 import type { PullRequest } from "../types.js";
 
 type RawPR = {
@@ -61,6 +62,68 @@ const readErrorBody = async (response: Response): Promise<string> => {
   }
 };
 
+const nextPageUrl = (response: Response): string | null => {
+  const link = response.headers.get("link");
+  return link?.match(/<([^>]+)>;\s*rel="next"/)?.[1] ?? null;
+};
+
+const fetchPages = async <T>(token: string, startUrl: string): Promise<T[]> => {
+  const items: T[] = [];
+  let url: string | null = startUrl;
+  while (url) {
+    const response = await fetch(url, { headers: GITHUB_HEADERS(token) });
+    if (!response.ok) {
+      console.warn(`  Failed paginated PR fetch: ${response.status} ${response.statusText}`);
+      break;
+    }
+    items.push(...await response.json() as T[]);
+    url = nextPageUrl(response);
+  }
+  return items;
+};
+
+const inRange = (timestamp: string | null | undefined, range: DateRange): boolean => {
+  if (!timestamp) return false;
+  const time = new Date(timestamp).getTime();
+  return time >= range.from.getTime() && time <= range.to.getTime();
+};
+
+const fetchPRWorkTimestamps = async (
+  token: string,
+  ref: PRRef,
+  range: DateRange,
+): Promise<string[]> => {
+  const commits = await fetchPages<{
+    commit: { author?: { date?: string | null }; committer?: { date?: string | null } };
+  }>(token, `https://api.github.com/repos/${ref.repo}/pulls/${ref.number}/commits?per_page=100`);
+  return commits
+    .map((item) => item.commit.author?.date ?? item.commit.committer?.date ?? null)
+    .filter((timestamp): timestamp is string => inRange(timestamp, range));
+};
+
+/** Enumerate authored PRs that already existed by a historical report day. */
+export const fetchAuthoredPRRefsForBackfill = async (
+  token: string,
+  username: string,
+  repos: string[],
+  range: DateRange,
+): Promise<PRRef[]> => {
+  const lower = username.toLowerCase();
+  const refs: PRRef[] = [];
+  await runWithConcurrency(repos, async (repo) => {
+    const pulls = await fetchPages<{
+      number: number;
+      created_at: string;
+      user: { login: string } | null;
+    }>(token, `https://api.github.com/repos/${repo}/pulls?state=all&sort=created&direction=desc&per_page=100`);
+    pulls
+      .filter((pr) => pr.user?.login.toLowerCase() === lower)
+      .filter((pr) => new Date(pr.created_at).getTime() <= range.to.getTime())
+      .forEach((pr) => refs.push({ repo, number: pr.number }));
+  });
+  return refs;
+};
+
 const toPullRequest = (pr: RawPR, repo: string): PullRequest => ({
   title: pr.title,
   body: cleanBody(pr.body),
@@ -81,6 +144,7 @@ const toPullRequest = (pr: RawPR, repo: string): PullRequest => ({
 const fetchSinglePR = async (
   token: string,
   ref: PRRef,
+  activityRange?: DateRange,
 ): Promise<PullRequest | null> => {
   const url = `https://api.github.com/repos/${ref.repo}/pulls/${ref.number}`;
 
@@ -88,7 +152,11 @@ const fetchSinglePR = async (
     const response = await fetch(url, { headers: GITHUB_HEADERS(token) });
 
     if (response.ok) {
-      return toPullRequest((await response.json()) as RawPR, ref.repo);
+      const pullRequest = toPullRequest((await response.json()) as RawPR, ref.repo);
+      if (activityRange) {
+        pullRequest.workTimestamps = await fetchPRWorkTimestamps(token, ref, activityRange);
+      }
+      return pullRequest;
     }
 
     if (response.status === 429 && attempt < MAX_RETRIES) {
@@ -129,6 +197,7 @@ const runWithConcurrency = async <T>(
 export const fetchPRsByRefs = async (
   token: string,
   refs: PRRef[],
+  activityRange?: DateRange,
 ): Promise<PullRequest[]> => {
   const unique = new Map<string, PRRef>();
   refs.forEach((ref) => {
@@ -140,7 +209,7 @@ export const fetchPRsByRefs = async (
   let failed = 0;
 
   await runWithConcurrency([...unique.values()], async (ref) => {
-    const pr = await fetchSinglePR(token, ref);
+    const pr = await fetchSinglePR(token, ref, activityRange);
     if (pr) prs.push(pr);
     else failed++;
   });

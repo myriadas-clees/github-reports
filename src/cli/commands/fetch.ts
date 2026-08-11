@@ -8,7 +8,7 @@ import { graphql } from "@octokit/graphql";
 import { buildDayRange, buildPreviousWorkdayRange, buildWeeklyRange, toISODate, parseLocalDate, type DateRange } from "../../collector/date-range.js";
 import { fetchEvents, dedupeEvents } from "../../collector/fetch-events.js";
 import { fetchContributions } from "../../collector/fetch-contributions.js";
-import { fetchPRsByRefs, type PRRef } from "../../collector/fetch-repo-prs.js";
+import { fetchAuthoredPRRefsForBackfill, fetchPRsByRefs, type PRRef } from "../../collector/fetch-repo-prs.js";
 import { fetchCommitMessages } from "../../collector/fetch-commits.js";
 import { fetchReleases } from "../../collector/fetch-releases.js";
 import { fetchReviewsForRepos } from "../../collector/fetch-reviews.js";
@@ -168,7 +168,10 @@ export const classifyPullRequestsForRange = (
   const activelyUpdated = authored.filter(
     (pr) => {
       const closedAfterRange = pr.closedAt && new Date(pr.closedAt).getTime() > range.to.getTime();
-      return (pr.state === "open" || Boolean(closedAfterRange)) && timestampInRange(pr.updatedAt ?? null, range);
+      const mergedAfterRange = pr.mergedAt && new Date(pr.mergedAt).getTime() > range.to.getTime();
+      const openAtRangeEnd = pr.state === "open" || Boolean(closedAfterRange) || Boolean(mergedAfterRange);
+      const historicalWork = pr.workTimestamps?.some((timestamp) => timestampInRange(timestamp, range)) ?? false;
+      return openAtRangeEnd && (historicalWork || timestampInRange(pr.updatedAt ?? null, range));
     },
   );
   const inProgressByUrl = new Map<string, PullRequest>();
@@ -314,6 +317,7 @@ const collectTimestamps = (
   pullRequests.forEach((pr) => {
     stamps.push(pr.createdAt);
     if (pr.mergedAt) stamps.push(pr.mergedAt);
+    pr.workTimestamps?.forEach((timestamp) => stamps.push(timestamp));
   });
   reviews.reviews.forEach((r) => {
     if (r.submittedAt) stamps.push(r.submittedAt);
@@ -364,13 +368,29 @@ const runFullFetch = async (
   );
   console.log(`Found ${searchRefs.length} PR references from search.`);
 
-  const allRefs = [...eventRefs, ...searchRefs];
+  const backfillRefs = command === "daily-fetch" && options.date && options.repositories.length > 0
+    ? await fetchAuthoredPRRefsForBackfill(
+      options.token,
+      options.username,
+      options.repositories,
+      plan.range,
+    )
+    : [];
+  if (backfillRefs.length > 0) {
+    console.log(`Found ${backfillRefs.length} authored PR references for historical work inspection.`);
+  }
+
+  const allRefs = [...eventRefs, ...searchRefs, ...backfillRefs];
   const uniqueRefs = new Map<string, PRRef>();
   allRefs.forEach((ref) => uniqueRefs.set(`${ref.repo}#${ref.number}`, ref));
   console.log(`Total unique PRs: ${uniqueRefs.size}`);
 
   console.log("Fetching PRs...");
-  const pullRequests = await fetchPRsByRefs(options.token, [...uniqueRefs.values()]);
+  const pullRequests = await fetchPRsByRefs(
+    options.token,
+    [...uniqueRefs.values()],
+    command === "daily-fetch" ? plan.range : undefined,
+  );
   console.log(`Fetched ${pullRequests.length} PRs.`);
 
   const prActions = command === "daily-fetch"
@@ -416,6 +436,8 @@ const runFullFetch = async (
     options.username,
     repoNames,
     plan.range,
+    new Date(),
+    Boolean(options.date),
   );
   const ai = reviewData.aiReviews;
   console.log(

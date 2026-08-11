@@ -23,7 +23,7 @@ const MAX_RETRIES = 3;
 const REQUEST_DELAY_MS = 100;
 const DEFAULT_RETRY_DELAY_MS = 5_000;
 const CONCURRENCY = 5;
-/** Max PRs per repo updated between the report start and collection to inspect. */
+/** Max PRs per repo updated between the report start and collection to inspect for scheduled runs. */
 const MAX_PRS_PER_REPO = 100;
 /** Allow delayed scheduled runs without making historical backfills scan to today. */
 const MAX_COLLECTION_LAG_MS = 12 * 60 * 60 * 1000;
@@ -131,6 +131,7 @@ export const fetchReviewsForRepos = async (
   repos: string[],
   range: DateRange,
   collectedAt: Date = new Date(),
+  historicalBackfill: boolean = false,
 ): Promise<FetchReviewsResult> => {
   const reviews: CodeReview[] = [];
   const comments: ReviewComment[] = [];
@@ -155,13 +156,16 @@ export const fetchReviewsForRepos = async (
       number: number;
       title: string;
       html_url: string;
+      created_at: string;
       updated_at: string;
     }>(token, `https://api.github.com/repos/${repo}/pulls?${params}`);
 
-    const relevant = prs.filter((pr) => {
-      const updated = new Date(pr.updated_at).getTime();
-      return updated >= range.from.getTime() && updated <= candidateEnd;
-    }).slice(0, MAX_PRS_PER_REPO);
+    const relevant = historicalBackfill
+      ? prs.filter((pr) => new Date(pr.created_at).getTime() <= range.to.getTime())
+      : prs.filter((pr) => {
+        const updated = new Date(pr.updated_at).getTime();
+        return updated >= range.from.getTime() && updated <= candidateEnd;
+      }).slice(0, MAX_PRS_PER_REPO);
 
     for (const pr of relevant) {
       const rawReviews = await fetchJsonPages<RawReview>(

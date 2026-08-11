@@ -28,6 +28,7 @@ export type PullRequest = {
   author: string;
   createdAt: string;
   updatedAt?: string;
+  workTimestamps?: string[];
   closedAt?: string | null;
   mergedAt: string | null;
 };

@@ -22,6 +22,7 @@ vi.mock("../../collector/fetch-events.js", () => ({
 
 vi.mock("../../collector/fetch-repo-prs.js", () => ({
   fetchPRsByRefs: vi.fn().mockResolvedValue([]),
+  fetchAuthoredPRRefsForBackfill: vi.fn().mockResolvedValue([]),
   mapState: vi.fn(),
 }));
 
@@ -331,6 +332,18 @@ describe("classifyPullRequestsForRange", () => {
     });
     const result = classifyPullRequestsForRange([older], "alice", range);
     expect(result.opened).toEqual([]);
+    expect(result.report).toEqual([]);
+    expect(result.inProgress).toEqual([older]);
+  });
+
+  it("uses historical commit evidence after the PR is updated later", () => {
+    const older = pr({
+      createdAt: "2026-08-01T12:00:00Z",
+      updatedAt: "2026-08-20T17:00:00Z",
+      workTimestamps: ["2026-08-10T17:00:00Z"],
+      state: "open",
+    });
+    const result = classifyPullRequestsForRange([older], "alice", range);
     expect(result.report).toEqual([]);
     expect(result.inProgress).toEqual([older]);
   });
