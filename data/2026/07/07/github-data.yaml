@@ -1,0 +1,183 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-07-07
+  to: 2026-07-07
+stats:
+  totalCommits: 20
+  totalAdditions: 0
+  totalDeletions: 0
+  prsOpened: 0
+  prsMerged: 0
+  prsInProgress: 0
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 4.6
+dailyCommits:
+  - date: 2026-07-07
+    count: 20
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 10
+    prsOpened: 0
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 10
+    prsOpened: 0
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests: []
+prsInProgress: []
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "fix(hub): use mounted index routes"
+      - "fix(hub): route mounted app pages"
+      - "fix(deploy): skip SWA API rebuild"
+      - "fix(hub): remove duplicate SWA routes"
+      - "fix(hub): route product entry points"
+      - "fix(deploy): compose product static routes"
+      - "fix(hub): protect SWA routes"
+      - "ci(pto): remove standalone workflow"
+      - "feat(deploy): add hub SWA infrastructure"
+      - Expand Myriad branding across apps
+    commits:
+      - sha: 27204d67de238d0e5d01b8fbb896085a373a02a8
+        message: "fix(hub): use mounted index routes"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/27204d67de238d0e5d01b8fbb896085a373a02a8
+        authoredAt: 2026-07-07T23:27:02Z
+      - sha: 6df0b87c70ee97b693a99caf91bfaeba688d20c8
+        message: "fix(hub): route mounted app pages"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6df0b87c70ee97b693a99caf91bfaeba688d20c8
+        authoredAt: 2026-07-07T23:09:19Z
+      - sha: e6dc8f6f456a378fb4af6acce4ab56b1792cf093
+        message: "fix(deploy): skip SWA API rebuild"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e6dc8f6f456a378fb4af6acce4ab56b1792cf093
+        authoredAt: 2026-07-07T22:34:26Z
+      - sha: d00a15ac2d7ad7e43a7eaa4a5f0f9f444ba50f8b
+        message: "fix(hub): remove duplicate SWA routes"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d00a15ac2d7ad7e43a7eaa4a5f0f9f444ba50f8b
+        authoredAt: 2026-07-07T22:29:29Z
+      - sha: 96ef05aa467360ea57f15a06a05c91a316a8f431
+        message: "fix(hub): route product entry points"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/96ef05aa467360ea57f15a06a05c91a316a8f431
+        authoredAt: 2026-07-07T22:23:06Z
+      - sha: 8f3baf259588322aba4db7d9c61f686ca9e086f9
+        message: "fix(deploy): compose product static routes"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8f3baf259588322aba4db7d9c61f686ca9e086f9
+        authoredAt: 2026-07-07T22:07:34Z
+      - sha: a57e01607009dd4b4c01eef4df9432d2d73d1206
+        message: "fix(hub): protect SWA routes"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a57e01607009dd4b4c01eef4df9432d2d73d1206
+        authoredAt: 2026-07-07T21:50:33Z
+      - sha: db758cde24082f9aa1d3e3bc72644ba6b294274e
+        message: "ci(pto): remove standalone workflow"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/db758cde24082f9aa1d3e3bc72644ba6b294274e
+        authoredAt: 2026-07-07T20:52:02Z
+      - sha: ef0f8407af226564680ce46d5f6d645648a81d66
+        message: "feat(deploy): add hub SWA infrastructure"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ef0f8407af226564680ce46d5f6d645648a81d66
+        authoredAt: 2026-07-07T20:39:15Z
+      - sha: bac8b93f1246d16bb6d93e68f494e25bcf60d107
+        message: Expand Myriad branding across apps
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/bac8b93f1246d16bb6d93e68f494e25bcf60d107
+        authoredAt: 2026-07-07T18:23:11Z
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "fix: use supported pricing scenario fallback"
+      - Add SWA auth login and pricing user menu
+      - "ci(actions): update Node 24 actions [skip ci]"
+      - "ci(pricing): restore function runtime types"
+      - "ci(pricing): fix production deploy checks"
+      - "ci(pricing): split deployment workflow"
+      - "ci(pricing): restore SWA API build skip"
+      - "ci(pricing): remove invalid SWA input"
+      - "feat(pricing): regenerate saved reports"
+      - "fix(pricing): use temp storage in Functions"
+    commits:
+      - sha: da2f9f3bbc7b9ca8628bfe46a1382869e3045520
+        message: "fix: use supported pricing scenario fallback"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/da2f9f3bbc7b9ca8628bfe46a1382869e3045520
+        authoredAt: 2026-07-07T21:49:30Z
+      - sha: 86060ee315f7a31fb35e0d8ee6150f16b7c88d11
+        message: Add SWA auth login and pricing user menu
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/86060ee315f7a31fb35e0d8ee6150f16b7c88d11
+        authoredAt: 2026-07-07T21:38:59Z
+      - sha: 7d1264cef8949be08a148ddd87f090f80777a6bf
+        message: "ci(actions): update Node 24 actions [skip ci]"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7d1264cef8949be08a148ddd87f090f80777a6bf
+        authoredAt: 2026-07-07T15:31:39Z
+      - sha: 14667e89d5898df7a4e59de1ffc286feffa4b31e
+        message: "ci(pricing): restore function runtime types"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/14667e89d5898df7a4e59de1ffc286feffa4b31e
+        authoredAt: 2026-07-07T15:23:14Z
+      - sha: 6f7d4e9e7b6123e376d78b71b549b5b906aebda7
+        message: "ci(pricing): fix production deploy checks"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6f7d4e9e7b6123e376d78b71b549b5b906aebda7
+        authoredAt: 2026-07-07T15:20:47Z
+      - sha: c71f4ec0792a6ef1a698d8235426bf66853d9c62
+        message: "ci(pricing): split deployment workflow"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c71f4ec0792a6ef1a698d8235426bf66853d9c62
+        authoredAt: 2026-07-07T15:15:13Z
+      - sha: 6168e77c8b52d9b423e34f6c69dcbde88b2baffc
+        message: "ci(pricing): restore SWA API build skip"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6168e77c8b52d9b423e34f6c69dcbde88b2baffc
+        authoredAt: 2026-07-07T14:47:13Z
+      - sha: 03edc02785055f11b8bf8c3b652c50787c05cc0b
+        message: "ci(pricing): remove invalid SWA input"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/03edc02785055f11b8bf8c3b652c50787c05cc0b
+        authoredAt: 2026-07-07T14:44:19Z
+      - sha: a8d7e74ca60b157f2e3c1059650c190dfaad8db9
+        message: "feat(pricing): regenerate saved reports"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a8d7e74ca60b157f2e3c1059650c190dfaad8db9
+        authoredAt: 2026-07-07T14:40:48Z
+      - sha: 1b6f950892de032a5c3a651b116dd8ab89bd1669
+        message: "fix(pricing): use temp storage in Functions"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/1b6f950892de032a5c3a651b116dd8ab89bd1669
+        authoredAt: 2026-07-07T14:13:57Z
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 0
+  comments: 0
+  reviews: 0
+  fixed: 0
+hoursEstimate:
+  hours: 4.6
+  sessions: 3
+  sessionHours: 4.6
+  volumeHours: 4
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
