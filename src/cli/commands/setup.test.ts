@@ -493,7 +493,7 @@ describe("registerSetup (full flow)", () => {
     expect(dailyCall![3]).toContain("Asia/Taipei");
   });
 
-  it("handles Pages enable failure gracefully", async () => {
+  it("fails closed when private Pages cannot be enabled", async () => {
     setupPromptDefaults();
     mockEnablePages.mockRejectedValue(new Error("Pages already enabled"));
 
@@ -502,11 +502,8 @@ describe("registerSetup (full flow)", () => {
     const program = new Command();
     registerSetup(program);
 
-    // Should not throw
-    await program.parseAsync(["node", "cli", "setup"]);
+    await expect(program.parseAsync(["node", "cli", "setup"])).rejects.toThrow(/process.exit/);
     expect(mockEnablePages).toHaveBeenCalled();
-    // Setup continues after Pages failure
-    expect(mockGhPost).toHaveBeenCalled();
   });
 
   it("aborts when user declines to retry invalid model", async () => {

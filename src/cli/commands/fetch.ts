@@ -8,7 +8,7 @@ import { graphql } from "@octokit/graphql";
 import { buildDayRange, buildPreviousWorkdayRange, buildWeeklyRange, toISODate, parseLocalDate, type DateRange } from "../../collector/date-range.js";
 import { fetchEvents, dedupeEvents } from "../../collector/fetch-events.js";
 import { fetchContributions } from "../../collector/fetch-contributions.js";
-import { fetchAuthoredPRRefsForBackfill, fetchPRsByRefs, type PRRef } from "../../collector/fetch-repo-prs.js";
+import { fetchAuthoredPRRefsForBackfill, fetchPRsByRefs, searchAuthoredPRRefsForBackfill, type PRRef } from "../../collector/fetch-repo-prs.js";
 import { fetchCommitMessages } from "../../collector/fetch-commits.js";
 import { fetchReleases } from "../../collector/fetch-releases.js";
 import { fetchReviewsForRepos } from "../../collector/fetch-reviews.js";
@@ -368,13 +368,10 @@ const runFullFetch = async (
   );
   console.log(`Found ${searchRefs.length} PR references from search.`);
 
-  const backfillRefs = command === "daily-fetch" && options.date && options.repositories.length > 0
-    ? await fetchAuthoredPRRefsForBackfill(
-      options.token,
-      options.username,
-      options.repositories,
-      plan.range,
-    )
+  const backfillRefs = command === "daily-fetch" && options.date
+    ? options.repositories.length > 0
+      ? await fetchAuthoredPRRefsForBackfill(options.token, options.username, options.repositories, plan.range)
+      : await searchAuthoredPRRefsForBackfill(options.token, options.username, plan.range)
     : [];
   if (backfillRefs.length > 0) {
     console.log(`Found ${backfillRefs.length} authored PR references for historical work inspection.`);
@@ -404,6 +401,13 @@ const runFullFetch = async (
         report,
       };
     })();
+  if (command === "daily-fetch" && options.date) {
+    prActions.report = prActions.report.map((pr) => ({
+      ...pr,
+      additions: pr.workAdditions ?? 0,
+      deletions: pr.workDeletions ?? 0,
+    }));
+  }
   const prsOpened = prActions.opened.length;
   const prsMerged = prActions.merged.length;
   const prsInProgress = prActions.inProgress;
@@ -438,6 +442,7 @@ const runFullFetch = async (
     plan.range,
     new Date(),
     Boolean(options.date),
+    [...uniqueRefs.values()],
   );
   const ai = reviewData.aiReviews;
   console.log(

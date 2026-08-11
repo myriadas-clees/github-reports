@@ -215,11 +215,36 @@ export const enablePages = async (
   token: string,
   repo: string,
 ): Promise<string> => {
-  // Enable Pages from main branch, /output directory (may already be enabled)
-  await ghPost(token, `/repos/${repo}/pages`, {
+  // A private source repository does not imply a private Pages site. Create the
+  // site if needed, then fail closed unless access control is explicitly private.
+  const createRes = await ghPost(token, `/repos/${repo}/pages`, {
     source: { branch: "gh-pages", path: "/" },
   });
+  if (!createRes.ok && createRes.status !== 409) {
+    throw new Error(`Failed to enable Pages for ${repo}: ${createRes.status}`);
+  }
+
+  const visibilityRes = await ghPut(token, `/repos/${repo}/pages`, {
+    visibility: "private",
+  });
+  if (!visibilityRes.ok) {
+    throw new Error(
+      `Private Pages access is unavailable for ${repo} (${visibilityRes.status}). ` +
+      "GitHub Pages was not approved for report deployment. Use a GitHub plan/organization " +
+      "that supports private Pages or deploy to a private host.",
+    );
+  }
+
+  const pagesRes = await ghGet(token, `/repos/${repo}/pages`);
+  const pages = pagesRes.ok
+    ? await pagesRes.json().catch(() => null) as { visibility?: string; html_url?: string } | null
+    : null;
+  if (pages?.visibility !== "private") {
+    throw new Error(
+      `Refusing to publish reports for ${repo}: GitHub Pages access is not private.`,
+    );
+  }
 
   const [owner, name] = repo.split("/");
-  return `https://${owner}.github.io/${name}`;
+  return pages.html_url ?? `https://${owner}.github.io/${name}`;
 };

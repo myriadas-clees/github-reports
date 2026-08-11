@@ -38,6 +38,35 @@ export type PRRef = {
   number: number;
 };
 
+/** Search every repository visible to the token for PRs authored by the user. */
+export const searchAuthoredPRRefsForBackfill = async (
+  token: string,
+  username: string,
+  range: DateRange,
+): Promise<PRRef[]> => {
+  const cutoff = range.to.toISOString().slice(0, 10);
+  const query = encodeURIComponent(`is:pr author:${username} created:<=${cutoff}`);
+  const refs: PRRef[] = [];
+  let url: string | null = `https://api.github.com/search/issues?q=${query}&per_page=100`;
+  while (url) {
+    const response = await fetch(url, { headers: GITHUB_HEADERS(token) });
+    if (!response.ok) {
+      console.warn(`  Failed historical PR search: ${response.status} ${response.statusText}`);
+      break;
+    }
+    const body = await response.json() as {
+      items: Array<{ number: number; repository_url: string }>;
+    };
+    for (const item of body.items) {
+      const marker = "/repos/";
+      const index = item.repository_url.indexOf(marker);
+      if (index >= 0) refs.push({ repo: item.repository_url.slice(index + marker.length), number: item.number });
+    }
+    url = nextPageUrl(response);
+  }
+  return refs;
+};
+
 const MAX_RETRIES = 3;
 const REQUEST_DELAY_MS = 100;
 const DEFAULT_RETRY_DELAY_MS = 5_000;
@@ -88,17 +117,31 @@ const inRange = (timestamp: string | null | undefined, range: DateRange): boolea
   return time >= range.from.getTime() && time <= range.to.getTime();
 };
 
-const fetchPRWorkTimestamps = async (
+const fetchPRWork = async (
   token: string,
   ref: PRRef,
   range: DateRange,
-): Promise<string[]> => {
+): Promise<{ timestamps: string[]; additions: number; deletions: number }> => {
   const commits = await fetchPages<{
+    sha: string;
     commit: { author?: { date?: string | null }; committer?: { date?: string | null } };
   }>(token, `https://api.github.com/repos/${ref.repo}/pulls/${ref.number}/commits?per_page=100`);
-  return commits
-    .map((item) => item.commit.author?.date ?? item.commit.committer?.date ?? null)
-    .filter((timestamp): timestamp is string => inRange(timestamp, range));
+  const relevant = commits.map((item) => ({
+    sha: item.sha,
+    timestamp: item.commit.author?.date ?? item.commit.committer?.date ?? null,
+  })).filter((item): item is { sha: string; timestamp: string } => inRange(item.timestamp, range));
+  let additions = 0;
+  let deletions = 0;
+  for (const commit of relevant) {
+    const response = await fetch(`https://api.github.com/repos/${ref.repo}/commits/${commit.sha}`, {
+      headers: GITHUB_HEADERS(token),
+    });
+    if (!response.ok) continue;
+    const detail = await response.json() as { stats?: { additions?: number; deletions?: number } };
+    additions += detail.stats?.additions ?? 0;
+    deletions += detail.stats?.deletions ?? 0;
+  }
+  return { timestamps: relevant.map((item) => item.timestamp), additions, deletions };
 };
 
 /** Enumerate authored PRs that already existed by a historical report day. */
@@ -154,7 +197,10 @@ const fetchSinglePR = async (
     if (response.ok) {
       const pullRequest = toPullRequest((await response.json()) as RawPR, ref.repo);
       if (activityRange) {
-        pullRequest.workTimestamps = await fetchPRWorkTimestamps(token, ref, activityRange);
+        const work = await fetchPRWork(token, ref, activityRange);
+        pullRequest.workTimestamps = work.timestamps;
+        pullRequest.workAdditions = work.additions;
+        pullRequest.workDeletions = work.deletions;
       }
       return pullRequest;
     }

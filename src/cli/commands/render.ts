@@ -94,6 +94,19 @@ const buildReportEntries = async (
   return entries.filter((e): e is ReportEntry => e !== null);
 };
 
+export const sortReportPathsChronologically = (
+  paths: string[],
+  reportDates: ReadonlyMap<string, string>,
+): string[] => [...paths].sort((a, b) => {
+  const dailyDate = (path: string) => /^\d{4}\/\d{2}\/\d{2}$/.test(path) ? path.replaceAll("/", "-") : undefined;
+  const dateA = dailyDate(a) ?? reportDates.get(a);
+  const dateB = dailyDate(b) ?? reportDates.get(b);
+  if (dateA && dateB && dateA !== dateB) return dateA.localeCompare(dateB);
+  if (dateA && !dateB) return -1;
+  if (!dateA && dateB) return 1;
+  return a.localeCompare(b);
+});
+
 /** Render HTML for a day from github-data + llm-data. Throws if data is missing. */
 export const runRender = async (options: RenderCommandOptions): Promise<void> => {
   const dayId = options.mode === "weekly"
@@ -119,9 +132,14 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
   const data: WeeklyReportData = { ...githubData, aiContent };
 
   // Determine previous/next report paths for internal linking.
-  const allPaths = (await listCompletedReportDirs(options.dataDir)).sort();
+  let allPaths = await listCompletedReportDirs(options.dataDir);
   if (!allPaths.includes(dayId.path)) allPaths.push(dayId.path);
-  allPaths.sort();
+  const reportDates = new Map<string, string>([[dayId.path, githubData.dateRange.to]]);
+  await Promise.all(allPaths.filter((path) => path !== dayId.path).map(async (path) => {
+    const report = await tryReadYaml<WeeklyReportData>(join(options.dataDir, path, "github-data.yaml"));
+    if (report?.dateRange?.to) reportDates.set(path, report.dateRange.to);
+  }));
+  allPaths = sortReportPathsChronologically(allPaths, reportDates);
   const currentIdx = allPaths.indexOf(dayId.path);
   const prevWeek = currentIdx > 0 ? allPaths[currentIdx - 1] : undefined;
   const nextWeek = currentIdx < allPaths.length - 1 ? allPaths[currentIdx + 1] : undefined;

@@ -23,6 +23,7 @@ vi.mock("../../collector/fetch-events.js", () => ({
 vi.mock("../../collector/fetch-repo-prs.js", () => ({
   fetchPRsByRefs: vi.fn().mockResolvedValue([]),
   fetchAuthoredPRRefsForBackfill: vi.fn().mockResolvedValue([]),
+  searchAuthoredPRRefsForBackfill: vi.fn().mockResolvedValue([]),
   mapState: vi.fn(),
 }));
 

@@ -1,5 +1,23 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { Command } from "commander";
+it("sorts weekly and daily archive paths by their report dates", async () => {
+  const { sortReportPathsChronologically } = await import("./render.js");
+  const dates = new Map([
+    ["2026/W14", "2026-04-05"],
+    ["2026/W15", "2026-04-12"],
+  ]);
+  expect(sortReportPathsChronologically([
+    "2026/04/08",
+    "2026/W15",
+    "2026/04/06",
+    "2026/W14",
+  ], dates)).toEqual([
+    "2026/W14",
+    "2026/04/06",
+    "2026/04/08",
+    "2026/W15",
+  ]);
+});
 
 // Mock fs/promises
 const mockReadFile = vi.fn();

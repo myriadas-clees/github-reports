@@ -222,11 +222,22 @@ describe("github-api", () => {
 
   describe("enablePages", () => {
     it("returns the Pages URL", async () => {
-      vi.spyOn(globalThis, "fetch").mockResolvedValue(
-        new Response("", { status: 201 }),
-      );
+      vi.spyOn(globalThis, "fetch")
+        .mockResolvedValueOnce(new Response("", { status: 201 }))
+        .mockResolvedValueOnce(new Response(null, { status: 204 }))
+        .mockResolvedValueOnce(new Response(JSON.stringify({
+          visibility: "private",
+          html_url: "https://user.github.io/repo",
+        }), { status: 200 }));
       const url = await enablePages("token", "user/repo");
       expect(url).toBe("https://user.github.io/repo");
+    });
+
+    it("refuses to continue when Pages cannot be restricted", async () => {
+      vi.spyOn(globalThis, "fetch")
+        .mockResolvedValueOnce(new Response("", { status: 201 }))
+        .mockResolvedValueOnce(new Response("", { status: 422 }));
+      await expect(enablePages("token", "user/repo")).rejects.toThrow(/Private Pages access is unavailable/);
     });
   });
 

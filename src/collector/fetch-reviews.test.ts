@@ -20,6 +20,15 @@ describe("fetchReviewsForRepos", () => {
           updated_at: "2026-08-11T04:30:00Z",
         }]));
       }
+      if (url.endsWith("/pulls/7")) {
+        return new Response(JSON.stringify({
+          number: 7,
+          title: "Historical review",
+          html_url: "https://github.com/org/app/pull/7",
+          created_at: "2026-08-01T12:00:00Z",
+          updated_at: "2026-08-20T20:00:00Z",
+        }));
+      }
       if (url.endsWith("/reviews")) {
         return new Response(JSON.stringify([{
           user: { login: "alice" },
@@ -76,6 +85,15 @@ describe("fetchReviewsForRepos", () => {
           updated_at: "2026-08-20T20:00:00Z",
         }]));
       }
+      if (url.endsWith("/pulls/7")) {
+        return new Response(JSON.stringify({
+          number: 7,
+          title: "Historical review",
+          html_url: "https://github.com/org/app/pull/7",
+          created_at: "2026-08-01T12:00:00Z",
+          updated_at: "2026-08-20T20:00:00Z",
+        }));
+      }
       if (url.endsWith("/reviews")) {
         return new Response(JSON.stringify([{
           user: { login: "alice" },
@@ -95,6 +113,7 @@ describe("fetchReviewsForRepos", () => {
       { from: new Date("2026-08-10T04:00:00Z"), to: new Date("2026-08-11T03:59:59.999Z") },
       new Date("2026-08-21T00:00:00Z"),
       true,
+      [{ repo: "org/app", number: 7 }],
     );
     expect(result.reviews).toHaveLength(1);
     expect(result.reviews[0]?.prNumber).toBe(7);
