@@ -1,6 +1,7 @@
 // RSS 2.0 feed generator for weekly reports
 
 import type { ReportEntry } from "../deployer/index-page.js";
+import { buildDayRange, parseLocalDate } from "../collector/date-range.js";
 
 export type RSSChannelOptions = {
   title: string;
@@ -18,42 +19,21 @@ const escapeXml = (text: string): string =>
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&apos;");
 
-// Compute the pubDate for an RSS item.
-// The weekly report cron fires at local 01:00 on the day after dateRange.to
-// (i.e. Monday 01:00 local time). We reconstruct that UTC instant.
+// Compute the scheduled publication at 01:00 on the next weekday. Friday's
+// completed-workday report is published Monday, not Saturday.
 const computePubDate = (dateTo: string, timezone: string): string => {
   const [y, m, d] = dateTo.split("-").map(Number);
-  // dateRange.to is Sunday. The next day (Monday) at 01:00 local time.
-  const mondayLocal = new Date(Date.UTC(y, m - 1, d + 1));
-
-  // Find UTC offset for the timezone at that date
-  const fmt = new Intl.DateTimeFormat("en-US", {
-    timeZone: timezone,
-    hourCycle: "h23",
-    year: "numeric",
-    month: "numeric",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-  });
-  const parts = fmt.formatToParts(mondayLocal);
-  const localHour = Number(parts.find((p) => p.type === "hour")?.value ?? 0);
-  const localMin = Number(parts.find((p) => p.type === "minute")?.value ?? 0);
-  const localDay = Number(parts.find((p) => p.type === "day")?.value ?? 0);
-  const localMonth = Number(parts.find((p) => p.type === "month")?.value ?? 0);
-
-  // mondayLocal (UTC midnight of target calendar day) maps to localHour:localMin
-  // in the given timezone. The offset in ms is: localTime - utcTime
-  const offsetMs = ((localDay === d + 1 && localMonth === m)
-    ? (localHour * 60 + localMin) * 60_000
-    : localDay > d + 1 || localMonth > m
-      ? (localHour * 60 + localMin) * 60_000
-      : -((24 * 60 - localHour * 60 - localMin) * 60_000));
-
-  // We want Monday 01:00 local = UTC midnight + (01:00 local offset in UTC)
-  // local 01:00 = utc + offset => utc = local 01:00 - offset
-  const targetUtc = new Date(mondayLocal.getTime() + 1 * 3_600_000 - offsetMs);
-  return targetUtc.toUTCString();
+  const publication = new Date(Date.UTC(y, m - 1, d + 1));
+  while (publication.getUTCDay() === 0 || publication.getUTCDay() === 6) {
+    publication.setUTCDate(publication.getUTCDate() + 1);
+  }
+  const localDate = [
+    publication.getUTCFullYear(),
+    String(publication.getUTCMonth() + 1).padStart(2, "0"),
+    String(publication.getUTCDate()).padStart(2, "0"),
+  ].join("-");
+  const midnight = buildDayRange(parseLocalDate(localDate, timezone), timezone).from;
+  return new Date(midnight.getTime() + 3_600_000).toUTCString();
 };
 
 const buildDescription = (entry: ReportEntry): string => {

@@ -25,6 +25,8 @@ const DEFAULT_RETRY_DELAY_MS = 5_000;
 const CONCURRENCY = 5;
 /** Max PRs per repo updated between the report start and collection to inspect. */
 const MAX_PRS_PER_REPO = 100;
+/** Allow delayed scheduled runs without making historical backfills scan to today. */
+const MAX_COLLECTION_LAG_MS = 12 * 60 * 60 * 1000;
 
 const sleep = (ms: number): Promise<void> => new Promise((r) => setTimeout(r, ms));
 
@@ -135,6 +137,10 @@ export const fetchReviewsForRepos = async (
   const threadInputs: ReviewCommentThreadInput[] = [];
   const aiReviewSubmissions: AiReviewSubmissionInput[] = [];
   const lower = username.toLowerCase();
+  const candidateEnd = Math.min(
+    collectedAt.getTime(),
+    range.to.getTime() + MAX_COLLECTION_LAG_MS,
+  );
 
   await runWithConcurrency(repos, async (repo) => {
     // Include PRs changed after the report day but before collection. Their
@@ -154,7 +160,7 @@ export const fetchReviewsForRepos = async (
 
     const relevant = prs.filter((pr) => {
       const updated = new Date(pr.updated_at).getTime();
-      return updated >= range.from.getTime() && updated <= collectedAt.getTime();
+      return updated >= range.from.getTime() && updated <= candidateEnd;
     }).slice(0, MAX_PRS_PER_REPO);
 
     for (const pr of relevant) {

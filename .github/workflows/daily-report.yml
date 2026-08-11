@@ -4,7 +4,7 @@ name: Daily Report
 
 on:
   schedule:
-    # 01:00 America/New_York (06:00 UTC in standard time; DST-safe report selection)
+    # 01:00 EST / 02:00 EDT; derived from the configured America/New_York timezone.
     - cron: '0 6 * * 1-5'
   workflow_dispatch:
     inputs:
@@ -19,6 +19,8 @@ permissions:
 
 env:
   SITE_TITLE: Worklog
+  # Keep this synchronized with config.yaml and the cron above.
+  TIMEZONE: America/New_York
 
 jobs:
   daily:
@@ -40,7 +42,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           GITHUB_USERNAME: ${{ vars.GITHUB_USERNAME }}
-          TIMEZONE: ${{ vars.TIMEZONE || 'UTC' }}
           DATA_DIR: ./data
           CONFIG_PATH: ./config.yaml
           INPUT_DATE: ${{ inputs.date }}
@@ -62,7 +63,6 @@ jobs:
           LLM_PROVIDER: ${{ vars.LLM_PROVIDER }}
           LLM_MODEL: ${{ vars.LLM_MODEL }}
           LANGUAGE: ${{ vars.LANGUAGE || 'en' }}
-          TIMEZONE: ${{ vars.TIMEZONE || 'UTC' }}
           DATA_DIR: ./data
           CONFIG_PATH: ./config.yaml
           INPUT_DATE: ${{ inputs.date }}
@@ -88,7 +88,6 @@ jobs:
       - name: Render HTML
         env:
           LANGUAGE: ${{ vars.LANGUAGE || 'en' }}
-          TIMEZONE: ${{ vars.TIMEZONE || 'UTC' }}
           THEME: ${{ vars.THEME || 'brutalist' }}
           DATA_DIR: ./data
           OUTPUT_DIR: ./output
