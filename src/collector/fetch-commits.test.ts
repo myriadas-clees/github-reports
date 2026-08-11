@@ -171,7 +171,7 @@ describe("fetchCommitMessages", () => {
     vi.useRealTimers();
   });
 
-  it("gives up after retry exhaustion on persistent 429", async () => {
+  it("fails closed after retry exhaustion on persistent 429", async () => {
     vi.useFakeTimers();
     const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
     const fetchSpy = vi.spyOn(globalThis, "fetch").mockResolvedValue(
@@ -183,12 +183,12 @@ describe("fetchCommitMessages", () => {
     );
 
     const promise = fetchCommitMessages("token", "user", ["org/repo"], range);
+    const rejection = expect(promise).rejects.toThrow(/GitHub API rate limit is exhausted/);
     await vi.runAllTimersAsync();
-    const result = await promise;
+    await rejection;
 
     expect(fetchSpy).toHaveBeenCalledTimes(4);
-    expect(result).toEqual([]);
-    expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining("Failed to fetch commits"));
+    expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining("429"));
     vi.useRealTimers();
   });
 

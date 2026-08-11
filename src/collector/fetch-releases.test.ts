@@ -182,7 +182,7 @@ describe("fetchReleases", () => {
     );
   });
 
-  it("returns empty when 429 retries are exhausted", async () => {
+  it("fails closed when 429 retries are exhausted", async () => {
     vi.useFakeTimers();
     const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
     const fetchSpy = vi.spyOn(globalThis, "fetch").mockResolvedValue(
@@ -194,15 +194,13 @@ describe("fetchReleases", () => {
     );
 
     const promise = fetchReleases("token", ["org/repo"], range);
+    const rejection = expect(promise).rejects.toThrow(/GitHub API rate limit is exhausted/);
     await vi.runAllTimersAsync();
-    const result = await promise;
+    await rejection;
 
-    expect(result).toEqual([]);
-    // MAX_RETRIES=3 → attempts 0..3 (4 total); the final attempt warns and returns []
+    // MAX_RETRIES=3 → attempts 0..3 (4 total), then abort collection.
     expect(fetchSpy).toHaveBeenCalledTimes(4);
-    expect(warnSpy).toHaveBeenCalledWith(
-      expect.stringContaining("Failed to fetch releases for org/repo"),
-    );
+    expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining("429"));
     vi.useRealTimers();
   });
 

@@ -2,6 +2,7 @@
 // GET /repos/{owner}/{repo}/commits?author={username}&since={from}&until={to}
 
 import type { DateRange } from "./date-range.js";
+import { throwOnGitHubAccessError } from "./github-api-error.js";
 import type { CommitDetail, PullRequest, RepoCommitMessages } from "../types.js";
 
 type RawCommit = {
@@ -63,7 +64,7 @@ const fetchPage = async (
     }
 
     if (response.status === 409) return null; // Empty repository
-    if (response.status === 403 || response.status === 404) return null;
+    if (response.status === 404) return null;
 
     if (response.status === 429 && attempt < MAX_RETRIES) {
       const delay = parseRetryDelay(response);
@@ -71,6 +72,8 @@ const fetchPage = async (
       await sleep(delay);
       continue;
     }
+
+    throwOnGitHubAccessError(response, "Commit fetch failed");
 
     console.warn(`  Failed to fetch commits: ${response.status} ${response.statusText}`);
     return null;

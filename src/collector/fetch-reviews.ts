@@ -10,6 +10,7 @@ import {
   type ReviewCommentThreadInput,
 } from "./ai-review-fixes.js";
 import type { DateRange } from "./date-range.js";
+import { throwOnGitHubAccessError } from "./github-api-error.js";
 import type { CodeReview, ReviewComment } from "../types.js";
 
 const GITHUB_HEADERS = (token: string) => ({
@@ -102,13 +103,14 @@ const fetchJsonPages = async <T>(token: string, startUrl: string): Promise<T[]> 
         url = parseNextUrl(response);
         break;
       }
-      if (response.status === 404 || response.status === 403) {
+      if (response.status === 404) {
         return items;
       }
       if (response.status === 429 && attempt < MAX_RETRIES) {
         await sleep(parseRetryDelay(response));
         continue;
       }
+      throwOnGitHubAccessError(response, "Review fetch failed");
       console.warn(`  Failed review fetch: ${response.status} ${response.statusText}`);
       return items;
     }
@@ -162,6 +164,8 @@ export const fetchReviewsForRepos = async (
         set.add(node.pullRequest.number);
         contributionCandidates.set(repo, set);
       }
+    } else {
+      throwOnGitHubAccessError(response, "Review contribution fetch failed");
     }
   }
 
@@ -199,6 +203,7 @@ export const fetchReviewsForRepos = async (
         const response = await fetch(`https://api.github.com/repos/${repo}/pulls/${number}`, {
           headers: GITHUB_HEADERS(token),
         });
+        throwOnGitHubAccessError(response, `Review candidate PR fetch failed for ${repo}#${number}`);
         return response.ok ? await response.json() as CandidatePR : null;
       }))).filter((pr): pr is CandidatePR => pr !== null);
     } else {

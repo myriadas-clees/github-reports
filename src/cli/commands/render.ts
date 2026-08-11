@@ -141,6 +141,9 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
 
   // Determine previous/next report paths for internal linking.
   let allPaths = await listCompletedReportDirs(options.dataDir);
+  if (options.mode !== "weekly") {
+    allPaths = allPaths.filter((path) => /^\d{4}\/\d{2}\/\d{2}$/.test(path));
+  }
   if (!allPaths.includes(dayId.path)) allPaths.push(dayId.path);
   const reportDates = new Map<string, string>([[dayId.path, githubData.dateRange.to]]);
   await Promise.all(allPaths.filter((path) => path !== dayId.path).map(async (path) => {

@@ -1,0 +1,52 @@
+name: Deploy Report Archive
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.pages.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.12
+
+      - name: Install
+        run: bun install --frozen-lockfile
+
+      - name: Build
+        run: bun run build
+
+      - name: Render complete archive
+        env:
+          LANGUAGE: ${{ vars.LANGUAGE || 'en' }}
+          THEME: ${{ vars.THEME || 'brutalist' }}
+          DATA_DIR: ./data
+          OUTPUT_DIR: ./output
+          SITE_TITLE: Worklog
+          BASE_URL: ${{ vars.BASE_URL || 'https://myriadas-clees.github.io/github-reports' }}
+          CONFIG_PATH: ./config.yaml
+        run: bash scripts/render-daily-archive.sh
+
+      - name: Upload worklog site
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: output
+
+      - name: Deploy worklog to GitHub Pages
+        id: pages
+        uses: actions/deploy-pages@v5

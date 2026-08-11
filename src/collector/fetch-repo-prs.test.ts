@@ -244,7 +244,7 @@ describe("fetchPRsByRefs", () => {
     vi.useRealTimers();
   });
 
-  it("falls back to default delay when retry-after is missing and exhausts retries", async () => {
+  it("fails closed when retry-after is missing and retries are exhausted", async () => {
     vi.useFakeTimers();
     const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
     const fetchSpy = vi.spyOn(globalThis, "fetch").mockResolvedValue(
@@ -252,13 +252,13 @@ describe("fetchPRsByRefs", () => {
     );
 
     const promise = fetchPRsByRefs("token", [{ repo: "owner/repo", number: 1 }]);
+    const rejection = expect(promise).rejects.toThrow(/GitHub API rate limit is exhausted/);
     await vi.runAllTimersAsync();
-    const result = await promise;
+    await rejection;
 
-    // MAX_RETRIES = 3 → attempts 0..3 (4 total). On attempt 3, retry guard fails → returns null.
+    // MAX_RETRIES = 3 → attempts 0..3 (4 total), then abort collection.
     expect(fetchSpy).toHaveBeenCalledTimes(4);
-    expect(result).toEqual([]);
-    expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining("Warning: 1 of 1 PRs"));
+    expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining("429"));
     vi.useRealTimers();
   });
 

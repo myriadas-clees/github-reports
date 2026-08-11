@@ -2,6 +2,7 @@
 // GET /repos/{owner}/{repo}/releases
 
 import type { DateRange } from "./date-range.js";
+import { throwOnGitHubAccessError } from "./github-api-error.js";
 import type { Release } from "../types.js";
 
 type RawRelease = {
@@ -74,7 +75,7 @@ const fetchRepoReleases = async (
         }));
     }
 
-    if (response.status === 409 || response.status === 403 || response.status === 404) {
+    if (response.status === 409 || response.status === 404) {
       return [];
     }
 
@@ -84,6 +85,8 @@ const fetchRepoReleases = async (
       await sleep(delay);
       continue;
     }
+
+    throwOnGitHubAccessError(response, `Release fetch failed for ${repo}`);
 
     console.warn(`  Failed to fetch releases for ${repo}: ${response.status} ${response.statusText}`);
     return [];

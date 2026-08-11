@@ -2,6 +2,7 @@
 
 import { cleanBody } from "./clean-body.js";
 import type { DateRange } from "./date-range.js";
+import { throwOnGitHubAccessError } from "./github-api-error.js";
 import type { CommitDetail, PullRequest } from "../types.js";
 
 type RawPR = {
@@ -51,6 +52,7 @@ export const searchAuthoredPRRefsForBackfill = async (
   while (url) {
     const response = await fetch(url, { headers: GITHUB_HEADERS(token) });
     if (!response.ok) {
+      throwOnGitHubAccessError(response, "Historical PR search failed");
       console.warn(`  Failed historical PR search: ${response.status} ${response.statusText}`);
       break;
     }
@@ -102,6 +104,7 @@ const fetchPages = async <T>(token: string, startUrl: string): Promise<T[]> => {
   while (url) {
     const response = await fetch(url, { headers: GITHUB_HEADERS(token) });
     if (!response.ok) {
+      throwOnGitHubAccessError(response, "Paginated PR fetch failed");
       console.warn(`  Failed paginated PR fetch: ${response.status} ${response.statusText}`);
       break;
     }
@@ -149,7 +152,10 @@ const fetchPRWork = async (
     const response = await fetch(`https://api.github.com/repos/${ref.repo}/commits/${commit.sha}`, {
       headers: GITHUB_HEADERS(token),
     });
-    if (!response.ok) continue;
+    if (!response.ok) {
+      throwOnGitHubAccessError(response, `Commit detail fetch failed for ${ref.repo}@${commit.sha}`);
+      continue;
+    }
     const detail = await response.json() as { stats?: { additions?: number; deletions?: number } };
     additions += detail.stats?.additions ?? 0;
     deletions += detail.stats?.deletions ?? 0;
@@ -236,6 +242,8 @@ const fetchSinglePR = async (
       await sleep(delay);
       continue;
     }
+
+    throwOnGitHubAccessError(response, `PR fetch failed for ${ref.repo}#${ref.number}`);
 
     const message = await readErrorBody(response);
     console.warn(`  Failed to fetch PR ${ref.repo}#${ref.number}: ${response.status} ${response.statusText}`);
