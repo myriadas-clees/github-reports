@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach, beforeEach } from "vitest";
-import { assertSafePagesVisibility, buildRepoUrl } from "./deploy.js";
+import { buildRepoUrl } from "./deploy.js";
 
 // Mock deploy module
 const mockDeploy = vi.fn().mockResolvedValue(undefined);
@@ -72,9 +72,6 @@ describe("buildRepoUrl", () => {
 describe("registerDeploy", () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    vi.spyOn(globalThis, "fetch").mockResolvedValue(
-      new Response(JSON.stringify({ private: false }), { status: 200 }),
-    );
     vi.spyOn(process, "exit").mockImplementation((() => { throw new Error("process.exit"); }) as never);
   });
 
@@ -182,23 +179,5 @@ describe("registerDeploy", () => {
     ).rejects.toThrow("process.exit");
 
     expect(errorSpy).toHaveBeenCalledWith("Error:", "string-failure");
-  });
-});
-
-describe("assertSafePagesVisibility", () => {
-  afterEach(() => vi.restoreAllMocks());
-
-  it("allows a private repository only when Pages is private", async () => {
-    vi.spyOn(globalThis, "fetch")
-      .mockResolvedValueOnce(new Response(JSON.stringify({ private: true })))
-      .mockResolvedValueOnce(new Response(JSON.stringify({ visibility: "private" })));
-    await expect(assertSafePagesVisibility("token", "owner/repo")).resolves.toBeUndefined();
-  });
-
-  it("blocks a private repository with public Pages", async () => {
-    vi.spyOn(globalThis, "fetch")
-      .mockResolvedValueOnce(new Response(JSON.stringify({ private: true })))
-      .mockResolvedValueOnce(new Response(JSON.stringify({ visibility: "public" })));
-    await expect(assertSafePagesVisibility("token", "owner/repo")).rejects.toThrow(/Refusing to deploy/);
   });
 });

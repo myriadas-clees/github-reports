@@ -10,45 +10,9 @@ type DeployCommandOptions = {
   repoUrl: string;
   timezone: string;
   date?: Date;
-  repository?: string;
 };
 
 const env = (key: string): string | undefined => process.env[key];
-
-const repositorySlug = (value: string | undefined): string | undefined => {
-  if (!value) return undefined;
-  if (/^[^/]+\/[^/]+$/.test(value)) return value.replace(/\.git$/, "");
-  const match = value.match(/github\.com[/:]([^/]+)\/([^/]+?)(?:\.git)?$/);
-  return match ? `${match[1]}/${match[2]}` : undefined;
-};
-
-export const assertSafePagesVisibility = async (
-  token: string | undefined,
-  repository: string | undefined,
-): Promise<void> => {
-  if (!token || !repository || !/^[^/]+\/[^/]+$/.test(repository)) {
-    throw new Error("GITHUB_TOKEN and an owner/repository slug are required to verify Pages privacy.");
-  }
-  const headers = {
-    Authorization: `Bearer ${token}`,
-    Accept: "application/vnd.github+json",
-    "X-GitHub-Api-Version": "2022-11-28",
-  };
-  const repoResponse = await fetch(`https://api.github.com/repos/${repository}`, { headers });
-  if (!repoResponse.ok) throw new Error(`Could not verify repository privacy (${repoResponse.status}).`);
-  const repo = await repoResponse.json() as { private?: boolean };
-  if (!repo.private) return;
-
-  const pagesResponse = await fetch(`https://api.github.com/repos/${repository}/pages`, { headers });
-  const pages = pagesResponse.ok
-    ? await pagesResponse.json() as { visibility?: string }
-    : null;
-  if (pages?.visibility !== "private") {
-    throw new Error(
-      `Refusing to deploy private repository ${repository}: GitHub Pages access is not private.`,
-    );
-  }
-};
 
 export const buildRepoUrl = (repo: string | undefined): string => {
   const repoSlug = repo ?? env("GITHUB_REPOSITORY");
@@ -76,8 +40,6 @@ export const buildRepoUrl = (repo: string | undefined): string => {
 const run = async (options: DeployCommandOptions): Promise<void> => {
   const dayId = resolveDayId(options.date, options.timezone);
 
-  await assertSafePagesVisibility(env("GITHUB_TOKEN"), options.repository);
-
   console.log(`Deploying ${options.directory}...`);
   await deploy({
     repoUrl: options.repoUrl,
@@ -104,7 +66,6 @@ export const registerDeploy = (program: Command): void => {
           repoUrl,
           timezone,
           date: opts.date ? parseLocalDate(opts.date, timezone) : undefined,
-          repository: repositorySlug(opts.repo ?? env("GITHUB_REPOSITORY")),
         });
       } catch (error) {
         console.error("Error:", error instanceof Error ? error.message : error);

@@ -1,5 +1,5 @@
 name: 'Worklog Daily Reporter'
-description: 'Generate a private daily GitHub activity report and deploy to GitHub Pages'
+description: 'Generate a public daily activity report from private GitHub repositories'
 author: 'deariary'
 
 branding:

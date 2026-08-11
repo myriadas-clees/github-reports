@@ -493,7 +493,7 @@ describe("registerSetup (full flow)", () => {
     expect(dailyCall![3]).toContain("Asia/Taipei");
   });
 
-  it("fails closed when private Pages cannot be enabled", async () => {
+  it("stops setup when Pages cannot be enabled", async () => {
     setupPromptDefaults();
     mockEnablePages.mockRejectedValue(new Error("Pages already enabled"));
 

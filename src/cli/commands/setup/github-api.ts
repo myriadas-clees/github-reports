@@ -149,7 +149,7 @@ export const ensureRepo = async (
     name,
     auto_init: true,
     private: true,
-    description: "Private daily GitHub activity reports",
+    description: "Public daily activity reports sourced from private repositories",
     homepage,
   };
 
@@ -215,8 +215,38 @@ export const enablePages = async (
   token: string,
   repo: string,
 ): Promise<string> => {
-  // A private source repository does not imply a private Pages site. Create the
-  // site if needed, then fail closed unless access control is explicitly private.
+  // Pages requires its configured source branch to exist. Seed an orphan branch
+  // with a harmless placeholder; the first deployment replaces its contents.
+  const branchRes = await ghGet(token, `/repos/${repo}/git/ref/heads/gh-pages`);
+  if (!branchRes.ok) {
+    if (branchRes.status !== 404) {
+      throw new Error(`Failed to inspect the gh-pages branch for ${repo}: ${branchRes.status}`);
+    }
+    const blobRes = await ghPost(token, `/repos/${repo}/git/blobs`, {
+      content: "<!doctype html><title>Report setup in progress</title>",
+      encoding: "utf-8",
+    });
+    if (!blobRes.ok) throw new Error(`Failed to create Pages placeholder: ${blobRes.status}`);
+    const { sha: blobSha } = await blobRes.json() as { sha: string };
+    const treeRes = await ghPost(token, `/repos/${repo}/git/trees`, {
+      tree: [{ path: "index.html", mode: "100644", type: "blob", sha: blobSha }],
+    });
+    if (!treeRes.ok) throw new Error(`Failed to create Pages tree: ${treeRes.status}`);
+    const { sha: treeSha } = await treeRes.json() as { sha: string };
+    const commitRes = await ghPost(token, `/repos/${repo}/git/commits`, {
+      message: "chore: initialize report site",
+      tree: treeSha,
+      parents: [],
+    });
+    if (!commitRes.ok) throw new Error(`Failed to create Pages commit: ${commitRes.status}`);
+    const { sha: commitSha } = await commitRes.json() as { sha: string };
+    const refRes = await ghPost(token, `/repos/${repo}/git/refs`, {
+      ref: "refs/heads/gh-pages",
+      sha: commitSha,
+    });
+    if (!refRes.ok) throw new Error(`Failed to create gh-pages branch: ${refRes.status}`);
+  }
+
   const createRes = await ghPost(token, `/repos/${repo}/pages`, {
     source: { branch: "gh-pages", path: "/" },
   });
@@ -224,27 +254,11 @@ export const enablePages = async (
     throw new Error(`Failed to enable Pages for ${repo}: ${createRes.status}`);
   }
 
-  const visibilityRes = await ghPut(token, `/repos/${repo}/pages`, {
-    visibility: "private",
-  });
-  if (!visibilityRes.ok) {
-    throw new Error(
-      `Private Pages access is unavailable for ${repo} (${visibilityRes.status}). ` +
-      "GitHub Pages was not approved for report deployment. Use a GitHub plan/organization " +
-      "that supports private Pages or deploy to a private host.",
-    );
-  }
-
   const pagesRes = await ghGet(token, `/repos/${repo}/pages`);
   const pages = pagesRes.ok
-    ? await pagesRes.json().catch(() => null) as { visibility?: string; html_url?: string } | null
+    ? await pagesRes.json().catch(() => null) as { html_url?: string } | null
     : null;
-  if (pages?.visibility !== "private") {
-    throw new Error(
-      `Refusing to publish reports for ${repo}: GitHub Pages access is not private.`,
-    );
-  }
 
   const [owner, name] = repo.split("/");
-  return pages.html_url ?? `https://${owner}.github.io/${name}`;
+  return pages?.html_url ?? `https://${owner}.github.io/${name}`;
 };

@@ -311,9 +311,9 @@ const run = async (cliRepo?: string): Promise<void> => {
   ok("README added.");
 
   // 6. GitHub Pages
-  step("Enabling private GitHub Pages...");
+  step("Enabling public GitHub Pages...");
   const url = await enablePages(config.token, fullRepo);
-  ok(`Private Pages enabled: ${url}`);
+  ok(`Public Pages enabled: ${url}`);
 
   // 7. Trigger first daily report
   step("Generating first daily report...");

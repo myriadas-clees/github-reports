@@ -133,7 +133,7 @@ describe("github-api", () => {
       const body = JSON.parse(createCall[1]!.body as string);
       expect(body.homepage).toBe("https://user.github.io/repo");
       expect(body.private).toBe(true);
-      expect(body.description).toContain("Private daily");
+      expect(body.description).toContain("Public daily");
     });
 
     it("creates org repo when owner differs from login", async () => {
@@ -223,21 +223,30 @@ describe("github-api", () => {
   describe("enablePages", () => {
     it("returns the Pages URL", async () => {
       vi.spyOn(globalThis, "fetch")
+        .mockResolvedValueOnce(new Response(JSON.stringify({ ref: "refs/heads/gh-pages" }), { status: 200 }))
         .mockResolvedValueOnce(new Response("", { status: 201 }))
-        .mockResolvedValueOnce(new Response(null, { status: 204 }))
         .mockResolvedValueOnce(new Response(JSON.stringify({
-          visibility: "private",
           html_url: "https://user.github.io/repo",
         }), { status: 200 }));
       const url = await enablePages("token", "user/repo");
       expect(url).toBe("https://user.github.io/repo");
     });
 
-    it("refuses to continue when Pages cannot be restricted", async () => {
+    it("creates an orphan source branch before enabling Pages", async () => {
       vi.spyOn(globalThis, "fetch")
+        .mockResolvedValueOnce(new Response("", { status: 404 }))
+        .mockResolvedValueOnce(new Response(JSON.stringify({ sha: "blob" }), { status: 201 }))
+        .mockResolvedValueOnce(new Response(JSON.stringify({ sha: "tree" }), { status: 201 }))
+        .mockResolvedValueOnce(new Response(JSON.stringify({ sha: "commit" }), { status: 201 }))
         .mockResolvedValueOnce(new Response("", { status: 201 }))
-        .mockResolvedValueOnce(new Response("", { status: 422 }));
-      await expect(enablePages("token", "user/repo")).rejects.toThrow(/Private Pages access is unavailable/);
+        .mockResolvedValueOnce(new Response("", { status: 201 }))
+        .mockResolvedValueOnce(new Response(JSON.stringify({ html_url: "https://user.github.io/repo" })));
+      await expect(enablePages("token", "user/repo")).resolves.toBe("https://user.github.io/repo");
+      const calls = vi.mocked(fetch).mock.calls;
+      expect(JSON.parse(String(calls[4]?.[1]?.body))).toEqual({
+        ref: "refs/heads/gh-pages",
+        sha: "commit",
+      });
     });
   });
 

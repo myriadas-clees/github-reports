@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Private, self-hosted daily GitHub status-page generator. Reports the **previous completed workday** every weekday morning. Supports configured private repos, commit messages, PRs (opened/merged/in progress), reviews, review comments, line changes, estimated hours (labeled as estimates), and plain-English stakeholder summaries.
+Daily GitHub status-page generator with a private source repository and an intentionally public GitHub Pages report. Reports the **previous completed workday** every weekday morning. Supports configured private repos, commit messages, PRs (opened/merged/in progress), reviews, review comments, line changes, estimated hours (labeled as estimates), and plain-English stakeholder summaries. Report content is public; repository source code and credentials remain private.
 
 ## Layout
 
