@@ -66,6 +66,9 @@ jobs:
               echo "Generating $report_date"
               bun dist/cli/index.js daily-fetch --date "$report_date"
               bun dist/cli/index.js generate --date "$report_date"
+              # Historical collection uses GitHub's separately throttled Search
+              # API. Keep batches below its 30-requests-per-minute ceiling.
+              sleep 15
             fi
             report_date=$(date -u -d "$report_date + 1 day" +%F)
           done
