@@ -16,6 +16,11 @@ on:
 permissions:
   contents: write
   pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 env:
   SITE_TITLE: Worklog
@@ -92,7 +97,7 @@ jobs:
           DATA_DIR: ./data
           OUTPUT_DIR: ./output
           SITE_TITLE: ${{ env.SITE_TITLE }}
-          BASE_URL: ${{ vars.BASE_URL }}
+          BASE_URL: ${{ vars.BASE_URL || 'https://myriadas-clees.github.io/github-weekly-reporter' }}
           CONFIG_PATH: ./config.yaml
           INPUT_DATE: ${{ inputs.date }}
         run: |
@@ -102,15 +107,18 @@ jobs:
             bun dist/cli/index.js render
           fi
 
-      - name: Deploy to GitHub Pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
-          GITHUB_REPOSITORY: ${{ github.repository }}
-          OUTPUT_DIR: ./output
-          INPUT_DATE: ${{ inputs.date }}
-        run: |
-          if [ -n "$INPUT_DATE" ]; then
-            bun dist/cli/index.js deploy --date "$INPUT_DATE"
-          else
-            bun dist/cli/index.js deploy
-          fi
+      - name: Upload worklog site
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: output
+
+  deploy:
+    needs: daily
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.pages.outputs.page_url }}
+    steps:
+      - name: Deploy worklog to GitHub Pages
+        id: pages
+        uses: actions/deploy-pages@v5
