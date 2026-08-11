@@ -67,7 +67,7 @@ describe("buildReadme", () => {
 
   it("includes github-weekly-reporter link", () => {
     const readme = buildReadme(baseOpts);
-    expect(readme).toContain("[github-weekly-reporter](https://github.com/myriadas-clees/github-weekly-reporter)");
+    expect(readme).toContain("[github-reports](https://github.com/myriadas-clees/github-reports)");
   });
 
   it("includes pages URL", () => {

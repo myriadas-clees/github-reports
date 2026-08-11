@@ -4,7 +4,7 @@ set -euo pipefail
 
 THEMES="brutalist minimal editorial swiss"
 LANGS="en ja"
-BASE_URL="${BASE_URL:-https://myriadas-clees.github.io/github-weekly-reporter}"
+BASE_URL="${BASE_URL:-https://myriadas-clees.github.io/github-reports}"
 OUT_DIR="${OUT_DIR:-preview-site}"
 # The checked-in preview fixture is the legacy weekly report at 2026/W14.
 # 2026-04-09 resolves to that completed Thu-Wed work week.
