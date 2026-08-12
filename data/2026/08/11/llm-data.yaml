@@ -1,44 +1,54 @@
 title: Aug 11
-subtitle: ofac, auth & streamline recruit
+subtitle: reduce redundant, redesign proforma & enable finet
 overview: ""
 summaries:
   - type: repo-summary
     heading: Projects worked on
-    body: Activity spanned Myriad-Advisor-Solutions/ohcpwm-apps.
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps and Myriad-Advisor-Solutions/ohcpwm-apps.
     chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 2 PRs
       - label: Myriad-Advisor-Solutions/ohcpwm-apps
-        value: 0 PRs
+        value: 2 PRs
   - type: commit-summary
     heading: Commits and line changes
-    body: 3 commits with +107 / −29 lines.
+    body: 19 commits with +2,898 / −1,440 lines.
     chips:
       - label: Commits
-        value: "3"
+        value: "19"
         color: green
       - label: Additions
-        value: "+107"
+        value: +2,898
         color: green
       - label: Deletions
-        value: −29
+        value: −1,440
         color: red
   - type: review-summary
+    heading: Reviews
+    body: 11 reviews with 11 comments.
+    chips:
+      - label: Reviews
+        value: "11"
+      - label: Comments
+        value: "11"
+  - type: review-summary
     heading: AI code reviews
-    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 3 reviews, 7 comments, 3 PRs."
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 17 reviews, 32 comments, 7 PRs."
     chips:
       - label: Codex
-        value: 3 reviews · 7 comments · 3 PRs
+        value: 17 reviews · 32 comments · 7 PRs
   - type: activity-pattern
     heading: Estimated engineering hours
     body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
       tracked, elapsed, or billed time.
     chips:
       - label: Estimated engineering hours
-        value: ~5.5h
+        value: ~53.9h
 highlights:
   - type: pr
     title: Streamline recruit editing and business mix UX in pricing
     repo: Myriad-Advisor-Solutions/ohcpwm-apps
-    meta: merged · +107 −29
+    meta: merged · +748 −202
     body: >-
       - Default local development role is now `admin` (`OHPWM_LOCAL_ROLE=admin` in env examples); set
       `OHPWM_LOCAL_ROLE=officer` to exercise officer visibility and holdco economics boundaries.
@@ -46,23 +56,23 @@ highlights:
       - Recruit mod
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/111
   - type: pr
-    title: "feat(auth): centralize Azure runtime auth"
+    title: Reduce redundant Codex agent token usage
     repo: Myriad-Advisor-Solutions/ohcpwm-apps
-    meta: in progress · +191 −115
+    meta: in progress · +72 −160
     body: Still open at the end of the reporting window.
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/79
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/113
   - type: pr
-    title: "feat(ofac): add durable scheduled sync lease"
+    title: Enable FINET business mix editing
     repo: Myriad-Advisor-Solutions/ohcpwm-apps
-    meta: in progress · +685 −27
+    meta: in progress · +687 −81
     body: Still open at the end of the reporting window.
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/89
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/112
   - type: pr
-    title: "refactor(ofac): migrate API routes to Azure Functions"
-    repo: Myriad-Advisor-Solutions/ohcpwm-apps
-    meta: in progress · +1669 −547
+    title: Redesign Proforma recruit intake and team economics
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +1310 −904
     body: Still open at the end of the reporting window.
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/85
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/85
 ticker:
   - label: SHIPPED
     text: '@myriadas-clees merged "Streamline recruit editing and business mix UX in pricing" in

@@ -12,29 +12,264 @@ dateRange:
   from: 2026-08-11
   to: 2026-08-11
 stats:
-  totalCommits: 3
-  totalAdditions: 107
-  totalDeletions: 29
-  prsOpened: 0
+  totalCommits: 19
+  totalAdditions: 2898
+  totalDeletions: 1440
+  prsOpened: 4
   prsMerged: 1
-  prsInProgress: 3
-  prsReviewed: 0
-  reviewComments: 0
+  prsInProgress: 8
+  prsReviewed: 11
+  reviewComments: 11
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 5.5
+  estimatedHours: 53.9
 dailyCommits:
   - date: 2026-08-11
-    count: 3
+    count: 19
 repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 10
+    prsOpened: 2
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
   - name: Myriad-Advisor-Solutions/ohcpwm-apps
-    commits: 3
-    prsOpened: 0
+    commits: 9
+    prsOpened: 2
     prsMerged: 1
     issuesOpened: 0
     issuesClosed: 0
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
 pullRequests:
+  - title: Reduce redundant Codex agent token usage
+    body: >-
+      - replace mandatory two-agent fan-out with one compact, read-only explorer and at most one scoped implementation
+      specialist for normal work
+
+      - make root guidance concise and align scoped issue, commit/push/PR, CI, and review-comment workflows
+
+      - lower explorer reasoning to low and routine implementati...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/113
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a1 []
+    additions: 72
+    deletions: 160
+    changedFiles: 10
+    author: myriadas-clees
+    createdAt: 2026-08-12T03:08:43Z
+    updatedAt: 2026-08-12T03:08:43Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a2
+      - &a24
+        sha: a5c068bdc3b7a5e0768f396fca085caa415b8676
+        message: "chore(codex): reduce redundant agent token usage"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a5c068bdc3b7a5e0768f396fca085caa415b8676
+        authoredAt: 2026-08-12T03:08:03Z
+    workTimestamps: &a3
+      - 2026-08-12T03:08:03Z
+    workAdditions: 72
+    workDeletions: 160
+    workFiles: &a4
+      - .codex/agents/docs.toml
+      - .codex/agents/explorer.toml
+      - .codex/agents/hub.toml
+      - .codex/agents/ofac.toml
+      - .codex/agents/packages.toml
+      - .codex/agents/pricing.toml
+      - .codex/agents/scripts.toml
+      - .codex/agents/worker.toml
+      - .codex/config.toml
+      - AGENTS.md
+  - title: Enable FINET business mix editing
+    body: |-
+      - Enable Revenue and Business Mix editing for FINET models.
+      - Show the Business mix editing destination for all recruit models.
+      - Add coverage for FINET business mix controls.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/112
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a5 []
+    additions: 687
+    deletions: 81
+    changedFiles: 25
+    author: myriadas-clees
+    createdAt: 2026-08-11T18:39:34Z
+    updatedAt: 2026-08-11T20:00:08Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a6
+      - &a19
+        sha: a0c1594bccf738e56f442a2032a64bef2f4a155a
+        message: "fix(pricing): enable business mix editing for FINET"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a0c1594bccf738e56f442a2032a64bef2f4a155a
+        authoredAt: 2026-08-11T18:39:24Z
+      - &a20
+        sha: cbad0510dccf9cfadcef4a1cc274f32bf57f05bc
+        message: "fix(pricing): apply FINET business mix edits"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cbad0510dccf9cfadcef4a1cc274f32bf57f05bc
+        authoredAt: 2026-08-11T19:01:27Z
+      - &a21
+        sha: 79b1ae1967d7e1eb1b9e1acf4d23251e55e88599
+        message: "fix(pricing): validate FINET revenue mixes"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/79b1ae1967d7e1eb1b9e1acf4d23251e55e88599
+        authoredAt: 2026-08-11T19:24:59Z
+      - &a22
+        sha: 862e6ddc302bdfe05ebacd9342ece8178c0d0098
+        message: "fix(pricing): preserve and validate editable FiNet revenue mixes"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/862e6ddc302bdfe05ebacd9342ece8178c0d0098
+        authoredAt: 2026-08-11T19:43:31Z
+      - &a23
+        sha: 425d50a046ce37631bf114939476c8a6eb5164c0
+        message: "fix(pricing): preserve Finet revenue mix on recruit creation"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/425d50a046ce37631bf114939476c8a6eb5164c0
+        authoredAt: 2026-08-11T19:56:13Z
+    workTimestamps: &a7
+      - 2026-08-11T18:39:24Z
+      - 2026-08-11T19:01:27Z
+      - 2026-08-11T19:24:59Z
+      - 2026-08-11T19:43:31Z
+      - 2026-08-11T19:56:13Z
+    workAdditions: 710
+    workDeletions: 104
+    workFiles: &a8
+      - docs/pricing-scenario-rules.md
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/pricing.test.ts
+      - packages/db/src/pricing.ts
+      - pricing/functions/src/index.ts
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/recruit-model-shell.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/components/pricing-workstation-client.tsx
+      - pricing/src/components/recruit-model-shell.tsx
+      - pricing/src/lib/__tests__/calculation.test.ts
+      - pricing/src/lib/__tests__/fixtures/auditable-pricing-fixture.ts
+      - pricing/src/lib/__tests__/new-recruit.test.ts
+      - pricing/src/lib/__tests__/report-model.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/cosmos-data.ts
+      - pricing/src/lib/graph-data.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - scripts/dev-pricing-api.ts
+  - title: Redesign Proforma recruit intake and team economics
+    body: >-
+      ## Why
+
+
+      The Proforma recruit intake needed a team-first workflow and clearer modeling for recruit types, owners, advisors,
+      support staff, affiliations, and economics. Preview deployments also needed to include the managed Hub API.
+
+
+      ## What changed
+
+
+      - Redesigned the recruit wizard around firm details...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/85
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a9
+      - github-automation
+      - "app: proforma"
+      - platform
+    additions: 1310
+    deletions: 904
+    changedFiles: 59
+    author: myriadas-clees
+    createdAt: 2026-08-11T17:38:21Z
+    updatedAt: 2026-08-11T17:44:31Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a10
+      - &a25
+        sha: 7699c7395e564b24fe02d6e48d13c3b5d21db86e
+        message: "feat(proforma): extend recruit wizard team modeling and economics"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7699c7395e564b24fe02d6e48d13c3b5d21db86e
+        authoredAt: 2026-08-11T17:34:06Z
+    workTimestamps: &a11
+      - 2026-08-11T17:34:06Z
+    workAdditions: 243
+    workDeletions: 82
+    workFiles: &a12
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - packages/db/src/proforma.ts
+      - proforma/next-env.d.ts
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+  - title: Reduce redundant Codex agent token usage
+    body: >-
+      - replace mandatory two-agent fan-out with one compact, read-only explorer and at most one scoped implementation
+      specialist for normal work
+
+      - make root guidance concise and align scoped issue, commit/push/PR, CI, and review-comment workflows
+
+      - lower explorer reasoning to low and routine implementati...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/90
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a13
+      - documentation
+    additions: 81
+    deletions: 93
+    changedFiles: 14
+    author: myriadas-clees
+    createdAt: 2026-08-12T03:08:46Z
+    updatedAt: 2026-08-12T03:18:47Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a14
+      - &a33
+        sha: e9b85a3c75e408cfaee446e640855033401ec377
+        message: "chore(codex): reduce redundant agent token usage"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e9b85a3c75e408cfaee446e640855033401ec377
+        authoredAt: 2026-08-12T03:08:05Z
+      - &a34
+        sha: d527aa6513fd8ee33598a4f30e3d4c91ba84280a
+        message: "docs(codex): retain serverless validation guidance"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d527aa6513fd8ee33598a4f30e3d4c91ba84280a
+        authoredAt: 2026-08-12T03:14:42Z
+    workTimestamps: &a15
+      - 2026-08-12T03:08:05Z
+      - 2026-08-12T03:14:42Z
+    workAdditions: 82
+    workDeletions: 94
+    workFiles: &a16
+      - .codex/agents/docs.toml
+      - .codex/agents/excelerate.toml
+      - .codex/agents/explorer.toml
+      - .codex/agents/hub.toml
+      - .codex/agents/infra.toml
+      - .codex/agents/onboarding.toml
+      - .codex/agents/packages.toml
+      - .codex/agents/proforma.toml
+      - .codex/agents/pto-tracker.toml
+      - .codex/agents/scripts.toml
+      - .codex/agents/valuation.toml
+      - .codex/agents/worker.toml
+      - .codex/config.toml
+      - AGENTS.md
   - title: Streamline recruit editing and business mix UX in pricing
     body: >-
       - Default local development role is now `admin` (`OHPWM_LOCAL_ROLE=admin` in env examples); set
@@ -46,8 +281,8 @@ pullRequests:
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: merged
     labels: []
-    additions: 107
-    deletions: 29
+    additions: 748
+    deletions: 202
     changedFiles: 19
     author: myriadas-clees
     createdAt: 2026-08-10T21:45:06Z
@@ -55,12 +290,12 @@ pullRequests:
     closedAt: 2026-08-11T16:40:33Z
     mergedAt: 2026-08-11T16:40:33Z
     workCommits:
-      - &a1
+      - &a17
         sha: 2065dea245ed60617a2d45a856a80fe0f9326586
         message: "fix(pricing): clamp advisor percentage inputs to 0-100"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2065dea245ed60617a2d45a856a80fe0f9326586
         authoredAt: 2026-08-11T13:07:43Z
-      - &a2
+      - &a18
         sha: db5c6bbdf44465923c565937797faa4eb0282ed8
         message: "fix(pricing): hide AUM/revenue steppers and reconcile platform breakdown"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/db5c6bbdf44465923c565937797faa4eb0282ed8
@@ -78,28 +313,108 @@ pullRequests:
       - pricing/src/lib/__tests__/workstation.test.ts
       - pricing/src/lib/workstation.ts
 prsInProgress:
-  - title: "feat(auth): centralize Azure runtime auth"
-    body: |-
-      - Centralizes Azure Static Web Apps principal parsing and app-role enforcement in `@ohpwm/auth`.
-      - Updates Pricing and OFAC Functions to consume the transport-neutral shared helper and preserve 401/403 behavior.
-      - Removes the obsolete `mode: "azure"` adapter option and adds malformed, role, and admi...
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/79
+  - title: Reduce redundant Codex agent token usage
+    body: >-
+      - replace mandatory two-agent fan-out with one compact, read-only explorer and at most one scoped implementation
+      specialist for normal work
+
+      - make root guidance concise and align scoped issue, commit/push/PR, CI, and review-comment workflows
+
+      - lower explorer reasoning to low and routine implementati...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/113
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
-    labels: []
-    additions: 191
-    deletions: 115
-    changedFiles: 6
+    labels: *a1
+    additions: 72
+    deletions: 160
+    changedFiles: 10
     author: myriadas-clees
-    createdAt: 2026-08-03T15:31:59Z
-    updatedAt: 2026-08-11T14:06:36Z
+    createdAt: 2026-08-12T03:08:43Z
+    updatedAt: 2026-08-12T03:08:43Z
     closedAt: null
     mergedAt: null
-    workCommits: []
-    workTimestamps: []
-    workAdditions: 0
-    workDeletions: 0
-    workFiles: []
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 72
+    workDeletions: 160
+    workFiles: *a4
+  - title: Enable FINET business mix editing
+    body: |-
+      - Enable Revenue and Business Mix editing for FINET models.
+      - Show the Business mix editing destination for all recruit models.
+      - Add coverage for FINET business mix controls.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/112
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: *a5
+    additions: 687
+    deletions: 81
+    changedFiles: 25
+    author: myriadas-clees
+    createdAt: 2026-08-11T18:39:34Z
+    updatedAt: 2026-08-11T20:00:08Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a6
+    workTimestamps: *a7
+    workAdditions: 710
+    workDeletions: 104
+    workFiles: *a8
+  - title: Redesign Proforma recruit intake and team economics
+    body: >-
+      ## Why
+
+
+      The Proforma recruit intake needed a team-first workflow and clearer modeling for recruit types, owners, advisors,
+      support staff, affiliations, and economics. Preview deployments also needed to include the managed Hub API.
+
+
+      ## What changed
+
+
+      - Redesigned the recruit wizard around firm details...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/85
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a9
+    additions: 1310
+    deletions: 904
+    changedFiles: 59
+    author: myriadas-clees
+    createdAt: 2026-08-11T17:38:21Z
+    updatedAt: 2026-08-11T17:44:31Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a10
+    workTimestamps: *a11
+    workAdditions: 243
+    workDeletions: 82
+    workFiles: *a12
+  - title: Reduce redundant Codex agent token usage
+    body: >-
+      - replace mandatory two-agent fan-out with one compact, read-only explorer and at most one scoped implementation
+      specialist for normal work
+
+      - make root guidance concise and align scoped issue, commit/push/PR, CI, and review-comment workflows
+
+      - lower explorer reasoning to low and routine implementati...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/90
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a13
+    additions: 81
+    deletions: 93
+    changedFiles: 14
+    author: myriadas-clees
+    createdAt: 2026-08-12T03:08:46Z
+    updatedAt: 2026-08-12T03:18:47Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a14
+    workTimestamps: *a15
+    workAdditions: 82
+    workDeletions: 94
+    workFiles: *a16
   - title: "feat(ofac): add durable scheduled sync lease"
     body: >-
       Closes #38.
@@ -152,6 +467,130 @@ prsInProgress:
     workAdditions: 0
     workDeletions: 0
     workFiles: []
+  - title: "feat(auth): centralize Azure runtime auth"
+    body: |-
+      - Centralizes Azure Static Web Apps principal parsing and app-role enforcement in `@ohpwm/auth`.
+      - Updates Pricing and OFAC Functions to consume the transport-neutral shared helper and preserve 401/403 behavior.
+      - Removes the obsolete `mode: "azure"` adapter option and adds malformed, role, and admi...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/79
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: []
+    additions: 191
+    deletions: 115
+    changedFiles: 6
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:31:59Z
+    updatedAt: 2026-08-11T14:06:36Z
+    closedAt: null
+    mergedAt: null
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: Redesign Proforma recruit intake with team-first step order
+    body: >-
+      ## Why
+
+
+      Recruit intake still followed an advisor-first flow that did not match how teams are modeled in practice. Platform
+      assumptions also carried legacy OHC and FiNet Wells/WFAFN fee inputs that are no longer part of the pricing model.
+
+
+      ## What changed
+
+
+      - Reordered the new-recruit wizard to **Firm...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - github-automation
+      - "app: proforma"
+      - platform
+      - deploy-preview
+    additions: 1613
+    deletions: 1039
+    changedFiles: 56
+    author: myriadas-clees
+    createdAt: 2026-08-10T18:50:49Z
+    updatedAt: 2026-08-11T20:46:55Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a26
+        sha: 9de30e5573aa99bf3bec45de9805d1df0747e23d
+        message: "fix(proforma): preserve benefits coverage"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9de30e5573aa99bf3bec45de9805d1df0747e23d
+        authoredAt: 2026-08-11T18:22:18Z
+      - &a27
+        sha: 370ba46fffc751eb70d85809d66a5725cc17cfbc
+        message: "fix(proforma): address recruit review feedback"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/370ba46fffc751eb70d85809d66a5725cc17cfbc
+        authoredAt: 2026-08-11T18:33:16Z
+      - &a28
+        sha: 7b22f9d47f63935a289d5b04c5d50aff9c5e556a
+        message: "fix(proforma): align workbook waterfall formulas"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7b22f9d47f63935a289d5b04c5d50aff9c5e556a
+        authoredAt: 2026-08-11T18:39:17Z
+      - &a29
+        sha: 35827a794bdac37c8f5b3d5532e56636af17451b
+        message: "fix(proforma): address remaining intake issues"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/35827a794bdac37c8f5b3d5532e56636af17451b
+        authoredAt: 2026-08-11T18:59:53Z
+      - &a30
+        sha: c9118afaf3bc92c2e02db0adfc97606438c01880
+        message: "fix(proforma): use Firm Details states for assumptions"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c9118afaf3bc92c2e02db0adfc97606438c01880
+        authoredAt: 2026-08-11T19:57:28Z
+      - &a31
+        sha: 70aed55df8ad66030766682af644e2599d264359
+        message: "refactor(proforma): remove live intake summary"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/70aed55df8ad66030766682af644e2599d264359
+        authoredAt: 2026-08-11T20:01:32Z
+      - &a32
+        sha: 57b763d87f8bb9322463281d15a408f5a2ec14b2
+        message: "feat(proforma): model entities by formation state"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/57b763d87f8bb9322463281d15a408f5a2ec14b2
+        authoredAt: 2026-08-11T20:42:17Z
+    workTimestamps:
+      - 2026-08-11T18:22:18Z
+      - 2026-08-11T18:33:16Z
+      - 2026-08-11T18:39:17Z
+      - 2026-08-11T18:59:53Z
+      - 2026-08-11T19:57:28Z
+      - 2026-08-11T20:01:32Z
+      - 2026-08-11T20:42:17Z
+    workAdditions: 787
+    workDeletions: 458
+    workFiles:
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/src/app/globals.css
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
 issues: []
 events: []
 commitMessages:
@@ -160,38 +599,240 @@ commitMessages:
       - "fix(pricing): clamp advisor percentage inputs to 0-100"
       - "fix(pricing): hide AUM/revenue steppers and reconcile platform breakdown"
       - Streamline recruit editing and business mix UX in pricing (#111)
+      - "fix(pricing): enable business mix editing for FINET"
+      - "fix(pricing): apply FINET business mix edits"
+      - "fix(pricing): validate FINET revenue mixes"
+      - "fix(pricing): preserve and validate editable FiNet revenue mixes"
+      - "fix(pricing): preserve Finet revenue mix on recruit creation"
+      - "chore(codex): reduce redundant agent token usage"
     commits:
-      - *a1
-      - *a2
+      - *a17
+      - *a18
       - sha: 726f1ae14f4a30add404abd2922eddb74dbeb57e
         message: Streamline recruit editing and business mix UX in pricing (#111)
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/726f1ae14f4a30add404abd2922eddb74dbeb57e
         authoredAt: 2026-08-11T16:40:32Z
+      - *a19
+      - *a20
+      - *a21
+      - *a22
+      - *a23
+      - *a24
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "feat(proforma): extend recruit wizard team modeling and economics"
+      - "fix(proforma): preserve benefits coverage"
+      - "fix(proforma): address recruit review feedback"
+      - "fix(proforma): align workbook waterfall formulas"
+      - "fix(proforma): address remaining intake issues"
+      - "fix(proforma): use Firm Details states for assumptions"
+      - "refactor(proforma): remove live intake summary"
+      - "feat(proforma): model entities by formation state"
+      - "chore(codex): reduce redundant agent token usage"
+      - "docs(codex): retain serverless validation guidance"
+    commits:
+      - *a25
+      - *a26
+      - *a27
+      - *a28
+      - *a29
+      - *a30
+      - *a31
+      - *a32
+      - *a33
+      - *a34
 releases: []
 externalContributions: []
-codeReviews: []
-reviewComments: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 90
+    prTitle: Reduce redundant Codex agent token usage
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/90
+    state: commented
+    submittedAt: 2026-08-12T03:15:00Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 84
+    prTitle: Redesign Proforma recruit intake with team-first step order
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
+    state: commented
+    submittedAt: 2026-08-11T18:33:41Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 84
+    prTitle: Redesign Proforma recruit intake with team-first step order
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
+    state: commented
+    submittedAt: 2026-08-11T18:33:43Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 84
+    prTitle: Redesign Proforma recruit intake with team-first step order
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
+    state: commented
+    submittedAt: 2026-08-11T18:33:45Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 84
+    prTitle: Redesign Proforma recruit intake with team-first step order
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
+    state: commented
+    submittedAt: 2026-08-11T18:33:48Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 84
+    prTitle: Redesign Proforma recruit intake with team-first step order
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
+    state: commented
+    submittedAt: 2026-08-11T18:33:50Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 84
+    prTitle: Redesign Proforma recruit intake with team-first step order
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
+    state: commented
+    submittedAt: 2026-08-11T18:33:53Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 84
+    prTitle: Redesign Proforma recruit intake with team-first step order
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
+    state: commented
+    submittedAt: 2026-08-11T18:33:56Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 84
+    prTitle: Redesign Proforma recruit intake with team-first step order
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
+    state: commented
+    submittedAt: 2026-08-11T18:34:00Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 84
+    prTitle: Redesign Proforma recruit intake with team-first step order
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
+    state: commented
+    submittedAt: 2026-08-11T18:34:02Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 84
+    prTitle: Redesign Proforma recruit intake with team-first step order
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
+    state: commented
+    submittedAt: 2026-08-11T18:39:28Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 90
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/90
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/90#discussion_r3763336981
+    body: Legitimate catch—fixed in d527aa6. `verify` covers typecheck, lint, and tests, while `build:serverless` also
+      builds static output and Functions and validates composed artifacts. The repository-specific guidance now
+      explicitly requires `bun run build:serverless` for static output, Azure Functions, or...
+    path: AGENTS.md
+    createdAt: 2026-08-12T03:15:00Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 84
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3760692399
+    body: Fixed in 370ba46. Syndicate, insurance, and retirement revenue now affect total revenue, gross payout,
+      projections, report totals, and workbook totals, with focused calculation coverage.
+    path: proforma/src/lib/new-recruit.ts
+    createdAt: 2026-08-11T18:33:41Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 84
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3760692667
+    body: Fixed in 370ba46. Owner role and ownership percentage are structured Advisor fields, editable after creation,
+      included in reporting, and no longer encoded as a zero-dollar expense.
+    path: proforma/src/lib/new-recruit.ts
+    createdAt: 2026-08-11T18:33:43Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 84
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3760692918
+    body: Fixed in 370ba46. The registration footprint picker now synchronizes setup.registeredStateCount, so setup costs
+      and review values update from the selected states.
+    path: proforma/src/components/new-recruit-wizard.tsx
+    createdAt: 2026-08-11T18:33:45Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 84
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3760693211
+    body: Fixed in 370ba46. Final submission now requires Company, displays a review warning, and keeps Create Recruit
+      disabled until the company is present.
+    path: proforma/src/components/new-recruit-wizard.tsx
+    createdAt: 2026-08-11T18:33:47Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 84
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3760693458
+    body: Fixed in 370ba46. Every rendered recruit wizard panel now includes intake-panel, activating the intended shell,
+      responsive, and dark-mode selectors throughout the flow.
+    path: proforma/src/app/globals.css
+    createdAt: 2026-08-11T18:33:50Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 84
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3760693837
+    body: Fixed in 370ba46. Changing a member to Staff clears advisor-only economics, and an all-staff team is now blocked
+      so review and created-model economics remain consistent.
+    path: proforma/src/components/new-recruit-wizard.tsx
+    createdAt: 2026-08-11T18:33:53Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 84
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3760694182
+    body: Fixed in 370ba46. Standalone staff preset and custom expenses now contribute to the wizard local-expense total.
+    path: proforma/src/components/new-recruit-wizard.tsx
+    createdAt: 2026-08-11T18:33:56Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 84
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3760694552
+    body: "Resolved as intentional product behavior. The required mapping is categorical: FiNet records Broker-dealer and
+      RIA records Custodian. Collecting an institution name is intentionally out of scope, and tests cover both
+      mappings."
+    path: proforma/src/components/new-recruit-wizard.tsx
+    createdAt: 2026-08-11T18:33:59Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 84
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3760694829
+    body: Fixed in 9de30e5. Benefits coverage is now structured advisor/support-staff data, editable after creation, and
+      surfaced in reporting rather than stored as a zero-dollar expense.
+    path: proforma/src/lib/new-recruit.ts
+    createdAt: 2026-08-11T18:34:02Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 84
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3760732221
+    body: Fixed in 7b22f9d. WFCS and Schwab waterfall formulas are now derived from the actual rendered row positions, so
+      optional platform/local rows cannot create stale references or self-references. Focused row-alignment tests cover
+      both sheets.
+    path: proforma/src/lib/workbook-output.ts
+    createdAt: 2026-08-11T18:39:28Z
 aiReviews:
   codex:
-    prsReviewed: 3
-    comments: 7
-    reviews: 3
-    fixed: 0
+    prsReviewed: 7
+    comments: 32
+    reviews: 17
+    fixed: 9
   cursor:
     prsReviewed: 0
     comments: 0
     reviews: 0
     fixed: 0
-  prsReviewed: 3
-  comments: 7
-  reviews: 3
-  fixed: 0
+  prsReviewed: 7
+  comments: 32
+  reviews: 17
+  fixed: 9
 hoursEstimate:
   version: "2.0"
-  hours: 5.5
-  sessions: 2
-  sessionHours: 1.1
-  volumeHours: 5.5
+  hours: 53.9
+  sessions: 3
+  sessionHours: 5.1
+  volumeHours: 53.9
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
