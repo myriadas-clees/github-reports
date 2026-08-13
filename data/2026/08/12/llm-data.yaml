@@ -1,0 +1,103 @@
+title: Aug 12
+subtitle: ofac, reduce redundant & enable finet
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/ohcpwm-apps and Myriad-Advisor-Solutions/myriadas-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 2 PRs
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 0 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 11 commits with +1,994 / −425 lines.
+    chips:
+      - label: Commits
+        value: "11"
+        color: green
+      - label: Additions
+        value: +1,994
+        color: green
+      - label: Deletions
+        value: −425
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 1 reviews with 1 comments.
+    chips:
+      - label: Reviews
+        value: "1"
+      - label: Comments
+        value: "1"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 3 reviews, 7 comments, 3 PRs."
+    chips:
+      - label: Codex
+        value: 3 reviews · 7 comments · 3 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~39.9h
+highlights:
+  - type: pr
+    title: "fix(pricing): make static font builds deterministic"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +212 −7
+    body: >-
+      ## Problem
+
+
+      The production Static Web Apps workflow failed while building Pricing because `next/font/google` could not
+      download IBM Plex Sans from `fonts.gstatic.com`. Hub and OFAC built successfully,
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/114
+  - type: pr
+    title: Reduce redundant Codex agent token usage
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +72 −160
+    body: >-
+      - replace mandatory two-agent fan-out with one compact, read-only explorer and at most one scoped implementation
+      specialist for normal work
+
+      - make root guidance concise and align scoped issue, commit/
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/113
+  - type: pr
+    title: Reduce redundant Codex agent token usage
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +81 −93
+    body: >-
+      - replace mandatory two-agent fan-out with one compact, read-only explorer and at most one scoped implementation
+      specialist for normal work
+
+      - make root guidance concise and align scoped issue, commit/
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/90
+  - type: pr
+    title: Enable FINET business mix editing
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +802 −95
+    body: |-
+      - Enable Revenue and Business Mix editing for FINET models.
+      - Show the Business mix editing destination for all recruit models.
+      - Add coverage for FINET business mix controls.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/112
+  - type: pr
+    title: "feat(ofac): add PDF, CSV, and Excel report exports"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +827 −70
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(pricing): make static font builds deterministic" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "Reduce redundant Codex agent token usage" in Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "Reduce redundant Codex agent token usage" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "Enable FINET business mix editing" in Myriad-Advisor-Solutions/ohcpwm-apps'

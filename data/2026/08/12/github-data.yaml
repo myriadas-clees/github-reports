@@ -1,0 +1,440 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-08-12
+  to: 2026-08-12
+stats:
+  totalCommits: 11
+  totalAdditions: 1994
+  totalDeletions: 425
+  prsOpened: 2
+  prsMerged: 4
+  prsInProgress: 2
+  prsReviewed: 1
+  reviewComments: 1
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 39.9
+dailyCommits:
+  - date: 2026-08-12
+    count: 11
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 7
+    prsOpened: 2
+    prsMerged: 3
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 4
+    prsOpened: 0
+    prsMerged: 1
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests:
+  - title: "fix(pricing): make static font builds deterministic"
+    body: >-
+      ## Problem
+
+
+      The production Static Web Apps workflow failed while building Pricing because `next/font/google` could not
+      download IBM Plex Sans from `fonts.gstatic.com`. Hub and OFAC built successfully, but the Pricing failure
+      prevented artifact composition and deployment.
+
+
+      The failed run was rerun on...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/114
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels:
+      - deploy-preview
+    additions: 212
+    deletions: 7
+    changedFiles: 8
+    author: myriadas-clees
+    createdAt: 2026-08-12T19:34:01Z
+    updatedAt: 2026-08-12T19:44:46Z
+    closedAt: 2026-08-12T19:44:46Z
+    mergedAt: 2026-08-12T19:44:46Z
+    workCommits:
+      - &a10
+        sha: 34eed792bf53646af97ea03af66a0e1e16c78e5d
+        message: "fix(pricing): make static font builds deterministic"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/34eed792bf53646af97ea03af66a0e1e16c78e5d
+        authoredAt: 2026-08-12T19:33:42Z
+    workTimestamps:
+      - 2026-08-12T19:33:42Z
+    workAdditions: 212
+    workDeletions: 7
+    workFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - pricing/src/app/fonts/CORMORANT-GARAMOND-LICENSE.txt
+      - pricing/src/app/fonts/IBM-PLEX-LICENSE.txt
+      - pricing/src/app/fonts/cormorant-garamond-latin.woff2
+      - pricing/src/app/fonts/ibm-plex-sans-medium.woff2
+      - pricing/src/app/fonts/ibm-plex-sans-regular.woff2
+      - pricing/src/app/fonts/ibm-plex-sans-semibold.woff2
+      - pricing/src/app/layout.tsx
+  - title: "feat(ofac): add PDF, CSV, and Excel report exports"
+    body: |-
+      - adds branded, on-demand PDF evidence reports for individual OFAC screenings
+      - adds complete filtered or single-screening CSV and styled XLSX exports with a stable full-evidence row contract
+      - adds Pricing-style PDF and workbook previews, with Excel previews capped at 200 rows while downloads remai...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a1 []
+    additions: 827
+    deletions: 70
+    changedFiles: 28
+    author: myriadas-clees
+    createdAt: 2026-08-12T19:55:22Z
+    updatedAt: 2026-08-12T19:59:23Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a2
+      - &a11
+        sha: c5161259ba3a5884305ef3e3902225a1874bc7aa
+        message: "feat(ofac): add compliance report exports"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c5161259ba3a5884305ef3e3902225a1874bc7aa
+        authoredAt: 2026-08-12T19:54:58Z
+    workTimestamps: &a3
+      - 2026-08-12T19:54:58Z
+    workAdditions: 827
+    workDeletions: 70
+    workFiles: &a4
+      - bun.lock
+      - ofac/functions/src/index.ts
+      - ofac/functions/src/ofac-repository.ts
+      - ofac/package.json
+      - ofac/src/app/api/ofac/export/__tests__/route.test.ts
+      - ofac/src/app/api/ofac/export/route.ts
+      - ofac/src/app/api/ofac/export/workbook-preview/route.ts
+      - ofac/src/app/api/ofac/screenings/[id]/pdf/route.test.ts
+      - ofac/src/app/api/ofac/screenings/[id]/pdf/route.ts
+      - ofac/src/app/api/ofac/screenings/route.ts
+      - ofac/src/app/globals.css
+      - ofac/src/app/screenings/page.tsx
+      - ofac/src/components/export-artifact-viewer.test.tsx
+      - ofac/src/components/export-artifact-viewer.tsx
+      - ofac/src/components/pdf-report-viewer.tsx
+      - ofac/src/components/report-viewer-shell.tsx
+      - ofac/src/components/screening-detail.tsx
+      - ofac/src/components/workbook-report-viewer.tsx
+      - ofac/src/lib/__tests__/ofac-api-client.test.ts
+      - ofac/src/lib/__tests__/report.test.ts
+      - ofac/src/lib/ofac-api-client.ts
+      - ofac/src/lib/report/csv.ts
+      - ofac/src/lib/report/excel.ts
+      - ofac/src/lib/report/filenames.ts
+      - ofac/src/lib/report/index.ts
+      - ofac/src/lib/report/model.ts
+      - ofac/src/lib/report/pdf.tsx
+      - packages/db/src/ofac.ts
+  - title: Reduce redundant Codex agent token usage
+    body: >-
+      - replace mandatory two-agent fan-out with one compact, read-only explorer and at most one scoped implementation
+      specialist for normal work
+
+      - make root guidance concise and align scoped issue, commit/push/PR, CI, and review-comment workflows
+
+      - lower explorer reasoning to low and routine implementati...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/113
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 72
+    deletions: 160
+    changedFiles: 10
+    author: myriadas-clees
+    createdAt: 2026-08-12T03:08:43Z
+    updatedAt: 2026-08-12T14:35:03Z
+    closedAt: 2026-08-12T14:35:03Z
+    mergedAt: 2026-08-12T14:35:03Z
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: Reduce redundant Codex agent token usage
+    body: >-
+      - replace mandatory two-agent fan-out with one compact, read-only explorer and at most one scoped implementation
+      specialist for normal work
+
+      - make root guidance concise and align scoped issue, commit/push/PR, CI, and review-comment workflows
+
+      - lower explorer reasoning to low and routine implementati...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/90
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+    additions: 81
+    deletions: 93
+    changedFiles: 14
+    author: myriadas-clees
+    createdAt: 2026-08-12T03:08:46Z
+    updatedAt: 2026-08-12T14:34:52Z
+    closedAt: 2026-08-12T14:34:52Z
+    mergedAt: 2026-08-12T14:34:52Z
+    workCommits:
+      - &a5
+        sha: 983927673f4ed1f6866cbc6de16a59332ab69e1b
+        message: "docs(codex): retain serverless package approval"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/983927673f4ed1f6866cbc6de16a59332ab69e1b
+        authoredAt: 2026-08-12T14:25:30Z
+    workTimestamps:
+      - 2026-08-12T14:25:30Z
+    workAdditions: 1
+    workDeletions: 1
+    workFiles:
+      - AGENTS.md
+  - title: Enable FINET business mix editing
+    body: |-
+      - Enable Revenue and Business Mix editing for FINET models.
+      - Show the Business mix editing destination for all recruit models.
+      - Add coverage for FINET business mix controls.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/112
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 802
+    deletions: 95
+    changedFiles: 27
+    author: myriadas-clees
+    createdAt: 2026-08-11T18:39:34Z
+    updatedAt: 2026-08-12T14:48:47Z
+    closedAt: 2026-08-12T14:48:47Z
+    mergedAt: 2026-08-12T14:48:47Z
+    workCommits:
+      - &a8
+        sha: fd0a97511661c50c96402291bc5f8f3f405c2f5f
+        message: "fix(pricing): normalize legacy FiNet mixes"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/fd0a97511661c50c96402291bc5f8f3f405c2f5f
+        authoredAt: 2026-08-12T13:37:27Z
+      - &a9
+        sha: 3de6408f907e287ca18b906d099fff746eb72773
+        message: "fix(pricing): align FiNet payout validation"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3de6408f907e287ca18b906d099fff746eb72773
+        authoredAt: 2026-08-12T14:07:33Z
+    workTimestamps:
+      - 2026-08-12T13:37:27Z
+      - 2026-08-12T14:07:33Z
+    workAdditions: 131
+    workDeletions: 30
+    workFiles:
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - pricing/src/components/pricing-workstation-client.tsx
+      - pricing/src/lib/__tests__/calculation.test.ts
+      - pricing/src/lib/__tests__/report-model.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/workstation.ts
+      - scripts/dev-pricing-api.ts
+prsInProgress:
+  - title: "feat(ofac): add PDF, CSV, and Excel report exports"
+    body: |-
+      - adds branded, on-demand PDF evidence reports for individual OFAC screenings
+      - adds complete filtered or single-screening CSV and styled XLSX exports with a stable full-evidence row contract
+      - adds Pricing-style PDF and workbook previews, with Excel previews capped at 200 rows while downloads remai...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: *a1
+    additions: 827
+    deletions: 70
+    changedFiles: 28
+    author: myriadas-clees
+    createdAt: 2026-08-12T19:55:22Z
+    updatedAt: 2026-08-12T19:59:23Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 827
+    workDeletions: 70
+    workFiles: *a4
+  - title: Redesign Proforma recruit intake with team-first step order
+    body: >-
+      ## Why
+
+
+      Recruit intake still followed an advisor-first flow that did not match how teams are modeled in practice. Platform
+      assumptions also carried legacy OHC and FiNet Wells/WFAFN fee inputs that are no longer part of the pricing model.
+
+
+      ## What changed
+
+
+      - Reordered the new-recruit wizard to **Firm...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - documentation
+      - github-automation
+      - "app: proforma"
+      - platform
+      - deploy-preview
+    additions: 3463
+    deletions: 1544
+    changedFiles: 61
+    author: myriadas-clees
+    createdAt: 2026-08-10T18:50:49Z
+    updatedAt: 2026-08-12T20:40:04Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a6
+        sha: 952c9754b07197988414e068fd9d26e5a0d9b166
+        message: Match client expense section formatting
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/952c9754b07197988414e068fd9d26e5a0d9b166
+        authoredAt: 2026-08-12T15:30:05Z
+      - &a7
+        sha: 37578a70f828f6d4bcbf85bf998040e22ccbb78d
+        message: Align Proforma expenses and setup outputs
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/37578a70f828f6d4bcbf85bf998040e22ccbb78d
+        authoredAt: 2026-08-12T20:33:26Z
+    workTimestamps:
+      - 2026-08-12T15:30:05Z
+      - 2026-08-12T20:33:26Z
+    workAdditions: 2112
+    workDeletions: 767
+    workFiles:
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/src/app/globals.css
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workstation.ts
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "docs(codex): retain serverless package approval"
+      - Reduce redundant Codex agent token usage (#90)
+      - Match client expense section formatting
+      - Align Proforma expenses and setup outputs
+    commits:
+      - *a5
+      - sha: 697c61a9f472d351315d5e67300be31fcefa1ad4
+        message: Reduce redundant Codex agent token usage (#90)
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/697c61a9f472d351315d5e67300be31fcefa1ad4
+        authoredAt: 2026-08-12T14:34:51Z
+      - *a6
+      - *a7
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "fix(pricing): normalize legacy FiNet mixes"
+      - "fix(pricing): align FiNet payout validation"
+      - "chore(codex): reduce redundant agent token usage (#113)"
+      - Enable FINET business mix editing (#112)
+      - "fix(pricing): make static font builds deterministic"
+      - "fix(pricing): make static font builds deterministic (#114)"
+      - "feat(ofac): add compliance report exports"
+    commits:
+      - *a8
+      - *a9
+      - sha: 24bdc0d44592ff6346208d6b91eb8454a72519e0
+        message: "chore(codex): reduce redundant agent token usage (#113)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/24bdc0d44592ff6346208d6b91eb8454a72519e0
+        authoredAt: 2026-08-12T14:35:02Z
+      - sha: 6bfe793ba8bbbf18a097931c6d717660154f7822
+        message: Enable FINET business mix editing (#112)
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6bfe793ba8bbbf18a097931c6d717660154f7822
+        authoredAt: 2026-08-12T14:48:47Z
+      - *a10
+      - sha: 67f6625c9025e5bd7f6f20015011e88bfdd78df2
+        message: "fix(pricing): make static font builds deterministic (#114)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/67f6625c9025e5bd7f6f20015011e88bfdd78df2
+        authoredAt: 2026-08-12T19:44:45Z
+      - *a11
+releases: []
+externalContributions: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 90
+    prTitle: Reduce redundant Codex agent token usage
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/90
+    state: commented
+    submittedAt: 2026-08-12T14:25:47Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 90
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/90
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/90#discussion_r3767294583
+    body: Legitimate—the rewrite preserved hosting and migration approval but unintentionally dropped the separate
+      shared-serverless-package boundary. Restored it in the repository-specific guidance in 9839276.
+    path: AGENTS.md
+    createdAt: 2026-08-12T14:25:47Z
+aiReviews:
+  codex:
+    prsReviewed: 3
+    comments: 7
+    reviews: 3
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 3
+  comments: 7
+  reviews: 3
+  fixed: 0
+hoursEstimate:
+  version: "2.0"
+  hours: 39.9
+  sessions: 2
+  sessionHours: 2.9
+  volumeHours: 39.9
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
