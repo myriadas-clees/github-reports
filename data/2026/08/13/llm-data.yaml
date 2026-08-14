@@ -1,0 +1,80 @@
+title: Aug 13
+subtitle: identify pull, ofac & read-only user
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps and Myriad-Advisor-Solutions/ohcpwm-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 2 PRs
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 0 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 9 commits with +283 / −74 lines.
+    chips:
+      - label: Commits
+        value: "9"
+        color: green
+      - label: Additions
+        value: "+283"
+        color: green
+      - label: Deletions
+        value: −74
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 2 reviews with 2 comments.
+    chips:
+      - label: Reviews
+        value: "2"
+      - label: Comments
+        value: "2"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 7 reviews, 13 comments, 3 PRs."
+    chips:
+      - label: Codex
+        value: 7 reviews · 13 comments · 3 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~25.6h
+highlights:
+  - type: pr
+    title: Add read-only user access across operational apps
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +242 −73
+    body: >-
+      ## Why
+
+
+      Enable users assigned the `read_only` role to access operational applications while preventing them from modifying
+      business data.
+
+
+      ## What changed
+
+
+      - Added `read_only` role recognition across 
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/91
+  - type: pr
+    title: "feat(ofac): add PDF, CSV, and Excel report exports"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +973 −70
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115
+  - type: pr
+    title: Redesign Proforma recruit intake with team-first step order
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +3597 −1565
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "Add read-only user access across operational apps" in
+      Myriad-Advisor-Solutions/myriadas-apps'

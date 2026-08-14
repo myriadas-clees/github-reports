@@ -1,0 +1,365 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-08-13
+  to: 2026-08-13
+stats:
+  totalCommits: 9
+  totalAdditions: 283
+  totalDeletions: 74
+  prsOpened: 2
+  prsMerged: 1
+  prsInProgress: 2
+  prsReviewed: 2
+  reviewComments: 2
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 25.6
+dailyCommits:
+  - date: 2026-08-13
+    count: 9
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 8
+    prsOpened: 2
+    prsMerged: 1
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 1
+    prsOpened: 0
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests:
+  - title: Identify pull request preview environments
+    body: |-
+      - show a branded preview-only banner across Hub pages
+      - include the pull request number and an explicit “Not production” warning
+      - compile the marker only into pull request preview artifacts
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/92
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: closed
+    labels:
+      - documentation
+      - github-automation
+      - "app: hub"
+      - platform
+    additions: 41
+    deletions: 1
+    changedFiles: 5
+    author: myriadas-clees
+    createdAt: 2026-08-13T17:44:18Z
+    updatedAt: 2026-08-13T17:45:30Z
+    closedAt: 2026-08-13T17:45:30Z
+    mergedAt: null
+    workCommits:
+      - &a7
+        sha: b61dce9d80dac4925b1a02f009f84dd16d643be6
+        message: Identify pull request preview environments
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b61dce9d80dac4925b1a02f009f84dd16d643be6
+        authoredAt: 2026-08-13T17:44:08Z
+    workTimestamps:
+      - 2026-08-13T17:44:08Z
+    workAdditions: 41
+    workDeletions: 1
+    workFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - docs/repository-operations.md
+      - hub/app/globals.css
+      - hub/app/layout.tsx
+      - scripts/tooling.test.ts
+  - title: Add read-only user access across operational apps
+    body: >-
+      ## Why
+
+
+      Enable users assigned the `read_only` role to access operational applications while preventing them from modifying
+      business data.
+
+
+      ## What changed
+
+
+      - Added `read_only` role recognition across Excelerate, Hub, Onboarding, Proforma, PTO Tracker, and Valuation
+      authentication flows.
+
+      - Updated St...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/91
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - "app: hub"
+      - "app: onboarding"
+      - "app: pto-tracker"
+      - "app: proforma"
+      - "app: excelerate"
+      - "app: valuation"
+    additions: 242
+    deletions: 73
+    changedFiles: 33
+    author: myriadas-clees
+    createdAt: 2026-08-13T17:07:38Z
+    updatedAt: 2026-08-13T17:44:22Z
+    closedAt: 2026-08-13T17:44:22Z
+    mergedAt: 2026-08-13T17:44:22Z
+    workCommits:
+      - &a2
+        sha: bc08ff3c1b59738052c5e4ff59ce9a5818dba84d
+        message: "feat(auth): add read-only user access across apps"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/bc08ff3c1b59738052c5e4ff59ce9a5818dba84d
+        authoredAt: 2026-08-13T17:07:27Z
+      - &a3
+        sha: 01b7b75680e6a6b89f375aec5553b1dfe54d4cc4
+        message: "fix(auth): enforce read-only access consistently"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/01b7b75680e6a6b89f375aec5553b1dfe54d4cc4
+        authoredAt: 2026-08-13T17:14:30Z
+      - &a4
+        sha: 561d907bf2876912870f14c3bb60f7d5eaa6359e
+        message: "fix(auth): complete read-only browsing safeguards"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/561d907bf2876912870f14c3bb60f7d5eaa6359e
+        authoredAt: 2026-08-13T17:23:31Z
+      - &a5
+        sha: 2d01596c4696d3a75238e437dcce595c4ba37e80
+        message: "fix(pto): keep read-only reads mutation-free"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2d01596c4696d3a75238e437dcce595c4ba37e80
+        authoredAt: 2026-08-13T17:31:53Z
+      - &a6
+        sha: 9eb2d9b6a11440b18d12c7e31676c3267579b3c7
+        message: "fix(proforma): allow read-only settings routes"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9eb2d9b6a11440b18d12c7e31676c3267579b3c7
+        authoredAt: 2026-08-13T17:37:12Z
+    workTimestamps:
+      - 2026-08-13T17:07:27Z
+      - 2026-08-13T17:14:30Z
+      - 2026-08-13T17:23:31Z
+      - 2026-08-13T17:31:53Z
+      - 2026-08-13T17:37:12Z
+    workAdditions: 248
+    workDeletions: 79
+    workFiles:
+      - excelerate/src/lib/api/azure-functions-adapter.test.ts
+      - excelerate/src/lib/api/azure-functions-adapter.ts
+      - excelerate/src/lib/auth.test.ts
+      - excelerate/src/lib/auth.ts
+      - excelerate/staticwebapp.config.json
+      - hub/lib/auth.ts
+      - hub/staticwebapp.config.json
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/auth.test.ts
+      - onboarding/apps/dashboard/lib/auth.ts
+      - onboarding/apps/dashboard/staticwebapp.config.json
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/auth.ts
+      - proforma/staticwebapp.config.json
+      - pto-tracker/src/app/page.tsx
+      - pto-tracker/src/components/PtoAppShell.tsx
+      - pto-tracker/src/lib/api/azure-functions-adapter.ts
+      - pto-tracker/src/lib/auth/entra-provider.ts
+      - pto-tracker/src/lib/auth/entra-token-provider.test.ts
+      - pto-tracker/src/lib/auth/entra-token-provider.ts
+      - pto-tracker/src/lib/auth/permissions.test.ts
+      - pto-tracker/src/lib/auth/permissions.ts
+      - pto-tracker/src/lib/auth/types.ts
+      - pto-tracker/src/lib/navigation.test.ts
+      - pto-tracker/src/lib/navigation.ts
+      - pto-tracker/src/lib/pto/read-model.test.ts
+      - pto-tracker/src/lib/pto/read-model.ts
+      - valuation/src/lib/api/azure-functions-adapter.test.ts
+      - valuation/src/lib/api/azure-functions-adapter.ts
+      - valuation/src/lib/auth.ts
+      - valuation/staticwebapp.config.json
+prsInProgress:
+  - title: "feat(ofac): add PDF, CSV, and Excel report exports"
+    body: |-
+      - adds branded, on-demand PDF evidence reports for individual OFAC screenings
+      - adds complete filtered or single-screening CSV and styled XLSX exports with a stable full-evidence row contract
+      - adds Pricing-style PDF and workbook previews, with Excel previews capped at 200 rows while downloads remai...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels:
+      - deploy-preview
+    additions: 973
+    deletions: 70
+    changedFiles: 28
+    author: myriadas-clees
+    createdAt: 2026-08-12T19:55:22Z
+    updatedAt: 2026-08-13T15:48:28Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a8
+        sha: 438afa56544e96d931ba789f3818f29e65174f97
+        message: "fix(ofac): harden previews and enrich PDF evidence"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/438afa56544e96d931ba789f3818f29e65174f97
+        authoredAt: 2026-08-13T15:43:29Z
+    workTimestamps:
+      - 2026-08-13T15:43:29Z
+    workAdditions: 190
+    workDeletions: 44
+    workFiles:
+      - ofac/functions/src/index.ts
+      - ofac/src/app/api/ofac/export/workbook-preview/route.ts
+      - ofac/src/components/pdf-report-viewer.tsx
+      - ofac/src/lib/__tests__/report.test.ts
+      - ofac/src/lib/report/excel.ts
+      - ofac/src/lib/report/model.ts
+      - ofac/src/lib/report/pdf.tsx
+  - title: Redesign Proforma recruit intake with team-first step order
+    body: >-
+      ## Why
+
+
+      Recruit intake still followed an advisor-first flow that did not match how teams are modeled in practice. Platform
+      assumptions also carried legacy OHC and FiNet Wells/WFAFN fee inputs that are no longer part of the pricing model.
+
+
+      ## What changed
+
+
+      - Reordered the new-recruit wizard to **Firm...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - documentation
+      - github-automation
+      - "app: proforma"
+      - platform
+      - deploy-preview
+    additions: 3597
+    deletions: 1565
+    changedFiles: 61
+    author: myriadas-clees
+    createdAt: 2026-08-10T18:50:49Z
+    updatedAt: 2026-08-13T16:40:18Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a1
+        sha: bac4006afe27c8417ce939582844cf07bd88e49d
+        message: "feat(proforma): add person-specific payroll and setup cost inputs"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/bac4006afe27c8417ce939582844cf07bd88e49d
+        authoredAt: 2026-08-13T16:35:22Z
+    workTimestamps:
+      - 2026-08-13T16:35:22Z
+    workAdditions: 146
+    workDeletions: 33
+    workFiles:
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/setup-projection.ts
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "feat(proforma): add person-specific payroll and setup cost inputs"
+      - "feat(auth): add read-only user access across apps"
+      - "fix(auth): enforce read-only access consistently"
+      - "fix(auth): complete read-only browsing safeguards"
+      - "fix(pto): keep read-only reads mutation-free"
+      - "fix(proforma): allow read-only settings routes"
+      - Identify pull request preview environments
+      - "feat(auth): Add read-only user access across operational apps (#91)"
+    commits:
+      - *a1
+      - *a2
+      - *a3
+      - *a4
+      - *a5
+      - *a6
+      - *a7
+      - sha: d5fd296b8199b40321f67a2f420b0e03d4e0f251
+        message: "feat(auth): Add read-only user access across operational apps (#91)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d5fd296b8199b40321f67a2f420b0e03d4e0f251
+        authoredAt: 2026-08-13T17:44:22Z
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "fix(ofac): harden previews and enrich PDF evidence"
+    commits:
+      - *a8
+releases: []
+externalContributions: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 115
+    prTitle: "feat(ofac): add PDF, CSV, and Excel report exports"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115
+    state: commented
+    submittedAt: 2026-08-13T15:43:38Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 115
+    prTitle: "feat(ofac): add PDF, CSV, and Excel report exports"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115
+    state: commented
+    submittedAt: 2026-08-13T15:43:39Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 115
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115#discussion_r3776827714
+    body: Fixed in 438afa5. Both adapters now build a dedicated preview model that retains the complete totalRows count but
+      caps flattened evidence rows at 200 before XLSX generation. The renderer uses the full count in the summary and
+      the bounded row set in the evidence sheet; regression coverage includes 20...
+    path: ofac/functions/src/index.ts
+    createdAt: 2026-08-13T15:43:38Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 115
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115#discussion_r3776827841
+    body: Fixed in 438afa5. The viewer now fetches with credentials, verifies response.ok and the PDF MIME type, and only
+      then creates an object URL for the iframe. Failed and authentication responses flow to the viewer error state;
+      object URLs are revoked and in-flight requests are aborted on cleanup.
+    path: ofac/src/components/pdf-report-viewer.tsx
+    createdAt: 2026-08-13T15:43:39Z
+aiReviews:
+  codex:
+    prsReviewed: 3
+    comments: 13
+    reviews: 7
+    fixed: 2
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 3
+  comments: 13
+  reviews: 7
+  fixed: 2
+hoursEstimate:
+  version: "2.0"
+  hours: 25.6
+  sessions: 1
+  sessionHours: 2
+  volumeHours: 25.6
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
