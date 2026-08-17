@@ -1,0 +1,66 @@
+title: Aug 14
+subtitle: onboarding, ofac & redesign proforma
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps and Myriad-Advisor-Solutions/ohcpwm-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 1 PRs
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 0 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 16 commits with +5,281 / −173 lines.
+    chips:
+      - label: Commits
+        value: "16"
+        color: green
+      - label: Additions
+        value: +5,281
+        color: green
+      - label: Deletions
+        value: −173
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 16 reviews with 16 comments.
+    chips:
+      - label: Reviews
+        value: "16"
+      - label: Comments
+        value: "16"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 11 reviews, 19 comments, 3 PRs."
+    chips:
+      - label: Codex
+        value: 11 reviews · 19 comments · 3 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~38.5h
+highlights:
+  - type: pr
+    title: "feat(onboarding): establish Twenty-inspired operations workspace"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +5281 −173
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
+  - type: pr
+    title: Redesign Proforma recruit intake with team-first step order
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +3602 −1565
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
+  - type: pr
+    title: "feat(ofac): add PDF, CSV, and Excel report exports"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +1047 −80
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115
+ticker: []
