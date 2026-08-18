@@ -1,0 +1,59 @@
+title: Aug 17
+subtitle: onboarding & redesign proforma
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 0 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 2 commits with +8,883 / −1,738 lines.
+    chips:
+      - label: Commits
+        value: "2"
+        color: green
+      - label: Additions
+        value: +8,883
+        color: green
+      - label: Deletions
+        value: −1,738
+        color: red
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~18.4h
+highlights:
+  - type: pr
+    title: "feat(onboarding): establish Twenty-inspired operations workspace"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +5281 −173
+    body: >-
+      - add the upstream Twenty repository as a pinned `twenty/` submodule for architecture and product-pattern
+      reference
+
+      - preserve the current Myriad static Next export, Azure Functions boundary, server-o
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
+  - type: pr
+    title: Redesign Proforma recruit intake with team-first step order
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +3602 −1565
+    body: >-
+      ## Why
+
+
+      Recruit intake still followed an advisor-first flow that did not match how teams are modeled in practice. Platform
+      assumptions also carried legacy OHC and FiNet Wells/WFAFN fee inputs that are
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(onboarding): establish Twenty-inspired operations workspace" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "Redesign Proforma recruit intake with team-first step order" in
+      Myriad-Advisor-Solutions/myriadas-apps'
