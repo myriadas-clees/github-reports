@@ -1,0 +1,62 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-08-19
+  to: 2026-08-19
+stats:
+  totalCommits: 0
+  totalAdditions: 0
+  totalDeletions: 0
+  prsOpened: 0
+  prsMerged: 0
+  prsInProgress: 0
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 0
+dailyCommits: []
+repositories: []
+pullRequests: []
+prsInProgress: []
+issues: []
+events: []
+commitMessages: []
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 0
+  comments: 0
+  reviews: 0
+  fixed: 0
+hoursEstimate:
+  version: "2.0"
+  hours: 0
+  sessions: 0
+  sessionHours: 0
+  volumeHours: 0
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
