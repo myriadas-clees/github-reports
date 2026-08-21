@@ -1,0 +1,77 @@
+title: Aug 20
+subtitle: proforma, deploy & hub
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 4 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 17 commits with +5,715 / −1,879 lines.
+    chips:
+      - label: Commits
+        value: "17"
+        color: green
+      - label: Additions
+        value: +5,715
+        color: green
+      - label: Deletions
+        value: −1,879
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 5 reviews with 5 comments.
+    chips:
+      - label: Reviews
+        value: "5"
+      - label: Comments
+        value: "5"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 9 reviews, 12 comments, 4 PRs."
+    chips:
+      - label: Codex
+        value: 9 reviews · 12 comments · 4 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~46.9h
+highlights:
+  - type: pr
+    title: "feat(deploy): add friendly preview links"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +1165 −165
+    body: >-
+      ## Problem
+
+
+      Product deployments required separate URL variables, and preview deployments exposed only Azure-generated
+      hostnames.
+
+
+      ## Solution
+
+
+      - Derive product routes from the single MYRIAD_HUB_URL re
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/95
+  - type: pr
+    title: "feat(proforma): update FiNet pricing calculations"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +271 −71
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/97
+  - type: pr
+    title: "feat(proforma): restyle intake and trim unused Platform fee lines"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +3087 −1202
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(deploy): add friendly preview links" in Myriad-Advisor-Solutions/myriadas-apps'
