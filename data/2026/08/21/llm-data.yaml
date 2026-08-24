@@ -1,0 +1,72 @@
+title: Aug 21
+subtitle: ci, hub & proforma
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 2 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 4 commits with +57 / −1 lines.
+    chips:
+      - label: Commits
+        value: "4"
+        color: green
+      - label: Additions
+        value: "+57"
+        color: green
+      - label: Deletions
+        value: −1
+        color: red
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 2 reviews, 2 comments, 1 PR."
+    chips:
+      - label: Codex
+        value: 2 reviews · 2 comments · 1 PR
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~7.8h
+highlights:
+  - type: pr
+    title: "fix(hub): use configured SWA hostname for preview links"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +53 −1
+    body: >-
+      ## Why
+
+
+      Friendly preview registration returned HTTP 503 because the production Hub could not verify its Static Web App
+      hostname through the forwarded request host and DNS fallback. This prevented the 
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/102
+  - type: pr
+    title: "fix(ci): deploy prebuilt SWA Functions without rebuilding"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +4 −0
+    body: >-
+      ## Why
+
+
+      The production Hub deployment could not publish the friendly preview redirect because Azure Oryx attempted to
+      rebuild the already-built Functions package and rejected Bun workspace:* dependenc
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/101
+  - type: pr
+    title: "feat(proforma): update FiNet pricing calculations"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +271 −71
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/97
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(hub): use configured SWA hostname for preview links" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(ci): deploy prebuilt SWA Functions without rebuilding" in
+      Myriad-Advisor-Solutions/myriadas-apps'

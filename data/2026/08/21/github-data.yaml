@@ -1,0 +1,192 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-08-21
+  to: 2026-08-21
+stats:
+  totalCommits: 4
+  totalAdditions: 57
+  totalDeletions: 1
+  prsOpened: 2
+  prsMerged: 2
+  prsInProgress: 1
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 7.8
+dailyCommits:
+  - date: 2026-08-21
+    count: 4
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 4
+    prsOpened: 2
+    prsMerged: 2
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests:
+  - title: "fix(hub): use configured SWA hostname for preview links"
+    body: >-
+      ## Why
+
+
+      Friendly preview registration returned HTTP 503 because the production Hub could not verify its Static Web App
+      hostname through the forwarded request host and DNS fallback. This prevented the registry from accepting PR
+      preview URLs even after the preview deployment succeeded.
+
+
+      ## What change...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/102
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - "app: hub"
+    additions: 53
+    deletions: 1
+    changedFiles: 3
+    author: myriadas-clees
+    createdAt: 2026-08-21T18:20:35Z
+    updatedAt: 2026-08-21T18:29:00Z
+    closedAt: 2026-08-21T18:28:57Z
+    mergedAt: 2026-08-21T18:28:57Z
+    workCommits:
+      - &a2
+        sha: 91a0b9175c2efce321f171af478b37b3d65f4751
+        message: "fix(hub): use configured SWA hostname for preview links"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/91a0b9175c2efce321f171af478b37b3d65f4751
+        authoredAt: 2026-08-21T18:19:39Z
+    workTimestamps:
+      - 2026-08-21T18:19:39Z
+    workAdditions: 53
+    workDeletions: 1
+    workFiles:
+      - docs/deploy-asap.md
+      - hub/functions/src/preview-redirects.test.ts
+      - hub/functions/src/preview-redirects.ts
+  - title: "fix(ci): deploy prebuilt SWA Functions without rebuilding"
+    body: >-
+      ## Why
+
+
+      The production Hub deployment could not publish the friendly preview redirect because Azure Oryx attempted to
+      rebuild the already-built Functions package and rejected Bun workspace:* dependencies.
+
+
+      ## What changed
+
+
+      - Tell both unified Hub Azure Static Web Apps deployment steps to skip the AP...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/101
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - github-automation
+      - platform
+    additions: 4
+    deletions: 0
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-08-21T17:20:49Z
+    updatedAt: 2026-08-21T17:31:45Z
+    closedAt: 2026-08-21T17:31:42Z
+    mergedAt: 2026-08-21T17:31:42Z
+    workCommits:
+      - &a1
+        sha: cb6cbe1e5f5825c958fd340d0765df71bc787c55
+        message: "fix(ci): deploy prebuilt SWA Functions without rebuilding"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/cb6cbe1e5f5825c958fd340d0765df71bc787c55
+        authoredAt: 2026-08-21T17:20:24Z
+    workTimestamps:
+      - 2026-08-21T17:20:24Z
+    workAdditions: 4
+    workDeletions: 0
+    workFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - scripts/tooling.test.ts
+prsInProgress:
+  - title: "feat(proforma): update FiNet pricing calculations"
+    body: |-
+      - Add explicit month-end advisory AUM and prior-quarter advisory AUM inputs.
+      - Apply the 4 bps advisory adjustment with per-advisor annual caps.
+      - Support Advisor Gateway package selection and updated Cloud PC pricing.
+      - Update FiNet assumptions, wizard summaries, workstation inputs, contracts, and ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/97
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - "app: proforma"
+      - platform
+    additions: 271
+    deletions: 71
+    changedFiles: 14
+    author: myriadas-clees
+    createdAt: 2026-08-20T16:54:34Z
+    updatedAt: 2026-08-21T18:32:02Z
+    closedAt: null
+    mergedAt: null
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "fix(ci): deploy prebuilt SWA Functions without rebuilding"
+      - "fix(ci): deploy prebuilt SWA Functions without rebuilding (#101)"
+      - "fix(hub): use configured SWA hostname for preview links"
+      - "fix(hub): use configured SWA hostname for preview links (#102)"
+    commits:
+      - *a1
+      - sha: 157c58a511e49f74adef9e41945db3756adc80b6
+        message: "fix(ci): deploy prebuilt SWA Functions without rebuilding (#101)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/157c58a511e49f74adef9e41945db3756adc80b6
+        authoredAt: 2026-08-21T17:31:41Z
+      - *a2
+      - sha: 830559e93812679898542009051654328de9e1aa
+        message: "fix(hub): use configured SWA hostname for preview links (#102)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/830559e93812679898542009051654328de9e1aa
+        authoredAt: 2026-08-21T18:28:56Z
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 1
+    comments: 2
+    reviews: 2
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 1
+  comments: 2
+  reviews: 2
+  fixed: 0
+hoursEstimate:
+  version: "2.0"
+  hours: 7.8
+  sessions: 1
+  sessionHours: 1.1
+  volumeHours: 7.8
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
