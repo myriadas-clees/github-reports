@@ -1,0 +1,63 @@
+title: Aug 24
+subtitle: proforma
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 0 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 16 commits with +11,815 / −3,530 lines.
+    chips:
+      - label: Commits
+        value: "16"
+        color: green
+      - label: Additions
+        value: +11,815
+        color: green
+      - label: Deletions
+        value: −3,530
+        color: red
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 8 reviews, 11 comments, 1 PR."
+    chips:
+      - label: Codex
+        value: 8 reviews · 11 comments · 1 PR
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~13.7h
+highlights:
+  - type: pr
+    title: "feat(proforma): update FiNet pricing calculations"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +271 −71
+    body: |-
+      - Add explicit month-end advisory AUM and prior-quarter advisory AUM inputs.
+      - Apply the 4 bps advisory adjustment with per-advisor annual caps.
+      - Support Advisor Gateway package selection and updated
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/97
+  - type: pr
+    title: "feat(proforma): restyle intake and trim unused Platform fee lines"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +11544 −3459
+    body: >-
+      - Stacks on #97 so FiNet 2026 pricing (Gateway packages, Cloud PC, Schedule A/B, advisory adjustment) stays the
+      base layer.
+
+      - Restyles New Recruit intake and groups Platform fees by cadence (Local Mon
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(proforma): update FiNet pricing calculations" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(proforma): restyle intake and trim unused Platform fee lines" in
+      Myriad-Advisor-Solutions/myriadas-apps'

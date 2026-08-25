@@ -1,0 +1,289 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-08-24
+  to: 2026-08-24
+stats:
+  totalCommits: 16
+  totalAdditions: 11815
+  totalDeletions: 3530
+  prsOpened: 0
+  prsMerged: 2
+  prsInProgress: 0
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 13.7
+dailyCommits:
+  - date: 2026-08-24
+    count: 16
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 16
+    prsOpened: 0
+    prsMerged: 2
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests:
+  - title: "feat(proforma): update FiNet pricing calculations"
+    body: |-
+      - Add explicit month-end advisory AUM and prior-quarter advisory AUM inputs.
+      - Apply the 4 bps advisory adjustment with per-advisor annual caps.
+      - Support Advisor Gateway package selection and updated Cloud PC pricing.
+      - Update FiNet assumptions, wizard summaries, workstation inputs, contracts, and ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/97
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - "app: proforma"
+      - platform
+    additions: 271
+    deletions: 71
+    changedFiles: 14
+    author: myriadas-clees
+    createdAt: 2026-08-20T16:54:34Z
+    updatedAt: 2026-08-24T19:38:04Z
+    closedAt: 2026-08-24T19:38:04Z
+    mergedAt: 2026-08-24T19:38:04Z
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "feat(proforma): restyle intake and trim unused Platform fee lines"
+    body: >-
+      - Stacks on #97 so FiNet 2026 pricing (Gateway packages, Cloud PC, Schedule A/B, advisory adjustment) stays the
+      base layer.
+
+      - Restyles New Recruit intake and groups Platform fees by cadence (Local Monthly, Local Annual, Annual, Monthly,
+      One-Time).
+
+      - Moves locations/domains to Firm and projection yea...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - github-automation
+      - "app: proforma"
+      - platform
+      - deploy-preview
+    additions: 11544
+    deletions: 3459
+    changedFiles: 116
+    author: myriadas-clees
+    createdAt: 2026-08-20T19:22:33Z
+    updatedAt: 2026-08-24T19:39:08Z
+    closedAt: 2026-08-24T19:38:05Z
+    mergedAt: 2026-08-24T19:38:05Z
+    workCommits:
+      - &a1
+        sha: 4950e0c12ff7123e548973ec57d9a7d49666b3fb
+        message: Align new recruit fee tables
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4950e0c12ff7123e548973ec57d9a7d49666b3fb
+        authoredAt: 2026-08-24T12:38:57Z
+      - &a2
+        sha: 8651b44674343c0481bd5346698a7dae5aa1e4af
+        message: Unify recruit fee editing
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8651b44674343c0481bd5346698a7dae5aa1e4af
+        authoredAt: 2026-08-24T14:43:41Z
+      - &a3
+        sha: c4b919fc67ce57dad6ec7f3880495eb37d79dab1
+        message: Unify FiNet service assumptions
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c4b919fc67ce57dad6ec7f3880495eb37d79dab1
+        authoredAt: 2026-08-24T15:07:11Z
+      - &a4
+        sha: 0b89cf12ff4772ed2e86cd5a6620baf9244aa9b0
+        message: Fix FiNet payout cash flow projection
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0b89cf12ff4772ed2e86cd5a6620baf9244aa9b0
+        authoredAt: 2026-08-24T15:25:29Z
+      - &a5
+        sha: 2f35ee6399f2fb90b814493b0af8bf08d0620799
+        message: Hide legacy advanced workbook link
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2f35ee6399f2fb90b814493b0af8bf08d0620799
+        authoredAt: 2026-08-24T15:31:29Z
+      - &a6
+        sha: 0f69f24ea065edc67c8696f283d019389a3910e7
+        message: Fix remaining Proforma review issues
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0f69f24ea065edc67c8696f283d019389a3910e7
+        authoredAt: 2026-08-24T15:55:49Z
+      - &a7
+        sha: 19bee0c1c76eed6e8e2b021b79f4d9df7ae48770
+        message: Refine proforma fee inputs
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/19bee0c1c76eed6e8e2b021b79f4d9df7ae48770
+        authoredAt: 2026-08-24T16:35:17Z
+      - &a8
+        sha: 9c6bae284a956a5c9147270b478298f35fd795be
+        message: Align technology expense rates
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9c6bae284a956a5c9147270b478298f35fd795be
+        authoredAt: 2026-08-24T16:45:56Z
+      - &a9
+        sha: aae11ec5114db15c245ce1fd141e66b1177335df
+        message: Fix Proforma review regressions
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/aae11ec5114db15c245ce1fd141e66b1177335df
+        authoredAt: 2026-08-24T17:02:01Z
+      - &a10
+        sha: beb70e468e8274790e21d609acb41cdea1f2bd5a
+        message: Refine proforma fee inputs
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/beb70e468e8274790e21d609acb41cdea1f2bd5a
+        authoredAt: 2026-08-24T17:56:37Z
+      - &a11
+        sha: 2564bb8b5e7f4a66b287fa1889cc0a86d14ce589
+        message: Refine proforma report exports
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2564bb8b5e7f4a66b287fa1889cc0a86d14ce589
+        authoredAt: 2026-08-24T18:23:26Z
+      - &a12
+        sha: ca897bb5308e3777ab200ba7bfe421a39df33112
+        message: Route annual platform custom fees correctly
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ca897bb5308e3777ab200ba7bfe421a39df33112
+        authoredAt: 2026-08-24T18:29:30Z
+      - &a13
+        sha: 998a928175b16f0c25f8901aa508ee460f34d90a
+        message: Refine proforma fee and revenue details
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/998a928175b16f0c25f8901aa508ee460f34d90a
+        authoredAt: 2026-08-24T19:18:57Z
+      - &a14
+        sha: 775750e2c177703ee6f76a842a38f8b71ca11b40
+        message: Calculate platform fee amounts
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/775750e2c177703ee6f76a842a38f8b71ca11b40
+        authoredAt: 2026-08-24T19:27:07Z
+    workTimestamps:
+      - 2026-08-24T12:38:57Z
+      - 2026-08-24T14:43:41Z
+      - 2026-08-24T15:07:11Z
+      - 2026-08-24T15:25:29Z
+      - 2026-08-24T15:31:29Z
+      - 2026-08-24T15:55:49Z
+      - 2026-08-24T16:35:17Z
+      - 2026-08-24T16:45:56Z
+      - 2026-08-24T17:02:01Z
+      - 2026-08-24T17:56:37Z
+      - 2026-08-24T18:23:26Z
+      - 2026-08-24T18:29:30Z
+      - 2026-08-24T19:18:57Z
+      - 2026-08-24T19:27:07Z
+    workAdditions: 1692
+    workDeletions: 731
+    workFiles:
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/docs/client-reference-alignment.md
+      - proforma/src/app/globals.css
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/hybrid-fee-editor.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/__tests__/workbook-fee-table.test.ts
+      - proforma/src/components/advisor-finet-services.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/category-fee-table.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/hybrid-fee-editor.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/payout-reconciliation.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/components/workbook-fee-table.tsx
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/entity-state-costs.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+prsInProgress: []
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - Align new recruit fee tables
+      - Unify recruit fee editing
+      - Unify FiNet service assumptions
+      - Fix FiNet payout cash flow projection
+      - Hide legacy advanced workbook link
+      - Fix remaining Proforma review issues
+      - Refine proforma fee inputs
+      - Align technology expense rates
+      - Fix Proforma review regressions
+      - Refine proforma fee inputs
+      - Refine proforma report exports
+      - Route annual platform custom fees correctly
+      - Refine proforma fee and revenue details
+      - Calculate platform fee amounts
+      - "feat(proforma): update FiNet pricing calculations (#97)"
+      - "feat(proforma): restyle intake and trim unused Platform fee lines (#98)"
+    commits:
+      - *a1
+      - *a2
+      - *a3
+      - *a4
+      - *a5
+      - *a6
+      - *a7
+      - *a8
+      - *a9
+      - *a10
+      - *a11
+      - *a12
+      - *a13
+      - *a14
+      - sha: 0ffc5d5ca26238667227808ae5c9a3d11d6ddc4a
+        message: "feat(proforma): update FiNet pricing calculations (#97)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0ffc5d5ca26238667227808ae5c9a3d11d6ddc4a
+        authoredAt: 2026-08-24T19:38:02Z
+      - sha: 9dacf7b57db43a15c3eafb34293986ea8dffd120
+        message: "feat(proforma): restyle intake and trim unused Platform fee lines (#98)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9dacf7b57db43a15c3eafb34293986ea8dffd120
+        authoredAt: 2026-08-24T19:38:03Z
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 1
+    comments: 11
+    reviews: 8
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 1
+  comments: 11
+  reviews: 8
+  fixed: 0
+hoursEstimate:
+  version: "2.0"
+  hours: 13.7
+  sessions: 2
+  sessionHours: 5.4
+  volumeHours: 13.7
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
