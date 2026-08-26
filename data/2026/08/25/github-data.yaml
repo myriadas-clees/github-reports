@@ -1,0 +1,229 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-08-25
+  to: 2026-08-25
+stats:
+  totalCommits: 7
+  totalAdditions: 946
+  totalDeletions: 121
+  prsOpened: 1
+  prsMerged: 0
+  prsInProgress: 1
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 10.8
+dailyCommits:
+  - date: 2026-08-25
+    count: 7
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 7
+    prsOpened: 1
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests:
+  - title: "feat(onboarding): add client and vendor contacts"
+    body: >-
+      ## Why
+
+
+      Client and vendor onboarding did not have a dedicated contact directory or a way to add contacts without first
+      creating a client workspace.
+
+
+      ## What changed
+
+
+      - Add Contacts sections under client and vendor onboarding.
+
+      - Add typed Company, Client, and Vendor contacts with a compact add form.
+
+      ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/104
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a1
+      - "app: onboarding"
+      - "app: proforma"
+      - platform
+      - deploy-preview
+    additions: 946
+    deletions: 121
+    changedFiles: 27
+    author: myriadas-clees
+    createdAt: 2026-08-25T16:14:15Z
+    updatedAt: 2026-08-25T18:03:39Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a2
+      - &a5
+        sha: 18176c186195835d29c1e852ce5371b272d3b41c
+        message: "feat(onboarding): add client and vendor contacts"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/18176c186195835d29c1e852ce5371b272d3b41c
+        authoredAt: 2026-08-25T16:12:24Z
+      - &a6
+        sha: c8483de1f6d022b77ca7bf3f892679069af6169f
+        message: "fix(onboarding): remove contacts workspace requirement"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c8483de1f6d022b77ca7bf3f892679069af6169f
+        authoredAt: 2026-08-25T16:29:05Z
+      - &a7
+        sha: 4b0327f297c081dcb1194ae113e36c6d7d7fcd13
+        message: "feat(onboarding): add contact address and phone formatting"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4b0327f297c081dcb1194ae113e36c6d7d7fcd13
+        authoredAt: 2026-08-25T16:41:00Z
+      - &a8
+        sha: 6d70774d64aefef1a7ea7fb67dfeaf3a59f8bf1d
+        message: "feat(onboarding): structure contact addresses"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6d70774d64aefef1a7ea7fb67dfeaf3a59f8bf1d
+        authoredAt: 2026-08-25T17:02:07Z
+      - &a9
+        sha: e7b8be29c40aab7b72f5fd2e82aee11705da0ac0
+        message: "fix(ui): keep top-bar menus exclusive"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e7b8be29c40aab7b72f5fd2e82aee11705da0ac0
+        authoredAt: 2026-08-25T17:16:16Z
+      - &a10
+        sha: 737425f6da8d70247ee15e2ab1fe56af9a84c788
+        message: "feat(onboarding): link client contacts to companies"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/737425f6da8d70247ee15e2ab1fe56af9a84c788
+        authoredAt: 2026-08-25T17:44:46Z
+      - &a11
+        sha: 23172a0e8ff90c96be1912607407d3d8036804b9
+        message: "feat(onboarding): add contact directory views"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/23172a0e8ff90c96be1912607407d3d8036804b9
+        authoredAt: 2026-08-25T17:58:43Z
+    workTimestamps: &a3
+      - 2026-08-25T16:12:24Z
+      - 2026-08-25T16:29:05Z
+      - 2026-08-25T16:41:00Z
+      - 2026-08-25T17:02:07Z
+      - 2026-08-25T17:16:16Z
+      - 2026-08-25T17:44:46Z
+      - 2026-08-25T17:58:43Z
+    workAdditions: 1036
+    workDeletions: 211
+    workFiles: &a4
+      - bun.lock
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/contacts/page.tsx
+      - onboarding/apps/dashboard/app/vendors/contacts/page.tsx
+      - onboarding/apps/dashboard/components/contacts-workspace.test.ts
+      - onboarding/apps/dashboard/components/contacts-workspace.tsx
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/client.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - onboarding/apps/dashboard/lib/navigation.ts
+      - packages/contracts/src/onboarding.ts
+      - packages/db/src/contact.test.ts
+      - packages/db/src/cosmos-queries.ts
+      - packages/db/src/migrate-database.test.ts
+      - packages/db/src/migrate-database.ts
+      - packages/db/src/queries.ts
+      - packages/db/src/runtime.ts
+      - packages/db/src/schema.ts
+      - packages/ui/package.json
+      - packages/ui/src/branded-select.tsx
+      - packages/ui/src/index.ts
+      - packages/ui/src/navigation/app-nav.tsx
+      - packages/ui/src/work-state-select.tsx
+      - proforma/src/components/branded-select.tsx
+      - proforma/src/components/work-state-select.tsx
+prsInProgress:
+  - title: "feat(onboarding): add client and vendor contacts"
+    body: >-
+      ## Why
+
+
+      Client and vendor onboarding did not have a dedicated contact directory or a way to add contacts without first
+      creating a client workspace.
+
+
+      ## What changed
+
+
+      - Add Contacts sections under client and vendor onboarding.
+
+      - Add typed Company, Client, and Vendor contacts with a compact add form.
+
+      ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/104
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a1
+    additions: 946
+    deletions: 121
+    changedFiles: 27
+    author: myriadas-clees
+    createdAt: 2026-08-25T16:14:15Z
+    updatedAt: 2026-08-25T18:03:39Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 1036
+    workDeletions: 211
+    workFiles: *a4
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "feat(onboarding): add client and vendor contacts"
+      - "fix(onboarding): remove contacts workspace requirement"
+      - "feat(onboarding): add contact address and phone formatting"
+      - "feat(onboarding): structure contact addresses"
+      - "fix(ui): keep top-bar menus exclusive"
+      - "feat(onboarding): link client contacts to companies"
+      - "feat(onboarding): add contact directory views"
+    commits:
+      - *a5
+      - *a6
+      - *a7
+      - *a8
+      - *a9
+      - *a10
+      - *a11
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 1
+    comments: 5
+    reviews: 5
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 1
+  comments: 5
+  reviews: 5
+  fixed: 0
+hoursEstimate:
+  version: "2.0"
+  hours: 10.8
+  sessions: 1
+  sessionHours: 1.8
+  volumeHours: 10.8
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
