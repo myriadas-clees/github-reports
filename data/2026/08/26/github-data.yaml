@@ -1,0 +1,365 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-08-26
+  to: 2026-08-26
+stats:
+  totalCommits: 8
+  totalAdditions: 944
+  totalDeletions: 935
+  prsOpened: 2
+  prsMerged: 0
+  prsInProgress: 3
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 27.4
+dailyCommits:
+  - date: 2026-08-26
+    count: 8
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 8
+    prsOpened: 2
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests:
+  - title: "refactor: centralize suite architecture"
+    body: >-
+      Centralizes repeated suite behavior so navigation preferences, static exports, and product route declarations are
+      maintained once instead of drifting across apps.
+
+
+      - Share Top bar/Sidebar preference across suite products.
+
+      - Centralize static-export lifecycle and Onboarding/PTO route declarations.
+
+      - ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/106
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a1
+      - "app: onboarding"
+      - "app: pto-tracker"
+      - "app: proforma"
+      - "app: excelerate"
+      - "app: valuation"
+      - platform
+    additions: 399
+    deletions: 825
+    changedFiles: 37
+    author: myriadas-clees
+    createdAt: 2026-08-26T20:17:31Z
+    updatedAt: 2026-08-26T20:17:44Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a2
+      - &a16
+        sha: 82b36f284caf1449b582b734edbc3f959a44e962
+        message: "refactor: centralize suite architecture"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/82b36f284caf1449b582b734edbc3f959a44e962
+        authoredAt: 2026-08-26T20:16:47Z
+    workTimestamps: &a3
+      - 2026-08-26T20:16:47Z
+    workAdditions: 399
+    workDeletions: 825
+    workFiles: &a4
+      - excelerate/scripts/build-static.ts
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/api/vm/[...path]/route.ts
+      - onboarding/apps/dashboard/app/layout.tsx
+      - onboarding/apps/dashboard/app/page.test.tsx
+      - onboarding/apps/dashboard/components/metric-card.tsx
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.ts
+      - onboarding/apps/dashboard/lib/api/request-input.test.ts
+      - onboarding/apps/dashboard/lib/api/request-input.ts
+      - onboarding/apps/dashboard/lib/api/routes.test.ts
+      - onboarding/apps/dashboard/lib/api/routes.ts
+      - onboarding/apps/dashboard/lib/api/vm-handlers.ts
+      - onboarding/apps/dashboard/scripts/build-static.ts
+      - packages/ui/src/index.ts
+      - packages/ui/src/navigation/navigation-mode-picker.tsx
+      - packages/ui/src/navigation/preferences.tsx
+      - packages/ui/src/summary-metric.tsx
+      - proforma/scripts/build-static.ts
+      - proforma/src/app/layout.tsx
+      - proforma/src/lib/report/format.ts
+      - proforma/src/lib/report/model.ts
+      - pto-tracker/functions/src/index.ts
+      - pto-tracker/scripts/build-static.ts
+      - pto-tracker/scripts/serverless-smoke.ts
+      - pto-tracker/src/app/api/[...path]/route.ts
+      - pto-tracker/src/app/layout.tsx
+      - pto-tracker/src/lib/api/routes.test.ts
+      - pto-tracker/src/lib/api/routes.ts
+      - pto-tracker/src/lib/auth/entra-provider.test.ts
+      - pto-tracker/src/lib/auth/entra-provider.ts
+      - pto-tracker/src/lib/auth/entra-token-provider.ts
+      - scripts/build-static-export.ts
+      - valuation/scripts/build-static.ts
+      - valuation/src/app/page.tsx
+      - valuation/src/components/metric-card.tsx
+  - title: "ci: build only affected unified app artifacts"
+    body: |-
+      ## Why
+
+      Unified deployment rebuilt every app and Function bundle on every eligible push.
+
+      ## What changed
+
+      - Resolve affected static and Function targets from repository diffs and workspace dependencies.
+      - Reuse only exact fingerprinted artifacts, then compose and validate a fresh unified deployment...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/105
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a5
+      - github-automation
+      - platform
+    additions: 545
+    deletions: 110
+    changedFiles: 12
+    author: myriadas-clees
+    createdAt: 2026-08-26T15:54:51Z
+    updatedAt: 2026-08-26T19:48:36Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a6
+      - &a13
+        sha: 845bc164f6856a5b203384d6a0fbced9656f3fcc
+        message: "ci: build only affected unified app artifacts"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/845bc164f6856a5b203384d6a0fbced9656f3fcc
+        authoredAt: 2026-08-26T15:54:16Z
+      - &a14
+        sha: 65000f6dd55fd2481d7e31dca7811d1d309c1137
+        message: "fix(ci): preserve affected builds and shared checks"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/65000f6dd55fd2481d7e31dca7811d1d309c1137
+        authoredAt: 2026-08-26T19:08:04Z
+      - &a15
+        sha: be93f9aedc68c90b983f89709bc598c1e02337ce
+        message: "fix(ci): rebuild functions for parent app changes"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/be93f9aedc68c90b983f89709bc598c1e02337ce
+        authoredAt: 2026-08-26T19:44:05Z
+    workTimestamps: &a7
+      - 2026-08-26T15:54:16Z
+      - 2026-08-26T19:08:04Z
+      - 2026-08-26T19:44:05Z
+    workAdditions: 545
+    workDeletions: 110
+    workFiles: &a8
+      - .github/actions/setup-bun/action.yml
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/verify.yml
+      - scripts/affected-apps.ts
+      - scripts/app-command.ts
+      - scripts/app-selection.ts
+      - scripts/artifact-cache.ts
+      - scripts/artifact-fingerprints.ts
+      - scripts/build-unified-swa.ts
+      - scripts/tooling.test.ts
+      - scripts/workflow-matrix.ts
+prsInProgress:
+  - title: "refactor: centralize suite architecture"
+    body: >-
+      Centralizes repeated suite behavior so navigation preferences, static exports, and product route declarations are
+      maintained once instead of drifting across apps.
+
+
+      - Share Top bar/Sidebar preference across suite products.
+
+      - Centralize static-export lifecycle and Onboarding/PTO route declarations.
+
+      - ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/106
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a1
+    additions: 399
+    deletions: 825
+    changedFiles: 37
+    author: myriadas-clees
+    createdAt: 2026-08-26T20:17:31Z
+    updatedAt: 2026-08-26T20:17:44Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 399
+    workDeletions: 825
+    workFiles: *a4
+  - title: "ci: build only affected unified app artifacts"
+    body: |-
+      ## Why
+
+      Unified deployment rebuilt every app and Function bundle on every eligible push.
+
+      ## What changed
+
+      - Resolve affected static and Function targets from repository diffs and workspace dependencies.
+      - Reuse only exact fingerprinted artifacts, then compose and validate a fresh unified deployment...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/105
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a5
+    additions: 540
+    deletions: 105
+    changedFiles: 12
+    author: myriadas-clees
+    createdAt: 2026-08-26T15:54:51Z
+    updatedAt: 2026-08-26T19:48:36Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a6
+    workTimestamps: *a7
+    workAdditions: 545
+    workDeletions: 110
+    workFiles: *a8
+  - title: "feat(onboarding): add client and vendor contacts"
+    body: >-
+      ## Why
+
+
+      Client and vendor onboarding did not have a dedicated contact directory or a way to add contacts without first
+      creating a client workspace.
+
+
+      ## What changed
+
+
+      - Add Contacts sections under client and vendor onboarding.
+
+      - Add typed Company, Client, and Vendor contacts with a compact add form.
+
+      ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/104
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - "app: onboarding"
+      - "app: proforma"
+      - platform
+      - deploy-preview
+    additions: 1428
+    deletions: 124
+    changedFiles: 31
+    author: myriadas-clees
+    createdAt: 2026-08-25T16:14:15Z
+    updatedAt: 2026-08-26T17:21:52Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a9
+        sha: d2c41a7fa655da85796b4e982fdc26b90cc94d34
+        message: "feat(onboarding): add contact lifecycle and form controls"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d2c41a7fa655da85796b4e982fdc26b90cc94d34
+        authoredAt: 2026-08-26T14:51:54Z
+      - &a10
+        sha: 47ba1747f86bddea93968b18d760b701d454d4a1
+        message: "test(onboarding): mock contacts in function adapter"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/47ba1747f86bddea93968b18d760b701d454d4a1
+        authoredAt: 2026-08-26T14:52:53Z
+      - &a11
+        sha: 1eb5e5a2fe6f64bea15e527129834275024fa9f4
+        message: "fix(onboarding): polish contact directory controls"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/1eb5e5a2fe6f64bea15e527129834275024fa9f4
+        authoredAt: 2026-08-26T15:18:57Z
+      - &a12
+        sha: db40bf8849cd9a8178839965030ab8eb4415e8bf
+        message: "feat(onboarding): open and edit contact details"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/db40bf8849cd9a8178839965030ab8eb4415e8bf
+        authoredAt: 2026-08-26T15:35:58Z
+    workTimestamps:
+      - 2026-08-26T14:51:54Z
+      - 2026-08-26T14:52:53Z
+      - 2026-08-26T15:18:57Z
+      - 2026-08-26T15:35:58Z
+    workAdditions: 563
+    workDeletions: 84
+    workFiles:
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/globals.css
+      - onboarding/apps/dashboard/components/contacts-workspace.test.ts
+      - onboarding/apps/dashboard/components/contacts-workspace.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/universal-record-panel.tsx
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/client.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/types.ts
+      - packages/contracts/src/onboarding.ts
+      - packages/db/src/contact.test.ts
+      - packages/db/src/cosmos-queries.ts
+      - packages/db/src/migrate-database.test.ts
+      - packages/db/src/migrate-database.ts
+      - packages/db/src/queries.ts
+      - packages/db/src/runtime.ts
+      - packages/db/src/schema.ts
+      - packages/ui/src/branded-select.tsx
+      - packages/ui/src/navigation/app-nav.tsx
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "feat(onboarding): add contact lifecycle and form controls"
+      - "test(onboarding): mock contacts in function adapter"
+      - "fix(onboarding): polish contact directory controls"
+      - "feat(onboarding): open and edit contact details"
+      - "ci: build only affected unified app artifacts"
+      - "fix(ci): preserve affected builds and shared checks"
+      - "fix(ci): rebuild functions for parent app changes"
+      - "refactor: centralize suite architecture"
+    commits:
+      - *a9
+      - *a10
+      - *a11
+      - *a12
+      - *a13
+      - *a14
+      - *a15
+      - *a16
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 2
+    comments: 13
+    reviews: 6
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 2
+  comments: 13
+  reviews: 6
+  fixed: 0
+hoursEstimate:
+  version: "2.0"
+  hours: 27.4
+  sessions: 2
+  sessionHours: 2.2
+  volumeHours: 27.4
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
