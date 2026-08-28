@@ -1,0 +1,170 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-06-26
+  to: 2026-06-26
+stats:
+  totalCommits: 8
+  totalAdditions: 0
+  totalDeletions: 0
+  prsOpened: 0
+  prsMerged: 0
+  prsInProgress: 0
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 13
+dailyCommits:
+  - date: 2026-06-26
+    count: 8
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 7
+    prsOpened: 0
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 1
+    prsOpened: 0
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests: []
+prsInProgress: []
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "feat(dashboard): update onboarding dashboard components and integrate new task features"
+    commits:
+      - sha: 2f497708bf3272a85da6826d048811633ea642b6
+        message: "feat(dashboard): update onboarding dashboard components and integrate new task features"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2f497708bf3272a85da6826d048811633ea642b6
+        authoredAt: 2026-06-26T16:39:40Z
+        additions: 1559
+        deletions: 544
+        filesChanged: 39
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "refactor: streamline app workspace setup"
+      - "feat(pricing): add unsaved return confirmation"
+      - "refactor(pricing): consolidate recruit info editing"
+      - "feat(pricing): add excel workbook edit surface"
+      - "refactor(pricing): update pricing workstation layout and introduce advisor picker"
+      - "feat(pricing): introduce pricing dev tools and enhance workstation sections"
+      - "feat(pricing): enhance advisor metrics and update workstation sections"
+    commits:
+      - sha: a5332ae968405b0ae8a628df10b39d331ee6cb4d
+        message: "refactor: streamline app workspace setup"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a5332ae968405b0ae8a628df10b39d331ee6cb4d
+        authoredAt: 2026-06-26T14:45:32Z
+        additions: 1935
+        deletions: 2218
+        filesChanged: 22
+      - sha: d3874f49568042fa2379114bc915cc4214ab6cb1
+        message: "feat(pricing): add unsaved return confirmation"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d3874f49568042fa2379114bc915cc4214ab6cb1
+        authoredAt: 2026-06-26T15:02:07Z
+        additions: 107
+        deletions: 10
+        filesChanged: 3
+      - sha: d5a1baea177e222940aef028ce6a3d26148db02d
+        message: "refactor(pricing): consolidate recruit info editing"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d5a1baea177e222940aef028ce6a3d26148db02d
+        authoredAt: 2026-06-26T16:03:40Z
+        additions: 183
+        deletions: 46
+        filesChanged: 5
+      - sha: d45f859156bb9888ee02930c9a1501033d541bd3
+        message: "feat(pricing): add excel workbook edit surface"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d45f859156bb9888ee02930c9a1501033d541bd3
+        authoredAt: 2026-06-26T16:55:35Z
+        additions: 1250
+        deletions: 217
+        filesChanged: 10
+      - sha: bf2e40f22c372bc71e714fe3a7958697e23093e8
+        message: "refactor(pricing): update pricing workstation layout and introduce advisor picker"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/bf2e40f22c372bc71e714fe3a7958697e23093e8
+        authoredAt: 2026-06-26T17:03:38Z
+        additions: 373
+        deletions: 258
+        filesChanged: 6
+      - sha: 88e4afe79685a24eaeab7dbd82cef3fdb749c75d
+        message: "feat(pricing): introduce pricing dev tools and enhance workstation sections"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/88e4afe79685a24eaeab7dbd82cef3fdb749c75d
+        authoredAt: 2026-06-26T17:09:19Z
+        additions: 124
+        deletions: 86
+        filesChanged: 8
+      - sha: d0b634f5b4d808af18a931740bb9c8a62ba7add5
+        message: "feat(pricing): enhance advisor metrics and update workstation sections"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d0b634f5b4d808af18a931740bb9c8a62ba7add5
+        authoredAt: 2026-06-26T17:51:52Z
+        additions: 1133
+        deletions: 189
+        filesChanged: 12
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 0
+  comments: 0
+  reviews: 0
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-06-26T16:39:40Z
+    - 2026-06-26T14:45:32Z
+    - 2026-06-26T15:02:07Z
+    - 2026-06-26T16:03:40Z
+    - 2026-06-26T16:55:35Z
+    - 2026-06-26T17:03:38Z
+    - 2026-06-26T17:09:19Z
+    - 2026-06-26T17:51:52Z
+  volume:
+    pullRequests: []
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 8
+    commitAdditions: 6664
+    commitDeletions: 3568
+    commitStatsCount: 8
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 13
+  sessions: 1
+  sessionHours: 3.1
+  volumeHours: 13
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""

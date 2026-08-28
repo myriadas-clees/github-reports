@@ -1,0 +1,133 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-06-30
+  to: 2026-06-30
+stats:
+  totalCommits: 5
+  totalAdditions: 0
+  totalDeletions: 0
+  prsOpened: 0
+  prsMerged: 0
+  prsInProgress: 0
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 13
+dailyCommits:
+  - date: 2026-06-30
+    count: 5
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 5
+    prsOpened: 0
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests: []
+prsInProgress: []
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - Add payout notes to pricing workbook
+      - "feat(pricing): collapse basis point calculator"
+      - Merge branch 'clees/test-noop-prompt' into clees/demo-0702
+      - Add simple pricing workstation view
+      - Add pricing settings and theme defaults
+    commits:
+      - sha: bdc61e736dadeb74374b5eef7d1c3b55494acc9d
+        message: Add payout notes to pricing workbook
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/bdc61e736dadeb74374b5eef7d1c3b55494acc9d
+        authoredAt: 2026-06-30T19:24:48Z
+        additions: 2038
+        deletions: 228
+        filesChanged: 17
+      - sha: 81422f362135a09e124678cf3f3c09d2dae5a70e
+        message: "feat(pricing): collapse basis point calculator"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/81422f362135a09e124678cf3f3c09d2dae5a70e
+        authoredAt: 2026-06-30T19:26:23Z
+        additions: 121
+        deletions: 40
+        filesChanged: 2
+      - sha: 27230927bde8624f37e74ec3bc5afde2f4d71c66
+        message: Merge branch 'clees/test-noop-prompt' into clees/demo-0702
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/27230927bde8624f37e74ec3bc5afde2f4d71c66
+        authoredAt: 2026-06-30T19:34:11Z
+        additions: 3038
+        deletions: 506
+        filesChanged: 29
+      - sha: 6b79d5ada7e083b40e23ac33c393d3bbea3f9b74
+        message: Add simple pricing workstation view
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6b79d5ada7e083b40e23ac33c393d3bbea3f9b74
+        authoredAt: 2026-06-30T20:22:58Z
+        additions: 544
+        deletions: 60
+        filesChanged: 6
+      - sha: 34d379f9f1ebeaed5405f5e9116e10ea5370a5bf
+        message: Add pricing settings and theme defaults
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/34d379f9f1ebeaed5405f5e9116e10ea5370a5bf
+        authoredAt: 2026-06-30T20:47:29Z
+        additions: 368
+        deletions: 31
+        filesChanged: 13
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 0
+  comments: 0
+  reviews: 0
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-06-30T19:24:48Z
+    - 2026-06-30T19:26:23Z
+    - 2026-06-30T19:34:11Z
+    - 2026-06-30T20:22:58Z
+    - 2026-06-30T20:47:29Z
+  volume:
+    pullRequests: []
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 5
+    commitAdditions: 6109
+    commitDeletions: 865
+    commitStatsCount: 5
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 13
+  sessions: 1
+  sessionHours: 1.4
+  volumeHours: 13
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""

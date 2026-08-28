@@ -1,0 +1,161 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-06-29
+  to: 2026-06-29
+stats:
+  totalCommits: 7
+  totalAdditions: 0
+  totalDeletions: 0
+  prsOpened: 0
+  prsMerged: 0
+  prsInProgress: 0
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 9
+dailyCommits:
+  - date: 2026-06-29
+    count: 7
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 5
+    prsOpened: 0
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 2
+    prsOpened: 0
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests: []
+prsInProgress: []
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "fix(pricing): correct workbook sheet cells"
+      - "fix(pricing): skip computed sheet tab stops"
+      - "ci(deploy): prepare Hub SWA deploy"
+      - Add iframe embedding support for OFAC and pricing
+      - "style: refine dark mode and active states"
+    commits:
+      - sha: 562af35d75508a2692a227265bae9263c706fbdb
+        message: "fix(pricing): correct workbook sheet cells"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/562af35d75508a2692a227265bae9263c706fbdb
+        authoredAt: 2026-06-29T14:21:45Z
+        additions: 65
+        deletions: 4
+        filesChanged: 4
+      - sha: 91aee5495f9505905a2dce3b62f13077d4f83226
+        message: "fix(pricing): skip computed sheet tab stops"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/91aee5495f9505905a2dce3b62f13077d4f83226
+        authoredAt: 2026-06-29T14:33:14Z
+        additions: 35
+        deletions: 1
+        filesChanged: 2
+      - sha: 8819ae4e1158e5dbb94a6c9a925f13ad5440c78c
+        message: "ci(deploy): prepare Hub SWA deploy"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8819ae4e1158e5dbb94a6c9a925f13ad5440c78c
+        authoredAt: 2026-06-29T20:02:01Z
+        additions: 1647
+        deletions: 16
+        filesChanged: 11
+      - sha: f123b65208451a0f49b9f94a534519cd12bbf740
+        message: Add iframe embedding support for OFAC and pricing
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f123b65208451a0f49b9f94a534519cd12bbf740
+        authoredAt: 2026-06-29T22:50:21Z
+        additions: 391
+        deletions: 37
+        filesChanged: 21
+      - sha: ad6844fd11a7529a4b0238131f6218d27efd0583
+        message: "style: refine dark mode and active states"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ad6844fd11a7529a4b0238131f6218d27efd0583
+        authoredAt: 2026-06-30T00:34:30Z
+        additions: 20
+        deletions: 2
+        filesChanged: 3
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "fix(dashboard): keep board task metadata visible"
+      - "fix(deploy): support static export builds"
+    commits:
+      - sha: 31d567f1a6db34a1b168050819fe329c2bee245e
+        message: "fix(dashboard): keep board task metadata visible"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/31d567f1a6db34a1b168050819fe329c2bee245e
+        authoredAt: 2026-06-29T13:40:02Z
+        additions: 113
+        deletions: 2
+        filesChanged: 3
+      - sha: 8a25b9523e2bfcb6c15b0d9428bb9239b26cf359
+        message: "fix(deploy): support static export builds"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8a25b9523e2bfcb6c15b0d9428bb9239b26cf359
+        authoredAt: 2026-06-29T20:02:02Z
+        additions: 257
+        deletions: 29
+        filesChanged: 18
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 0
+  comments: 0
+  reviews: 0
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-06-29T14:21:45Z
+    - 2026-06-29T14:33:14Z
+    - 2026-06-29T20:02:01Z
+    - 2026-06-29T22:50:21Z
+    - 2026-06-30T00:34:30Z
+    - 2026-06-29T13:40:02Z
+    - 2026-06-29T20:02:02Z
+  volume:
+    pullRequests: []
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 7
+    commitAdditions: 2528
+    commitDeletions: 91
+    commitStatsCount: 7
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 9
+  sessions: 4
+  sessionHours: 2.4
+  volumeHours: 9
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
