@@ -1,0 +1,124 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-06-17
+  to: 2026-06-17
+stats:
+  totalCommits: 4
+  totalAdditions: 0
+  totalDeletions: 0
+  prsOpened: 0
+  prsMerged: 0
+  prsInProgress: 0
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 9
+dailyCommits:
+  - date: 2026-06-17
+    count: 4
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 4
+    prsOpened: 0
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests: []
+prsInProgress: []
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "feat(proforma): add branded export dashboards"
+      - "fix(proforma): relax scenario draft inputs"
+      - "feat(proforma): add quick scenario workflow"
+      - "fix(proforma): label projection exports"
+    commits:
+      - sha: f986b9113cb30ffe6a947418795484e7e900ba63
+        message: "feat(proforma): add branded export dashboards"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f986b9113cb30ffe6a947418795484e7e900ba63
+        authoredAt: 2026-06-17T10:33:39.000-04:00
+        additions: 1553
+        deletions: 246
+        filesChanged: 17
+      - sha: b3dbefab36e2cf91d516e21087b4ee5ac042d596
+        message: "fix(proforma): relax scenario draft inputs"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b3dbefab36e2cf91d516e21087b4ee5ac042d596
+        authoredAt: 2026-06-17T11:11:37.000-04:00
+        additions: 349
+        deletions: 219
+        filesChanged: 6
+      - sha: ce4a516dd948d98ec45e9f92a858d461d5ba6932
+        message: "feat(proforma): add quick scenario workflow"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ce4a516dd948d98ec45e9f92a858d461d5ba6932
+        authoredAt: 2026-06-17T16:59:37.000-04:00
+        additions: 2787
+        deletions: 604
+        filesChanged: 44
+      - sha: c3a775edf2870c67a16a84f151ad4f030a6b2c35
+        message: "fix(proforma): label projection exports"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c3a775edf2870c67a16a84f151ad4f030a6b2c35
+        authoredAt: 2026-06-17T17:47:21.000-04:00
+        additions: 36
+        deletions: 8
+        filesChanged: 6
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 0
+  comments: 0
+  reviews: 0
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-06-17T10:33:39.000-04:00
+    - 2026-06-17T11:11:37.000-04:00
+    - 2026-06-17T16:59:37.000-04:00
+    - 2026-06-17T17:47:21.000-04:00
+  volume:
+    pullRequests: []
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 4
+    commitAdditions: 4725
+    commitDeletions: 1077
+    commitStatsCount: 4
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 9
+  sessions: 2
+  sessionHours: 1.4
+  volumeHours: 9
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""

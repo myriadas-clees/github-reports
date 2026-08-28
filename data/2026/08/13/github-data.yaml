@@ -13,8 +13,8 @@ dateRange:
   to: 2026-08-13
 stats:
   totalCommits: 9
-  totalAdditions: 283
-  totalDeletions: 74
+  totalAdditions: 289
+  totalDeletions: 80
   prsOpened: 2
   prsMerged: 1
   prsInProgress: 2
@@ -22,7 +22,7 @@ stats:
   reviewComments: 2
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 25.6
+  estimatedHours: 27.9
 dailyCommits:
   - date: 2026-08-13
     count: 9
@@ -105,8 +105,8 @@ pullRequests:
       - "app: proforma"
       - "app: excelerate"
       - "app: valuation"
-    additions: 242
-    deletions: 73
+    additions: 248
+    deletions: 79
     changedFiles: 33
     author: myriadas-clees
     createdAt: 2026-08-13T17:07:38Z
@@ -189,17 +189,17 @@ prsInProgress:
       - adds Pricing-style PDF and workbook previews, with Excel previews capped at 200 rows while downloads remai...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
-    state: open
+    state: merged
     labels:
       - deploy-preview
-    additions: 973
-    deletions: 70
-    changedFiles: 28
+    additions: 1110
+    deletions: 80
+    changedFiles: 32
     author: myriadas-clees
     createdAt: 2026-08-12T19:55:22Z
-    updatedAt: 2026-08-13T15:48:28Z
-    closedAt: null
-    mergedAt: null
+    updatedAt: 2026-08-28T14:51:40Z
+    closedAt: 2026-08-28T14:51:36Z
+    mergedAt: 2026-08-28T14:51:35Z
     workCommits:
       - &a8
         sha: 438afa56544e96d931ba789f3818f29e65174f97
@@ -233,21 +233,21 @@ prsInProgress:
       - Reordered the new-recruit wizard to **Firm...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: open
+    state: merged
     labels:
       - documentation
       - github-automation
       - "app: proforma"
       - platform
       - deploy-preview
-    additions: 3597
+    additions: 3602
     deletions: 1565
     changedFiles: 61
     author: myriadas-clees
     createdAt: 2026-08-10T18:50:49Z
-    updatedAt: 2026-08-13T16:40:18Z
-    closedAt: null
-    mergedAt: null
+    updatedAt: 2026-08-17T23:10:26Z
+    closedAt: 2026-08-17T23:10:26Z
+    mergedAt: 2026-08-17T23:10:26Z
     workCommits:
       - &a1
         sha: bac4006afe27c8417ce939582844cf07bd88e49d
@@ -296,6 +296,9 @@ commitMessages:
         message: "feat(auth): Add read-only user access across operational apps (#91)"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d5fd296b8199b40321f67a2f420b0e03d4e0f251
         authoredAt: 2026-08-13T17:44:22Z
+        additions: 242
+        deletions: 73
+        filesChanged: 33
   - repo: Myriad-Advisor-Solutions/ohcpwm-apps
     messages:
       - "fix(ofac): harden previews and enrich PDF evidence"
@@ -352,12 +355,76 @@ aiReviews:
   comments: 13
   reviews: 7
   fixed: 2
+hoursInputs:
+  timestamps:
+    - 2026-08-13T16:35:22Z
+    - 2026-08-13T17:07:27Z
+    - 2026-08-13T17:14:30Z
+    - 2026-08-13T17:23:31Z
+    - 2026-08-13T17:31:53Z
+    - 2026-08-13T17:37:12Z
+    - 2026-08-13T17:44:08Z
+    - 2026-08-13T17:44:22Z
+    - 2026-08-13T15:43:29Z
+    - 2026-08-13T17:44:18Z
+    - 2026-08-13T17:44:08Z
+    - 2026-08-13T17:07:38Z
+    - 2026-08-13T17:44:22Z
+    - 2026-08-13T17:07:27Z
+    - 2026-08-13T17:14:30Z
+    - 2026-08-13T17:23:31Z
+    - 2026-08-13T17:31:53Z
+    - 2026-08-13T17:37:12Z
+    - 2026-08-13T15:43:38Z
+    - 2026-08-13T15:43:39Z
+    - 2026-08-13T15:43:38Z
+    - 2026-08-13T15:43:39Z
+  volume:
+    pullRequests:
+      - additions: 190
+        deletions: 44
+        state: merged
+        dailyWork: true
+        filesChanged: 7
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 41
+        deletions: 1
+        state: closed
+        dailyWork: true
+        filesChanged: 5
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 248
+        deletions: 79
+        state: merged
+        dailyWork: true
+        filesChanged: 33
+        testFilesChanged: 9
+        commitCount: 5
+      - additions: 146
+        deletions: 33
+        state: merged
+        dailyWork: true
+        filesChanged: 12
+        testFilesChanged: 3
+        commitCount: 1
+    reviewCount: 2
+    reviewCommentCount: 2
+    commitCount: 1
+    commitAdditions: 242
+    commitDeletions: 73
+    commitStatsCount: 1
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
 hoursEstimate:
-  version: "2.0"
-  hours: 25.6
+  version: "2.1"
+  hours: 27.9
   sessions: 1
   sessionHours: 2
-  volumeHours: 25.6
+  volumeHours: 27.9
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

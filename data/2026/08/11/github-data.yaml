@@ -13,8 +13,8 @@ dateRange:
   to: 2026-08-11
 stats:
   totalCommits: 19
-  totalAdditions: 2898
-  totalDeletions: 1440
+  totalAdditions: 1214
+  totalDeletions: 469
   prsOpened: 4
   prsMerged: 1
   prsInProgress: 8
@@ -22,7 +22,7 @@ stats:
   reviewComments: 11
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 53.9
+  estimatedHours: 57.7
 dailyCommits:
   - date: 2026-08-11
     count: 19
@@ -59,9 +59,9 @@ pullRequests:
     changedFiles: 10
     author: myriadas-clees
     createdAt: 2026-08-12T03:08:43Z
-    updatedAt: 2026-08-12T03:08:43Z
-    closedAt: null
-    mergedAt: null
+    updatedAt: 2026-08-12T14:35:03Z
+    closedAt: 2026-08-12T14:35:03Z
+    mergedAt: 2026-08-12T14:35:03Z
     workCommits: &a2
       - &a24
         sha: a5c068bdc3b7a5e0768f396fca085caa415b8676
@@ -83,6 +83,58 @@ pullRequests:
       - .codex/agents/worker.toml
       - .codex/config.toml
       - AGENTS.md
+  - title: Reduce redundant Codex agent token usage
+    body: >-
+      - replace mandatory two-agent fan-out with one compact, read-only explorer and at most one scoped implementation
+      specialist for normal work
+
+      - make root guidance concise and align scoped issue, commit/push/PR, CI, and review-comment workflows
+
+      - lower explorer reasoning to low and routine implementati...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/90
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a5
+      - documentation
+    additions: 82
+    deletions: 94
+    changedFiles: 14
+    author: myriadas-clees
+    createdAt: 2026-08-12T03:08:46Z
+    updatedAt: 2026-08-12T14:34:52Z
+    closedAt: 2026-08-12T14:34:52Z
+    mergedAt: 2026-08-12T14:34:52Z
+    workCommits: &a6
+      - &a33
+        sha: e9b85a3c75e408cfaee446e640855033401ec377
+        message: "chore(codex): reduce redundant agent token usage"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e9b85a3c75e408cfaee446e640855033401ec377
+        authoredAt: 2026-08-12T03:08:05Z
+      - &a34
+        sha: d527aa6513fd8ee33598a4f30e3d4c91ba84280a
+        message: "docs(codex): retain serverless validation guidance"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d527aa6513fd8ee33598a4f30e3d4c91ba84280a
+        authoredAt: 2026-08-12T03:14:42Z
+    workTimestamps: &a7
+      - 2026-08-12T03:08:05Z
+      - 2026-08-12T03:14:42Z
+    workAdditions: 82
+    workDeletions: 94
+    workFiles: &a8
+      - .codex/agents/docs.toml
+      - .codex/agents/excelerate.toml
+      - .codex/agents/explorer.toml
+      - .codex/agents/hub.toml
+      - .codex/agents/infra.toml
+      - .codex/agents/onboarding.toml
+      - .codex/agents/packages.toml
+      - .codex/agents/proforma.toml
+      - .codex/agents/pto-tracker.toml
+      - .codex/agents/scripts.toml
+      - .codex/agents/valuation.toml
+      - .codex/agents/worker.toml
+      - .codex/config.toml
+      - AGENTS.md
   - title: Enable FINET business mix editing
     body: |-
       - Enable Revenue and Business Mix editing for FINET models.
@@ -91,16 +143,16 @@ pullRequests:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/112
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
-    labels: &a5 []
-    additions: 687
-    deletions: 81
-    changedFiles: 25
+    labels: &a9 []
+    additions: 710
+    deletions: 104
+    changedFiles: 27
     author: myriadas-clees
     createdAt: 2026-08-11T18:39:34Z
-    updatedAt: 2026-08-11T20:00:08Z
-    closedAt: null
-    mergedAt: null
-    workCommits: &a6
+    updatedAt: 2026-08-12T14:48:47Z
+    closedAt: 2026-08-12T14:48:47Z
+    mergedAt: 2026-08-12T14:48:47Z
+    workCommits: &a10
       - &a19
         sha: a0c1594bccf738e56f442a2032a64bef2f4a155a
         message: "fix(pricing): enable business mix editing for FINET"
@@ -126,7 +178,7 @@ pullRequests:
         message: "fix(pricing): preserve Finet revenue mix on recruit creation"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/425d50a046ce37631bf114939476c8a6eb5164c0
         authoredAt: 2026-08-11T19:56:13Z
-    workTimestamps: &a7
+    workTimestamps: &a11
       - 2026-08-11T18:39:24Z
       - 2026-08-11T19:01:27Z
       - 2026-08-11T19:24:59Z
@@ -134,7 +186,7 @@ pullRequests:
       - 2026-08-11T19:56:13Z
     workAdditions: 710
     workDeletions: 104
-    workFiles: &a8
+    workFiles: &a12
       - docs/pricing-scenario-rules.md
       - packages/contracts/src/pricing.test.ts
       - packages/contracts/src/pricing.ts
@@ -176,29 +228,29 @@ pullRequests:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/85
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: open
-    labels: &a9
+    labels: &a13
       - github-automation
       - "app: proforma"
       - platform
-    additions: 1310
-    deletions: 904
+    additions: 243
+    deletions: 82
     changedFiles: 59
     author: myriadas-clees
     createdAt: 2026-08-11T17:38:21Z
-    updatedAt: 2026-08-11T17:44:31Z
-    closedAt: null
+    updatedAt: 2026-08-12T14:21:44Z
+    closedAt: 2026-08-12T14:21:43Z
     mergedAt: null
-    workCommits: &a10
+    workCommits: &a14
       - &a25
         sha: 7699c7395e564b24fe02d6e48d13c3b5d21db86e
         message: "feat(proforma): extend recruit wizard team modeling and economics"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7699c7395e564b24fe02d6e48d13c3b5d21db86e
         authoredAt: 2026-08-11T17:34:06Z
-    workTimestamps: &a11
+    workTimestamps: &a15
       - 2026-08-11T17:34:06Z
     workAdditions: 243
     workDeletions: 82
-    workFiles: &a12
+    workFiles: &a16
       - packages/contracts/src/proforma.ts
       - packages/db/src/proforma.test.ts
       - packages/db/src/proforma.ts
@@ -218,58 +270,6 @@ pullRequests:
       - proforma/src/lib/report/pdf.tsx
       - proforma/src/lib/setup-projection.ts
       - proforma/src/lib/workbook-output.ts
-  - title: Reduce redundant Codex agent token usage
-    body: >-
-      - replace mandatory two-agent fan-out with one compact, read-only explorer and at most one scoped implementation
-      specialist for normal work
-
-      - make root guidance concise and align scoped issue, commit/push/PR, CI, and review-comment workflows
-
-      - lower explorer reasoning to low and routine implementati...
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/90
-    repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: open
-    labels: &a13
-      - documentation
-    additions: 81
-    deletions: 93
-    changedFiles: 14
-    author: myriadas-clees
-    createdAt: 2026-08-12T03:08:46Z
-    updatedAt: 2026-08-12T03:18:47Z
-    closedAt: null
-    mergedAt: null
-    workCommits: &a14
-      - &a33
-        sha: e9b85a3c75e408cfaee446e640855033401ec377
-        message: "chore(codex): reduce redundant agent token usage"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e9b85a3c75e408cfaee446e640855033401ec377
-        authoredAt: 2026-08-12T03:08:05Z
-      - &a34
-        sha: d527aa6513fd8ee33598a4f30e3d4c91ba84280a
-        message: "docs(codex): retain serverless validation guidance"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d527aa6513fd8ee33598a4f30e3d4c91ba84280a
-        authoredAt: 2026-08-12T03:14:42Z
-    workTimestamps: &a15
-      - 2026-08-12T03:08:05Z
-      - 2026-08-12T03:14:42Z
-    workAdditions: 82
-    workDeletions: 94
-    workFiles: &a16
-      - .codex/agents/docs.toml
-      - .codex/agents/excelerate.toml
-      - .codex/agents/explorer.toml
-      - .codex/agents/hub.toml
-      - .codex/agents/infra.toml
-      - .codex/agents/onboarding.toml
-      - .codex/agents/packages.toml
-      - .codex/agents/proforma.toml
-      - .codex/agents/pto-tracker.toml
-      - .codex/agents/scripts.toml
-      - .codex/agents/valuation.toml
-      - .codex/agents/worker.toml
-      - .codex/config.toml
-      - AGENTS.md
   - title: Streamline recruit editing and business mix UX in pricing
     body: >-
       - Default local development role is now `admin` (`OHPWM_LOCAL_ROLE=admin` in env examples); set
@@ -281,8 +281,8 @@ pullRequests:
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: merged
     labels: []
-    additions: 748
-    deletions: 202
+    additions: 107
+    deletions: 29
     changedFiles: 19
     author: myriadas-clees
     createdAt: 2026-08-10T21:45:06Z
@@ -323,21 +323,46 @@ prsInProgress:
       - lower explorer reasoning to low and routine implementati...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/113
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
-    state: open
+    state: merged
     labels: *a1
     additions: 72
     deletions: 160
     changedFiles: 10
     author: myriadas-clees
     createdAt: 2026-08-12T03:08:43Z
-    updatedAt: 2026-08-12T03:08:43Z
-    closedAt: null
-    mergedAt: null
+    updatedAt: 2026-08-12T14:35:03Z
+    closedAt: 2026-08-12T14:35:03Z
+    mergedAt: 2026-08-12T14:35:03Z
     workCommits: *a2
     workTimestamps: *a3
     workAdditions: 72
     workDeletions: 160
     workFiles: *a4
+  - title: Reduce redundant Codex agent token usage
+    body: >-
+      - replace mandatory two-agent fan-out with one compact, read-only explorer and at most one scoped implementation
+      specialist for normal work
+
+      - make root guidance concise and align scoped issue, commit/push/PR, CI, and review-comment workflows
+
+      - lower explorer reasoning to low and routine implementati...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/90
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels: *a5
+    additions: 81
+    deletions: 93
+    changedFiles: 14
+    author: myriadas-clees
+    createdAt: 2026-08-12T03:08:46Z
+    updatedAt: 2026-08-12T14:34:52Z
+    closedAt: 2026-08-12T14:34:52Z
+    mergedAt: 2026-08-12T14:34:52Z
+    workCommits: *a6
+    workTimestamps: *a7
+    workAdditions: 82
+    workDeletions: 94
+    workFiles: *a8
   - title: Enable FINET business mix editing
     body: |-
       - Enable Revenue and Business Mix editing for FINET models.
@@ -345,21 +370,21 @@ prsInProgress:
       - Add coverage for FINET business mix controls.
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/112
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
-    state: open
-    labels: *a5
-    additions: 687
-    deletions: 81
-    changedFiles: 25
+    state: merged
+    labels: *a9
+    additions: 802
+    deletions: 95
+    changedFiles: 27
     author: myriadas-clees
     createdAt: 2026-08-11T18:39:34Z
-    updatedAt: 2026-08-11T20:00:08Z
-    closedAt: null
-    mergedAt: null
-    workCommits: *a6
-    workTimestamps: *a7
+    updatedAt: 2026-08-12T14:48:47Z
+    closedAt: 2026-08-12T14:48:47Z
+    mergedAt: 2026-08-12T14:48:47Z
+    workCommits: *a10
+    workTimestamps: *a11
     workAdditions: 710
     workDeletions: 104
-    workFiles: *a8
+    workFiles: *a12
   - title: Redesign Proforma recruit intake and team economics
     body: >-
       ## Why
@@ -375,45 +400,20 @@ prsInProgress:
       - Redesigned the recruit wizard around firm details...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/85
     repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: open
-    labels: *a9
+    state: closed
+    labels: *a13
     additions: 1310
     deletions: 904
     changedFiles: 59
     author: myriadas-clees
     createdAt: 2026-08-11T17:38:21Z
-    updatedAt: 2026-08-11T17:44:31Z
-    closedAt: null
-    mergedAt: null
-    workCommits: *a10
-    workTimestamps: *a11
-    workAdditions: 243
-    workDeletions: 82
-    workFiles: *a12
-  - title: Reduce redundant Codex agent token usage
-    body: >-
-      - replace mandatory two-agent fan-out with one compact, read-only explorer and at most one scoped implementation
-      specialist for normal work
-
-      - make root guidance concise and align scoped issue, commit/push/PR, CI, and review-comment workflows
-
-      - lower explorer reasoning to low and routine implementati...
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/90
-    repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: open
-    labels: *a13
-    additions: 81
-    deletions: 93
-    changedFiles: 14
-    author: myriadas-clees
-    createdAt: 2026-08-12T03:08:46Z
-    updatedAt: 2026-08-12T03:18:47Z
-    closedAt: null
+    updatedAt: 2026-08-12T14:21:44Z
+    closedAt: 2026-08-12T14:21:43Z
     mergedAt: null
     workCommits: *a14
     workTimestamps: *a15
-    workAdditions: 82
-    workDeletions: 94
+    workAdditions: 243
+    workDeletions: 82
     workFiles: *a16
   - title: "feat(ofac): add durable scheduled sync lease"
     body: >-
@@ -504,20 +504,21 @@ prsInProgress:
       - Reordered the new-recruit wizard to **Firm...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: open
+    state: merged
     labels:
+      - documentation
       - github-automation
       - "app: proforma"
       - platform
       - deploy-preview
-    additions: 1613
-    deletions: 1039
-    changedFiles: 56
+    additions: 3602
+    deletions: 1565
+    changedFiles: 61
     author: myriadas-clees
     createdAt: 2026-08-10T18:50:49Z
-    updatedAt: 2026-08-11T20:46:55Z
-    closedAt: null
-    mergedAt: null
+    updatedAt: 2026-08-17T23:10:26Z
+    closedAt: 2026-08-17T23:10:26Z
+    mergedAt: 2026-08-17T23:10:26Z
     workCommits:
       - &a26
         sha: 9de30e5573aa99bf3bec45de9805d1df0747e23d
@@ -612,6 +613,9 @@ commitMessages:
         message: Streamline recruit editing and business mix UX in pricing (#111)
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/726f1ae14f4a30add404abd2922eddb74dbeb57e
         authoredAt: 2026-08-11T16:40:32Z
+        additions: 748
+        deletions: 202
+        filesChanged: 19
       - *a19
       - *a20
       - *a21
@@ -827,12 +831,125 @@ aiReviews:
   comments: 32
   reviews: 17
   fixed: 9
+hoursInputs:
+  timestamps:
+    - 2026-08-11T13:07:43Z
+    - 2026-08-11T13:41:37Z
+    - 2026-08-11T16:40:32Z
+    - 2026-08-11T18:39:24Z
+    - 2026-08-11T19:01:27Z
+    - 2026-08-11T19:24:59Z
+    - 2026-08-11T19:43:31Z
+    - 2026-08-11T19:56:13Z
+    - 2026-08-12T03:08:03Z
+    - 2026-08-11T17:34:06Z
+    - 2026-08-11T18:22:18Z
+    - 2026-08-11T18:33:16Z
+    - 2026-08-11T18:39:17Z
+    - 2026-08-11T18:59:53Z
+    - 2026-08-11T19:57:28Z
+    - 2026-08-11T20:01:32Z
+    - 2026-08-11T20:42:17Z
+    - 2026-08-12T03:08:05Z
+    - 2026-08-12T03:14:42Z
+    - 2026-08-12T03:08:43Z
+    - 2026-08-12T03:08:03Z
+    - 2026-08-12T03:08:46Z
+    - 2026-08-12T03:08:05Z
+    - 2026-08-12T03:14:42Z
+    - 2026-08-11T18:39:34Z
+    - 2026-08-11T18:39:24Z
+    - 2026-08-11T19:01:27Z
+    - 2026-08-11T19:24:59Z
+    - 2026-08-11T19:43:31Z
+    - 2026-08-11T19:56:13Z
+    - 2026-08-11T17:38:21Z
+    - 2026-08-11T17:34:06Z
+    - 2026-08-11T16:40:33Z
+    - 2026-08-11T13:07:43Z
+    - 2026-08-11T13:41:37Z
+    - 2026-08-12T03:15:00Z
+    - 2026-08-11T18:33:41Z
+    - 2026-08-11T18:33:43Z
+    - 2026-08-11T18:33:45Z
+    - 2026-08-11T18:33:48Z
+    - 2026-08-11T18:33:50Z
+    - 2026-08-11T18:33:53Z
+    - 2026-08-11T18:33:56Z
+    - 2026-08-11T18:34:00Z
+    - 2026-08-11T18:34:02Z
+    - 2026-08-11T18:39:28Z
+    - 2026-08-12T03:15:00Z
+    - 2026-08-11T18:33:41Z
+    - 2026-08-11T18:33:43Z
+    - 2026-08-11T18:33:45Z
+    - 2026-08-11T18:33:47Z
+    - 2026-08-11T18:33:50Z
+    - 2026-08-11T18:33:53Z
+    - 2026-08-11T18:33:56Z
+    - 2026-08-11T18:33:59Z
+    - 2026-08-11T18:34:02Z
+    - 2026-08-11T18:39:28Z
+  volume:
+    pullRequests:
+      - additions: 72
+        deletions: 160
+        state: merged
+        dailyWork: true
+        filesChanged: 10
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 107
+        deletions: 29
+        state: merged
+        dailyWork: true
+        filesChanged: 6
+        testFilesChanged: 2
+        commitCount: 2
+      - additions: 82
+        deletions: 94
+        state: merged
+        dailyWork: true
+        filesChanged: 14
+        testFilesChanged: 0
+        commitCount: 2
+      - additions: 710
+        deletions: 104
+        state: merged
+        dailyWork: true
+        filesChanged: 25
+        testFilesChanged: 9
+        commitCount: 5
+      - additions: 243
+        deletions: 82
+        state: closed
+        dailyWork: true
+        filesChanged: 19
+        testFilesChanged: 6
+        commitCount: 1
+      - additions: 787
+        deletions: 458
+        state: merged
+        dailyWork: true
+        filesChanged: 26
+        testFilesChanged: 12
+        commitCount: 7
+    reviewCount: 11
+    reviewCommentCount: 11
+    commitCount: 1
+    commitAdditions: 748
+    commitDeletions: 202
+    commitStatsCount: 1
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
 hoursEstimate:
-  version: "2.0"
-  hours: 53.9
+  version: "2.1"
+  hours: 57.7
   sessions: 3
   sessionHours: 5.1
-  volumeHours: 53.9
+  volumeHours: 57.7
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

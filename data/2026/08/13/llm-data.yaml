@@ -12,16 +12,16 @@ summaries:
         value: 0 PRs
   - type: commit-summary
     heading: Commits and line changes
-    body: 9 commits with +283 / −74 lines.
+    body: 9 commits with +289 / −80 lines.
     chips:
       - label: Commits
         value: "9"
         color: green
       - label: Additions
-        value: "+283"
+        value: "+289"
         color: green
       - label: Deletions
-        value: −74
+        value: −80
         color: red
   - type: review-summary
     heading: Reviews
@@ -43,12 +43,12 @@ summaries:
       tracked, elapsed, or billed time.
     chips:
       - label: Estimated engineering hours
-        value: ~25.6h
+        value: ~27.9h
 highlights:
   - type: pr
     title: Add read-only user access across operational apps
     repo: Myriad-Advisor-Solutions/myriadas-apps
-    meta: merged · +242 −73
+    meta: merged · +248 −79
     body: >-
       ## Why
 
@@ -65,13 +65,13 @@ highlights:
   - type: pr
     title: "feat(ofac): add PDF, CSV, and Excel report exports"
     repo: Myriad-Advisor-Solutions/ohcpwm-apps
-    meta: in progress · +973 −70
+    meta: in progress · +1110 −80
     body: Still open at the end of the reporting window.
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115
   - type: pr
     title: Redesign Proforma recruit intake with team-first step order
     repo: Myriad-Advisor-Solutions/myriadas-apps
-    meta: in progress · +3597 −1565
+    meta: in progress · +3602 −1565
     body: Still open at the end of the reporting window.
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
 ticker:

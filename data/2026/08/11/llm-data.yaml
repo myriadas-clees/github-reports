@@ -12,16 +12,16 @@ summaries:
         value: 2 PRs
   - type: commit-summary
     heading: Commits and line changes
-    body: 19 commits with +2,898 / −1,440 lines.
+    body: 19 commits with +1,214 / −469 lines.
     chips:
       - label: Commits
         value: "19"
         color: green
       - label: Additions
-        value: +2,898
+        value: +1,214
         color: green
       - label: Deletions
-        value: −1,440
+        value: −469
         color: red
   - type: review-summary
     heading: Reviews
@@ -43,12 +43,12 @@ summaries:
       tracked, elapsed, or billed time.
     chips:
       - label: Estimated engineering hours
-        value: ~53.9h
+        value: ~57.7h
 highlights:
   - type: pr
     title: Streamline recruit editing and business mix UX in pricing
     repo: Myriad-Advisor-Solutions/ohcpwm-apps
-    meta: merged · +748 −202
+    meta: merged · +107 −29
     body: >-
       - Default local development role is now `admin` (`OHPWM_LOCAL_ROLE=admin` in env examples); set
       `OHPWM_LOCAL_ROLE=officer` to exercise officer visibility and holdco economics boundaries.
@@ -62,17 +62,17 @@ highlights:
     body: Still open at the end of the reporting window.
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/113
   - type: pr
+    title: Reduce redundant Codex agent token usage
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +81 −93
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/90
+  - type: pr
     title: Enable FINET business mix editing
     repo: Myriad-Advisor-Solutions/ohcpwm-apps
-    meta: in progress · +687 −81
+    meta: in progress · +802 −95
     body: Still open at the end of the reporting window.
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/112
-  - type: pr
-    title: Redesign Proforma recruit intake and team economics
-    repo: Myriad-Advisor-Solutions/myriadas-apps
-    meta: in progress · +1310 −904
-    body: Still open at the end of the reporting window.
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/85
 ticker:
   - label: SHIPPED
     text: '@myriadas-clees merged "Streamline recruit editing and business mix UX in pricing" in

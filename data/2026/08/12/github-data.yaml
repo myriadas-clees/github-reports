@@ -13,8 +13,8 @@ dateRange:
   to: 2026-08-12
 stats:
   totalCommits: 11
-  totalAdditions: 1994
-  totalDeletions: 425
+  totalAdditions: 1171
+  totalDeletions: 108
   prsOpened: 2
   prsMerged: 4
   prsInProgress: 2
@@ -22,7 +22,7 @@ stats:
   reviewComments: 1
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 39.9
+  estimatedHours: 43.4
 dailyCommits:
   - date: 2026-08-12
     count: 11
@@ -67,7 +67,7 @@ pullRequests:
     closedAt: 2026-08-12T19:44:46Z
     mergedAt: 2026-08-12T19:44:46Z
     workCommits:
-      - &a10
+      - &a7
         sha: 34eed792bf53646af97ea03af66a0e1e16c78e5d
         message: "fix(pricing): make static font builds deterministic"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/34eed792bf53646af97ea03af66a0e1e16c78e5d
@@ -93,17 +93,18 @@ pullRequests:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
-    labels: &a1 []
+    labels: &a1
+      - deploy-preview
     additions: 827
     deletions: 70
-    changedFiles: 28
+    changedFiles: 32
     author: myriadas-clees
     createdAt: 2026-08-12T19:55:22Z
-    updatedAt: 2026-08-12T19:59:23Z
-    closedAt: null
-    mergedAt: null
+    updatedAt: 2026-08-28T14:51:40Z
+    closedAt: 2026-08-28T14:51:36Z
+    mergedAt: 2026-08-28T14:51:35Z
     workCommits: &a2
-      - &a11
+      - &a8
         sha: c5161259ba3a5884305ef3e3902225a1874bc7aa
         message: "feat(ofac): add compliance report exports"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c5161259ba3a5884305ef3e3902225a1874bc7aa
@@ -153,8 +154,8 @@ pullRequests:
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: merged
     labels: []
-    additions: 72
-    deletions: 160
+    additions: 0
+    deletions: 0
     changedFiles: 10
     author: myriadas-clees
     createdAt: 2026-08-12T03:08:43Z
@@ -166,39 +167,6 @@ pullRequests:
     workAdditions: 0
     workDeletions: 0
     workFiles: []
-  - title: Reduce redundant Codex agent token usage
-    body: >-
-      - replace mandatory two-agent fan-out with one compact, read-only explorer and at most one scoped implementation
-      specialist for normal work
-
-      - make root guidance concise and align scoped issue, commit/push/PR, CI, and review-comment workflows
-
-      - lower explorer reasoning to low and routine implementati...
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/90
-    repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: merged
-    labels:
-      - documentation
-    additions: 81
-    deletions: 93
-    changedFiles: 14
-    author: myriadas-clees
-    createdAt: 2026-08-12T03:08:46Z
-    updatedAt: 2026-08-12T14:34:52Z
-    closedAt: 2026-08-12T14:34:52Z
-    mergedAt: 2026-08-12T14:34:52Z
-    workCommits:
-      - &a5
-        sha: 983927673f4ed1f6866cbc6de16a59332ab69e1b
-        message: "docs(codex): retain serverless package approval"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/983927673f4ed1f6866cbc6de16a59332ab69e1b
-        authoredAt: 2026-08-12T14:25:30Z
-    workTimestamps:
-      - 2026-08-12T14:25:30Z
-    workAdditions: 1
-    workDeletions: 1
-    workFiles:
-      - AGENTS.md
   - title: Enable FINET business mix editing
     body: |-
       - Enable Revenue and Business Mix editing for FINET models.
@@ -208,8 +176,8 @@ pullRequests:
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: merged
     labels: []
-    additions: 802
-    deletions: 95
+    additions: 131
+    deletions: 30
     changedFiles: 27
     author: myriadas-clees
     createdAt: 2026-08-11T18:39:34Z
@@ -217,12 +185,12 @@ pullRequests:
     closedAt: 2026-08-12T14:48:47Z
     mergedAt: 2026-08-12T14:48:47Z
     workCommits:
-      - &a8
+      - &a5
         sha: fd0a97511661c50c96402291bc5f8f3f405c2f5f
         message: "fix(pricing): normalize legacy FiNet mixes"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/fd0a97511661c50c96402291bc5f8f3f405c2f5f
         authoredAt: 2026-08-12T13:37:27Z
-      - &a9
+      - &a6
         sha: 3de6408f907e287ca18b906d099fff746eb72773
         message: "fix(pricing): align FiNet payout validation"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3de6408f907e287ca18b906d099fff746eb72773
@@ -246,6 +214,39 @@ pullRequests:
       - pricing/src/lib/new-recruit.ts
       - pricing/src/lib/workstation.ts
       - scripts/dev-pricing-api.ts
+  - title: Reduce redundant Codex agent token usage
+    body: >-
+      - replace mandatory two-agent fan-out with one compact, read-only explorer and at most one scoped implementation
+      specialist for normal work
+
+      - make root guidance concise and align scoped issue, commit/push/PR, CI, and review-comment workflows
+
+      - lower explorer reasoning to low and routine implementati...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/90
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+    additions: 1
+    deletions: 1
+    changedFiles: 14
+    author: myriadas-clees
+    createdAt: 2026-08-12T03:08:46Z
+    updatedAt: 2026-08-12T14:34:52Z
+    closedAt: 2026-08-12T14:34:52Z
+    mergedAt: 2026-08-12T14:34:52Z
+    workCommits:
+      - &a9
+        sha: 983927673f4ed1f6866cbc6de16a59332ab69e1b
+        message: "docs(codex): retain serverless package approval"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/983927673f4ed1f6866cbc6de16a59332ab69e1b
+        authoredAt: 2026-08-12T14:25:30Z
+    workTimestamps:
+      - 2026-08-12T14:25:30Z
+    workAdditions: 1
+    workDeletions: 1
+    workFiles:
+      - AGENTS.md
 prsInProgress:
   - title: "feat(ofac): add PDF, CSV, and Excel report exports"
     body: |-
@@ -254,16 +255,16 @@ prsInProgress:
       - adds Pricing-style PDF and workbook previews, with Excel previews capped at 200 rows while downloads remai...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
-    state: open
+    state: merged
     labels: *a1
-    additions: 827
-    deletions: 70
-    changedFiles: 28
+    additions: 1110
+    deletions: 80
+    changedFiles: 32
     author: myriadas-clees
     createdAt: 2026-08-12T19:55:22Z
-    updatedAt: 2026-08-12T19:59:23Z
-    closedAt: null
-    mergedAt: null
+    updatedAt: 2026-08-28T14:51:40Z
+    closedAt: 2026-08-28T14:51:36Z
+    mergedAt: 2026-08-28T14:51:35Z
     workCommits: *a2
     workTimestamps: *a3
     workAdditions: 827
@@ -284,28 +285,28 @@ prsInProgress:
       - Reordered the new-recruit wizard to **Firm...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: open
+    state: merged
     labels:
       - documentation
       - github-automation
       - "app: proforma"
       - platform
       - deploy-preview
-    additions: 3463
-    deletions: 1544
+    additions: 3602
+    deletions: 1565
     changedFiles: 61
     author: myriadas-clees
     createdAt: 2026-08-10T18:50:49Z
-    updatedAt: 2026-08-12T20:40:04Z
-    closedAt: null
-    mergedAt: null
+    updatedAt: 2026-08-17T23:10:26Z
+    closedAt: 2026-08-17T23:10:26Z
+    mergedAt: 2026-08-17T23:10:26Z
     workCommits:
-      - &a6
+      - &a10
         sha: 952c9754b07197988414e068fd9d26e5a0d9b166
         message: Match client expense section formatting
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/952c9754b07197988414e068fd9d26e5a0d9b166
         authoredAt: 2026-08-12T15:30:05Z
-      - &a7
+      - &a11
         sha: 37578a70f828f6d4bcbf85bf998040e22ccbb78d
         message: Align Proforma expenses and setup outputs
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/37578a70f828f6d4bcbf85bf998040e22ccbb78d
@@ -353,20 +354,6 @@ prsInProgress:
 issues: []
 events: []
 commitMessages:
-  - repo: Myriad-Advisor-Solutions/myriadas-apps
-    messages:
-      - "docs(codex): retain serverless package approval"
-      - Reduce redundant Codex agent token usage (#90)
-      - Match client expense section formatting
-      - Align Proforma expenses and setup outputs
-    commits:
-      - *a5
-      - sha: 697c61a9f472d351315d5e67300be31fcefa1ad4
-        message: Reduce redundant Codex agent token usage (#90)
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/697c61a9f472d351315d5e67300be31fcefa1ad4
-        authoredAt: 2026-08-12T14:34:51Z
-      - *a6
-      - *a7
   - repo: Myriad-Advisor-Solutions/ohcpwm-apps
     messages:
       - "fix(pricing): normalize legacy FiNet mixes"
@@ -377,21 +364,47 @@ commitMessages:
       - "fix(pricing): make static font builds deterministic (#114)"
       - "feat(ofac): add compliance report exports"
     commits:
-      - *a8
-      - *a9
+      - *a5
+      - *a6
       - sha: 24bdc0d44592ff6346208d6b91eb8454a72519e0
         message: "chore(codex): reduce redundant agent token usage (#113)"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/24bdc0d44592ff6346208d6b91eb8454a72519e0
         authoredAt: 2026-08-12T14:35:02Z
+        additions: 72
+        deletions: 160
+        filesChanged: 10
       - sha: 6bfe793ba8bbbf18a097931c6d717660154f7822
         message: Enable FINET business mix editing (#112)
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6bfe793ba8bbbf18a097931c6d717660154f7822
         authoredAt: 2026-08-12T14:48:47Z
-      - *a10
+        additions: 802
+        deletions: 95
+        filesChanged: 27
+      - *a7
       - sha: 67f6625c9025e5bd7f6f20015011e88bfdd78df2
         message: "fix(pricing): make static font builds deterministic (#114)"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/67f6625c9025e5bd7f6f20015011e88bfdd78df2
         authoredAt: 2026-08-12T19:44:45Z
+        additions: 212
+        deletions: 7
+        filesChanged: 8
+      - *a8
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "docs(codex): retain serverless package approval"
+      - Reduce redundant Codex agent token usage (#90)
+      - Match client expense section formatting
+      - Align Proforma expenses and setup outputs
+    commits:
+      - *a9
+      - sha: 697c61a9f472d351315d5e67300be31fcefa1ad4
+        message: Reduce redundant Codex agent token usage (#90)
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/697c61a9f472d351315d5e67300be31fcefa1ad4
+        authoredAt: 2026-08-12T14:34:51Z
+        additions: 81
+        deletions: 93
+        filesChanged: 14
+      - *a10
       - *a11
 releases: []
 externalContributions: []
@@ -427,12 +440,88 @@ aiReviews:
   comments: 7
   reviews: 3
   fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-08-12T13:37:27Z
+    - 2026-08-12T14:07:33Z
+    - 2026-08-12T14:35:02Z
+    - 2026-08-12T14:48:47Z
+    - 2026-08-12T19:33:42Z
+    - 2026-08-12T19:44:45Z
+    - 2026-08-12T19:54:58Z
+    - 2026-08-12T14:25:30Z
+    - 2026-08-12T14:34:51Z
+    - 2026-08-12T15:30:05Z
+    - 2026-08-12T20:33:26Z
+    - 2026-08-12T19:34:01Z
+    - 2026-08-12T19:44:46Z
+    - 2026-08-12T19:33:42Z
+    - 2026-08-12T19:55:22Z
+    - 2026-08-12T19:54:58Z
+    - 2026-08-12T14:35:03Z
+    - 2026-08-12T14:48:47Z
+    - 2026-08-12T13:37:27Z
+    - 2026-08-12T14:07:33Z
+    - 2026-08-12T14:34:52Z
+    - 2026-08-12T14:25:30Z
+    - 2026-08-12T14:25:47Z
+    - 2026-08-12T14:25:47Z
+  volume:
+    pullRequests:
+      - additions: 212
+        deletions: 7
+        state: merged
+        dailyWork: true
+        filesChanged: 8
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 131
+        deletions: 30
+        state: merged
+        dailyWork: true
+        filesChanged: 13
+        testFilesChanged: 5
+        commitCount: 2
+      - additions: 1
+        deletions: 1
+        state: merged
+        dailyWork: true
+        filesChanged: 1
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 827
+        deletions: 70
+        state: merged
+        dailyWork: true
+        filesChanged: 28
+        testFilesChanged: 5
+        commitCount: 1
+      - additions: 2112
+        deletions: 767
+        state: merged
+        dailyWork: true
+        filesChanged: 34
+        testFilesChanged: 16
+        commitCount: 2
+      - additions: 0
+        deletions: 0
+        state: merged
+    reviewCount: 1
+    reviewCommentCount: 1
+    commitCount: 4
+    commitAdditions: 1167
+    commitDeletions: 355
+    commitStatsCount: 4
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
 hoursEstimate:
-  version: "2.0"
-  hours: 39.9
+  version: "2.1"
+  hours: 43.4
   sessions: 2
   sessionHours: 2.9
-  volumeHours: 39.9
+  volumeHours: 43.4
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
