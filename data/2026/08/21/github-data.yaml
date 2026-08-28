@@ -12,23 +12,23 @@ dateRange:
   from: 2026-08-21
   to: 2026-08-21
 stats:
-  totalCommits: 4
+  totalCommits: 47
   totalAdditions: 57
   totalDeletions: 1
   prsOpened: 2
   prsMerged: 2
   prsInProgress: 1
-  prsReviewed: 0
-  reviewComments: 0
+  prsReviewed: 27
+  reviewComments: 27
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 7.8
+  estimatedHours: 53.7
 dailyCommits:
   - date: 2026-08-21
-    count: 4
+    count: 47
 repositories:
   - name: Myriad-Advisor-Solutions/myriadas-apps
-    commits: 4
+    commits: 47
     prsOpened: 2
     prsMerged: 2
     issuesOpened: 0
@@ -61,7 +61,7 @@ pullRequests:
     closedAt: 2026-08-21T18:28:57Z
     mergedAt: 2026-08-21T18:28:57Z
     workCommits:
-      - &a2
+      - &a16
         sha: 91a0b9175c2efce321f171af478b37b3d65f4751
         message: "fix(hub): use configured SWA hostname for preview links"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/91a0b9175c2efce321f171af478b37b3d65f4751
@@ -102,7 +102,7 @@ pullRequests:
     closedAt: 2026-08-21T17:31:42Z
     mergedAt: 2026-08-21T17:31:42Z
     workCommits:
-      - &a1
+      - &a15
         sha: cb6cbe1e5f5825c958fd340d0765df71bc787c55
         message: "fix(ci): deploy prebuilt SWA Functions without rebuilding"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/cb6cbe1e5f5825c958fd340d0765df71bc787c55
@@ -115,76 +115,2115 @@ pullRequests:
       - .github/workflows/azure-static-web-apps.yml
       - scripts/tooling.test.ts
 prsInProgress:
-  - title: "feat(proforma): update FiNet pricing calculations"
-    body: |-
-      - Add explicit month-end advisory AUM and prior-quarter advisory AUM inputs.
-      - Apply the 4 bps advisory adjustment with per-advisor annual caps.
-      - Support Advisor Gateway package selection and updated Cloud PC pricing.
-      - Update FiNet assumptions, wizard summaries, workstation inputs, contracts, and ...
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/97
+  - title: "feat(proforma): restyle intake and trim unused Platform fee lines"
+    body: >-
+      - Stacks on #97 so FiNet 2026 pricing (Gateway packages, Cloud PC, Schedule A/B, advisory adjustment) stays the
+      base layer.
+
+      - Restyles New Recruit intake and groups Platform fees by cadence (Local Monthly, Local Annual, Annual, Monthly,
+      One-Time).
+
+      - Moves locations/domains to Firm and projection yea...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
     repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: open
+    state: merged
     labels:
+      - documentation
+      - github-automation
       - "app: proforma"
       - platform
-    additions: 271
-    deletions: 71
-    changedFiles: 14
+      - deploy-preview
+    additions: 11544
+    deletions: 3459
+    changedFiles: 116
     author: myriadas-clees
-    createdAt: 2026-08-20T16:54:34Z
-    updatedAt: 2026-08-21T18:32:02Z
-    closedAt: null
-    mergedAt: null
-    workCommits: []
-    workTimestamps: []
-    workAdditions: 0
-    workDeletions: 0
-    workFiles: []
+    createdAt: 2026-08-20T19:22:33Z
+    updatedAt: 2026-08-24T19:39:08Z
+    closedAt: 2026-08-24T19:38:05Z
+    mergedAt: 2026-08-24T19:38:05Z
+    workCommits:
+      - &a1
+        sha: e7dddbb651a950ecc516b7e58e5740a8eae803fe
+        message: "fix(proforma): address PR review regressions"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e7dddbb651a950ecc516b7e58e5740a8eae803fe
+        authoredAt: 2026-08-21T14:11:07Z
+      - &a2
+        sha: 9a12768a27be7341c1efcfd98c0cebe846bc7602
+        message: "fix(proforma): preserve and reconcile practice expenses"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9a12768a27be7341c1efcfd98c0cebe846bc7602
+        authoredAt: 2026-08-21T14:28:43Z
+      - &a3
+        sha: 11c1876eb03b1f9b4aa27143dd399dd367f117a9
+        message: "fix(proforma): reconcile annual local expenses"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/11c1876eb03b1f9b4aa27143dd399dd367f117a9
+        authoredAt: 2026-08-21T14:45:56Z
+      - &a4
+        sha: 3819f5e66c6ecbdef80580ab005b0fbd16877200
+        message: "test(proforma): stabilize PDF determinism check"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3819f5e66c6ecbdef80580ab005b0fbd16877200
+        authoredAt: 2026-08-21T15:06:57Z
+      - &a5
+        sha: ae81c3abd2b76f5ce551009c80ee5c43a06d7d7c
+        message: "fix(proforma): keep custom category editor open"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ae81c3abd2b76f5ce551009c80ee5c43a06d7d7c
+        authoredAt: 2026-08-21T15:14:24Z
+      - &a6
+        sha: 447cb73f59b207e1d061877ef2e65e5f5637049a
+        message: "fix(proforma): reconcile custom platform fees"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/447cb73f59b207e1d061877ef2e65e5f5637049a
+        authoredAt: 2026-08-21T15:25:15Z
+      - &a7
+        sha: 2998663ac8a75af76c619492f5b1f4130fdf96f9
+        message: "fix(proforma): expose and reconcile one-time costs"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2998663ac8a75af76c619492f5b1f4130fdf96f9
+        authoredAt: 2026-08-21T15:32:58Z
+      - &a8
+        sha: 621f240462a131cc63017e565f8798e6a06808ff
+        message: "fix(proforma): reconcile annual fees and label drafts"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/621f240462a131cc63017e565f8798e6a06808ff
+        authoredAt: 2026-08-21T15:45:12Z
+      - &a9
+        sha: 437498f348b275dbf07380f4a5fdc079a95acc85
+        message: "fix(proforma): expose RIA monthly platform fees"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/437498f348b275dbf07380f4a5fdc079a95acc85
+        authoredAt: 2026-08-21T15:54:37Z
+      - &a10
+        sha: b8bc2d2d410152d678f7c0899f1c688b4723d2ba
+        message: "fix(proforma): grow workbook expense schedules"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b8bc2d2d410152d678f7c0899f1c688b4723d2ba
+        authoredAt: 2026-08-21T16:10:03Z
+      - &a11
+        sha: e41f49a8df0b4838cef7cc4541979da26e8cbd86
+        message: "fix(proforma): reconcile FiNet annual fees"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e41f49a8df0b4838cef7cc4541979da26e8cbd86
+        authoredAt: 2026-08-21T16:19:25Z
+      - &a12
+        sha: ba5fc4e8732601a2db51668a1c7ae06e19b49fdd
+        message: "fix(proforma): preserve advisor values across roles"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ba5fc4e8732601a2db51668a1c7ae06e19b49fdd
+        authoredAt: 2026-08-21T16:28:21Z
+      - &a13
+        sha: 937eb92abe6c042261b1c1220eeb1e423d32174b
+        message: "fix(ui): cap topbar account menu width"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/937eb92abe6c042261b1c1220eeb1e423d32174b
+        authoredAt: 2026-08-21T16:40:46Z
+      - &a14
+        sha: f9c7e5f2ae9fd03ac814eab6a45fb5c2e87ca73f
+        message: Align the selected recruit model with intake steps and polish the live UI.
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f9c7e5f2ae9fd03ac814eab6a45fb5c2e87ca73f
+        authoredAt: 2026-08-21T16:51:14Z
+      - &a17
+        sha: 8cba2e5661003e36c566937fd15033c3f582f69a
+        message: Align Proforma with solo intake and one economics model so derived locations, payout grid, per-person Cloud PC,
+          and tax tables stay consistent, details AUM persists, and Budget $400 is not counted twice.
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8cba2e5661003e36c566937fd15033c3f582f69a
+        authoredAt: 2026-08-21T19:14:43Z
+      - &a18
+        sha: 026953c4f4cfbd2688d4690d6bd2b68b21f3ac27
+        message: "fix(proforma): persist Details Save Model and satisfy isSolo typecheck"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/026953c4f4cfbd2688d4690d6bd2b68b21f3ac27
+        authoredAt: 2026-08-21T19:29:39Z
+      - &a19
+        sha: ae1f5dbfe62a0af48c739928d96ebea5289eb1b2
+        message: Keep Proforma readable at 2880 and 720-tall viewports so dashboard KPIs, intake fields, and wizard Continue
+          stay on screen without hydration flicker.
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ae1f5dbfe62a0af48c739928d96ebea5289eb1b2
+        authoredAt: 2026-08-21T20:00:07Z
+      - &a20
+        sha: 571c45b815105525e104a082ca71c8ab75c60f38
+        message: Fix Codex review defects on estimated AUM, scenario projections, and intake persistence.
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/571c45b815105525e104a082ca71c8ab75c60f38
+        authoredAt: 2026-08-21T20:13:06Z
+      - &a21
+        sha: 6805801c3e1e82ef199a8a16c77a5b42d04defb4
+        message: Keep explicit multi-office location counts above derived state codes.
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6805801c3e1e82ef199a8a16c77a5b42d04defb4
+        authoredAt: 2026-08-21T20:13:49Z
+      - &a22
+        sha: 4586ac11d174dc7113e9fad7e0e779b87e0b569d
+        message: Fix follow-up Codex review on Details AUM seed, location edits, and annual workbook fees.
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4586ac11d174dc7113e9fad7e0e779b87e0b569d
+        authoredAt: 2026-08-21T20:27:43Z
+      - &a23
+        sha: 255e35c28604a8b22ece5249ffe151e8bdac0032
+        message: Submit the solo-normalized roster when creating an independent practice.
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/255e35c28604a8b22ece5249ffe151e8bdac0032
+        authoredAt: 2026-08-21T20:34:28Z
+      - &a24
+        sha: ccdf73afcce46196111117a14c9b74c3d9e1dec8
+        message: Fix recruit intake persistence validation
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ccdf73afcce46196111117a14c9b74c3d9e1dec8
+        authoredAt: 2026-08-21T21:02:19Z
+      - &a25
+        sha: 729b5d6083fe53e095f0ba801a832821ce6ecfc8
+        message: Simplify FiNet assumptions and benefits
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/729b5d6083fe53e095f0ba801a832821ce6ecfc8
+        authoredAt: 2026-08-21T21:15:48Z
+      - &a26
+        sha: d29096c76c36cc363714fca269d43fae0cc71e7d
+        message: Remove solo recruit intake path
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d29096c76c36cc363714fca269d43fae0cc71e7d
+        authoredAt: 2026-08-21T21:28:40Z
+      - &a27
+        sha: 904fd2a35857f2128421a90d43e0c43ff30b5531
+        message: Fix FiNet report layout and exports
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/904fd2a35857f2128421a90d43e0c43ff30b5531
+        authoredAt: 2026-08-21T21:40:59Z
+      - &a28
+        sha: 5639067619acfb42d5f9ea04d6425ab7ff7ee8e0
+        message: Improve selected choice contrast
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5639067619acfb42d5f9ea04d6425ab7ff7ee8e0
+        authoredAt: 2026-08-21T21:46:54Z
+      - &a29
+        sha: dc0e40e3a229768d5368b3069270d6a458d0b8ba
+        message: Fix dark theme choice contrast
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/dc0e40e3a229768d5368b3069270d6a458d0b8ba
+        authoredAt: 2026-08-21T21:49:36Z
+      - &a30
+        sha: 5e3cb59935c647c8fd3d1946488fbc50972b8a06
+        message: Align recruit notes field
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5e3cb59935c647c8fd3d1946488fbc50972b8a06
+        authoredAt: 2026-08-21T21:53:59Z
+      - &a31
+        sha: 10307dd6ba0a08aeaf422f1d7d6d9011ebc72e0a
+        message: Fix licensed toggle contrast
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/10307dd6ba0a08aeaf422f1d7d6d9011ebc72e0a
+        authoredAt: 2026-08-21T21:56:12Z
+      - &a32
+        sha: b8f3cee17fc044a51685fb01d1e696dec370c4ad
+        message: Show payout after local expenses
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b8f3cee17fc044a51685fb01d1e696dec370c4ad
+        authoredAt: 2026-08-21T21:58:21Z
+      - &a33
+        sha: 0624150dc860fec8cbc224c6c6d144b25edf6c12
+        message: Prevent donut total clipping
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0624150dc860fec8cbc224c6c6d144b25edf6c12
+        authoredAt: 2026-08-21T22:00:46Z
+      - &a34
+        sha: b79d6f967ad79bd81bf2eeba967529c357aed040
+        message: Enlarge payout donut layout
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b79d6f967ad79bd81bf2eeba967529c357aed040
+        authoredAt: 2026-08-21T22:07:15Z
+      - &a35
+        sha: fbda7aa4b37b2de2c13686bb1c2fd80113555f5b
+        message: Require explicit recruit creation
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/fbda7aa4b37b2de2c13686bb1c2fd80113555f5b
+        authoredAt: 2026-08-21T22:13:02Z
+      - &a36
+        sha: 3ce13607cdbc5f4517ed11a8a1daee33af621e45
+        message: Align expense occurrences with source workbook
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3ce13607cdbc5f4517ed11a8a1daee33af621e45
+        authoredAt: 2026-08-22T00:07:04Z
+      - &a37
+        sha: 0aae0495557a4b8e19c3038d8c61b6e2d258566c
+        message: Correct FiNet pricing schedule calculations
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0aae0495557a4b8e19c3038d8c61b6e2d258566c
+        authoredAt: 2026-08-22T00:20:08Z
+      - &a38
+        sha: 773ae10d7f5d886e88232f4144776008714a3570
+        message: Align setup budget Excel occurrences
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/773ae10d7f5d886e88232f4144776008714a3570
+        authoredAt: 2026-08-22T00:42:01Z
+      - &a39
+        sha: e6f4cc706fd757776235186bc741c30fc654c945
+        message: Match setup budget workbook styling
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e6f4cc706fd757776235186bc741c30fc654c945
+        authoredAt: 2026-08-22T00:51:44Z
+      - &a40
+        sha: 37e5e0f650a9a544caabc364051aecd4956d6cdc
+        message: Update FiNet reconciliation expectations
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/37e5e0f650a9a544caabc364051aecd4956d6cdc
+        authoredAt: 2026-08-22T00:52:38Z
+      - &a41
+        sha: 7ccfc78b44b2f7f45f607234c24507ea82ad8123
+        message: Match workbook export to advisor proforma
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7ccfc78b44b2f7f45f607234c24507ea82ad8123
+        authoredAt: 2026-08-22T01:10:38Z
+      - &a42
+        sha: c7d172ba0ff312c3d2aa0939dbb63c3eb80383ef
+        message: Theme remaining proforma workbook sheets
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c7d172ba0ff312c3d2aa0939dbb63c3eb80383ef
+        authoredAt: 2026-08-22T01:19:57Z
+      - &a43
+        sha: df31cecbad3df904be277585d0cd6dc10038557d
+        message: Consolidate and compact proforma workbooks
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/df31cecbad3df904be277585d0cd6dc10038557d
+        authoredAt: 2026-08-22T01:59:55Z
+      - &a44
+        sha: e0c098bd421193b929c8737f41fe5fd4d773a4f8
+        message: Fix Codex review findings
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e0c098bd421193b929c8737f41fe5fd4d773a4f8
+        authoredAt: 2026-08-22T02:12:43Z
+      - &a45
+        sha: 63a424b58f75da94b97fb2ac025c427b82d73021
+        message: Align FiNet wizard payout basis
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/63a424b58f75da94b97fb2ac025c427b82d73021
+        authoredAt: 2026-08-22T02:13:13Z
+    workTimestamps:
+      - 2026-08-21T14:11:07Z
+      - 2026-08-21T14:28:43Z
+      - 2026-08-21T14:45:56Z
+      - 2026-08-21T15:06:57Z
+      - 2026-08-21T15:14:24Z
+      - 2026-08-21T15:25:15Z
+      - 2026-08-21T15:32:58Z
+      - 2026-08-21T15:45:12Z
+      - 2026-08-21T15:54:37Z
+      - 2026-08-21T16:10:03Z
+      - 2026-08-21T16:19:25Z
+      - 2026-08-21T16:28:21Z
+      - 2026-08-21T16:40:46Z
+      - 2026-08-21T16:51:14Z
+      - 2026-08-21T19:14:43Z
+      - 2026-08-21T19:29:39Z
+      - 2026-08-21T20:00:07Z
+      - 2026-08-21T20:13:06Z
+      - 2026-08-21T20:13:49Z
+      - 2026-08-21T20:27:43Z
+      - 2026-08-21T20:34:28Z
+      - 2026-08-21T21:02:19Z
+      - 2026-08-21T21:15:48Z
+      - 2026-08-21T21:28:40Z
+      - 2026-08-21T21:40:59Z
+      - 2026-08-21T21:46:54Z
+      - 2026-08-21T21:49:36Z
+      - 2026-08-21T21:53:59Z
+      - 2026-08-21T21:56:12Z
+      - 2026-08-21T21:58:21Z
+      - 2026-08-21T22:00:46Z
+      - 2026-08-21T22:07:15Z
+      - 2026-08-21T22:13:02Z
+      - 2026-08-22T00:07:04Z
+      - 2026-08-22T00:20:08Z
+      - 2026-08-22T00:42:01Z
+      - 2026-08-22T00:51:44Z
+      - 2026-08-22T00:52:38Z
+      - 2026-08-22T01:10:38Z
+      - 2026-08-22T01:19:57Z
+      - 2026-08-22T01:59:55Z
+      - 2026-08-22T02:12:43Z
+      - 2026-08-22T02:13:13Z
+    workAdditions: 6163
+    workDeletions: 2677
+    workFiles:
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.ts
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/navigation/preferences.tsx
+      - proforma/src/app/globals.css
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/custom-expense-fields.test.tsx
+      - proforma/src/components/__tests__/dashboard-metrics-charts.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/recruit-archive-section.test.tsx
+      - proforma/src/components/__tests__/recruit-detail-panels.test.tsx
+      - proforma/src/components/__tests__/recruit-form.test.tsx
+      - proforma/src/components/__tests__/recruit-model-shell.test.tsx
+      - proforma/src/components/__tests__/recruit-row-actions.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/custom-expense-fields.tsx
+      - proforma/src/components/dashboard-get-started.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/intake-live-summary.tsx
+      - proforma/src/components/location-cost-table.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/payout-breakdown-donut.tsx
+      - proforma/src/components/proforma-intake-layout.tsx
+      - proforma/src/components/proforma-intake-options.ts
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-form.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruit-model-tab-icon.tsx
+      - proforma/src/components/recruit-row-actions.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/components/workbook-fee-table.tsx
+      - proforma/src/components/workbook-report-viewer.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/dashboard-summary.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/pipeline-metrics.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/recruit-routes.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report-storage.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/cosmos-data.ts
+      - proforma/src/lib/entity-state-costs.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/payroll-state-rates.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/proforma-nav.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/recruit-notes.ts
+      - proforma/src/lib/recruit-routes.ts
+      - proforma/src/lib/report-storage.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/report/workbook-preview.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
 issues: []
-events: []
+events:
+  - id: "18472682053"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T02:13:15Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18469553972"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T00:51:49Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18463620936"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T01:59:57Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18462978459"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T02:12:45Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "13677503622"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T02:14:22Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: created
+  - id: "13677503598"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T02:14:22Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: commented
+  - id: "13677503012"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T02:14:20Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: created
+  - id: "13677503011"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T02:14:21Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: commented
+  - id: "13677502544"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T02:14:18Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: created
+  - id: "13677502502"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T02:14:19Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: commented
+  - id: "13677501827"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T02:14:16Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: created
+  - id: "13677501750"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T02:14:17Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: commented
+  - id: "13677501214"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T02:14:14Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: created
+  - id: "13677501197"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T02:14:15Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: commented
+  - id: "13677500587"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T02:14:12Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: created
+  - id: "13677500578"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T02:14:13Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: commented
+  - id: "13677500027"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T02:14:10Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: created
+  - id: "13677499999"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T02:14:11Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: commented
+  - id: "13677499450"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T02:14:09Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: created
+  - id: "13677499446"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T02:14:09Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: commented
+  - id: "13677498795"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T02:14:07Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: created
+  - id: "13677498787"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T02:14:07Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: commented
+  - id: "13677498270"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T02:14:05Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: created
+  - id: "13677498259"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T02:14:06Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: commented
+  - id: "13677497667"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T02:14:03Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: created
+  - id: "13677497651"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T02:14:04Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: commented
+  - id: "13677497125"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T02:14:00Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: created
+  - id: "13677497072"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T02:14:02Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: commented
+  - id: "13677495891"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T02:13:57Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: created
+  - id: "13677495879"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T02:13:58Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: commented
+  - id: "13677494981"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T02:13:53Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: created
+  - id: "13677494962"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T02:13:55Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: commented
+  - id: "18461140806"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T01:19:58Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18460881683"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T22:00:48Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18460428997"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T21:54:01Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18460149296"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T00:20:10Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18459682308"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T00:07:05Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18458731587"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T21:28:42Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18456172037"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T01:10:39Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18456007307"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T00:42:03Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18454546202"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-22T00:52:40Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18454472892"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T20:34:29Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18453477640"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T21:46:56Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18452102714"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T22:13:03Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18451834481"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T21:15:50Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18449534077"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T20:27:45Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18449326487"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T21:58:22Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18448520321"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T21:41:01Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18446921180"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T20:13:10Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18446578022"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T22:07:17Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18446179599"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T20:00:09Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18445169197"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T19:14:49Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18444230455"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T18:28:58Z
+    payload:
+      kind: push
+      ref: refs/heads/main
+      commits: []
+  - id: "18440384275"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T18:29:29Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18439466551"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T19:29:54Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18439325700"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T21:56:14Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18438813681"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T21:49:37Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18436121469"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T17:32:11Z
+    payload:
+      kind: push
+      ref: refs/heads/clees/update-pricing-calculations
+      commits: []
+  - id: "18434829702"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T21:02:20Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18433830607"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T16:40:55Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "13667969155"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T20:34:35Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: created
+  - id: "13667968694"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T20:34:36Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: commented
+  - id: "13667670678"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T20:28:03Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: created
+  - id: "13667670608"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T20:28:04Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: commented
+  - id: "13667669337"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T20:28:02Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: created
+  - id: "13667669308"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T20:28:02Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: commented
+  - id: "13667668226"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T20:27:59Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: created
+  - id: "13667667963"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T20:28:01Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: commented
+  - id: "18431446619"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T17:31:43Z
+    payload:
+      kind: push
+      ref: refs/heads/main
+      commits: []
+  - id: "18431171353"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T15:54:45Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "13667081953"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T20:14:49Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: created
+  - id: "13667081936"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T20:14:49Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: commented
+  - id: "13667080661"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T20:14:47Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: created
+  - id: "13667080652"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T20:14:48Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: commented
+  - id: "13667079531"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T20:14:46Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: commented
+  - id: "13667079527"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T20:14:45Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: created
+  - id: "13667078219"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T20:14:43Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: created
+  - id: "13667078220"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T20:14:44Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: commented
+  - id: "13667077194"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T20:14:41Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: created
+  - id: "13667076810"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T20:14:42Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: commented
+  - id: "13667075657"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T20:14:40Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: created
+  - id: "13667075611"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T20:14:40Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: commented
+  - id: "13667074616"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T20:14:38Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: created
+  - id: "13667074588"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T20:14:39Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: commented
+  - id: "13667072993"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T20:14:36Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: created
+  - id: "13667072950"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T20:14:37Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: commented
+  - id: "13667071922"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T20:14:34Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: created
+  - id: "13667071808"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T20:14:35Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 98
+      prTitle: ""
+      state: commented
+  - id: "18430572638"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T20:13:51Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18430502696"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T15:45:25Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18427565740"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T17:32:12Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18427027063"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T15:25:24Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18426824499"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T14:28:54Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18426184702"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T16:28:30Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18425658479"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T16:10:13Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18425532099"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T14:46:05Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18425468067"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T14:11:25Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18424567078"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T15:07:08Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18422069170"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T18:29:27Z
+    payload:
+      kind: push
+      ref: refs/heads/clees/update-pricing-calculations
+      commits: []
+  - id: "18415695299"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T17:07:39Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18414654674"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T16:54:32Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18411904786"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T16:19:36Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18411481057"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T13:25:08Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18408204173"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T15:33:07Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18406744354"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-21T15:14:33Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
 commitMessages:
   - repo: Myriad-Advisor-Solutions/myriadas-apps
     messages:
+      - "fix(proforma): address PR review regressions"
+      - "fix(proforma): preserve and reconcile practice expenses"
+      - "fix(proforma): reconcile annual local expenses"
+      - "test(proforma): stabilize PDF determinism check"
+      - "fix(proforma): keep custom category editor open"
+      - "fix(proforma): reconcile custom platform fees"
+      - "fix(proforma): expose and reconcile one-time costs"
+      - "fix(proforma): reconcile annual fees and label drafts"
+      - "fix(proforma): expose RIA monthly platform fees"
+      - "fix(proforma): grow workbook expense schedules"
+      - "fix(proforma): reconcile FiNet annual fees"
+      - "fix(proforma): preserve advisor values across roles"
+      - "fix(ui): cap topbar account menu width"
+      - Align the selected recruit model with intake steps and polish the live UI.
       - "fix(ci): deploy prebuilt SWA Functions without rebuilding"
       - "fix(ci): deploy prebuilt SWA Functions without rebuilding (#101)"
       - "fix(hub): use configured SWA hostname for preview links"
       - "fix(hub): use configured SWA hostname for preview links (#102)"
+      - Align Proforma with solo intake and one economics model so derived locations, payout grid, per-person Cloud PC,
+        and tax tables stay consistent, details AUM persists, and Budget $400 is not counted twice.
+      - "fix(proforma): persist Details Save Model and satisfy isSolo typecheck"
+      - Keep Proforma readable at 2880 and 720-tall viewports so dashboard KPIs, intake fields, and wizard Continue stay
+        on screen without hydration flicker.
+      - Fix Codex review defects on estimated AUM, scenario projections, and intake persistence.
+      - Keep explicit multi-office location counts above derived state codes.
+      - Fix follow-up Codex review on Details AUM seed, location edits, and annual workbook fees.
+      - Submit the solo-normalized roster when creating an independent practice.
+      - Fix recruit intake persistence validation
+      - Simplify FiNet assumptions and benefits
+      - Remove solo recruit intake path
+      - Fix FiNet report layout and exports
+      - Improve selected choice contrast
+      - Fix dark theme choice contrast
+      - Align recruit notes field
+      - Fix licensed toggle contrast
+      - Show payout after local expenses
+      - Prevent donut total clipping
+      - Enlarge payout donut layout
+      - Require explicit recruit creation
+      - Align expense occurrences with source workbook
+      - Correct FiNet pricing schedule calculations
+      - Align setup budget Excel occurrences
+      - Match setup budget workbook styling
+      - Update FiNet reconciliation expectations
+      - Match workbook export to advisor proforma
+      - Theme remaining proforma workbook sheets
+      - Consolidate and compact proforma workbooks
+      - Fix Codex review findings
+      - Align FiNet wizard payout basis
     commits:
       - *a1
+      - *a2
+      - *a3
+      - *a4
+      - *a5
+      - *a6
+      - *a7
+      - *a8
+      - *a9
+      - *a10
+      - *a11
+      - *a12
+      - *a13
+      - *a14
+      - *a15
       - sha: 157c58a511e49f74adef9e41945db3756adc80b6
         message: "fix(ci): deploy prebuilt SWA Functions without rebuilding (#101)"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/157c58a511e49f74adef9e41945db3756adc80b6
         authoredAt: 2026-08-21T17:31:41Z
-      - *a2
+        additions: 4
+        deletions: 0
+        filesChanged: 2
+      - *a16
       - sha: 830559e93812679898542009051654328de9e1aa
         message: "fix(hub): use configured SWA hostname for preview links (#102)"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/830559e93812679898542009051654328de9e1aa
         authoredAt: 2026-08-21T18:28:56Z
+        additions: 53
+        deletions: 1
+        filesChanged: 3
+      - *a17
+      - *a18
+      - *a19
+      - *a20
+      - *a21
+      - *a22
+      - *a23
+      - *a24
+      - *a25
+      - *a26
+      - *a27
+      - *a28
+      - *a29
+      - *a30
+      - *a31
+      - *a32
+      - *a33
+      - *a34
+      - *a35
+      - *a36
+      - *a37
+      - *a38
+      - *a39
+      - *a40
+      - *a41
+      - *a42
+      - *a43
+      - *a44
+      - *a45
 releases: []
 externalContributions: []
-codeReviews: []
-reviewComments: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prTitle: "feat(proforma): restyle intake and trim unused Platform fee lines"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    state: commented
+    submittedAt: 2026-08-21T20:14:34Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prTitle: "feat(proforma): restyle intake and trim unused Platform fee lines"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    state: commented
+    submittedAt: 2026-08-21T20:14:36Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prTitle: "feat(proforma): restyle intake and trim unused Platform fee lines"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    state: commented
+    submittedAt: 2026-08-21T20:14:38Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prTitle: "feat(proforma): restyle intake and trim unused Platform fee lines"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    state: commented
+    submittedAt: 2026-08-21T20:14:40Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prTitle: "feat(proforma): restyle intake and trim unused Platform fee lines"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    state: commented
+    submittedAt: 2026-08-21T20:14:41Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prTitle: "feat(proforma): restyle intake and trim unused Platform fee lines"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    state: commented
+    submittedAt: 2026-08-21T20:14:43Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prTitle: "feat(proforma): restyle intake and trim unused Platform fee lines"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    state: commented
+    submittedAt: 2026-08-21T20:14:45Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prTitle: "feat(proforma): restyle intake and trim unused Platform fee lines"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    state: commented
+    submittedAt: 2026-08-21T20:14:47Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prTitle: "feat(proforma): restyle intake and trim unused Platform fee lines"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    state: commented
+    submittedAt: 2026-08-21T20:14:49Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prTitle: "feat(proforma): restyle intake and trim unused Platform fee lines"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    state: commented
+    submittedAt: 2026-08-21T20:28:00Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prTitle: "feat(proforma): restyle intake and trim unused Platform fee lines"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    state: commented
+    submittedAt: 2026-08-21T20:28:02Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prTitle: "feat(proforma): restyle intake and trim unused Platform fee lines"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    state: commented
+    submittedAt: 2026-08-21T20:28:03Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prTitle: "feat(proforma): restyle intake and trim unused Platform fee lines"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    state: commented
+    submittedAt: 2026-08-21T20:34:35Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prTitle: "feat(proforma): restyle intake and trim unused Platform fee lines"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    state: commented
+    submittedAt: 2026-08-22T02:13:53Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prTitle: "feat(proforma): restyle intake and trim unused Platform fee lines"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    state: commented
+    submittedAt: 2026-08-22T02:13:57Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prTitle: "feat(proforma): restyle intake and trim unused Platform fee lines"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    state: commented
+    submittedAt: 2026-08-22T02:14:00Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prTitle: "feat(proforma): restyle intake and trim unused Platform fee lines"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    state: commented
+    submittedAt: 2026-08-22T02:14:03Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prTitle: "feat(proforma): restyle intake and trim unused Platform fee lines"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    state: commented
+    submittedAt: 2026-08-22T02:14:05Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prTitle: "feat(proforma): restyle intake and trim unused Platform fee lines"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    state: commented
+    submittedAt: 2026-08-22T02:14:07Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prTitle: "feat(proforma): restyle intake and trim unused Platform fee lines"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    state: commented
+    submittedAt: 2026-08-22T02:14:09Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prTitle: "feat(proforma): restyle intake and trim unused Platform fee lines"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    state: commented
+    submittedAt: 2026-08-22T02:14:10Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prTitle: "feat(proforma): restyle intake and trim unused Platform fee lines"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    state: commented
+    submittedAt: 2026-08-22T02:14:12Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prTitle: "feat(proforma): restyle intake and trim unused Platform fee lines"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    state: commented
+    submittedAt: 2026-08-22T02:14:14Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prTitle: "feat(proforma): restyle intake and trim unused Platform fee lines"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    state: commented
+    submittedAt: 2026-08-22T02:14:16Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prTitle: "feat(proforma): restyle intake and trim unused Platform fee lines"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    state: commented
+    submittedAt: 2026-08-22T02:14:18Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prTitle: "feat(proforma): restyle intake and trim unused Platform fee lines"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    state: commented
+    submittedAt: 2026-08-22T02:14:20Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prTitle: "feat(proforma): restyle intake and trim unused Platform fee lines"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    state: commented
+    submittedAt: 2026-08-22T02:14:22Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3833371735
+    body: Fixed in 571c45b. Year-by-year projection now uses `proformaOptionsForScenarioSheet()` for the active tab instead
+      of always WFCS.
+    path: proforma/src/components/scenario-model-tab.tsx
+    createdAt: 2026-08-21T20:14:34Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3833371874
+    body: Fixed in 571c45b. Duplicating an advisor remaps nested staff `allocation` keys onto the new advisor id.
+    path: proforma/src/components/assumptions-tab.tsx
+    createdAt: 2026-08-21T20:14:36Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3833372063
+    body: "Already fixed on this branch: Assumptions One-Time Fees use `setupCosts.oneTimeSetup` only, which already
+      includes foreign one-time amounts. Confirmed in 571c45b; no extra add remains."
+    path: proforma/src/components/assumptions-tab.tsx
+    createdAt: 2026-08-21T20:14:38Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3833372259
+    body: Fixed in 571c45b. Wizard create now submits `startDate` / `bdCustodian` and persists them as generated note lines.
+    path: proforma/src/components/new-recruit-wizard.tsx
+    createdAt: 2026-08-21T20:14:40Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3833372429
+    body: Fixed in 571c45b. Details still hides generated note lines in the textarea, but save merges them back from the
+      existing recruit notes.
+    path: proforma/src/components/recruit-form.tsx
+    createdAt: 2026-08-21T20:14:41Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3833372579
+    body: Fixed in 571c45b. Details Estimated AUM now scales every advisor’s AUM (and caps month-end AUM) so the saved total
+      matches the entered value.
+    path: proforma/src/components/recruit-model-shell.tsx
+    createdAt: 2026-08-21T20:14:43Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3833372732
+    body: Fixed in 571c45b. Explicit `statePayroll` values including 0 are honored; table/global rates apply only when
+      `statePayroll` is absent.
+    path: proforma/src/lib/setup-projection.ts
+    createdAt: 2026-08-21T20:14:45Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3833372893
+    body: Fixed in 571c45b. Firm membership No/Yes no longer wipes company, locations, or extra team; those stay in draft
+      while solo only affects the live model and submitted firm name.
+    path: proforma/src/components/new-recruit-wizard.tsx
+    createdAt: 2026-08-21T20:14:47Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3833373045
+    body: Fixed in 6805801. `derivedLocationCount()` now uses max(state codes, persisted locations), so multi-office counts
+      in one state are kept.
+    path: proforma/src/lib/entity-state-costs.ts
+    createdAt: 2026-08-21T20:14:49Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3833474957
+    body: "Legitimate defect. Fixed in 4586ac1: Details Estimated AUM now seeds from the sum of advisor AUM so an unrelated
+      save no longer scales a 50+50 book to 25+25."
+    path: proforma/src/components/recruit-model-shell.tsx
+    createdAt: 2026-08-21T20:27:59Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3833475275
+    body: "Legitimate defect from the previous max() floor. Fixed in 4586ac1: state add/remove uses extra offices (locations
+      minus prior state count), so removing CA from TX+CA returns to 1 while TX with 3 offices still keeps the extras."
+    path: proforma/src/components/new-recruit-wizard.tsx
+    createdAt: 2026-08-21T20:28:02Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3833475534
+    body: "Legitimate defect. Fixed in 4586ac1: annual custom workbook rows store the annual amount and derive monthly as
+      H/12 (subtotals SUM the annual cells), so $100 stays $100 instead of $99.96."
+    path: proforma/src/lib/report/excel.ts
+    createdAt: 2026-08-21T20:28:03Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3833532535
+    body: "Legitimate defect. Fixed in 255e35c: create submits `submittedAdvisors` (solo-normalized) and the wizard API
+      applies `applySoloPracticeRoster` when `isSolo` is true, so extra firm team members are not persisted."
+    path: proforma/src/components/new-recruit-wizard.tsx
+    createdAt: 2026-08-21T20:34:35Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3834817375
+    body: Fixed in e0c098b. Both the create wizard and post-create assumptions editor now recalculate the derived location
+      count when all foreign states are cleared.
+    path: proforma/src/components/new-recruit-wizard.tsx
+    createdAt: 2026-08-22T02:13:53Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3834817519
+    body: "This is no longer applicable to the current product flow: the solo-advisor intake path was removed per product
+      direction, so users cannot enter this state transition. No compatibility behavior was changed."
+    path: proforma/src/components/new-recruit-wizard.tsx
+    createdAt: 2026-08-22T02:13:57Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3834817612
+    body: Fixed in e0c098b. The legacy annualOther value is again shown as an editable Other annual costs row, so saved
+      charges remain visible and correctable.
+    path: proforma/src/components/assumptions-tab.tsx
+    createdAt: 2026-08-22T02:14:00Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3834817711
+    body: Fixed in df31cec. FiNet workbook formulas now source their revenue and AUM inputs directly from Inputs, so the
+      export no longer depends on an omitted WFCS worksheet.
+    path: proforma/src/lib/report/excel.ts
+    createdAt: 2026-08-22T02:14:03Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3834817774
+    body: "The current behavior is intentional product direction: benefit pricing is standardized at $1,000/month for single
+      coverage and $2,000/month for married coverage. Preserving arbitrary legacy monthly amounts would conflict with
+      that requested rule."
+    path: proforma/src/lib/calculation.ts
+    createdAt: 2026-08-22T02:14:05Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3834817818
+    body: Fixed in e0c098b. Review AUM, total-account, and billing-account totals now exclude rows whose current role is
+      Staff, matching the model that is created.
+    path: proforma/src/components/new-recruit-wizard.tsx
+    createdAt: 2026-08-22T02:14:07Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3834817884
+    body: Fixed in e0c098b. FiNet Excel uses base plus syndicate revenue for grid selection, while payout formulas apply the
+      production-grid rate only to base revenue and 70% to syndicate revenue.
+    path: proforma/src/lib/report/excel.ts
+    createdAt: 2026-08-22T02:14:09Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3834817979
+    body: Fixed in e0c098b. Legacy website expenses remain active for non-FiNet saved models. FiNet continues excluding that
+      legacy row specifically to avoid duplicating its platform hosting charge.
+    path: proforma/src/lib/calculation.ts
+    createdAt: 2026-08-22T02:14:10Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3834818031
+    body: Fixed in e0c098b. Domestic recurring state-card fees are included in setup recurring totals and emitted as a
+      visible, styled Budget detail row.
+    path: proforma/src/lib/report/excel.ts
+    createdAt: 2026-08-22T02:14:12Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3834818091
+    body: Fixed in e0c098b. Each Budget projection year now uses that year’s baselineNetFinal instead of repeating the
+      current-period net.
+    path: proforma/src/lib/report/excel.ts
+    createdAt: 2026-08-22T02:14:14Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3834818137
+    body: Fixed in e0c098b. The Inputs sheet now uses the effective maximum of the entities roster length and legacy
+      entityCount, preserving compatibility models.
+    path: proforma/src/lib/report/excel.ts
+    createdAt: 2026-08-22T02:14:16Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3834818199
+    body: Fixed in e0c098b. The Rates sheet selects Schedule A or B from prior-quarter advisory AUM percentage and emits the
+      matching progressive tiers and total formulas.
+    path: proforma/src/lib/report/excel.ts
+    createdAt: 2026-08-22T02:14:18Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3834818276
+    body: Fixed in e0c098b. Staff and financial sections now start after the complete advisor roster, so large advisor teams
+      are not overwritten.
+    path: proforma/src/lib/report/excel.ts
+    createdAt: 2026-08-22T02:14:20Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 98
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3834818342
+    body: Fixed in 63a424b. The wizard preview now selects the FiNet production-grid tier from base plus syndicate revenue,
+      excluding insurance and retirement just like the saved model.
+    path: proforma/src/lib/calculation.ts
+    createdAt: 2026-08-22T02:14:22Z
 aiReviews:
   codex:
-    prsReviewed: 1
-    comments: 2
-    reviews: 2
-    fixed: 0
+    prsReviewed: 2
+    comments: 51
+    reviews: 33
+    fixed: 20
   cursor:
     prsReviewed: 0
     comments: 0
     reviews: 0
     fixed: 0
-  prsReviewed: 1
-  comments: 2
-  reviews: 2
-  fixed: 0
+  prsReviewed: 2
+  comments: 51
+  reviews: 33
+  fixed: 20
+hoursInputs:
+  timestamps:
+    - 2026-08-22T02:13:15Z
+    - 2026-08-22T00:51:49Z
+    - 2026-08-22T01:59:57Z
+    - 2026-08-22T02:12:45Z
+    - 2026-08-22T02:14:22Z
+    - 2026-08-22T02:14:22Z
+    - 2026-08-22T02:14:20Z
+    - 2026-08-22T02:14:21Z
+    - 2026-08-22T02:14:18Z
+    - 2026-08-22T02:14:19Z
+    - 2026-08-22T02:14:16Z
+    - 2026-08-22T02:14:17Z
+    - 2026-08-22T02:14:14Z
+    - 2026-08-22T02:14:15Z
+    - 2026-08-22T02:14:12Z
+    - 2026-08-22T02:14:13Z
+    - 2026-08-22T02:14:10Z
+    - 2026-08-22T02:14:11Z
+    - 2026-08-22T02:14:09Z
+    - 2026-08-22T02:14:09Z
+    - 2026-08-22T02:14:07Z
+    - 2026-08-22T02:14:07Z
+    - 2026-08-22T02:14:05Z
+    - 2026-08-22T02:14:06Z
+    - 2026-08-22T02:14:03Z
+    - 2026-08-22T02:14:04Z
+    - 2026-08-22T02:14:00Z
+    - 2026-08-22T02:14:02Z
+    - 2026-08-22T02:13:57Z
+    - 2026-08-22T02:13:58Z
+    - 2026-08-22T02:13:53Z
+    - 2026-08-22T02:13:55Z
+    - 2026-08-22T01:19:58Z
+    - 2026-08-21T22:00:48Z
+    - 2026-08-21T21:54:01Z
+    - 2026-08-22T00:20:10Z
+    - 2026-08-22T00:07:05Z
+    - 2026-08-21T21:28:42Z
+    - 2026-08-22T01:10:39Z
+    - 2026-08-22T00:42:03Z
+    - 2026-08-22T00:52:40Z
+    - 2026-08-21T20:34:29Z
+    - 2026-08-21T21:46:56Z
+    - 2026-08-21T22:13:03Z
+    - 2026-08-21T21:15:50Z
+    - 2026-08-21T20:27:45Z
+    - 2026-08-21T21:58:22Z
+    - 2026-08-21T21:41:01Z
+    - 2026-08-21T20:13:10Z
+    - 2026-08-21T22:07:17Z
+    - 2026-08-21T20:00:09Z
+    - 2026-08-21T19:14:49Z
+    - 2026-08-21T18:28:58Z
+    - 2026-08-21T18:29:29Z
+    - 2026-08-21T18:29:01Z
+    - 2026-08-21T18:19:47Z
+    - 2026-08-21T19:29:54Z
+    - 2026-08-21T21:56:14Z
+    - 2026-08-21T21:49:37Z
+    - 2026-08-21T17:31:46Z
+    - 2026-08-21T17:32:11Z
+    - 2026-08-21T21:02:20Z
+    - 2026-08-21T16:40:55Z
+    - 2026-08-21T17:20:31Z
+    - 2026-08-21T20:34:35Z
+    - 2026-08-21T20:34:36Z
+    - 2026-08-21T20:28:03Z
+    - 2026-08-21T20:28:04Z
+    - 2026-08-21T20:28:02Z
+    - 2026-08-21T20:28:02Z
+    - 2026-08-21T20:27:59Z
+    - 2026-08-21T20:28:01Z
+    - 2026-08-21T17:31:43Z
+    - 2026-08-21T15:54:45Z
+    - 2026-08-21T20:14:49Z
+    - 2026-08-21T20:14:49Z
+    - 2026-08-21T20:14:47Z
+    - 2026-08-21T20:14:48Z
+    - 2026-08-21T20:14:46Z
+    - 2026-08-21T20:14:45Z
+    - 2026-08-21T20:14:43Z
+    - 2026-08-21T20:14:44Z
+    - 2026-08-21T20:14:41Z
+    - 2026-08-21T20:14:42Z
+    - 2026-08-21T20:14:40Z
+    - 2026-08-21T20:14:40Z
+    - 2026-08-21T20:14:38Z
+    - 2026-08-21T20:14:39Z
+    - 2026-08-21T20:14:36Z
+    - 2026-08-21T20:14:37Z
+    - 2026-08-21T20:14:34Z
+    - 2026-08-21T20:14:35Z
+    - 2026-08-21T20:13:51Z
+    - 2026-08-21T15:45:25Z
+    - 2026-08-21T17:32:12Z
+    - 2026-08-21T15:25:24Z
+    - 2026-08-21T14:28:54Z
+    - 2026-08-21T16:28:30Z
+    - 2026-08-21T16:10:13Z
+    - 2026-08-21T14:46:05Z
+    - 2026-08-21T14:11:25Z
+    - 2026-08-21T15:07:08Z
+    - 2026-08-21T18:29:27Z
+    - 2026-08-21T18:28:57Z
+    - 2026-08-21T18:20:35Z
+    - 2026-08-21T17:31:42Z
+    - 2026-08-21T17:20:49Z
+    - 2026-08-21T17:07:39Z
+    - 2026-08-21T16:58:15Z
+    - 2026-08-21T16:54:32Z
+    - 2026-08-21T16:19:36Z
+    - 2026-08-21T13:25:08Z
+    - 2026-08-21T15:33:07Z
+    - 2026-08-21T15:14:33Z
+    - 2026-08-21T13:19:18Z
+    - 2026-08-21T14:11:07Z
+    - 2026-08-21T14:28:43Z
+    - 2026-08-21T14:45:56Z
+    - 2026-08-21T15:06:57Z
+    - 2026-08-21T15:14:24Z
+    - 2026-08-21T15:25:15Z
+    - 2026-08-21T15:32:58Z
+    - 2026-08-21T15:45:12Z
+    - 2026-08-21T15:54:37Z
+    - 2026-08-21T16:10:03Z
+    - 2026-08-21T16:19:25Z
+    - 2026-08-21T16:28:21Z
+    - 2026-08-21T16:40:46Z
+    - 2026-08-21T16:51:14Z
+    - 2026-08-21T17:20:24Z
+    - 2026-08-21T17:31:41Z
+    - 2026-08-21T18:19:39Z
+    - 2026-08-21T18:28:56Z
+    - 2026-08-21T19:14:43Z
+    - 2026-08-21T19:29:39Z
+    - 2026-08-21T20:00:07Z
+    - 2026-08-21T20:13:06Z
+    - 2026-08-21T20:13:49Z
+    - 2026-08-21T20:27:43Z
+    - 2026-08-21T20:34:28Z
+    - 2026-08-21T21:02:19Z
+    - 2026-08-21T21:15:48Z
+    - 2026-08-21T21:28:40Z
+    - 2026-08-21T21:40:59Z
+    - 2026-08-21T21:46:54Z
+    - 2026-08-21T21:49:36Z
+    - 2026-08-21T21:53:59Z
+    - 2026-08-21T21:56:12Z
+    - 2026-08-21T21:58:21Z
+    - 2026-08-21T22:00:46Z
+    - 2026-08-21T22:07:15Z
+    - 2026-08-21T22:13:02Z
+    - 2026-08-22T00:07:04Z
+    - 2026-08-22T00:20:08Z
+    - 2026-08-22T00:42:01Z
+    - 2026-08-22T00:51:44Z
+    - 2026-08-22T00:52:38Z
+    - 2026-08-22T01:10:38Z
+    - 2026-08-22T01:19:57Z
+    - 2026-08-22T01:59:55Z
+    - 2026-08-22T02:12:43Z
+    - 2026-08-22T02:13:13Z
+    - 2026-08-21T18:20:35Z
+    - 2026-08-21T18:28:57Z
+    - 2026-08-21T18:19:39Z
+    - 2026-08-21T17:20:49Z
+    - 2026-08-21T17:31:42Z
+    - 2026-08-21T17:20:24Z
+    - 2026-08-21T20:14:34Z
+    - 2026-08-21T20:14:36Z
+    - 2026-08-21T20:14:38Z
+    - 2026-08-21T20:14:40Z
+    - 2026-08-21T20:14:41Z
+    - 2026-08-21T20:14:43Z
+    - 2026-08-21T20:14:45Z
+    - 2026-08-21T20:14:47Z
+    - 2026-08-21T20:14:49Z
+    - 2026-08-21T20:28:00Z
+    - 2026-08-21T20:28:02Z
+    - 2026-08-21T20:28:03Z
+    - 2026-08-21T20:34:35Z
+    - 2026-08-22T02:13:53Z
+    - 2026-08-22T02:13:57Z
+    - 2026-08-22T02:14:00Z
+    - 2026-08-22T02:14:03Z
+    - 2026-08-22T02:14:05Z
+    - 2026-08-22T02:14:07Z
+    - 2026-08-22T02:14:09Z
+    - 2026-08-22T02:14:10Z
+    - 2026-08-22T02:14:12Z
+    - 2026-08-22T02:14:14Z
+    - 2026-08-22T02:14:16Z
+    - 2026-08-22T02:14:18Z
+    - 2026-08-22T02:14:20Z
+    - 2026-08-22T02:14:22Z
+    - 2026-08-21T20:14:34Z
+    - 2026-08-21T20:14:36Z
+    - 2026-08-21T20:14:38Z
+    - 2026-08-21T20:14:40Z
+    - 2026-08-21T20:14:41Z
+    - 2026-08-21T20:14:43Z
+    - 2026-08-21T20:14:45Z
+    - 2026-08-21T20:14:47Z
+    - 2026-08-21T20:14:49Z
+    - 2026-08-21T20:27:59Z
+    - 2026-08-21T20:28:02Z
+    - 2026-08-21T20:28:03Z
+    - 2026-08-21T20:34:35Z
+    - 2026-08-22T02:13:53Z
+    - 2026-08-22T02:13:57Z
+    - 2026-08-22T02:14:00Z
+    - 2026-08-22T02:14:03Z
+    - 2026-08-22T02:14:05Z
+    - 2026-08-22T02:14:07Z
+    - 2026-08-22T02:14:09Z
+    - 2026-08-22T02:14:10Z
+    - 2026-08-22T02:14:12Z
+    - 2026-08-22T02:14:14Z
+    - 2026-08-22T02:14:16Z
+    - 2026-08-22T02:14:18Z
+    - 2026-08-22T02:14:20Z
+    - 2026-08-22T02:14:22Z
+  volume:
+    pullRequests:
+      - additions: 53
+        deletions: 1
+        state: merged
+        dailyWork: true
+        filesChanged: 3
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 4
+        deletions: 0
+        state: merged
+        dailyWork: true
+        filesChanged: 2
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 6163
+        deletions: 2677
+        state: merged
+        dailyWork: true
+        filesChanged: 70
+        testFilesChanged: 27
+        commitCount: 43
+    reviewCount: 27
+    reviewCommentCount: 27
+    commitCount: 2
+    commitAdditions: 57
+    commitDeletions: 1
+    commitStatsCount: 2
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
 hoursEstimate:
-  version: "2.0"
-  hours: 7.8
-  sessions: 1
-  sessionHours: 1.1
-  volumeHours: 7.8
+  version: "2.1"
+  hours: 53.7
+  sessions: 2
+  sessionHours: 8.1
+  volumeHours: 53.7
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

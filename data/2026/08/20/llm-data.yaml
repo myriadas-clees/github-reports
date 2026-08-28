@@ -10,16 +10,16 @@ summaries:
         value: 4 PRs
   - type: commit-summary
     heading: Commits and line changes
-    body: 17 commits with +5,715 / −1,879 lines.
+    body: 18 commits with +6,982 / −2,306 lines.
     chips:
       - label: Commits
-        value: "17"
+        value: "18"
         color: green
       - label: Additions
-        value: +5,715
+        value: +6,982
         color: green
       - label: Deletions
-        value: −1,879
+        value: −2,306
         color: red
   - type: review-summary
     heading: Reviews
@@ -41,12 +41,12 @@ summaries:
       tracked, elapsed, or billed time.
     chips:
       - label: Estimated engineering hours
-        value: ~46.9h
+        value: ~52.7h
 highlights:
   - type: pr
     title: "feat(deploy): add friendly preview links"
     repo: Myriad-Advisor-Solutions/myriadas-apps
-    meta: merged · +1165 −165
+    meta: merged · +1176 −176
     body: >-
       ## Problem
 
@@ -69,7 +69,7 @@ highlights:
   - type: pr
     title: "feat(proforma): restyle intake and trim unused Platform fee lines"
     repo: Myriad-Advisor-Solutions/myriadas-apps
-    meta: in progress · +3087 −1202
+    meta: in progress · +11544 −3459
     body: Still open at the end of the reporting window.
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
 ticker:

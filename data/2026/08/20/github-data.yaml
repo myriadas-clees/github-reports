@@ -12,9 +12,9 @@ dateRange:
   from: 2026-08-20
   to: 2026-08-20
 stats:
-  totalCommits: 17
-  totalAdditions: 5715
-  totalDeletions: 1879
+  totalCommits: 18
+  totalAdditions: 6982
+  totalDeletions: 2306
   prsOpened: 4
   prsMerged: 1
   prsInProgress: 2
@@ -22,13 +22,13 @@ stats:
   reviewComments: 5
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 46.9
+  estimatedHours: 52.7
 dailyCommits:
   - date: 2026-08-20
-    count: 17
+    count: 18
 repositories:
   - name: Myriad-Advisor-Solutions/myriadas-apps
-    commits: 17
+    commits: 18
     prsOpened: 4
     prsMerged: 1
     issuesOpened: 0
@@ -59,8 +59,8 @@ pullRequests:
       - "app: hub"
       - platform
       - infrastructure
-    additions: 1165
-    deletions: 165
+    additions: 1176
+    deletions: 176
     changedFiles: 27
     author: myriadas-clees
     createdAt: 2026-08-20T14:53:13Z
@@ -128,19 +128,19 @@ pullRequests:
     changedFiles: 14
     author: myriadas-clees
     createdAt: 2026-08-20T16:54:34Z
-    updatedAt: 2026-08-20T17:10:36Z
-    closedAt: null
-    mergedAt: null
+    updatedAt: 2026-08-24T19:38:04Z
+    closedAt: 2026-08-24T19:38:04Z
+    mergedAt: 2026-08-24T19:38:04Z
     workCommits: &a2
       - &a11
-        sha: f322b6161b2e0b79b5ab7dea72344489588ab67e
+        sha: b60e5e7c67996570adc205f1da7ed867b6edd2bb
         message: "feat(proforma): add FiNet advisory pricing and package options"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f322b6161b2e0b79b5ab7dea72344489588ab67e
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b60e5e7c67996570adc205f1da7ed867b6edd2bb
         authoredAt: 2026-08-20T16:21:17Z
       - &a12
-        sha: 5922d229501932147686ac3c66891dcf7a9f1b25
+        sha: c2e1be677cb1c766b2b6dc8f82f02c58599541cb
         message: "fix(proforma): reconcile FiNet workbook formulas"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5922d229501932147686ac3c66891dcf7a9f1b25
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c2e1be677cb1c766b2b6dc8f82f02c58599541cb
         authoredAt: 2026-08-20T17:05:17Z
     workTimestamps: &a3
       - 2026-08-20T16:21:17Z
@@ -183,8 +183,8 @@ pullRequests:
       - github-automation
       - "app: hub"
       - platform
-    additions: 1192
-    deletions: 441
+    additions: 1201
+    deletions: 450
     changedFiles: 13
     author: myriadas-clees
     createdAt: 2026-08-20T19:37:14Z
@@ -258,47 +258,55 @@ pullRequests:
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: open
     labels: &a5
+      - documentation
+      - github-automation
       - "app: proforma"
       - platform
-    additions: 3087
-    deletions: 1202
-    changedFiles: 58
+      - deploy-preview
+    additions: 4334
+    deletions: 1609
+    changedFiles: 116
     author: myriadas-clees
     createdAt: 2026-08-20T19:22:33Z
-    updatedAt: 2026-08-20T19:26:31Z
-    closedAt: null
-    mergedAt: null
+    updatedAt: 2026-08-24T19:39:08Z
+    closedAt: 2026-08-24T19:38:05Z
+    mergedAt: 2026-08-24T19:38:05Z
     workCommits: &a6
       - &a13
-        sha: 11d1151a31400b2a0fd20de65d11e38250ef04f0
+        sha: ff8fb6fb36e3e35bdc1ec7eeabf5aea5d9ac55a8
         message: Restyle Proforma recruits and new-recruit intake to match the ledger UI.
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/11d1151a31400b2a0fd20de65d11e38250ef04f0
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ff8fb6fb36e3e35bdc1ec7eeabf5aea5d9ac55a8
         authoredAt: 2026-08-20T17:59:36Z
       - &a14
-        sha: 52eb28466cf4712db674f134208d27fffc94dfa7
+        sha: 23138e370a341fcc806d58906eba5fdc23254ba6
         message: Stop re-asking Firm entity and state fields on the Platform step.
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/52eb28466cf4712db674f134208d27fffc94dfa7
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/23138e370a341fcc806d58906eba5fdc23254ba6
         authoredAt: 2026-08-20T18:07:00Z
       - &a15
-        sha: ffe75bfe21b4832e600ce8c1b3ae91ab2b083c5f
+        sha: 50473ab497a71a4b4ac45cd4a2ada7c3c3a647d7
         message: Group Platform fees by cadence and treat no new entity as zero entities.
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ffe75bfe21b4832e600ce8c1b3ae91ab2b083c5f
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/50473ab497a71a4b4ac45cd4a2ada7c3c3a647d7
         authoredAt: 2026-08-20T18:44:19Z
       - &a16
-        sha: aa531d2a5becbe1ec7bf1a45101a00ed23a59c3d
+        sha: 346bbcc033cd3951cf7ec1e2da2feadd39b75d2d
         message: Move firm footprint and projection years off the Platform step.
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/aa531d2a5becbe1ec7bf1a45101a00ed23a59c3d
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/346bbcc033cd3951cf7ec1e2da2feadd39b75d2d
         authoredAt: 2026-08-20T18:51:57Z
       - &a17
-        sha: 16433a8627a427b25129b6f232c735d1de1b7bb0
+        sha: 83aaf0e9a5a313b6f362570b59adf3c2997ae4c6
         message: Trim unused Platform fees and add 2026 Gateway, Cloud PC, and Schedule A/B pricing.
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/16433a8627a427b25129b6f232c735d1de1b7bb0
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/83aaf0e9a5a313b6f362570b59adf3c2997ae4c6
         authoredAt: 2026-08-20T19:17:21Z
       - &a18
-        sha: 4242afb3d689cf321f3739dc77fc3747da205b04
+        sha: bc616b100e0814d1a57bedf6466e8f72dfa19326
         message: Keep Version 6 office-fee fixtures and hide zero-location office lines in tests.
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4242afb3d689cf321f3739dc77fc3747da205b04
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/bc616b100e0814d1a57bedf6466e8f72dfa19326
         authoredAt: 2026-08-20T19:22:15Z
+      - &a25
+        sha: 6b9e8021d24df406e89c800d21c7eb427d3d322e
+        message: Add custom expenses to every Platform fee cadence with one table layout.
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6b9e8021d24df406e89c800d21c7eb427d3d322e
+        authoredAt: 2026-08-20T20:47:54Z
     workTimestamps: &a7
       - 2026-08-20T17:59:36Z
       - 2026-08-20T18:07:00Z
@@ -306,11 +314,14 @@ pullRequests:
       - 2026-08-20T18:51:57Z
       - 2026-08-20T19:17:21Z
       - 2026-08-20T19:22:15Z
-    workAdditions: 3095
-    workDeletions: 1210
+      - 2026-08-20T20:47:54Z
+    workAdditions: 4334
+    workDeletions: 1609
     workFiles: &a8
       - bun.lock
       - packages/brand/src/styles.css
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
       - packages/ui/src/navigation/app-nav.tsx
       - packages/ui/src/navigation/app-shell.tsx
       - packages/ui/src/user-menu.tsx
@@ -332,6 +343,7 @@ pullRequests:
       - proforma/src/components/assumptions-tab.tsx
       - proforma/src/components/branded-date-field.tsx
       - proforma/src/components/branded-select.tsx
+      - proforma/src/components/custom-expense-fields.tsx
       - proforma/src/components/dashboard-get-started.tsx
       - proforma/src/components/dashboard-metrics-charts.tsx
       - proforma/src/components/dashboard-recruits-panel.tsx
@@ -352,19 +364,24 @@ pullRequests:
       - proforma/src/components/scenario-model-tab.tsx
       - proforma/src/components/work-state-select.tsx
       - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
       - proforma/src/lib/__tests__/proforma-visibility.test.ts
       - proforma/src/lib/__tests__/report-filenames.test.ts
       - proforma/src/lib/__tests__/report-model.test.ts
       - proforma/src/lib/__tests__/report-storage.test.ts
       - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
       - proforma/src/lib/__tests__/workbook-output.test.ts
       - proforma/src/lib/__tests__/workbook-preview.test.ts
       - proforma/src/lib/__tests__/workstation.test.ts
       - proforma/src/lib/calculation.ts
+      - proforma/src/lib/expense-groups.ts
       - proforma/src/lib/proforma-nav.ts
       - proforma/src/lib/recruit-model-tabs.ts
       - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
       - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/setup-projection.ts
       - proforma/src/lib/workstation-sections.ts
       - proforma/src/lib/workstation.ts
 prsInProgress:
@@ -376,16 +393,16 @@ prsInProgress:
       - Update FiNet assumptions, wizard summaries, workstation inputs, contracts, and ...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/97
     repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: open
+    state: merged
     labels: *a1
     additions: 271
     deletions: 71
     changedFiles: 14
     author: myriadas-clees
     createdAt: 2026-08-20T16:54:34Z
-    updatedAt: 2026-08-20T17:10:36Z
-    closedAt: null
-    mergedAt: null
+    updatedAt: 2026-08-24T19:38:04Z
+    closedAt: 2026-08-24T19:38:04Z
+    mergedAt: 2026-08-24T19:38:04Z
     workCommits: *a2
     workTimestamps: *a3
     workAdditions: 271
@@ -402,23 +419,179 @@ prsInProgress:
       - Moves locations/domains to Firm and projection yea...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
     repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: open
+    state: merged
     labels: *a5
-    additions: 3087
-    deletions: 1202
-    changedFiles: 58
+    additions: 11544
+    deletions: 3459
+    changedFiles: 116
     author: myriadas-clees
     createdAt: 2026-08-20T19:22:33Z
-    updatedAt: 2026-08-20T19:26:31Z
-    closedAt: null
-    mergedAt: null
+    updatedAt: 2026-08-24T19:39:08Z
+    closedAt: 2026-08-24T19:38:05Z
+    mergedAt: 2026-08-24T19:38:05Z
     workCommits: *a6
     workTimestamps: *a7
-    workAdditions: 3095
-    workDeletions: 1210
+    workAdditions: 4334
+    workDeletions: 1609
     workFiles: *a8
 issues: []
-events: []
+events:
+  - id: "18326312329"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-20T19:36:28Z
+    payload:
+      kind: push
+      ref: refs/heads/clees/proforma-landing-redesign
+      commits: []
+  - id: "18325881986"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-20T20:22:34Z
+    payload:
+      kind: push
+      ref: refs/heads/clees/proforma-landing-redesign
+      commits: []
+  - id: "18325059813"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-20T20:14:21Z
+    payload:
+      kind: push
+      ref: refs/heads/clees/proforma-landing-redesign
+      commits: []
+  - id: "18322287642"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-20T19:47:54Z
+    payload:
+      kind: push
+      ref: refs/heads/clees/proforma-landing-redesign
+      commits: []
+  - id: "18322002900"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-20T19:58:35Z
+    payload:
+      kind: push
+      ref: refs/heads/clees/proforma-landing-redesign
+      commits: []
+  - id: "13608903548"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-20T19:58:48Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 100
+      prTitle: ""
+      state: created
+  - id: "18312692177"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-20T17:05:26Z
+    payload:
+      kind: push
+      ref: refs/heads/clees/update-pricing-calculations
+      commits: []
+  - id: "13607686667"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-20T20:28:55Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 100
+      prTitle: ""
+      state: created
+  - id: "13607686629"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-20T20:28:56Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 100
+      prTitle: ""
+      state: commented
+  - id: "13607387524"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-20T20:22:41Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 100
+      prTitle: ""
+      state: created
+  - id: "13607387280"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-20T20:22:42Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 100
+      prTitle: ""
+      state: commented
+  - id: "13606996172"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-20T20:14:31Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 100
+      prTitle: ""
+      state: created
+  - id: "13606992226"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-20T20:14:32Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 100
+      prTitle: ""
+      state: commented
+  - id: "13606222125"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-20T19:58:49Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 100
+      prTitle: ""
+      state: commented
+  - id: "13605718862"
+    type: PullRequestReviewCommentEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-20T19:48:30Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 100
+      prTitle: ""
+      state: created
+  - id: "13605718281"
+    type: PullRequestReviewEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-20T19:48:31Z
+    payload:
+      kind: review
+      action: created
+      prNumber: 100
+      prTitle: ""
+      state: commented
+  - id: "18300022123"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-20T15:29:24Z
+    payload:
+      kind: push
+      ref: refs/heads/clees/derive-product-urls-from-hub
+      commits: []
 commitMessages:
   - repo: Myriad-Advisor-Solutions/myriadas-apps
     messages:
@@ -439,6 +612,7 @@ commitMessages:
       - "fix(hub): close menu at desktop breakpoint"
       - "fix(hub): allow short menus to scroll"
       - "fix(hub): scope preview metadata"
+      - Add custom expenses to every Platform fee cadence with one table layout.
     commits:
       - *a9
       - *a10
@@ -446,6 +620,9 @@ commitMessages:
         message: "feat(deploy): add friendly preview links (#95)"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ab66d6f8a8518411cab5c786d439315e91463b8e
         authoredAt: 2026-08-20T15:54:00Z
+        additions: 1165
+        deletions: 165
+        filesChanged: 27
       - *a11
       - *a12
       - *a13
@@ -460,6 +637,7 @@ commitMessages:
       - *a22
       - *a23
       - *a24
+      - *a25
 releases: []
 externalContributions: []
 codeReviews:
@@ -558,12 +736,134 @@ aiReviews:
   comments: 12
   reviews: 9
   fixed: 4
+hoursInputs:
+  timestamps:
+    - 2026-08-20T19:36:28Z
+    - 2026-08-20T20:22:34Z
+    - 2026-08-20T20:14:21Z
+    - 2026-08-20T19:47:54Z
+    - 2026-08-20T19:58:35Z
+    - 2026-08-20T19:22:32Z
+    - 2026-08-20T19:31:46Z
+    - 2026-08-20T19:58:48Z
+    - 2026-08-20T20:28:55Z
+    - 2026-08-20T17:05:26Z
+    - 2026-08-20T20:28:55Z
+    - 2026-08-20T20:28:56Z
+    - 2026-08-20T20:22:41Z
+    - 2026-08-20T20:22:42Z
+    - 2026-08-20T20:14:31Z
+    - 2026-08-20T20:14:32Z
+    - 2026-08-20T19:58:49Z
+    - 2026-08-20T19:48:30Z
+    - 2026-08-20T19:48:31Z
+    - 2026-08-20T19:37:14Z
+    - 2026-08-20T19:22:33Z
+    - 2026-08-20T16:54:34Z
+    - 2026-08-20T15:29:24Z
+    - 2026-08-20T14:27:33Z
+    - 2026-08-20T16:54:34Z
+    - 2026-08-20T15:54:01Z
+    - 2026-08-20T14:54:13Z
+    - 2026-08-20T14:54:00Z
+    - 2026-08-20T14:53:58Z
+    - 2026-08-20T14:53:13Z
+    - 2026-08-20T14:27:31Z
+    - 2026-08-20T15:29:22Z
+    - 2026-08-20T15:54:00Z
+    - 2026-08-20T16:21:17Z
+    - 2026-08-20T17:05:17Z
+    - 2026-08-20T17:59:36Z
+    - 2026-08-20T18:07:00Z
+    - 2026-08-20T18:44:19Z
+    - 2026-08-20T18:51:57Z
+    - 2026-08-20T19:17:21Z
+    - 2026-08-20T19:22:15Z
+    - 2026-08-20T19:31:15Z
+    - 2026-08-20T19:36:18Z
+    - 2026-08-20T19:47:44Z
+    - 2026-08-20T19:58:25Z
+    - 2026-08-20T20:14:13Z
+    - 2026-08-20T20:22:25Z
+    - 2026-08-20T20:47:54Z
+    - 2026-08-20T14:53:13Z
+    - 2026-08-20T15:54:01Z
+    - 2026-08-20T14:27:31Z
+    - 2026-08-20T15:29:22Z
+    - 2026-08-20T16:54:34Z
+    - 2026-08-20T16:21:17Z
+    - 2026-08-20T17:05:17Z
+    - 2026-08-20T19:37:14Z
+    - 2026-08-20T19:31:15Z
+    - 2026-08-20T19:36:18Z
+    - 2026-08-20T19:47:44Z
+    - 2026-08-20T19:58:25Z
+    - 2026-08-20T20:14:13Z
+    - 2026-08-20T20:22:25Z
+    - 2026-08-20T19:22:33Z
+    - 2026-08-20T17:59:36Z
+    - 2026-08-20T18:07:00Z
+    - 2026-08-20T18:44:19Z
+    - 2026-08-20T18:51:57Z
+    - 2026-08-20T19:17:21Z
+    - 2026-08-20T19:22:15Z
+    - 2026-08-20T20:47:54Z
+    - 2026-08-20T19:48:30Z
+    - 2026-08-20T19:58:48Z
+    - 2026-08-20T20:14:31Z
+    - 2026-08-20T20:22:42Z
+    - 2026-08-20T20:28:55Z
+    - 2026-08-20T19:48:30Z
+    - 2026-08-20T19:58:48Z
+    - 2026-08-20T20:14:31Z
+    - 2026-08-20T20:22:41Z
+    - 2026-08-20T20:28:55Z
+  volume:
+    pullRequests:
+      - additions: 1176
+        deletions: 176
+        state: merged
+        dailyWork: true
+        filesChanged: 27
+        testFilesChanged: 6
+        commitCount: 2
+      - additions: 271
+        deletions: 71
+        state: merged
+        dailyWork: true
+        filesChanged: 14
+        testFilesChanged: 6
+        commitCount: 2
+      - additions: 1201
+        deletions: 450
+        state: closed
+        dailyWork: true
+        filesChanged: 13
+        testFilesChanged: 1
+        commitCount: 6
+      - additions: 4334
+        deletions: 1609
+        state: merged
+        dailyWork: true
+        filesChanged: 66
+        testFilesChanged: 26
+        commitCount: 7
+    reviewCount: 5
+    reviewCommentCount: 5
+    commitCount: 1
+    commitAdditions: 1165
+    commitDeletions: 165
+    commitStatsCount: 1
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
 hoursEstimate:
-  version: "2.0"
-  hours: 46.9
+  version: "2.1"
+  hours: 52.7
   sessions: 1
   sessionHours: 6
-  volumeHours: 46.9
+  volumeHours: 52.7
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

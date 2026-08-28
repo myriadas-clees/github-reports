@@ -13,8 +13,8 @@ dateRange:
   to: 2026-08-24
 stats:
   totalCommits: 16
-  totalAdditions: 11815
-  totalDeletions: 3530
+  totalAdditions: 1692
+  totalDeletions: 731
   prsOpened: 0
   prsMerged: 2
   prsInProgress: 0
@@ -22,7 +22,7 @@ stats:
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 13.7
+  estimatedHours: 29.6
 dailyCommits:
   - date: 2026-08-24
     count: 16
@@ -47,8 +47,8 @@ pullRequests:
     labels:
       - "app: proforma"
       - platform
-    additions: 271
-    deletions: 71
+    additions: 0
+    deletions: 0
     changedFiles: 14
     author: myriadas-clees
     createdAt: 2026-08-20T16:54:34Z
@@ -78,8 +78,8 @@ pullRequests:
       - "app: proforma"
       - platform
       - deploy-preview
-    additions: 11544
-    deletions: 3459
+    additions: 1692
+    deletions: 731
     changedFiles: 116
     author: myriadas-clees
     createdAt: 2026-08-20T19:22:33Z
@@ -214,7 +214,135 @@ pullRequests:
       - proforma/src/lib/workbook-output.ts
 prsInProgress: []
 issues: []
-events: []
+events:
+  - id: "18766296155"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-24T19:19:01Z
+    payload:
+      kind: push
+      ref: refs/heads/t3code/pr98-review-fixes
+      commits: []
+  - id: "18764112311"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-24T19:19:24Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18752716507"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-24T19:38:06Z
+    payload:
+      kind: push
+      ref: refs/heads/main
+      commits: []
+  - id: "18751835445"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-24T17:02:02Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18751767031"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-24T19:27:09Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18751765428"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-24T19:27:08Z
+    payload:
+      kind: push
+      ref: refs/heads/t3code/pr98-review-fixes
+      commits: []
+  - id: "18750252796"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-24T16:45:58Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18746521717"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-24T15:55:51Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18746303550"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-24T18:23:28Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18744172452"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-24T17:59:15Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18743952680"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-24T17:56:39Z
+    payload:
+      kind: push
+      ref: refs/heads/t3code/pr98-review-fixes
+      commits: []
+  - id: "18741678020"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-24T15:25:35Z
+    payload:
+      kind: push
+      ref: refs/heads/t3code/pr98-review-fixes
+      commits: []
+  - id: "18741138580"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-24T15:31:30Z
+    payload:
+      kind: push
+      ref: refs/heads/t3code/pr98-review-fixes
+      commits: []
+  - id: "18736817048"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-24T16:35:26Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18731550524"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-24T15:36:42Z
+    payload:
+      kind: push
+      ref: refs/heads/cursor/ceb90b8b
+      commits: []
+  - id: "18728436090"
+    type: PushEvent
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    createdAt: 2026-08-24T15:07:13Z
+    payload:
+      kind: push
+      ref: refs/heads/t3code/pr98-review-fixes
+      commits: []
 commitMessages:
   - repo: Myriad-Advisor-Solutions/myriadas-apps
     messages:
@@ -253,10 +381,16 @@ commitMessages:
         message: "feat(proforma): update FiNet pricing calculations (#97)"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0ffc5d5ca26238667227808ae5c9a3d11d6ddc4a
         authoredAt: 2026-08-24T19:38:02Z
+        additions: 271
+        deletions: 71
+        filesChanged: 14
       - sha: 9dacf7b57db43a15c3eafb34293986ea8dffd120
         message: "feat(proforma): restyle intake and trim unused Platform fee lines (#98)"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9dacf7b57db43a15c3eafb34293986ea8dffd120
         authoredAt: 2026-08-24T19:38:03Z
+        additions: 11544
+        deletions: 3459
+        filesChanged: 116
 releases: []
 externalContributions: []
 codeReviews: []
@@ -276,12 +410,87 @@ aiReviews:
   comments: 11
   reviews: 8
   fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-08-24T19:19:01Z
+    - 2026-08-24T19:19:24Z
+    - 2026-08-24T19:38:06Z
+    - 2026-08-24T19:38:05Z
+    - 2026-08-24T19:38:04Z
+    - 2026-08-24T17:02:02Z
+    - 2026-08-24T19:27:09Z
+    - 2026-08-24T19:27:08Z
+    - 2026-08-24T16:45:58Z
+    - 2026-08-24T15:55:51Z
+    - 2026-08-24T18:23:28Z
+    - 2026-08-24T17:59:15Z
+    - 2026-08-24T17:56:39Z
+    - 2026-08-24T15:25:35Z
+    - 2026-08-24T15:31:30Z
+    - 2026-08-24T16:35:26Z
+    - 2026-08-24T15:36:42Z
+    - 2026-08-24T15:07:13Z
+    - 2026-08-24T14:43:48Z
+    - 2026-08-24T12:38:57Z
+    - 2026-08-24T14:43:41Z
+    - 2026-08-24T15:07:11Z
+    - 2026-08-24T15:25:29Z
+    - 2026-08-24T15:31:29Z
+    - 2026-08-24T15:55:49Z
+    - 2026-08-24T16:35:17Z
+    - 2026-08-24T16:45:56Z
+    - 2026-08-24T17:02:01Z
+    - 2026-08-24T17:56:37Z
+    - 2026-08-24T18:23:26Z
+    - 2026-08-24T18:29:30Z
+    - 2026-08-24T19:18:57Z
+    - 2026-08-24T19:27:07Z
+    - 2026-08-24T19:38:02Z
+    - 2026-08-24T19:38:03Z
+    - 2026-08-24T19:38:04Z
+    - 2026-08-24T19:38:05Z
+    - 2026-08-24T12:38:57Z
+    - 2026-08-24T14:43:41Z
+    - 2026-08-24T15:07:11Z
+    - 2026-08-24T15:25:29Z
+    - 2026-08-24T15:31:29Z
+    - 2026-08-24T15:55:49Z
+    - 2026-08-24T16:35:17Z
+    - 2026-08-24T16:45:56Z
+    - 2026-08-24T17:02:01Z
+    - 2026-08-24T17:56:37Z
+    - 2026-08-24T18:23:26Z
+    - 2026-08-24T18:29:30Z
+    - 2026-08-24T19:18:57Z
+    - 2026-08-24T19:27:07Z
+  volume:
+    pullRequests:
+      - additions: 1692
+        deletions: 731
+        state: merged
+        dailyWork: true
+        filesChanged: 37
+        testFilesChanged: 16
+        commitCount: 14
+      - additions: 0
+        deletions: 0
+        state: merged
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 2
+    commitAdditions: 11815
+    commitDeletions: 3530
+    commitStatsCount: 2
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
 hoursEstimate:
-  version: "2.0"
-  hours: 13.7
+  version: "2.1"
+  hours: 29.6
   sessions: 2
   sessionHours: 5.4
-  volumeHours: 13.7
+  volumeHours: 29.6
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

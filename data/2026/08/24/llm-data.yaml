@@ -10,16 +10,16 @@ summaries:
         value: 0 PRs
   - type: commit-summary
     heading: Commits and line changes
-    body: 16 commits with +11,815 / −3,530 lines.
+    body: 16 commits with +1,692 / −731 lines.
     chips:
       - label: Commits
         value: "16"
         color: green
       - label: Additions
-        value: +11,815
+        value: +1,692
         color: green
       - label: Deletions
-        value: −3,530
+        value: −731
         color: red
   - type: review-summary
     heading: AI code reviews
@@ -33,12 +33,12 @@ summaries:
       tracked, elapsed, or billed time.
     chips:
       - label: Estimated engineering hours
-        value: ~13.7h
+        value: ~29.6h
 highlights:
   - type: pr
     title: "feat(proforma): update FiNet pricing calculations"
     repo: Myriad-Advisor-Solutions/myriadas-apps
-    meta: merged · +271 −71
+    meta: merged · +0 −0
     body: |-
       - Add explicit month-end advisory AUM and prior-quarter advisory AUM inputs.
       - Apply the 4 bps advisory adjustment with per-advisor annual caps.
@@ -47,7 +47,7 @@ highlights:
   - type: pr
     title: "feat(proforma): restyle intake and trim unused Platform fee lines"
     repo: Myriad-Advisor-Solutions/myriadas-apps
-    meta: merged · +11544 −3459
+    meta: merged · +1692 −731
     body: >-
       - Stacks on #97 so FiNet 2026 pricing (Gateway packages, Cloud PC, Schedule A/B, advisory adjustment) stays the
       base layer.

@@ -10,10 +10,10 @@ summaries:
         value: 2 PRs
   - type: commit-summary
     heading: Commits and line changes
-    body: 4 commits with +57 / −1 lines.
+    body: 47 commits with +57 / −1 lines.
     chips:
       - label: Commits
-        value: "4"
+        value: "47"
         color: green
       - label: Additions
         value: "+57"
@@ -22,18 +22,26 @@ summaries:
         value: −1
         color: red
   - type: review-summary
+    heading: Reviews
+    body: 27 reviews with 27 comments.
+    chips:
+      - label: Reviews
+        value: "27"
+      - label: Comments
+        value: "27"
+  - type: review-summary
     heading: AI code reviews
-    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 2 reviews, 2 comments, 1 PR."
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 33 reviews, 51 comments, 2 PRs."
     chips:
       - label: Codex
-        value: 2 reviews · 2 comments · 1 PR
+        value: 33 reviews · 51 comments · 2 PRs
   - type: activity-pattern
     heading: Estimated engineering hours
     body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
       tracked, elapsed, or billed time.
     chips:
       - label: Estimated engineering hours
-        value: ~7.8h
+        value: ~53.7h
 highlights:
   - type: pr
     title: "fix(hub): use configured SWA hostname for preview links"
@@ -58,11 +66,11 @@ highlights:
       rebuild the already-built Functions package and rejected Bun workspace:* dependenc
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/101
   - type: pr
-    title: "feat(proforma): update FiNet pricing calculations"
+    title: "feat(proforma): restyle intake and trim unused Platform fee lines"
     repo: Myriad-Advisor-Solutions/myriadas-apps
-    meta: in progress · +271 −71
+    meta: in progress · +11544 −3459
     body: Still open at the end of the reporting window.
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/97
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
 ticker:
   - label: SHIPPED
     text: '@myriadas-clees merged "fix(hub): use configured SWA hostname for preview links" in
