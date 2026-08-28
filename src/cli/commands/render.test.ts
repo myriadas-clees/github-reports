@@ -732,3 +732,61 @@ describe("registerRender", () => {
     expect(opts).toMatchObject({ prevWeek: undefined, nextWeek: undefined });
   });
 });
+
+describe("withRecomputedHours", () => {
+  it("recomputes from hoursInputs and falls back when missing", async () => {
+    const { withRecomputedHours } = await import("./render.js");
+    const base = {
+      username: "alice",
+      avatarUrl: "",
+      dateRange: { from: "2026-06-16", to: "2026-06-16" },
+      stats: {
+        totalCommits: 0,
+        totalAdditions: 0,
+        totalDeletions: 0,
+        prsOpened: 0,
+        prsMerged: 0,
+        prsInProgress: 0,
+        prsReviewed: 0,
+        reviewComments: 0,
+        issuesOpened: 0,
+        issuesClosed: 0,
+        estimatedHours: 2,
+      },
+      dailyCommits: [],
+      repositories: [],
+      pullRequests: [],
+      issues: [],
+      events: [],
+      commitMessages: [],
+      releases: [],
+      externalContributions: [],
+      hoursEstimate: {
+        version: "1.0",
+        hours: 2,
+        sessions: 0,
+        gapMinutes: 90,
+        maxSessionHours: 6,
+        note: "old",
+      },
+      aiContent: { title: "t", subtitle: "s", overview: "", summaries: [], highlights: [] },
+    };
+
+    expect(withRecomputedHours(base as never).stats.estimatedHours).toBe(2);
+
+    const withInputs = {
+      ...base,
+      hoursInputs: {
+        timestamps: [],
+        volume: {
+          commitCount: 3,
+          commitAdditions: 4000,
+          commitDeletions: 200,
+          commitStatsCount: 3,
+        },
+        options: { gapMinutes: 90, maxSessionHours: 6, minimumHours: 8 },
+      },
+    };
+    expect(withRecomputedHours(withInputs as never).stats.estimatedHours).toBe(9);
+  });
+});

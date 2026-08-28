@@ -4,6 +4,7 @@
 //   1) session hours from activity timestamps
 //   2) volume hours from PR size / reviews / commits
 // and take the stronger signal. Always labeled as an estimate.
+// Persist HoursInputs on github-data.yaml so formula changes recompute without refetch.
 
 export type HoursEstimateResult = {
   version: string;
@@ -34,6 +35,13 @@ export type VolumeInput = {
   commitDeletions?: number;
   /** Direct commits that have line-stat enrichment. */
   commitStatsCount?: number;
+};
+
+/** Snapshot of everything estimateHours needs — stored so formulas can change later. */
+export type HoursInputs = {
+  timestamps: string[];
+  volume: VolumeInput;
+  options: { gapMinutes: number; maxSessionHours: number; minimumHours?: number };
 };
 
 const DEFAULT_GAP_MINUTES = 90;
@@ -182,3 +190,33 @@ export const estimateHoursFromTimestamps = (
   timestamps: string[],
   options: { gapMinutes?: number; maxSessionHours?: number } = {},
 ): HoursEstimateResult => estimateHours(timestamps, {}, options);
+
+type HoursBearing = {
+  hoursInputs?: HoursInputs;
+  hoursEstimate?: {
+    version?: string;
+    hours: number;
+    sessions: number;
+    sessionHours?: number;
+    volumeHours?: number;
+    gapMinutes: number;
+    maxSessionHours: number;
+    note: string;
+  };
+  stats: { estimatedHours: number };
+};
+
+/** Re-run the current estimator from persisted hoursInputs (no GitHub calls). */
+export const applyHoursEstimate = <T extends HoursBearing>(data: T): T => {
+  if (!data.hoursInputs) return data;
+  const hoursEstimate = estimateHours(
+    data.hoursInputs.timestamps,
+    data.hoursInputs.volume,
+    data.hoursInputs.options,
+  );
+  return {
+    ...data,
+    hoursEstimate,
+    stats: { ...data.stats, estimatedHours: hoursEstimate.hours },
+  };
+};

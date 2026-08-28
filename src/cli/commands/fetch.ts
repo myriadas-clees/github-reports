@@ -543,9 +543,9 @@ const runFullFetch = async (
     options.timezone,
     hasRepositoryScope,
   );
-  const hoursEstimate = estimateHours(
+  const hoursInputs = {
     timestamps,
-    {
+    volume: {
       pullRequests: hoursPullRequests,
       reviewCount: reviewData.reviews.length,
       reviewCommentCount: reviewData.comments.length,
@@ -554,11 +554,16 @@ const runFullFetch = async (
       commitDeletions: directCommitChurn.deletions,
       commitStatsCount: directCommitChurn.withStats,
     },
-    {
+    options: {
       gapMinutes: options.sessionGapMinutes,
       maxSessionHours: options.maxSessionHours,
       minimumHours: command === "daily-fetch" ? 8 : 0,
     },
+  };
+  const hoursEstimate = estimateHours(
+    hoursInputs.timestamps,
+    hoursInputs.volume,
+    hoursInputs.options,
   );
   console.log(
     `Estimated engineering hours: ~${hoursEstimate.hours}h ` +
@@ -595,6 +600,7 @@ const runFullFetch = async (
     codeReviews: reviewData.reviews,
     reviewComments: reviewData.comments,
     aiReviews: reviewData.aiReviews,
+    hoursInputs,
     hoursEstimate,
   };
 

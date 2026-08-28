@@ -1,5 +1,9 @@
 // Weekly report data types
 
+import type { HoursInputs } from "./collector/estimate-hours.js";
+
+export type { HoursInputs };
+
 export type DailyCommitCount = {
   date: string; // ISO date string (YYYY-MM-DD)
   count: number;
@@ -256,6 +260,8 @@ export type WeeklyReportData = {
    * @deprecated Prefer aiReviews. Kept so older YAML still loads.
    */
   aiReviewFixes?: AiReviewFixCounts;
+  /** Inputs for estimateHours — recompute without refetch when the formula changes. */
+  hoursInputs?: HoursInputs;
   hoursEstimate?: HoursEstimate;
   /** Plain-English summary for non-technical stakeholders. */
   stakeholderSummary?: string;

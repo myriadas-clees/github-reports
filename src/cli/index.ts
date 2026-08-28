@@ -9,6 +9,7 @@ import { Command } from "commander";
 import { registerFetch } from "./commands/fetch.js";
 import { registerGenerate } from "./commands/generate.js";
 import { registerRender } from "./commands/render.js";
+import { registerRecomputeHours } from "./commands/recompute-hours.js";
 import { registerDeploy } from "./commands/deploy.js";
 import { registerSetup } from "./commands/setup.js";
 import { registerReport } from "./commands/report.js";
@@ -26,6 +27,7 @@ const program = new Command()
 registerFetch(program);
 registerGenerate(program);
 registerRender(program);
+registerRecomputeHours(program);
 registerDeploy(program);
 registerSetup(program);
 registerReport(program);

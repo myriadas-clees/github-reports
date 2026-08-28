@@ -5,6 +5,8 @@ import {
   estimatePrHours,
   estimateDailyPrWorkHours,
   estimateVolumeHours,
+  applyHoursEstimate,
+  ESTIMATOR_VERSION,
 } from "./estimate-hours.js";
 
 describe("estimatePrHours", () => {
@@ -175,5 +177,42 @@ describe("weekday hour floor", () => {
   it("does not apply a floor when minimumHours is omitted", () => {
     const result = estimateHours([], {});
     expect(result.hours).toBe(0);
+  });
+});
+
+describe("applyHoursEstimate", () => {
+  it("leaves data unchanged when hoursInputs is missing", () => {
+    const data = { stats: { estimatedHours: 3 }, hoursEstimate: { hours: 3 } as never };
+    expect(applyHoursEstimate(data)).toBe(data);
+  });
+
+  it("recomputes hours and version from hoursInputs", () => {
+    const data = {
+      stats: { estimatedHours: 1 },
+      hoursEstimate: {
+        version: "1.0",
+        hours: 1,
+        sessions: 0,
+        sessionHours: 0,
+        volumeHours: 1,
+        gapMinutes: 90,
+        maxSessionHours: 6,
+        note: "old",
+      },
+      hoursInputs: {
+        timestamps: [] as string[],
+        volume: {
+          commitCount: 3,
+          commitAdditions: 4000,
+          commitDeletions: 200,
+          commitStatsCount: 3,
+        },
+        options: { gapMinutes: 90, maxSessionHours: 6, minimumHours: 8 },
+      },
+    };
+    const next = applyHoursEstimate(data);
+    expect(next.stats.estimatedHours).toBe(9);
+    expect(next.hoursEstimate?.hours).toBe(9);
+    expect(next.hoursEstimate?.version).toBe(ESTIMATOR_VERSION);
   });
 });

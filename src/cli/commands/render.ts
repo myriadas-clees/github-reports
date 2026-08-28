@@ -14,8 +14,13 @@ import { generateOGImage, generateIndexOGImage } from "../../renderer/og-image.j
 import { generateCard, generateDarkCard } from "../../renderer/card.js";
 import { buildRSSFeed } from "../../renderer/rss.js";
 import { assertNoSecretsInHtml, loadConfigFile, resolveConfig } from "../../config.js";
+import { applyHoursEstimate } from "../../collector/estimate-hours.js";
 import type { WeeklyReportData, AIContent, Language, Theme } from "../../types.js";
 import { AVAILABLE_THEMES } from "../../renderer/themes/index.js";
+
+/** Prefer current formula from hoursInputs; fall back to stored estimate. */
+export const withRecomputedHours = (data: WeeklyReportData): WeeklyReportData =>
+  data.hoursInputs ? applyHoursEstimate(data) : data; // structural HoursBearing
 
 const env = (key: string): string | undefined => process.env[key];
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -82,11 +87,12 @@ const buildReportEntries = async (
         tryReadYaml<WeeklyReportData>(join(dataDir, path, "github-data.yaml")),
       ]);
       if (!llmData) return null;
-      const stats = ghData ? {
-        commits: ghData.stats.totalCommits,
-        prs: ghData.stats.prsOpened,
-        reviews: ghData.stats.prsReviewed,
-        hours: ghData.stats.estimatedHours ?? ghData.hoursEstimate?.hours ?? 0,
+      const hoursData = ghData ? withRecomputedHours(ghData) : null;
+      const stats = hoursData ? {
+        commits: hoursData.stats.totalCommits,
+        prs: hoursData.stats.prsOpened,
+        reviews: hoursData.stats.prsReviewed,
+        hours: hoursData.stats.estimatedHours ?? hoursData.hoursEstimate?.hours ?? 0,
       } : undefined;
       const dateTo = ghData?.dateRange?.to;
       return buildReportEntry(path, llmData.title, llmData.subtitle, stats, dateTo, llmData.overview);
@@ -138,7 +144,10 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
   }
   console.log("Loaded LLM data.");
 
-  const data: WeeklyReportData = { ...normalizeReportData(githubData), aiContent };
+  const data: WeeklyReportData = {
+    ...withRecomputedHours(normalizeReportData(githubData)),
+    aiContent,
+  };
 
   // Determine previous/next report paths for internal linking.
   let allPaths = await listCompletedReportDirs(options.dataDir);

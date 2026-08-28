@@ -85,6 +85,22 @@ jobs:
             git push
           fi
 
+      - name: Recompute hours from stored inputs
+        env:
+          DATA_DIR: ./data
+          CONFIG_PATH: ./config.yaml
+        run: bun dist/cli/index.js recompute-hours
+
+      - name: Commit recomputed hours
+        run: |
+          git add -f data/
+          if git diff --cached --quiet; then
+            echo "No hours changes"
+          else
+            git commit -m "data: recompute estimated hours"
+            git push
+          fi
+
       - name: Render complete archive
         env:
           LANGUAGE: ${{ vars.LANGUAGE || 'en' }}

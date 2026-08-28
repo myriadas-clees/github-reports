@@ -981,6 +981,7 @@ describe("registerFetch (weekly-fetch)", () => {
     expect(yaml).toContain("stakeholderSummary:");
     expect(yaml).toContain("estimatedHours:");
     expect(yaml).toContain("hoursEstimate:");
+    expect(yaml).toContain("hoursInputs:");
   });
 
   it("maps repo names and reduces commit-message totals when repositories aggregate is non-empty", async () => {
