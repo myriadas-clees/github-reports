@@ -4,8 +4,8 @@ name: Daily Report
 
 on:
   schedule:
-    # 01:00 EST / 02:00 EDT; derived from the configured America/New_York timezone.
-    - cron: '0 6 * * 1-5'
+    # 01:27 EST / 02:27 EDT; derived from the configured America/New_York timezone.
+    - cron: '27 6 * * 1-5'
   workflow_dispatch:
     inputs:
       date:
@@ -48,22 +48,13 @@ jobs:
       - name: Build
         run: bun run build
 
-      - name: Fetch daily activity
+      - name: Fetch and generate
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           GITHUB_USERNAME: ${{ vars.GITHUB_USERNAME }}
           DATA_DIR: ./data
           CONFIG_PATH: ./config.yaml
           INPUT_DATE: ${{ inputs.date }}
-        run: |
-          if [ -n "$INPUT_DATE" ]; then
-            bun dist/cli/index.js daily-fetch --date "$INPUT_DATE"
-          else
-            bun dist/cli/index.js daily-fetch
-          fi
-
-      - name: Generate summary
-        env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -73,15 +64,41 @@ jobs:
           LLM_PROVIDER: ${{ vars.LLM_PROVIDER }}
           LLM_MODEL: ${{ vars.LLM_MODEL }}
           LANGUAGE: ${{ vars.LANGUAGE || 'en' }}
-          DATA_DIR: ./data
-          CONFIG_PATH: ./config.yaml
-          INPUT_DATE: ${{ inputs.date }}
         run: |
+          fill_date() {
+            local report_date="$1"
+            local dir="data/${report_date//-//}"
+            if [ ! -f "$dir/github-data.yaml" ]; then
+              echo "Fetching $report_date"
+              bun dist/cli/index.js daily-fetch --date "$report_date"
+            fi
+            if [ ! -f "$dir/llm-data.yaml" ]; then
+              echo "Generating $report_date"
+              bun dist/cli/index.js generate --date "$report_date"
+            fi
+            if [ -f "$dir/github-data.yaml" ] && [ -f "$dir/llm-data.yaml" ]; then
+              echo "Complete $report_date"
+            fi
+          }
+
           if [ -n "$INPUT_DATE" ]; then
+            echo "Fetching $INPUT_DATE"
+            bun dist/cli/index.js daily-fetch --date "$INPUT_DATE"
+            echo "Generating $INPUT_DATE"
             bun dist/cli/index.js generate --date "$INPUT_DATE"
-          else
-            bun dist/cli/index.js generate
+            exit 0
           fi
+
+          cursor=$(TZ="$TIMEZONE" date -d "yesterday" +%F)
+          filled=0
+          while [ "$filled" -lt 3 ]; do
+            dow=$(TZ="$TIMEZONE" date -d "$cursor" +%u)
+            if [ "$dow" -le 5 ]; then
+              fill_date "$cursor"
+              filled=$((filled + 1))
+            fi
+            cursor=$(TZ="$TIMEZONE" date -d "$cursor - 1 day" +%F)
+          done
 
       - name: Commit report data
         run: |
@@ -116,6 +133,7 @@ jobs:
     if: ${{ github.event_name == 'schedule' || inputs.publish }}
     needs: daily
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     environment:
       name: github-pages
       url: ${{ steps.pages.outputs.page_url }}
