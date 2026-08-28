@@ -12,7 +12,7 @@ dateRange:
   from: 2026-07-24
   to: 2026-07-24
 stats:
-  totalCommits: 4
+  totalCommits: 17
   totalAdditions: 476
   totalDeletions: 56
   prsOpened: 5
@@ -22,51 +22,19 @@ stats:
   reviewComments: 4
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 12.8
+  estimatedHours: 31.1
 dailyCommits:
   - date: 2026-07-24
-    count: 4
+    count: 17
 repositories:
   - name: Myriad-Advisor-Solutions/myriadas-apps
-    commits: 4
+    commits: 17
     prsOpened: 5
     prsMerged: 4
     issuesOpened: 0
     issuesClosed: 0
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
 pullRequests:
-  - title: "feat(onboarding): archive workstreams"
-    body: >-
-      Why
-
-
-      Alpha workspaces generate a workstream and task set, but the supported UI had no safe cleanup lifecycle.
-      Disposable test data therefore remained in active selectors after verification.
-
-
-      What changed
-
-
-      - Add an admin-only archive and restore endpoint for onboarding workstreams
-
-      - Hide archived wor...
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/47
-    repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: open
-    labels: &a1
-      - "app: onboarding"
-      - platform
-    additions: 0
-    deletions: 0
-    changedFiles: 21
-    author: myriadas-clees
-    createdAt: 2026-07-24T20:58:21Z
-    updatedAt: 2026-07-31T19:48:51Z
-    closedAt: 2026-07-31T19:44:23Z
-    mergedAt: 2026-07-31T19:44:23Z
-    workTimestamps: &a2 []
-    workAdditions: 0
-    workDeletions: 0
   - title: "fix(excelerate): clarify request errors"
     body: >-
       Why
@@ -95,10 +63,19 @@ pullRequests:
     updatedAt: 2026-07-24T18:57:31Z
     closedAt: 2026-07-24T18:57:31Z
     mergedAt: 2026-07-24T18:57:31Z
+    workCommits:
+      - &a6
+        sha: 1a89b55f483c621c581fddf129e0e2c104450357
+        message: "fix(excelerate): clarify request errors"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/1a89b55f483c621c581fddf129e0e2c104450357
+        authoredAt: 2026-07-24T18:17:10Z
     workTimestamps:
       - 2026-07-24T18:17:10Z
     workAdditions: 47
     workDeletions: 5
+    workFiles:
+      - excelerate/src/components/excelerate-client.test.ts
+      - excelerate/src/components/excelerate-client.tsx
   - title: "feat(pto): add staff setup tools"
     body: >-
       Why
@@ -129,11 +106,31 @@ pullRequests:
     updatedAt: 2026-07-24T18:57:29Z
     closedAt: 2026-07-24T18:57:29Z
     mergedAt: 2026-07-24T18:57:29Z
+    workCommits:
+      - &a7
+        sha: dec7ee5631a337a0b1e340d15b56c0bc5d9dfe98
+        message: "feat(pto): add staff setup tools"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/dec7ee5631a337a0b1e340d15b56c0bc5d9dfe98
+        authoredAt: 2026-07-24T18:17:28Z
+      - &a17
+        sha: 39ffd5d4a37abac456b7f846812c53344f45f2f0
+        message: "fix(pto): honor staff template base path"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/39ffd5d4a37abac456b7f846812c53344f45f2f0
+        authoredAt: 2026-07-24T18:37:00Z
     workTimestamps:
       - 2026-07-24T18:17:28Z
       - 2026-07-24T18:37:00Z
     workAdditions: 258
     workDeletions: 15
+    workFiles:
+      - .gitignore
+      - pto-tracker/public/pto-staff-template.csv
+      - pto-tracker/src/app/admin/AdminClient.tsx
+      - pto-tracker/src/lib/api/handlers.test.ts
+      - pto-tracker/src/lib/api/handlers.ts
+      - pto-tracker/src/lib/import/staff-import.test.ts
+      - pto-tracker/src/lib/import/staff-import.ts
+      - pto-tracker/src/lib/workflow/service.ts
   - title: "fix(proforma): support multiple states"
     body: >-
       Why
@@ -163,12 +160,35 @@ pullRequests:
     updatedAt: 2026-07-24T18:58:02Z
     closedAt: 2026-07-24T18:58:02Z
     mergedAt: 2026-07-24T18:58:02Z
+    workCommits:
+      - &a5
+        sha: bb74284af50fe2ecb72a38213e7bd70f646ebdce
+        message: "fix(proforma): support multiple states"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/bb74284af50fe2ecb72a38213e7bd70f646ebdce
+        authoredAt: 2026-07-24T18:17:08Z
+      - &a9
+        sha: 7d7f4df13826b091e785a5d8a0519bedb2afa224
+        message: "fix(proforma): allow clearing states"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7d7f4df13826b091e785a5d8a0519bedb2afa224
+        authoredAt: 2026-07-24T18:24:53Z
+      - &a14
+        sha: 24d6935e3aa82ee4ad967e09381bb913247799da
+        message: "fix(proforma): preserve legacy state counts"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/24d6935e3aa82ee4ad967e09381bb913247799da
+        authoredAt: 2026-07-24T18:30:05Z
     workTimestamps:
       - 2026-07-24T18:17:08Z
       - 2026-07-24T18:24:53Z
       - 2026-07-24T18:30:05Z
     workAdditions: 151
     workDeletions: 14
+    workFiles:
+      - packages/contracts/src/proforma.ts
+      - proforma/src/app/globals.css
+      - proforma/src/components/scenario-form.test.ts
+      - proforma/src/components/scenario-form.tsx
+      - proforma/src/lib/fixtures/sample-scenarios.ts
+      - proforma/src/lib/validation/scenario-form-values.ts
   - title: "fix(onboarding): complete workspace creation"
     body: >-
       ## Why
@@ -198,6 +218,42 @@ pullRequests:
     updatedAt: 2026-07-24T18:56:41Z
     closedAt: 2026-07-24T18:56:41Z
     mergedAt: 2026-07-24T18:56:41Z
+    workCommits:
+      - &a8
+        sha: 44b15e7b50c3ee5bcf83fce883cf097745a9a1a8
+        message: "fix(onboarding): complete workspace creation"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/44b15e7b50c3ee5bcf83fce883cf097745a9a1a8
+        authoredAt: 2026-07-24T18:18:15Z
+      - &a10
+        sha: a32aae1ec6b9af5c1dbdd38fa4d8c1eea9865fa5
+        message: "fix(onboarding): preserve client context"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a32aae1ec6b9af5c1dbdd38fa4d8c1eea9865fa5
+        authoredAt: 2026-07-24T18:27:27Z
+      - &a11
+        sha: 3ce91810aa8fc59a77b59e5efe4e62e3b46386eb
+        message: "fix(onboarding): preserve client context"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3ce91810aa8fc59a77b59e5efe4e62e3b46386eb
+        authoredAt: 2026-07-24T18:27:30Z
+      - &a12
+        sha: b80820729b3d3d0892a3d61677a325009968e794
+        message: "fix(onboarding): preserve client context"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b80820729b3d3d0892a3d61677a325009968e794
+        authoredAt: 2026-07-24T18:27:36Z
+      - &a13
+        sha: e46eb1f60e3a755a2736ca01c193f5e8dc8a7f55
+        message: "fix(onboarding): preserve client context"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e46eb1f60e3a755a2736ca01c193f5e8dc8a7f55
+        authoredAt: 2026-07-24T18:27:41Z
+      - &a15
+        sha: 64ac1a5fc64d3fcecfd3e36f59e1e50736b10fbd
+        message: "fix(onboarding): retain workspace IDs"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/64ac1a5fc64d3fcecfd3e36f59e1e50736b10fbd
+        authoredAt: 2026-07-24T18:35:12Z
+      - &a16
+        sha: 74d1a00bd6257e16b1b23ee6023bfe006654c7b2
+        message: "fix(onboarding): retain workspace IDs"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/74d1a00bd6257e16b1b23ee6023bfe006654c7b2
+        authoredAt: 2026-07-24T18:35:16Z
     workTimestamps:
       - 2026-07-24T18:18:15Z
       - 2026-07-24T18:27:27Z
@@ -208,6 +264,46 @@ pullRequests:
       - 2026-07-24T18:35:16Z
     workAdditions: 20
     workDeletions: 22
+    workFiles:
+      - onboarding/apps/dashboard/components/create-employee-form.tsx
+      - onboarding/apps/dashboard/lib/api/client.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - packages/db/src/cosmos-queries.ts
+  - title: "feat(onboarding): archive workstreams"
+    body: >-
+      Why
+
+
+      Alpha workspaces generate a workstream and task set, but the supported UI had no safe cleanup lifecycle.
+      Disposable test data therefore remained in active selectors after verification.
+
+
+      What changed
+
+
+      - Add an admin-only archive and restore endpoint for onboarding workstreams
+
+      - Hide archived wor...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/47
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a1
+      - "app: onboarding"
+      - platform
+    additions: 0
+    deletions: 0
+    changedFiles: 21
+    author: myriadas-clees
+    createdAt: 2026-07-24T20:58:21Z
+    updatedAt: 2026-07-31T19:48:51Z
+    closedAt: 2026-07-31T19:44:23Z
+    mergedAt: 2026-07-31T19:44:23Z
+    workCommits: &a2 []
+    workTimestamps: &a3 []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: &a4 []
 prsInProgress:
   - title: "feat(onboarding): archive workstreams"
     body: >-
@@ -236,35 +332,75 @@ prsInProgress:
     updatedAt: 2026-07-31T19:48:51Z
     closedAt: 2026-07-31T19:44:23Z
     mergedAt: 2026-07-31T19:44:23Z
-    workTimestamps: *a2
+    workCommits: *a2
+    workTimestamps: *a3
     workAdditions: 0
     workDeletions: 0
+    workFiles: *a4
 issues: []
 events: []
 commitMessages:
   - repo: Myriad-Advisor-Solutions/myriadas-apps
     messages:
-      - "fix(proforma): support multiple states [skip ci]"
-      - "fix(excelerate): clarify request errors [skip ci]"
-      - "feat(pto): add staff setup tools (#45)"
+      - "fix(proforma): support multiple states"
+      - "fix(excelerate): clarify request errors"
+      - "feat(pto): add staff setup tools"
+      - "fix(onboarding): complete workspace creation"
+      - "fix(proforma): allow clearing states"
+      - "fix(onboarding): preserve client context"
+      - "fix(onboarding): preserve client context"
+      - "fix(onboarding): preserve client context"
+      - "fix(onboarding): preserve client context"
+      - "fix(proforma): preserve legacy state counts"
+      - "fix(onboarding): retain workspace IDs"
+      - "fix(onboarding): retain workspace IDs"
+      - "fix(pto): honor staff template base path"
       - "fix(onboarding): complete workspace creation [skip ci]"
+      - "feat(pto): add staff setup tools (#45)"
+      - "fix(excelerate): clarify request errors [skip ci]"
+      - "fix(proforma): support multiple states [skip ci]"
     commits:
-      - sha: e0cd56a89e27f29a81d57b5246430f6e6069247c
-        message: "fix(proforma): support multiple states [skip ci]"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e0cd56a89e27f29a81d57b5246430f6e6069247c
-        authoredAt: 2026-07-24T18:58:02Z
-      - sha: e18e20569687252d05880b9606e4e4856d0672e7
-        message: "fix(excelerate): clarify request errors [skip ci]"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e18e20569687252d05880b9606e4e4856d0672e7
-        authoredAt: 2026-07-24T18:57:30Z
-      - sha: 3ee543c80f48ada3db2a1e4a1d2bca40b0eba5ae
-        message: "feat(pto): add staff setup tools (#45)"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3ee543c80f48ada3db2a1e4a1d2bca40b0eba5ae
-        authoredAt: 2026-07-24T18:57:28Z
+      - *a5
+      - *a6
+      - *a7
+      - *a8
+      - *a9
+      - *a10
+      - *a11
+      - *a12
+      - *a13
+      - *a14
+      - *a15
+      - *a16
+      - *a17
       - sha: bad72837d48b1df8e408e17f9fc27b6486e4c424
         message: "fix(onboarding): complete workspace creation [skip ci]"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/bad72837d48b1df8e408e17f9fc27b6486e4c424
         authoredAt: 2026-07-24T18:56:40Z
+        additions: 15
+        deletions: 17
+        filesChanged: 5
+      - sha: 3ee543c80f48ada3db2a1e4a1d2bca40b0eba5ae
+        message: "feat(pto): add staff setup tools (#45)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3ee543c80f48ada3db2a1e4a1d2bca40b0eba5ae
+        authoredAt: 2026-07-24T18:57:28Z
+        additions: 256
+        deletions: 13
+        filesChanged: 8
+      - sha: e18e20569687252d05880b9606e4e4856d0672e7
+        message: "fix(excelerate): clarify request errors [skip ci]"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e18e20569687252d05880b9606e4e4856d0672e7
+        authoredAt: 2026-07-24T18:57:30Z
+        additions: 47
+        deletions: 5
+        filesChanged: 2
+      - sha: e0cd56a89e27f29a81d57b5246430f6e6069247c
+        message: "fix(proforma): support multiple states [skip ci]"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e0cd56a89e27f29a81d57b5246430f6e6069247c
+        authoredAt: 2026-07-24T18:58:02Z
+        additions: 141
+        deletions: 4
+        filesChanged: 6
 releases: []
 externalContributions: []
 codeReviews:
@@ -348,11 +484,104 @@ aiReviews:
   comments: 5
   reviews: 5
   fixed: 4
+hoursInputs:
+  timestamps:
+    - 2026-07-24T18:17:08Z
+    - 2026-07-24T18:17:10Z
+    - 2026-07-24T18:17:28Z
+    - 2026-07-24T18:18:15Z
+    - 2026-07-24T18:24:53Z
+    - 2026-07-24T18:27:27Z
+    - 2026-07-24T18:27:30Z
+    - 2026-07-24T18:27:36Z
+    - 2026-07-24T18:27:41Z
+    - 2026-07-24T18:30:05Z
+    - 2026-07-24T18:35:12Z
+    - 2026-07-24T18:35:16Z
+    - 2026-07-24T18:37:00Z
+    - 2026-07-24T18:56:40Z
+    - 2026-07-24T18:57:28Z
+    - 2026-07-24T18:57:30Z
+    - 2026-07-24T18:58:02Z
+    - 2026-07-24T18:17:41Z
+    - 2026-07-24T18:57:31Z
+    - 2026-07-24T18:17:10Z
+    - 2026-07-24T18:17:56Z
+    - 2026-07-24T18:57:29Z
+    - 2026-07-24T18:17:28Z
+    - 2026-07-24T18:37:00Z
+    - 2026-07-24T18:17:36Z
+    - 2026-07-24T18:58:02Z
+    - 2026-07-24T18:17:08Z
+    - 2026-07-24T18:24:53Z
+    - 2026-07-24T18:30:05Z
+    - 2026-07-24T18:18:31Z
+    - 2026-07-24T18:56:41Z
+    - 2026-07-24T18:18:15Z
+    - 2026-07-24T18:27:27Z
+    - 2026-07-24T18:27:30Z
+    - 2026-07-24T18:27:36Z
+    - 2026-07-24T18:27:41Z
+    - 2026-07-24T18:35:12Z
+    - 2026-07-24T18:35:16Z
+    - 2026-07-24T20:58:21Z
+    - 2026-07-24T18:27:56Z
+    - 2026-07-24T18:35:34Z
+    - 2026-07-24T18:25:17Z
+    - 2026-07-24T18:30:31Z
+    - 2026-07-24T18:27:56Z
+    - 2026-07-24T18:35:34Z
+    - 2026-07-24T18:25:17Z
+    - 2026-07-24T18:30:31Z
+  volume:
+    pullRequests:
+      - additions: 47
+        deletions: 5
+        state: merged
+        dailyWork: true
+        filesChanged: 2
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 258
+        deletions: 15
+        state: merged
+        dailyWork: true
+        filesChanged: 8
+        testFilesChanged: 2
+        commitCount: 2
+      - additions: 151
+        deletions: 14
+        state: merged
+        dailyWork: true
+        filesChanged: 6
+        testFilesChanged: 1
+        commitCount: 3
+      - additions: 20
+        deletions: 22
+        state: merged
+        dailyWork: true
+        filesChanged: 5
+        testFilesChanged: 1
+        commitCount: 7
+      - additions: 0
+        deletions: 0
+        state: open
+    reviewCount: 4
+    reviewCommentCount: 4
+    commitCount: 4
+    commitAdditions: 459
+    commitDeletions: 39
+    commitStatsCount: 4
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
 hoursEstimate:
-  hours: 12.8
+  version: "2.1"
+  hours: 31.1
   sessions: 2
   sessionHours: 1.2
-  volumeHours: 12.8
+  volumeHours: 31.1
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

@@ -4,18 +4,18 @@ overview: ""
 summaries:
   - type: repo-summary
     heading: Projects worked on
-    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps and Myriad-Advisor-Solutions/ohcpwm-apps.
+    body: Activity spanned Myriad-Advisor-Solutions/ohcpwm-apps and Myriad-Advisor-Solutions/myriadas-apps.
     chips:
-      - label: Myriad-Advisor-Solutions/myriadas-apps
-        value: 1 PRs
       - label: Myriad-Advisor-Solutions/ohcpwm-apps
         value: 2 PRs
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 1 PRs
   - type: commit-summary
     heading: Commits and line changes
-    body: 9 commits with +34,593 / −9,932 lines.
+    body: 52 commits with +34,593 / −9,932 lines.
     chips:
       - label: Commits
-        value: "9"
+        value: "52"
         color: green
       - label: Additions
         value: +34,593
@@ -46,7 +46,7 @@ summaries:
       tracked, elapsed, or billed time.
     chips:
       - label: Estimated engineering hours
-        value: ~41.6h
+        value: ~84.5h
 highlights:
   - type: pr
     title: "fix(pricing): normalize expense label edits"

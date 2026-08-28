@@ -12,7 +12,7 @@ dateRange:
   from: 2026-07-29
   to: 2026-07-29
 stats:
-  totalCommits: 9
+  totalCommits: 52
   totalAdditions: 34593
   totalDeletions: 9932
   prsOpened: 3
@@ -22,25 +22,25 @@ stats:
   reviewComments: 1
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 41.6
+  estimatedHours: 84.5
 dailyCommits:
   - date: 2026-07-29
-    count: 9
+    count: 52
 repositories:
-  - name: Myriad-Advisor-Solutions/myriadas-apps
-    commits: 6
-    prsOpened: 1
-    prsMerged: 6
-    issuesOpened: 0
-    issuesClosed: 0
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
   - name: Myriad-Advisor-Solutions/ohcpwm-apps
-    commits: 3
+    commits: 32
     prsOpened: 2
     prsMerged: 3
     issuesOpened: 0
     issuesClosed: 0
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 20
+    prsOpened: 1
+    prsMerged: 6
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
 pullRequests:
   - title: "fix(pricing): normalize expense label edits"
     body: >-
@@ -67,12 +67,33 @@ pullRequests:
     updatedAt: 2026-07-29T22:15:43Z
     closedAt: 2026-07-29T22:15:43Z
     mergedAt: 2026-07-29T22:15:43Z
+    workCommits:
+      - &a3
+        sha: 0adcee54da171361789386886969ab217c38a313
+        message: "fix(pricing): allow incomplete expense drafts"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0adcee54da171361789386886969ab217c38a313
+        authoredAt: 2026-07-29T20:18:24Z
+      - &a5
+        sha: 99743bdfd598ab622cf959a4fb4865b4d332286f
+        message: "fix(pricing): normalize expense label edits"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/99743bdfd598ab622cf959a4fb4865b4d332286f
+        authoredAt: 2026-07-29T20:40:03Z
+      - &a7
+        sha: 0f506251d0b471120a3c47e1053ca837d3d4fe0d
+        message: "fix(pricing): track expense label drafts"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0f506251d0b471120a3c47e1053ca837d3d4fe0d
+        authoredAt: 2026-07-29T20:50:14Z
     workTimestamps:
       - 2026-07-29T20:18:24Z
       - 2026-07-29T20:40:03Z
       - 2026-07-29T20:50:14Z
     workAdditions: 103
     workDeletions: 50
+    workFiles:
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/pricing-workstation-client.tsx
+      - pricing/src/lib/__tests__/workstation.test.ts
+      - pricing/src/lib/workstation.ts
   - title: "feat(pricing): replace Proforma app"
     body: >-
       ## Why
@@ -108,6 +129,62 @@ pullRequests:
     updatedAt: 2026-07-30T02:08:54Z
     closedAt: 2026-07-30T02:08:54Z
     mergedAt: 2026-07-30T02:08:54Z
+    workCommits:
+      - &a30
+        sha: 05295a5feb0415cc9768d6b1d461d5c8f39e1af8
+        message: "feat(pricing): replace Proforma app"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/05295a5feb0415cc9768d6b1d461d5c8f39e1af8
+        authoredAt: 2026-07-29T20:44:34Z
+      - &a33
+        sha: 5dbe10009327cf6867f201aaee922aa901084593
+        message: "fix(pricing): address review findings"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5dbe10009327cf6867f201aaee922aa901084593
+        authoredAt: 2026-07-29T22:30:38Z
+      - &a35
+        sha: 8617aebdc77687f55eef8179a3d4514f8b1bfe4e
+        message: "fix(pricing): avoid unified health collision"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8617aebdc77687f55eef8179a3d4514f8b1bfe4e
+        authoredAt: 2026-07-29T22:38:11Z
+      - &a36
+        sha: 096545897bb4a2fbd1a185457a23d3b06e2e8c12
+        message: "merge: update from main"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/096545897bb4a2fbd1a185457a23d3b06e2e8c12
+        authoredAt: 2026-07-29T22:49:57Z
+      - &a37
+        sha: 01ec16e11266c85af0c25403df832f94a42ddbbd
+        message: "merge: update from main"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/01ec16e11266c85af0c25403df832f94a42ddbbd
+        authoredAt: 2026-07-29T22:54:06Z
+      - &a38
+        sha: e1773c3b412c71aa891ad97b8a9eb50e60994e60
+        message: "fix(hub): secure linked Functions backend"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e1773c3b412c71aa891ad97b8a9eb50e60994e60
+        authoredAt: 2026-07-30T00:42:15Z
+      - &a39
+        sha: 347d1a049f196f161402754d3be716bcbbd0addb
+        message: "fix(hub): harden linked backend rollout"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/347d1a049f196f161402754d3be716bcbbd0addb
+        authoredAt: 2026-07-30T01:05:01Z
+      - &a40
+        sha: 4bfab3dc022707b163f46c6b18efec584f09fa69
+        message: "fix(infra): bind Functions to linked SWA"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4bfab3dc022707b163f46c6b18efec584f09fa69
+        authoredAt: 2026-07-30T01:13:50Z
+      - &a41
+        sha: d2bd0a00296cd948e3f955c2edb58df38fa675ad
+        message: "fix(infra): require production networking"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d2bd0a00296cd948e3f955c2edb58df38fa675ad
+        authoredAt: 2026-07-30T01:22:13Z
+      - &a42
+        sha: d734a6ee4451e9720bc1c2d76131e120b4929251
+        message: "fix(ci): send valid forged principal"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d734a6ee4451e9720bc1c2d76131e120b4929251
+        authoredAt: 2026-07-30T01:25:58Z
+      - &a43
+        sha: 877d0c6fd6489078d5559523d2a4ed2ac7799109
+        message: "fix(ci): avoid wrapped forged headers"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/877d0c6fd6489078d5559523d2a4ed2ac7799109
+        authoredAt: 2026-07-30T01:28:47Z
     workTimestamps:
       - 2026-07-29T20:44:34Z
       - 2026-07-29T22:30:38Z
@@ -122,6 +199,341 @@ pullRequests:
       - 2026-07-30T01:28:47Z
     workAdditions: 32367
     workDeletions: 9023
+    workFiles:
+      - .github/ISSUE_TEMPLATE/bug.yml
+      - .github/ISSUE_TEMPLATE/feature.yml
+      - .github/dependabot.yml
+      - .github/labeler.yml
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/verify.yml
+      - .gitignore
+      - AGENTS.md
+      - README.md
+      - bun.lock
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/production-readiness-progress.md
+      - docs/repository-operations.md
+      - excelerate/.env.example
+      - excelerate/src/app/api/excelerate/api.test.ts
+      - excelerate/src/app/layout.tsx
+      - excelerate/src/components/excelerate-client.test.ts
+      - excelerate/src/components/excelerate-client.tsx
+      - excelerate/src/components/excelerate-shell.tsx
+      - excelerate/src/lib/excelerate/classification.test.ts
+      - excelerate/src/lib/excelerate/processor.ts
+      - excelerate/src/lib/excelerate/types.ts
+      - excelerate/src/lib/excelerate/workbooks.test.ts
+      - excelerate/templates/SS_NN_BP_Database.xlsx
+      - excelerate/templates/SS_NN_BP_Database_Simple.xlsx
+      - hub/app/globals.css
+      - hub/components/HubLauncher.tsx
+      - hub/components/LandingPage.tsx
+      - hub/functions/dist-entry.js
+      - hub/functions/local.settings.json.example
+      - hub/lib/apps.test.ts
+      - hub/lib/apps.ts
+      - hub/lib/dev-apps.test.ts
+      - hub/lib/local-dev.test.ts
+      - hub/lib/local-dev.ts
+      - hub/scripts/dev.ts
+      - hub/staticwebapp.config.json
+      - infra/azure/README.md
+      - infra/azure/excelerate/README.md
+      - infra/azure/excelerate/serverless.bicep
+      - infra/azure/onboarding/README.md
+      - infra/azure/onboarding/serverless.bicep
+      - infra/azure/pricing/README.md
+      - infra/azure/pricing/serverless.bicep
+      - infra/azure/ptb-development.outputs.json
+      - infra/azure/ptb-development.parameters.json
+      - infra/azure/pto-tracker/README.md
+      - infra/azure/pto-tracker/serverless.bicep
+      - infra/azure/static-web-apps.bicep
+      - infra/azure/valuation/README.md
+      - infra/azure/valuation/serverless.bicep
+      - onboarding/apps/dashboard/app/layout.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - package.json
+      - packages/contracts/package.json
+      - packages/contracts/src/index.ts
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/package.json
+      - packages/db/src/cosmos-client.ts
+      - packages/db/src/cosmos-queries.ts
+      - packages/db/src/pricing.test.ts
+      - packages/db/src/pricing.ts
+      - packages/ui/src/badge.tsx
+      - packages/ui/src/button.tsx
+      - packages/ui/src/card.tsx
+      - packages/ui/src/index.ts
+      - packages/ui/src/input.tsx
+      - packages/ui/src/native-controls.tsx
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/navigation/navigation-mode-picker.tsx
+      - packages/ui/src/navigation/preferences.test.ts
+      - packages/ui/src/navigation/preferences.tsx
+      - packages/ui/src/textarea.tsx
+      - packages/ui/src/theme-toggle.tsx
+      - packages/ui/src/user-menu.test.tsx
+      - packages/ui/src/user-menu.tsx
+      - pricing/.env.example
+      - pricing/README.md
+      - pricing/eslint.config.mjs
+      - pricing/functions/host.json
+      - pricing/functions/local.settings.json.example
+      - pricing/functions/package.json
+      - pricing/functions/src/index.ts
+      - pricing/functions/tsconfig.json
+      - pricing/next-env.d.ts
+      - pricing/next.config.ts
+      - pricing/package.json
+      - pricing/postcss.config.mjs
+      - pricing/scripts/build-static.ts
+      - pricing/src/app/api/[...path]/route.ts
+      - pricing/src/app/globals.css
+      - pricing/src/app/layout.tsx
+      - pricing/src/app/login/page.tsx
+      - pricing/src/app/page.tsx
+      - pricing/src/app/proforma-compat/page.tsx
+      - pricing/src/app/recruits/detail/page.tsx
+      - pricing/src/app/recruits/model/page.tsx
+      - pricing/src/app/recruits/new/page.tsx
+      - pricing/src/app/recruits/page.tsx
+      - pricing/src/app/settings/page.tsx
+      - pricing/src/components/__tests__/archive-recruit-form.test.tsx
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/dashboard-metrics-charts.test.tsx
+      - pricing/src/components/__tests__/dataframe-table.test.tsx
+      - pricing/src/components/__tests__/delete-recruit-form.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - pricing/src/components/__tests__/pdf-report-viewer.test.tsx
+      - pricing/src/components/__tests__/pricing-graphs.test.tsx
+      - pricing/src/components/__tests__/pricing-workstation-client.test.tsx
+      - pricing/src/components/__tests__/recruit-admin-actions.test.tsx
+      - pricing/src/components/__tests__/recruit-archive-section.test.tsx
+      - pricing/src/components/__tests__/recruit-data-cell.test.tsx
+      - pricing/src/components/__tests__/recruit-detail-panels.test.tsx
+      - pricing/src/components/__tests__/recruit-row-actions.test.tsx
+      - pricing/src/components/__tests__/recruits-table-responsive-css.test.ts
+      - pricing/src/components/__tests__/recruits-table.test.tsx
+      - pricing/src/components/__tests__/scenario-model-tab.test.tsx
+      - pricing/src/components/__tests__/settings-previews.test.tsx
+      - pricing/src/components/archive-recruit-form.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/bps-calculator.tsx
+      - pricing/src/components/dashboard-metrics-charts.tsx
+      - pricing/src/components/dashboard-recruits-panel.tsx
+      - pricing/src/components/dataframe-table.tsx
+      - pricing/src/components/delete-recruit-form.tsx
+      - pricing/src/components/delete-report-form.tsx
+      - pricing/src/components/excel-sheet/__tests__/excel-cell.test.tsx
+      - pricing/src/components/excel-sheet/__tests__/excel-input-sheet.test.ts
+      - pricing/src/components/excel-sheet/__tests__/format.test.ts
+      - pricing/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - pricing/src/components/excel-sheet/excel-cell.tsx
+      - pricing/src/components/excel-sheet/excel-formula-bar.tsx
+      - pricing/src/components/excel-sheet/excel-grid.tsx
+      - pricing/src/components/excel-sheet/excel-input-sheet.tsx
+      - pricing/src/components/excel-sheet/format.ts
+      - pricing/src/components/excel-sheet/index.ts
+      - pricing/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - pricing/src/components/formatted-number-input.tsx
+      - pricing/src/components/generate-report-form.tsx
+      - pricing/src/components/model-switcher.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/payout-breakdown-donut.tsx
+      - pricing/src/components/pdf-report-viewer.tsx
+      - pricing/src/components/percent-slider.tsx
+      - pricing/src/components/pipeline-stage-bar.tsx
+      - pricing/src/components/pricing-app-shell.tsx
+      - pricing/src/components/pricing-graphs.tsx
+      - pricing/src/components/pricing-quick-settings.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/components/pricing-theme-controller.tsx
+      - pricing/src/components/pricing-theme-toggle.tsx
+      - pricing/src/components/pricing-user-menu.tsx
+      - pricing/src/components/pricing-workstation-client.tsx
+      - pricing/src/components/recruit-admin-actions.tsx
+      - pricing/src/components/recruit-archive-section.tsx
+      - pricing/src/components/recruit-data-cell.tsx
+      - pricing/src/components/recruit-detail-hero.tsx
+      - pricing/src/components/recruit-detail-metrics.tsx
+      - pricing/src/components/recruit-detail-panels.tsx
+      - pricing/src/components/recruit-detail-scenario-skeleton.tsx
+      - pricing/src/components/recruit-detail-scenario-view.tsx
+      - pricing/src/components/recruit-filters.tsx
+      - pricing/src/components/recruit-form.tsx
+      - pricing/src/components/recruit-model-shell.tsx
+      - pricing/src/components/recruit-model-tab-icon.tsx
+      - pricing/src/components/recruit-row-actions.tsx
+      - pricing/src/components/recruits-table.tsx
+      - pricing/src/components/report-artifact-actions.tsx
+      - pricing/src/components/report-artifact-viewer.tsx
+      - pricing/src/components/report-sort-control.tsx
+      - pricing/src/components/report-viewer-shell.tsx
+      - pricing/src/components/scenario-brief-grid.tsx
+      - pricing/src/components/scenario-model-tab.tsx
+      - pricing/src/components/settings-previews.tsx
+      - pricing/src/components/stepper-number-input.tsx
+      - pricing/src/components/workbook-report-viewer.tsx
+      - pricing/src/components/workstation-report-table.tsx
+      - pricing/src/lib/__tests__/api-handler.test.ts
+      - pricing/src/lib/__tests__/auth.test.ts
+      - pricing/src/lib/__tests__/calculation.test.ts
+      - pricing/src/lib/__tests__/dashboard-summary.test.ts
+      - pricing/src/lib/__tests__/excel-formulas.test.ts
+      - pricing/src/lib/__tests__/format.test.ts
+      - pricing/src/lib/__tests__/new-recruit.test.ts
+      - pricing/src/lib/__tests__/pipeline-metrics.test.ts
+      - pricing/src/lib/__tests__/pricing-api-client.test.ts
+      - pricing/src/lib/__tests__/pricing-auth-routes.test.ts
+      - pricing/src/lib/__tests__/pricing-user-settings.test.ts
+      - pricing/src/lib/__tests__/pricing-visibility.test.ts
+      - pricing/src/lib/__tests__/proforma-compat.test.ts
+      - pricing/src/lib/__tests__/recruit-model-tabs.test.ts
+      - pricing/src/lib/__tests__/recruit-routes.test.ts
+      - pricing/src/lib/__tests__/report-filenames.test.ts
+      - pricing/src/lib/__tests__/report-list.test.ts
+      - pricing/src/lib/__tests__/report-model.test.ts
+      - pricing/src/lib/__tests__/report-storage.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/workbook-output.test.ts
+      - pricing/src/lib/__tests__/workbook-preview.test.ts
+      - pricing/src/lib/__tests__/workstation-sections.test.ts
+      - pricing/src/lib/__tests__/workstation.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/api/request-session.ts
+      - pricing/src/lib/auth.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/cosmos-data.ts
+      - pricing/src/lib/dashboard-summary.ts
+      - pricing/src/lib/data.ts
+      - pricing/src/lib/dev-tools.ts
+      - pricing/src/lib/edit-view.ts
+      - pricing/src/lib/excel-formulas.ts
+      - pricing/src/lib/format.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/pipeline-metrics.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/pricing-auth-routes.ts
+      - pricing/src/lib/pricing-session-client.ts
+      - pricing/src/lib/pricing-theme.ts
+      - pricing/src/lib/pricing-user-settings.ts
+      - pricing/src/lib/pricing-visibility.ts
+      - pricing/src/lib/proforma-compat.ts
+      - pricing/src/lib/recruit-model-tabs.ts
+      - pricing/src/lib/recruit-routes.ts
+      - pricing/src/lib/report-filenames.ts
+      - pricing/src/lib/report-list.ts
+      - pricing/src/lib/report-storage.ts
+      - pricing/src/lib/report.ts
+      - pricing/src/lib/report/assets.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/format.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/report/workbook-preview.ts
+      - pricing/src/lib/reports.ts
+      - pricing/src/lib/seed.ts
+      - pricing/src/lib/stage-badge.ts
+      - pricing/src/lib/workbook-output.ts
+      - pricing/src/lib/workstation-sections.ts
+      - pricing/src/lib/workstation.ts
+      - pricing/staticwebapp.config.json
+      - pricing/tsconfig.json
+      - pricing/vitest.config.ts
+      - proforma/.env.example
+      - proforma/README.md
+      - proforma/functions/local.settings.json.example
+      - proforma/functions/src/index.ts
+      - proforma/next.config.ts
+      - proforma/scripts/build-static.ts
+      - proforma/src/app/api/[...path]/route.ts
+      - proforma/src/app/error.tsx
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/loading.tsx
+      - proforma/src/app/not-found.tsx
+      - proforma/src/app/page.tsx
+      - proforma/src/app/rates/page.tsx
+      - proforma/src/app/scenarios/detail/page.tsx
+      - proforma/src/app/scenarios/detail/scenario-detail-client.tsx
+      - proforma/src/app/scenarios/edit/page.tsx
+      - proforma/src/app/scenarios/edit/scenario-edit-client.tsx
+      - proforma/src/app/scenarios/new/page.tsx
+      - proforma/src/app/scenarios/page.tsx
+      - proforma/src/app/settings/page.tsx
+      - proforma/src/app/settings/settings-page.test.ts
+      - proforma/src/components/metric-card.tsx
+      - proforma/src/components/proforma-runtime-shell.tsx
+      - proforma/src/components/proforma-shell.tsx
+      - proforma/src/components/results-summary.tsx
+      - proforma/src/components/scenario-form-steps.test.ts
+      - proforma/src/components/scenario-form-steps.ts
+      - proforma/src/components/scenario-form.test.ts
+      - proforma/src/components/scenario-form.tsx
+      - proforma/src/components/scenario-row-actions.tsx
+      - proforma/src/components/scenario-table.tsx
+      - proforma/src/components/use-proforma-dashboard.ts
+      - proforma/src/lib/api/azure-functions-adapter.test.ts
+      - proforma/src/lib/api/azure-functions-adapter.ts
+      - proforma/src/lib/api/client.ts
+      - proforma/src/lib/api/handlers.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/auth.test.ts
+      - proforma/src/lib/auth.ts
+      - proforma/src/lib/calculation/proforma-calculation.test.ts
+      - proforma/src/lib/calculation/proforma-calculation.ts
+      - proforma/src/lib/calculation/quick-proforma.test.ts
+      - proforma/src/lib/calculation/quick-proforma.ts
+      - proforma/src/lib/data.ts
+      - proforma/src/lib/export/brand-assets.ts
+      - proforma/src/lib/export/pdf.ts
+      - proforma/src/lib/export/presentation.ts
+      - proforma/src/lib/export/proforma-export.test.ts
+      - proforma/src/lib/export/quick-export.test.ts
+      - proforma/src/lib/export/quick-pdf.ts
+      - proforma/src/lib/export/quick-xlsx.ts
+      - proforma/src/lib/export/xlsx-charts.ts
+      - proforma/src/lib/export/xlsx.ts
+      - proforma/src/lib/fixtures/default-rate-set.ts
+      - proforma/src/lib/fixtures/sample-scenarios.ts
+      - proforma/src/lib/format.ts
+      - proforma/src/lib/navigation.test.ts
+      - proforma/src/lib/navigation.ts
+      - proforma/src/lib/persistence/bun-native.ts
+      - proforma/src/lib/persistence/cosmos-repository.ts
+      - proforma/src/lib/persistence/native-sqlite.ts
+      - proforma/src/lib/persistence/repository.test.ts
+      - proforma/src/lib/persistence/repository.ts
+      - proforma/src/lib/persistence/reset.ts
+      - proforma/src/lib/persistence/seed.ts
+      - proforma/src/lib/scenario-actions.test.ts
+      - proforma/src/lib/scenario-actions.ts
+      - proforma/src/lib/scenario-title.test.ts
+      - proforma/src/lib/scenario-title.ts
+      - proforma/src/lib/validation/proforma-validation.test.ts
+      - proforma/src/lib/validation/scenario-form-values.test.ts
+      - proforma/src/lib/validation/scenario-form-values.ts
+      - proforma/staticwebapp.config.json
+      - proforma/tsconfig.json
+      - proforma/vitest.config.ts
+      - pto-tracker/Dockerfile
+      - pto-tracker/src/app/layout.tsx
+      - pto-tracker/src/components/PtoAppShell.tsx
+      - scripts/app-registry.ts
+      - scripts/github/configure-repository.ts
+      - scripts/github/triage-issue.ts
+      - scripts/tooling.test.ts
+      - scripts/validate-artifacts.ts
+      - valuation/src/app/layout.tsx
+      - valuation/src/components/valuation-shell.tsx
+      - valuation/src/lib/persistence/cosmos-repository.ts
   - title: "fix(pricing): align FiNet model with workbook"
     body: >-
       Why
@@ -148,6 +560,127 @@ pullRequests:
     updatedAt: 2026-07-30T02:20:52Z
     closedAt: 2026-07-30T02:20:52Z
     mergedAt: 2026-07-30T02:20:52Z
+    workCommits:
+      - &a1
+        sha: 5f6175bfcc8b391147e7f99002131f9dfd6f27e9
+        message: "fix(pricing): align FiNet model with workbook"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/5f6175bfcc8b391147e7f99002131f9dfd6f27e9
+        authoredAt: 2026-07-29T15:00:45Z
+      - &a2
+        sha: 687f7e738ff1d5d61a7494698dcaa5c9b3bf082d
+        message: "fix(pricing): fill recruit table width"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/687f7e738ff1d5d61a7494698dcaa5c9b3bf082d
+        authoredAt: 2026-07-29T20:09:20Z
+      - &a4
+        sha: a396433f09015d0b1b5ae566181d0c0c46419240
+        message: "fix(pricing): preserve FiNet fee integrity"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a396433f09015d0b1b5ae566181d0c0c46419240
+        authoredAt: 2026-07-29T20:31:06Z
+      - &a6
+        sha: ac51f88f4fa0546740ab6e28a252be701761231d
+        message: "fix(pricing): make FiNet exports recalculable"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ac51f88f4fa0546740ab6e28a252be701761231d
+        authoredAt: 2026-07-29T20:44:18Z
+      - &a8
+        sha: 78fe9fc64d26575e6ec017cbc431af3eeb3597a6
+        message: "fix(pricing): correct report fee presentation"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/78fe9fc64d26575e6ec017cbc431af3eeb3597a6
+        authoredAt: 2026-07-29T20:53:37Z
+      - &a9
+        sha: 4c3e15d28e2451da73c4b883927820d4cb1bbfab
+        message: "fix(pricing): link FiNet report assumptions"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4c3e15d28e2451da73c4b883927820d4cb1bbfab
+        authoredAt: 2026-07-29T21:04:00Z
+      - &a10
+        sha: 64c4206a161a97da146450fc7e67b4b3c767406f
+        message: "fix(pricing): normalize FiNet rate units"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/64c4206a161a97da146450fc7e67b4b3c767406f
+        authoredAt: 2026-07-29T21:18:22Z
+      - &a11
+        sha: 022f39e03893854fedc7fc5fb2c401c22857c9be
+        message: "fix(pricing): resolve FiNet merge conflict"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/022f39e03893854fedc7fc5fb2c401c22857c9be
+        authoredAt: 2026-07-29T22:26:03Z
+      - &a14
+        sha: 8551a8e3c64675a0358b0c125d4768fdb55ccfd2
+        message: "fix(pricing): link FiNet advisory fee"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8551a8e3c64675a0358b0c125d4768fdb55ccfd2
+        authoredAt: 2026-07-29T22:36:27Z
+      - &a15
+        sha: 7f99b41f6d17e0f566b4e7c53982f707db80c457
+        message: "fix(pricing): reconcile main conflict"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7f99b41f6d17e0f566b4e7c53982f707db80c457
+        authoredAt: 2026-07-29T22:49:15Z
+      - &a16
+        sha: 529c24145a308716c6660e518a31e0ccbc24241c
+        message: "fix(pricing): render FiNet PDF expenses"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/529c24145a308716c6660e518a31e0ccbc24241c
+        authoredAt: 2026-07-30T00:00:29Z
+      - &a17
+        sha: 795dd3ac6083cd347f425b20fe08e71097178f1b
+        message: "fix(pricing): link FiNet expense count"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/795dd3ac6083cd347f425b20fe08e71097178f1b
+        authoredAt: 2026-07-30T00:14:57Z
+      - &a18
+        sha: 669e6ff34b3e318a6aafcec449566014cf384385
+        message: "fix(pricing): normalize FiNet editor output"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/669e6ff34b3e318a6aafcec449566014cf384385
+        authoredAt: 2026-07-30T00:24:14Z
+      - &a19
+        sha: 1fa4744b18d5533dbdcf50128f4cbb096850c878
+        message: "fix(pricing): link FiNet terms to inputs"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/1fa4744b18d5533dbdcf50128f4cbb096850c878
+        authoredAt: 2026-07-30T00:35:11Z
+      - &a20
+        sha: fbd03107b26ea95f562f80d07595dc71842d8f7a
+        message: "fix(pricing): link WFAFN fee to count"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/fbd03107b26ea95f562f80d07595dc71842d8f7a
+        authoredAt: 2026-07-30T00:39:21Z
+      - &a21
+        sha: 8ecdd432194bc2a6de722d016572d73485d15adf
+        message: "fix(pricing): link FiNet workbook inputs"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8ecdd432194bc2a6de722d016572d73485d15adf
+        authoredAt: 2026-07-30T00:48:03Z
+      - &a22
+        sha: a39acfae69efd833f95e7b4aa25ea543da62491b
+        message: "fix(pricing): reconcile FiNet chart costs"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a39acfae69efd833f95e7b4aa25ea543da62491b
+        authoredAt: 2026-07-30T00:54:50Z
+      - &a23
+        sha: cca20fd8c21a7d3d9e69f76b74b3018c942f76dc
+        message: "fix(report): show current FiNet fees"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cca20fd8c21a7d3d9e69f76b74b3018c942f76dc
+        authoredAt: 2026-07-30T01:11:54Z
+      - &a24
+        sha: 136c77b4f0d3486cec7d31d052d5c716f1726c9d
+        message: "fix(pricing): retain non-FiNet chart buckets"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/136c77b4f0d3486cec7d31d052d5c716f1726c9d
+        authoredAt: 2026-07-30T01:18:06Z
+      - &a25
+        sha: 62375f55c09bf4dccb052b24fe7868ccd5c0c426
+        message: "fix(report): clarify current FiNet deductions"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/62375f55c09bf4dccb052b24fe7868ccd5c0c426
+        authoredAt: 2026-07-30T01:24:39Z
+      - &a26
+        sha: 3fdd0df4940088100c946e47a58637efd8860798
+        message: "fix(report): paginate current FiNet fees"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3fdd0df4940088100c946e47a58637efd8860798
+        authoredAt: 2026-07-30T01:33:13Z
+      - &a27
+        sha: cc8ac7edda927fd9c33666b22ada6f3f123be5a4
+        message: "fix(pricing): label custom FiNet fees"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cc8ac7edda927fd9c33666b22ada6f3f123be5a4
+        authoredAt: 2026-07-30T01:43:13Z
+      - &a28
+        sha: 987c4935143f830851498a7b93958bfce1271e6a
+        message: "fix(pricing): edit FiNet custom fees"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/987c4935143f830851498a7b93958bfce1271e6a
+        authoredAt: 2026-07-30T02:00:28Z
+      - &a29
+        sha: d23d732896f223f5f8abd1b16ea5f0ed2ba9d97c
+        message: "fix(pricing): normalize FiNet custom fees"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d23d732896f223f5f8abd1b16ea5f0ed2ba9d97c
+        authoredAt: 2026-07-30T02:15:23Z
     workTimestamps:
       - 2026-07-29T15:00:45Z
       - 2026-07-29T20:09:20Z
@@ -175,6 +708,50 @@ pullRequests:
       - 2026-07-30T02:15:23Z
     workAdditions: 2065
     workDeletions: 840
+    workFiles:
+      - docs/pricing-scenario-rules.md
+      - docs/superpowers/specs/2026-07-13-ofac-api-demo-design.md
+      - ofac/src/app/api/ofac/health/__tests__/route.test.ts
+      - ofac/src/app/api/ofac/health/route.ts
+      - ofac/src/components/client-intake-form.tsx
+      - ofac/src/lib/__tests__/client-csv.test.ts
+      - ofac/src/lib/__tests__/ofac-api-client.test.ts
+      - ofac/src/lib/__tests__/screening-provider.test.ts
+      - ofac/src/lib/client-csv.ts
+      - ofac/src/lib/screening-provider.ts
+      - packages/contracts/src/ofac.test.ts
+      - packages/contracts/src/ofac.ts
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/ofac.test.ts
+      - packages/db/src/ofac.ts
+      - pricing/functions/src/index.ts
+      - pricing/src/app/globals.css
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/__tests__/pricing-workstation-client.test.tsx
+      - pricing/src/components/__tests__/scenario-model-tab.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - pricing/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/payout-breakdown-donut.tsx
+      - pricing/src/components/pricing-graphs.tsx
+      - pricing/src/components/pricing-workstation-client.tsx
+      - pricing/src/components/scenario-model-tab.tsx
+      - pricing/src/lib/__tests__/calculation.test.ts
+      - pricing/src/lib/__tests__/new-recruit.test.ts
+      - pricing/src/lib/__tests__/report-model.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/workstation.test.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/dashboard-summary.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/workbook-output.ts
+      - pricing/src/lib/workstation.ts
+      - scripts/dev-pricing-api.ts
   - title: "fix(ofac): align browser and API behavior"
     body: >-
       ## Why
@@ -200,11 +777,26 @@ pullRequests:
     updatedAt: 2026-07-29T22:41:36Z
     closedAt: 2026-07-29T22:41:35Z
     mergedAt: 2026-07-29T22:41:35Z
+    workCommits:
+      - &a12
+        sha: fca1ccc27d02035b1a811fbb3dd9bbb6e5abf9ca
+        message: "docs(ofac): clarify request mapping"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/fca1ccc27d02035b1a811fbb3dd9bbb6e5abf9ca
+        authoredAt: 2026-07-29T22:27:06Z
+      - &a13
+        sha: d349469015258073e802b4ee3819d9e60e05a58a
+        message: "fix(db): rerun OFAC migrations"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d349469015258073e802b4ee3819d9e60e05a58a
+        authoredAt: 2026-07-29T22:36:15Z
     workTimestamps:
       - 2026-07-29T22:27:06Z
       - 2026-07-29T22:36:15Z
     workAdditions: 12
     workDeletions: 6
+    workFiles:
+      - docs/superpowers/specs/2026-07-13-ofac-api-demo-design.md
+      - packages/db/src/ofac.test.ts
+      - packages/db/src/ofac.ts
   - title: "fix(platform): repair API and navigation"
     body: |-
       Why
@@ -237,9 +829,11 @@ pullRequests:
     updatedAt: 2026-07-29T22:53:22Z
     closedAt: 2026-07-29T22:53:22Z
     mergedAt: 2026-07-29T22:53:22Z
+    workCommits: []
     workTimestamps: []
     workAdditions: 0
     workDeletions: 0
+    workFiles: []
   - title: "fix(ui): persist navigation preference"
     body: >-
       Why
@@ -272,10 +866,19 @@ pullRequests:
     updatedAt: 2026-07-29T22:38:12Z
     closedAt: 2026-07-29T22:38:12Z
     mergedAt: 2026-07-29T22:38:12Z
+    workCommits:
+      - &a31
+        sha: 5fee2baecec8402159692f2b43623db35ac464d4
+        message: "chore: sync main into navigation fix"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5fee2baecec8402159692f2b43623db35ac464d4
+        authoredAt: 2026-07-29T22:26:45Z
     workTimestamps:
       - 2026-07-29T22:26:45Z
     workAdditions: 3
     workDeletions: 5
+    workFiles:
+      - .github/dependabot.yml
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
   - title: "fix(onboarding): show current workstream name"
     body: >-
       Why
@@ -308,9 +911,11 @@ pullRequests:
     updatedAt: 2026-07-29T22:23:14Z
     closedAt: 2026-07-29T22:23:14Z
     mergedAt: 2026-07-29T22:23:14Z
+    workCommits: []
     workTimestamps: []
     workAdditions: 0
     workDeletions: 0
+    workFiles: []
   - title: "fix(excelerate): reject missing templates"
     body: >-
       ## Why
@@ -339,11 +944,33 @@ pullRequests:
     updatedAt: 2026-07-29T22:36:39Z
     closedAt: 2026-07-29T22:36:39Z
     mergedAt: 2026-07-29T22:36:38Z
+    workCommits:
+      - &a32
+        sha: 091ee7602bc4e47d2a7a42af6534e111b224dad1
+        message: "fix(excelerate): package output templates"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/091ee7602bc4e47d2a7a42af6534e111b224dad1
+        authoredAt: 2026-07-29T22:26:48Z
+      - &a34
+        sha: 5748bb1249e279cedf6926b2890fa35ff895a97f
+        message: "fix(deploy): package unified templates"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5748bb1249e279cedf6926b2890fa35ff895a97f
+        authoredAt: 2026-07-29T22:31:42Z
     workTimestamps:
       - 2026-07-29T22:26:48Z
       - 2026-07-29T22:31:42Z
     workAdditions: 43
     workDeletions: 8
+    workFiles:
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .gitignore
+      - excelerate/src/app/api/excelerate/api.test.ts
+      - excelerate/src/lib/excelerate/processor.ts
+      - excelerate/src/lib/excelerate/workbooks.test.ts
+      - excelerate/templates/SS_NN_BP_Database.xlsx
+      - excelerate/templates/SS_NN_BP_Database_Simple.xlsx
+      - scripts/tooling.test.ts
+      - scripts/validate-artifacts.ts
   - title: "fix(dependabot): reduce update frequency"
     body: >-
       Why
@@ -372,64 +999,179 @@ pullRequests:
     updatedAt: 2026-07-29T22:22:45Z
     closedAt: 2026-07-29T22:22:45Z
     mergedAt: 2026-07-29T22:22:45Z
+    workCommits: []
     workTimestamps: []
     workAdditions: 0
     workDeletions: 0
+    workFiles: []
 prsInProgress: []
 issues: []
 events: []
 commitMessages:
   - repo: Myriad-Advisor-Solutions/ohcpwm-apps
     messages:
-      - "fix(pricing): align FiNet model with workbook (#76)"
-      - "fix(ofac): align browser and API behavior (#73)"
+      - "fix(pricing): align FiNet model with workbook"
+      - "fix(pricing): fill recruit table width"
+      - "fix(pricing): allow incomplete expense drafts"
+      - "fix(pricing): preserve FiNet fee integrity"
+      - "fix(pricing): normalize expense label edits"
+      - "fix(pricing): make FiNet exports recalculable"
+      - "fix(pricing): track expense label drafts"
+      - "fix(pricing): correct report fee presentation"
+      - "fix(pricing): link FiNet report assumptions"
+      - "fix(pricing): normalize FiNet rate units"
       - "fix(pricing): normalize expense label edits (#75)"
+      - "fix(pricing): resolve FiNet merge conflict"
+      - "docs(ofac): clarify request mapping"
+      - "fix(db): rerun OFAC migrations"
+      - "fix(pricing): link FiNet advisory fee"
+      - "fix(ofac): align browser and API behavior (#73)"
+      - "fix(pricing): reconcile main conflict"
+      - "fix(pricing): render FiNet PDF expenses"
+      - "fix(pricing): link FiNet expense count"
+      - "fix(pricing): normalize FiNet editor output"
+      - "fix(pricing): link FiNet terms to inputs"
+      - "fix(pricing): link WFAFN fee to count"
+      - "fix(pricing): link FiNet workbook inputs"
+      - "fix(pricing): reconcile FiNet chart costs"
+      - "fix(report): show current FiNet fees"
+      - "fix(pricing): retain non-FiNet chart buckets"
+      - "fix(report): clarify current FiNet deductions"
+      - "fix(report): paginate current FiNet fees"
+      - "fix(pricing): label custom FiNet fees"
+      - "fix(pricing): edit FiNet custom fees"
+      - "fix(pricing): normalize FiNet custom fees"
+      - "fix(pricing): align FiNet model with workbook (#76)"
     commits:
-      - sha: d272853d09aa9fa4e2727b639705c3b0be5c4e17
-        message: "fix(pricing): align FiNet model with workbook (#76)"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d272853d09aa9fa4e2727b639705c3b0be5c4e17
-        authoredAt: 2026-07-30T02:20:51Z
-      - sha: 11e97158539ab498a48127cdfa172db0674e96f2
-        message: "fix(ofac): align browser and API behavior (#73)"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/11e97158539ab498a48127cdfa172db0674e96f2
-        authoredAt: 2026-07-29T22:41:35Z
+      - *a1
+      - *a2
+      - *a3
+      - *a4
+      - *a5
+      - *a6
+      - *a7
+      - *a8
+      - *a9
+      - *a10
       - sha: 1dbe88b3469b6237892862c3d2f0136f780072ad
         message: "fix(pricing): normalize expense label edits (#75)"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/1dbe88b3469b6237892862c3d2f0136f780072ad
         authoredAt: 2026-07-29T22:15:42Z
+        additions: 64
+        deletions: 11
+        filesChanged: 4
+      - *a11
+      - *a12
+      - *a13
+      - *a14
+      - sha: 11e97158539ab498a48127cdfa172db0674e96f2
+        message: "fix(ofac): align browser and API behavior (#73)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/11e97158539ab498a48127cdfa172db0674e96f2
+        authoredAt: 2026-07-29T22:41:35Z
+        additions: 172
+        deletions: 19
+        filesChanged: 13
+      - *a15
+      - *a16
+      - *a17
+      - *a18
+      - *a19
+      - *a20
+      - *a21
+      - *a22
+      - *a23
+      - *a24
+      - *a25
+      - *a26
+      - *a27
+      - *a28
+      - *a29
+      - sha: d272853d09aa9fa4e2727b639705c3b0be5c4e17
+        message: "fix(pricing): align FiNet model with workbook (#76)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d272853d09aa9fa4e2727b639705c3b0be5c4e17
+        authoredAt: 2026-07-30T02:20:51Z
+        additions: 1616
+        deletions: 597
+        filesChanged: 30
   - repo: Myriad-Advisor-Solutions/myriadas-apps
     messages:
-      - "feat(pricing): replace Proforma app (#64)"
-      - "fix(platform): repair API and navigation (#63)"
-      - "fix(ui): persist navigation preference (#62)"
-      - "fix(excelerate): reject missing templates (#57)"
-      - "fix(onboarding): show current workstream name (#54)"
+      - "feat(pricing): replace Proforma app"
       - "fix(dependabot): reduce update frequency (#51)"
+      - "fix(onboarding): show current workstream name (#54)"
+      - "chore: sync main into navigation fix"
+      - "fix(excelerate): package output templates"
+      - "fix(pricing): address review findings"
+      - "fix(deploy): package unified templates"
+      - "fix(excelerate): reject missing templates (#57)"
+      - "fix(ui): persist navigation preference (#62)"
+      - "fix(pricing): avoid unified health collision"
+      - "merge: update from main"
+      - "fix(platform): repair API and navigation (#63)"
+      - "merge: update from main"
+      - "fix(hub): secure linked Functions backend"
+      - "fix(hub): harden linked backend rollout"
+      - "fix(infra): bind Functions to linked SWA"
+      - "fix(infra): require production networking"
+      - "fix(ci): send valid forged principal"
+      - "fix(ci): avoid wrapped forged headers"
+      - "feat(pricing): replace Proforma app (#64)"
     commits:
-      - sha: 8d80e2c5ddb8a675ada3c73d8207d36cd062a460
-        message: "feat(pricing): replace Proforma app (#64)"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8d80e2c5ddb8a675ada3c73d8207d36cd062a460
-        authoredAt: 2026-07-30T02:08:54Z
-      - sha: 313ce1c4d98b8abc32211281331bbbf13e9c7f17
-        message: "fix(platform): repair API and navigation (#63)"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/313ce1c4d98b8abc32211281331bbbf13e9c7f17
-        authoredAt: 2026-07-29T22:53:22Z
-      - sha: 6b77867e7045eb4e8ac2b03cba45fe8defe75538
-        message: "fix(ui): persist navigation preference (#62)"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6b77867e7045eb4e8ac2b03cba45fe8defe75538
-        authoredAt: 2026-07-29T22:38:11Z
-      - sha: c1e7fbaee506bfb0d158b835e762bc0847fe684a
-        message: "fix(excelerate): reject missing templates (#57)"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c1e7fbaee506bfb0d158b835e762bc0847fe684a
-        authoredAt: 2026-07-29T22:36:38Z
-      - sha: e59f489013e9dc298be4d78a2121b95bc7ea31d8
-        message: "fix(onboarding): show current workstream name (#54)"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e59f489013e9dc298be4d78a2121b95bc7ea31d8
-        authoredAt: 2026-07-29T22:23:14Z
+      - *a30
       - sha: bff4bf86f9788cc38f66f45448ee0345cfff8c10
         message: "fix(dependabot): reduce update frequency (#51)"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/bff4bf86f9788cc38f66f45448ee0345cfff8c10
         authoredAt: 2026-07-29T22:22:44Z
+        additions: 2
+        deletions: 4
+        filesChanged: 1
+      - sha: e59f489013e9dc298be4d78a2121b95bc7ea31d8
+        message: "fix(onboarding): show current workstream name (#54)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e59f489013e9dc298be4d78a2121b95bc7ea31d8
+        authoredAt: 2026-07-29T22:23:14Z
+        additions: 1
+        deletions: 1
+        filesChanged: 1
+      - *a31
+      - *a32
+      - *a33
+      - *a34
+      - sha: c1e7fbaee506bfb0d158b835e762bc0847fe684a
+        message: "fix(excelerate): reject missing templates (#57)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c1e7fbaee506bfb0d158b835e762bc0847fe684a
+        authoredAt: 2026-07-29T22:36:38Z
+        additions: 123
+        deletions: 160
+        filesChanged: 13
+      - sha: 6b77867e7045eb4e8ac2b03cba45fe8defe75538
+        message: "fix(ui): persist navigation preference (#62)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6b77867e7045eb4e8ac2b03cba45fe8defe75538
+        authoredAt: 2026-07-29T22:38:11Z
+        additions: 104
+        deletions: 16
+        filesChanged: 9
+      - *a35
+      - *a36
+      - sha: 313ce1c4d98b8abc32211281331bbbf13e9c7f17
+        message: "fix(platform): repair API and navigation (#63)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/313ce1c4d98b8abc32211281331bbbf13e9c7f17
+        authoredAt: 2026-07-29T22:53:22Z
+        additions: 36
+        deletions: 3
+        filesChanged: 3
+      - *a37
+      - *a38
+      - *a39
+      - *a40
+      - *a41
+      - *a42
+      - *a43
+      - sha: 8d80e2c5ddb8a675ada3c73d8207d36cd062a460
+        message: "feat(pricing): replace Proforma app (#64)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8d80e2c5ddb8a675ada3c73d8207d36cd062a460
+        authoredAt: 2026-07-30T02:08:54Z
+        additions: 31960
+        deletions: 8698
+        filesChanged: 300
 releases: []
 externalContributions: []
 codeReviews:
@@ -464,11 +1206,186 @@ aiReviews:
   comments: 60
   reviews: 39
   fixed: 1
+hoursInputs:
+  timestamps:
+    - 2026-07-29T15:00:45Z
+    - 2026-07-29T20:09:20Z
+    - 2026-07-29T20:18:24Z
+    - 2026-07-29T20:31:06Z
+    - 2026-07-29T20:40:03Z
+    - 2026-07-29T20:44:18Z
+    - 2026-07-29T20:50:14Z
+    - 2026-07-29T20:53:37Z
+    - 2026-07-29T21:04:00Z
+    - 2026-07-29T21:18:22Z
+    - 2026-07-29T22:15:42Z
+    - 2026-07-29T22:26:03Z
+    - 2026-07-29T22:27:06Z
+    - 2026-07-29T22:36:15Z
+    - 2026-07-29T22:36:27Z
+    - 2026-07-29T22:41:35Z
+    - 2026-07-29T22:49:15Z
+    - 2026-07-30T00:00:29Z
+    - 2026-07-30T00:14:57Z
+    - 2026-07-30T00:24:14Z
+    - 2026-07-30T00:35:11Z
+    - 2026-07-30T00:39:21Z
+    - 2026-07-30T00:48:03Z
+    - 2026-07-30T00:54:50Z
+    - 2026-07-30T01:11:54Z
+    - 2026-07-30T01:18:06Z
+    - 2026-07-30T01:24:39Z
+    - 2026-07-30T01:33:13Z
+    - 2026-07-30T01:43:13Z
+    - 2026-07-30T02:00:28Z
+    - 2026-07-30T02:15:23Z
+    - 2026-07-30T02:20:51Z
+    - 2026-07-29T20:44:34Z
+    - 2026-07-29T22:22:44Z
+    - 2026-07-29T22:23:14Z
+    - 2026-07-29T22:26:45Z
+    - 2026-07-29T22:26:48Z
+    - 2026-07-29T22:30:38Z
+    - 2026-07-29T22:31:42Z
+    - 2026-07-29T22:36:38Z
+    - 2026-07-29T22:38:11Z
+    - 2026-07-29T22:38:11Z
+    - 2026-07-29T22:49:57Z
+    - 2026-07-29T22:53:22Z
+    - 2026-07-29T22:54:06Z
+    - 2026-07-30T00:42:15Z
+    - 2026-07-30T01:05:01Z
+    - 2026-07-30T01:13:50Z
+    - 2026-07-30T01:22:13Z
+    - 2026-07-30T01:25:58Z
+    - 2026-07-30T01:28:47Z
+    - 2026-07-30T02:08:54Z
+    - 2026-07-29T20:19:09Z
+    - 2026-07-29T22:15:43Z
+    - 2026-07-29T20:18:24Z
+    - 2026-07-29T20:40:03Z
+    - 2026-07-29T20:50:14Z
+    - 2026-07-29T20:45:36Z
+    - 2026-07-30T02:08:54Z
+    - 2026-07-29T20:44:34Z
+    - 2026-07-29T22:30:38Z
+    - 2026-07-29T22:38:11Z
+    - 2026-07-29T22:49:57Z
+    - 2026-07-29T22:54:06Z
+    - 2026-07-30T00:42:15Z
+    - 2026-07-30T01:05:01Z
+    - 2026-07-30T01:13:50Z
+    - 2026-07-30T01:22:13Z
+    - 2026-07-30T01:25:58Z
+    - 2026-07-30T01:28:47Z
+    - 2026-07-29T20:20:11Z
+    - 2026-07-30T02:20:52Z
+    - 2026-07-29T15:00:45Z
+    - 2026-07-29T20:09:20Z
+    - 2026-07-29T20:31:06Z
+    - 2026-07-29T20:44:18Z
+    - 2026-07-29T20:53:37Z
+    - 2026-07-29T21:04:00Z
+    - 2026-07-29T21:18:22Z
+    - 2026-07-29T22:26:03Z
+    - 2026-07-29T22:36:27Z
+    - 2026-07-29T22:49:15Z
+    - 2026-07-30T00:00:29Z
+    - 2026-07-30T00:14:57Z
+    - 2026-07-30T00:24:14Z
+    - 2026-07-30T00:35:11Z
+    - 2026-07-30T00:39:21Z
+    - 2026-07-30T00:48:03Z
+    - 2026-07-30T00:54:50Z
+    - 2026-07-30T01:11:54Z
+    - 2026-07-30T01:18:06Z
+    - 2026-07-30T01:24:39Z
+    - 2026-07-30T01:33:13Z
+    - 2026-07-30T01:43:13Z
+    - 2026-07-30T02:00:28Z
+    - 2026-07-30T02:15:23Z
+    - 2026-07-29T22:41:35Z
+    - 2026-07-29T22:27:06Z
+    - 2026-07-29T22:36:15Z
+    - 2026-07-29T22:53:22Z
+    - 2026-07-29T22:38:12Z
+    - 2026-07-29T22:26:45Z
+    - 2026-07-29T22:23:14Z
+    - 2026-07-29T22:36:38Z
+    - 2026-07-29T22:26:48Z
+    - 2026-07-29T22:31:42Z
+    - 2026-07-29T22:22:45Z
+    - 2026-07-29T22:27:47Z
+    - 2026-07-29T22:27:47Z
+  volume:
+    pullRequests:
+      - additions: 12
+        deletions: 6
+        state: merged
+        dailyWork: true
+        filesChanged: 3
+        testFilesChanged: 1
+        commitCount: 2
+      - additions: 103
+        deletions: 50
+        state: merged
+        dailyWork: true
+        filesChanged: 4
+        testFilesChanged: 1
+        commitCount: 3
+      - additions: 3
+        deletions: 5
+        state: merged
+        dailyWork: true
+        filesChanged: 2
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 43
+        deletions: 8
+        state: merged
+        dailyWork: true
+        filesChanged: 10
+        testFilesChanged: 3
+        commitCount: 2
+      - additions: 32367
+        deletions: 9023
+        state: merged
+        dailyWork: true
+        filesChanged: 334
+        testFilesChanged: 75
+        commitCount: 11
+      - additions: 2065
+        deletions: 840
+        state: merged
+        dailyWork: true
+        filesChanged: 43
+        testFilesChanged: 17
+        commitCount: 24
+      - additions: 0
+        deletions: 0
+        state: merged
+      - additions: 0
+        deletions: 0
+        state: merged
+      - additions: 0
+        deletions: 0
+        state: merged
+    reviewCount: 1
+    reviewCommentCount: 1
+    commitCount: 9
+    commitAdditions: 34078
+    commitDeletions: 9509
+    commitStatsCount: 9
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
 hoursEstimate:
-  hours: 41.6
+  version: "2.1"
+  hours: 84.5
   sessions: 2
   sessionHours: 6.5
-  volumeHours: 41.6
+  volumeHours: 84.5
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

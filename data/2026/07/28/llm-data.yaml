@@ -12,10 +12,10 @@ summaries:
         value: 1 PRs
   - type: commit-summary
     heading: Commits and line changes
-    body: 0 commits with +401 / −205 lines.
+    body: 6 commits with +401 / −205 lines.
     chips:
       - label: Commits
-        value: "0"
+        value: "6"
         color: green
       - label: Additions
         value: "+401"
@@ -35,14 +35,8 @@ summaries:
       tracked, elapsed, or billed time.
     chips:
       - label: Estimated engineering hours
-        value: ~8.8h
+        value: ~23.3h
 highlights:
-  - type: pr
-    title: "fix(platform): repair API and navigation"
-    repo: Myriad-Advisor-Solutions/myriadas-apps
-    meta: in progress · +36 −3
-    body: Still open at the end of the reporting window.
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/63
   - type: pr
     title: "fix(excelerate): reject missing templates"
     repo: Myriad-Advisor-Solutions/myriadas-apps
@@ -50,9 +44,15 @@ highlights:
     body: Still open at the end of the reporting window.
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/57
   - type: pr
-    title: "fix(ofac): align browser and API behavior"
-    repo: Myriad-Advisor-Solutions/ohcpwm-apps
-    meta: in progress · +172 −19
+    title: "fix(platform): repair API and navigation"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +36 −3
     body: Still open at the end of the reporting window.
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/73
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/63
+  - type: pr
+    title: "fix(ui): persist navigation preference"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +104 −16
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/62
 ticker: []

@@ -12,7 +12,7 @@ dateRange:
   from: 2026-07-23
   to: 2026-07-23
 stats:
-  totalCommits: 2
+  totalCommits: 9
   totalAdditions: 982
   totalDeletions: 533
   prsOpened: 3
@@ -22,20 +22,20 @@ stats:
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 9.9
+  estimatedHours: 25.3
 dailyCommits:
   - date: 2026-07-23
-    count: 2
+    count: 9
 repositories:
   - name: Myriad-Advisor-Solutions/myriadas-apps
-    commits: 2
+    commits: 5
     prsOpened: 2
     prsMerged: 2
     issuesOpened: 0
     issuesClosed: 0
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
   - name: Myriad-Advisor-Solutions/ohcpwm-apps
-    commits: 0
+    commits: 4
     prsOpened: 1
     prsMerged: 0
     issuesOpened: 0
@@ -73,10 +73,40 @@ pullRequests:
     updatedAt: 2026-07-23T16:06:32Z
     closedAt: 2026-07-23T16:04:10Z
     mergedAt: 2026-07-23T16:04:10Z
+    workCommits:
+      - &a7
+        sha: 9916e1adba50f6831f34433d1cf38c930bf60868
+        message: "revert(deploy): restore unified SWA"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9916e1adba50f6831f34433d1cf38c930bf60868
+        authoredAt: 2026-07-23T15:59:56Z
     workTimestamps:
       - 2026-07-23T15:59:56Z
     workAdditions: 362
     workDeletions: 389
+    workFiles:
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - hub/README.md
+      - hub/functions/package.json
+      - infra/azure/README.md
+      - infra/azure/pto-tracker/README.md
+      - infra/azure/pto-tracker/serverless.bicep
+      - infra/azure/static-web-apps.bicep
+      - pto-tracker/.env.example
+      - pto-tracker/README.md
+      - pto-tracker/docs/microsoft-tenant-deployment.md
+      - pto-tracker/functions/local.settings.json.example
+      - pto-tracker/scripts/build-static.ts
+      - pto-tracker/src/components/AuthProvider.tsx
+      - pto-tracker/src/components/PtoAppShell.tsx
+      - pto-tracker/src/lib/api/handlers.test.ts
+      - pto-tracker/src/lib/api/handlers.ts
+      - pto-tracker/src/lib/auth/entra-provider.test.ts
+      - pto-tracker/src/lib/auth/entra-provider.ts
+      - pto-tracker/src/lib/auth/entra-token-provider.test.ts
+      - pto-tracker/src/lib/auth/entra-token-provider.ts
+      - pto-tracker/staticwebapp.config.json
   - title: "fix(hub): route product app roots"
     body: >-
       ## Why
@@ -107,11 +137,26 @@ pullRequests:
     updatedAt: 2026-07-23T15:32:37Z
     closedAt: 2026-07-23T15:32:37Z
     mergedAt: 2026-07-23T15:32:37Z
+    workCommits:
+      - &a5
+        sha: a6de25eea024875e319200136e91b2cc3d3bff0c
+        message: "fix(hub): route product app roots"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a6de25eea024875e319200136e91b2cc3d3bff0c
+        authoredAt: 2026-07-23T15:21:19Z
+      - &a6
+        sha: 83f307dab0dab8b9cd33048e74d7d2489f03148f
+        message: "chore(github): remove default reviewers"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/83f307dab0dab8b9cd33048e74d7d2489f03148f
+        authoredAt: 2026-07-23T15:27:42Z
     workTimestamps:
       - 2026-07-23T15:21:19Z
       - 2026-07-23T15:27:42Z
     workAdditions: 49
     workDeletions: 10
+    workFiles:
+      - .github/CODEOWNERS
+      - hub/staticwebapp.config.json
+      - scripts/tooling.test.ts
   - title: "feat(pricing): add FiNet recruit workflow"
     body: >-
       ## Why
@@ -139,13 +184,68 @@ pullRequests:
     updatedAt: 2026-07-27T21:31:24Z
     closedAt: 2026-07-27T21:31:07Z
     mergedAt: 2026-07-27T21:31:07Z
-    workTimestamps: &a2
+    workCommits: &a2
+      - &a8
+        sha: cfcd73cfa3ccc9c1891c990ecb1843fcded446d8
+        message: "fix(pricing): refine recruit pricing flow"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cfcd73cfa3ccc9c1891c990ecb1843fcded446d8
+        authoredAt: 2026-07-23T16:43:32Z
+      - &a9
+        sha: cf6993504668f48a70e69fcc7b7504c9e9b3d5e9
+        message: "fix(pricing): preserve FiNet wizard state"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cf6993504668f48a70e69fcc7b7504c9e9b3d5e9
+        authoredAt: 2026-07-23T16:50:46Z
+      - &a10
+        sha: 21160be8a4682ca5be3f622e83c4e0f11c1803ea
+        message: "fix(pricing): correct FiNet expenses"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/21160be8a4682ca5be3f622e83c4e0f11c1803ea
+        authoredAt: 2026-07-23T20:20:14Z
+      - &a11
+        sha: 8b1148c7e7709832be55b7a7355c063aa03ad5e7
+        message: "fix(ci): redeploy labeled previews"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8b1148c7e7709832be55b7a7355c063aa03ad5e7
+        authoredAt: 2026-07-23T20:27:30Z
+    workTimestamps: &a3
       - 2026-07-23T16:43:32Z
       - 2026-07-23T16:50:46Z
       - 2026-07-23T20:20:14Z
       - 2026-07-23T20:27:30Z
     workAdditions: 571
     workDeletions: 134
+    workFiles: &a4
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - pricing/functions/src/index.ts
+      - pricing/src/app/globals.css
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/dashboard-metrics-charts.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/__tests__/recruit-detail-panels.test.tsx
+      - pricing/src/components/__tests__/recruits-table.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/dashboard-recruits-panel.tsx
+      - pricing/src/components/formatted-number-input.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/components/pricing-workstation-client.tsx
+      - pricing/src/components/recruits-table.tsx
+      - pricing/src/components/scenario-model-tab.tsx
+      - pricing/src/lib/__tests__/calculation.test.ts
+      - pricing/src/lib/__tests__/dashboard-summary.test.ts
+      - pricing/src/lib/__tests__/new-recruit.test.ts
+      - pricing/src/lib/__tests__/report-model.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/workstation.test.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/dashboard-summary.ts
+      - pricing/src/lib/format.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/workbook-output.ts
+      - scripts/dev-pricing-api.ts
 prsInProgress:
   - title: "feat(pricing): add FiNet recruit workflow"
     body: >-
@@ -173,25 +273,50 @@ prsInProgress:
     updatedAt: 2026-07-27T21:31:24Z
     closedAt: 2026-07-27T21:31:07Z
     mergedAt: 2026-07-27T21:31:07Z
-    workTimestamps: *a2
+    workCommits: *a2
+    workTimestamps: *a3
     workAdditions: 571
     workDeletions: 134
+    workFiles: *a4
 issues: []
 events: []
 commitMessages:
   - repo: Myriad-Advisor-Solutions/myriadas-apps
     messages:
-      - "revert(deploy): restore unified SWA"
+      - "fix(hub): route product app roots"
+      - "chore(github): remove default reviewers"
       - "fix(hub): route product app roots (#40)"
+      - "revert(deploy): restore unified SWA"
+      - "revert(deploy): restore unified SWA"
     commits:
-      - sha: bf3c0c7d02cb9f24227362f4c49dcf22c1cd61e7
-        message: "revert(deploy): restore unified SWA"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/bf3c0c7d02cb9f24227362f4c49dcf22c1cd61e7
-        authoredAt: 2026-07-23T16:04:09Z
+      - *a5
+      - *a6
       - sha: 74b0d02d981028e5773b295a68abf24142adf6cb
         message: "fix(hub): route product app roots (#40)"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/74b0d02d981028e5773b295a68abf24142adf6cb
         authoredAt: 2026-07-23T15:32:36Z
+        additions: 49
+        deletions: 10
+        filesChanged: 3
+      - *a7
+      - sha: bf3c0c7d02cb9f24227362f4c49dcf22c1cd61e7
+        message: "revert(deploy): restore unified SWA"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/bf3c0c7d02cb9f24227362f4c49dcf22c1cd61e7
+        authoredAt: 2026-07-23T16:04:09Z
+        additions: 362
+        deletions: 389
+        filesChanged: 23
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "fix(pricing): refine recruit pricing flow"
+      - "fix(pricing): preserve FiNet wizard state"
+      - "fix(pricing): correct FiNet expenses"
+      - "fix(ci): redeploy labeled previews"
+    commits:
+      - *a8
+      - *a9
+      - *a10
+      - *a11
 releases: []
 externalContributions: []
 codeReviews: []
@@ -211,11 +336,68 @@ aiReviews:
   comments: 6
   reviews: 2
   fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-07-23T15:21:19Z
+    - 2026-07-23T15:27:42Z
+    - 2026-07-23T15:32:36Z
+    - 2026-07-23T15:59:56Z
+    - 2026-07-23T16:04:09Z
+    - 2026-07-23T16:43:32Z
+    - 2026-07-23T16:50:46Z
+    - 2026-07-23T20:20:14Z
+    - 2026-07-23T20:27:30Z
+    - 2026-07-23T16:00:31Z
+    - 2026-07-23T16:04:10Z
+    - 2026-07-23T15:59:56Z
+    - 2026-07-23T15:24:22Z
+    - 2026-07-23T15:32:37Z
+    - 2026-07-23T15:21:19Z
+    - 2026-07-23T15:27:42Z
+    - 2026-07-23T16:44:11Z
+    - 2026-07-23T16:43:32Z
+    - 2026-07-23T16:50:46Z
+    - 2026-07-23T20:20:14Z
+    - 2026-07-23T20:27:30Z
+  volume:
+    pullRequests:
+      - additions: 362
+        deletions: 389
+        state: merged
+        dailyWork: true
+        filesChanged: 23
+        testFilesChanged: 3
+        commitCount: 1
+      - additions: 49
+        deletions: 10
+        state: merged
+        dailyWork: true
+        filesChanged: 3
+        testFilesChanged: 1
+        commitCount: 2
+      - additions: 571
+        deletions: 134
+        state: merged
+        dailyWork: true
+        filesChanged: 33
+        testFilesChanged: 12
+        commitCount: 4
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 2
+    commitAdditions: 411
+    commitDeletions: 399
+    commitStatsCount: 2
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
 hoursEstimate:
-  hours: 9.9
+  version: "2.1"
+  hours: 25.3
   sessions: 2
   sessionHours: 2
-  volumeHours: 9.9
+  volumeHours: 25.3
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
