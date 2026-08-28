@@ -38,12 +38,6 @@ summaries:
         value: ~23.4h
 highlights:
   - type: pr
-    title: "feat(onboarding): add client and vendor contacts"
-    repo: Myriad-Advisor-Solutions/myriadas-apps
-    meta: in progress · +1947 −205
-    body: Still open at the end of the reporting window.
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/104
-  - type: pr
     title: "feat(ofac): add PDF, CSV, and Excel report exports"
     repo: Myriad-Advisor-Solutions/ohcpwm-apps
     meta: in progress · +1110 −80
@@ -55,4 +49,10 @@ highlights:
     meta: in progress · +1167 −1501
     body: Still open at the end of the reporting window.
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/106
+  - type: pr
+    title: "feat(onboarding): add client and vendor contacts"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +1947 −205
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/104
 ticker: []

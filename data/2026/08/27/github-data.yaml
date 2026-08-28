@@ -43,80 +43,6 @@ repositories:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
 pullRequests: []
 prsInProgress:
-  - title: "feat(onboarding): add client and vendor contacts"
-    body: >-
-      ## Why
-
-
-      Client and vendor onboarding did not have a dedicated contact directory or a way to add contacts without first
-      creating a client workspace.
-
-
-      ## What changed
-
-
-      - Add Contacts sections under client and vendor onboarding.
-
-      - Add typed Company, Client, and Vendor contacts with a compact add form.
-
-      ...
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/104
-    repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: open
-    labels:
-      - "app: onboarding"
-      - "app: proforma"
-      - platform
-      - deploy-preview
-    additions: 1947
-    deletions: 205
-    changedFiles: 47
-    author: myriadas-clees
-    createdAt: 2026-08-25T16:14:15Z
-    updatedAt: 2026-08-27T13:32:42Z
-    closedAt: null
-    mergedAt: null
-    workCommits:
-      - &a3
-        sha: da30d48ae3a663acc666ad5bf6d934fbd0bed2fd
-        message: "feat(onboarding): add task associations"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/da30d48ae3a663acc666ad5bf6d934fbd0bed2fd
-        authoredAt: 2026-08-27T13:27:19Z
-    workTimestamps:
-      - 2026-08-27T13:27:19Z
-    workAdditions: 555
-    workDeletions: 117
-    workFiles:
-      - onboarding/apps/dashboard/app/contacts/page.tsx
-      - onboarding/apps/dashboard/app/tasks/page.tsx
-      - onboarding/apps/dashboard/app/vendors/contacts/page.tsx
-      - onboarding/apps/dashboard/components/contacts-workspace.tsx
-      - onboarding/apps/dashboard/components/create-task-button.tsx
-      - onboarding/apps/dashboard/components/operations-workspace/task-record-panel.tsx
-      - onboarding/apps/dashboard/components/task-associations-editor.test.tsx
-      - onboarding/apps/dashboard/components/task-associations-editor.tsx
-      - onboarding/apps/dashboard/components/task-board.test.tsx
-      - onboarding/apps/dashboard/components/task-detail-form.tsx
-      - onboarding/apps/dashboard/components/task-detail-header.tsx
-      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
-      - onboarding/apps/dashboard/lib/api/client.ts
-      - onboarding/apps/dashboard/lib/api/handlers.test.ts
-      - onboarding/apps/dashboard/lib/api/handlers.ts
-      - onboarding/apps/dashboard/lib/operations-workspace/adapters.ts
-      - onboarding/apps/dashboard/lib/operations-workspace/operations-workspace.test.ts
-      - packages/contracts/src/onboarding-task-elements.test.ts
-      - packages/contracts/src/onboarding.ts
-      - packages/db/src/contact.test.ts
-      - packages/db/src/cosmos-migration.test.ts
-      - packages/db/src/cosmos-queries.ts
-      - packages/db/src/custom-task.ts
-      - packages/db/src/employee-case.ts
-      - packages/db/src/metrics.ts
-      - packages/db/src/migrate-database.test.ts
-      - packages/db/src/migrate-database.ts
-      - packages/db/src/queries.ts
-      - packages/db/src/schema.ts
-      - packages/db/src/sqlite-migration-source.ts
   - title: "feat(ofac): add PDF, CSV, and Excel report exports"
     body: |-
       - adds branded, on-demand PDF evidence reports for individual OFAC screenings
@@ -124,7 +50,7 @@ prsInProgress:
       - adds Pricing-style PDF and workbook previews, with Excel previews capped at 200 rows while downloads remai...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
-    state: open
+    state: merged
     labels:
       - deploy-preview
     additions: 1110
@@ -132,9 +58,9 @@ prsInProgress:
     changedFiles: 32
     author: myriadas-clees
     createdAt: 2026-08-12T19:55:22Z
-    updatedAt: 2026-08-27T19:07:12Z
-    closedAt: null
-    mergedAt: null
+    updatedAt: 2026-08-28T14:51:40Z
+    closedAt: 2026-08-28T14:51:36Z
+    mergedAt: 2026-08-28T14:51:35Z
     workCommits:
       - &a1
         sha: 8261a0ad1d1794616b0f09b0629f485d563d951a
@@ -234,6 +160,80 @@ prsInProgress:
       - pto-tracker/src/components/PtoAppShell.tsx
       - valuation/src/app/layout.tsx
       - valuation/src/components/valuation-shell.tsx
+  - title: "feat(onboarding): add client and vendor contacts"
+    body: >-
+      ## Why
+
+
+      Client and vendor onboarding did not have a dedicated contact directory or a way to add contacts without first
+      creating a client workspace.
+
+
+      ## What changed
+
+
+      - Add Contacts sections under client and vendor onboarding.
+
+      - Add typed Company, Client, and Vendor contacts with a compact add form.
+
+      ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/104
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - "app: onboarding"
+      - "app: proforma"
+      - platform
+      - deploy-preview
+    additions: 1947
+    deletions: 205
+    changedFiles: 47
+    author: myriadas-clees
+    createdAt: 2026-08-25T16:14:15Z
+    updatedAt: 2026-08-27T13:32:42Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a3
+        sha: da30d48ae3a663acc666ad5bf6d934fbd0bed2fd
+        message: "feat(onboarding): add task associations"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/da30d48ae3a663acc666ad5bf6d934fbd0bed2fd
+        authoredAt: 2026-08-27T13:27:19Z
+    workTimestamps:
+      - 2026-08-27T13:27:19Z
+    workAdditions: 555
+    workDeletions: 117
+    workFiles:
+      - onboarding/apps/dashboard/app/contacts/page.tsx
+      - onboarding/apps/dashboard/app/tasks/page.tsx
+      - onboarding/apps/dashboard/app/vendors/contacts/page.tsx
+      - onboarding/apps/dashboard/components/contacts-workspace.tsx
+      - onboarding/apps/dashboard/components/create-task-button.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/task-record-panel.tsx
+      - onboarding/apps/dashboard/components/task-associations-editor.test.tsx
+      - onboarding/apps/dashboard/components/task-associations-editor.tsx
+      - onboarding/apps/dashboard/components/task-board.test.tsx
+      - onboarding/apps/dashboard/components/task-detail-form.tsx
+      - onboarding/apps/dashboard/components/task-detail-header.tsx
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/client.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/adapters.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/operations-workspace.test.ts
+      - packages/contracts/src/onboarding-task-elements.test.ts
+      - packages/contracts/src/onboarding.ts
+      - packages/db/src/contact.test.ts
+      - packages/db/src/cosmos-migration.test.ts
+      - packages/db/src/cosmos-queries.ts
+      - packages/db/src/custom-task.ts
+      - packages/db/src/employee-case.ts
+      - packages/db/src/metrics.ts
+      - packages/db/src/migrate-database.test.ts
+      - packages/db/src/migrate-database.ts
+      - packages/db/src/queries.ts
+      - packages/db/src/schema.ts
+      - packages/db/src/sqlite-migration-source.ts
 issues: []
 events: []
 commitMessages:
@@ -272,8 +272,48 @@ aiReviews:
   comments: 9
   reviews: 4
   fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-08-27T18:09:49Z
+    - 2026-08-27T19:02:17Z
+    - 2026-08-27T13:27:19Z
+    - 2026-08-27T17:04:52Z
+    - 2026-08-27T17:59:40Z
+  volume:
+    pullRequests:
+      - additions: 80
+        deletions: 17
+        state: merged
+        dailyWork: true
+        filesChanged: 6
+        testFilesChanged: 1
+        commitCount: 2
+      - additions: 782
+        deletions: 690
+        state: open
+        dailyWork: true
+        filesChanged: 29
+        testFilesChanged: 1
+        commitCount: 2
+      - additions: 555
+        deletions: 117
+        state: open
+        dailyWork: true
+        filesChanged: 30
+        testFilesChanged: 8
+        commitCount: 1
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 0
+    commitAdditions: 0
+    commitDeletions: 0
+    commitStatsCount: 0
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
 hoursEstimate:
-  version: "2.0"
+  version: "2.1"
   hours: 23.4
   sessions: 2
   sessionHours: 2.5
