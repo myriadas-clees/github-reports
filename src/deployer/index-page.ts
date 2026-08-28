@@ -15,6 +15,8 @@ export type ReportEntryStats = {
   commits: number;
   prs: number;
   reviews: number;
+  /** Estimated engineering hours for the report day (drives month-tape height). */
+  hours?: number;
 };
 
 export type ReportEntry = {
@@ -71,16 +73,20 @@ const groupByYear = (reports: ReportEntry[]): YearGroup[] => {
   return [...groups.entries()].map(([year, reps]) => ({ year, reports: reps }));
 };
 
-const reportActivity = (report: ReportEntry): number =>
-  (report.stats?.commits ?? 0) + (report.stats?.prs ?? 0) * 3 + (report.stats?.reviews ?? 0) * 2;
+/** Absolute scale: 0h → 4% tick, 8h → ~33%, 24h+ → 100%. */
+const FULL_DAY_HOURS = 24;
+const MIN_ACTIVITY_PERCENT = 4;
 
-const enrichActivity = (reports: ReportEntry[]): ReportEntry[] => {
-  const max = Math.max(...reports.map(reportActivity), 1);
-  return reports.map((report) => ({
-    ...report,
-    activityPercent: Math.max(4, Math.round((reportActivity(report) / max) * 100)),
-  }));
+export const hoursToActivityPercent = (hours: number): number => {
+  if (!Number.isFinite(hours) || hours <= 0) return MIN_ACTIVITY_PERCENT;
+  return Math.min(100, Math.max(MIN_ACTIVITY_PERCENT, Math.round((hours / FULL_DAY_HOURS) * 100)));
 };
+
+const enrichActivity = (reports: ReportEntry[]): ReportEntry[] =>
+  reports.map((report) => ({
+    ...report,
+    activityPercent: hoursToActivityPercent(report.stats?.hours ?? 0),
+  }));
 
 const groupByMonth = (reports: ReportEntry[], language: Language): MonthGroup[] => {
   const groups = new Map<string, ReportEntry[]>();

@@ -1,7 +1,8 @@
-// Fetch commit messages per repository via GitHub REST API
-// GET /repos/{owner}/{repo}/commits?author={username}&since={from}&until={to}
+// Fetch commit messages per repository via GitHub REST + Commit Search.
+// REST: GET /repos/{owner}/{repo}/commits?author=&since=&until= (default branch)
+// Search: GET /search/commits?q=author:+author-date:+repo: (all branches)
 
-import type { DateRange } from "./date-range.js";
+import { toISODate, type DateRange } from "./date-range.js";
 import { throwOnGitHubAccessError } from "./github-api-error.js";
 import type { CommitDetail, PullRequest, RepoCommitMessages } from "../types.js";
 
@@ -11,6 +12,15 @@ type RawCommit = {
   commit: {
     message: string;
     author: { date: string } | null;
+  };
+};
+
+type SearchCommitItem = {
+  sha: string;
+  html_url: string;
+  commit: {
+    message: string;
+    author?: { date?: string | null } | null;
   };
 };
 
@@ -50,6 +60,19 @@ const firstLine = (message: string): string => {
     ? `${subject.slice(0, MAX_MESSAGE_LENGTH)}...`
     : subject;
 };
+
+const timestampInRange = (authoredAt: string, range: DateRange): boolean => {
+  const time = new Date(authoredAt).getTime();
+  if (Number.isNaN(time)) return false;
+  return time >= range.from.getTime() && time <= range.to.getTime();
+};
+
+const toCommitDetail = (sha: string, message: string, url: string, authoredAt: string): CommitDetail => ({
+  sha,
+  message: firstLine(message),
+  url,
+  authoredAt,
+});
 
 const fetchPage = async (
   token: string,
@@ -101,17 +124,136 @@ const fetchRepoCommits = async (
     const result = await fetchPage(token, url);
     if (!result) break;
     result.commits.forEach((c) => {
-      commits.push({
-        sha: c.sha,
-        message: firstLine(c.commit.message),
-        url: c.html_url,
-        authoredAt: c.commit.author?.date ?? "",
-      });
+      commits.push(toCommitDetail(
+        c.sha,
+        c.commit.message,
+        c.html_url,
+        c.commit.author?.date ?? "",
+      ));
     });
     url = result.nextUrl;
   }
 
   return commits;
+};
+
+/** All-branch author commits via Search (includes work not yet on the default branch). */
+const searchRepoCommits = async (
+  token: string,
+  repo: string,
+  author: string,
+  range: DateRange,
+  timezone: string,
+): Promise<CommitDetail[]> => {
+  const fromDate = toISODate(range.from, timezone);
+  const toDate = toISODate(range.to, timezone);
+  const query = `author:${author} author-date:${fromDate}..${toDate} repo:${repo}`;
+  let url: string | null =
+    `https://api.github.com/search/commits?q=${encodeURIComponent(query)}&per_page=${PER_PAGE}`;
+  const commits: CommitDetail[] = [];
+
+  while (url) {
+    let page: { items: SearchCommitItem[]; nextUrl: string | null } | null = null;
+
+    for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
+      const response = await fetch(url, { headers: GITHUB_HEADERS(token) });
+
+      if (response.ok) {
+        const body = (await response.json()) as { items?: SearchCommitItem[] };
+        page = { items: body.items ?? [], nextUrl: parseNextUrl(response) };
+        break;
+      }
+
+      if (response.status === 422 || response.status === 404) {
+        return commits;
+      }
+
+      if (response.status === 429 && attempt < MAX_RETRIES) {
+        const delay = parseRetryDelay(response);
+        console.warn(
+          `  commit search 429, retrying in ${Math.round(delay / 1000)}s (attempt ${attempt + 1}/${MAX_RETRIES})`,
+        );
+        await sleep(delay);
+        continue;
+      }
+
+      console.warn(
+        `  Failed to search commits for ${repo}: ${response.status} ${response.statusText}`,
+      );
+      return commits;
+    }
+
+    if (!page) return commits;
+
+    for (const item of page.items) {
+      const authoredAt = item.commit.author?.date ?? "";
+      if (!authoredAt || !timestampInRange(authoredAt, range)) continue;
+      commits.push(toCommitDetail(item.sha, item.commit.message, item.html_url, authoredAt));
+    }
+    url = page.nextUrl;
+  }
+
+  return commits;
+};
+
+const fetchCommitStats = async (
+  token: string,
+  repo: string,
+  sha: string,
+): Promise<{ additions?: number; deletions?: number; filesChanged?: number } | null> => {
+  const url = `https://api.github.com/repos/${repo}/commits/${sha}`;
+  for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
+    const response = await fetch(url, { headers: GITHUB_HEADERS(token) });
+    if (response.ok) {
+      const detail = await response.json() as {
+        stats?: { additions?: number; deletions?: number };
+        files?: unknown[];
+      };
+      return {
+        additions: detail.stats?.additions,
+        deletions: detail.stats?.deletions,
+        filesChanged: detail.files?.length,
+      };
+    }
+    if (response.status === 404) return null;
+    if (response.status === 429 && attempt < MAX_RETRIES) {
+      const delay = parseRetryDelay(response);
+      console.warn(
+        `  commit stats 429, retrying in ${Math.round(delay / 1000)}s (attempt ${attempt + 1}/${MAX_RETRIES})`,
+      );
+      await sleep(delay);
+      continue;
+    }
+    console.warn(`  Failed to fetch commit stats for ${repo}@${sha}: ${response.status} ${response.statusText}`);
+    return null;
+  }
+  return null;
+};
+
+const enrichCommitStats = async (
+  token: string,
+  repo: string,
+  commits: CommitDetail[],
+): Promise<CommitDetail[]> => {
+  await runWithConcurrency(commits, async (commit) => {
+    const stats = await fetchCommitStats(token, repo, commit.sha);
+    if (!stats) return;
+    commit.additions = stats.additions;
+    commit.deletions = stats.deletions;
+    commit.filesChanged = stats.filesChanged;
+  });
+  return commits;
+};
+
+const mergeCommitsBySha = (
+  restCommits: CommitDetail[],
+  searchCommits: CommitDetail[],
+): CommitDetail[] => {
+  const bySha = new Map<string, CommitDetail>();
+  for (const commit of searchCommits) bySha.set(commit.sha, commit);
+  // Prefer REST fields when the same commit appears in both sources.
+  for (const commit of restCommits) bySha.set(commit.sha, commit);
+  return [...bySha.values()].sort((a, b) => a.authoredAt.localeCompare(b.authoredAt));
 };
 
 const CONCURRENCY = 5;
@@ -177,11 +319,19 @@ export const fetchCommitMessages = async (
   username: string,
   repos: string[],
   range: DateRange,
+  timezone: string = "UTC",
 ): Promise<RepoCommitMessages[]> => {
   const results: RepoCommitMessages[] = [];
 
   await runWithConcurrency(repos, async (repo) => {
-    const commits = await fetchRepoCommits(token, repo, username, range);
+    if (!repo) return;
+    const restCommits = await fetchRepoCommits(token, repo, username, range);
+    const searchCommits = await searchRepoCommits(token, repo, username, range, timezone);
+    const commits = await enrichCommitStats(
+      token,
+      repo,
+      mergeCommitsBySha(restCommits, searchCommits),
+    );
     if (commits.length > 0) {
       results.push({
         repo,

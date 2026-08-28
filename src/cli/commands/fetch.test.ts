@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach, beforeEach } from "vitest";
-import { resolveBaseOptions, extractPRRefs, filterEventsToRepositories, classifyPullRequestsForRange, deriveContributionStats, countDirectCommits, buildDailyPlan, buildWeeklyPlan, formatCommitMsg } from "./fetch.js";
+import { resolveBaseOptions, extractPRRefs, filterEventsToRepositories, classifyPullRequestsForRange, deriveContributionStats, countDirectCommits, sumDirectCommitChurn, buildDailyPlan, buildWeeklyPlan, formatCommitMsg } from "./fetch.js";
 import type { GitHubEvent, PullRequest } from "../../types.js";
 
 // Mock fs/promises
@@ -392,6 +392,50 @@ describe("countDirectCommits", () => {
       [{ repo: "org/app", messages: ["PR work", "Direct work"], commits: [shared, direct] }],
       workedOn,
     )).toBe(1);
+  });
+
+  it("sums churn only for direct commits that have stats", () => {
+    const shared = {
+      sha: "pr-sha",
+      message: "PR work",
+      url: "commit",
+      authoredAt: "2026-08-11T13:00:00Z",
+      additions: 999,
+      deletions: 999,
+    };
+    const direct = {
+      sha: "direct-sha",
+      message: "Direct work",
+      url: "direct",
+      authoredAt: "2026-08-11T14:00:00Z",
+      additions: 4000,
+      deletions: 200,
+    };
+    const missing = {
+      sha: "no-stats",
+      message: "No stats",
+      url: "none",
+      authoredAt: "2026-08-11T15:00:00Z",
+    };
+    const workedOn = [{
+      title: "PR",
+      body: null,
+      url: "pull",
+      repository: "org/app",
+      state: "open" as const,
+      labels: [],
+      additions: 1,
+      deletions: 1,
+      changedFiles: 1,
+      author: "alice",
+      createdAt: "2026-08-10T00:00:00Z",
+      mergedAt: null,
+      workCommits: [shared],
+    }];
+    expect(sumDirectCommitChurn(
+      [{ repo: "org/app", messages: [], commits: [shared, direct, missing] }],
+      workedOn,
+    )).toEqual({ additions: 4000, deletions: 200, withStats: 1 });
   });
 });
 
@@ -999,6 +1043,7 @@ describe("registerFetch (weekly-fetch)", () => {
       "alice",
       expect.arrayContaining(["owner/alpha", "owner/beta"]),
       expect.any(Object),
+      expect.any(String),
     );
   });
 });

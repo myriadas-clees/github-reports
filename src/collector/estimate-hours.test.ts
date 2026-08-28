@@ -66,7 +66,7 @@ describe("estimateHours hybrid", () => {
     expect(result.sessionHours).toBeLessThan(2);
     expect(result.volumeHours).toBeGreaterThanOrEqual(22);
     expect(result.hours).toBe(result.volumeHours);
-    expect(result.version).toBe("2.0");
+    expect(result.version).toBe("2.1");
     expect(result.note).toMatch(/conventional engineering effort/i);
     expect(result.note).toMatch(/not tracked, elapsed, or billed time/i);
   });
@@ -142,5 +142,38 @@ describe("estimateHoursFromTimestamps", () => {
     });
     expect(result.sessions).toBe(1);
     expect(result.hours).toBe(6);
+  });
+});
+
+describe("direct-commit churn volume", () => {
+  it("scores aggregated commit churn with PR bands", () => {
+    expect(estimateVolumeHours({
+      commitCount: 3,
+      commitAdditions: 4000,
+      commitDeletions: 200,
+      commitStatsCount: 3,
+    })).toBe(9);
+  });
+
+  it("falls back to 0.5h per commit when stats are missing", () => {
+    expect(estimateVolumeHours({ commitCount: 55 })).toBe(27.5);
+  });
+});
+
+describe("weekday hour floor", () => {
+  it("raises hours to 8 when session and volume are lower", () => {
+    const result = estimateHours(
+      ["2026-06-16T15:00:00Z"],
+      { commitCount: 3 },
+      { minimumHours: 8 },
+    );
+    expect(result.sessionHours).toBe(0.5);
+    expect(result.volumeHours).toBe(1.5);
+    expect(result.hours).toBe(8);
+  });
+
+  it("does not apply a floor when minimumHours is omitted", () => {
+    const result = estimateHours([], {});
+    expect(result.hours).toBe(0);
   });
 });

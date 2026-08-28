@@ -151,6 +151,29 @@ export const countDirectCommits = (
   }, 0);
 };
 
+/** Line churn for direct commits (excludes commits already counted as PR work). */
+export const sumDirectCommitChurn = (
+  commitMessages: RepoCommitMessages[],
+  workedOn: PullRequest[],
+): { additions: number; deletions: number; withStats: number } => {
+  const prCommitShas = new Set(
+    workedOn.flatMap((pr) => (pr.workCommits ?? []).map((commit) => commit.sha)),
+  );
+  let additions = 0;
+  let deletions = 0;
+  let withStats = 0;
+  for (const repo of commitMessages) {
+    for (const commit of repo.commits ?? []) {
+      if (prCommitShas.has(commit.sha)) continue;
+      if (commit.additions == null && commit.deletions == null) continue;
+      additions += commit.additions ?? 0;
+      deletions += commit.deletions ?? 0;
+      withStats += 1;
+    }
+  }
+  return { additions, deletions, withStats };
+};
+
 /** Attribute authored PRs only to create/merge actions inside the exact report window. */
 export const classifyPullRequestsForRange = (
   pullRequests: PullRequest[],
@@ -453,6 +476,7 @@ const runFullFetch = async (
     options.username,
     repoNames,
     plan.range,
+    options.timezone,
   );
   const commitMessages = mergeCommitMessagesWithPRs(defaultBranchCommits, pullRequests);
   const totalMsgs = commitMessages.reduce((sum, r) => sum + r.messages.length, 0);
@@ -490,6 +514,7 @@ const runFullFetch = async (
 
   const timestamps = collectTimestamps(events, commitMessages, prActions.report, reviewData, plan.range);
   const directCommitCount = countDirectCommits(commitMessages, prActions.workedOn);
+  const directCommitChurn = sumDirectCommitChurn(commitMessages, prActions.workedOn);
   const dailyPrUrls = new Set(prActions.workedOn.map((pr) => pr.url));
   const hoursPullRequests = [
     ...prActions.workedOn.map((pr) => {
@@ -525,10 +550,14 @@ const runFullFetch = async (
       reviewCount: reviewData.reviews.length,
       reviewCommentCount: reviewData.comments.length,
       commitCount: directCommitCount,
+      commitAdditions: directCommitChurn.additions,
+      commitDeletions: directCommitChurn.deletions,
+      commitStatsCount: directCommitChurn.withStats,
     },
     {
       gapMinutes: options.sessionGapMinutes,
       maxSessionHours: options.maxSessionHours,
+      minimumHours: command === "daily-fetch" ? 8 : 0,
     },
   );
   console.log(

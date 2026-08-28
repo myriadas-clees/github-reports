@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { renderIndexPage, buildReportEntry } from "./index-page.js";
+import { renderIndexPage, buildReportEntry, hoursToActivityPercent } from "./index-page.js";
 
 const entries = (paths: string[]) => paths.map((p) => buildReportEntry(p));
 
@@ -105,11 +105,36 @@ describe("renderIndexPage", () => {
     expect(html).toContain("--activity:");
   });
 
+  it("scales month-tape bars from absolute estimated hours", () => {
+    const html = renderIndexPage([
+      buildReportEntry("2026/06/16", "Seed day", undefined, { commits: 3, prs: 0, reviews: 0, hours: 8 }),
+      buildReportEntry("2026/06/17", "Heavy day", undefined, { commits: 55, prs: 0, reviews: 0, hours: 24 }),
+      buildReportEntry("2026/08/11", "PR day", undefined, { commits: 1, prs: 10, reviews: 5, hours: 48 }),
+      buildReportEntry("2026/07/03", "Empty day", undefined, { commits: 0, prs: 0, reviews: 0, hours: 0 }),
+    ]);
+    expect(html).toContain('--activity: 33%');
+    expect(html).toContain('--activity: 100%');
+    expect(html).toContain('--activity: 4%');
+    // High-commit / 0-PR day is not crushed by PR-heavy archive siblings.
+    expect(html.match(/--activity: 100%/g)?.length).toBe(2);
+  });
+
   it("keeps legacy weekly entries in the brutalist archive", () => {
     const html = renderIndexPage([buildReportEntry("2026/W14", "Weekly delivery")]);
     expect(html).toContain("Weekly delivery");
     expect(html).toContain('href="2026/W14/"');
     expect(html).toContain("Weekly");
+  });
+});
+
+describe("hoursToActivityPercent", () => {
+  it("maps 0/missing hours to a min tick, 8h to ~33%, and 24h+ to full", () => {
+    expect(hoursToActivityPercent(0)).toBe(4);
+    expect(hoursToActivityPercent(-1)).toBe(4);
+    expect(hoursToActivityPercent(8)).toBe(33);
+    expect(hoursToActivityPercent(18)).toBe(75);
+    expect(hoursToActivityPercent(24)).toBe(100);
+    expect(hoursToActivityPercent(54)).toBe(100);
   });
 });
 

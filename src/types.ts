@@ -143,6 +143,9 @@ export type CommitDetail = {
   message: string;
   url: string;
   authoredAt: string;
+  additions?: number;
+  deletions?: number;
+  filesChanged?: number;
 };
 
 export type RepoCommitMessages = {

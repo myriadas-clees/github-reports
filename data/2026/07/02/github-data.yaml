@@ -22,7 +22,7 @@ stats:
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 1.6
+  estimatedHours: 8
 dailyCommits:
   - date: 2026-07-02
     count: 6
@@ -41,37 +41,55 @@ events: []
 commitMessages:
   - repo: Myriad-Advisor-Solutions/ohcpwm-apps
     messages:
-      - Add custom expense controls to pricing workbook
-      - "fix(pricing): use payout pct for scenario bars"
-      - "refactor(pricing): use recruit dashboard redirects"
-      - "refactor(ui): use Next links for internal navigation"
-      - "fix(pricing): improve local API dev flow"
       - "fix(function): require graph runtime settings"
+      - "fix(pricing): improve local API dev flow"
+      - "refactor(ui): use Next links for internal navigation"
+      - "refactor(pricing): use recruit dashboard redirects"
+      - "fix(pricing): use payout pct for scenario bars"
+      - Add custom expense controls to pricing workbook
     commits:
-      - sha: 7f85ff3e894aa23c2dc3fd2bbe1b8624901b6a74
-        message: Add custom expense controls to pricing workbook
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7f85ff3e894aa23c2dc3fd2bbe1b8624901b6a74
-        authoredAt: 2026-07-02T15:56:44Z
-      - sha: 2cee83f2f8471fdbf8f03e1c89543ff563c2f7d3
-        message: "fix(pricing): use payout pct for scenario bars"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2cee83f2f8471fdbf8f03e1c89543ff563c2f7d3
-        authoredAt: 2026-07-02T14:56:18Z
-      - sha: 6a75190a4ce338b0f8d273c35d7d2639fdedcc13
-        message: "refactor(pricing): use recruit dashboard redirects"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6a75190a4ce338b0f8d273c35d7d2639fdedcc13
-        authoredAt: 2026-07-02T14:53:13Z
-      - sha: ee34bea1a2bfd413e99af58d563f7b844d487695
-        message: "refactor(ui): use Next links for internal navigation"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ee34bea1a2bfd413e99af58d563f7b844d487695
-        authoredAt: 2026-07-02T14:51:03Z
-      - sha: 202932c94ba6a9b5fb529a9ecf270af2e0805f40
-        message: "fix(pricing): improve local API dev flow"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/202932c94ba6a9b5fb529a9ecf270af2e0805f40
-        authoredAt: 2026-07-02T14:48:53Z
       - sha: d92e7e24fee42402fa0f60aff5e3a721b090efdd
         message: "fix(function): require graph runtime settings"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d92e7e24fee42402fa0f60aff5e3a721b090efdd
         authoredAt: 2026-07-02T04:10:08Z
+        additions: 43
+        deletions: 2
+        filesChanged: 1
+      - sha: 202932c94ba6a9b5fb529a9ecf270af2e0805f40
+        message: "fix(pricing): improve local API dev flow"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/202932c94ba6a9b5fb529a9ecf270af2e0805f40
+        authoredAt: 2026-07-02T14:48:53Z
+        additions: 582
+        deletions: 20
+        filesChanged: 9
+      - sha: ee34bea1a2bfd413e99af58d563f7b844d487695
+        message: "refactor(ui): use Next links for internal navigation"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ee34bea1a2bfd413e99af58d563f7b844d487695
+        authoredAt: 2026-07-02T14:51:03Z
+        additions: 34
+        deletions: 3
+        filesChanged: 2
+      - sha: 6a75190a4ce338b0f8d273c35d7d2639fdedcc13
+        message: "refactor(pricing): use recruit dashboard redirects"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6a75190a4ce338b0f8d273c35d7d2639fdedcc13
+        authoredAt: 2026-07-02T14:53:13Z
+        additions: 14
+        deletions: 2
+        filesChanged: 3
+      - sha: 2cee83f2f8471fdbf8f03e1c89543ff563c2f7d3
+        message: "fix(pricing): use payout pct for scenario bars"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2cee83f2f8471fdbf8f03e1c89543ff563c2f7d3
+        authoredAt: 2026-07-02T14:56:18Z
+        additions: 42
+        deletions: 3
+        filesChanged: 2
+      - sha: 7f85ff3e894aa23c2dc3fd2bbe1b8624901b6a74
+        message: Add custom expense controls to pricing workbook
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7f85ff3e894aa23c2dc3fd2bbe1b8624901b6a74
+        authoredAt: 2026-07-02T15:56:44Z
+        additions: 499
+        deletions: 160
+        filesChanged: 10
 releases: []
 externalContributions: []
 codeReviews: []
@@ -92,10 +110,11 @@ aiReviews:
   reviews: 0
   fixed: 0
 hoursEstimate:
-  hours: 1.6
+  version: "2.1"
+  hours: 8
   sessions: 2
   sessionHours: 1.6
-  volumeHours: 1.2
+  volumeHours: 6
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

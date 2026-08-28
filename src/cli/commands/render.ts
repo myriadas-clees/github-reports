@@ -86,6 +86,7 @@ const buildReportEntries = async (
         commits: ghData.stats.totalCommits,
         prs: ghData.stats.prsOpened,
         reviews: ghData.stats.prsReviewed,
+        hours: ghData.stats.estimatedHours ?? ghData.hoursEstimate?.hours ?? 0,
       } : undefined;
       const dateTo = ghData?.dateRange?.to;
       return buildReportEntry(path, llmData.title, llmData.subtitle, stats, dateTo, llmData.overview);

@@ -30,13 +30,17 @@ export type VolumeInput = {
   reviewCount?: number;
   reviewCommentCount?: number;
   commitCount?: number;
+  commitAdditions?: number;
+  commitDeletions?: number;
+  /** Direct commits that have line-stat enrichment. */
+  commitStatsCount?: number;
 };
 
 const DEFAULT_GAP_MINUTES = 90;
 const DEFAULT_MAX_SESSION_HOURS = 6;
 /** Minimum duration credited for a lone activity ping in a session (hours). */
 const MIN_ACTIVITY_HOURS = 0.5;
-export const ESTIMATOR_VERSION = "2.0";
+export const ESTIMATOR_VERSION = "2.1";
 const DAILY_PR_CONTEXT_HOURS = 1.5;
 const FILE_BREADTH_HOURS = 0.2;
 const MAX_FILE_BREADTH_HOURS = 1.5;
@@ -136,8 +140,10 @@ export const estimateVolumeHours = (input: VolumeInput = {}): number => {
   // Reviews / comments are real collaboration time not captured by PR size.
   const reviewHours =
     (input.reviewCount ?? 0) * 0.75 + (input.reviewCommentCount ?? 0) * 0.25;
-  // Commits without a matching PR still imply work; keep this light to avoid double-counting.
-  const commitHours = Math.min((input.commitCount ?? 0) * 0.2, 8);
+  const commitCount = input.commitCount ?? 0;
+  const commitHours = (input.commitStatsCount ?? 0) > 0
+    ? estimatePrHours(input.commitAdditions ?? 0, input.commitDeletions ?? 0)
+    : commitCount * 0.5;
 
   return round1(prHours + reviewHours + commitHours);
 };
@@ -149,11 +155,11 @@ export const estimateVolumeHours = (input: VolumeInput = {}): number => {
 export const estimateHours = (
   timestamps: string[],
   volume: VolumeInput = {},
-  options: { gapMinutes?: number; maxSessionHours?: number } = {},
+  options: { gapMinutes?: number; maxSessionHours?: number; minimumHours?: number } = {},
 ): HoursEstimateResult => {
   const session = estimateSessionHours(timestamps, options);
   const volumeHours = estimateVolumeHours(volume);
-  const hours = round1(Math.max(session.hours, volumeHours));
+  const hours = round1(Math.max(options.minimumHours ?? 0, Math.max(session.hours, volumeHours)));
 
   const note =
     "Estimated conventional engineering effort based on delivered PR scope, " +
