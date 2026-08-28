@@ -59,31 +59,48 @@ jobs:
           LLM_MODEL: ${{ vars.LLM_MODEL }}
           LANGUAGE: ${{ vars.LANGUAGE || 'en' }}
         run: |
+          git config user.name "worklog[bot]"
+          git config user.email "worklog[bot]@users.noreply.github.com"
+          commit_progress() {
+            git add -f data/
+            if git diff --cached --quiet; then
+              echo "No new data to commit"
+            else
+              git commit -m "data: backfill weekday reports"
+              git push
+            fi
+          }
+
           report_date="$START_DATE"
+          filled=0
           while [[ "$report_date" < "$END_DATE" || "$report_date" == "$END_DATE" ]]; do
             day_of_week=$(date -u -d "$report_date" +%u)
             if [ "$day_of_week" -le 5 ]; then
-              echo "Generating $report_date"
-              bun dist/cli/index.js daily-fetch --date "$report_date"
-              bun dist/cli/index.js generate --date "$report_date"
-              # Historical collection uses GitHub's separately throttled Search
-              # API. Keep batches below its 30-requests-per-minute ceiling.
-              sleep 15
+              dir="data/${report_date//-//}"
+              # Resume-safe: days with hoursInputs already have the new estimator snapshot.
+              if [ -f "$dir/github-data.yaml" ] && grep -q "^hoursInputs:" "$dir/github-data.yaml"; then
+                echo "skip $report_date (hoursInputs present)"
+              else
+                echo "Generating $report_date"
+                if bun dist/cli/index.js daily-fetch --date "$report_date" \
+                  && bun dist/cli/index.js generate --date "$report_date"; then
+                  filled=$((filled + 1))
+                  # Persist often so a mid-run rate-limit does not lose the batch.
+                  if [ $((filled % 5)) -eq 0 ]; then
+                    commit_progress
+                  fi
+                else
+                  echo "FAIL $report_date — waiting out likely rate limit"
+                  sleep 180
+                fi
+                # Historical collection uses GitHub's separately throttled Search
+                # API. Keep batches below its 30-requests-per-minute ceiling.
+                sleep 20
+              fi
             fi
             report_date=$(date -u -d "$report_date + 1 day" +%F)
           done
-
-      - name: Commit report data
-        run: |
-          git config user.name "worklog[bot]"
-          git config user.email "worklog[bot]@users.noreply.github.com"
-          git add -f data/
-          if git diff --cached --quiet; then
-            echo "No new data"
-          else
-            git commit -m "data: backfill weekday reports"
-            git push
-          fi
+          commit_progress
 
       - name: Recompute hours from stored inputs
         env:
