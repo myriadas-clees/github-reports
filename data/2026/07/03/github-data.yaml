@@ -49,6 +49,20 @@ aiReviews:
   comments: 0
   reviews: 0
   fixed: 0
+hoursInputs:
+  timestamps: []
+  volume:
+    pullRequests: []
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 0
+    commitAdditions: 0
+    commitDeletions: 0
+    commitStatsCount: 0
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
 hoursEstimate:
   version: "2.1"
   hours: 8
