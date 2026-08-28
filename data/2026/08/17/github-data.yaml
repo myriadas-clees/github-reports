@@ -13,8 +13,8 @@ dateRange:
   to: 2026-08-17
 stats:
   totalCommits: 2
-  totalAdditions: 8883
-  totalDeletions: 1738
+  totalAdditions: 0
+  totalDeletions: 0
   prsOpened: 0
   prsMerged: 2
   prsInProgress: 0
@@ -22,7 +22,7 @@ stats:
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 18.4
+  estimatedHours: 14.5
 dailyCommits:
   - date: 2026-08-17
     count: 2
@@ -35,35 +35,6 @@ repositories:
     issuesClosed: 0
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
 pullRequests:
-  - title: "feat(onboarding): establish Twenty-inspired operations workspace"
-    body: >-
-      - add the upstream Twenty repository as a pinned `twenty/` submodule for architecture and product-pattern
-      reference
-
-      - preserve the current Myriad static Next export, Azure Functions boundary, server-owned authorization, and visual
-      system
-
-      - turn onboarding into a broader operations workspace for clie...
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
-    repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: merged
-    labels:
-      - documentation
-      - "app: onboarding"
-      - platform
-    additions: 5281
-    deletions: 173
-    changedFiles: 58
-    author: myriadas-clees
-    createdAt: 2026-08-14T14:42:26Z
-    updatedAt: 2026-08-17T23:08:42Z
-    closedAt: 2026-08-17T23:08:42Z
-    mergedAt: 2026-08-17T23:08:42Z
-    workCommits: []
-    workTimestamps: []
-    workAdditions: 0
-    workDeletions: 0
-    workFiles: []
   - title: Redesign Proforma recruit intake with team-first step order
     body: >-
       ## Why
@@ -86,14 +57,43 @@ pullRequests:
       - "app: proforma"
       - platform
       - deploy-preview
-    additions: 3602
-    deletions: 1565
+    additions: 0
+    deletions: 0
     changedFiles: 61
     author: myriadas-clees
     createdAt: 2026-08-10T18:50:49Z
     updatedAt: 2026-08-17T23:10:26Z
     closedAt: 2026-08-17T23:10:26Z
     mergedAt: 2026-08-17T23:10:26Z
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "feat(onboarding): establish Twenty-inspired operations workspace"
+    body: >-
+      - add the upstream Twenty repository as a pinned `twenty/` submodule for architecture and product-pattern
+      reference
+
+      - preserve the current Myriad static Next export, Azure Functions boundary, server-owned authorization, and visual
+      system
+
+      - turn onboarding into a broader operations workspace for clie...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - "app: onboarding"
+      - platform
+    additions: 0
+    deletions: 0
+    changedFiles: 58
+    author: myriadas-clees
+    createdAt: 2026-08-14T14:42:26Z
+    updatedAt: 2026-08-17T23:08:42Z
+    closedAt: 2026-08-17T23:08:42Z
+    mergedAt: 2026-08-17T23:08:42Z
     workCommits: []
     workTimestamps: []
     workAdditions: 0
@@ -112,10 +112,16 @@ commitMessages:
         message: "feat(onboarding): establish Twenty-inspired operations workspace (#93)"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b3b01cba7b37c0a59eacaaa45a4a25532b8eabca
         authoredAt: 2026-08-17T23:08:42Z
+        additions: 5281
+        deletions: 173
+        filesChanged: 58
       - sha: 41bde3d2dd04f11108b9d6f685699e8a922fad66
         message: "feat(proforma): Redesign recruit intake with team-first step order (#84)"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/41bde3d2dd04f11108b9d6f685699e8a922fad66
         authoredAt: 2026-08-17T23:10:25Z
+        additions: 3602
+        deletions: 1565
+        filesChanged: 61
 releases: []
 externalContributions: []
 codeReviews: []
@@ -135,12 +141,36 @@ aiReviews:
   comments: 0
   reviews: 0
   fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-08-17T23:08:42Z
+    - 2026-08-17T23:10:25Z
+    - 2026-08-17T23:10:26Z
+    - 2026-08-17T23:08:42Z
+  volume:
+    pullRequests:
+      - additions: 0
+        deletions: 0
+        state: merged
+      - additions: 0
+        deletions: 0
+        state: merged
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 2
+    commitAdditions: 8883
+    commitDeletions: 1738
+    commitStatsCount: 2
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
 hoursEstimate:
-  version: "2.0"
-  hours: 18.4
+  version: "2.1"
+  hours: 14.5
   sessions: 1
   sessionHours: 0.5
-  volumeHours: 18.4
+  volumeHours: 14.5
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

@@ -12,16 +12,16 @@ summaries:
         value: 0 PRs
   - type: commit-summary
     heading: Commits and line changes
-    body: 16 commits with +5,281 / −173 lines.
+    body: 16 commits with +5,537 / −429 lines.
     chips:
       - label: Commits
         value: "16"
         color: green
       - label: Additions
-        value: +5,281
+        value: +5,537
         color: green
       - label: Deletions
-        value: −173
+        value: −429
         color: red
   - type: review-summary
     heading: Reviews
@@ -52,15 +52,15 @@ highlights:
     body: Still open at the end of the reporting window.
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
   - type: pr
+    title: "feat(ofac): add PDF, CSV, and Excel report exports"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +1110 −80
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115
+  - type: pr
     title: Redesign Proforma recruit intake with team-first step order
     repo: Myriad-Advisor-Solutions/myriadas-apps
     meta: in progress · +3602 −1565
     body: Still open at the end of the reporting window.
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
-  - type: pr
-    title: "feat(ofac): add PDF, CSV, and Excel report exports"
-    repo: Myriad-Advisor-Solutions/ohcpwm-apps
-    meta: in progress · +1047 −80
-    body: Still open at the end of the reporting window.
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115
 ticker: []

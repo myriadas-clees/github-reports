@@ -10,16 +10,16 @@ summaries:
         value: 0 PRs
   - type: commit-summary
     heading: Commits and line changes
-    body: 2 commits with +8,883 / −1,738 lines.
+    body: 2 commits with +0 / −0 lines.
     chips:
       - label: Commits
         value: "2"
         color: green
       - label: Additions
-        value: +8,883
+        value: "+0"
         color: green
       - label: Deletions
-        value: −1,738
+        value: −0
         color: red
   - type: activity-pattern
     heading: Estimated engineering hours
@@ -27,22 +27,12 @@ summaries:
       tracked, elapsed, or billed time.
     chips:
       - label: Estimated engineering hours
-        value: ~18.4h
+        value: ~14.5h
 highlights:
-  - type: pr
-    title: "feat(onboarding): establish Twenty-inspired operations workspace"
-    repo: Myriad-Advisor-Solutions/myriadas-apps
-    meta: merged · +5281 −173
-    body: >-
-      - add the upstream Twenty repository as a pinned `twenty/` submodule for architecture and product-pattern
-      reference
-
-      - preserve the current Myriad static Next export, Azure Functions boundary, server-o
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
   - type: pr
     title: Redesign Proforma recruit intake with team-first step order
     repo: Myriad-Advisor-Solutions/myriadas-apps
-    meta: merged · +3602 −1565
+    meta: merged · +0 −0
     body: >-
       ## Why
 
@@ -50,10 +40,20 @@ highlights:
       Recruit intake still followed an advisor-first flow that did not match how teams are modeled in practice. Platform
       assumptions also carried legacy OHC and FiNet Wells/WFAFN fee inputs that are
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
+  - type: pr
+    title: "feat(onboarding): establish Twenty-inspired operations workspace"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +0 −0
+    body: >-
+      - add the upstream Twenty repository as a pinned `twenty/` submodule for architecture and product-pattern
+      reference
+
+      - preserve the current Myriad static Next export, Azure Functions boundary, server-o
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
 ticker:
   - label: SHIPPED
-    text: '@myriadas-clees merged "feat(onboarding): establish Twenty-inspired operations workspace" in
+    text: '@myriadas-clees merged "Redesign Proforma recruit intake with team-first step order" in
       Myriad-Advisor-Solutions/myriadas-apps'
   - label: SHIPPED
-    text: '@myriadas-clees merged "Redesign Proforma recruit intake with team-first step order" in
+    text: '@myriadas-clees merged "feat(onboarding): establish Twenty-inspired operations workspace" in
       Myriad-Advisor-Solutions/myriadas-apps'

@@ -13,8 +13,8 @@ dateRange:
   to: 2026-08-14
 stats:
   totalCommits: 16
-  totalAdditions: 5281
-  totalDeletions: 173
+  totalAdditions: 5537
+  totalDeletions: 429
   prsOpened: 1
   prsMerged: 0
   prsInProgress: 3
@@ -58,76 +58,76 @@ pullRequests:
       - documentation
       - "app: onboarding"
       - platform
-    additions: 5281
-    deletions: 173
+    additions: 5537
+    deletions: 429
     changedFiles: 58
     author: myriadas-clees
     createdAt: 2026-08-14T14:42:26Z
-    updatedAt: 2026-08-14T20:00:36Z
-    closedAt: null
-    mergedAt: null
+    updatedAt: 2026-08-17T23:08:42Z
+    closedAt: 2026-08-17T23:08:42Z
+    mergedAt: 2026-08-17T23:08:42Z
     workCommits: &a2
-      - &a6
+      - &a8
         sha: 400667f7f871f2e4e657b68618035a5557992379
         message: "chore: add Twenty upstream submodule"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/400667f7f871f2e4e657b68618035a5557992379
         authoredAt: 2026-08-14T14:41:53Z
-      - &a7
+      - &a9
         sha: 8734e486aa1244938f75b510575e146a7585aec8
         message: "feat(onboarding): add vendor record workspace"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8734e486aa1244938f75b510575e146a7585aec8
         authoredAt: 2026-08-14T15:09:13Z
-      - &a8
+      - &a10
         sha: a685d504f8fcbc3fc9c85ed33182f17d2905493c
         message: "feat(onboarding): expand vendor workspace"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a685d504f8fcbc3fc9c85ed33182f17d2905493c
         authoredAt: 2026-08-14T15:46:25Z
-      - &a9
+      - &a11
         sha: 22a7563f16341063ab3d4cb4bc2798639f088117
         message: "fix(onboarding): use contract renewal deadlines"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/22a7563f16341063ab3d4cb4bc2798639f088117
         authoredAt: 2026-08-14T15:53:56Z
-      - &a10
+      - &a12
         sha: e612842c3340cef09737e84b7a6e0a8a441ffe65
         message: "feat(onboarding): add vendor review seed"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e612842c3340cef09737e84b7a6e0a8a441ffe65
         authoredAt: 2026-08-14T16:23:19Z
-      - &a11
+      - &a13
         sha: affdb08c0aae65d791ec2e070277e20a0621295d
         message: "fix(onboarding): address workspace review findings"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/affdb08c0aae65d791ec2e070277e20a0621295d
         authoredAt: 2026-08-14T16:29:19Z
-      - &a12
+      - &a14
         sha: e32a755f4c234f0059bf7638275eacc3deca2252
         message: "fix(onboarding): refresh vendor workspace state"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e32a755f4c234f0059bf7638275eacc3deca2252
         authoredAt: 2026-08-14T16:38:36Z
-      - &a13
+      - &a15
         sha: 4f17fbe9174538c1a9d1d6469cead34b6f4da008
         message: "fix(onboarding): quote carriage returns in CSV"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4f17fbe9174538c1a9d1d6469cead34b6f4da008
         authoredAt: 2026-08-14T16:47:11Z
-      - &a14
+      - &a16
         sha: 6eb26bbd9f0d0c5aa04841f17c8c01bd84dea611
         message: "fix(onboarding): reseed renewal review contracts"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6eb26bbd9f0d0c5aa04841f17c8c01bd84dea611
         authoredAt: 2026-08-14T16:54:53Z
-      - &a15
+      - &a17
         sha: 2341947f75f57a85b0999f047f0cb13bba2773b5
         message: "fix(onboarding): surface vendor workspace on home"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2341947f75f57a85b0999f047f0cb13bba2773b5
         authoredAt: 2026-08-14T17:21:46Z
-      - &a16
+      - &a18
         sha: 14977a90cf4926a86e33f6545372bf239ac4bdd9
         message: "feat(onboarding): add vendor operations workbench"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/14977a90cf4926a86e33f6545372bf239ac4bdd9
         authoredAt: 2026-08-14T18:22:08Z
-      - &a17
+      - &a19
         sha: 3d331b9825ba7f6bb3eb6a7f9d86dee48900cf81
         message: "fix(onboarding): keep vendor profile action visible"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3d331b9825ba7f6bb3eb6a7f9d86dee48900cf81
         authoredAt: 2026-08-14T18:32:17Z
-      - &a18
+      - &a20
         sha: dee309001d18545f20146d79de76c75c162ba8c1
         message: "feat(onboarding): add operations workspace platform"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/dee309001d18545f20146d79de76c75c162ba8c1
@@ -219,66 +219,21 @@ prsInProgress:
       - turn onboarding into a broader operations workspace for clie...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
     repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: open
+    state: merged
     labels: *a1
     additions: 5281
     deletions: 173
     changedFiles: 58
     author: myriadas-clees
     createdAt: 2026-08-14T14:42:26Z
-    updatedAt: 2026-08-14T20:00:36Z
-    closedAt: null
-    mergedAt: null
+    updatedAt: 2026-08-17T23:08:42Z
+    closedAt: 2026-08-17T23:08:42Z
+    mergedAt: 2026-08-17T23:08:42Z
     workCommits: *a2
     workTimestamps: *a3
     workAdditions: 5537
     workDeletions: 429
     workFiles: *a4
-  - title: Redesign Proforma recruit intake with team-first step order
-    body: >-
-      ## Why
-
-
-      Recruit intake still followed an advisor-first flow that did not match how teams are modeled in practice. Platform
-      assumptions also carried legacy OHC and FiNet Wells/WFAFN fee inputs that are no longer part of the pricing model.
-
-
-      ## What changed
-
-
-      - Reordered the new-recruit wizard to **Firm...
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
-    repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: open
-    labels:
-      - documentation
-      - github-automation
-      - "app: proforma"
-      - platform
-      - deploy-preview
-    additions: 3602
-    deletions: 1565
-    changedFiles: 61
-    author: myriadas-clees
-    createdAt: 2026-08-10T18:50:49Z
-    updatedAt: 2026-08-14T14:18:01Z
-    closedAt: null
-    mergedAt: null
-    workCommits:
-      - &a5
-        sha: 8c79700b4242876f7d9c0b7eda88a91f7227fb00
-        message: "fix(proforma): enforce team inputs and reconcile projection costs"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8c79700b4242876f7d9c0b7eda88a91f7227fb00
-        authoredAt: 2026-08-14T14:12:36Z
-    workTimestamps:
-      - 2026-08-14T14:12:36Z
-    workAdditions: 5
-    workDeletions: 0
-    workFiles:
-      - proforma/src/components/assumptions-tab.tsx
-      - proforma/src/lib/api/handlers.ts
-      - proforma/src/lib/calculation.ts
-      - proforma/src/lib/report/excel.ts
   - title: "feat(ofac): add PDF, CSV, and Excel report exports"
     body: |-
       - adds branded, on-demand PDF evidence reports for individual OFAC screenings
@@ -286,24 +241,24 @@ prsInProgress:
       - adds Pricing-style PDF and workbook previews, with Excel previews capped at 200 rows while downloads remai...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
-    state: open
+    state: merged
     labels:
       - deploy-preview
-    additions: 1047
+    additions: 1110
     deletions: 80
     changedFiles: 32
     author: myriadas-clees
     createdAt: 2026-08-12T19:55:22Z
-    updatedAt: 2026-08-14T13:45:46Z
-    closedAt: null
-    mergedAt: null
+    updatedAt: 2026-08-28T14:51:40Z
+    closedAt: 2026-08-28T14:51:36Z
+    mergedAt: 2026-08-28T14:51:35Z
     workCommits:
-      - &a19
+      - &a5
         sha: 20bef18ce0b09fea3b3ff06801c58034cc33221b
         message: "fix(ofac): embed Unicode PDF fonts"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/20bef18ce0b09fea3b3ff06801c58034cc33221b
         authoredAt: 2026-08-14T13:23:02Z
-      - &a20
+      - &a6
         sha: 0846902cf7a07f8a9ffda01a04c0f943cc3f2287
         message: "fix(ofac): avoid repeated Cosmos export scans"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0846902cf7a07f8a9ffda01a04c0f943cc3f2287
@@ -324,9 +279,61 @@ prsInProgress:
       - ofac/package.json
       - ofac/src/lib/__tests__/report.test.ts
       - ofac/src/lib/report/pdf.tsx
+  - title: Redesign Proforma recruit intake with team-first step order
+    body: >-
+      ## Why
+
+
+      Recruit intake still followed an advisor-first flow that did not match how teams are modeled in practice. Platform
+      assumptions also carried legacy OHC and FiNet Wells/WFAFN fee inputs that are no longer part of the pricing model.
+
+
+      ## What changed
+
+
+      - Reordered the new-recruit wizard to **Firm...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - github-automation
+      - "app: proforma"
+      - platform
+      - deploy-preview
+    additions: 3602
+    deletions: 1565
+    changedFiles: 61
+    author: myriadas-clees
+    createdAt: 2026-08-10T18:50:49Z
+    updatedAt: 2026-08-17T23:10:26Z
+    closedAt: 2026-08-17T23:10:26Z
+    mergedAt: 2026-08-17T23:10:26Z
+    workCommits:
+      - &a7
+        sha: 8c79700b4242876f7d9c0b7eda88a91f7227fb00
+        message: "fix(proforma): enforce team inputs and reconcile projection costs"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8c79700b4242876f7d9c0b7eda88a91f7227fb00
+        authoredAt: 2026-08-14T14:12:36Z
+    workTimestamps:
+      - 2026-08-14T14:12:36Z
+    workAdditions: 5
+    workDeletions: 0
+    workFiles:
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/report/excel.ts
 issues: []
 events: []
 commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "fix(ofac): embed Unicode PDF fonts"
+      - "fix(ofac): avoid repeated Cosmos export scans"
+    commits:
+      - *a5
+      - *a6
   - repo: Myriad-Advisor-Solutions/myriadas-apps
     messages:
       - "fix(proforma): enforce team inputs and reconcile projection costs"
@@ -344,8 +351,6 @@ commitMessages:
       - "fix(onboarding): keep vendor profile action visible"
       - "feat(onboarding): add operations workspace platform"
     commits:
-      - *a5
-      - *a6
       - *a7
       - *a8
       - *a9
@@ -358,11 +363,6 @@ commitMessages:
       - *a16
       - *a17
       - *a18
-  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
-    messages:
-      - "fix(ofac): embed Unicode PDF fonts"
-      - "fix(ofac): avoid repeated Cosmos export scans"
-    commits:
       - *a19
       - *a20
 releases: []
@@ -634,8 +634,105 @@ aiReviews:
   comments: 19
   reviews: 11
   fixed: 9
+hoursInputs:
+  timestamps:
+    - 2026-08-14T13:23:02Z
+    - 2026-08-14T13:39:30Z
+    - 2026-08-14T14:12:36Z
+    - 2026-08-14T14:41:53Z
+    - 2026-08-14T15:09:13Z
+    - 2026-08-14T15:46:25Z
+    - 2026-08-14T15:53:56Z
+    - 2026-08-14T16:23:19Z
+    - 2026-08-14T16:29:19Z
+    - 2026-08-14T16:38:36Z
+    - 2026-08-14T16:47:11Z
+    - 2026-08-14T16:54:53Z
+    - 2026-08-14T17:21:46Z
+    - 2026-08-14T18:22:08Z
+    - 2026-08-14T18:32:17Z
+    - 2026-08-14T19:55:21Z
+    - 2026-08-14T14:42:26Z
+    - 2026-08-14T14:41:53Z
+    - 2026-08-14T15:09:13Z
+    - 2026-08-14T15:46:25Z
+    - 2026-08-14T15:53:56Z
+    - 2026-08-14T16:23:19Z
+    - 2026-08-14T16:29:19Z
+    - 2026-08-14T16:38:36Z
+    - 2026-08-14T16:47:11Z
+    - 2026-08-14T16:54:53Z
+    - 2026-08-14T17:21:46Z
+    - 2026-08-14T18:22:08Z
+    - 2026-08-14T18:32:17Z
+    - 2026-08-14T19:55:21Z
+    - 2026-08-14T15:47:34Z
+    - 2026-08-14T15:54:11Z
+    - 2026-08-14T16:29:44Z
+    - 2026-08-14T16:29:46Z
+    - 2026-08-14T16:29:47Z
+    - 2026-08-14T16:38:54Z
+    - 2026-08-14T16:38:56Z
+    - 2026-08-14T16:38:57Z
+    - 2026-08-14T16:47:24Z
+    - 2026-08-14T16:55:09Z
+    - 2026-08-14T14:01:31Z
+    - 2026-08-14T14:01:33Z
+    - 2026-08-14T14:01:34Z
+    - 2026-08-14T14:01:36Z
+    - 2026-08-14T14:01:37Z
+    - 2026-08-14T14:01:39Z
+    - 2026-08-14T15:47:34Z
+    - 2026-08-14T15:54:11Z
+    - 2026-08-14T16:29:44Z
+    - 2026-08-14T16:29:46Z
+    - 2026-08-14T16:29:47Z
+    - 2026-08-14T16:38:54Z
+    - 2026-08-14T16:38:56Z
+    - 2026-08-14T16:38:57Z
+    - 2026-08-14T16:47:24Z
+    - 2026-08-14T16:55:09Z
+    - 2026-08-14T14:01:31Z
+    - 2026-08-14T14:01:33Z
+    - 2026-08-14T14:01:34Z
+    - 2026-08-14T14:01:36Z
+    - 2026-08-14T14:01:37Z
+    - 2026-08-14T14:01:39Z
+  volume:
+    pullRequests:
+      - additions: 80
+        deletions: 16
+        state: merged
+        dailyWork: true
+        filesChanged: 10
+        testFilesChanged: 2
+        commitCount: 2
+      - additions: 5
+        deletions: 0
+        state: merged
+        dailyWork: true
+        filesChanged: 4
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 5537
+        deletions: 429
+        state: merged
+        dailyWork: true
+        filesChanged: 58
+        testFilesChanged: 12
+        commitCount: 13
+    reviewCount: 16
+    reviewCommentCount: 16
+    commitCount: 0
+    commitAdditions: 0
+    commitDeletions: 0
+    commitStatsCount: 0
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
 hoursEstimate:
-  version: "2.0"
+  version: "2.1"
   hours: 38.5
   sessions: 1
   sessionHours: 6
