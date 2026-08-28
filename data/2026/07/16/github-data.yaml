@@ -12,7 +12,7 @@ dateRange:
   from: 2026-07-16
   to: 2026-07-16
 stats:
-  totalCommits: 14
+  totalCommits: 15
   totalAdditions: 916
   totalDeletions: 72
   prsOpened: 2
@@ -22,13 +22,13 @@ stats:
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 10.8
+  estimatedHours: 30.9
 dailyCommits:
   - date: 2026-07-16
-    count: 14
+    count: 15
 repositories:
   - name: Myriad-Advisor-Solutions/ohcpwm-apps
-    commits: 12
+    commits: 13
     prsOpened: 1
     prsMerged: 0
     issuesOpened: 0
@@ -69,10 +69,32 @@ pullRequests:
     updatedAt: 2026-07-16T19:54:49Z
     closedAt: 2026-07-16T19:23:20Z
     mergedAt: 2026-07-16T19:23:20Z
+    workCommits:
+      - sha: c811c95a91de620a8b18a94ba54231595f6034da
+        message: "fix(onboarding): add first-run setup"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c811c95a91de620a8b18a94ba54231595f6034da
+        authoredAt: 2026-07-16T19:00:30Z
     workTimestamps:
       - 2026-07-16T19:00:30Z
     workAdditions: 537
     workDeletions: 1
+    workFiles:
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/page.tsx
+      - onboarding/apps/dashboard/app/settings/page.tsx
+      - onboarding/apps/dashboard/components/create-employee-form.tsx
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/client.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - packages/db/src/cosmos-queries.ts
+      - packages/db/src/employee-case.test.ts
+      - packages/db/src/employee-case.ts
+      - packages/db/src/index.ts
+      - packages/db/src/queries.ts
+      - packages/db/src/runtime.ts
   - title: "ci: add Codex issue PR workflow"
     body: >-
       ## Why
@@ -100,10 +122,21 @@ pullRequests:
     updatedAt: 2026-07-16T21:05:39Z
     closedAt: null
     mergedAt: null
-    workTimestamps: &a2
+    workCommits: &a2
+      - &a5
+        sha: 81e6f6ac27e48dc456b7f5e93f2bae70d9229c84
+        message: "ci: add Codex issue PR workflow"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/81e6f6ac27e48dc456b7f5e93f2bae70d9229c84
+        authoredAt: 2026-07-16T21:04:36Z
+    workTimestamps: &a3
       - 2026-07-16T21:04:36Z
     workAdditions: 379
     workDeletions: 71
+    workFiles: &a4
+      - .github/ISSUE_TEMPLATE/bug_report.yml
+      - .github/ISSUE_TEMPLATE/feature_request.yml
+      - .github/workflows/codex-issue-pr.yml
+      - .github/workflows/issue-project-triage.yml
 prsInProgress:
   - title: "ci: add Codex issue PR workflow"
     body: >-
@@ -132,9 +165,11 @@ prsInProgress:
     updatedAt: 2026-07-16T21:05:39Z
     closedAt: null
     mergedAt: null
-    workTimestamps: *a2
+    workCommits: *a2
+    workTimestamps: *a3
     workAdditions: 379
     workDeletions: 71
+    workFiles: *a4
   - title: Unify OHCPWM platform and OFAC
     body: >-
       - publish the completed FINET Pricing model work alongside shared product-platform consolidation
@@ -155,6 +190,55 @@ prsInProgress:
     updatedAt: 2026-07-22T20:23:04Z
     closedAt: 2026-07-20T15:26:30Z
     mergedAt: 2026-07-20T15:26:30Z
+    workCommits:
+      - sha: 49b143e3eb28194b1159fdeb036c87c55bafb329
+        message: "feat: refine operational app workspace"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/49b143e3eb28194b1159fdeb036c87c55bafb329
+        authoredAt: 2026-07-16T15:50:56Z
+      - sha: 271d535816fcb4efa8910c0e6be3ebf9e839509a
+        message: "ci(hub): promote entry deployment"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/271d535816fcb4efa8910c0e6be3ebf9e839509a
+        authoredAt: 2026-07-16T16:20:06Z
+      - sha: d9366a6f033231434718e6ae482a825247e72eb7
+        message: "ci(hub): add stage deployment"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d9366a6f033231434718e6ae482a825247e72eb7
+        authoredAt: 2026-07-16T16:26:16Z
+      - sha: f10a097ae911c460b360286f2c03d6ac28d49fe8
+        message: "feat(suite): mount apps under hub paths"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f10a097ae911c460b360286f2c03d6ac28d49fe8
+        authoredAt: 2026-07-16T16:46:34Z
+      - sha: c952c6e62927eab5710c24b8a976186eb7d740be
+        message: "fix(ofac): remove static logout route"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c952c6e62927eab5710c24b8a976186eb7d740be
+        authoredAt: 2026-07-16T16:49:43Z
+      - sha: b982cd6b8c3df3f1fafb72b5ee98a9b27b6f7d65
+        message: "fix(ci): exclude Next APIs from static build"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b982cd6b8c3df3f1fafb72b5ee98a9b27b6f7d65
+        authoredAt: 2026-07-16T16:52:45Z
+      - sha: 3261e9d5db33fe20aee9ce56272ab09f838375c3
+        message: "feat(ofac): add static suite client"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3261e9d5db33fe20aee9ce56272ab09f838375c3
+        authoredAt: 2026-07-16T17:02:41Z
+      - sha: d8f47823be66a95e70facb2927888ffe572bc18a
+        message: "fix(hub): use Link for OFAC navigation"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d8f47823be66a95e70facb2927888ffe572bc18a
+        authoredAt: 2026-07-16T17:07:48Z
+      - sha: edd412a05be93862366248532e8c26b9cbd2b934
+        message: "fix(hub): export directory routes"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/edd412a05be93862366248532e8c26b9cbd2b934
+        authoredAt: 2026-07-16T17:11:26Z
+      - sha: b4eb7932d4d6ab7bbd541496b4dcbe701e68c695
+        message: "fix(functions): use unique registrations"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b4eb7932d4d6ab7bbd541496b4dcbe701e68c695
+        authoredAt: 2026-07-16T17:38:21Z
+      - sha: 4b0f87db857734302feed06e061d6e5de8c7ee6e
+        message: "feat(suite): restore OFAC and refine hub"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4b0f87db857734302feed06e061d6e5de8c7ee6e
+        authoredAt: 2026-07-16T19:21:14Z
+      - sha: 408a606b2fc84f4adf4fbdfd60e4c3e05f7b4b8a
+        message: "ci: keep unified deployment workflow"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/408a606b2fc84f4adf4fbdfd60e4c3e05f7b4b8a
+        authoredAt: 2026-07-16T19:30:46Z
     workTimestamps:
       - 2026-07-16T15:50:56Z
       - 2026-07-16T16:20:06Z
@@ -170,85 +254,179 @@ prsInProgress:
       - 2026-07-16T19:30:46Z
     workAdditions: 2651
     workDeletions: 1380
+    workFiles:
+      - .github/workflows/azure-static-web-apps-pricing.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - bun.lock
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - hub/app/api/health/route.ts
+      - hub/app/globals.css
+      - hub/app/layout.tsx
+      - hub/app/ofac/page.tsx
+      - hub/app/page.tsx
+      - hub/components/hub-launcher.tsx
+      - hub/components/ofac-portal.tsx
+      - hub/functions/dist-entry.js
+      - hub/functions/package.json
+      - hub/functions/src/index.ts
+      - hub/lib/apps.ts
+      - hub/next.config.ts
+      - hub/staticwebapp.config.json
+      - ofac/functions/src/index.ts
+      - ofac/next.config.ts
+      - ofac/package.json
+      - ofac/src/app/actions.ts
+      - ofac/src/app/clients/new/page.tsx
+      - ofac/src/app/globals.css
+      - ofac/src/app/logout/route.ts
+      - ofac/src/app/page.tsx
+      - ofac/src/app/screenings/page.tsx
+      - ofac/src/app/search/page.tsx
+      - ofac/src/app/sync/page.tsx
+      - ofac/src/components/client-intake-form.tsx
+      - ofac/src/components/ofac-app-shell.tsx
+      - ofac/src/components/screening-detail.tsx
+      - ofac/src/lib/ofac-api-client.ts
+      - ofac/src/lib/ofac-auth-routes.ts
+      - packages/ui/src/styles.css
+      - packages/ui/src/user-menu.tsx
+      - pricing/functions/src/index.ts
+      - pricing/next.config.ts
+      - pricing/package.json
+      - pricing/src/app/globals.css
+      - pricing/src/components/pricing-app-shell.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/components/pricing-workstation-client.tsx
+      - pricing/src/lib/pricing-auth-routes.ts
+      - pricing/src/lib/recruit-routes.ts
+      - scripts/build-static-next.ts
+      - scripts/compose-static-suite.ts
+      - scripts/dev.ts
 issues: []
 events: []
 commitMessages:
-  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
-    messages:
-      - "ci: keep unified deployment workflow"
-      - "feat(suite): restore OFAC and refine hub"
-      - "fix(functions): use unique registrations"
-      - "fix(hub): export directory routes"
-      - "fix(hub): use Link for OFAC navigation"
-      - "feat(ofac): add static suite client"
-      - "fix(ci): exclude Next APIs from static build"
-      - "fix(ofac): remove static logout route"
-      - "feat(suite): mount apps under hub paths"
-      - "ci(hub): add stage deployment"
-      - "ci(hub): promote entry deployment"
-      - "feat: refine operational app workspace"
-    commits:
-      - sha: 408a606b2fc84f4adf4fbdfd60e4c3e05f7b4b8a
-        message: "ci: keep unified deployment workflow"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/408a606b2fc84f4adf4fbdfd60e4c3e05f7b4b8a
-        authoredAt: 2026-07-16T19:30:46Z
-      - sha: 4b0f87db857734302feed06e061d6e5de8c7ee6e
-        message: "feat(suite): restore OFAC and refine hub"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4b0f87db857734302feed06e061d6e5de8c7ee6e
-        authoredAt: 2026-07-16T19:21:14Z
-      - sha: b4eb7932d4d6ab7bbd541496b4dcbe701e68c695
-        message: "fix(functions): use unique registrations"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b4eb7932d4d6ab7bbd541496b4dcbe701e68c695
-        authoredAt: 2026-07-16T17:38:21Z
-      - sha: edd412a05be93862366248532e8c26b9cbd2b934
-        message: "fix(hub): export directory routes"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/edd412a05be93862366248532e8c26b9cbd2b934
-        authoredAt: 2026-07-16T17:11:26Z
-      - sha: d8f47823be66a95e70facb2927888ffe572bc18a
-        message: "fix(hub): use Link for OFAC navigation"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d8f47823be66a95e70facb2927888ffe572bc18a
-        authoredAt: 2026-07-16T17:07:48Z
-      - sha: 3261e9d5db33fe20aee9ce56272ab09f838375c3
-        message: "feat(ofac): add static suite client"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3261e9d5db33fe20aee9ce56272ab09f838375c3
-        authoredAt: 2026-07-16T17:02:41Z
-      - sha: b982cd6b8c3df3f1fafb72b5ee98a9b27b6f7d65
-        message: "fix(ci): exclude Next APIs from static build"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b982cd6b8c3df3f1fafb72b5ee98a9b27b6f7d65
-        authoredAt: 2026-07-16T16:52:45Z
-      - sha: c952c6e62927eab5710c24b8a976186eb7d740be
-        message: "fix(ofac): remove static logout route"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c952c6e62927eab5710c24b8a976186eb7d740be
-        authoredAt: 2026-07-16T16:49:43Z
-      - sha: f10a097ae911c460b360286f2c03d6ac28d49fe8
-        message: "feat(suite): mount apps under hub paths"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f10a097ae911c460b360286f2c03d6ac28d49fe8
-        authoredAt: 2026-07-16T16:46:34Z
-      - sha: d9366a6f033231434718e6ae482a825247e72eb7
-        message: "ci(hub): add stage deployment"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d9366a6f033231434718e6ae482a825247e72eb7
-        authoredAt: 2026-07-16T16:26:16Z
-      - sha: 271d535816fcb4efa8910c0e6be3ebf9e839509a
-        message: "ci(hub): promote entry deployment"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/271d535816fcb4efa8910c0e6be3ebf9e839509a
-        authoredAt: 2026-07-16T16:20:06Z
-      - sha: 49b143e3eb28194b1159fdeb036c87c55bafb329
-        message: "feat: refine operational app workspace"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/49b143e3eb28194b1159fdeb036c87c55bafb329
-        authoredAt: 2026-07-16T15:50:56Z
   - repo: Myriad-Advisor-Solutions/myriadas-apps
     messages:
       - "fix(onboarding): add first-run setup"
       - "fix(onboarding): add first-run setup"
     commits:
-      - sha: a57024e2c73b3e13c6ef5a1590fd3f54ceaae441
-        message: "fix(onboarding): add first-run setup"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a57024e2c73b3e13c6ef5a1590fd3f54ceaae441
-        authoredAt: 2026-07-16T19:23:20Z
       - sha: c811c95a91de620a8b18a94ba54231595f6034da
         message: "fix(onboarding): add first-run setup"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c811c95a91de620a8b18a94ba54231595f6034da
         authoredAt: 2026-07-16T19:00:30Z
+        additions: 537
+        deletions: 1
+        filesChanged: 16
+      - sha: a57024e2c73b3e13c6ef5a1590fd3f54ceaae441
+        message: "fix(onboarding): add first-run setup"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a57024e2c73b3e13c6ef5a1590fd3f54ceaae441
+        authoredAt: 2026-07-16T19:23:20Z
+        additions: 537
+        deletions: 1
+        filesChanged: 16
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "feat: refine operational app workspace"
+      - "ci(hub): promote entry deployment"
+      - "ci(hub): add stage deployment"
+      - "feat(suite): mount apps under hub paths"
+      - "fix(ofac): remove static logout route"
+      - "fix(ci): exclude Next APIs from static build"
+      - "feat(ofac): add static suite client"
+      - "fix(hub): use Link for OFAC navigation"
+      - "fix(hub): export directory routes"
+      - "fix(functions): use unique registrations"
+      - "feat(suite): restore OFAC and refine hub"
+      - "ci: keep unified deployment workflow"
+      - "ci: add Codex issue PR workflow"
+    commits:
+      - sha: 49b143e3eb28194b1159fdeb036c87c55bafb329
+        message: "feat: refine operational app workspace"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/49b143e3eb28194b1159fdeb036c87c55bafb329
+        authoredAt: 2026-07-16T15:50:56Z
+        additions: 877
+        deletions: 110
+        filesChanged: 14
+      - sha: 271d535816fcb4efa8910c0e6be3ebf9e839509a
+        message: "ci(hub): promote entry deployment"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/271d535816fcb4efa8910c0e6be3ebf9e839509a
+        authoredAt: 2026-07-16T16:20:06Z
+        additions: 312
+        deletions: 156
+        filesChanged: 7
+      - sha: d9366a6f033231434718e6ae482a825247e72eb7
+        message: "ci(hub): add stage deployment"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d9366a6f033231434718e6ae482a825247e72eb7
+        authoredAt: 2026-07-16T16:26:16Z
+        additions: 14
+        deletions: 2
+        filesChanged: 2
+      - sha: f10a097ae911c460b360286f2c03d6ac28d49fe8
+        message: "feat(suite): mount apps under hub paths"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f10a097ae911c460b360286f2c03d6ac28d49fe8
+        authoredAt: 2026-07-16T16:46:34Z
+        additions: 156
+        deletions: 441
+        filesChanged: 24
+      - sha: c952c6e62927eab5710c24b8a976186eb7d740be
+        message: "fix(ofac): remove static logout route"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c952c6e62927eab5710c24b8a976186eb7d740be
+        authoredAt: 2026-07-16T16:49:43Z
+        additions: 0
+        deletions: 5
+        filesChanged: 1
+      - sha: b982cd6b8c3df3f1fafb72b5ee98a9b27b6f7d65
+        message: "fix(ci): exclude Next APIs from static build"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b982cd6b8c3df3f1fafb72b5ee98a9b27b6f7d65
+        authoredAt: 2026-07-16T16:52:45Z
+        additions: 51
+        deletions: 2
+        filesChanged: 3
+      - sha: 3261e9d5db33fe20aee9ce56272ab09f838375c3
+        message: "feat(ofac): add static suite client"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3261e9d5db33fe20aee9ce56272ab09f838375c3
+        authoredAt: 2026-07-16T17:02:41Z
+        additions: 333
+        deletions: 5
+        filesChanged: 7
+      - sha: d8f47823be66a95e70facb2927888ffe572bc18a
+        message: "fix(hub): use Link for OFAC navigation"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d8f47823be66a95e70facb2927888ffe572bc18a
+        authoredAt: 2026-07-16T17:07:48Z
+        additions: 3
+        deletions: 2
+        filesChanged: 1
+      - sha: edd412a05be93862366248532e8c26b9cbd2b934
+        message: "fix(hub): export directory routes"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/edd412a05be93862366248532e8c26b9cbd2b934
+        authoredAt: 2026-07-16T17:11:26Z
+        additions: 1
+        deletions: 0
+        filesChanged: 1
+      - sha: b4eb7932d4d6ab7bbd541496b4dcbe701e68c695
+        message: "fix(functions): use unique registrations"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b4eb7932d4d6ab7bbd541496b4dcbe701e68c695
+        authoredAt: 2026-07-16T17:38:21Z
+        additions: 2
+        deletions: 2
+        filesChanged: 2
+      - sha: 4b0f87db857734302feed06e061d6e5de8c7ee6e
+        message: "feat(suite): restore OFAC and refine hub"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4b0f87db857734302feed06e061d6e5de8c7ee6e
+        authoredAt: 2026-07-16T19:21:14Z
+        additions: 902
+        deletions: 655
+        filesChanged: 17
+      - sha: 408a606b2fc84f4adf4fbdfd60e4c3e05f7b4b8a
+        message: "ci: keep unified deployment workflow"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/408a606b2fc84f4adf4fbdfd60e4c3e05f7b4b8a
+        authoredAt: 2026-07-16T19:30:46Z
+        additions: 0
+        deletions: 0
+        filesChanged: 0
+      - *a5
 releases: []
 externalContributions: []
 codeReviews: []
@@ -268,11 +446,67 @@ aiReviews:
   comments: 1
   reviews: 1
   fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-07-16T19:00:30Z
+    - 2026-07-16T19:23:20Z
+    - 2026-07-16T15:50:56Z
+    - 2026-07-16T16:20:06Z
+    - 2026-07-16T16:26:16Z
+    - 2026-07-16T16:46:34Z
+    - 2026-07-16T16:49:43Z
+    - 2026-07-16T16:52:45Z
+    - 2026-07-16T17:02:41Z
+    - 2026-07-16T17:07:48Z
+    - 2026-07-16T17:11:26Z
+    - 2026-07-16T17:38:21Z
+    - 2026-07-16T19:21:14Z
+    - 2026-07-16T19:30:46Z
+    - 2026-07-16T21:04:36Z
+    - 2026-07-16T19:04:26Z
+    - 2026-07-16T19:23:20Z
+    - 2026-07-16T19:00:30Z
+    - 2026-07-16T21:05:28Z
+    - 2026-07-16T21:04:36Z
+  volume:
+    pullRequests:
+      - additions: 537
+        deletions: 1
+        state: merged
+        dailyWork: true
+        filesChanged: 16
+        testFilesChanged: 3
+        commitCount: 1
+      - additions: 379
+        deletions: 71
+        state: open
+        dailyWork: true
+        filesChanged: 4
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 2651
+        deletions: 1380
+        state: merged
+        dailyWork: true
+        filesChanged: 49
+        testFilesChanged: 0
+        commitCount: 12
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 1
+    commitAdditions: 537
+    commitDeletions: 1
+    commitStatsCount: 1
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
 hoursEstimate:
-  hours: 10.8
+  version: "2.1"
+  hours: 30.9
   sessions: 2
   sessionHours: 4.2
-  volumeHours: 10.8
+  volumeHours: 30.9
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

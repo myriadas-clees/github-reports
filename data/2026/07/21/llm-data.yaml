@@ -12,10 +12,10 @@ summaries:
         value: 2 PRs
   - type: commit-summary
     heading: Commits and line changes
-    body: 8 commits with +623 / −445 lines.
+    body: 13 commits with +623 / −445 lines.
     chips:
       - label: Commits
-        value: "8"
+        value: "13"
         color: green
       - label: Additions
         value: "+623"
@@ -35,8 +35,22 @@ summaries:
       tracked, elapsed, or billed time.
     chips:
       - label: Estimated engineering hours
-        value: ~9.4h
+        value: ~22.4h
 highlights:
+  - type: pr
+    title: "fix(pricing): unblock expense edits"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +81 −2
+    body: |-
+      Why
+
+      Replacing a custom expense name reset its controlled input before users could finish typing.
+
+      What changed
+
+      * Commit custom expense names when the field loses focus
+      * Add a shared environment-var
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/62
   - type: pr
     title: "ci: enable Dependabot"
     repo: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -54,20 +68,6 @@ highlights:
 
       * `git diff --check`
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/63
-  - type: pr
-    title: "fix(pricing): unblock expense edits"
-    repo: Myriad-Advisor-Solutions/ohcpwm-apps
-    meta: merged · +81 −2
-    body: |-
-      Why
-
-      Replacing a custom expense name reset its controlled input before users could finish typing.
-
-      What changed
-
-      * Commit custom expense names when the field loses focus
-      * Add a shared environment-var
-    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/62
   - type: pr
     title: "fix(dependabot): use bun ecosystem"
     repo: Myriad-Advisor-Solutions/myriadas-apps
@@ -99,8 +99,8 @@ highlights:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/37
 ticker:
   - label: SHIPPED
-    text: '@myriadas-clees merged "ci: enable Dependabot" in Myriad-Advisor-Solutions/ohcpwm-apps'
-  - label: SHIPPED
     text: '@myriadas-clees merged "fix(pricing): unblock expense edits" in Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "ci: enable Dependabot" in Myriad-Advisor-Solutions/ohcpwm-apps'
   - label: SHIPPED
     text: '@myriadas-clees merged "fix(dependabot): use bun ecosystem" in Myriad-Advisor-Solutions/myriadas-apps'

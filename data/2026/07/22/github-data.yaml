@@ -12,7 +12,7 @@ dateRange:
   from: 2026-07-22
   to: 2026-07-22
 stats:
-  totalCommits: 4
+  totalCommits: 15
   totalAdditions: 224
   totalDeletions: 179
   prsOpened: 3
@@ -22,20 +22,20 @@ stats:
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 7.8
+  estimatedHours: 21.5
 dailyCommits:
   - date: 2026-07-22
-    count: 4
+    count: 15
 repositories:
   - name: Myriad-Advisor-Solutions/ohcpwm-apps
-    commits: 2
+    commits: 9
     prsOpened: 2
     prsMerged: 2
     issuesOpened: 0
     issuesClosed: 0
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
   - name: Myriad-Advisor-Solutions/myriadas-apps
-    commits: 2
+    commits: 6
     prsOpened: 1
     prsMerged: 2
     issuesOpened: 0
@@ -71,10 +71,19 @@ pullRequests:
     updatedAt: 2026-07-22T17:47:58Z
     closedAt: 2026-07-22T17:47:46Z
     mergedAt: null
+    workCommits:
+      - &a2
+        sha: 7269db84b77da94b6942cf9a6a6dbf6080050028
+        message: "ci: benchmark uncached runtime"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7269db84b77da94b6942cf9a6a6dbf6080050028
+        authoredAt: 2026-07-22T17:29:38Z
     workTimestamps:
       - 2026-07-22T17:29:38Z
     workAdditions: 36
     workDeletions: 22
+    workFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/verify.yml
   - title: "ci(actions): reduce automatic runtime"
     body: >-
       Why
@@ -104,6 +113,37 @@ pullRequests:
     updatedAt: 2026-07-22T20:23:00Z
     closedAt: 2026-07-22T20:16:10Z
     mergedAt: 2026-07-22T20:16:10Z
+    workCommits:
+      - &a1
+        sha: 6a274de04365c5368cf7770cad02118bf338ce57
+        message: "ci: benchmark cached runtime"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6a274de04365c5368cf7770cad02118bf338ce57
+        authoredAt: 2026-07-22T17:29:35Z
+      - &a3
+        sha: 95dc875d58e392cd2686e88670ff765adb04d3d7
+        message: "ci(actions): make previews manual"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/95dc875d58e392cd2686e88670ff765adb04d3d7
+        authoredAt: 2026-07-22T17:47:18Z
+      - &a4
+        sha: f79480e93501a20b0ab5bccee0b9dd683c720cfd
+        message: "ci(actions): link manual previews"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f79480e93501a20b0ab5bccee0b9dd683c720cfd
+        authoredAt: 2026-07-22T17:53:27Z
+      - &a5
+        sha: baf0a857bba7ea6bebb8d2e5f8a9a6eef30b5dd3
+        message: "ci(actions): trigger previews by label"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/baf0a857bba7ea6bebb8d2e5f8a9a6eef30b5dd3
+        authoredAt: 2026-07-22T19:05:06Z
+      - &a6
+        sha: 8d56b4c49af6266ab9112e773a37f1da8d69a08f
+        message: "ci(actions): skip unlabeled PR updates"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8d56b4c49af6266ab9112e773a37f1da8d69a08f
+        authoredAt: 2026-07-22T19:05:55Z
+      - &a7
+        sha: c24ac482c441441f25f4dacda94abda80b0f403e
+        message: "ci(actions): stabilize concurrent checks"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c24ac482c441441f25f4dacda94abda80b0f403e
+        authoredAt: 2026-07-22T19:09:58Z
     workTimestamps:
       - 2026-07-22T17:29:35Z
       - 2026-07-22T17:47:18Z
@@ -113,6 +153,10 @@ pullRequests:
       - 2026-07-22T19:09:58Z
     workAdditions: 120
     workDeletions: 95
+    workFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/verify.yml
+      - pricing/src/lib/__tests__/report.test.ts
   - title: "ci: gate previews behind PR label"
     body: >-
       Why
@@ -142,12 +186,34 @@ pullRequests:
     updatedAt: 2026-07-22T20:23:48Z
     closedAt: 2026-07-22T20:16:32Z
     mergedAt: 2026-07-22T20:16:32Z
+    workCommits:
+      - &a8
+        sha: 99e758247398cd63bc1fdbbf777ce2f8345d0949
+        message: "ci: gate previews behind PR label"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/99e758247398cd63bc1fdbbf777ce2f8345d0949
+        authoredAt: 2026-07-22T19:19:37Z
+      - &a9
+        sha: fc9f61861a88b207f13490ca7fd8b602c0116c7f
+        message: "docs: clarify preview trigger"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/fc9f61861a88b207f13490ca7fd8b602c0116c7f
+        authoredAt: 2026-07-22T19:20:58Z
+      - &a10
+        sha: ab19366ee00b17d00b8a6c72eff25d676a3d0b2a
+        message: "fix(ci): await unified static builds"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ab19366ee00b17d00b8a6c72eff25d676a3d0b2a
+        authoredAt: 2026-07-22T19:38:53Z
     workTimestamps:
       - 2026-07-22T19:19:37Z
       - 2026-07-22T19:20:58Z
       - 2026-07-22T19:38:53Z
     workAdditions: 65
     workDeletions: 40
+    workFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/verify.yml
+      - docs/azure-serverless-plan.md
+      - package.json
+      - scripts/build-unified-swa.ts
   - title: "fix(pricing): keep advisor links in app"
     body: >-
       Why
@@ -175,9 +241,11 @@ pullRequests:
     updatedAt: 2026-07-22T20:23:02Z
     closedAt: 2026-07-22T17:04:42Z
     mergedAt: 2026-07-22T17:04:42Z
+    workCommits: []
     workTimestamps: []
     workAdditions: 0
     workDeletions: 0
+    workFiles: []
   - title: "feat(deploy): ready apps for Cosmos"
     body: >-
       Why
@@ -209,40 +277,83 @@ pullRequests:
     updatedAt: 2026-07-22T20:51:26Z
     closedAt: 2026-07-22T20:51:09Z
     mergedAt: 2026-07-22T20:51:08Z
+    workCommits:
+      - &a11
+        sha: 5998026711d16b9d4e3efd2f279b97640dd42022
+        message: "fix(deploy): preserve linked SWA auth"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5998026711d16b9d4e3efd2f279b97640dd42022
+        authoredAt: 2026-07-22T20:22:27Z
     workTimestamps:
       - 2026-07-22T20:22:27Z
     workAdditions: 3
     workDeletions: 22
+    workFiles:
+      - infra/azure/pto-tracker/README.md
+      - infra/azure/pto-tracker/serverless.bicep
 prsInProgress: []
 issues: []
 events: []
 commitMessages:
   - repo: Myriad-Advisor-Solutions/ohcpwm-apps
     messages:
-      - "ci(actions): reduce automatic runtime (#68)"
       - "fix(pricing): keep advisor links in app (#67)"
+      - "ci: benchmark cached runtime"
+      - "ci: benchmark uncached runtime"
+      - "ci(actions): make previews manual"
+      - "ci(actions): link manual previews"
+      - "ci(actions): trigger previews by label"
+      - "ci(actions): skip unlabeled PR updates"
+      - "ci(actions): stabilize concurrent checks"
+      - "ci(actions): reduce automatic runtime (#68)"
     commits:
-      - sha: f3f128ff58423b6bba62864a073d6a374a40d276
-        message: "ci(actions): reduce automatic runtime (#68)"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f3f128ff58423b6bba62864a073d6a374a40d276
-        authoredAt: 2026-07-22T20:16:10Z
       - sha: 31abeced40aebca76e4e924ecf9d5cfcc2a66c1a
         message: "fix(pricing): keep advisor links in app (#67)"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/31abeced40aebca76e4e924ecf9d5cfcc2a66c1a
         authoredAt: 2026-07-22T17:04:42Z
+        additions: 34
+        deletions: 1
+        filesChanged: 2
+      - *a1
+      - *a2
+      - *a3
+      - *a4
+      - *a5
+      - *a6
+      - *a7
+      - sha: f3f128ff58423b6bba62864a073d6a374a40d276
+        message: "ci(actions): reduce automatic runtime (#68)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f3f128ff58423b6bba62864a073d6a374a40d276
+        authoredAt: 2026-07-22T20:16:10Z
+        additions: 54
+        deletions: 29
+        filesChanged: 3
   - repo: Myriad-Advisor-Solutions/myriadas-apps
     messages:
-      - "feat(deploy): ready apps for Cosmos (#37)"
+      - "ci: gate previews behind PR label"
+      - "docs: clarify preview trigger"
+      - "fix(ci): await unified static builds"
       - "ci: gate previews behind PR label (#38)"
+      - "fix(deploy): preserve linked SWA auth"
+      - "feat(deploy): ready apps for Cosmos (#37)"
     commits:
-      - sha: 085bd47e42508cb8d60742f74d77a046e7349bfe
-        message: "feat(deploy): ready apps for Cosmos (#37)"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/085bd47e42508cb8d60742f74d77a046e7349bfe
-        authoredAt: 2026-07-22T20:51:08Z
+      - *a8
+      - *a9
+      - *a10
       - sha: a3ed691f4fcc64ed87a3efd8a54ec9bf54c98d5b
         message: "ci: gate previews behind PR label (#38)"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a3ed691f4fcc64ed87a3efd8a54ec9bf54c98d5b
         authoredAt: 2026-07-22T20:16:32Z
+        additions: 62
+        deletions: 37
+        filesChanged: 5
+      - *a11
+      - sha: 085bd47e42508cb8d60742f74d77a046e7349bfe
+        message: "feat(deploy): ready apps for Cosmos (#37)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/085bd47e42508cb8d60742f74d77a046e7349bfe
+        authoredAt: 2026-07-22T20:51:08Z
+        additions: 389
+        deletions: 362
+        filesChanged: 23
 releases: []
 externalContributions: []
 codeReviews: []
@@ -262,11 +373,90 @@ aiReviews:
   comments: 5
   reviews: 2
   fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-07-22T17:04:42Z
+    - 2026-07-22T17:29:35Z
+    - 2026-07-22T17:29:38Z
+    - 2026-07-22T17:47:18Z
+    - 2026-07-22T17:53:27Z
+    - 2026-07-22T19:05:06Z
+    - 2026-07-22T19:05:55Z
+    - 2026-07-22T19:09:58Z
+    - 2026-07-22T20:16:10Z
+    - 2026-07-22T19:19:37Z
+    - 2026-07-22T19:20:58Z
+    - 2026-07-22T19:38:53Z
+    - 2026-07-22T20:16:32Z
+    - 2026-07-22T20:22:27Z
+    - 2026-07-22T20:51:08Z
+    - 2026-07-22T17:30:47Z
+    - 2026-07-22T17:29:38Z
+    - 2026-07-22T17:30:40Z
+    - 2026-07-22T20:16:10Z
+    - 2026-07-22T17:29:35Z
+    - 2026-07-22T17:47:18Z
+    - 2026-07-22T17:53:27Z
+    - 2026-07-22T19:05:06Z
+    - 2026-07-22T19:05:55Z
+    - 2026-07-22T19:09:58Z
+    - 2026-07-22T19:20:06Z
+    - 2026-07-22T20:16:32Z
+    - 2026-07-22T19:19:37Z
+    - 2026-07-22T19:20:58Z
+    - 2026-07-22T19:38:53Z
+    - 2026-07-22T17:04:42Z
+    - 2026-07-22T20:51:08Z
+    - 2026-07-22T20:22:27Z
+  volume:
+    pullRequests:
+      - additions: 36
+        deletions: 22
+        state: closed
+        dailyWork: true
+        filesChanged: 2
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 120
+        deletions: 95
+        state: merged
+        dailyWork: true
+        filesChanged: 3
+        testFilesChanged: 1
+        commitCount: 6
+      - additions: 3
+        deletions: 22
+        state: merged
+        dailyWork: true
+        filesChanged: 2
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 65
+        deletions: 40
+        state: merged
+        dailyWork: true
+        filesChanged: 5
+        testFilesChanged: 0
+        commitCount: 3
+      - additions: 0
+        deletions: 0
+        state: merged
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 4
+    commitAdditions: 539
+    commitDeletions: 429
+    commitStatsCount: 4
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
 hoursEstimate:
-  hours: 7.8
+  version: "2.1"
+  hours: 21.5
   sessions: 1
   sessionHours: 3.8
-  volumeHours: 7.8
+  volumeHours: 21.5
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

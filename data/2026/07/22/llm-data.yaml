@@ -12,10 +12,10 @@ summaries:
         value: 1 PRs
   - type: commit-summary
     heading: Commits and line changes
-    body: 4 commits with +224 / −179 lines.
+    body: 15 commits with +224 / −179 lines.
     chips:
       - label: Commits
-        value: "4"
+        value: "15"
         color: green
       - label: Additions
         value: "+224"
@@ -35,7 +35,7 @@ summaries:
       tracked, elapsed, or billed time.
     chips:
       - label: Estimated engineering hours
-        value: ~7.8h
+        value: ~21.5h
 highlights:
   - type: pr
     title: "ci(actions): reduce automatic runtime"

@@ -22,7 +22,7 @@ stats:
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 1.5
+  estimatedHours: 22.8
 dailyCommits:
   - date: 2026-07-17
     count: 6
@@ -63,51 +63,119 @@ prsInProgress:
     updatedAt: 2026-07-22T20:23:04Z
     closedAt: 2026-07-20T15:26:30Z
     mergedAt: 2026-07-20T15:26:30Z
+    workCommits:
+      - sha: b09c3ee79f3e80d808157dae6f10fdf37c3c3fbe
+        message: "feat(pricing): match Version 6 rules"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b09c3ee79f3e80d808157dae6f10fdf37c3c3fbe
+        authoredAt: 2026-07-17T15:14:55Z
+      - sha: 7adbf2ba47117289cc0abb63e1496000eab2ebab
+        message: "feat(pricing): add truthful dashboard"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7adbf2ba47117289cc0abb63e1496000eab2ebab
+        authoredAt: 2026-07-17T19:33:01Z
+      - sha: 29ef9f8398dd359f89a6f38409b29034994effcc
+        message: "feat(pricing): add six-month cohort charts"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/29ef9f8398dd359f89a6f38409b29034994effcc
+        authoredAt: 2026-07-17T21:51:14Z
     workTimestamps:
       - 2026-07-17T15:14:55Z
       - 2026-07-17T19:33:01Z
       - 2026-07-17T21:51:14Z
     workAdditions: 1787
     workDeletions: 907
+    workFiles:
+      - docs/pricing-scenario-rules.md
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - pricing/functions/src/index.ts
+      - pricing/src/app/globals.css
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/dashboard-metrics-charts.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/__tests__/scenario-model-tab.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/dashboard-metrics-charts.tsx
+      - pricing/src/components/dashboard-payout-pie.tsx
+      - pricing/src/components/dashboard-trend-chart.tsx
+      - pricing/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - pricing/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pipeline-stage-bar.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/components/pricing-workstation-client.tsx
+      - pricing/src/components/scenario-model-tab.tsx
+      - pricing/src/lib/__tests__/calculation.test.ts
+      - pricing/src/lib/__tests__/dashboard-charts.test.ts
+      - pricing/src/lib/__tests__/dashboard-summary.test.ts
+      - pricing/src/lib/__tests__/report-model.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/workbook-output.test.ts
+      - pricing/src/lib/__tests__/workstation.test.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/dashboard-charts.ts
+      - pricing/src/lib/dashboard-summary.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/workbook-output.ts
+      - pricing/src/lib/workstation.ts
+      - scripts/dev-pricing-api.ts
 issues: []
 events: []
 commitMessages:
   - repo: Myriad-Advisor-Solutions/ohcpwm-apps
     messages:
-      - "feat(pricing): add six-month cohort charts"
-      - "feat(pricing): add truthful dashboard"
       - "feat(pricing): match Version 6 rules"
+      - "feat(pricing): add truthful dashboard"
+      - "feat(pricing): add six-month cohort charts"
     commits:
-      - sha: 29ef9f8398dd359f89a6f38409b29034994effcc
-        message: "feat(pricing): add six-month cohort charts"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/29ef9f8398dd359f89a6f38409b29034994effcc
-        authoredAt: 2026-07-17T21:51:14Z
-      - sha: 7adbf2ba47117289cc0abb63e1496000eab2ebab
-        message: "feat(pricing): add truthful dashboard"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7adbf2ba47117289cc0abb63e1496000eab2ebab
-        authoredAt: 2026-07-17T19:33:01Z
       - sha: b09c3ee79f3e80d808157dae6f10fdf37c3c3fbe
         message: "feat(pricing): match Version 6 rules"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b09c3ee79f3e80d808157dae6f10fdf37c3c3fbe
         authoredAt: 2026-07-17T15:14:55Z
+        additions: 567
+        deletions: 119
+        filesChanged: 23
+      - sha: 7adbf2ba47117289cc0abb63e1496000eab2ebab
+        message: "feat(pricing): add truthful dashboard"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7adbf2ba47117289cc0abb63e1496000eab2ebab
+        authoredAt: 2026-07-17T19:33:01Z
+        additions: 684
+        deletions: 584
+        filesChanged: 14
+      - sha: 29ef9f8398dd359f89a6f38409b29034994effcc
+        message: "feat(pricing): add six-month cohort charts"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/29ef9f8398dd359f89a6f38409b29034994effcc
+        authoredAt: 2026-07-17T21:51:14Z
+        additions: 536
+        deletions: 204
+        filesChanged: 8
   - repo: Myriad-Advisor-Solutions/myriadas-apps
     messages:
-      - "fix(onboarding): isolate Bun SQLite runtime"
-      - "feat(onboarding): complete operations workspace"
       - "feat(onboarding): add client work management"
+      - "feat(onboarding): complete operations workspace"
+      - "fix(onboarding): isolate Bun SQLite runtime"
     commits:
-      - sha: d97b513d8e96d185aa0205ca6c3a5d6e83d8b047
-        message: "fix(onboarding): isolate Bun SQLite runtime"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d97b513d8e96d185aa0205ca6c3a5d6e83d8b047
-        authoredAt: 2026-07-17T21:59:39Z
-      - sha: 734ad60e206a63276eeb5811da43624a993e0893
-        message: "feat(onboarding): complete operations workspace"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/734ad60e206a63276eeb5811da43624a993e0893
-        authoredAt: 2026-07-17T21:41:42Z
       - sha: 812d278e04d647764a27c8b284ca434e95747ac7
         message: "feat(onboarding): add client work management"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/812d278e04d647764a27c8b284ca434e95747ac7
         authoredAt: 2026-07-17T19:02:50Z
+        additions: 690
+        deletions: 126
+        filesChanged: 33
+      - sha: 734ad60e206a63276eeb5811da43624a993e0893
+        message: "feat(onboarding): complete operations workspace"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/734ad60e206a63276eeb5811da43624a993e0893
+        authoredAt: 2026-07-17T21:41:42Z
+        additions: 2501
+        deletions: 308
+        filesChanged: 35
+      - sha: d97b513d8e96d185aa0205ca6c3a5d6e83d8b047
+        message: "fix(onboarding): isolate Bun SQLite runtime"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d97b513d8e96d185aa0205ca6c3a5d6e83d8b047
+        authoredAt: 2026-07-17T21:59:39Z
+        additions: 12
+        deletions: 14
+        filesChanged: 7
 releases: []
 externalContributions: []
 codeReviews: []
@@ -127,11 +195,39 @@ aiReviews:
   comments: 0
   reviews: 0
   fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-07-17T15:14:55Z
+    - 2026-07-17T19:33:01Z
+    - 2026-07-17T21:51:14Z
+    - 2026-07-17T19:02:50Z
+    - 2026-07-17T21:41:42Z
+    - 2026-07-17T21:59:39Z
+  volume:
+    pullRequests:
+      - additions: 1787
+        deletions: 907
+        state: merged
+        dailyWork: true
+        filesChanged: 36
+        testFilesChanged: 13
+        commitCount: 3
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 3
+    commitAdditions: 3203
+    commitDeletions: 448
+    commitStatsCount: 3
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
 hoursEstimate:
-  hours: 1.5
+  version: "2.1"
+  hours: 22.8
   sessions: 3
   sessionHours: 1.5
-  volumeHours: 1.2
+  volumeHours: 22.8
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

@@ -29,7 +29,7 @@ summaries:
       tracked, elapsed, or billed time.
     chips:
       - label: Estimated engineering hours
-        value: ~1.5h
+        value: ~22.8h
 highlights:
   - type: pr
     title: Unify OHCPWM platform and OFAC

@@ -22,7 +22,7 @@ stats:
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 15
+  estimatedHours: 34.6
 dailyCommits:
   - date: 2026-07-20
     count: 10
@@ -68,6 +68,31 @@ pullRequests:
     updatedAt: 2026-07-22T20:23:50Z
     closedAt: 2026-07-20T20:52:25Z
     mergedAt: 2026-07-20T20:52:25Z
+    workCommits:
+      - sha: b01a65efea1061378bd46b752e027cf71a469a10
+        message: "feat(platform): centralize auth and audit"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b01a65efea1061378bd46b752e027cf71a469a10
+        authoredAt: 2026-07-20T19:49:13Z
+      - sha: 9b6b273de1b2a173b22f1e3472e2b82afb490dea
+        message: "feat(platform): unify app operations"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9b6b273de1b2a173b22f1e3472e2b82afb490dea
+        authoredAt: 2026-07-20T19:52:11Z
+      - sha: 56c5754aad849095c6977e9627596154da629b3a
+        message: "ci(github): add repository operations"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/56c5754aad849095c6977e9627596154da629b3a
+        authoredAt: 2026-07-20T19:53:07Z
+      - sha: f786a600313593490be973cd1629fa6de0d30045
+        message: "ci(codeql): allow workflow reads"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f786a600313593490be973cd1629fa6de0d30045
+        authoredAt: 2026-07-20T20:10:47Z
+      - sha: f9f4cabdacc32762f8e05add6854ab129b9fe99d
+        message: "ci(codeql): gate unsupported scanning"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f9f4cabdacc32762f8e05add6854ab129b9fe99d
+        authoredAt: 2026-07-20T20:16:07Z
+      - sha: a7e52431b0209f51c3423ced41d7911d221f99c1
+        message: "fix(platform): correct health and security reads"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a7e52431b0209f51c3423ced41d7911d221f99c1
+        authoredAt: 2026-07-20T20:34:41Z
     workTimestamps:
       - 2026-07-20T19:49:13Z
       - 2026-07-20T19:52:11Z
@@ -77,6 +102,93 @@ pullRequests:
       - 2026-07-20T20:34:41Z
     workAdditions: 2786
     workDeletions: 809
+    workFiles:
+      - .github/CODEOWNERS
+      - .github/ISSUE_TEMPLATE/bug.yml
+      - .github/ISSUE_TEMPLATE/config.yml
+      - .github/ISSUE_TEMPLATE/feature.yml
+      - .github/dependabot.yml
+      - .github/labeler.yml
+      - .github/pull_request_template.md
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/codeql.yml
+      - .github/workflows/issue-triage.yml
+      - .github/workflows/labeler.yml
+      - .github/workflows/verify.yml
+      - .gitignore
+      - README.md
+      - SECURITY.md
+      - bun.lock
+      - docs/production-readiness-progress.md
+      - docs/repository-operations.md
+      - excelerate/functions/package.json
+      - excelerate/package.json
+      - excelerate/src/lib/api/azure-functions-adapter.ts
+      - excelerate/src/lib/auth.ts
+      - hub/lib/auth.ts
+      - hub/package.json
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/auth.ts
+      - onboarding/apps/dashboard/package.json
+      - package.json
+      - packages/audit/package.json
+      - packages/audit/src/index.test.ts
+      - packages/audit/src/index.ts
+      - packages/audit/tsconfig.json
+      - packages/auth/package.json
+      - packages/auth/src/index.test.ts
+      - packages/auth/src/index.ts
+      - packages/auth/tsconfig.json
+      - packages/contracts/package.json
+      - packages/contracts/src/audit.ts
+      - packages/contracts/src/auth.ts
+      - packages/contracts/src/index.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/package.json
+      - packages/db/src/cosmos-queries.ts
+      - packages/db/src/queries.ts
+      - packages/db/src/runtime.ts
+      - packages/db/src/start-date-reconciliation.test.ts
+      - packages/db/src/start-date-reconciliation.ts
+      - proforma/functions/package.json
+      - proforma/package.json
+      - proforma/src/lib/api/azure-functions-adapter.ts
+      - proforma/src/lib/api/handlers.test.ts
+      - proforma/src/lib/auth.ts
+      - proforma/src/lib/persistence/cosmos-repository.ts
+      - proforma/src/lib/persistence/repository.test.ts
+      - proforma/src/lib/persistence/repository.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/package.json
+      - pto-tracker/src/lib/api/azure-functions-adapter.test.ts
+      - pto-tracker/src/lib/api/azure-functions-adapter.ts
+      - pto-tracker/src/lib/audit/index.ts
+      - pto-tracker/src/lib/auth/entra-provider.ts
+      - pto-tracker/src/lib/auth/entra-token-provider.ts
+      - pto-tracker/src/lib/auth/index.ts
+      - pto-tracker/src/lib/store/audit-adapter.test.ts
+      - pto-tracker/src/lib/store/types.ts
+      - scripts/app-command.ts
+      - scripts/app-registry.ts
+      - scripts/build-unified-swa.ts
+      - scripts/dev-apps.ts
+      - scripts/dev.ts
+      - scripts/github/configure-repository.test.ts
+      - scripts/github/configure-repository.ts
+      - scripts/github/triage-issue.test.ts
+      - scripts/github/triage-issue.ts
+      - scripts/tooling.test.ts
+      - scripts/validate-artifacts.ts
+      - scripts/workflow-matrix.ts
+      - valuation/functions/package.json
+      - valuation/package.json
+      - valuation/src/lib/api/azure-functions-adapter.ts
+      - valuation/src/lib/auth.ts
+      - valuation/src/lib/persistence/cosmos-repository.ts
+      - valuation/src/lib/persistence/repository.ts
   - title: Unify OHCPWM platform and OFAC
     body: >-
       - publish the completed FINET Pricing model work alongside shared product-platform consolidation
@@ -97,70 +209,129 @@ pullRequests:
     updatedAt: 2026-07-22T20:23:04Z
     closedAt: 2026-07-20T15:26:30Z
     mergedAt: 2026-07-20T15:26:30Z
+    workCommits:
+      - sha: c996aa25c78197eee85de43da0b153d32d6e107c
+        message: "fix(suite): resolve merge blockers"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c996aa25c78197eee85de43da0b153d32d6e107c
+        authoredAt: 2026-07-20T15:14:10Z
     workTimestamps:
       - 2026-07-20T15:14:10Z
     workAdditions: 814
     workDeletions: 182
+    workFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - hub/lib/apps.ts
+      - ofac/functions/src/index.ts
+      - ofac/functions/src/ofac-repository.test.ts
+      - ofac/functions/src/ofac-repository.ts
+      - ofac/src/app/api/ofac/me/route.ts
+      - ofac/src/app/api/ofac/overview/route.ts
+      - ofac/src/app/globals.css
+      - ofac/src/app/page.tsx
+      - ofac/src/components/client-intake-form.tsx
+      - ofac/src/lib/__tests__/auth.test.ts
+      - ofac/src/lib/__tests__/client-csv.test.ts
+      - ofac/src/lib/__tests__/ofac-api-client.test.ts
+      - ofac/src/lib/auth.ts
+      - ofac/src/lib/client-csv.ts
+      - ofac/src/lib/ofac-api-client.ts
+      - ofac/src/lib/screening-provider.ts
+      - packages/contracts/src/pricing.ts
+      - pricing/functions/package.json
+      - pricing/functions/src/index.ts
+      - pricing/src/components/__tests__/dashboard-metrics-charts.test.tsx
+      - pricing/src/lib/__tests__/dashboard-summary.test.ts
+      - pricing/src/lib/dashboard-summary.ts
 prsInProgress: []
 issues: []
 events: []
 commitMessages:
   - repo: Myriad-Advisor-Solutions/ohcpwm-apps
     messages:
-      - "feat(hub): Unify OHCPWM platform and OFAC"
       - "fix(suite): resolve merge blockers"
+      - "feat(hub): Unify OHCPWM platform and OFAC"
     commits:
-      - sha: 4e589173dd7d3ddfdf562550fe350348ec0efebc
-        message: "feat(hub): Unify OHCPWM platform and OFAC"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4e589173dd7d3ddfdf562550fe350348ec0efebc
-        authoredAt: 2026-07-20T15:26:29Z
       - sha: c996aa25c78197eee85de43da0b153d32d6e107c
         message: "fix(suite): resolve merge blockers"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c996aa25c78197eee85de43da0b153d32d6e107c
         authoredAt: 2026-07-20T15:14:10Z
+        additions: 814
+        deletions: 182
+        filesChanged: 23
+      - sha: 4e589173dd7d3ddfdf562550fe350348ec0efebc
+        message: "feat(hub): Unify OHCPWM platform and OFAC"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4e589173dd7d3ddfdf562550fe350348ec0efebc
+        authoredAt: 2026-07-20T15:26:29Z
+        additions: 7616
+        deletions: 2416
+        filesChanged: 148
   - repo: Myriad-Advisor-Solutions/myriadas-apps
     messages:
-      - "feat(platform): add repository operations"
-      - "fix(platform): correct health and security reads"
-      - "ci(codeql): gate unsupported scanning"
-      - "ci(codeql): allow workflow reads"
-      - "ci(github): add repository operations"
-      - "feat(platform): unify app operations"
-      - "feat(platform): centralize auth and audit"
       - "feat: add source-backed planning controls"
+      - "feat(platform): centralize auth and audit"
+      - "feat(platform): unify app operations"
+      - "ci(github): add repository operations"
+      - "ci(codeql): allow workflow reads"
+      - "ci(codeql): gate unsupported scanning"
+      - "fix(platform): correct health and security reads"
+      - "feat(platform): add repository operations"
     commits:
-      - sha: 70f3e9fba74a15885d05ded8137f5f2b9ebfe2c0
-        message: "feat(platform): add repository operations"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/70f3e9fba74a15885d05ded8137f5f2b9ebfe2c0
-        authoredAt: 2026-07-20T20:52:25Z
-      - sha: a7e52431b0209f51c3423ced41d7911d221f99c1
-        message: "fix(platform): correct health and security reads"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a7e52431b0209f51c3423ced41d7911d221f99c1
-        authoredAt: 2026-07-20T20:34:41Z
-      - sha: f9f4cabdacc32762f8e05add6854ab129b9fe99d
-        message: "ci(codeql): gate unsupported scanning"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f9f4cabdacc32762f8e05add6854ab129b9fe99d
-        authoredAt: 2026-07-20T20:16:07Z
-      - sha: f786a600313593490be973cd1629fa6de0d30045
-        message: "ci(codeql): allow workflow reads"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f786a600313593490be973cd1629fa6de0d30045
-        authoredAt: 2026-07-20T20:10:47Z
-      - sha: 56c5754aad849095c6977e9627596154da629b3a
-        message: "ci(github): add repository operations"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/56c5754aad849095c6977e9627596154da629b3a
-        authoredAt: 2026-07-20T19:53:07Z
-      - sha: 9b6b273de1b2a173b22f1e3472e2b82afb490dea
-        message: "feat(platform): unify app operations"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9b6b273de1b2a173b22f1e3472e2b82afb490dea
-        authoredAt: 2026-07-20T19:52:11Z
-      - sha: b01a65efea1061378bd46b752e027cf71a469a10
-        message: "feat(platform): centralize auth and audit"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b01a65efea1061378bd46b752e027cf71a469a10
-        authoredAt: 2026-07-20T19:49:13Z
       - sha: 428a4b669e93d8b0425729bea41db9a8019dac78
         message: "feat: add source-backed planning controls"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/428a4b669e93d8b0425729bea41db9a8019dac78
         authoredAt: 2026-07-20T15:23:26Z
+        additions: 483
+        deletions: 9
+        filesChanged: 14
+      - sha: b01a65efea1061378bd46b752e027cf71a469a10
+        message: "feat(platform): centralize auth and audit"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b01a65efea1061378bd46b752e027cf71a469a10
+        authoredAt: 2026-07-20T19:49:13Z
+        additions: 891
+        deletions: 351
+        filesChanged: 48
+      - sha: 9b6b273de1b2a173b22f1e3472e2b82afb490dea
+        message: "feat(platform): unify app operations"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9b6b273de1b2a173b22f1e3472e2b82afb490dea
+        authoredAt: 2026-07-20T19:52:11Z
+        additions: 908
+        deletions: 455
+        filesChanged: 22
+      - sha: 56c5754aad849095c6977e9627596154da629b3a
+        message: "ci(github): add repository operations"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/56c5754aad849095c6977e9627596154da629b3a
+        authoredAt: 2026-07-20T19:53:07Z
+        additions: 965
+        deletions: 0
+        filesChanged: 16
+      - sha: f786a600313593490be973cd1629fa6de0d30045
+        message: "ci(codeql): allow workflow reads"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f786a600313593490be973cd1629fa6de0d30045
+        authoredAt: 2026-07-20T20:10:47Z
+        additions: 1
+        deletions: 0
+        filesChanged: 1
+      - sha: f9f4cabdacc32762f8e05add6854ab129b9fe99d
+        message: "ci(codeql): gate unsupported scanning"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f9f4cabdacc32762f8e05add6854ab129b9fe99d
+        authoredAt: 2026-07-20T20:16:07Z
+        additions: 5
+        deletions: 0
+        filesChanged: 2
+      - sha: a7e52431b0209f51c3423ced41d7911d221f99c1
+        message: "fix(platform): correct health and security reads"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a7e52431b0209f51c3423ced41d7911d221f99c1
+        authoredAt: 2026-07-20T20:34:41Z
+        additions: 16
+        deletions: 3
+        filesChanged: 4
+      - sha: 70f3e9fba74a15885d05ded8137f5f2b9ebfe2c0
+        message: "feat(platform): add repository operations"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/70f3e9fba74a15885d05ded8137f5f2b9ebfe2c0
+        authoredAt: 2026-07-20T20:52:25Z
+        additions: 2783
+        deletions: 806
+        filesChanged: 86
 releases: []
 externalContributions: []
 codeReviews: []
@@ -180,11 +351,60 @@ aiReviews:
   comments: 2
   reviews: 1
   fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-07-20T15:14:10Z
+    - 2026-07-20T15:26:29Z
+    - 2026-07-20T15:23:26Z
+    - 2026-07-20T19:49:13Z
+    - 2026-07-20T19:52:11Z
+    - 2026-07-20T19:53:07Z
+    - 2026-07-20T20:10:47Z
+    - 2026-07-20T20:16:07Z
+    - 2026-07-20T20:34:41Z
+    - 2026-07-20T20:52:25Z
+    - 2026-07-20T20:02:06Z
+    - 2026-07-20T20:52:25Z
+    - 2026-07-20T19:49:13Z
+    - 2026-07-20T19:52:11Z
+    - 2026-07-20T19:53:07Z
+    - 2026-07-20T20:10:47Z
+    - 2026-07-20T20:16:07Z
+    - 2026-07-20T20:34:41Z
+    - 2026-07-20T15:26:30Z
+    - 2026-07-20T15:14:10Z
+  volume:
+    pullRequests:
+      - additions: 814
+        deletions: 182
+        state: merged
+        dailyWork: true
+        filesChanged: 23
+        testFilesChanged: 6
+        commitCount: 1
+      - additions: 2786
+        deletions: 809
+        state: merged
+        dailyWork: true
+        filesChanged: 86
+        testFilesChanged: 10
+        commitCount: 6
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 3
+    commitAdditions: 10882
+    commitDeletions: 3231
+    commitStatsCount: 3
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
 hoursEstimate:
-  hours: 15
+  version: "2.1"
+  hours: 34.6
   sessions: 2
   sessionHours: 1.6
-  volumeHours: 15
+  volumeHours: 34.6
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
