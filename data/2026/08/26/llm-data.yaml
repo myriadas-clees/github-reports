@@ -10,16 +10,16 @@ summaries:
         value: 2 PRs
   - type: commit-summary
     heading: Commits and line changes
-    body: 8 commits with +939 / −930 lines.
+    body: 8 commits with +944 / −935 lines.
     chips:
       - label: Commits
         value: "8"
         color: green
       - label: Additions
-        value: "+939"
+        value: "+944"
         color: green
       - label: Deletions
-        value: −930
+        value: −935
         color: red
   - type: review-summary
     heading: AI code reviews
@@ -36,17 +36,17 @@ summaries:
         value: ~27.4h
 highlights:
   - type: pr
-    title: "refactor: centralize suite architecture"
-    repo: Myriad-Advisor-Solutions/myriadas-apps
-    meta: in progress · +399 −825
-    body: Still open at the end of the reporting window.
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/106
-  - type: pr
     title: "ci: build only affected unified app artifacts"
     repo: Myriad-Advisor-Solutions/myriadas-apps
     meta: in progress · +540 −105
     body: Still open at the end of the reporting window.
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/105
+  - type: pr
+    title: "refactor: centralize suite architecture"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +1167 −1501
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/106
   - type: pr
     title: "feat(onboarding): add client and vendor contacts"
     repo: Myriad-Advisor-Solutions/myriadas-apps

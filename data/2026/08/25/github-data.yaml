@@ -13,8 +13,8 @@ dateRange:
   to: 2026-08-25
 stats:
   totalCommits: 7
-  totalAdditions: 946
-  totalDeletions: 121
+  totalAdditions: 1036
+  totalDeletions: 211
   prsOpened: 1
   prsMerged: 0
   prsInProgress: 1
@@ -60,12 +60,12 @@ pullRequests:
       - "app: proforma"
       - platform
       - deploy-preview
-    additions: 946
-    deletions: 121
-    changedFiles: 27
+    additions: 1036
+    deletions: 211
+    changedFiles: 47
     author: myriadas-clees
     createdAt: 2026-08-25T16:14:15Z
-    updatedAt: 2026-08-25T18:03:39Z
+    updatedAt: 2026-08-27T13:32:42Z
     closedAt: null
     mergedAt: null
     workCommits: &a2
@@ -164,12 +164,12 @@ prsInProgress:
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: open
     labels: *a1
-    additions: 946
-    deletions: 121
-    changedFiles: 27
+    additions: 1947
+    deletions: 205
+    changedFiles: 47
     author: myriadas-clees
     createdAt: 2026-08-25T16:14:15Z
-    updatedAt: 2026-08-25T18:03:39Z
+    updatedAt: 2026-08-27T13:32:42Z
     closedAt: null
     mergedAt: null
     workCommits: *a2
@@ -216,8 +216,44 @@ aiReviews:
   comments: 5
   reviews: 5
   fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-08-25T16:12:24Z
+    - 2026-08-25T16:29:05Z
+    - 2026-08-25T16:41:00Z
+    - 2026-08-25T17:02:07Z
+    - 2026-08-25T17:16:16Z
+    - 2026-08-25T17:44:46Z
+    - 2026-08-25T17:58:43Z
+    - 2026-08-25T16:14:15Z
+    - 2026-08-25T16:12:24Z
+    - 2026-08-25T16:29:05Z
+    - 2026-08-25T16:41:00Z
+    - 2026-08-25T17:02:07Z
+    - 2026-08-25T17:16:16Z
+    - 2026-08-25T17:44:46Z
+    - 2026-08-25T17:58:43Z
+  volume:
+    pullRequests:
+      - additions: 1036
+        deletions: 211
+        state: open
+        dailyWork: true
+        filesChanged: 27
+        testFilesChanged: 4
+        commitCount: 7
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 0
+    commitAdditions: 0
+    commitDeletions: 0
+    commitStatsCount: 0
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
 hoursEstimate:
-  version: "2.0"
+  version: "2.1"
   hours: 10.8
   sessions: 1
   sessionHours: 1.8

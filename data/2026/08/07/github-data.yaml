@@ -12,7 +12,7 @@ dateRange:
   from: 2026-08-07
   to: 2026-08-07
 stats:
-  totalCommits: 3
+  totalCommits: 17
   totalAdditions: 2648
   totalDeletions: 706
   prsOpened: 6
@@ -22,20 +22,20 @@ stats:
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 18.4
+  estimatedHours: 50.1
 dailyCommits:
   - date: 2026-08-07
-    count: 3
+    count: 17
 repositories:
   - name: Myriad-Advisor-Solutions/myriadas-apps
-    commits: 3
+    commits: 16
     prsOpened: 5
     prsMerged: 3
     issuesOpened: 0
     issuesClosed: 0
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
   - name: Myriad-Advisor-Solutions/ohcpwm-apps
-    commits: 0
+    commits: 1
     prsOpened: 1
     prsMerged: 0
     issuesOpened: 0
@@ -63,10 +63,22 @@ pullRequests:
     updatedAt: 2026-08-07T18:01:38Z
     closedAt: 2026-08-07T18:01:38Z
     mergedAt: 2026-08-07T18:01:38Z
+    workCommits:
+      - &a19
+        sha: 57921d07d1047e466f1d8d227a09dc40e3aa5651
+        message: "fix(hub): keep bun:sqlite out of managed SWA Functions bundle"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/57921d07d1047e466f1d8d227a09dc40e3aa5651
+        authoredAt: 2026-08-07T17:49:05Z
     workTimestamps:
       - 2026-08-07T17:49:05Z
     workAdditions: 33
     workDeletions: 15
+    workFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/db/src/cli-client.ts
+      - packages/db/src/vm-runtime.ts
+      - packages/db/src/vm-sqlite.ts
+      - scripts/tooling.test.ts
   - title: "feat(agents): configure scoped Codex agents"
     body: |-
       - replace the root-only guidance with concise repository-wide instructions and scoped AGENTS.md files
@@ -93,11 +105,45 @@ pullRequests:
     updatedAt: 2026-08-07T18:25:16Z
     closedAt: 2026-08-07T18:25:16Z
     mergedAt: 2026-08-07T18:25:16Z
+    workCommits:
+      - &a20
+        sha: 17627f033cf4a7472fe669cc9d445b947814cab5
+        message: Configure scoped Codex agents
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/17627f033cf4a7472fe669cc9d445b947814cab5
+        authoredAt: 2026-08-07T17:54:17Z
+      - &a21
+        sha: 22bea2562cbd4c20309899d072842ddd170e889c
+        message: "chore(agents): add scripts subtree agent configuration"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/22bea2562cbd4c20309899d072842ddd170e889c
+        authoredAt: 2026-08-07T18:11:49Z
     workTimestamps:
       - 2026-08-07T17:54:17Z
       - 2026-08-07T18:11:49Z
     workAdditions: 354
     workDeletions: 14
+    workFiles:
+      - .codex/agents/docs.toml
+      - .codex/agents/excelerate.toml
+      - .codex/agents/hub.toml
+      - .codex/agents/infra.toml
+      - .codex/agents/onboarding.toml
+      - .codex/agents/packages.toml
+      - .codex/agents/pricing.toml
+      - .codex/agents/pto-tracker.toml
+      - .codex/agents/scripts.toml
+      - .codex/agents/valuation.toml
+      - .codex/config.toml
+      - AGENTS.md
+      - docs/AGENTS.md
+      - excelerate/AGENTS.md
+      - hub/AGENTS.md
+      - infra/AGENTS.md
+      - onboarding/AGENTS.md
+      - packages/AGENTS.md
+      - pricing/AGENTS.md
+      - pto-tracker/AGENTS.md
+      - scripts/AGENTS.md
+      - valuation/AGENTS.md
   - title: "chore: trim stale documentation and dead artifact"
     body: >-
       - trim superseded implementation planning from the vendor-management discovery record while retaining source
@@ -119,11 +165,26 @@ pullRequests:
     updatedAt: 2026-08-10T15:57:44Z
     closedAt: 2026-08-10T15:57:34Z
     mergedAt: 2026-08-10T15:57:34Z
-    workTimestamps: &a2
+    workCommits: &a2
+      - &a23
+        sha: 55e7da4f0a2d85115cc9501811dde0a6d4804ad8
+        message: "chore: trim stale documentation and dead artifact"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/55e7da4f0a2d85115cc9501811dde0a6d4804ad8
+        authoredAt: 2026-08-07T19:30:26Z
+      - &a24
+        sha: e0b9ca7ec61324d8b0834b8dc9097e16a160dddb
+        message: "fix: restore unified Functions entrypoint"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e0b9ca7ec61324d8b0834b8dc9097e16a160dddb
+        authoredAt: 2026-08-07T19:34:22Z
+    workTimestamps: &a3
       - 2026-08-07T19:30:26Z
       - 2026-08-07T19:34:22Z
     workAdditions: 13
     workDeletions: 59
+    workFiles: &a4
+      - docs/vendor-management-discovery.md
+      - hub/functions/dist-entry.js
+      - pto-tracker/docs/README.md
   - title: "docs(agents): require explorer and worker delegation"
     body: |-
       - require a concurrent Luna-high explorer and Terra-high worker for repository tasks
@@ -132,7 +193,7 @@ pullRequests:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/79
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: open
-    labels: &a3
+    labels: &a5
       - documentation
     additions: 53
     deletions: 1
@@ -142,11 +203,27 @@ pullRequests:
     updatedAt: 2026-08-10T16:15:16Z
     closedAt: 2026-08-10T16:15:13Z
     mergedAt: 2026-08-10T16:15:13Z
-    workTimestamps: &a4
+    workCommits: &a6
+      - &a22
+        sha: fe2ea3ea23c091c6a85ff7bdbbf5e8534b3fcea4
+        message: "docs(agents): require explorer and worker delegation"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/fe2ea3ea23c091c6a85ff7bdbbf5e8534b3fcea4
+        authoredAt: 2026-08-07T19:28:50Z
+      - &a25
+        sha: e9cf242b93933ad88cc9bb6627262825bb8b61c4
+        message: "fix(agents): register explorer and worker profiles"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e9cf242b93933ad88cc9bb6627262825bb8b61c4
+        authoredAt: 2026-08-07T19:45:58Z
+    workTimestamps: &a7
       - 2026-08-07T19:28:50Z
       - 2026-08-07T19:45:58Z
     workAdditions: 53
     workDeletions: 1
+    workFiles: &a8
+      - .codex/agents/explorer.toml
+      - .codex/agents/worker.toml
+      - .codex/config.toml
+      - AGENTS.md
   - title: "feat(onboarding): add vendor management workflows and dashboard"
     body: >-
       ## Why
@@ -177,6 +254,37 @@ pullRequests:
     updatedAt: 2026-08-07T17:21:16Z
     closedAt: 2026-08-07T17:21:13Z
     mergedAt: 2026-08-07T17:21:13Z
+    workCommits:
+      - &a13
+        sha: d025299ed261ac1b5f413a16b69258afb941a43c
+        message: Refine onboarding dashboard workspace and theme UX
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d025299ed261ac1b5f413a16b69258afb941a43c
+        authoredAt: 2026-08-07T14:06:36Z
+      - &a14
+        sha: 9a0f69befcf71f90d392bfab9239b54658c02ed3
+        message: Refine vendor intake UX and consolidate repository guidance
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9a0f69befcf71f90d392bfab9239b54658c02ed3
+        authoredAt: 2026-08-07T15:50:00Z
+      - &a15
+        sha: 4ddc59efac660abf6440f66f2dd712172c794fd7
+        message: "feat(onboarding): strengthen vendor management workflows"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4ddc59efac660abf6440f66f2dd712172c794fd7
+        authoredAt: 2026-08-07T16:12:48Z
+      - &a16
+        sha: ccc9c7c015ea85513efd179cbc1322d77ac80780
+        message: "fix(vendor-management): enforce derived vendor statuses"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ccc9c7c015ea85513efd179cbc1322d77ac80780
+        authoredAt: 2026-08-07T16:28:36Z
+      - &a17
+        sha: bb04d0060e99d23ce07b52538e527fb65b902098
+        message: "feat(onboarding): harden vendor monitoring workflows"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/bb04d0060e99d23ce07b52538e527fb65b902098
+        authoredAt: 2026-08-07T16:40:46Z
+      - &a18
+        sha: b6c75c07bad9e4c3f7e6baa5b10651227ec45cbb
+        message: "fix(onboarding): restrict risk acceptance to vendor admins"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b6c75c07bad9e4c3f7e6baa5b10651227ec45cbb
+        authoredAt: 2026-08-07T17:04:56Z
     workTimestamps:
       - 2026-08-07T14:06:36Z
       - 2026-08-07T15:50:00Z
@@ -186,6 +294,66 @@ pullRequests:
       - 2026-08-07T17:04:56Z
     workAdditions: 2018
     workDeletions: 617
+    workFiles:
+      - AGENTS.md
+      - hub/staticwebapp.config.json
+      - onboarding/AGENTS.md
+      - onboarding/apps/dashboard/app/approvals/page.tsx
+      - onboarding/apps/dashboard/app/blockers/page.tsx
+      - onboarding/apps/dashboard/app/documents/page.tsx
+      - onboarding/apps/dashboard/app/due-dates/page.tsx
+      - onboarding/apps/dashboard/app/globals.css
+      - onboarding/apps/dashboard/app/layout.tsx
+      - onboarding/apps/dashboard/app/owners/page.tsx
+      - onboarding/apps/dashboard/app/page.tsx
+      - onboarding/apps/dashboard/app/settings/page.tsx
+      - onboarding/apps/dashboard/app/tasks/page.tsx
+      - onboarding/apps/dashboard/app/vendors/approvals/page.tsx
+      - onboarding/apps/dashboard/app/vendors/assessment/page.tsx
+      - onboarding/apps/dashboard/app/vendors/blockers/page.tsx
+      - onboarding/apps/dashboard/app/vendors/contract/page.tsx
+      - onboarding/apps/dashboard/app/vendors/documents/page.tsx
+      - onboarding/apps/dashboard/app/vendors/due-dates/page.tsx
+      - onboarding/apps/dashboard/app/vendors/intake/page.tsx
+      - onboarding/apps/dashboard/app/vendors/owners/page.tsx
+      - onboarding/apps/dashboard/app/vendors/page.tsx
+      - onboarding/apps/dashboard/app/vendors/workstreams/page.tsx
+      - onboarding/apps/dashboard/app/workflows/page.tsx
+      - onboarding/apps/dashboard/components/client-workspace-empty-state.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - onboarding/apps/dashboard/components/onboarding-theme-toggle.tsx
+      - onboarding/apps/dashboard/components/task-detail-form.tsx
+      - onboarding/apps/dashboard/components/task-detail-header.tsx
+      - onboarding/apps/dashboard/components/vendor-operations.tsx
+      - onboarding/apps/dashboard/components/vendor-workspace.tsx
+      - onboarding/apps/dashboard/components/vendor-workstreams-empty-state.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-360.tsx
+      - onboarding/apps/dashboard/components/vm/vm-shared.tsx
+      - onboarding/apps/dashboard/components/workflow-overview.tsx
+      - onboarding/apps/dashboard/lib/api/client.ts
+      - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/vm-client.ts
+      - onboarding/apps/dashboard/lib/api/vm-handlers.ts
+      - onboarding/apps/dashboard/lib/api/vm-upload-document.test.ts
+      - onboarding/apps/dashboard/lib/auth.ts
+      - onboarding/apps/dashboard/lib/navigation.ts
+      - onboarding/apps/dashboard/lib/theme.ts
+      - onboarding/apps/dashboard/next.config.ts
+      - onboarding/apps/dashboard/package.json
+      - onboarding/apps/dashboard/staticwebapp.config.json
+      - packages/contracts/src/vendor-management.test.ts
+      - packages/contracts/src/vendor-management.ts
+      - packages/db/src/vm-runtime.ts
+      - packages/db/src/vm-sqlite.test.ts
+      - packages/sharepoint-mock/src/index.test.ts
+      - packages/sharepoint-mock/src/index.ts
+      - packages/ui/src/navigation/app-nav.tsx
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/navigation/index.ts
+      - packages/ui/src/navigation/types.ts
+      - packages/ui/src/user-menu.tsx
+      - pto-tracker/AGENTS.md
   - title: Add scoped Codex subtree agents and AGENTS.md guidance
     body: >-
       - Add `.codex/config.toml` with multi-agent support and subtree-scoped write permissions (`docs-write`,
@@ -196,7 +364,7 @@ pullRequests:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/108
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
-    labels: &a5 []
+    labels: &a9 []
     additions: 177
     deletions: 0
     changedFiles: 16
@@ -205,10 +373,31 @@ pullRequests:
     updatedAt: 2026-08-10T16:22:09Z
     closedAt: 2026-08-10T16:22:04Z
     mergedAt: 2026-08-10T16:22:04Z
-    workTimestamps: &a6
+    workCommits: &a10
+      - &a26
+        sha: e70844f710b7aa6e1d8fc1a4d5191d04b99cca5d
+        message: "feat(codex): add scoped subtree agents and AGENTS.md guidance"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e70844f710b7aa6e1d8fc1a4d5191d04b99cca5d
+        authoredAt: 2026-08-07T18:22:27Z
+    workTimestamps: &a11
       - 2026-08-07T18:22:27Z
     workAdditions: 177
     workDeletions: 0
+    workFiles: &a12
+      - .codex/agents/docs.toml
+      - .codex/agents/hub.toml
+      - .codex/agents/ofac.toml
+      - .codex/agents/packages.toml
+      - .codex/agents/pricing.toml
+      - .codex/agents/scripts.toml
+      - .codex/config.toml
+      - AGENTS.md
+      - docs/AGENTS.md
+      - hub/AGENTS.md
+      - ofac/AGENTS.md
+      - packages/AGENTS.md
+      - pricing/AGENTS.md
+      - scripts/AGENTS.md
 prsInProgress:
   - title: "chore: trim stale documentation and dead artifact"
     body: >-
@@ -228,9 +417,11 @@ prsInProgress:
     updatedAt: 2026-08-10T15:57:44Z
     closedAt: 2026-08-10T15:57:34Z
     mergedAt: 2026-08-10T15:57:34Z
-    workTimestamps: *a2
+    workCommits: *a2
+    workTimestamps: *a3
     workAdditions: 13
     workDeletions: 59
+    workFiles: *a4
   - title: "docs(agents): require explorer and worker delegation"
     body: |-
       - require a concurrent Luna-high explorer and Terra-high worker for repository tasks
@@ -239,7 +430,7 @@ prsInProgress:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/79
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: merged
-    labels: *a3
+    labels: *a5
     additions: 74
     deletions: 0
     changedFiles: 4
@@ -248,9 +439,11 @@ prsInProgress:
     updatedAt: 2026-08-10T16:15:16Z
     closedAt: 2026-08-10T16:15:13Z
     mergedAt: 2026-08-10T16:15:13Z
-    workTimestamps: *a4
+    workCommits: *a6
+    workTimestamps: *a7
     workAdditions: 53
     workDeletions: 1
+    workFiles: *a8
   - title: Add scoped Codex subtree agents and AGENTS.md guidance
     body: >-
       - Add `.codex/config.toml` with multi-agent support and subtree-scoped write permissions (`docs-write`,
@@ -261,7 +454,7 @@ prsInProgress:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/108
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: merged
-    labels: *a5
+    labels: *a9
     additions: 248
     deletions: 0
     changedFiles: 16
@@ -270,30 +463,72 @@ prsInProgress:
     updatedAt: 2026-08-10T16:22:09Z
     closedAt: 2026-08-10T16:22:04Z
     mergedAt: 2026-08-10T16:22:04Z
-    workTimestamps: *a6
+    workCommits: *a10
+    workTimestamps: *a11
     workAdditions: 177
     workDeletions: 0
+    workFiles: *a12
 issues: []
 events: []
 commitMessages:
   - repo: Myriad-Advisor-Solutions/myriadas-apps
     messages:
-      - "feat(agents): configure scoped Codex agents (#78)"
-      - "fix(hub): keep bun:sqlite out of managed SWA Functions bundle (#77)"
+      - Refine onboarding dashboard workspace and theme UX
+      - Refine vendor intake UX and consolidate repository guidance
+      - "feat(onboarding): strengthen vendor management workflows"
+      - "fix(vendor-management): enforce derived vendor statuses"
+      - "feat(onboarding): harden vendor monitoring workflows"
+      - "fix(onboarding): restrict risk acceptance to vendor admins"
       - "feat(onboarding): add vendor management workflows and dashboard (#75)"
+      - "fix(hub): keep bun:sqlite out of managed SWA Functions bundle"
+      - Configure scoped Codex agents
+      - "fix(hub): keep bun:sqlite out of managed SWA Functions bundle (#77)"
+      - "chore(agents): add scripts subtree agent configuration"
+      - "feat(agents): configure scoped Codex agents (#78)"
+      - "docs(agents): require explorer and worker delegation"
+      - "chore: trim stale documentation and dead artifact"
+      - "fix: restore unified Functions entrypoint"
+      - "fix(agents): register explorer and worker profiles"
     commits:
-      - sha: 774ea85018ccfeaae2b88a902f535fefb33ed40d
-        message: "feat(agents): configure scoped Codex agents (#78)"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/774ea85018ccfeaae2b88a902f535fefb33ed40d
-        authoredAt: 2026-08-07T18:25:15Z
-      - sha: 8b77374b14559563742095172c439571aa102fa9
-        message: "fix(hub): keep bun:sqlite out of managed SWA Functions bundle (#77)"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8b77374b14559563742095172c439571aa102fa9
-        authoredAt: 2026-08-07T18:01:37Z
+      - *a13
+      - *a14
+      - *a15
+      - *a16
+      - *a17
+      - *a18
       - sha: 945fa7b18be6f4660162587d4cf426e13ec43703
         message: "feat(onboarding): add vendor management workflows and dashboard (#75)"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/945fa7b18be6f4660162587d4cf426e13ec43703
         authoredAt: 2026-08-07T17:21:12Z
+        additions: 12510
+        deletions: 387
+        filesChanged: 84
+      - *a19
+      - *a20
+      - sha: 8b77374b14559563742095172c439571aa102fa9
+        message: "fix(hub): keep bun:sqlite out of managed SWA Functions bundle (#77)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8b77374b14559563742095172c439571aa102fa9
+        authoredAt: 2026-08-07T18:01:37Z
+        additions: 33
+        deletions: 15
+        filesChanged: 5
+      - *a21
+      - sha: 774ea85018ccfeaae2b88a902f535fefb33ed40d
+        message: "feat(agents): configure scoped Codex agents (#78)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/774ea85018ccfeaae2b88a902f535fefb33ed40d
+        authoredAt: 2026-08-07T18:25:15Z
+        additions: 353
+        deletions: 13
+        filesChanged: 22
+      - *a22
+      - *a23
+      - *a24
+      - *a25
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "feat(codex): add scoped subtree agents and AGENTS.md guidance"
+    commits:
+      - *a26
 releases: []
 externalContributions: []
 codeReviews: []
@@ -313,11 +548,108 @@ aiReviews:
   comments: 24
   reviews: 6
   fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-08-07T14:06:36Z
+    - 2026-08-07T15:50:00Z
+    - 2026-08-07T16:12:48Z
+    - 2026-08-07T16:28:36Z
+    - 2026-08-07T16:40:46Z
+    - 2026-08-07T17:04:56Z
+    - 2026-08-07T17:21:12Z
+    - 2026-08-07T17:49:05Z
+    - 2026-08-07T17:54:17Z
+    - 2026-08-07T18:01:37Z
+    - 2026-08-07T18:11:49Z
+    - 2026-08-07T18:25:15Z
+    - 2026-08-07T19:28:50Z
+    - 2026-08-07T19:30:26Z
+    - 2026-08-07T19:34:22Z
+    - 2026-08-07T19:45:58Z
+    - 2026-08-07T18:22:27Z
+    - 2026-08-07T17:49:13Z
+    - 2026-08-07T18:01:38Z
+    - 2026-08-07T17:49:05Z
+    - 2026-08-07T17:54:32Z
+    - 2026-08-07T18:25:16Z
+    - 2026-08-07T17:54:17Z
+    - 2026-08-07T18:11:49Z
+    - 2026-08-07T19:30:38Z
+    - 2026-08-07T19:30:26Z
+    - 2026-08-07T19:34:22Z
+    - 2026-08-07T19:29:03Z
+    - 2026-08-07T19:28:50Z
+    - 2026-08-07T19:45:58Z
+    - 2026-08-07T15:50:16Z
+    - 2026-08-07T17:21:13Z
+    - 2026-08-07T14:06:36Z
+    - 2026-08-07T15:50:00Z
+    - 2026-08-07T16:12:48Z
+    - 2026-08-07T16:28:36Z
+    - 2026-08-07T16:40:46Z
+    - 2026-08-07T17:04:56Z
+    - 2026-08-07T18:22:42Z
+    - 2026-08-07T18:22:27Z
+  volume:
+    pullRequests:
+      - additions: 33
+        deletions: 15
+        state: merged
+        dailyWork: true
+        filesChanged: 5
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 354
+        deletions: 14
+        state: merged
+        dailyWork: true
+        filesChanged: 22
+        testFilesChanged: 0
+        commitCount: 2
+      - additions: 13
+        deletions: 59
+        state: merged
+        dailyWork: true
+        filesChanged: 3
+        testFilesChanged: 0
+        commitCount: 2
+      - additions: 53
+        deletions: 1
+        state: merged
+        dailyWork: true
+        filesChanged: 4
+        testFilesChanged: 0
+        commitCount: 2
+      - additions: 2018
+        deletions: 617
+        state: merged
+        dailyWork: true
+        filesChanged: 59
+        testFilesChanged: 5
+        commitCount: 6
+      - additions: 177
+        deletions: 0
+        state: merged
+        dailyWork: true
+        filesChanged: 14
+        testFilesChanged: 0
+        commitCount: 1
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 3
+    commitAdditions: 12896
+    commitDeletions: 415
+    commitStatsCount: 3
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
 hoursEstimate:
-  hours: 18.4
+  version: "2.1"
+  hours: 50.1
   sessions: 2
   sessionHours: 4.4
-  volumeHours: 18.4
+  volumeHours: 50.1
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

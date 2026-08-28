@@ -10,16 +10,16 @@ summaries:
         value: 1 PRs
   - type: commit-summary
     heading: Commits and line changes
-    body: 7 commits with +946 / −121 lines.
+    body: 7 commits with +1,036 / −211 lines.
     chips:
       - label: Commits
         value: "7"
         color: green
       - label: Additions
-        value: "+946"
+        value: +1,036
         color: green
       - label: Deletions
-        value: −121
+        value: −211
         color: red
   - type: review-summary
     heading: AI code reviews
@@ -38,7 +38,7 @@ highlights:
   - type: pr
     title: "feat(onboarding): add client and vendor contacts"
     repo: Myriad-Advisor-Solutions/myriadas-apps
-    meta: in progress · +946 −121
+    meta: in progress · +1947 −205
     body: Still open at the end of the reporting window.
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/104
 ticker: []

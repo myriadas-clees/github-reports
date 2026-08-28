@@ -12,10 +12,10 @@ summaries:
         value: 1 PRs
   - type: commit-summary
     heading: Commits and line changes
-    body: 3 commits with +2,648 / −706 lines.
+    body: 17 commits with +2,648 / −706 lines.
     chips:
       - label: Commits
-        value: "3"
+        value: "17"
         color: green
       - label: Additions
         value: +2,648
@@ -35,7 +35,7 @@ summaries:
       tracked, elapsed, or billed time.
     chips:
       - label: Estimated engineering hours
-        value: ~18.4h
+        value: ~50.1h
 highlights:
   - type: pr
     title: "fix(hub): keep bun:sqlite out of managed SWA Functions bundle"

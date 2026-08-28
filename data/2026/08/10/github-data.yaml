@@ -12,7 +12,7 @@ dateRange:
   from: 2026-08-10
   to: 2026-08-10
 stats:
-  totalCommits: 6
+  totalCommits: 23
   totalAdditions: 8277
   totalDeletions: 7717
   prsOpened: 5
@@ -22,20 +22,20 @@ stats:
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 38.2
+  estimatedHours: 76.7
 dailyCommits:
   - date: 2026-08-10
-    count: 6
+    count: 23
 repositories:
   - name: Myriad-Advisor-Solutions/myriadas-apps
-    commits: 4
+    commits: 14
     prsOpened: 3
     prsMerged: 4
     issuesOpened: 0
     issuesClosed: 0
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
   - name: Myriad-Advisor-Solutions/ohcpwm-apps
-    commits: 2
+    commits: 9
     prsOpened: 2
     prsMerged: 2
     issuesOpened: 0
@@ -58,13 +58,38 @@ pullRequests:
     changedFiles: 19
     author: myriadas-clees
     createdAt: 2026-08-10T21:45:06Z
-    updatedAt: 2026-08-11T13:41:41Z
-    closedAt: null
-    mergedAt: null
-    workTimestamps: &a2
+    updatedAt: 2026-08-11T16:40:46Z
+    closedAt: 2026-08-11T16:40:33Z
+    mergedAt: 2026-08-11T16:40:33Z
+    workCommits: &a2
+      - &a15
+        sha: 0c8643f03b2f2111e8063b37d58647dae0964514
+        message: "feat(pricing): streamline recruit editing and business mix UX"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0c8643f03b2f2111e8063b37d58647dae0964514
+        authoredAt: 2026-08-10T21:44:49Z
+    workTimestamps: &a3
       - 2026-08-10T21:44:49Z
     workAdditions: 651
     workDeletions: 183
+    workFiles: &a4
+      - .env.example
+      - docs/pricing-architecture.md
+      - docs/pricing-dashboard-contract.md
+      - pricing/.env.example
+      - pricing/src/app/globals.css
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/pricing-graphs.test.tsx
+      - pricing/src/components/__tests__/recruit-model-shell.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/pricing-graphs.tsx
+      - pricing/src/components/recruit-model-shell.tsx
+      - pricing/src/lib/__tests__/local-pricing-auth.test.ts
+      - pricing/src/lib/__tests__/workstation.test.ts
+      - pricing/src/lib/auth.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/local-pricing-auth.ts
+      - pricing/src/lib/workstation.ts
+      - scripts/dev-pricing-api.ts
   - title: Render FiNet PDF logos from SVG
     body: >-
       - Switch FiNet pricing report branding from separate PNG cover/inline logos to a single `logo_finet.svg` wordmark
@@ -86,6 +111,32 @@ pullRequests:
     updatedAt: 2026-08-10T19:29:31Z
     closedAt: 2026-08-10T19:29:27Z
     mergedAt: 2026-08-10T19:29:27Z
+    workCommits:
+      - &a9
+        sha: 9e5b3804e1f665b5c88ba41cc790863e787ce11b
+        message: "feat(pricing): render FiNet PDF logos from SVG"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/9e5b3804e1f665b5c88ba41cc790863e787ce11b
+        authoredAt: 2026-08-10T16:03:48Z
+      - &a10
+        sha: 2efe65c693aaff45524745be03b9bdfe7b7ccf4b
+        message: "fix(pricing): switch Finet report logos to SVG"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2efe65c693aaff45524745be03b9bdfe7b7ccf4b
+        authoredAt: 2026-08-10T16:11:30Z
+      - &a12
+        sha: 2c3633aa29acd1f922fe77e60d6842152635352e
+        message: "fix(pricing): page-break advisor blocks on local expenses PDF page"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2c3633aa29acd1f922fe77e60d6842152635352e
+        authoredAt: 2026-08-10T16:20:08Z
+      - &a13
+        sha: 6d846ae01b5c10c7885a09208bfee7f48f8b493c
+        message: "chore: add finet logo PDF cover verification image"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6d846ae01b5c10c7885a09208bfee7f48f8b493c
+        authoredAt: 2026-08-10T16:43:01Z
+      - &a14
+        sha: 44de102a1f38bb76b12a4b118e46f60c28c4886e
+        message: "chore: ignore temporary PDF renders"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/44de102a1f38bb76b12a4b118e46f60c28c4886e
+        authoredAt: 2026-08-10T16:44:03Z
     workTimestamps:
       - 2026-08-10T16:03:48Z
       - 2026-08-10T16:11:30Z
@@ -94,6 +145,16 @@ pullRequests:
       - 2026-08-10T16:44:03Z
     workAdditions: 284
     workDeletions: 24
+    workFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - .gitignore
+      - pricing/functions/package.json
+      - pricing/public/report-assets/logo_finet.svg
+      - pricing/src/lib/__tests__/report-model.test.ts
+      - pricing/src/lib/report/assets.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - tmp/pdfs/finet-logo-verification-cover.png
   - title: Use shared AZURE_COSMOS settings for Proforma managed SWA
     body: >-
       ## Why
@@ -125,47 +186,38 @@ pullRequests:
     updatedAt: 2026-08-10T18:49:00Z
     closedAt: 2026-08-10T18:49:00Z
     mergedAt: 2026-08-10T18:49:00Z
+    workCommits:
+      - &a20
+        sha: 4aff9b96ccde5890a6246fcd670b2aa880a86d5f
+        message: "fix(proforma): use shared AZURE_COSMOS settings for managed SWA"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4aff9b96ccde5890a6246fcd670b2aa880a86d5f
+        authoredAt: 2026-08-10T16:44:47Z
+      - &a21
+        sha: fa9f8da83e5c07f3eec5e3155b94665fce56b263
+        message: "fix(infra): set PROFORMA_COSMOS_SHARED_CONTAINER in shared SWA"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/fa9f8da83e5c07f3eec5e3155b94665fce56b263
+        authoredAt: 2026-08-10T17:03:01Z
+      - &a22
+        sha: 7431748d540a5f10c22354c935cbf50399d8b1aa
+        message: "chore(hub): add PROFORMA_COSMOS_SHARED_CONTAINER local example"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7431748d540a5f10c22354c935cbf50399d8b1aa
+        authoredAt: 2026-08-10T18:00:31Z
     workTimestamps:
       - 2026-08-10T16:44:47Z
       - 2026-08-10T17:03:01Z
       - 2026-08-10T18:00:31Z
     workAdditions: 79
     workDeletions: 68
-  - title: Redesign Proforma recruit intake with team-first step order
-    body: >-
-      ## Why
-
-
-      Recruit intake still followed an advisor-first flow that did not match how teams are modeled in practice. Platform
-      assumptions also carried legacy OHC and FiNet Wells/WFAFN fee inputs that are no longer part of the pricing model.
-
-
-      ## What changed
-
-
-      - Reordered the new-recruit wizard to **Firm...
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
-    repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: open
-    labels: &a3
-      - github-automation
-      - "app: proforma"
-      - platform
-      - deploy-preview
-    additions: 4102
-    deletions: 4096
-    changedFiles: 55
-    author: myriadas-clees
-    createdAt: 2026-08-10T18:50:49Z
-    updatedAt: 2026-08-10T19:11:32Z
-    closedAt: null
-    mergedAt: null
-    workTimestamps: &a4
-      - 2026-08-10T18:50:03Z
-      - 2026-08-10T18:59:37Z
-      - 2026-08-10T19:06:33Z
-    workAdditions: 4102
-    workDeletions: 4096
+    workFiles:
+      - docs/deploy-asap.md
+      - hub/functions/local.settings.json.example
+      - infra/azure/README.md
+      - infra/azure/static-web-apps.bicep
+      - proforma/README.md
+      - proforma/src/lib/__tests__/runtime-config.test.ts
+      - proforma/src/lib/cosmos-data.ts
+      - proforma/src/lib/runtime-config.ts
+      - scripts/tooling.test.ts
   - title: "chore(proforma): Rename Pricing app to Proforma"
     body: >-
       ## Why
@@ -194,12 +246,629 @@ pullRequests:
     updatedAt: 2026-08-10T16:08:02Z
     closedAt: 2026-08-10T16:07:58Z
     mergedAt: 2026-08-10T16:07:58Z
+    workCommits:
+      - &a16
+        sha: 837176fb00bf99fdef05a241457414ce77b050c7
+        message: "refactor: rename pricing app to proforma"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/837176fb00bf99fdef05a241457414ce77b050c7
+        authoredAt: 2026-08-10T15:21:38Z
+      - &a17
+        sha: 06fdc9dab656f696e01187ef19458432d507a58e
+        message: "feat(proforma): add Pricing cutover compatibility for runtime and routes"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/06fdc9dab656f696e01187ef19458432d507a58e
+        authoredAt: 2026-08-10T15:38:19Z
+      - &a18
+        sha: a24cf1d206a16d1c879a87d0de3945e511a3f39c
+        message: "refactor(proforma): remove legacy Pricing compatibility layer"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a24cf1d206a16d1c879a87d0de3945e511a3f39c
+        authoredAt: 2026-08-10T16:00:53Z
     workTimestamps:
       - 2026-08-10T15:21:38Z
       - 2026-08-10T15:38:19Z
       - 2026-08-10T16:00:53Z
     workAdditions: 3062
     workDeletions: 3340
+    workFiles:
+      - .codex/agents/pricing.toml
+      - .codex/agents/proforma.toml
+      - .codex/config.toml
+      - .github/ISSUE_TEMPLATE/bug.yml
+      - .github/ISSUE_TEMPLATE/feature.yml
+      - .github/labeler.yml
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/verify.yml
+      - AGENTS.md
+      - README.md
+      - bun.lock
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/production-readiness-progress.md
+      - hub/components/HubLauncher.tsx
+      - hub/components/LandingPage.tsx
+      - hub/functions/dist-entry.js
+      - hub/functions/local.settings.json.example
+      - hub/lib/apps.test.ts
+      - hub/lib/apps.ts
+      - hub/lib/dev-apps.test.ts
+      - hub/lib/local-dev.ts
+      - hub/scripts/dev.ts
+      - hub/staticwebapp.config.json
+      - infra/azure/README.md
+      - infra/azure/proforma/README.md
+      - infra/azure/proforma/serverless.bicep
+      - infra/azure/ptb-development.parameters.json
+      - infra/azure/static-web-apps.bicep
+      - onboarding/apps/dashboard/app/vendors/contract/page.tsx
+      - onboarding/docs/vendor-management-spec.md
+      - onboarding/examples/vendor-management/Myriad_Contract_Management_Web_Form.html
+      - package.json
+      - packages/contracts/package.json
+      - packages/contracts/src/index.ts
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/contracts/src/vendor-management.ts
+      - packages/db/package.json
+      - packages/db/src/proforma.test.ts
+      - packages/db/src/proforma.ts
+      - packages/ui/src/user-menu.test.tsx
+      - pricing/.env.example
+      - pricing/AGENTS.md
+      - pricing/functions/local.settings.json.example
+      - pricing/src/app/page.tsx
+      - pricing/src/app/settings/page.tsx
+      - pricing/src/components/pricing-quick-settings.tsx
+      - pricing/src/components/pricing-theme-controller.tsx
+      - pricing/src/components/pricing-user-menu.tsx
+      - pricing/src/lib/__tests__/auth.test.ts
+      - pricing/src/lib/__tests__/pricing-auth-routes.test.ts
+      - pricing/src/lib/__tests__/pricing-user-settings.test.ts
+      - pricing/src/lib/__tests__/report-filenames.test.ts
+      - pricing/src/lib/api/request-session.ts
+      - pricing/src/lib/dev-tools.ts
+      - pricing/src/lib/pricing-auth-routes.ts
+      - pricing/src/lib/pricing-session-client.ts
+      - pricing/src/lib/pricing-theme.ts
+      - pricing/src/lib/recruit-routes.ts
+      - pricing/src/lib/report-filenames.ts
+      - pricing/src/lib/report.ts
+      - pricing/src/lib/runtime-config.ts
+      - proforma/.env.example
+      - proforma/AGENTS.md
+      - proforma/README.md
+      - proforma/eslint.config.mjs
+      - proforma/functions/host.json
+      - proforma/functions/local.settings.json.example
+      - proforma/functions/package.json
+      - proforma/functions/src/index.ts
+      - proforma/functions/tsconfig.json
+      - proforma/next-env.d.ts
+      - proforma/next.config.ts
+      - proforma/package.json
+      - proforma/postcss.config.mjs
+      - proforma/scripts/build-static.ts
+      - proforma/src/app/api/[...path]/route.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/app/page.tsx
+      - proforma/src/app/proforma-compat/page.tsx
+      - proforma/src/app/recruits/detail/page.tsx
+      - proforma/src/app/recruits/model/page.tsx
+      - proforma/src/app/recruits/new/page.tsx
+      - proforma/src/app/recruits/page.tsx
+      - proforma/src/app/settings/page.tsx
+      - proforma/src/components/__tests__/archive-recruit-form.test.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/dashboard-metrics-charts.test.tsx
+      - proforma/src/components/__tests__/dataframe-table.test.tsx
+      - proforma/src/components/__tests__/delete-recruit-form.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/pdf-report-viewer.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruit-admin-actions.test.tsx
+      - proforma/src/components/__tests__/recruit-archive-section.test.tsx
+      - proforma/src/components/__tests__/recruit-data-cell.test.tsx
+      - proforma/src/components/__tests__/recruit-detail-panels.test.tsx
+      - proforma/src/components/__tests__/recruit-row-actions.test.tsx
+      - proforma/src/components/__tests__/recruits-table-responsive-css.test.ts
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/__tests__/settings-previews.test.tsx
+      - proforma/src/components/__tests__/work-state-select.test.tsx
+      - proforma/src/components/archive-recruit-form.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/bps-calculator.tsx
+      - proforma/src/components/dashboard-metrics-charts.tsx
+      - proforma/src/components/dashboard-recruits-panel.tsx
+      - proforma/src/components/dataframe-table.tsx
+      - proforma/src/components/delete-recruit-form.tsx
+      - proforma/src/components/delete-report-form.tsx
+      - proforma/src/components/excel-sheet/__tests__/excel-cell.test.tsx
+      - proforma/src/components/excel-sheet/__tests__/excel-input-sheet.test.ts
+      - proforma/src/components/excel-sheet/__tests__/format.test.ts
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/excel-cell.tsx
+      - proforma/src/components/excel-sheet/excel-formula-bar.tsx
+      - proforma/src/components/excel-sheet/excel-grid.tsx
+      - proforma/src/components/excel-sheet/excel-input-sheet.tsx
+      - proforma/src/components/excel-sheet/format.ts
+      - proforma/src/components/excel-sheet/index.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/formatted-number-input.tsx
+      - proforma/src/components/generate-report-form.tsx
+      - proforma/src/components/model-switcher.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/payout-breakdown-donut.tsx
+      - proforma/src/components/pdf-report-viewer.tsx
+      - proforma/src/components/percent-slider.tsx
+      - proforma/src/components/pipeline-stage-bar.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-quick-settings.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-theme-controller.tsx
+      - proforma/src/components/proforma-theme-toggle.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-admin-actions.tsx
+      - proforma/src/components/recruit-archive-section.tsx
+      - proforma/src/components/recruit-data-cell.tsx
+      - proforma/src/components/recruit-detail-hero.tsx
+      - proforma/src/components/recruit-detail-metrics.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-detail-scenario-skeleton.tsx
+      - proforma/src/components/recruit-detail-scenario-view.tsx
+      - proforma/src/components/recruit-filters.tsx
+      - proforma/src/components/recruit-form.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruit-model-tab-icon.tsx
+      - proforma/src/components/recruit-row-actions.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/report-artifact-actions.tsx
+      - proforma/src/components/report-artifact-viewer.tsx
+      - proforma/src/components/report-sort-control.tsx
+      - proforma/src/components/report-viewer-shell.tsx
+      - proforma/src/components/scenario-brief-grid.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/components/settings-previews.tsx
+      - proforma/src/components/stepper-number-input.tsx
+      - proforma/src/components/work-state-select.tsx
+      - proforma/src/components/workbook-report-viewer.tsx
+      - proforma/src/components/workstation-report-table.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/auth.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/dashboard-summary.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/format.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/pipeline-metrics.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-auth-routes.test.ts
+      - proforma/src/lib/__tests__/proforma-compat.test.ts
+      - proforma/src/lib/__tests__/proforma-user-settings.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/recruit-routes.test.ts
+      - proforma/src/lib/__tests__/report-filenames.test.ts
+      - proforma/src/lib/__tests__/report-list.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report-storage.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/runtime-config.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation-sections.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/api/request-session.ts
+      - proforma/src/lib/auth.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/cosmos-data.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/data.ts
+      - proforma/src/lib/dev-tools.ts
+      - proforma/src/lib/edit-view.ts
+      - proforma/src/lib/entity-state-costs.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/format.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/pipeline-metrics.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/proforma-auth-routes.ts
+      - proforma/src/lib/proforma-compat.ts
+      - proforma/src/lib/proforma-session-client.ts
+      - proforma/src/lib/proforma-theme.ts
+      - proforma/src/lib/proforma-user-settings.ts
+      - proforma/src/lib/proforma-visibility.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/recruit-routes.ts
+      - proforma/src/lib/report-filenames.ts
+      - proforma/src/lib/report-list.ts
+      - proforma/src/lib/report-storage.ts
+      - proforma/src/lib/report.ts
+      - proforma/src/lib/report/assets.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/format.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/report/workbook-preview.ts
+      - proforma/src/lib/reports.ts
+      - proforma/src/lib/runtime-config.ts
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/stage-badge.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation-sections.ts
+      - proforma/src/lib/workstation.ts
+      - proforma/staticwebapp.config.json
+      - proforma/tsconfig.json
+      - proforma/vitest.config.ts
+      - pto-tracker/Dockerfile
+      - scripts/app-registry.ts
+      - scripts/github/configure-repository.ts
+      - scripts/github/triage-issue.ts
+      - scripts/tooling.test.ts
+      - scripts/validate-artifacts.ts
+  - title: Redesign Proforma recruit intake with team-first step order
+    body: >-
+      ## Why
+
+
+      Recruit intake still followed an advisor-first flow that did not match how teams are modeled in practice. Platform
+      assumptions also carried legacy OHC and FiNet Wells/WFAFN fee inputs that are no longer part of the pricing model.
+
+
+      ## What changed
+
+
+      - Reordered the new-recruit wizard to **Firm...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a5
+      - documentation
+      - github-automation
+      - "app: proforma"
+      - platform
+      - deploy-preview
+    additions: 4102
+    deletions: 4096
+    changedFiles: 61
+    author: myriadas-clees
+    createdAt: 2026-08-10T18:50:49Z
+    updatedAt: 2026-08-17T23:10:26Z
+    closedAt: 2026-08-17T23:10:26Z
+    mergedAt: 2026-08-17T23:10:26Z
+    workCommits: &a6
+      - &a23
+        sha: 9b1bb02af5b85fc395cee9640b5abc105aeecf03
+        message: "feat(pricing): redesign recruit intake with team-first step order"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9b1bb02af5b85fc395cee9640b5abc105aeecf03
+        authoredAt: 2026-08-10T18:50:03Z
+      - &a24
+        sha: c68eac352d846f16e58eac23801ca55134fadf11
+        message: Merge main into Proforma intake redesign
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c68eac352d846f16e58eac23801ca55134fadf11
+        authoredAt: 2026-08-10T18:59:37Z
+      - &a25
+        sha: f6b1749e33a353682a9e6eae9f056a40f4c40286
+        message: "fix(preview): deploy managed API with Hub previews"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f6b1749e33a353682a9e6eae9f056a40f4c40286
+        authoredAt: 2026-08-10T19:06:33Z
+    workTimestamps: &a7
+      - 2026-08-10T18:50:03Z
+      - 2026-08-10T18:59:37Z
+      - 2026-08-10T19:06:33Z
+    workAdditions: 4102
+    workDeletions: 4096
+    workFiles: &a8
+      - .codex/agents/explorer.toml
+      - .codex/agents/pricing.toml
+      - .codex/agents/proforma.toml
+      - .codex/agents/worker.toml
+      - .codex/config.toml
+      - .github/ISSUE_TEMPLATE/bug.yml
+      - .github/ISSUE_TEMPLATE/feature.yml
+      - .github/labeler.yml
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/codeql.yml
+      - .github/workflows/verify.yml
+      - AGENTS.md
+      - README.md
+      - bun.lock
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/production-readiness-progress.md
+      - docs/vendor-management-discovery.md
+      - hub/components/HubLauncher.tsx
+      - hub/components/LandingPage.tsx
+      - hub/functions/dist-entry.js
+      - hub/functions/local.settings.json.example
+      - hub/lib/apps.test.ts
+      - hub/lib/apps.ts
+      - hub/lib/dev-apps.test.ts
+      - hub/lib/local-dev.ts
+      - hub/scripts/dev.ts
+      - hub/staticwebapp.config.json
+      - infra/azure/README.md
+      - infra/azure/proforma/README.md
+      - infra/azure/proforma/serverless.bicep
+      - infra/azure/ptb-development.parameters.json
+      - infra/azure/static-web-apps.bicep
+      - package.json
+      - packages/contracts/package.json
+      - packages/contracts/src/index.ts
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/package.json
+      - packages/db/src/pricing.test.ts
+      - packages/db/src/proforma.test.ts
+      - packages/db/src/proforma.ts
+      - packages/ui/src/user-menu.test.tsx
+      - pricing/.env.example
+      - pricing/AGENTS.md
+      - pricing/README.md
+      - pricing/functions/local.settings.json.example
+      - pricing/next.config.ts
+      - pricing/src/app/globals.css
+      - pricing/src/app/layout.tsx
+      - pricing/src/app/login/page.tsx
+      - pricing/src/app/page.tsx
+      - pricing/src/app/proforma-compat/page.tsx
+      - pricing/src/app/settings/page.tsx
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - pricing/src/components/__tests__/pricing-graphs.test.tsx
+      - pricing/src/components/__tests__/pricing-workstation-client.test.tsx
+      - pricing/src/components/__tests__/recruits-table.test.tsx
+      - pricing/src/components/__tests__/scenario-model-tab.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - pricing/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-app-shell.tsx
+      - pricing/src/components/pricing-graphs.tsx
+      - pricing/src/components/pricing-quick-settings.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/components/pricing-theme-controller.tsx
+      - pricing/src/components/pricing-user-menu.tsx
+      - pricing/src/components/pricing-workstation-client.tsx
+      - pricing/src/components/recruit-detail-panels.tsx
+      - pricing/src/components/recruit-model-shell.tsx
+      - pricing/src/components/recruits-table.tsx
+      - pricing/src/components/scenario-model-tab.tsx
+      - pricing/src/lib/__tests__/auth.test.ts
+      - pricing/src/lib/__tests__/calculation.test.ts
+      - pricing/src/lib/__tests__/excel-formulas.test.ts
+      - pricing/src/lib/__tests__/new-recruit.test.ts
+      - pricing/src/lib/__tests__/pricing-api-client.test.ts
+      - pricing/src/lib/__tests__/pricing-auth-routes.test.ts
+      - pricing/src/lib/__tests__/pricing-user-settings.test.ts
+      - pricing/src/lib/__tests__/pricing-visibility.test.ts
+      - pricing/src/lib/__tests__/proforma-compat.test.ts
+      - pricing/src/lib/__tests__/recruit-model-tabs.test.ts
+      - pricing/src/lib/__tests__/report-filenames.test.ts
+      - pricing/src/lib/__tests__/report-model.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/runtime-config.test.ts
+      - pricing/src/lib/__tests__/setup-projection.test.ts
+      - pricing/src/lib/__tests__/workbook-output.test.ts
+      - pricing/src/lib/__tests__/workbook-preview.test.ts
+      - pricing/src/lib/__tests__/workstation.test.ts
+      - pricing/src/lib/api/request-session.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/dashboard-summary.ts
+      - pricing/src/lib/dev-tools.ts
+      - pricing/src/lib/excel-formulas.ts
+      - pricing/src/lib/id.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/pricing-auth-routes.ts
+      - pricing/src/lib/pricing-session-client.ts
+      - pricing/src/lib/pricing-theme.ts
+      - pricing/src/lib/proforma-compat.ts
+      - pricing/src/lib/recruit-model-tabs.ts
+      - pricing/src/lib/recruit-routes.ts
+      - pricing/src/lib/report-filenames.ts
+      - pricing/src/lib/report.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/runtime-config.ts
+      - pricing/src/lib/seed.ts
+      - pricing/src/lib/setup-projection.ts
+      - pricing/src/lib/workbook-output.ts
+      - pricing/src/lib/workstation.ts
+      - pricing/staticwebapp.config.json
+      - proforma/.env.example
+      - proforma/AGENTS.md
+      - proforma/README.md
+      - proforma/eslint.config.mjs
+      - proforma/functions/host.json
+      - proforma/functions/local.settings.json.example
+      - proforma/functions/package.json
+      - proforma/functions/src/index.ts
+      - proforma/functions/tsconfig.json
+      - proforma/next-env.d.ts
+      - proforma/next.config.ts
+      - proforma/package.json
+      - proforma/postcss.config.mjs
+      - proforma/scripts/build-static.ts
+      - proforma/src/app/api/[...path]/route.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/app/page.tsx
+      - proforma/src/app/recruits/detail/page.tsx
+      - proforma/src/app/recruits/model/page.tsx
+      - proforma/src/app/recruits/new/page.tsx
+      - proforma/src/app/recruits/page.tsx
+      - proforma/src/app/settings/page.tsx
+      - proforma/src/components/__tests__/archive-recruit-form.test.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/dashboard-metrics-charts.test.tsx
+      - proforma/src/components/__tests__/dataframe-table.test.tsx
+      - proforma/src/components/__tests__/delete-recruit-form.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/pdf-report-viewer.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruit-admin-actions.test.tsx
+      - proforma/src/components/__tests__/recruit-archive-section.test.tsx
+      - proforma/src/components/__tests__/recruit-data-cell.test.tsx
+      - proforma/src/components/__tests__/recruit-detail-panels.test.tsx
+      - proforma/src/components/__tests__/recruit-row-actions.test.tsx
+      - proforma/src/components/__tests__/recruits-table-responsive-css.test.ts
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/__tests__/settings-previews.test.tsx
+      - proforma/src/components/__tests__/work-state-select.test.tsx
+      - proforma/src/components/archive-recruit-form.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/bps-calculator.tsx
+      - proforma/src/components/dashboard-metrics-charts.tsx
+      - proforma/src/components/dashboard-recruits-panel.tsx
+      - proforma/src/components/dataframe-table.tsx
+      - proforma/src/components/delete-recruit-form.tsx
+      - proforma/src/components/delete-report-form.tsx
+      - proforma/src/components/excel-sheet/__tests__/excel-cell.test.tsx
+      - proforma/src/components/excel-sheet/__tests__/excel-input-sheet.test.ts
+      - proforma/src/components/excel-sheet/__tests__/format.test.ts
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/excel-cell.tsx
+      - proforma/src/components/excel-sheet/excel-formula-bar.tsx
+      - proforma/src/components/excel-sheet/excel-grid.tsx
+      - proforma/src/components/excel-sheet/excel-input-sheet.tsx
+      - proforma/src/components/excel-sheet/format.ts
+      - proforma/src/components/excel-sheet/index.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/formatted-number-input.tsx
+      - proforma/src/components/generate-report-form.tsx
+      - proforma/src/components/model-switcher.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/payout-breakdown-donut.tsx
+      - proforma/src/components/pdf-report-viewer.tsx
+      - proforma/src/components/percent-slider.tsx
+      - proforma/src/components/pipeline-stage-bar.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-quick-settings.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-theme-controller.tsx
+      - proforma/src/components/proforma-theme-toggle.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-admin-actions.tsx
+      - proforma/src/components/recruit-archive-section.tsx
+      - proforma/src/components/recruit-data-cell.tsx
+      - proforma/src/components/recruit-detail-hero.tsx
+      - proforma/src/components/recruit-detail-metrics.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-detail-scenario-skeleton.tsx
+      - proforma/src/components/recruit-detail-scenario-view.tsx
+      - proforma/src/components/recruit-filters.tsx
+      - proforma/src/components/recruit-form.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruit-model-tab-icon.tsx
+      - proforma/src/components/recruit-row-actions.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/report-artifact-actions.tsx
+      - proforma/src/components/report-artifact-viewer.tsx
+      - proforma/src/components/report-sort-control.tsx
+      - proforma/src/components/report-viewer-shell.tsx
+      - proforma/src/components/scenario-brief-grid.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/components/settings-previews.tsx
+      - proforma/src/components/stepper-number-input.tsx
+      - proforma/src/components/work-state-select.tsx
+      - proforma/src/components/workbook-report-viewer.tsx
+      - proforma/src/components/workstation-report-table.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/auth.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/dashboard-summary.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/format.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/pipeline-metrics.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-auth-routes.test.ts
+      - proforma/src/lib/__tests__/proforma-user-settings.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/recruit-routes.test.ts
+      - proforma/src/lib/__tests__/report-filenames.test.ts
+      - proforma/src/lib/__tests__/report-list.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report-storage.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/runtime-config.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation-sections.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/api/request-session.ts
+      - proforma/src/lib/auth.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/cosmos-data.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/data.ts
+      - proforma/src/lib/dev-tools.ts
+      - proforma/src/lib/edit-view.ts
+      - proforma/src/lib/entity-state-costs.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/format.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/pipeline-metrics.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/proforma-auth-routes.ts
+      - proforma/src/lib/proforma-session-client.ts
+      - proforma/src/lib/proforma-theme.ts
+      - proforma/src/lib/proforma-user-settings.ts
+      - proforma/src/lib/proforma-visibility.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/recruit-routes.ts
+      - proforma/src/lib/report-filenames.ts
+      - proforma/src/lib/report-list.ts
+      - proforma/src/lib/report-storage.ts
+      - proforma/src/lib/report.ts
+      - proforma/src/lib/report/assets.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/format.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/report/workbook-preview.ts
+      - proforma/src/lib/reports.ts
+      - proforma/src/lib/runtime-config.ts
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/stage-badge.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation-sections.ts
+      - proforma/src/lib/workstation.ts
+      - proforma/staticwebapp.config.json
+      - proforma/tsconfig.json
+      - proforma/vitest.config.ts
+      - pto-tracker/Dockerfile
+      - pto-tracker/docs/README.md
+      - scripts/app-registry.ts
+      - scripts/github/configure-repository.ts
+      - scripts/github/triage-issue.ts
+      - scripts/tooling.test.ts
+      - scripts/validate-artifacts.ts
   - title: Add scoped Codex subtree agents and AGENTS.md guidance
     body: >-
       - Add `.codex/config.toml` with multi-agent support and subtree-scoped write permissions (`docs-write`,
@@ -219,10 +888,21 @@ pullRequests:
     updatedAt: 2026-08-10T16:22:09Z
     closedAt: 2026-08-10T16:22:04Z
     mergedAt: 2026-08-10T16:22:04Z
+    workCommits:
+      - &a11
+        sha: bdd1ba2baf2a39850376fe8fd2840175d16c1657
+        message: "feat(codex): add explorer and worker scoped agents"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/bdd1ba2baf2a39850376fe8fd2840175d16c1657
+        authoredAt: 2026-08-10T16:17:25Z
     workTimestamps:
       - 2026-08-10T16:17:25Z
     workAdditions: 71
     workDeletions: 0
+    workFiles:
+      - .codex/agents/explorer.toml
+      - .codex/agents/worker.toml
+      - .codex/config.toml
+      - AGENTS.md
   - title: "chore: trim stale documentation and dead artifact"
     body: >-
       - trim superseded implementation planning from the vendor-management discovery record while retaining source
@@ -244,9 +924,11 @@ pullRequests:
     updatedAt: 2026-08-10T15:57:44Z
     closedAt: 2026-08-10T15:57:34Z
     mergedAt: 2026-08-10T15:57:34Z
+    workCommits: []
     workTimestamps: []
     workAdditions: 0
     workDeletions: 0
+    workFiles: []
   - title: "docs(agents): require explorer and worker delegation"
     body: |-
       - require a concurrent Luna-high explorer and Terra-high worker for repository tasks
@@ -265,10 +947,18 @@ pullRequests:
     updatedAt: 2026-08-10T16:15:16Z
     closedAt: 2026-08-10T16:15:13Z
     mergedAt: 2026-08-10T16:15:13Z
+    workCommits:
+      - &a19
+        sha: 30e47533b2f3552a65391161fda9eca4632b11e1
+        message: "docs(agents): route work through scoped specialists"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/30e47533b2f3552a65391161fda9eca4632b11e1
+        authoredAt: 2026-08-10T16:03:03Z
     workTimestamps:
       - 2026-08-10T16:03:03Z
     workAdditions: 28
     workDeletions: 6
+    workFiles:
+      - AGENTS.md
 prsInProgress:
   - title: Streamline recruit editing and business mix UX in pricing
     body: >-
@@ -279,19 +969,21 @@ prsInProgress:
       **Mod...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/111
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
-    state: open
+    state: merged
     labels: *a1
     additions: 748
     deletions: 202
     changedFiles: 19
     author: myriadas-clees
     createdAt: 2026-08-10T21:45:06Z
-    updatedAt: 2026-08-11T13:41:41Z
-    closedAt: null
-    mergedAt: null
-    workTimestamps: *a2
+    updatedAt: 2026-08-11T16:40:46Z
+    closedAt: 2026-08-11T16:40:33Z
+    mergedAt: 2026-08-11T16:40:33Z
+    workCommits: *a2
+    workTimestamps: *a3
     workAdditions: 651
     workDeletions: 183
+    workFiles: *a4
   - title: Redesign Proforma recruit intake with team-first step order
     body: >-
       ## Why
@@ -307,58 +999,112 @@ prsInProgress:
       - Reordered the new-recruit wizard to **Firm...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: open
-    labels: *a3
-    additions: 1105
-    deletions: 860
-    changedFiles: 55
+    state: merged
+    labels: *a5
+    additions: 3602
+    deletions: 1565
+    changedFiles: 61
     author: myriadas-clees
     createdAt: 2026-08-10T18:50:49Z
-    updatedAt: 2026-08-10T19:11:32Z
-    closedAt: null
-    mergedAt: null
-    workTimestamps: *a4
+    updatedAt: 2026-08-17T23:10:26Z
+    closedAt: 2026-08-17T23:10:26Z
+    mergedAt: 2026-08-17T23:10:26Z
+    workCommits: *a6
+    workTimestamps: *a7
     workAdditions: 4102
     workDeletions: 4096
+    workFiles: *a8
 issues: []
 events: []
 commitMessages:
-  - repo: Myriad-Advisor-Solutions/myriadas-apps
-    messages:
-      - Use shared AZURE_COSMOS settings for Proforma managed SWA (#83)
-      - "docs(agents): require explorer and worker delegation (#79)"
-      - "chore(proforma): Rename Pricing app to Proforma (#81)"
-      - "chore: trim stale documentation and dead artifact (#80)"
-    commits:
-      - sha: 193609c11a50185b62b2e9eb5e93191a23603bd5
-        message: Use shared AZURE_COSMOS settings for Proforma managed SWA (#83)
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/193609c11a50185b62b2e9eb5e93191a23603bd5
-        authoredAt: 2026-08-10T18:49:00Z
-      - sha: 7cbe1df0ccd4bfd13295fef645069527fff8538b
-        message: "docs(agents): require explorer and worker delegation (#79)"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7cbe1df0ccd4bfd13295fef645069527fff8538b
-        authoredAt: 2026-08-10T16:15:13Z
-      - sha: 363b84ebf066ff9644b7196d94102c4bbb0be266
-        message: "chore(proforma): Rename Pricing app to Proforma (#81)"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/363b84ebf066ff9644b7196d94102c4bbb0be266
-        authoredAt: 2026-08-10T16:07:58Z
-      - sha: 22cf3ed5ce4441e86a1bc62b133e7914ab470395
-        message: "chore: trim stale documentation and dead artifact (#80)"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/22cf3ed5ce4441e86a1bc62b133e7914ab470395
-        authoredAt: 2026-08-10T15:57:34Z
   - repo: Myriad-Advisor-Solutions/ohcpwm-apps
     messages:
-      - Render FiNet PDF logos from SVG (#109)
+      - "feat(pricing): render FiNet PDF logos from SVG"
+      - "fix(pricing): switch Finet report logos to SVG"
+      - "feat(codex): add explorer and worker scoped agents"
+      - "fix(pricing): page-break advisor blocks on local expenses PDF page"
       - "feat(codex): Add scoped Codex subtree agents and AGENTS.md guidance (#108)"
+      - "chore: add finet logo PDF cover verification image"
+      - "chore: ignore temporary PDF renders"
+      - Render FiNet PDF logos from SVG (#109)
+      - "feat(pricing): streamline recruit editing and business mix UX"
     commits:
-      - sha: 8015ffae8be629c47a70f15a3029e554ccfa2efd
-        message: Render FiNet PDF logos from SVG (#109)
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8015ffae8be629c47a70f15a3029e554ccfa2efd
-        authoredAt: 2026-08-10T19:29:26Z
+      - *a9
+      - *a10
+      - *a11
+      - *a12
       - sha: 41da63705f163a0edf201414160d7d0d5a1f2f79
         message: "feat(codex): Add scoped Codex subtree agents and AGENTS.md guidance (#108)"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/41da63705f163a0edf201414160d7d0d5a1f2f79
         authoredAt: 2026-08-10T16:22:04Z
+        additions: 248
+        deletions: 0
+        filesChanged: 16
+      - *a13
+      - *a14
+      - sha: 8015ffae8be629c47a70f15a3029e554ccfa2efd
+        message: Render FiNet PDF logos from SVG (#109)
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8015ffae8be629c47a70f15a3029e554ccfa2efd
+        authoredAt: 2026-08-10T19:29:26Z
+        additions: 284
+        deletions: 24
+        filesChanged: 8
+      - *a15
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "refactor: rename pricing app to proforma"
+      - "feat(proforma): add Pricing cutover compatibility for runtime and routes"
+      - "chore: trim stale documentation and dead artifact (#80)"
+      - "refactor(proforma): remove legacy Pricing compatibility layer"
+      - "docs(agents): route work through scoped specialists"
+      - "chore(proforma): Rename Pricing app to Proforma (#81)"
+      - "docs(agents): require explorer and worker delegation (#79)"
+      - "fix(proforma): use shared AZURE_COSMOS settings for managed SWA"
+      - "fix(infra): set PROFORMA_COSMOS_SHARED_CONTAINER in shared SWA"
+      - "chore(hub): add PROFORMA_COSMOS_SHARED_CONTAINER local example"
+      - Use shared AZURE_COSMOS settings for Proforma managed SWA (#83)
+      - "feat(pricing): redesign recruit intake with team-first step order"
+      - Merge main into Proforma intake redesign
+      - "fix(preview): deploy managed API with Hub previews"
+    commits:
+      - *a16
+      - *a17
+      - sha: 22cf3ed5ce4441e86a1bc62b133e7914ab470395
+        message: "chore: trim stale documentation and dead artifact (#80)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/22cf3ed5ce4441e86a1bc62b133e7914ab470395
+        authoredAt: 2026-08-10T15:57:34Z
+        additions: 7
+        deletions: 53
+        filesChanged: 2
+      - *a18
+      - *a19
+      - sha: 363b84ebf066ff9644b7196d94102c4bbb0be266
+        message: "chore(proforma): Rename Pricing app to Proforma (#81)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/363b84ebf066ff9644b7196d94102c4bbb0be266
+        authoredAt: 2026-08-10T16:07:58Z
+        additions: 2893
+        deletions: 3171
+        filesChanged: 244
+      - sha: 7cbe1df0ccd4bfd13295fef645069527fff8538b
+        message: "docs(agents): require explorer and worker delegation (#79)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7cbe1df0ccd4bfd13295fef645069527fff8538b
+        authoredAt: 2026-08-10T16:15:13Z
+        additions: 74
+        deletions: 0
+        filesChanged: 4
+      - *a20
+      - *a21
+      - *a22
+      - sha: 193609c11a50185b62b2e9eb5e93191a23603bd5
+        message: Use shared AZURE_COSMOS settings for Proforma managed SWA (#83)
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/193609c11a50185b62b2e9eb5e93191a23603bd5
+        authoredAt: 2026-08-10T18:49:00Z
+        additions: 79
+        deletions: 68
+        filesChanged: 9
+      - *a23
+      - *a24
+      - *a25
 releases: []
 externalContributions: []
 codeReviews: []
@@ -378,11 +1124,129 @@ aiReviews:
   comments: 24
   reviews: 10
   fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-08-10T16:03:48Z
+    - 2026-08-10T16:11:30Z
+    - 2026-08-10T16:17:25Z
+    - 2026-08-10T16:20:08Z
+    - 2026-08-10T16:22:04Z
+    - 2026-08-10T16:43:01Z
+    - 2026-08-10T16:44:03Z
+    - 2026-08-10T19:29:26Z
+    - 2026-08-10T21:44:49Z
+    - 2026-08-10T15:21:38Z
+    - 2026-08-10T15:38:19Z
+    - 2026-08-10T15:57:34Z
+    - 2026-08-10T16:00:53Z
+    - 2026-08-10T16:03:03Z
+    - 2026-08-10T16:07:58Z
+    - 2026-08-10T16:15:13Z
+    - 2026-08-10T16:44:47Z
+    - 2026-08-10T17:03:01Z
+    - 2026-08-10T18:00:31Z
+    - 2026-08-10T18:49:00Z
+    - 2026-08-10T18:50:03Z
+    - 2026-08-10T18:59:37Z
+    - 2026-08-10T19:06:33Z
+    - 2026-08-10T21:45:06Z
+    - 2026-08-10T21:44:49Z
+    - 2026-08-10T16:04:04Z
+    - 2026-08-10T19:29:27Z
+    - 2026-08-10T16:03:48Z
+    - 2026-08-10T16:11:30Z
+    - 2026-08-10T16:20:08Z
+    - 2026-08-10T16:43:01Z
+    - 2026-08-10T16:44:03Z
+    - 2026-08-10T16:45:06Z
+    - 2026-08-10T18:49:00Z
+    - 2026-08-10T16:44:47Z
+    - 2026-08-10T17:03:01Z
+    - 2026-08-10T18:00:31Z
+    - 2026-08-10T15:22:48Z
+    - 2026-08-10T16:07:58Z
+    - 2026-08-10T15:21:38Z
+    - 2026-08-10T15:38:19Z
+    - 2026-08-10T16:00:53Z
+    - 2026-08-10T18:50:49Z
+    - 2026-08-10T18:50:03Z
+    - 2026-08-10T18:59:37Z
+    - 2026-08-10T19:06:33Z
+    - 2026-08-10T16:22:04Z
+    - 2026-08-10T16:17:25Z
+    - 2026-08-10T15:57:34Z
+    - 2026-08-10T16:15:13Z
+    - 2026-08-10T16:03:03Z
+  volume:
+    pullRequests:
+      - additions: 651
+        deletions: 183
+        state: merged
+        dailyWork: true
+        filesChanged: 18
+        testFilesChanged: 5
+        commitCount: 1
+      - additions: 71
+        deletions: 0
+        state: merged
+        dailyWork: true
+        filesChanged: 4
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 284
+        deletions: 24
+        state: merged
+        dailyWork: true
+        filesChanged: 9
+        testFilesChanged: 1
+        commitCount: 5
+      - additions: 79
+        deletions: 68
+        state: merged
+        dailyWork: true
+        filesChanged: 9
+        testFilesChanged: 2
+        commitCount: 3
+      - additions: 28
+        deletions: 6
+        state: merged
+        dailyWork: true
+        filesChanged: 1
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 3062
+        deletions: 3340
+        state: merged
+        dailyWork: true
+        filesChanged: 245
+        testFilesChanged: 60
+        commitCount: 3
+      - additions: 4102
+        deletions: 4096
+        state: merged
+        dailyWork: true
+        filesChanged: 302
+        testFilesChanged: 83
+        commitCount: 3
+      - additions: 0
+        deletions: 0
+        state: merged
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 6
+    commitAdditions: 3585
+    commitDeletions: 3316
+    commitStatsCount: 6
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
 hoursEstimate:
-  hours: 38.2
+  version: "2.1"
+  hours: 76.7
   sessions: 2
   sessionHours: 4.6
-  volumeHours: 38.2
+  volumeHours: 76.7
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

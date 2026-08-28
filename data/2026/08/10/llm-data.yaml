@@ -12,10 +12,10 @@ summaries:
         value: 2 PRs
   - type: commit-summary
     heading: Commits and line changes
-    body: 6 commits with +8,277 / −7,717 lines.
+    body: 23 commits with +8,277 / −7,717 lines.
     chips:
       - label: Commits
-        value: "6"
+        value: "23"
         color: green
       - label: Additions
         value: +8,277
@@ -35,7 +35,7 @@ summaries:
       tracked, elapsed, or billed time.
     chips:
       - label: Estimated engineering hours
-        value: ~38.2h
+        value: ~76.7h
 highlights:
   - type: pr
     title: Render FiNet PDF logos from SVG

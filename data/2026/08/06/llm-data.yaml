@@ -12,10 +12,10 @@ summaries:
         value: 1 PRs
   - type: commit-summary
     heading: Commits and line changes
-    body: 3 commits with +1,060 / −222 lines.
+    body: 9 commits with +1,060 / −222 lines.
     chips:
       - label: Commits
-        value: "3"
+        value: "9"
         color: green
       - label: Additions
         value: +1,060
@@ -43,7 +43,7 @@ summaries:
       tracked, elapsed, or billed time.
     chips:
       - label: Estimated engineering hours
-        value: ~10.6h
+        value: ~27.1h
 highlights:
   - type: pr
     title: "fix(pricing): remove FiNet comparisons from PDFs"
