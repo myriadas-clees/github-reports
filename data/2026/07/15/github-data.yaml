@@ -12,7 +12,7 @@ dateRange:
   from: 2026-07-15
   to: 2026-07-15
 stats:
-  totalCommits: 16
+  totalCommits: 30
   totalAdditions: 822
   totalDeletions: 839
   prsOpened: 4
@@ -22,55 +22,28 @@ stats:
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 13.5
+  estimatedHours: 31.2
 dailyCommits:
   - date: 2026-07-14
     count: 1
   - date: 2026-07-15
-    count: 15
+    count: 29
 repositories:
   - name: Myriad-Advisor-Solutions/myriadas-apps
-    commits: 13
+    commits: 21
     prsOpened: 2
     prsMerged: 2
     issuesOpened: 0
     issuesClosed: 0
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
   - name: Myriad-Advisor-Solutions/ohcpwm-apps
-    commits: 3
+    commits: 9
     prsOpened: 2
     prsMerged: 2
     issuesOpened: 0
     issuesClosed: 0
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
 pullRequests:
-  - title: "ci: harden PR preview credentials"
-    body: |-
-      ## What changed
-
-      - build Hub artifacts without Azure deployment credentials
-      - deploy from a fresh runner with PR-write permission scoped to that job
-      - cancel stale runs for the same PR preview
-
-      ## Why
-
-      PR-controlled build code previously shared a job with the Azure deployment token, and concurrent r...
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/27
-    repository: Myriad-Advisor-Solutions/myriadas-apps
-    state: merged
-    labels: []
-    additions: 58
-    deletions: 3
-    changedFiles: 1
-    author: myriadas-clees
-    createdAt: 2026-07-15T16:44:55Z
-    updatedAt: 2026-07-16T19:54:48Z
-    closedAt: 2026-07-15T17:00:50Z
-    mergedAt: 2026-07-15T17:00:50Z
-    workTimestamps:
-      - 2026-07-15T16:43:43Z
-    workAdditions: 58
-    workDeletions: 3
   - title: "ci: scope PR preview permissions"
     body: >-
       ## What changed
@@ -104,10 +77,53 @@ pullRequests:
     updatedAt: 2026-07-15T20:38:30Z
     closedAt: 2026-07-15T17:00:57Z
     mergedAt: 2026-07-15T17:00:57Z
+    workCommits:
+      - &a6
+        sha: f98296a1258361c82fd709496e53d898e8cb7105
+        message: "ci: harden PR preview credentials"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f98296a1258361c82fd709496e53d898e8cb7105
+        authoredAt: 2026-07-15T16:43:57Z
     workTimestamps:
       - 2026-07-15T16:43:57Z
     workAdditions: 6
     workDeletions: 1
+    workFiles:
+      - .github/workflows/azure-static-web-apps-pricing.yml
+  - title: "ci: harden PR preview credentials"
+    body: |-
+      ## What changed
+
+      - build Hub artifacts without Azure deployment credentials
+      - deploy from a fresh runner with PR-write permission scoped to that job
+      - cancel stale runs for the same PR preview
+
+      ## Why
+
+      PR-controlled build code previously shared a job with the Azure deployment token, and concurrent r...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/27
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels: []
+    additions: 58
+    deletions: 3
+    changedFiles: 1
+    author: myriadas-clees
+    createdAt: 2026-07-15T16:44:55Z
+    updatedAt: 2026-07-16T19:54:48Z
+    closedAt: 2026-07-15T17:00:50Z
+    mergedAt: 2026-07-15T17:00:50Z
+    workCommits:
+      - &a14
+        sha: 1838b620e7f837b9e0bdeeea8f23c6bc4aeebcda
+        message: "ci: harden PR preview credentials"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/1838b620e7f837b9e0bdeeea8f23c6bc4aeebcda
+        authoredAt: 2026-07-15T16:43:43Z
+    workTimestamps:
+      - 2026-07-15T16:43:43Z
+    workAdditions: 58
+    workDeletions: 3
+    workFiles:
+      - .github/workflows/azure-static-web-apps.yml
   - title: "ci: add Static Web Apps PR previews"
     body: |-
       ## What changed
@@ -130,6 +146,32 @@ pullRequests:
     updatedAt: 2026-07-15T20:38:30Z
     closedAt: 2026-07-15T16:26:21Z
     mergedAt: 2026-07-15T16:26:21Z
+    workCommits:
+      - &a1
+        sha: 60a46f77c2145b2aa6a825cbca1597e46a738912
+        message: "ci: deploy pricing PR previews"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/60a46f77c2145b2aa6a825cbca1597e46a738912
+        authoredAt: 2026-07-15T15:31:57Z
+      - &a2
+        sha: 7021f16e3c886c74ae98a8889eab8da49d569bdb
+        message: "ci: allow PR preview comments"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7021f16e3c886c74ae98a8889eab8da49d569bdb
+        authoredAt: 2026-07-15T15:36:31Z
+      - &a3
+        sha: 6044f93a545a22c5aba97d920ec85c0f232a592e
+        message: "ci: scope preview jobs"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6044f93a545a22c5aba97d920ec85c0f232a592e
+        authoredAt: 2026-07-15T15:44:19Z
+      - &a4
+        sha: 560706782d98c78a6297e9c2c6b004a244ddf968
+        message: 'Revert "feat(pricing): complete FINET controls"'
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/560706782d98c78a6297e9c2c6b004a244ddf968
+        authoredAt: 2026-07-15T15:48:31Z
+      - &a5
+        sha: a7c76d4ea7d5d30e81b49d7253ee84973df3bfe4
+        message: 'Revert "feat(pricing): add FINET pricing model"'
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a7c76d4ea7d5d30e81b49d7253ee84973df3bfe4
+        authoredAt: 2026-07-15T15:48:50Z
     workTimestamps:
       - 2026-07-15T15:31:57Z
       - 2026-07-15T15:36:31Z
@@ -138,6 +180,29 @@ pullRequests:
       - 2026-07-15T15:48:50Z
     workAdditions: 265
     workDeletions: 710
+    workFiles:
+      - .github/workflows/azure-static-web-apps-pricing.yml
+      - docs/pricing-scenario-rules.md
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - pricing/src/app/globals.css
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/pricing-workstation-client.tsx
+      - pricing/src/components/scenario-model-tab.tsx
+      - pricing/src/lib/__tests__/calculation.test.ts
+      - pricing/src/lib/__tests__/dashboard-charts.test.ts
+      - pricing/src/lib/__tests__/report-model.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/workstation.test.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/dashboard-charts.ts
+      - pricing/src/lib/report/assets.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/workbook-output.ts
+      - pricing/src/lib/workstation.ts
   - title: "ci: add Static Web Apps PR previews"
     body: |-
       ## What changed
@@ -162,6 +227,42 @@ pullRequests:
     updatedAt: 2026-07-16T19:54:49Z
     closedAt: 2026-07-15T16:26:26Z
     mergedAt: 2026-07-15T16:26:26Z
+    workCommits:
+      - &a7
+        sha: 5f818ea2c661ff5d89d249e9776c0faf616ba09c
+        message: "ci: add SWA pull request previews"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5f818ea2c661ff5d89d249e9776c0faf616ba09c
+        authoredAt: 2026-07-15T15:32:50Z
+      - &a8
+        sha: 0fdad62318edcbf94488d79a06c72f6405bbb284
+        message: "ci: add SWA pull request previews"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0fdad62318edcbf94488d79a06c72f6405bbb284
+        authoredAt: 2026-07-15T15:32:50Z
+      - &a9
+        sha: 964c5ca931e3c8ff038cadef2a33ee4fb9906ee6
+        message: 'Revert "chore: align docs with dedicated app deploys"'
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/964c5ca931e3c8ff038cadef2a33ee4fb9906ee6
+        authoredAt: 2026-07-15T15:49:11Z
+      - &a10
+        sha: 6f4d1e57e489f92c81a00edc62e8b875ab572b22
+        message: 'Revert "ci: add SWA pull request previews"'
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6f4d1e57e489f92c81a00edc62e8b875ab572b22
+        authoredAt: 2026-07-15T16:11:43Z
+      - &a11
+        sha: b929da88c6d71c1f11ec901f63dd94e51ef93308
+        message: 'Revert "ci: add SWA pull request previews"'
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b929da88c6d71c1f11ec901f63dd94e51ef93308
+        authoredAt: 2026-07-15T16:11:57Z
+      - &a12
+        sha: b10198aa86efa4872884d72fa13271eef02a54ca
+        message: "ci: preview Hub pull requests"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b10198aa86efa4872884d72fa13271eef02a54ca
+        authoredAt: 2026-07-15T16:12:46Z
+      - &a13
+        sha: 7b179f06ac7061c1337db8be363e34dd9e04e02d
+        message: "ci: skip production assertion in previews"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7b179f06ac7061c1337db8be363e34dd9e04e02d
+        authoredAt: 2026-07-15T16:16:08Z
     workTimestamps:
       - 2026-07-15T15:32:50Z
       - 2026-07-15T15:32:50Z
@@ -172,6 +273,35 @@ pullRequests:
       - 2026-07-15T16:16:08Z
     workAdditions: 493
     workDeletions: 125
+    workFiles:
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .gitignore
+      - README.md
+      - excelerate/src/components/excelerate-client.tsx
+      - excelerate/src/lib/excelerate/types.ts
+      - hub/components/LandingPage.tsx
+      - hub/components/SiteFooter.tsx
+      - hub/lib/contact.ts
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/components/settings-form.tsx
+      - onboarding/apps/dashboard/lib/data.ts
+      - onboarding/apps/dashboard/lib/search-params.ts
+      - onboarding/apps/dashboard/lib/utils.ts
+      - packages/ui/src/button.tsx
+      - packages/ui/src/dialog.tsx
+      - packages/ui/src/navigation/index.ts
+      - proforma/src/components/scenario-form-steps.test.ts
+      - proforma/src/components/scenario-form.tsx
+      - pto-tracker/README.md
+      - pto-tracker/docs/adr/0001-documentation-only-scaffold.md
+      - pto-tracker/src/app/admin/AdminClient.tsx
+      - pto-tracker/src/app/approvals/ApprovalsClient.tsx
+      - pto-tracker/src/app/calendar/CalendarClient.tsx
+      - pto-tracker/src/app/my/MyClient.tsx
+      - pto-tracker/src/app/my/requests/MyRequestsClient.tsx
+      - pto-tracker/src/app/team/TeamClient.tsx
+      - pto-tracker/src/components/AuthProvider.tsx
 prsInProgress:
   - title: Unify OHCPWM platform and OFAC
     body: >-
@@ -193,99 +323,182 @@ prsInProgress:
     updatedAt: 2026-07-22T20:23:04Z
     closedAt: 2026-07-20T15:26:30Z
     mergedAt: 2026-07-20T15:26:30Z
+    workCommits:
+      - sha: 842e51b9b652ccf25d00bcdd034fe26a7db4aeb3
+        message: "fix(ui): load image module types"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/842e51b9b652ccf25d00bcdd034fe26a7db4aeb3
+        authoredAt: 2026-07-15T15:27:20Z
     workTimestamps:
       - 2026-07-15T15:27:20Z
     workAdditions: 2
     workDeletions: 0
+    workFiles:
+      - packages/ui/src/brand-logo.tsx
 issues: []
 events: []
 commitMessages:
   - repo: Myriad-Advisor-Solutions/ohcpwm-apps
     messages:
-      - "ci: harden PR preview credentials (#60)"
-      - "ci: add Static Web Apps PR previews (#59)"
       - "fix(ui): load image module types"
+      - "ci: deploy pricing PR previews"
+      - "ci: allow PR preview comments"
+      - "ci: scope preview jobs"
+      - 'Revert "feat(pricing): complete FINET controls"'
+      - 'Revert "feat(pricing): add FINET pricing model"'
+      - "ci: add Static Web Apps PR previews (#59)"
+      - "ci: harden PR preview credentials"
+      - "ci: harden PR preview credentials (#60)"
     commits:
-      - sha: 599242a0976ea2064af8101115428924237cd183
-        message: "ci: harden PR preview credentials (#60)"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/599242a0976ea2064af8101115428924237cd183
-        authoredAt: 2026-07-15T17:00:56Z
-      - sha: 4f916a854e5691d58e1e9854ce32eed55e31b4a1
-        message: "ci: add Static Web Apps PR previews (#59)"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4f916a854e5691d58e1e9854ce32eed55e31b4a1
-        authoredAt: 2026-07-15T16:26:20Z
       - sha: 842e51b9b652ccf25d00bcdd034fe26a7db4aeb3
         message: "fix(ui): load image module types"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/842e51b9b652ccf25d00bcdd034fe26a7db4aeb3
         authoredAt: 2026-07-15T15:27:20Z
+        additions: 2
+        deletions: 0
+        filesChanged: 1
+      - *a1
+      - *a2
+      - *a3
+      - *a4
+      - *a5
+      - sha: 4f916a854e5691d58e1e9854ce32eed55e31b4a1
+        message: "ci: add Static Web Apps PR previews (#59)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4f916a854e5691d58e1e9854ce32eed55e31b4a1
+        authoredAt: 2026-07-15T16:26:20Z
+        additions: 33
+        deletions: 0
+        filesChanged: 1
+      - *a6
+      - sha: 599242a0976ea2064af8101115428924237cd183
+        message: "ci: harden PR preview credentials (#60)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/599242a0976ea2064af8101115428924237cd183
+        authoredAt: 2026-07-15T17:00:56Z
+        additions: 6
+        deletions: 1
+        filesChanged: 1
   - repo: Myriad-Advisor-Solutions/myriadas-apps
     messages:
-      - "fix(pto): persist accrual config in Cosmos"
-      - "fix(auth): grant suite role full access"
-      - "fix(valuation): scope API client routes"
-      - "fix(proforma): scope API redirects"
-      - "fix(api): isolate Bun-only SQLite"
-      - "fix(ci): deploy prebuilt functions"
-      - "fix(swa): declare health routes"
-      - "fix(swa): load combined API entrypoint"
-      - "feat(azure): unify suite deployment"
-      - "feat(cosmos): support shared container"
       - "chore: align docs with dedicated app deploys"
-      - "ci: harden PR preview credentials (#27)"
+      - "ci: add SWA pull request previews"
+      - "ci: add SWA pull request previews"
+      - 'Revert "chore: align docs with dedicated app deploys"'
+      - 'Revert "ci: add SWA pull request previews"'
+      - 'Revert "ci: add SWA pull request previews"'
+      - "ci: preview Hub pull requests"
+      - "ci: skip production assertion in previews"
       - "ci: add Static Web Apps PR previews (#26)"
+      - "ci: harden PR preview credentials"
+      - "ci: harden PR preview credentials (#27)"
+      - "feat(cosmos): support shared container"
+      - "feat(azure): unify suite deployment"
+      - "fix(swa): load combined API entrypoint"
+      - "fix(swa): declare health routes"
+      - "fix(ci): deploy prebuilt functions"
+      - "fix(api): isolate Bun-only SQLite"
+      - "fix(proforma): scope API redirects"
+      - "fix(valuation): scope API client routes"
+      - "fix(auth): grant suite role full access"
+      - "fix(pto): persist accrual config in Cosmos"
     commits:
-      - sha: c1788269c96edeb5f62de45196fc69046d3ae99c
-        message: "fix(pto): persist accrual config in Cosmos"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c1788269c96edeb5f62de45196fc69046d3ae99c
-        authoredAt: 2026-07-15T22:31:59Z
-      - sha: 7c64c61d22f1ad707558d6813daf62306c515948
-        message: "fix(auth): grant suite role full access"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7c64c61d22f1ad707558d6813daf62306c515948
-        authoredAt: 2026-07-15T22:21:52Z
-      - sha: 337c6b1f69d8f9f5399b161e599a67d83c957ca1
-        message: "fix(valuation): scope API client routes"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/337c6b1f69d8f9f5399b161e599a67d83c957ca1
-        authoredAt: 2026-07-15T21:06:46Z
-      - sha: b75c64c5ed55acbcde29d98ace90455d10a973f4
-        message: "fix(proforma): scope API redirects"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b75c64c5ed55acbcde29d98ace90455d10a973f4
-        authoredAt: 2026-07-15T21:02:18Z
-      - sha: c196d46b3173808c57345630e6f5c2103865efb1
-        message: "fix(api): isolate Bun-only SQLite"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c196d46b3173808c57345630e6f5c2103865efb1
-        authoredAt: 2026-07-15T20:50:54Z
-      - sha: 26690e94f9d2541a731e47dd128b57b35444b898
-        message: "fix(ci): deploy prebuilt functions"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/26690e94f9d2541a731e47dd128b57b35444b898
-        authoredAt: 2026-07-15T20:31:45Z
-      - sha: a0f3e137563fc7402bb5e94e397c00c91036029e
-        message: "fix(swa): declare health routes"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a0f3e137563fc7402bb5e94e397c00c91036029e
-        authoredAt: 2026-07-15T20:24:58Z
-      - sha: 1b4d831f0b8e29bf1c1842729dbf5d3c091fde0f
-        message: "fix(swa): load combined API entrypoint"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/1b4d831f0b8e29bf1c1842729dbf5d3c091fde0f
-        authoredAt: 2026-07-15T20:11:12Z
-      - sha: b91b9117e245128abbfe171f1ff5a4b49b65a99d
-        message: "feat(azure): unify suite deployment"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b91b9117e245128abbfe171f1ff5a4b49b65a99d
-        authoredAt: 2026-07-15T20:03:04Z
-      - sha: 3f9c230a5326bae8cd944afc91946c81698065aa
-        message: "feat(cosmos): support shared container"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3f9c230a5326bae8cd944afc91946c81698065aa
-        authoredAt: 2026-07-15T19:11:56Z
       - sha: ff517cc86b9cb1de3c790fb7256147815c6d1fcb
         message: "chore: align docs with dedicated app deploys"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ff517cc86b9cb1de3c790fb7256147815c6d1fcb
         authoredAt: 2026-07-14T15:12:08Z
-      - sha: 7416c4d073e816050108f85dd41b471a26d6e1a1
-        message: "ci: harden PR preview credentials (#27)"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7416c4d073e816050108f85dd41b471a26d6e1a1
-        authoredAt: 2026-07-15T17:00:49Z
+        additions: 73
+        deletions: 417
+        filesChanged: 26
+      - *a7
+      - *a8
+      - *a9
+      - *a10
+      - *a11
+      - *a12
+      - *a13
       - sha: c8fbc40c52b1bf675792b9a8e9c74a668b4b6183
         message: "ci: add Static Web Apps PR previews (#26)"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c8fbc40c52b1bf675792b9a8e9c74a668b4b6183
         authoredAt: 2026-07-15T16:26:26Z
+        additions: 25
+        deletions: 1
+        filesChanged: 1
+      - *a14
+      - sha: 7416c4d073e816050108f85dd41b471a26d6e1a1
+        message: "ci: harden PR preview credentials (#27)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7416c4d073e816050108f85dd41b471a26d6e1a1
+        authoredAt: 2026-07-15T17:00:49Z
+        additions: 58
+        deletions: 3
+        filesChanged: 1
+      - sha: 3f9c230a5326bae8cd944afc91946c81698065aa
+        message: "feat(cosmos): support shared container"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3f9c230a5326bae8cd944afc91946c81698065aa
+        authoredAt: 2026-07-15T19:11:56Z
+        additions: 113
+        deletions: 44
+        filesChanged: 16
+      - sha: b91b9117e245128abbfe171f1ff5a4b49b65a99d
+        message: "feat(azure): unify suite deployment"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b91b9117e245128abbfe171f1ff5a4b49b65a99d
+        authoredAt: 2026-07-15T20:03:04Z
+        additions: 421
+        deletions: 169
+        filesChanged: 50
+      - sha: 1b4d831f0b8e29bf1c1842729dbf5d3c091fde0f
+        message: "fix(swa): load combined API entrypoint"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/1b4d831f0b8e29bf1c1842729dbf5d3c091fde0f
+        authoredAt: 2026-07-15T20:11:12Z
+        additions: 16
+        deletions: 4
+        filesChanged: 4
+      - sha: a0f3e137563fc7402bb5e94e397c00c91036029e
+        message: "fix(swa): declare health routes"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a0f3e137563fc7402bb5e94e397c00c91036029e
+        authoredAt: 2026-07-15T20:24:58Z
+        additions: 17
+        deletions: 1
+        filesChanged: 1
+      - sha: 26690e94f9d2541a731e47dd128b57b35444b898
+        message: "fix(ci): deploy prebuilt functions"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/26690e94f9d2541a731e47dd128b57b35444b898
+        authoredAt: 2026-07-15T20:31:45Z
+        additions: 1
+        deletions: 0
+        filesChanged: 1
+      - sha: c196d46b3173808c57345630e6f5c2103865efb1
+        message: "fix(api): isolate Bun-only SQLite"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c196d46b3173808c57345630e6f5c2103865efb1
+        authoredAt: 2026-07-15T20:50:54Z
+        additions: 41
+        deletions: 21
+        filesChanged: 8
+      - sha: b75c64c5ed55acbcde29d98ace90455d10a973f4
+        message: "fix(proforma): scope API redirects"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b75c64c5ed55acbcde29d98ace90455d10a973f4
+        authoredAt: 2026-07-15T21:02:18Z
+        additions: 22
+        deletions: 1
+        filesChanged: 2
+      - sha: 337c6b1f69d8f9f5399b161e599a67d83c957ca1
+        message: "fix(valuation): scope API client routes"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/337c6b1f69d8f9f5399b161e599a67d83c957ca1
+        authoredAt: 2026-07-15T21:06:46Z
+        additions: 21
+        deletions: 2
+        filesChanged: 2
+      - sha: 7c64c61d22f1ad707558d6813daf62306c515948
+        message: "fix(auth): grant suite role full access"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7c64c61d22f1ad707558d6813daf62306c515948
+        authoredAt: 2026-07-15T22:21:52Z
+        additions: 31
+        deletions: 6
+        filesChanged: 8
+      - sha: c1788269c96edeb5f62de45196fc69046d3ae99c
+        message: "fix(pto): persist accrual config in Cosmos"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c1788269c96edeb5f62de45196fc69046d3ae99c
+        authoredAt: 2026-07-15T22:31:59Z
+        additions: 4
+        deletions: 8
+        filesChanged: 1
 releases: []
 externalContributions: []
 codeReviews: []
@@ -305,11 +518,112 @@ aiReviews:
   comments: 3
   reviews: 2
   fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-07-15T15:27:20Z
+    - 2026-07-15T15:31:57Z
+    - 2026-07-15T15:36:31Z
+    - 2026-07-15T15:44:19Z
+    - 2026-07-15T15:48:31Z
+    - 2026-07-15T15:48:50Z
+    - 2026-07-15T16:26:20Z
+    - 2026-07-15T16:43:57Z
+    - 2026-07-15T17:00:56Z
+    - 2026-07-15T15:32:50Z
+    - 2026-07-15T15:32:50Z
+    - 2026-07-15T15:49:11Z
+    - 2026-07-15T16:11:43Z
+    - 2026-07-15T16:11:57Z
+    - 2026-07-15T16:12:46Z
+    - 2026-07-15T16:16:08Z
+    - 2026-07-15T16:26:26Z
+    - 2026-07-15T16:43:43Z
+    - 2026-07-15T17:00:49Z
+    - 2026-07-15T19:11:56Z
+    - 2026-07-15T20:03:04Z
+    - 2026-07-15T20:11:12Z
+    - 2026-07-15T20:24:58Z
+    - 2026-07-15T20:31:45Z
+    - 2026-07-15T20:50:54Z
+    - 2026-07-15T21:02:18Z
+    - 2026-07-15T21:06:46Z
+    - 2026-07-15T22:21:52Z
+    - 2026-07-15T22:31:59Z
+    - 2026-07-15T16:45:00Z
+    - 2026-07-15T17:00:57Z
+    - 2026-07-15T16:43:57Z
+    - 2026-07-15T16:44:55Z
+    - 2026-07-15T17:00:50Z
+    - 2026-07-15T16:43:43Z
+    - 2026-07-15T16:05:26Z
+    - 2026-07-15T16:26:21Z
+    - 2026-07-15T15:31:57Z
+    - 2026-07-15T15:36:31Z
+    - 2026-07-15T15:44:19Z
+    - 2026-07-15T15:48:31Z
+    - 2026-07-15T15:48:50Z
+    - 2026-07-15T16:05:31Z
+    - 2026-07-15T16:26:26Z
+    - 2026-07-15T15:32:50Z
+    - 2026-07-15T15:32:50Z
+    - 2026-07-15T15:49:11Z
+    - 2026-07-15T16:11:43Z
+    - 2026-07-15T16:11:57Z
+    - 2026-07-15T16:12:46Z
+    - 2026-07-15T16:16:08Z
+  volume:
+    pullRequests:
+      - additions: 6
+        deletions: 1
+        state: merged
+        dailyWork: true
+        filesChanged: 1
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 58
+        deletions: 3
+        state: merged
+        dailyWork: true
+        filesChanged: 1
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 2
+        deletions: 0
+        state: merged
+        dailyWork: true
+        filesChanged: 1
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 265
+        deletions: 710
+        state: merged
+        dailyWork: true
+        filesChanged: 22
+        testFilesChanged: 7
+        commitCount: 5
+      - additions: 493
+        deletions: 125
+        state: merged
+        dailyWork: true
+        filesChanged: 28
+        testFilesChanged: 1
+        commitCount: 7
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 15
+    commitAdditions: 882
+    commitDeletions: 678
+    commitStatsCount: 15
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
 hoursEstimate:
-  hours: 13.5
+  version: "2.1"
+  hours: 31.2
   sessions: 2
   sessionHours: 4.9
-  volumeHours: 13.5
+  volumeHours: 31.2
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

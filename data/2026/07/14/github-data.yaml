@@ -12,7 +12,7 @@ dateRange:
   from: 2026-07-14
   to: 2026-07-14
 stats:
-  totalCommits: 12
+  totalCommits: 13
   totalAdditions: 2681
   totalDeletions: 706
   prsOpened: 2
@@ -22,10 +22,10 @@ stats:
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 12.2
+  estimatedHours: 18.6
 dailyCommits:
   - date: 2026-07-14
-    count: 12
+    count: 13
 repositories:
   - name: Myriad-Advisor-Solutions/ohcpwm-apps
     commits: 12
@@ -35,7 +35,7 @@ repositories:
     issuesClosed: 0
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
   - name: Myriad-Advisor-Solutions/myriadas-apps
-    commits: 0
+    commits: 1
     prsOpened: 1
     prsMerged: 0
     issuesOpened: 0
@@ -74,9 +74,11 @@ pullRequests:
     updatedAt: 2026-07-31T19:37:56Z
     closedAt: null
     mergedAt: null
-    workTimestamps: &a2 []
+    workCommits: &a2 []
+    workTimestamps: &a3 []
     workAdditions: 0
     workDeletions: 0
+    workFiles: &a4 []
   - title: Unify OHCPWM platform and OFAC
     body: >-
       - publish the completed FINET Pricing model work alongside shared product-platform consolidation
@@ -88,7 +90,7 @@ pullRequests:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/58
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
-    labels: &a3 []
+    labels: &a5 []
     additions: 2681
     deletions: 706
     changedFiles: 148
@@ -97,7 +99,56 @@ pullRequests:
     updatedAt: 2026-07-22T20:23:04Z
     closedAt: 2026-07-20T15:26:30Z
     mergedAt: 2026-07-20T15:26:30Z
-    workTimestamps: &a4
+    workCommits: &a6
+      - sha: a75fce197499f03d7a7e19fe5dcfc8aa927bc627
+        message: "feat: unify OHCPWM platform and OFAC"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a75fce197499f03d7a7e19fe5dcfc8aa927bc627
+        authoredAt: 2026-07-14T20:20:53Z
+      - sha: 16bd3ab07d6b9200a72db1743d271efeadb18ddf
+        message: "fix(pricing): require parsed FINET defaults"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/16bd3ab07d6b9200a72db1743d271efeadb18ddf
+        authoredAt: 2026-07-14T20:26:26Z
+      - sha: 757414932bb35df27a261b31dc305a81b5491c1c
+        message: "test(pricing): parse repository platform fixture"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/757414932bb35df27a261b31dc305a81b5491c1c
+        authoredAt: 2026-07-14T20:28:00Z
+      - sha: bb2f7a2c9c8c2410032eecb0d4b717f1e21b5214
+        message: "fix(ofac): narrow screening fetch contract"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/bb2f7a2c9c8c2410032eecb0d4b717f1e21b5214
+        authoredAt: 2026-07-14T20:29:57Z
+      - sha: 88c18257df9df6d22f354cc9c232dd5c5ba70c5f
+        message: "fix(pricing): preserve optional FINET inputs"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/88c18257df9df6d22f354cc9c232dd5c5ba70c5f
+        authoredAt: 2026-07-14T20:34:22Z
+      - sha: 07ce57858733f5124ae6a5e07ef5db48ceda5865
+        message: "fix(pricing): separate model input from state"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/07ce57858733f5124ae6a5e07ef5db48ceda5865
+        authoredAt: 2026-07-14T20:38:15Z
+      - sha: a100e3117ffae6e0b420cc40717267b31e6fbaf2
+        message: "fix(pricing): type scenario and FINET state"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a100e3117ffae6e0b420cc40717267b31e6fbaf2
+        authoredAt: 2026-07-14T20:42:43Z
+      - sha: 202997edb4c5b912e3ce81efabb44120d999e262
+        message: "fix(pricing): make model summaries explicit"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/202997edb4c5b912e3ce81efabb44120d999e262
+        authoredAt: 2026-07-14T21:19:42Z
+      - sha: 80cf47cc19dbcf5c658db1b85b60933ba51f279a
+        message: "fix(pricing): parse workbook model boundary"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/80cf47cc19dbcf5c658db1b85b60933ba51f279a
+        authoredAt: 2026-07-14T21:26:20Z
+      - sha: 678a56c56e45e61cb1c73bec660421a4a277495e
+        message: "fix(pricing): handle final FINET scenario"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/678a56c56e45e61cb1c73bec660421a4a277495e
+        authoredAt: 2026-07-14T21:33:18Z
+      - sha: c4012592948d7151e6c93caf521d86f3a9ed2965
+        message: "fix(pricing): respect selected review scenario"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c4012592948d7151e6c93caf521d86f3a9ed2965
+        authoredAt: 2026-07-14T21:38:01Z
+      - sha: 2de609818934ede54c0ab6f87f7439d30f08d02d
+        message: "test(ofac): handle timeout rejection promptly"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2de609818934ede54c0ab6f87f7439d30f08d02d
+        authoredAt: 2026-07-14T21:43:09Z
+    workTimestamps: &a7
       - 2026-07-14T20:20:53Z
       - 2026-07-14T20:26:26Z
       - 2026-07-14T20:28:00Z
@@ -112,6 +163,90 @@ pullRequests:
       - 2026-07-14T21:43:09Z
     workAdditions: 2681
     workDeletions: 706
+    workFiles: &a8
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/ofac-api-demo.md
+      - docs/ofac-api-integration.md
+      - docs/ofac-operations.md
+      - docs/shared-product-platform.md
+      - docs/superpowers/plans/2026-07-13-ofac-api-demo.md
+      - docs/superpowers/specs/2026-07-13-ofac-api-demo-design.md
+      - docs/superpowers/specs/2026-07-14-ofac-microsoft-login-design.md
+      - ofac/.env.example
+      - ofac/functions/local.settings.json.example
+      - ofac/functions/src/index.ts
+      - ofac/package.json
+      - ofac/src/app/actions.ts
+      - ofac/src/app/api/auth/[...nextauth]/route.ts
+      - ofac/src/app/api/auth/login/route.ts
+      - ofac/src/app/api/health/route.ts
+      - ofac/src/app/api/ofac/clients/route.ts
+      - ofac/src/app/api/ofac/export/__tests__/route.test.ts
+      - ofac/src/app/api/ofac/export/route.ts
+      - ofac/src/app/api/ofac/me/route.ts
+      - ofac/src/app/api/ofac/screenings/[id]/decision/route.ts
+      - ofac/src/app/api/ofac/sync/route.ts
+      - ofac/src/app/clients/new/page.tsx
+      - ofac/src/app/globals.css
+      - ofac/src/app/layout.tsx
+      - ofac/src/app/login/page.test.tsx
+      - ofac/src/app/login/page.tsx
+      - ofac/src/app/logout/route.ts
+      - ofac/src/app/page.tsx
+      - ofac/src/app/screenings/[id]/page.tsx
+      - ofac/src/app/screenings/page.tsx
+      - ofac/src/app/search/page.tsx
+      - ofac/src/app/settings/page.tsx
+      - ofac/src/app/sync/page.tsx
+      - ofac/src/components/client-intake-form.tsx
+      - ofac/src/components/ofac-app-shell.tsx
+      - ofac/src/components/ofac-settings-page.tsx
+      - ofac/src/components/ofac-user-menu.tsx
+      - ofac/src/components/screening-filter-form.tsx
+      - ofac/src/lib/__tests__/auth.test.ts
+      - ofac/src/lib/__tests__/screening-provider.test.ts
+      - ofac/src/lib/auth.ts
+      - ofac/src/lib/data.ts
+      - ofac/src/lib/ofac-auth-routes.ts
+      - ofac/src/lib/ofac-session-client.ts
+      - ofac/src/lib/ofac-theme.ts
+      - ofac/src/lib/screening-presentation.ts
+      - ofac/src/lib/screening-provider.ts
+      - ofac/src/lib/screening-readiness.ts
+      - ofac/src/lib/sync-cli.ts
+      - ofac/staticwebapp.config.json
+      - package.json
+      - packages/audit/src/index.ts
+      - packages/auth/package.json
+      - packages/auth/src/auth.test.ts
+      - packages/auth/src/client.ts
+      - packages/contracts/src/ofac.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/ofac.test.ts
+      - packages/db/src/ofac.ts
+      - packages/db/src/pricing.test.ts
+      - packages/ui/src/form.tsx
+      - packages/ui/src/index.ts
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/settings.tsx
+      - packages/ui/src/styles.css
+      - packages/ui/src/theme-toggle.tsx
+      - packages/ui/src/theme.ts
+      - pricing/src/components/pricing-app-shell.tsx
+      - pricing/src/components/pricing-theme-toggle.tsx
+      - pricing/src/components/pricing-workstation-client.tsx
+      - pricing/src/components/settings-previews.tsx
+      - pricing/src/lib/__tests__/pricing-user-settings.test.ts
+      - pricing/src/lib/__tests__/workbook-output.test.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/edit-view.ts
+      - pricing/src/lib/pricing-auth-routes.ts
+      - pricing/src/lib/pricing-session-client.ts
+      - pricing/src/lib/pricing-theme.ts
+      - pricing/src/lib/pricing-user-settings.ts
+      - pricing/src/lib/workbook-output.ts
+      - pricing/src/lib/workstation.ts
 prsInProgress:
   - title: "feat(workflows): restore review integrity"
     body: >-
@@ -139,9 +274,11 @@ prsInProgress:
     updatedAt: 2026-07-31T19:37:56Z
     closedAt: null
     mergedAt: null
-    workTimestamps: *a2
+    workCommits: *a2
+    workTimestamps: *a3
     workAdditions: 0
     workDeletions: 0
+    workFiles: *a4
   - title: Unify OHCPWM platform and OFAC
     body: >-
       - publish the completed FINET Pricing model work alongside shared product-platform consolidation
@@ -153,7 +290,7 @@ prsInProgress:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/58
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: merged
-    labels: *a3
+    labels: *a5
     additions: 7616
     deletions: 2416
     changedFiles: 148
@@ -162,75 +299,124 @@ prsInProgress:
     updatedAt: 2026-07-22T20:23:04Z
     closedAt: 2026-07-20T15:26:30Z
     mergedAt: 2026-07-20T15:26:30Z
-    workTimestamps: *a4
+    workCommits: *a6
+    workTimestamps: *a7
     workAdditions: 2681
     workDeletions: 706
+    workFiles: *a8
 issues: []
 events: []
 commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "chore: align docs with dedicated app deploys"
+    commits:
+      - sha: ff517cc86b9cb1de3c790fb7256147815c6d1fcb
+        message: "chore: align docs with dedicated app deploys"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ff517cc86b9cb1de3c790fb7256147815c6d1fcb
+        authoredAt: 2026-07-14T11:12:08.000-04:00
+        additions: 73
+        deletions: 417
+        filesChanged: 26
   - repo: Myriad-Advisor-Solutions/ohcpwm-apps
     messages:
-      - "test(ofac): handle timeout rejection promptly"
-      - "fix(pricing): respect selected review scenario"
-      - "fix(pricing): handle final FINET scenario"
-      - "fix(pricing): parse workbook model boundary"
-      - "fix(pricing): make model summaries explicit"
-      - "fix(pricing): type scenario and FINET state"
-      - "fix(pricing): separate model input from state"
-      - "fix(pricing): preserve optional FINET inputs"
-      - "fix(ofac): narrow screening fetch contract"
-      - "test(pricing): parse repository platform fixture"
-      - "fix(pricing): require parsed FINET defaults"
       - "feat: unify OHCPWM platform and OFAC"
+      - "fix(pricing): require parsed FINET defaults"
+      - "test(pricing): parse repository platform fixture"
+      - "fix(ofac): narrow screening fetch contract"
+      - "fix(pricing): preserve optional FINET inputs"
+      - "fix(pricing): separate model input from state"
+      - "fix(pricing): type scenario and FINET state"
+      - "fix(pricing): make model summaries explicit"
+      - "fix(pricing): parse workbook model boundary"
+      - "fix(pricing): handle final FINET scenario"
+      - "fix(pricing): respect selected review scenario"
+      - "test(ofac): handle timeout rejection promptly"
     commits:
-      - sha: 2de609818934ede54c0ab6f87f7439d30f08d02d
-        message: "test(ofac): handle timeout rejection promptly"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2de609818934ede54c0ab6f87f7439d30f08d02d
-        authoredAt: 2026-07-14T21:43:09Z
-      - sha: c4012592948d7151e6c93caf521d86f3a9ed2965
-        message: "fix(pricing): respect selected review scenario"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c4012592948d7151e6c93caf521d86f3a9ed2965
-        authoredAt: 2026-07-14T21:38:01Z
-      - sha: 678a56c56e45e61cb1c73bec660421a4a277495e
-        message: "fix(pricing): handle final FINET scenario"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/678a56c56e45e61cb1c73bec660421a4a277495e
-        authoredAt: 2026-07-14T21:33:18Z
-      - sha: 80cf47cc19dbcf5c658db1b85b60933ba51f279a
-        message: "fix(pricing): parse workbook model boundary"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/80cf47cc19dbcf5c658db1b85b60933ba51f279a
-        authoredAt: 2026-07-14T21:26:20Z
-      - sha: 202997edb4c5b912e3ce81efabb44120d999e262
-        message: "fix(pricing): make model summaries explicit"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/202997edb4c5b912e3ce81efabb44120d999e262
-        authoredAt: 2026-07-14T21:19:42Z
-      - sha: a100e3117ffae6e0b420cc40717267b31e6fbaf2
-        message: "fix(pricing): type scenario and FINET state"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a100e3117ffae6e0b420cc40717267b31e6fbaf2
-        authoredAt: 2026-07-14T20:42:43Z
-      - sha: 07ce57858733f5124ae6a5e07ef5db48ceda5865
-        message: "fix(pricing): separate model input from state"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/07ce57858733f5124ae6a5e07ef5db48ceda5865
-        authoredAt: 2026-07-14T20:38:15Z
-      - sha: 88c18257df9df6d22f354cc9c232dd5c5ba70c5f
-        message: "fix(pricing): preserve optional FINET inputs"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/88c18257df9df6d22f354cc9c232dd5c5ba70c5f
-        authoredAt: 2026-07-14T20:34:22Z
-      - sha: bb2f7a2c9c8c2410032eecb0d4b717f1e21b5214
-        message: "fix(ofac): narrow screening fetch contract"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/bb2f7a2c9c8c2410032eecb0d4b717f1e21b5214
-        authoredAt: 2026-07-14T20:29:57Z
-      - sha: 757414932bb35df27a261b31dc305a81b5491c1c
-        message: "test(pricing): parse repository platform fixture"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/757414932bb35df27a261b31dc305a81b5491c1c
-        authoredAt: 2026-07-14T20:28:00Z
-      - sha: 16bd3ab07d6b9200a72db1743d271efeadb18ddf
-        message: "fix(pricing): require parsed FINET defaults"
-        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/16bd3ab07d6b9200a72db1743d271efeadb18ddf
-        authoredAt: 2026-07-14T20:26:26Z
       - sha: a75fce197499f03d7a7e19fe5dcfc8aa927bc627
         message: "feat: unify OHCPWM platform and OFAC"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a75fce197499f03d7a7e19fe5dcfc8aa927bc627
         authoredAt: 2026-07-14T20:20:53Z
+        additions: 2574
+        deletions: 631
+        filesChanged: 76
+      - sha: 16bd3ab07d6b9200a72db1743d271efeadb18ddf
+        message: "fix(pricing): require parsed FINET defaults"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/16bd3ab07d6b9200a72db1743d271efeadb18ddf
+        authoredAt: 2026-07-14T20:26:26Z
+        additions: 1
+        deletions: 1
+        filesChanged: 1
+      - sha: 757414932bb35df27a261b31dc305a81b5491c1c
+        message: "test(pricing): parse repository platform fixture"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/757414932bb35df27a261b31dc305a81b5491c1c
+        authoredAt: 2026-07-14T20:28:00Z
+        additions: 3
+        deletions: 3
+        filesChanged: 1
+      - sha: bb2f7a2c9c8c2410032eecb0d4b717f1e21b5214
+        message: "fix(ofac): narrow screening fetch contract"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/bb2f7a2c9c8c2410032eecb0d4b717f1e21b5214
+        authoredAt: 2026-07-14T20:29:57Z
+        additions: 2
+        deletions: 2
+        filesChanged: 2
+      - sha: 88c18257df9df6d22f354cc9c232dd5c5ba70c5f
+        message: "fix(pricing): preserve optional FINET inputs"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/88c18257df9df6d22f354cc9c232dd5c5ba70c5f
+        authoredAt: 2026-07-14T20:34:22Z
+        additions: 8
+        deletions: 4
+        filesChanged: 3
+      - sha: 07ce57858733f5124ae6a5e07ef5db48ceda5865
+        message: "fix(pricing): separate model input from state"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/07ce57858733f5124ae6a5e07ef5db48ceda5865
+        authoredAt: 2026-07-14T20:38:15Z
+        additions: 19
+        deletions: 17
+        filesChanged: 3
+      - sha: a100e3117ffae6e0b420cc40717267b31e6fbaf2
+        message: "fix(pricing): type scenario and FINET state"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a100e3117ffae6e0b420cc40717267b31e6fbaf2
+        authoredAt: 2026-07-14T20:42:43Z
+        additions: 12
+        deletions: 6
+        filesChanged: 3
+      - sha: 202997edb4c5b912e3ce81efabb44120d999e262
+        message: "fix(pricing): make model summaries explicit"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/202997edb4c5b912e3ce81efabb44120d999e262
+        authoredAt: 2026-07-14T21:19:42Z
+        additions: 27
+        deletions: 18
+        filesChanged: 4
+      - sha: 80cf47cc19dbcf5c658db1b85b60933ba51f279a
+        message: "fix(pricing): parse workbook model boundary"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/80cf47cc19dbcf5c658db1b85b60933ba51f279a
+        authoredAt: 2026-07-14T21:26:20Z
+        additions: 26
+        deletions: 18
+        filesChanged: 3
+      - sha: 678a56c56e45e61cb1c73bec660421a4a277495e
+        message: "fix(pricing): handle final FINET scenario"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/678a56c56e45e61cb1c73bec660421a4a277495e
+        authoredAt: 2026-07-14T21:33:18Z
+        additions: 6
+        deletions: 4
+        filesChanged: 1
+      - sha: c4012592948d7151e6c93caf521d86f3a9ed2965
+        message: "fix(pricing): respect selected review scenario"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c4012592948d7151e6c93caf521d86f3a9ed2965
+        authoredAt: 2026-07-14T21:38:01Z
+        additions: 1
+        deletions: 1
+        filesChanged: 1
+      - sha: 2de609818934ede54c0ab6f87f7439d30f08d02d
+        message: "test(ofac): handle timeout rejection promptly"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2de609818934ede54c0ab6f87f7439d30f08d02d
+        authoredAt: 2026-07-14T21:43:09Z
+        additions: 2
+        deletions: 1
+        filesChanged: 1
 releases: []
 externalContributions: []
 codeReviews: []
@@ -250,11 +436,63 @@ aiReviews:
   comments: 0
   reviews: 0
   fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-07-14T11:12:08.000-04:00
+    - 2026-07-14T20:20:53Z
+    - 2026-07-14T20:26:26Z
+    - 2026-07-14T20:28:00Z
+    - 2026-07-14T20:29:57Z
+    - 2026-07-14T20:34:22Z
+    - 2026-07-14T20:38:15Z
+    - 2026-07-14T20:42:43Z
+    - 2026-07-14T21:19:42Z
+    - 2026-07-14T21:26:20Z
+    - 2026-07-14T21:33:18Z
+    - 2026-07-14T21:38:01Z
+    - 2026-07-14T21:43:09Z
+    - 2026-07-14T19:40:30Z
+    - 2026-07-14T20:21:25Z
+    - 2026-07-14T20:20:53Z
+    - 2026-07-14T20:26:26Z
+    - 2026-07-14T20:28:00Z
+    - 2026-07-14T20:29:57Z
+    - 2026-07-14T20:34:22Z
+    - 2026-07-14T20:38:15Z
+    - 2026-07-14T20:42:43Z
+    - 2026-07-14T21:19:42Z
+    - 2026-07-14T21:26:20Z
+    - 2026-07-14T21:33:18Z
+    - 2026-07-14T21:38:01Z
+    - 2026-07-14T21:43:09Z
+  volume:
+    pullRequests:
+      - additions: 2681
+        deletions: 706
+        state: merged
+        dailyWork: true
+        filesChanged: 83
+        testFilesChanged: 9
+        commitCount: 12
+      - additions: 0
+        deletions: 0
+        state: open
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 1
+    commitAdditions: 73
+    commitDeletions: 417
+    commitStatsCount: 1
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
 hoursEstimate:
-  hours: 12.2
-  sessions: 1
-  sessionHours: 2
-  volumeHours: 12.2
+  version: "2.1"
+  hours: 18.6
+  sessions: 2
+  sessionHours: 2.5
+  volumeHours: 18.6
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

@@ -12,10 +12,10 @@ summaries:
         value: 1 PRs
   - type: commit-summary
     heading: Commits and line changes
-    body: 12 commits with +2,681 / −706 lines.
+    body: 13 commits with +2,681 / −706 lines.
     chips:
       - label: Commits
-        value: "12"
+        value: "13"
         color: green
       - label: Additions
         value: +2,681
@@ -29,7 +29,7 @@ summaries:
       tracked, elapsed, or billed time.
     chips:
       - label: Estimated engineering hours
-        value: ~12.2h
+        value: ~18.6h
 highlights:
   - type: pr
     title: "feat(workflows): restore review integrity"

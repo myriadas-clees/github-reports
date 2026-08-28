@@ -159,6 +159,31 @@ aiReviews:
   comments: 0
   reviews: 0
   fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-07-10T12:08:57Z
+    - 2026-07-10T12:30:21Z
+    - 2026-07-10T12:50:25Z
+    - 2026-07-10T16:44:31Z
+    - 2026-07-10T17:13:38Z
+    - 2026-07-10T13:37:25Z
+    - 2026-07-10T16:57:59Z
+    - 2026-07-10T18:30:12Z
+    - 2026-07-10T18:48:14Z
+    - 2026-07-10T18:52:10Z
+    - 2026-07-10T19:22:42Z
+  volume:
+    pullRequests: []
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 11
+    commitAdditions: 8275
+    commitDeletions: 1808
+    commitStatsCount: 11
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
 hoursEstimate:
   version: "2.1"
   hours: 13

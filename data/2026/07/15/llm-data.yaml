@@ -12,10 +12,10 @@ summaries:
         value: 2 PRs
   - type: commit-summary
     heading: Commits and line changes
-    body: 16 commits with +822 / −839 lines.
+    body: 30 commits with +822 / −839 lines.
     chips:
       - label: Commits
-        value: "16"
+        value: "30"
         color: green
       - label: Additions
         value: "+822"
@@ -35,21 +35,8 @@ summaries:
       tracked, elapsed, or billed time.
     chips:
       - label: Estimated engineering hours
-        value: ~13.5h
+        value: ~31.2h
 highlights:
-  - type: pr
-    title: "ci: harden PR preview credentials"
-    repo: Myriad-Advisor-Solutions/myriadas-apps
-    meta: merged · +58 −3
-    body: |-
-      ## What changed
-
-      - build Hub artifacts without Azure deployment credentials
-      - deploy from a fresh runner with PR-write permission scoped to that job
-      - cancel stale runs for the same PR preview
-
-      ## Why
-    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/27
   - type: pr
     title: "ci: scope PR preview permissions"
     repo: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -64,6 +51,19 @@ highlights:
 
       PR-controlled build and test scripts previously ran w
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/60
+  - type: pr
+    title: "ci: harden PR preview credentials"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +58 −3
+    body: |-
+      ## What changed
+
+      - build Hub artifacts without Azure deployment credentials
+      - deploy from a fresh runner with PR-write permission scoped to that job
+      - cancel stale runs for the same PR preview
+
+      ## Why
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/27
   - type: pr
     title: "ci: add Static Web Apps PR previews"
     repo: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -94,9 +94,9 @@ highlights:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/58
 ticker:
   - label: SHIPPED
-    text: '@myriadas-clees merged "ci: harden PR preview credentials" in Myriad-Advisor-Solutions/myriadas-apps'
-  - label: SHIPPED
     text: '@myriadas-clees merged "ci: scope PR preview permissions" in Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "ci: harden PR preview credentials" in Myriad-Advisor-Solutions/myriadas-apps'
   - label: SHIPPED
     text: '@myriadas-clees merged "ci: add Static Web Apps PR previews" in Myriad-Advisor-Solutions/ohcpwm-apps'
   - label: SHIPPED
