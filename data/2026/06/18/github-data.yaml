@@ -1,0 +1,170 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-06-18
+  to: 2026-06-18
+stats:
+  totalCommits: 8
+  totalAdditions: 0
+  totalDeletions: 0
+  prsOpened: 0
+  prsMerged: 0
+  prsInProgress: 0
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 13
+dailyCommits:
+  - date: 2026-06-18
+    count: 8
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 5
+    prsOpened: 0
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 3
+    prsOpened: 0
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests: []
+prsInProgress: []
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "feat(pto): add accrual renewal policy"
+      - "feat: initial tenent work before serverless functions"
+      - "feat(pto): convert tracker to serverless"
+      - "test(pto): add runtime benchmark"
+      - "feat(pto): add free-tier Entra token auth"
+    commits:
+      - sha: 1b77e8f1d0f14231ecbba97907b087902854f94d
+        message: "feat(pto): add accrual renewal policy"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/1b77e8f1d0f14231ecbba97907b087902854f94d
+        authoredAt: 2026-06-18T14:03:28.000-04:00
+        additions: 1463
+        deletions: 7
+        filesChanged: 15
+      - sha: a30d5390660600e167a8e28a93415778c99646ef
+        message: "feat: initial tenent work before serverless functions"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a30d5390660600e167a8e28a93415778c99646ef
+        authoredAt: 2026-06-18T14:44:08.000-04:00
+        additions: 1341
+        deletions: 92
+        filesChanged: 39
+      - sha: 173cf60b662b2d671a7e03ee62d9bdc9dbffecc3
+        message: "feat(pto): convert tracker to serverless"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/173cf60b662b2d671a7e03ee62d9bdc9dbffecc3
+        authoredAt: 2026-06-18T15:06:32.000-04:00
+        additions: 2226
+        deletions: 673
+        filesChanged: 57
+      - sha: 690a0464356793f796d343b5599b2bfbe31f0356
+        message: "test(pto): add runtime benchmark"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/690a0464356793f796d343b5599b2bfbe31f0356
+        authoredAt: 2026-06-18T15:28:00.000-04:00
+        additions: 251
+        deletions: 0
+        filesChanged: 2
+      - sha: 2c1b9da56497cbd8caf8baa836e477b5c1c7d4c0
+        message: "feat(pto): add free-tier Entra token auth"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2c1b9da56497cbd8caf8baa836e477b5c1c7d4c0
+        authoredAt: 2026-06-18T16:36:00.000-04:00
+        additions: 817
+        deletions: 163
+        filesChanged: 29
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "feat: create ohpwm apps monorepo"
+      - "chore: initial commit"
+      - "feat: add authentication and auditing features to OFAC app"
+    commits:
+      - sha: 8dd06b97d19859ce6df16a486eb31662cf5ab9b6
+        message: "feat: create ohpwm apps monorepo"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8dd06b97d19859ce6df16a486eb31662cf5ab9b6
+        authoredAt: 2026-06-18T08:29:56.000-04:00
+        additions: 5414
+        deletions: 0
+        filesChanged: 106
+      - sha: 94de1ee6fa5393c3b0cecdcbc05804fe988216b8
+        message: "chore: initial commit"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/94de1ee6fa5393c3b0cecdcbc05804fe988216b8
+        authoredAt: 2026-06-18T08:51:29.000-04:00
+        additions: 7
+        deletions: 7
+        filesChanged: 6
+      - sha: a989fc0c2133af3b4931973d58e3d25df602f623
+        message: "feat: add authentication and auditing features to OFAC app"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a989fc0c2133af3b4931973d58e3d25df602f623
+        authoredAt: 2026-06-18T12:24:52.000-04:00
+        additions: 1790
+        deletions: 172
+        filesChanged: 64
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 0
+  comments: 0
+  reviews: 0
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-06-18T14:03:28.000-04:00
+    - 2026-06-18T14:44:08.000-04:00
+    - 2026-06-18T15:06:32.000-04:00
+    - 2026-06-18T15:28:00.000-04:00
+    - 2026-06-18T16:36:00.000-04:00
+    - 2026-06-18T08:29:56.000-04:00
+    - 2026-06-18T08:51:29.000-04:00
+    - 2026-06-18T12:24:52.000-04:00
+  volume:
+    pullRequests: []
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 8
+    commitAdditions: 13309
+    commitDeletions: 1114
+    commitStatsCount: 8
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 13
+  sessions: 3
+  sessionHours: 3.5
+  volumeHours: 13
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""

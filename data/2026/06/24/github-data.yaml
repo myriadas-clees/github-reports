@@ -1,0 +1,179 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-06-24
+  to: 2026-06-24
+stats:
+  totalCommits: 9
+  totalAdditions: 0
+  totalDeletions: 0
+  prsOpened: 0
+  prsMerged: 0
+  prsInProgress: 0
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 9
+dailyCommits:
+  - date: 2026-06-24
+    count: 9
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 6
+    prsOpened: 0
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 3
+    prsOpened: 0
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests: []
+prsInProgress: []
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "refactor: simplify shared workspace wiring"
+      - "docs: add GitHub Projects triage guidance"
+      - "chore: strengthen serverless repo workflow"
+    commits:
+      - sha: aa78c2e0b8326fa3cf32f1be29afbe8be37289c0
+        message: "refactor: simplify shared workspace wiring"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/aa78c2e0b8326fa3cf32f1be29afbe8be37289c0
+        authoredAt: 2026-06-24T15:04:21Z
+        additions: 2345
+        deletions: 718
+        filesChanged: 105
+      - sha: 6687869653432a487f8eebdf9728c0c554040038
+        message: "docs: add GitHub Projects triage guidance"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6687869653432a487f8eebdf9728c0c554040038
+        authoredAt: 2026-06-24T15:18:14Z
+        additions: 4
+        deletions: 0
+        filesChanged: 1
+      - sha: 16e971041798b15469426b8a2aa0f90af29ccd30
+        message: "chore: strengthen serverless repo workflow"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/16e971041798b15469426b8a2aa0f90af29ccd30
+        authoredAt: 2026-06-24T20:01:21Z
+        additions: 425
+        deletions: 14
+        filesChanged: 7
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "feat: add shared password field and pricing demo seeds"
+      - "feat(pricing): enhance dashboard trend chart functionality and styling"
+      - "fix(pricing): update dashboard styles and improve layout responsiveness"
+      - "docs: update serverless deployment guidance"
+      - "docs: update agent instructions"
+      - "feat: add serverless parity scaffolding"
+    commits:
+      - sha: 0ea5f68395376aeba9fc98eb22c314e5d2b5a38b
+        message: "feat: add shared password field and pricing demo seeds"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0ea5f68395376aeba9fc98eb22c314e5d2b5a38b
+        authoredAt: 2026-06-24T14:08:40Z
+        additions: 353
+        deletions: 27
+        filesChanged: 5
+      - sha: 0d416f52a82120c33567c501abd0a346294f302a
+        message: "feat(pricing): enhance dashboard trend chart functionality and styling"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0d416f52a82120c33567c501abd0a346294f302a
+        authoredAt: 2026-06-24T18:02:02Z
+        additions: 178
+        deletions: 29
+        filesChanged: 5
+      - sha: 463160c0365392c547e65006b3da3f1e64213957
+        message: "fix(pricing): update dashboard styles and improve layout responsiveness"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/463160c0365392c547e65006b3da3f1e64213957
+        authoredAt: 2026-06-24T18:08:04Z
+        additions: 43
+        deletions: 10
+        filesChanged: 2
+      - sha: 06fa8a318a0e08ea68ada7656b61b28b57e37595
+        message: "docs: update serverless deployment guidance"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/06fa8a318a0e08ea68ada7656b61b28b57e37595
+        authoredAt: 2026-06-24T19:28:45Z
+        additions: 204
+        deletions: 30
+        filesChanged: 4
+      - sha: 06890f6586e21c186d1e5cafb14cd4b01af87546
+        message: "docs: update agent instructions"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/06890f6586e21c186d1e5cafb14cd4b01af87546
+        authoredAt: 2026-06-24T19:41:25Z
+        additions: 95
+        deletions: 0
+        filesChanged: 1
+      - sha: 088f13282a00d045fea0d34e5fe5678a8f27a4d9
+        message: "feat: add serverless parity scaffolding"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/088f13282a00d045fea0d34e5fe5678a8f27a4d9
+        authoredAt: 2026-06-24T20:01:20Z
+        additions: 454
+        deletions: 12
+        filesChanged: 34
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 0
+  comments: 0
+  reviews: 0
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-06-24T15:04:21Z
+    - 2026-06-24T15:18:14Z
+    - 2026-06-24T20:01:21Z
+    - 2026-06-24T14:08:40Z
+    - 2026-06-24T18:02:02Z
+    - 2026-06-24T18:08:04Z
+    - 2026-06-24T19:28:45Z
+    - 2026-06-24T19:41:25Z
+    - 2026-06-24T20:01:20Z
+  volume:
+    pullRequests: []
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 9
+    commitAdditions: 4101
+    commitDeletions: 840
+    commitStatsCount: 9
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 9
+  sessions: 2
+  sessionHours: 3.1
+  volumeHours: 9
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""

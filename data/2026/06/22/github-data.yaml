@@ -1,0 +1,188 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-06-22
+  to: 2026-06-22
+stats:
+  totalCommits: 10
+  totalAdditions: 0
+  totalDeletions: 0
+  prsOpened: 0
+  prsMerged: 0
+  prsInProgress: 0
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 18
+dailyCommits:
+  - date: 2026-06-22
+    count: 10
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 6
+    prsOpened: 0
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 4
+    prsOpened: 0
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests: []
+prsInProgress: []
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - Ignore output artifacts and retain valuation fixtures
+      - Merge branch 'feature/pto-accrual-renewal'
+      - Refactor PTO tracker functions to use built-in Azure types
+      - Merge branch 'serverless-tenant-deployment'
+    commits:
+      - sha: f2f6a599b72d14b2a1a4e0adc86be8c3d8d6c9fe
+        message: Ignore output artifacts and retain valuation fixtures
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f2f6a599b72d14b2a1a4e0adc86be8c3d8d6c9fe
+        authoredAt: 2026-06-22T14:45:38.000-04:00
+        additions: 397
+        deletions: 574
+        filesChanged: 83
+      - sha: 9446aa51b5f6dbcfaecba87034054806e34bfeb3
+        message: Merge branch 'feature/pto-accrual-renewal'
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9446aa51b5f6dbcfaecba87034054806e34bfeb3
+        authoredAt: 2026-06-22T14:57:14.000-04:00
+        additions: 1463
+        deletions: 7
+        filesChanged: 15
+      - sha: 225fc2af507913e71560e2afd54e4851f88015c2
+        message: Refactor PTO tracker functions to use built-in Azure types
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/225fc2af507913e71560e2afd54e4851f88015c2
+        authoredAt: 2026-06-22T15:48:11.000-04:00
+        additions: 97
+        deletions: 466
+        filesChanged: 10
+      - sha: c98fa434b03f98e0c9141d76d8c80fd5f1a5785b
+        message: Merge branch 'serverless-tenant-deployment'
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c98fa434b03f98e0c9141d76d8c80fd5f1a5785b
+        authoredAt: 2026-06-22T15:59:59.000-04:00
+        additions: 4308
+        deletions: 906
+        filesChanged: 97
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "refactor: simplify app state handling"
+      - "feat: expand app flows and shared UI"
+      - "feat: merge auth and simplification branches"
+      - "feat: enhance login error handling and styling"
+      - "feat(pricing): implement dashboard components and styling"
+      - "feat(pricing): add recruit detail components and report deletion functionality"
+    commits:
+      - sha: 6821eecf4439c47692b7701c2864fb20fbd32b54
+        message: "refactor: simplify app state handling"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6821eecf4439c47692b7701c2864fb20fbd32b54
+        authoredAt: 2026-06-22T10:54:47.000-04:00
+        additions: 522
+        deletions: 843
+        filesChanged: 65
+      - sha: 838f455853a3e8d7c59e18b184e713bb63df27ce
+        message: "feat: expand app flows and shared UI"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/838f455853a3e8d7c59e18b184e713bb63df27ce
+        authoredAt: 2026-06-22T14:42:16.000-04:00
+        additions: 1374
+        deletions: 267
+        filesChanged: 73
+      - sha: 902a194746031ca174368e4636d276963f8fcbf1
+        message: "feat: merge auth and simplification branches"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/902a194746031ca174368e4636d276963f8fcbf1
+        authoredAt: 2026-06-22T15:11:30.000-04:00
+        additions: 1482
+        deletions: 180
+        filesChanged: 73
+      - sha: 0ee2229a18b4c21f8762bcdfe224caa55c74cb8e
+        message: "feat: enhance login error handling and styling"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0ee2229a18b4c21f8762bcdfe224caa55c74cb8e
+        authoredAt: 2026-06-22T16:11:17.000-04:00
+        additions: 48
+        deletions: 4
+        filesChanged: 6
+      - sha: fefab383d3a0b61e7eaad5fdfe9b4f4017217b88
+        message: "feat(pricing): implement dashboard components and styling"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/fefab383d3a0b61e7eaad5fdfe9b4f4017217b88
+        authoredAt: 2026-06-22T16:54:49.000-04:00
+        additions: 1346
+        deletions: 78
+        filesChanged: 12
+      - sha: 4ebcd1e763de6ab8095358b85059836eb8615ebc
+        message: "feat(pricing): add recruit detail components and report deletion functionality"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4ebcd1e763de6ab8095358b85059836eb8615ebc
+        authoredAt: 2026-06-22T17:27:34.000-04:00
+        additions: 1165
+        deletions: 165
+        filesChanged: 10
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 0
+  comments: 0
+  reviews: 0
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-06-22T14:45:38.000-04:00
+    - 2026-06-22T14:57:14.000-04:00
+    - 2026-06-22T15:48:11.000-04:00
+    - 2026-06-22T15:59:59.000-04:00
+    - 2026-06-22T10:54:47.000-04:00
+    - 2026-06-22T14:42:16.000-04:00
+    - 2026-06-22T15:11:30.000-04:00
+    - 2026-06-22T16:11:17.000-04:00
+    - 2026-06-22T16:54:49.000-04:00
+    - 2026-06-22T17:27:34.000-04:00
+  volume:
+    pullRequests: []
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 10
+    commitAdditions: 12202
+    commitDeletions: 3490
+    commitStatsCount: 10
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 18
+  sessions: 2
+  sessionHours: 3.3
+  volumeHours: 18
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
