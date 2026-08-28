@@ -10,10 +10,10 @@ summaries:
         value: 2 PRs
   - type: commit-summary
     heading: Commits and line changes
-    body: 4 commits with +4,082 / −2,945 lines.
+    body: 37 commits with +4,082 / −2,945 lines.
     chips:
       - label: Commits
-        value: "4"
+        value: "37"
         color: green
       - label: Additions
         value: +4,082
@@ -44,7 +44,7 @@ summaries:
       tracked, elapsed, or billed time.
     chips:
       - label: Estimated engineering hours
-        value: ~34.3h
+        value: ~60.5h
 highlights:
   - type: pr
     title: "feat(pricing): add entity and state costs"

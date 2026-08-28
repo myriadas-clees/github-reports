@@ -10,10 +10,10 @@ summaries:
         value: 0 PRs
   - type: commit-summary
     heading: Commits and line changes
-    body: 6 commits with +1,075 / −240 lines.
+    body: 11 commits with +1,075 / −240 lines.
     chips:
       - label: Commits
-        value: "6"
+        value: "11"
         color: green
       - label: Additions
         value: +1,075
@@ -27,7 +27,7 @@ summaries:
       tracked, elapsed, or billed time.
     chips:
       - label: Estimated engineering hours
-        value: ~15.5h
+        value: ~35.7h
 highlights:
   - type: pr
     title: "fix(pricing): give payout details room to breathe"

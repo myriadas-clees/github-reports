@@ -10,10 +10,10 @@ summaries:
         value: 4 PRs
   - type: commit-summary
     heading: Commits and line changes
-    body: 5 commits with +761 / −388 lines.
+    body: 27 commits with +761 / −388 lines.
     chips:
       - label: Commits
-        value: "5"
+        value: "27"
         color: green
       - label: Additions
         value: "+761"
@@ -44,7 +44,7 @@ summaries:
       tracked, elapsed, or billed time.
     chips:
       - label: Estimated engineering hours
-        value: ~30.3h
+        value: ~73.8h
 highlights:
   - type: pr
     title: "docs(deploy): document app target matrix"

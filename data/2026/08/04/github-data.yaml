@@ -12,7 +12,7 @@ dateRange:
   from: 2026-08-04
   to: 2026-08-04
 stats:
-  totalCommits: 1
+  totalCommits: 17
   totalAdditions: 436
   totalDeletions: 502
   prsOpened: 4
@@ -22,13 +22,13 @@ stats:
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 10
+  estimatedHours: 37.7
 dailyCommits:
   - date: 2026-08-04
-    count: 1
+    count: 17
 repositories:
   - name: Myriad-Advisor-Solutions/ohcpwm-apps
-    commits: 1
+    commits: 17
     prsOpened: 4
     prsMerged: 1
     issuesOpened: 0
@@ -55,10 +55,19 @@ pullRequests:
     updatedAt: 2026-08-05T12:37:49Z
     closedAt: 2026-08-05T12:37:49Z
     mergedAt: null
-    workTimestamps: &a2
+    workCommits: &a2
+      - &a13
+        sha: 9096a4cc44afb9f48efff91e748521ad3692dc75
+        message: "fix(pricing): focus executive dashboard metrics [skip ci]"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/9096a4cc44afb9f48efff91e748521ad3692dc75
+        authoredAt: 2026-08-04T18:29:12Z
+    workTimestamps: &a3
       - 2026-08-04T18:29:12Z
     workAdditions: 9
     workDeletions: 167
+    workFiles: &a4
+      - pricing/src/components/__tests__/dashboard-metrics-charts.test.tsx
+      - pricing/src/components/dashboard-metrics-charts.tsx
   - title: "fix(pricing): add bottom save actions"
     body: >-
       - Adds a bottom **Save Changes** action to the advanced pricing workstation.
@@ -81,11 +90,28 @@ pullRequests:
     updatedAt: 2026-08-04T20:45:07Z
     closedAt: 2026-08-04T20:45:07Z
     mergedAt: 2026-08-04T20:45:07Z
+    workCommits:
+      - &a15
+        sha: 0da96dd00ae3d15644f31f1774b899e4e518b1ef
+        message: "fix(pricing): add bottom save actions"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0da96dd00ae3d15644f31f1774b899e4e518b1ef
+        authoredAt: 2026-08-04T18:32:13Z
+      - &a18
+        sha: 91257b809a521c910b541a7b8856d6ca5bdb5894
+        message: "fix(pricing): focus returned input workflows"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/91257b809a521c910b541a7b8856d6ca5bdb5894
+        authoredAt: 2026-08-04T18:57:28Z
     workTimestamps:
       - 2026-08-04T18:32:13Z
       - 2026-08-04T18:57:28Z
     workAdditions: 188
     workDeletions: 6
+    workFiles:
+      - pricing/src/app/globals.css
+      - pricing/src/components/__tests__/pricing-workstation-client.test.tsx
+      - pricing/src/components/__tests__/recruit-model-shell.test.tsx
+      - pricing/src/components/pricing-workstation-client.tsx
+      - pricing/src/components/recruit-model-shell.tsx
   - title: "fix(pricing): remove FINET advantage summary"
     body: |-
       ## What changed
@@ -98,7 +124,7 @@ pullRequests:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/99
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
-    labels: &a3 []
+    labels: &a5 []
     additions: 25
     deletions: 5
     changedFiles: 26
@@ -107,12 +133,31 @@ pullRequests:
     updatedAt: 2026-08-05T12:37:51Z
     closedAt: 2026-08-05T12:37:51Z
     mergedAt: null
-    workTimestamps: &a4
+    workCommits: &a6
+      - &a16
+        sha: 51a3139d70867dd689d8ae210df6b313485bebf3
+        message: "fix(pricing): remove FINET advantage summary"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/51a3139d70867dd689d8ae210df6b313485bebf3
+        authoredAt: 2026-08-04T18:47:40Z
+      - &a19
+        sha: f07bc5e312446621c97c12846fdf41604e1876bb
+        message: "test(pricing): stabilize PDF content assertion"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f07bc5e312446621c97c12846fdf41604e1876bb
+        authoredAt: 2026-08-04T19:05:15Z
+      - &a21
+        sha: b1d0ab1fcda0bb34e57cbdf63c95075b9462195e
+        message: "test(pricing): allow report content comparison time"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b1d0ab1fcda0bb34e57cbdf63c95075b9462195e
+        authoredAt: 2026-08-04T19:07:55Z
+    workTimestamps: &a7
       - 2026-08-04T18:47:40Z
       - 2026-08-04T19:05:15Z
       - 2026-08-04T19:07:55Z
     workAdditions: 25
     workDeletions: 5
+    workFiles: &a8
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/report/pdf.tsx
   - title: "fix(pricing): give payout details room to breathe"
     body: >-
       - Reorganize the expanded recruit payout detail into a vertical proposed-payout calculation and a separate Current
@@ -124,7 +169,7 @@ pullRequests:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/100
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
-    labels: &a5 []
+    labels: &a9 []
     additions: 214
     deletions: 324
     changedFiles: 8
@@ -133,7 +178,48 @@ pullRequests:
     updatedAt: 2026-08-05T12:42:53Z
     closedAt: 2026-08-05T12:42:53Z
     mergedAt: 2026-08-05T12:42:53Z
-    workTimestamps: &a6
+    workCommits: &a10
+      - &a14
+        sha: 1b3d4555eb642524e437569fe0efeea38446d9ce
+        message: "fix(pricing): focus executive dashboard metrics"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/1b3d4555eb642524e437569fe0efeea38446d9ce
+        authoredAt: 2026-08-04T18:29:12Z
+      - &a17
+        sha: 76025f2932d4d633f788eda28523c29bc511393c
+        message: "fix(pricing): remove FINET advantage summary"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/76025f2932d4d633f788eda28523c29bc511393c
+        authoredAt: 2026-08-04T18:47:40Z
+      - &a20
+        sha: 09683a284dc9b5d1fd901740b51066974388bcd1
+        message: "test(pricing): stabilize PDF content assertion"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/09683a284dc9b5d1fd901740b51066974388bcd1
+        authoredAt: 2026-08-04T19:05:15Z
+      - &a22
+        sha: 2b1b8262d63574e5b6ed5bdcbbba027238b08eab
+        message: "test(pricing): allow report content comparison time"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2b1b8262d63574e5b6ed5bdcbbba027238b08eab
+        authoredAt: 2026-08-04T19:07:55Z
+      - &a23
+        sha: 5d5ab4b57c3434391a4aa41dbdac4ee968173338
+        message: "fix(pricing): give payout details room to breathe"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/5d5ab4b57c3434391a4aa41dbdac4ee968173338
+        authoredAt: 2026-08-04T19:19:19Z
+      - &a24
+        sha: 346041d934896c649479d5c6c01ad5431b3d9fd1
+        message: "fix(pricing): keep payout details recruiter-focused"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/346041d934896c649479d5c6c01ad5431b3d9fd1
+        authoredAt: 2026-08-04T19:39:18Z
+      - &a25
+        sha: 308653242e269bcacf1a88d6a2f16a7f7c3f5698
+        message: "fix(pricing): center pipeline totals label"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/308653242e269bcacf1a88d6a2f16a7f7c3f5698
+        authoredAt: 2026-08-04T19:43:57Z
+      - &a26
+        sha: 20cff27b17dc0fad3f650b2bc58b4fde28bd3fa9
+        message: "fix(pricing): align pipeline totals with name"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/20cff27b17dc0fad3f650b2bc58b4fde28bd3fa9
+        authoredAt: 2026-08-04T19:47:23Z
+    workTimestamps: &a11
       - 2026-08-04T18:29:12Z
       - 2026-08-04T18:47:40Z
       - 2026-08-04T19:05:15Z
@@ -144,6 +230,15 @@ pullRequests:
       - 2026-08-04T19:47:23Z
     workAdditions: 214
     workDeletions: 324
+    workFiles: &a12
+      - pricing/src/app/globals.css
+      - pricing/src/components/__tests__/dashboard-metrics-charts.test.tsx
+      - pricing/src/components/__tests__/recruits-table-responsive-css.test.ts
+      - pricing/src/components/__tests__/recruits-table.test.tsx
+      - pricing/src/components/dashboard-metrics-charts.tsx
+      - pricing/src/components/recruits-table.tsx
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/report/pdf.tsx
 prsInProgress:
   - title: "fix(pricing): focus executive dashboard metrics"
     body: >-
@@ -165,9 +260,11 @@ prsInProgress:
     updatedAt: 2026-08-05T12:37:49Z
     closedAt: 2026-08-05T12:37:49Z
     mergedAt: null
-    workTimestamps: *a2
+    workCommits: *a2
+    workTimestamps: *a3
     workAdditions: 9
     workDeletions: 167
+    workFiles: *a4
   - title: "fix(pricing): remove FINET advantage summary"
     body: |-
       ## What changed
@@ -180,7 +277,7 @@ prsInProgress:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/99
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: closed
-    labels: *a3
+    labels: *a5
     additions: 803
     deletions: 129
     changedFiles: 26
@@ -189,9 +286,11 @@ prsInProgress:
     updatedAt: 2026-08-05T12:37:51Z
     closedAt: 2026-08-05T12:37:51Z
     mergedAt: null
-    workTimestamps: *a4
+    workCommits: *a6
+    workTimestamps: *a7
     workAdditions: 25
     workDeletions: 5
+    workFiles: *a8
   - title: "fix(pricing): give payout details room to breathe"
     body: >-
       - Reorganize the expanded recruit payout detail into a vertical proposed-payout calculation and a separate Current
@@ -203,7 +302,7 @@ prsInProgress:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/100
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: merged
-    labels: *a5
+    labels: *a9
     additions: 122
     deletions: 232
     changedFiles: 8
@@ -212,9 +311,11 @@ prsInProgress:
     updatedAt: 2026-08-05T12:42:53Z
     closedAt: 2026-08-05T12:42:53Z
     mergedAt: 2026-08-05T12:42:53Z
-    workTimestamps: *a6
+    workCommits: *a10
+    workTimestamps: *a11
     workAdditions: 214
     workDeletions: 324
+    workFiles: *a12
   - title: "fix(pricing): normalize duplicated recruit models"
     body: |-
       - Deep-copy and normalize duplicated pricing models so the copied recruit's advisor name is updated independently.
@@ -232,10 +333,22 @@ prsInProgress:
     updatedAt: 2026-08-05T11:56:28Z
     closedAt: 2026-08-05T11:56:28Z
     mergedAt: 2026-08-05T11:56:28Z
+    workCommits:
+      - &a27
+        sha: 3498f3e5fe8cd575e797fe25f565455baf348120
+        message: "chore(pricing): resolve #82 against main"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3498f3e5fe8cd575e797fe25f565455baf348120
+        authoredAt: 2026-08-04T20:48:24Z
     workTimestamps:
       - 2026-08-04T20:48:24Z
     workAdditions: 185
     workDeletions: 3
+    workFiles:
+      - pricing/src/app/globals.css
+      - pricing/src/components/__tests__/pricing-workstation-client.test.tsx
+      - pricing/src/components/__tests__/recruit-model-shell.test.tsx
+      - pricing/src/components/pricing-workstation-client.tsx
+      - pricing/src/components/recruit-model-shell.tsx
   - title: "feat(pricing): add permissioned holdco revenue"
     body: |-
       Adds the requested AUM, Top Line Revenue, and Revenue to Holdco views to the Advisor Pricing pipeline.
@@ -256,21 +369,68 @@ prsInProgress:
     updatedAt: 2026-08-05T12:33:36Z
     closedAt: 2026-08-05T12:33:35Z
     mergedAt: 2026-08-05T12:33:35Z
+    workCommits:
+      - &a28
+        sha: 152a6e31a42f0f612b6e4fbe4455d9b014cd5295
+        message: "chore(pricing): resolve #81 against main"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/152a6e31a42f0f612b6e4fbe4455d9b014cd5295
+        authoredAt: 2026-08-04T20:49:23Z
     workTimestamps:
       - 2026-08-04T20:49:23Z
     workAdditions: 185
     workDeletions: 3
+    workFiles:
+      - pricing/src/app/globals.css
+      - pricing/src/components/__tests__/pricing-workstation-client.test.tsx
+      - pricing/src/components/__tests__/recruit-model-shell.test.tsx
+      - pricing/src/components/pricing-workstation-client.tsx
+      - pricing/src/components/recruit-model-shell.tsx
 issues: []
 events: []
 commitMessages:
   - repo: Myriad-Advisor-Solutions/ohcpwm-apps
     messages:
+      - "fix(pricing): focus executive dashboard metrics [skip ci]"
+      - "fix(pricing): focus executive dashboard metrics"
+      - "fix(pricing): add bottom save actions"
+      - "fix(pricing): remove FINET advantage summary"
+      - "fix(pricing): remove FINET advantage summary"
+      - "fix(pricing): focus returned input workflows"
+      - "test(pricing): stabilize PDF content assertion"
+      - "test(pricing): stabilize PDF content assertion"
+      - "test(pricing): allow report content comparison time"
+      - "test(pricing): allow report content comparison time"
+      - "fix(pricing): give payout details room to breathe"
+      - "fix(pricing): keep payout details recruiter-focused"
+      - "fix(pricing): center pipeline totals label"
+      - "fix(pricing): align pipeline totals with name"
       - "fix(pricing): add bottom save actions (#98) [skip ci]"
+      - "chore(pricing): resolve #82 against main"
+      - "chore(pricing): resolve #81 against main"
     commits:
+      - *a13
+      - *a14
+      - *a15
+      - *a16
+      - *a17
+      - *a18
+      - *a19
+      - *a20
+      - *a21
+      - *a22
+      - *a23
+      - *a24
+      - *a25
+      - *a26
       - sha: d8f118bab8d5ee46a3f4605a32a6fb84de960fba
         message: "fix(pricing): add bottom save actions (#98) [skip ci]"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d8f118bab8d5ee46a3f4605a32a6fb84de960fba
         authoredAt: 2026-08-04T20:45:07Z
+        additions: 185
+        deletions: 3
+        filesChanged: 5
+      - *a27
+      - *a28
 releases: []
 externalContributions: []
 codeReviews: []
@@ -290,11 +450,104 @@ aiReviews:
   comments: 1
   reviews: 1
   fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-08-04T18:29:12Z
+    - 2026-08-04T18:29:12Z
+    - 2026-08-04T18:32:13Z
+    - 2026-08-04T18:47:40Z
+    - 2026-08-04T18:47:40Z
+    - 2026-08-04T18:57:28Z
+    - 2026-08-04T19:05:15Z
+    - 2026-08-04T19:05:15Z
+    - 2026-08-04T19:07:55Z
+    - 2026-08-04T19:07:55Z
+    - 2026-08-04T19:19:19Z
+    - 2026-08-04T19:39:18Z
+    - 2026-08-04T19:43:57Z
+    - 2026-08-04T19:47:23Z
+    - 2026-08-04T20:45:07Z
+    - 2026-08-04T20:48:24Z
+    - 2026-08-04T20:49:23Z
+    - 2026-08-04T18:34:28Z
+    - 2026-08-04T18:29:12Z
+    - 2026-08-04T18:34:53Z
+    - 2026-08-04T20:45:07Z
+    - 2026-08-04T18:32:13Z
+    - 2026-08-04T18:57:28Z
+    - 2026-08-04T18:48:11Z
+    - 2026-08-04T18:47:40Z
+    - 2026-08-04T19:05:15Z
+    - 2026-08-04T19:07:55Z
+    - 2026-08-04T19:22:39Z
+    - 2026-08-04T18:29:12Z
+    - 2026-08-04T18:47:40Z
+    - 2026-08-04T19:05:15Z
+    - 2026-08-04T19:07:55Z
+    - 2026-08-04T19:19:19Z
+    - 2026-08-04T19:39:18Z
+    - 2026-08-04T19:43:57Z
+    - 2026-08-04T19:47:23Z
+  volume:
+    pullRequests:
+      - additions: 9
+        deletions: 167
+        state: closed
+        dailyWork: true
+        filesChanged: 2
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 188
+        deletions: 6
+        state: merged
+        dailyWork: true
+        filesChanged: 5
+        testFilesChanged: 2
+        commitCount: 2
+      - additions: 25
+        deletions: 5
+        state: closed
+        dailyWork: true
+        filesChanged: 2
+        testFilesChanged: 1
+        commitCount: 3
+      - additions: 185
+        deletions: 3
+        state: merged
+        dailyWork: true
+        filesChanged: 5
+        testFilesChanged: 2
+        commitCount: 1
+      - additions: 185
+        deletions: 3
+        state: merged
+        dailyWork: true
+        filesChanged: 5
+        testFilesChanged: 2
+        commitCount: 1
+      - additions: 214
+        deletions: 324
+        state: merged
+        dailyWork: true
+        filesChanged: 8
+        testFilesChanged: 4
+        commitCount: 8
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 1
+    commitAdditions: 185
+    commitDeletions: 3
+    commitStatsCount: 1
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
 hoursEstimate:
-  hours: 10
+  version: "2.1"
+  hours: 37.7
   sessions: 1
   sessionHours: 2.3
-  volumeHours: 10
+  volumeHours: 37.7
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

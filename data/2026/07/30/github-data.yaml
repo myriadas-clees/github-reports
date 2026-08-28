@@ -12,7 +12,7 @@ dateRange:
   from: 2026-07-30
   to: 2026-07-30
 stats:
-  totalCommits: 5
+  totalCommits: 27
   totalAdditions: 761
   totalDeletions: 388
   prsOpened: 4
@@ -22,13 +22,13 @@ stats:
   reviewComments: 19
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 30.3
+  estimatedHours: 73.8
 dailyCommits:
   - date: 2026-07-30
-    count: 5
+    count: 27
 repositories:
   - name: Myriad-Advisor-Solutions/myriadas-apps
-    commits: 5
+    commits: 27
     prsOpened: 4
     prsMerged: 5
     issuesOpened: 0
@@ -64,10 +64,18 @@ pullRequests:
     updatedAt: 2026-07-30T20:51:31Z
     closedAt: 2026-07-30T20:49:39Z
     mergedAt: 2026-07-30T20:49:39Z
+    workCommits:
+      - &a19
+        sha: f9da31b388bc4cb6e35177fa365bf9396b41c308
+        message: "docs(deploy): document app target matrix"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f9da31b388bc4cb6e35177fa365bf9396b41c308
+        authoredAt: 2026-07-30T20:37:43Z
     workTimestamps:
       - 2026-07-30T20:37:43Z
     workAdditions: 50
     workDeletions: 0
+    workFiles:
+      - docs/azure-serverless-plan.md
   - title: "fix(pricing): preserve Cosmos key fallback"
     body: >-
       ## Why
@@ -92,11 +100,31 @@ pullRequests:
     updatedAt: 2026-07-30T18:24:20Z
     closedAt: 2026-07-30T18:24:20Z
     mergedAt: 2026-07-30T18:24:20Z
+    workCommits:
+      - &a16
+        sha: e12f4b01bc576ac4b00084e563335baed2e72421
+        message: "fix(pricing): preserve Cosmos key fallback"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e12f4b01bc576ac4b00084e563335baed2e72421
+        authoredAt: 2026-07-30T18:14:45Z
+      - &a17
+        sha: 3689a6bfbb542c880a542ab273eb2954efb23a53
+        message: "fix(pricing): mirror Cosmos key setting"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3689a6bfbb542c880a542ab273eb2954efb23a53
+        authoredAt: 2026-07-30T18:20:04Z
     workTimestamps:
       - 2026-07-30T18:14:45Z
       - 2026-07-30T18:20:04Z
     workAdditions: 66
     workDeletions: 32
+    workFiles:
+      - docs/deploy-asap.md
+      - infra/azure/README.md
+      - pricing/.env.example
+      - pricing/README.md
+      - pricing/functions/local.settings.json.example
+      - pricing/src/lib/__tests__/runtime-config.test.ts
+      - pricing/src/lib/cosmos-data.ts
+      - scripts/tooling.test.ts
   - title: "fix(pricing): accept legacy runtime settings"
     body: >-
       Why
@@ -123,12 +151,40 @@ pullRequests:
     updatedAt: 2026-07-30T17:49:25Z
     closedAt: 2026-07-30T17:49:25Z
     mergedAt: 2026-07-30T17:49:25Z
+    workCommits:
+      - &a13
+        sha: e2c4d20e045f387eadf146d75fb6d4073ef7203c
+        message: "fix(pricing): accept legacy runtime settings"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e2c4d20e045f387eadf146d75fb6d4073ef7203c
+        authoredAt: 2026-07-30T17:18:42Z
+      - &a14
+        sha: 3324034fe7c3b54f6e1ce2359e0b8ca83d5b9e88
+        message: "fix(pricing): support shared Cosmos partition"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3324034fe7c3b54f6e1ce2359e0b8ca83d5b9e88
+        authoredAt: 2026-07-30T17:32:54Z
+      - &a15
+        sha: 2d3261be3fa559c2a3440ffbd1918a3af3aca9cd
+        message: "fix(pricing): couple Cosmos fallbacks"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2d3261be3fa559c2a3440ffbd1918a3af3aca9cd
+        authoredAt: 2026-07-30T17:44:02Z
     workTimestamps:
       - 2026-07-30T17:18:42Z
       - 2026-07-30T17:32:54Z
       - 2026-07-30T17:44:02Z
     workAdditions: 317
     workDeletions: 40
+    workFiles:
+      - docs/deploy-asap.md
+      - infra/azure/README.md
+      - pricing/.env.example
+      - pricing/README.md
+      - pricing/functions/local.settings.json.example
+      - pricing/src/lib/__tests__/runtime-config.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/api/request-session.ts
+      - pricing/src/lib/cosmos-data.ts
+      - pricing/src/lib/data.ts
+      - pricing/src/lib/runtime-config.ts
   - title: "fix(deploy): restore managed SWA API"
     body: >-
       Why
@@ -161,6 +217,67 @@ pullRequests:
     updatedAt: 2026-07-30T16:28:23Z
     closedAt: 2026-07-30T16:28:22Z
     mergedAt: 2026-07-30T16:28:22Z
+    workCommits:
+      - &a1
+        sha: 24698048bbf47feb4c2ff0ec271105609cb35477
+        message: "fix(deploy): restore managed SWA API"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/24698048bbf47feb4c2ff0ec271105609cb35477
+        authoredAt: 2026-07-30T13:00:19Z
+      - &a2
+        sha: cf2a0eaecdd87cd4ebb7fcc2c5c489bd3281e4d7
+        message: "fix(deploy): bind preview cleanup environment"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/cf2a0eaecdd87cd4ebb7fcc2c5c489bd3281e4d7
+        authoredAt: 2026-07-30T13:04:40Z
+      - &a3
+        sha: 54645f34bd66232864d63e1bc268c96be224ccfd
+        message: "docs(deploy): record managed SWA invariants"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/54645f34bd66232864d63e1bc268c96be224ccfd
+        authoredAt: 2026-07-30T13:12:28Z
+      - &a4
+        sha: 567ff4a7dbc1997b53452c276b0c8e0d665922bf
+        message: "fix(deploy): restrict manual deploy refs"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/567ff4a7dbc1997b53452c276b0c8e0d665922bf
+        authoredAt: 2026-07-30T13:30:25Z
+      - &a5
+        sha: b9b25cc069a8df920ffec4090f4e98cbac7f8047
+        message: "docs(azure): require manual auth probe"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b9b25cc069a8df920ffec4090f4e98cbac7f8047
+        authoredAt: 2026-07-30T13:45:12Z
+      - &a6
+        sha: 9efcb2db2a1a9d8069417ce6e7b18f16cabfa662
+        message: "docs(deploy): record PTO Cosmos settings"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9efcb2db2a1a9d8069417ce6e7b18f16cabfa662
+        authoredAt: 2026-07-30T13:54:56Z
+      - &a7
+        sha: 57cc1cff9663e1c655de2cb3e41132fcd7433669
+        message: "fix(deploy): isolate managed API artifacts"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/57cc1cff9663e1c655de2cb3e41132fcd7433669
+        authoredAt: 2026-07-30T14:18:42Z
+      - &a8
+        sha: 5fa309e85f9b08db5676160c7851682c6b9b1481
+        message: "fix(deploy): preserve start-date recovery"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5fa309e85f9b08db5676160c7851682c6b9b1481
+        authoredAt: 2026-07-30T14:33:23Z
+      - &a9
+        sha: 8b5696273196d7fc926a785d9dc5563e9df676a6
+        message: "fix(deploy): isolate preview uploads"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8b5696273196d7fc926a785d9dc5563e9df676a6
+        authoredAt: 2026-07-30T14:50:48Z
+      - &a10
+        sha: 409c135643b8cd314fcb648e01b504ca903018ac
+        message: "docs(deploy): record PTO auth mode"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/409c135643b8cd314fcb648e01b504ca903018ac
+        authoredAt: 2026-07-30T15:53:57Z
+      - &a11
+        sha: f06322d8aa41a816051bc63071fa62e881099500
+        message: "fix(onboarding): isolate recovery errors"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f06322d8aa41a816051bc63071fa62e881099500
+        authoredAt: 2026-07-30T16:08:38Z
+      - &a12
+        sha: 6335b2b8d9911746ffa939b535e53d784cd1acb0
+        message: "fix(deploy): refresh labeled previews"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6335b2b8d9911746ffa939b535e53d784cd1acb0
+        authoredAt: 2026-07-30T16:22:11Z
     workTimestamps:
       - 2026-07-30T13:00:19Z
       - 2026-07-30T13:04:40Z
@@ -176,6 +293,20 @@ pullRequests:
       - 2026-07-30T16:22:11Z
     workAdditions: 318
     workDeletions: 306
+    workFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
   - title: "fix(github): align triage project fields"
     body: |-
       ## What changed
@@ -209,10 +340,21 @@ pullRequests:
     updatedAt: 2026-07-30T20:35:06Z
     closedAt: 2026-07-30T20:35:06Z
     mergedAt: 2026-07-30T20:35:06Z
+    workCommits:
+      - &a18
+        sha: 730c87e18bffb8f156c0e2fb19b2a1a873db445f
+        message: "fix(github): align triage project fields"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/730c87e18bffb8f156c0e2fb19b2a1a873db445f
+        authoredAt: 2026-07-30T20:15:25Z
     workTimestamps:
       - 2026-07-30T20:15:25Z
     workAdditions: 10
     workDeletions: 10
+    workFiles:
+      - docs/repository-operations.md
+      - scripts/github/configure-repository.ts
+      - scripts/github/triage-issue.test.ts
+      - scripts/github/triage-issue.ts
 prsInProgress:
   - title: "fix(pto): remove production personas"
     body: >-
@@ -244,10 +386,23 @@ prsInProgress:
     updatedAt: 2026-07-31T19:38:23Z
     closedAt: 2026-07-31T19:38:23Z
     mergedAt: 2026-07-31T19:38:22Z
+    workCommits:
+      - &a21
+        sha: 2bf5fe8e4d5a7119d2a0f75d2dfa6da5ff02697d
+        message: "fix(pto): remove production personas"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2bf5fe8e4d5a7119d2a0f75d2dfa6da5ff02697d
+        authoredAt: 2026-07-30T20:56:00Z
     workTimestamps:
       - 2026-07-30T20:56:00Z
     workAdditions: 60
     workDeletions: 3
+    workFiles:
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - pto-tracker/src/lib/api/client.test.ts
+      - pto-tracker/src/lib/auth/navigation.test.ts
+      - pto-tracker/src/lib/auth/navigation.ts
+      - scripts/tooling.test.ts
   - title: "feat(onboarding): archive workstreams"
     body: >-
       Why
@@ -277,10 +432,36 @@ prsInProgress:
     updatedAt: 2026-07-31T19:48:51Z
     closedAt: 2026-07-31T19:44:23Z
     mergedAt: 2026-07-31T19:44:23Z
+    workCommits:
+      - &a20
+        sha: 4deb3bba0333420920fa50da2396dd7834527702
+        message: "feat(onboarding): archive workstreams"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4deb3bba0333420920fa50da2396dd7834527702
+        authoredAt: 2026-07-30T20:54:11Z
     workTimestamps:
       - 2026-07-30T20:54:11Z
     workAdditions: 431
     workDeletions: 41
+    workFiles:
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/settings/page.tsx
+      - onboarding/apps/dashboard/components/workstream-archive-settings.tsx
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/client.test.ts
+      - onboarding/apps/dashboard/lib/api/client.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - packages/contracts/src/onboarding.ts
+      - packages/db/src/client-isolation.test.ts
+      - packages/db/src/cosmos-queries.ts
+      - packages/db/src/migrate-database.test.ts
+      - packages/db/src/migrate-database.ts
+      - packages/db/src/queries.ts
+      - packages/db/src/runtime.ts
+      - packages/db/src/schema.ts
+      - packages/db/src/sqlite-migration-source.ts
   - title: "feat(workflows): restore review integrity"
     body: >-
       Why
@@ -313,41 +494,141 @@ prsInProgress:
     updatedAt: 2026-07-31T19:37:56Z
     closedAt: null
     mergedAt: null
+    workCommits:
+      - &a22
+        sha: 95c6ebd054b69f319626c4f979d734a2e8561a92
+        message: "feat(workflows): restore review integrity"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/95c6ebd054b69f319626c4f979d734a2e8561a92
+        authoredAt: 2026-07-30T21:01:56Z
     workTimestamps:
       - 2026-07-30T21:01:56Z
     workAdditions: 523
     workDeletions: 43
+    workFiles:
+      - excelerate/.env.example
+      - excelerate/README.md
+      - excelerate/functions/local.settings.json.example
+      - excelerate/src/app/api/excelerate/api.test.ts
+      - excelerate/src/components/excelerate-client.tsx
+      - excelerate/src/lib/api/azure-functions-adapter.ts
+      - excelerate/src/lib/api/handlers.ts
+      - excelerate/src/lib/excelerate/processor.ts
+      - excelerate/src/lib/excelerate/types.ts
+      - packages/contracts/src/pricing.ts
+      - packages/contracts/src/pto.ts
+      - packages/contracts/src/valuation.ts
+      - pricing/src/lib/report-storage.ts
+      - pto-tracker/functions/src/index.ts
+      - pto-tracker/src/app/api/[...path]/route.ts
+      - pto-tracker/src/app/my/requests/MyRequestsClient.tsx
+      - pto-tracker/src/lib/api/azure-functions-adapter.ts
+      - pto-tracker/src/lib/api/handlers.test.ts
+      - pto-tracker/src/lib/api/handlers.ts
+      - pto-tracker/src/lib/csv/paths.ts
+      - pto-tracker/src/lib/csv/reader.ts
+      - pto-tracker/src/lib/csv/writer.ts
+      - pto-tracker/src/lib/pto/request-policy.test.ts
+      - pto-tracker/src/lib/pto/request-policy.ts
+      - pto-tracker/src/lib/store/graph-lists-store.ts
+      - pto-tracker/src/lib/workflow/service.ts
+      - valuation/functions/src/index.ts
+      - valuation/src/app/api/[...path]/route.ts
+      - valuation/src/lib/api/azure-functions-adapter.ts
+      - valuation/src/lib/api/handlers.ts
+      - valuation/src/lib/persistence/cosmos-repository.ts
+      - valuation/src/lib/persistence/repository.ts
+      - valuation/src/lib/review-integrity.test.ts
+      - valuation/src/lib/review-integrity.ts
 issues: []
 events: []
 commitMessages:
   - repo: Myriad-Advisor-Solutions/myriadas-apps
     messages:
-      - "docs(deploy): document app target matrix"
-      - "fix(github): align triage project fields"
-      - "fix(pricing): preserve Cosmos key fallback (#68)"
-      - "fix(pricing): accept legacy runtime settings (#67)"
+      - "fix(deploy): restore managed SWA API"
+      - "fix(deploy): bind preview cleanup environment"
+      - "docs(deploy): record managed SWA invariants"
+      - "fix(deploy): restrict manual deploy refs"
+      - "docs(azure): require manual auth probe"
+      - "docs(deploy): record PTO Cosmos settings"
+      - "fix(deploy): isolate managed API artifacts"
+      - "fix(deploy): preserve start-date recovery"
+      - "fix(deploy): isolate preview uploads"
+      - "docs(deploy): record PTO auth mode"
+      - "fix(onboarding): isolate recovery errors"
+      - "fix(deploy): refresh labeled previews"
       - "fix(deploy): restore managed SWA API (#66)"
+      - "fix(pricing): accept legacy runtime settings"
+      - "fix(pricing): support shared Cosmos partition"
+      - "fix(pricing): couple Cosmos fallbacks"
+      - "fix(pricing): accept legacy runtime settings (#67)"
+      - "fix(pricing): preserve Cosmos key fallback"
+      - "fix(pricing): mirror Cosmos key setting"
+      - "fix(pricing): preserve Cosmos key fallback (#68)"
+      - "fix(github): align triage project fields"
+      - "fix(github): align triage project fields"
+      - "docs(deploy): document app target matrix"
+      - "docs(deploy): document app target matrix"
+      - "feat(onboarding): archive workstreams"
+      - "fix(pto): remove production personas"
+      - "feat(workflows): restore review integrity"
     commits:
-      - sha: 3976484058567d27b102df4846c28abac9d76455
-        message: "docs(deploy): document app target matrix"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3976484058567d27b102df4846c28abac9d76455
-        authoredAt: 2026-07-30T20:49:38Z
-      - sha: 4c1c59b16675e165106f948b9e106bb701a90d00
-        message: "fix(github): align triage project fields"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4c1c59b16675e165106f948b9e106bb701a90d00
-        authoredAt: 2026-07-30T20:35:05Z
-      - sha: c260ef199a80f6af41945c72e08ac439033a2d14
-        message: "fix(pricing): preserve Cosmos key fallback (#68)"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c260ef199a80f6af41945c72e08ac439033a2d14
-        authoredAt: 2026-07-30T18:24:19Z
-      - sha: c0ff9521a4d48f3a0f7d809e512330eef9955a79
-        message: "fix(pricing): accept legacy runtime settings (#67)"
-        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c0ff9521a4d48f3a0f7d809e512330eef9955a79
-        authoredAt: 2026-07-30T17:49:24Z
+      - *a1
+      - *a2
+      - *a3
+      - *a4
+      - *a5
+      - *a6
+      - *a7
+      - *a8
+      - *a9
+      - *a10
+      - *a11
+      - *a12
       - sha: a2e9951403de79829b404c2f926ee1a7d3252228
         message: "fix(deploy): restore managed SWA API (#66)"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a2e9951403de79829b404c2f926ee1a7d3252228
         authoredAt: 2026-07-30T16:28:22Z
+        additions: 286
+        deletions: 274
+        filesChanged: 13
+      - *a13
+      - *a14
+      - *a15
+      - sha: c0ff9521a4d48f3a0f7d809e512330eef9955a79
+        message: "fix(pricing): accept legacy runtime settings (#67)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c0ff9521a4d48f3a0f7d809e512330eef9955a79
+        authoredAt: 2026-07-30T17:49:24Z
+        additions: 312
+        deletions: 35
+        filesChanged: 11
+      - *a16
+      - *a17
+      - sha: c260ef199a80f6af41945c72e08ac439033a2d14
+        message: "fix(pricing): preserve Cosmos key fallback (#68)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c260ef199a80f6af41945c72e08ac439033a2d14
+        authoredAt: 2026-07-30T18:24:19Z
+        additions: 66
+        deletions: 32
+        filesChanged: 8
+      - *a18
+      - sha: 4c1c59b16675e165106f948b9e106bb701a90d00
+        message: "fix(github): align triage project fields"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4c1c59b16675e165106f948b9e106bb701a90d00
+        authoredAt: 2026-07-30T20:35:05Z
+        additions: 10
+        deletions: 10
+        filesChanged: 4
+      - *a19
+      - sha: 3976484058567d27b102df4846c28abac9d76455
+        message: "docs(deploy): document app target matrix"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3976484058567d27b102df4846c28abac9d76455
+        authoredAt: 2026-07-30T20:49:38Z
+        additions: 50
+        deletions: 0
+        filesChanged: 1
+      - *a20
+      - *a21
+      - *a22
 releases: []
 externalContributions: []
 codeReviews:
@@ -670,11 +951,175 @@ aiReviews:
   comments: 43
   reviews: 26
   fixed: 19
+hoursInputs:
+  timestamps:
+    - 2026-07-30T13:00:19Z
+    - 2026-07-30T13:04:40Z
+    - 2026-07-30T13:12:28Z
+    - 2026-07-30T13:30:25Z
+    - 2026-07-30T13:45:12Z
+    - 2026-07-30T13:54:56Z
+    - 2026-07-30T14:18:42Z
+    - 2026-07-30T14:33:23Z
+    - 2026-07-30T14:50:48Z
+    - 2026-07-30T15:53:57Z
+    - 2026-07-30T16:08:38Z
+    - 2026-07-30T16:22:11Z
+    - 2026-07-30T16:28:22Z
+    - 2026-07-30T17:18:42Z
+    - 2026-07-30T17:32:54Z
+    - 2026-07-30T17:44:02Z
+    - 2026-07-30T17:49:24Z
+    - 2026-07-30T18:14:45Z
+    - 2026-07-30T18:20:04Z
+    - 2026-07-30T18:24:19Z
+    - 2026-07-30T20:15:25Z
+    - 2026-07-30T20:35:05Z
+    - 2026-07-30T20:37:43Z
+    - 2026-07-30T20:49:38Z
+    - 2026-07-30T20:54:11Z
+    - 2026-07-30T20:56:00Z
+    - 2026-07-30T21:01:56Z
+    - 2026-07-30T20:20:51Z
+    - 2026-07-30T20:49:39Z
+    - 2026-07-30T20:37:43Z
+    - 2026-07-30T18:15:17Z
+    - 2026-07-30T18:24:20Z
+    - 2026-07-30T18:14:45Z
+    - 2026-07-30T18:20:04Z
+    - 2026-07-30T17:19:16Z
+    - 2026-07-30T17:49:25Z
+    - 2026-07-30T17:18:42Z
+    - 2026-07-30T17:32:54Z
+    - 2026-07-30T17:44:02Z
+    - 2026-07-30T13:01:12Z
+    - 2026-07-30T16:28:22Z
+    - 2026-07-30T13:00:19Z
+    - 2026-07-30T13:04:40Z
+    - 2026-07-30T13:12:28Z
+    - 2026-07-30T13:30:25Z
+    - 2026-07-30T13:45:12Z
+    - 2026-07-30T13:54:56Z
+    - 2026-07-30T14:18:42Z
+    - 2026-07-30T14:33:23Z
+    - 2026-07-30T14:50:48Z
+    - 2026-07-30T15:53:57Z
+    - 2026-07-30T16:08:38Z
+    - 2026-07-30T16:22:11Z
+    - 2026-07-30T20:35:06Z
+    - 2026-07-30T20:15:25Z
+    - 2026-07-30T18:20:21Z
+    - 2026-07-30T17:33:14Z
+    - 2026-07-30T17:44:40Z
+    - 2026-07-30T13:05:10Z
+    - 2026-07-30T13:12:58Z
+    - 2026-07-30T13:31:10Z
+    - 2026-07-30T13:45:40Z
+    - 2026-07-30T13:55:23Z
+    - 2026-07-30T14:19:24Z
+    - 2026-07-30T14:19:28Z
+    - 2026-07-30T14:19:33Z
+    - 2026-07-30T14:33:55Z
+    - 2026-07-30T14:33:59Z
+    - 2026-07-30T14:51:37Z
+    - 2026-07-30T14:51:43Z
+    - 2026-07-30T14:51:48Z
+    - 2026-07-30T15:54:24Z
+    - 2026-07-30T16:09:07Z
+    - 2026-07-30T16:22:37Z
+    - 2026-07-30T18:20:21Z
+    - 2026-07-30T17:33:14Z
+    - 2026-07-30T17:44:40Z
+    - 2026-07-30T13:05:10Z
+    - 2026-07-30T13:12:58Z
+    - 2026-07-30T13:31:10Z
+    - 2026-07-30T13:45:40Z
+    - 2026-07-30T13:55:23Z
+    - 2026-07-30T14:19:24Z
+    - 2026-07-30T14:19:28Z
+    - 2026-07-30T14:19:33Z
+    - 2026-07-30T14:33:55Z
+    - 2026-07-30T14:33:59Z
+    - 2026-07-30T14:51:37Z
+    - 2026-07-30T14:51:43Z
+    - 2026-07-30T14:51:48Z
+    - 2026-07-30T15:54:24Z
+    - 2026-07-30T16:09:07Z
+    - 2026-07-30T16:22:37Z
+  volume:
+    pullRequests:
+      - additions: 50
+        deletions: 0
+        state: merged
+        dailyWork: true
+        filesChanged: 1
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 66
+        deletions: 32
+        state: merged
+        dailyWork: true
+        filesChanged: 8
+        testFilesChanged: 2
+        commitCount: 2
+      - additions: 10
+        deletions: 10
+        state: merged
+        dailyWork: true
+        filesChanged: 4
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 317
+        deletions: 40
+        state: merged
+        dailyWork: true
+        filesChanged: 11
+        testFilesChanged: 1
+        commitCount: 3
+      - additions: 60
+        deletions: 3
+        state: merged
+        dailyWork: true
+        filesChanged: 6
+        testFilesChanged: 3
+        commitCount: 1
+      - additions: 431
+        deletions: 41
+        state: merged
+        dailyWork: true
+        filesChanged: 19
+        testFilesChanged: 5
+        commitCount: 1
+      - additions: 523
+        deletions: 43
+        state: open
+        dailyWork: true
+        filesChanged: 34
+        testFilesChanged: 4
+        commitCount: 1
+      - additions: 318
+        deletions: 306
+        state: merged
+        dailyWork: true
+        filesChanged: 13
+        testFilesChanged: 2
+        commitCount: 12
+    reviewCount: 19
+    reviewCommentCount: 19
+    commitCount: 5
+    commitAdditions: 724
+    commitDeletions: 351
+    commitStatsCount: 5
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
 hoursEstimate:
-  hours: 30.3
+  version: "2.1"
+  hours: 73.8
   sessions: 2
-  sessionHours: 6
-  volumeHours: 30.3
+  sessionHours: 6.2
+  volumeHours: 73.8
   gapMinutes: 90
   maxSessionHours: 6
   note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not

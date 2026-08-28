@@ -10,10 +10,10 @@ summaries:
         value: 4 PRs
   - type: commit-summary
     heading: Commits and line changes
-    body: 1 commits with +436 / −502 lines.
+    body: 17 commits with +436 / −502 lines.
     chips:
       - label: Commits
-        value: "1"
+        value: "17"
         color: green
       - label: Additions
         value: "+436"
@@ -33,7 +33,7 @@ summaries:
       tracked, elapsed, or billed time.
     chips:
       - label: Estimated engineering hours
-        value: ~10h
+        value: ~37.7h
 highlights:
   - type: pr
     title: "fix(pricing): add bottom save actions"
