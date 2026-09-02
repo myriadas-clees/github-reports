@@ -1,0 +1,435 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-09-01
+  to: 2026-09-01
+stats:
+  totalCommits: 26
+  totalAdditions: 2406
+  totalDeletions: 1124
+  prsOpened: 1
+  prsMerged: 0
+  prsInProgress: 1
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 13.8
+dailyCommits:
+  - date: 2026-09-01
+    count: 26
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 26
+    prsOpened: 1
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests:
+  - title: "feat: add Northstar frontend"
+    body: |-
+      - add the Northstar advisor workspace, chat, client, portfolio, compliance, marketing, and news interfaces
+      - use shared OHPWM account, brand, and theme controls with accessible light, dark, and system themes
+      - remove all fabricated workspace records and mount the static app at `/northstar/` in Azure...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a1
+      - deploy-preview
+    additions: 2406
+    deletions: 1124
+    changedFiles: 74
+    author: myriadas-clees
+    createdAt: 2026-09-01T14:08:22Z
+    updatedAt: 2026-09-02T19:11:30Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a2
+      - &a5
+        sha: c27ec822badbbbd8a3a54dda7317dd289ae5ce78
+        message: "refactor(northstar): remove seeded data"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c27ec822badbbbd8a3a54dda7317dd289ae5ce78
+        authoredAt: 2026-09-01T14:07:55Z
+      - &a6
+        sha: c51cc7220abb18b68911f82b2c58d762071ab0af
+        message: "fix(northstar): secure session interactions"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c51cc7220abb18b68911f82b2c58d762071ab0af
+        authoredAt: 2026-09-01T14:17:28Z
+      - &a7
+        sha: 0e64a4f9e877fde3b55c85cd9655bb49bddb0fb7
+        message: "feat(northstar): add Microsoft connection flow"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0e64a4f9e877fde3b55c85cd9655bb49bddb0fb7
+        authoredAt: 2026-09-01T14:46:24Z
+      - &a8
+        sha: f46a71da628bb3cbc2ecf2cc2250eaab8332916c
+        message: "feat(northstar): support Entra certificate credentials"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f46a71da628bb3cbc2ecf2cc2250eaab8332916c
+        authoredAt: 2026-09-01T15:48:58Z
+      - &a9
+        sha: 5ce213a274563b1683bd5c96fd03adcf93fbe0f9
+        message: "feat(northstar): support Myriad test tenant"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/5ce213a274563b1683bd5c96fd03adcf93fbe0f9
+        authoredAt: 2026-09-01T15:58:25Z
+      - &a10
+        sha: 884bb6dc7a34f7191b84dfda855279c540aab09c
+        message: "fix(northstar): make Microsoft OAuth work on Azure"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/884bb6dc7a34f7191b84dfda855279c540aab09c
+        authoredAt: 2026-09-01T16:12:07Z
+      - &a11
+        sha: d045f96cbb3328714c2167400e5a8fc319ef440d
+        message: "fix(northstar): resolve workspace review feedback"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d045f96cbb3328714c2167400e5a8fc319ef440d
+        authoredAt: 2026-09-01T16:12:07Z
+      - &a12
+        sha: fb89143fc2bc3676ab93a8469d3729d91266ab6d
+        message: "fix(northstar): allow approved preview OAuth origins"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/fb89143fc2bc3676ab93a8469d3729d91266ab6d
+        authoredAt: 2026-09-01T16:21:26Z
+      - &a13
+        sha: e62f1afe59099643a0d6f7ce107c552acbe57d63
+        message: "fix(northstar): address review findings"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e62f1afe59099643a0d6f7ce107c552acbe57d63
+        authoredAt: 2026-09-01T16:43:55Z
+      - &a14
+        sha: 8d4e2f81048dcb25402dc1669e02ddf409e3d5dc
+        message: "fix(northstar): preserve Microsoft connection handoff"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8d4e2f81048dcb25402dc1669e02ddf409e3d5dc
+        authoredAt: 2026-09-01T16:52:07Z
+      - &a15
+        sha: e8e3051db137dfc3ca867b3a1bbc5210614489e7
+        message: "fix(northstar): complete Microsoft callback handoff"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e8e3051db137dfc3ca867b3a1bbc5210614489e7
+        authoredAt: 2026-09-01T17:24:02Z
+      - &a16
+        sha: 760f4c7cb224449341ac415417594182171917e6
+        message: "fix(northstar): refine connected Microsoft dashboard"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/760f4c7cb224449341ac415417594182171917e6
+        authoredAt: 2026-09-01T17:43:31Z
+      - &a17
+        sha: 50ea4c8260c45176bfcc4decd8da90d41f967175
+        message: "feat(northstar): open recent emails in Outlook"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/50ea4c8260c45176bfcc4decd8da90d41f967175
+        authoredAt: 2026-09-01T17:52:58Z
+      - &a18
+        sha: 3b24260e06384a419c9b7126abb75b8b77a5ee0b
+        message: "feat(northstar): add local serverless development"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3b24260e06384a419c9b7126abb75b8b77a5ee0b
+        authoredAt: 2026-09-01T18:38:38Z
+      - &a19
+        sha: a410214b51aca083515cf300c36bd558a0ddb84c
+        message: "fix(northstar): initialize local OAuth security"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a410214b51aca083515cf300c36bd558a0ddb84c
+        authoredAt: 2026-09-01T18:47:11Z
+      - &a20
+        sha: 05b0e4e33a2d1d616bee0febb883ed84355f55b0
+        message: "fix(northstar): load local certificate credentials"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/05b0e4e33a2d1d616bee0febb883ed84355f55b0
+        authoredAt: 2026-09-01T18:54:22Z
+      - &a21
+        sha: 1698f13c2f0a94ad4a1d4852b7d16d99c02c3484
+        message: "fix(northstar): standardize local ports"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/1698f13c2f0a94ad4a1d4852b7d16d99c02c3484
+        authoredAt: 2026-09-01T19:05:51Z
+      - &a22
+        sha: a1e98a69a6eb8278821e4737651f43756772bb00
+        message: "feat(northstar): add calendar views"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a1e98a69a6eb8278821e4737651f43756772bb00
+        authoredAt: 2026-09-01T19:15:50Z
+      - &a23
+        sha: 1c4e7b2934a088390c1bcfc42bf1b641bb90ed6b
+        message: "feat(northstar): add shadcn toggle group"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/1c4e7b2934a088390c1bcfc42bf1b641bb90ed6b
+        authoredAt: 2026-09-01T19:28:06Z
+      - &a24
+        sha: 2a13ff207f7c12f7307bce94a90c9e8a0b0b552d
+        message: "feat(northstar): restore daily AI brief"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2a13ff207f7c12f7307bce94a90c9e8a0b0b552d
+        authoredAt: 2026-09-01T19:46:56Z
+      - &a25
+        sha: 5ff53b85c1450df286fa827837d1470e98ac7985
+        message: "feat(northstar): tabulate recent emails"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/5ff53b85c1450df286fa827837d1470e98ac7985
+        authoredAt: 2026-09-01T20:05:59Z
+      - &a26
+        sha: 958d8a2521407cfd5ae5cbf8476aa329a08d2c4e
+        message: "fix(northstar): show actual email sender"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/958d8a2521407cfd5ae5cbf8476aa329a08d2c4e
+        authoredAt: 2026-09-01T20:09:49Z
+      - &a27
+        sha: e45e3e738e8289a1f4eb4095f695d82b6020e414
+        message: "feat(northstar): link Teams calendar events"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e45e3e738e8289a1f4eb4095f695d82b6020e414
+        authoredAt: 2026-09-01T20:13:49Z
+      - &a28
+        sha: d7e56adbcb40bc37d415c8edc8412a14904b24bb
+        message: "fix(northstar): make calendar events actionable"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d7e56adbcb40bc37d415c8edc8412a14904b24bb
+        authoredAt: 2026-09-01T20:19:41Z
+      - &a29
+        sha: 1f9672a717a5f86c934d471c615951d4d0fbb826
+        message: "feat(northstar): add email quick peek"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/1f9672a717a5f86c934d471c615951d4d0fbb826
+        authoredAt: 2026-09-01T20:29:02Z
+      - &a30
+        sha: 8fb10aeaa4040062149253b9e67b18b31996132a
+        message: "feat(northstar): add Microsoft app icons"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8fb10aeaa4040062149253b9e67b18b31996132a
+        authoredAt: 2026-09-01T20:55:10Z
+    workTimestamps: &a3
+      - 2026-09-01T14:07:55Z
+      - 2026-09-01T14:17:28Z
+      - 2026-09-01T14:46:24Z
+      - 2026-09-01T15:48:58Z
+      - 2026-09-01T15:58:25Z
+      - 2026-09-01T16:12:07Z
+      - 2026-09-01T16:12:07Z
+      - 2026-09-01T16:21:26Z
+      - 2026-09-01T16:43:55Z
+      - 2026-09-01T16:52:07Z
+      - 2026-09-01T17:24:02Z
+      - 2026-09-01T17:43:31Z
+      - 2026-09-01T17:52:58Z
+      - 2026-09-01T18:38:38Z
+      - 2026-09-01T18:47:11Z
+      - 2026-09-01T18:54:22Z
+      - 2026-09-01T19:05:51Z
+      - 2026-09-01T19:15:50Z
+      - 2026-09-01T19:28:06Z
+      - 2026-09-01T19:46:56Z
+      - 2026-09-01T20:05:59Z
+      - 2026-09-01T20:09:49Z
+      - 2026-09-01T20:13:49Z
+      - 2026-09-01T20:19:41Z
+      - 2026-09-01T20:29:02Z
+      - 2026-09-01T20:55:10Z
+    workAdditions: 2406
+    workDeletions: 1124
+    workFiles: &a4
+      - .github/workflows/azure-static-web-apps.yml
+      - .gitignore
+      - README.md
+      - bun.lock
+      - hub/functions/local.settings.json.example
+      - hub/functions/package.json
+      - hub/functions/src/index.ts
+      - hub/functions/src/northstar-local-store.test.ts
+      - hub/functions/src/northstar-local-store.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/lib/apps.ts
+      - hub/staticwebapp.config.json
+      - northstar/app/globals.css
+      - northstar/components.json
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/client-intelligence-workspace.tsx
+      - northstar/components/compliance-workspace.tsx
+      - northstar/components/marketing-workspace.tsx
+      - northstar/components/news-workspace.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/portfolio-ai-workspace.tsx
+      - northstar/components/ui/toggle-group.tsx
+      - northstar/lib/utils.ts
+      - northstar/next.config.ts
+      - northstar/package.json
+      - northstar/postcss.config.mjs
+      - package.json
+      - packages/db/package.json
+      - packages/db/src/northstar.test.ts
+      - packages/db/src/northstar.ts
+      - scripts/compose-static-suite.ts
+      - scripts/dev-northstar.ts
+      - scripts/dev.ts
+prsInProgress:
+  - title: "feat: add Northstar frontend"
+    body: |-
+      - add the Northstar advisor workspace, chat, client, portfolio, compliance, marketing, and news interfaces
+      - use shared OHPWM account, brand, and theme controls with accessible light, dark, and system themes
+      - remove all fabricated workspace records and mount the static app at `/northstar/` in Azure...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: *a1
+    additions: 11389
+    deletions: 43
+    changedFiles: 74
+    author: myriadas-clees
+    createdAt: 2026-09-01T14:08:22Z
+    updatedAt: 2026-09-02T19:11:30Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 2406
+    workDeletions: 1124
+    workFiles: *a4
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "refactor(northstar): remove seeded data"
+      - "fix(northstar): secure session interactions"
+      - "feat(northstar): add Microsoft connection flow"
+      - "feat(northstar): support Entra certificate credentials"
+      - "feat(northstar): support Myriad test tenant"
+      - "fix(northstar): make Microsoft OAuth work on Azure"
+      - "fix(northstar): resolve workspace review feedback"
+      - "fix(northstar): allow approved preview OAuth origins"
+      - "fix(northstar): address review findings"
+      - "fix(northstar): preserve Microsoft connection handoff"
+      - "fix(northstar): complete Microsoft callback handoff"
+      - "fix(northstar): refine connected Microsoft dashboard"
+      - "feat(northstar): open recent emails in Outlook"
+      - "feat(northstar): add local serverless development"
+      - "fix(northstar): initialize local OAuth security"
+      - "fix(northstar): load local certificate credentials"
+      - "fix(northstar): standardize local ports"
+      - "feat(northstar): add calendar views"
+      - "feat(northstar): add shadcn toggle group"
+      - "feat(northstar): restore daily AI brief"
+      - "feat(northstar): tabulate recent emails"
+      - "fix(northstar): show actual email sender"
+      - "feat(northstar): link Teams calendar events"
+      - "fix(northstar): make calendar events actionable"
+      - "feat(northstar): add email quick peek"
+      - "feat(northstar): add Microsoft app icons"
+    commits:
+      - *a5
+      - *a6
+      - *a7
+      - *a8
+      - *a9
+      - *a10
+      - *a11
+      - *a12
+      - *a13
+      - *a14
+      - *a15
+      - *a16
+      - *a17
+      - *a18
+      - *a19
+      - *a20
+      - *a21
+      - *a22
+      - *a23
+      - *a24
+      - *a25
+      - *a26
+      - *a27
+      - *a28
+      - *a29
+      - *a30
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 1
+    comments: 44
+    reviews: 20
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 1
+  comments: 44
+  reviews: 20
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-09-01T14:07:55Z
+    - 2026-09-01T14:17:28Z
+    - 2026-09-01T14:46:24Z
+    - 2026-09-01T15:48:58Z
+    - 2026-09-01T15:58:25Z
+    - 2026-09-01T16:12:07Z
+    - 2026-09-01T16:12:07Z
+    - 2026-09-01T16:21:26Z
+    - 2026-09-01T16:43:55Z
+    - 2026-09-01T16:52:07Z
+    - 2026-09-01T17:24:02Z
+    - 2026-09-01T17:43:31Z
+    - 2026-09-01T17:52:58Z
+    - 2026-09-01T18:38:38Z
+    - 2026-09-01T18:47:11Z
+    - 2026-09-01T18:54:22Z
+    - 2026-09-01T19:05:51Z
+    - 2026-09-01T19:15:50Z
+    - 2026-09-01T19:28:06Z
+    - 2026-09-01T19:46:56Z
+    - 2026-09-01T20:05:59Z
+    - 2026-09-01T20:09:49Z
+    - 2026-09-01T20:13:49Z
+    - 2026-09-01T20:19:41Z
+    - 2026-09-01T20:29:02Z
+    - 2026-09-01T20:55:10Z
+    - 2026-09-01T14:08:22Z
+    - 2026-09-01T14:07:55Z
+    - 2026-09-01T14:17:28Z
+    - 2026-09-01T14:46:24Z
+    - 2026-09-01T15:48:58Z
+    - 2026-09-01T15:58:25Z
+    - 2026-09-01T16:12:07Z
+    - 2026-09-01T16:12:07Z
+    - 2026-09-01T16:21:26Z
+    - 2026-09-01T16:43:55Z
+    - 2026-09-01T16:52:07Z
+    - 2026-09-01T17:24:02Z
+    - 2026-09-01T17:43:31Z
+    - 2026-09-01T17:52:58Z
+    - 2026-09-01T18:38:38Z
+    - 2026-09-01T18:47:11Z
+    - 2026-09-01T18:54:22Z
+    - 2026-09-01T19:05:51Z
+    - 2026-09-01T19:15:50Z
+    - 2026-09-01T19:28:06Z
+    - 2026-09-01T19:46:56Z
+    - 2026-09-01T20:05:59Z
+    - 2026-09-01T20:09:49Z
+    - 2026-09-01T20:13:49Z
+    - 2026-09-01T20:19:41Z
+    - 2026-09-01T20:29:02Z
+    - 2026-09-01T20:55:10Z
+  volume:
+    pullRequests:
+      - additions: 2406
+        deletions: 1124
+        state: open
+        dailyWork: true
+        filesChanged: 34
+        testFilesChanged: 3
+        commitCount: 26
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 0
+    commitAdditions: 0
+    commitDeletions: 0
+    commitStatsCount: 0
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 13.8
+  sessions: 1
+  sessionHours: 6
+  volumeHours: 13.8
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""

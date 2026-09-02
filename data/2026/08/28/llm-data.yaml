@@ -1,0 +1,97 @@
+title: Aug 28
+subtitle: auth, require admin & document advisor
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps and Myriad-Advisor-Solutions/ohcpwm-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 5 PRs
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 1 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 11 commits with +178 / −77 lines.
+    chips:
+      - label: Commits
+        value: "11"
+        color: green
+      - label: Additions
+        value: "+178"
+        color: green
+      - label: Deletions
+        value: −77
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 8 reviews with 8 comments.
+    chips:
+      - label: Reviews
+        value: "8"
+      - label: Comments
+        value: "8"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 8 reviews, 16 comments, 5 PRs."
+    chips:
+      - label: Codex
+        value: 8 reviews · 16 comments · 5 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~38.9h
+highlights:
+  - type: pr
+    title: "feat(ofac): add PDF, CSV, and Excel report exports"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +0 −0
+    body: |-
+      - adds branded, on-demand PDF evidence reports for individual OFAC screenings
+      - adds complete filtered or single-screening CSV and styled XLSX exports with a stable full-evidence row contract
+      - adds P
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115
+  - type: pr
+    title: "docs: publish #2/#37/#39 readiness runbooks"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +0 −0
+    body: >-
+      - Add separate, evidence-backed readiness runbooks for #2 Cosmos production readiness, #37 Pricing monitoring, and
+      #39 monday.com sync discovery.
+
+      - Add the blank `APPLICATIONINSIGHTS_CONNECTION_STRING
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/86
+  - type: pr
+    title: "docs: document Advisor Pricing architecture"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +0 −0
+    body: >-
+      ## What changed
+
+
+      - Added an end-to-end Advisor Pricing architecture document covering static pages, browser API/base URL behavior,
+      Azure Functions, transport seams, auth, auditing, calculations, persi
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/84
+  - type: pr
+    title: Require admin authorization for permanent recruit deletion
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +1 −1
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/118
+  - type: pr
+    title: "docs(auth): define authorization role naming"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +58 −3
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(ofac): add PDF, CSV, and Excel report exports" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "docs: publish #2/#37/#39 readiness runbooks" in Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "docs: document Advisor Pricing architecture" in Myriad-Advisor-Solutions/ohcpwm-apps'

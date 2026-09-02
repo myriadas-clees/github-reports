@@ -1,0 +1,818 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-08-31
+  to: 2026-08-31
+stats:
+  totalCommits: 24
+  totalAdditions: 415
+  totalDeletions: 663
+  prsOpened: 5
+  prsMerged: 9
+  prsInProgress: 0
+  prsReviewed: 3
+  reviewComments: 3
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 48
+dailyCommits:
+  - date: 2026-08-31
+    count: 24
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 20
+    prsOpened: 3
+    prsMerged: 7
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 4
+    prsOpened: 2
+    prsMerged: 2
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests:
+  - title: "chore(codex): simplify sub-agent roles"
+    body: >-
+      ## Problem
+
+
+      The project registered six obsolete subtree specialists in addition to explorer and worker, increasing routing
+      complexity and leaving reasoning and handoff behavior inconsistent with the intended explorer-first workflow.
+
+
+      ## Solution
+
+
+      - Keep only default, explorer, and worker project rol...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/119
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 25
+    deletions: 145
+    changedFiles: 11
+    author: myriadas-clees
+    createdAt: 2026-08-31T15:12:21Z
+    updatedAt: 2026-08-31T15:25:31Z
+    closedAt: 2026-08-31T15:24:14Z
+    mergedAt: 2026-08-31T15:24:14Z
+    workCommits:
+      - &a1
+        sha: ff6ad3ac2a71fed806069b48b23353780ac14f84
+        message: "chore(codex): simplify sub-agent roles"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ff6ad3ac2a71fed806069b48b23353780ac14f84
+        authoredAt: 2026-08-31T15:11:37Z
+    workTimestamps:
+      - 2026-08-31T15:11:37Z
+    workAdditions: 25
+    workDeletions: 145
+    workFiles:
+      - .codex/agents/default.toml
+      - .codex/agents/docs.toml
+      - .codex/agents/explorer.toml
+      - .codex/agents/hub.toml
+      - .codex/agents/ofac.toml
+      - .codex/agents/packages.toml
+      - .codex/agents/pricing.toml
+      - .codex/agents/scripts.toml
+      - .codex/agents/worker.toml
+      - .codex/config.toml
+      - AGENTS.md
+  - title: "fix(ci): use valid artifact root context"
+    body: >-
+      ## Why
+
+
+      The Hub deployment workflow failed during workflow planning because job-level env referenced the unavailable
+      runner context. No jobs were created, so the main-branch deployment did not run.
+
+
+      ## What changed
+
+
+      - Use a fixed Ubuntu temporary path for Hub deployment artifacts.
+
+      - Preserve the exi...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/114
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - github-automation
+    additions: 1
+    deletions: 1
+    changedFiles: 1
+    author: myriadas-clees
+    createdAt: 2026-08-31T16:12:42Z
+    updatedAt: 2026-08-31T16:30:35Z
+    closedAt: 2026-08-31T16:30:31Z
+    mergedAt: 2026-08-31T16:30:31Z
+    workCommits:
+      - &a14
+        sha: bea34b6dbe787b27f64c396cc72fee1a704a9fe8
+        message: "fix(ci): use valid artifact root context"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/bea34b6dbe787b27f64c396cc72fee1a704a9fe8
+        authoredAt: 2026-08-31T16:11:54Z
+    workTimestamps:
+      - 2026-08-31T16:11:54Z
+    workAdditions: 1
+    workDeletions: 1
+    workFiles:
+      - .github/workflows/azure-static-web-apps.yml
+  - title: "fix(codex): prevent explorer approval requests"
+    body: >-
+      ## Problem
+
+
+      The spawned custom explorer role uses the read-only explorer permission profile but did not prohibit approval
+      requests, leaving a gap in its enforced behavior.
+
+
+      ## Solution
+
+
+      - Set the explorer agent approval policy to never.
+
+      - Preserve its existing explorer-read permission profile, repos...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/120
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 1
+    deletions: 0
+    changedFiles: 1
+    author: myriadas-clees
+    createdAt: 2026-08-31T16:36:42Z
+    updatedAt: 2026-08-31T17:57:06Z
+    closedAt: 2026-08-31T17:56:43Z
+    mergedAt: 2026-08-31T17:56:42Z
+    workCommits:
+      - &a2
+        sha: f181f646a45e106b8833b853fbe7944f5c9e1a8d
+        message: "fix(codex): prevent explorer approval requests"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f181f646a45e106b8833b853fbe7944f5c9e1a8d
+        authoredAt: 2026-08-31T16:36:00Z
+    workTimestamps:
+      - 2026-08-31T16:36:00Z
+    workAdditions: 1
+    workDeletions: 0
+    workFiles:
+      - .codex/agents/explorer.toml
+  - title: "chore(codex): simplify project agent roles"
+    body: >-
+      ## Why
+
+
+      The project-scoped Codex setup registered ten overlapping specialists, which made delegation more complex than
+      necessary and duplicated permission profiles.
+
+
+      ## What changed
+
+
+      - Reduced project agent roles to `default`, `explorer`, and `worker`.
+
+      - Set all three roles to high reasoning with th...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/113
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+    additions: 26
+    deletions: 254
+    changedFiles: 15
+    author: myriadas-clees
+    createdAt: 2026-08-31T15:10:22Z
+    updatedAt: 2026-08-31T15:25:34Z
+    closedAt: 2026-08-31T15:24:09Z
+    mergedAt: 2026-08-31T15:24:09Z
+    workCommits:
+      - &a12
+        sha: 388bfc017077ae923710ec3458d8a14696e95505
+        message: "chore(codex): simplify project agent roles"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/388bfc017077ae923710ec3458d8a14696e95505
+        authoredAt: 2026-08-31T15:09:31Z
+      - &a13
+        sha: c0734880042ce1026e0c4d0ce7851b38c3a0676b
+        message: "docs(agents): clarify worker routing"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c0734880042ce1026e0c4d0ce7851b38c3a0676b
+        authoredAt: 2026-08-31T15:16:06Z
+    workTimestamps:
+      - 2026-08-31T15:09:31Z
+      - 2026-08-31T15:16:06Z
+    workAdditions: 26
+    workDeletions: 254
+    workFiles:
+      - .codex/agents/default.toml
+      - .codex/agents/docs.toml
+      - .codex/agents/excelerate.toml
+      - .codex/agents/explorer.toml
+      - .codex/agents/hub.toml
+      - .codex/agents/infra.toml
+      - .codex/agents/onboarding.toml
+      - .codex/agents/packages.toml
+      - .codex/agents/proforma.toml
+      - .codex/agents/pto-tracker.toml
+      - .codex/agents/scripts.toml
+      - .codex/agents/valuation.toml
+      - .codex/agents/worker.toml
+      - .codex/config.toml
+      - AGENTS.md
+  - title: "fix(codex): prevent explorer approval escalation"
+    body: |-
+      ## Why
+
+      The custom spawned explorer role used a read-only permission profile but could still request approval escalation.
+
+      ## What changed
+
+      - Set the custom explorer agent approval policy to `never` alongside its `explorer-read` profile.
+      - Kept the default and worker agent configurations unchanged.
+      ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/115
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels: []
+    additions: 1
+    deletions: 0
+    changedFiles: 1
+    author: myriadas-clees
+    createdAt: 2026-08-31T16:36:44Z
+    updatedAt: 2026-08-31T17:57:23Z
+    closedAt: 2026-08-31T17:57:19Z
+    mergedAt: 2026-08-31T17:57:19Z
+    workCommits:
+      - &a15
+        sha: a72c2a2dfb0ffc7e7b939e089fcdbfd8149176e2
+        message: "fix(codex): prevent explorer approval escalation"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a72c2a2dfb0ffc7e7b939e089fcdbfd8149176e2
+        authoredAt: 2026-08-31T16:35:53Z
+    workTimestamps:
+      - 2026-08-31T16:35:53Z
+    workAdditions: 1
+    workDeletions: 0
+    workFiles:
+      - .codex/agents/explorer.toml
+  - title: "docs(auth): define authorization role naming"
+    body: >-
+      ## Why
+
+
+      Authorization role values had no single naming contract, allowing values such as PTO's `HRAdmin` to drift from the
+      repository's lowercase snake-case convention.
+
+
+      Stacked on #107 so the documentation describes the consolidated authorization model introduced there.
+
+
+      ## What changed
+
+
+      - Define c...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - "app: pto-tracker"
+      - infrastructure
+    additions: 0
+    deletions: 0
+    changedFiles: 4
+    author: myriadas-clees
+    createdAt: 2026-08-28T18:36:43Z
+    updatedAt: 2026-08-31T15:25:37Z
+    closedAt: 2026-08-31T15:25:37Z
+    mergedAt: 2026-08-31T15:25:37Z
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "fix(auth): standardize platform administrator roles"
+    body: >-
+      ## Why
+
+
+      The suite-wide `myriadas_user` role was promoted to application administrator or HR access in several products.
+      This conflated platform access with privileged authorization and allowed platform-only users to perform protected
+      mutations.
+
+
+      ## What changed
+
+
+      - Treat `myriadas_user` as ordinary p...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/107
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - "app: hub"
+      - "app: onboarding"
+      - "app: pto-tracker"
+      - "app: excelerate"
+      - "app: valuation"
+      - infrastructure
+      - codex
+      - aardvark
+    additions: 0
+    deletions: 0
+    changedFiles: 17
+    author: myriadas-clees
+    createdAt: 2026-08-28T17:44:50Z
+    updatedAt: 2026-08-31T15:25:36Z
+    closedAt: 2026-08-31T15:25:36Z
+    mergedAt: 2026-08-31T15:25:36Z
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "refactor: centralize suite architecture"
+    body: >-
+      Centralizes repeated suite behavior so navigation preferences, static exports, and product route declarations are
+      maintained once instead of drifting across apps.
+
+
+      - Share Top bar/Sidebar preference across suite products.
+
+      - Centralize static-export lifecycle and Onboarding/PTO route declarations.
+
+      - ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/106
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - "app: hub"
+      - "app: onboarding"
+      - "app: pto-tracker"
+      - "app: proforma"
+      - "app: excelerate"
+      - "app: valuation"
+      - platform
+    additions: 206
+    deletions: 207
+    changedFiles: 69
+    author: myriadas-clees
+    createdAt: 2026-08-26T20:17:31Z
+    updatedAt: 2026-08-31T15:25:58Z
+    closedAt: 2026-08-31T15:25:39Z
+    mergedAt: 2026-08-31T15:25:39Z
+    workCommits:
+      - &a4
+        sha: 3a1fb6f9941919d3d5d4abc4e34e63aeae540891
+        message: "fix: address suite architecture review findings"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3a1fb6f9941919d3d5d4abc4e34e63aeae540891
+        authoredAt: 2026-08-31T12:46:29Z
+      - &a5
+        sha: a8b78af87a6d5d127a9d3ea02910aa0246b6569a
+        message: "fix(ui): resolve shared theme and hub search regressions"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a8b78af87a6d5d127a9d3ea02910aa0246b6569a
+        authoredAt: 2026-08-31T13:56:49Z
+      - &a8
+        sha: 8e40c9cf149339f34de9332ca714658a080590a5
+        message: "fix(ui): harden shared theme synchronization"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8e40c9cf149339f34de9332ca714658a080590a5
+        authoredAt: 2026-08-31T14:25:48Z
+      - &a10
+        sha: 9b235f8f4d4e8e71fcc5b27b7ed05939fc181b7e
+        message: "fix(pto): preserve static page routes in smoke server"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9b235f8f4d4e8e71fcc5b27b7ed05939fc181b7e
+        authoredAt: 2026-08-31T14:41:25Z
+      - &a11
+        sha: 539d345b93245f1eb992013ef3391bd1ca3faa9b
+        message: "fix: preserve theme and launcher state without storage"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/539d345b93245f1eb992013ef3391bd1ca3faa9b
+        authoredAt: 2026-08-31T14:54:47Z
+    workTimestamps:
+      - 2026-08-31T12:46:29Z
+      - 2026-08-31T13:56:49Z
+      - 2026-08-31T14:25:48Z
+      - 2026-08-31T14:41:25Z
+      - 2026-08-31T14:54:47Z
+    workAdditions: 206
+    workDeletions: 207
+    workFiles:
+      - excelerate/src/app/layout.tsx
+      - hub/app/layout.tsx
+      - hub/components/HubLauncher.tsx
+      - onboarding/apps/dashboard/app/layout.tsx
+      - packages/ui/src/index.ts
+      - packages/ui/src/navigation/app-nav.tsx
+      - packages/ui/src/theme-bootstrap.test.ts
+      - packages/ui/src/theme-bootstrap.ts
+      - packages/ui/src/theme-preferences.tsx
+      - proforma/src/app/layout.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/lib/__tests__/proforma-user-settings.test.ts
+      - proforma/src/lib/proforma-theme.ts
+      - proforma/src/lib/proforma-user-settings.ts
+      - pto-tracker/scripts/serverless-smoke.ts
+      - pto-tracker/src/app/layout.tsx
+      - pto-tracker/src/lib/api/routes.test.ts
+      - pto-tracker/src/lib/api/routes.ts
+      - valuation/src/app/layout.tsx
+  - title: "ci: build only affected unified app artifacts"
+    body: |-
+      ## Why
+
+      Unified deployment rebuilt every app and Function bundle on every eligible push.
+
+      ## What changed
+
+      - Resolve affected static and Function targets from repository diffs and workspace dependencies.
+      - Reuse only exact fingerprinted artifacts, then compose and validate a fresh unified deployment...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/105
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - github-automation
+      - platform
+    additions: 155
+    deletions: 56
+    changedFiles: 12
+    author: myriadas-clees
+    createdAt: 2026-08-26T15:54:51Z
+    updatedAt: 2026-08-31T15:25:38Z
+    closedAt: 2026-08-31T15:25:38Z
+    mergedAt: 2026-08-31T15:25:38Z
+    workCommits:
+      - &a3
+        sha: c74fbfac389f0e275adaa94cef48d7a128de1b29
+        message: "fix(ci): address incremental build review findings"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c74fbfac389f0e275adaa94cef48d7a128de1b29
+        authoredAt: 2026-08-31T12:44:48Z
+      - &a6
+        sha: a21c142808567d3443195850258ea68e47cf0799
+        message: "chore(stack): integrate PR #111 into #105"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a21c142808567d3443195850258ea68e47cf0799
+        authoredAt: 2026-08-31T14:04:33Z
+      - &a7
+        sha: e7c0edf47f69eb395600eab3cfb01f25ef8be62f
+        message: "fix(ci): quote product workflow input safely"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e7c0edf47f69eb395600eab3cfb01f25ef8be62f
+        authoredAt: 2026-08-31T14:21:40Z
+      - &a9
+        sha: d8af293097aeaf94be6eb87e6a2e551320485d05
+        message: "fix(ci): deploy manual runs despite stale-main guard"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d8af293097aeaf94be6eb87e6a2e551320485d05
+        authoredAt: 2026-08-31T14:40:45Z
+    workTimestamps:
+      - 2026-08-31T12:44:48Z
+      - 2026-08-31T14:04:33Z
+      - 2026-08-31T14:21:40Z
+      - 2026-08-31T14:40:45Z
+    workAdditions: 155
+    workDeletions: 56
+    workFiles:
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/verify.yml
+      - docs/authorization-roles.md
+      - docs/production-readiness-progress.md
+      - excelerate/src/lib/auth.test.ts
+      - excelerate/src/lib/auth.ts
+      - excelerate/staticwebapp.config.json
+      - hub/lib/auth.test.ts
+      - hub/lib/auth.ts
+      - hub/staticwebapp.config.json
+      - infra/azure/README.md
+      - infra/azure/pto-tracker/main.bicep
+      - onboarding/apps/dashboard/lib/auth.test.ts
+      - onboarding/apps/dashboard/lib/auth.ts
+      - onboarding/apps/dashboard/staticwebapp.config.json
+      - pto-tracker/docs/README.md
+      - pto-tracker/src/lib/auth/entra-provider.test.ts
+      - pto-tracker/src/lib/auth/entra-provider.ts
+      - pto-tracker/src/lib/auth/entra-token-provider.test.ts
+      - pto-tracker/src/lib/auth/entra-token-provider.ts
+      - scripts/artifact-fingerprints.ts
+      - valuation/src/lib/auth.test.ts
+      - valuation/src/lib/auth.ts
+      - valuation/staticwebapp.config.json
+prsInProgress: []
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "chore(codex): simplify sub-agent roles"
+      - "chore(codex): simplify sub-agent roles (#119)"
+      - "fix(codex): prevent explorer approval requests"
+      - "fix(codex): prevent explorer approval requests (#120)"
+    commits:
+      - *a1
+      - sha: 8a083d9a3195634ec271003b701abe4ab2dae0a0
+        message: "chore(codex): simplify sub-agent roles (#119)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8a083d9a3195634ec271003b701abe4ab2dae0a0
+        authoredAt: 2026-08-31T15:24:14Z
+        additions: 25
+        deletions: 145
+        filesChanged: 11
+      - *a2
+      - sha: c2798b8be8f9e8ee5578585ff71d884606f1158d
+        message: "fix(codex): prevent explorer approval requests (#120)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c2798b8be8f9e8ee5578585ff71d884606f1158d
+        authoredAt: 2026-08-31T17:56:42Z
+        additions: 1
+        deletions: 0
+        filesChanged: 1
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "fix(ci): address incremental build review findings"
+      - "fix: address suite architecture review findings"
+      - "fix(ui): resolve shared theme and hub search regressions"
+      - "chore(stack): integrate PR #111 into #105"
+      - "fix(ci): quote product workflow input safely"
+      - "fix(ui): harden shared theme synchronization"
+      - "fix(ci): deploy manual runs despite stale-main guard"
+      - "fix(pto): preserve static page routes in smoke server"
+      - "fix: preserve theme and launcher state without storage"
+      - "chore(codex): simplify project agent roles"
+      - "docs(agents): clarify worker routing"
+      - "chore(codex): simplify project agent roles (#113)"
+      - "docs(auth): define authorization role naming (#111)"
+      - "fix(auth): standardize platform administrator roles (#107)"
+      - "refactor: centralize suite architecture (#106)"
+      - "ci: build only affected unified app artifacts (#105)"
+      - "fix(ci): use valid artifact root context"
+      - "fix(ci): use valid artifact root context (#114)"
+      - "fix(codex): prevent explorer approval escalation"
+      - "fix(codex): prevent explorer approval escalation (#115)"
+    commits:
+      - *a3
+      - *a4
+      - *a5
+      - *a6
+      - *a7
+      - *a8
+      - *a9
+      - *a10
+      - *a11
+      - *a12
+      - *a13
+      - sha: 842caa126d884db77d69f4fc7c5a0ef4972d1f64
+        message: "chore(codex): simplify project agent roles (#113)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/842caa126d884db77d69f4fc7c5a0ef4972d1f64
+        authoredAt: 2026-08-31T15:24:09Z
+        additions: 25
+        deletions: 253
+        filesChanged: 15
+      - sha: aea5d53dad6a09057c948ba141958594ad2b97af
+        message: "docs(auth): define authorization role naming (#111)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/aea5d53dad6a09057c948ba141958594ad2b97af
+        authoredAt: 2026-08-31T15:25:34Z
+        additions: 58
+        deletions: 3
+        filesChanged: 4
+      - sha: 73e9fb84a82f819bfb7eb710a17ebfc8c0ffb91b
+        message: "fix(auth): standardize platform administrator roles (#107)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/73e9fb84a82f819bfb7eb710a17ebfc8c0ffb91b
+        authoredAt: 2026-08-31T15:25:34Z
+        additions: 87
+        deletions: 48
+        filesChanged: 17
+      - sha: 84cacafdd268ff407e429e912718e9ce52c823fb
+        message: "refactor: centralize suite architecture (#106)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/84cacafdd268ff407e429e912718e9ce52c823fb
+        authoredAt: 2026-08-31T15:25:35Z
+        additions: 1321
+        deletions: 1656
+        filesChanged: 69
+      - sha: 2018a6abdc1495f4dead30834e14244f6167919a
+        message: "ci: build only affected unified app artifacts (#105)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2018a6abdc1495f4dead30834e14244f6167919a
+        authoredAt: 2026-08-31T15:25:35Z
+        additions: 545
+        deletions: 105
+        filesChanged: 12
+      - *a14
+      - sha: 87dbaef1265d7a42bfc42cee64aa454d6c097b19
+        message: "fix(ci): use valid artifact root context (#114)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/87dbaef1265d7a42bfc42cee64aa454d6c097b19
+        authoredAt: 2026-08-31T16:30:30Z
+        additions: 1
+        deletions: 1
+        filesChanged: 1
+      - *a15
+      - sha: e78f7266e4327814161fbe66869b7dbbb89a4f24
+        message: "fix(codex): prevent explorer approval escalation (#115)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e78f7266e4327814161fbe66869b7dbbb89a4f24
+        authoredAt: 2026-08-31T17:57:18Z
+        additions: 1
+        deletions: 0
+        filesChanged: 1
+releases: []
+externalContributions: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 113
+    prTitle: "chore(codex): simplify project agent roles"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/113
+    state: commented
+    submittedAt: 2026-08-31T15:16:21Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 105
+    prTitle: "ci: build only affected unified app artifacts"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/105
+    state: commented
+    submittedAt: 2026-08-31T14:22:05Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 105
+    prTitle: "ci: build only affected unified app artifacts"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/105
+    state: commented
+    submittedAt: 2026-08-31T14:41:11Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 113
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/113
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/113#discussion_r3895757642
+    body: Fixed in c073488. The Sub-agents section now explicitly identifies `worker` as the matching implementation role
+      for scoped issues, while preserving the requirement to change only that section.
+    path: AGENTS.md
+    createdAt: 2026-08-31T15:16:21Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 105
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/105
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/105#discussion_r3895313598
+    body: Addressed in e7c0edf. The workflow now passes the dispatch input through PRODUCT_APPS and quotes the environment
+      variable inside the shell command, so embedded shell syntax is treated as data and parseApps performs validation.
+    path: .github/workflows/azure-static-web-apps-products.yml
+    createdAt: 2026-08-31T14:22:05Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 105
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/105
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/105#discussion_r3895481515
+    body: Addressed in d8af293. The stale-main check now runs only for push events; manual workflow_dispatch runs bypass
+      that guard and proceed with their explicitly selected stage/production deployment.
+    path: .github/workflows/azure-static-web-apps.yml
+    createdAt: 2026-08-31T14:41:11Z
+aiReviews:
+  codex:
+    prsReviewed: 3
+    comments: 11
+    reviews: 7
+    fixed: 3
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 3
+  comments: 11
+  reviews: 7
+  fixed: 3
+hoursInputs:
+  timestamps:
+    - 2026-08-31T15:11:37Z
+    - 2026-08-31T15:24:14Z
+    - 2026-08-31T16:36:00Z
+    - 2026-08-31T17:56:42Z
+    - 2026-08-31T12:44:48Z
+    - 2026-08-31T12:46:29Z
+    - 2026-08-31T13:56:49Z
+    - 2026-08-31T14:04:33Z
+    - 2026-08-31T14:21:40Z
+    - 2026-08-31T14:25:48Z
+    - 2026-08-31T14:40:45Z
+    - 2026-08-31T14:41:25Z
+    - 2026-08-31T14:54:47Z
+    - 2026-08-31T15:09:31Z
+    - 2026-08-31T15:16:06Z
+    - 2026-08-31T15:24:09Z
+    - 2026-08-31T15:25:34Z
+    - 2026-08-31T15:25:34Z
+    - 2026-08-31T15:25:35Z
+    - 2026-08-31T15:25:35Z
+    - 2026-08-31T16:11:54Z
+    - 2026-08-31T16:30:30Z
+    - 2026-08-31T16:35:53Z
+    - 2026-08-31T17:57:18Z
+    - 2026-08-31T15:12:21Z
+    - 2026-08-31T15:24:14Z
+    - 2026-08-31T15:11:37Z
+    - 2026-08-31T16:12:42Z
+    - 2026-08-31T16:30:31Z
+    - 2026-08-31T16:11:54Z
+    - 2026-08-31T16:36:42Z
+    - 2026-08-31T17:56:42Z
+    - 2026-08-31T16:36:00Z
+    - 2026-08-31T15:10:22Z
+    - 2026-08-31T15:24:09Z
+    - 2026-08-31T15:09:31Z
+    - 2026-08-31T15:16:06Z
+    - 2026-08-31T16:36:44Z
+    - 2026-08-31T17:57:19Z
+    - 2026-08-31T16:35:53Z
+    - 2026-08-31T15:25:37Z
+    - 2026-08-31T15:25:36Z
+    - 2026-08-31T15:25:39Z
+    - 2026-08-31T12:46:29Z
+    - 2026-08-31T13:56:49Z
+    - 2026-08-31T14:25:48Z
+    - 2026-08-31T14:41:25Z
+    - 2026-08-31T14:54:47Z
+    - 2026-08-31T15:25:38Z
+    - 2026-08-31T12:44:48Z
+    - 2026-08-31T14:04:33Z
+    - 2026-08-31T14:21:40Z
+    - 2026-08-31T14:40:45Z
+    - 2026-08-31T15:16:21Z
+    - 2026-08-31T14:22:05Z
+    - 2026-08-31T14:41:11Z
+    - 2026-08-31T15:16:21Z
+    - 2026-08-31T14:22:05Z
+    - 2026-08-31T14:41:11Z
+  volume:
+    pullRequests:
+      - additions: 25
+        deletions: 145
+        state: merged
+        dailyWork: true
+        filesChanged: 11
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 1
+        deletions: 1
+        state: merged
+        dailyWork: true
+        filesChanged: 1
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 1
+        deletions: 0
+        state: merged
+        dailyWork: true
+        filesChanged: 1
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 26
+        deletions: 254
+        state: merged
+        dailyWork: true
+        filesChanged: 15
+        testFilesChanged: 0
+        commitCount: 2
+      - additions: 1
+        deletions: 0
+        state: merged
+        dailyWork: true
+        filesChanged: 1
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 206
+        deletions: 207
+        state: merged
+        dailyWork: true
+        filesChanged: 20
+        testFilesChanged: 3
+        commitCount: 5
+      - additions: 155
+        deletions: 56
+        state: merged
+        dailyWork: true
+        filesChanged: 25
+        testFilesChanged: 6
+        commitCount: 4
+      - additions: 0
+        deletions: 0
+        state: merged
+      - additions: 0
+        deletions: 0
+        state: merged
+    reviewCount: 3
+    reviewCommentCount: 3
+    commitCount: 9
+    commitAdditions: 2064
+    commitDeletions: 2211
+    commitStatsCount: 9
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 48
+  sessions: 1
+  sessionHours: 5.2
+  volumeHours: 48
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""

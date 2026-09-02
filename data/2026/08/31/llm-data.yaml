@@ -1,0 +1,131 @@
+title: Aug 31
+subtitle: codex, auth & build only
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps and Myriad-Advisor-Solutions/ohcpwm-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 3 PRs
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 2 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 24 commits with +415 / −663 lines.
+    chips:
+      - label: Commits
+        value: "24"
+        color: green
+      - label: Additions
+        value: "+415"
+        color: green
+      - label: Deletions
+        value: −663
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 3 reviews with 3 comments.
+    chips:
+      - label: Reviews
+        value: "3"
+      - label: Comments
+        value: "3"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 7 reviews, 11 comments, 3 PRs."
+    chips:
+      - label: Codex
+        value: 7 reviews · 11 comments · 3 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~48h
+highlights:
+  - type: pr
+    title: "chore(codex): simplify sub-agent roles"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +25 −145
+    body: >-
+      ## Problem
+
+
+      The project registered six obsolete subtree specialists in addition to explorer and worker, increasing routing
+      complexity and leaving reasoning and handoff behavior inconsistent with the i
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/119
+  - type: pr
+    title: "fix(ci): use valid artifact root context"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +1 −1
+    body: >-
+      ## Why
+
+
+      The Hub deployment workflow failed during workflow planning because job-level env referenced the unavailable
+      runner context. No jobs were created, so the main-branch deployment did not run.
+
+
+      #
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/114
+  - type: pr
+    title: "fix(codex): prevent explorer approval requests"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +1 −0
+    body: >-
+      ## Problem
+
+
+      The spawned custom explorer role uses the read-only explorer permission profile but did not prohibit approval
+      requests, leaving a gap in its enforced behavior.
+
+
+      ## Solution
+
+
+      - Set the expl
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/120
+  - type: pr
+    title: "chore(codex): simplify project agent roles"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +26 −254
+    body: >-
+      ## Why
+
+
+      The project-scoped Codex setup registered ten overlapping specialists, which made delegation more complex than
+      necessary and duplicated permission profiles.
+
+
+      ## What changed
+
+
+      - Reduced project
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/113
+  - type: pr
+    title: "fix(codex): prevent explorer approval escalation"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +1 −0
+    body: |-
+      ## Why
+
+      The custom spawned explorer role used a read-only permission profile but could still request approval escalation.
+
+      ## What changed
+
+      - Set the custom explorer agent approval policy to `never` a
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/115
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "chore(codex): simplify sub-agent roles" in Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(ci): use valid artifact root context" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(codex): prevent explorer approval requests" in Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "chore(codex): simplify project agent roles" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(codex): prevent explorer approval escalation" in
+      Myriad-Advisor-Solutions/myriadas-apps'

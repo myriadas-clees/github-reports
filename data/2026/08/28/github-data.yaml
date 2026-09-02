@@ -1,0 +1,801 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-08-28
+  to: 2026-08-28
+stats:
+  totalCommits: 11
+  totalAdditions: 178
+  totalDeletions: 77
+  prsOpened: 6
+  prsMerged: 3
+  prsInProgress: 3
+  prsReviewed: 8
+  reviewComments: 8
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 38.9
+dailyCommits:
+  - date: 2026-08-28
+    count: 11
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 7
+    prsOpened: 5
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 4
+    prsOpened: 1
+    prsMerged: 3
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests:
+  - title: "fix(auth): preserve app-specific privilege boundaries"
+    body: >-
+      ### Motivation
+
+
+      - A recent change promoted the suite-wide `myriadas_user` role to application `admin`/`hr` in several apps,
+      creating a privilege-escalation risk by conflating platform access with app-specific admin/HR elevation. 
+
+      - The change restores the intended least-privilege model where `myriad...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/110
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: closed
+    labels:
+      - "app: onboarding"
+      - "app: pto-tracker"
+      - "app: valuation"
+      - codex
+      - aardvark
+    additions: 9
+    deletions: 14
+    changedFiles: 6
+    author: myriadas-clees
+    createdAt: 2026-08-28T17:45:58Z
+    updatedAt: 2026-08-28T18:33:44Z
+    closedAt: 2026-08-28T18:33:44Z
+    mergedAt: null
+    workCommits:
+      - &a17
+        sha: 72b653e66fb889fbb7068331b738488e0c334eb1
+        message: "fix(auth): preserve app-specific privilege boundaries"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/72b653e66fb889fbb7068331b738488e0c334eb1
+        authoredAt: 2026-08-28T17:45:56Z
+    workTimestamps:
+      - 2026-08-28T17:45:56Z
+    workAdditions: 9
+    workDeletions: 14
+    workFiles:
+      - onboarding/apps/dashboard/lib/auth.test.ts
+      - onboarding/apps/dashboard/lib/auth.ts
+      - pto-tracker/src/lib/auth/entra-provider.test.ts
+      - pto-tracker/src/lib/auth/entra-provider.ts
+      - valuation/src/lib/auth.test.ts
+      - valuation/src/lib/auth.ts
+  - title: Require admin authorization for permanent recruit deletion
+    body: >-
+      ### Motivation
+
+
+      - Close an authorization gap that allowed any `pricing_user` officer to permanently delete a recruit (and
+      cascade-delete its model and reports) because the same officer role can also archive recruits.
+
+
+      ### Description
+
+
+      - Update the pricing recruit HTTP handler to require the existing...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/118
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a1
+      - aardvark
+      - codex
+    additions: 1
+    deletions: 1
+    changedFiles: 1
+    author: myriadas-clees
+    createdAt: 2026-08-28T17:46:08Z
+    updatedAt: 2026-08-28T17:49:18Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a2
+      - &a13
+        sha: 7d3854e4b41e62a0b1480cb42669a6312b6fbb31
+        message: "fix(pricing): require admin for recruit deletion"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7d3854e4b41e62a0b1480cb42669a6312b6fbb31
+        authoredAt: 2026-08-28T17:46:07Z
+    workTimestamps: &a3
+      - 2026-08-28T17:46:07Z
+    workAdditions: 1
+    workDeletions: 1
+    workFiles: &a4
+      - pricing/functions/src/index.ts
+  - title: "fix(onboarding): map myriadas_user to non-admin onboarding role"
+    body: >-
+      ### Motivation
+
+
+      - Prevent platform-wide `myriadas_user` from granting privileged onboarding mutations by ensuring only
+      `onboarding_admin` maps to the internal `admin` role.
+
+
+      ### Description
+
+
+      - Update `onboarding/apps/dashboard/lib/auth.ts` to remove `myriadas_user` from the admin mapping so `myriada...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/109
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: closed
+    labels:
+      - "app: onboarding"
+      - codex
+      - aardvark
+    additions: 3
+    deletions: 2
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-08-28T17:45:46Z
+    updatedAt: 2026-08-28T18:33:45Z
+    closedAt: 2026-08-28T18:33:45Z
+    mergedAt: null
+    workCommits:
+      - &a16
+        sha: a1858576c0282fb95926af6bbfae133e82b7c1c2
+        message: "fix(onboarding): require app admin for mutations"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a1858576c0282fb95926af6bbfae133e82b7c1c2
+        authoredAt: 2026-08-28T17:45:45Z
+    workTimestamps:
+      - 2026-08-28T17:45:45Z
+    workAdditions: 3
+    workDeletions: 2
+    workFiles:
+      - onboarding/apps/dashboard/lib/auth.test.ts
+      - onboarding/apps/dashboard/lib/auth.ts
+  - title: Prevent shared platform role from granting PTO HR access
+    body: >-
+      ### Motivation
+
+      - A recent change treated the suite-wide `myriadas_user` platform role as equivalent to the PTO HR application
+      role, allowing platform-only principals to receive `role: "hr"` and perform privileged HR operations. 
+
+      - This PR restores the intended invariant that only the configured HR a...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/108
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: closed
+    labels:
+      - "app: pto-tracker"
+      - codex
+      - aardvark
+    additions: 17
+    deletions: 6
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-08-28T17:45:37Z
+    updatedAt: 2026-08-28T18:33:48Z
+    closedAt: 2026-08-28T18:33:48Z
+    mergedAt: null
+    workCommits:
+      - &a15
+        sha: 490e6bb10e9bc1cf4fa8181dde2cfb39c3e533f6
+        message: "fix(pto): prevent platform role HR escalation"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/490e6bb10e9bc1cf4fa8181dde2cfb39c3e533f6
+        authoredAt: 2026-08-28T17:45:35Z
+    workTimestamps:
+      - 2026-08-28T17:45:35Z
+    workAdditions: 17
+    workDeletions: 6
+    workFiles:
+      - pto-tracker/src/lib/auth/entra-provider.test.ts
+      - pto-tracker/src/lib/auth/entra-provider.ts
+  - title: "docs(auth): define authorization role naming"
+    body: >-
+      ## Why
+
+
+      Authorization role values had no single naming contract, allowing values such as PTO's `HRAdmin` to drift from the
+      repository's lowercase snake-case convention.
+
+
+      Stacked on #107 so the documentation describes the consolidated authorization model introduced there.
+
+
+      ## What changed
+
+
+      - Define c...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a5
+      - documentation
+      - "app: pto-tracker"
+      - infrastructure
+    additions: 58
+    deletions: 3
+    changedFiles: 4
+    author: myriadas-clees
+    createdAt: 2026-08-28T18:36:43Z
+    updatedAt: 2026-08-31T15:25:37Z
+    closedAt: 2026-08-31T15:25:37Z
+    mergedAt: 2026-08-31T15:25:37Z
+    workCommits: &a6
+      - &a19
+        sha: 5aa56bd9fac30a44cce273a6721b2f0643d450d1
+        message: "docs(auth): define authorization role naming"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5aa56bd9fac30a44cce273a6721b2f0643d450d1
+        authoredAt: 2026-08-28T18:36:09Z
+    workTimestamps: &a7
+      - 2026-08-28T18:36:09Z
+    workAdditions: 58
+    workDeletions: 3
+    workFiles: &a8
+      - docs/authorization-roles.md
+      - docs/production-readiness-progress.md
+      - infra/azure/README.md
+      - pto-tracker/docs/README.md
+  - title: "fix(auth): standardize platform administrator roles"
+    body: >-
+      ## Why
+
+
+      The suite-wide `myriadas_user` role was promoted to application administrator or HR access in several products.
+      This conflated platform access with privileged authorization and allowed platform-only users to perform protected
+      mutations.
+
+
+      ## What changed
+
+
+      - Treat `myriadas_user` as ordinary p...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/107
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a9
+      - "app: hub"
+      - "app: onboarding"
+      - "app: pto-tracker"
+      - "app: excelerate"
+      - "app: valuation"
+      - infrastructure
+      - codex
+      - aardvark
+    additions: 90
+    deletions: 51
+    changedFiles: 17
+    author: myriadas-clees
+    createdAt: 2026-08-28T17:44:50Z
+    updatedAt: 2026-08-31T15:25:36Z
+    closedAt: 2026-08-31T15:25:36Z
+    mergedAt: 2026-08-31T15:25:36Z
+    workCommits: &a10
+      - &a14
+        sha: 67fc4edaeb6b7f4f9f4986431910153cf0395ce5
+        message: "fix(onboarding): restrict admin role mapping"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/67fc4edaeb6b7f4f9f4986431910153cf0395ce5
+        authoredAt: 2026-08-28T17:44:48Z
+      - &a18
+        sha: 51afb452e208844d6b64fc374847a6fcb030e330
+        message: "fix(auth): standardize platform administrator roles"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/51afb452e208844d6b64fc374847a6fcb030e330
+        authoredAt: 2026-08-28T18:32:14Z
+      - &a20
+        sha: dda26a129a608333890264558be49cd8f672fe7b
+        message: "fix(pto): support standardized admin roles in token auth"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/dda26a129a608333890264558be49cd8f672fe7b
+        authoredAt: 2026-08-28T18:44:59Z
+    workTimestamps: &a11
+      - 2026-08-28T17:44:48Z
+      - 2026-08-28T18:32:14Z
+      - 2026-08-28T18:44:59Z
+    workAdditions: 90
+    workDeletions: 51
+    workFiles: &a12
+      - excelerate/src/lib/auth.test.ts
+      - excelerate/src/lib/auth.ts
+      - excelerate/staticwebapp.config.json
+      - hub/lib/auth.test.ts
+      - hub/lib/auth.ts
+      - hub/staticwebapp.config.json
+      - infra/azure/pto-tracker/main.bicep
+      - onboarding/apps/dashboard/lib/auth.test.ts
+      - onboarding/apps/dashboard/lib/auth.ts
+      - onboarding/apps/dashboard/staticwebapp.config.json
+      - pto-tracker/src/lib/auth/entra-provider.test.ts
+      - pto-tracker/src/lib/auth/entra-provider.ts
+      - pto-tracker/src/lib/auth/entra-token-provider.test.ts
+      - pto-tracker/src/lib/auth/entra-token-provider.ts
+      - valuation/src/lib/auth.test.ts
+      - valuation/src/lib/auth.ts
+      - valuation/staticwebapp.config.json
+  - title: "feat(ofac): add PDF, CSV, and Excel report exports"
+    body: |-
+      - adds branded, on-demand PDF evidence reports for individual OFAC screenings
+      - adds complete filtered or single-screening CSV and styled XLSX exports with a stable full-evidence row contract
+      - adds Pricing-style PDF and workbook previews, with Excel previews capped at 200 rows while downloads remai...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels:
+      - deploy-preview
+    additions: 0
+    deletions: 0
+    changedFiles: 32
+    author: myriadas-clees
+    createdAt: 2026-08-12T19:55:22Z
+    updatedAt: 2026-08-28T14:51:40Z
+    closedAt: 2026-08-28T14:51:36Z
+    mergedAt: 2026-08-28T14:51:35Z
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "docs: publish #2/#37/#39 readiness runbooks"
+    body: >-
+      - Add separate, evidence-backed readiness runbooks for #2 Cosmos production readiness, #37 Pricing monitoring, and
+      #39 monday.com sync discovery.
+
+      - Add the blank `APPLICATIONINSIGHTS_CONNECTION_STRING` setting name to the Pricing Functions example without
+      committing a secret.
+
+      - Preserve the current ...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/86
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 0
+    deletions: 0
+    changedFiles: 4
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:33:23Z
+    updatedAt: 2026-08-28T15:32:21Z
+    closedAt: 2026-08-28T15:29:59Z
+    mergedAt: 2026-08-28T15:29:59Z
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "docs: document Advisor Pricing architecture"
+    body: >-
+      ## What changed
+
+
+      - Added an end-to-end Advisor Pricing architecture document covering static pages, browser API/base URL behavior,
+      Azure Functions, transport seams, auth, auditing, calculations, persistence, and PDF/XLSX report snapshots.
+
+      - Added request/data-flow diagrams and documented local versu...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/84
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 0
+    deletions: 0
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-08-03T15:32:36Z
+    updatedAt: 2026-08-28T15:28:12Z
+    closedAt: 2026-08-28T15:27:21Z
+    mergedAt: 2026-08-28T15:27:21Z
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+prsInProgress:
+  - title: Require admin authorization for permanent recruit deletion
+    body: >-
+      ### Motivation
+
+
+      - Close an authorization gap that allowed any `pricing_user` officer to permanently delete a recruit (and
+      cascade-delete its model and reports) because the same officer role can also archive recruits.
+
+
+      ### Description
+
+
+      - Update the pricing recruit HTTP handler to require the existing...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/118
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: *a1
+    additions: 1
+    deletions: 1
+    changedFiles: 1
+    author: myriadas-clees
+    createdAt: 2026-08-28T17:46:08Z
+    updatedAt: 2026-08-28T17:49:18Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 1
+    workDeletions: 1
+    workFiles: *a4
+  - title: "docs(auth): define authorization role naming"
+    body: >-
+      ## Why
+
+
+      Authorization role values had no single naming contract, allowing values such as PTO's `HRAdmin` to drift from the
+      repository's lowercase snake-case convention.
+
+
+      Stacked on #107 so the documentation describes the consolidated authorization model introduced there.
+
+
+      ## What changed
+
+
+      - Define c...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels: *a5
+    additions: 58
+    deletions: 3
+    changedFiles: 4
+    author: myriadas-clees
+    createdAt: 2026-08-28T18:36:43Z
+    updatedAt: 2026-08-31T15:25:37Z
+    closedAt: 2026-08-31T15:25:37Z
+    mergedAt: 2026-08-31T15:25:37Z
+    workCommits: *a6
+    workTimestamps: *a7
+    workAdditions: 58
+    workDeletions: 3
+    workFiles: *a8
+  - title: "fix(auth): standardize platform administrator roles"
+    body: >-
+      ## Why
+
+
+      The suite-wide `myriadas_user` role was promoted to application administrator or HR access in several products.
+      This conflated platform access with privileged authorization and allowed platform-only users to perform protected
+      mutations.
+
+
+      ## What changed
+
+
+      - Treat `myriadas_user` as ordinary p...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/107
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels: *a9
+    additions: 87
+    deletions: 48
+    changedFiles: 17
+    author: myriadas-clees
+    createdAt: 2026-08-28T17:44:50Z
+    updatedAt: 2026-08-31T15:25:36Z
+    closedAt: 2026-08-31T15:25:36Z
+    mergedAt: 2026-08-31T15:25:36Z
+    workCommits: *a10
+    workTimestamps: *a11
+    workAdditions: 90
+    workDeletions: 51
+    workFiles: *a12
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "feat(ofac): add PDF, CSV, and Excel report exports (#115)"
+      - "docs: document Advisor Pricing architecture (#84)"
+      - "docs: publish #2/#37/#39 readiness runbooks (#86)"
+      - "fix(pricing): require admin for recruit deletion"
+    commits:
+      - sha: 5462f91288bbec24424d4b7adaf6547b2f7ce3da
+        message: "feat(ofac): add PDF, CSV, and Excel report exports (#115)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/5462f91288bbec24424d4b7adaf6547b2f7ce3da
+        authoredAt: 2026-08-28T14:51:35Z
+        additions: 1110
+        deletions: 80
+        filesChanged: 32
+      - sha: 8df6f93e64ff6007f697b27e919c05d14c28144d
+        message: "docs: document Advisor Pricing architecture (#84)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8df6f93e64ff6007f697b27e919c05d14c28144d
+        authoredAt: 2026-08-28T15:27:20Z
+        additions: 296
+        deletions: 0
+        filesChanged: 2
+      - sha: 1fd3947202fd45fa31babd06d6393bd6fe36e825
+        message: "docs: publish #2/#37/#39 readiness runbooks (#86)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/1fd3947202fd45fa31babd06d6393bd6fe36e825
+        authoredAt: 2026-08-28T15:29:58Z
+        additions: 639
+        deletions: 0
+        filesChanged: 4
+      - *a13
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "fix(onboarding): restrict admin role mapping"
+      - "fix(pto): prevent platform role HR escalation"
+      - "fix(onboarding): require app admin for mutations"
+      - "fix(auth): preserve app-specific privilege boundaries"
+      - "fix(auth): standardize platform administrator roles"
+      - "docs(auth): define authorization role naming"
+      - "fix(pto): support standardized admin roles in token auth"
+    commits:
+      - *a14
+      - *a15
+      - *a16
+      - *a17
+      - *a18
+      - *a19
+      - *a20
+releases: []
+externalContributions: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 111
+    prTitle: "docs(auth): define authorization role naming"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
+    state: commented
+    submittedAt: 2026-08-28T18:47:29Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 111
+    prTitle: "docs(auth): define authorization role naming"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
+    state: commented
+    submittedAt: 2026-08-28T18:47:30Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 111
+    prTitle: "docs(auth): define authorization role naming"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
+    state: commented
+    submittedAt: 2026-08-28T18:52:27Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 111
+    prTitle: "docs(auth): define authorization role naming"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
+    state: commented
+    submittedAt: 2026-08-28T18:57:45Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 111
+    prTitle: "docs(auth): define authorization role naming"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
+    state: commented
+    submittedAt: 2026-08-28T18:57:46Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 111
+    prTitle: "docs(auth): define authorization role naming"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
+    state: commented
+    submittedAt: 2026-08-28T19:04:09Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 111
+    prTitle: "docs(auth): define authorization role naming"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
+    state: commented
+    submittedAt: 2026-08-28T19:04:09Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 107
+    prTitle: "fix(auth): standardize platform administrator roles"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/107
+    state: commented
+    submittedAt: 2026-08-28T18:47:32Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 111
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111#discussion_r3883177861
+    body: Addressed in 98c78a3. The schema now describes `myriadas_user` as ordinary non-administrator access and explicitly
+      notes that product user or analyst permissions may include ordinary writes.
+    path: docs/authorization-roles.md
+    createdAt: 2026-08-28T18:47:29Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 111
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111#discussion_r3883177953
+    body: Addressed in dda26a1 on the stacked base PR. PTO token authentication now honors `admin` and `hr_admin`, retains
+      temporary `HRAdmin` compatibility, and preserves `read_only` precedence with focused tests.
+    path: infra/azure/README.md
+    createdAt: 2026-08-28T18:47:30Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 111
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111#discussion_r3883210875
+    body: Addressed in 9da5f02. The schema and Azure guidance now distinguish suite route access from PTO API authorization
+      and state the matching Staff-record requirement for non-administrators.
+    path: infra/azure/README.md
+    createdAt: 2026-08-28T18:52:27Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 111
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111#discussion_r3883243836
+    body: Addressed in 8d5e03d. The established Hub topology intentionally uses `myriadas_user` as the base platform grant,
+      so the schema and Azure guidance now explicitly require pairing it with scoped Onboarding, PTO, and Valuation
+      roles; the Proforma direct-role exception is also documented.
+    path: infra/azure/README.md
+    createdAt: 2026-08-28T18:57:45Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 111
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111#discussion_r3883243926
+    body: Addressed in 8d5e03d. `read_only` is now defined as protecting business data while allowing app-scoped personal
+      settings such as Onboarding saved views.
+    path: docs/authorization-roles.md
+    createdAt: 2026-08-28T18:57:46Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 111
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111#discussion_r3883289575
+    body: Addressed in 5aa56bd. The Staff prerequisite now applies specifically to ordinary PTO access through
+      `myriadas_user`; `admin`, `hr_admin`, and `read_only` exceptions are explicit.
+    path: docs/authorization-roles.md
+    createdAt: 2026-08-28T19:04:09Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 111
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111#discussion_r3883289620
+    body: Addressed in 5aa56bd. Excelerate and `excelerate_user` are now included in the combined-Hub pairing guidance.
+    path: docs/authorization-roles.md
+    createdAt: 2026-08-28T19:04:09Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 107
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/107
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/107#discussion_r3883178189
+    body: Addressed in dda26a1. Both PTO Entra providers now accept legacy `HRAdmin` during migration while `hr_admin`
+      remains canonical, with regression coverage for both values.
+    path: infra/azure/pto-tracker/main.bicep
+    createdAt: 2026-08-28T18:47:32Z
+aiReviews:
+  codex:
+    prsReviewed: 5
+    comments: 16
+    reviews: 8
+    fixed: 8
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 5
+  comments: 16
+  reviews: 8
+  fixed: 8
+hoursInputs:
+  timestamps:
+    - 2026-08-28T14:51:35Z
+    - 2026-08-28T15:27:20Z
+    - 2026-08-28T15:29:58Z
+    - 2026-08-28T17:46:07Z
+    - 2026-08-28T17:44:48Z
+    - 2026-08-28T17:45:35Z
+    - 2026-08-28T17:45:45Z
+    - 2026-08-28T17:45:56Z
+    - 2026-08-28T18:32:14Z
+    - 2026-08-28T18:36:09Z
+    - 2026-08-28T18:44:59Z
+    - 2026-08-28T17:45:58Z
+    - 2026-08-28T17:45:56Z
+    - 2026-08-28T17:46:08Z
+    - 2026-08-28T17:46:07Z
+    - 2026-08-28T17:45:46Z
+    - 2026-08-28T17:45:45Z
+    - 2026-08-28T17:45:37Z
+    - 2026-08-28T17:45:35Z
+    - 2026-08-28T18:36:43Z
+    - 2026-08-28T18:36:09Z
+    - 2026-08-28T17:44:50Z
+    - 2026-08-28T17:44:48Z
+    - 2026-08-28T18:32:14Z
+    - 2026-08-28T18:44:59Z
+    - 2026-08-28T14:51:35Z
+    - 2026-08-28T15:29:59Z
+    - 2026-08-28T15:27:21Z
+    - 2026-08-28T18:47:29Z
+    - 2026-08-28T18:47:30Z
+    - 2026-08-28T18:52:27Z
+    - 2026-08-28T18:57:45Z
+    - 2026-08-28T18:57:46Z
+    - 2026-08-28T19:04:09Z
+    - 2026-08-28T19:04:09Z
+    - 2026-08-28T18:47:32Z
+    - 2026-08-28T18:47:29Z
+    - 2026-08-28T18:47:30Z
+    - 2026-08-28T18:52:27Z
+    - 2026-08-28T18:57:45Z
+    - 2026-08-28T18:57:46Z
+    - 2026-08-28T19:04:09Z
+    - 2026-08-28T19:04:09Z
+    - 2026-08-28T18:47:32Z
+  volume:
+    pullRequests:
+      - additions: 9
+        deletions: 14
+        state: closed
+        dailyWork: true
+        filesChanged: 6
+        testFilesChanged: 3
+        commitCount: 1
+      - additions: 1
+        deletions: 1
+        state: open
+        dailyWork: true
+        filesChanged: 1
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 3
+        deletions: 2
+        state: closed
+        dailyWork: true
+        filesChanged: 2
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 17
+        deletions: 6
+        state: closed
+        dailyWork: true
+        filesChanged: 2
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 58
+        deletions: 3
+        state: merged
+        dailyWork: true
+        filesChanged: 4
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 90
+        deletions: 51
+        state: merged
+        dailyWork: true
+        filesChanged: 17
+        testFilesChanged: 6
+        commitCount: 3
+      - additions: 0
+        deletions: 0
+        state: merged
+      - additions: 0
+        deletions: 0
+        state: merged
+      - additions: 0
+        deletions: 0
+        state: merged
+    reviewCount: 8
+    reviewCommentCount: 8
+    commitCount: 3
+    commitAdditions: 2045
+    commitDeletions: 80
+    commitStatsCount: 3
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 38.9
+  sessions: 2
+  sessionHours: 2
+  volumeHours: 38.9
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
