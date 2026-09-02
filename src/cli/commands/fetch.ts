@@ -483,6 +483,20 @@ const runFullFetch = async (
   console.log(`Collected ${totalMsgs} commit messages from ${commitMessages.length} repositories.`);
 
   console.log(`Fetching reviews and review comments...`);
+  const reviewCandidates = new Map<string, { repo: string; number: number; title?: string; url?: string }>();
+  for (const ref of uniqueRefs.values()) {
+    reviewCandidates.set(`${ref.repo}#${ref.number}`, ref);
+  }
+  for (const pr of pullRequests) {
+    const number = Number(pr.url.match(/\/pull\/(\d+)/)?.[1]);
+    if (!Number.isInteger(number)) continue;
+    reviewCandidates.set(`${pr.repository}#${number}`, {
+      repo: pr.repository,
+      number,
+      title: pr.title,
+      url: pr.url,
+    });
+  }
   const reviewData = await fetchReviewsForRepos(
     options.token,
     options.username,
@@ -490,7 +504,7 @@ const runFullFetch = async (
     plan.range,
     new Date(),
     Boolean(options.date),
-    [...uniqueRefs.values()],
+    [...reviewCandidates.values()],
   );
   const ai = reviewData.aiReviews;
   console.log(

@@ -23,6 +23,8 @@ const GITHUB_HEADERS = (token: string) => ({
 const MAX_RETRIES = 3;
 const REQUEST_DELAY_MS = 100;
 const DEFAULT_RETRY_DELAY_MS = 5_000;
+/** GitHub asks clients to wait at least one minute after a secondary rate limit. */
+const SECONDARY_RATE_LIMIT_DELAY_MS = 60_000;
 const CONCURRENCY = 5;
 /** Max PRs per repo updated between the report start and collection to inspect for scheduled runs. */
 const MAX_PRS_PER_REPO = 100;
@@ -31,13 +33,45 @@ const MAX_COLLECTION_LAG_MS = 12 * 60 * 60 * 1000;
 
 const sleep = (ms: number): Promise<void> => new Promise((r) => setTimeout(r, ms));
 
-const parseRetryDelay = (response: Response): number => {
+export type ReviewCandidate = {
+  repo: string;
+  number: number;
+  title?: string;
+  url?: string;
+};
+
+const parseRetryDelay = (response: Response, attempt: number = 0): number => {
   const retryAfter = response.headers.get("retry-after");
   if (retryAfter) {
     const seconds = Number(retryAfter);
     if (!Number.isNaN(seconds)) return seconds * 1000;
   }
-  return DEFAULT_RETRY_DELAY_MS;
+
+  // Primary rate limit: wait until the documented reset instead of a short backoff.
+  if (response.headers.get("x-ratelimit-remaining") === "0") {
+    const reset = Number(response.headers.get("x-ratelimit-reset"));
+    if (Number.isFinite(reset)) {
+      const msUntilReset = reset * 1000 - Date.now() + 1_000;
+      return Math.max(DEFAULT_RETRY_DELAY_MS, msUntilReset);
+    }
+  }
+
+  // Secondary limits may arrive as 403 or 429 without Retry-After; wait ≥1 minute.
+  return SECONDARY_RATE_LIMIT_DELAY_MS * 2 ** attempt;
+};
+
+/** Retry 429s and secondary-limit 403s; leave ordinary permission 403s for immediate failure. */
+const isRetryableGitHubLimit = async (response: Response): Promise<boolean> => {
+  if (response.status === 429) return true;
+  if (response.status !== 403) return false;
+  if (response.headers.get("retry-after")) return true;
+  if (response.headers.get("x-ratelimit-remaining") === "0") return true;
+  try {
+    const body = await response.clone().text();
+    return /secondary rate limit|abuse detection/i.test(body);
+  } catch {
+    return false;
+  }
 };
 
 const parseNextUrl = (response: Response): string | null => {
@@ -106,8 +140,8 @@ const fetchJsonPages = async <T>(token: string, startUrl: string): Promise<T[]> 
       if (response.status === 404) {
         return items;
       }
-      if (response.status === 429 && attempt < MAX_RETRIES) {
-        await sleep(parseRetryDelay(response));
+      if (attempt < MAX_RETRIES && await isRetryableGitHubLimit(response)) {
+        await sleep(parseRetryDelay(response, attempt));
         continue;
       }
       throwOnGitHubAccessError(response, "Review fetch failed");
@@ -127,6 +161,34 @@ export type FetchReviewsResult = {
   aiReviews: AiReviewActivity;
 };
 
+type CandidatePR = {
+  number: number;
+  title: string;
+  html_url: string;
+  created_at: string;
+  updated_at: string;
+};
+
+const fetchCandidatePR = async (
+  token: string,
+  repo: string,
+  number: number,
+): Promise<CandidatePR | null> => {
+  const url = `https://api.github.com/repos/${repo}/pulls/${number}`;
+  for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
+    const response = await fetch(url, { headers: GITHUB_HEADERS(token) });
+    if (response.ok) return await response.json() as CandidatePR;
+    if (response.status === 404) return null;
+    if (attempt < MAX_RETRIES && await isRetryableGitHubLimit(response)) {
+      await sleep(parseRetryDelay(response, attempt));
+      continue;
+    }
+    throwOnGitHubAccessError(response, `Review candidate PR fetch failed for ${repo}#${number}`);
+    return null;
+  }
+  return null;
+};
+
 export const fetchReviewsForRepos = async (
   token: string,
   username: string,
@@ -134,7 +196,7 @@ export const fetchReviewsForRepos = async (
   range: DateRange,
   collectedAt: Date = new Date(),
   historicalBackfill: boolean = false,
-  knownCandidates: Array<{ repo: string; number: number }> = [],
+  knownCandidates: ReviewCandidate[] = [],
 ): Promise<FetchReviewsResult> => {
   const reviews: CodeReview[] = [];
   const comments: ReviewComment[] = [];
@@ -178,17 +240,15 @@ export const fetchReviewsForRepos = async (
       direction: "desc",
       per_page: "50",
     });
-    type CandidatePR = {
-      number: number;
-      title: string;
-      html_url: string;
-      created_at: string;
-      updated_at: string;
-    };
     let prs: CandidatePR[];
     if (historicalBackfill) {
+      const knownByNumber = new Map(
+        knownCandidates
+          .filter((candidate) => candidate.repo === repo)
+          .map((candidate) => [candidate.number, candidate] as const),
+      );
       const numbers = new Set<number>([
-        ...knownCandidates.filter((candidate) => candidate.repo === repo).map((candidate) => candidate.number),
+        ...knownByNumber.keys(),
         ...(contributionCandidates.get(repo) ?? []),
       ]);
       const activityComments = await fetchJsonPages<RawComment>(
@@ -199,13 +259,27 @@ export const fetchReviewsForRepos = async (
         const number = Number(comment.pull_request_url.split("/").at(-1));
         if (Number.isInteger(number)) numbers.add(number);
       }
-      prs = (await Promise.all([...numbers].map(async (number) => {
-        const response = await fetch(`https://api.github.com/repos/${repo}/pulls/${number}`, {
-          headers: GITHUB_HEADERS(token),
-        });
-        throwOnGitHubAccessError(response, `Review candidate PR fetch failed for ${repo}#${number}`);
-        return response.ok ? await response.json() as CandidatePR : null;
-      }))).filter((pr): pr is CandidatePR => pr !== null);
+      // Reuse titles/URLs already hydrated by fetchPRsByRefs. Only GET candidates
+      // that are still missing metadata — never burst-fetch the whole set.
+      const fetchedByNumber = new Map<number, CandidatePR>();
+      for (const number of numbers) {
+        const known = knownByNumber.get(number);
+        if (known?.title && known.url) continue;
+        const fetched = await fetchCandidatePR(token, repo, number);
+        if (fetched) fetchedByNumber.set(number, fetched);
+        await sleep(REQUEST_DELAY_MS);
+      }
+      prs = [...numbers].map((number) => {
+        const known = knownByNumber.get(number);
+        const fetched = fetchedByNumber.get(number);
+        return {
+          number,
+          title: known?.title ?? fetched?.title ?? `#${number}`,
+          html_url: known?.url ?? fetched?.html_url ?? `https://github.com/${repo}/pull/${number}`,
+          created_at: fetched?.created_at ?? range.from.toISOString(),
+          updated_at: fetched?.updated_at ?? range.from.toISOString(),
+        };
+      });
     } else {
       prs = await fetchJsonPages<CandidatePR>(token, `https://api.github.com/repos/${repo}/pulls?${params}`);
     }

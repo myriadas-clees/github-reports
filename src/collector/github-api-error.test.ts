@@ -15,6 +15,17 @@ describe("throwOnGitHubAccessError", () => {
       .toThrow(/Collection failed: GitHub API returned/);
   });
 
+  it("treats a 403 with retry-after as a rate limit", () => {
+    expect(() => throwOnGitHubAccessError(
+      new Response("", {
+        status: 403,
+        statusText: "Forbidden",
+        headers: { "retry-after": "30", "x-ratelimit-remaining": "4999" },
+      }),
+      "Collection failed",
+    )).toThrow(/rate limit is exhausted/);
+  });
+
   it("does not throw for an ordinary missing resource", () => {
     expect(() => throwOnGitHubAccessError(
       new Response("", { status: 404, statusText: "Not Found" }),
