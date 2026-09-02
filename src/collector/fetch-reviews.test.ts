@@ -162,7 +162,10 @@ describe("fetchReviewsForRepos", () => {
     expect(result.reviews).toHaveLength(1);
   });
 
-  it("waits at least one minute before retrying a secondary-limit 403 without Retry-After", async () => {
+  it.each([
+    { status: 403, statusText: "Forbidden", label: "403" },
+    { status: 429, statusText: "Too Many Requests", label: "429" },
+  ])("waits at least one minute before retrying a secondary-limit $label without Retry-After", async ({ status, statusText }) => {
     vi.useFakeTimers();
     let reviewCalls = 0;
     vi.spyOn(globalThis, "fetch").mockImplementation(async (input) => {
@@ -181,7 +184,11 @@ describe("fetchReviewsForRepos", () => {
         if (reviewCalls === 1) {
           return new Response(JSON.stringify({
             message: "You have exceeded a secondary rate limit. Please wait a while before making new requests.",
-          }), { status: 403, statusText: "Forbidden" });
+          }), {
+            status,
+            statusText,
+            headers: { "x-ratelimit-remaining": "4999" },
+          });
         }
         return new Response(JSON.stringify([{
           user: { login: "alice" },

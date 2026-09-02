@@ -56,9 +56,8 @@ const parseRetryDelay = (response: Response, attempt: number = 0): number => {
     }
   }
 
-  // Secondary-limit 403s often omit Retry-After; five seconds is too short to clear them.
-  const base = response.status === 403 ? SECONDARY_RATE_LIMIT_DELAY_MS : DEFAULT_RETRY_DELAY_MS;
-  return base * 2 ** attempt;
+  // Secondary limits may arrive as 403 or 429 without Retry-After; wait ≥1 minute.
+  return SECONDARY_RATE_LIMIT_DELAY_MS * 2 ** attempt;
 };
 
 /** Retry 429s and secondary-limit 403s; leave ordinary permission 403s for immediate failure. */
