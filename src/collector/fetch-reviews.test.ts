@@ -2,7 +2,10 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { fetchReviewsForRepos } from "./fetch-reviews.js";
 
 describe("fetchReviewsForRepos", () => {
-  afterEach(() => vi.restoreAllMocks());
+  afterEach(() => {
+    vi.useRealTimers();
+    vi.restoreAllMocks();
+  });
 
   it("retains in-range reviews when the PR changes after midnight", async () => {
     const range = {
@@ -156,6 +159,54 @@ describe("fetchReviewsForRepos", () => {
       new Date("2026-08-11T05:00:00Z"),
     );
 
+    expect(reviewCalls).toBe(2);
+    expect(result.reviews).toHaveLength(1);
+  });
+
+  it("waits at least one minute before retrying a 403 without Retry-After", async () => {
+    vi.useFakeTimers();
+    let reviewCalls = 0;
+    vi.spyOn(globalThis, "fetch").mockImplementation(async (input) => {
+      const url = String(input);
+      if (url.includes("/pulls?")) {
+        return new Response(JSON.stringify([{
+          number: 7,
+          title: "Reviewed work",
+          html_url: "https://github.com/org/app/pull/7",
+          created_at: "2026-08-01T12:00:00Z",
+          updated_at: "2026-08-10T20:00:00Z",
+        }]));
+      }
+      if (url.endsWith("/reviews")) {
+        reviewCalls += 1;
+        if (reviewCalls === 1) {
+          return new Response("", { status: 403, statusText: "Forbidden" });
+        }
+        return new Response(JSON.stringify([{
+          user: { login: "alice" },
+          state: "APPROVED",
+          body: "Looks good",
+          submitted_at: "2026-08-10T20:00:00Z",
+          html_url: "https://github.com/org/app/pull/7#review",
+          pull_request_url: "https://api.github.com/repos/org/app/pulls/7",
+        }]));
+      }
+      return new Response(JSON.stringify([]));
+    });
+
+    const resultPromise = fetchReviewsForRepos(
+      "token",
+      "alice",
+      ["org/app"],
+      { from: new Date("2026-08-10T04:00:00Z"), to: new Date("2026-08-11T03:59:59.999Z") },
+      new Date("2026-08-11T05:00:00Z"),
+    );
+
+    await vi.advanceTimersByTimeAsync(59_999);
+    expect(reviewCalls).toBe(1);
+    await vi.advanceTimersByTimeAsync(1);
+    await vi.runAllTimersAsync();
+    const result = await resultPromise;
     expect(reviewCalls).toBe(2);
     expect(result.reviews).toHaveLength(1);
   });

@@ -23,6 +23,8 @@ const GITHUB_HEADERS = (token: string) => ({
 const MAX_RETRIES = 3;
 const REQUEST_DELAY_MS = 100;
 const DEFAULT_RETRY_DELAY_MS = 5_000;
+/** GitHub asks clients to wait at least one minute after a secondary rate limit. */
+const SECONDARY_RATE_LIMIT_DELAY_MS = 60_000;
 const CONCURRENCY = 5;
 /** Max PRs per repo updated between the report start and collection to inspect for scheduled runs. */
 const MAX_PRS_PER_REPO = 100;
@@ -31,13 +33,15 @@ const MAX_COLLECTION_LAG_MS = 12 * 60 * 60 * 1000;
 
 const sleep = (ms: number): Promise<void> => new Promise((r) => setTimeout(r, ms));
 
-const parseRetryDelay = (response: Response): number => {
+const parseRetryDelay = (response: Response, attempt: number = 0): number => {
   const retryAfter = response.headers.get("retry-after");
   if (retryAfter) {
     const seconds = Number(retryAfter);
     if (!Number.isNaN(seconds)) return seconds * 1000;
   }
-  return DEFAULT_RETRY_DELAY_MS;
+  // Secondary-limit 403s often omit Retry-After; five seconds is too short to clear them.
+  const base = response.status === 403 ? SECONDARY_RATE_LIMIT_DELAY_MS : DEFAULT_RETRY_DELAY_MS;
+  return base * 2 ** attempt;
 };
 
 const parseNextUrl = (response: Response): string | null => {
@@ -108,7 +112,7 @@ const fetchJsonPages = async <T>(token: string, startUrl: string): Promise<T[]> 
       }
       // 403 is GitHub's secondary rate limit as well as a permission error.
       if ((response.status === 429 || response.status === 403) && attempt < MAX_RETRIES) {
-        await sleep(parseRetryDelay(response));
+        await sleep(parseRetryDelay(response, attempt));
         continue;
       }
       throwOnGitHubAccessError(response, "Review fetch failed");
