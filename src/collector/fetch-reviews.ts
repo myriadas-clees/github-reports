@@ -46,6 +46,16 @@ const parseRetryDelay = (response: Response, attempt: number = 0): number => {
     const seconds = Number(retryAfter);
     if (!Number.isNaN(seconds)) return seconds * 1000;
   }
+
+  // Primary rate limit: wait until the documented reset instead of a short backoff.
+  if (response.headers.get("x-ratelimit-remaining") === "0") {
+    const reset = Number(response.headers.get("x-ratelimit-reset"));
+    if (Number.isFinite(reset)) {
+      const msUntilReset = reset * 1000 - Date.now() + 1_000;
+      return Math.max(DEFAULT_RETRY_DELAY_MS, msUntilReset);
+    }
+  }
+
   // Secondary-limit 403s often omit Retry-After; five seconds is too short to clear them.
   const base = response.status === 403 ? SECONDARY_RATE_LIMIT_DELAY_MS : DEFAULT_RETRY_DELAY_MS;
   return base * 2 ** attempt;

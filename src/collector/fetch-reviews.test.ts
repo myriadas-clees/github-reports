@@ -212,6 +212,64 @@ describe("fetchReviewsForRepos", () => {
     expect(result.reviews).toHaveLength(1);
   });
 
+  it("waits until x-ratelimit-reset for a primary-limit 403", async () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-09-02T12:00:00Z"));
+    const resetUnix = Math.floor(new Date("2026-09-02T12:10:00Z").getTime() / 1000);
+    let reviewCalls = 0;
+    vi.spyOn(globalThis, "fetch").mockImplementation(async (input) => {
+      const url = String(input);
+      if (url.includes("/pulls?")) {
+        return new Response(JSON.stringify([{
+          number: 7,
+          title: "Reviewed work",
+          html_url: "https://github.com/org/app/pull/7",
+          created_at: "2026-08-01T12:00:00Z",
+          updated_at: "2026-08-10T20:00:00Z",
+        }]));
+      }
+      if (url.endsWith("/reviews")) {
+        reviewCalls += 1;
+        if (reviewCalls === 1) {
+          return new Response(JSON.stringify({ message: "API rate limit exceeded" }), {
+            status: 403,
+            statusText: "Forbidden",
+            headers: {
+              "x-ratelimit-remaining": "0",
+              "x-ratelimit-reset": String(resetUnix),
+            },
+          });
+        }
+        return new Response(JSON.stringify([{
+          user: { login: "alice" },
+          state: "APPROVED",
+          body: "Looks good",
+          submitted_at: "2026-08-10T20:00:00Z",
+          html_url: "https://github.com/org/app/pull/7#review",
+          pull_request_url: "https://api.github.com/repos/org/app/pulls/7",
+        }]));
+      }
+      return new Response(JSON.stringify([]));
+    });
+
+    const resultPromise = fetchReviewsForRepos(
+      "token",
+      "alice",
+      ["org/app"],
+      { from: new Date("2026-08-10T04:00:00Z"), to: new Date("2026-08-11T03:59:59.999Z") },
+      new Date("2026-08-11T05:00:00Z"),
+    );
+
+    // Reset is 10 minutes out; short secondary backoff must not retry early.
+    await vi.advanceTimersByTimeAsync(9 * 60_000);
+    expect(reviewCalls).toBe(1);
+    await vi.advanceTimersByTimeAsync(60_000 + 1_000);
+    await vi.runAllTimersAsync();
+    const result = await resultPromise;
+    expect(reviewCalls).toBe(2);
+    expect(result.reviews).toHaveLength(1);
+  });
+
   it("fails immediately on a permission-denied 403", async () => {
     vi.spyOn(globalThis, "fetch").mockImplementation(async (input) => {
       const url = String(input);
