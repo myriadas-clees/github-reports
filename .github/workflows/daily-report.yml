@@ -70,11 +70,11 @@ jobs:
             local dir="data/${report_date//-//}"
             if [ ! -f "$dir/github-data.yaml" ]; then
               echo "Fetching $report_date"
-              bun dist/cli/index.js daily-fetch --date "$report_date"
+              bun dist/cli/index.js daily-fetch --date "$report_date" || return 1
             fi
             if [ ! -f "$dir/llm-data.yaml" ]; then
               echo "Generating $report_date"
-              bun dist/cli/index.js generate --date "$report_date"
+              bun dist/cli/index.js generate --date "$report_date" || return 1
             fi
             if [ -f "$dir/github-data.yaml" ] && [ -f "$dir/llm-data.yaml" ]; then
               echo "Complete $report_date"
@@ -91,16 +91,25 @@ jobs:
 
           cursor=$(TZ="$TIMEZONE" date -d "yesterday" +%F)
           filled=0
+          failed=0
           while [ "$filled" -lt 3 ]; do
             dow=$(TZ="$TIMEZONE" date -d "$cursor" +%u)
             if [ "$dow" -le 5 ]; then
-              fill_date "$cursor"
+              fill_date "$cursor" || {
+                echo "FAIL $cursor — continuing so finished days are still committed"
+                failed=1
+              }
               filled=$((filled + 1))
             fi
             cursor=$(TZ="$TIMEZONE" date -d "$cursor - 1 day" +%F)
           done
+          if [ "$failed" -ne 0 ]; then
+            echo "One or more catch-up days failed"
+            exit 1
+          fi
 
       - name: Commit report data
+        if: ${{ !cancelled() }}
         run: |
           git config user.name "worklog[bot]"
           git config user.email "worklog[bot]@users.noreply.github.com"

@@ -106,7 +106,8 @@ const fetchJsonPages = async <T>(token: string, startUrl: string): Promise<T[]> 
       if (response.status === 404) {
         return items;
       }
-      if (response.status === 429 && attempt < MAX_RETRIES) {
+      // 403 is GitHub's secondary rate limit as well as a permission error.
+      if ((response.status === 429 || response.status === 403) && attempt < MAX_RETRIES) {
         await sleep(parseRetryDelay(response));
         continue;
       }
@@ -199,13 +200,15 @@ export const fetchReviewsForRepos = async (
         const number = Number(comment.pull_request_url.split("/").at(-1));
         if (Number.isInteger(number)) numbers.add(number);
       }
-      prs = (await Promise.all([...numbers].map(async (number) => {
-        const response = await fetch(`https://api.github.com/repos/${repo}/pulls/${number}`, {
-          headers: GITHUB_HEADERS(token),
-        });
-        throwOnGitHubAccessError(response, `Review candidate PR fetch failed for ${repo}#${number}`);
-        return response.ok ? await response.json() as CandidatePR : null;
-      }))).filter((pr): pr is CandidatePR => pr !== null);
+      // Don't re-GET each PR; the collector already hydrated these refs, and a
+      // parallel burst of /pulls/{n} trips GitHub's secondary rate limit (403).
+      prs = [...numbers].map((number) => ({
+        number,
+        title: `#${number}`,
+        html_url: `https://github.com/${repo}/pull/${number}`,
+        created_at: range.from.toISOString(),
+        updated_at: range.from.toISOString(),
+      }));
     } else {
       prs = await fetchJsonPages<CandidatePR>(token, `https://api.github.com/repos/${repo}/pulls?${params}`);
     }
