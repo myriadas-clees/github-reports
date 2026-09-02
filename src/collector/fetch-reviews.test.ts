@@ -76,20 +76,11 @@ describe("fetchReviewsForRepos", () => {
     expect(fetchSpy).toHaveBeenCalledTimes(1);
   });
 
-  it("inspects historical candidates even when their latest update is much later", async () => {
+  it("preserves hydrated titles for historical candidates without re-fetching them", async () => {
     const urls: string[] = [];
     vi.spyOn(globalThis, "fetch").mockImplementation(async (input) => {
       const url = String(input);
       urls.push(url);
-      if (url.includes("/pulls?")) {
-        return new Response(JSON.stringify([{
-          number: 7,
-          title: "Historical review",
-          html_url: "https://github.com/org/app/pull/7",
-          created_at: "2026-08-01T12:00:00Z",
-          updated_at: "2026-08-20T20:00:00Z",
-        }]));
-      }
       if (url.endsWith("/reviews")) {
         return new Response(JSON.stringify([{
           user: { login: "alice" },
@@ -109,11 +100,19 @@ describe("fetchReviewsForRepos", () => {
       { from: new Date("2026-08-10T04:00:00Z"), to: new Date("2026-08-11T03:59:59.999Z") },
       new Date("2026-08-21T00:00:00Z"),
       true,
-      [{ repo: "org/app", number: 7 }],
+      [{
+        repo: "org/app",
+        number: 7,
+        title: "Historical review",
+        url: "https://github.com/org/app/pull/7",
+      }],
     );
     expect(result.reviews).toHaveLength(1);
-    expect(result.reviews[0]?.prNumber).toBe(7);
-    expect(result.reviews[0]?.prUrl).toBe("https://github.com/org/app/pull/7");
+    expect(result.reviews[0]).toMatchObject({
+      prNumber: 7,
+      prTitle: "Historical review",
+      prUrl: "https://github.com/org/app/pull/7",
+    });
     expect(urls.some((url) => /\/pulls\/7$/.test(url))).toBe(false);
   });
 
@@ -163,7 +162,7 @@ describe("fetchReviewsForRepos", () => {
     expect(result.reviews).toHaveLength(1);
   });
 
-  it("waits at least one minute before retrying a 403 without Retry-After", async () => {
+  it("waits at least one minute before retrying a secondary-limit 403 without Retry-After", async () => {
     vi.useFakeTimers();
     let reviewCalls = 0;
     vi.spyOn(globalThis, "fetch").mockImplementation(async (input) => {
@@ -180,7 +179,9 @@ describe("fetchReviewsForRepos", () => {
       if (url.endsWith("/reviews")) {
         reviewCalls += 1;
         if (reviewCalls === 1) {
-          return new Response("", { status: 403, statusText: "Forbidden" });
+          return new Response(JSON.stringify({
+            message: "You have exceeded a secondary rate limit. Please wait a while before making new requests.",
+          }), { status: 403, statusText: "Forbidden" });
         }
         return new Response(JSON.stringify([{
           user: { login: "alice" },
@@ -209,5 +210,34 @@ describe("fetchReviewsForRepos", () => {
     const result = await resultPromise;
     expect(reviewCalls).toBe(2);
     expect(result.reviews).toHaveLength(1);
+  });
+
+  it("fails immediately on a permission-denied 403", async () => {
+    vi.spyOn(globalThis, "fetch").mockImplementation(async (input) => {
+      const url = String(input);
+      if (url.includes("/pulls?")) {
+        return new Response(JSON.stringify([{
+          number: 7,
+          title: "Reviewed work",
+          html_url: "https://github.com/org/app/pull/7",
+          created_at: "2026-08-01T12:00:00Z",
+          updated_at: "2026-08-10T20:00:00Z",
+        }]));
+      }
+      if (url.endsWith("/reviews")) {
+        return new Response(JSON.stringify({
+          message: "Resource not accessible by personal access token",
+        }), { status: 403, statusText: "Forbidden" });
+      }
+      return new Response(JSON.stringify([]));
+    });
+
+    await expect(fetchReviewsForRepos(
+      "token",
+      "alice",
+      ["org/app"],
+      { from: new Date("2026-08-10T04:00:00Z"), to: new Date("2026-08-11T03:59:59.999Z") },
+      new Date("2026-08-11T05:00:00Z"),
+    )).rejects.toThrow(/Review fetch failed/);
   });
 });
