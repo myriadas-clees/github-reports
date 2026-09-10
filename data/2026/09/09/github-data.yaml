@@ -1,0 +1,286 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-09-09
+  to: 2026-09-09
+stats:
+  totalCommits: 13
+  totalAdditions: 0
+  totalDeletions: 0
+  prsOpened: 0
+  prsMerged: 0
+  prsInProgress: 1
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 10.8
+dailyCommits:
+  - date: 2026-09-09
+    count: 13
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 13
+    prsOpened: 0
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests: []
+prsInProgress:
+  - title: "feat: add Northstar frontend"
+    body: |-
+      - add the Northstar advisor workspace, chat, client, portfolio, compliance, marketing, and news interfaces
+      - use shared OHPWM account, brand, and theme controls with accessible light, dark, and system themes
+      - remove all fabricated workspace records and mount the static app at `/northstar/` in Azure...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels:
+      - deploy-preview
+    additions: 11335
+    deletions: 43
+    changedFiles: 52
+    author: myriadas-clees
+    createdAt: 2026-09-01T14:08:22Z
+    updatedAt: 2026-09-09T21:02:54Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a1
+        sha: 224b5af91b6cba3de54ca7f91f81c7152ce25994
+        message: "fix(northstar): distinguish Copilot permissions from access"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/224b5af91b6cba3de54ca7f91f81c7152ce25994
+        authoredAt: 2026-09-09T14:28:58Z
+      - &a2
+        sha: 2ce8b0539ff92839e87d86b67999489bf2a4440c
+        message: "fix(northstar): expose Microsoft rejection details"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2ce8b0539ff92839e87d86b67999489bf2a4440c
+        authoredAt: 2026-09-09T14:37:37Z
+      - &a3
+        sha: cd608500f15a9a96e755ad1271bab6347d7b788c
+        message: "fix(northstar): unwrap Copilot rejection explanations"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cd608500f15a9a96e755ad1271bab6347d7b788c
+        authoredAt: 2026-09-09T14:44:41Z
+      - &a4
+        sha: 3347ff56c724da88b88e73b7c693dc963f076256
+        message: "feat(northstar): render Markdown and refresh settings"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3347ff56c724da88b88e73b7c693dc963f076256
+        authoredAt: 2026-09-09T15:54:32Z
+      - &a5
+        sha: e2c6fcf294197d8a5e6a29e02036798c510bc0b4
+        message: "fix(northstar): replace loading checklist with rotating wave"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e2c6fcf294197d8a5e6a29e02036798c510bc0b4
+        authoredAt: 2026-09-09T16:07:19Z
+      - &a6
+        sha: 4ce0273f1bc17e490285677f40d7aab7d1f8c486
+        message: "feat(northstar): add breathing thinking orb"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4ce0273f1bc17e490285677f40d7aab7d1f8c486
+        authoredAt: 2026-09-09T16:43:17Z
+      - &a7
+        sha: df5e3aa189a01c6e23ff86aa762bbee9590c77db
+        message: "feat(northstar): show Microsoft source icons in chat"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/df5e3aa189a01c6e23ff86aa762bbee9590c77db
+        authoredAt: 2026-09-09T17:38:14Z
+      - &a8
+        sha: 737f648c044b40cf1a3e4b76734f0ff265e470b6
+        message: "chore(northstar): remove generated review artifacts"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/737f648c044b40cf1a3e4b76734f0ff265e470b6
+        authoredAt: 2026-09-09T17:57:25Z
+      - &a9
+        sha: 6b333b9d41775973562630f2b08a8256982574c6
+        message: "refactor(northstar): remove unused styling and state scaffolding"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6b333b9d41775973562630f2b08a8256982574c6
+        authoredAt: 2026-09-09T18:04:18Z
+      - &a10
+        sha: 46ff2b280eb5fc3ea7ea42373a7190ad96b86fc7
+        message: "fix(northstar): invalidate stale Ask requests"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/46ff2b280eb5fc3ea7ea42373a7190ad96b86fc7
+        authoredAt: 2026-09-09T20:39:05Z
+      - &a11
+        sha: ca6526fc0a6349af9c9a5a68cdc73946caa1a684
+        message: "fix(northstar): preserve chat context"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ca6526fc0a6349af9c9a5a68cdc73946caa1a684
+        authoredAt: 2026-09-09T20:45:22Z
+      - &a12
+        sha: 6199e412dd71fbbe95968067268fac0bf6d81de2
+        message: "fix(northstar): keep response sources accurate"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6199e412dd71fbbe95968067268fac0bf6d81de2
+        authoredAt: 2026-09-09T20:52:13Z
+      - &a13
+        sha: 6ed26f62f3c55ef89a388555a173565b63c2c6e0
+        message: "fix(northstar): default to Graph brief"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6ed26f62f3c55ef89a388555a173565b63c2c6e0
+        authoredAt: 2026-09-09T20:57:04Z
+    workTimestamps:
+      - 2026-09-09T14:28:58Z
+      - 2026-09-09T14:37:37Z
+      - 2026-09-09T14:44:41Z
+      - 2026-09-09T15:54:32Z
+      - 2026-09-09T16:07:19Z
+      - 2026-09-09T16:43:17Z
+      - 2026-09-09T17:38:14Z
+      - 2026-09-09T17:57:25Z
+      - 2026-09-09T18:04:18Z
+      - 2026-09-09T20:39:05Z
+      - 2026-09-09T20:45:22Z
+      - 2026-09-09T20:52:13Z
+      - 2026-09-09T20:57:04Z
+    workAdditions: 1025
+    workDeletions: 1097
+    workFiles:
+      - .gitignore
+      - bun.lock
+      - hub/functions/src/northstar-copilot.test.ts
+      - hub/functions/src/northstar-copilot.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - northstar/app/globals.css
+      - northstar/ask-empty-final.png
+      - northstar/ask-implementation-final.png
+      - northstar/ask-implementation-mobile-bottom-final.png
+      - northstar/ask-implementation-mobile-final.png
+      - northstar/chat-active-final.png
+      - northstar/chat-context-open-final.png
+      - northstar/chat-context-open-qa-final.png
+      - northstar/chat-default-final.png
+      - northstar/chat-default-qa-final.png
+      - northstar/chat-history-open-final.png
+      - northstar/chat-history-open-qa-final.png
+      - northstar/chat-mobile-context-final.png
+      - northstar/chat-mobile-context-qa-final.png
+      - northstar/chat-mobile-history-final.png
+      - northstar/components.json
+      - northstar/components/answer-markdown.test.tsx
+      - northstar/components/answer-markdown.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/microsoft-app-icon.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/settings-workspace.tsx
+      - northstar/components/ui/toggle-group.tsx
+      - northstar/design-comparison-ask-final.png
+      - northstar/design-comparison-ask-header-final.png
+      - northstar/design-comparison-chat-context-final.png
+      - northstar/design-comparison-chat-history-final.png
+      - northstar/design-comparison-final.png
+      - northstar/design-comparison-header-annotations.png
+      - northstar/design-comparison-primary-final.png
+      - northstar/design-qa.md
+      - northstar/design-source-before-ask.png
+      - northstar/design-source-chat-context-normalized.png
+      - northstar/design-source-chat-history-normalized.png
+      - northstar/implementation-final.png
+      - northstar/implementation-mobile-final.png
+      - northstar/lib/settings-preferences.test.ts
+      - northstar/lib/settings-preferences.ts
+      - northstar/lib/utils.ts
+      - northstar/package.json
+      - northstar/postcss.config.mjs
+      - northstar/public/integrations/SOURCES.md
+      - northstar/public/integrations/claude.svg
+      - northstar/public/integrations/microsoft-365.svg
+      - northstar/public/integrations/microsoft-copilot.svg
+      - northstar/public/ohpwm-wordmark.png
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "fix(northstar): distinguish Copilot permissions from access"
+      - "fix(northstar): expose Microsoft rejection details"
+      - "fix(northstar): unwrap Copilot rejection explanations"
+      - "feat(northstar): render Markdown and refresh settings"
+      - "fix(northstar): replace loading checklist with rotating wave"
+      - "feat(northstar): add breathing thinking orb"
+      - "feat(northstar): show Microsoft source icons in chat"
+      - "chore(northstar): remove generated review artifacts"
+      - "refactor(northstar): remove unused styling and state scaffolding"
+      - "fix(northstar): invalidate stale Ask requests"
+      - "fix(northstar): preserve chat context"
+      - "fix(northstar): keep response sources accurate"
+      - "fix(northstar): default to Graph brief"
+    commits:
+      - *a1
+      - *a2
+      - *a3
+      - *a4
+      - *a5
+      - *a6
+      - *a7
+      - *a8
+      - *a9
+      - *a10
+      - *a11
+      - *a12
+      - *a13
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 1
+    comments: 24
+    reviews: 11
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 1
+  comments: 24
+  reviews: 11
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-09-09T14:28:58Z
+    - 2026-09-09T14:37:37Z
+    - 2026-09-09T14:44:41Z
+    - 2026-09-09T15:54:32Z
+    - 2026-09-09T16:07:19Z
+    - 2026-09-09T16:43:17Z
+    - 2026-09-09T17:38:14Z
+    - 2026-09-09T17:57:25Z
+    - 2026-09-09T18:04:18Z
+    - 2026-09-09T20:39:05Z
+    - 2026-09-09T20:45:22Z
+    - 2026-09-09T20:52:13Z
+    - 2026-09-09T20:57:04Z
+  volume:
+    pullRequests:
+      - additions: 1025
+        deletions: 1097
+        state: open
+        dailyWork: true
+        filesChanged: 51
+        testFilesChanged: 3
+        commitCount: 13
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 0
+    commitAdditions: 0
+    commitDeletions: 0
+    commitStatsCount: 0
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 10.8
+  sessions: 2
+  sessionHours: 4.1
+  volumeHours: 10.8
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
