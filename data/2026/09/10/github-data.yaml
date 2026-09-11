@@ -1,0 +1,296 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-09-10
+  to: 2026-09-10
+stats:
+  totalCommits: 18
+  totalAdditions: 0
+  totalDeletions: 0
+  prsOpened: 0
+  prsMerged: 0
+  prsInProgress: 1
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 8.8
+dailyCommits:
+  - date: 2026-09-10
+    count: 18
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 18
+    prsOpened: 0
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests: []
+prsInProgress:
+  - title: "feat: add Northstar frontend"
+    body: |-
+      - add the Northstar advisor workspace, chat, client, portfolio, compliance, marketing, and news interfaces
+      - use shared OHPWM account, brand, and theme controls with accessible light, dark, and system themes
+      - remove all fabricated workspace records and mount the static app at `/northstar/` in Azure...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels:
+      - deploy-preview
+    additions: 11400
+    deletions: 20
+    changedFiles: 53
+    author: myriadas-clees
+    createdAt: 2026-09-01T14:08:22Z
+    updatedAt: 2026-09-10T15:24:14Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a1
+        sha: 1be79ed4579f8a529dd458aa036128b21868c511
+        message: "fix(northstar): keep logout anonymous"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/1be79ed4579f8a529dd458aa036128b21868c511
+        authoredAt: 2026-09-10T12:22:02Z
+      - &a2
+        sha: 9dcfffd94c05408ea442ed7c6ba4c414cb1abb26
+        message: "fix(northstar): surface Microsoft data failures"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/9dcfffd94c05408ea442ed7c6ba4c414cb1abb26
+        authoredAt: 2026-09-10T13:34:42Z
+      - &a3
+        sha: cd9abfd8413d3b5fe9da9482f0e41d1c4f0a5b10
+        message: "test(northstar): run tests in CI"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cd9abfd8413d3b5fe9da9482f0e41d1c4f0a5b10
+        authoredAt: 2026-09-10T13:36:28Z
+      - &a4
+        sha: 740c96c681dfd1d8247d844fe10082e46ecbf2c9
+        message: "fix(ui): restore user role badge"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/740c96c681dfd1d8247d844fe10082e46ecbf2c9
+        authoredAt: 2026-09-10T13:38:56Z
+      - &a5
+        sha: d20847269b95f89ffcb005fc7b345aaaeefc4605
+        message: "fix(northstar): create local database directory"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d20847269b95f89ffcb005fc7b345aaaeefc4605
+        authoredAt: 2026-09-10T13:40:08Z
+      - &a6
+        sha: 1367d07baadb2d97bc21e5ae12f9d78fa4e5cc74
+        message: "fix(northstar): report Microsoft data errors"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/1367d07baadb2d97bc21e5ae12f9d78fa4e5cc74
+        authoredAt: 2026-09-10T13:42:37Z
+      - &a7
+        sha: fa90783fdbb2addf290ad72c36b6ff82c134fe40
+        message: "fix(northstar): load complete calendar ranges"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/fa90783fdbb2addf290ad72c36b6ff82c134fe40
+        authoredAt: 2026-09-10T13:48:03Z
+      - &a8
+        sha: 8ea007789dec0738250afcbd9a9a3334a0a416b8
+        message: "fix(northstar): preserve Copilot response fidelity"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8ea007789dec0738250afcbd9a9a3334a0a416b8
+        authoredAt: 2026-09-10T13:52:54Z
+      - &a9
+        sha: 5a591931cc233c82bda48c2b8247d9793c18a802
+        message: "fix(northstar): keep chat state consistent"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/5a591931cc233c82bda48c2b8247d9793c18a802
+        authoredAt: 2026-09-10T13:56:53Z
+      - &a10
+        sha: d0b532b5eda9f2a2179c84652fef917601c3189f
+        message: "fix(northstar): authenticate OAuth callbacks"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d0b532b5eda9f2a2179c84652fef917601c3189f
+        authoredAt: 2026-09-10T14:01:38Z
+      - &a11
+        sha: 6a35a9c8707f143dd774388301135b64d0597e36
+        message: "fix(northstar): allow Azure preview origins"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6a35a9c8707f143dd774388301135b64d0597e36
+        authoredAt: 2026-09-10T14:03:05Z
+      - &a12
+        sha: 87f98e9eff609d836ebe08aa9d27acda42e36273
+        message: "fix(northstar): require explicit local storage"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/87f98e9eff609d836ebe08aa9d27acda42e36273
+        authoredAt: 2026-09-10T14:04:04Z
+      - &a13
+        sha: 9566235d2343b25a2fbea2fd715cb01f07becb91
+        message: "fix(northstar): avoid misleading chat recovery"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/9566235d2343b25a2fbea2fd715cb01f07becb91
+        authoredAt: 2026-09-10T14:06:05Z
+      - &a14
+        sha: 59634d4790558cdbf545c977eca80a5f7027111d
+        message: "fix(northstar): route Ask through Copilot"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/59634d4790558cdbf545c977eca80a5f7027111d
+        authoredAt: 2026-09-10T14:08:51Z
+      - &a15
+        sha: 14834ea878af1bf95c3c73468eb0bdae16ff4455
+        message: "fix(northstar): close local and refresh races"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/14834ea878af1bf95c3c73468eb0bdae16ff4455
+        authoredAt: 2026-09-10T14:11:23Z
+      - &a16
+        sha: 594765b27d9183082447bc5dddadc494737f6f7d
+        message: "fix(northstar): bound local data loading"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/594765b27d9183082447bc5dddadc494737f6f7d
+        authoredAt: 2026-09-10T14:45:40Z
+      - &a17
+        sha: 8d7519fcc53a0c3e2052ad2cafb2164d0825386f
+        message: "fix(northstar): preserve preview and session state"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8d7519fcc53a0c3e2052ad2cafb2164d0825386f
+        authoredAt: 2026-09-10T15:04:11Z
+      - &a18
+        sha: 5f90f48a5e879f0b54b21bac70240ef1aae598d0
+        message: "fix(northstar): close preview and calendar gaps"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/5f90f48a5e879f0b54b21bac70240ef1aae598d0
+        authoredAt: 2026-09-10T15:19:31Z
+    workTimestamps:
+      - 2026-09-10T12:22:02Z
+      - 2026-09-10T13:34:42Z
+      - 2026-09-10T13:36:28Z
+      - 2026-09-10T13:38:56Z
+      - 2026-09-10T13:40:08Z
+      - 2026-09-10T13:42:37Z
+      - 2026-09-10T13:48:03Z
+      - 2026-09-10T13:52:54Z
+      - 2026-09-10T13:56:53Z
+      - 2026-09-10T14:01:38Z
+      - 2026-09-10T14:03:05Z
+      - 2026-09-10T14:04:04Z
+      - 2026-09-10T14:06:05Z
+      - 2026-09-10T14:08:51Z
+      - 2026-09-10T14:11:23Z
+      - 2026-09-10T14:45:40Z
+      - 2026-09-10T15:04:11Z
+      - 2026-09-10T15:19:31Z
+    workAdditions: 443
+    workDeletions: 355
+    workFiles:
+      - hub/functions/src/northstar-copilot.test.ts
+      - hub/functions/src/northstar-copilot.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/staticwebapp.config.json
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/settings-workspace.tsx
+      - northstar/lib/resolved-mail.test.ts
+      - northstar/lib/resolved-mail.ts
+      - northstar/package.json
+      - package.json
+      - packages/ui/src/styles.css
+      - packages/ui/src/user-menu.tsx
+      - scripts/dev-northstar.ts
+      - scripts/dev.ts
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "fix(northstar): keep logout anonymous"
+      - "fix(northstar): surface Microsoft data failures"
+      - "test(northstar): run tests in CI"
+      - "fix(ui): restore user role badge"
+      - "fix(northstar): create local database directory"
+      - "fix(northstar): report Microsoft data errors"
+      - "fix(northstar): load complete calendar ranges"
+      - "fix(northstar): preserve Copilot response fidelity"
+      - "fix(northstar): keep chat state consistent"
+      - "fix(northstar): authenticate OAuth callbacks"
+      - "fix(northstar): allow Azure preview origins"
+      - "fix(northstar): require explicit local storage"
+      - "fix(northstar): avoid misleading chat recovery"
+      - "fix(northstar): route Ask through Copilot"
+      - "fix(northstar): close local and refresh races"
+      - "fix(northstar): bound local data loading"
+      - "fix(northstar): preserve preview and session state"
+      - "fix(northstar): close preview and calendar gaps"
+    commits:
+      - *a1
+      - *a2
+      - *a3
+      - *a4
+      - *a5
+      - *a6
+      - *a7
+      - *a8
+      - *a9
+      - *a10
+      - *a11
+      - *a12
+      - *a13
+      - *a14
+      - *a15
+      - *a16
+      - *a17
+      - *a18
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 1
+    comments: 9
+    reviews: 4
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 1
+  comments: 9
+  reviews: 4
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-09-10T12:22:02Z
+    - 2026-09-10T13:34:42Z
+    - 2026-09-10T13:36:28Z
+    - 2026-09-10T13:38:56Z
+    - 2026-09-10T13:40:08Z
+    - 2026-09-10T13:42:37Z
+    - 2026-09-10T13:48:03Z
+    - 2026-09-10T13:52:54Z
+    - 2026-09-10T13:56:53Z
+    - 2026-09-10T14:01:38Z
+    - 2026-09-10T14:03:05Z
+    - 2026-09-10T14:04:04Z
+    - 2026-09-10T14:06:05Z
+    - 2026-09-10T14:08:51Z
+    - 2026-09-10T14:11:23Z
+    - 2026-09-10T14:45:40Z
+    - 2026-09-10T15:04:11Z
+    - 2026-09-10T15:19:31Z
+  volume:
+    pullRequests:
+      - additions: 443
+        deletions: 355
+        state: open
+        dailyWork: true
+        filesChanged: 16
+        testFilesChanged: 3
+        commitCount: 18
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 0
+    commitAdditions: 0
+    commitDeletions: 0
+    commitStatsCount: 0
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 8.8
+  sessions: 1
+  sessionHours: 3
+  volumeHours: 8.8
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
