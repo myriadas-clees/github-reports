@@ -1,0 +1,420 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-09-14
+  to: 2026-09-14
+stats:
+  totalCommits: 10
+  totalAdditions: 49
+  totalDeletions: 33
+  prsOpened: 1
+  prsMerged: 1
+  prsInProgress: 1
+  prsReviewed: 5
+  reviewComments: 5
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 28
+dailyCommits:
+  - date: 2026-09-14
+    count: 10
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 10
+    prsOpened: 1
+    prsMerged: 1
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests:
+  - title: "fix(hub): hide apps without assigned roles"
+    body: |-
+      - filter Hub app cards and recent apps by assigned role
+      - request Hub statistics only for authorized apps
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/123
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 49
+    deletions: 33
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-09-14T13:12:49Z
+    updatedAt: 2026-09-14T13:23:59Z
+    closedAt: 2026-09-14T13:23:55Z
+    mergedAt: 2026-09-14T13:23:55Z
+    workCommits:
+      - &a1
+        sha: caf7f4ff68bff2078dc326e06c62035a12028ea4
+        message: "fix(hub): hide apps without assigned roles"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/caf7f4ff68bff2078dc326e06c62035a12028ea4
+        authoredAt: 2026-09-14T13:12:22Z
+      - &a2
+        sha: b99eb64f12181900fb57b67734e693974de2b806
+        message: "fix(hub): preserve local app visibility"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b99eb64f12181900fb57b67734e693974de2b806
+        authoredAt: 2026-09-14T13:19:29Z
+    workTimestamps:
+      - 2026-09-14T13:12:22Z
+      - 2026-09-14T13:19:29Z
+    workAdditions: 49
+    workDeletions: 33
+    workFiles:
+      - hub/components/hub-launcher.tsx
+      - hub/lib/apps.ts
+prsInProgress:
+  - title: "feat: add Northstar frontend"
+    body: |-
+      - add the Northstar advisor workspace, chat, client, portfolio, compliance, marketing, and news interfaces
+      - use shared OHPWM account, brand, and theme controls with accessible light, dark, and system themes
+      - remove all fabricated workspace records and mount the static app at `/northstar/` in Azure...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels:
+      - deploy-preview
+    additions: 14279
+    deletions: 24
+    changedFiles: 75
+    author: myriadas-clees
+    createdAt: 2026-09-01T14:08:22Z
+    updatedAt: 2026-09-14T19:37:20Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a3
+        sha: f5f77f9a79acbe05d886e93269be8ad3527cb74a
+        message: "feat(northstar): stream Copilot answers and improve chat controls"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f5f77f9a79acbe05d886e93269be8ad3527cb74a
+        authoredAt: 2026-09-14T15:32:54Z
+      - &a4
+        sha: 7e004cabedfd5e8166f705fc317acfc3e94d588b
+        message: Merge remote-tracking branch 'origin/main' into clees/northstar-frontend
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7e004cabedfd5e8166f705fc317acfc3e94d588b
+        authoredAt: 2026-09-14T15:56:23Z
+      - &a5
+        sha: 57bd084aef5e77918eb2e43fcb7d6288afaccb9c
+        message: "codex: address PR review feedback (#121)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/57bd084aef5e77918eb2e43fcb7d6288afaccb9c
+        authoredAt: 2026-09-14T16:02:48Z
+      - &a6
+        sha: 2c403d1fe62a46156ce58280ab3a540562d2864a
+        message: "revert(northstar): restore pre-streaming chat experience"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2c403d1fe62a46156ce58280ab3a540562d2864a
+        authoredAt: 2026-09-14T16:16:58Z
+      - &a7
+        sha: b1a765b036a2be7d3941030054873eb10e19557b
+        message: "feat(northstar): stream copilot responses"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b1a765b036a2be7d3941030054873eb10e19557b
+        authoredAt: 2026-09-14T18:03:07Z
+      - &a8
+        sha: 09f81df110710e39d00d1a72d190ff138780621e
+        message: "feat(northstar): add chat history and answer transition"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/09f81df110710e39d00d1a72d190ff138780621e
+        authoredAt: 2026-09-14T18:49:08Z
+      - &a9
+        sha: 4598375fe487e1cd389c1261101c8944147378c4
+        message: "fix(northstar): address chat persistence review"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4598375fe487e1cd389c1261101c8944147378c4
+        authoredAt: 2026-09-14T19:30:49Z
+    workTimestamps:
+      - 2026-09-14T15:32:54Z
+      - 2026-09-14T15:56:23Z
+      - 2026-09-14T16:02:48Z
+      - 2026-09-14T16:16:58Z
+      - 2026-09-14T18:03:07Z
+      - 2026-09-14T18:49:08Z
+      - 2026-09-14T19:30:49Z
+    workAdditions: 9026
+    workDeletions: 5098
+    workFiles:
+      - .codex/agents/default.toml
+      - .codex/agents/docs.toml
+      - .codex/agents/explorer.toml
+      - .codex/agents/hub.toml
+      - .codex/agents/ofac.toml
+      - .codex/agents/packages.toml
+      - .codex/agents/pricing.toml
+      - .codex/agents/scripts.toml
+      - .codex/agents/worker.toml
+      - .codex/config.toml
+      - .codex/cursor-delegate/20260914-130117-single-star-transition-b2697b/events.ndjson
+      - .codex/cursor-delegate/20260914-130117-single-star-transition-b2697b/meta.json
+      - .codex/cursor-delegate/20260914-130117-single-star-transition-b2697b/prompt.txt
+      - .codex/cursor-delegate/20260914-130117-single-star-transition-b2697b/runner.log
+      - .codex/cursor-delegate/20260914-130117-single-star-transition-b2697b/stderr.log
+      - .github/workflows/azure-static-web-apps.yml
+      - .gitignore
+      - AGENTS.md
+      - README.md
+      - bun.lock
+      - docs/advisor-pricing-architecture.md
+      - docs/issue-2-cosmos-production-readiness.md
+      - docs/issue-37-pricing-monitoring-readiness.md
+      - docs/issue-39-monday-sync-discovery.md
+      - hub/components/hub-launcher.tsx
+      - hub/functions/src/index.ts
+      - hub/functions/src/northstar-chat-history.test.ts
+      - hub/functions/src/northstar-chat-history.ts
+      - hub/functions/src/northstar-conversations.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-copilot.test.ts
+      - hub/functions/src/northstar-copilot.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/lib/apps.ts
+      - northstar/LOCAL-BENCHMARK.md
+      - northstar/STREAMING.md
+      - northstar/app/globals.css
+      - northstar/components/answer-markdown.test.tsx
+      - northstar/components/answer-markdown.tsx
+      - northstar/components/answer-star.test.ts
+      - northstar/components/answer-star.tsx
+      - northstar/components/ask-northstar-workspace.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/settings-workspace.tsx
+      - northstar/components/streaming-markdown.tsx
+      - northstar/lib/ask-stream.test.ts
+      - northstar/lib/ask-stream.ts
+      - northstar/lib/background-briefs.test.ts
+      - northstar/lib/background-briefs.ts
+      - northstar/lib/chat-history.test.ts
+      - northstar/lib/chat-history.ts
+      - northstar/lib/pending-markdown-links.ts
+      - northstar/lib/settings-preferences.test.ts
+      - northstar/lib/settings-preferences.ts
+      - northstar/lib/typing-reveal.test.ts
+      - northstar/lib/typing-reveal.ts
+      - northstar/measure-copilot.ts
+      - ofac/functions/package.json
+      - ofac/functions/src/copy-report-assets.ts
+      - ofac/functions/src/index.ts
+      - ofac/functions/src/ofac-repository.test.ts
+      - ofac/functions/src/ofac-repository.ts
+      - ofac/package.json
+      - ofac/src/app/api/ofac/export/__tests__/route.test.ts
+      - ofac/src/app/api/ofac/export/route.ts
+      - ofac/src/app/api/ofac/export/workbook-preview/route.ts
+      - ofac/src/app/api/ofac/screenings/[id]/pdf/route.test.ts
+      - ofac/src/app/api/ofac/screenings/[id]/pdf/route.ts
+      - ofac/src/app/api/ofac/screenings/route.ts
+      - ofac/src/app/globals.css
+      - ofac/src/app/screenings/page.tsx
+      - ofac/src/components/export-artifact-viewer.test.tsx
+      - ofac/src/components/export-artifact-viewer.tsx
+      - ofac/src/components/pdf-report-viewer.tsx
+      - ofac/src/components/report-viewer-shell.tsx
+      - ofac/src/components/screening-detail.tsx
+      - ofac/src/components/workbook-report-viewer.tsx
+      - ofac/src/lib/__tests__/ofac-api-client.test.ts
+      - ofac/src/lib/__tests__/report.test.ts
+      - ofac/src/lib/ofac-api-client.ts
+      - ofac/src/lib/report/csv.ts
+      - ofac/src/lib/report/excel.ts
+      - ofac/src/lib/report/filenames.ts
+      - ofac/src/lib/report/index.ts
+      - ofac/src/lib/report/model.ts
+      - ofac/src/lib/report/pdf.tsx
+      - packages/db/src/ofac.ts
+      - pricing/functions/local.settings.json.example
+      - scripts/dev-northstar.ts
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "fix(hub): hide apps without assigned roles"
+      - "fix(hub): preserve local app visibility"
+      - "fix(hub): hide apps without assigned roles (#123)"
+      - "feat(northstar): stream Copilot answers and improve chat controls"
+      - Merge remote-tracking branch 'origin/main' into clees/northstar-frontend
+      - "codex: address PR review feedback (#121)"
+      - "revert(northstar): restore pre-streaming chat experience"
+      - "feat(northstar): stream copilot responses"
+      - "feat(northstar): add chat history and answer transition"
+      - "fix(northstar): address chat persistence review"
+    commits:
+      - *a1
+      - *a2
+      - sha: e2143aecdd7b86c0cd6d16591e2fdda212f4896f
+        message: "fix(hub): hide apps without assigned roles (#123)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e2143aecdd7b86c0cd6d16591e2fdda212f4896f
+        authoredAt: 2026-09-14T13:23:54Z
+        additions: 44
+        deletions: 28
+        filesChanged: 2
+      - *a3
+      - *a4
+      - *a5
+      - *a6
+      - *a7
+      - *a8
+      - *a9
+releases: []
+externalContributions: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 123
+    prTitle: "fix(hub): hide apps without assigned roles"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/123
+    state: commented
+    submittedAt: 2026-09-14T13:19:41Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 121
+    prTitle: "feat: add Northstar frontend"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121
+    state: commented
+    submittedAt: 2026-09-14T16:07:00Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 121
+    prTitle: "feat: add Northstar frontend"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121
+    state: commented
+    submittedAt: 2026-09-14T16:07:21Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 121
+    prTitle: "feat: add Northstar frontend"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121
+    state: commented
+    submittedAt: 2026-09-14T16:07:26Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 121
+    prTitle: "feat: add Northstar frontend"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121
+    state: commented
+    submittedAt: 2026-09-14T16:07:31Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 123
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/123
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/123#discussion_r4005579243
+    body: Fixed in b99eb64. Development mode now permits both local apps and their stats when `/.auth/me` is unavailable;
+      production retains role-based filtering and request gating.
+    path: hub/components/hub-launcher.tsx
+    createdAt: 2026-09-14T13:19:41Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 121
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121#discussion_r4007116634
+    body: "[from Codex]: Fixed in 57bd084. Stopped and errored turns now fork subsequent submissions into a fresh chat. Both
+      composer and dashboard entry points enforce this. Tests and a local browser check confirm that the interrupted
+      provider conversation is not reused."
+    path: northstar/components/ask-northstar-workspace.tsx
+    createdAt: 2026-09-14T16:07:00Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 121
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121#discussion_r4007120080
+    body: "[from Codex]: Fixed in 57bd084. Invalidates the application user's stored Copilot mappings and cached briefs
+      before saving a different Microsoft account. User isolation and paginated Cosmos deletion are tested."
+    path: hub/functions/src/northstar-microsoft.ts
+    createdAt: 2026-09-14T16:07:21Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 121
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121#discussion_r4007120801
+    body: "[from Codex]: Fixed in 57bd084. Brief follow-ups copy the visible snapshot into a fresh UUID chat and send the
+      snapshot as reference context for the new provider conversation. Browser validation confirms the shared cached
+      conversation is not reused."
+    path: northstar/components/northstar-dashboard.tsx
+    createdAt: 2026-09-14T16:07:26Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 121
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121#discussion_r4007121501
+    body: "[from Codex]: Fixed in 57bd084. End-of-day generation starts after 5 PM local time, with scheduling boundaries at
+      5 PM and midnight. Tests cover morning, evening, and rollover."
+    path: northstar/components/northstar-dashboard.tsx
+    createdAt: 2026-09-14T16:07:31Z
+aiReviews:
+  codex:
+    prsReviewed: 2
+    comments: 6
+    reviews: 5
+    fixed: 1
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 2
+  comments: 6
+  reviews: 5
+  fixed: 1
+hoursInputs:
+  timestamps:
+    - 2026-09-14T13:12:22Z
+    - 2026-09-14T13:19:29Z
+    - 2026-09-14T13:23:54Z
+    - 2026-09-14T15:32:54Z
+    - 2026-09-14T15:56:23Z
+    - 2026-09-14T16:02:48Z
+    - 2026-09-14T16:16:58Z
+    - 2026-09-14T18:03:07Z
+    - 2026-09-14T18:49:08Z
+    - 2026-09-14T19:30:49Z
+    - 2026-09-14T13:12:49Z
+    - 2026-09-14T13:23:55Z
+    - 2026-09-14T13:12:22Z
+    - 2026-09-14T13:19:29Z
+    - 2026-09-14T13:19:41Z
+    - 2026-09-14T16:07:00Z
+    - 2026-09-14T16:07:21Z
+    - 2026-09-14T16:07:26Z
+    - 2026-09-14T16:07:31Z
+    - 2026-09-14T13:19:41Z
+    - 2026-09-14T16:07:00Z
+    - 2026-09-14T16:07:21Z
+    - 2026-09-14T16:07:26Z
+    - 2026-09-14T16:07:31Z
+  volume:
+    pullRequests:
+      - additions: 49
+        deletions: 33
+        state: merged
+        dailyWork: true
+        filesChanged: 2
+        testFilesChanged: 0
+        commitCount: 2
+      - additions: 9026
+        deletions: 5098
+        state: open
+        dailyWork: true
+        filesChanged: 91
+        testFilesChanged: 18
+        commitCount: 7
+    reviewCount: 5
+    reviewCommentCount: 5
+    commitCount: 1
+    commitAdditions: 44
+    commitDeletions: 28
+    commitStatsCount: 1
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 28
+  sessions: 3
+  sessionHours: 2.7
+  volumeHours: 28
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
