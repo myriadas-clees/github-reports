@@ -1,0 +1,172 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-09-15
+  to: 2026-09-15
+stats:
+  totalCommits: 3
+  totalAdditions: 0
+  totalDeletions: 0
+  prsOpened: 0
+  prsMerged: 0
+  prsInProgress: 1
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 10.8
+dailyCommits:
+  - date: 2026-09-15
+    count: 3
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 3
+    prsOpened: 0
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests: []
+prsInProgress:
+  - title: "feat: add Northstar frontend"
+    body: |-
+      - add the Northstar advisor workspace, chat, client, portfolio, compliance, marketing, and news interfaces
+      - use shared OHPWM account, brand, and theme controls with accessible light, dark, and system themes
+      - remove all fabricated workspace records and mount the static app at `/northstar/` in Azure...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels:
+      - deploy-preview
+    additions: 15085
+    deletions: 25
+    changedFiles: 78
+    author: myriadas-clees
+    createdAt: 2026-09-01T14:08:22Z
+    updatedAt: 2026-09-15T20:15:58Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a1
+        sha: 8bbbbf6f34457ba446e223b0c6c720bb4387f8c1
+        message: "fix(northstar): enable production response streaming"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8bbbbf6f34457ba446e223b0c6c720bb4387f8c1
+        authoredAt: 2026-09-15T14:45:32Z
+      - &a2
+        sha: bcdbccd487b1cbd6bd1a0aa31b275b83034bbfa7
+        message: "feat(northstar): improve brief review and source handling"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/bcdbccd487b1cbd6bd1a0aa31b275b83034bbfa7
+        authoredAt: 2026-09-15T15:47:04Z
+      - &a3
+        sha: 4ffd32941a76a447e735835558a7ce7c2ba18db4
+        message: "feat(northstar): improve Microsoft 365 workspace integration"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4ffd32941a76a447e735835558a7ce7c2ba18db4
+        authoredAt: 2026-09-15T20:09:27Z
+    workTimestamps:
+      - 2026-09-15T14:45:32Z
+      - 2026-09-15T15:47:04Z
+      - 2026-09-15T20:09:27Z
+    workAdditions: 1109
+    workDeletions: 304
+    workFiles:
+      - hub/components/hub-launcher.tsx
+      - hub/functions/src/northstar-conversations.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-copilot.test.ts
+      - hub/functions/src/northstar-copilot.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/lib/apps.ts
+      - northstar/app/globals.css
+      - northstar/components/answer-markdown.test.tsx
+      - northstar/components/answer-markdown.tsx
+      - northstar/components/ask-northstar-workspace.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/microsoft-app-icon.test.ts
+      - northstar/components/microsoft-app-icon.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/settings-workspace.tsx
+      - northstar/lib/ask-stream.test.ts
+      - northstar/lib/ask-stream.ts
+      - northstar/lib/background-briefs.test.ts
+      - northstar/lib/background-briefs.ts
+      - northstar/lib/chat-history.test.ts
+      - northstar/lib/chat-history.ts
+      - northstar/lib/graph-permissions.test.ts
+      - northstar/lib/graph-permissions.ts
+      - northstar/next.config.ts
+      - scripts/dev-northstar.ts
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "fix(northstar): enable production response streaming"
+      - "feat(northstar): improve brief review and source handling"
+      - "feat(northstar): improve Microsoft 365 workspace integration"
+    commits:
+      - *a1
+      - *a2
+      - *a3
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 1
+    comments: 5
+    reviews: 2
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 1
+  comments: 5
+  reviews: 2
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-09-15T14:45:32Z
+    - 2026-09-15T15:47:04Z
+    - 2026-09-15T20:09:27Z
+  volume:
+    pullRequests:
+      - additions: 1109
+        deletions: 304
+        state: open
+        dailyWork: true
+        filesChanged: 27
+        testFilesChanged: 10
+        commitCount: 3
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 0
+    commitAdditions: 0
+    commitDeletions: 0
+    commitStatsCount: 0
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 10.8
+  sessions: 2
+  sessionHours: 1.5
+  volumeHours: 10.8
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
