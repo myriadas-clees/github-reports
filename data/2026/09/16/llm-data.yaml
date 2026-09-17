@@ -1,0 +1,82 @@
+title: Sep 16
+subtitle: transition, keep entra & ci
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps and Myriad-Advisor-Solutions/ohcpwm-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 4 PRs
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 1 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 18 commits with +2,561 / −168 lines.
+    chips:
+      - label: Commits
+        value: "18"
+        color: green
+      - label: Additions
+        value: +2,561
+        color: green
+      - label: Deletions
+        value: −168
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 3 reviews with 3 comments.
+    chips:
+      - label: Reviews
+        value: "3"
+      - label: Comments
+        value: "3"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 9 reviews, 11 comments, 4 PRs."
+    chips:
+      - label: Codex
+        value: 9 reviews · 11 comments · 4 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~37.4h
+highlights:
+  - type: pr
+    title: "fix(ci): package unified function artifacts"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +2 −2
+    body: The unified deployment fails on a cold artifact cache because the Functions artifact parent does not exist before
+      per-app copies begin. Once that path is created, PTO packaging also resolves the app I
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/119
+  - type: pr
+    title: "fix(ui): restore readable contrast in light and dark themes"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +181 −74
+    body: >-
+      - Make theme and layout pickers use Myriad red selected states and readable unselected text instead of pale pink
+      on Cool Gray 4.
+
+      - Keep Hub app-card pins and badges on a light chip so they stay visibl
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/120
+  - type: pr
+    title: Keep Entra sign-in outside embedded app frames
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +34 −14
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
+  - type: pr
+    title: "feat(transition): add account transition prototype"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +1371 −13
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(ci): package unified function artifacts" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(ui): restore readable contrast in light and dark themes" in
+      Myriad-Advisor-Solutions/myriadas-apps'
