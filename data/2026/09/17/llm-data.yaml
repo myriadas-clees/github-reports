@@ -1,0 +1,73 @@
+title: Sep 17
+subtitle: keep entra, scoped proforma & transition
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps and Myriad-Advisor-Solutions/ohcpwm-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 0 PRs
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 0 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 31 commits with +1,006 / −174 lines.
+    chips:
+      - label: Commits
+        value: "31"
+        color: green
+      - label: Additions
+        value: +1,006
+        color: green
+      - label: Deletions
+        value: −174
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 34 reviews with 34 comments.
+    chips:
+      - label: Reviews
+        value: "34"
+      - label: Comments
+        value: "34"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 23 reviews, 33 comments, 3 PRs."
+    chips:
+      - label: Codex
+        value: 23 reviews · 33 comments · 3 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~67.9h
+highlights:
+  - type: pr
+    title: Keep Entra sign-in outside embedded app frames
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +1006 −174
+    body: >-
+      Unauthenticated protected routes redirected embedded apps directly to Microsoft Entra ID. Entra returns
+      `X-Frame-Options: DENY` and `frame-ancestors 'none'`, leaving the iframe blank.
+
+
+      Protected route
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
+  - type: pr
+    title: Add scoped Proforma data isolation and internal master access
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +6886 −28
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
+  - type: pr
+    title: "feat(transition): add account transition prototype"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +1674 −34
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "Keep Entra sign-in outside embedded app frames" in Myriad-Advisor-Solutions/ohcpwm-apps'

@@ -1,0 +1,1171 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-09-17
+  to: 2026-09-17
+stats:
+  totalCommits: 31
+  totalAdditions: 1006
+  totalDeletions: 174
+  prsOpened: 0
+  prsMerged: 1
+  prsInProgress: 2
+  prsReviewed: 34
+  reviewComments: 34
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 67.9
+dailyCommits:
+  - date: 2026-09-17
+    count: 31
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 20
+    prsOpened: 0
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 11
+    prsOpened: 0
+    prsMerged: 1
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests:
+  - title: Keep Entra sign-in outside embedded app frames
+    body: >-
+      Unauthenticated protected routes redirected embedded apps directly to Microsoft Entra ID. Entra returns
+      `X-Frame-Options: DENY` and `frame-ancestors 'none'`, leaving the iframe blank.
+
+
+      Protected routes now rewrite unauthorized responses to a public local login page while retaining HTTP 401. The
+      Micr...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 1006
+    deletions: 174
+    changedFiles: 32
+    author: myriadas-clees
+    createdAt: 2026-09-16T20:20:34Z
+    updatedAt: 2026-09-17T19:36:07Z
+    closedAt: 2026-09-17T19:36:01Z
+    mergedAt: 2026-09-17T19:36:01Z
+    workCommits:
+      - &a1
+        sha: 8317a452f9346ebcda7bff6105d74742e18b8842
+        message: "fix(auth): preserve API unauthorized responses"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8317a452f9346ebcda7bff6105d74742e18b8842
+        authoredAt: 2026-09-17T13:43:37Z
+      - &a2
+        sha: 4afc8792375c2b1c66575deccd20e3c448b0bd2f
+        message: "fix(auth): complete iframe login in new tab"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4afc8792375c2b1c66575deccd20e3c448b0bd2f
+        authoredAt: 2026-09-17T14:11:50Z
+      - &a3
+        sha: 9596299b0bace87c6278c6477b5ec5489391abc6
+        message: "ci(auth): verify embedded login response"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/9596299b0bace87c6278c6477b5ec5489391abc6
+        authoredAt: 2026-09-17T14:18:02Z
+      - &a4
+        sha: 10451c67f3f4f888cf736b4c1a066ec69b38e76f
+        message: "fix(auth): expose login hydration assets"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/10451c67f3f4f888cf736b4c1a066ec69b38e76f
+        authoredAt: 2026-09-17T14:22:54Z
+      - &a5
+        sha: 3e5335b057bcd170e5ae9941fba021a33c213d8c
+        message: "fix(auth): require app role after iframe login"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3e5335b057bcd170e5ae9941fba021a33c213d8c
+        authoredAt: 2026-09-17T14:32:53Z
+      - &a6
+        sha: e1d599a98096819c65ca204d5697e90cd1608b91
+        message: "docs(auth): clarify Invent sign-in requirements"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e1d599a98096819c65ca204d5697e90cd1608b91
+        authoredAt: 2026-09-17T14:42:29Z
+      - &a7
+        sha: 8b4d8cd331bea81cd21c7816770aecba89dc5881
+        message: "fix(auth): guide the embedded Microsoft sign-in flow"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8b4d8cd331bea81cd21c7816770aecba89dc5881
+        authoredAt: 2026-09-17T15:13:24Z
+      - &a8
+        sha: 5af8313646f29a0ae404e7f1d423935ab6dd5195
+        message: "fix(auth): bound iframe session probes and recover modifier-clicks"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/5af8313646f29a0ae404e7f1d423935ab6dd5195
+        authoredAt: 2026-09-17T15:26:17Z
+      - &a9
+        sha: 5f04a0fcb892250c8d98ed1392c372c47f37b3d4
+        message: "fix(ofac): recover rewritten API 401s through login"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/5f04a0fcb892250c8d98ed1392c372c47f37b3d4
+        authoredAt: 2026-09-17T15:33:48Z
+      - &a10
+        sha: e76f7c2b87436bb17138bca4a1e3165c6c3c2620
+        message: "fix(auth): recover middle-click sign-in and report 401s"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e76f7c2b87436bb17138bca4a1e3165c6c3c2620
+        authoredAt: 2026-09-17T18:18:52Z
+    workTimestamps:
+      - 2026-09-17T13:43:37Z
+      - 2026-09-17T14:11:50Z
+      - 2026-09-17T14:18:02Z
+      - 2026-09-17T14:22:54Z
+      - 2026-09-17T14:32:53Z
+      - 2026-09-17T14:42:29Z
+      - 2026-09-17T15:13:24Z
+      - 2026-09-17T15:26:17Z
+      - 2026-09-17T15:33:48Z
+      - 2026-09-17T18:18:52Z
+    workAdditions: 1006
+    workDeletions: 174
+    workFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - bun.lock
+      - docs/advisor-pricing-architecture.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - hub/app/login/page.tsx
+      - hub/package.json
+      - hub/staticwebapp.config.json
+      - ofac/src/app/login/page.test.tsx
+      - ofac/src/app/login/page.tsx
+      - ofac/src/components/pdf-report-viewer.tsx
+      - ofac/src/components/report-viewer-shell.tsx
+      - ofac/src/components/workbook-report-viewer.tsx
+      - ofac/src/lib/__tests__/ofac-api-client.test.ts
+      - ofac/src/lib/ofac-api-client.ts
+      - ofac/staticwebapp.config.json
+      - packages/auth/package.json
+      - packages/auth/src/auth.test.ts
+      - packages/auth/src/client.ts
+      - packages/auth/src/iframe-login.test.tsx
+      - packages/auth/src/iframe-login.tsx
+      - packages/auth/tsconfig.json
+      - packages/ui/src/styles.css
+      - pricing/src/app/globals.css
+      - pricing/src/app/login/page.tsx
+      - pricing/src/components/__tests__/pdf-report-viewer.test.tsx
+      - pricing/src/components/pdf-report-viewer.tsx
+      - pricing/src/components/report-viewer-shell.tsx
+      - pricing/src/components/workbook-report-viewer.tsx
+      - pricing/src/lib/__tests__/pricing-api-client.test.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/staticwebapp.config.json
+prsInProgress:
+  - title: Add scoped Proforma data isolation and internal master access
+    body: >-
+      ## Problem
+
+
+      Proforma needs customer/workspace data isolation in Cosmos while authorized Myriad staff retain audited access to
+      the complete master record set. The prior runtime also had scoped edit, version propagation, CORS, and idempotent
+      retry gaps.
+
+
+      ## Result
+
+
+      - Add the platform runtime and Cosmo...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - documentation
+      - github-automation
+      - "app: proforma"
+      - platform
+      - infrastructure
+    additions: 6886
+    deletions: 28
+    changedFiles: 57
+    author: myriadas-clees
+    createdAt: 2026-09-11T15:10:29Z
+    updatedAt: 2026-09-17T20:07:56Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a25
+        sha: c913f460078bccda5b146be0fd7c77cf72924fe1
+        message: "fix(platform): complete scoped data access flows"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c913f460078bccda5b146be0fd7c77cf72924fe1
+        authoredAt: 2026-09-17T18:33:31Z
+      - &a26
+        sha: 0ff2a11bd152488af5c1bd4ef8224c72fc135db5
+        message: "fix(platform): address scoped runtime review findings"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0ff2a11bd152488af5c1bd4ef8224c72fc135db5
+        authoredAt: 2026-09-17T20:03:12Z
+    workTimestamps:
+      - 2026-09-17T18:33:31Z
+      - 2026-09-17T20:03:12Z
+    workAdditions: 371
+    workDeletions: 50
+    workFiles:
+      - PLAN.md
+      - docs/authorization-roles.md
+      - docs/platform-cosmos-operations.md
+      - packages/db/src/master-command-store.ts
+      - packages/db/src/phase2-stores.test.ts
+      - platform/src/__tests__/runtime.test.ts
+      - platform/src/admin-api.ts
+      - platform/src/runtime.ts
+      - platform/src/user-api.ts
+      - proforma/.env.example
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/scoped-handler.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/scoped-runtime.ts
+  - title: "feat(transition): add account transition prototype"
+    body: >-
+      ## Why
+
+
+      Myriad has no native workspace for coordinating account transitions. Add a functional prototype and synthetic
+      Azure PR demo based on the Transition Tool references, with defaults created only by explicit seed commands.
+
+
+      ## What changed
+
+
+      - Add Transition to the Hub, static namespaces, Functio...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - documentation
+      - github-automation
+      - "app: hub"
+      - platform
+      - deploy-preview
+    additions: 1674
+    deletions: 34
+    changedFiles: 72
+    author: myriadas-clees
+    createdAt: 2026-09-16T18:54:28Z
+    updatedAt: 2026-09-17T21:17:08Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a11
+        sha: 895c25c596eafbc65f8ffc0597e2a3ac8765da87
+        message: "feat(transition): expand household account workflow"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/895c25c596eafbc65f8ffc0597e2a3ac8765da87
+        authoredAt: 2026-09-17T16:24:14Z
+      - &a12
+        sha: fc21bcc2e7390f2932efd14ff0e0ba58db8c6f2e
+        message: "fix(transition): address preview review findings"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/fc21bcc2e7390f2932efd14ff0e0ba58db8c6f2e
+        authoredAt: 2026-09-17T16:44:02Z
+      - &a13
+        sha: d5769fdcd5e58e8fa09016d435e24a123ef7032f
+        message: "fix(transition): align preview deployment checks"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d5769fdcd5e58e8fa09016d435e24a123ef7032f
+        authoredAt: 2026-09-17T16:52:28Z
+      - &a14
+        sha: abc01f16e449d846483f890a6ebfa40299978967
+        message: "fix(transition): preserve workflow timestamps"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/abc01f16e449d846483f890a6ebfa40299978967
+        authoredAt: 2026-09-17T16:59:28Z
+      - &a15
+        sha: 852c5966d822b5abada23b030b4f5531a3a0f445
+        message: "fix(transition): exclude previews from stage validation"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/852c5966d822b5abada23b030b4f5531a3a0f445
+        authoredAt: 2026-09-17T17:07:23Z
+      - &a16
+        sha: 71134548ad522acd16db68c2138d5a2b45d98356
+        message: "fix(transition): hide preview app from stage"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/71134548ad522acd16db68c2138d5a2b45d98356
+        authoredAt: 2026-09-17T17:14:08Z
+      - &a17
+        sha: 31e846011dd5a6b0c500ce513b5fe18f1ef7e8f6
+        message: "fix(transition): remove preview routes from stage"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/31e846011dd5a6b0c500ce513b5fe18f1ef7e8f6
+        authoredAt: 2026-09-17T17:20:45Z
+      - &a18
+        sha: db35fb84f03f7c7a7b25e7fa4635bf4e6af5eb67
+        message: "fix(transition): align functions preview default"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/db35fb84f03f7c7a7b25e7fa4635bf4e6af5eb67
+        authoredAt: 2026-09-17T17:32:30Z
+      - &a19
+        sha: 97b68f6a6b32cc10c28be43ca9bb1f4a1ec2eaf9
+        message: "fix(transition): allow contact creation"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/97b68f6a6b32cc10c28be43ca9bb1f4a1ec2eaf9
+        authoredAt: 2026-09-17T17:42:17Z
+      - &a20
+        sha: a13be604eb2b6dbeb99de7dde929cb21e76e3354
+        message: "fix(transition): complete contact routing"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a13be604eb2b6dbeb99de7dde929cb21e76e3354
+        authoredAt: 2026-09-17T17:50:38Z
+      - &a21
+        sha: 843121fc658431aa84fabaa9473d092159665012
+        message: "refactor(transition): reuse shared onboarding UI"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/843121fc658431aa84fabaa9473d092159665012
+        authoredAt: 2026-09-17T18:05:46Z
+      - &a22
+        sha: 0a7d395a2e232df0f3f57d19a81faef7e466454d
+        message: "fix(transition): skip preview builds outside preview"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0a7d395a2e232df0f3f57d19a81faef7e466454d
+        authoredAt: 2026-09-17T18:10:03Z
+      - &a23
+        sha: 2d67c1cc170f521824610c0b38f0115606b10428
+        message: "fix(transition): validate account owners"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2d67c1cc170f521824610c0b38f0115606b10428
+        authoredAt: 2026-09-17T18:20:34Z
+      - &a24
+        sha: e4d5c25e72ae8b100b9ae977b12a93d78958ea70
+        message: "fix(transition): align standalone preview defaults"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e4d5c25e72ae8b100b9ae977b12a93d78958ea70
+        authoredAt: 2026-09-17T18:29:55Z
+      - &a27
+        sha: 2b0f77487a877aee7fd63d5a458648c490ef7b98
+        message: "feat(transition): add household dashboard controls"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2b0f77487a877aee7fd63d5a458648c490ef7b98
+        authoredAt: 2026-09-17T20:45:59Z
+      - &a28
+        sha: 86392e43fe674472c254477ce8b68f55ca468a6d
+        message: "fix(transition): preserve dashboard contracts"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/86392e43fe674472c254477ce8b68f55ca468a6d
+        authoredAt: 2026-09-17T20:55:55Z
+      - &a29
+        sha: 482edb1ea3ce7748337b932434a8d7def7eb147b
+        message: "fix(transition): sanitize task deletion audits"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/482edb1ea3ce7748337b932434a8d7def7eb147b
+        authoredAt: 2026-09-17T21:03:55Z
+      - &a30
+        sha: 66333534aa2d0f5134d34ef9ff7b187df24ec0e4
+        message: "fix(transition): reset household note form safely"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/66333534aa2d0f5134d34ef9ff7b187df24ec0e4
+        authoredAt: 2026-09-17T21:11:44Z
+    workTimestamps:
+      - 2026-09-17T16:24:14Z
+      - 2026-09-17T16:44:02Z
+      - 2026-09-17T16:52:28Z
+      - 2026-09-17T16:59:28Z
+      - 2026-09-17T17:07:23Z
+      - 2026-09-17T17:14:08Z
+      - 2026-09-17T17:20:45Z
+      - 2026-09-17T17:32:30Z
+      - 2026-09-17T17:42:17Z
+      - 2026-09-17T17:50:38Z
+      - 2026-09-17T18:05:46Z
+      - 2026-09-17T18:10:03Z
+      - 2026-09-17T18:20:34Z
+      - 2026-09-17T18:29:55Z
+      - 2026-09-17T20:45:59Z
+      - 2026-09-17T20:55:55Z
+      - 2026-09-17T21:03:55Z
+      - 2026-09-17T21:11:44Z
+    workAdditions: 499
+    workDeletions: 217
+    workFiles:
+      - .github/ISSUE_TEMPLATE/bug.yml
+      - .github/ISSUE_TEMPLATE/feature.yml
+      - .github/labeler.yml
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - design-qa.md
+      - docs/transition/contracts.md
+      - hub/lib/apps.test.ts
+      - hub/lib/apps.ts
+      - scripts/app-registry.ts
+      - scripts/build-unified-swa.ts
+      - scripts/github/configure-repository.ts
+      - scripts/github/triage-issue.test.ts
+      - scripts/github/triage-issue.ts
+      - scripts/tooling.test.ts
+      - scripts/validate-artifacts.ts
+      - scripts/workflow-matrix.ts
+      - transition/functions/scripts/build.ts
+      - transition/functions/src/index.ts
+      - transition/next.config.ts
+      - transition/scripts/audit-reference.py
+      - transition/scripts/audit_reference_test.py
+      - transition/src/app/api/[...path]/route.test.ts
+      - transition/src/app/api/[...path]/route.ts
+      - transition/src/app/globals.css
+      - transition/src/components/transition-workspace.tsx
+      - transition/src/lib/api/azure-functions-adapter.test.ts
+      - transition/src/lib/api/azure-functions-adapter.ts
+      - transition/src/lib/api/client.ts
+      - transition/src/lib/handlers.ts
+      - transition/src/lib/model.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
+      - transition/src/lib/rules.test.ts
+      - transition/src/lib/seed.ts
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "fix(auth): preserve API unauthorized responses"
+      - "fix(auth): complete iframe login in new tab"
+      - "ci(auth): verify embedded login response"
+      - "fix(auth): expose login hydration assets"
+      - "fix(auth): require app role after iframe login"
+      - "docs(auth): clarify Invent sign-in requirements"
+      - "fix(auth): guide the embedded Microsoft sign-in flow"
+      - "fix(auth): bound iframe session probes and recover modifier-clicks"
+      - "fix(ofac): recover rewritten API 401s through login"
+      - "fix(auth): recover middle-click sign-in and report 401s"
+      - "fix(auth): Keep Entra sign-in outside embedded app frames (#124)"
+    commits:
+      - *a1
+      - *a2
+      - *a3
+      - *a4
+      - *a5
+      - *a6
+      - *a7
+      - *a8
+      - *a9
+      - *a10
+      - sha: fdbb6ea9fc144e39476f47cf0c2893cc1ce2c22a
+        message: "fix(auth): Keep Entra sign-in outside embedded app frames (#124)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/fdbb6ea9fc144e39476f47cf0c2893cc1ce2c22a
+        authoredAt: 2026-09-17T19:36:00Z
+        additions: 945
+        deletions: 93
+        filesChanged: 32
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "feat(transition): expand household account workflow"
+      - "fix(transition): address preview review findings"
+      - "fix(transition): align preview deployment checks"
+      - "fix(transition): preserve workflow timestamps"
+      - "fix(transition): exclude previews from stage validation"
+      - "fix(transition): hide preview app from stage"
+      - "fix(transition): remove preview routes from stage"
+      - "fix(transition): align functions preview default"
+      - "fix(transition): allow contact creation"
+      - "fix(transition): complete contact routing"
+      - "refactor(transition): reuse shared onboarding UI"
+      - "fix(transition): skip preview builds outside preview"
+      - "fix(transition): validate account owners"
+      - "fix(transition): align standalone preview defaults"
+      - "fix(platform): complete scoped data access flows"
+      - "fix(platform): address scoped runtime review findings"
+      - "feat(transition): add household dashboard controls"
+      - "fix(transition): preserve dashboard contracts"
+      - "fix(transition): sanitize task deletion audits"
+      - "fix(transition): reset household note form safely"
+    commits:
+      - *a11
+      - *a12
+      - *a13
+      - *a14
+      - *a15
+      - *a16
+      - *a17
+      - *a18
+      - *a19
+      - *a20
+      - *a21
+      - *a22
+      - *a23
+      - *a24
+      - *a25
+      - *a26
+      - *a27
+      - *a28
+      - *a29
+      - *a30
+releases: []
+externalContributions: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 124
+    prTitle: Keep Entra sign-in outside embedded app frames
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
+    state: commented
+    submittedAt: 2026-09-17T13:44:05Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 124
+    prTitle: Keep Entra sign-in outside embedded app frames
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
+    state: commented
+    submittedAt: 2026-09-17T14:18:22Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 124
+    prTitle: Keep Entra sign-in outside embedded app frames
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
+    state: commented
+    submittedAt: 2026-09-17T14:23:18Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 124
+    prTitle: Keep Entra sign-in outside embedded app frames
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
+    state: commented
+    submittedAt: 2026-09-17T14:33:29Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 124
+    prTitle: Keep Entra sign-in outside embedded app frames
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
+    state: commented
+    submittedAt: 2026-09-17T15:26:22Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 124
+    prTitle: Keep Entra sign-in outside embedded app frames
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
+    state: commented
+    submittedAt: 2026-09-17T15:26:23Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 124
+    prTitle: Keep Entra sign-in outside embedded app frames
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
+    state: commented
+    submittedAt: 2026-09-17T15:33:56Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 124
+    prTitle: Keep Entra sign-in outside embedded app frames
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
+    state: commented
+    submittedAt: 2026-09-17T18:18:59Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 124
+    prTitle: Keep Entra sign-in outside embedded app frames
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
+    state: commented
+    submittedAt: 2026-09-17T18:19:00Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add account transition prototype"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-17T16:44:47Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add account transition prototype"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-17T16:44:49Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add account transition prototype"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-17T16:44:51Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add account transition prototype"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-17T16:44:52Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add account transition prototype"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-17T16:44:54Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add account transition prototype"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-17T16:44:55Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add account transition prototype"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-17T16:52:46Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add account transition prototype"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-17T16:52:48Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add account transition prototype"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-17T16:59:44Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add account transition prototype"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-17T17:07:34Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add account transition prototype"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-17T17:14:20Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add account transition prototype"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-17T17:20:57Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add account transition prototype"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-17T17:32:43Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add account transition prototype"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-17T17:42:31Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add account transition prototype"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-17T17:50:52Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add account transition prototype"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-17T17:50:59Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add account transition prototype"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-17T18:10:18Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add account transition prototype"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-17T18:10:26Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add account transition prototype"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-17T18:20:48Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add account transition prototype"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-17T18:20:55Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add account transition prototype"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-17T18:30:19Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add account transition prototype"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-17T20:56:13Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add account transition prototype"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-17T20:56:24Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add account transition prototype"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-17T21:04:10Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add account transition prototype"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-17T21:11:59Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 124
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124#discussion_r4037499664
+    body: Fixed in 8317a45. The 401 override now rewrites to /login while preserving status 401, and the Pricing client
+      handles that status before parsing the rewritten HTML. Added a regression test for the HTML 401 response.
+    path: hub/staticwebapp.config.json
+    createdAt: 2026-09-17T13:44:05Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 124
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124#discussion_r4037886225
+    body: Fixed in 9596299. The production smoke now requires 401 for each protected page and verifies the rewritten body
+      contains the Microsoft sign-in action. Updated the deployment docs to match the new-tab flow.
+    path: hub/staticwebapp.config.json
+    createdAt: 2026-09-17T14:18:22Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 124
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124#discussion_r4037949829
+    body: Fixed in 10451c6. Hub now allows anonymous access to /_next/* before the protected catch-all. The production smoke
+      extracts a hydration script from the rewritten login page and requires that asset to return 200.
+    path: hub/staticwebapp.config.json
+    createdAt: 2026-09-17T14:23:18Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 124
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124#discussion_r4038059512
+    body: Fixed in 3e5335b. The iframe now waits for the role required by the requested app before closing the auth tab or
+      restoring the embedded route. Pricing and OFAC pass their roles explicitly; Hub derives the role from the stored
+      return path. Added matching-role and wrong-role coverage while preserving ...
+    path: packages/auth/src/iframe-login.tsx
+    createdAt: 2026-09-17T14:33:29Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 124
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124#discussion_r4038627334
+    body: Fixed in 5af8313. Each `/.auth/me` probe now aborts and times out, using the remaining overall poll window so a
+      stalled request cannot block the five-minute login deadline.
+    path: packages/auth/src/iframe-login.tsx
+    createdAt: 2026-09-17T15:26:22Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 124
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124#discussion_r4038627528
+    body: Fixed in 5af8313. Ctrl/Cmd/Shift/Alt-clicks still let the browser open the Microsoft tab, and the embedded frame
+      now starts the same session poll so it can restore the original route.
+    path: packages/auth/src/iframe-login.tsx
+    createdAt: 2026-09-17T15:26:23Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 124
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124#discussion_r4038700663
+    body: Fixed in 5f04a0f. OFAC API 401s in SWA mode now store the current route and go to `/login` before parsing the
+      rewritten HTML, matching Pricing. Local non-SWA 401 JSON bodies remain visible.
+    path: hub/staticwebapp.config.json
+    createdAt: 2026-09-17T15:33:56Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 124
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124#discussion_r4040088904
+    body: Fixed in e76f7c2. Middle-click now uses `onAuxClick` and starts the same iframe recovery poll without suppressing
+      the browser's new tab.
+    path: packages/auth/src/iframe-login.tsx
+    createdAt: 2026-09-17T18:18:59Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 124
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124#discussion_r4040089059
+    body: Fixed in e76f7c2. Report previews and downloads now inspect the 401 before rendering or saving the file. In SWA
+      mode they store the current route and go to `/login` instead of showing a generic load error or downloading the
+      rewritten login HTML.
+    path: hub/staticwebapp.config.json
+    createdAt: 2026-09-17T18:19:00Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4039345204
+    body: Fixed earlier in 81d9939 by passing app-relative links and letting Next apply the base path once.
+    path: transition/src/components/transition-shell.tsx
+    createdAt: 2026-09-17T16:44:47Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4039345444
+    body: Fixed in fc21bcc. Transition is preview-only in the registry; production matrices, Hub launcher, static
+      composition, routes, and unified Functions composition exclude it. Preview composition still includes it.
+    path: .github/workflows/azure-static-web-apps.yml
+    createdAt: 2026-09-17T16:44:49Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4039345640
+    body: Fixed in fc21bcc. The audit now rejects any workbook missing a required operational sheet with a sanitized error,
+      with focused coverage.
+    path: transition/scripts/audit-reference.py
+    createdAt: 2026-09-17T16:44:50Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4039345806
+    body: Fixed in fc21bcc. Transition is now present in both issue forms, triage labels, repository configuration, project
+      options, and triage tests.
+    path: scripts/app-registry.ts
+    createdAt: 2026-09-17T16:44:52Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4039346004
+    body: Fixed in fc21bcc. Read-only account searches exclude legacy identifiers at the repository query boundary, with
+      handler coverage proving writer-only identifier search.
+    path: transition/src/lib/repository.ts
+    createdAt: 2026-09-17T16:44:54Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4039346212
+    body: Fixed in fc21bcc. My Accounts now compares assignee emails case-insensitively, with repository coverage for mixed
+      casing.
+    path: transition/src/lib/repository.ts
+    createdAt: 2026-09-17T16:44:55Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4039408042
+    body: Fixed in d5769fd. Production and stage smoke checks no longer probe the preview-only Transition endpoint.
+    path: .github/workflows/azure-static-web-apps.yml
+    createdAt: 2026-09-17T16:52:46Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4039408348
+    body: Fixed in d5769fd. Unified composition now defaults an unset BUILD_ENVIRONMENT to preview, matching the Hub
+      launcher and validator; production remains explicitly filtered.
+    path: scripts/build-unified-swa.ts
+    createdAt: 2026-09-17T16:52:48Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4039463744
+    body: Fixed in abc01f1. Repository workflow actions now reject repeated reconciliation and confirmation without changing
+      timestamps or adding duplicate audit events; direct API regression checks cover both cases.
+    path: transition/src/lib/repository.ts
+    createdAt: 2026-09-17T16:59:44Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4039526850
+    body: Fixed in 852c596. Artifact validation now defaults an unset environment to preview and uses production products
+      for every non-preview environment, including stage.
+    path: scripts/validate-artifacts.ts
+    createdAt: 2026-09-17T17:07:33Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4039584629
+    body: Fixed in 7113454. The Hub launcher now defaults an unset environment to preview and exposes preview-only products
+      only when the resolved environment is preview; stage and production both exclude Transition.
+    path: hub/lib/apps.ts
+    createdAt: 2026-09-17T17:14:20Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4039639668
+    body: Fixed in 31e8460. Route filtering now removes Transition routes for every non-preview environment, and an actual
+      stage composition assertion confirms both routes and static files are absent.
+    path: scripts/build-unified-swa.ts
+    createdAt: 2026-09-17T17:20:57Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4039732699
+    body: Fixed in db35fb8. The Functions build now defaults an unset BUILD_ENVIRONMENT to preview, matching unified
+      composition and artifact validation. Added a tooling regression assertion; bun run test:tooling and the Transition
+      Functions build pass.
+    path: transition/functions/scripts/build.ts
+    createdAt: 2026-09-17T17:32:43Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4039807169
+    body: Fixed in 97b68f6. Contactless accounts now expose an Add contact form and POST /accounts/{id}/contacts route with
+      validation, optimistic account version checks, persistence, and audit logging. Transition typecheck, lint, 14
+      tests, and Functions build pass.
+    path: transition/src/components/transition-workspace.tsx
+    createdAt: 2026-09-17T17:42:31Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4039871846
+    body: Fixed in a13be60. The local Next adapter now dispatches POST /accounts/{id}/contacts to contactCreate, with a
+      focused route regression test.
+    path: transition/src/app/api/[...path]/route.ts
+    createdAt: 2026-09-17T17:50:52Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4039872847
+    body: Fixed in a13be60. Contact updates now validate a supplied email with required-text validation before the format
+      check, and the repository handler test covers rejecting an empty email.
+    path: transition/src/lib/handlers.ts
+    createdAt: 2026-09-17T17:50:58Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4040021685
+    body: Fixed in 0a7d395. Unified child builds now receive the normalized BUILD_ENVIRONMENT, so an unset parent
+      consistently produces preview composition and preview UI warnings. Added tooling coverage.
+    path: scripts/build-unified-swa.ts
+    createdAt: 2026-09-17T18:10:18Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4040023010
+    body: Fixed in 0a7d395. Non-preview runs now filter Transition from static and Functions build lists, staging, and cache
+      saves; build-unified-swa also filters preview-only selections. Tooling tests, a stage orchestration check, and
+      build:serverless pass.
+    path: .github/workflows/azure-static-web-apps.yml
+    createdAt: 2026-09-17T18:10:26Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4040104163
+    body: "Fixed in 2d67c1c. .github/labeler.yml now maps transition/** to app: transition, with tooling coverage."
+    path: scripts/app-registry.ts
+    createdAt: 2026-09-17T18:20:48Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4040105603
+    body: Fixed in 2d67c1c. New owner assignments are validated as email identities server-side and use type=email in the
+      UI, keeping My accounts aligned with the authenticated email. Existing stored values remain readable; the direct
+      API rejection is covered.
+    path: transition/src/lib/handlers.ts
+    createdAt: 2026-09-17T18:20:55Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4040190669
+    body: Fixed in e4d5c25. The static config now defaults an unset BUILD_ENVIRONMENT to preview, matching the standalone
+      Functions builder and artifact validator. Added a tooling contract assertion. Validated with 15 tooling tests plus
+      standalone static and Functions builds with BUILD_ENVIRONMENT unset.
+    path: transition/next.config.ts
+    createdAt: 2026-09-17T18:30:19Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4041371574
+    body: Fixed in 86392e4. Household progress now uses completeAccounts / accountCount with a zero-account guard, matching
+      the committed household contract. Removed the unused feature-total fields from the household response.
+    path: transition/src/components/transition-workspace.tsx
+    createdAt: 2026-09-17T20:56:13Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4041372815
+    body: Fixed in 86392e4. AUM descending is again the explicit handler and UI default, and remains available in the sort
+      selector alongside Household, Account, and Account number. Added handler-level default-order and invalid-sort
+      coverage.
+    path: transition/src/lib/handlers.ts
+    createdAt: 2026-09-17T20:56:24Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4041425184
+    body: Fixed in 482edb1. Task deletion audits now use the constant detail "Removed operational task" and no longer read
+      or preserve the free-text task title. The removal test asserts the generic detail and verifies the title is
+      absent.
+    path: transition/src/lib/repository.ts
+    createdAt: 2026-09-17T21:04:10Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4041478210
+    body: Fixed in 6633353. The submit handler now captures the form element synchronously and resets that stable reference
+      after the note request succeeds. Transition tests, typecheck, and lint pass.
+    path: transition/src/components/transition-workspace.tsx
+    createdAt: 2026-09-17T21:11:59Z
+aiReviews:
+  codex:
+    prsReviewed: 3
+    comments: 33
+    reviews: 23
+    fixed: 34
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 3
+  comments: 33
+  reviews: 23
+  fixed: 34
+hoursInputs:
+  timestamps:
+    - 2026-09-17T13:43:37Z
+    - 2026-09-17T14:11:50Z
+    - 2026-09-17T14:18:02Z
+    - 2026-09-17T14:22:54Z
+    - 2026-09-17T14:32:53Z
+    - 2026-09-17T14:42:29Z
+    - 2026-09-17T15:13:24Z
+    - 2026-09-17T15:26:17Z
+    - 2026-09-17T15:33:48Z
+    - 2026-09-17T18:18:52Z
+    - 2026-09-17T19:36:00Z
+    - 2026-09-17T16:24:14Z
+    - 2026-09-17T16:44:02Z
+    - 2026-09-17T16:52:28Z
+    - 2026-09-17T16:59:28Z
+    - 2026-09-17T17:07:23Z
+    - 2026-09-17T17:14:08Z
+    - 2026-09-17T17:20:45Z
+    - 2026-09-17T17:32:30Z
+    - 2026-09-17T17:42:17Z
+    - 2026-09-17T17:50:38Z
+    - 2026-09-17T18:05:46Z
+    - 2026-09-17T18:10:03Z
+    - 2026-09-17T18:20:34Z
+    - 2026-09-17T18:29:55Z
+    - 2026-09-17T18:33:31Z
+    - 2026-09-17T20:03:12Z
+    - 2026-09-17T20:45:59Z
+    - 2026-09-17T20:55:55Z
+    - 2026-09-17T21:03:55Z
+    - 2026-09-17T21:11:44Z
+    - 2026-09-17T19:36:01Z
+    - 2026-09-17T13:43:37Z
+    - 2026-09-17T14:11:50Z
+    - 2026-09-17T14:18:02Z
+    - 2026-09-17T14:22:54Z
+    - 2026-09-17T14:32:53Z
+    - 2026-09-17T14:42:29Z
+    - 2026-09-17T15:13:24Z
+    - 2026-09-17T15:26:17Z
+    - 2026-09-17T15:33:48Z
+    - 2026-09-17T18:18:52Z
+    - 2026-09-17T13:44:05Z
+    - 2026-09-17T14:18:22Z
+    - 2026-09-17T14:23:18Z
+    - 2026-09-17T14:33:29Z
+    - 2026-09-17T15:26:22Z
+    - 2026-09-17T15:26:23Z
+    - 2026-09-17T15:33:56Z
+    - 2026-09-17T18:18:59Z
+    - 2026-09-17T18:19:00Z
+    - 2026-09-17T16:44:47Z
+    - 2026-09-17T16:44:49Z
+    - 2026-09-17T16:44:51Z
+    - 2026-09-17T16:44:52Z
+    - 2026-09-17T16:44:54Z
+    - 2026-09-17T16:44:55Z
+    - 2026-09-17T16:52:46Z
+    - 2026-09-17T16:52:48Z
+    - 2026-09-17T16:59:44Z
+    - 2026-09-17T17:07:34Z
+    - 2026-09-17T17:14:20Z
+    - 2026-09-17T17:20:57Z
+    - 2026-09-17T17:32:43Z
+    - 2026-09-17T17:42:31Z
+    - 2026-09-17T17:50:52Z
+    - 2026-09-17T17:50:59Z
+    - 2026-09-17T18:10:18Z
+    - 2026-09-17T18:10:26Z
+    - 2026-09-17T18:20:48Z
+    - 2026-09-17T18:20:55Z
+    - 2026-09-17T18:30:19Z
+    - 2026-09-17T20:56:13Z
+    - 2026-09-17T20:56:24Z
+    - 2026-09-17T21:04:10Z
+    - 2026-09-17T21:11:59Z
+    - 2026-09-17T13:44:05Z
+    - 2026-09-17T14:18:22Z
+    - 2026-09-17T14:23:18Z
+    - 2026-09-17T14:33:29Z
+    - 2026-09-17T15:26:22Z
+    - 2026-09-17T15:26:23Z
+    - 2026-09-17T15:33:56Z
+    - 2026-09-17T18:18:59Z
+    - 2026-09-17T18:19:00Z
+    - 2026-09-17T16:44:47Z
+    - 2026-09-17T16:44:49Z
+    - 2026-09-17T16:44:50Z
+    - 2026-09-17T16:44:52Z
+    - 2026-09-17T16:44:54Z
+    - 2026-09-17T16:44:55Z
+    - 2026-09-17T16:52:46Z
+    - 2026-09-17T16:52:48Z
+    - 2026-09-17T16:59:44Z
+    - 2026-09-17T17:07:33Z
+    - 2026-09-17T17:14:20Z
+    - 2026-09-17T17:20:57Z
+    - 2026-09-17T17:32:43Z
+    - 2026-09-17T17:42:31Z
+    - 2026-09-17T17:50:52Z
+    - 2026-09-17T17:50:58Z
+    - 2026-09-17T18:10:18Z
+    - 2026-09-17T18:10:26Z
+    - 2026-09-17T18:20:48Z
+    - 2026-09-17T18:20:55Z
+    - 2026-09-17T18:30:19Z
+    - 2026-09-17T20:56:13Z
+    - 2026-09-17T20:56:24Z
+    - 2026-09-17T21:04:10Z
+    - 2026-09-17T21:11:59Z
+  volume:
+    pullRequests:
+      - additions: 371
+        deletions: 50
+        state: open
+        dailyWork: true
+        filesChanged: 15
+        testFilesChanged: 4
+        commitCount: 2
+      - additions: 1006
+        deletions: 174
+        state: merged
+        dailyWork: true
+        filesChanged: 32
+        testFilesChanged: 6
+        commitCount: 10
+      - additions: 499
+        deletions: 217
+        state: open
+        dailyWork: true
+        filesChanged: 35
+        testFilesChanged: 7
+        commitCount: 18
+    reviewCount: 34
+    reviewCommentCount: 34
+    commitCount: 1
+    commitAdditions: 945
+    commitDeletions: 93
+    commitStatsCount: 1
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 67.9
+  sessions: 1
+  sessionHours: 6
+  volumeHours: 67.9
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
