@@ -1,0 +1,785 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-09-18
+  to: 2026-09-18
+stats:
+  totalCommits: 26
+  totalAdditions: 2544
+  totalDeletions: 346
+  prsOpened: 7
+  prsMerged: 7
+  prsInProgress: 1
+  prsReviewed: 5
+  reviewComments: 5
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 69.9
+dailyCommits:
+  - date: 2026-09-18
+    count: 26
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 26
+    prsOpened: 7
+    prsMerged: 7
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests:
+  - title: "fix(ofac): restore the previous iframe sign-in design"
+    body: >-
+      Restore the previous centered iframe sign-in card after the authentication fix changed its presentation. Reuse the
+      existing page layout, hint styling, full-width navy button, and Microsoft icon.
+
+
+      The relay, credential handling, access checks, and authenticated OFAC interface remain unchanged.
+
+
+      ## Te...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/130
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 13
+    deletions: 5
+    changedFiles: 1
+    author: myriadas-clees
+    createdAt: 2026-09-18T18:39:44Z
+    updatedAt: 2026-09-18T18:44:26Z
+    closedAt: 2026-09-18T18:44:26Z
+    mergedAt: 2026-09-18T18:44:26Z
+    workCommits:
+      - &a10
+        sha: 1d3dad41c2e1b23ae7a6720fada31c20544c0a17
+        message: "fix(ofac): restore the previous iframe sign-in design"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/1d3dad41c2e1b23ae7a6720fada31c20544c0a17
+        authoredAt: 2026-09-18T18:39:26Z
+    workTimestamps:
+      - 2026-09-18T18:39:26Z
+    workAdditions: 13
+    workDeletions: 5
+    workFiles:
+      - ofac/src/components/ofac-iframe-auth-boundary.tsx
+  - title: "fix(ofac): preserve iframe credentials through the SWA proxy"
+    body: OFAC credential issuance succeeds after configuring the public UI origin, but the embedded `/api/ofac/me` check
+      returns 401 despite the browser sending its signed credential. Azure SWA uses `Authorization` for backend
+      authentication, so this header cannot reliably transport the application's iframe ...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/129
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 48
+    deletions: 18
+    changedFiles: 5
+    author: myriadas-clees
+    createdAt: 2026-09-18T18:24:25Z
+    updatedAt: 2026-09-18T18:29:16Z
+    closedAt: 2026-09-18T18:29:11Z
+    mergedAt: 2026-09-18T18:29:11Z
+    workCommits:
+      - &a9
+        sha: c62d1343d55d1740b1be4e0fcd50a480848924d6
+        message: "fix(ofac): preserve iframe credentials through the SWA proxy"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c62d1343d55d1740b1be4e0fcd50a480848924d6
+        authoredAt: 2026-09-18T18:24:14Z
+    workTimestamps:
+      - 2026-09-18T18:24:14Z
+    workAdditions: 48
+    workDeletions: 18
+    workFiles:
+      - docs/deploy-asap.md
+      - ofac/functions/src/iframe-auth.test.ts
+      - ofac/functions/src/iframe-auth.ts
+      - ofac/src/lib/__tests__/ofac-authorized-fetch.test.ts
+      - ofac/src/lib/ofac-authorized-fetch.ts
+  - title: "feat(auth): add iframe sign-in diagnostics"
+    body: >-
+      The Invent iframe can keep waiting after Microsoft sign-in, but the current session probe reduces HTTP failures,
+      anonymous sessions, missing roles, and timeouts to the same boolean. Add local browser-console diagnostics so the
+      next deployed reproduction identifies which step fails.
+
+
+      - Emit `[ohpwm:i...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/127
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 299
+    deletions: 14
+    changedFiles: 5
+    author: myriadas-clees
+    createdAt: 2026-09-18T16:57:34Z
+    updatedAt: 2026-09-18T17:03:33Z
+    closedAt: 2026-09-18T17:03:30Z
+    mergedAt: 2026-09-18T17:03:30Z
+    workCommits:
+      - &a5
+        sha: f8d94c054ebec03a63af4609df3d1cb8b4dbd9df
+        message: "feat(auth): add iframe sign-in diagnostics"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f8d94c054ebec03a63af4609df3d1cb8b4dbd9df
+        authoredAt: 2026-09-18T16:57:29Z
+    workTimestamps:
+      - 2026-09-18T16:57:29Z
+    workAdditions: 299
+    workDeletions: 14
+    workFiles:
+      - docs/deploy-asap.md
+      - packages/auth/src/auth.test.ts
+      - packages/auth/src/client.ts
+      - packages/auth/src/iframe-login-lifecycle.test.tsx
+      - packages/auth/src/iframe-login.tsx
+  - title: "fix(ofac): authenticate embedded sessions without SWA cookies"
+    body: >-
+      Azure SWA's `SameSite=Strict` authentication cookie is excluded inside Invent, so completing Microsoft sign-in
+      never authorizes the OFAC iframe. Keep the OFAC shell public and gate its children until server authorization
+      succeeds.
+
+
+      A same-origin relay tab exchanges an existing first-party SWA sessio...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/128
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 1275
+    deletions: 70
+    changedFiles: 27
+    author: myriadas-clees
+    createdAt: 2026-09-18T17:43:43Z
+    updatedAt: 2026-09-18T18:05:50Z
+    closedAt: 2026-09-18T18:05:46Z
+    mergedAt: 2026-09-18T18:05:45Z
+    workCommits:
+      - &a6
+        sha: 15a73370e0daab730a3b2a4e2c724d36ed72e8c4
+        message: "fix(ofac): authenticate embedded sessions without SWA cookies"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/15a73370e0daab730a3b2a4e2c724d36ed72e8c4
+        authoredAt: 2026-09-18T17:43:12Z
+      - &a7
+        sha: dff394fea286ec32abef22a1fd7859b1fbb2e83c
+        message: "fix(ofac): allow an explicitly configured iframe UI origin"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/dff394fea286ec32abef22a1fd7859b1fbb2e83c
+        authoredAt: 2026-09-18T17:51:02Z
+      - &a8
+        sha: 63bde8ce31ec248518cf7fbef060554ebe824c4d
+        message: "fix(ofac): preserve embedded report auth and API prefixes"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/63bde8ce31ec248518cf7fbef060554ebe824c4d
+        authoredAt: 2026-09-18T17:59:04Z
+    workTimestamps:
+      - 2026-09-18T17:43:12Z
+      - 2026-09-18T17:51:02Z
+      - 2026-09-18T17:59:04Z
+    workAdditions: 1275
+    workDeletions: 70
+    workFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - docs/deploy-asap.md
+      - hub/staticwebapp.config.json
+      - ofac/functions/src/iframe-auth.test.ts
+      - ofac/functions/src/iframe-auth.ts
+      - ofac/functions/src/index.ts
+      - ofac/src/app/auth/iframe/page.tsx
+      - ofac/src/app/screenings/page.tsx
+      - ofac/src/components/ofac-app-shell.tsx
+      - ofac/src/components/ofac-iframe-auth-boundary.test.tsx
+      - ofac/src/components/ofac-iframe-auth-boundary.tsx
+      - ofac/src/components/ofac-iframe-auth-relay.tsx
+      - ofac/src/components/ofac-user-menu.tsx
+      - ofac/src/components/pdf-report-viewer.tsx
+      - ofac/src/components/report-preview-auth.test.tsx
+      - ofac/src/components/report-viewer-shell.tsx
+      - ofac/src/components/screening-detail.tsx
+      - ofac/src/components/workbook-report-viewer.tsx
+      - ofac/src/lib/__tests__/iframe-routing.test.ts
+      - ofac/src/lib/__tests__/ofac-authorized-fetch.test.ts
+      - ofac/src/lib/ofac-api-client.ts
+      - ofac/src/lib/ofac-authorized-fetch.ts
+      - ofac/src/lib/ofac-iframe-credential.ts
+      - ofac/src/lib/ofac-session-client.ts
+      - ofac/staticwebapp.config.json
+      - packages/auth/src/auth.test.ts
+      - packages/auth/src/client.ts
+  - title: "fix(auth): keep iframe permission action available"
+    body: >-
+      An Invent iframe could remain unauthenticated after Microsoft sign-in while hiding the native session-access
+      action. The component treated `hasStorageAccess()` as proof that the Azure session was usable and also required
+      that check API to exist.
+
+
+      Offer **Continue in this workspace** whenever the emb...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/126
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 102
+    deletions: 18
+    changedFiles: 3
+    author: myriadas-clees
+    createdAt: 2026-09-18T16:34:38Z
+    updatedAt: 2026-09-18T16:39:03Z
+    closedAt: 2026-09-18T16:38:59Z
+    mergedAt: 2026-09-18T16:38:59Z
+    workCommits:
+      - &a4
+        sha: 97925b1700172dfddfab89ab17336d8e34e04f4d
+        message: "fix(auth): keep iframe permission action available"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/97925b1700172dfddfab89ab17336d8e34e04f4d
+        authoredAt: 2026-09-18T16:34:32Z
+    workTimestamps:
+      - 2026-09-18T16:34:32Z
+    workAdditions: 102
+    workDeletions: 18
+    workFiles:
+      - docs/deploy-asap.md
+      - packages/auth/src/iframe-login-lifecycle.test.tsx
+      - packages/auth/src/iframe-login.tsx
+  - title: "fix(auth): enable cookie access inside embedded apps"
+    body: Cross-site embedded apps could finish Microsoft sign-in in another tab while the iframe kept polling without
+      access to the Azure session cookie. The shared login component now detects missing cookie access and offers a
+      native Storage Access request inside the iframe, then restores the original app r...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/125
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 300
+    deletions: 21
+    changedFiles: 6
+    author: myriadas-clees
+    createdAt: 2026-09-18T15:54:32Z
+    updatedAt: 2026-09-18T16:18:44Z
+    closedAt: 2026-09-18T16:18:40Z
+    mergedAt: 2026-09-18T16:18:40Z
+    workCommits:
+      - &a1
+        sha: 5d745d8409c7805fb5f74e21ebfefae13336a1ba
+        message: "fix(auth): enable cookie access inside embedded apps"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/5d745d8409c7805fb5f74e21ebfefae13336a1ba
+        authoredAt: 2026-09-18T15:54:19Z
+      - &a2
+        sha: 1c51399dfefbd0515aff3e7014feba7f44b1a7e7
+        message: "fix(auth): complete iframe login only once"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/1c51399dfefbd0515aff3e7014feba7f44b1a7e7
+        authoredAt: 2026-09-18T16:07:46Z
+      - &a3
+        sha: 6bc551fe21db5873dbf9311becbdf478278ff7d7
+        message: "fix(auth): ignore storage access after login unmounts"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6bc551fe21db5873dbf9311becbdf478278ff7d7
+        authoredAt: 2026-09-18T16:15:28Z
+    workTimestamps:
+      - 2026-09-18T15:54:19Z
+      - 2026-09-18T16:07:46Z
+      - 2026-09-18T16:15:28Z
+    workAdditions: 300
+    workDeletions: 21
+    workFiles:
+      - docs/deploy-asap.md
+      - packages/auth/src/auth.test.ts
+      - packages/auth/src/client.ts
+      - packages/auth/src/iframe-login-lifecycle.test.tsx
+      - packages/auth/src/iframe-login.test.tsx
+      - packages/auth/src/iframe-login.tsx
+  - title: "fix(ofac): Compact OFAC chrome in the Invent iframe"
+    body: >-
+      - Detect when OFAC is running inside Invent/Hub and drop duplicate product chrome (logo, gold rule, dashboard
+      hero, email label) that the parent workspace already provides.
+
+      - Keep OFAC-only controls in the iframe: Dashboard / New Client / Screenings / Settings, search, account menu,
+      metrics, and wor...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/131
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 507
+    deletions: 200
+    changedFiles: 15
+    author: myriadas-clees
+    createdAt: 2026-09-18T19:50:57Z
+    updatedAt: 2026-09-18T23:48:06Z
+    closedAt: 2026-09-18T23:48:01Z
+    mergedAt: 2026-09-18T23:48:01Z
+    workCommits:
+      - &a11
+        sha: d77e373b6fa16ac8a4adde79b2fe19f9deb37222
+        message: "fix(ofac): compact OFAC chrome when embedded in Invent"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d77e373b6fa16ac8a4adde79b2fe19f9deb37222
+        authoredAt: 2026-09-18T19:50:37Z
+      - &a12
+        sha: 7dd6f51bec34e995bc6a16271adeecc4464d7421
+        message: "fix(ofac): center iframe nav and restore page gutters"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7dd6f51bec34e995bc6a16271adeecc4464d7421
+        authoredAt: 2026-09-18T20:20:27Z
+      - &a13
+        sha: bbf362ab8931d801b35899fce4d6132dd2a35832
+        message: "feat(ofac): add iframe preview page"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/bbf362ab8931d801b35899fce4d6132dd2a35832
+        authoredAt: 2026-09-18T20:24:10Z
+      - &a14
+        sha: 10f3108f8ee7c8211f232b052a3e3bb68f02504a
+        message: "fix(ofac): compact iframe chrome only for workspace parents"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/10f3108f8ee7c8211f232b052a3e3bb68f02504a
+        authoredAt: 2026-09-18T20:27:45Z
+      - &a15
+        sha: 6c1bffbbcb4b11758bc5a9627b575b29c9ae3367
+        message: "revert(ofac): compact chrome in every iframe parent"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6c1bffbbcb4b11758bc5a9627b575b29c9ae3367
+        authoredAt: 2026-09-18T20:33:22Z
+      - &a16
+        sha: ed2d9179659635775f851cb559f9db95ab1cb1e3
+        message: "docs(ofac): record that compact chrome applies in any iframe"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ed2d9179659635775f851cb559f9db95ab1cb1e3
+        authoredAt: 2026-09-18T20:35:07Z
+      - &a17
+        sha: 2282fe39ba8e6d57bcf1e37879899150b9efe55b
+        message: "docs(ofac): describe compact iframe chrome without origin lists"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2282fe39ba8e6d57bcf1e37879899150b9efe55b
+        authoredAt: 2026-09-18T20:53:05Z
+      - &a18
+        sha: 3021be84dcfc7e98cb17294ff8379695ac234953
+        message: "codex: address PR review feedback (#131)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3021be84dcfc7e98cb17294ff8379695ac234953
+        authoredAt: 2026-09-18T23:30:15Z
+    workTimestamps:
+      - 2026-09-18T19:50:37Z
+      - 2026-09-18T20:20:27Z
+      - 2026-09-18T20:24:10Z
+      - 2026-09-18T20:27:45Z
+      - 2026-09-18T20:33:22Z
+      - 2026-09-18T20:35:07Z
+      - 2026-09-18T20:53:05Z
+      - 2026-09-18T23:30:15Z
+    workAdditions: 507
+    workDeletions: 200
+    workFiles:
+      - README.md
+      - docs/deploy-asap.md
+      - ofac/.env.example
+      - ofac/public/iframe-preview.html
+      - ofac/src/app/globals.css
+      - ofac/src/app/page.tsx
+      - ofac/src/components/app-shell-brand.test.tsx
+      - ofac/src/components/ofac-app-shell.tsx
+      - ofac/src/lib/__tests__/ofac-shell-presentation.test.ts
+      - ofac/src/lib/ofac-shell-presentation.ts
+      - packages/ui/src/metric-card.tsx
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/navigation/frame.test.ts
+      - packages/ui/src/navigation/frame.ts
+      - packages/ui/src/styles.css
+      - packages/ui/src/user-menu.tsx
+prsInProgress:
+  - title: "feat: add Northstar frontend"
+    body: |-
+      - add the Northstar advisor workspace, chat, client, portfolio, compliance, marketing, and news interfaces
+      - use shared OHPWM account, brand, and theme controls with accessible light, dark, and system themes
+      - remove all fabricated workspace records and mount the static app at `/northstar/` in Azure...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels:
+      - deploy-preview
+    additions: 18617
+    deletions: 25
+    changedFiles: 85
+    author: myriadas-clees
+    createdAt: 2026-09-01T14:08:22Z
+    updatedAt: 2026-09-21T12:58:29Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a19
+        sha: dd54be7bfd4e71154b91e95c34cc6f2943881b16
+        message: "feat(northstar): add Microsoft To Do and calendar integrations"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/dd54be7bfd4e71154b91e95c34cc6f2943881b16
+        authoredAt: 2026-09-18T23:48:56Z
+    workTimestamps:
+      - 2026-09-18T23:48:56Z
+    workAdditions: 3965
+    workDeletions: 441
+    workFiles:
+      - hub/functions/src/index.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - northstar/app/globals.css
+      - northstar/app/layout.tsx
+      - northstar/components/ask-northstar-workspace.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/microsoft-app-icon.test.ts
+      - northstar/components/microsoft-app-icon.tsx
+      - northstar/components/microsoft-todo-panel.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/settings-workspace.tsx
+      - northstar/lib/background-briefs.test.ts
+      - northstar/lib/background-briefs.ts
+      - northstar/lib/external-links.test.ts
+      - northstar/lib/external-links.ts
+      - northstar/lib/graph-permissions.test.ts
+      - northstar/lib/graph-permissions.ts
+      - northstar/lib/microsoft-search.test.ts
+      - northstar/lib/microsoft-search.ts
+      - northstar/lib/outlook-calendar.test.ts
+      - northstar/lib/outlook-calendar.ts
+      - northstar/lib/settings-preferences.test.ts
+      - northstar/lib/settings-preferences.ts
+      - northstar/lib/todo-tasks.test.ts
+      - northstar/lib/todo-tasks.ts
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "fix(auth): enable cookie access inside embedded apps"
+      - "fix(auth): complete iframe login only once"
+      - "fix(auth): ignore storage access after login unmounts"
+      - "fix(auth): enable cookie access inside embedded apps (#125)"
+      - "fix(auth): keep iframe permission action available"
+      - "fix(auth): keep iframe permission action available (#126)"
+      - "feat(auth): add iframe sign-in diagnostics"
+      - "feat(auth): add iframe sign-in diagnostics (#127)"
+      - "fix(ofac): authenticate embedded sessions without SWA cookies"
+      - "fix(ofac): allow an explicitly configured iframe UI origin"
+      - "fix(ofac): preserve embedded report auth and API prefixes"
+      - "fix(ofac): authenticate embedded sessions without SWA cookies (#128)"
+      - "fix(ofac): preserve iframe credentials through the SWA proxy"
+      - "fix(ofac): preserve iframe credentials through the SWA proxy (#129)"
+      - "fix(ofac): restore the previous iframe sign-in design"
+      - "fix(ofac): restore the previous iframe sign-in design (#130)"
+      - "fix(ofac): compact OFAC chrome when embedded in Invent"
+      - "fix(ofac): center iframe nav and restore page gutters"
+      - "feat(ofac): add iframe preview page"
+      - "fix(ofac): compact iframe chrome only for workspace parents"
+      - "revert(ofac): compact chrome in every iframe parent"
+      - "docs(ofac): record that compact chrome applies in any iframe"
+      - "docs(ofac): describe compact iframe chrome without origin lists"
+      - "codex: address PR review feedback (#131)"
+      - "fix(ofac): Compact OFAC chrome in the Invent iframe (#131)"
+      - "feat(northstar): add Microsoft To Do and calendar integrations"
+    commits:
+      - *a1
+      - *a2
+      - *a3
+      - sha: 432eaee51f04ba0bfd25dae40423b280e4eedf3b
+        message: "fix(auth): enable cookie access inside embedded apps (#125)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/432eaee51f04ba0bfd25dae40423b280e4eedf3b
+        authoredAt: 2026-09-18T16:18:39Z
+        additions: 300
+        deletions: 21
+        filesChanged: 6
+      - *a4
+      - sha: f97ba82de55325f82533cf1f026e7a72ca408060
+        message: "fix(auth): keep iframe permission action available (#126)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f97ba82de55325f82533cf1f026e7a72ca408060
+        authoredAt: 2026-09-18T16:38:59Z
+        additions: 102
+        deletions: 18
+        filesChanged: 3
+      - *a5
+      - sha: 38c352b0964984cb966e534f879755d69e9cf363
+        message: "feat(auth): add iframe sign-in diagnostics (#127)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/38c352b0964984cb966e534f879755d69e9cf363
+        authoredAt: 2026-09-18T17:03:30Z
+        additions: 299
+        deletions: 14
+        filesChanged: 5
+      - *a6
+      - *a7
+      - *a8
+      - sha: b797a56cd6e964e49d9bc89c44fac3d53685b19e
+        message: "fix(ofac): authenticate embedded sessions without SWA cookies (#128)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b797a56cd6e964e49d9bc89c44fac3d53685b19e
+        authoredAt: 2026-09-18T18:05:45Z
+        additions: 1273
+        deletions: 68
+        filesChanged: 27
+      - *a9
+      - sha: 427557d6d8f0215473a1535138925738d2e8b792
+        message: "fix(ofac): preserve iframe credentials through the SWA proxy (#129)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/427557d6d8f0215473a1535138925738d2e8b792
+        authoredAt: 2026-09-18T18:29:11Z
+        additions: 48
+        deletions: 18
+        filesChanged: 5
+      - *a10
+      - sha: 03c4eb33c57b76b7d1c7c571f861baa088d2baa2
+        message: "fix(ofac): restore the previous iframe sign-in design (#130)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/03c4eb33c57b76b7d1c7c571f861baa088d2baa2
+        authoredAt: 2026-09-18T18:44:26Z
+        additions: 13
+        deletions: 5
+        filesChanged: 1
+      - *a11
+      - *a12
+      - *a13
+      - *a14
+      - *a15
+      - *a16
+      - *a17
+      - *a18
+      - sha: be7b52afbd03077668c4156987775e2dcd170caa
+        message: "fix(ofac): Compact OFAC chrome in the Invent iframe (#131)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/be7b52afbd03077668c4156987775e2dcd170caa
+        authoredAt: 2026-09-18T23:48:01Z
+        additions: 344
+        deletions: 37
+        filesChanged: 15
+      - *a19
+releases: []
+externalContributions: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 131
+    prTitle: "fix(ofac): Compact OFAC chrome in the Invent iframe"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/131
+    state: commented
+    submittedAt: 2026-09-18T20:27:50Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 131
+    prTitle: "fix(ofac): Compact OFAC chrome in the Invent iframe"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/131
+    state: commented
+    submittedAt: 2026-09-18T20:33:27Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 131
+    prTitle: "fix(ofac): Compact OFAC chrome in the Invent iframe"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/131
+    state: commented
+    submittedAt: 2026-09-18T23:30:48Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 131
+    prTitle: "fix(ofac): Compact OFAC chrome in the Invent iframe"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/131
+    state: commented
+    submittedAt: 2026-09-18T23:30:50Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 131
+    prTitle: "fix(ofac): Compact OFAC chrome in the Invent iframe"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/131
+    state: commented
+    submittedAt: 2026-09-18T23:30:51Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 131
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/131
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/131#discussion_r4050447914
+    body: >-
+      Compact chrome is no longer applied to every iframe.
+
+
+      `ofacShellPresentation` now requires the parent origin to be listed in
+      `NEXT_PUBLIC_OFAC_WORKSPACE_PARENT_ORIGINS`. Other trusted `OHPWM_IFRAME_PARENT_ORIGINS` keep the full OFAC shell,
+      including brand, dashboard heading, and CTA.
+    path: ofac/src/lib/ofac-shell-presentation.ts
+    createdAt: 2026-09-18T20:27:50Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 131
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/131
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/131#discussion_r4050486533
+    body: >-
+      Reverted the extra origin list. Compact chrome is intentional for any iframe so OFAC can be embedded in multiple
+      workspaces without registering each parent for layout.
+
+
+      Who may frame OFAC is still controlled by `OHPWM_IFRAME_PARENT_ORIGINS` / `frame-ancestors`. That list already
+      supports multiple tr...
+    path: ofac/src/lib/ofac-shell-presentation.ts
+    createdAt: 2026-09-18T20:33:27Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 131
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/131
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/131#discussion_r4051418808
+    body: "[from Codex]: Changed the preview iframe source to `./`, so the composed `/ofac/iframe-preview.html` stays within
+      the OFAC base path. Included in commit `3021be8`."
+    path: ofac/public/iframe-preview.html
+    createdAt: 2026-09-18T23:30:48Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 131
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/131
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/131#discussion_r4051418917
+    body: "[from Codex]: Restored the one-column embedded header layout at widths of 720px and below, including safe nav and
+      end-control placement. Included in commit `3021be8`."
+    path: ofac/src/app/globals.css
+    createdAt: 2026-09-18T23:30:50Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 131
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/131
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/131#discussion_r4051419003
+    body: "[from Codex]: Kept the dashboard `<h1>` in the accessibility tree using the existing screen-reader-only pattern
+      while hiding the supporting description and CTA in embedded mode. Included in commit `3021be8`."
+    path: ofac/src/app/globals.css
+    createdAt: 2026-09-18T23:30:51Z
+aiReviews:
+  codex:
+    prsReviewed: 4
+    comments: 13
+    reviews: 10
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 4
+  comments: 13
+  reviews: 10
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-09-18T15:54:19Z
+    - 2026-09-18T16:07:46Z
+    - 2026-09-18T16:15:28Z
+    - 2026-09-18T16:18:39Z
+    - 2026-09-18T16:34:32Z
+    - 2026-09-18T16:38:59Z
+    - 2026-09-18T16:57:29Z
+    - 2026-09-18T17:03:30Z
+    - 2026-09-18T17:43:12Z
+    - 2026-09-18T17:51:02Z
+    - 2026-09-18T17:59:04Z
+    - 2026-09-18T18:05:45Z
+    - 2026-09-18T18:24:14Z
+    - 2026-09-18T18:29:11Z
+    - 2026-09-18T18:39:26Z
+    - 2026-09-18T18:44:26Z
+    - 2026-09-18T19:50:37Z
+    - 2026-09-18T20:20:27Z
+    - 2026-09-18T20:24:10Z
+    - 2026-09-18T20:27:45Z
+    - 2026-09-18T20:33:22Z
+    - 2026-09-18T20:35:07Z
+    - 2026-09-18T20:53:05Z
+    - 2026-09-18T23:30:15Z
+    - 2026-09-18T23:48:01Z
+    - 2026-09-18T23:48:56Z
+    - 2026-09-18T18:39:44Z
+    - 2026-09-18T18:44:26Z
+    - 2026-09-18T18:39:26Z
+    - 2026-09-18T18:24:25Z
+    - 2026-09-18T18:29:11Z
+    - 2026-09-18T18:24:14Z
+    - 2026-09-18T16:57:34Z
+    - 2026-09-18T17:03:30Z
+    - 2026-09-18T16:57:29Z
+    - 2026-09-18T17:43:43Z
+    - 2026-09-18T18:05:45Z
+    - 2026-09-18T17:43:12Z
+    - 2026-09-18T17:51:02Z
+    - 2026-09-18T17:59:04Z
+    - 2026-09-18T16:34:38Z
+    - 2026-09-18T16:38:59Z
+    - 2026-09-18T16:34:32Z
+    - 2026-09-18T15:54:32Z
+    - 2026-09-18T16:18:40Z
+    - 2026-09-18T15:54:19Z
+    - 2026-09-18T16:07:46Z
+    - 2026-09-18T16:15:28Z
+    - 2026-09-18T19:50:57Z
+    - 2026-09-18T23:48:01Z
+    - 2026-09-18T19:50:37Z
+    - 2026-09-18T20:20:27Z
+    - 2026-09-18T20:24:10Z
+    - 2026-09-18T20:27:45Z
+    - 2026-09-18T20:33:22Z
+    - 2026-09-18T20:35:07Z
+    - 2026-09-18T20:53:05Z
+    - 2026-09-18T23:30:15Z
+    - 2026-09-18T20:27:50Z
+    - 2026-09-18T20:33:27Z
+    - 2026-09-18T23:30:48Z
+    - 2026-09-18T23:30:50Z
+    - 2026-09-18T23:30:51Z
+    - 2026-09-18T20:27:50Z
+    - 2026-09-18T20:33:27Z
+    - 2026-09-18T23:30:48Z
+    - 2026-09-18T23:30:50Z
+    - 2026-09-18T23:30:51Z
+  volume:
+    pullRequests:
+      - additions: 13
+        deletions: 5
+        state: merged
+        dailyWork: true
+        filesChanged: 1
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 48
+        deletions: 18
+        state: merged
+        dailyWork: true
+        filesChanged: 5
+        testFilesChanged: 2
+        commitCount: 1
+      - additions: 299
+        deletions: 14
+        state: merged
+        dailyWork: true
+        filesChanged: 5
+        testFilesChanged: 2
+        commitCount: 1
+      - additions: 1275
+        deletions: 70
+        state: merged
+        dailyWork: true
+        filesChanged: 27
+        testFilesChanged: 6
+        commitCount: 3
+      - additions: 102
+        deletions: 18
+        state: merged
+        dailyWork: true
+        filesChanged: 3
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 300
+        deletions: 21
+        state: merged
+        dailyWork: true
+        filesChanged: 6
+        testFilesChanged: 3
+        commitCount: 3
+      - additions: 507
+        deletions: 200
+        state: merged
+        dailyWork: true
+        filesChanged: 16
+        testFilesChanged: 3
+        commitCount: 8
+      - additions: 3965
+        deletions: 441
+        state: open
+        dailyWork: true
+        filesChanged: 26
+        testFilesChanged: 10
+        commitCount: 1
+    reviewCount: 5
+    reviewCommentCount: 5
+    commitCount: 7
+    commitAdditions: 2379
+    commitDeletions: 181
+    commitStatsCount: 7
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 69.9
+  sessions: 2
+  sessionHours: 5.5
+  volumeHours: 69.9
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""

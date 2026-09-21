@@ -1,0 +1,99 @@
+title: Sep 18
+subtitle: ofac, auth & northstar frontend
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/ohcpwm-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 7 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 26 commits with +2,544 / −346 lines.
+    chips:
+      - label: Commits
+        value: "26"
+        color: green
+      - label: Additions
+        value: +2,544
+        color: green
+      - label: Deletions
+        value: −346
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 5 reviews with 5 comments.
+    chips:
+      - label: Reviews
+        value: "5"
+      - label: Comments
+        value: "5"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 10 reviews, 13 comments, 4 PRs."
+    chips:
+      - label: Codex
+        value: 10 reviews · 13 comments · 4 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~69.9h
+highlights:
+  - type: pr
+    title: "fix(ofac): restore the previous iframe sign-in design"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +13 −5
+    body: >-
+      Restore the previous centered iframe sign-in card after the authentication fix changed its presentation. Reuse the
+      existing page layout, hint styling, full-width navy button, and Microsoft icon.
+
+
+      The 
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/130
+  - type: pr
+    title: "fix(ofac): preserve iframe credentials through the SWA proxy"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +48 −18
+    body: OFAC credential issuance succeeds after configuring the public UI origin, but the embedded `/api/ofac/me` check
+      returns 401 despite the browser sending its signed credential. Azure SWA uses `Authoriza
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/129
+  - type: pr
+    title: "feat(auth): add iframe sign-in diagnostics"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +299 −14
+    body: The Invent iframe can keep waiting after Microsoft sign-in, but the current session probe reduces HTTP failures,
+      anonymous sessions, missing roles, and timeouts to the same boolean. Add local browser-
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/127
+  - type: pr
+    title: "fix(ofac): authenticate embedded sessions without SWA cookies"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +1275 −70
+    body: "Azure SWA's `SameSite=Strict` authentication cookie is excluded inside Invent, so completing Microsoft sign-in
+      never authorizes the OFAC iframe. Keep the OFAC shell public and gate its children until "
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/128
+  - type: pr
+    title: "fix(auth): keep iframe permission action available"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +102 −18
+    body: An Invent iframe could remain unauthenticated after Microsoft sign-in while hiding the native session-access
+      action. The component treated `hasStorageAccess()` as proof that the Azure session was usab
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/126
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(ofac): restore the previous iframe sign-in design" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(ofac): preserve iframe credentials through the SWA proxy" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(auth): add iframe sign-in diagnostics" in Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(ofac): authenticate embedded sessions without SWA cookies" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(auth): keep iframe permission action available" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'
