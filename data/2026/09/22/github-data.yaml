@@ -1,0 +1,241 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-09-22
+  to: 2026-09-22
+stats:
+  totalCommits: 4
+  totalAdditions: 0
+  totalDeletions: 0
+  prsOpened: 0
+  prsMerged: 0
+  prsInProgress: 2
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 20.6
+dailyCommits:
+  - date: 2026-09-22
+    count: 4
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 3
+    prsOpened: 0
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 1
+    prsOpened: 0
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests: []
+prsInProgress:
+  - title: "feat(transition): add workbook imports and shared tenant workflows"
+    body: Add a Transition workspace for household and account operations, with Hub navigation, protected APIs, and Azure PR
+      preview integration. Initialize applicable requirements from the supplied Business Mix account and positions
+      workbooks and track progress through paperwork, custodian processing, and cl...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - documentation
+      - github-automation
+      - "app: hub"
+      - platform
+      - deploy-preview
+    additions: 3219
+    deletions: 34
+    changedFiles: 85
+    author: myriadas-clees
+    createdAt: 2026-09-16T18:54:28Z
+    updatedAt: 2026-09-22T15:14:44Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a1
+        sha: 017f43e764c940fd8857bbdda85d579ea0c42005
+        message: "feat(transition): import business mix and share tenant workflows"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/017f43e764c940fd8857bbdda85d579ea0c42005
+        authoredAt: 2026-09-22T14:53:16Z
+      - &a2
+        sha: 511d060e13286cdae3854b40516e6ce20946ee59
+        message: "fix(transition): use configured tenant with SWA authentication"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/511d060e13286cdae3854b40516e6ce20946ee59
+        authoredAt: 2026-09-22T15:02:37Z
+      - &a3
+        sha: e4f35ca340de84da5b9890816504c1d7804ac332
+        message: "fix(transition): retain malformed source rows and funded status"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e4f35ca340de84da5b9890816504c1d7804ac332
+        authoredAt: 2026-09-22T15:08:08Z
+    workTimestamps:
+      - 2026-09-22T14:53:16Z
+      - 2026-09-22T15:02:37Z
+      - 2026-09-22T15:08:08Z
+    workAdditions: 1152
+    workDeletions: 185
+    workFiles:
+      - PLAN.md
+      - bun.lock
+      - docs/transition/PLAN.md
+      - docs/transition/contracts.md
+      - scripts/tooling.test.ts
+      - transition/.env.example
+      - transition/README.md
+      - transition/functions/package.json
+      - transition/functions/src/index.ts
+      - transition/next.config.ts
+      - transition/package.json
+      - transition/scripts/import-workbooks.ts
+      - transition/src/app/api/[...path]/route.ts
+      - transition/src/components/transition-shell.tsx
+      - transition/src/components/transition-workspace.tsx
+      - transition/src/lib/api/azure-functions-adapter.ts
+      - transition/src/lib/api/client.ts
+      - transition/src/lib/auth.test.ts
+      - transition/src/lib/auth.ts
+      - transition/src/lib/catalog.ts
+      - transition/src/lib/cosmos-repository.test.ts
+      - transition/src/lib/cosmos-repository.ts
+      - transition/src/lib/data.ts
+      - transition/src/lib/handlers.ts
+      - transition/src/lib/import-cli.ts
+      - transition/src/lib/model.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
+      - transition/src/lib/rules.test.ts
+      - transition/src/lib/rules.ts
+      - transition/src/lib/seed.ts
+      - transition/src/lib/snapshot.ts
+      - transition/src/lib/source-repository.ts
+      - transition/src/lib/workbook.test.ts
+      - transition/src/lib/workbook.ts
+  - title: "feat: add Northstar frontend"
+    body: |-
+      - add the Northstar advisor workspace, chat, client, portfolio, compliance, marketing, and news interfaces
+      - use shared OHPWM account, brand, and theme controls with accessible light, dark, and system themes
+      - remove all fabricated workspace records and mount the static app at `/northstar/` in Azure...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels:
+      - deploy-preview
+    additions: 19601
+    deletions: 25
+    changedFiles: 87
+    author: myriadas-clees
+    createdAt: 2026-09-01T14:08:22Z
+    updatedAt: 2026-09-22T16:42:16Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a4
+        sha: cb323df10d8f42488528fb4d1a994ba2510be041
+        message: "feat(northstar): handle Microsoft reauth and token failures"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cb323df10d8f42488528fb4d1a994ba2510be041
+        authoredAt: 2026-09-22T16:36:02Z
+    workTimestamps:
+      - 2026-09-22T16:36:02Z
+    workAdditions: 1003
+    workDeletions: 165
+    workFiles:
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - northstar/app/globals.css
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/lib/ask-stream.test.ts
+      - northstar/lib/ask-stream.ts
+      - northstar/lib/microsoft-reauth.test.ts
+      - northstar/lib/microsoft-reauth.ts
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "feat(transition): import business mix and share tenant workflows"
+      - "fix(transition): use configured tenant with SWA authentication"
+      - "fix(transition): retain malformed source rows and funded status"
+    commits:
+      - *a1
+      - *a2
+      - *a3
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "feat(northstar): handle Microsoft reauth and token failures"
+    commits:
+      - *a4
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 2
+    comments: 6
+    reviews: 3
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 2
+  comments: 6
+  reviews: 3
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-09-22T14:53:16Z
+    - 2026-09-22T15:02:37Z
+    - 2026-09-22T15:08:08Z
+    - 2026-09-22T16:36:02Z
+  volume:
+    pullRequests:
+      - additions: 1152
+        deletions: 185
+        state: open
+        dailyWork: true
+        filesChanged: 35
+        testFilesChanged: 6
+        commitCount: 3
+      - additions: 1003
+        deletions: 165
+        state: open
+        dailyWork: true
+        filesChanged: 9
+        testFilesChanged: 3
+        commitCount: 1
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 0
+    commitAdditions: 0
+    commitDeletions: 0
+    commitStatsCount: 0
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 20.6
+  sessions: 1
+  sessionHours: 1.7
+  volumeHours: 20.6
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
