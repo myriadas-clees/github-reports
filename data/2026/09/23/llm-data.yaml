@@ -1,0 +1,96 @@
+title: Sep 23
+subtitle: agents, auth & hub
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/ohcpwm-apps and Myriad-Advisor-Solutions/myriadas-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 3 PRs
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 1 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 16 commits with +546 / −161 lines.
+    chips:
+      - label: Commits
+        value: "16"
+        color: green
+      - label: Additions
+        value: "+546"
+        color: green
+      - label: Deletions
+        value: −161
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 2 reviews with 2 comments.
+    chips:
+      - label: Reviews
+        value: "2"
+      - label: Comments
+        value: "2"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 4 reviews, 7 comments, 3 PRs."
+    chips:
+      - label: Codex
+        value: 4 reviews · 7 comments · 3 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~50.3h
+highlights:
+  - type: pr
+    title: "chore(agents): update all sub-agents"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +112 −50
+    body: |-
+      ## Problem
+      Subdirectories need direct access to the repository's configured sub-agent roles.
+
+      ## Change
+      Set `default`, `explorer`, and `worker` to `gpt-6-luna` with high reasoning. Link the root `.cod
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/137
+  - type: pr
+    title: "chore(agents): update all sub-agents"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +93 −47
+    body: >-
+      ## Change
+
+      Set the default, explorer, and worker sub-agent profiles to `gpt-6-luna` with `high` reasoning effort. Symlink the
+      shared `.codex` directory into each first-level project directory so those 
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/123
+  - type: pr
+    title: "fix(auth): refresh stale SWA sessions"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +180 −24
+    body: |
+      - Centralize SWA client-session classification and stale-session redirects.
+      - Refresh Hub authentication on focus and visibility changes.
+      - Preserve deep return URLs and avoid redirects from iframes.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/136
+  - type: pr
+    title: "feat: add Northstar frontend"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +20458 −27
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121
+  - type: pr
+    title: "feat(transition): add workbook imports and shared tenant workflows"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +4163 −34
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "chore(agents): update all sub-agents" in Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "chore(agents): update all sub-agents" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(auth): refresh stale SWA sessions" in Myriad-Advisor-Solutions/ohcpwm-apps'
