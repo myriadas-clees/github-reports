@@ -1,0 +1,1403 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-09-24
+  to: 2026-09-24
+stats:
+  totalCommits: 43
+  totalAdditions: 2539
+  totalDeletions: 481
+  prsOpened: 3
+  prsMerged: 4
+  prsInProgress: 1
+  prsReviewed: 35
+  reviewComments: 35
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 92.3
+dailyCommits:
+  - date: 2026-09-24
+    count: 43
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 26
+    prsOpened: 1
+    prsMerged: 2
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 17
+    prsOpened: 2
+    prsMerged: 2
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests:
+  - title: "feat(northstar): add PDF export, @ commands, and advisor context"
+    body: >-
+      - Ask can download the open conversation or a single response as a PDF.
+
+      - `@email`, `@calendar`, `@todo`, and `@meeting` expand into task prompts and render fenced deliverables as cards.
+
+      - Settings stores Northstar, morning, end-of-day, and weekly brief instructions on this device. Copilot also
+      rece...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/138
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a1
+      - deploy-preview
+    additions: 554
+    deletions: 15
+    changedFiles: 17
+    author: myriadas-clees
+    createdAt: 2026-09-24T14:56:20Z
+    updatedAt: 2026-09-24T15:39:09Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a2
+      - &a17
+        sha: 27edd1779bb7e2c0a7378ca9f7f58139ac04683f
+        message: "feat(northstar): add PDF export, @ commands, and advisor context"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/27edd1779bb7e2c0a7378ca9f7f58139ac04683f
+        authoredAt: 2026-09-24T14:56:05Z
+    workTimestamps: &a3
+      - 2026-09-24T14:56:05Z
+    workAdditions: 554
+    workDeletions: 15
+    workFiles: &a4
+      - hub/functions/src/northstar-microsoft.ts
+      - northstar/app/globals.css
+      - northstar/components/answer-markdown.test.tsx
+      - northstar/components/answer-markdown.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/settings-workspace.tsx
+      - northstar/lib/at-commands.test.ts
+      - northstar/lib/at-commands.ts
+      - northstar/lib/background-briefs.test.ts
+      - northstar/lib/background-briefs.ts
+      - northstar/lib/chat-pdf.test.ts
+      - northstar/lib/chat-pdf.ts
+      - northstar/lib/northstar-context.test.ts
+      - northstar/lib/northstar-context.ts
+      - northstar/lib/settings-preferences.test.ts
+      - northstar/lib/settings-preferences.ts
+  - title: "fix(northstar): recovery from Entra client mismatch"
+    body: >-
+      ## Problem
+
+      Northstar treats an Entra `unauthorized_client` / `AADSTS7000110` refresh-token failure as a generic token
+      exchange error. The user cannot use the existing Microsoft reconnect and saved-question recovery path.
+
+
+      ## Cause and fix
+
+      Microsoft reports `AADSTS7000110` when the refresh token belo...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/139
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 46
+    deletions: 24
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-09-24T15:18:09Z
+    updatedAt: 2026-09-24T15:33:15Z
+    closedAt: 2026-09-24T15:33:12Z
+    mergedAt: 2026-09-24T15:33:12Z
+    workCommits:
+      - &a18
+        sha: 782a0473a8e8a7cabf0ad647d1c5831b7a028285
+        message: "fix: reconnect Northstar after Entra client mismatch"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/782a0473a8e8a7cabf0ad647d1c5831b7a028285
+        authoredAt: 2026-09-24T15:17:30Z
+      - &a19
+        sha: 4dd9d878da6594ae70b9d4b8409b4264c2f205b4
+        message: "fix: retry newer token after Entra client mismatch"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4dd9d878da6594ae70b9d4b8409b4264c2f205b4
+        authoredAt: 2026-09-24T15:26:16Z
+    workTimestamps:
+      - 2026-09-24T15:17:30Z
+      - 2026-09-24T15:26:16Z
+    workAdditions: 46
+    workDeletions: 24
+    workFiles:
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+  - title: Enforce product-scoped app access
+    body: |-
+      ## Why
+
+      Users with a product role need access to their assigned app without gaining access to other products.
+
+      ## What changed
+
+      - Added product-role access rules for Hub launcher visibility, product pages, and API routes.
+      - Kept suite roles able to access all products and added `transition_user` sup...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - github-automation
+      - "app: hub"
+      - "app: onboarding"
+      - "app: pto-tracker"
+      - platform
+      - infrastructure
+      - deploy-preview
+      - "app: transition"
+    additions: 831
+    deletions: 286
+    changedFiles: 44
+    author: myriadas-clees
+    createdAt: 2026-09-24T16:55:12Z
+    updatedAt: 2026-09-25T03:00:15Z
+    closedAt: 2026-09-25T02:59:30Z
+    mergedAt: 2026-09-25T02:59:30Z
+    workCommits:
+      - &a25
+        sha: 04dd617da57f61bbef2500937bc23e1a4d83280e
+        message: "feat(auth): enforce product-scoped app access"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/04dd617da57f61bbef2500937bc23e1a4d83280e
+        authoredAt: 2026-09-24T16:54:59Z
+      - &a26
+        sha: feb886304bd6d1900c09d89e79a86e6c43d5da89
+        message: "feat(transition): add manual household and account management"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/feb886304bd6d1900c09d89e79a86e6c43d5da89
+        authoredAt: 2026-09-25T00:23:49Z
+      - &a27
+        sha: 893c173c23e004ea05cd787f306e9d7134b2bb84
+        message: "codex: address PR review feedback (#126)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/893c173c23e004ea05cd787f306e9d7134b2bb84
+        authoredAt: 2026-09-25T00:38:48Z
+      - &a28
+        sha: 63d989fcfc086dea92d7140bfaaca9d43f969fee
+        message: "codex: address PR review feedback (#126)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/63d989fcfc086dea92d7140bfaaca9d43f969fee
+        authoredAt: 2026-09-25T00:45:33Z
+      - &a29
+        sha: 9fde0d4d3c386387aab8a6093c4fa6ee4b6496f0
+        message: "codex: address PR review feedback (#126)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9fde0d4d3c386387aab8a6093c4fa6ee4b6496f0
+        authoredAt: 2026-09-25T00:54:04Z
+      - &a30
+        sha: dfa23887c80f0dd4af9e7caa1a88ed39fa6cb326
+        message: "codex: address PR review feedback (#126)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/dfa23887c80f0dd4af9e7caa1a88ed39fa6cb326
+        authoredAt: 2026-09-25T01:05:14Z
+      - &a31
+        sha: 6273cd07efe07ea1751fb8af8b27443a29018585
+        message: "codex: address PR review feedback (#126)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6273cd07efe07ea1751fb8af8b27443a29018585
+        authoredAt: 2026-09-25T01:10:56Z
+      - &a32
+        sha: 2b55245639db4583d7a64fa0afb48fb5cd6816b4
+        message: "codex: address PR review feedback (#126)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2b55245639db4583d7a64fa0afb48fb5cd6816b4
+        authoredAt: 2026-09-25T01:17:02Z
+      - &a33
+        sha: 7961ad6bc1dfdd894b847f46b2b001b396125032
+        message: "codex: address PR review feedback (#126)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7961ad6bc1dfdd894b847f46b2b001b396125032
+        authoredAt: 2026-09-25T01:24:18Z
+      - &a34
+        sha: 3b55193584c4a68f8bc702e782be028b81ce737b
+        message: "codex: address PR review feedback (#126)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3b55193584c4a68f8bc702e782be028b81ce737b
+        authoredAt: 2026-09-25T01:32:38Z
+      - &a35
+        sha: b4028ec2771028f5c69b85c18c0b1bc185a2a6d9
+        message: "codex: address PR review feedback (#126)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b4028ec2771028f5c69b85c18c0b1bc185a2a6d9
+        authoredAt: 2026-09-25T01:40:06Z
+      - &a36
+        sha: 0b9c7ba06b46f993eb7ac21f3da9abde75def915
+        message: "codex: address PR review feedback (#126)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0b9c7ba06b46f993eb7ac21f3da9abde75def915
+        authoredAt: 2026-09-25T01:46:17Z
+      - &a37
+        sha: a9e1693d8eaeef7b1edec760258b38e45740a8a6
+        message: "codex: fix Transition inventory CI failure (#126)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a9e1693d8eaeef7b1edec760258b38e45740a8a6
+        authoredAt: 2026-09-25T01:51:52Z
+      - &a38
+        sha: f3b25615674c70ed9e981b4bb40c20d609a0ec4a
+        message: "codex: address PR review feedback (#126)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f3b25615674c70ed9e981b4bb40c20d609a0ec4a
+        authoredAt: 2026-09-25T01:59:25Z
+      - &a39
+        sha: 16ec3dfe8cc89a6b9ecccd515913fdf637b5cddc
+        message: "codex: address PR review feedback (#126)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/16ec3dfe8cc89a6b9ecccd515913fdf637b5cddc
+        authoredAt: 2026-09-25T02:08:21Z
+      - &a40
+        sha: 331526abf4d89d9bf22523d65493b7c77edb06ea
+        message: "codex: address PR review feedback (#126)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/331526abf4d89d9bf22523d65493b7c77edb06ea
+        authoredAt: 2026-09-25T02:15:39Z
+      - &a41
+        sha: 72c80654360792d8b11ff9cb8c34fac272c0356e
+        message: "codex: address PR review feedback (#126)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/72c80654360792d8b11ff9cb8c34fac272c0356e
+        authoredAt: 2026-09-25T02:23:04Z
+      - &a42
+        sha: 11837ffec8b6614e3a7f1c68695b54a7224d4428
+        message: "codex: address PTO PR review feedback (#126)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/11837ffec8b6614e3a7f1c68695b54a7224d4428
+        authoredAt: 2026-09-25T02:34:20Z
+      - &a43
+        sha: 3451f679721667c5f476ee6380b776c43e8d0a23
+        message: "codex: address Hub PTO role review feedback (#126)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3451f679721667c5f476ee6380b776c43e8d0a23
+        authoredAt: 2026-09-25T02:40:14Z
+    workTimestamps:
+      - 2026-09-24T16:54:59Z
+      - 2026-09-25T00:23:49Z
+      - 2026-09-25T00:38:48Z
+      - 2026-09-25T00:45:33Z
+      - 2026-09-25T00:54:04Z
+      - 2026-09-25T01:05:14Z
+      - 2026-09-25T01:10:56Z
+      - 2026-09-25T01:17:02Z
+      - 2026-09-25T01:24:18Z
+      - 2026-09-25T01:32:38Z
+      - 2026-09-25T01:40:06Z
+      - 2026-09-25T01:46:17Z
+      - 2026-09-25T01:51:52Z
+      - 2026-09-25T01:59:25Z
+      - 2026-09-25T02:08:21Z
+      - 2026-09-25T02:15:39Z
+      - 2026-09-25T02:23:04Z
+      - 2026-09-25T02:34:20Z
+      - 2026-09-25T02:40:14Z
+    workAdditions: 831
+    workDeletions: 286
+    workFiles:
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/authorization-roles.md
+      - docs/transition/contracts.md
+      - hub/README.md
+      - hub/components/HubLauncher.tsx
+      - hub/lib/apps.test.ts
+      - hub/lib/apps.ts
+      - hub/lib/auth.test.ts
+      - hub/lib/auth.ts
+      - hub/staticwebapp.config.json
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - package.json
+      - pto-tracker/staticwebapp.config.json
+      - scripts/tooling.test.ts
+      - transition/.env.example
+      - transition/README.md
+      - transition/functions/src/index.ts
+      - transition/package.json
+      - transition/scripts/seed.ts
+      - transition/src/app/api/[...path]/route.test.ts
+      - transition/src/app/api/[...path]/route.ts
+      - transition/src/components/transition-shell.tsx
+      - transition/src/components/transition-workspace.tsx
+      - transition/src/lib/api/azure-functions-adapter.test.ts
+      - transition/src/lib/api/azure-functions-adapter.ts
+      - transition/src/lib/api/client.ts
+      - transition/src/lib/auth.test.ts
+      - transition/src/lib/auth.ts
+      - transition/src/lib/cosmos-repository.test.ts
+      - transition/src/lib/cosmos-repository.ts
+      - transition/src/lib/data.test.ts
+      - transition/src/lib/data.ts
+      - transition/src/lib/handlers.ts
+      - transition/src/lib/model.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
+      - transition/src/lib/seed.ts
+      - transition/src/lib/source-repository.ts
+      - transition/staticwebapp.config.json
+      - twenty
+  - title: "feat(transition): add workbook imports and shared tenant workflows"
+    body: Add a Transition workspace for household and account operations, with Hub navigation, protected APIs, and Azure PR
+      preview integration. Initialize applicable requirements from the supplied Business Mix account and positions
+      workbooks and track progress through paperwork, custodian processing, and cl...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - github-automation
+      - "app: hub"
+      - platform
+      - deploy-preview
+    additions: 67
+    deletions: 17
+    changedFiles: 89
+    author: myriadas-clees
+    createdAt: 2026-09-16T18:54:28Z
+    updatedAt: 2026-09-24T14:59:49Z
+    closedAt: 2026-09-24T14:59:04Z
+    mergedAt: 2026-09-24T14:59:04Z
+    workCommits:
+      - &a20
+        sha: 5dda8f2b7268137eeb617d23e15820696a6973d0
+        message: "codex: address PR review feedback (#122)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5dda8f2b7268137eeb617d23e15820696a6973d0
+        authoredAt: 2026-09-24T13:55:05Z
+      - &a21
+        sha: 0968b48e4edefc57f7a9dbe9063334d101d046ee
+        message: "codex: address PR review feedback (#122)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0968b48e4edefc57f7a9dbe9063334d101d046ee
+        authoredAt: 2026-09-24T14:03:55Z
+      - &a22
+        sha: d23529878bb882d02789d8789462156b6c85a12b
+        message: "codex: address PR review feedback (#122)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d23529878bb882d02789d8789462156b6c85a12b
+        authoredAt: 2026-09-24T14:09:39Z
+      - &a23
+        sha: ea9fc3818073e04d6e81d2d8649a21f1b3597b49
+        message: "fix(transition): report unmatched households and protect imports"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ea9fc3818073e04d6e81d2d8649a21f1b3597b49
+        authoredAt: 2026-09-24T14:45:27Z
+      - &a24
+        sha: ac8d709b5b3cd5bb6d93e0c9850f4f3a28dc49a7
+        message: "fix(transition): flag invalid household details"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ac8d709b5b3cd5bb6d93e0c9850f4f3a28dc49a7
+        authoredAt: 2026-09-24T14:51:50Z
+    workTimestamps:
+      - 2026-09-24T13:55:05Z
+      - 2026-09-24T14:03:55Z
+      - 2026-09-24T14:09:39Z
+      - 2026-09-24T14:45:27Z
+      - 2026-09-24T14:51:50Z
+    workAdditions: 67
+    workDeletions: 17
+    workFiles:
+      - transition/src/lib/catalog.ts
+      - transition/src/lib/seed.ts
+      - transition/src/lib/workbook.test.ts
+      - transition/src/lib/workbook.ts
+  - title: "feat: add Northstar frontend"
+    body: |-
+      - add the Northstar advisor workspace, chat, client, portfolio, compliance, marketing, and news interfaces
+      - use shared OHPWM account, brand, and theme controls with accessible light, dark, and system themes
+      - remove all fabricated workspace records and mount the static app at `/northstar/` in Azure...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels:
+      - deploy-preview
+    additions: 1041
+    deletions: 139
+    changedFiles: 88
+    author: myriadas-clees
+    createdAt: 2026-09-01T14:08:22Z
+    updatedAt: 2026-09-24T14:11:58Z
+    closedAt: 2026-09-24T14:11:51Z
+    mergedAt: 2026-09-24T14:11:51Z
+    workCommits:
+      - &a5
+        sha: 09ff948c463e51f54fe061bc8a4ff1285264968f
+        message: "fix(northstar): preserve chats and scope Copilot mappings"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/09ff948c463e51f54fe061bc8a4ff1285264968f
+        authoredAt: 2026-09-24T12:20:31Z
+      - &a6
+        sha: e2a2bf8d53ddb56049c37f584d9c6a0086ad3a08
+        message: "codex: address PR review feedback (#121)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e2a2bf8d53ddb56049c37f584d9c6a0086ad3a08
+        authoredAt: 2026-09-24T12:26:34Z
+      - &a7
+        sha: d6dd928a5aa2703c632093f02540fe2f9a65e0db
+        message: "codex: address PR review feedback (#121)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d6dd928a5aa2703c632093f02540fe2f9a65e0db
+        authoredAt: 2026-09-24T12:30:49Z
+      - &a8
+        sha: d1196e61084e678ccca7d084908bd09d4736185a
+        message: "codex: address PR review feedback (#121)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d1196e61084e678ccca7d084908bd09d4736185a
+        authoredAt: 2026-09-24T12:35:07Z
+      - &a9
+        sha: e0cf63aa84ed006a1c654219e0a6b27ffbf50ea4
+        message: "codex: fix CI failure on PR #121"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e0cf63aa84ed006a1c654219e0a6b27ffbf50ea4
+        authoredAt: 2026-09-24T12:38:44Z
+      - &a10
+        sha: ee50a14c107fedefd60282c97f2d893eafbae9f2
+        message: "codex: address PR review feedback (#121)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ee50a14c107fedefd60282c97f2d893eafbae9f2
+        authoredAt: 2026-09-24T12:45:27Z
+      - &a11
+        sha: 270b380f80e88b9d3930d4d25caf4e81dcdbdc5d
+        message: "codex: address PR review feedback (#121)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/270b380f80e88b9d3930d4d25caf4e81dcdbdc5d
+        authoredAt: 2026-09-24T12:54:25Z
+      - &a12
+        sha: cf4fe0786ac8ec4b75a09f047200200ab6024296
+        message: "codex: address PR review feedback (#121)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cf4fe0786ac8ec4b75a09f047200200ab6024296
+        authoredAt: 2026-09-24T13:10:25Z
+      - &a13
+        sha: a50b62bb3536401c80bc48c54ecbbb526bed453e
+        message: "codex: address PR review feedback (#121)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a50b62bb3536401c80bc48c54ecbbb526bed453e
+        authoredAt: 2026-09-24T13:26:55Z
+      - &a14
+        sha: ad8a381daaacff34c5caf7e97202f5ab949f6dba
+        message: "codex: address PR review feedback (#121)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ad8a381daaacff34c5caf7e97202f5ab949f6dba
+        authoredAt: 2026-09-24T13:35:26Z
+      - &a15
+        sha: a4a1a94eac32d98d4ca779cd613d505e941fcb99
+        message: "codex: address PR review feedback (#121)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a4a1a94eac32d98d4ca779cd613d505e941fcb99
+        authoredAt: 2026-09-24T13:44:22Z
+      - &a16
+        sha: 2d4f67d87e7e82e289165ce9e0b8cc136284fcd7
+        message: "codex: address PR review feedback (#121)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2d4f67d87e7e82e289165ce9e0b8cc136284fcd7
+        authoredAt: 2026-09-24T13:58:09Z
+    workTimestamps:
+      - 2026-09-24T12:20:31Z
+      - 2026-09-24T12:26:34Z
+      - 2026-09-24T12:30:49Z
+      - 2026-09-24T12:35:07Z
+      - 2026-09-24T12:38:44Z
+      - 2026-09-24T12:45:27Z
+      - 2026-09-24T12:54:25Z
+      - 2026-09-24T13:10:25Z
+      - 2026-09-24T13:26:55Z
+      - 2026-09-24T13:35:26Z
+      - 2026-09-24T13:44:22Z
+      - 2026-09-24T13:58:09Z
+    workAdditions: 1041
+    workDeletions: 139
+    workFiles:
+      - README.md
+      - hub/functions/src/northstar-chat-history.test.ts
+      - hub/functions/src/northstar-chat-history.ts
+      - hub/functions/src/northstar-conversations.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-local-store.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - northstar/components/ask-northstar-workspace.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/lib/chat-history.test.ts
+      - northstar/lib/chat-history.ts
+      - scripts/dev-northstar.ts
+prsInProgress:
+  - title: "feat(northstar): add PDF export, @ commands, and advisor context"
+    body: >-
+      - Ask can download the open conversation or a single response as a PDF.
+
+      - `@email`, `@calendar`, `@todo`, and `@meeting` expand into task prompts and render fenced deliverables as cards.
+
+      - Settings stores Northstar, morning, end-of-day, and weekly brief instructions on this device. Copilot also
+      rece...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/138
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: *a1
+    additions: 554
+    deletions: 15
+    changedFiles: 17
+    author: myriadas-clees
+    createdAt: 2026-09-24T14:56:20Z
+    updatedAt: 2026-09-24T15:39:09Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 554
+    workDeletions: 15
+    workFiles: *a4
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "fix(northstar): preserve chats and scope Copilot mappings"
+      - "codex: address PR review feedback (#121)"
+      - "codex: address PR review feedback (#121)"
+      - "codex: address PR review feedback (#121)"
+      - "codex: fix CI failure on PR #121"
+      - "codex: address PR review feedback (#121)"
+      - "codex: address PR review feedback (#121)"
+      - "codex: address PR review feedback (#121)"
+      - "codex: address PR review feedback (#121)"
+      - "codex: address PR review feedback (#121)"
+      - "codex: address PR review feedback (#121)"
+      - "codex: address PR review feedback (#121)"
+      - "feat: add Northstar frontend (#121)"
+      - "feat(northstar): add PDF export, @ commands, and advisor context"
+      - "fix: reconnect Northstar after Entra client mismatch"
+      - "fix: retry newer token after Entra client mismatch"
+      - "fix(northstar): recovery from Entra client mismatch (#139)"
+    commits:
+      - *a5
+      - *a6
+      - *a7
+      - *a8
+      - *a9
+      - *a10
+      - *a11
+      - *a12
+      - *a13
+      - *a14
+      - *a15
+      - *a16
+      - sha: ad105aaa4d0e437f67b2fb069ab0f45df9cbaccf
+        message: "feat: add Northstar frontend (#121)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ad105aaa4d0e437f67b2fb069ab0f45df9cbaccf
+        authoredAt: 2026-09-24T14:11:50Z
+        additions: 21360
+        deletions: 27
+        filesChanged: 88
+      - *a17
+      - *a18
+      - *a19
+      - sha: b27cf89d59f464b1998d94789a2acf5230997b70
+        message: "fix(northstar): recovery from Entra client mismatch (#139)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b27cf89d59f464b1998d94789a2acf5230997b70
+        authoredAt: 2026-09-24T15:33:11Z
+        additions: 46
+        deletions: 24
+        filesChanged: 2
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "codex: address PR review feedback (#122)"
+      - "codex: address PR review feedback (#122)"
+      - "codex: address PR review feedback (#122)"
+      - "fix(transition): report unmatched households and protect imports"
+      - "fix(transition): flag invalid household details"
+      - "feat(transition): add workbook imports and shared tenant workflows (#122)"
+      - "feat(auth): enforce product-scoped app access"
+      - "feat(transition): add manual household and account management"
+      - "codex: address PR review feedback (#126)"
+      - "codex: address PR review feedback (#126)"
+      - "codex: address PR review feedback (#126)"
+      - "codex: address PR review feedback (#126)"
+      - "codex: address PR review feedback (#126)"
+      - "codex: address PR review feedback (#126)"
+      - "codex: address PR review feedback (#126)"
+      - "codex: address PR review feedback (#126)"
+      - "codex: address PR review feedback (#126)"
+      - "codex: address PR review feedback (#126)"
+      - "codex: fix Transition inventory CI failure (#126)"
+      - "codex: address PR review feedback (#126)"
+      - "codex: address PR review feedback (#126)"
+      - "codex: address PR review feedback (#126)"
+      - "codex: address PR review feedback (#126)"
+      - "codex: address PTO PR review feedback (#126)"
+      - "codex: address Hub PTO role review feedback (#126)"
+      - Enforce product-scoped app access (#126)
+    commits:
+      - *a20
+      - *a21
+      - *a22
+      - *a23
+      - *a24
+      - sha: cda0dc1808407b87afa8dd947cc786745db76a3d
+        message: "feat(transition): add workbook imports and shared tenant workflows (#122)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/cda0dc1808407b87afa8dd947cc786745db76a3d
+        authoredAt: 2026-09-24T14:59:03Z
+        additions: 4213
+        deletions: 34
+        filesChanged: 89
+      - *a25
+      - *a26
+      - *a27
+      - *a28
+      - *a29
+      - *a30
+      - *a31
+      - *a32
+      - *a33
+      - *a34
+      - *a35
+      - *a36
+      - *a37
+      - *a38
+      - *a39
+      - *a40
+      - *a41
+      - *a42
+      - *a43
+      - sha: 9ec60b3b0d1a62b9845b2333122db37e8ed45c22
+        message: Enforce product-scoped app access (#126)
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9ec60b3b0d1a62b9845b2333122db37e8ed45c22
+        authoredAt: 2026-09-25T02:59:30Z
+        additions: 758
+        deletions: 213
+        filesChanged: 44
+releases: []
+externalContributions: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prTitle: Enforce product-scoped app access
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    state: commented
+    submittedAt: 2026-09-25T00:39:30Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prTitle: Enforce product-scoped app access
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    state: commented
+    submittedAt: 2026-09-25T00:39:45Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prTitle: Enforce product-scoped app access
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    state: commented
+    submittedAt: 2026-09-25T00:46:10Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prTitle: Enforce product-scoped app access
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    state: commented
+    submittedAt: 2026-09-25T00:46:26Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prTitle: Enforce product-scoped app access
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    state: commented
+    submittedAt: 2026-09-25T00:54:25Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prTitle: Enforce product-scoped app access
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    state: commented
+    submittedAt: 2026-09-25T00:54:31Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prTitle: Enforce product-scoped app access
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    state: commented
+    submittedAt: 2026-09-25T01:05:45Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prTitle: Enforce product-scoped app access
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    state: commented
+    submittedAt: 2026-09-25T01:05:54Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prTitle: Enforce product-scoped app access
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    state: commented
+    submittedAt: 2026-09-25T01:06:01Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prTitle: Enforce product-scoped app access
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    state: commented
+    submittedAt: 2026-09-25T01:11:14Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prTitle: Enforce product-scoped app access
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    state: commented
+    submittedAt: 2026-09-25T01:17:20Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prTitle: Enforce product-scoped app access
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    state: commented
+    submittedAt: 2026-09-25T01:24:38Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prTitle: Enforce product-scoped app access
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    state: commented
+    submittedAt: 2026-09-25T01:24:48Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prTitle: Enforce product-scoped app access
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    state: commented
+    submittedAt: 2026-09-25T01:32:57Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prTitle: Enforce product-scoped app access
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    state: commented
+    submittedAt: 2026-09-25T01:33:04Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prTitle: Enforce product-scoped app access
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    state: commented
+    submittedAt: 2026-09-25T01:40:25Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prTitle: Enforce product-scoped app access
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    state: commented
+    submittedAt: 2026-09-25T01:40:34Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prTitle: Enforce product-scoped app access
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    state: commented
+    submittedAt: 2026-09-25T01:46:37Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prTitle: Enforce product-scoped app access
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    state: commented
+    submittedAt: 2026-09-25T01:46:47Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prTitle: Enforce product-scoped app access
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    state: commented
+    submittedAt: 2026-09-25T01:59:51Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prTitle: Enforce product-scoped app access
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    state: commented
+    submittedAt: 2026-09-25T02:00:01Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prTitle: Enforce product-scoped app access
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    state: commented
+    submittedAt: 2026-09-25T02:00:09Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prTitle: Enforce product-scoped app access
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    state: commented
+    submittedAt: 2026-09-25T02:08:40Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prTitle: Enforce product-scoped app access
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    state: commented
+    submittedAt: 2026-09-25T02:15:58Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prTitle: Enforce product-scoped app access
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    state: commented
+    submittedAt: 2026-09-25T02:23:26Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prTitle: Enforce product-scoped app access
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    state: commented
+    submittedAt: 2026-09-25T02:34:42Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prTitle: Enforce product-scoped app access
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    state: commented
+    submittedAt: 2026-09-25T02:34:50Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prTitle: Enforce product-scoped app access
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    state: commented
+    submittedAt: 2026-09-25T02:40:35Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add workbook imports and shared tenant workflows"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-24T13:55:44Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add workbook imports and shared tenant workflows"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-24T13:55:48Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add workbook imports and shared tenant workflows"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-24T14:04:21Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add workbook imports and shared tenant workflows"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-24T14:10:07Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add workbook imports and shared tenant workflows"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-24T14:52:05Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add workbook imports and shared tenant workflows"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-24T14:58:27Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prTitle: "feat(transition): add workbook imports and shared tenant workflows"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    state: commented
+    submittedAt: 2026-09-24T14:58:36Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4099890747
+    body: "[from Codex]: Added the supported vendor roles to Hub access, the launcher, and Onboarding page/API routes in
+      commit 893c173."
+    path: hub/staticwebapp.config.json
+    createdAt: 2026-09-25T00:39:30Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4099892230
+    body: "[from Codex]: Keyed the household edit form by household ID so switching records remounts the fields in commit
+      893c173."
+    path: transition/src/components/transition-workspace.tsx
+    createdAt: 2026-09-25T00:39:45Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4099922014
+    body: "[from Codex]: Added a household profile concurrency token and stale-write rejection in commit 63d989f."
+    path: transition/src/lib/repository.ts
+    createdAt: 2026-09-25T00:46:10Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4099923102
+    body: "[from Codex]: Updated the remaining README and example-environment instructions to describe the empty Transition
+      workspace in commit 63d989f."
+    path: package.json
+    createdAt: 2026-09-25T00:46:26Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4099971803
+    body: "[from Codex]: Fixed in 9fde0d4. Vendor routes now bootstrap against the vendor API and show only vendor
+      navigation; client onboarding routes keep their existing authorization."
+    path: hub/lib/apps.ts
+    createdAt: 2026-09-25T00:54:24Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4099972415
+    body: "[from Codex]: Fixed in 9fde0d4. Azure guidance now documents direct scoped-role access and reserves myriadas_user
+      for full-suite access."
+    path: docs/authorization-roles.md
+    createdAt: 2026-09-25T00:54:31Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100040228
+    body: "[from Codex]: Fixed in dfa2388. Hub opens vendor-only users at /onboarding/vendors, and direct visits to the
+      Onboarding root redirect after successful vendor API authentication."
+    path: onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+    createdAt: 2026-09-25T01:05:45Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100041059
+    body: "[from Codex]: Fixed in dfa2388. New manual households use separate Cosmos documents with manifest IDs and
+      incomplete-data checks; older manifest households remain readable."
+    path: transition/src/lib/cosmos-repository.ts
+    createdAt: 2026-09-25T01:05:53Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100041705
+    body: "[from Codex]: Fixed in dfa2388. Household status now reflects linked account and task progress."
+    path: transition/src/lib/repository.ts
+    createdAt: 2026-09-25T01:06:01Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100068867
+    body: "[from Codex]: Fixed in 6273cd0. Paperwork now counts as active household progress; the focused repository test
+      covers this transition."
+    path: transition/src/lib/repository.ts
+    createdAt: 2026-09-25T01:11:14Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100099129
+    body: "[from Codex]: Fixed in 2b55245. Blocked follow-up tasks now take precedence in household status, with a focused
+      test."
+    path: transition/src/lib/repository.ts
+    createdAt: 2026-09-25T01:17:20Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100137458
+    body: "[from Codex]: Fixed in 7961ad6. The account form remounts when the selected household changes, clearing drafts
+      from the previous household."
+    path: transition/src/components/transition-workspace.tsx
+    createdAt: 2026-09-25T01:24:38Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100138162
+    body: "[from Codex]: Fixed in 7961ad6. Management and Households use a shared status derivation that includes account
+      progress and exception states; focused tests cover both views."
+    path: transition/src/lib/repository.ts
+    createdAt: 2026-09-25T01:24:48Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100175964
+    body: "[from Codex]: Fixed in 3b55193. Household creation uses a stable request ID across retries and returns the
+      existing household after an ambiguous committed write. A Cosmos retry test covers the case."
+    path: transition/src/lib/cosmos-repository.ts
+    createdAt: 2026-09-25T01:32:57Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100176451
+    body: "[from Codex]: Fixed in 3b55193. Household completion requires all account tasks to be Completed or Not
+      Applicable; both views use the shared rule."
+    path: transition/src/lib/repository.ts
+    createdAt: 2026-09-25T01:33:04Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100212731
+    body: "[from Codex]: Fixed in b4028ec. Operational household inventory excludes inactive-only imports and includes empty
+      manual households; a focused test covers both."
+    path: transition/src/lib/source-repository.ts
+    createdAt: 2026-09-25T01:40:25Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100213295
+    body: "[from Codex]: Fixed in b4028ec. Account creation carries a stable request ID, and retries return the existing
+      account. A Cosmos test covers a committed write with a lost response."
+    path: transition/src/lib/repository.ts
+    createdAt: 2026-09-25T01:40:34Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100238128
+    body: "[from Codex]: Fixed in 0b9c7ba. A retry reads a saved manual household document after an ambiguous create and
+      publishes it; a focused test covers an orphaned document."
+    path: transition/src/lib/cosmos-repository.ts
+    createdAt: 2026-09-25T01:46:37Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100238780
+    body: "[from Codex]: Fixed in 0b9c7ba. Household blocker details now include blocked follow-up tasks and exception
+      accounts, with focused assertions."
+    path: transition/src/lib/repository.ts
+    createdAt: 2026-09-25T01:46:47Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100299580
+    body: "[from Codex]: Fixed in f3b2561. Account NIGO and exception states are counted separately only when no blocked
+      checklist cause exists; dashboard and detail tests cover deduplication."
+    path: transition/src/lib/repository.ts
+    createdAt: 2026-09-25T01:59:51Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100300325
+    body: "[from Codex]: Fixed in f3b2561. Read-only household responses now omit the deterministic profile version."
+    path: transition/src/lib/repository.ts
+    createdAt: 2026-09-25T02:00:01Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100300852
+    body: "[from Codex]: Fixed in f3b2561. Vendor-only pages no longer show client command search or call its general API."
+    path: onboarding/apps/dashboard/components/dashboard-shell.tsx
+    createdAt: 2026-09-25T02:00:09Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100350634
+    body: "[from Codex]: Fixed in 16ec3df. Manual account Exception states remain independent blockers even when checklist
+      exceptions exist; the full Transition suite covers both count and details."
+    path: transition/src/lib/repository.ts
+    createdAt: 2026-09-25T02:08:40Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100383026
+    body: "[from Codex]: Fixed in 331526a. The attention queue includes standalone account exceptions and unexplained NIGO
+      states, with tests for both visibility and deduplication."
+    path: transition/src/lib/repository.ts
+    createdAt: 2026-09-25T02:15:58Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100415398
+    body: "[from Codex]: Fixed in 72c8065. Removing the final contact link deletes its legacy contacts row in the same
+      transaction; a reopen regression test verifies it stays removed."
+    path: transition/src/lib/repository.ts
+    createdAt: 2026-09-25T02:23:26Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100478897
+    body: "[from Codex]: Fixed in 11837ff. The dedicated PTO static shell admits anonymous visitors so MSAL can start
+      sign-in; API routes remain role-gated."
+    path: pto-tracker/staticwebapp.config.json
+    createdAt: 2026-09-25T02:34:41Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100480088
+    body: "[from Codex]: Fixed in 11837ff. The dedicated PTO API edge admits legacy HRAdmin assignments during the
+      documented migration."
+    path: pto-tracker/staticwebapp.config.json
+    createdAt: 2026-09-25T02:34:50Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 126
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100518451
+    body: "[from Codex]: Fixed in 3451f67. Legacy HRAdmin is admitted by the combined Hub launcher, Hub routes, PTO routes,
+      and PTO API edge; focused tests cover the mapping."
+    path: hub/lib/apps.ts
+    createdAt: 2026-09-25T02:40:35Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4094418689
+    body: "[from Codex]: Fixed in commit 5dda8f2. The importer now uses HH Details for household assignment, reports
+      conflicts, and validates subfirms on malformed retained rows. Focused tests and typecheck passed."
+    path: transition/src/lib/workbook.ts
+    createdAt: 2026-09-24T13:55:44Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4094419535
+    body: "[from Codex]: Fixed in commit 5dda8f2. The importer now uses HH Details for household assignment, reports
+      conflicts, and validates subfirms on malformed retained rows. Focused tests and typecheck passed."
+    path: transition/src/lib/workbook.ts
+    createdAt: 2026-09-24T13:55:48Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4094505125
+    body: "[from Codex]: Fixed in commit 0968b48. Workbook imports now create the six shared household checklist items for
+      each household using the same catalog as the seed. Focused tests and typecheck passed."
+    path: transition/src/lib/workbook.ts
+    createdAt: 2026-09-24T14:04:21Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4094562841
+    body: "[from Codex]: Fixed in commit d235298. HH Details now participates in subfirm validation, and account detail
+      lookups use a subfirm-scoped key. Focused tests and typecheck passed."
+    path: transition/src/lib/workbook.ts
+    createdAt: 2026-09-24T14:10:06Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4094996926
+    body: Valid operational follow-up. Storage failures can return HTTP 400 through safely(). This does not alter saved data
+      or block the transition workflow; deferring the error classification change so this PR can merge now.
+    path: transition/src/lib/handlers.ts
+    createdAt: 2026-09-24T14:52:05Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4095061844
+    body: Valid preview seeding follow-up. The seed command checks some tables rather than the complete persisted-table
+      list. It is an explicit synthetic-data command and is outside the workbook import path fixed here; deferring for a
+      focused follow-up.
+    path: transition/src/lib/seed.ts
+    createdAt: 2026-09-24T14:58:27Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 122
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4095063468
+    body: Valid display follow-up. The Households list uses the stored status while the dashboard derives current status.
+      This does not affect account workflow or stored progress; deferring the list alignment for a focused follow-up.
+    path: transition/src/lib/repository.ts
+    createdAt: 2026-09-24T14:58:36Z
+aiReviews:
+  codex:
+    prsReviewed: 5
+    comments: 59
+    reviews: 34
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 5
+  comments: 59
+  reviews: 34
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-09-24T12:20:31Z
+    - 2026-09-24T12:26:34Z
+    - 2026-09-24T12:30:49Z
+    - 2026-09-24T12:35:07Z
+    - 2026-09-24T12:38:44Z
+    - 2026-09-24T12:45:27Z
+    - 2026-09-24T12:54:25Z
+    - 2026-09-24T13:10:25Z
+    - 2026-09-24T13:26:55Z
+    - 2026-09-24T13:35:26Z
+    - 2026-09-24T13:44:22Z
+    - 2026-09-24T13:58:09Z
+    - 2026-09-24T14:11:50Z
+    - 2026-09-24T14:56:05Z
+    - 2026-09-24T15:17:30Z
+    - 2026-09-24T15:26:16Z
+    - 2026-09-24T15:33:11Z
+    - 2026-09-24T13:55:05Z
+    - 2026-09-24T14:03:55Z
+    - 2026-09-24T14:09:39Z
+    - 2026-09-24T14:45:27Z
+    - 2026-09-24T14:51:50Z
+    - 2026-09-24T14:59:03Z
+    - 2026-09-24T16:54:59Z
+    - 2026-09-25T00:23:49Z
+    - 2026-09-25T00:38:48Z
+    - 2026-09-25T00:45:33Z
+    - 2026-09-25T00:54:04Z
+    - 2026-09-25T01:05:14Z
+    - 2026-09-25T01:10:56Z
+    - 2026-09-25T01:17:02Z
+    - 2026-09-25T01:24:18Z
+    - 2026-09-25T01:32:38Z
+    - 2026-09-25T01:40:06Z
+    - 2026-09-25T01:46:17Z
+    - 2026-09-25T01:51:52Z
+    - 2026-09-25T01:59:25Z
+    - 2026-09-25T02:08:21Z
+    - 2026-09-25T02:15:39Z
+    - 2026-09-25T02:23:04Z
+    - 2026-09-25T02:34:20Z
+    - 2026-09-25T02:40:14Z
+    - 2026-09-25T02:59:30Z
+    - 2026-09-24T14:56:20Z
+    - 2026-09-24T14:56:05Z
+    - 2026-09-24T15:18:09Z
+    - 2026-09-24T15:33:12Z
+    - 2026-09-24T15:17:30Z
+    - 2026-09-24T15:26:16Z
+    - 2026-09-24T16:55:12Z
+    - 2026-09-25T02:59:30Z
+    - 2026-09-24T16:54:59Z
+    - 2026-09-25T00:23:49Z
+    - 2026-09-25T00:38:48Z
+    - 2026-09-25T00:45:33Z
+    - 2026-09-25T00:54:04Z
+    - 2026-09-25T01:05:14Z
+    - 2026-09-25T01:10:56Z
+    - 2026-09-25T01:17:02Z
+    - 2026-09-25T01:24:18Z
+    - 2026-09-25T01:32:38Z
+    - 2026-09-25T01:40:06Z
+    - 2026-09-25T01:46:17Z
+    - 2026-09-25T01:51:52Z
+    - 2026-09-25T01:59:25Z
+    - 2026-09-25T02:08:21Z
+    - 2026-09-25T02:15:39Z
+    - 2026-09-25T02:23:04Z
+    - 2026-09-25T02:34:20Z
+    - 2026-09-25T02:40:14Z
+    - 2026-09-24T14:59:04Z
+    - 2026-09-24T13:55:05Z
+    - 2026-09-24T14:03:55Z
+    - 2026-09-24T14:09:39Z
+    - 2026-09-24T14:45:27Z
+    - 2026-09-24T14:51:50Z
+    - 2026-09-24T14:11:51Z
+    - 2026-09-24T12:20:31Z
+    - 2026-09-24T12:26:34Z
+    - 2026-09-24T12:30:49Z
+    - 2026-09-24T12:35:07Z
+    - 2026-09-24T12:38:44Z
+    - 2026-09-24T12:45:27Z
+    - 2026-09-24T12:54:25Z
+    - 2026-09-24T13:10:25Z
+    - 2026-09-24T13:26:55Z
+    - 2026-09-24T13:35:26Z
+    - 2026-09-24T13:44:22Z
+    - 2026-09-24T13:58:09Z
+    - 2026-09-25T00:39:30Z
+    - 2026-09-25T00:39:45Z
+    - 2026-09-25T00:46:10Z
+    - 2026-09-25T00:46:26Z
+    - 2026-09-25T00:54:25Z
+    - 2026-09-25T00:54:31Z
+    - 2026-09-25T01:05:45Z
+    - 2026-09-25T01:05:54Z
+    - 2026-09-25T01:06:01Z
+    - 2026-09-25T01:11:14Z
+    - 2026-09-25T01:17:20Z
+    - 2026-09-25T01:24:38Z
+    - 2026-09-25T01:24:48Z
+    - 2026-09-25T01:32:57Z
+    - 2026-09-25T01:33:04Z
+    - 2026-09-25T01:40:25Z
+    - 2026-09-25T01:40:34Z
+    - 2026-09-25T01:46:37Z
+    - 2026-09-25T01:46:47Z
+    - 2026-09-25T01:59:51Z
+    - 2026-09-25T02:00:01Z
+    - 2026-09-25T02:00:09Z
+    - 2026-09-25T02:08:40Z
+    - 2026-09-25T02:15:58Z
+    - 2026-09-25T02:23:26Z
+    - 2026-09-25T02:34:42Z
+    - 2026-09-25T02:34:50Z
+    - 2026-09-25T02:40:35Z
+    - 2026-09-24T13:55:44Z
+    - 2026-09-24T13:55:48Z
+    - 2026-09-24T14:04:21Z
+    - 2026-09-24T14:10:07Z
+    - 2026-09-24T14:52:05Z
+    - 2026-09-24T14:58:27Z
+    - 2026-09-24T14:58:36Z
+    - 2026-09-25T00:39:30Z
+    - 2026-09-25T00:39:45Z
+    - 2026-09-25T00:46:10Z
+    - 2026-09-25T00:46:26Z
+    - 2026-09-25T00:54:24Z
+    - 2026-09-25T00:54:31Z
+    - 2026-09-25T01:05:45Z
+    - 2026-09-25T01:05:53Z
+    - 2026-09-25T01:06:01Z
+    - 2026-09-25T01:11:14Z
+    - 2026-09-25T01:17:20Z
+    - 2026-09-25T01:24:38Z
+    - 2026-09-25T01:24:48Z
+    - 2026-09-25T01:32:57Z
+    - 2026-09-25T01:33:04Z
+    - 2026-09-25T01:40:25Z
+    - 2026-09-25T01:40:34Z
+    - 2026-09-25T01:46:37Z
+    - 2026-09-25T01:46:47Z
+    - 2026-09-25T01:59:51Z
+    - 2026-09-25T02:00:01Z
+    - 2026-09-25T02:00:09Z
+    - 2026-09-25T02:08:40Z
+    - 2026-09-25T02:15:58Z
+    - 2026-09-25T02:23:26Z
+    - 2026-09-25T02:34:41Z
+    - 2026-09-25T02:34:50Z
+    - 2026-09-25T02:40:35Z
+    - 2026-09-24T13:55:44Z
+    - 2026-09-24T13:55:48Z
+    - 2026-09-24T14:04:21Z
+    - 2026-09-24T14:10:06Z
+    - 2026-09-24T14:52:05Z
+    - 2026-09-24T14:58:27Z
+    - 2026-09-24T14:58:36Z
+  volume:
+    pullRequests:
+      - additions: 554
+        deletions: 15
+        state: open
+        dailyWork: true
+        filesChanged: 17
+        testFilesChanged: 6
+        commitCount: 1
+      - additions: 46
+        deletions: 24
+        state: merged
+        dailyWork: true
+        filesChanged: 2
+        testFilesChanged: 1
+        commitCount: 2
+      - additions: 67
+        deletions: 17
+        state: merged
+        dailyWork: true
+        filesChanged: 4
+        testFilesChanged: 1
+        commitCount: 5
+      - additions: 1041
+        deletions: 139
+        state: merged
+        dailyWork: true
+        filesChanged: 14
+        testFilesChanged: 5
+        commitCount: 12
+      - additions: 831
+        deletions: 286
+        state: merged
+        dailyWork: true
+        filesChanged: 44
+        testFilesChanged: 9
+        commitCount: 19
+    reviewCount: 35
+    reviewCommentCount: 35
+    commitCount: 4
+    commitAdditions: 26377
+    commitDeletions: 298
+    commitStatsCount: 4
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 92.3
+  sessions: 2
+  sessionHours: 7.2
+  volumeHours: 92.3
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
