@@ -1,0 +1,176 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-09-25
+  to: 2026-09-25
+stats:
+  totalCommits: 3
+  totalAdditions: 151
+  totalDeletions: 90
+  prsOpened: 1
+  prsMerged: 1
+  prsInProgress: 0
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 9.3
+dailyCommits:
+  - date: 2026-09-25
+    count: 3
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 3
+    prsOpened: 1
+    prsMerged: 1
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests:
+  - title: Promote Transition to production with shared Cosmos storage
+    body: >-
+      ## Problem
+
+
+      Transition is absent from the production Hub because the app registry and unified deployment mark it preview-only.
+      `myriadas_user` already has suite-wide access, but the production bundle contains no Transition app or API.
+
+
+      ## Change
+
+
+      - Include Transition in production and stage launcher...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/127
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - github-automation
+      - "app: hub"
+      - platform
+      - deploy-preview
+      - "app: transition"
+    additions: 151
+    deletions: 90
+    changedFiles: 14
+    author: myriadas-clees
+    createdAt: 2026-09-25T15:26:28Z
+    updatedAt: 2026-09-25T17:03:23Z
+    closedAt: 2026-09-25T17:02:41Z
+    mergedAt: 2026-09-25T17:02:41Z
+    workCommits:
+      - &a1
+        sha: e4d882d023390db462f24ab0e0a2c95427cfb324
+        message: "feat: prepare Transition production rollout"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e4d882d023390db462f24ab0e0a2c95427cfb324
+        authoredAt: 2026-09-25T15:23:15Z
+      - &a2
+        sha: 5d9ad70f03e326aa8e177a2f6b270f63381131e6
+        message: "fix: validate Hub Functions packaging script"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5d9ad70f03e326aa8e177a2f6b270f63381131e6
+        authoredAt: 2026-09-25T15:38:42Z
+    workTimestamps:
+      - 2026-09-25T15:23:15Z
+      - 2026-09-25T15:38:42Z
+    workAdditions: 151
+    workDeletions: 90
+    workFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - docs/transition/contracts.md
+      - hub/lib/apps.test.ts
+      - scripts/app-registry.ts
+      - scripts/build-unified-swa.ts
+      - scripts/tooling.test.ts
+      - transition/README.md
+      - transition/functions/scripts/build.ts
+      - transition/src/lib/auth.test.ts
+      - transition/src/lib/cosmos-repository.test.ts
+      - transition/src/lib/cosmos-repository.ts
+      - transition/src/lib/data.test.ts
+      - transition/src/lib/data.ts
+      - transition/src/lib/handlers.ts
+prsInProgress: []
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "feat: prepare Transition production rollout"
+      - "fix: validate Hub Functions packaging script"
+      - Promote Transition to production with shared Cosmos storage (#127)
+    commits:
+      - *a1
+      - *a2
+      - sha: fc65aec89308d28c971f9c1ac6344647da80fb9f
+        message: Promote Transition to production with shared Cosmos storage (#127)
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/fc65aec89308d28c971f9c1ac6344647da80fb9f
+        authoredAt: 2026-09-25T17:02:40Z
+        additions: 150
+        deletions: 89
+        filesChanged: 14
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 0
+  comments: 0
+  reviews: 0
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-09-25T15:23:15Z
+    - 2026-09-25T15:38:42Z
+    - 2026-09-25T17:02:40Z
+    - 2026-09-25T15:26:28Z
+    - 2026-09-25T17:02:41Z
+    - 2026-09-25T15:23:15Z
+    - 2026-09-25T15:38:42Z
+  volume:
+    pullRequests:
+      - additions: 151
+        deletions: 90
+        state: merged
+        dailyWork: true
+        filesChanged: 14
+        testFilesChanged: 5
+        commitCount: 2
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 1
+    commitAdditions: 150
+    commitDeletions: 89
+    commitStatsCount: 1
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 9.3
+  sessions: 1
+  sessionHours: 1.7
+  volumeHours: 9.3
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""

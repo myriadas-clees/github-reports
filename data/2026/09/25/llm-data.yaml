@@ -1,0 +1,46 @@
+title: Sep 25
+subtitle: promote transition
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 1 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 3 commits with +151 / −90 lines.
+    chips:
+      - label: Commits
+        value: "3"
+        color: green
+      - label: Additions
+        value: "+151"
+        color: green
+      - label: Deletions
+        value: −90
+        color: red
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~9.3h
+highlights:
+  - type: pr
+    title: Promote Transition to production with shared Cosmos storage
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +151 −90
+    body: >-
+      ## Problem
+
+
+      Transition is absent from the production Hub because the app registry and unified deployment mark it preview-only.
+      `myriadas_user` already has suite-wide access, but the production bundle 
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/127
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "Promote Transition to production with shared Cosmos storage" in
+      Myriad-Advisor-Solutions/myriadas-apps'
