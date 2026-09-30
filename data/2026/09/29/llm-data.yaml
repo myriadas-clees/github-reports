@@ -1,0 +1,71 @@
+title: Sep 29
+subtitle: use ohcpwm, northstar & support dark
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/ohcpwm-apps and Myriad-Advisor-Solutions/myriadas-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 1 PRs
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 1 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 20 commits with +277 / −226 lines.
+    chips:
+      - label: Commits
+        value: "20"
+        color: green
+      - label: Additions
+        value: "+277"
+        color: green
+      - label: Deletions
+        value: −226
+        color: red
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 12 reviews, 15 comments, 3 PRs."
+    chips:
+      - label: Codex
+        value: 12 reviews · 15 comments · 3 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~23.9h
+highlights:
+  - type: pr
+    title: Support dark mode in the task action editor
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +8 −8
+    body: >-
+      ## Why
+
+
+      The task action editor used fixed light colors, making its add-action controls inconsistent and difficult to read
+      in dark mode.
+
+
+      ## What changed
+
+
+      Updated the add-action panel and unselected ac
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/128
+  - type: pr
+    title: Use ohcpwm branding and add app favicons
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +84 −33
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/140
+  - type: pr
+    title: "feat(northstar): add PDF export, @ commands, and advisor context"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +1703 −88
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/138
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "Support dark mode in the task action editor" in Myriad-Advisor-Solutions/myriadas-apps'

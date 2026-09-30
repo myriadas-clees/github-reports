@@ -1,0 +1,489 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-09-29
+  to: 2026-09-29
+stats:
+  totalCommits: 20
+  totalAdditions: 277
+  totalDeletions: 226
+  prsOpened: 2
+  prsMerged: 1
+  prsInProgress: 2
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 23.9
+dailyCommits:
+  - date: 2026-09-29
+    count: 20
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 15
+    prsOpened: 1
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 5
+    prsOpened: 1
+    prsMerged: 1
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests:
+  - title: Support dark mode in the task action editor
+    body: >-
+      ## Why
+
+
+      The task action editor used fixed light colors, making its add-action controls inconsistent and difficult to read
+      in dark mode.
+
+
+      ## What changed
+
+
+      Updated the add-action panel and unselected action type buttons to use theme-aware colors. Removed fixed white
+      backgrounds from the input fields s...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/128
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - "app: onboarding"
+    additions: 8
+    deletions: 8
+    changedFiles: 1
+    author: myriadas-clees
+    createdAt: 2026-09-29T15:30:08Z
+    updatedAt: 2026-09-29T18:10:16Z
+    closedAt: 2026-09-29T17:59:23Z
+    mergedAt: 2026-09-29T17:59:23Z
+    workCommits:
+      - &a5
+        sha: b31b7f7b1f9ebb9bba15db2c3f31949cd79e324c
+        message: "fix(onboarding): support dark mode in task action editor"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b31b7f7b1f9ebb9bba15db2c3f31949cd79e324c
+        authoredAt: 2026-09-29T15:29:55Z
+      - &a6
+        sha: cabfef0a5d49a9351501f1667a66847de27b16a3
+        message: "fix: restore Twenty submodule pin"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/cabfef0a5d49a9351501f1667a66847de27b16a3
+        authoredAt: 2026-09-29T15:50:25Z
+      - &a7
+        sha: fb4dd4e999757406e69f123895152dc9b8d3d507
+        message: "chore(twenty): update submodule revision"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/fb4dd4e999757406e69f123895152dc9b8d3d507
+        authoredAt: 2026-09-29T15:50:44Z
+      - &a8
+        sha: 6a5b4bc00b79a7a67e745ea8770d1d4dc310245b
+        message: "fix: restore Twenty submodule pin"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6a5b4bc00b79a7a67e745ea8770d1d4dc310245b
+        authoredAt: 2026-09-29T17:55:07Z
+    workTimestamps:
+      - 2026-09-29T15:29:55Z
+      - 2026-09-29T15:50:25Z
+      - 2026-09-29T15:50:44Z
+      - 2026-09-29T17:55:07Z
+    workAdditions: 8
+    workDeletions: 8
+    workFiles:
+      - onboarding/apps/dashboard/components/task-actions-editor.tsx
+      - twenty
+  - title: Use ohcpwm branding and add app favicons
+    body: >-
+      - Rename visible OHPWM branding to `ohcpwm` and use the approved full company name in app metadata, accessible
+      logo text, and generated report attribution.
+
+      - Add a shared-design SVG favicon to Hub, Northstar, OFAC, and Advisor Pricing.
+
+      - Keep package names, storage keys, CSS identifiers, and FINET p...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/140
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a1
+      - deploy-preview
+    additions: 269
+    deletions: 218
+    changedFiles: 24
+    author: myriadas-clees
+    createdAt: 2026-09-29T15:26:44Z
+    updatedAt: 2026-09-29T17:23:10Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a2
+      - &a13
+        sha: 339f1c7e1d5dfac49f972bd2c80f0f50cd8eefe5
+        message: "fix(brand): use ohcpwm names and add app favicons"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/339f1c7e1d5dfac49f972bd2c80f0f50cd8eefe5
+        authoredAt: 2026-09-29T15:26:17Z
+      - &a14
+        sha: 93881276279b6d39f925255d75a9a2e05fd0eaef
+        message: "fix(hub): align login brand spelling"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/93881276279b6d39f925255d75a9a2e05fd0eaef
+        authoredAt: 2026-09-29T15:29:23Z
+      - &a16
+        sha: 977de72c69760c640ae685c5821f43b4b564fb6e
+        message: "fix(pricing): preserve branding on saved reports"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/977de72c69760c640ae685c5821f43b4b564fb6e
+        authoredAt: 2026-09-29T15:36:36Z
+      - &a17
+        sha: f648286621ae54fd21b4bb76131061065765c20f
+        message: "fix(pricing): align saved report branding and logos"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f648286621ae54fd21b4bb76131061065765c20f
+        authoredAt: 2026-09-29T15:57:52Z
+      - &a19
+        sha: 748073a2910430476c93f18c3110d4160ba8bf57
+        message: "fix(brand): align visible wordmark and app copy"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/748073a2910430476c93f18c3110d4160ba8bf57
+        authoredAt: 2026-09-29T16:57:43Z
+      - &a20
+        sha: 805fe01ebdebfb1c922360f3498d4d8475e19c07
+        message: "fix(ofac): size report logo for new wordmark"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/805fe01ebdebfb1c922360f3498d4d8475e19c07
+        authoredAt: 2026-09-29T17:03:15Z
+      - &a22
+        sha: a93703407a068dfd746740dfa559fb717ca159cd
+        message: "fix(brand): remove unapproved artwork and allow OHCPWM"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a93703407a068dfd746740dfa559fb717ca159cd
+        authoredAt: 2026-09-29T17:19:07Z
+    workTimestamps: &a3
+      - 2026-09-29T15:26:17Z
+      - 2026-09-29T15:29:23Z
+      - 2026-09-29T15:36:36Z
+      - 2026-09-29T15:57:52Z
+      - 2026-09-29T16:57:43Z
+      - 2026-09-29T17:03:15Z
+      - 2026-09-29T17:19:07Z
+    workAdditions: 269
+    workDeletions: 218
+    workFiles: &a4
+      - .agents/skills/ohcpwm-branding/SKILL.md
+      - hub/app/icon.svg
+      - hub/app/layout.tsx
+      - hub/app/login/page.tsx
+      - hub/components/hub-launcher.tsx
+      - northstar/app/icon.svg
+      - northstar/app/layout.tsx
+      - northstar/components/marketing-workspace.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - ofac/src/app/icon.svg
+      - ofac/src/app/layout.tsx
+      - ofac/src/components/app-shell-brand.test.tsx
+      - ofac/src/lib/report/excel.ts
+      - ofac/src/lib/report/pdf.tsx
+      - packages/brand/assets/logo-mono.svg
+      - packages/brand/assets/logo.svg
+      - packages/brand/src/logo-paths.ts
+      - packages/contracts/src/pricing.ts
+      - packages/ui/src/brand-logo.tsx
+      - pricing/functions/package.json
+      - pricing/functions/src/index.ts
+      - pricing/public/report-assets/logo_ohcpwm.png
+      - pricing/public/report-assets/logo_ohcpwm_white.png
+      - pricing/src/app/icon.svg
+      - pricing/src/app/layout.tsx
+      - pricing/src/lib/__tests__/report-model.test.ts
+      - pricing/src/lib/__tests__/report-storage.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/report-storage.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - scripts/dev-pricing-api.ts
+prsInProgress:
+  - title: Use ohcpwm branding and add app favicons
+    body: >-
+      - Rename visible OHPWM branding to `ohcpwm` and use the approved full company name in app metadata, accessible
+      logo text, and generated report attribution.
+
+      - Add a shared-design SVG favicon to Hub, Northstar, OFAC, and Advisor Pricing.
+
+      - Keep package names, storage keys, CSS identifiers, and FINET p...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/140
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: *a1
+    additions: 84
+    deletions: 33
+    changedFiles: 24
+    author: myriadas-clees
+    createdAt: 2026-09-29T15:26:44Z
+    updatedAt: 2026-09-29T17:23:10Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 269
+    workDeletions: 218
+    workFiles: *a4
+  - title: "feat(northstar): add PDF export, @ commands, and advisor context"
+    body: >-
+      - Ask can download the open conversation or a single response as a PDF.
+
+      - `@email`, `@calendar`, `@todo`, and `@meeting` expand into task prompts and render fenced deliverables as cards.
+
+      - Settings stores Northstar, morning, end-of-day, and weekly brief instructions on this device. Copilot also
+      rece...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/138
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels:
+      - deploy-preview
+    additions: 1703
+    deletions: 88
+    changedFiles: 34
+    author: myriadas-clees
+    createdAt: 2026-09-24T14:56:20Z
+    updatedAt: 2026-09-29T18:20:31Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a9
+        sha: d9a1b0e434bbb66a49babc9f5c9da1e18571abd8
+        message: "fix(northstar): preserve context for new Copilot conversations"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d9a1b0e434bbb66a49babc9f5c9da1e18571abd8
+        authoredAt: 2026-09-29T12:41:57Z
+      - &a10
+        sha: 59f2417e4fe42dc6c6f5b5a0aa770c365996de70
+        message: "fix(northstar): preserve context and regenerate briefs"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/59f2417e4fe42dc6c6f5b5a0aa770c365996de70
+        authoredAt: 2026-09-29T13:34:19Z
+      - &a11
+        sha: ada726895120217c6eb052f3e14c8b5482c5a878
+        message: "feat(northstar): export formatted chats with speaker labels"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ada726895120217c6eb052f3e14c8b5482c5a878
+        authoredAt: 2026-09-29T14:24:48Z
+      - &a12
+        sha: b337ba8efda8f99393676404b3c9b5d6f64562a7
+        message: "feat(northstar): add Markdown PDF export"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b337ba8efda8f99393676404b3c9b5d6f64562a7
+        authoredAt: 2026-09-29T14:49:27Z
+      - &a15
+        sha: 2c83085262b869d4c01fa2e8c11ec05daf7aa36c
+        message: "fix(northstar): improve PDF and streaming feedback"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2c83085262b869d4c01fa2e8c11ec05daf7aa36c
+        authoredAt: 2026-09-29T15:32:23Z
+      - &a18
+        sha: 2584e1b87431a956f5168caf66a337b0868dd98e
+        message: "feat(northstar): show selected chat commands"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2584e1b87431a956f5168caf66a337b0868dd98e
+        authoredAt: 2026-09-29T16:29:54Z
+      - &a21
+        sha: 16e52d34d70e4f7fd5b8dd77a7b840dbdcd4d4ce
+        message: "feat(northstar): add selectable commands and Outlook email drafts"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/16e52d34d70e4f7fd5b8dd77a7b840dbdcd4d4ce
+        authoredAt: 2026-09-29T17:09:14Z
+      - &a23
+        sha: f9e35067306a9a15281e3871fdb48d5218eeb5f5
+        message: "fix(northstar): resolve named email recipients for Outlook drafts"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f9e35067306a9a15281e3871fdb48d5218eeb5f5
+        authoredAt: 2026-09-29T18:16:34Z
+    workTimestamps:
+      - 2026-09-29T12:41:57Z
+      - 2026-09-29T13:34:19Z
+      - 2026-09-29T14:24:48Z
+      - 2026-09-29T14:49:27Z
+      - 2026-09-29T15:32:23Z
+      - 2026-09-29T16:29:54Z
+      - 2026-09-29T17:09:14Z
+      - 2026-09-29T18:16:34Z
+    workAdditions: 1396
+    workDeletions: 320
+    workFiles:
+      - bun.lock
+      - hub/functions/src/northstar-copilot.test.ts
+      - hub/functions/src/northstar-copilot.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - northstar/app/globals.css
+      - northstar/components/answer-markdown.test.tsx
+      - northstar/components/answer-markdown.tsx
+      - northstar/components/ask-northstar-workspace.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/streaming-markdown.tsx
+      - northstar/lib/ask-stream.test.ts
+      - northstar/lib/ask-stream.ts
+      - northstar/lib/at-commands.test.ts
+      - northstar/lib/at-commands.ts
+      - northstar/lib/background-briefs.test.ts
+      - northstar/lib/background-briefs.ts
+      - northstar/lib/chat-pdf.test.ts
+      - northstar/lib/chat-pdf.ts
+      - northstar/lib/chat-pdf.tsx
+      - northstar/lib/email-draft.test.ts
+      - northstar/lib/email-draft.ts
+      - northstar/lib/northstar-context.test.ts
+      - northstar/lib/northstar-context.ts
+      - northstar/package.json
+      - northstar/public/pdf-fonts/NotoSansArabic.woff
+      - northstar/public/pdf-fonts/NotoSansCJKsc-Bold.otf
+      - northstar/public/pdf-fonts/NotoSansCJKsc-Regular.otf
+      - northstar/public/pdf-fonts/NotoSansDevanagari.woff
+      - northstar/public/pdf-fonts/NotoSansHebrew.woff
+      - northstar/public/pdf-fonts/OFL.txt
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "fix(onboarding): support dark mode in task action editor"
+      - "fix: restore Twenty submodule pin"
+      - "chore(twenty): update submodule revision"
+      - "fix: restore Twenty submodule pin"
+      - Support dark mode in the task action editor (#128)
+    commits:
+      - *a5
+      - *a6
+      - *a7
+      - *a8
+      - sha: f09fb492a408dc4f3f10feee1edc4b442aa56cf2
+        message: Support dark mode in the task action editor (#128)
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f09fb492a408dc4f3f10feee1edc4b442aa56cf2
+        authoredAt: 2026-09-29T17:59:23Z
+        additions: 4
+        deletions: 4
+        filesChanged: 1
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "fix(northstar): preserve context for new Copilot conversations"
+      - "fix(northstar): preserve context and regenerate briefs"
+      - "feat(northstar): export formatted chats with speaker labels"
+      - "feat(northstar): add Markdown PDF export"
+      - "fix(brand): use ohcpwm names and add app favicons"
+      - "fix(hub): align login brand spelling"
+      - "fix(northstar): improve PDF and streaming feedback"
+      - "fix(pricing): preserve branding on saved reports"
+      - "fix(pricing): align saved report branding and logos"
+      - "feat(northstar): show selected chat commands"
+      - "fix(brand): align visible wordmark and app copy"
+      - "fix(ofac): size report logo for new wordmark"
+      - "feat(northstar): add selectable commands and Outlook email drafts"
+      - "fix(brand): remove unapproved artwork and allow OHCPWM"
+      - "fix(northstar): resolve named email recipients for Outlook drafts"
+    commits:
+      - *a9
+      - *a10
+      - *a11
+      - *a12
+      - *a13
+      - *a14
+      - *a15
+      - *a16
+      - *a17
+      - *a18
+      - *a19
+      - *a20
+      - *a21
+      - *a22
+      - *a23
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 3
+    comments: 15
+    reviews: 12
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 3
+  comments: 15
+  reviews: 12
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-09-29T15:29:55Z
+    - 2026-09-29T15:50:25Z
+    - 2026-09-29T15:50:44Z
+    - 2026-09-29T17:55:07Z
+    - 2026-09-29T17:59:23Z
+    - 2026-09-29T12:41:57Z
+    - 2026-09-29T13:34:19Z
+    - 2026-09-29T14:24:48Z
+    - 2026-09-29T14:49:27Z
+    - 2026-09-29T15:26:17Z
+    - 2026-09-29T15:29:23Z
+    - 2026-09-29T15:32:23Z
+    - 2026-09-29T15:36:36Z
+    - 2026-09-29T15:57:52Z
+    - 2026-09-29T16:29:54Z
+    - 2026-09-29T16:57:43Z
+    - 2026-09-29T17:03:15Z
+    - 2026-09-29T17:09:14Z
+    - 2026-09-29T17:19:07Z
+    - 2026-09-29T18:16:34Z
+    - 2026-09-29T15:30:08Z
+    - 2026-09-29T17:59:23Z
+    - 2026-09-29T15:29:55Z
+    - 2026-09-29T15:50:25Z
+    - 2026-09-29T15:50:44Z
+    - 2026-09-29T17:55:07Z
+    - 2026-09-29T15:26:44Z
+    - 2026-09-29T15:26:17Z
+    - 2026-09-29T15:29:23Z
+    - 2026-09-29T15:36:36Z
+    - 2026-09-29T15:57:52Z
+    - 2026-09-29T16:57:43Z
+    - 2026-09-29T17:03:15Z
+    - 2026-09-29T17:19:07Z
+  volume:
+    pullRequests:
+      - additions: 8
+        deletions: 8
+        state: merged
+        dailyWork: true
+        filesChanged: 2
+        testFilesChanged: 0
+        commitCount: 4
+      - additions: 269
+        deletions: 218
+        state: open
+        dailyWork: true
+        filesChanged: 33
+        testFilesChanged: 4
+        commitCount: 7
+      - additions: 1396
+        deletions: 320
+        state: open
+        dailyWork: true
+        filesChanged: 32
+        testFilesChanged: 10
+        commitCount: 8
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 1
+    commitAdditions: 4
+    commitDeletions: 4
+    commitStatsCount: 1
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 23.9
+  sessions: 1
+  sessionHours: 5.6
+  volumeHours: 23.9
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
