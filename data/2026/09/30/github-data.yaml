@@ -1,0 +1,361 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-09-30
+  to: 2026-09-30
+stats:
+  totalCommits: 7
+  totalAdditions: 2621
+  totalDeletions: 572
+  prsOpened: 1
+  prsMerged: 0
+  prsInProgress: 1
+  prsReviewed: 7
+  reviewComments: 7
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 20.8
+dailyCommits:
+  - date: 2026-09-30
+    count: 7
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 7
+    prsOpened: 1
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests:
+  - title: "fix(northstar): make scheduled briefs reliable and fresh"
+    body: >-
+      Scheduled briefs could fail after a fresh login when concurrent Microsoft refreshes lost a storage
+      compare-and-swap, while slow Copilot calls could exceed the hosting request window. Daily, weekly, and end-of-day
+      briefs also had inconsistent generation and recovery paths.
+
+
+      All three now use one sche...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a1 []
+    additions: 2621
+    deletions: 572
+    changedFiles: 19
+    author: myriadas-clees
+    createdAt: 2026-09-30T18:57:28Z
+    updatedAt: 2026-10-01T12:35:24Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a2
+      - &a5
+        sha: 8c2ddbb1f8b756cee0800a43468c6dfeb5a64d8f
+        message: "fix(northstar): make daily briefs resilient and fresh"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8c2ddbb1f8b756cee0800a43468c6dfeb5a64d8f
+        authoredAt: 2026-09-30T18:56:34Z
+      - &a6
+        sha: 30e3d16c6276fb7ec55a87eb466fcb249671bbc7
+        message: "fix(northstar): handle daily brief date boundaries"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/30e3d16c6276fb7ec55a87eb466fcb249671bbc7
+        authoredAt: 2026-09-30T19:06:15Z
+      - &a7
+        sha: cbc714f70eab570195dde691b1e0289a7dce82d6
+        message: "fix(northstar): recover briefs before offering manual retry"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cbc714f70eab570195dde691b1e0289a7dce82d6
+        authoredAt: 2026-09-30T19:26:53Z
+      - &a8
+        sha: c47ed3b99a22065783567a75d0316eae266282b9
+        message: "fix(northstar): share scheduled brief generation and recovery"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c47ed3b99a22065783567a75d0316eae266282b9
+        authoredAt: 2026-09-30T19:55:23Z
+      - &a9
+        sha: 02930621a0aa5bca2484bb1db08697ac95ef2ec8
+        message: "fix(northstar): preserve newer brief results during recovery"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/02930621a0aa5bca2484bb1db08697ac95ef2ec8
+        authoredAt: 2026-09-30T20:18:09Z
+      - &a10
+        sha: d1f6321270132f2ba6597e10987dae21b6bf8e5e
+        message: "fix(northstar): fence brief generations before retrieval"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d1f6321270132f2ba6597e10987dae21b6bf8e5e
+        authoredAt: 2026-09-30T20:35:13Z
+      - &a11
+        sha: b60c74ac5b971a626976b7521c94619d32bef845
+        message: "fix(northstar): keep brief summaries within source periods"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b60c74ac5b971a626976b7521c94619d32bef845
+        authoredAt: 2026-09-30T20:40:43Z
+    workTimestamps: &a3
+      - 2026-09-30T18:56:34Z
+      - 2026-09-30T19:06:15Z
+      - 2026-09-30T19:26:53Z
+      - 2026-09-30T19:55:23Z
+      - 2026-09-30T20:18:09Z
+      - 2026-09-30T20:35:13Z
+      - 2026-09-30T20:40:43Z
+    workAdditions: 2621
+    workDeletions: 572
+    workFiles: &a4
+      - hub/functions/src/northstar-brief-journeys.test.ts
+      - hub/functions/src/northstar-conversations.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-copilot.ts
+      - hub/functions/src/northstar-daily-brief.test.ts
+      - hub/functions/src/northstar-daily-brief.ts
+      - hub/functions/src/northstar-daily-flow.test.ts
+      - hub/functions/src/northstar-local-store.test.ts
+      - hub/functions/src/northstar-local-store.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/functions/src/northstar-scheduled-brief.test.ts
+      - hub/functions/src/northstar-scheduled-brief.ts
+      - northstar/app/globals.css
+      - northstar/components/ask-northstar-workspace.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/lib/background-briefs.test.ts
+      - northstar/lib/background-briefs.ts
+      - northstar/lib/chat-history.test.ts
+prsInProgress:
+  - title: "fix(northstar): make scheduled briefs reliable and fresh"
+    body: >-
+      Scheduled briefs could fail after a fresh login when concurrent Microsoft refreshes lost a storage
+      compare-and-swap, while slow Copilot calls could exceed the hosting request window. Daily, weekly, and end-of-day
+      briefs also had inconsistent generation and recovery paths.
+
+
+      All three now use one sche...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: *a1
+    additions: 2524
+    deletions: 223
+    changedFiles: 19
+    author: myriadas-clees
+    createdAt: 2026-09-30T18:57:28Z
+    updatedAt: 2026-10-01T12:35:24Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 2621
+    workDeletions: 572
+    workFiles: *a4
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "fix(northstar): make daily briefs resilient and fresh"
+      - "fix(northstar): handle daily brief date boundaries"
+      - "fix(northstar): recover briefs before offering manual retry"
+      - "fix(northstar): share scheduled brief generation and recovery"
+      - "fix(northstar): preserve newer brief results during recovery"
+      - "fix(northstar): fence brief generations before retrieval"
+      - "fix(northstar): keep brief summaries within source periods"
+    commits:
+      - *a5
+      - *a6
+      - *a7
+      - *a8
+      - *a9
+      - *a10
+      - *a11
+releases: []
+externalContributions: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 141
+    prTitle: "fix(northstar): make scheduled briefs reliable and fresh"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141
+    state: commented
+    submittedAt: 2026-09-30T19:07:17Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 141
+    prTitle: "fix(northstar): make scheduled briefs reliable and fresh"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141
+    state: commented
+    submittedAt: 2026-09-30T19:07:18Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 141
+    prTitle: "fix(northstar): make scheduled briefs reliable and fresh"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141
+    state: commented
+    submittedAt: 2026-09-30T19:56:43Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 141
+    prTitle: "fix(northstar): make scheduled briefs reliable and fresh"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141
+    state: commented
+    submittedAt: 2026-09-30T20:18:57Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 141
+    prTitle: "fix(northstar): make scheduled briefs reliable and fresh"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141
+    state: commented
+    submittedAt: 2026-09-30T20:19:01Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 141
+    prTitle: "fix(northstar): make scheduled briefs reliable and fresh"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141
+    state: commented
+    submittedAt: 2026-09-30T20:36:08Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 141
+    prTitle: "fix(northstar): make scheduled briefs reliable and fresh"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141
+    state: commented
+    submittedAt: 2026-09-30T20:44:11Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141#discussion_r4148316524
+    body: Fixed in 30e3d16. Historical daily briefs remain readable, but regeneration is offered only for the current
+      browser-local daily ID. The existing test now rejects yesterday’s ID as well as weekly/chat IDs.
+    path: northstar/components/ask-northstar-workspace.tsx
+    createdAt: 2026-09-30T19:07:17Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141#discussion_r4148316709
+    body: Fixed in 30e3d16. The query envelope now derives from the requested local calendar dates rather than now minus 24
+      hours/plus 48 hours. It covers UTC+14 through UTC-12, then filters by the requested timezone. A test honoring
+      Graph query bounds verifies both early-today and late-tomorrow events at the...
+    path: hub/functions/src/northstar-daily-brief.ts
+    createdAt: 2026-09-30T19:07:18Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141#discussion_r4148756512
+    body: Fixed in the consolidated head c47ed3b. Calendar queries now use exact zoned day boundaries, including DST
+      fall-back and skipped-midnight dates. Retrieval also follows validated Graph continuations for at most three pages
+      per source within the 8-second budget; weekly activity and next-week sections ...
+    path: hub/functions/src/northstar-daily-brief.ts
+    createdAt: 2026-09-30T19:56:43Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141#discussion_r4148940871
+    body: "Scheduled browser calls now request SSE at 0293062, so they pass the existing response-reader cancellation signal
+      into the shared orchestrator rather than take the signal-free JSON branch. Direct handler cancellation and no
+      completion after abort are tested. Important limitation: a real authenticate..."
+    path: northstar/components/northstar-dashboard.tsx
+    createdAt: 2026-09-30T20:18:57Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141#discussion_r4148941412
+    body: Fixed in 0293062. Scheduled-only SQLite UPSERT compares generatedAt atomically; Cosmos uses ETag replacement or
+      conflict-safe creation with a bounded retry. Older/equal snapshots are discarded. Removed unconditional
+      generation-start deletion; partial regeneration conditionally deletes only older cac...
+    path: hub/functions/src/northstar-microsoft.ts
+    createdAt: 2026-09-30T20:19:01Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141#discussion_r4149098354
+    body: Fixed in d1f6321 using the existing mapping, without deletion or a new table. Fresh generation claims an
+      empty-content incomplete marker before retrieval, with request-start generatedAt and a random generationId.
+      Completion and partial watermark updates must preserve ordering; equal timestamps requi...
+    path: hub/functions/src/northstar-conversations.ts
+    createdAt: 2026-09-30T20:36:08Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141#discussion_r4149163522
+    body: "The alternate server-side invalidation is now implemented in d1f6321: fresh scheduled generation first claims a
+      metadata-only incomplete fence using request-start time plus random owner ID; final publication must retain that
+      claim. A replacement fences older responses before replacement content is r..."
+    path: northstar/components/northstar-dashboard.tsx
+    createdAt: 2026-09-30T20:44:11Z
+aiReviews:
+  codex:
+    prsReviewed: 1
+    comments: 6
+    reviews: 4
+    fixed: 5
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 1
+  comments: 6
+  reviews: 4
+  fixed: 5
+hoursInputs:
+  timestamps:
+    - 2026-09-30T18:56:34Z
+    - 2026-09-30T19:06:15Z
+    - 2026-09-30T19:26:53Z
+    - 2026-09-30T19:55:23Z
+    - 2026-09-30T20:18:09Z
+    - 2026-09-30T20:35:13Z
+    - 2026-09-30T20:40:43Z
+    - 2026-09-30T18:57:28Z
+    - 2026-09-30T18:56:34Z
+    - 2026-09-30T19:06:15Z
+    - 2026-09-30T19:26:53Z
+    - 2026-09-30T19:55:23Z
+    - 2026-09-30T20:18:09Z
+    - 2026-09-30T20:35:13Z
+    - 2026-09-30T20:40:43Z
+    - 2026-09-30T19:07:17Z
+    - 2026-09-30T19:07:18Z
+    - 2026-09-30T19:56:43Z
+    - 2026-09-30T20:18:57Z
+    - 2026-09-30T20:19:01Z
+    - 2026-09-30T20:36:08Z
+    - 2026-09-30T20:44:11Z
+    - 2026-09-30T19:07:17Z
+    - 2026-09-30T19:07:18Z
+    - 2026-09-30T19:56:43Z
+    - 2026-09-30T20:18:57Z
+    - 2026-09-30T20:19:01Z
+    - 2026-09-30T20:36:08Z
+    - 2026-09-30T20:44:11Z
+  volume:
+    pullRequests:
+      - additions: 2621
+        deletions: 572
+        state: open
+        dailyWork: true
+        filesChanged: 20
+        testFilesChanged: 10
+        commitCount: 7
+    reviewCount: 7
+    reviewCommentCount: 7
+    commitCount: 0
+    commitAdditions: 0
+    commitDeletions: 0
+    commitStatsCount: 0
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 20.8
+  sessions: 1
+  sessionHours: 1.8
+  volumeHours: 20.8
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""

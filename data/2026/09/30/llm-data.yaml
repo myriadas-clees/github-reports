@@ -1,0 +1,52 @@
+title: Sep 30
+subtitle: northstar
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/ohcpwm-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 1 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 7 commits with +2,621 / −572 lines.
+    chips:
+      - label: Commits
+        value: "7"
+        color: green
+      - label: Additions
+        value: +2,621
+        color: green
+      - label: Deletions
+        value: −572
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 7 reviews with 7 comments.
+    chips:
+      - label: Reviews
+        value: "7"
+      - label: Comments
+        value: "7"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 4 reviews, 6 comments, 1 PR."
+    chips:
+      - label: Codex
+        value: 4 reviews · 6 comments · 1 PR
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~20.8h
+highlights:
+  - type: pr
+    title: "fix(northstar): make scheduled briefs reliable and fresh"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +2524 −223
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141
+ticker: []
