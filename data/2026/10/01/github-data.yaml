@@ -1,0 +1,1243 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-10-01
+  to: 2026-10-01
+stats:
+  totalCommits: 37
+  totalAdditions: 4298
+  totalDeletions: 268
+  prsOpened: 6
+  prsMerged: 5
+  prsInProgress: 4
+  prsReviewed: 19
+  reviewComments: 19
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 95.4
+dailyCommits:
+  - date: 2026-10-01
+    count: 37
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 27
+    prsOpened: 4
+    prsMerged: 4
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 10
+    prsOpened: 2
+    prsMerged: 1
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests:
+  - title: Fix Northstar scheduled brief recovery and bounded retries
+    body: Scheduled brief footer Retry and error Try again currently make no request because those chats contain no user
+      message. Rate-limit backoff also consumes the single 45-second timer, Microsoft preflight 429 loses its retry
+      guidance, and OAuth recovery resumes a scheduled brief as an ordinary Ask reque...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/145
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 1100
+    deletions: 74
+    changedFiles: 14
+    author: myriadas-clees
+    createdAt: 2026-10-01T18:58:40Z
+    updatedAt: 2026-10-01T20:07:08Z
+    closedAt: 2026-10-01T20:07:08Z
+    mergedAt: 2026-10-01T20:07:08Z
+    workCommits:
+      - &a34
+        sha: cd56bc7455b2f4d1600000f8939aaf6392b30781
+        message: Fix scheduled brief recovery controls and bounded retries
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cd56bc7455b2f4d1600000f8939aaf6392b30781
+        authoredAt: 2026-10-01T18:57:36Z
+      - &a35
+        sha: bf0027c71633eb70c7dd270a7aefa38887189ea1
+        message: Preserve cached brief reuse after preflight recovery
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/bf0027c71633eb70c7dd270a7aefa38887189ea1
+        authoredAt: 2026-10-01T19:02:16Z
+    workTimestamps:
+      - 2026-10-01T18:57:36Z
+      - 2026-10-01T19:02:16Z
+    workAdditions: 1100
+    workDeletions: 74
+    workFiles:
+      - bun.lock
+      - hub/functions/src/northstar-brief-journeys.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-copilot.ts
+      - hub/functions/src/northstar-cosmos-recovery.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - northstar/components/ask-northstar-workspace.dom.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/northstar-recovery.dom.test.ts
+      - northstar/components/northstar-recovery.fixture.tsx
+      - northstar/lib/ask-stream.test.ts
+      - northstar/lib/ask-stream.ts
+      - northstar/package.json
+  - title: "fix(northstar): keep brief Retry working without TTL caching"
+    body: "Authenticated production Retry reaches `/api/northstar/ask` but returns an SSE error after `connecting`: `code:
+      transient`, `retryAfterMs: null`, and “This request was superseded or could not be saved.” The observed request
+      was HTTP 200 with correlation `f90a70c643c456e64409e00f` on deployed `49382c..."
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/143
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a1 []
+    additions: 615
+    deletions: 22
+    changedFiles: 4
+    author: myriadas-clees
+    createdAt: 2026-10-01T16:09:01Z
+    updatedAt: 2026-10-01T18:21:23Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a2
+      - &a27
+        sha: d22d7186319acf34fcd970dd4c00776ad30b7d57
+        message: "fix(northstar): preserve brief generation without TTL cache"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d22d7186319acf34fcd970dd4c00776ad30b7d57
+        authoredAt: 2026-10-01T16:08:37Z
+      - &a28
+        sha: ad508828a52e5d650bbdb914ee88a4ac96450f8d
+        message: "fix(northstar): clean expired generation markers"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ad508828a52e5d650bbdb914ee88a4ac96450f8d
+        authoredAt: 2026-10-01T16:21:11Z
+      - &a30
+        sha: 080876addfdff4b1f2e02f68a3803bd8ed0d7662
+        message: "fix(northstar): honor current retention during marker cleanup"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/080876addfdff4b1f2e02f68a3803bd8ed0d7662
+        authoredAt: 2026-10-01T16:45:48Z
+    workTimestamps: &a3
+      - 2026-10-01T16:08:37Z
+      - 2026-10-01T16:21:11Z
+      - 2026-10-01T16:45:48Z
+    workAdditions: 615
+    workDeletions: 22
+    workFiles: &a4
+      - hub/functions/src/northstar-conversations.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-cosmos-brief.test.ts
+      - hub/functions/src/northstar-daily-flow.test.ts
+  - title: "fix(northstar): preserve loaded state when returning to the app"
+    body: Returning to Northstar triggered a same-user auth check that cleared Microsoft data, set the connection to
+      loading, replaced the dashboard with its skeleton, and fetched the data again. A headless baseline confirmed three
+      extra data fetches across three foreground cycles while the document stayed lo...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/144
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 402
+    deletions: 47
+    changedFiles: 3
+    author: myriadas-clees
+    createdAt: 2026-10-01T16:41:50Z
+    updatedAt: 2026-10-01T20:07:09Z
+    closedAt: 2026-10-01T20:07:09Z
+    mergedAt: 2026-10-01T20:07:09Z
+    workCommits:
+      - &a29
+        sha: c69e1216fdab97343c9e4f73441cb8a8c0fb759c
+        message: "fix(northstar): preserve loaded state on focus"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c69e1216fdab97343c9e4f73441cb8a8c0fb759c
+        authoredAt: 2026-10-01T16:40:56Z
+      - &a31
+        sha: c96693c40a4ae9f8909d0cfc5c67bb9fe7150f80
+        message: "fix(northstar): retain preference sync during focus checks"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c96693c40a4ae9f8909d0cfc5c67bb9fe7150f80
+        authoredAt: 2026-10-01T16:47:21Z
+      - &a32
+        sha: 2beb777fb3150b348edf28fc67cb4e722e721cad
+        message: Guard Northstar data across connection changes
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2beb777fb3150b348edf28fc67cb4e722e721cad
+        authoredAt: 2026-10-01T18:37:36Z
+      - &a33
+        sha: da84970ccf091867e24b0e43e19a31dc79d012d9
+        message: Retain Northstar data during status outages
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/da84970ccf091867e24b0e43e19a31dc79d012d9
+        authoredAt: 2026-10-01T18:49:21Z
+      - &a37
+        sha: b182e68764e69dc4e7b55700f30a7bd7d9d4db3f
+        message: Clear cached data when upgrading legacy Microsoft connections
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b182e68764e69dc4e7b55700f30a7bd7d9d4db3f
+        authoredAt: 2026-10-01T19:43:10Z
+      - &a39
+        sha: 1a60e1e30660ecfb1ce943a2cb9115d1b879a13a
+        message: Invalidate Northstar data on legacy disconnects
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/1a60e1e30660ecfb1ce943a2cb9115d1b879a13a
+        authoredAt: 2026-10-01T19:55:39Z
+    workTimestamps:
+      - 2026-10-01T16:40:56Z
+      - 2026-10-01T16:47:21Z
+      - 2026-10-01T18:37:36Z
+      - 2026-10-01T18:49:21Z
+      - 2026-10-01T19:43:10Z
+      - 2026-10-01T19:55:39Z
+    workAdditions: 402
+    workDeletions: 47
+    workFiles:
+      - northstar/components/northstar-dashboard-lifecycle.fixture.ts
+      - northstar/components/northstar-dashboard-lifecycle.test.ts
+      - northstar/components/northstar-dashboard.tsx
+  - title: Preserve Northstar history until retention preferences load
+    body: Returning users can lose 45/75-day device history because Northstar initially reads and rewrites the cache using
+      30 days before their saved 60/90-day preference loads. The existing history read also cannot distinguish an absent
+      preference from explicitly selected 30 days and can purge server history...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a5 []
+    additions: 551
+    deletions: 55
+    changedFiles: 11
+    author: myriadas-clees
+    createdAt: 2026-10-01T19:29:45Z
+    updatedAt: 2026-10-01T20:40:32Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a6
+      - &a36
+        sha: 7e7f3b30cb387001f0cbfd7bfe69699f1ff1d0b1
+        message: Preserve local history until account retention is resolved
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7e7f3b30cb387001f0cbfd7bfe69699f1ff1d0b1
+        authoredAt: 2026-10-01T19:28:29Z
+      - &a38
+        sha: d942a339ed4ae7236114023a5ad3da0476cc9879
+        message: Cache new chats without pruning while retention is unresolved
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d942a339ed4ae7236114023a5ad3da0476cc9879
+        authoredAt: 2026-10-01T19:45:50Z
+      - &a40
+        sha: 78ffd1b33f26a80e27b71be8e8bc88c25899ea0b
+        message: Preserve new chats when cached history is unreadable
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/78ffd1b33f26a80e27b71be8e8bc88c25899ea0b
+        authoredAt: 2026-10-01T19:56:37Z
+      - &a41
+        sha: eef4065810d0be9a4986abe5b0278d4d31be5707
+        message: Retry unknown retention before offering an account save
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/eef4065810d0be9a4986abe5b0278d4d31be5707
+        authoredAt: 2026-10-01T20:04:27Z
+      - &a42
+        sha: b9f7803fa74a6a7cb87bf9186e97d53fbcbfd32a
+        message: Preserve regenerated briefs and defer cross-tab retention pruning
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b9f7803fa74a6a7cb87bf9186e97d53fbcbfd32a
+        authoredAt: 2026-10-01T20:18:34Z
+      - &a43
+        sha: b90da58bc32d9767b3106caf76089e0c0b4801a4
+        message: Serialize retention saves when browser storage is unavailable
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b90da58bc32d9767b3106caf76089e0c0b4801a4
+        authoredAt: 2026-10-01T20:26:21Z
+      - &a44
+        sha: e7a64604b4362bc6df10edfb544b025ac50b3537
+        message: Show cached conversations while retention is unresolved
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e7a64604b4362bc6df10edfb544b025ac50b3537
+        authoredAt: 2026-10-01T20:34:10Z
+    workTimestamps: &a7
+      - 2026-10-01T19:28:29Z
+      - 2026-10-01T19:45:50Z
+      - 2026-10-01T19:56:37Z
+      - 2026-10-01T20:04:27Z
+      - 2026-10-01T20:18:34Z
+      - 2026-10-01T20:26:21Z
+      - 2026-10-01T20:34:10Z
+    workAdditions: 551
+    workDeletions: 55
+    workFiles: &a8
+      - hub/functions/src/index.ts
+      - hub/functions/src/northstar-chat-history.test.ts
+      - hub/functions/src/northstar-chat-history.ts
+      - hub/functions/src/northstar-conversations.ts
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/northstar-retention.dom.test.ts
+      - northstar/components/northstar-retention.fixture.tsx
+      - northstar/components/settings-workspace.tsx
+      - northstar/lib/chat-history.test.ts
+      - northstar/lib/chat-history.ts
+  - title: Reduce Transition navigation query and restore work
+    body: >-
+      ## Why
+
+
+      Transition navigation repeatedly reconstructs a full tenant SQLite database from Cosmos. At the reported workload
+      size, unindexed household/account scans and loading full account details merely to calculate household checklist
+      progress add substantial server CPU time to every navigation requ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/131
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a9
+      - "app: transition"
+    additions: 256
+    deletions: 4
+    changedFiles: 5
+    author: myriadas-clees
+    createdAt: 2026-10-01T21:36:47Z
+    updatedAt: 2026-10-02T12:55:59Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a10
+      - &a21
+        sha: b09d8f73ed3d19d07a97e041680ac32a47c8b313
+        message: Reduce Transition navigation query and restore work
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b09d8f73ed3d19d07a97e041680ac32a47c8b313
+        authoredAt: 2026-10-01T21:35:51Z
+    workTimestamps: &a11
+      - 2026-10-01T21:35:51Z
+    workAdditions: 256
+    workDeletions: 4
+    workFiles: &a12
+      - transition/scripts/benchmark-navigation.mjs
+      - transition/src/lib/navigation-performance.test.ts
+      - transition/src/lib/repository.ts
+      - transition/src/lib/snapshot.test.ts
+      - transition/src/lib/snapshot.ts
+  - title: "feat(transition): add Excel templates, database backup and guarded import"
+    body: >-
+      ## Problem and behavior
+
+
+      Transition users need Excel source templates, a current database download, and imports through the app. Workbook
+      inventory keeps both blank template downloads and adds administrator **Download database** and **Import Excel**
+      controls.
+
+
+      Administrators select the prepared Acco...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/130
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - platform
+      - "app: transition"
+    additions: 1115
+    deletions: 59
+    changedFiles: 28
+    author: myriadas-clees
+    createdAt: 2026-10-01T15:00:07Z
+    updatedAt: 2026-10-01T20:57:31Z
+    closedAt: 2026-10-01T20:57:31Z
+    mergedAt: 2026-10-01T20:57:31Z
+    workCommits:
+      - &a13
+        sha: e6a03c8987df5e5100f63d173b403389a0f41507
+        message: "feat(transition): add downloadable workbook templates"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e6a03c8987df5e5100f63d173b403389a0f41507
+        authoredAt: 2026-10-01T14:59:18Z
+      - &a14
+        sha: 609fb9fc72ff9d1d7cef12233cdb5a6fd4973261
+        message: "feat(transition): add guarded Excel import and database backup"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/609fb9fc72ff9d1d7cef12233cdb5a6fd4973261
+        authoredAt: 2026-10-01T19:32:53Z
+      - &a15
+        sha: a155ce0d49abbdc7e5b9a6e5bc69fb80e1e28e4d
+        message: "fix(transition): accept passive source workbook references safely"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a155ce0d49abbdc7e5b9a6e5bc69fb80e1e28e4d
+        authoredAt: 2026-10-01T19:41:05Z
+      - &a16
+        sha: fb01626a19639ba8c21fb4c24fd5b1bb3530bcec
+        message: "fix(transition): preserve full dataset backups within upload limits"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/fb01626a19639ba8c21fb4c24fd5b1bb3530bcec
+        authoredAt: 2026-10-01T19:46:47Z
+      - &a17
+        sha: 2e57cd45d2618608f9af4df1d1f3ee77827c6811
+        message: "fix(transition): secure Excel parser and validate backup JSON"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2e57cd45d2618608f9af4df1d1f3ee77827c6811
+        authoredAt: 2026-10-01T20:05:46Z
+      - &a18
+        sha: 68dbeac13416db8817835c2fa986604eadb4b879
+        message: "fix(transition): enforce backup document reference limits"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/68dbeac13416db8817835c2fa986604eadb4b879
+        authoredAt: 2026-10-01T20:15:23Z
+      - &a19
+        sha: fc513b68454fb8985385c1850d629ea3927d7032
+        message: "fix(transition): clean ambiguously committed import staging"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/fc513b68454fb8985385c1850d629ea3927d7032
+        authoredAt: 2026-10-01T20:27:34Z
+      - &a20
+        sha: 90be26692f4a3498b7be204b97d232baf4b9b3ad
+        message: "fix(transition): preserve uncertain published import generations"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/90be26692f4a3498b7be204b97d232baf4b9b3ad
+        authoredAt: 2026-10-01T20:39:22Z
+    workTimestamps:
+      - 2026-10-01T14:59:18Z
+      - 2026-10-01T19:32:53Z
+      - 2026-10-01T19:41:05Z
+      - 2026-10-01T19:46:47Z
+      - 2026-10-01T20:05:46Z
+      - 2026-10-01T20:15:23Z
+      - 2026-10-01T20:27:34Z
+      - 2026-10-01T20:39:22Z
+    workAdditions: 1115
+    workDeletions: 59
+    workFiles:
+      - bun.lock
+      - docs/transition/PLAN.md
+      - docs/transition/contracts.md
+      - docs/transition/excel-browser-controls.png
+      - docs/transition/workbook-templates-after.jpg
+      - docs/transition/workbook-templates-before.jpg
+      - transition/README.md
+      - transition/functions/src/index.ts
+      - transition/package.json
+      - transition/public/transition-accounts-template.xlsx
+      - transition/public/transition-positions-template.xlsx
+      - transition/src/app/api/[...path]/route.ts
+      - transition/src/components/transition-workspace.tsx
+      - transition/src/components/workbook-transfers.tsx
+      - transition/src/lib/api/azure-functions-adapter.ts
+      - transition/src/lib/api/client.ts
+      - transition/src/lib/cosmos-repository.test.ts
+      - transition/src/lib/cosmos-repository.ts
+      - transition/src/lib/document-references.ts
+      - transition/src/lib/excel-backup.test.ts
+      - transition/src/lib/excel-backup.ts
+      - transition/src/lib/excel-transfer-types.ts
+      - transition/src/lib/excel-transfer.test.ts
+      - transition/src/lib/excel-transfer.ts
+      - transition/src/lib/handlers.ts
+      - transition/src/lib/repository.ts
+      - transition/src/lib/workbook.test.ts
+      - transition/src/lib/workbook.ts
+  - title: "fix(northstar): make scheduled briefs reliable and fresh"
+    body: >-
+      Scheduled briefs could fail after a fresh login when concurrent Microsoft refreshes lost a storage
+      compare-and-swap, while slow Copilot calls could exceed the hosting request window. Daily, weekly, and end-of-day
+      briefs also had inconsistent generation and recovery paths.
+
+
+      All three now use one sche...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 258
+    deletions: 6
+    changedFiles: 19
+    author: myriadas-clees
+    createdAt: 2026-09-30T18:57:28Z
+    updatedAt: 2026-10-01T14:17:34Z
+    closedAt: 2026-10-01T14:17:34Z
+    mergedAt: 2026-10-01T14:17:34Z
+    workCommits:
+      - &a22
+        sha: 5881e36e3eb32a54e7e968db63759e807e10c197
+        message: "fix(northstar): preserve legacy chat mappings on refresh"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/5881e36e3eb32a54e7e968db63759e807e10c197
+        authoredAt: 2026-10-01T12:32:11Z
+    workTimestamps:
+      - 2026-10-01T12:32:11Z
+    workAdditions: 258
+    workDeletions: 6
+    workFiles:
+      - hub/functions/src/northstar-mapping-upgrade.test.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+  - title: "chore(repo): Align ohcpwm text branding and preserve saved report branding"
+    body: This PR aligns app text, metadata, accessible names, and report attribution with `ohcpwm` / `Oxford Harriman
+      Company & Private Wealth Management`. It also removes the obsolete Pricing Functions copy entries for the removed
+      `logo_ohcpwm.png` and `logo_ohcpwm_white.png` assets, which caused Azure's ap...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/140
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels:
+      - deploy-preview
+    additions: 1
+    deletions: 1
+    changedFiles: 23
+    author: myriadas-clees
+    createdAt: 2026-09-29T15:26:44Z
+    updatedAt: 2026-10-01T14:17:35Z
+    closedAt: 2026-10-01T14:17:35Z
+    mergedAt: 2026-10-01T14:17:35Z
+    workCommits:
+      - &a23
+        sha: 23184f51e41b490281e98ca2572cc4120b377880
+        message: "fix(pricing): remove obsolete report logo copy entries"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/23184f51e41b490281e98ca2572cc4120b377880
+        authoredAt: 2026-10-01T13:29:14Z
+    workTimestamps:
+      - 2026-10-01T13:29:14Z
+    workAdditions: 1
+    workDeletions: 1
+    workFiles:
+      - pricing/functions/package.json
+prsInProgress:
+  - title: "fix(northstar): keep brief Retry working without TTL caching"
+    body: "Authenticated production Retry reaches `/api/northstar/ask` but returns an SSE error after `connecting`: `code:
+      transient`, `retryAfterMs: null`, and “This request was superseded or could not be saved.” The observed request
+      was HTTP 200 with correlation `f90a70c643c456e64409e00f` on deployed `49382c..."
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/143
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: *a1
+    additions: 597
+    deletions: 4
+    changedFiles: 4
+    author: myriadas-clees
+    createdAt: 2026-10-01T16:09:01Z
+    updatedAt: 2026-10-01T18:21:23Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 615
+    workDeletions: 22
+    workFiles: *a4
+  - title: Preserve Northstar history until retention preferences load
+    body: Returning users can lose 45/75-day device history because Northstar initially reads and rewrites the cache using
+      30 days before their saved 60/90-day preference loads. The existing history read also cannot distinguish an absent
+      preference from explicitly selected 30 days and can purge server history...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: *a5
+    additions: 517
+    deletions: 21
+    changedFiles: 11
+    author: myriadas-clees
+    createdAt: 2026-10-01T19:29:45Z
+    updatedAt: 2026-10-01T20:40:32Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a6
+    workTimestamps: *a7
+    workAdditions: 551
+    workDeletions: 55
+    workFiles: *a8
+  - title: Reduce Transition navigation query and restore work
+    body: >-
+      ## Why
+
+
+      Transition navigation repeatedly reconstructs a full tenant SQLite database from Cosmos. At the reported workload
+      size, unindexed household/account scans and loading full account details merely to calculate household checklist
+      progress add substantial server CPU time to every navigation requ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/131
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a9
+    additions: 256
+    deletions: 4
+    changedFiles: 5
+    author: myriadas-clees
+    createdAt: 2026-10-01T21:36:47Z
+    updatedAt: 2026-10-02T12:55:59Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a10
+    workTimestamps: *a11
+    workAdditions: 256
+    workDeletions: 4
+    workFiles: *a12
+  - title: "feat(northstar): add PDF export, @ commands, and advisor context"
+    body: >-
+      - Ask can download the open conversation or a single response as a PDF.
+
+      - `@email`, `@calendar`, `@todo`, and `@meeting` expand into task prompts and render fenced deliverables as cards.
+
+      - Settings stores Northstar, morning, end-of-day, and weekly brief instructions on this device. Copilot also
+      rece...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/138
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels:
+      - deploy-preview
+    additions: 2016
+    deletions: 92
+    changedFiles: 35
+    author: myriadas-clees
+    createdAt: 2026-09-24T14:56:20Z
+    updatedAt: 2026-10-01T15:30:48Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a24
+        sha: f4427a1c2fc2e864c19640091b2c206361ac3856
+        message: "fix(northstar): preserve briefs and enforce complete single-format exports"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f4427a1c2fc2e864c19640091b2c206361ac3856
+        authoredAt: 2026-10-01T14:52:20Z
+      - &a25
+        sha: 16618f517a9bbf2c0df6e1378ed55e95e5eb2881
+        message: "fix(northstar): keep partial brief retries and draft actions pending"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/16618f517a9bbf2c0df6e1378ed55e95e5eb2881
+        authoredAt: 2026-10-01T15:05:58Z
+      - &a26
+        sha: a83a9c304119c4363654ad727aef265a7e85e785
+        message: "fix(northstar): refresh brief settings across tabs"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a83a9c304119c4363654ad727aef265a7e85e785
+        authoredAt: 2026-10-01T15:26:15Z
+    workTimestamps:
+      - 2026-10-01T14:52:20Z
+      - 2026-10-01T15:05:58Z
+      - 2026-10-01T15:26:15Z
+    workAdditions: 404
+    workDeletions: 117
+    workFiles:
+      - hub/functions/src/northstar-brief-journeys.test.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - northstar/components/answer-markdown.test.tsx
+      - northstar/components/answer-markdown.tsx
+      - northstar/components/ask-northstar-workspace.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/lib/at-commands.test.ts
+      - northstar/lib/at-commands.ts
+      - northstar/lib/background-briefs.test.ts
+      - northstar/lib/background-briefs.ts
+      - northstar/lib/chat-pdf.test.ts
+      - northstar/lib/chat-pdf.tsx
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "feat(transition): add downloadable workbook templates"
+      - "feat(transition): add guarded Excel import and database backup"
+      - "fix(transition): accept passive source workbook references safely"
+      - "fix(transition): preserve full dataset backups within upload limits"
+      - "fix(transition): secure Excel parser and validate backup JSON"
+      - "fix(transition): enforce backup document reference limits"
+      - "fix(transition): clean ambiguously committed import staging"
+      - "fix(transition): preserve uncertain published import generations"
+      - "feat(transition): add Excel templates, database backup and guarded import (#130)"
+      - Reduce Transition navigation query and restore work
+    commits:
+      - *a13
+      - *a14
+      - *a15
+      - *a16
+      - *a17
+      - *a18
+      - *a19
+      - *a20
+      - sha: 6bdf2497c5ea5d2a9199633254d3a934e92da541
+        message: "feat(transition): add Excel templates, database backup and guarded import (#130)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6bdf2497c5ea5d2a9199633254d3a934e92da541
+        authoredAt: 2026-10-01T20:57:31Z
+        additions: 1094
+        deletions: 38
+        filesChanged: 28
+      - *a21
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "fix(northstar): preserve legacy chat mappings on refresh"
+      - "fix(pricing): remove obsolete report logo copy entries"
+      - "fix(northstar): make scheduled briefs reliable and fresh (#141)"
+      - "chore(repo): Align ohcpwm text branding and preserve saved report branding (#140)"
+      - "fix(northstar): preserve briefs and enforce complete single-format exports"
+      - "fix(northstar): keep partial brief retries and draft actions pending"
+      - "fix(northstar): refresh brief settings across tabs"
+      - "fix(northstar): preserve brief generation without TTL cache"
+      - "fix(northstar): clean expired generation markers"
+      - "fix(northstar): preserve loaded state on focus"
+      - "fix(northstar): honor current retention during marker cleanup"
+      - "fix(northstar): retain preference sync during focus checks"
+      - Guard Northstar data across connection changes
+      - Retain Northstar data during status outages
+      - Fix scheduled brief recovery controls and bounded retries
+      - Preserve cached brief reuse after preflight recovery
+      - Preserve local history until account retention is resolved
+      - Clear cached data when upgrading legacy Microsoft connections
+      - Cache new chats without pruning while retention is unresolved
+      - Invalidate Northstar data on legacy disconnects
+      - Preserve new chats when cached history is unreadable
+      - Retry unknown retention before offering an account save
+      - "fix(northstar): preserve loaded state when returning to the app (#144)"
+      - Fix Northstar scheduled brief recovery and bounded retries (#145)
+      - Preserve regenerated briefs and defer cross-tab retention pruning
+      - Serialize retention saves when browser storage is unavailable
+      - Show cached conversations while retention is unresolved
+    commits:
+      - *a22
+      - *a23
+      - sha: 4fb90e29c49f486d9eb56eb631267d9b26a7c8af
+        message: "fix(northstar): make scheduled briefs reliable and fresh (#141)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4fb90e29c49f486d9eb56eb631267d9b26a7c8af
+        authoredAt: 2026-10-01T14:17:32Z
+        additions: 2524
+        deletions: 223
+        filesChanged: 19
+      - sha: 49382cc1f4dcc677508d41bd5925da3b0bbd2a0f
+        message: "chore(repo): Align ohcpwm text branding and preserve saved report branding (#140)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/49382cc1f4dcc677508d41bd5925da3b0bbd2a0f
+        authoredAt: 2026-10-01T14:17:33Z
+        additions: 83
+        deletions: 32
+        filesChanged: 23
+      - *a24
+      - *a25
+      - *a26
+      - *a27
+      - *a28
+      - *a29
+      - *a30
+      - *a31
+      - *a32
+      - *a33
+      - *a34
+      - *a35
+      - *a36
+      - *a37
+      - *a38
+      - *a39
+      - *a40
+      - *a41
+      - sha: 7115d4e0b96e5ac2e65692a3d120227364cb5c4b
+        message: "fix(northstar): preserve loaded state when returning to the app (#144)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7115d4e0b96e5ac2e65692a3d120227364cb5c4b
+        authoredAt: 2026-10-01T20:07:07Z
+        additions: 371
+        deletions: 16
+        filesChanged: 3
+      - sha: ea61fea6046639454f644045626a65c69460c9c0
+        message: Fix Northstar scheduled brief recovery and bounded retries (#145)
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ea61fea6046639454f644045626a65c69460c9c0
+        authoredAt: 2026-10-01T20:07:07Z
+        additions: 1100
+        deletions: 74
+        filesChanged: 14
+      - *a42
+      - *a43
+      - *a44
+releases: []
+externalContributions: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 147
+    prTitle: Preserve Northstar history until retention preferences load
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147
+    state: commented
+    submittedAt: 2026-10-01T19:46:30Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 147
+    prTitle: Preserve Northstar history until retention preferences load
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147
+    state: commented
+    submittedAt: 2026-10-01T19:57:34Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 147
+    prTitle: Preserve Northstar history until retention preferences load
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147
+    state: commented
+    submittedAt: 2026-10-01T20:04:53Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 147
+    prTitle: Preserve Northstar history until retention preferences load
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147
+    state: commented
+    submittedAt: 2026-10-01T20:18:57Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 147
+    prTitle: Preserve Northstar history until retention preferences load
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147
+    state: commented
+    submittedAt: 2026-10-01T20:18:59Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 147
+    prTitle: Preserve Northstar history until retention preferences load
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147
+    state: commented
+    submittedAt: 2026-10-01T20:26:30Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 147
+    prTitle: Preserve Northstar history until retention preferences load
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147
+    state: commented
+    submittedAt: 2026-10-01T20:34:12Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 130
+    prTitle: "feat(transition): add Excel templates, database backup and guarded import"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/130
+    state: commented
+    submittedAt: 2026-10-01T20:20:36Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 130
+    prTitle: "feat(transition): add Excel templates, database backup and guarded import"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/130
+    state: commented
+    submittedAt: 2026-10-01T20:28:59Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 144
+    prTitle: "fix(northstar): preserve loaded state when returning to the app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/144
+    state: commented
+    submittedAt: 2026-10-01T19:48:01Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 144
+    prTitle: "fix(northstar): preserve loaded state when returning to the app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/144
+    state: commented
+    submittedAt: 2026-10-01T19:57:16Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 143
+    prTitle: "fix(northstar): keep brief Retry working without TTL caching"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/143
+    state: commented
+    submittedAt: 2026-10-01T16:22:12Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 143
+    prTitle: "fix(northstar): keep brief Retry working without TTL caching"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/143
+    state: commented
+    submittedAt: 2026-10-01T16:47:01Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 143
+    prTitle: "fix(northstar): keep brief Retry working without TTL caching"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/143
+    state: commented
+    submittedAt: 2026-10-01T16:47:02Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 141
+    prTitle: "fix(northstar): make scheduled briefs reliable and fresh"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-01T12:32:47Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 140
+    prTitle: "chore(repo): Align ohcpwm text branding and preserve saved report branding"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/140
+    state: commented
+    submittedAt: 2026-10-01T13:33:16Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 140
+    prTitle: "chore(repo): Align ohcpwm text branding and preserve saved report branding"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/140
+    state: commented
+    submittedAt: 2026-10-01T13:33:35Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 140
+    prTitle: "chore(repo): Align ohcpwm text branding and preserve saved report branding"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/140
+    state: commented
+    submittedAt: 2026-10-01T13:34:17Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 140
+    prTitle: "chore(repo): Align ohcpwm text branding and preserve saved report branding"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/140
+    state: commented
+    submittedAt: 2026-10-01T13:34:30Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 147
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147#discussion_r4159748797
+    body: Fixed in 6f44c0f. Unresolved retention now merges new completed chats into the same user cache without an age
+      cutoff, preserving existing and unrecognized entries. Retention-dependent pruning and remote synchronization still
+      wait. Actual DOM and cache regression tests prove the new answer survives r...
+    path: northstar/components/ask-northstar-workspace.tsx
+    createdAt: 2026-10-01T19:46:30Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 147
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147#discussion_r4159851816
+    body: Fixed in 1418875. Malformed JSON and non-array cache values now initialize an empty cache before persisting newly
+      completed chats. Valid saved history still merges without age pruning while retention is unresolved. Two cache
+      format cases and an actual React DOM reload case pass (21 focused tests tot...
+    path: northstar/lib/chat-history.ts
+    createdAt: 2026-10-01T19:57:34Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 147
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147#discussion_r4159923265
+    body: Fixed in d3d78f2. A failed metadata lookup now shows Retry retention lookup, not Save retention to account. The
+      retry performs only GET; missing preference still requires a successful retentionConfigured:false response before
+      offering the save. Actual React DOM tests cover a fresh device default30 a...
+    path: northstar/components/northstar-dashboard.tsx
+    createdAt: 2026-10-01T20:04:53Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 147
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147#discussion_r4160054210
+    body: Fixed in b9f7803. The unresolved cache merge now prefers incoming payloads on equal period timestamps while
+      retaining cached-only turns. Tests cover daily/end-of-day/weekly stable message-ID ties, plus actual workspace
+      regeneration -> reload retaining the regenerated answer with unchanged period tim...
+    path: northstar/lib/chat-history.ts
+    createdAt: 2026-10-01T20:18:57Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 147
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147#discussion_r4160054425
+    body: Fixed in b9f7803. Storage events invalidate readiness for a pending or unconfirmed retention choice before
+      applying it. Successful queued PUT records the accepted days and restores readiness; when no pending save remains,
+      a changed value triggers a preference-only GET to verify account policy. Actua...
+    path: northstar/components/northstar-dashboard.tsx
+    createdAt: 2026-10-01T20:18:59Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 147
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147#discussion_r4160124796
+    body: "Fixed in the latest commit: storage-unavailable saves now use retentionSaveRef serialization and capture the
+      current choice version. Superseded queued saves skip; in-flight older responses cannot mark readiness; the latest
+      request runs only after the older request settles. Actual DOM scenario blocks..."
+    path: northstar/components/northstar-dashboard.tsx
+    createdAt: 2026-10-01T20:26:30Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 147
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147#discussion_r4160193583
+    body: Fixed in the latest commit. Unresolved retention now reads the same user cache without pruning or rewriting bytes
+      and merges valid cached chats into the workspace; remote hydration and retention-dependent pruning still wait.
+      Actual Dashboard tests open Ask then Chats before preference resolution and...
+    path: northstar/components/ask-northstar-workspace.tsx
+    createdAt: 2026-10-01T20:34:12Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 130
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/130
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/130#discussion_r4160070057
+    body: Fixed in `68dbeac13416db8817835c2fa986604eadb4b879`. Normal account writes and backup restore now share
+      `parseDocumentReferences` in `document-references.ts` (maximum 20, label 200, URL 2048, required nonempty text,
+      HTTP(S) only). Restore rejects values requiring trimming rather than silently changi...
+    path: transition/src/lib/excel-backup.ts
+    createdAt: 2026-10-01T20:20:36Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 130
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/130
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/130#discussion_r4160145859
+    body: "Fixed in `fc513b68454fb8985385c1850d629ea3927d7032`: track each random UUID-generation-owned staging ID before
+      awaiting create, so a committed write with a lost response is included in unpublished cleanup. Existing manifest
+      readback still preserves our published generation and skips cleanup if publi..."
+    path: transition/src/lib/cosmos-repository.ts
+    createdAt: 2026-10-01T20:28:59Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 144
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/144
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/144#discussion_r4159761076
+    body: "Fixed in b182e68764e69dc4e7b55700f30a7bd7d9d4db3f: clearChangedConnection now clears cached data and previews for
+      every verified key change, including null → key. The delayed legacy-account lifecycle regression failed before the
+      one-line fix and passes afterward; a headless DOM case also confirms ol..."
+    path: northstar/components/northstar-dashboard.tsx
+    createdAt: 2026-10-01T19:48:01Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 144
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/144
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/144#discussion_r4159849053
+    body: Fixed in 1a60e1e30660ecfb1ce943a2cb9115d1b879a13a. Connection invalidation now considers both key and connected
+      status, so a legacy connected null-key → disconnected null-key transition clears state and invalidates old data
+      before passive effects. A successful in-app disconnect also bumps data owner...
+    path: northstar/components/northstar-dashboard.tsx
+    createdAt: 2026-10-01T19:57:16Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 143
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/143
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/143#discussion_r4157809749
+    body: Addressed in ad508828a52e5d650bbdb914ee88a4ac96450f8d. Before TTL-unverified generation writes, explicit cleanup
+      selects only the current user's expired mapping IDs/partition keys/ETags across continuation pages, then deletes
+      with if-match. A concurrent renewal survives 412; already deleted records ...
+    path: hub/functions/src/northstar-conversations.ts
+    createdAt: 2026-10-01T16:22:12Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 143
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/143
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/143#discussion_r4158046643
+    body: "Addressed in 080876addfdff4b1f2e02f68a3803bd8ed0d7662: purge eligibility is stored expiry OR updatedAt at/before
+      one cutoff derived from the current 30/60/90-day preference. This catches a failed 90-to-30/60 expiry rewrite.
+      Tests cover stale future expiry, exact boundary, pagination, and conditional..."
+    path: hub/functions/src/northstar-conversations.ts
+    createdAt: 2026-10-01T16:47:01Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 143
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/143
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/143#discussion_r4158046811
+    body: This remains unresolved and blocks merge readiness. Demand cleanup cannot guarantee physical deletion for inactive
+      accounts when item TTL is unavailable. No independent sweep or infrastructure change has been authorized; the
+      current managed Static Web Apps deployment supports HTTP triggers only. We ...
+    path: hub/functions/src/northstar-conversations.ts
+    createdAt: 2026-10-01T16:47:02Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141#discussion_r4155371855
+    body: >-
+      Confirmed at b60c74ac: a public-handler regression seeded an account-only v2 mapping, then ordinary Ask refreshed
+      the legacy connection and created a new Copilot conversation instead of continuing the saved context.
+
+
+      Fixed in 5881e36e3eb32a54e7e968db63759e807e10c197. A first guarded refresh uses a r...
+    path: hub/functions/src/northstar-microsoft.ts
+    createdAt: 2026-10-01T12:32:47Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 140
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/140
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/140#discussion_r4155937353
+    body: "Fixed in `23184f51e41b490281e98ca2572cc4120b377880`: removed only the two nonexistent logo copy entries. The
+      original Pricing assets, FiNet logo, and workbook template remain. Local Pricing Functions build and full combined
+      Azure packaging passed, including byte-for-byte checks of the original repor..."
+    path: pricing/functions/package.json
+    createdAt: 2026-10-01T13:33:16Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 140
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/140
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/140#discussion_r4155940458
+    body: "Already addressed in the current diff: `scripts/dev-pricing-api.ts:135` maps `snapshot.brandingVersion === 1` to
+      version 1 and an absent marker to version 0, matching the Azure adapter. Rebase preserved this mapping. Full
+      Pricing tests and the 38 focused report model/storage/rendering tests passed o..."
+    path: pricing/src/lib/report/model.ts
+    createdAt: 2026-10-01T13:33:35Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 140
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/140
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/140#discussion_r4155947621
+    body: "Already addressed in the current diff: `hub/components/hub-launcher.tsx:257` labels the home link `ohcpwm apps
+      home`, and line 288 displays `ohcpwm`. Both changes survived the rebase. Hub typecheck, lint, and normal/static
+      builds passed on `23184f5`."
+    path: hub/app/layout.tsx
+    createdAt: 2026-10-01T13:34:17Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 140
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/140
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/140#discussion_r4155949831
+    body: Intentionally deferred under the approved scope. The repository branding guidance now requires existing artwork to
+      remain unchanged until approved replacements are available, and this PR explicitly documents the resulting legacy
+      visual-wordmark mismatch. The user deferred official favicons, and repl...
+    path: pricing/src/lib/report/model.ts
+    createdAt: 2026-10-01T13:34:30Z
+aiReviews:
+  codex:
+    prsReviewed: 6
+    comments: 23
+    reviews: 20
+    fixed: 14
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 6
+  comments: 23
+  reviews: 20
+  fixed: 14
+hoursInputs:
+  timestamps:
+    - 2026-10-01T14:59:18Z
+    - 2026-10-01T19:32:53Z
+    - 2026-10-01T19:41:05Z
+    - 2026-10-01T19:46:47Z
+    - 2026-10-01T20:05:46Z
+    - 2026-10-01T20:15:23Z
+    - 2026-10-01T20:27:34Z
+    - 2026-10-01T20:39:22Z
+    - 2026-10-01T20:57:31Z
+    - 2026-10-01T21:35:51Z
+    - 2026-10-01T12:32:11Z
+    - 2026-10-01T13:29:14Z
+    - 2026-10-01T14:17:32Z
+    - 2026-10-01T14:17:33Z
+    - 2026-10-01T14:52:20Z
+    - 2026-10-01T15:05:58Z
+    - 2026-10-01T15:26:15Z
+    - 2026-10-01T16:08:37Z
+    - 2026-10-01T16:21:11Z
+    - 2026-10-01T16:40:56Z
+    - 2026-10-01T16:45:48Z
+    - 2026-10-01T16:47:21Z
+    - 2026-10-01T18:37:36Z
+    - 2026-10-01T18:49:21Z
+    - 2026-10-01T18:57:36Z
+    - 2026-10-01T19:02:16Z
+    - 2026-10-01T19:28:29Z
+    - 2026-10-01T19:43:10Z
+    - 2026-10-01T19:45:50Z
+    - 2026-10-01T19:55:39Z
+    - 2026-10-01T19:56:37Z
+    - 2026-10-01T20:04:27Z
+    - 2026-10-01T20:07:07Z
+    - 2026-10-01T20:07:07Z
+    - 2026-10-01T20:18:34Z
+    - 2026-10-01T20:26:21Z
+    - 2026-10-01T20:34:10Z
+    - 2026-10-01T18:58:40Z
+    - 2026-10-01T20:07:08Z
+    - 2026-10-01T18:57:36Z
+    - 2026-10-01T19:02:16Z
+    - 2026-10-01T16:09:01Z
+    - 2026-10-01T16:08:37Z
+    - 2026-10-01T16:21:11Z
+    - 2026-10-01T16:45:48Z
+    - 2026-10-01T16:41:50Z
+    - 2026-10-01T20:07:09Z
+    - 2026-10-01T16:40:56Z
+    - 2026-10-01T16:47:21Z
+    - 2026-10-01T18:37:36Z
+    - 2026-10-01T18:49:21Z
+    - 2026-10-01T19:43:10Z
+    - 2026-10-01T19:55:39Z
+    - 2026-10-01T19:29:45Z
+    - 2026-10-01T19:28:29Z
+    - 2026-10-01T19:45:50Z
+    - 2026-10-01T19:56:37Z
+    - 2026-10-01T20:04:27Z
+    - 2026-10-01T20:18:34Z
+    - 2026-10-01T20:26:21Z
+    - 2026-10-01T20:34:10Z
+    - 2026-10-01T21:36:47Z
+    - 2026-10-01T21:35:51Z
+    - 2026-10-01T15:00:07Z
+    - 2026-10-01T20:57:31Z
+    - 2026-10-01T14:59:18Z
+    - 2026-10-01T19:32:53Z
+    - 2026-10-01T19:41:05Z
+    - 2026-10-01T19:46:47Z
+    - 2026-10-01T20:05:46Z
+    - 2026-10-01T20:15:23Z
+    - 2026-10-01T20:27:34Z
+    - 2026-10-01T20:39:22Z
+    - 2026-10-01T14:17:34Z
+    - 2026-10-01T12:32:11Z
+    - 2026-10-01T14:17:35Z
+    - 2026-10-01T13:29:14Z
+    - 2026-10-01T19:46:30Z
+    - 2026-10-01T19:57:34Z
+    - 2026-10-01T20:04:53Z
+    - 2026-10-01T20:18:57Z
+    - 2026-10-01T20:18:59Z
+    - 2026-10-01T20:26:30Z
+    - 2026-10-01T20:34:12Z
+    - 2026-10-01T20:20:36Z
+    - 2026-10-01T20:28:59Z
+    - 2026-10-01T19:48:01Z
+    - 2026-10-01T19:57:16Z
+    - 2026-10-01T16:22:12Z
+    - 2026-10-01T16:47:01Z
+    - 2026-10-01T16:47:02Z
+    - 2026-10-01T12:32:47Z
+    - 2026-10-01T13:33:16Z
+    - 2026-10-01T13:33:35Z
+    - 2026-10-01T13:34:17Z
+    - 2026-10-01T13:34:30Z
+    - 2026-10-01T19:46:30Z
+    - 2026-10-01T19:57:34Z
+    - 2026-10-01T20:04:53Z
+    - 2026-10-01T20:18:57Z
+    - 2026-10-01T20:18:59Z
+    - 2026-10-01T20:26:30Z
+    - 2026-10-01T20:34:12Z
+    - 2026-10-01T20:20:36Z
+    - 2026-10-01T20:28:59Z
+    - 2026-10-01T19:48:01Z
+    - 2026-10-01T19:57:16Z
+    - 2026-10-01T16:22:12Z
+    - 2026-10-01T16:47:01Z
+    - 2026-10-01T16:47:02Z
+    - 2026-10-01T12:32:47Z
+    - 2026-10-01T13:33:16Z
+    - 2026-10-01T13:33:35Z
+    - 2026-10-01T13:34:17Z
+    - 2026-10-01T13:34:30Z
+  volume:
+    pullRequests:
+      - additions: 258
+        deletions: 6
+        state: merged
+        dailyWork: true
+        filesChanged: 3
+        testFilesChanged: 2
+        commitCount: 1
+      - additions: 1100
+        deletions: 74
+        state: merged
+        dailyWork: true
+        filesChanged: 14
+        testFilesChanged: 5
+        commitCount: 2
+      - additions: 615
+        deletions: 22
+        state: open
+        dailyWork: true
+        filesChanged: 4
+        testFilesChanged: 3
+        commitCount: 3
+      - additions: 1
+        deletions: 1
+        state: merged
+        dailyWork: true
+        filesChanged: 1
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 402
+        deletions: 47
+        state: merged
+        dailyWork: true
+        filesChanged: 3
+        testFilesChanged: 1
+        commitCount: 6
+      - additions: 551
+        deletions: 55
+        state: open
+        dailyWork: true
+        filesChanged: 11
+        testFilesChanged: 3
+        commitCount: 7
+      - additions: 256
+        deletions: 4
+        state: open
+        dailyWork: true
+        filesChanged: 5
+        testFilesChanged: 2
+        commitCount: 1
+      - additions: 404
+        deletions: 117
+        state: open
+        dailyWork: true
+        filesChanged: 14
+        testFilesChanged: 7
+        commitCount: 3
+      - additions: 1115
+        deletions: 59
+        state: merged
+        dailyWork: true
+        filesChanged: 28
+        testFilesChanged: 4
+        commitCount: 8
+    reviewCount: 19
+    reviewCommentCount: 19
+    commitCount: 5
+    commitAdditions: 5172
+    commitDeletions: 383
+    commitStatsCount: 5
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 95.4
+  sessions: 2
+  sessionHours: 7.2
+  volumeHours: 95.4
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""

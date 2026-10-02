@@ -1,0 +1,102 @@
+title: Oct 1
+subtitle: northstar, preserve northstar & reduce transition
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/ohcpwm-apps and Myriad-Advisor-Solutions/myriadas-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 4 PRs
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 2 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 37 commits with +4,298 / −268 lines.
+    chips:
+      - label: Commits
+        value: "37"
+        color: green
+      - label: Additions
+        value: +4,298
+        color: green
+      - label: Deletions
+        value: −268
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 19 reviews with 19 comments.
+    chips:
+      - label: Reviews
+        value: "19"
+      - label: Comments
+        value: "19"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 20 reviews, 23 comments, 6 PRs."
+    chips:
+      - label: Codex
+        value: 20 reviews · 23 comments · 6 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~95.4h
+highlights:
+  - type: pr
+    title: Fix Northstar scheduled brief recovery and bounded retries
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +1100 −74
+    body: Scheduled brief footer Retry and error Try again currently make no request because those chats contain no user
+      message. Rate-limit backoff also consumes the single 45-second timer, Microsoft preflight
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/145
+  - type: pr
+    title: "fix(northstar): preserve loaded state when returning to the app"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +402 −47
+    body: Returning to Northstar triggered a same-user auth check that cleared Microsoft data, set the connection to
+      loading, replaced the dashboard with its skeleton, and fetched the data again. A headless bas
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/144
+  - type: pr
+    title: "feat(transition): add Excel templates, database backup and guarded import"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +1115 −59
+    body: >-
+      ## Problem and behavior
+
+
+      Transition users need Excel source templates, a current database download, and imports through the app. Workbook
+      inventory keeps both blank template downloads and adds adminis
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/130
+  - type: pr
+    title: "fix(northstar): make scheduled briefs reliable and fresh"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +258 −6
+    body: Scheduled briefs could fail after a fresh login when concurrent Microsoft refreshes lost a storage
+      compare-and-swap, while slow Copilot calls could exceed the hosting request window. Daily, weekly, an
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141
+  - type: pr
+    title: "chore(repo): Align ohcpwm text branding and preserve saved report branding"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +1 −1
+    body: This PR aligns app text, metadata, accessible names, and report attribution with `ohcpwm` / `Oxford Harriman
+      Company & Private Wealth Management`. It also removes the obsolete Pricing Functions copy e
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/140
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "Fix Northstar scheduled brief recovery and bounded retries" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(northstar): preserve loaded state when returning to the app" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(transition): add Excel templates, database backup and guarded import" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(northstar): make scheduled briefs reliable and fresh" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "chore(repo): Align ohcpwm text branding and preserve saved report branding" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'
