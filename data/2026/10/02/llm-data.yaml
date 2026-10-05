@@ -1,0 +1,106 @@
+title: Oct 2
+subtitle: transition & northstar
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps and Myriad-Advisor-Solutions/ohcpwm-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 12 PRs
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 0 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 56 commits with +4,841 / −351 lines.
+    chips:
+      - label: Commits
+        value: "56"
+        color: green
+      - label: Additions
+        value: +4,841
+        color: green
+      - label: Deletions
+        value: −351
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 12 reviews with 12 comments.
+    chips:
+      - label: Reviews
+        value: "12"
+      - label: Comments
+        value: "12"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 22 reviews, 32 comments, 7 PRs."
+    chips:
+      - label: Codex
+        value: 22 reviews · 32 comments · 7 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~121.3h
+highlights:
+  - type: pr
+    title: "feat(transition): plan household outreach"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +582 −48
+    body: Household profiles lacked an assigned coordinator and next client-contact date. Add a focused planning dialog with
+      optional coordinator/date, save/clear/cancel, repeated-submit protection and stale-da
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/140
+  - type: pr
+    title: "feat(transition): remove unlinked household contacts"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +544 −26
+    body: Household-only people can be added and edited but could not be removed after an accidental entry. Add an explicit
+      confirmation dialog and version-checked removal for people with no account links, incl
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/138
+  - type: pr
+    title: "feat(transition): add account planning fields"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +570 −29
+    body: Operators could not record the destination account number, target submission date, or reviewer from the reference
+      workflow. Add a focused Account planning dialog with save/clear, cancel, and stale-dat
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/139
+  - type: pr
+    title: "fix(transition): recover from ambiguous import responses"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +256 −4
+    body: Large imports can persist successfully while the hosting gateway returns a non-JSON response. Show the HTTP
+      status, explain that completion is unconfirmed, and clear the previous confirmation so users
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/132
+  - type: pr
+    title: "feat(transition): add household contact controls"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +617 −24
+    body: >-
+      ## Why
+
+
+      Transition lets coordinators add and edit contacts from an account, but the household overview only displays them.
+      A household with no accounts cannot record a contact.
+
+
+      ## What changed
+
+
+      Add c
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/133
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(transition): plan household outreach" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(transition): remove unlinked household contacts" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(transition): add account planning fields" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(transition): recover from ambiguous import responses" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(transition): add household contact controls" in
+      Myriad-Advisor-Solutions/myriadas-apps'
