@@ -1,0 +1,1199 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-10-05
+  to: 2026-10-05
+stats:
+  totalCommits: 55
+  totalAdditions: 0
+  totalDeletions: 0
+  prsOpened: 0
+  prsMerged: 0
+  prsInProgress: 5
+  prsReviewed: 21
+  reviewComments: 21
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 67.5
+dailyCommits:
+  - date: 2026-10-05
+    count: 55
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 55
+    prsOpened: 0
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests: []
+prsInProgress:
+  - title: "feat(transition): widen checklist notes editor"
+    body: |-
+      - Place checklist details on the left and a taller, resizable Notes field on the right at desktop widths.
+      - Stack the fields on smaller screens while preserving the existing save behavior.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/146
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - github-automation
+      - "app: transition"
+    additions: 6
+    deletions: 4
+    changedFiles: 5
+    author: myriadas-clees
+    createdAt: 2026-10-02T20:08:58Z
+    updatedAt: 2026-10-05T17:40:19Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a17
+        sha: 8add7adc8d5664f3f085445eb4f1b11a07b13892
+        message: Merge remote-tracking branch 'refs/remotes/github/feat/transition-rep-assignments' into
+          codex/pr146-parent-refresh
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8add7adc8d5664f3f085445eb4f1b11a07b13892
+        authoredAt: 2026-10-05T17:37:40Z
+    workTimestamps:
+      - 2026-10-05T17:37:40Z
+    workAdditions: 132
+    workDeletions: 20
+    workFiles:
+      - transition/src/lib/contact-enrichment.test.ts
+      - transition/src/lib/contact-enrichment.ts
+      - transition/src/lib/cosmos-repository.test.ts
+      - transition/src/lib/cosmos-repository.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
+  - title: "feat(transition): add rep code assignment choices"
+    body: >-
+      - Keep imported household rep codes distinct from assigned people, and display normalized codes while preserving
+      source values.
+
+      - Add the supplied code-to-person suggestions and reusable person choices in account, reviewer, household
+      coordinator, and follow-up assignments.
+
+      - Preserve existing assign...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/144
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - documentation
+      - "app: transition"
+    additions: 119
+    deletions: 26
+    changedFiles: 7
+    author: myriadas-clees
+    createdAt: 2026-10-02T18:58:30Z
+    updatedAt: 2026-10-05T23:27:06Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a11
+        sha: afa130713335613fe559443875492d781e200a27
+        message: "fix(transition): share rep code whitespace normalization"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/afa130713335613fe559443875492d781e200a27
+        authoredAt: 2026-10-05T16:50:56Z
+      - &a16
+        sha: 92f6a627dfd33dfd78893befca905bd69091d7b5
+        message: Merge remote-tracking branch 'origin/codex/transition-click-to-call' into stack-144
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/92f6a627dfd33dfd78893befca905bd69091d7b5
+        authoredAt: 2026-10-05T17:34:33Z
+      - &a45
+        sha: 9c07a625ee475b96ad50bd3a66aaff53df0cb6e4
+        message: "fix(transition): normalize advisor select query"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9c07a625ee475b96ad50bd3a66aaff53df0cb6e4
+        authoredAt: 2026-10-05T23:24:13Z
+    workTimestamps:
+      - 2026-10-05T16:50:56Z
+      - 2026-10-05T17:34:33Z
+      - 2026-10-05T23:24:13Z
+    workAdditions: 150
+    workDeletions: 22
+    workFiles:
+      - transition/src/components/transition-workspace.tsx
+      - transition/src/lib/advisor-filter.test.ts
+      - transition/src/lib/contact-enrichment.test.ts
+      - transition/src/lib/contact-enrichment.ts
+      - transition/src/lib/cosmos-repository.test.ts
+      - transition/src/lib/cosmos-repository.ts
+      - transition/src/lib/rep-codes.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
+  - title: "perf(transition): cache loaded sections for instant revisits"
+    body: Section navigation currently refetches data whenever a route remounts, producing visible delays even when the user
+      recently viewed the same section. This change adds a verified-identity-scoped, memory-only cache for dashboard,
+      household, account list, exception, and account detail reads. Fresh entri...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - "app: transition"
+    additions: 717
+    deletions: 93
+    changedFiles: 6
+    author: myriadas-clees
+    createdAt: 2026-10-02T18:39:08Z
+    updatedAt: 2026-10-06T13:29:09Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a2
+        sha: b645df4cbc4ac61deead226f4a3eef6da72a3989
+        message: "fix(transition): invalidate writes before parsing responses"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b645df4cbc4ac61deead226f4a3eef6da72a3989
+        authoredAt: 2026-10-05T15:58:56Z
+      - &a6
+        sha: 4c363de9e645aeccdd021543e588299b20f88da9
+        message: "fix(transition): order data auth failures behind verification"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4c363de9e645aeccdd021543e588299b20f88da9
+        authoredAt: 2026-10-05T16:15:37Z
+      - &a10
+        sha: 0b2f4ea589d25e73e965e638edf91f6b1e706ced
+        message: "fix(transition): order pending access verification"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0b2f4ea589d25e73e965e638edf91f6b1e706ced
+        authoredAt: 2026-10-05T16:49:02Z
+      - &a13
+        sha: 50497bc959d0fd694edcad797993fed1edc54762
+        message: "fix(transition): preserve edits during cache refresh"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/50497bc959d0fd694edcad797993fed1edc54762
+        authoredAt: 2026-10-05T17:03:36Z
+      - &a14
+        sha: 0be80df8bbdce6d43cce34e784436494533027dd
+        message: "fix(transition): reconcile safe cache refreshes"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0be80df8bbdce6d43cce34e784436494533027dd
+        authoredAt: 2026-10-05T17:09:35Z
+      - &a44
+        sha: a99a9f863e7aae989324326c182418ecf6b3a7db
+        message: "fix(transition): clear child conflict errors after reload"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a99a9f863e7aae989324326c182418ecf6b3a7db
+        authoredAt: 2026-10-05T23:23:48Z
+    workTimestamps:
+      - 2026-10-05T15:58:56Z
+      - 2026-10-05T16:15:37Z
+      - 2026-10-05T16:49:02Z
+      - 2026-10-05T17:03:36Z
+      - 2026-10-05T17:09:35Z
+      - 2026-10-05T23:23:48Z
+    workAdditions: 108
+    workDeletions: 39
+    workFiles:
+      - transition/src/components/transition-shell.tsx
+      - transition/src/components/transition-workspace.tsx
+      - transition/src/lib/api/client.ts
+      - transition/src/lib/api/session-cache.test.ts
+      - transition/src/lib/api/session-cache.ts
+      - transition/src/lib/hooks/use-transition-read.ts
+  - title: "feat(transition): add click-to-call contact links"
+    body: Add click-to-call actions for Transition contact phone numbers using validated standard `tel:` links. Preserve the
+      stored/displayed number formatting, suppress call links for blank or invalid numbers, and label links for
+      assistive technology. The UI explains that links use the device’s configured ca...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/143
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - documentation
+      - "app: transition"
+    additions: 105
+    deletions: 4
+    changedFiles: 5
+    author: myriadas-clees
+    createdAt: 2026-10-02T18:41:24Z
+    updatedAt: 2026-10-06T00:43:53Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a3
+        sha: e72925ac6860fc5932c8ba1b2e3b26d97dcbf2e1
+        message: Merge verified parent contact fix into click-to-call
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e72925ac6860fc5932c8ba1b2e3b26d97dcbf2e1
+        authoredAt: 2026-10-05T16:00:19Z
+      - &a5
+        sha: 0997a3909572c18a369ca382495ceed80178abb1
+        message: Merge verified parent persistence fix into click-to-call
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0997a3909572c18a369ca382495ceed80178abb1
+        authoredAt: 2026-10-05T16:12:40Z
+      - &a15
+        sha: 81fab82490d939011cd78a3ef5f450c03157bfda
+        message: Merge commit 'c2d266e6e33eccf8e097e6568f60cf84c10cb2c7' into HEAD
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/81fab82490d939011cd78a3ef5f450c03157bfda
+        authoredAt: 2026-10-05T17:31:07Z
+      - &a49
+        sha: bb957c2b3ad423e44153eb3830edc2146fce54ca
+        message: Merge PR141 CSV contact details into click-to-call
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/bb957c2b3ad423e44153eb3830edc2146fce54ca
+        authoredAt: 2026-10-06T00:27:02Z
+      - &a51
+        sha: ee873a59e4c9de00b3ee75287270edb6c14d0408
+        message: "fix(transition): preserve phone call links for extensions"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ee873a59e4c9de00b3ee75287270edb6c14d0408
+        authoredAt: 2026-10-06T00:39:02Z
+    workTimestamps:
+      - 2026-10-05T16:00:19Z
+      - 2026-10-05T16:12:40Z
+      - 2026-10-05T17:31:07Z
+      - 2026-10-06T00:27:02Z
+      - 2026-10-06T00:39:02Z
+    workAdditions: 3145
+    workDeletions: 225
+    workFiles:
+      - docs/transition/contracts.md
+      - transition/README.md
+      - transition/src/components/contact-enrichment-search.test.ts
+      - transition/src/components/contact-enrichment-search.ts
+      - transition/src/components/contact-enrichment-value-review.test.ts
+      - transition/src/components/contact-enrichment-value-review.tsx
+      - transition/src/components/contact-enrichment.test.ts
+      - transition/src/components/contact-enrichment.tsx
+      - transition/src/components/contact-phone-link.test.ts
+      - transition/src/lib/account-number.ts
+      - transition/src/lib/contact-enrichment-issue-counts.test.ts
+      - transition/src/lib/contact-enrichment-name.ts
+      - transition/src/lib/contact-enrichment-new-draft.integration.test.ts
+      - transition/src/lib/contact-enrichment-phone.test.ts
+      - transition/src/lib/contact-enrichment-phone.ts
+      - transition/src/lib/contact-enrichment-scale-synthetic.test.ts
+      - transition/src/lib/contact-enrichment-types.ts
+      - transition/src/lib/contact-enrichment-whitespace-synthetic.test.ts
+      - transition/src/lib/contact-enrichment.test.ts
+      - transition/src/lib/contact-enrichment.ts
+      - transition/src/lib/contact-phone.test.ts
+      - transition/src/lib/contact-phone.ts
+      - transition/src/lib/cosmos-repository.test.ts
+      - transition/src/lib/cosmos-repository.ts
+      - transition/src/lib/excel-contact-enrichment.integration.test.ts
+      - transition/src/lib/repository.ts
+      - transition/src/lib/workbook.ts
+      - transition/vitest.config.ts
+  - title: "feat(transition): import CSV household contact details"
+    body: >-
+      Populated Transition workspaces need a safe way to correct names and enrich household contact details from the
+      retained CSV layouts. The existing Excel import initializes an empty workspace and is not used for these
+      corrections.
+
+
+      This adds an administrator-only full-file CSV preview and confirmation...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - documentation
+      - "app: transition"
+    additions: 4253
+    deletions: 39
+    changedFiles: 34
+    author: myriadas-clees
+    createdAt: 2026-10-02T17:31:02Z
+    updatedAt: 2026-10-06T13:28:36Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a1
+        sha: 7add8b84f8df40cadef9b52db7d4b1dcb55ad522
+        message: "codex: address PR review feedback (#141)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7add8b84f8df40cadef9b52db7d4b1dcb55ad522
+        authoredAt: 2026-10-05T15:54:30Z
+      - &a4
+        sha: 14a5b4cb854171750a2c6394f29bfa57908d7436
+        message: "codex: address PR review feedback (#141)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/14a5b4cb854171750a2c6394f29bfa57908d7436
+        authoredAt: 2026-10-05T16:06:03Z
+      - &a7
+        sha: f96b6d9ae6af8c7fcdebda4d28c281b358ba67f9
+        message: "codex: address PR review feedback (#141)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f96b6d9ae6af8c7fcdebda4d28c281b358ba67f9
+        authoredAt: 2026-10-05T16:16:41Z
+      - &a8
+        sha: e5ed2af74b639e854e8d0345979f262bea3dfb62
+        message: "codex: address PR review feedback (#141)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e5ed2af74b639e854e8d0345979f262bea3dfb62
+        authoredAt: 2026-10-05T16:29:05Z
+      - &a9
+        sha: 8489b1baa99b3bd2e23ae63b93ac7c17baa6eb4a
+        message: "codex: address PR review feedback (#141)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8489b1baa99b3bd2e23ae63b93ac7c17baa6eb4a
+        authoredAt: 2026-10-05T16:39:29Z
+      - &a12
+        sha: c2d266e6e33eccf8e097e6568f60cf84c10cb2c7
+        message: "fix(transition): bound CSV parsing shape"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c2d266e6e33eccf8e097e6568f60cf84c10cb2c7
+        authoredAt: 2026-10-05T17:03:07Z
+      - &a18
+        sha: 8f403199535bef1cab2b300a3bf0fd7393aa9628
+        message: "fix(transition): bound CSV cell materialization"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8f403199535bef1cab2b300a3bf0fd7393aa9628
+        authoredAt: 2026-10-05T17:42:17Z
+      - &a19
+        sha: 6e6e74b46b750df76c8ef6bb365a681f42de9610
+        message: "feat(transition): preview confirmed CSV corrections"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6e6e74b46b750df76c8ef6bb365a681f42de9610
+        authoredAt: 2026-10-05T18:11:18Z
+      - &a21
+        sha: 7e0e04fd0dda53d9f715010fcfdbda88871d6729
+        message: Add atomic correction snapshot publication
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7e0e04fd0dda53d9f715010fcfdbda88871d6729
+        authoredAt: 2026-10-05T19:14:40Z
+      - &a20
+        sha: d8fc7fe9aa4838673238777f78e377b7de122b2a
+        message: "fix(transition): align account matching diagnostics"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d8fc7fe9aa4838673238777f78e377b7de122b2a
+        authoredAt: 2026-10-05T18:59:30Z
+      - &a22
+        sha: 040b558bc3bde423412428ae40d4508ad1a6f41f
+        message: Publish complete CSV corrections atomically
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/040b558bc3bde423412428ae40d4508ad1a6f41f
+        authoredAt: 2026-10-05T19:19:10Z
+      - &a23
+        sha: 143cc852a09f37f13994940838933319760278cb
+        message: Harden atomic CSV correction publication
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/143cc852a09f37f13994940838933319760278cb
+        authoredAt: 2026-10-05T19:28:16Z
+      - &a24
+        sha: bb2dd9c886e253c413b3dcc53d3c8a5afddd87c7
+        message: Delay cleanup of superseded correction snapshots
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/bb2dd9c886e253c413b3dcc53d3c8a5afddd87c7
+        authoredAt: 2026-10-05T19:31:42Z
+      - &a25
+        sha: f8b9ffbb08ad85ee4033b45774fc83d6f4e219f9
+        message: Scope correction generation cleanup
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f8b9ffbb08ad85ee4033b45774fc83d6f4e219f9
+        authoredAt: 2026-10-05T19:32:38Z
+      - &a26
+        sha: 88d9556285f419cd4f412fd2730ea0ea3358554d
+        message: Match CSV rows through account source provenance
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/88d9556285f419cd4f412fd2730ea0ea3358554d
+        authoredAt: 2026-10-05T19:55:17Z
+      - &a27
+        sha: 92b27e40139397d07927dd48ca029ceb23f119e0
+        message: Reconcile account provenance and shared contacts
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/92b27e40139397d07927dd48ca029ceb23f119e0
+        authoredAt: 2026-10-05T20:00:47Z
+      - &a28
+        sha: dd10b2e203e8c9f6f45119ff3697c2490abad267
+        message: Fence canonical account identity globally
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/dd10b2e203e8c9f6f45119ff3697c2490abad267
+        authoredAt: 2026-10-05T20:04:27Z
+      - &a29
+        sha: fa4926a9438d22b47b168c0acfc7634642d1947d
+        message: Restore legacy import contact matching
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/fa4926a9438d22b47b168c0acfc7634642d1947d
+        authoredAt: 2026-10-05T20:14:43Z
+      - &a30
+        sha: 375e22b74048f3ef878b9e854d9b77af61c15ee9
+        message: Recover historical account provenance from headers
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/375e22b74048f3ef878b9e854d9b77af61c15ee9
+        authoredAt: 2026-10-05T20:18:16Z
+      - &a31
+        sha: 48b30f4b5803ad2a36fe2ba7e1bc6b3aa1291477
+        message: Keep blocked correction previews explicit
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/48b30f4b5803ad2a36fe2ba7e1bc6b3aa1291477
+        authoredAt: 2026-10-05T20:18:55Z
+      - &a32
+        sha: 6315d287bde561689ea135331b20f94a204c5a01
+        message: Reject ambiguous retained workbook headers
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6315d287bde561689ea135331b20f94a204c5a01
+        authoredAt: 2026-10-05T20:19:54Z
+      - &a33
+        sha: 92c4679ab1a74fced8b37acf1c2d35b7a69b553f
+        message: Honor retained household-detail precedence
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/92c4679ab1a74fced8b37acf1c2d35b7a69b553f
+        authoredAt: 2026-10-05T20:27:01Z
+      - &a34
+        sha: 7363e557f043526621696b43564f41df4a7d4ab6
+        message: Normalize standard contact phone formats
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7363e557f043526621696b43564f41df4a7d4ab6
+        authoredAt: 2026-10-05T20:39:39Z
+      - &a35
+        sha: 3df212a14ea696fba9dffdf2670f61e38bccf986
+        message: Apply entity-specific CSV name authority
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3df212a14ea696fba9dffdf2670f61e38bccf986
+        authoredAt: 2026-10-05T20:57:45Z
+      - &a36
+        sha: 0a9c611ac279d73f20b61035becf12c422493355
+        message: Add resolved-value CSV decisions
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0a9c611ac279d73f20b61035becf12c422493355
+        authoredAt: 2026-10-05T21:21:07Z
+      - &a37
+        sha: 9c3b230ab2364a1b59ff9e126d28f02cbb2169e0
+        message: Label resolved value choices by household
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9c3b230ab2364a1b59ff9e126d28f02cbb2169e0
+        authoredAt: 2026-10-05T21:25:34Z
+      - &a38
+        sha: a21f087647524e1e14a655685e949f4fd5fc9702
+        message: Add manual CSV value review
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a21f087647524e1e14a655685e949f4fd5fc9702
+        authoredAt: 2026-10-05T21:30:27Z
+      - &a39
+        sha: 060c95ca6cc3620eba5fd10d20ba36934dce149c
+        message: Preserve selected saved phone text
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/060c95ca6cc3620eba5fd10d20ba36934dce149c
+        authoredAt: 2026-10-05T21:34:19Z
+      - &a40
+        sha: 9a574dd737bb7ec8627cdd38ce2256fee1f4eaf2
+        message: "fix(transition): normalize whitespace in CSV record names"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9a574dd737bb7ec8627cdd38ce2256fee1f4eaf2
+        authoredAt: 2026-10-05T22:00:48Z
+      - &a41
+        sha: 3e0a461838a293fecafdd61e96436d9dd3278355
+        message: "fix(transition): normalize names before retaining bounded cells"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3e0a461838a293fecafdd61e96436d9dd3278355
+        authoredAt: 2026-10-05T22:04:15Z
+      - &a42
+        sha: e69dd0b704ece35ab3fbf6dc6c60802c4daf04c3
+        message: Support incoming value review for clear new contact drafts
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e69dd0b704ece35ab3fbf6dc6c60802c4daf04c3
+        authoredAt: 2026-10-05T22:24:45Z
+      - &a43
+        sha: 0f3da795e9d0bf0b8f9d37f010511e37a4f9e241
+        message: Distinguish CSV issue entries from affected rows and choices
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0f3da795e9d0bf0b8f9d37f010511e37a4f9e241
+        authoredAt: 2026-10-05T22:34:29Z
+      - &a46
+        sha: a10ca7b9bd9d3aa4467c3cede3f3ad6bf9189ee4
+        message: Fix full-file CSV enrichment review findings
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a10ca7b9bd9d3aa4467c3cede3f3ad6bf9189ee4
+        authoredAt: 2026-10-05T23:42:32Z
+      - &a47
+        sha: 1a6379968f4996ccfc71e1bf5262a7320b98f6ed
+        message: Document full-file CSV correction scope
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/1a6379968f4996ccfc71e1bf5262a7320b98f6ed
+        authoredAt: 2026-10-06T00:04:05Z
+      - &a48
+        sha: 23a5c89684913b3fc3acaa4e7ef2491f1d1954e2
+        message: Preserve contact roles with unrelated File4 data
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/23a5c89684913b3fc3acaa4e7ef2491f1d1954e2
+        authoredAt: 2026-10-06T00:04:17Z
+      - &a50
+        sha: b411ed192de53252304c298a6bc83a16a6887b29
+        message: Retain primary and secondary detail source columns in review
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b411ed192de53252304c298a6bc83a16a6887b29
+        authoredAt: 2026-10-06T00:38:47Z
+      - &a52
+        sha: 420aa8ae9b46fbe47e851975668cefe22bd6f9f1
+        message: Fix correction retirement and contact identity scans
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/420aa8ae9b46fbe47e851975668cefe22bd6f9f1
+        authoredAt: 2026-10-06T01:15:03Z
+      - &a53
+        sha: 9c02990e993725eae3b6b74d80f43e9ce141e38b
+        message: Index enrichment batch household keys
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9c02990e993725eae3b6b74d80f43e9ce141e38b
+        authoredAt: 2026-10-06T01:27:32Z
+      - &a54
+        sha: 7675475127f55233f947a1bf5701397aa1fc45f9
+        message: "fix(transition): resolve full contact enrichment reviews"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7675475127f55233f947a1bf5701397aa1fc45f9
+        authoredAt: 2026-10-06T01:56:47Z
+      - &a55
+        sha: a037851d5ce137c7caf6e2878b89d399406accca
+        message: "test(transition): keep full review coverage within CI budget"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a037851d5ce137c7caf6e2878b89d399406accca
+        authoredAt: 2026-10-06T02:19:41Z
+    workTimestamps:
+      - 2026-10-05T15:54:30Z
+      - 2026-10-05T16:06:03Z
+      - 2026-10-05T16:16:41Z
+      - 2026-10-05T16:29:05Z
+      - 2026-10-05T16:39:29Z
+      - 2026-10-05T17:03:07Z
+      - 2026-10-05T17:42:17Z
+      - 2026-10-05T18:11:18Z
+      - 2026-10-05T19:14:40Z
+      - 2026-10-05T18:59:30Z
+      - 2026-10-05T19:19:10Z
+      - 2026-10-05T19:28:16Z
+      - 2026-10-05T19:31:42Z
+      - 2026-10-05T19:32:38Z
+      - 2026-10-05T19:55:17Z
+      - 2026-10-05T20:00:47Z
+      - 2026-10-05T20:04:27Z
+      - 2026-10-05T20:14:43Z
+      - 2026-10-05T20:18:16Z
+      - 2026-10-05T20:18:55Z
+      - 2026-10-05T20:19:54Z
+      - 2026-10-05T20:27:01Z
+      - 2026-10-05T20:39:39Z
+      - 2026-10-05T20:57:45Z
+      - 2026-10-05T21:21:07Z
+      - 2026-10-05T21:25:34Z
+      - 2026-10-05T21:30:27Z
+      - 2026-10-05T21:34:19Z
+      - 2026-10-05T22:00:48Z
+      - 2026-10-05T22:04:15Z
+      - 2026-10-05T22:24:45Z
+      - 2026-10-05T22:34:29Z
+      - 2026-10-05T23:42:32Z
+      - 2026-10-06T00:04:05Z
+      - 2026-10-06T00:04:17Z
+      - 2026-10-06T00:38:47Z
+      - 2026-10-06T01:15:03Z
+      - 2026-10-06T01:27:32Z
+      - 2026-10-06T01:56:47Z
+      - 2026-10-06T02:19:41Z
+    workAdditions: 4088
+    workDeletions: 595
+    workFiles:
+      - docs/transition/contracts.md
+      - transition/README.md
+      - transition/src/components/contact-enrichment-search.test.ts
+      - transition/src/components/contact-enrichment-search.ts
+      - transition/src/components/contact-enrichment-value-review.test.ts
+      - transition/src/components/contact-enrichment-value-review.tsx
+      - transition/src/components/contact-enrichment.test.ts
+      - transition/src/components/contact-enrichment.tsx
+      - transition/src/lib/account-number.ts
+      - transition/src/lib/contact-enrichment-email-roles-synthetic.test.ts
+      - transition/src/lib/contact-enrichment-issue-counts.test.ts
+      - transition/src/lib/contact-enrichment-name.ts
+      - transition/src/lib/contact-enrichment-new-draft.integration.test.ts
+      - transition/src/lib/contact-enrichment-phone.test.ts
+      - transition/src/lib/contact-enrichment-phone.ts
+      - transition/src/lib/contact-enrichment-resolution-pages.test.ts
+      - transition/src/lib/contact-enrichment-resolution-pages.ts
+      - transition/src/lib/contact-enrichment-scale-synthetic.test.ts
+      - transition/src/lib/contact-enrichment-types.ts
+      - transition/src/lib/contact-enrichment-whitespace-synthetic.test.ts
+      - transition/src/lib/contact-enrichment.test.ts
+      - transition/src/lib/contact-enrichment.ts
+      - transition/src/lib/cosmos-repository.test.ts
+      - transition/src/lib/cosmos-repository.ts
+      - transition/src/lib/excel-contact-enrichment.integration.test.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
+      - transition/src/lib/workbook.ts
+      - transition/vitest.config.ts
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "codex: address PR review feedback (#141)"
+      - "fix(transition): invalidate writes before parsing responses"
+      - Merge verified parent contact fix into click-to-call
+      - "codex: address PR review feedback (#141)"
+      - Merge verified parent persistence fix into click-to-call
+      - "fix(transition): order data auth failures behind verification"
+      - "codex: address PR review feedback (#141)"
+      - "codex: address PR review feedback (#141)"
+      - "codex: address PR review feedback (#141)"
+      - "fix(transition): order pending access verification"
+      - "fix(transition): share rep code whitespace normalization"
+      - "fix(transition): bound CSV parsing shape"
+      - "fix(transition): preserve edits during cache refresh"
+      - "fix(transition): reconcile safe cache refreshes"
+      - Merge commit 'c2d266e6e33eccf8e097e6568f60cf84c10cb2c7' into HEAD
+      - Merge remote-tracking branch 'origin/codex/transition-click-to-call' into stack-144
+      - Merge remote-tracking branch 'refs/remotes/github/feat/transition-rep-assignments' into
+        codex/pr146-parent-refresh
+      - "fix(transition): bound CSV cell materialization"
+      - "feat(transition): preview confirmed CSV corrections"
+      - "fix(transition): align account matching diagnostics"
+      - Add atomic correction snapshot publication
+      - Publish complete CSV corrections atomically
+      - Harden atomic CSV correction publication
+      - Delay cleanup of superseded correction snapshots
+      - Scope correction generation cleanup
+      - Match CSV rows through account source provenance
+      - Reconcile account provenance and shared contacts
+      - Fence canonical account identity globally
+      - Restore legacy import contact matching
+      - Recover historical account provenance from headers
+      - Keep blocked correction previews explicit
+      - Reject ambiguous retained workbook headers
+      - Honor retained household-detail precedence
+      - Normalize standard contact phone formats
+      - Apply entity-specific CSV name authority
+      - Add resolved-value CSV decisions
+      - Label resolved value choices by household
+      - Add manual CSV value review
+      - Preserve selected saved phone text
+      - "fix(transition): normalize whitespace in CSV record names"
+      - "fix(transition): normalize names before retaining bounded cells"
+      - Support incoming value review for clear new contact drafts
+      - Distinguish CSV issue entries from affected rows and choices
+      - "fix(transition): clear child conflict errors after reload"
+      - "fix(transition): normalize advisor select query"
+      - Fix full-file CSV enrichment review findings
+      - Document full-file CSV correction scope
+      - Preserve contact roles with unrelated File4 data
+      - Merge PR141 CSV contact details into click-to-call
+      - Retain primary and secondary detail source columns in review
+      - "fix(transition): preserve phone call links for extensions"
+      - Fix correction retirement and contact identity scans
+      - Index enrichment batch household keys
+      - "fix(transition): resolve full contact enrichment reviews"
+      - "test(transition): keep full review coverage within CI budget"
+    commits:
+      - *a1
+      - *a2
+      - *a3
+      - *a4
+      - *a5
+      - *a6
+      - *a7
+      - *a8
+      - *a9
+      - *a10
+      - *a11
+      - *a12
+      - *a13
+      - *a14
+      - *a15
+      - *a16
+      - *a17
+      - *a18
+      - *a19
+      - *a20
+      - *a21
+      - *a22
+      - *a23
+      - *a24
+      - *a25
+      - *a26
+      - *a27
+      - *a28
+      - *a29
+      - *a30
+      - *a31
+      - *a32
+      - *a33
+      - *a34
+      - *a35
+      - *a36
+      - *a37
+      - *a38
+      - *a39
+      - *a40
+      - *a41
+      - *a42
+      - *a43
+      - *a44
+      - *a45
+      - *a46
+      - *a47
+      - *a48
+      - *a49
+      - *a50
+      - *a51
+      - *a52
+      - *a53
+      - *a54
+      - *a55
+releases: []
+externalContributions: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 143
+    prTitle: "feat(transition): add click-to-call contact links"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/143
+    state: commented
+    submittedAt: 2026-10-06T00:43:53Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-05T17:04:44Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-05T17:42:58Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T00:12:47Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T00:13:41Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T00:16:42Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T00:18:06Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T00:18:24Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T00:20:23Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T00:21:51Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T00:22:18Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T00:22:57Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T00:23:40Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T00:24:21Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T00:24:43Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T00:25:58Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T00:26:50Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T01:23:24Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T01:23:58Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T01:24:21Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T01:36:27Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 143
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/143
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/143#discussion_r4190372358
+    body: Fixed in ee873a5. `contactPhoneHref` accepts recognized `x`, `ext.`, `extension`, and `;ext=` suffixes, validates
+      the base and extension digits, and emits RFC 3966 `;ext=` while leaving the stored/displayed value unchanged.
+      Synthetic tests cover `515-555-0123 x12`, other supported forms, leading-zer...
+    path: transition/src/lib/contact-phone.ts
+    createdAt: 2026-10-06T00:43:53Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4186636928
+    body: Fixed in c2d266e. CSV parsing now enforces the 100-column and 50,000-data-row limits before appending fields or
+      rows, preventing oversized shape inputs from being fully materialized. Synthetic oversized-column and
+      oversized-row regressions pass with the focused 74-test suite, typecheck, and lint.
+    path: transition/src/lib/contact-enrichment.ts
+    createdAt: 2026-10-05T17:04:44Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4186975735
+    body: Fixed in 8f40319. Parsing now retains only the required File1/File4 columns, enforces a shared cross-file
+      materialized-cell budget, and preserves existing row accounting and field mapping. A synthetic 100-column
+      regression verifies unused values are discarded without changing imported contact fields...
+    path: transition/src/lib/contact-enrichment.ts
+    createdAt: 2026-10-05T17:42:58Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190193804
+    body: The approved correction flow permits one consistent nonblank incoming email or phone to update a uniquely resolved
+      saved contact. The full-file preview shows the saved and proposed values, and the UI requires every review page
+      plus one final confirmation before the atomic apply. Conflicting incoming...
+    path: transition/src/lib/contact-enrichment.ts
+    createdAt: 2026-10-06T00:12:47Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190198777
+    body: "The contact-only contract was superseded by the approved scope: File1 ACCOUNTNAME may correct a uniquely
+      identified saved account, while the optional File4 HOUSEHOLDNAME controls household names. Account and household
+      names can differ. When both ACCOUNTID and LEGACYACCOUNTNUMBER are supplied they mu..."
+    path: transition/src/lib/contact-enrichment.ts
+    createdAt: 2026-10-06T00:13:41Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190215961
+    body: Fixed in 23a5c89. Both storage adapters run the same repository transaction against the apply-time household
+      snapshot. It revalidates the unique household key and checks current contact names, email, and phone immediately
+      before each create; a collision aborts the full transaction. The synthetic tes...
+    path: transition/src/lib/contact-enrichment.ts
+    createdAt: 2026-10-06T00:16:42Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190223670
+    body: Fixed in 23a5c89. The apply transaction reloads the current household/contact state and checks any proposed
+      nonblank email or phone against every other person before writing. The synthetic `rechecks update email and phone
+      signals inside the apply transaction` test creates a competing contact after p...
+    path: transition/src/lib/repository.ts
+    createdAt: 2026-10-06T00:18:06Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190225284
+    body: Fixed in 23a5c89. The Cosmos writer measures the serialized full transactional operation array, including the
+      manifest, and rejects it above 1,800,000 bytes before issuing the batch; it also rejects more than 99 stored
+      aggregates rather than splitting the file. Synthetic tests verify oversized paylo...
+    path: transition/src/lib/cosmos-repository.ts
+    createdAt: 2026-10-06T00:18:23Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190237061
+    body: Fixed in 23a5c89. The parser rejects case-insensitive duplicate upload filenames before building row-accounting
+      keys, so File1 and File4 cannot alias on `file:row`. The synthetic test `rejects colliding File1 and File4 display
+      filenames before row accounting` verifies `Contacts.csv` and `contacts.CS...
+    path: transition/src/lib/contact-enrichment.ts
+    createdAt: 2026-10-06T00:20:23Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190245362
+    body: Fixed in 23a5c89. Inside the apply transaction, the repository recomputes the household matches from the current
+      advisor and legacy number and requires exactly one match with the same household ID before writing. The synthetic
+      test `rejects persistence when the matched household key changed after pl...
+    path: transition/src/lib/repository.ts
+    createdAt: 2026-10-06T00:21:51Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190247775
+    body: Fixed in 23a5c89. `batchFailure` checks both a batch-level `response.code` and any failing per-operation status;
+      409/412 remains mapped to a conflict. The synthetic Cosmos test `rejects a failed Cosmos batch-level response`
+      supplies a 412, verifies apply rejects, and confirms no proposed contacts we...
+    path: transition/src/lib/cosmos-repository.ts
+    createdAt: 2026-10-06T00:22:18Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190251650
+    body: Fixed in 23a5c89. Normalized-equivalent saved email values are not added to the update field set, and the planned
+      change keeps `person.email` when email itself is unchanged. The synthetic test `preserves normalized-equivalent
+      saved values during another field update` verifies a relationship change r...
+    path: transition/src/lib/contact-enrichment.ts
+    createdAt: 2026-10-06T00:22:57Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190255692
+    body: Fixed in 23a5c89. The transaction rechecks email and phone collisions only when that field is part of the proposed
+      patch, so a pre-existing duplicate does not block an unrelated relationship-only update; newly supplied signals
+      remain guarded. The synthetic test `allows relationship-only updates when...
+    path: transition/src/lib/repository.ts
+    createdAt: 2026-10-06T00:23:40Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190259586
+    body: Fixed in 23a5c89. Saved primary/secondary contact roles are merged into the incoming relationship when File4 has
+      no role evidence for that contact, including when File4 is omitted. The synthetic test `preserves saved File4
+      contact roles when the optional File4 file is omitted` verifies preview and a...
+    path: transition/src/lib/contact-enrichment.ts
+    createdAt: 2026-10-06T00:24:21Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190261684
+    body: Fixed in 23a5c89. File4 role evidence is tracked per contact candidate, so a File4 row for another person does not
+      erase this contact's saved relationship. The synthetic test `preserves saved File4 contact roles when File4 only
+      identifies a different contact` verifies preview and apply (`contact-enr...
+    path: transition/src/lib/contact-enrichment.ts
+    createdAt: 2026-10-06T00:24:43Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190268871
+    body: "Addressed in 23a5c89 with an explicit bounded full-file envelope rather than a partial-import cap: one File1 and
+      optional File4, each up to 50,000 data rows, 5 MiB, 100 columns, and 1,000,000 retained cells total, yielding at
+      most 200,000 contact-role candidate slots before de-duplication. The synth..."
+    path: transition/src/lib/contact-enrichment.ts
+    createdAt: 2026-10-06T00:25:58Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190273737
+    body: Fixed in 23a5c89. The README and contracts now say any unmatched row blocks the entire file; no rows are skipped
+      or partially applied. The UI requires every changes/issues/value-review page and one confirmation for the full
+      atomic apply. The synthetic test `blocks the entire import when any row is u...
+    path: docs/transition/contracts.md
+    createdAt: 2026-10-06T00:26:49Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190613296
+    body: Addressed in 420aa8a. A transaction-local contact identity index is built once per household and updated after
+      creates/updates, rather than rescanning all contacts per change. The synthetic repository test `indexes household
+      contact identities once for a large create batch` performs 5,000 same-house...
+    path: transition/src/lib/repository.ts
+    createdAt: 2026-10-06T01:23:24Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190616234
+    body: Fixed in 420aa8a. The manifest swap atomically creates a retirement record with `retiredAt`; cleanup uses that
+      timestamp, not the source documents’ original `_ts`, for the one-hour grace. Synthetic tests create an old
+      generation, verify it survives for the full grace after retirement, and let a read...
+    path: transition/src/lib/cosmos-repository.ts
+    createdAt: 2026-10-06T01:23:58Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190618109
+    body: Fixed in 420aa8a. After the manifest readback confirms the new snapshot is live, stale-generation cleanup is
+      best-effort and its errors do not turn a committed correction into an apparent failure. The synthetic `returns
+      committed correction success when retirement cleanup is throttled` test injects ...
+    path: transition/src/lib/cosmos-repository.ts
+    createdAt: 2026-10-06T01:24:20Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190677382
+    body: Addressed in 9c02990e. The transaction now builds and reuses household-key and account-identity indexes instead of
+      rescanning those tables per planned change. The regression `indexes household and account keys once across a
+      repeated multi-household batch` covers 1,000 households and 4,000 repeated c...
+    path: transition/src/lib/repository.ts
+    createdAt: 2026-10-06T01:36:27Z
+aiReviews:
+  codex:
+    prsReviewed: 4
+    comments: 37
+    reviews: 25
+    fixed: 19
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 4
+  comments: 37
+  reviews: 25
+  fixed: 19
+hoursInputs:
+  timestamps:
+    - 2026-10-05T15:54:30Z
+    - 2026-10-05T15:58:56Z
+    - 2026-10-05T16:00:19Z
+    - 2026-10-05T16:06:03Z
+    - 2026-10-05T16:12:40Z
+    - 2026-10-05T16:15:37Z
+    - 2026-10-05T16:16:41Z
+    - 2026-10-05T16:29:05Z
+    - 2026-10-05T16:39:29Z
+    - 2026-10-05T16:49:02Z
+    - 2026-10-05T16:50:56Z
+    - 2026-10-05T17:03:07Z
+    - 2026-10-05T17:03:36Z
+    - 2026-10-05T17:09:35Z
+    - 2026-10-05T17:31:07Z
+    - 2026-10-05T17:34:33Z
+    - 2026-10-05T17:37:40Z
+    - 2026-10-05T17:42:17Z
+    - 2026-10-05T18:11:18Z
+    - 2026-10-05T18:59:30Z
+    - 2026-10-05T19:14:40Z
+    - 2026-10-05T19:19:10Z
+    - 2026-10-05T19:28:16Z
+    - 2026-10-05T19:31:42Z
+    - 2026-10-05T19:32:38Z
+    - 2026-10-05T19:55:17Z
+    - 2026-10-05T20:00:47Z
+    - 2026-10-05T20:04:27Z
+    - 2026-10-05T20:14:43Z
+    - 2026-10-05T20:18:16Z
+    - 2026-10-05T20:18:55Z
+    - 2026-10-05T20:19:54Z
+    - 2026-10-05T20:27:01Z
+    - 2026-10-05T20:39:39Z
+    - 2026-10-05T20:57:45Z
+    - 2026-10-05T21:21:07Z
+    - 2026-10-05T21:25:34Z
+    - 2026-10-05T21:30:27Z
+    - 2026-10-05T21:34:19Z
+    - 2026-10-05T22:00:48Z
+    - 2026-10-05T22:04:15Z
+    - 2026-10-05T22:24:45Z
+    - 2026-10-05T22:34:29Z
+    - 2026-10-05T23:23:48Z
+    - 2026-10-05T23:24:13Z
+    - 2026-10-05T23:42:32Z
+    - 2026-10-06T00:04:05Z
+    - 2026-10-06T00:04:17Z
+    - 2026-10-06T00:27:02Z
+    - 2026-10-06T00:38:47Z
+    - 2026-10-06T00:39:02Z
+    - 2026-10-06T01:15:03Z
+    - 2026-10-06T01:27:32Z
+    - 2026-10-06T01:56:47Z
+    - 2026-10-06T02:19:41Z
+    - 2026-10-06T00:43:53Z
+    - 2026-10-05T17:04:44Z
+    - 2026-10-05T17:42:58Z
+    - 2026-10-06T00:12:47Z
+    - 2026-10-06T00:13:41Z
+    - 2026-10-06T00:16:42Z
+    - 2026-10-06T00:18:06Z
+    - 2026-10-06T00:18:24Z
+    - 2026-10-06T00:20:23Z
+    - 2026-10-06T00:21:51Z
+    - 2026-10-06T00:22:18Z
+    - 2026-10-06T00:22:57Z
+    - 2026-10-06T00:23:40Z
+    - 2026-10-06T00:24:21Z
+    - 2026-10-06T00:24:43Z
+    - 2026-10-06T00:25:58Z
+    - 2026-10-06T00:26:50Z
+    - 2026-10-06T01:23:24Z
+    - 2026-10-06T01:23:58Z
+    - 2026-10-06T01:24:21Z
+    - 2026-10-06T01:36:27Z
+    - 2026-10-06T00:43:53Z
+    - 2026-10-05T17:04:44Z
+    - 2026-10-05T17:42:58Z
+    - 2026-10-06T00:12:47Z
+    - 2026-10-06T00:13:41Z
+    - 2026-10-06T00:16:42Z
+    - 2026-10-06T00:18:06Z
+    - 2026-10-06T00:18:23Z
+    - 2026-10-06T00:20:23Z
+    - 2026-10-06T00:21:51Z
+    - 2026-10-06T00:22:18Z
+    - 2026-10-06T00:22:57Z
+    - 2026-10-06T00:23:40Z
+    - 2026-10-06T00:24:21Z
+    - 2026-10-06T00:24:43Z
+    - 2026-10-06T00:25:58Z
+    - 2026-10-06T00:26:49Z
+    - 2026-10-06T01:23:24Z
+    - 2026-10-06T01:23:58Z
+    - 2026-10-06T01:24:20Z
+    - 2026-10-06T01:36:27Z
+  volume:
+    pullRequests:
+      - additions: 132
+        deletions: 20
+        state: open
+        dailyWork: true
+        filesChanged: 6
+        testFilesChanged: 3
+        commitCount: 1
+      - additions: 150
+        deletions: 22
+        state: open
+        dailyWork: true
+        filesChanged: 9
+        testFilesChanged: 4
+        commitCount: 3
+      - additions: 108
+        deletions: 39
+        state: open
+        dailyWork: true
+        filesChanged: 6
+        testFilesChanged: 1
+        commitCount: 6
+      - additions: 3145
+        deletions: 225
+        state: open
+        dailyWork: true
+        filesChanged: 28
+        testFilesChanged: 13
+        commitCount: 5
+      - additions: 4088
+        deletions: 595
+        state: open
+        dailyWork: true
+        filesChanged: 29
+        testFilesChanged: 14
+        commitCount: 40
+    reviewCount: 21
+    reviewCommentCount: 21
+    commitCount: 0
+    commitAdditions: 0
+    commitDeletions: 0
+    commitStatsCount: 0
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 67.5
+  sessions: 1
+  sessionHours: 6
+  volumeHours: 67.5
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""

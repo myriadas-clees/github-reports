@@ -1,0 +1,64 @@
+title: Oct 5
+subtitle: transition
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 0 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 55 commits with +0 / −0 lines.
+    chips:
+      - label: Commits
+        value: "55"
+        color: green
+      - label: Additions
+        value: "+0"
+        color: green
+      - label: Deletions
+        value: −0
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 21 reviews with 21 comments.
+    chips:
+      - label: Reviews
+        value: "21"
+      - label: Comments
+        value: "21"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 25 reviews, 37 comments, 4 PRs."
+    chips:
+      - label: Codex
+        value: 25 reviews · 37 comments · 4 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~67.5h
+highlights:
+  - type: pr
+    title: "feat(transition): widen checklist notes editor"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +6 −4
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/146
+  - type: pr
+    title: "feat(transition): add rep code assignment choices"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +119 −26
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/144
+  - type: pr
+    title: "perf(transition): cache loaded sections for instant revisits"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +717 −93
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
+ticker: []
