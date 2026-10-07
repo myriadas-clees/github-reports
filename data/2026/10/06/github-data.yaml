@@ -1,0 +1,1967 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-10-06
+  to: 2026-10-06
+stats:
+  totalCommits: 58
+  totalAdditions: 8484
+  totalDeletions: 1626
+  prsOpened: 5
+  prsMerged: 7
+  prsInProgress: 3
+  prsReviewed: 36
+  reviewComments: 36
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 132.9
+dailyCommits:
+  - date: 2026-10-06
+    count: 58
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 48
+    prsOpened: 2
+    prsMerged: 4
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 10
+    prsOpened: 3
+    prsMerged: 3
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests:
+  - title: "fix(northstar): recognize Microsoft consent errors wrapped in invalid_grant"
+    body: >-
+      Microsoft can return a missing-consent failure as `invalid_grant` with `suberror=consent_required` or error code
+      `65001`. Northstar classified that response as an expired session, exposing silent recovery that cannot satisfy
+      consent.
+
+
+      Recognize these structured consent markers, return `403 consent_r...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/151
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels:
+      - deploy-preview
+    additions: 62
+    deletions: 19
+    changedFiles: 6
+    author: myriadas-clees
+    createdAt: 2026-10-06T16:29:08Z
+    updatedAt: 2026-10-06T16:47:56Z
+    closedAt: 2026-10-06T16:47:50Z
+    mergedAt: 2026-10-06T16:47:50Z
+    workCommits:
+      - &a10
+        sha: e5f5ae35821ce15f8ad2398d1047a8f3854dcdf5
+        message: "fix(northstar): recognize wrapped Microsoft consent errors"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e5f5ae35821ce15f8ad2398d1047a8f3854dcdf5
+        authoredAt: 2026-10-06T16:28:33Z
+      - &a11
+        sha: 7b00f7056b14b9312e9f91d523f05d00cbc65fef
+        message: "docs(northstar): document structured consent classification"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7b00f7056b14b9312e9f91d523f05d00cbc65fef
+        authoredAt: 2026-10-06T16:36:05Z
+    workTimestamps:
+      - 2026-10-06T16:28:33Z
+      - 2026-10-06T16:36:05Z
+    workAdditions: 62
+    workDeletions: 19
+    workFiles:
+      - hub/functions/src/northstar-consent.fixture.ts
+      - hub/functions/src/northstar-consent.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - northstar/CONSENT-FLOW.md
+      - northstar/components/northstar-recovery.dom.test.ts
+      - northstar/components/northstar-recovery.fixture.tsx
+  - title: Stabilize Northstar entry and asynchronous recovery
+    body: Northstar entry and interaction could lose focus or remain stuck while session checks and Microsoft requests were
+      loading. Source inspection and synthetic tests verified link remounts, shifting launch controls, session-probe
+      races, unbounded reads, stale async completions, and missing retry/cancel r...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/148
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 1762
+    deletions: 299
+    changedFiles: 27
+    author: myriadas-clees
+    createdAt: 2026-10-06T13:34:29Z
+    updatedAt: 2026-10-06T14:55:15Z
+    closedAt: 2026-10-06T14:55:14Z
+    mergedAt: 2026-10-06T14:55:14Z
+    workCommits:
+      - &a5
+        sha: 6e6835a81a84bb3cbe8d55ba6217deeeb62bcc73
+        message: "fix(northstar): stabilize entry and async recovery"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6e6835a81a84bb3cbe8d55ba6217deeeb62bcc73
+        authoredAt: 2026-10-06T13:29:29Z
+      - &a7
+        sha: 2ec405b316863ce152d80ff03daac44d5550fbdc
+        message: "fix(northstar): preserve recovery and refresh invariants"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2ec405b316863ce152d80ff03daac44d5550fbdc
+        authoredAt: 2026-10-06T14:10:23Z
+    workTimestamps:
+      - 2026-10-06T13:29:29Z
+      - 2026-10-06T14:10:23Z
+    workAdditions: 1762
+    workDeletions: 299
+    workFiles:
+      - hub/app/globals.css
+      - hub/components/hub-launcher.fixture.tsx
+      - hub/components/hub-launcher.test.ts
+      - hub/components/hub-launcher.tsx
+      - hub/functions/src/northstar-microsoft-deadline.fixture.ts
+      - hub/functions/src/northstar-microsoft-deadline.test.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/package.json
+      - northstar/app/globals.css
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/microsoft-todo-panel.tsx
+      - northstar/components/northstar-dashboard-lifecycle.fixture.ts
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/northstar-recovery.fixture.tsx
+      - northstar/components/northstar-stability.dom.test.ts
+      - northstar/components/northstar-stability.fixture.tsx
+      - northstar/components/settings-workspace.tsx
+      - northstar/lib/request-deadline.test.ts
+      - northstar/lib/request-deadline.ts
+      - package.json
+      - packages/auth/src/auth.test.ts
+      - packages/auth/src/client.ts
+      - packages/auth/src/iframe-login-dom.test.ts
+      - packages/auth/src/iframe-login-lifecycle.test.tsx
+      - packages/auth/src/iframe-login.fixture.tsx
+      - packages/auth/src/iframe-login.tsx
+  - title: "fix(northstar): stop redundant user consent after tenant approval"
+    body: New Northstar users were forced through Microsoft consent because OAuth start treated an empty per-user connection
+      record as evidence that consent was missing. `prompt=consent` can still block users after tenant-wide admin
+      approval. Interactive connect and explicit scope upgrades now use account sel...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/149
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 642
+    deletions: 66
+    changedFiles: 9
+    author: myriadas-clees
+    createdAt: 2026-10-06T14:10:41Z
+    updatedAt: 2026-10-06T14:55:16Z
+    closedAt: 2026-10-06T14:55:16Z
+    mergedAt: 2026-10-06T14:55:16Z
+    workCommits:
+      - &a6
+        sha: c5a030027811ab2d5037c74a09b243382c36fc7f
+        message: "fix(northstar): reuse tenant consent on user connections"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c5a030027811ab2d5037c74a09b243382c36fc7f
+        authoredAt: 2026-10-06T14:09:55Z
+      - &a8
+        sha: cc9a3a18fa7baff8d062ca0d211fa79e9232cf41
+        message: Merge remote-tracking branch 'origin/fix/northstar-stability' into fix/northstar-consent-flow
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cc9a3a18fa7baff8d062ca0d211fa79e9232cf41
+        authoredAt: 2026-10-06T14:12:28Z
+      - &a9
+        sha: a917112e3aa5bc2ba45d207b3ea330cb244ea47a
+        message: "docs(northstar): record integrated recovery parent"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a917112e3aa5bc2ba45d207b3ea330cb244ea47a
+        authoredAt: 2026-10-06T14:14:02Z
+    workTimestamps:
+      - 2026-10-06T14:09:55Z
+      - 2026-10-06T14:12:28Z
+      - 2026-10-06T14:14:02Z
+    workAdditions: 642
+    workDeletions: 66
+    workFiles:
+      - hub/functions/src/northstar-consent.fixture.ts
+      - hub/functions/src/northstar-consent.test.ts
+      - hub/functions/src/northstar-microsoft-deadline.fixture.ts
+      - hub/functions/src/northstar-microsoft-deadline.test.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - northstar/CONSENT-FLOW.md
+      - northstar/components/northstar-consent.dom.test.ts
+      - northstar/components/northstar-consent.fixture.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/northstar-stability.dom.test.ts
+      - northstar/components/northstar-stability.fixture.tsx
+      - northstar/components/settings-workspace.tsx
+  - title: "feat(transition): add censored offline CSV diagnostic review"
+    body: Administrators need to inspect contact-enrichment problems with an agent while keeping original client CSVs and
+      saved records in their own trusted session. This adds a Settings flow for Accounts.csv and optional Households.csv
+      that prepares censored structural evidence, lets the human inspect the co...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/148
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a1
+      - documentation
+      - "app: transition"
+    additions: 1436
+    deletions: 39
+    changedFiles: 26
+    author: myriadas-clees
+    createdAt: 2026-10-06T18:29:10Z
+    updatedAt: 2026-10-06T21:48:21Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a2
+      - &a28
+        sha: a644d5cb2a1941dfd544b37a76058716f32430c6
+        message: "feat(transition): prepare censored offline diagnostic reviews"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a644d5cb2a1941dfd544b37a76058716f32430c6
+        authoredAt: 2026-10-06T18:21:12Z
+      - &a29
+        sha: 877aa7ef20afa30457bca34aa5932483336a8d78
+        message: "fix(transition): keep diagnostic dialog stable and canonicalize source labels"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/877aa7ef20afa30457bca34aa5932483336a8d78
+        authoredAt: 2026-10-06T18:25:39Z
+      - &a34
+        sha: 69e41fa61ec177e3a3645b70b9afb12e03519b11
+        message: "fix(transition): address diagnostic review feedback"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/69e41fa61ec177e3a3645b70b9afb12e03519b11
+        authoredAt: 2026-10-06T21:28:30Z
+      - &a37
+        sha: de0764d1f6d1169610828ac7fc8f9cf88ce5d376
+        message: "fix(transition): improve diagnostic row provenance"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/de0764d1f6d1169610828ac7fc8f9cf88ce5d376
+        authoredAt: 2026-10-06T21:44:53Z
+    workTimestamps: &a3
+      - 2026-10-06T18:21:12Z
+      - 2026-10-06T18:25:39Z
+      - 2026-10-06T21:28:30Z
+      - 2026-10-06T21:44:53Z
+    workAdditions: 1436
+    workDeletions: 39
+    workFiles: &a4
+      - transition/DIAGNOSTIC-REVIEW.md
+      - transition/functions/src/index.ts
+      - transition/src/app/api/[...path]/route.ts
+      - transition/src/components/diagnostic-import.test.ts
+      - transition/src/components/diagnostic-import.tsx
+      - transition/src/components/transition-shell.test.ts
+      - transition/src/components/transition-shell.tsx
+      - transition/src/lib/__fixtures__/diagnostic-viewer.ts
+      - transition/src/lib/api/azure-functions-adapter.ts
+      - transition/src/lib/api/client.test.ts
+      - transition/src/lib/api/client.ts
+      - transition/src/lib/contact-enrichment.ts
+      - transition/src/lib/cosmos-repository.test.ts
+      - transition/src/lib/cosmos-repository.ts
+      - transition/src/lib/data.ts
+      - transition/src/lib/diagnostic-baseline.test.ts
+      - transition/src/lib/diagnostic-baseline.ts
+      - transition/src/lib/diagnostic-import.test.ts
+      - transition/src/lib/diagnostic-import.ts
+      - transition/src/lib/diagnostic-package.test.ts
+      - transition/src/lib/diagnostic-package.ts
+      - transition/src/lib/diagnostic-projection.test.ts
+      - transition/src/lib/diagnostic-projection.ts
+      - transition/src/lib/diagnostic-viewer.test.ts
+      - transition/src/lib/diagnostic-viewer.ts
+      - transition/src/lib/handlers.ts
+  - title: "feat(transition): retain multiple contact methods per person"
+    body: >-
+      Accounts CSV alternate email/phone columns belong to the same primary person. Scalar storage and secondary-owner
+      assignment dropped legitimate methods or forced incorrect choices. This retains every distinct method for the
+      verified person throughout storage, API, preview, and contact editors.
+
+
+      Sourc...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/147
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - "app: transition"
+    additions: 3744
+    deletions: 897
+    changedFiles: 56
+    author: myriadas-clees
+    createdAt: 2026-10-06T13:48:56Z
+    updatedAt: 2026-10-06T23:55:31Z
+    closedAt: 2026-10-06T23:55:31Z
+    mergedAt: 2026-10-06T23:55:31Z
+    workCommits:
+      - &a18
+        sha: 17535f774f9622971b7e437fb3b3fd304c1b8cf2
+        message: "feat(transition): retain multiple person contact methods"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/17535f774f9622971b7e437fb3b3fd304c1b8cf2
+        authoredAt: 2026-10-06T13:39:19Z
+      - &a21
+        sha: cf08084dc885589ece8cf8869a06bb5ce2181db3
+        message: Merge parent CSV identity and cleanup fixes
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/cf08084dc885589ece8cf8869a06bb5ce2181db3
+        authoredAt: 2026-10-06T13:43:04Z
+      - &a22
+        sha: 59d8479643db204aaf9d83f9b8cf9e6ebbb81789
+        message: Merge final parent planning and cleanup fixes
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/59d8479643db204aaf9d83f9b8cf9e6ebbb81789
+        authoredAt: 2026-10-06T13:48:09Z
+      - &a23
+        sha: b8fc70ef78de2234b35eda1397c42ada754e5f29
+        message: "test(transition): allow bounded scale verification time"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b8fc70ef78de2234b35eda1397c42ada754e5f29
+        authoredAt: 2026-10-06T13:56:22Z
+      - &a24
+        sha: a51845135b2a9ba5ff2117f1c28f3a7330e72c36
+        message: "fix(transition): derive manual contact provenance from saved methods"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a51845135b2a9ba5ff2117f1c28f3a7330e72c36
+        authoredAt: 2026-10-06T14:38:23Z
+      - &a25
+        sha: fb4eeff51cda8a72010c76c5cabda827eb7752c7
+        message: "fix(transition): show retained evidence for CSV blockers"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/fb4eeff51cda8a72010c76c5cabda827eb7752c7
+        authoredAt: 2026-10-06T15:56:38Z
+      - &a26
+        sha: 8d4ad004e44b43668ae902b49013c459c196b44e
+        message: "fix(transition): mark unavailable source cells in old previews"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8d4ad004e44b43668ae902b49013c459c196b44e
+        authoredAt: 2026-10-06T16:01:40Z
+      - &a27
+        sha: 3938856ae6b51b3a34d01958c48148b84bdc447a
+        message: "fix(transition): show verified File4 household evidence"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3938856ae6b51b3a34d01958c48148b84bdc447a
+        authoredAt: 2026-10-06T16:10:43Z
+      - &a33
+        sha: bd2e436af2b0fbb5713beed1b4be2f5ce192a5d0
+        message: Merge remote-tracking branch 'refs/remotes/parent/feat/transition-csv-contact-details' into
+          feat/transition-multiple-contact-methods
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/bd2e436af2b0fbb5713beed1b4be2f5ce192a5d0
+        authoredAt: 2026-10-06T21:25:06Z
+      - &a36
+        sha: 75d62c5ef5c94945f8dab968f92c6bd7a3897545
+        message: "fix(transition): address contact review feedback"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/75d62c5ef5c94945f8dab968f92c6bd7a3897545
+        authoredAt: 2026-10-06T21:44:48Z
+      - &a38
+        sha: 1e053f67db78607d023cf1f376a781379a41e027
+        message: Merge remote-tracking branch 'refs/remotes/parent/feat/transition-csv-contact-details' into
+          feat/transition-multiple-contact-methods
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/1e053f67db78607d023cf1f376a781379a41e027
+        authoredAt: 2026-10-06T21:46:27Z
+      - &a39
+        sha: d6d7b99c2855a81b239b52242bf0e5fac3a6302c
+        message: "test(transition): assert imported phone base errors"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d6d7b99c2855a81b239b52242bf0e5fac3a6302c
+        authoredAt: 2026-10-06T21:48:15Z
+      - &a43
+        sha: 7a9a21c692bcfec7fe22c3bdde933c8821533846
+        message: "fix(transition): preserve legacy contact phones"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7a9a21c692bcfec7fe22c3bdde933c8821533846
+        authoredAt: 2026-10-06T22:08:54Z
+      - &a45
+        sha: 70b7b6c9ab1cebe9eeaa5bfd5c6294baf36d016c
+        message: "fix(transition): integrate parent enrichment review"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/70b7b6c9ab1cebe9eeaa5bfd5c6294baf36d016c
+        authoredAt: 2026-10-06T22:25:58Z
+      - &a46
+        sha: 57fa2a177a7224fbcc93e84b8fa9523d0a45b359
+        message: "fix(transition): preserve unchanged legacy enrichment methods"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/57fa2a177a7224fbcc93e84b8fa9523d0a45b359
+        authoredAt: 2026-10-06T22:29:30Z
+      - &a47
+        sha: 31a5bd251723d0cfe2ee0574aa83126c1f3ab19f
+        message: "feat(transition): verify CSV-created accounts"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/31a5bd251723d0cfe2ee0574aa83126c1f3ab19f
+        authoredAt: 2026-10-06T22:49:30Z
+      - &a49
+        sha: d97ffc01c52a5fcbe2965397ba53bca6bc1cfc6a
+        message: merge latest Transition CSV parent
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d97ffc01c52a5fcbe2965397ba53bca6bc1cfc6a
+        authoredAt: 2026-10-06T23:06:31Z
+      - &a50
+        sha: 9d609adf7994391fe13c3e54620a61f652334e28
+        message: "fix(transition): preserve unchanged legacy contact phones"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9d609adf7994391fe13c3e54620a61f652334e28
+        authoredAt: 2026-10-06T23:09:31Z
+      - &a51
+        sha: 70376c4b6a40c9c6e24ec309a16410a9a8076e2a
+        message: "fix(transition): index contact detail matching"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/70376c4b6a40c9c6e24ec309a16410a9a8076e2a
+        authoredAt: 2026-10-06T23:15:47Z
+      - &a52
+        sha: b04de6f552f64c5e6e4906f82baafa8ccb323925
+        message: "fix(transition): retain paired rows for account review"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b04de6f552f64c5e6e4906f82baafa8ccb323925
+        authoredAt: 2026-10-06T23:21:51Z
+      - &a53
+        sha: 8280cf3a921c39b1af39be9f50fa0164f782f927
+        message: "fix(transition): omit status edits for held accounts"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8280cf3a921c39b1af39be9f50fa0164f782f927
+        authoredAt: 2026-10-06T23:27:25Z
+    workTimestamps:
+      - 2026-10-06T13:39:19Z
+      - 2026-10-06T13:43:04Z
+      - 2026-10-06T13:48:09Z
+      - 2026-10-06T13:56:22Z
+      - 2026-10-06T14:38:23Z
+      - 2026-10-06T15:56:38Z
+      - 2026-10-06T16:01:40Z
+      - 2026-10-06T16:10:43Z
+      - 2026-10-06T21:25:06Z
+      - 2026-10-06T21:44:48Z
+      - 2026-10-06T21:46:27Z
+      - 2026-10-06T21:48:15Z
+      - 2026-10-06T22:08:54Z
+      - 2026-10-06T22:25:58Z
+      - 2026-10-06T22:29:30Z
+      - 2026-10-06T22:49:30Z
+      - 2026-10-06T23:06:31Z
+      - 2026-10-06T23:09:31Z
+      - 2026-10-06T23:15:47Z
+      - 2026-10-06T23:21:51Z
+      - 2026-10-06T23:27:25Z
+    workAdditions: 3744
+    workDeletions: 897
+    workFiles:
+      - .github/pr-screenshots/transition-notes-after-desktop.png
+      - .github/pr-screenshots/transition-notes-after-mobile.png
+      - .github/pr-screenshots/transition-notes-before-desktop.png
+      - .github/pr-screenshots/transition-notes-before-mobile.png
+      - docs/transition/contracts.md
+      - transition/README.md
+      - transition/functions/src/index.ts
+      - transition/scripts/benchmark-navigation.mjs
+      - transition/src/app/api/[...path]/route.ts
+      - transition/src/components/account-verification-review.test.ts
+      - transition/src/components/account-verification-review.tsx
+      - transition/src/components/contact-enrichment-value-review.test.ts
+      - transition/src/components/contact-enrichment-value-review.tsx
+      - transition/src/components/contact-enrichment.test.ts
+      - transition/src/components/contact-enrichment.tsx
+      - transition/src/components/contact-methods.test.ts
+      - transition/src/components/contact-methods.tsx
+      - transition/src/components/transition-workspace.tsx
+      - transition/src/lib/__fixtures__/contact-enrichment-conflicts.ts
+      - transition/src/lib/account-repcode-persistence.test.ts
+      - transition/src/lib/account-verification-handlers.test.ts
+      - transition/src/lib/account-verification-import.integration.test.ts
+      - transition/src/lib/account-verification-persistence.test.ts
+      - transition/src/lib/advisor-filter.test.ts
+      - transition/src/lib/api/azure-functions-adapter.test.ts
+      - transition/src/lib/api/azure-functions-adapter.ts
+      - transition/src/lib/api/client.ts
+      - transition/src/lib/contact-enrichment-account-review.test.ts
+      - transition/src/lib/contact-enrichment-comparison.test.ts
+      - transition/src/lib/contact-enrichment-csv-new.test.ts
+      - transition/src/lib/contact-enrichment-email-roles-synthetic.test.ts
+      - transition/src/lib/contact-enrichment-issue-counts.test.ts
+      - transition/src/lib/contact-enrichment-new-draft.integration.test.ts
+      - transition/src/lib/contact-enrichment-phone.test.ts
+      - transition/src/lib/contact-enrichment-phone.ts
+      - transition/src/lib/contact-enrichment-rep-correction.integration.test.ts
+      - transition/src/lib/contact-enrichment-scale-synthetic.test.ts
+      - transition/src/lib/contact-enrichment-types.ts
+      - transition/src/lib/contact-enrichment-whitespace-synthetic.test.ts
+      - transition/src/lib/contact-enrichment.test.ts
+      - transition/src/lib/contact-enrichment.ts
+      - transition/src/lib/contact-methods.test.ts
+      - transition/src/lib/contact-methods.ts
+      - transition/src/lib/cosmos-repository.test.ts
+      - transition/src/lib/cosmos-repository.ts
+      - transition/src/lib/csv-new-import.integration.test.ts
+      - transition/src/lib/csv-new-persistence.test.ts
+      - transition/src/lib/excel-backup.test.ts
+      - transition/src/lib/excel-backup.ts
+      - transition/src/lib/excel-contact-enrichment.integration.test.ts
+      - transition/src/lib/handlers.ts
+      - transition/src/lib/household-contacts.test.ts
+      - transition/src/lib/model.ts
+      - transition/src/lib/navigation-performance.test.ts
+      - transition/src/lib/rep-codes.test.ts
+      - transition/src/lib/rep-codes.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
+      - transition/src/lib/rules.ts
+      - transition/src/lib/snapshot.test.ts
+      - transition/src/lib/snapshot.ts
+      - transition/src/lib/workbook.test.ts
+      - transition/src/lib/workbook.ts
+  - title: "feat(transition): widen checklist notes editor"
+    body: >-
+      ## Why
+
+
+      Checklist notes need more room for multiline transition context.
+
+
+      ## What changed
+
+
+      Gives the Notes editor 12 rows, an 18rem minimum height, and vertical resizing. Required and due-date fields sit
+      beside Notes on large screens and stack above it on smaller screens. Save behavior and the 2,000...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/146
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - github-automation
+      - "app: transition"
+    additions: 0
+    deletions: 0
+    changedFiles: 5
+    author: myriadas-clees
+    createdAt: 2026-10-02T20:08:58Z
+    updatedAt: 2026-10-06T20:28:13Z
+    closedAt: 2026-10-06T20:28:12Z
+    mergedAt: 2026-10-06T20:28:12Z
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "feat(transition): add rep code assignment choices"
+    body: >-
+      ## Why
+
+
+      Imported household rep codes need to remain distinguishable from the people assigned to transition work.
+
+
+      ## What changed
+
+
+      Displays household identifiers as rep codes, normalizes whitespace for matching and filters while preserving
+      imported source values, and offers person choices and rep-ba...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/144
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - "app: transition"
+    additions: 0
+    deletions: 0
+    changedFiles: 7
+    author: myriadas-clees
+    createdAt: 2026-10-02T18:58:30Z
+    updatedAt: 2026-10-06T20:28:14Z
+    closedAt: 2026-10-06T20:28:14Z
+    mergedAt: 2026-10-06T20:28:14Z
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "feat(transition): import CSV household contact details"
+    body: >-
+      Populated Transition workspaces need a safe way to correct names and enrich household contact details from the
+      retained CSV layouts. The existing Excel import initializes an empty workspace and is not used for these
+      corrections.
+
+
+      This adds an administrator-only full-file CSV preview and confirmation...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - "app: transition"
+    additions: 838
+    deletions: 306
+    changedFiles: 36
+    author: myriadas-clees
+    createdAt: 2026-10-02T17:31:02Z
+    updatedAt: 2026-10-06T23:55:30Z
+    closedAt: 2026-10-06T23:55:30Z
+    mergedAt: 2026-10-06T23:55:30Z
+    workCommits:
+      - &a13
+        sha: cc4e9624e5d35d3d609e6d0f4b48197bb65ac869
+        message: "fix(transition): avoid no-op CSV corrections"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/cc4e9624e5d35d3d609e6d0f4b48197bb65ac869
+        authoredAt: 2026-10-06T12:55:21Z
+      - &a16
+        sha: e350c8d3c72dc72eb8efb0fadb1461dba750b35c
+        message: "fix(transition): clean conflicted correction staging"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e350c8d3c72dc72eb8efb0fadb1461dba750b35c
+        authoredAt: 2026-10-06T13:26:03Z
+      - &a17
+        sha: c9ec5829de641144c24b6c56f4abec534310e5e6
+        message: "fix(transition): preserve equivalent contact names"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c9ec5829de641144c24b6c56f4abec534310e5e6
+        authoredAt: 2026-10-06T13:26:08Z
+      - &a19
+        sha: 746884c76fa8cf82d8be334d49e2d1a337b99f32
+        message: "fix(transition): group name proposal sources efficiently"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/746884c76fa8cf82d8be334d49e2d1a337b99f32
+        authoredAt: 2026-10-06T13:39:45Z
+      - &a20
+        sha: 039c33ee72e95914891363152e8cb616af858dc3
+        message: "fix(transition): clean staged docs after failed batch"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/039c33ee72e95914891363152e8cb616af858dc3
+        authoredAt: 2026-10-06T13:39:52Z
+      - &a31
+        sha: 66ebd8547da9d38aa890b20508b9884c949f0439
+        message: "fix(transition): preserve phone extensions on contact edits"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/66ebd8547da9d38aa890b20508b9884c949f0439
+        authoredAt: 2026-10-06T21:14:11Z
+      - &a35
+        sha: 93304aa4721fb4b3b4e9fe6a9a5d38d5de3df68a
+        message: "fix(transition): bound value review and validate phone digits"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/93304aa4721fb4b3b4e9fe6a9a5d38d5de3df68a
+        authoredAt: 2026-10-06T21:42:47Z
+      - &a40
+        sha: a3c3819584281d50d8ed314383e89afca1b06289
+        message: "fix(transition): paginate value review evidence"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a3c3819584281d50d8ed314383e89afca1b06289
+        authoredAt: 2026-10-06T21:55:37Z
+      - &a41
+        sha: c2ec56c62d9d537cbe981ebe18bf021631ab0849
+        message: "fix(transition): restore complete value review regression"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c2ec56c62d9d537cbe981ebe18bf021631ab0849
+        authoredAt: 2026-10-06T21:58:36Z
+      - &a42
+        sha: 8ea33fafd6012ab0831e3462ff6291117f2efde4
+        message: "fix(transition): review source rows and index contacts"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8ea33fafd6012ab0831e3462ff6291117f2efde4
+        authoredAt: 2026-10-06T22:06:33Z
+      - &a44
+        sha: 989df2d7eaa2acfe12051cd99797939c71a6db8f
+        message: "fix(transition): validate contact row identity and phone edits"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/989df2d7eaa2acfe12051cd99797939c71a6db8f
+        authoredAt: 2026-10-06T22:12:26Z
+      - &a48
+        sha: a72c7ae71272357d22500bd676b92514bb166e70
+        message: Merge main into Transition CSV import branch
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a72c7ae71272357d22500bd676b92514bb166e70
+        authoredAt: 2026-10-06T22:58:32Z
+    workTimestamps:
+      - 2026-10-06T12:55:21Z
+      - 2026-10-06T13:26:03Z
+      - 2026-10-06T13:26:08Z
+      - 2026-10-06T13:39:45Z
+      - 2026-10-06T13:39:52Z
+      - 2026-10-06T21:14:11Z
+      - 2026-10-06T21:42:47Z
+      - 2026-10-06T21:55:37Z
+      - 2026-10-06T21:58:36Z
+      - 2026-10-06T22:06:33Z
+      - 2026-10-06T22:12:26Z
+      - 2026-10-06T22:58:32Z
+    workAdditions: 838
+    workDeletions: 306
+    workFiles:
+      - .github/pr-screenshots/transition-notes-after-desktop.png
+      - .github/pr-screenshots/transition-notes-after-mobile.png
+      - .github/pr-screenshots/transition-notes-before-desktop.png
+      - .github/pr-screenshots/transition-notes-before-mobile.png
+      - transition/src/components/contact-enrichment-value-review.test.ts
+      - transition/src/components/contact-enrichment-value-review.tsx
+      - transition/src/components/contact-enrichment.test.ts
+      - transition/src/components/contact-enrichment.tsx
+      - transition/src/components/transition-workspace.tsx
+      - transition/src/lib/advisor-filter.test.ts
+      - transition/src/lib/contact-enrichment-phone.test.ts
+      - transition/src/lib/contact-enrichment-phone.ts
+      - transition/src/lib/contact-enrichment-scale-synthetic.test.ts
+      - transition/src/lib/contact-enrichment-whitespace-synthetic.test.ts
+      - transition/src/lib/contact-enrichment.test.ts
+      - transition/src/lib/contact-enrichment.ts
+      - transition/src/lib/cosmos-repository.test.ts
+      - transition/src/lib/cosmos-repository.ts
+      - transition/src/lib/handlers.ts
+      - transition/src/lib/household-contacts.test.ts
+      - transition/src/lib/model.ts
+      - transition/src/lib/rep-codes.test.ts
+      - transition/src/lib/rep-codes.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
+prsInProgress:
+  - title: "feat(transition): add censored offline CSV diagnostic review"
+    body: Administrators need to inspect contact-enrichment problems with an agent while keeping original client CSVs and
+      saved records in their own trusted session. This adds a Settings flow for Accounts.csv and optional Households.csv
+      that prepares censored structural evidence, lets the human inspect the co...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/148
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a1
+    additions: 1417
+    deletions: 20
+    changedFiles: 26
+    author: myriadas-clees
+    createdAt: 2026-10-06T18:29:10Z
+    updatedAt: 2026-10-06T21:48:21Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 1436
+    workDeletions: 39
+    workFiles: *a4
+  - title: "perf(transition): cache loaded sections for instant revisits"
+    body: Section navigation currently refetches data whenever a route remounts, producing visible delays even when the user
+      recently viewed the same section. This change adds a verified-identity-scoped, memory-only cache for dashboard,
+      household, account list, exception, and account detail reads. Fresh entri...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - "app: transition"
+    additions: 717
+    deletions: 93
+    changedFiles: 6
+    author: myriadas-clees
+    createdAt: 2026-10-02T18:39:08Z
+    updatedAt: 2026-10-06T21:26:06Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a12
+        sha: f6522f23653ff8649f3aa4e2721429a86848506c
+        message: "fix(transition): order auth verification races"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f6522f23653ff8649f3aa4e2721429a86848506c
+        authoredAt: 2026-10-06T12:52:52Z
+      - &a14
+        sha: 3b8b2b5ce0024dcd60c5aa2b667fd7d0fd7fa379
+        message: "test(transition): cover auth verification completion races"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3b8b2b5ce0024dcd60c5aa2b667fd7d0fd7fa379
+        authoredAt: 2026-10-06T13:06:12Z
+      - &a15
+        sha: a419877718d40a193de2e31b37fe5bc931f9d371
+        message: "fix(transition): address remaining review comments"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a419877718d40a193de2e31b37fe5bc931f9d371
+        authoredAt: 2026-10-06T13:24:49Z
+      - &a32
+        sha: c4356900df10b4703544ca54f843c312a1fbb698
+        message: Merge branch 'main' of https://github.com/Myriad-Advisor-Solutions/myriadas-apps into
+          codex/transition-section-cache-main
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c4356900df10b4703544ca54f843c312a1fbb698
+        authoredAt: 2026-10-06T21:20:13Z
+    workTimestamps:
+      - 2026-10-06T12:52:52Z
+      - 2026-10-06T13:06:12Z
+      - 2026-10-06T13:24:49Z
+      - 2026-10-06T21:20:13Z
+    workAdditions: 427
+    workDeletions: 69
+    workFiles:
+      - .github/pr-screenshots/transition-notes-after-desktop.png
+      - .github/pr-screenshots/transition-notes-after-mobile.png
+      - .github/pr-screenshots/transition-notes-before-desktop.png
+      - .github/pr-screenshots/transition-notes-before-mobile.png
+      - transition/src/components/transition-shell.tsx
+      - transition/src/components/transition-workspace.tsx
+      - transition/src/lib/advisor-filter.test.ts
+      - transition/src/lib/api/client.ts
+      - transition/src/lib/api/session-cache.test.ts
+      - transition/src/lib/api/session-cache.ts
+      - transition/src/lib/hooks/use-transition-read.ts
+      - transition/src/lib/model.ts
+      - transition/src/lib/rep-codes.test.ts
+      - transition/src/lib/rep-codes.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
+  - title: "feat(transition): add click-to-call contact links"
+    body: Add click-to-call actions for Transition contact phone numbers using validated standard `tel:` links. Preserve the
+      stored/displayed number formatting, suppress call links for blank or invalid numbers, and label links for
+      assistive technology. The UI explains that links use the device’s configured ca...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/143
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - documentation
+      - "app: transition"
+    additions: 130
+    deletions: 6
+    changedFiles: 7
+    author: myriadas-clees
+    createdAt: 2026-10-02T18:41:24Z
+    updatedAt: 2026-10-07T00:41:40Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - sha: cc4e9624e5d35d3d609e6d0f4b48197bb65ac869
+        message: "fix(transition): avoid no-op CSV corrections"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/cc4e9624e5d35d3d609e6d0f4b48197bb65ac869
+        authoredAt: 2026-10-06T12:55:21Z
+      - sha: e350c8d3c72dc72eb8efb0fadb1461dba750b35c
+        message: "fix(transition): clean conflicted correction staging"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e350c8d3c72dc72eb8efb0fadb1461dba750b35c
+        authoredAt: 2026-10-06T13:26:03Z
+      - sha: c9ec5829de641144c24b6c56f4abec534310e5e6
+        message: "fix(transition): preserve equivalent contact names"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c9ec5829de641144c24b6c56f4abec534310e5e6
+        authoredAt: 2026-10-06T13:26:08Z
+      - sha: 746884c76fa8cf82d8be334d49e2d1a337b99f32
+        message: "fix(transition): group name proposal sources efficiently"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/746884c76fa8cf82d8be334d49e2d1a337b99f32
+        authoredAt: 2026-10-06T13:39:45Z
+      - sha: 039c33ee72e95914891363152e8cb616af858dc3
+        message: "fix(transition): clean staged docs after failed batch"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/039c33ee72e95914891363152e8cb616af858dc3
+        authoredAt: 2026-10-06T13:39:52Z
+      - &a30
+        sha: fac79397a05099248a1d3071d10e72cc1468efc0
+        message: "fix(transition): support hash-style phone extensions"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/fac79397a05099248a1d3071d10e72cc1468efc0
+        authoredAt: 2026-10-06T21:12:48Z
+      - sha: 66ebd8547da9d38aa890b20508b9884c949f0439
+        message: "fix(transition): preserve phone extensions on contact edits"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/66ebd8547da9d38aa890b20508b9884c949f0439
+        authoredAt: 2026-10-06T21:14:11Z
+      - sha: 93304aa4721fb4b3b4e9fe6a9a5d38d5de3df68a
+        message: "fix(transition): bound value review and validate phone digits"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/93304aa4721fb4b3b4e9fe6a9a5d38d5de3df68a
+        authoredAt: 2026-10-06T21:42:47Z
+      - sha: a3c3819584281d50d8ed314383e89afca1b06289
+        message: "fix(transition): paginate value review evidence"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a3c3819584281d50d8ed314383e89afca1b06289
+        authoredAt: 2026-10-06T21:55:37Z
+      - sha: c2ec56c62d9d537cbe981ebe18bf021631ab0849
+        message: "fix(transition): restore complete value review regression"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c2ec56c62d9d537cbe981ebe18bf021631ab0849
+        authoredAt: 2026-10-06T21:58:36Z
+      - sha: 8ea33fafd6012ab0831e3462ff6291117f2efde4
+        message: "fix(transition): review source rows and index contacts"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8ea33fafd6012ab0831e3462ff6291117f2efde4
+        authoredAt: 2026-10-06T22:06:33Z
+      - sha: 989df2d7eaa2acfe12051cd99797939c71a6db8f
+        message: "fix(transition): validate contact row identity and phone edits"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/989df2d7eaa2acfe12051cd99797939c71a6db8f
+        authoredAt: 2026-10-06T22:12:26Z
+      - sha: a72c7ae71272357d22500bd676b92514bb166e70
+        message: Merge main into Transition CSV import branch
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a72c7ae71272357d22500bd676b92514bb166e70
+        authoredAt: 2026-10-06T22:58:32Z
+      - &a54
+        sha: 6eb05dd4f3625b9fabfc4c02d782d64115e31a8a
+        message: "merge: integrate latest Transition contact updates"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6eb05dd4f3625b9fabfc4c02d782d64115e31a8a
+        authoredAt: 2026-10-07T00:27:50Z
+      - &a55
+        sha: a315500b43ccfd37844c06241dd0d9a74edc3db3
+        message: "fix(transition): integrate click-to-call with current contact methods"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a315500b43ccfd37844c06241dd0d9a74edc3db3
+        authoredAt: 2026-10-07T00:38:01Z
+    workTimestamps:
+      - 2026-10-06T12:55:21Z
+      - 2026-10-06T13:26:03Z
+      - 2026-10-06T13:26:08Z
+      - 2026-10-06T13:39:45Z
+      - 2026-10-06T13:39:52Z
+      - 2026-10-06T21:12:48Z
+      - 2026-10-06T21:14:11Z
+      - 2026-10-06T21:42:47Z
+      - 2026-10-06T21:55:37Z
+      - 2026-10-06T21:58:36Z
+      - 2026-10-06T22:06:33Z
+      - 2026-10-06T22:12:26Z
+      - 2026-10-06T22:58:32Z
+      - 2026-10-07T00:27:50Z
+      - 2026-10-07T00:38:01Z
+    workAdditions: 4400
+    workDeletions: 1086
+    workFiles:
+      - .github/pr-screenshots/transition-notes-after-desktop.png
+      - .github/pr-screenshots/transition-notes-after-mobile.png
+      - .github/pr-screenshots/transition-notes-before-desktop.png
+      - .github/pr-screenshots/transition-notes-before-mobile.png
+      - docs/transition/contracts.md
+      - transition/README.md
+      - transition/functions/src/index.ts
+      - transition/scripts/benchmark-navigation.mjs
+      - transition/src/app/api/[...path]/route.ts
+      - transition/src/components/account-verification-review.test.ts
+      - transition/src/components/account-verification-review.tsx
+      - transition/src/components/contact-enrichment-value-review.test.ts
+      - transition/src/components/contact-enrichment-value-review.tsx
+      - transition/src/components/contact-enrichment.test.ts
+      - transition/src/components/contact-enrichment.tsx
+      - transition/src/components/contact-methods.test.ts
+      - transition/src/components/contact-methods.tsx
+      - transition/src/components/transition-workspace.tsx
+      - transition/src/lib/__fixtures__/contact-enrichment-conflicts.ts
+      - transition/src/lib/account-repcode-persistence.test.ts
+      - transition/src/lib/account-verification-handlers.test.ts
+      - transition/src/lib/account-verification-import.integration.test.ts
+      - transition/src/lib/account-verification-persistence.test.ts
+      - transition/src/lib/advisor-filter.test.ts
+      - transition/src/lib/api/azure-functions-adapter.test.ts
+      - transition/src/lib/api/azure-functions-adapter.ts
+      - transition/src/lib/api/client.ts
+      - transition/src/lib/contact-enrichment-account-review.test.ts
+      - transition/src/lib/contact-enrichment-comparison.test.ts
+      - transition/src/lib/contact-enrichment-csv-new.test.ts
+      - transition/src/lib/contact-enrichment-email-roles-synthetic.test.ts
+      - transition/src/lib/contact-enrichment-issue-counts.test.ts
+      - transition/src/lib/contact-enrichment-new-draft.integration.test.ts
+      - transition/src/lib/contact-enrichment-phone.test.ts
+      - transition/src/lib/contact-enrichment-phone.ts
+      - transition/src/lib/contact-enrichment-rep-correction.integration.test.ts
+      - transition/src/lib/contact-enrichment-scale-synthetic.test.ts
+      - transition/src/lib/contact-enrichment-types.ts
+      - transition/src/lib/contact-enrichment-whitespace-synthetic.test.ts
+      - transition/src/lib/contact-enrichment.test.ts
+      - transition/src/lib/contact-enrichment.ts
+      - transition/src/lib/contact-methods.test.ts
+      - transition/src/lib/contact-methods.ts
+      - transition/src/lib/contact-phone.test.ts
+      - transition/src/lib/contact-phone.ts
+      - transition/src/lib/cosmos-repository.test.ts
+      - transition/src/lib/cosmos-repository.ts
+      - transition/src/lib/csv-new-import.integration.test.ts
+      - transition/src/lib/csv-new-persistence.test.ts
+      - transition/src/lib/excel-backup.test.ts
+      - transition/src/lib/excel-backup.ts
+      - transition/src/lib/excel-contact-enrichment.integration.test.ts
+      - transition/src/lib/handlers.ts
+      - transition/src/lib/household-contacts.test.ts
+      - transition/src/lib/model.ts
+      - transition/src/lib/navigation-performance.test.ts
+      - transition/src/lib/rep-codes.test.ts
+      - transition/src/lib/rep-codes.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
+      - transition/src/lib/rules.ts
+      - transition/src/lib/snapshot.test.ts
+      - transition/src/lib/snapshot.ts
+      - transition/src/lib/workbook.test.ts
+      - transition/src/lib/workbook.ts
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "fix(northstar): stabilize entry and async recovery"
+      - "fix(northstar): reuse tenant consent on user connections"
+      - "fix(northstar): preserve recovery and refresh invariants"
+      - Merge remote-tracking branch 'origin/fix/northstar-stability' into fix/northstar-consent-flow
+      - "docs(northstar): record integrated recovery parent"
+      - "fix(northstar): stop redundant user consent after tenant approval (#149)"
+      - Stabilize Northstar entry and asynchronous recovery (#148)
+      - "fix(northstar): recognize wrapped Microsoft consent errors"
+      - "docs(northstar): document structured consent classification"
+      - "fix(northstar): recognize Microsoft consent errors wrapped in invalid_grant (#151)"
+    commits:
+      - *a5
+      - *a6
+      - *a7
+      - *a8
+      - *a9
+      - sha: 15667bc3f6af09d9f5804844aee925e133df3545
+        message: "fix(northstar): stop redundant user consent after tenant approval (#149)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/15667bc3f6af09d9f5804844aee925e133df3545
+        authoredAt: 2026-10-06T14:55:13Z
+        additions: 487
+        deletions: 39
+        filesChanged: 9
+      - sha: 3dcbb069efe04ab455fcf9bcd13f6ea74b8e0abc
+        message: Stabilize Northstar entry and asynchronous recovery (#148)
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3dcbb069efe04ab455fcf9bcd13f6ea74b8e0abc
+        authoredAt: 2026-10-06T14:55:13Z
+        additions: 1740
+        deletions: 277
+        filesChanged: 27
+      - *a10
+      - *a11
+      - sha: 8b66d1690833d2567f8ec46c495f9c549d8fdd79
+        message: "fix(northstar): recognize Microsoft consent errors wrapped in invalid_grant (#151)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8b66d1690833d2567f8ec46c495f9c549d8fdd79
+        authoredAt: 2026-10-06T16:47:50Z
+        additions: 62
+        deletions: 19
+        filesChanged: 6
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "fix(transition): order auth verification races"
+      - "fix(transition): avoid no-op CSV corrections"
+      - "test(transition): cover auth verification completion races"
+      - "fix(transition): address remaining review comments"
+      - "fix(transition): clean conflicted correction staging"
+      - "fix(transition): preserve equivalent contact names"
+      - "feat(transition): retain multiple person contact methods"
+      - "fix(transition): group name proposal sources efficiently"
+      - "fix(transition): clean staged docs after failed batch"
+      - Merge parent CSV identity and cleanup fixes
+      - Merge final parent planning and cleanup fixes
+      - "test(transition): allow bounded scale verification time"
+      - "fix(transition): derive manual contact provenance from saved methods"
+      - "fix(transition): show retained evidence for CSV blockers"
+      - "fix(transition): mark unavailable source cells in old previews"
+      - "fix(transition): show verified File4 household evidence"
+      - "feat(transition): prepare censored offline diagnostic reviews"
+      - "fix(transition): keep diagnostic dialog stable and canonicalize source labels"
+      - "feat(transition): widen checklist notes editor (#146)"
+      - "feat(transition): add rep code assignment choices (#144)"
+      - "fix(transition): support hash-style phone extensions"
+      - "fix(transition): preserve phone extensions on contact edits"
+      - Merge branch 'main' of https://github.com/Myriad-Advisor-Solutions/myriadas-apps into
+        codex/transition-section-cache-main
+      - Merge remote-tracking branch 'refs/remotes/parent/feat/transition-csv-contact-details' into
+        feat/transition-multiple-contact-methods
+      - "fix(transition): address diagnostic review feedback"
+      - "fix(transition): bound value review and validate phone digits"
+      - "fix(transition): address contact review feedback"
+      - "fix(transition): improve diagnostic row provenance"
+      - Merge remote-tracking branch 'refs/remotes/parent/feat/transition-csv-contact-details' into
+        feat/transition-multiple-contact-methods
+      - "test(transition): assert imported phone base errors"
+      - "fix(transition): paginate value review evidence"
+      - "fix(transition): restore complete value review regression"
+      - "fix(transition): review source rows and index contacts"
+      - "fix(transition): preserve legacy contact phones"
+      - "fix(transition): validate contact row identity and phone edits"
+      - "fix(transition): integrate parent enrichment review"
+      - "fix(transition): preserve unchanged legacy enrichment methods"
+      - "feat(transition): verify CSV-created accounts"
+      - Merge main into Transition CSV import branch
+      - merge latest Transition CSV parent
+      - "fix(transition): preserve unchanged legacy contact phones"
+      - "fix(transition): index contact detail matching"
+      - "fix(transition): retain paired rows for account review"
+      - "fix(transition): omit status edits for held accounts"
+      - "feat(transition): retain multiple contact methods per person (#147)"
+      - "feat(transition): import CSV household contact details (#141)"
+      - "merge: integrate latest Transition contact updates"
+      - "fix(transition): integrate click-to-call with current contact methods"
+    commits:
+      - *a12
+      - *a13
+      - *a14
+      - *a15
+      - *a16
+      - *a17
+      - *a18
+      - *a19
+      - *a20
+      - *a21
+      - *a22
+      - *a23
+      - *a24
+      - *a25
+      - *a26
+      - *a27
+      - *a28
+      - *a29
+      - sha: 129b13861b3a7a0a3d5cb9b1077d4faf1f66c742
+        message: "feat(transition): widen checklist notes editor (#146)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/129b13861b3a7a0a3d5cb9b1077d4faf1f66c742
+        authoredAt: 2026-10-06T20:28:11Z
+        additions: 6
+        deletions: 4
+        filesChanged: 5
+      - sha: d39d3307d613640cb1891721e4e1c820691c9874
+        message: "feat(transition): add rep code assignment choices (#144)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d39d3307d613640cb1891721e4e1c820691c9874
+        authoredAt: 2026-10-06T20:28:12Z
+        additions: 119
+        deletions: 26
+        filesChanged: 7
+      - *a30
+      - *a31
+      - *a32
+      - *a33
+      - *a34
+      - *a35
+      - *a36
+      - *a37
+      - *a38
+      - *a39
+      - *a40
+      - *a41
+      - *a42
+      - *a43
+      - *a44
+      - *a45
+      - *a46
+      - *a47
+      - *a48
+      - *a49
+      - *a50
+      - *a51
+      - *a52
+      - *a53
+      - sha: c6f3046e2822741df7311c9fa9d14315c728397a
+        message: "feat(transition): retain multiple contact methods per person (#147)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c6f3046e2822741df7311c9fa9d14315c728397a
+        authoredAt: 2026-10-06T23:55:29Z
+        additions: 3052
+        deletions: 708
+        filesChanged: 56
+      - sha: baea71cf873034ac775e87138713f6d6c6fbb8e8
+        message: "feat(transition): import CSV household contact details (#141)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/baea71cf873034ac775e87138713f6d6c6fbb8e8
+        authoredAt: 2026-10-06T23:55:29Z
+        additions: 4612
+        deletions: 43
+        filesChanged: 36
+      - *a54
+      - *a55
+releases: []
+externalContributions: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 151
+    prTitle: "fix(northstar): recognize Microsoft consent errors wrapped in invalid_grant"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/151
+    state: commented
+    submittedAt: 2026-10-06T16:36:35Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 148
+    prTitle: "feat(transition): add censored offline CSV diagnostic review"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/148
+    state: commented
+    submittedAt: 2026-10-06T21:30:13Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 148
+    prTitle: "feat(transition): add censored offline CSV diagnostic review"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/148
+    state: commented
+    submittedAt: 2026-10-06T21:30:26Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 148
+    prTitle: "feat(transition): add censored offline CSV diagnostic review"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/148
+    state: commented
+    submittedAt: 2026-10-06T21:45:33Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 148
+    prTitle: "feat(transition): add censored offline CSV diagnostic review"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/148
+    state: commented
+    submittedAt: 2026-10-06T21:45:40Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 148
+    prTitle: Stabilize Northstar entry and asynchronous recovery
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/148
+    state: commented
+    submittedAt: 2026-10-06T14:12:53Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 148
+    prTitle: Stabilize Northstar entry and asynchronous recovery
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/148
+    state: commented
+    submittedAt: 2026-10-06T14:13:00Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 148
+    prTitle: Stabilize Northstar entry and asynchronous recovery
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/148
+    state: commented
+    submittedAt: 2026-10-06T14:13:05Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 147
+    prTitle: "feat(transition): retain multiple contact methods per person"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/147
+    state: commented
+    submittedAt: 2026-10-06T14:38:47Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 147
+    prTitle: "feat(transition): retain multiple contact methods per person"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/147
+    state: commented
+    submittedAt: 2026-10-06T23:29:21Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 147
+    prTitle: "feat(transition): retain multiple contact methods per person"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/147
+    state: commented
+    submittedAt: 2026-10-06T23:29:27Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 147
+    prTitle: "feat(transition): retain multiple contact methods per person"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/147
+    state: commented
+    submittedAt: 2026-10-06T23:29:31Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 143
+    prTitle: "feat(transition): add click-to-call contact links"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/143
+    state: commented
+    submittedAt: 2026-10-06T21:13:13Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 142
+    prTitle: "perf(transition): cache loaded sections for instant revisits"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
+    state: commented
+    submittedAt: 2026-10-06T13:11:13Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 142
+    prTitle: "perf(transition): cache loaded sections for instant revisits"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
+    state: commented
+    submittedAt: 2026-10-06T13:11:30Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 142
+    prTitle: "perf(transition): cache loaded sections for instant revisits"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
+    state: commented
+    submittedAt: 2026-10-06T13:11:47Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 142
+    prTitle: "perf(transition): cache loaded sections for instant revisits"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
+    state: commented
+    submittedAt: 2026-10-06T13:12:04Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 142
+    prTitle: "perf(transition): cache loaded sections for instant revisits"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
+    state: commented
+    submittedAt: 2026-10-06T13:12:21Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 142
+    prTitle: "perf(transition): cache loaded sections for instant revisits"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
+    state: commented
+    submittedAt: 2026-10-06T13:28:55Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 142
+    prTitle: "perf(transition): cache loaded sections for instant revisits"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
+    state: commented
+    submittedAt: 2026-10-06T13:29:02Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 142
+    prTitle: "perf(transition): cache loaded sections for instant revisits"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
+    state: commented
+    submittedAt: 2026-10-06T13:29:09Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 142
+    prTitle: "perf(transition): cache loaded sections for instant revisits"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
+    state: commented
+    submittedAt: 2026-10-06T13:29:15Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T13:06:26Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T13:06:32Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T13:06:37Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T13:06:43Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T13:06:49Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T13:06:57Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T13:28:36Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T13:28:41Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T13:48:48Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T13:49:11Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T21:43:55Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T21:44:07Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T21:56:41Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prTitle: "feat(transition): import CSV household contact details"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    state: commented
+    submittedAt: 2026-10-06T21:56:52Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 151
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/151
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/151#discussion_r4197953957
+    body: Actionable; fixed in 7b00f70. CONSENT-FLOW.md now documents the narrow invalid_grant exception for structured
+      suberror=consent_required or error_codes containing 65001, precedence over session recovery, the 403 /
+      consentRequired / reauthRequired contract, and preservation of the interactive callback...
+    path: hub/functions/src/northstar-microsoft.ts
+    createdAt: 2026-10-06T16:36:35Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 148
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/148
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/148#discussion_r4200629038
+    body: Fixed in `69e41fa61ec177e3a3645b70b9afb12e03519b11`. Reset now clears the pending/working lock immediately and
+      invalidates the old operation token; a stale finalizer can only release its own token. The regression test covers
+      cancel, starting a new prepare, then settling the old request first while t...
+    path: transition/src/components/diagnostic-import.tsx
+    createdAt: 2026-10-06T21:30:13Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 148
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/148
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/148#discussion_r4200630693
+    body: Fixed in `69e41fa61ec177e3a3645b70b9afb12e03519b11`. SQLite capture now serializes the read-only source within one
+      read transaction, opens that snapshot as an in-memory disposable copy, migrates it, then exports. A synthetic
+      legacy-schema test covers a missing `source_records` table and verifies sou...
+    path: transition/src/lib/diagnostic-baseline.ts
+    createdAt: 2026-10-06T21:30:26Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 148
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/148
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/148#discussion_r4200744216
+    body: Addressed in commit `de0764d`. Internal contact source rows now project to opaque diagnostic row IDs for
+      name/role-only contact changes, including creates and relationship-only updates without method sources. They are
+      excluded from ordinary preview output and preview hashing. Added synthetic regress...
+    path: transition/src/lib/diagnostic-projection.ts
+    createdAt: 2026-10-06T21:45:33Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 148
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/148
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/148#discussion_r4200745108
+    body: Addressed in commit `de0764d`. Retained method provenance now matches on method kind and value identity, so a
+      changed uploaded value at the same filename/row/field/label stays linked to the uploaded row. Added synthetic
+      regression coverage for the retained and changed values. The Transition suite pa...
+    path: transition/src/lib/diagnostic-projection.ts
+    createdAt: 2026-10-06T21:45:40Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 148
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/148
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/148#discussion_r4196346069
+    body: "Actionable. Fixed in 2ec405b: dispatched Cosmos writes receive neither the caller's abort signal nor the default
+      read deadline signal. The caller and queued read waiters still receive bounded errors, while the refresh lock
+      remains held until the underlying write settles. Synthetic regressions model ..."
+    path: hub/functions/src/northstar-microsoft.ts
+    createdAt: 2026-10-06T14:12:53Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 148
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/148
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/148#discussion_r4196347455
+    body: "Actionable. Fixed in 2ec405b: the session-recovery guard now uses the same development exemption as the existing
+      connection and unauthorized-session paths. Production session and role requirements remain unchanged. A synthetic
+      plain Next development fixture returns 404 from /.auth/me and verifies th..."
+    path: northstar/components/northstar-dashboard.tsx
+    createdAt: 2026-10-06T14:13:00Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 148
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/148
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/148#discussion_r4196348337
+    body: "Actionable. Fixed in 2ec405b: known HTTP failures preserve their specific guidance and still reject for
+      optimistic rollback, without falling into the uncertain-outcome handler or marking unrelated Microsoft data stale.
+      A 403 retains the reconnect message; transport failures/timeouts retain manual re..."
+    path: northstar/components/northstar-dashboard.tsx
+    createdAt: 2026-10-06T14:13:05Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 147
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/147
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/147#discussion_r4196651278
+    body: "Actionable; fixed in a51845135b2a9ba5ff2117f1c28f3a7330e72c36. Manual creates and edits now derive provenance
+      from server-loaded methods matched by kind and approved normalized identity. Client records are ignored: retained
+      equivalent methods keep their saved sources, while new or distinctly changed..."
+    path: transition/src/lib/handlers.ts
+    createdAt: 2026-10-06T14:38:47Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 147
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/147
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/147#discussion_r4201401817
+    body: Addressed at the current PR head (`8280cf3`). Both account edit and add handlers call `tryContactMethodFields`,
+      which catches validation errors, reports them through the form error state, and returns before calling the API.
+      Regression coverage is in `components/contact-methods.test.ts`.
+    path: transition/src/components/transition-workspace.tsx
+    createdAt: 2026-10-06T23:29:21Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 147
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/147
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/147#discussion_r4201402240
+    body: Addressed at the current PR head (`8280cf3`). `isValidContactPhone` counts digits in the captured base number
+      separately from extension digits, and regression cases for `1x123456` and `12 x 12345` are covered in
+      `contact-methods.test.ts` and `contact-enrichment-phone.test.ts`.
+    path: transition/src/lib/contact-methods.ts
+    createdAt: 2026-10-06T23:29:27Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 147
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/147
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/147#discussion_r4201402629
+    body: Addressed at the current PR head (`8280cf3`). `parseCsv` rejects any original column heading longer than 64
+      characters before copying headings into `sourceFields`; the size-limit regression is covered in
+      `contact-enrichment.test.ts`.
+    path: transition/src/lib/contact-enrichment.ts
+    createdAt: 2026-10-06T23:29:31Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 143
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/143
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/143#discussion_r4200495547
+    body: "Fixed in fac7939: `contactPhoneHref` now recognizes `#` as a stored extension separator and emits the extension
+      digits as `;ext=`. Added coverage for `515-555-0123#12` and malformed hash suffixes; invalid phone values still
+      produce no call link."
+    path: transition/src/lib/contact-phone.ts
+    createdAt: 2026-10-06T21:13:13Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 142
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142#discussion_r4195669606
+    body: Addressed. `networkRequest` now routes data 401s through `deferTransitionAuthFailure`, tagged with the request
+      session and verification-success count. A later successful `/auth/me` check suppresses this stale 401; covered by
+      `ignores an older data request's auth failure after same-identity verificat...
+    path: transition/src/lib/api/client.ts
+    createdAt: 2026-10-06T13:11:13Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 142
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142#discussion_r4195672564
+    body: Addressed. Data 401s are deferred while an `/auth/me` verification ticket is pending, so they cannot invalidate
+      the shell before that check settles. `keeps a session when requests return 401 before verification later succeeds`
+      returns the data 401s first, then confirms that synthetic verification su...
+    path: transition/src/lib/api/client.ts
+    createdAt: 2026-10-06T13:11:30Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 142
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142#discussion_r4195675333
+    body: Addressed. When verification ends transiently, deferred data 401s are evaluated after pending checks settle; if no
+      verification succeeded for that session, auth failure is applied. Covered by `defers 401s from requests started
+      both before and during verification` with a transient outcome.
+    path: transition/src/lib/api/client.ts
+    createdAt: 2026-10-06T13:11:47Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 142
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142#discussion_r4195678136
+    body: "Addressed. The shell accepts a successful, non-invalidated overlapping verification even after a newer check
+      fails transiently, and clears the transient error when applying that success. Synthetic tests cover both
+      completion orders: `retains an earlier successful verification when a newer overlap fa..."
+    path: transition/src/components/transition-shell.tsx
+    createdAt: 2026-10-06T13:12:04Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 142
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142#discussion_r4195680971
+    body: Addressed. Requests started during a pending verification use the same deferred 401 arbitration as earlier
+      requests. `keeps a session when requests return 401 before verification later succeeds` includes a request started
+      after verification begins and returning 401 before the synthetic `/auth/me` su...
+    path: transition/src/lib/api/client.ts
+    createdAt: 2026-10-06T13:12:21Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 142
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142#discussion_r4195851440
+    body: Addressed. A 403 is now treated as a local read invalidation, so the mounted hook drops previously cached data
+      while preserving stale data for transient failures. Added synthetic coverage for the 403 classification; the
+      Transition suite passes (152 tests), typecheck/lint/build pass, and exact-head C...
+    path: transition/src/lib/hooks/use-transition-read.ts
+    createdAt: 2026-10-06T13:28:55Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 142
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142#discussion_r4195852689
+    body: Addressed. Queue status handlers now await the forced refresh, and queue controls stay disabled while it runs or
+      when refresh leaves an error, preventing another edit with the stale version. Transition suite (152 tests),
+      typecheck, lint, production build, and exact-head CI pass at `a419877718d40a193...
+    path: transition/src/lib/hooks/use-transition-read.ts
+    createdAt: 2026-10-06T13:29:02Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 142
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142#discussion_r4195853742
+    body: Addressed. Account version changes still clear stale save errors, but success notices now remain visible; each new
+      write already clears the previous notice when it starts. Transition suite (152 tests), typecheck, lint, production
+      build, and exact-head CI pass at `a419877718d40a193de2e31b37fe5bc931f9...
+    path: transition/src/components/transition-workspace.tsx
+    createdAt: 2026-10-06T13:29:09Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 142
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142#discussion_r4195854774
+    body: Addressed. Household overview reads now preserve stale data only when the cached list is non-empty, so a
+      successful refresh can replace a stale empty list and leave the false empty state. Added a synthetic policy
+      assertion; Transition suite (152 tests), typecheck/lint/build and exact-head CI pass at...
+    path: transition/src/components/transition-workspace.tsx
+    createdAt: 2026-10-06T13:29:15Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4195621467
+    body: Fixed in `cc4e962`. CSV validation now accepts numeric `x`, `ext`/`ext.`, and `#` suffixes while keeping the
+      extension literal in the existing single phone field. Synthetic CSV preview/apply regressions cover `x12`, `ext
+      12`, and `#12`; phone normalization and secondary-field ownership are unchanged...
+    path: transition/src/components/contact-enrichment.tsx
+    createdAt: 2026-10-06T13:06:26Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4195622383
+    body: Fixed in `cc4e962`. The apply handler now returns a zero-write success result when the validated plan produces an
+      empty batch, and the Cosmos full-file path independently returns after confirming the workspace is initialized. It
+      does not stage correction documents or advance the manifest. Regression...
+    path: transition/src/lib/contact-enrichment.ts
+    createdAt: 2026-10-06T13:06:32Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4195623248
+    body: Verified on the current PR head. Resolution selections are bounded at `maxRows * 8`, matching the supported File1
+      contact-role field envelope. The synthetic scale test that resolves and applies more than 50,000 groups passed.
+    path: transition/src/lib/contact-enrichment.ts
+    createdAt: 2026-10-06T13:06:37Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4195624298
+    body: Verified on the current PR head. Shared-signal resolution allows a new named contact to share an email or phone
+      only when all saved names are covered and every saved contact matching that channel is included among the named
+      sharers. A synthetic preview with an explicitly named saved contact and a di...
+    path: transition/src/lib/contact-enrichment.ts
+    createdAt: 2026-10-06T13:06:43Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4195625223
+    body: "I did not add a manual choice for case-only name variants: that would conflict with the requirement for automatic
+      equivalence and no unnecessary review decisions. Current matching groups them case-insensitively, then retains the
+      first incoming display spelling, so repeated-row capitalization can sti..."
+    path: transition/src/lib/contact-enrichment.ts
+    createdAt: 2026-10-06T13:06:49Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4195626433
+    body: Verified on the current PR head. Account numbers are indexed once globally and per household, and those indexes
+      serve row matching and canonical-collision checks. The synthetic scale test for prebuilt account-number indexes
+      passed.
+    path: transition/src/lib/contact-enrichment.ts
+    createdAt: 2026-10-06T13:06:57Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4195847963
+    body: Fixed in c9ec5829de641144c24b6c56f4abec534310e5e6. Cleanup now treats any manifest revision newer than the
+      correction baseline as a winning write when the manifest does not reference this correction’s staged snapshot,
+      including ordinary writes that retain the same snapshot ID. The synthetic race tes...
+    path: transition/src/lib/cosmos-repository.ts
+    createdAt: 2026-10-06T13:28:36Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4195848872
+    body: Fixed in c9ec5829de641144c24b6c56f4abec534310e5e6. Contact names that differ only by case or whitespace now
+      resolve as equivalent while keeping the saved display spelling. For a new contact, the importer picks a
+      deterministic spelling from the incoming variants, independent of row order. Names with ...
+    path: transition/src/lib/contact-enrichment.ts
+    createdAt: 2026-10-06T13:28:41Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4196064474
+    body: Fixed in `746884c`. Name proposal sources are now indexed by incoming value as the proposal is built, so creating
+      each conflict choice no longer rescans every source row. Added a synthetic 50,000-row case with 50,000 distinct
+      account names and verified the source mapping. The full Transition suite p...
+    path: transition/src/lib/contact-enrichment.ts
+    createdAt: 2026-10-06T13:48:48Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4196068750
+    body: Fixed in `039c33e`. The correction publisher now tracks a definite batch failure response separately and removes
+      staged documents after a 429 even when the manifest remains at the original baseline. Ambiguous publication
+      outcomes keep the existing safeguards. A synthetic 429 regression verifies that...
+    path: transition/src/lib/cosmos-repository.ts
+    createdAt: 2026-10-06T13:49:11Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4200732225
+    body: Fixed in `93304aa`. Each value group now paginates both incoming values and their radio choices at 50 options per
+      page, so a 50,000-option group renders only one page at a time. The synthetic 50,000-option regression asserts
+      that only 50 radios and that page's source rows render. Transition tests pa...
+    path: transition/src/components/contact-enrichment-value-review.tsx
+    createdAt: 2026-10-06T21:43:55Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4200733691
+    body: Fixed in `93304aa`. Imported phones now require at least seven digits in the base number; extension digits do not
+      count. Punctuation-only values create a blocking conflict and are excluded from the proposed change. Synthetic
+      import/apply cases cover the rejected values. Transition tests pass 383/383...
+    path: transition/src/lib/contact-enrichment.ts
+    createdAt: 2026-10-06T21:44:07Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4200825607
+    body: "Fixed in `a3c3819584281d50d8ed314383e89afca1b06289`: source rows are now paged 10 at a time independently for
+      each incoming option, while incoming values remain capped at 50 per page. Added a synthetic regression with 25,000
+      source rows; the value-review presentation suite passes (11 tests)."
+    path: transition/src/components/contact-enrichment-value-review.tsx
+    createdAt: 2026-10-06T21:56:41Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 141
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4200826898
+    body: "Fixed in `a3c3819584281d50d8ed314383e89afca1b06289`: each multi-page value group records its inner pages, and the
+      resolution page is marked reviewed only after every inner page for its groups has been opened. A fresh validated
+      preview resets the value-page and reviewed-page state, and the confirmati..."
+    path: transition/src/components/contact-enrichment.tsx
+    createdAt: 2026-10-06T21:56:52Z
+aiReviews:
+  codex:
+    prsReviewed: 7
+    comments: 35
+    reviews: 21
+    fixed: 27
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 7
+  comments: 35
+  reviews: 21
+  fixed: 27
+hoursInputs:
+  timestamps:
+    - 2026-10-06T13:29:29Z
+    - 2026-10-06T14:09:55Z
+    - 2026-10-06T14:10:23Z
+    - 2026-10-06T14:12:28Z
+    - 2026-10-06T14:14:02Z
+    - 2026-10-06T14:55:13Z
+    - 2026-10-06T14:55:13Z
+    - 2026-10-06T16:28:33Z
+    - 2026-10-06T16:36:05Z
+    - 2026-10-06T16:47:50Z
+    - 2026-10-06T12:52:52Z
+    - 2026-10-06T12:55:21Z
+    - 2026-10-06T13:06:12Z
+    - 2026-10-06T13:24:49Z
+    - 2026-10-06T13:26:03Z
+    - 2026-10-06T13:26:08Z
+    - 2026-10-06T13:39:19Z
+    - 2026-10-06T13:39:45Z
+    - 2026-10-06T13:39:52Z
+    - 2026-10-06T13:43:04Z
+    - 2026-10-06T13:48:09Z
+    - 2026-10-06T13:56:22Z
+    - 2026-10-06T14:38:23Z
+    - 2026-10-06T15:56:38Z
+    - 2026-10-06T16:01:40Z
+    - 2026-10-06T16:10:43Z
+    - 2026-10-06T18:21:12Z
+    - 2026-10-06T18:25:39Z
+    - 2026-10-06T20:28:11Z
+    - 2026-10-06T20:28:12Z
+    - 2026-10-06T21:12:48Z
+    - 2026-10-06T21:14:11Z
+    - 2026-10-06T21:20:13Z
+    - 2026-10-06T21:25:06Z
+    - 2026-10-06T21:28:30Z
+    - 2026-10-06T21:42:47Z
+    - 2026-10-06T21:44:48Z
+    - 2026-10-06T21:44:53Z
+    - 2026-10-06T21:46:27Z
+    - 2026-10-06T21:48:15Z
+    - 2026-10-06T21:55:37Z
+    - 2026-10-06T21:58:36Z
+    - 2026-10-06T22:06:33Z
+    - 2026-10-06T22:08:54Z
+    - 2026-10-06T22:12:26Z
+    - 2026-10-06T22:25:58Z
+    - 2026-10-06T22:29:30Z
+    - 2026-10-06T22:49:30Z
+    - 2026-10-06T22:58:32Z
+    - 2026-10-06T23:06:31Z
+    - 2026-10-06T23:09:31Z
+    - 2026-10-06T23:15:47Z
+    - 2026-10-06T23:21:51Z
+    - 2026-10-06T23:27:25Z
+    - 2026-10-06T23:55:29Z
+    - 2026-10-06T23:55:29Z
+    - 2026-10-07T00:27:50Z
+    - 2026-10-07T00:38:01Z
+    - 2026-10-06T16:29:08Z
+    - 2026-10-06T16:47:50Z
+    - 2026-10-06T16:28:33Z
+    - 2026-10-06T16:36:05Z
+    - 2026-10-06T13:34:29Z
+    - 2026-10-06T14:55:14Z
+    - 2026-10-06T13:29:29Z
+    - 2026-10-06T14:10:23Z
+    - 2026-10-06T14:10:41Z
+    - 2026-10-06T14:55:16Z
+    - 2026-10-06T14:09:55Z
+    - 2026-10-06T14:12:28Z
+    - 2026-10-06T14:14:02Z
+    - 2026-10-06T18:29:10Z
+    - 2026-10-06T18:21:12Z
+    - 2026-10-06T18:25:39Z
+    - 2026-10-06T21:28:30Z
+    - 2026-10-06T21:44:53Z
+    - 2026-10-06T13:48:56Z
+    - 2026-10-06T23:55:31Z
+    - 2026-10-06T13:39:19Z
+    - 2026-10-06T13:43:04Z
+    - 2026-10-06T13:48:09Z
+    - 2026-10-06T13:56:22Z
+    - 2026-10-06T14:38:23Z
+    - 2026-10-06T15:56:38Z
+    - 2026-10-06T16:01:40Z
+    - 2026-10-06T16:10:43Z
+    - 2026-10-06T21:25:06Z
+    - 2026-10-06T21:44:48Z
+    - 2026-10-06T21:46:27Z
+    - 2026-10-06T21:48:15Z
+    - 2026-10-06T22:08:54Z
+    - 2026-10-06T22:25:58Z
+    - 2026-10-06T22:29:30Z
+    - 2026-10-06T22:49:30Z
+    - 2026-10-06T23:06:31Z
+    - 2026-10-06T23:09:31Z
+    - 2026-10-06T23:15:47Z
+    - 2026-10-06T23:21:51Z
+    - 2026-10-06T23:27:25Z
+    - 2026-10-06T20:28:12Z
+    - 2026-10-06T20:28:14Z
+    - 2026-10-06T23:55:30Z
+    - 2026-10-06T12:55:21Z
+    - 2026-10-06T13:26:03Z
+    - 2026-10-06T13:26:08Z
+    - 2026-10-06T13:39:45Z
+    - 2026-10-06T13:39:52Z
+    - 2026-10-06T21:14:11Z
+    - 2026-10-06T21:42:47Z
+    - 2026-10-06T21:55:37Z
+    - 2026-10-06T21:58:36Z
+    - 2026-10-06T22:06:33Z
+    - 2026-10-06T22:12:26Z
+    - 2026-10-06T22:58:32Z
+    - 2026-10-06T16:36:35Z
+    - 2026-10-06T21:30:13Z
+    - 2026-10-06T21:30:26Z
+    - 2026-10-06T21:45:33Z
+    - 2026-10-06T21:45:40Z
+    - 2026-10-06T14:12:53Z
+    - 2026-10-06T14:13:00Z
+    - 2026-10-06T14:13:05Z
+    - 2026-10-06T14:38:47Z
+    - 2026-10-06T23:29:21Z
+    - 2026-10-06T23:29:27Z
+    - 2026-10-06T23:29:31Z
+    - 2026-10-06T21:13:13Z
+    - 2026-10-06T13:11:13Z
+    - 2026-10-06T13:11:30Z
+    - 2026-10-06T13:11:47Z
+    - 2026-10-06T13:12:04Z
+    - 2026-10-06T13:12:21Z
+    - 2026-10-06T13:28:55Z
+    - 2026-10-06T13:29:02Z
+    - 2026-10-06T13:29:09Z
+    - 2026-10-06T13:29:15Z
+    - 2026-10-06T13:06:26Z
+    - 2026-10-06T13:06:32Z
+    - 2026-10-06T13:06:37Z
+    - 2026-10-06T13:06:43Z
+    - 2026-10-06T13:06:49Z
+    - 2026-10-06T13:06:57Z
+    - 2026-10-06T13:28:36Z
+    - 2026-10-06T13:28:41Z
+    - 2026-10-06T13:48:48Z
+    - 2026-10-06T13:49:11Z
+    - 2026-10-06T21:43:55Z
+    - 2026-10-06T21:44:07Z
+    - 2026-10-06T21:56:41Z
+    - 2026-10-06T21:56:52Z
+    - 2026-10-06T16:36:35Z
+    - 2026-10-06T21:30:13Z
+    - 2026-10-06T21:30:26Z
+    - 2026-10-06T21:45:33Z
+    - 2026-10-06T21:45:40Z
+    - 2026-10-06T14:12:53Z
+    - 2026-10-06T14:13:00Z
+    - 2026-10-06T14:13:05Z
+    - 2026-10-06T14:38:47Z
+    - 2026-10-06T23:29:21Z
+    - 2026-10-06T23:29:27Z
+    - 2026-10-06T23:29:31Z
+    - 2026-10-06T21:13:13Z
+    - 2026-10-06T13:11:13Z
+    - 2026-10-06T13:11:30Z
+    - 2026-10-06T13:11:47Z
+    - 2026-10-06T13:12:04Z
+    - 2026-10-06T13:12:21Z
+    - 2026-10-06T13:28:55Z
+    - 2026-10-06T13:29:02Z
+    - 2026-10-06T13:29:09Z
+    - 2026-10-06T13:29:15Z
+    - 2026-10-06T13:06:26Z
+    - 2026-10-06T13:06:32Z
+    - 2026-10-06T13:06:37Z
+    - 2026-10-06T13:06:43Z
+    - 2026-10-06T13:06:49Z
+    - 2026-10-06T13:06:57Z
+    - 2026-10-06T13:28:36Z
+    - 2026-10-06T13:28:41Z
+    - 2026-10-06T13:48:48Z
+    - 2026-10-06T13:49:11Z
+    - 2026-10-06T21:43:55Z
+    - 2026-10-06T21:44:07Z
+    - 2026-10-06T21:56:41Z
+    - 2026-10-06T21:56:52Z
+  volume:
+    pullRequests:
+      - additions: 62
+        deletions: 19
+        state: merged
+        dailyWork: true
+        filesChanged: 6
+        testFilesChanged: 2
+        commitCount: 2
+      - additions: 1762
+        deletions: 299
+        state: merged
+        dailyWork: true
+        filesChanged: 27
+        testFilesChanged: 8
+        commitCount: 2
+      - additions: 642
+        deletions: 66
+        state: merged
+        dailyWork: true
+        filesChanged: 13
+        testFilesChanged: 5
+        commitCount: 3
+      - additions: 1436
+        deletions: 39
+        state: open
+        dailyWork: true
+        filesChanged: 26
+        testFilesChanged: 9
+        commitCount: 4
+      - additions: 427
+        deletions: 69
+        state: open
+        dailyWork: true
+        filesChanged: 16
+        testFilesChanged: 4
+        commitCount: 4
+      - additions: 838
+        deletions: 306
+        state: merged
+        dailyWork: true
+        filesChanged: 25
+        testFilesChanged: 11
+        commitCount: 12
+      - additions: 4400
+        deletions: 1086
+        state: open
+        dailyWork: true
+        filesChanged: 65
+        testFilesChanged: 34
+        commitCount: 15
+      - additions: 3744
+        deletions: 897
+        state: merged
+        dailyWork: true
+        filesChanged: 63
+        testFilesChanged: 33
+        commitCount: 21
+      - additions: 0
+        deletions: 0
+        state: merged
+      - additions: 0
+        deletions: 0
+        state: merged
+    reviewCount: 36
+    reviewCommentCount: 36
+    commitCount: 7
+    commitAdditions: 10078
+    commitDeletions: 1116
+    commitStatsCount: 7
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 132.9
+  sessions: 3
+  sessionHours: 8.6
+  volumeHours: 132.9
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
