@@ -1,0 +1,126 @@
+title: Oct 7
+subtitle: hub, group-managed swa & stale pto
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps and Myriad-Advisor-Solutions/ohcpwm-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 6 PRs
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 1 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 32 commits with +21,516 / −3,526 lines.
+    chips:
+      - label: Commits
+        value: "32"
+        color: green
+      - label: Additions
+        value: +21,516
+        color: green
+      - label: Deletions
+        value: −3,526
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 6 reviews with 6 comments.
+    chips:
+      - label: Reviews
+        value: "6"
+      - label: Comments
+        value: "6"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 9 reviews, 12 comments, 6 PRs."
+    chips:
+      - label: Codex
+        value: 9 reviews · 12 comments · 6 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~93.2h
+highlights:
+  - type: pr
+    title: Preload Transition dashboard data and add list paging
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +1123 −353
+    body: >-
+      ## Why
+
+
+      The Transition dashboard waits for client-side data fetching after navigation, and long account and household
+      lists are difficult to scan.
+
+
+      ## What changed
+
+
+      Preloads Transition dashboard data 
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/157
+  - type: pr
+    title: "feat(hub): Refresh Hub landing page design and content"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +1679 −419
+    body: >-
+      ## Why
+
+
+      The Hub landing page needed a clearer presentation of Myriad’s services, operational apps, and support for
+      independent advisory firms.
+
+
+      ## What changed
+
+
+      - Reworked the landing page with update
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/155
+  - type: pr
+    title: "feat(hub): make group authentication opt-in at deployment"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +135 −31
+    body: >-
+      ## Why
+
+
+      The Hub role source is deployed, but SWA still uses built-in authentication. Managed identity authentication needs
+      native SWA configuration; enabling it now would drop invitation-based access 
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/154
+  - type: pr
+    title: "feat(hub): derive SWA roles from Entra app-role claims"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +236 −0
+    body: >-
+      ## Why
+
+
+      Adding users to an Entra group does not populate the SWA roles required by Transition. The shared Hub needs a role
+      source to translate Entra app-role assignments into existing application perm
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/153
+  - type: pr
+    title: "feat(transition): production UI on the Myriad Advisor Solutions theme"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +17597 −2581
+    body: "Applies the Graphical **Myriad Advisor Solutions** theme to the shared Myriad design system and rebuilds the
+      Transition app for production use. This PR supersedes #142, #143, and #148; all three are p"
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/152
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "Preload Transition dashboard data and add list paging" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(hub): Refresh Hub landing page design and content" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(hub): make group authentication opt-in at deployment" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(hub): derive SWA roles from Entra app-role claims" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(transition): production UI on the Myriad Advisor Solutions theme" in
+      Myriad-Advisor-Solutions/myriadas-apps'

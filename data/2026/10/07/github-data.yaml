@@ -1,0 +1,1156 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-10-07
+  to: 2026-10-07
+stats:
+  totalCommits: 32
+  totalAdditions: 21516
+  totalDeletions: 3526
+  prsOpened: 7
+  prsMerged: 5
+  prsInProgress: 2
+  prsReviewed: 6
+  reviewComments: 6
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 93.2
+dailyCommits:
+  - date: 2026-10-07
+    count: 32
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 30
+    prsOpened: 6
+    prsMerged: 5
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 2
+    prsOpened: 1
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests:
+  - title: Add group-managed SWA role access
+    body: >-
+      - Add an Azure AD role source that validates tenant claims and returns supported app roles.
+
+      - Configure the deployment workflow to inject group-managed authentication settings when `SWA_AUTH_TENANT_ID` is
+      set.
+
+      - Document Entra group setup, activation, verification, and rollback.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/152
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a1 []
+    additions: 682
+    deletions: 8
+    changedFiles: 6
+    author: myriadas-clees
+    createdAt: 2026-10-07T19:02:22Z
+    updatedAt: 2026-10-08T13:49:31Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a2
+      - &a34
+        sha: 293cdbfc5237c9931171a665191b01a8837ecb9f
+        message: "feat(auth): add group-managed SWA role access"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/293cdbfc5237c9931171a665191b01a8837ecb9f
+        authoredAt: 2026-10-07T19:02:13Z
+      - &a35
+        sha: df46f404788e551a4c5bb3e5023e475e9f1148bb
+        message: "feat(hub): expand admin role to all app roles"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/df46f404788e551a4c5bb3e5023e475e9f1148bb
+        authoredAt: 2026-10-07T19:19:28Z
+    workTimestamps: &a3
+      - 2026-10-07T19:02:13Z
+      - 2026-10-07T19:19:28Z
+    workAdditions: 682
+    workDeletions: 8
+    workFiles: &a4
+      - .github/workflows/azure-static-web-apps.yml
+      - docs/swa-group-managed-access.md
+      - hub/functions/src/index.ts
+      - hub/functions/src/roles.test.ts
+      - hub/functions/src/roles.ts
+      - hub/functions/src/swa-auth-activation.test.ts
+  - title: Remove stale PTO docs and unused dependencies
+    body: >-
+      ## Why
+
+
+      The PTO Tracker documentation still described an unimplemented scaffold, and the repository retained an unused
+      `twenty` submodule and unused `@azure/identity` dependency in Valuation.
+
+
+      ## What changed
+
+
+      Updated PTO Tracker docs to describe the implemented app, its current providers and workfl...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/156
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a5
+      - documentation
+      - "app: pto-tracker"
+      - "app: valuation"
+      - platform
+    additions: 64
+    deletions: 134
+    changedFiles: 9
+    author: myriadas-clees
+    createdAt: 2026-10-07T19:03:16Z
+    updatedAt: 2026-10-07T19:21:47Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a6
+      - &a29
+        sha: 9fbf72beb8afdf7ff235d1acaa997aceea80e3fe
+        message: "chore(repo): remove stale content and unused dependencies"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9fbf72beb8afdf7ff235d1acaa997aceea80e3fe
+        authoredAt: 2026-10-07T19:03:06Z
+      - &a30
+        sha: 9c7a349aff8bc28d88e611895bd7937a07211b3a
+        message: "docs(pto-tracker): clarify request cancellation permissions"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9c7a349aff8bc28d88e611895bd7937a07211b3a
+        authoredAt: 2026-10-07T19:19:16Z
+    workTimestamps: &a7
+      - 2026-10-07T19:03:06Z
+      - 2026-10-07T19:19:16Z
+    workAdditions: 64
+    workDeletions: 134
+    workFiles: &a8
+      - .gitmodules
+      - bun.lock
+      - pto-tracker/docs/README.md
+      - pto-tracker/docs/architecture.md
+      - pto-tracker/docs/implementation-playbook.md
+      - pto-tracker/research/assumptions.md
+      - pto-tracker/templates/README.md
+      - twenty
+      - valuation/package.json
+  - title: Preload Transition dashboard data and add list paging
+    body: >-
+      ## Why
+
+
+      The Transition dashboard waits for client-side data fetching after navigation, and long account and household
+      lists are difficult to scan.
+
+
+      ## What changed
+
+
+      Preloads Transition dashboard data during shell startup and reuses the cached session data when the dashboard
+      loads. Adds paging for ac...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/157
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - "app: hub"
+      - "app: onboarding"
+      - "app: pto-tracker"
+      - "app: proforma"
+      - "app: excelerate"
+      - "app: valuation"
+      - platform
+      - deploy-preview
+      - "app: transition"
+    additions: 1123
+    deletions: 353
+    changedFiles: 42
+    author: myriadas-clees
+    createdAt: 2026-10-07T20:17:36Z
+    updatedAt: 2026-10-08T03:15:30Z
+    closedAt: 2026-10-08T03:14:31Z
+    mergedAt: 2026-10-08T03:14:31Z
+    workCommits:
+      - &a31
+        sha: 555efab84a57203736b20db37fe5297bac11d84e
+        message: "feat(transition): preload dashboard data and add list paging"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/555efab84a57203736b20db37fe5297bac11d84e
+        authoredAt: 2026-10-07T20:17:25Z
+      - &a32
+        sha: 54b4ac503b52baa27dc1a3fe18bd0fe42e1fc3b4
+        message: "fix(transition): reset household progress pager when dashboard filters change"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/54b4ac503b52baa27dc1a3fe18bd0fe42e1fc3b4
+        authoredAt: 2026-10-07T20:30:54Z
+      - &a33
+        sha: 4ae5c93d69294be8c59369e79eb1c762cfe8576a
+        message: "fix(transition): restore twenty submodule pointer to main"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4ae5c93d69294be8c59369e79eb1c762cfe8576a
+        authoredAt: 2026-10-07T23:28:54Z
+    workTimestamps:
+      - 2026-10-07T20:17:25Z
+      - 2026-10-07T20:30:54Z
+      - 2026-10-07T23:28:54Z
+    workAdditions: 1123
+    workDeletions: 353
+    workFiles:
+      - excelerate/src/app/layout.tsx
+      - excelerate/src/components/excelerate-shell.tsx
+      - hub/app/layout.tsx
+      - onboarding/apps/dashboard/app/layout.tsx
+      - packages/brand/src/styles.css
+      - packages/ui/src/index.ts
+      - packages/ui/src/navigation/app-shell.test.tsx
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/navigation/mode-storage.ts
+      - packages/ui/src/navigation/preferences.tsx
+      - packages/ui/src/pager.tsx
+      - packages/ui/src/paging.test.ts
+      - packages/ui/src/paging.ts
+      - packages/ui/src/shell-bootstrap.test.ts
+      - packages/ui/src/shell-bootstrap.ts
+      - proforma/src/app/layout.tsx
+      - pto-tracker/src/app/layout.tsx
+      - transition/src/app/globals.css
+      - transition/src/app/layout.tsx
+      - transition/src/components/accounts/accounts-page.tsx
+      - transition/src/components/dashboard/dashboard.tsx
+      - transition/src/components/households/households-page.tsx
+      - transition/src/components/page-skeletons.tsx
+      - transition/src/components/transition-shell.tsx
+      - transition/src/components/ui/layout.tsx
+      - transition/src/components/ui/skeleton.tsx
+      - transition/src/lib/accounts-list.test.ts
+      - transition/src/lib/accounts-list.ts
+      - transition/src/lib/api/session-cache.ts
+      - transition/src/lib/handlers.ts
+      - transition/src/lib/hooks/use-home-due-badge.ts
+      - transition/src/lib/hooks/use-read-prefetch.ts
+      - transition/src/lib/model.ts
+      - transition/src/lib/navigation.test.ts
+      - transition/src/lib/navigation.ts
+      - transition/src/lib/page-sizes.ts
+      - transition/src/lib/prefetch.test.ts
+      - transition/src/lib/prefetch.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
+      - twenty
+      - valuation/src/app/layout.tsx
+      - valuation/src/components/valuation-shell.tsx
+  - title: "feat(hub): Refresh Hub landing page design and content"
+    body: >-
+      ## Why
+
+
+      The Hub landing page needed a clearer presentation of Myriad’s services, operational apps, and support for
+      independent advisory firms.
+
+
+      ## What changed
+
+
+      - Reworked the landing page with updated content and sections for services, testimonials, stats, FAQs, and the
+      Myriad approach.
+
+      - Added scr...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/155
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - github-automation
+      - "app: hub"
+      - platform
+      - "app: transition"
+    additions: 1679
+    deletions: 419
+    changedFiles: 19
+    author: myriadas-clees
+    createdAt: 2026-10-07T18:12:28Z
+    updatedAt: 2026-10-07T18:38:43Z
+    closedAt: 2026-10-07T18:38:38Z
+    mergedAt: 2026-10-07T18:38:38Z
+    workCommits:
+      - &a27
+        sha: 1b92ab86f0ed0df65dad3404248683825e613f8a
+        message: "feat(hub): refresh landing page design and content"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/1b92ab86f0ed0df65dad3404248683825e613f8a
+        authoredAt: 2026-10-07T18:12:19Z
+      - &a28
+        sha: 7df6fd245498d7b707f477005f466a90187553f4
+        message: "fix(hub): bake site URL into static metadata and address PR review"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7df6fd245498d7b707f477005f466a90187553f4
+        authoredAt: 2026-10-07T18:27:30Z
+    workTimestamps:
+      - 2026-10-07T18:12:19Z
+      - 2026-10-07T18:27:30Z
+    workAdditions: 1679
+    workDeletions: 419
+    workFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - hub/app/globals.css
+      - hub/app/login/page.tsx
+      - hub/app/page.tsx
+      - hub/app/preview/page.tsx
+      - hub/components/ApproachSteps.tsx
+      - hub/components/CountUp.tsx
+      - hub/components/HomeClient.tsx
+      - hub/components/LandingPage.tsx
+      - hub/components/SiteFooter.tsx
+      - hub/components/SiteHeader.tsx
+      - hub/components/TestimonialCarousel.tsx
+      - hub/components/landing-motion.ts
+      - hub/lib/contact.ts
+      - hub/lib/landing-faq.ts
+      - hub/lib/site.ts
+      - scripts/artifact-fingerprints.ts
+      - transition/src/app/icon.svg
+      - transition/src/lib/contact-enrichment-scale-synthetic.test.ts
+      - twenty
+  - title: "feat(hub): make group authentication opt-in at deployment"
+    body: >-
+      ## Why
+
+
+      The Hub role source is deployed, but SWA still uses built-in authentication. Managed identity authentication needs
+      native SWA configuration; enabling it now would drop invitation-based access before guest migration is complete.
+
+
+      ## What changed
+
+
+      Add one deployment step that injects tenant-sp...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/154
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - github-automation
+      - "app: hub"
+      - platform
+    additions: 135
+    deletions: 31
+    changedFiles: 5
+    author: myriadas-clees
+    createdAt: 2026-10-07T16:03:06Z
+    updatedAt: 2026-10-07T16:20:20Z
+    closedAt: 2026-10-07T16:20:20Z
+    mergedAt: 2026-10-07T16:20:20Z
+    workCommits:
+      - &a24
+        sha: e941c9df25bddc09c153a101fd5805fee197bbb6
+        message: "feat(hub): make group authentication opt-in at deployment"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e941c9df25bddc09c153a101fd5805fee197bbb6
+        authoredAt: 2026-10-07T16:02:33Z
+      - &a26
+        sha: 86ba18aaef2ac10dbb3e1c6596636c7d409c3b5b
+        message: "fix(hub): compare tenant IDs without case sensitivity"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/86ba18aaef2ac10dbb3e1c6596636c7d409c3b5b
+        authoredAt: 2026-10-07T16:10:55Z
+    workTimestamps:
+      - 2026-10-07T16:02:33Z
+      - 2026-10-07T16:10:55Z
+    workAdditions: 135
+    workDeletions: 31
+    workFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - docs/authorization-roles.md
+      - hub/functions/src/roles.test.ts
+      - hub/functions/src/roles.ts
+      - scripts/tooling.test.ts
+  - title: "feat(hub): derive SWA roles from Entra app-role claims"
+    body: >-
+      ## Why
+
+
+      Adding users to an Entra group does not populate the SWA roles required by Transition. The shared Hub needs a role
+      source to translate Entra app-role assignments into existing application permissions.
+
+
+      ## What changed
+
+
+      - Add `POST /api/auth/roles`, using the existing Hub route as the custom-...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/153
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - "app: hub"
+    additions: 236
+    deletions: 0
+    changedFiles: 4
+    author: myriadas-clees
+    createdAt: 2026-10-07T14:58:25Z
+    updatedAt: 2026-10-07T15:21:58Z
+    closedAt: 2026-10-07T15:21:54Z
+    mergedAt: 2026-10-07T15:21:54Z
+    workCommits:
+      - &a21
+        sha: 6090013b21193ae6a1b04e40d2f00a9145b7c2ab
+        message: "feat(hub): derive SWA roles from Entra app-role claims"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6090013b21193ae6a1b04e40d2f00a9145b7c2ab
+        authoredAt: 2026-10-07T14:57:56Z
+    workTimestamps:
+      - 2026-10-07T14:57:56Z
+    workAdditions: 236
+    workDeletions: 0
+    workFiles:
+      - docs/authorization-roles.md
+      - hub/functions/src/index.ts
+      - hub/functions/src/roles.test.ts
+      - hub/functions/src/roles.ts
+  - title: "feat(transition): production UI on the Myriad Advisor Solutions theme"
+    body: >-
+      Applies the Graphical **Myriad Advisor Solutions** theme to the shared Myriad design system and rebuilds the
+      Transition app for production use. This PR supersedes #142, #143, and #148; all three are ported here (details
+      below), so those PRs can be closed.
+
+
+      ### Shared design system (`packages/brand`,...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/152
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - "app: hub"
+      - "app: onboarding"
+      - "app: pto-tracker"
+      - "app: proforma"
+      - "app: excelerate"
+      - "app: valuation"
+      - platform
+      - deploy-preview
+      - "app: transition"
+    additions: 17597
+    deletions: 2581
+    changedFiles: 196
+    author: myriadas-clees
+    createdAt: 2026-10-07T04:03:28Z
+    updatedAt: 2026-10-07T16:16:22Z
+    closedAt: 2026-10-07T16:15:41Z
+    mergedAt: 2026-10-07T16:15:41Z
+    workCommits:
+      - &a9
+        sha: dfae66576f04af23487af900daf37bb920105d03
+        message: "feat(transition): production UI on the Myriad Advisor Solutions theme"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/dfae66576f04af23487af900daf37bb920105d03
+        authoredAt: 2026-10-07T04:03:11Z
+      - &a10
+        sha: 8eef34658e75f4a3efe1e763836e1a35ec508aab
+        message: "feat(transition): add scoped data deletion and backup restore"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8eef34658e75f4a3efe1e763836e1a35ec508aab
+        authoredAt: 2026-10-07T04:58:13Z
+      - &a11
+        sha: abcde93514dba53d948611f39637fec8bbadd6dd
+        message: "feat(transition): seed PR previews with synthetic demo data"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/abcde93514dba53d948611f39637fec8bbadd6dd
+        authoredAt: 2026-10-07T05:19:57Z
+      - &a12
+        sha: 5c7bed48024c9db361b385c9eda7719a1f577468
+        message: "feat(transition): finish session cache wiring from #142"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5c7bed48024c9db361b385c9eda7719a1f577468
+        authoredAt: 2026-10-07T06:13:19Z
+      - &a13
+        sha: 95d1c7e967d54ee1b273bc4fe4af7d6599a1a683
+        message: "fix(transition): skeleton becomes content in place without sliding"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/95d1c7e967d54ee1b273bc4fe4af7d6599a1a683
+        authoredAt: 2026-10-07T06:59:07Z
+      - &a14
+        sha: ce7cab4910d51b825e7d39d80df5e32d284fa1e2
+        message: "fix(ui): top bar nav overlap, phone nav focus, dark danger pill contrast"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ce7cab4910d51b825e7d39d80df5e32d284fa1e2
+        authoredAt: 2026-10-07T07:18:16Z
+      - &a15
+        sha: d96acaccba7fdfd855512ad46ec22fbc7d2481e6
+        message: "docs(brand): describe the shipped app theme in the branding skill"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d96acaccba7fdfd855512ad46ec22fbc7d2481e6
+        authoredAt: 2026-10-07T13:31:55Z
+      - &a16
+        sha: 66d7cf727ab08830b0a8805491579d38239c840a
+        message: "feat(brand): self-host Roboto and Lora instead of Google Fonts"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/66d7cf727ab08830b0a8805491579d38239c840a
+        authoredAt: 2026-10-07T13:37:01Z
+      - &a17
+        sha: b623888b7d7922535149940ffcec972457bb96bd
+        message: "feat(transition): split Paperwork into custodian and advisor sent/received statuses"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b623888b7d7922535149940ffcec972457bb96bd
+        authoredAt: 2026-10-07T14:12:57Z
+      - &a18
+        sha: f31950253ce8ec9f51a246d0ba537a4fdce0f694
+        message: "feat(transition): link paperwork status and checklist with confirmation"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f31950253ce8ec9f51a246d0ba537a4fdce0f694
+        authoredAt: 2026-10-07T14:32:31Z
+      - &a20
+        sha: c7623b14786987c9157b2228dbe939e368fb978e
+        message: "feat(transition): bulk status, time in status, stalled paperwork, progress steps"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c7623b14786987c9157b2228dbe939e368fb978e
+        authoredAt: 2026-10-07T14:54:05Z
+      - &a19
+        sha: a8613e4be55117ae8a34e2281edf4ae3228f48f4
+        message: "feat(transition): command palette (Ctrl/Cmd+K) and due-task count on Home nav item"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a8613e4be55117ae8a34e2281edf4ae3228f48f4
+        authoredAt: 2026-10-07T14:48:56Z
+      - &a22
+        sha: caefa050164c8b7dc0c7586dfd9d4147807c2f9e
+        message: "fix(transition): keep wide status controls to account status, tidy review copy"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/caefa050164c8b7dc0c7586dfd9d4147807c2f9e
+        authoredAt: 2026-10-07T15:01:41Z
+      - &a23
+        sha: c2865b105b23a85568ef3207a81b7930d905b0ed
+        message: "feat(transition): undo toast, remembered filters, copy buttons, unsaved-changes guard"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c2865b105b23a85568ef3207a81b7930d905b0ed
+        authoredAt: 2026-10-07T15:27:59Z
+      - &a25
+        sha: 7f4e6ec65b2b04d3a26411fa2326424b981ad239
+        message: "feat(transition): add censored offline CSV diagnostic review (ports #148)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7f4e6ec65b2b04d3a26411fa2326424b981ad239
+        authoredAt: 2026-10-07T16:06:32Z
+    workTimestamps:
+      - 2026-10-07T04:03:11Z
+      - 2026-10-07T04:58:13Z
+      - 2026-10-07T05:19:57Z
+      - 2026-10-07T06:13:19Z
+      - 2026-10-07T06:59:07Z
+      - 2026-10-07T07:18:16Z
+      - 2026-10-07T13:31:55Z
+      - 2026-10-07T13:37:01Z
+      - 2026-10-07T14:12:57Z
+      - 2026-10-07T14:32:31Z
+      - 2026-10-07T14:54:05Z
+      - 2026-10-07T14:48:56Z
+      - 2026-10-07T15:01:41Z
+      - 2026-10-07T15:27:59Z
+      - 2026-10-07T16:06:32Z
+    workAdditions: 17597
+    workDeletions: 2581
+    workFiles:
+      - .agents/skills/graphical-audit/SKILL.md
+      - .agents/skills/graphical-audit/references/drift-rules.md
+      - .agents/skills/graphical-audit/references/report-format.md
+      - .agents/skills/graphical-convert/SKILL.md
+      - .agents/skills/graphical-convert/references/mapping-examples.md
+      - .agents/skills/graphical-ui/SKILL.md
+      - .agents/skills/myriad-branding/SKILL.md
+      - .agents/skills/myriad-branding/references/digital-product-brand.md
+      - .gitignore
+      - AGENTS.md
+      - GUI.md
+      - README.md
+      - docs/transition/contracts.md
+      - excelerate/next.config.ts
+      - gui/base-ui.md
+      - gui/custom-components.md
+      - gui/foundations.md
+      - gui/interface-judgment.md
+      - gui/theme-contract.md
+      - gui/themes.md
+      - gui/themes/myriad-advisor-solutions-components.md
+      - gui/themes/myriad-advisor-solutions.md
+      - gui/verification.md
+      - hub/lib/local-dev.test.ts
+      - hub/lib/local-dev.ts
+      - hub/next.config.ts
+      - onboarding/apps/dashboard/next.config.ts
+      - packages/brand/assets/fonts/Lora-OFL.txt
+      - packages/brand/assets/fonts/Roboto-OFL.txt
+      - packages/brand/assets/fonts/lora-latin-ext-italic.woff2
+      - packages/brand/assets/fonts/lora-latin-ext-normal.woff2
+      - packages/brand/assets/fonts/lora-latin-italic.woff2
+      - packages/brand/assets/fonts/lora-latin-normal.woff2
+      - packages/brand/assets/fonts/roboto-latin-ext-italic.woff2
+      - packages/brand/assets/fonts/roboto-latin-ext-normal.woff2
+      - packages/brand/assets/fonts/roboto-latin-italic.woff2
+      - packages/brand/assets/fonts/roboto-latin-normal.woff2
+      - packages/brand/src/fonts.css
+      - packages/brand/src/graphical-theme.css
+      - packages/brand/src/styles.css
+      - packages/ui/src/appearance-quick-settings.tsx
+      - packages/ui/src/badge.tsx
+      - packages/ui/src/brand/myriad-logo.tsx
+      - packages/ui/src/button.tsx
+      - packages/ui/src/card.tsx
+      - packages/ui/src/dialog.tsx
+      - packages/ui/src/modal.tsx
+      - packages/ui/src/navigation/app-nav.tsx
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/navigation/nav-badge.test.ts
+      - packages/ui/src/navigation/nav-badge.ts
+      - packages/ui/src/navigation/navigation-mode-picker.tsx
+      - packages/ui/src/navigation/types.ts
+      - packages/ui/src/select.tsx
+      - packages/ui/src/summary-metric.tsx
+      - packages/ui/src/tabs.tsx
+      - packages/ui/src/theme-toggle.tsx
+      - packages/ui/src/user-menu.tsx
+      - proforma/next.config.ts
+      - pto-tracker/next.config.ts
+      - scripts/next-dev-origins.ts
+      - transition/.env.example
+      - transition/AGENTS.md
+      - transition/DIAGNOSTIC-REVIEW.md
+      - transition/README.md
+      - transition/functions/src/index.ts
+      - transition/next.config.ts
+      - transition/package.json
+      - transition/scripts/seed-synthetic.ts
+      - transition/scripts/synthetic-seed-cli.ts
+      - transition/scripts/synthetic-seed.ts
+      - transition/src/app/accounts/page.tsx
+      - transition/src/app/api/[...path]/route.ts
+      - transition/src/app/data/page.tsx
+      - transition/src/app/exceptions/page.tsx
+      - transition/src/app/globals.css
+      - transition/src/app/households/page.tsx
+      - transition/src/app/management/page.tsx
+      - transition/src/app/page.tsx
+      - transition/src/components/account-verification-review.test.ts
+      - transition/src/components/account-verification-review.tsx
+      - transition/src/components/accounts/account-detail.tsx
+      - transition/src/components/accounts/accounts-page.tsx
+      - transition/src/components/bulk-status.tsx
+      - transition/src/components/command-palette-model.ts
+      - transition/src/components/command-palette.test.ts
+      - transition/src/components/command-palette.tsx
+      - transition/src/components/contact-enrichment-value-review.test.ts
+      - transition/src/components/contact-enrichment-value-review.tsx
+      - transition/src/components/contact-enrichment.test.ts
+      - transition/src/components/contact-enrichment.tsx
+      - transition/src/components/contact-methods.module.css
+      - transition/src/components/contact-methods.test.ts
+      - transition/src/components/contact-methods.tsx
+      - transition/src/components/contact-phone-link.test.ts
+      - transition/src/components/contact-phone-link.tsx
+      - transition/src/components/dashboard/dashboard.tsx
+      - transition/src/components/data/clear-data-button.tsx
+      - transition/src/components/data/data-page.test.ts
+      - transition/src/components/data/data-page.tsx
+      - transition/src/components/data/import-step.tsx
+      - transition/src/components/diagnostic-import.test.ts
+      - transition/src/components/diagnostic-import.tsx
+      - transition/src/components/feedback.tsx
+      - transition/src/components/households/household-overview.tsx
+      - transition/src/components/households/households-page.tsx
+      - transition/src/components/linked-changes.tsx
+      - transition/src/components/page-skeletons.tsx
+      - transition/src/components/status-meta.tsx
+      - transition/src/components/status-select.module.css
+      - transition/src/components/status-select.tsx
+      - transition/src/components/transition-shell.tsx
+      - transition/src/components/transition-workspace.tsx
+      - transition/src/components/ui/copy-button.tsx
+      - transition/src/components/ui/discard-dialog.tsx
+      - transition/src/components/ui/fields.tsx
+      - transition/src/components/ui/inline-edit.tsx
+      - transition/src/components/ui/layout.tsx
+      - transition/src/components/ui/search-field.tsx
+      - transition/src/components/ui/select-field.tsx
+      - transition/src/components/ui/skeleton.tsx
+      - transition/src/components/ui/table-sort.tsx
+      - transition/src/components/ui/undo-toast.tsx
+      - transition/src/components/ui/unsaved-changes-guard.tsx
+      - transition/src/components/workbook-transfers.tsx
+      - transition/src/components/workspace/shared.tsx
+      - transition/src/lib/__fixtures__/diagnostic-viewer.ts
+      - transition/src/lib/account-search.test.ts
+      - transition/src/lib/account-status-age.test.ts
+      - transition/src/lib/account-status-preview.test.ts
+      - transition/src/lib/api/azure-functions-adapter.ts
+      - transition/src/lib/api/client-cache.test.ts
+      - transition/src/lib/api/client.test.ts
+      - transition/src/lib/api/client.ts
+      - transition/src/lib/api/session-cache.test.ts
+      - transition/src/lib/api/session-cache.ts
+      - transition/src/lib/bulk-status.test.ts
+      - transition/src/lib/bulk-status.ts
+      - transition/src/lib/choices.ts
+      - transition/src/lib/clear-data.test.ts
+      - transition/src/lib/clear-data.ts
+      - transition/src/lib/clipboard.test.ts
+      - transition/src/lib/clipboard.ts
+      - transition/src/lib/contact-enrichment.ts
+      - transition/src/lib/contact-phone.test.ts
+      - transition/src/lib/contact-phone.ts
+      - transition/src/lib/cosmos-repository.test.ts
+      - transition/src/lib/cosmos-repository.ts
+      - transition/src/lib/data.test.ts
+      - transition/src/lib/data.ts
+      - transition/src/lib/diagnostic-baseline.test.ts
+      - transition/src/lib/diagnostic-baseline.ts
+      - transition/src/lib/diagnostic-import.test.ts
+      - transition/src/lib/diagnostic-import.ts
+      - transition/src/lib/diagnostic-package.test.ts
+      - transition/src/lib/diagnostic-package.ts
+      - transition/src/lib/diagnostic-projection.test.ts
+      - transition/src/lib/diagnostic-projection.ts
+      - transition/src/lib/diagnostic-viewer.test.ts
+      - transition/src/lib/diagnostic-viewer.ts
+      - transition/src/lib/excel-backup.test.ts
+      - transition/src/lib/excel-backup.ts
+      - transition/src/lib/form-dirty.test.ts
+      - transition/src/lib/form-dirty.ts
+      - transition/src/lib/handlers.ts
+      - transition/src/lib/hooks/use-dirty-form.ts
+      - transition/src/lib/hooks/use-home-due-badge.ts
+      - transition/src/lib/hooks/use-transition-read.ts
+      - transition/src/lib/hooks/use-unsaved-changes.ts
+      - transition/src/lib/model.test.ts
+      - transition/src/lib/model.ts
+      - transition/src/lib/navigation.test.ts
+      - transition/src/lib/navigation.ts
+      - transition/src/lib/paperwork-link-handlers.test.ts
+      - transition/src/lib/paperwork-link-repository.test.ts
+      - transition/src/lib/paperwork-link.test.ts
+      - transition/src/lib/paperwork-link.ts
+      - transition/src/lib/paperwork-progress.test.ts
+      - transition/src/lib/paperwork-progress.ts
+      - transition/src/lib/remembered-filters.test.ts
+      - transition/src/lib/remembered-filters.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
+      - transition/src/lib/rules.test.ts
+      - transition/src/lib/source-repository.ts
+      - transition/src/lib/synthetic-seed.test.ts
+      - transition/src/lib/undo.test.ts
+      - transition/src/lib/undo.ts
+      - transition/src/lib/unsaved-guard.test.ts
+      - transition/src/lib/unsaved-guard.ts
+      - transition/src/lib/workbook.test.ts
+      - transition/src/lib/workbook.ts
+      - transition/src/lib/workflow-view.test.ts
+      - transition/src/lib/workflow-view.ts
+      - twenty
+      - valuation/next.config.ts
+prsInProgress:
+  - title: Add group-managed SWA role access
+    body: >-
+      - Add an Azure AD role source that validates tenant claims and returns supported app roles.
+
+      - Configure the deployment workflow to inject group-managed authentication settings when `SWA_AUTH_TENANT_ID` is
+      set.
+
+      - Document Entra group setup, activation, verification, and rollback.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/152
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: *a1
+    additions: 676
+    deletions: 0
+    changedFiles: 6
+    author: myriadas-clees
+    createdAt: 2026-10-07T19:02:22Z
+    updatedAt: 2026-10-08T13:49:31Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 682
+    workDeletions: 8
+    workFiles: *a4
+  - title: Remove stale PTO docs and unused dependencies
+    body: >-
+      ## Why
+
+
+      The PTO Tracker documentation still described an unimplemented scaffold, and the repository retained an unused
+      `twenty` submodule and unused `@azure/identity` dependency in Valuation.
+
+
+      ## What changed
+
+
+      Updated PTO Tracker docs to describe the implemented app, its current providers and workfl...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/156
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a5
+    additions: 63
+    deletions: 133
+    changedFiles: 9
+    author: myriadas-clees
+    createdAt: 2026-10-07T19:03:16Z
+    updatedAt: 2026-10-07T19:21:47Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a6
+    workTimestamps: *a7
+    workAdditions: 64
+    workDeletions: 134
+    workFiles: *a8
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "feat(transition): production UI on the Myriad Advisor Solutions theme"
+      - "feat(transition): add scoped data deletion and backup restore"
+      - "feat(transition): seed PR previews with synthetic demo data"
+      - "feat(transition): finish session cache wiring from #142"
+      - "fix(transition): skeleton becomes content in place without sliding"
+      - "fix(ui): top bar nav overlap, phone nav focus, dark danger pill contrast"
+      - "docs(brand): describe the shipped app theme in the branding skill"
+      - "feat(brand): self-host Roboto and Lora instead of Google Fonts"
+      - "feat(transition): split Paperwork into custodian and advisor sent/received statuses"
+      - "feat(transition): link paperwork status and checklist with confirmation"
+      - "feat(transition): command palette (Ctrl/Cmd+K) and due-task count on Home nav item"
+      - "feat(transition): bulk status, time in status, stalled paperwork, progress steps"
+      - "feat(hub): derive SWA roles from Entra app-role claims"
+      - "fix(transition): keep wide status controls to account status, tidy review copy"
+      - "feat(hub): derive SWA roles from Entra app-role claims (#153)"
+      - "feat(transition): undo toast, remembered filters, copy buttons, unsaved-changes guard"
+      - "feat(hub): make group authentication opt-in at deployment"
+      - "feat(transition): add censored offline CSV diagnostic review (ports #148)"
+      - "fix(hub): compare tenant IDs without case sensitivity"
+      - "feat(transition): production UI on the Myriad Advisor Solutions theme (#152)"
+      - "feat(hub): make group authentication opt-in at deployment (#154)"
+      - "feat(hub): refresh landing page design and content"
+      - "fix(hub): bake site URL into static metadata and address PR review"
+      - "feat(hub): Refresh Hub landing page design and content (#155)"
+      - "chore(repo): remove stale content and unused dependencies"
+      - "docs(pto-tracker): clarify request cancellation permissions"
+      - "feat(transition): preload dashboard data and add list paging"
+      - "fix(transition): reset household progress pager when dashboard filters change"
+      - "fix(transition): restore twenty submodule pointer to main"
+      - "feat(transition): preload dashboard data and add list paging (#157)"
+    commits:
+      - *a9
+      - *a10
+      - *a11
+      - *a12
+      - *a13
+      - *a14
+      - *a15
+      - *a16
+      - *a17
+      - *a18
+      - *a19
+      - *a20
+      - *a21
+      - *a22
+      - sha: a047f237acf2aff61e4e0bc6bc156c0fc2636e26
+        message: "feat(hub): derive SWA roles from Entra app-role claims (#153)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a047f237acf2aff61e4e0bc6bc156c0fc2636e26
+        authoredAt: 2026-10-07T15:21:53Z
+        additions: 236
+        deletions: 0
+        filesChanged: 4
+      - *a23
+      - *a24
+      - *a25
+      - *a26
+      - sha: 72dd04d1a1853b352c522f1163628fe904a0a59b
+        message: "feat(transition): production UI on the Myriad Advisor Solutions theme (#152)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/72dd04d1a1853b352c522f1163628fe904a0a59b
+        authoredAt: 2026-10-07T16:15:41Z
+        additions: 17145
+        deletions: 2129
+        filesChanged: 196
+      - sha: 519873526e7ac5849208e9f18489230d08033b73
+        message: "feat(hub): make group authentication opt-in at deployment (#154)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/519873526e7ac5849208e9f18489230d08033b73
+        authoredAt: 2026-10-07T16:20:20Z
+        additions: 132
+        deletions: 28
+        filesChanged: 5
+      - *a27
+      - *a28
+      - sha: e2d3055a1a34d666dc45b4fcb1caf8320f6498f6
+        message: "feat(hub): Refresh Hub landing page design and content (#155)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e2d3055a1a34d666dc45b4fcb1caf8320f6498f6
+        authoredAt: 2026-10-07T18:38:37Z
+        additions: 1676
+        deletions: 416
+        filesChanged: 19
+      - *a29
+      - *a30
+      - *a31
+      - *a32
+      - *a33
+      - sha: 3939e3688ecc6d8c187897762df2eb4d112a5b98
+        message: "feat(transition): preload dashboard data and add list paging (#157)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3939e3688ecc6d8c187897762df2eb4d112a5b98
+        authoredAt: 2026-10-08T03:14:30Z
+        additions: 1118
+        deletions: 348
+        filesChanged: 42
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "feat(auth): add group-managed SWA role access"
+      - "feat(hub): expand admin role to all app roles"
+    commits:
+      - *a34
+      - *a35
+releases: []
+externalContributions: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 157
+    prTitle: Preload Transition dashboard data and add list paging
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/157
+    state: commented
+    submittedAt: 2026-10-07T20:30:59Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 157
+    prTitle: Preload Transition dashboard data and add list paging
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/157
+    state: commented
+    submittedAt: 2026-10-07T20:31:01Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 157
+    prTitle: Preload Transition dashboard data and add list paging
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/157
+    state: commented
+    submittedAt: 2026-10-07T23:29:01Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 157
+    prTitle: Preload Transition dashboard data and add list paging
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/157
+    state: commented
+    submittedAt: 2026-10-07T23:30:17Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 155
+    prTitle: "feat(hub): Refresh Hub landing page design and content"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/155
+    state: commented
+    submittedAt: 2026-10-07T18:34:12Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 152
+    prTitle: "feat(transition): production UI on the Myriad Advisor Solutions theme"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/152
+    state: commented
+    submittedAt: 2026-10-07T16:14:53Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 157
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/157
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/157#discussion_r4211658723
+    body: "Fixed in 54b4ac5: the Household progress panel now takes the dashboard query as its pager reset key (same as the
+      task panel), so filter changes return it to page 1."
+    path: transition/src/components/dashboard/dashboard.tsx
+    createdAt: 2026-10-07T20:30:58Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 157
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/157
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/157#discussion_r4211659139
+    body: "Not changed yet: this needs a decision before I touch it. The gitlink bump (0d66dd1 to 27a18ba) was committed in
+      555efab, and the instructions for this loop say not to commit the `twenty` submodule. Reverting the pointer would
+      be a commit on that path, so I am holding it for confirmation."
+    path: twenty
+    createdAt: 2026-10-07T20:31:01Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 157
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/157
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/157#discussion_r4213066191
+    body: "Fixed in 4ae5c93: the twenty gitlink is restored to main's pointer (0d66dd1). Only that path changed. The
+      submodule is removed by open PR #156, so this PR no longer touches it."
+    path: twenty
+    createdAt: 2026-10-07T23:29:01Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 157
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/157
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/157#discussion_r4213073598
+    body: "Benign, no change: the Home due-task badge is removed by an explicit design decision for this PR. The prefetch
+      hook only warms the identity-scoped dashboard cache."
+    path: transition/src/components/transition-shell.tsx
+    createdAt: 2026-10-07T23:30:17Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 155
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/155
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/155#discussion_r4210554941
+    body: This was intentional, keeping this.
+    path: transition/src/app/icon.svg
+    createdAt: 2026-10-07T18:34:11Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 152
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/152
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/152#discussion_r4209221754
+    body: >-
+      This is deliberate. The product owner asked for "Paperwork (legacy)" to be removed from the Status filter. Nobody
+      is using the app yet, so there are few or no stored `Paperwork` accounts, and a filter option for a status that
+      can no longer be chosen would mostly be noise during the changeover.
+
+
+      Lega...
+    path: transition/src/components/accounts/accounts-page.tsx
+    createdAt: 2026-10-07T16:14:53Z
+aiReviews:
+  codex:
+    prsReviewed: 6
+    comments: 12
+    reviews: 9
+    fixed: 2
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 6
+  comments: 12
+  reviews: 9
+  fixed: 2
+hoursInputs:
+  timestamps:
+    - 2026-10-07T04:03:11Z
+    - 2026-10-07T04:58:13Z
+    - 2026-10-07T05:19:57Z
+    - 2026-10-07T06:13:19Z
+    - 2026-10-07T06:59:07Z
+    - 2026-10-07T07:18:16Z
+    - 2026-10-07T13:31:55Z
+    - 2026-10-07T13:37:01Z
+    - 2026-10-07T14:12:57Z
+    - 2026-10-07T14:32:31Z
+    - 2026-10-07T14:48:56Z
+    - 2026-10-07T14:54:05Z
+    - 2026-10-07T14:57:56Z
+    - 2026-10-07T15:01:41Z
+    - 2026-10-07T15:21:53Z
+    - 2026-10-07T15:27:59Z
+    - 2026-10-07T16:02:33Z
+    - 2026-10-07T16:06:32Z
+    - 2026-10-07T16:10:55Z
+    - 2026-10-07T16:15:41Z
+    - 2026-10-07T16:20:20Z
+    - 2026-10-07T18:12:19Z
+    - 2026-10-07T18:27:30Z
+    - 2026-10-07T18:38:37Z
+    - 2026-10-07T19:03:06Z
+    - 2026-10-07T19:19:16Z
+    - 2026-10-07T20:17:25Z
+    - 2026-10-07T20:30:54Z
+    - 2026-10-07T23:28:54Z
+    - 2026-10-08T03:14:30Z
+    - 2026-10-07T19:02:13Z
+    - 2026-10-07T19:19:28Z
+    - 2026-10-07T19:02:22Z
+    - 2026-10-07T19:02:13Z
+    - 2026-10-07T19:19:28Z
+    - 2026-10-07T19:03:16Z
+    - 2026-10-07T19:03:06Z
+    - 2026-10-07T19:19:16Z
+    - 2026-10-07T20:17:36Z
+    - 2026-10-08T03:14:31Z
+    - 2026-10-07T20:17:25Z
+    - 2026-10-07T20:30:54Z
+    - 2026-10-07T23:28:54Z
+    - 2026-10-07T18:12:28Z
+    - 2026-10-07T18:38:38Z
+    - 2026-10-07T18:12:19Z
+    - 2026-10-07T18:27:30Z
+    - 2026-10-07T16:03:06Z
+    - 2026-10-07T16:20:20Z
+    - 2026-10-07T16:02:33Z
+    - 2026-10-07T16:10:55Z
+    - 2026-10-07T14:58:25Z
+    - 2026-10-07T15:21:54Z
+    - 2026-10-07T14:57:56Z
+    - 2026-10-07T04:03:28Z
+    - 2026-10-07T16:15:41Z
+    - 2026-10-07T04:03:11Z
+    - 2026-10-07T04:58:13Z
+    - 2026-10-07T05:19:57Z
+    - 2026-10-07T06:13:19Z
+    - 2026-10-07T06:59:07Z
+    - 2026-10-07T07:18:16Z
+    - 2026-10-07T13:31:55Z
+    - 2026-10-07T13:37:01Z
+    - 2026-10-07T14:12:57Z
+    - 2026-10-07T14:32:31Z
+    - 2026-10-07T14:54:05Z
+    - 2026-10-07T14:48:56Z
+    - 2026-10-07T15:01:41Z
+    - 2026-10-07T15:27:59Z
+    - 2026-10-07T16:06:32Z
+    - 2026-10-07T20:30:59Z
+    - 2026-10-07T20:31:01Z
+    - 2026-10-07T23:29:01Z
+    - 2026-10-07T23:30:17Z
+    - 2026-10-07T18:34:12Z
+    - 2026-10-07T16:14:53Z
+    - 2026-10-07T20:30:58Z
+    - 2026-10-07T20:31:01Z
+    - 2026-10-07T23:29:01Z
+    - 2026-10-07T23:30:17Z
+    - 2026-10-07T18:34:11Z
+    - 2026-10-07T16:14:53Z
+  volume:
+    pullRequests:
+      - additions: 682
+        deletions: 8
+        state: open
+        dailyWork: true
+        filesChanged: 6
+        testFilesChanged: 2
+        commitCount: 2
+      - additions: 64
+        deletions: 134
+        state: open
+        dailyWork: true
+        filesChanged: 9
+        testFilesChanged: 0
+        commitCount: 2
+      - additions: 1123
+        deletions: 353
+        state: merged
+        dailyWork: true
+        filesChanged: 43
+        testFilesChanged: 7
+        commitCount: 3
+      - additions: 1679
+        deletions: 419
+        state: merged
+        dailyWork: true
+        filesChanged: 20
+        testFilesChanged: 1
+        commitCount: 2
+      - additions: 135
+        deletions: 31
+        state: merged
+        dailyWork: true
+        filesChanged: 5
+        testFilesChanged: 2
+        commitCount: 2
+      - additions: 236
+        deletions: 0
+        state: merged
+        dailyWork: true
+        filesChanged: 4
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 17597
+        deletions: 2581
+        state: merged
+        dailyWork: true
+        filesChanged: 196
+        testFilesChanged: 43
+        commitCount: 15
+    reviewCount: 6
+    reviewCommentCount: 6
+    commitCount: 5
+    commitAdditions: 20307
+    commitDeletions: 2921
+    commitStatsCount: 5
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 93.2
+  sessions: 5
+  sessionHours: 9.4
+  volumeHours: 93.2
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
