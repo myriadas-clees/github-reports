@@ -12,6 +12,7 @@ import type {
   PullRequest,
   AiReviewerStats,
 } from "../types.js";
+import { buildAllocationView, type AllocationInput } from "./allocation-view.js";
 import { getLocale } from "../i18n/index.js";
 import { loadTheme, readThemeTemplate } from "./themes/index.js";
 import { registerHelpers } from "./helpers.js";
@@ -23,6 +24,7 @@ import {
 
 const PARTIAL_NAMES = [
   "header",
+  "allocation",
   "overview",
   "activity",
   "summaries",
@@ -279,6 +281,8 @@ export type RenderOptions = {
   prevWeek?: string;
   nextWeek?: string;
   theme?: Theme;
+  /** Optional effort-allocation inputs for the "Where the effort went" section. */
+  allocation?: AllocationInput;
 };
 
 const createInstance = (language: Language, timezone: string, theme: ReturnType<typeof loadTheme>): typeof Handlebars => {
@@ -326,6 +330,7 @@ export const renderReport = (
     // Nested under repos; only orphans remain as a flat list.
     pullRequests: enriched.orphanPullRequests,
     aiReviews: buildAiReviewActivityView(data),
+    allocation: buildAllocationView(options.allocation),
     dailyCommits: computeHeatmapLevels(data.dailyCommits),
     css: theme.buildCSS(language),
     lang: language,

@@ -72,6 +72,8 @@
     </div>
   </article>
 
+  {{> allocation}}
+
   {{!-- OVERVIEW (skip when it duplicates stakeholder summary) --}}
   {{#if aiContent.overview}}
   {{#neq aiContent.overview stakeholderSummary}}

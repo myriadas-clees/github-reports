@@ -3,7 +3,15 @@
 
 import { readFile } from "node:fs/promises";
 import { parse as parseYaml } from "yaml";
-import type { Language, LLMProvider, Theme } from "./types.js";
+import { DEFAULT_ALLOCATION_CONFIG } from "./collector/allocation.js";
+import type {
+  AllocationConfig,
+  Language,
+  LLMProvider,
+  ManualTimeEntry,
+  Theme,
+  WorkType,
+} from "./types.js";
 
 export type WorklogConfig = {
   username: string;
@@ -23,6 +31,10 @@ export type WorklogConfig = {
     provider: LLMProvider | null;
     model: string | null;
   };
+  /** Effort allocation: initiative mapping and trend window. */
+  allocation: AllocationConfig;
+  /** Self-reported time GitHub can't see (meetings, design, support). */
+  manualTime: ManualTimeEntry[];
 };
 
 export const DEFAULT_CONFIG: WorklogConfig = {
@@ -37,6 +49,36 @@ export const DEFAULT_CONFIG: WorklogConfig = {
   sessionGapMinutes: 90,
   maxSessionHours: 6,
   llm: { provider: null, model: null },
+  allocation: { ...DEFAULT_ALLOCATION_CONFIG, initiatives: {} },
+  manualTime: [],
+};
+
+const WORK_TYPES: readonly WorkType[] = [
+  "new-capability",
+  "quality",
+  "maintenance",
+  "documentation",
+  "team-support",
+  "unlogged",
+];
+
+type RawAllocation = {
+  label_prefix?: unknown;
+  labelPrefix?: unknown;
+  default_initiative?: unknown;
+  defaultInitiative?: unknown;
+  trend_weeks?: unknown;
+  trendWeeks?: unknown;
+  initiatives?: unknown;
+};
+
+type RawManualTime = {
+  date?: unknown;
+  initiative?: unknown;
+  hours?: unknown;
+  work_type?: unknown;
+  workType?: unknown;
+  note?: unknown;
 };
 
 type RawConfig = {
@@ -59,11 +101,73 @@ type RawConfig = {
     provider?: string;
     model?: string;
   };
+  allocation?: RawAllocation;
+  /** Validated at runtime by parseManualTime. */
+  manual_time?: unknown;
+  manualTime?: unknown;
 };
 
 const env = (key: string): string | undefined => {
   const v = process.env[key];
   return v && v.length > 0 ? v : undefined;
+};
+
+const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+
+/** Parse allocation YAML into a full AllocationConfig; unset keys keep defaults. */
+const parseAllocation = (raw: RawAllocation): AllocationConfig => {
+  const out: AllocationConfig = { ...DEFAULT_ALLOCATION_CONFIG, initiatives: {} };
+  const labelPrefix = raw.label_prefix ?? raw.labelPrefix;
+  if (typeof labelPrefix === "string" && labelPrefix.length > 0) out.labelPrefix = labelPrefix;
+  const defaultInitiative = raw.default_initiative ?? raw.defaultInitiative;
+  if (typeof defaultInitiative === "string" && defaultInitiative.trim()) {
+    out.defaultInitiative = defaultInitiative.trim();
+  }
+  const trend = raw.trend_weeks ?? raw.trendWeeks;
+  if (typeof trend === "number" && Number.isFinite(trend)) {
+    out.trendWeeks = Math.min(52, Math.max(1, Math.floor(trend)));
+  }
+  if (raw.initiatives && typeof raw.initiatives === "object" && !Array.isArray(raw.initiatives)) {
+    for (const [key, value] of Object.entries(raw.initiatives)) {
+      if (typeof value !== "string") continue;
+      const k = key.trim();
+      const v = value.trim();
+      if (k && v) out.initiatives[k] = v;
+    }
+  }
+  return out;
+};
+
+/** Validate manual time entries; invalid entries are dropped silently. */
+const parseManualTime = (raw: unknown): ManualTimeEntry[] => {
+  if (!Array.isArray(raw)) return [];
+  const out: ManualTimeEntry[] = [];
+  for (const item of raw) {
+    if (!item || typeof item !== "object") continue;
+    const e = item as RawManualTime;
+    // Unquoted YAML dates may parse to Date objects; normalize to YYYY-MM-DD.
+    const date =
+      e.date instanceof Date
+        ? Number.isNaN(e.date.getTime())
+          ? ""
+          : e.date.toISOString().slice(0, 10)
+        : typeof e.date === "string"
+          ? e.date.trim()
+          : "";
+    if (!DATE_RE.test(date)) continue;
+    const initiative = typeof e.initiative === "string" ? e.initiative.trim() : "";
+    if (!initiative) continue;
+    const hours = e.hours;
+    if (typeof hours !== "number" || !Number.isFinite(hours) || hours <= 0 || hours > 24) continue;
+    const entry: ManualTimeEntry = { date, initiative, hours };
+    const workType = e.work_type ?? e.workType;
+    if (typeof workType === "string" && (WORK_TYPES as readonly string[]).includes(workType)) {
+      entry.workType = workType as WorkType;
+    }
+    if (typeof e.note === "string" && e.note.trim()) entry.note = e.note.trim();
+    out.push(entry);
+  }
+  return out;
 };
 
 export const parseConfigObject = (raw: RawConfig | null | undefined): Partial<WorklogConfig> => {
@@ -95,6 +199,11 @@ export const parseConfigObject = (raw: RawConfig | null | undefined): Partial<Wo
       model: raw.llm.model ?? null,
     };
   }
+  if (raw.allocation && typeof raw.allocation === "object") {
+    out.allocation = parseAllocation(raw.allocation);
+  }
+  const manualTime = raw.manual_time ?? raw.manualTime;
+  if (manualTime !== undefined) out.manualTime = parseManualTime(manualTime);
   return out;
 };
 
@@ -119,6 +228,12 @@ export const resolveConfig = (
     ...filePartial,
     llm: { ...DEFAULT_CONFIG.llm, ...filePartial.llm },
     repositories: filePartial.repositories ?? DEFAULT_CONFIG.repositories,
+    allocation: {
+      ...DEFAULT_CONFIG.allocation,
+      ...filePartial.allocation,
+      initiatives: { ...filePartial.allocation?.initiatives },
+    },
+    manualTime: filePartial.manualTime ?? [],
   };
 
   if (cli.username ?? env("GITHUB_USERNAME")) {

@@ -338,3 +338,100 @@ export type ReportConfig = {
   timezone: string; // IANA timezone (e.g. "Asia/Tokyo", "UTC")
   repositories?: string[];
 };
+
+// Effort allocation (stakeholder "where is the time going")
+// Computed at render time from stored github-data.yaml — no GitHub refetch needed.
+
+export type WorkType =
+  | "new-capability"
+  | "quality"
+  | "maintenance"
+  | "documentation"
+  | "team-support"
+  | "unlogged";
+
+export type AllocationItem = {
+  kind: "pr" | "review" | "commits" | "manual";
+  title: string;
+  url?: string;
+  repository?: string;
+  state?: "open" | "merged" | "closed";
+  /** Scaled engineer-hour estimate for this PR (PR items only). Never shown as hours. */
+  effortHours?: number;
+  /** Stakeholder-facing impact badge derived from effort size or labels. */
+  impact?: "major" | "notable";
+};
+
+export type AllocationBucket = {
+  /** Stakeholder-facing initiative / product name. */
+  initiative: string;
+  hours: number;
+  /** 0–1 share of the period's total hours. */
+  share: number;
+  byWorkType: Partial<Record<WorkType, number>>;
+  shipped: AllocationItem[];
+  inProgress: AllocationItem[];
+  /** Other items (reviews, direct commits, manual entries). */
+  other: AllocationItem[];
+};
+
+export type WorkTypeShare = {
+  workType: WorkType;
+  label: string;
+  hours: number;
+  share: number;
+};
+
+export type Allocation = {
+  version: string;
+  totalHours: number;
+  /** Sorted by hours desc. */
+  initiatives: AllocationBucket[];
+  /** Sorted by hours desc; zero-hour types omitted. */
+  workTypes: WorkTypeShare[];
+  /** Self-reported hours included in totalHours. */
+  manualHours: number;
+  note: string;
+};
+
+export type AllocationPeriod = {
+  /** e.g. "2026-10-01" (Thursday that starts the Thu–Wed work week). */
+  id: string;
+  label: string;
+  from: string;
+  to: string;
+  /** Number of daily reports merged into this period. */
+  days: number;
+  allocation: Allocation;
+};
+
+export type AllocationTrend = {
+  /** Union of initiative names across periods, ordered by total hours desc. */
+  initiatives: string[];
+  /** Chronological, oldest first. */
+  periods: AllocationPeriod[];
+};
+
+export type ManualTimeEntry = {
+  date: string; // YYYY-MM-DD
+  initiative: string;
+  hours: number;
+  workType?: WorkType;
+  note?: string;
+};
+
+export type AllocationConfig = {
+  /**
+   * Map from a classifier key to a stakeholder-facing initiative name. Keys:
+   *   - exact PR label, e.g. "app: hub"
+   *   - "scope:<conventional-commit scope>", e.g. "scope:pricing"
+   *   - "repo:<owner/name>", e.g. "repo:org/app"
+   */
+  initiatives: Record<string, string>;
+  /** Labels starting with this prefix name an initiative (default "app:"). */
+  labelPrefix: string;
+  /** Fallback initiative when nothing matches (default: humanized repo name). */
+  defaultInitiative: string | null;
+  /** Number of Thu–Wed weeks in the trend (default 8). */
+  trendWeeks: number;
+};
