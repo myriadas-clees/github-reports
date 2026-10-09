@@ -1,0 +1,1512 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-10-08
+  to: 2026-10-08
+stats:
+  totalCommits: 37
+  totalAdditions: 1815
+  totalDeletions: 392
+  prsOpened: 4
+  prsMerged: 1
+  prsInProgress: 7
+  prsReviewed: 26
+  reviewComments: 26
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 79.8
+dailyCommits:
+  - date: 2026-10-08
+    count: 37
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 34
+    prsOpened: 4
+    prsMerged: 1
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 3
+    prsOpened: 0
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests:
+  - title: "feat(brand): make app actions and progress monotone"
+    body: >-
+      Stacked on #156; merge after it.
+
+
+      ## Why
+
+
+      The app theme used Myriad reds for actions and focus treatments, which conflicts with the brand guidance that
+      reserves red for accents.
+
+
+      ## What changed
+
+
+      - Defined the core brand palette and clarified red usage across the branding and GUI guidance.
+
+      - Changed...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/161
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a1
+      - documentation
+      - "app: hub"
+      - "app: onboarding"
+      - "app: pto-tracker"
+      - "app: proforma"
+      - "app: excelerate"
+      - "app: valuation"
+      - platform
+      - "app: transition"
+    additions: 194
+    deletions: 83
+    changedFiles: 32
+    author: myriadas-clees
+    createdAt: 2026-10-08T20:58:55Z
+    updatedAt: 2026-10-08T21:53:07Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a2
+      - &a25
+        sha: 2d413cdd8540323a241cc3f30c8896057ed687ed
+        message: "feat(brand): make app actions and progress monotone"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2d413cdd8540323a241cc3f30c8896057ed687ed
+        authoredAt: 2026-10-08T20:58:46Z
+      - &a30
+        sha: 20dfa6aac849c1e04c0d39ee72b15d36a2f13f8c
+        message: "fix(brand): keep semantic and on-dark colors after monotone primary"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/20dfa6aac849c1e04c0d39ee72b15d36a2f13f8c
+        authoredAt: 2026-10-08T21:31:53Z
+      - &a36
+        sha: 2a7ed09d14f41ecf9f2e4f2be66900df3f71d2bc
+        message: "fix(brand): use action foreground on remaining primary fills"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2a7ed09d14f41ecf9f2e4f2be66900df3f71d2bc
+        authoredAt: 2026-10-08T21:39:50Z
+      - &a39
+        sha: f2bac72c666b863239248428b5ba5dcbb20a1ff4
+        message: "fix(hub): keep landing page brand accents on the accent color"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f2bac72c666b863239248428b5ba5dcbb20a1ff4
+        authoredAt: 2026-10-08T21:47:49Z
+    workTimestamps: &a3
+      - 2026-10-08T20:58:46Z
+      - 2026-10-08T21:31:53Z
+      - 2026-10-08T21:39:50Z
+      - 2026-10-08T21:47:49Z
+    workAdditions: 194
+    workDeletions: 83
+    workFiles: &a4
+      - .agents/skills/graphical-audit/SKILL.md
+      - .agents/skills/graphical-ui/SKILL.md
+      - .agents/skills/myriad-branding/SKILL.md
+      - .agents/skills/myriad-branding/references/brand-guidelines.md
+      - .agents/skills/myriad-branding/references/digital-product-brand.md
+      - GUI.md
+      - excelerate/src/components/excelerate-client.tsx
+      - hub/app/403/page.tsx
+      - hub/app/error.tsx
+      - hub/app/globals.css
+      - hub/app/not-found.tsx
+      - hub/app/preview/page.tsx
+      - hub/components/LandingPage.tsx
+      - hub/staticwebapp.config.json
+      - onboarding/apps/dashboard/components/client-workspace-empty-state.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+      - onboarding/apps/dashboard/components/vendor-workstreams-empty-state.tsx
+      - onboarding/apps/dashboard/components/vm/vm-shared.tsx
+      - packages/brand/src/graphical-theme.css
+      - packages/brand/src/styles.css
+      - proforma/src/app/globals.css
+      - pto-tracker/src/app/team/TeamClient.tsx
+      - pto-tracker/src/components/ApprovalPanel.tsx
+      - pto-tracker/src/components/LeaveCalendar.tsx
+      - pto-tracker/src/components/RequestForm.tsx
+      - transition/next-env.d.ts
+      - transition/src/components/status-select.tsx
+      - transition/src/components/transition-shell.tsx
+      - valuation/src/app/cases/detail/case-detail-client.tsx
+      - valuation/src/app/cases/new/page.tsx
+      - valuation/src/app/imports/page.tsx
+      - valuation/src/app/page.tsx
+  - title: "feat(hub): streamline Entra sign-in and app routing"
+    body: >-
+      ## Why
+
+
+      Users needed a smoother path from sign-in to their available apps.
+
+
+      ## What changed
+
+
+      Route landing page sign-in links directly to Microsoft when Entra authentication is enabled. Send users with
+      access to exactly one app straight to that app, and show a branded loading screen while authentica...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/159
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - "app: hub"
+      - deploy-preview
+    additions: 183
+    deletions: 61
+    changedFiles: 16
+    author: myriadas-clees
+    createdAt: 2026-10-08T15:33:12Z
+    updatedAt: 2026-10-08T19:47:07Z
+    closedAt: 2026-10-08T19:46:28Z
+    mergedAt: 2026-10-08T19:46:28Z
+    workCommits:
+      - &a14
+        sha: 6b6ed689512d467afeb93c1f294783d0e2d96b46
+        message: "feat(hub): streamline Entra sign-in and app routing"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6b6ed689512d467afeb93c1f294783d0e2d96b46
+        authoredAt: 2026-10-08T15:33:02Z
+      - &a15
+        sha: b9395a701ad67520376cca239d8d137b5a09a8e8
+        message: "fix(hub): keep public home reachable for users without access"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b9395a701ad67520376cca239d8d137b5a09a8e8
+        authoredAt: 2026-10-08T16:23:14Z
+      - &a16
+        sha: 2b86ee107932d57f34f70d699c3ae5799a591c84
+        message: "fix(hub): return Entra sign-in through the public login page"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2b86ee107932d57f34f70d699c3ae5799a591c84
+        authoredAt: 2026-10-08T16:31:29Z
+      - &a19
+        sha: df3949e2c45c6c02f6c357fc3b4fca053aba9ee1
+        message: "feat(hub): rename launcher welcome heading"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/df3949e2c45c6c02f6c357fc3b4fca053aba9ee1
+        authoredAt: 2026-10-08T19:32:16Z
+    workTimestamps:
+      - 2026-10-08T15:33:02Z
+      - 2026-10-08T16:23:14Z
+      - 2026-10-08T16:31:29Z
+      - 2026-10-08T19:32:16Z
+    workAdditions: 183
+    workDeletions: 61
+    workFiles:
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - hub/README.md
+      - hub/app/globals.css
+      - hub/app/hub/page.tsx
+      - hub/app/loading.tsx
+      - hub/app/login/page.tsx
+      - hub/components/HomeClient.tsx
+      - hub/components/HubLauncher.tsx
+      - hub/components/HubLoadingScreen.tsx
+      - hub/components/LandingPage.tsx
+      - hub/lib/apps.test.ts
+      - hub/lib/apps.ts
+      - hub/lib/auth.ts
+      - hub/staticwebapp.config.json
+      - twenty
+  - title: "feat(transition): add registration filter and sorting"
+    body: >-
+      Stacked on #161; merge after it.
+
+
+      ## Why
+
+
+      Advisors need to find and compare accounts by registration type in the transition queue.
+
+
+      ## What changed
+
+
+      Added a Registration column and filter to the account queue, and made registration a sortable field. Registration
+      choices include values present in the...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a5
+      - "app: transition"
+    additions: 126
+    deletions: 65
+    changedFiles: 14
+    author: myriadas-clees
+    createdAt: 2026-10-08T18:41:11Z
+    updatedAt: 2026-10-08T21:53:31Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a6
+      - &a17
+        sha: 4926d9633f825bd703d6b689b71b0ec018ae9170
+        message: "feat(transition): add registration filter and sorting"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4926d9633f825bd703d6b689b71b0ec018ae9170
+        authoredAt: 2026-10-08T18:41:03Z
+      - &a18
+        sha: 80e0c5fc23e3ab412e7b67f015abff626d1103cc
+        message: "fix(transition): match accounts skeleton to registration column and filter"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/80e0c5fc23e3ab412e7b67f015abff626d1103cc
+        authoredAt: 2026-10-08T19:17:53Z
+      - &a22
+        sha: 90d05488d2558a3fa7086fd8079723cbbb385381
+        message: "fix(transition): keep registration filter distinct from stored All value"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/90d05488d2558a3fa7086fd8079723cbbb385381
+        authoredAt: 2026-10-08T19:59:30Z
+      - &a27
+        sha: 16a9a9d26e2c8f79ee36d175a1a604e72185f3f4
+        message: "fix(transition): label the registration no-filter option distinctly"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/16a9a9d26e2c8f79ee36d175a1a604e72185f3f4
+        authoredAt: 2026-10-08T21:25:34Z
+      - &a31
+        sha: 7abf469cc84b5aae9981a01bc91a4e2879a36536
+        message: Merge remote-tracking branch 'origin/docs/branding-colors' into fix/160-merge
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7abf469cc84b5aae9981a01bc91a4e2879a36536
+        authoredAt: 2026-10-08T21:31:58Z
+      - &a33
+        sha: c4d93ba5603fedffdba1572f8187268c7a167d89
+        message: "fix(transition): encode registration filter options so no stored value collides with the no-filter choice"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c4d93ba5603fedffdba1572f8187268c7a167d89
+        authoredAt: 2026-10-08T21:35:03Z
+      - &a37
+        sha: 80f07426c6343f62eff67684a13af38383c77f84
+        message: Merge remote-tracking branch 'origin/docs/branding-colors' into fix/160-merge3
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/80f07426c6343f62eff67684a13af38383c77f84
+        authoredAt: 2026-10-08T21:39:55Z
+      - &a40
+        sha: 46019f37dfeb53bc25c784bc22af26c82b887dff
+        message: Merge remote-tracking branch 'origin/docs/branding-colors' into tmp/acct-sort
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/46019f37dfeb53bc25c784bc22af26c82b887dff
+        authoredAt: 2026-10-08T21:47:55Z
+    workTimestamps: &a7
+      - 2026-10-08T18:41:03Z
+      - 2026-10-08T19:17:53Z
+      - 2026-10-08T19:59:30Z
+      - 2026-10-08T21:25:34Z
+      - 2026-10-08T21:31:58Z
+      - 2026-10-08T21:35:03Z
+      - 2026-10-08T21:39:55Z
+      - 2026-10-08T21:47:55Z
+    workAdditions: 126
+    workDeletions: 65
+    workFiles: &a8
+      - excelerate/src/components/excelerate-client.tsx
+      - hub/app/globals.css
+      - hub/components/LandingPage.tsx
+      - onboarding/apps/dashboard/components/client-workspace-empty-state.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+      - onboarding/apps/dashboard/components/vendor-workstreams-empty-state.tsx
+      - onboarding/apps/dashboard/components/vm/vm-shared.tsx
+      - packages/brand/src/styles.css
+      - proforma/src/app/globals.css
+      - pto-tracker/src/app/team/TeamClient.tsx
+      - pto-tracker/src/components/ApprovalPanel.tsx
+      - pto-tracker/src/components/LeaveCalendar.tsx
+      - pto-tracker/src/components/RequestForm.tsx
+      - transition/next-env.d.ts
+      - transition/src/components/accounts/accounts-page.tsx
+      - transition/src/components/page-skeletons.tsx
+      - transition/src/components/status-select.tsx
+      - transition/src/components/transition-shell.tsx
+      - transition/src/lib/account-search.test.ts
+      - transition/src/lib/accounts-list.test.ts
+      - transition/src/lib/accounts-list.ts
+      - transition/src/lib/api/client.ts
+      - transition/src/lib/choices.ts
+      - transition/src/lib/handlers.ts
+      - transition/src/lib/model.ts
+      - transition/src/lib/registration-option.test.ts
+      - transition/src/lib/remembered-filters.test.ts
+      - transition/src/lib/remembered-filters.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
+      - valuation/src/app/cases/detail/case-detail-client.tsx
+      - valuation/src/app/cases/new/page.tsx
+      - valuation/src/app/imports/page.tsx
+      - valuation/src/app/page.tsx
+  - title: "feat(transition): add guided onboarding tour"
+    body: >-
+      Stacked on #160; merge after it.
+
+
+      ## Why
+
+
+      New Transition users need a concise walkthrough to find key pages and understand the main workflow.
+
+
+      ## What changed
+
+
+      Added a guided tour with role-specific steps, a welcome and completion flow, and a spotlight that follows page
+      targets. Users can launch it ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a9
+      - "app: transition"
+    additions: 1312
+    deletions: 183
+    changedFiles: 24
+    author: myriadas-clees
+    createdAt: 2026-10-08T13:19:29Z
+    updatedAt: 2026-10-09T12:20:01Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a10
+      - &a13
+        sha: 225d53ba407e1ccc4d71f4fae0152708a78042bd
+        message: "feat(transition): add guided onboarding tour"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/225d53ba407e1ccc4d71f4fae0152708a78042bd
+        authoredAt: 2026-10-08T13:19:19Z
+      - &a20
+        sha: 35dcf75d40ac26bfe2a8d05418c2d4ddabd3c975
+        message: "feat(onboarding): guide users through the transition workflow"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/35dcf75d40ac26bfe2a8d05418c2d4ddabd3c975
+        authoredAt: 2026-10-08T19:39:30Z
+      - &a26
+        sha: b17e994e0b7c91a986d888c28622de0fc5ace13b
+        message: "test(transition): keep command palette tour test out of functions typecheck"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b17e994e0b7c91a986d888c28622de0fc5ace13b
+        authoredAt: 2026-10-08T21:15:18Z
+      - &a28
+        sha: b561d11346692aa9ac8b59ebc885d96ea648afa0
+        message: Merge remote-tracking branch 'origin/feat/transition-account-type-sort' into fix/158-merge
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b561d11346692aa9ac8b59ebc885d96ea648afa0
+        authoredAt: 2026-10-08T21:25:35Z
+      - &a29
+        sha: b28c21916be15acee1d33227bdd7c979b1138dda
+        message: "fix(transition): keep the tour dialog focus-trapped while steps load"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b28c21916be15acee1d33227bdd7c979b1138dda
+        authoredAt: 2026-10-08T21:27:40Z
+      - &a32
+        sha: 85d44200134079e9d5bd297aa92b8304fb679996
+        message: "fix(transition): reset tour spotlight and bypass remembered filters for tour records"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/85d44200134079e9d5bd297aa92b8304fb679996
+        authoredAt: 2026-10-08T21:34:51Z
+      - &a34
+        sha: ef1cd743dd1dea562c8fa4158303a6d3715a78ad
+        message: Merge remote-tracking branch 'origin/feat/transition-account-type-sort' into fix/158-merge2
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ef1cd743dd1dea562c8fa4158303a6d3715a78ad
+        authoredAt: 2026-10-08T21:35:27Z
+      - &a35
+        sha: cbd61ff0d3801f4aaf0fc196cb8eb3a1bfe89eb4
+        message: "fix(transition): restore remembered household filter and keep tour out of history"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/cbd61ff0d3801f4aaf0fc196cb8eb3a1bfe89eb4
+        authoredAt: 2026-10-08T21:39:44Z
+      - &a38
+        sha: aa9043a13a924a15693c3e4076a0128a16e60183
+        message: Merge remote-tracking branch 'origin/feat/transition-account-type-sort' into fix/158-merge4
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/aa9043a13a924a15693c3e4076a0128a16e60183
+        authoredAt: 2026-10-08T21:41:05Z
+      - &a41
+        sha: fdd6c12abf7a4901dccefc89e64ae0e18f170576
+        message: Merge remote-tracking branch 'origin/feat/transition-account-type-sort' into tmp/tour
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/fdd6c12abf7a4901dccefc89e64ae0e18f170576
+        authoredAt: 2026-10-08T21:48:32Z
+      - &a42
+        sha: bf9e24afd6156c140a3e8d9684928763558c8474
+        message: "fix(transition): block tour shortcuts while loading and recover after history navigation"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/bf9e24afd6156c140a3e8d9684928763558c8474
+        authoredAt: 2026-10-08T21:52:16Z
+      - &a43
+        sha: f3372bd6f5bc5a733a38a63af423940accb3920c
+        message: "fix(transition): harden tour anchors, focus restore, and mobile scrolling"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f3372bd6f5bc5a733a38a63af423940accb3920c
+        authoredAt: 2026-10-08T21:56:08Z
+      - &a44
+        sha: 0a285ce81f7cd980ced7d8590266f36e2d0c6e75
+        message: "fix(transition): detect the shell topbar when offsetting tour targets"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0a285ce81f7cd980ced7d8590266f36e2d0c6e75
+        authoredAt: 2026-10-08T21:57:38Z
+      - &a45
+        sha: dfe3ccd6aaab379d104428b9794bb6a5ff95ee77
+        message: "fix(transition): end the tour on query-only back, role changes, and clear the household override"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/dfe3ccd6aaab379d104428b9794bb6a5ff95ee77
+        authoredAt: 2026-10-08T21:59:25Z
+    workTimestamps: &a11
+      - 2026-10-08T13:19:19Z
+      - 2026-10-08T19:39:30Z
+      - 2026-10-08T21:15:18Z
+      - 2026-10-08T21:25:35Z
+      - 2026-10-08T21:27:40Z
+      - 2026-10-08T21:34:51Z
+      - 2026-10-08T21:35:27Z
+      - 2026-10-08T21:39:44Z
+      - 2026-10-08T21:41:05Z
+      - 2026-10-08T21:48:32Z
+      - 2026-10-08T21:52:16Z
+      - 2026-10-08T21:56:08Z
+      - 2026-10-08T21:57:38Z
+      - 2026-10-08T21:59:25Z
+    workAdditions: 1312
+    workDeletions: 183
+    workFiles: &a12
+      - excelerate/src/components/excelerate-client.tsx
+      - hub/app/globals.css
+      - hub/components/LandingPage.tsx
+      - onboarding/apps/dashboard/components/client-workspace-empty-state.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+      - onboarding/apps/dashboard/components/vendor-workstreams-empty-state.tsx
+      - onboarding/apps/dashboard/components/vm/vm-shared.tsx
+      - packages/brand/src/styles.css
+      - proforma/src/app/globals.css
+      - pto-tracker/src/app/team/TeamClient.tsx
+      - pto-tracker/src/components/ApprovalPanel.tsx
+      - pto-tracker/src/components/LeaveCalendar.tsx
+      - pto-tracker/src/components/RequestForm.tsx
+      - transition/next-env.d.ts
+      - transition/src/app/globals.css
+      - transition/src/components/accounts/account-detail.tsx
+      - transition/src/components/accounts/accounts-page.tsx
+      - transition/src/components/command-palette-model.ts
+      - transition/src/components/command-palette.test.ts
+      - transition/src/components/command-palette.tsx
+      - transition/src/components/dashboard/dashboard.tsx
+      - transition/src/components/data/data-page.tsx
+      - transition/src/components/feedback.tsx
+      - transition/src/components/households/household-overview.tsx
+      - transition/src/components/households/households-page.tsx
+      - transition/src/components/status-select.tsx
+      - transition/src/components/tour/tour-button.tsx
+      - transition/src/components/tour/tour-layer.tsx
+      - transition/src/components/tour/tour-provider.tsx
+      - transition/src/components/transition-shell.tsx
+      - transition/src/components/ui/layout.tsx
+      - transition/src/lib/choices.ts
+      - transition/src/lib/registration-option.test.ts
+      - transition/src/lib/remembered-filters.test.ts
+      - transition/src/lib/remembered-filters.ts
+      - transition/src/lib/tour.test.ts
+      - transition/src/lib/tour.ts
+      - valuation/src/app/cases/detail/case-detail-client.tsx
+      - valuation/src/app/cases/new/page.tsx
+      - valuation/src/app/imports/page.tsx
+      - valuation/src/app/page.tsx
+prsInProgress:
+  - title: "feat(brand): make app actions and progress monotone"
+    body: >-
+      Stacked on #156; merge after it.
+
+
+      ## Why
+
+
+      The app theme used Myriad reds for actions and focus treatments, which conflicts with the brand guidance that
+      reserves red for accents.
+
+
+      ## What changed
+
+
+      - Defined the core brand palette and clarified red usage across the branding and GUI guidance.
+
+      - Changed...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/161
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a1
+    additions: 193
+    deletions: 82
+    changedFiles: 32
+    author: myriadas-clees
+    createdAt: 2026-10-08T20:58:55Z
+    updatedAt: 2026-10-08T21:53:07Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 194
+    workDeletions: 83
+    workFiles: *a4
+  - title: "feat(transition): add registration filter and sorting"
+    body: >-
+      Stacked on #161; merge after it.
+
+
+      ## Why
+
+
+      Advisors need to find and compare accounts by registration type in the transition queue.
+
+
+      ## What changed
+
+
+      Added a Registration column and filter to the account queue, and made registration a sortable field. Registration
+      choices include values present in the...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a5
+    additions: 81
+    deletions: 21
+    changedFiles: 14
+    author: myriadas-clees
+    createdAt: 2026-10-08T18:41:11Z
+    updatedAt: 2026-10-08T21:53:31Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a6
+    workTimestamps: *a7
+    workAdditions: 126
+    workDeletions: 65
+    workFiles: *a8
+  - title: "feat(transition): add guided onboarding tour"
+    body: >-
+      Stacked on #160; merge after it.
+
+
+      ## Why
+
+
+      New Transition users need a concise walkthrough to find key pages and understand the main workflow.
+
+
+      ## What changed
+
+
+      Added a guided tour with role-specific steps, a welcome and completion flow, and a spotlight that follows page
+      targets. Users can launch it ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a9
+    additions: 1171
+    deletions: 63
+    changedFiles: 24
+    author: myriadas-clees
+    createdAt: 2026-10-08T13:19:29Z
+    updatedAt: 2026-10-09T12:20:01Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a10
+    workTimestamps: *a11
+    workAdditions: 1312
+    workDeletions: 183
+    workFiles: *a12
+  - title: "feat(northstar): add PDF export, @ commands, and advisor context"
+    body: >-
+      - Ask can download the open conversation or a single response as a PDF.
+
+      - `@email`, `@calendar`, `@todo`, and `@meeting` expand into task prompts and render fenced deliverables as cards.
+
+      - Settings stores Northstar, morning, end-of-day, and weekly brief instructions on this device. Copilot also
+      rece...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/138
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels:
+      - deploy-preview
+    additions: 2665
+    deletions: 115
+    changedFiles: 42
+    author: myriadas-clees
+    createdAt: 2026-09-24T14:56:20Z
+    updatedAt: 2026-10-08T20:19:42Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a48
+        sha: ebd7f7513dade217128268848e9091f7298fe1a1
+        message: "fix(northstar): preserve streams and improve PDF exports"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ebd7f7513dade217128268848e9091f7298fe1a1
+        authoredAt: 2026-10-08T20:15:21Z
+    workTimestamps:
+      - 2026-10-08T20:15:21Z
+    workAdditions: 127
+    workDeletions: 151
+    workFiles:
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - northstar/lib/chat-pdf.test.ts
+      - northstar/lib/chat-pdf.tsx
+      - northstar/lib/northstar-context.test.ts
+      - northstar/lib/northstar-context.ts
+  - title: "feat(auth): add group-managed SWA role access"
+    body: >-
+      - Add an Azure AD role source that validates tenant claims and returns supported app roles.
+
+      - Configure the deployment workflow to inject group-managed authentication settings when `SWA_AUTH_TENANT_ID` is
+      set.
+
+      - Document Entra group setup, activation, verification, and rollback.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/152
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels:
+      - deploy-preview
+    additions: 702
+    deletions: 0
+    changedFiles: 6
+    author: myriadas-clees
+    createdAt: 2026-10-07T19:02:22Z
+    updatedAt: 2026-10-08T20:28:50Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a46
+        sha: 35afcf8a007f3fd376a9dc812104723dec94d49e
+        message: "docs(swa): clarify group-managed access prerequisites"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/35afcf8a007f3fd376a9dc812104723dec94d49e
+        authoredAt: 2026-10-08T13:46:22Z
+      - &a47
+        sha: 38c65c2162e82558d3f724ae8ff6def8bba60ea2
+        message: "docs(swa): add production cutover checks and fix rollback steps"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/38c65c2162e82558d3f724ae8ff6def8bba60ea2
+        authoredAt: 2026-10-08T19:16:31Z
+    workTimestamps:
+      - 2026-10-08T13:46:22Z
+      - 2026-10-08T19:16:31Z
+    workAdditions: 31
+    workDeletions: 3
+    workFiles:
+      - docs/swa-group-managed-access.md
+  - title: "feat(platform): add scoped Proforma runtime and data isolation"
+    body: >-
+      ## Problem
+
+
+      Proforma needs customer/workspace data isolation in Cosmos while authorized Myriad staff retain audited access to
+      the complete master record set. The prior runtime also had scoped edit, version propagation, CORS, and idempotent
+      retry gaps.
+
+
+      ## Result
+
+
+      - Add the platform runtime and Cosmo...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - documentation
+      - github-automation
+      - "app: proforma"
+      - platform
+      - infrastructure
+    additions: 6886
+    deletions: 28
+    changedFiles: 57
+    author: myriadas-clees
+    createdAt: 2026-09-11T15:10:29Z
+    updatedAt: 2026-10-08T20:51:22Z
+    closedAt: null
+    mergedAt: null
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "chore(repo): remove stale content and Twenty submodule"
+    body: >-
+      The PTO documentation still described an unimplemented scaffold and referenced missing import templates. This PR
+      updates that guidance and removes the unused twenty checkout and submodule configuration.
+
+
+      Documentation and absent retired submodule paths do not require deployment. Changes to the impac...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/156
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - documentation
+      - github-automation
+      - "app: pto-tracker"
+      - "app: valuation"
+      - platform
+    additions: 155
+    deletions: 133
+    changedFiles: 10
+    author: myriadas-clees
+    createdAt: 2026-10-07T19:03:16Z
+    updatedAt: 2026-10-08T21:24:28Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a21
+        sha: 71d4f242a90147d880da4f067eca825d78b6ea93
+        message: "ci: skip deployment for documentation cleanup"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/71d4f242a90147d880da4f067eca825d78b6ea93
+        authoredAt: 2026-10-08T19:47:05Z
+      - &a23
+        sha: 8ef5c72f36b5d5b209157dccb00aa4f8effd47c7
+        message: Merge main into chore/find-stale-content
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8ef5c72f36b5d5b209157dccb00aa4f8effd47c7
+        authoredAt: 2026-10-08T20:05:30Z
+      - &a24
+        sha: 5c7709179e48d0fb8a60e27b6ee9767bf5cd3f44
+        message: "ci: verify impact resolver changes without deployment"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5c7709179e48d0fb8a60e27b6ee9767bf5cd3f44
+        authoredAt: 2026-10-08T20:21:48Z
+    workTimestamps:
+      - 2026-10-08T19:47:05Z
+      - 2026-10-08T20:05:30Z
+      - 2026-10-08T20:21:48Z
+    workAdditions: 1384
+    workDeletions: 400
+    workFiles:
+      - .github/workflows/verify.yml
+      - bun.lock
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - excelerate/src/app/layout.tsx
+      - excelerate/src/components/excelerate-shell.tsx
+      - hub/README.md
+      - hub/app/globals.css
+      - hub/app/hub/page.tsx
+      - hub/app/layout.tsx
+      - hub/app/loading.tsx
+      - hub/app/login/page.tsx
+      - hub/components/HomeClient.tsx
+      - hub/components/HubLauncher.tsx
+      - hub/components/HubLoadingScreen.tsx
+      - hub/components/LandingPage.tsx
+      - hub/lib/apps.test.ts
+      - hub/lib/apps.ts
+      - hub/lib/auth.ts
+      - hub/staticwebapp.config.json
+      - onboarding/apps/dashboard/app/layout.tsx
+      - packages/brand/src/styles.css
+      - packages/ui/src/index.ts
+      - packages/ui/src/navigation/app-shell.test.tsx
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/navigation/mode-storage.ts
+      - packages/ui/src/navigation/preferences.tsx
+      - packages/ui/src/pager.tsx
+      - packages/ui/src/paging.test.ts
+      - packages/ui/src/paging.ts
+      - packages/ui/src/shell-bootstrap.test.ts
+      - packages/ui/src/shell-bootstrap.ts
+      - proforma/src/app/layout.tsx
+      - pto-tracker/src/app/layout.tsx
+      - scripts/affected-apps.ts
+      - scripts/tooling.test.ts
+      - transition/src/app/globals.css
+      - transition/src/app/layout.tsx
+      - transition/src/components/accounts/accounts-page.tsx
+      - transition/src/components/dashboard/dashboard.tsx
+      - transition/src/components/households/households-page.tsx
+      - transition/src/components/page-skeletons.tsx
+      - transition/src/components/transition-shell.tsx
+      - transition/src/components/ui/layout.tsx
+      - transition/src/components/ui/skeleton.tsx
+      - transition/src/lib/accounts-list.test.ts
+      - transition/src/lib/accounts-list.ts
+      - transition/src/lib/api/session-cache.ts
+      - transition/src/lib/handlers.ts
+      - transition/src/lib/hooks/use-home-due-badge.ts
+      - transition/src/lib/hooks/use-read-prefetch.ts
+      - transition/src/lib/model.ts
+      - transition/src/lib/navigation.test.ts
+      - transition/src/lib/navigation.ts
+      - transition/src/lib/page-sizes.ts
+      - transition/src/lib/prefetch.test.ts
+      - transition/src/lib/prefetch.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
+      - valuation/package.json
+      - valuation/src/app/layout.tsx
+      - valuation/src/components/valuation-shell.tsx
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "feat(transition): add guided onboarding tour"
+      - "feat(hub): streamline Entra sign-in and app routing"
+      - "fix(hub): keep public home reachable for users without access"
+      - "fix(hub): return Entra sign-in through the public login page"
+      - "feat(transition): add registration filter and sorting"
+      - "fix(transition): match accounts skeleton to registration column and filter"
+      - "feat(hub): rename launcher welcome heading"
+      - "feat(onboarding): guide users through the transition workflow"
+      - "feat(hub): streamline Entra sign-in and app routing (#159)"
+      - "ci: skip deployment for documentation cleanup"
+      - "fix(transition): keep registration filter distinct from stored All value"
+      - Merge main into chore/find-stale-content
+      - "ci: verify impact resolver changes without deployment"
+      - "feat(brand): make app actions and progress monotone"
+      - "test(transition): keep command palette tour test out of functions typecheck"
+      - "fix(transition): label the registration no-filter option distinctly"
+      - Merge remote-tracking branch 'origin/feat/transition-account-type-sort' into fix/158-merge
+      - "fix(transition): keep the tour dialog focus-trapped while steps load"
+      - "fix(brand): keep semantic and on-dark colors after monotone primary"
+      - Merge remote-tracking branch 'origin/docs/branding-colors' into fix/160-merge
+      - "fix(transition): reset tour spotlight and bypass remembered filters for tour records"
+      - "fix(transition): encode registration filter options so no stored value collides with the no-filter choice"
+      - Merge remote-tracking branch 'origin/feat/transition-account-type-sort' into fix/158-merge2
+      - "fix(transition): restore remembered household filter and keep tour out of history"
+      - "fix(brand): use action foreground on remaining primary fills"
+      - Merge remote-tracking branch 'origin/docs/branding-colors' into fix/160-merge3
+      - Merge remote-tracking branch 'origin/feat/transition-account-type-sort' into fix/158-merge4
+      - "fix(hub): keep landing page brand accents on the accent color"
+      - Merge remote-tracking branch 'origin/docs/branding-colors' into tmp/acct-sort
+      - Merge remote-tracking branch 'origin/feat/transition-account-type-sort' into tmp/tour
+      - "fix(transition): block tour shortcuts while loading and recover after history navigation"
+      - "fix(transition): harden tour anchors, focus restore, and mobile scrolling"
+      - "fix(transition): detect the shell topbar when offsetting tour targets"
+      - "fix(transition): end the tour on query-only back, role changes, and clear the household override"
+    commits:
+      - *a13
+      - *a14
+      - *a15
+      - *a16
+      - *a17
+      - *a18
+      - *a19
+      - *a20
+      - sha: f2c06f7c5dd4f72d1d9d9ef134800da3de76a8c3
+        message: "feat(hub): streamline Entra sign-in and app routing (#159)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f2c06f7c5dd4f72d1d9d9ef134800da3de76a8c3
+        authoredAt: 2026-10-08T19:46:28Z
+        additions: 171
+        deletions: 49
+        filesChanged: 16
+      - *a21
+      - *a22
+      - *a23
+      - *a24
+      - *a25
+      - *a26
+      - *a27
+      - *a28
+      - *a29
+      - *a30
+      - *a31
+      - *a32
+      - *a33
+      - *a34
+      - *a35
+      - *a36
+      - *a37
+      - *a38
+      - *a39
+      - *a40
+      - *a41
+      - *a42
+      - *a43
+      - *a44
+      - *a45
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "docs(swa): clarify group-managed access prerequisites"
+      - "docs(swa): add production cutover checks and fix rollback steps"
+      - "fix(northstar): preserve streams and improve PDF exports"
+    commits:
+      - *a46
+      - *a47
+      - *a48
+releases: []
+externalContributions: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 161
+    prTitle: "feat(brand): make app actions and progress monotone"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/161
+    state: commented
+    submittedAt: 2026-10-08T21:31:55Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 161
+    prTitle: "feat(brand): make app actions and progress monotone"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/161
+    state: commented
+    submittedAt: 2026-10-08T21:39:53Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 161
+    prTitle: "feat(brand): make app actions and progress monotone"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/161
+    state: commented
+    submittedAt: 2026-10-08T21:47:52Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 161
+    prTitle: "feat(brand): make app actions and progress monotone"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/161
+    state: commented
+    submittedAt: 2026-10-08T21:53:06Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 160
+    prTitle: "feat(transition): add registration filter and sorting"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160
+    state: commented
+    submittedAt: 2026-10-08T21:26:11Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 160
+    prTitle: "feat(transition): add registration filter and sorting"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160
+    state: commented
+    submittedAt: 2026-10-08T21:35:05Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 160
+    prTitle: "feat(transition): add registration filter and sorting"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160
+    state: commented
+    submittedAt: 2026-10-08T21:36:55Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 160
+    prTitle: "feat(transition): add registration filter and sorting"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160
+    state: commented
+    submittedAt: 2026-10-08T21:53:31Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 160
+    prTitle: "feat(transition): add registration filter and sorting"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160
+    state: commented
+    submittedAt: 2026-10-08T21:53:34Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 160
+    prTitle: "feat(transition): add registration filter and sorting"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160
+    state: commented
+    submittedAt: 2026-10-08T21:53:35Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-08T21:27:42Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-08T21:34:52Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-08T21:34:54Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-08T21:39:45Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-08T21:39:47Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-08T21:52:17Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-08T21:52:19Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-08T21:53:32Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-08T21:56:10Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-08T21:56:12Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-08T21:56:13Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-08T21:56:14Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-08T21:57:42Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-08T21:59:27Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-08T21:59:28Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-08T21:59:30Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 161
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/161
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/161#discussion_r4224349342
+    body: "Fixed in 20dfa6a: migrated error/blocked consumers to danger tokens (pto-tracker, valuation, transition,
+      excelerate) and fixed on-primary/on-dark contrast (hub approach, proforma, onboarding, pto calendar)."
+    path: packages/brand/src/styles.css
+    createdAt: 2026-10-08T21:31:55Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 161
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/161
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/161#discussion_r4224412414
+    body: "Fixed in 2a7ed09: migrated the RecordCalendar badge and swept the repo for remaining primary fills (2 more
+      fixed)."
+    path: packages/brand/src/styles.css
+    createdAt: 2026-10-08T21:39:53Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 161
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/161
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/161#discussion_r4224475107
+    body: 'Fixed in f2bac72: Hub landing page accents (stats, trust and product icons, "future", hover top rule, carousel
+      accent bar) now use --color-1 instead of the neutral --primary; large text and icons stay at least 3:1 in both
+      themes.'
+    path: packages/brand/src/styles.css
+    createdAt: 2026-10-08T21:47:52Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 161
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/161
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/161#discussion_r4224514405
+    body: "Fixed in 20dfa6a and 2a7ed09: vm-shared.tsx, LeaveCalendar.tsx, the Onboarding empty states and RecordCalendar
+      badge now use text-primary-foreground, and Proforma's primary fills with inverse labels (wizard step, date grid,
+      recruit toggle, formula toggle, expense remove, pipeline stage) use var(--ac..."
+    path: packages/brand/src/styles.css
+    createdAt: 2026-10-08T21:53:06Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 160
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160#discussion_r4224300329
+    body: 'Fixed in 16a9a9d: the no-filter option is now labeled "All registrations".'
+    path: transition/src/components/accounts/accounts-page.tsx
+    createdAt: 2026-10-08T21:26:11Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 160
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160#discussion_r4224373094
+    body: "Fixed in c4d93ba: registration options are now encoded with a `value:` prefix and the no-filter choice uses an
+      unprefixed `any`, so no stored registration can collide with it; URL params and remembered filters still hold the
+      raw registration."
+    path: transition/src/components/accounts/accounts-page.tsx
+    createdAt: 2026-10-08T21:35:05Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 160
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160#discussion_r4224387654
+    body: Not changing this one. Since c4d93ba the option values are encoded, so selection is always unambiguous; only the
+      display text could coincide, and only if a registration is literally named "All registrations". That matches the
+      existing "All directions" pattern on Households, and any fixed label could...
+    path: transition/src/components/accounts/accounts-page.tsx
+    createdAt: 2026-10-08T21:36:55Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 160
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160#discussion_r4224517501
+    body: "Resolved by the restack: this branch no longer changes the twenty gitlink (the submodule is removed by #156,
+      which this stacks on)."
+    path: twenty
+    createdAt: 2026-10-08T21:53:31Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 160
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160#discussion_r4224517817
+    body: "Fixed in 80e0c5f: AccountsShapes now renders the Registration column and fifth filter control."
+    path: transition/src/components/accounts/accounts-page.tsx
+    createdAt: 2026-10-08T21:53:34Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 160
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160#discussion_r4224517951
+    body: 'Fixed in 16a9a9d and c4d93ba: the no-filter option is labeled "All registrations" and option values are encoded
+      (value:<registration> vs any), so no stored registration can collide with it.'
+    path: transition/src/components/accounts/accounts-page.tsx
+    createdAt: 2026-10-08T21:53:35Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4224312205
+    body: 'Fixed in b28c219: the tour dialog now stays mounted as a focusable, aria-busy "Finding the next step…" card (with
+      Skip tour and Escape) while a step loads, so the Tab and focusin trap never lapses.'
+    path: transition/src/components/tour/tour-layer.tsx
+    createdAt: 2026-10-08T21:27:42Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4224371413
+    body: "Fixed in 85d4420: the tour now opens Households with an explicit direction=All address, which the page honors
+      over the remembered filter without clearing it."
+    path: transition/src/lib/tour.ts
+    createdAt: 2026-10-08T21:34:52Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4224371626
+    body: "Fixed in 85d4420: the step rectangle is reset with ready on every step change so unresolved steps show the scrim."
+    path: transition/src/components/tour/tour-layer.tsx
+    createdAt: 2026-10-08T21:34:54Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4224411360
+    body: "Fixed in cbd61ff: The household direction now falls back to the remembered filter when the URL override is
+      removed."
+    path: transition/src/components/households/households-page.tsx
+    createdAt: 2026-10-08T21:39:45Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4224411559
+    body: "Fixed in cbd61ff: Tour navigation now pushes only the first page change (so Back returns to the starting page)
+      and replaces the rest, so the tour adds one history entry."
+    path: transition/src/components/tour/tour-layer.tsx
+    createdAt: 2026-10-08T21:39:47Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4224508211
+    body: "Fixed in bf9e24a: ArrowRight and ArrowLeft now do nothing while the step is still loading, so follow steps can
+      record their target before the tour advances."
+    path: transition/src/components/tour/tour-layer.tsx
+    createdAt: 2026-10-08T21:52:17Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4224508382
+    body: "Fixed in bf9e24a: if browser history moves off a step's page after the tour has arrived there, the tour now ends
+      instead of leaving a centred card over the wrong page."
+    path: transition/src/components/tour/tour-layer.tsx
+    createdAt: 2026-10-08T21:52:19Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4224517677
+    body: "Resolved by the restack: this branch no longer changes the twenty gitlink (the submodule is removed by #156,
+      which this stack builds on)."
+    path: twenty
+    createdAt: 2026-10-08T21:53:32Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4224536633
+    body: "Fixed in f3372bd: the empty states for Households, Accounts, Exceptions and Home now carry the same data-tour
+      anchors, so first-run steps settle immediately instead of waiting for the timeout."
+    path: transition/src/lib/tour.ts
+    createdAt: 2026-10-08T21:56:10Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4224536942
+    body: "Fixed in f3372bd: the previous focus is now captured in a layout effect ordered before the one that focuses the
+      card, and restored on close (falling back to main content)."
+    path: transition/src/components/tour/tour-layer.tsx
+    createdAt: 2026-10-08T21:56:12Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4224537141
+    body: "Fixed in f3372bd: the nav selector now matches both /households and /households/ (static export trailing slash,
+      any base path), and no other tour selector end-anchors an href."
+    path: transition/src/lib/tour.ts
+    createdAt: 2026-10-08T21:56:13Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4224537289
+    body: "Fixed in f3372bd: the element actually being scrolled to now gets a scroll-margin-top equal to the sticky header
+      height plus padding, so ID and descendant targets clear the topbar."
+    path: transition/src/components/tour/tour-layer.tsx
+    createdAt: 2026-10-08T21:56:14Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4224547792
+    body: "Follow-up in 0a285ce: the inset now measures the shell's sticky topbar wrapper ([data-shell-chrome='topbar']),
+      since the inner <header> itself isn't sticky."
+    path: transition/src/components/tour/tour-layer.tsx
+    createdAt: 2026-10-08T21:57:42Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4224561472
+    body: "Fixed in dfe3ccd: the history guard now also depends on the search params, so a query-only Back ends the tour."
+    path: transition/src/components/tour/tour-layer.tsx
+    createdAt: 2026-10-08T21:59:27Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4224561662
+    body: "Fixed in dfe3ccd: picking or clearing a direction now removes the direction param from the address (other params
+      kept), so the remembered value wins on reload."
+    path: transition/src/components/households/households-page.tsx
+    createdAt: 2026-10-08T21:59:28Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4224561868
+    body: "Fixed in dfe3ccd: a role change that alters the step set ends a running tour without marking it complete, and
+      TourLayer renders nothing if the step is missing."
+    path: transition/src/components/tour/tour-provider.tsx
+    createdAt: 2026-10-08T21:59:30Z
+aiReviews:
+  codex:
+    prsReviewed: 7
+    comments: 34
+    reviews: 24
+    fixed: 22
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 7
+  comments: 34
+  reviews: 24
+  fixed: 22
+hoursInputs:
+  timestamps:
+    - 2026-10-08T13:19:19Z
+    - 2026-10-08T15:33:02Z
+    - 2026-10-08T16:23:14Z
+    - 2026-10-08T16:31:29Z
+    - 2026-10-08T18:41:03Z
+    - 2026-10-08T19:17:53Z
+    - 2026-10-08T19:32:16Z
+    - 2026-10-08T19:39:30Z
+    - 2026-10-08T19:46:28Z
+    - 2026-10-08T19:47:05Z
+    - 2026-10-08T19:59:30Z
+    - 2026-10-08T20:05:30Z
+    - 2026-10-08T20:21:48Z
+    - 2026-10-08T20:58:46Z
+    - 2026-10-08T21:15:18Z
+    - 2026-10-08T21:25:34Z
+    - 2026-10-08T21:25:35Z
+    - 2026-10-08T21:27:40Z
+    - 2026-10-08T21:31:53Z
+    - 2026-10-08T21:31:58Z
+    - 2026-10-08T21:34:51Z
+    - 2026-10-08T21:35:03Z
+    - 2026-10-08T21:35:27Z
+    - 2026-10-08T21:39:44Z
+    - 2026-10-08T21:39:50Z
+    - 2026-10-08T21:39:55Z
+    - 2026-10-08T21:41:05Z
+    - 2026-10-08T21:47:49Z
+    - 2026-10-08T21:47:55Z
+    - 2026-10-08T21:48:32Z
+    - 2026-10-08T21:52:16Z
+    - 2026-10-08T21:56:08Z
+    - 2026-10-08T21:57:38Z
+    - 2026-10-08T21:59:25Z
+    - 2026-10-08T13:46:22Z
+    - 2026-10-08T19:16:31Z
+    - 2026-10-08T20:15:21Z
+    - 2026-10-08T20:58:55Z
+    - 2026-10-08T20:58:46Z
+    - 2026-10-08T21:31:53Z
+    - 2026-10-08T21:39:50Z
+    - 2026-10-08T21:47:49Z
+    - 2026-10-08T15:33:12Z
+    - 2026-10-08T19:46:28Z
+    - 2026-10-08T15:33:02Z
+    - 2026-10-08T16:23:14Z
+    - 2026-10-08T16:31:29Z
+    - 2026-10-08T19:32:16Z
+    - 2026-10-08T18:41:11Z
+    - 2026-10-08T18:41:03Z
+    - 2026-10-08T19:17:53Z
+    - 2026-10-08T19:59:30Z
+    - 2026-10-08T21:25:34Z
+    - 2026-10-08T21:31:58Z
+    - 2026-10-08T21:35:03Z
+    - 2026-10-08T21:39:55Z
+    - 2026-10-08T21:47:55Z
+    - 2026-10-08T13:19:29Z
+    - 2026-10-08T13:19:19Z
+    - 2026-10-08T19:39:30Z
+    - 2026-10-08T21:15:18Z
+    - 2026-10-08T21:25:35Z
+    - 2026-10-08T21:27:40Z
+    - 2026-10-08T21:34:51Z
+    - 2026-10-08T21:35:27Z
+    - 2026-10-08T21:39:44Z
+    - 2026-10-08T21:41:05Z
+    - 2026-10-08T21:48:32Z
+    - 2026-10-08T21:52:16Z
+    - 2026-10-08T21:56:08Z
+    - 2026-10-08T21:57:38Z
+    - 2026-10-08T21:59:25Z
+    - 2026-10-08T21:31:55Z
+    - 2026-10-08T21:39:53Z
+    - 2026-10-08T21:47:52Z
+    - 2026-10-08T21:53:06Z
+    - 2026-10-08T21:26:11Z
+    - 2026-10-08T21:35:05Z
+    - 2026-10-08T21:36:55Z
+    - 2026-10-08T21:53:31Z
+    - 2026-10-08T21:53:34Z
+    - 2026-10-08T21:53:35Z
+    - 2026-10-08T21:27:42Z
+    - 2026-10-08T21:34:52Z
+    - 2026-10-08T21:34:54Z
+    - 2026-10-08T21:39:45Z
+    - 2026-10-08T21:39:47Z
+    - 2026-10-08T21:52:17Z
+    - 2026-10-08T21:52:19Z
+    - 2026-10-08T21:53:32Z
+    - 2026-10-08T21:56:10Z
+    - 2026-10-08T21:56:12Z
+    - 2026-10-08T21:56:13Z
+    - 2026-10-08T21:56:14Z
+    - 2026-10-08T21:57:42Z
+    - 2026-10-08T21:59:27Z
+    - 2026-10-08T21:59:28Z
+    - 2026-10-08T21:59:30Z
+    - 2026-10-08T21:31:55Z
+    - 2026-10-08T21:39:53Z
+    - 2026-10-08T21:47:52Z
+    - 2026-10-08T21:53:06Z
+    - 2026-10-08T21:26:11Z
+    - 2026-10-08T21:35:05Z
+    - 2026-10-08T21:36:55Z
+    - 2026-10-08T21:53:31Z
+    - 2026-10-08T21:53:34Z
+    - 2026-10-08T21:53:35Z
+    - 2026-10-08T21:27:42Z
+    - 2026-10-08T21:34:52Z
+    - 2026-10-08T21:34:54Z
+    - 2026-10-08T21:39:45Z
+    - 2026-10-08T21:39:47Z
+    - 2026-10-08T21:52:17Z
+    - 2026-10-08T21:52:19Z
+    - 2026-10-08T21:53:32Z
+    - 2026-10-08T21:56:10Z
+    - 2026-10-08T21:56:12Z
+    - 2026-10-08T21:56:13Z
+    - 2026-10-08T21:56:14Z
+    - 2026-10-08T21:57:42Z
+    - 2026-10-08T21:59:27Z
+    - 2026-10-08T21:59:28Z
+    - 2026-10-08T21:59:30Z
+  volume:
+    pullRequests:
+      - additions: 127
+        deletions: 151
+        state: open
+        dailyWork: true
+        filesChanged: 6
+        testFilesChanged: 3
+        commitCount: 1
+      - additions: 31
+        deletions: 3
+        state: open
+        dailyWork: true
+        filesChanged: 1
+        testFilesChanged: 0
+        commitCount: 2
+      - additions: 194
+        deletions: 83
+        state: open
+        dailyWork: true
+        filesChanged: 32
+        testFilesChanged: 0
+        commitCount: 4
+      - additions: 183
+        deletions: 61
+        state: merged
+        dailyWork: true
+        filesChanged: 16
+        testFilesChanged: 1
+        commitCount: 4
+      - additions: 126
+        deletions: 65
+        state: open
+        dailyWork: true
+        filesChanged: 34
+        testFilesChanged: 5
+        commitCount: 8
+      - additions: 1384
+        deletions: 400
+        state: open
+        dailyWork: true
+        filesChanged: 62
+        testFilesChanged: 9
+        commitCount: 3
+      - additions: 1312
+        deletions: 183
+        state: open
+        dailyWork: true
+        filesChanged: 41
+        testFilesChanged: 4
+        commitCount: 14
+    reviewCount: 26
+    reviewCommentCount: 26
+    commitCount: 1
+    commitAdditions: 171
+    commitDeletions: 49
+    commitStatsCount: 1
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 79.8
+  sessions: 3
+  sessionHours: 4.8
+  volumeHours: 79.8
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""

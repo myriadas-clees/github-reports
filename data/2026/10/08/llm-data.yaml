@@ -1,0 +1,82 @@
+title: Oct 8
+subtitle: transition, brand & auth
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps and Myriad-Advisor-Solutions/ohcpwm-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 4 PRs
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 0 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 37 commits with +1,815 / −392 lines.
+    chips:
+      - label: Commits
+        value: "37"
+        color: green
+      - label: Additions
+        value: +1,815
+        color: green
+      - label: Deletions
+        value: −392
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 26 reviews with 26 comments.
+    chips:
+      - label: Reviews
+        value: "26"
+      - label: Comments
+        value: "26"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 24 reviews, 34 comments, 7 PRs."
+    chips:
+      - label: Codex
+        value: 24 reviews · 34 comments · 7 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~79.8h
+highlights:
+  - type: pr
+    title: "feat(hub): streamline Entra sign-in and app routing"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +183 −61
+    body: |-
+      ## Why
+
+      Users needed a smoother path from sign-in to their available apps.
+
+      ## What changed
+
+      Route landing page sign-in links directly to Microsoft when Entra authentication is enabled. Send users wit
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/159
+  - type: pr
+    title: "feat(brand): make app actions and progress monotone"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +193 −82
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/161
+  - type: pr
+    title: "feat(transition): add registration filter and sorting"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +81 −21
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160
+  - type: pr
+    title: "feat(transition): add guided onboarding tour"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +1171 −63
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(hub): streamline Entra sign-in and app routing" in
+      Myriad-Advisor-Solutions/myriadas-apps'
