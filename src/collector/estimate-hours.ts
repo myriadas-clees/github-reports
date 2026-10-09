@@ -170,8 +170,8 @@ export const estimateHours = (
   const hours = round1(Math.max(options.minimumHours ?? 0, Math.max(session.hours, volumeHours)));
 
   const note =
-    "Estimated conventional engineering effort based on delivered PR scope, " +
-    "reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.";
+    "Estimated work delivered: how long a typical engineer would need to build the same changes, " +
+    "based on PR scope, reviews, and commits. Measures output, not hours worked.";
 
   return {
     version: ESTIMATOR_VERSION,

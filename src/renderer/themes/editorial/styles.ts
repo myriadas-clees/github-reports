@@ -3,6 +3,7 @@
 
 import type { Language } from "../../../types.js";
 import { getFontConfig } from "../../../i18n/index.js";
+import { buildAllocationCSS } from "../allocation-css.js";
 
 const c = {
   bg: "#faf8f5",
@@ -293,6 +294,16 @@ export const buildCSS = (language: Language = "en"): string => {
     }
 
     /* TEXT (overview) */
+    .panel-alloc {
+      width: min(92vw, 780px);
+      justify-content: flex-start;
+      overflow-y: auto;
+    }
+    .panel-alloc .section-group-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+    .panel-alloc .section-group-title { font-size: 1.5rem; font-weight: 700; color: var(--e-heading); }
+    .panel-alloc .section-group-line { flex: 1; height: 1px; background: var(--e-border); }
+    .panel-alloc .alloc { margin-bottom: 0; }
+
     .panel-text {
       width: 38vw;
       min-width: 340px;
@@ -607,6 +618,7 @@ export const buildCSS = (language: Language = "en"): string => {
       }
       .panel-cover { width: auto; min-width: 0; max-width: none; }
       .panel-text { width: auto; min-width: 0; max-width: none; }
+      .panel-alloc { width: auto; overflow-y: visible; }
       .text-inner { max-width: none; }
       .column-stack {
         height: auto;
@@ -646,6 +658,20 @@ export const buildCSS = (language: Language = "en"): string => {
       .stack-card { width: 45%; }
       .fixed-footer { display: none; }
     }
+
+    ${buildAllocationCSS({
+      defaultMode: "light",
+      text: "var(--e-text)",
+      textSecondary: "var(--e-text-secondary)",
+      textTertiary: "var(--e-text-tertiary)",
+      heading: "var(--e-heading)",
+      border: "var(--e-border)",
+      borderSubtle: "var(--e-border-subtle)",
+      surface: "var(--e-bg)",
+      accent: "var(--e-accent)",
+      mono: `${f.monoFamily}`,
+      radius: "2px",
+    })}
   `;
 };
 

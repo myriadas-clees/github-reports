@@ -15,7 +15,20 @@ import { generateCard, generateDarkCard } from "../../renderer/card.js";
 import { buildRSSFeed } from "../../renderer/rss.js";
 import { assertNoSecretsInHtml, loadConfigFile, resolveConfig } from "../../config.js";
 import { applyHoursEstimate } from "../../collector/estimate-hours.js";
-import type { WeeklyReportData, AIContent, Language, Theme } from "../../types.js";
+import type {
+  AIContent,
+  AllocationConfig,
+  Language,
+  ManualTimeEntry,
+  Theme,
+  WeeklyReportData,
+} from "../../types.js";
+import {
+  DEFAULT_ALLOCATION_CONFIG,
+  buildAllocationTrend,
+  computeAllocation,
+} from "../../collector/allocation.js";
+import type { AllocationInput } from "../../renderer/allocation-view.js";
 import { AVAILABLE_THEMES } from "../../renderer/themes/index.js";
 
 /** Prefer current formula from hoursInputs; fall back to stored estimate. */
@@ -36,7 +49,13 @@ export type RenderCommandOptions = {
   theme: Theme;
   date?: Date;
   mode?: "daily" | "weekly";
+  /** Initiative mapping + trend window for the "Where the effort went" section. */
+  allocation?: AllocationConfig;
+  /** Self-reported time folded into the allocation. */
+  manualTime?: ManualTimeEntry[];
 };
+
+const DAILY_PATH = /^\d{4}\/\d{2}\/\d{2}$/;
 
 const fileExists = async (path: string): Promise<boolean> => {
   try { await access(path); return true; } catch { return false; }
@@ -109,6 +128,59 @@ export const normalizeReportData = (data: WeeklyReportData): WeeklyReportData =>
   externalContributions: data.externalContributions ?? [],
 });
 
+/**
+ * Build the allocation input (day / week / 8-week trend) for one report.
+ * Daily mode: trend covers all daily reports up to and including `current.date`.
+ * Weekly mode: only `week` is set (the report itself).
+ * Never throws; a bug here must not block a report.
+ */
+export const buildAllocationInput = (params: {
+  mode?: "daily" | "weekly";
+  current: { date: string; data: WeeklyReportData };
+  /** Daily reports keyed by YYYY-MM-DD (may include `current`). */
+  dailyReports: ReadonlyMap<string, WeeklyReportData>;
+  config?: AllocationConfig;
+  manualTime?: ManualTimeEntry[];
+}): AllocationInput | undefined => {
+  try {
+    const config = params.config ?? DEFAULT_ALLOCATION_CONFIG;
+    const manual = params.manualTime ?? [];
+    const prepare = (d: WeeklyReportData): WeeklyReportData =>
+      withRecomputedHours(normalizeReportData(d));
+    const currentData = prepare(params.current.data);
+
+    if (params.mode === "weekly") {
+      const allocation = computeAllocation(currentData, config, manual);
+      const { from, to } = currentData.dateRange;
+      return { week: { label: `${from} – ${to}`, allocation } };
+    }
+
+    const date = params.current.date;
+    const reports = new Map<string, WeeklyReportData>();
+    for (const [d, data] of params.dailyReports) {
+      if (d < date) reports.set(d, prepare(data));
+    }
+    reports.set(date, currentData);
+    const list = [...reports.entries()]
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([d, data]) => ({ date: d, data }));
+
+    const trend = buildAllocationTrend(list, date, config, manual);
+    const last = trend.periods.at(-1);
+    return {
+      day: computeAllocation(currentData, config, manual),
+      asOf: date,
+      week: last ? { label: last.label, allocation: last.allocation } : undefined,
+      trend,
+    };
+  } catch (error) {
+    console.warn(
+      `Skipping allocation section: ${error instanceof Error ? error.message : String(error)}`,
+    );
+    return undefined;
+  }
+};
+
 export const sortReportPathsChronologically = (
   paths: string[],
   reportDates: ReadonlyMap<string, string>,
@@ -156,10 +228,25 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
   }
   if (!allPaths.includes(dayId.path)) allPaths.push(dayId.path);
   const reportDates = new Map<string, string>([[dayId.path, githubData.dateRange.to]]);
+  // Raw github-data of every other report, kept for the allocation trend / previous-report re-render.
+  const loadedReports = new Map<string, WeeklyReportData>();
   await Promise.all(allPaths.filter((path) => path !== dayId.path).map(async (path) => {
     const report = await tryReadYaml<WeeklyReportData>(join(options.dataDir, path, "github-data.yaml"));
+    if (report) loadedReports.set(path, report);
     if (report?.dateRange?.to) reportDates.set(path, report.dateRange.to);
   }));
+  const dailyReports = new Map<string, WeeklyReportData>();
+  for (const [path, report] of loadedReports) {
+    if (DAILY_PATH.test(path)) dailyReports.set(path.replaceAll("/", "-"), report);
+  }
+  const allocationFor = (path: string, report: WeeklyReportData): AllocationInput | undefined =>
+    buildAllocationInput({
+      mode: options.mode,
+      current: { date: path.replaceAll("/", "-"), data: report },
+      dailyReports,
+      config: options.allocation,
+      manualTime: options.manualTime,
+    });
   allPaths = sortReportPathsChronologically(allPaths, reportDates);
   const currentIdx = allPaths.indexOf(dayId.path);
   const prevWeek = currentIdx > 0 ? allPaths[currentIdx - 1] : undefined;
@@ -189,6 +276,7 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
     theme: options.theme,
     prevWeek: prevWeek ? `${rootPrefix}${prevWeek}/` : undefined,
     nextWeek: nextWeek ? `${rootPrefix}${nextWeek}/` : undefined,
+    allocation: allocationFor(dayId.path, data),
   });
 
   await mkdir(outputWeekDir, { recursive: true });
@@ -214,6 +302,7 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
         theme: options.theme,
         prevWeek: prevPrev ? `${"../".repeat(prevWeek.split("/").length)}${prevPrev}/` : undefined,
         nextWeek: `${"../".repeat(prevWeek.split("/").length)}${dayId.path}/`,
+        allocation: allocationFor(prevWeek, prevGhData),
       });
       const prevOutputDir = join(options.outputDir, prevWeek);
       await mkdir(prevOutputDir, { recursive: true });
@@ -377,6 +466,8 @@ export const registerRender = (program: Command): void => {
           theme,
           date: opts.date ? parseLocalDate(opts.date, opts.timezone ?? cfg.timezone) : undefined,
           mode,
+          allocation: cfg.allocation,
+          manualTime: cfg.manualTime,
         };
         await runRender(options);
       } catch (error) {

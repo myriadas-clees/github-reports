@@ -3,6 +3,7 @@
 
 import type { Language } from "../../../types.js";
 import { getFontConfig } from "../../../i18n/index.js";
+import { buildAllocationCSS } from "../allocation-css.js";
 
 const c = {
   bg: "#050505",
@@ -789,6 +790,20 @@ export const buildCSS = (language: Language = "en"): string => {
       .section-summary .section-heading { font-size: 1.25rem; }
       .highlight-grid { grid-template-columns: 1fr; }
     }
+
+    ${buildAllocationCSS({
+      defaultMode: "dark",
+      text: "var(--b-text)",
+      textSecondary: "var(--b-text-secondary)",
+      textTertiary: "var(--b-text-tertiary)",
+      heading: "var(--b-heading)",
+      border: "var(--b-border)",
+      borderSubtle: "var(--b-border-subtle)",
+      surface: "var(--b-bg)",
+      accent: "var(--b-accent)",
+      mono: `${f.monoFamily}`,
+      radius: "0",
+    })}
   `;
 };
 
