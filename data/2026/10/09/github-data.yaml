@@ -1,0 +1,3327 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-10-09
+  to: 2026-10-09
+stats:
+  totalCommits: 100
+  totalAdditions: 29596
+  totalDeletions: 2405
+  prsOpened: 4
+  prsMerged: 0
+  prsInProgress: 5
+  prsReviewed: 91
+  reviewComments: 91
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 148.7
+dailyCommits:
+  - date: 2026-10-09
+    count: 100
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 100
+    prsOpened: 4
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests:
+  - title: "feat(compliance): add scaffold and planning draft"
+    body: >-
+      ## Why
+
+
+      Compliance needs an app foundation and an agreed planning draft before implementation can begin.
+
+
+      ## What changed
+
+
+      - Added a Compliance app scaffold with shared navigation, placeholder pages, role mapping, and health and auth
+      endpoints.
+
+      - Documented the proposed product scope, architecture, ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/166
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a1
+      - documentation
+      - "app: hub"
+      - platform
+    additions: 672
+    deletions: 18
+    changedFiles: 46
+    author: myriadas-clees
+    createdAt: 2026-10-09T18:52:36Z
+    updatedAt: 2026-10-09T18:57:45Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a2
+      - &a53
+        sha: 0fbae6c0aec7ebff324ff9749f5cdba579be0cb8
+        message: "feat(compliance): add scaffold and planning draft"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0fbae6c0aec7ebff324ff9749f5cdba579be0cb8
+        authoredAt: 2026-10-09T18:52:27Z
+    workTimestamps: &a3
+      - 2026-10-09T18:52:27Z
+    workAdditions: 672
+    workDeletions: 18
+    workFiles: &a4
+      - bun.lock
+      - compliance/.env.example
+      - compliance/AGENTS.md
+      - compliance/README.md
+      - compliance/functions/host.json
+      - compliance/functions/package.json
+      - compliance/functions/scripts/build.ts
+      - compliance/functions/src/index.ts
+      - compliance/functions/tsconfig.json
+      - compliance/next-env.d.ts
+      - compliance/next.config.ts
+      - compliance/package.json
+      - compliance/postcss.config.mjs
+      - compliance/scripts/build-static.ts
+      - compliance/src/app/api/[...path]/route.ts
+      - compliance/src/app/calendar/page.tsx
+      - compliance/src/app/forms/page.tsx
+      - compliance/src/app/globals.css
+      - compliance/src/app/icon.svg
+      - compliance/src/app/layout.tsx
+      - compliance/src/app/page.tsx
+      - compliance/src/app/reports/page.tsx
+      - compliance/src/app/tasks/page.tsx
+      - compliance/src/components/compliance-shell.tsx
+      - compliance/src/components/page.tsx
+      - compliance/src/lib/api/azure-functions-adapter.test.ts
+      - compliance/src/lib/api/azure-functions-adapter.ts
+      - compliance/src/lib/auth.test.ts
+      - compliance/src/lib/auth.ts
+      - compliance/src/lib/model.ts
+      - compliance/src/lib/navigation.ts
+      - compliance/staticwebapp.config.json
+      - compliance/tsconfig.json
+      - compliance/vitest.config.ts
+      - docs/authorization-roles.md
+      - docs/compliance/PLAN.md
+      - hub/app/login/page.tsx
+      - hub/functions/dist-entry.js
+      - hub/functions/src/roles.test.ts
+      - hub/lib/apps.ts
+      - hub/lib/return-target.test.ts
+      - hub/lib/return-target.ts
+      - hub/staticwebapp.config.json
+      - package.json
+      - scripts/app-registry.ts
+      - twenty
+  - title: "fix(auth): automate preview callback registration"
+    body: >-
+      ## Why
+
+
+      Custom Entra sign-in fails with `AADSTS50011` on new Azure SWA preview hosts because their callback URLs are not
+      registered. Each unified Hub preview needs one callback for the entire suite.
+
+
+      ## What changed
+
+
+      - Register the exact deployed preview callback before publishing friendly links; re...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/165
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a5
+      - documentation
+      - github-automation
+      - platform
+    additions: 455
+    deletions: 5
+    changedFiles: 7
+    author: myriadas-clees
+    createdAt: 2026-10-09T17:14:26Z
+    updatedAt: 2026-10-09T17:24:14Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a6
+      - &a33
+        sha: 78cffeb4d29825f5e51712c334c6eaeb2f9d6a95
+        message: "fix(auth): automate preview callback registration"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/78cffeb4d29825f5e51712c334c6eaeb2f9d6a95
+        authoredAt: 2026-10-09T17:13:58Z
+    workTimestamps: &a7
+      - 2026-10-09T17:13:58Z
+    workAdditions: 455
+    workDeletions: 5
+    workFiles: &a8
+      - .github/workflows/azure-static-web-apps.yml
+      - docs/authorization-roles.md
+      - docs/preview-auth.md
+      - package.json
+      - scripts/swa-preview-auth.cjs
+      - scripts/swa-preview-auth.test.ts
+      - scripts/tooling.test.ts
+  - title: "feat(ui): shared settings page across apps"
+    body: Adds a shared Settings module to `@myriad/ui` and gives every app a Settings page built from it. Settings now
+      carries everything from the account menu's quick settings (color theme, navigation layout), plus each app's own
+      real preferences. The quick settings stay in the account menu; both surfaces s...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/162
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a9
+      - documentation
+      - "app: hub"
+      - "app: onboarding"
+      - "app: pto-tracker"
+      - "app: proforma"
+      - "app: excelerate"
+      - "app: valuation"
+      - platform
+      - "app: transition"
+    additions: 1077
+    deletions: 812
+    changedFiles: 36
+    author: myriadas-clees
+    createdAt: 2026-10-09T12:33:38Z
+    updatedAt: 2026-10-12T05:19:10Z
+    closedAt: 2026-10-12T05:19:10Z
+    mergedAt: 2026-10-12T05:19:10Z
+    workCommits: &a10
+      - &a18
+        sha: 76dacbf93ed79b60a8934cc4b466a7598f1f6fb1
+        message: "feat(ui): shared settings module with appearance and navigation preferences"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/76dacbf93ed79b60a8934cc4b466a7598f1f6fb1
+        authoredAt: 2026-10-09T12:27:56Z
+      - &a19
+        sha: 03d5075f9f038f30e2928f004087af0f718148d1
+        message: "feat(transition): build the settings page from the shared settings module"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/03d5075f9f038f30e2928f004087af0f718148d1
+        authoredAt: 2026-10-09T12:27:56Z
+      - &a20
+        sha: bb71dcfa819cc5a85627737f052a946f514d9724
+        message: "feat(valuation): add the shared settings page"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/bb71dcfa819cc5a85627737f052a946f514d9724
+        authoredAt: 2026-10-09T12:29:47Z
+      - &a21
+        sha: ae5156f53121a967ec527ade2c0cfe1a95e2ec68
+        message: "feat(excelerate): use the shared settings page"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ae5156f53121a967ec527ade2c0cfe1a95e2ec68
+        authoredAt: 2026-10-09T12:29:49Z
+      - &a22
+        sha: 6272529f0b865ce64a20f6be36a8203dd0e01f7d
+        message: "feat(pto-tracker): use the shared settings page"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6272529f0b865ce64a20f6be36a8203dd0e01f7d
+        authoredAt: 2026-10-09T12:30:05Z
+      - &a23
+        sha: 94a8613a2fe479cd6115be79a927790347fb6074
+        message: "fix(ui): keep settings choice labels inside their segments"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/94a8613a2fe479cd6115be79a927790347fb6074
+        authoredAt: 2026-10-09T12:30:12Z
+      - &a24
+        sha: 3c161f8a32b365d82ec1f35f0b09297c2ba37781
+        message: "feat(onboarding): use the shared settings page"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3c161f8a32b365d82ec1f35f0b09297c2ba37781
+        authoredAt: 2026-10-09T12:30:27Z
+      - &a25
+        sha: 52253a9cf9b92b1f1cfd2fe728b6196e8b475af0
+        message: "feat(proforma): use the shared settings page"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/52253a9cf9b92b1f1cfd2fe728b6196e8b475af0
+        authoredAt: 2026-10-09T12:31:00Z
+      - &a26
+        sha: c8a9368deca068021622c0b85223e2ad89e37e2a
+        message: "feat(hub): add the shared settings page"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c8a9368deca068021622c0b85223e2ad89e37e2a
+        authoredAt: 2026-10-09T12:31:09Z
+      - &a27
+        sha: 4d873609493d3fac77e5a1b8888f135c2ca039dd
+        message: "fix(proforma): keep editing view in sync without rereading storage and wait for the session"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4d873609493d3fac77e5a1b8888f135c2ca039dd
+        authoredAt: 2026-10-09T12:41:04Z
+      - &a28
+        sha: e8dc90f81473d972cebbee162a13f486d1641e08
+        message: "fix(proforma): fall back to the anonymous editing view when the session fails"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e8dc90f81473d972cebbee162a13f486d1641e08
+        authoredAt: 2026-10-09T12:46:35Z
+      - &a29
+        sha: 2af73b70c8fd7c6ec107efe093fa3510261c7b4b
+        message: "fix(pto-tracker): keep calendar color selects labelled for multi-word leave types"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2af73b70c8fd7c6ec107efe093fa3510261c7b4b
+        authoredAt: 2026-10-09T12:58:23Z
+      - &a31
+        sha: aff0b97999e4c63dec568b4a51bbf2bdac3d4e71
+        message: Merge remote-tracking branch 'origin/feat/onboarding-transition-tour' into tmp/t162-merge
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/aff0b97999e4c63dec568b4a51bbf2bdac3d4e71
+        authoredAt: 2026-10-09T14:13:24Z
+      - &a36
+        sha: 5ca47441ccce66358508c6151aaaa81f3e9adfbd
+        message: Merge remote-tracking branch 'origin/feat/onboarding-transition-tour' into tmp-162-fix
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5ca47441ccce66358508c6151aaaa81f3e9adfbd
+        authoredAt: 2026-10-09T17:31:18Z
+      - &a39
+        sha: b76045ee6e2191d68f6924586e51e693b7bb753b
+        message: Merge remote-tracking branch 'origin/feat/onboarding-transition-tour' into tmp-162-fix
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b76045ee6e2191d68f6924586e51e693b7bb753b
+        authoredAt: 2026-10-09T17:38:51Z
+      - &a46
+        sha: c6c6121e415ff277e6625b80fbb8d67d77e450f4
+        message: Merge remote-tracking branch 'origin/feat/onboarding-transition-tour' into tmp-162
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c6c6121e415ff277e6625b80fbb8d67d77e450f4
+        authoredAt: 2026-10-09T18:12:45Z
+      - &a48
+        sha: f1fe0d07672d535f63823cbd8b83c76740c58eb5
+        message: Merge remote-tracking branch 'origin/feat/onboarding-transition-tour' into tmp-162
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f1fe0d07672d535f63823cbd8b83c76740c58eb5
+        authoredAt: 2026-10-09T18:21:41Z
+      - &a50
+        sha: 4d77a3c7ae9048663cfefe3f82f462e2ef49d840
+        message: "fix(ui): settings section headings and content padding"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4d77a3c7ae9048663cfefe3f82f462e2ef49d840
+        authoredAt: 2026-10-09T18:27:47Z
+      - &a72
+        sha: 4665c8020b771ba92c17511141d462db679d89ec
+        message: Merge remote-tracking branch 'origin/feat/onboarding-transition-tour' into tmp-162demo
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4665c8020b771ba92c17511141d462db679d89ec
+        authoredAt: 2026-10-09T20:37:24Z
+      - &a78
+        sha: 0643d55d099a84b1e07c9618f7b9beff9e4ea7c2
+        message: Merge remote-tracking branch 'origin/feat/onboarding-transition-tour' into tmp-162b
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0643d55d099a84b1e07c9618f7b9beff9e4ea7c2
+        authoredAt: 2026-10-09T20:44:57Z
+      - &a79
+        sha: 5f056a2181c78fdc7b14bab150f508c925417a9e
+        message: "fix(excelerate): keep Appearance below the settings page heading"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5f056a2181c78fdc7b14bab150f508c925417a9e
+        authoredAt: 2026-10-09T20:45:02Z
+      - &a89
+        sha: 34ce5671c58a8121c663653f4e200b7af2ad8b38
+        message: Merge remote-tracking branch 'origin/feat/onboarding-transition-tour' into tmp-162c
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/34ce5671c58a8121c663653f4e200b7af2ad8b38
+        authoredAt: 2026-10-09T21:13:21Z
+      - &a93
+        sha: 2850a68f727f6ca0a1541b45a25b6f3a5f8d7843
+        message: Merge remote-tracking branch 'origin/feat/onboarding-transition-tour' into tmp-162d
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2850a68f727f6ca0a1541b45a25b6f3a5f8d7843
+        authoredAt: 2026-10-09T21:21:29Z
+      - &a98
+        sha: 4499fd373e3ac7e0f78b507e9e75069a288d290c
+        message: Merge remote-tracking branch 'origin/feat/onboarding-transition-tour' into tmp-162e
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4499fd373e3ac7e0f78b507e9e75069a288d290c
+        authoredAt: 2026-10-09T21:29:44Z
+      - &a104
+        sha: 550a245a17c9b9124b20049bf846db96d3902edf
+        message: Merge remote-tracking branch 'origin/feat/onboarding-transition-tour' into tmp-162f
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/550a245a17c9b9124b20049bf846db96d3902edf
+        authoredAt: 2026-10-09T21:38:34Z
+      - &a111
+        sha: b5395dfcb6c63720b791c2cadf3df5cb21ff3e76
+        message: Merge remote-tracking branch 'origin/feat/onboarding-transition-tour' into tmp-162g
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b5395dfcb6c63720b791c2cadf3df5cb21ff3e76
+        authoredAt: 2026-10-09T21:45:56Z
+    workTimestamps: &a11
+      - 2026-10-09T12:27:56Z
+      - 2026-10-09T12:27:56Z
+      - 2026-10-09T12:29:47Z
+      - 2026-10-09T12:29:49Z
+      - 2026-10-09T12:30:05Z
+      - 2026-10-09T12:30:12Z
+      - 2026-10-09T12:30:27Z
+      - 2026-10-09T12:31:00Z
+      - 2026-10-09T12:31:09Z
+      - 2026-10-09T12:41:04Z
+      - 2026-10-09T12:46:35Z
+      - 2026-10-09T12:58:23Z
+      - 2026-10-09T14:13:24Z
+      - 2026-10-09T17:31:18Z
+      - 2026-10-09T17:38:51Z
+      - 2026-10-09T18:12:45Z
+      - 2026-10-09T18:21:41Z
+      - 2026-10-09T18:27:47Z
+      - 2026-10-09T20:37:24Z
+      - 2026-10-09T20:44:57Z
+      - 2026-10-09T20:45:02Z
+      - 2026-10-09T21:13:21Z
+      - 2026-10-09T21:21:29Z
+      - 2026-10-09T21:29:44Z
+      - 2026-10-09T21:38:34Z
+      - 2026-10-09T21:45:56Z
+    workAdditions: 1077
+    workDeletions: 812
+    workFiles: &a12
+      - excelerate/src/app/settings/page.tsx
+      - hub/app/hub/settings/page.tsx
+      - hub/components/HubLauncher.tsx
+      - hub/components/HubSettingsPage.tsx
+      - hub/lib/navigation.test.ts
+      - hub/lib/navigation.ts
+      - onboarding/apps/dashboard/app/settings/page.test.tsx
+      - onboarding/apps/dashboard/app/settings/page.tsx
+      - onboarding/apps/dashboard/components/workstream-archive-settings.tsx
+      - packages/brand/src/styles.css
+      - packages/ui/src/appearance-quick-settings.tsx
+      - packages/ui/src/index.ts
+      - packages/ui/src/settings/appearance-settings.tsx
+      - packages/ui/src/settings/index.ts
+      - packages/ui/src/settings/preference-options.test.ts
+      - packages/ui/src/settings/preference-options.ts
+      - packages/ui/src/settings/settings-section.tsx
+      - packages/ui/src/theme-toggle.tsx
+      - proforma/src/app/settings/page.tsx
+      - proforma/src/components/__tests__/proforma-settings-page.test.tsx
+      - proforma/src/components/__tests__/settings-previews.test.tsx
+      - proforma/src/components/proforma-quick-settings.tsx
+      - proforma/src/components/proforma-settings-page.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/settings-previews.tsx
+      - proforma/src/components/use-proforma-edit-view.ts
+      - pto-tracker/src/app/settings/CalendarColorSettings.tsx
+      - pto-tracker/src/app/settings/page.tsx
+      - pto-tracker/src/lib/navigation.test.ts
+      - pto-tracker/src/lib/navigation.ts
+      - transition/AGENTS.md
+      - transition/src/components/households/household-overview.tsx
+      - transition/src/components/households/households-page.tsx
+      - transition/src/components/page-skeletons.tsx
+      - transition/src/components/settings/settings-page.tsx
+      - transition/src/components/tour/tour-layer.tsx
+      - transition/src/components/tour/tour-provider.tsx
+      - transition/src/components/ui/fields.tsx
+      - transition/src/lib/api/client.ts
+      - transition/src/lib/remembered-filters.test.ts
+      - transition/src/lib/remembered-filters.ts
+      - transition/src/lib/tour-demo.test.ts
+      - transition/src/lib/tour-demo.ts
+      - transition/src/lib/tour.test.ts
+      - transition/src/lib/tour.ts
+      - valuation/src/app/settings/page.tsx
+      - valuation/src/lib/navigation.test.ts
+  - title: "feat(compass): add Microsoft 365 client intelligence app"
+    body: |-
+      Stacked on #162 (which stacks on #158 / #161); merge after it.
+
+      ## Why
+
+      Add a focused workspace for advisors to review daily priorities and client context from Microsoft 365.
+
+      ## What changed
+
+      - Add Compass with daily priorities, client briefs, Copilot answers, chat history, and Microsoft 365 integr...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a13
+      - documentation
+      - github-automation
+      - "app: hub"
+      - platform
+      - infrastructure
+      - deploy-preview
+      - "app: transition"
+    additions: 27392
+    deletions: 1570
+    changedFiles: 151
+    author: myriadas-clees
+    createdAt: 2026-10-09T16:05:01Z
+    updatedAt: 2026-10-12T05:20:04Z
+    closedAt: 2026-10-12T05:19:11Z
+    mergedAt: 2026-10-12T05:19:11Z
+    workCommits: &a14
+      - &a32
+        sha: 54363e924dde32dd8c245a8c7fcfa1ecea532969
+        message: "feat(compass): add Microsoft 365 client intelligence app"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/54363e924dde32dd8c245a8c7fcfa1ecea532969
+        authoredAt: 2026-10-09T16:04:49Z
+      - &a34
+        sha: 27ca6f7fc4d33f6e01a39ce9ca5313934633efd2
+        message: "feat(compass): refine Ask Compass workspace visuals"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/27ca6f7fc4d33f6e01a39ce9ca5313934633efd2
+        authoredAt: 2026-10-09T17:18:06Z
+      - &a37
+        sha: 829f831e0c5a05e0e417d7bc42df5eeb0447844e
+        message: "fix(compass): address review feedback"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/829f831e0c5a05e0e417d7bc42df5eeb0447844e
+        authoredAt: 2026-10-09T17:34:04Z
+      - &a40
+        sha: 696c46a66034dca4fc206247ccb32c6fb5cd2a60
+        message: "fix(compass): bind account mutations and palette previews to loaded data"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/696c46a66034dca4fc206247ccb32c6fb5cd2a60
+        authoredAt: 2026-10-09T17:43:59Z
+      - &a41
+        sha: d748ca691361c96615963b2ed36b8db514be5de4
+        message: "fix(compass): scope saved chats to the Microsoft connection"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d748ca691361c96615963b2ed36b8db514be5de4
+        authoredAt: 2026-10-09T17:59:30Z
+      - &a43
+        sha: f1484631cdb34b40f0d8178ce004381f8f6ddf73
+        message: "fix(compass): conditional disconnect, same-origin API base, read-only docs"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f1484631cdb34b40f0d8178ce004381f8f6ddf73
+        authoredAt: 2026-10-09T18:10:36Z
+      - &a49
+        sha: 1bb32add316c336ea4e25c318c23873ad14a03cb
+        message: "fix(compass): key saved chats by connection and read canonical Hub URL"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/1bb32add316c336ea4e25c318c23873ad14a03cb
+        authoredAt: 2026-10-09T18:22:17Z
+      - &a51
+        sha: f31413a45328c30395ed1042e160da759581fcff
+        message: "fix(compass): safe account replacement, legacy disconnect guard, mixed-role launcher"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f31413a45328c30395ed1042e160da759581fcff
+        authoredAt: 2026-10-09T18:32:23Z
+      - &a52
+        sha: 3269265a46104b441fcb43976f8ef63d1f7a5360
+        message: "fix(compass): revalidate Ask completion, scope mapping cleanup, preview-only docs"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3269265a46104b441fcb43976f8ef63d1f7a5360
+        authoredAt: 2026-10-09T18:43:24Z
+      - &a54
+        sha: 2a237da1d29a8bcd35653fa985b73dd70bc524cd
+        message: "fix(compass): scope disconnect cleanup, revalidate JSON Ask, document local auth"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2a237da1d29a8bcd35653fa985b73dd70bc524cd
+        authoredAt: 2026-10-09T18:53:08Z
+      - &a55
+        sha: 14d1a6fc4351945fb58b057ea0053818b2bcd79e
+        message: "fix(compass): keep the default local database path in the settings example"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/14d1a6fc4351945fb58b057ea0053818b2bcd79e
+        authoredAt: 2026-10-09T18:53:30Z
+      - &a56
+        sha: 0f27fd0552eb472d6a0051dd6f9232b81ed49715
+        message: "fix(compass): revalidate the connection before returning dashboard data"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0f27fd0552eb472d6a0051dd6f9232b81ed49715
+        authoredAt: 2026-10-09T19:03:56Z
+      - &a57
+        sha: e79abb1a90dd1ffeac04b8ec45490133622d3384
+        message: "fix(compass): bind chat reads to the displayed Microsoft connection"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e79abb1a90dd1ffeac04b8ec45490133622d3384
+        authoredAt: 2026-10-09T19:13:57Z
+      - &a58
+        sha: 1e4d64d8245f24a82dcacd2d16bd532d1e8d65ff
+        message: "chore: drop unrelated twenty pointer and generated next-env change"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/1e4d64d8245f24a82dcacd2d16bd532d1e8d65ff
+        authoredAt: 2026-10-09T19:31:23Z
+      - &a59
+        sha: 7de7851ac3734356c85daa3c0363e7b144a0a96b
+        message: Merge feat/shared-settings-page into feat/port-northstar-app
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7de7851ac3734356c85daa3c0363e7b144a0a96b
+        authoredAt: 2026-10-09T19:36:36Z
+      - &a60
+        sha: ae7ba73e971e6b8e933c3ca893a2a35223fb42db
+        message: "fix(compass): keep all-day brief dates and recheck chat connection after reads"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ae7ba73e971e6b8e933c3ca893a2a35223fb42db
+        authoredAt: 2026-10-09T19:39:18Z
+      - &a61
+        sha: 95a4a84ece5e2c9fcfa03a28c57dab81858faffc
+        message: "fix(compass): make Cosmos chat cleanup and retention rewrites ETag-conditional"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/95a4a84ece5e2c9fcfa03a28c57dab81858faffc
+        authoredAt: 2026-10-09T19:49:07Z
+      - &a62
+        sha: c615ef7bcafec6f53fa25d1611abb3d580891b67
+        message: "fix(compass): keep newer same-ID message payloads against stale chat saves"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c615ef7bcafec6f53fa25d1611abb3d580891b67
+        authoredAt: 2026-10-09T19:56:47Z
+      - &a63
+        sha: ac5a418fab4b2977e90920235a2c60232a4c93fd
+        message: "fix(compass): fence Cosmos retention publication with the preference ETag"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ac5a418fab4b2977e90920235a2c60232a4c93fd
+        authoredAt: 2026-10-09T19:56:47Z
+      - &a64
+        sha: 26db4d6237f13afe3bf9b6d124c4468e002de020
+        message: "fix(compass): refresh the retention timestamp when a Copilot conversation is reused"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/26db4d6237f13afe3bf9b6d124c4468e002de020
+        authoredAt: 2026-10-09T20:09:48Z
+      - &a65
+        sha: cffb1e81a12b1e50063d48c89fb5f850478d4e79
+        message: "fix(compass): keep newer same-ID message payloads in the SQLite chat path"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/cffb1e81a12b1e50063d48c89fb5f850478d4e79
+        authoredAt: 2026-10-09T20:09:53Z
+      - &a66
+        sha: ea0da75205f8a9495a93cc58d483a40ea342a19f
+        message: "fix(compass): include Copilot mapping TTL rewrites in the fenced retention pass"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ea0da75205f8a9495a93cc58d483a40ea342a19f
+        authoredAt: 2026-10-09T20:09:53Z
+      - &a67
+        sha: f6cc7325c0a8547aaf8c7e48e8c2ff8be068c8e6
+        message: "fix(compass): fence ordinary Ask completion by connection generation"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f6cc7325c0a8547aaf8c7e48e8c2ff8be068c8e6
+        authoredAt: 2026-10-09T20:18:36Z
+      - &a68
+        sha: 385bf0d5bdb76dc2cbd9bfd8c60fbe037d3375d4
+        message: "fix(compass): retain the client chat revision when validating chat saves"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/385bf0d5bdb76dc2cbd9bfd8c60fbe037d3375d4
+        authoredAt: 2026-10-09T20:18:36Z
+      - &a69
+        sha: a8461664f472899621f94eae5b5c33d5513dff66
+        message: "fix(compass): verify the connection immediately before calendar and To Do writes"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a8461664f472899621f94eae5b5c33d5513dff66
+        authoredAt: 2026-10-09T20:28:57Z
+      - &a70
+        sha: 6e697806680f7a6f07d3cd9f9a4907df0f597c75
+        message: "fix(compass): make Cosmos chat saves conditional and re-merge on conflict"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6e697806680f7a6f07d3cd9f9a4907df0f597c75
+        authoredAt: 2026-10-09T20:31:38Z
+      - &a73
+        sha: 46d6170e63be74a5fa71d57a0df45b3d568b9e99
+        message: "fix(compass): scope disconnect cleanup to the removed connection generation"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/46d6170e63be74a5fa71d57a0df45b3d568b9e99
+        authoredAt: 2026-10-09T20:37:24Z
+      - &a74
+        sha: 808b8e87712a38283a1f69f5422cba8297a5e8a2
+        message: "fix(infra): provision a dedicated Compass Cosmos container and COMPASS_COSMOS_CONTAINER setting"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/808b8e87712a38283a1f69f5422cba8297a5e8a2
+        authoredAt: 2026-10-09T20:38:08Z
+      - &a75
+        sha: bd5259c2957b788643b6ac88e14198e6811105e0
+        message: "chore(compass): remove the unused unconditional Cosmos chat upsert helper"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/bd5259c2957b788643b6ac88e14198e6811105e0
+        authoredAt: 2026-10-09T20:42:22Z
+      - &a80
+        sha: 744e176660ef54ad0559b9598d4802ad2e8c02f8
+        message: "fix(compass): clear scheduled-brief attempts when the Microsoft connection changes"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/744e176660ef54ad0559b9598d4802ad2e8c02f8
+        authoredAt: 2026-10-09T20:45:06Z
+      - &a81
+        sha: dba04a7da25e6306167c4f2277052ad330c06680
+        message: "fix(compass): revalidate the retention preference around Cosmos chat saves"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/dba04a7da25e6306167c4f2277052ad330c06680
+        authoredAt: 2026-10-09T20:51:12Z
+      - &a82
+        sha: 852ac1e88d3122140d184373d778bf6e291c1dae
+        message: "fix(compass): keep midnight calendar slot selections as timed events"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/852ac1e88d3122140d184373d778bf6e291c1dae
+        authoredAt: 2026-10-09T20:55:22Z
+      - &a83
+        sha: 33c2783e6d72759a47e3d77523e2b343ad082eb7
+        message: Merge remote-tracking branch 'origin/feat/shared-settings-page' into tmp-164g
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/33c2783e6d72759a47e3d77523e2b343ad082eb7
+        authoredAt: 2026-10-09T20:59:17Z
+      - &a84
+        sha: a8b3f966525c60dc727be71d3b37ade28415dd12
+        message: "fix(compass): recheck retention after publishing Copilot mappings"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a8b3f966525c60dc727be71d3b37ade28415dd12
+        authoredAt: 2026-10-09T21:08:26Z
+      - &a85
+        sha: 9f51818b7c43f3418bde9562fafc92838abf2e63
+        message: "fix(compass): read retention inside the SQLite chat save transaction"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9f51818b7c43f3418bde9562fafc92838abf2e63
+        authoredAt: 2026-10-09T21:08:49Z
+      - &a86
+        sha: dd21ba4636e50bdaaf73b9011c060d2c239afe00
+        message: "fix(compass): re-read an expired Copilot mapping whose delete lost the ETag race"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/dd21ba4636e50bdaaf73b9011c060d2c239afe00
+        authoredAt: 2026-10-09T21:09:06Z
+      - &a87
+        sha: fa69a17b01488a06ea3b09c630248dc5b0538061
+        message: "fix(compass): verify the connection before emitting streamed partial answers"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/fa69a17b01488a06ea3b09c630248dc5b0538061
+        authoredAt: 2026-10-09T21:09:37Z
+      - &a90
+        sha: 27691bccd20c471f4e7c05d8b0ebf17985f74f69
+        message: "fix(compass): return auth_required for chat saves bound to a replaced account"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/27691bccd20c471f4e7c05d8b0ebf17985f74f69
+        authoredAt: 2026-10-09T21:15:19Z
+      - &a91
+        sha: 8d961d19bc33c2fa17056e672c72bf3c97b9150d
+        message: "fix(compass): reject Ask when the preflight account differs from the displayed one"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8d961d19bc33c2fa17056e672c72bf3c97b9150d
+        authoredAt: 2026-10-09T21:16:59Z
+      - &a94
+        sha: 99b61e994eb833210b11ca2f752a98671c220605
+        message: "fix(compass): verify every streamed partial answer before emitting it"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/99b61e994eb833210b11ca2f752a98671c220605
+        authoredAt: 2026-10-09T21:21:42Z
+      - &a95
+        sha: ab89265cf58ad9f11eaa2fc3b2b5d0e62f68a7f8
+        message: "fix(compass): place timed calendar events by wall-clock time across DST"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ab89265cf58ad9f11eaa2fc3b2b5d0e62f68a7f8
+        authoredAt: 2026-10-09T21:22:12Z
+      - &a96
+        sha: 6cc6c17f044cff75d59e4e3a7369db8028adf6cc
+        message: Merge remote-tracking branch 'origin/feat/shared-settings-page' into tmp-164i
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6cc6c17f044cff75d59e4e3a7369db8028adf6cc
+        authoredAt: 2026-10-09T21:26:35Z
+      - &a99
+        sha: 5ee0e44ee0e13bb9a1c46a3875df2289b9329051
+        message: "fix(compass): refresh reused Copilot mappings conditionally"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5ee0e44ee0e13bb9a1c46a3875df2289b9329051
+        authoredAt: 2026-10-09T21:33:01Z
+      - &a100
+        sha: 452b6e629181bcc4183e12d023c4379de1e005bb
+        message: "fix(compass): track pending To Do updates per task"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/452b6e629181bcc4183e12d023c4379de1e005bb
+        authoredAt: 2026-10-09T21:33:37Z
+      - &a101
+        sha: 2a9453f3133511c67c2818eca5b0ebd733ce2272
+        message: "fix(compass): reset saved chats when the chat owner changes"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2a9453f3133511c67c2818eca5b0ebd733ce2272
+        authoredAt: 2026-10-09T21:34:05Z
+      - &a102
+        sha: 8516aa945f77db750c4a49e398d21ac5e7f1fc10
+        message: Merge remote-tracking branch 'origin/feat/shared-settings-page' into tmp-164j
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8516aa945f77db750c4a49e398d21ac5e7f1fc10
+        authoredAt: 2026-10-09T21:34:56Z
+      - &a105
+        sha: 04d59c752b86b36cb9ee4e61bab7ad73976a376c
+        message: "fix(compass): rethrow SQLITE_BUSY from BEGIN instead of masking it with ROLLBACK"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/04d59c752b86b36cb9ee4e61bab7ad73976a376c
+        authoredAt: 2026-10-09T21:39:16Z
+      - &a106
+        sha: 66a52acebfcfe994189d4ebf27044460a3690b14
+        message: "fix(compass): fence local Copilot mapping writes with retention updates"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/66a52acebfcfe994189d4ebf27044460a3690b14
+        authoredAt: 2026-10-09T21:39:16Z
+      - &a107
+        sha: 4950ceef5badf38a21891934bd44b83e60286ec6
+        message: "test(compass): import bun:sqlite as an ES module"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4950ceef5badf38a21891934bd44b83e60286ec6
+        authoredAt: 2026-10-09T21:41:51Z
+      - &a109
+        sha: 69c9ae49ddbee5521073b558f2f6eb040e3a4cf3
+        message: "fix(compass): fail Ask mapping writes when container TTL cannot be verified"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/69c9ae49ddbee5521073b558f2f6eb040e3a4cf3
+        authoredAt: 2026-10-09T21:44:58Z
+      - &a110
+        sha: 7da1cf852ffd25cd10b06354a4258259a0b83d5f
+        message: "fix(compass): commit SQLite retention changes in one transaction"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7da1cf852ffd25cd10b06354a4258259a0b83d5f
+        authoredAt: 2026-10-09T21:45:09Z
+      - &a112
+        sha: b71aa8f4dec019e00ff0706f3708dadeecff35d2
+        message: Merge remote-tracking branch 'origin/feat/shared-settings-page' into tmp-164j
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b71aa8f4dec019e00ff0706f3708dadeecff35d2
+        authoredAt: 2026-10-09T21:46:05Z
+      - &a113
+        sha: 66d7209ad4a7d7be10a503f14934ff7ea9ab7ea3
+        message: "fix(compass): keep events visible across the repeated DST hour"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/66d7209ad4a7d7be10a503f14934ff7ea9ab7ea3
+        authoredAt: 2026-10-09T21:50:01Z
+      - &a114
+        sha: 4b77b9ff9a21823d3ba3510a261ed5c63d616636
+        message: Merge remote-tracking branch 'origin/feat/shared-settings-page' into tmp-164k
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4b77b9ff9a21823d3ba3510a261ed5c63d616636
+        authoredAt: 2026-10-09T21:50:53Z
+      - &a115
+        sha: 0495d9e7228d3e97540d6a68a0465ffc676fb00b
+        message: "fix(compass): serialize local mapping refreshes with retention updates"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0495d9e7228d3e97540d6a68a0465ffc676fb00b
+        authoredAt: 2026-10-09T21:55:18Z
+      - &a116
+        sha: d4c7439fe89e559a040761a66e5668f07de7de58
+        message: "fix(compass): publish new Copilot mappings create-only"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d4c7439fe89e559a040761a66e5668f07de7de58
+        authoredAt: 2026-10-09T21:55:18Z
+    workTimestamps: &a15
+      - 2026-10-09T16:04:49Z
+      - 2026-10-09T17:18:06Z
+      - 2026-10-09T17:34:04Z
+      - 2026-10-09T17:43:59Z
+      - 2026-10-09T17:59:30Z
+      - 2026-10-09T18:10:36Z
+      - 2026-10-09T18:22:17Z
+      - 2026-10-09T18:32:23Z
+      - 2026-10-09T18:43:24Z
+      - 2026-10-09T18:53:08Z
+      - 2026-10-09T18:53:30Z
+      - 2026-10-09T19:03:56Z
+      - 2026-10-09T19:13:57Z
+      - 2026-10-09T19:31:23Z
+      - 2026-10-09T19:36:36Z
+      - 2026-10-09T19:39:18Z
+      - 2026-10-09T19:49:07Z
+      - 2026-10-09T19:56:47Z
+      - 2026-10-09T19:56:47Z
+      - 2026-10-09T20:09:48Z
+      - 2026-10-09T20:09:53Z
+      - 2026-10-09T20:09:53Z
+      - 2026-10-09T20:18:36Z
+      - 2026-10-09T20:18:36Z
+      - 2026-10-09T20:28:57Z
+      - 2026-10-09T20:31:38Z
+      - 2026-10-09T20:37:24Z
+      - 2026-10-09T20:38:08Z
+      - 2026-10-09T20:42:22Z
+      - 2026-10-09T20:45:06Z
+      - 2026-10-09T20:51:12Z
+      - 2026-10-09T20:55:22Z
+      - 2026-10-09T20:59:17Z
+      - 2026-10-09T21:08:26Z
+      - 2026-10-09T21:08:49Z
+      - 2026-10-09T21:09:06Z
+      - 2026-10-09T21:09:37Z
+      - 2026-10-09T21:15:19Z
+      - 2026-10-09T21:16:59Z
+      - 2026-10-09T21:21:42Z
+      - 2026-10-09T21:22:12Z
+      - 2026-10-09T21:26:35Z
+      - 2026-10-09T21:33:01Z
+      - 2026-10-09T21:33:37Z
+      - 2026-10-09T21:34:05Z
+      - 2026-10-09T21:34:56Z
+      - 2026-10-09T21:39:16Z
+      - 2026-10-09T21:39:16Z
+      - 2026-10-09T21:41:51Z
+      - 2026-10-09T21:44:58Z
+      - 2026-10-09T21:45:09Z
+      - 2026-10-09T21:46:05Z
+      - 2026-10-09T21:50:01Z
+      - 2026-10-09T21:50:53Z
+      - 2026-10-09T21:55:18Z
+      - 2026-10-09T21:55:18Z
+    workAdditions: 27392
+    workDeletions: 1570
+    workFiles: &a16
+      - .agents/skills/graphical-audit/SKILL.md
+      - .agents/skills/graphical-ui/SKILL.md
+      - .agents/skills/myriad-branding/SKILL.md
+      - .agents/skills/myriad-branding/references/brand-guidelines.md
+      - .agents/skills/myriad-branding/references/digital-product-brand.md
+      - .github/ISSUE_TEMPLATE/bug.yml
+      - .github/ISSUE_TEMPLATE/feature.yml
+      - .github/labeler.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/verify.yml
+      - .gitignore
+      - .gitmodules
+      - GUI.md
+      - README.md
+      - bun.lock
+      - compass/AGENTS.md
+      - compass/README.md
+      - compass/functions/.funcignore
+      - compass/functions/host.json
+      - compass/functions/local.settings.json.example
+      - compass/functions/package.json
+      - compass/functions/src/compass-brief-journeys.test.ts
+      - compass/functions/src/compass-chat-history.test.ts
+      - compass/functions/src/compass-chat-history.ts
+      - compass/functions/src/compass-consent.fixture.ts
+      - compass/functions/src/compass-consent.test.ts
+      - compass/functions/src/compass-conversations.test.ts
+      - compass/functions/src/compass-conversations.ts
+      - compass/functions/src/compass-copilot.test.ts
+      - compass/functions/src/compass-copilot.ts
+      - compass/functions/src/compass-cosmos-recovery.test.ts
+      - compass/functions/src/compass-daily-flow.test.ts
+      - compass/functions/src/compass-local-store.test.ts
+      - compass/functions/src/compass-local-store.ts
+      - compass/functions/src/compass-mapping-upgrade.test.ts
+      - compass/functions/src/compass-microsoft-deadline.fixture.ts
+      - compass/functions/src/compass-microsoft-deadline.test.ts
+      - compass/functions/src/compass-microsoft.test.ts
+      - compass/functions/src/compass-microsoft.ts
+      - compass/functions/src/compass-scheduled-brief.test.ts
+      - compass/functions/src/compass-scheduled-brief.ts
+      - compass/functions/src/index.ts
+      - compass/functions/tsconfig.json
+      - compass/next-env.d.ts
+      - compass/next.config.ts
+      - compass/package.json
+      - compass/postcss.config.mjs
+      - compass/scripts/build-static.ts
+      - compass/src/app/api/compass/health/route.ts
+      - compass/src/app/ask.css
+      - compass/src/app/ask/page.tsx
+      - compass/src/app/clients/page.tsx
+      - compass/src/app/globals.css
+      - compass/src/app/icon.svg
+      - compass/src/app/layout.tsx
+      - compass/src/app/page.tsx
+      - compass/src/app/settings/page.tsx
+      - compass/src/components/answer-markdown.test.tsx
+      - compass/src/components/answer-markdown.tsx
+      - compass/src/components/answer-star.test.ts
+      - compass/src/components/answer-star.tsx
+      - compass/src/components/ask-compass-workspace.dom.test.tsx
+      - compass/src/components/ask-compass-workspace.test.tsx
+      - compass/src/components/ask-compass-workspace.tsx
+      - compass/src/components/client-intelligence-workspace.tsx
+      - compass/src/components/command-palette.tsx
+      - compass/src/components/compass-consent.dom.test.ts
+      - compass/src/components/compass-consent.fixture.tsx
+      - compass/src/components/compass-dashboard-lifecycle.fixture.ts
+      - compass/src/components/compass-dashboard-lifecycle.test.ts
+      - compass/src/components/compass-dashboard.tsx
+      - compass/src/components/compass-fixture-app.tsx
+      - compass/src/components/compass-provider.tsx
+      - compass/src/components/compass-recovery.dom.test.ts
+      - compass/src/components/compass-recovery.fixture.tsx
+      - compass/src/components/compass-retention.dom.test.ts
+      - compass/src/components/compass-retention.fixture.tsx
+      - compass/src/components/compass-routes.tsx
+      - compass/src/components/compass-shell.tsx
+      - compass/src/components/compass-stability.dom.test.ts
+      - compass/src/components/compass-stability.fixture.tsx
+      - compass/src/components/microsoft-app-icon.test.ts
+      - compass/src/components/microsoft-app-icon.tsx
+      - compass/src/components/microsoft-todo-panel.tsx
+      - compass/src/components/settings-workspace.tsx
+      - compass/src/components/streaming-markdown.tsx
+      - compass/src/components/today/calendar-draft-dialog.tsx
+      - compass/src/components/today/calendar-layout.test.ts
+      - compass/src/components/today/calendar.tsx
+      - compass/src/components/today/dates.ts
+      - compass/src/components/today/mail-list.tsx
+      - compass/src/components/today/previews.tsx
+      - compass/src/components/today/row-menu.tsx
+      - compass/src/components/ui/feedback.tsx
+      - compass/src/components/ui/layout.tsx
+      - compass/src/components/ui/search-field.tsx
+      - compass/src/components/ui/skeleton.tsx
+      - compass/src/components/ui/toast.tsx
+      - compass/src/lib/ask-stream.test.ts
+      - compass/src/lib/ask-stream.ts
+      - compass/src/lib/background-briefs.test.ts
+      - compass/src/lib/background-briefs.ts
+      - compass/src/lib/chat-history.test.ts
+      - compass/src/lib/chat-history.ts
+      - compass/src/lib/compass-api.test.ts
+      - compass/src/lib/compass-api.ts
+      - compass/src/lib/external-links.test.ts
+      - compass/src/lib/external-links.ts
+      - compass/src/lib/graph-permissions.test.ts
+      - compass/src/lib/graph-permissions.ts
+      - compass/src/lib/https-url.test.ts
+      - compass/src/lib/https-url.ts
+      - compass/src/lib/mail-priority.ts
+      - compass/src/lib/microsoft-data.ts
+      - compass/src/lib/microsoft-reauth.test.ts
+      - compass/src/lib/microsoft-reauth.ts
+      - compass/src/lib/microsoft-search.test.ts
+      - compass/src/lib/microsoft-search.ts
+      - compass/src/lib/navigation.ts
+      - compass/src/lib/outlook-calendar.test.ts
+      - compass/src/lib/outlook-calendar.ts
+      - compass/src/lib/pending-markdown-links.ts
+      - compass/src/lib/request-deadline.test.ts
+      - compass/src/lib/request-deadline.ts
+      - compass/src/lib/resolved-mail.test.ts
+      - compass/src/lib/resolved-mail.ts
+      - compass/src/lib/settings-preferences.test.ts
+      - compass/src/lib/settings-preferences.ts
+      - compass/src/lib/swa-session.ts
+      - compass/src/lib/todo-tasks.test.ts
+      - compass/src/lib/todo-tasks.ts
+      - compass/src/lib/typing-reveal.test.ts
+      - compass/src/lib/typing-reveal.ts
+      - compass/src/public/integrations/SOURCES.md
+      - compass/src/public/integrations/claude.svg
+      - compass/src/public/integrations/microsoft-365.svg
+      - compass/src/public/integrations/microsoft-copilot.svg
+      - compass/staticwebapp.config.json
+      - compass/tsconfig.json
+      - docs/authorization-roles.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - excelerate/src/app/settings/page.tsx
+      - excelerate/src/components/excelerate-client.tsx
+      - hub/app/403/page.tsx
+      - hub/app/error.tsx
+      - hub/app/globals.css
+      - hub/app/hub/settings/page.tsx
+      - hub/app/not-found.tsx
+      - hub/app/preview/page.tsx
+      - hub/components/HubLauncher.tsx
+      - hub/components/HubSettingsPage.tsx
+      - hub/components/LandingPage.tsx
+      - hub/functions/dist-entry.js
+      - hub/functions/src/roles.test.ts
+      - hub/lib/apps.test.ts
+      - hub/lib/apps.ts
+      - hub/lib/navigation.test.ts
+      - hub/lib/navigation.ts
+      - hub/staticwebapp.config.json
+      - infra/azure/README.md
+      - infra/azure/compass/README.md
+      - infra/azure/compass/serverless.bicep
+      - infra/azure/static-web-apps.bicep
+      - onboarding/apps/dashboard/app/settings/page.test.tsx
+      - onboarding/apps/dashboard/app/settings/page.tsx
+      - onboarding/apps/dashboard/components/client-workspace-empty-state.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+      - onboarding/apps/dashboard/components/vendor-workstreams-empty-state.tsx
+      - onboarding/apps/dashboard/components/vm/vm-shared.tsx
+      - onboarding/apps/dashboard/components/workstream-archive-settings.tsx
+      - package.json
+      - packages/brand/src/graphical-theme.css
+      - packages/brand/src/styles.css
+      - packages/ui/src/appearance-quick-settings.tsx
+      - packages/ui/src/index.ts
+      - packages/ui/src/settings/appearance-settings.tsx
+      - packages/ui/src/settings/index.ts
+      - packages/ui/src/settings/preference-options.test.ts
+      - packages/ui/src/settings/preference-options.ts
+      - packages/ui/src/settings/settings-section.tsx
+      - packages/ui/src/theme-toggle.tsx
+      - proforma/src/app/globals.css
+      - proforma/src/app/settings/page.tsx
+      - proforma/src/components/__tests__/proforma-settings-page.test.tsx
+      - proforma/src/components/__tests__/settings-previews.test.tsx
+      - proforma/src/components/proforma-quick-settings.tsx
+      - proforma/src/components/proforma-settings-page.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/settings-previews.tsx
+      - proforma/src/components/use-proforma-edit-view.ts
+      - pto-tracker/docs/README.md
+      - pto-tracker/docs/architecture.md
+      - pto-tracker/docs/implementation-playbook.md
+      - pto-tracker/research/assumptions.md
+      - pto-tracker/src/app/settings/CalendarColorSettings.tsx
+      - pto-tracker/src/app/settings/page.tsx
+      - pto-tracker/src/app/team/TeamClient.tsx
+      - pto-tracker/src/components/ApprovalPanel.tsx
+      - pto-tracker/src/components/LeaveCalendar.tsx
+      - pto-tracker/src/components/RequestForm.tsx
+      - pto-tracker/src/lib/navigation.test.ts
+      - pto-tracker/src/lib/navigation.ts
+      - pto-tracker/templates/README.md
+      - scripts/affected-apps.ts
+      - scripts/app-registry.ts
+      - scripts/github/configure-repository.ts
+      - scripts/github/triage-issue.test.ts
+      - scripts/github/triage-issue.ts
+      - scripts/tooling.test.ts
+      - transition/AGENTS.md
+      - transition/next-env.d.ts
+      - transition/src/app/globals.css
+      - transition/src/app/settings/page.tsx
+      - transition/src/components/accounts/account-detail.tsx
+      - transition/src/components/accounts/accounts-page.tsx
+      - transition/src/components/command-palette-model.ts
+      - transition/src/components/command-palette.test.ts
+      - transition/src/components/command-palette.tsx
+      - transition/src/components/dashboard/dashboard.tsx
+      - transition/src/components/data/data-page.tsx
+      - transition/src/components/feedback.tsx
+      - transition/src/components/households/household-overview.tsx
+      - transition/src/components/households/households-page.tsx
+      - transition/src/components/page-skeletons.tsx
+      - transition/src/components/settings/settings-page.tsx
+      - transition/src/components/status-select.tsx
+      - transition/src/components/tour/tour-layer.tsx
+      - transition/src/components/tour/tour-provider.tsx
+      - transition/src/components/transition-shell.tsx
+      - transition/src/components/ui/fields.tsx
+      - transition/src/components/ui/layout.tsx
+      - transition/src/lib/account-search.test.ts
+      - transition/src/lib/accounts-list.test.ts
+      - transition/src/lib/accounts-list.ts
+      - transition/src/lib/api/client.ts
+      - transition/src/lib/choices.ts
+      - transition/src/lib/handlers.ts
+      - transition/src/lib/model.ts
+      - transition/src/lib/navigation.test.ts
+      - transition/src/lib/navigation.ts
+      - transition/src/lib/registration-option.test.ts
+      - transition/src/lib/remembered-filters.test.ts
+      - transition/src/lib/remembered-filters.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
+      - transition/src/lib/tour-demo.test.ts
+      - transition/src/lib/tour-demo.ts
+      - transition/src/lib/tour.test.ts
+      - transition/src/lib/tour.ts
+      - twenty
+      - valuation/src/app/cases/detail/case-detail-client.tsx
+      - valuation/src/app/cases/new/page.tsx
+      - valuation/src/app/imports/page.tsx
+      - valuation/src/app/page.tsx
+      - valuation/src/app/settings/page.tsx
+      - valuation/src/lib/navigation.test.ts
+prsInProgress:
+  - title: "feat(compliance): add scaffold and planning draft"
+    body: >-
+      ## Why
+
+
+      Compliance needs an app foundation and an agreed planning draft before implementation can begin.
+
+
+      ## What changed
+
+
+      - Added a Compliance app scaffold with shared navigation, placeholder pages, role mapping, and health and auth
+      endpoints.
+
+      - Documented the proposed product scope, architecture, ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/166
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a1
+    additions: 672
+    deletions: 18
+    changedFiles: 46
+    author: myriadas-clees
+    createdAt: 2026-10-09T18:52:36Z
+    updatedAt: 2026-10-09T18:57:45Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 672
+    workDeletions: 18
+    workFiles: *a4
+  - title: "fix(auth): automate preview callback registration"
+    body: >-
+      ## Why
+
+
+      Custom Entra sign-in fails with `AADSTS50011` on new Azure SWA preview hosts because their callback URLs are not
+      registered. Each unified Hub preview needs one callback for the entire suite.
+
+
+      ## What changed
+
+
+      - Register the exact deployed preview callback before publishing friendly links; re...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/165
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a5
+    additions: 455
+    deletions: 5
+    changedFiles: 7
+    author: myriadas-clees
+    createdAt: 2026-10-09T17:14:26Z
+    updatedAt: 2026-10-09T17:24:14Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a6
+    workTimestamps: *a7
+    workAdditions: 455
+    workDeletions: 5
+    workFiles: *a8
+  - title: "feat(ui): shared settings page across apps"
+    body: Adds a shared Settings module to `@myriad/ui` and gives every app a Settings page built from it. Settings now
+      carries everything from the account menu's quick settings (color theme, navigation layout), plus each app's own
+      real preferences. The quick settings stay in the account menu; both surfaces s...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/162
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels: *a9
+    additions: 748
+    deletions: 613
+    changedFiles: 36
+    author: myriadas-clees
+    createdAt: 2026-10-09T12:33:38Z
+    updatedAt: 2026-10-12T05:19:10Z
+    closedAt: 2026-10-12T05:19:10Z
+    mergedAt: 2026-10-12T05:19:10Z
+    workCommits: *a10
+    workTimestamps: *a11
+    workAdditions: 1077
+    workDeletions: 812
+    workFiles: *a12
+  - title: "feat(compass): add Microsoft 365 client intelligence app"
+    body: |-
+      Stacked on #162 (which stacks on #158 / #161); merge after it.
+
+      ## Why
+
+      Add a focused workspace for advisors to review daily priorities and client context from Microsoft 365.
+
+      ## What changed
+
+      - Add Compass with daily priorities, client briefs, Copilot answers, chat history, and Microsoft 365 integr...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels: *a13
+    additions: 24279
+    deletions: 23
+    changedFiles: 151
+    author: myriadas-clees
+    createdAt: 2026-10-09T16:05:01Z
+    updatedAt: 2026-10-12T05:20:04Z
+    closedAt: 2026-10-12T05:19:11Z
+    mergedAt: 2026-10-12T05:19:11Z
+    workCommits: *a14
+    workTimestamps: *a15
+    workAdditions: 27392
+    workDeletions: 1570
+    workFiles: *a16
+  - title: "feat(transition): add guided onboarding tour"
+    body: >-
+      Stacked on #160; merge after it.
+
+
+      ## Why
+
+
+      New Transition users need a concise walkthrough to find key pages and understand the main workflow.
+
+
+      ## What changed
+
+
+      Added a guided tour with role-specific steps, a welcome and completion flow, and a spotlight that follows page
+      targets. Users can launch it ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - "app: transition"
+    additions: 1303
+    deletions: 65
+    changedFiles: 28
+    author: myriadas-clees
+    createdAt: 2026-10-08T13:19:29Z
+    updatedAt: 2026-10-12T05:19:09Z
+    closedAt: 2026-10-12T05:19:09Z
+    mergedAt: 2026-10-12T05:19:09Z
+    workCommits:
+      - &a17
+        sha: e43753c8d5f191dc4479195909083fdbfa74c08f
+        message: "feat(transition): add a settings page and start the guided tour from it"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e43753c8d5f191dc4479195909083fdbfa74c08f
+        authoredAt: 2026-10-09T12:15:55Z
+      - &a30
+        sha: f633f76f1785d29185460eded8f8088660ba0973
+        message: "fix(transition): give accounts tour steps an explicit default query"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f633f76f1785d29185460eded8f8088660ba0973
+        authoredAt: 2026-10-09T14:13:13Z
+      - &a35
+        sha: e114a263f7e250e12002f9081b738f8736da8abe
+        message: "fix(transition): prefer a household with accounts for the tour's account step"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e114a263f7e250e12002f9081b738f8736da8abe
+        authoredAt: 2026-10-09T17:31:06Z
+      - &a38
+        sha: dee61a463c8379c60bab30835fc189e93e92fabb
+        message: "fix(transition): name the combined Blocked/Exception follow-up status in the tour"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/dee61a463c8379c60bab30835fc189e93e92fabb
+        authoredAt: 2026-10-09T17:38:37Z
+      - &a42
+        sha: d05d779b78f9b002babef7f421fb43994be4019c
+        message: "fix(transition): guard tour start against unsaved form dialog edits"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d05d779b78f9b002babef7f421fb43994be4019c
+        authoredAt: 2026-10-09T18:09:57Z
+      - &a44
+        sha: 8da05b9f222de6d9ddd133213d4274b1a78aa82d
+        message: "fix(transition): keep phone tour sheet from covering targets at page end"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8da05b9f222de6d9ddd133213d4274b1a78aa82d
+        authoredAt: 2026-10-09T18:11:38Z
+      - &a45
+        sha: 7e96264a1f8e45190c4df63a17a07ffe1e37b08e
+        message: "fix(transition): open the tour's household list in its default sort"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7e96264a1f8e45190c4df63a17a07ffe1e37b08e
+        authoredAt: 2026-10-09T18:12:29Z
+      - &a47
+        sha: 0ccd6583a2d9177d7edc201471f808fff6afe22c
+        message: "fix(transition): keep the tour's household sort out of remembered and user state"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0ccd6583a2d9177d7edc201471f808fff6afe22c
+        authoredAt: 2026-10-09T18:21:40Z
+      - &a71
+        sha: c08fbcec033648cc7d9297e9b908ce1cdcd3c666
+        message: "feat(transition): walk the tour through a synthetic demo household"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c08fbcec033648cc7d9297e9b908ce1cdcd3c666
+        authoredAt: 2026-10-09T20:37:14Z
+      - &a76
+        sha: ebba58bd7fd3ec346a6e4cfcfc7c40f3296fffde
+        message: "fix(transition): limit the tour demo write guard to mutations by path"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ebba58bd7fd3ec346a6e4cfcfc7c40f3296fffde
+        authoredAt: 2026-10-09T20:42:32Z
+      - &a77
+        sha: 08f47cc4c85bec053fd3413368c0a37a9c97815d
+        message: "fix(transition): leave the demo household when a role change ends the tour"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/08f47cc4c85bec053fd3413368c0a37a9c97815d
+        authoredAt: 2026-10-09T20:42:32Z
+      - &a88
+        sha: 7d96c0b5183e6fdc0330bc8946e94b33e91b374b
+        message: "fix(transition): restore the remembered households sort when the tour override leaves the address"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7d96c0b5183e6fdc0330bc8946e94b33e91b374b
+        authoredAt: 2026-10-09T21:10:52Z
+      - &a92
+        sha: 15adba4cb1870da8575afdc026807fdf841cf847
+        message: "fix(transition): leave the demo household when the tour's identity changes"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/15adba4cb1870da8575afdc026807fdf841cf847
+        authoredAt: 2026-10-09T21:19:15Z
+      - &a97
+        sha: c4a352734e4fb7e7e3417268e20d517e9349de78
+        message: "fix(transition): drop the Home persistence claim from the tour copy"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c4a352734e4fb7e7e3417268e20d517e9349de78
+        authoredAt: 2026-10-09T21:27:11Z
+      - &a103
+        sha: 6029826f970343301badafb3910546c236f7e12c
+        message: "fix(transition): end the tour when Back interrupts its navigation"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6029826f970343301badafb3910546c236f7e12c
+        authoredAt: 2026-10-09T21:36:26Z
+      - &a108
+        sha: a700681365656dfe0923aa5f0963615061625191
+        message: "fix(transition): clear both URL overrides when clearing households filters"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a700681365656dfe0923aa5f0963615061625191
+        authoredAt: 2026-10-09T21:43:53Z
+    workTimestamps:
+      - 2026-10-09T12:15:55Z
+      - 2026-10-09T14:13:13Z
+      - 2026-10-09T17:31:06Z
+      - 2026-10-09T17:38:37Z
+      - 2026-10-09T18:09:57Z
+      - 2026-10-09T18:11:38Z
+      - 2026-10-09T18:12:29Z
+      - 2026-10-09T18:21:40Z
+      - 2026-10-09T20:37:14Z
+      - 2026-10-09T20:42:32Z
+      - 2026-10-09T20:42:32Z
+      - 2026-10-09T21:10:52Z
+      - 2026-10-09T21:19:15Z
+      - 2026-10-09T21:27:11Z
+      - 2026-10-09T21:36:26Z
+      - 2026-10-09T21:43:53Z
+    workAdditions: 387
+    workDeletions: 251
+    workFiles:
+      - transition/src/app/settings/page.tsx
+      - transition/src/components/command-palette.test.ts
+      - transition/src/components/households/household-overview.tsx
+      - transition/src/components/households/households-page.tsx
+      - transition/src/components/page-skeletons.tsx
+      - transition/src/components/settings/settings-page.tsx
+      - transition/src/components/tour/tour-button.tsx
+      - transition/src/components/tour/tour-layer.tsx
+      - transition/src/components/tour/tour-provider.tsx
+      - transition/src/components/transition-shell.tsx
+      - transition/src/components/ui/fields.tsx
+      - transition/src/lib/api/client.ts
+      - transition/src/lib/navigation.test.ts
+      - transition/src/lib/navigation.ts
+      - transition/src/lib/remembered-filters.test.ts
+      - transition/src/lib/remembered-filters.ts
+      - transition/src/lib/tour-demo.test.ts
+      - transition/src/lib/tour-demo.ts
+      - transition/src/lib/tour.test.ts
+      - transition/src/lib/tour.ts
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "feat(transition): add a settings page and start the guided tour from it"
+      - "feat(ui): shared settings module with appearance and navigation preferences"
+      - "feat(transition): build the settings page from the shared settings module"
+      - "feat(valuation): add the shared settings page"
+      - "feat(excelerate): use the shared settings page"
+      - "feat(pto-tracker): use the shared settings page"
+      - "fix(ui): keep settings choice labels inside their segments"
+      - "feat(onboarding): use the shared settings page"
+      - "feat(proforma): use the shared settings page"
+      - "feat(hub): add the shared settings page"
+      - "fix(proforma): keep editing view in sync without rereading storage and wait for the session"
+      - "fix(proforma): fall back to the anonymous editing view when the session fails"
+      - "fix(pto-tracker): keep calendar color selects labelled for multi-word leave types"
+      - "fix(transition): give accounts tour steps an explicit default query"
+      - Merge remote-tracking branch 'origin/feat/onboarding-transition-tour' into tmp/t162-merge
+      - "feat(compass): add Microsoft 365 client intelligence app"
+      - "fix(auth): automate preview callback registration"
+      - "feat(compass): refine Ask Compass workspace visuals"
+      - "fix(transition): prefer a household with accounts for the tour's account step"
+      - Merge remote-tracking branch 'origin/feat/onboarding-transition-tour' into tmp-162-fix
+      - "fix(compass): address review feedback"
+      - "fix(transition): name the combined Blocked/Exception follow-up status in the tour"
+      - Merge remote-tracking branch 'origin/feat/onboarding-transition-tour' into tmp-162-fix
+      - "fix(compass): bind account mutations and palette previews to loaded data"
+      - "fix(compass): scope saved chats to the Microsoft connection"
+      - "fix(transition): guard tour start against unsaved form dialog edits"
+      - "fix(compass): conditional disconnect, same-origin API base, read-only docs"
+      - "fix(transition): keep phone tour sheet from covering targets at page end"
+      - "fix(transition): open the tour's household list in its default sort"
+      - Merge remote-tracking branch 'origin/feat/onboarding-transition-tour' into tmp-162
+      - "fix(transition): keep the tour's household sort out of remembered and user state"
+      - Merge remote-tracking branch 'origin/feat/onboarding-transition-tour' into tmp-162
+      - "fix(compass): key saved chats by connection and read canonical Hub URL"
+      - "fix(ui): settings section headings and content padding"
+      - "fix(compass): safe account replacement, legacy disconnect guard, mixed-role launcher"
+      - "fix(compass): revalidate Ask completion, scope mapping cleanup, preview-only docs"
+      - "feat(compliance): add scaffold and planning draft"
+      - "fix(compass): scope disconnect cleanup, revalidate JSON Ask, document local auth"
+      - "fix(compass): keep the default local database path in the settings example"
+      - "fix(compass): revalidate the connection before returning dashboard data"
+      - "fix(compass): bind chat reads to the displayed Microsoft connection"
+      - "chore: drop unrelated twenty pointer and generated next-env change"
+      - Merge feat/shared-settings-page into feat/port-northstar-app
+      - "fix(compass): keep all-day brief dates and recheck chat connection after reads"
+      - "fix(compass): make Cosmos chat cleanup and retention rewrites ETag-conditional"
+      - "fix(compass): keep newer same-ID message payloads against stale chat saves"
+      - "fix(compass): fence Cosmos retention publication with the preference ETag"
+      - "fix(compass): refresh the retention timestamp when a Copilot conversation is reused"
+      - "fix(compass): keep newer same-ID message payloads in the SQLite chat path"
+      - "fix(compass): include Copilot mapping TTL rewrites in the fenced retention pass"
+      - "fix(compass): fence ordinary Ask completion by connection generation"
+      - "fix(compass): retain the client chat revision when validating chat saves"
+      - "fix(compass): verify the connection immediately before calendar and To Do writes"
+      - "fix(compass): make Cosmos chat saves conditional and re-merge on conflict"
+      - "feat(transition): walk the tour through a synthetic demo household"
+      - Merge remote-tracking branch 'origin/feat/onboarding-transition-tour' into tmp-162demo
+      - "fix(compass): scope disconnect cleanup to the removed connection generation"
+      - "fix(infra): provision a dedicated Compass Cosmos container and COMPASS_COSMOS_CONTAINER setting"
+      - "chore(compass): remove the unused unconditional Cosmos chat upsert helper"
+      - "fix(transition): limit the tour demo write guard to mutations by path"
+      - "fix(transition): leave the demo household when a role change ends the tour"
+      - Merge remote-tracking branch 'origin/feat/onboarding-transition-tour' into tmp-162b
+      - "fix(excelerate): keep Appearance below the settings page heading"
+      - "fix(compass): clear scheduled-brief attempts when the Microsoft connection changes"
+      - "fix(compass): revalidate the retention preference around Cosmos chat saves"
+      - "fix(compass): keep midnight calendar slot selections as timed events"
+      - Merge remote-tracking branch 'origin/feat/shared-settings-page' into tmp-164g
+      - "fix(compass): recheck retention after publishing Copilot mappings"
+      - "fix(compass): read retention inside the SQLite chat save transaction"
+      - "fix(compass): re-read an expired Copilot mapping whose delete lost the ETag race"
+      - "fix(compass): verify the connection before emitting streamed partial answers"
+      - "fix(transition): restore the remembered households sort when the tour override leaves the address"
+      - Merge remote-tracking branch 'origin/feat/onboarding-transition-tour' into tmp-162c
+      - "fix(compass): return auth_required for chat saves bound to a replaced account"
+      - "fix(compass): reject Ask when the preflight account differs from the displayed one"
+      - "fix(transition): leave the demo household when the tour's identity changes"
+      - Merge remote-tracking branch 'origin/feat/onboarding-transition-tour' into tmp-162d
+      - "fix(compass): verify every streamed partial answer before emitting it"
+      - "fix(compass): place timed calendar events by wall-clock time across DST"
+      - Merge remote-tracking branch 'origin/feat/shared-settings-page' into tmp-164i
+      - "fix(transition): drop the Home persistence claim from the tour copy"
+      - Merge remote-tracking branch 'origin/feat/onboarding-transition-tour' into tmp-162e
+      - "fix(compass): refresh reused Copilot mappings conditionally"
+      - "fix(compass): track pending To Do updates per task"
+      - "fix(compass): reset saved chats when the chat owner changes"
+      - Merge remote-tracking branch 'origin/feat/shared-settings-page' into tmp-164j
+      - "fix(transition): end the tour when Back interrupts its navigation"
+      - Merge remote-tracking branch 'origin/feat/onboarding-transition-tour' into tmp-162f
+      - "fix(compass): rethrow SQLITE_BUSY from BEGIN instead of masking it with ROLLBACK"
+      - "fix(compass): fence local Copilot mapping writes with retention updates"
+      - "test(compass): import bun:sqlite as an ES module"
+      - "fix(transition): clear both URL overrides when clearing households filters"
+      - "fix(compass): fail Ask mapping writes when container TTL cannot be verified"
+      - "fix(compass): commit SQLite retention changes in one transaction"
+      - Merge remote-tracking branch 'origin/feat/onboarding-transition-tour' into tmp-162g
+      - Merge remote-tracking branch 'origin/feat/shared-settings-page' into tmp-164j
+      - "fix(compass): keep events visible across the repeated DST hour"
+      - Merge remote-tracking branch 'origin/feat/shared-settings-page' into tmp-164k
+      - "fix(compass): serialize local mapping refreshes with retention updates"
+      - "fix(compass): publish new Copilot mappings create-only"
+    commits:
+      - *a17
+      - *a18
+      - *a19
+      - *a20
+      - *a21
+      - *a22
+      - *a23
+      - *a24
+      - *a25
+      - *a26
+      - *a27
+      - *a28
+      - *a29
+      - *a30
+      - *a31
+      - *a32
+      - *a33
+      - *a34
+      - *a35
+      - *a36
+      - *a37
+      - *a38
+      - *a39
+      - *a40
+      - *a41
+      - *a42
+      - *a43
+      - *a44
+      - *a45
+      - *a46
+      - *a47
+      - *a48
+      - *a49
+      - *a50
+      - *a51
+      - *a52
+      - *a53
+      - *a54
+      - *a55
+      - *a56
+      - *a57
+      - *a58
+      - *a59
+      - *a60
+      - *a61
+      - *a62
+      - *a63
+      - *a64
+      - *a65
+      - *a66
+      - *a67
+      - *a68
+      - *a69
+      - *a70
+      - *a71
+      - *a72
+      - *a73
+      - *a74
+      - *a75
+      - *a76
+      - *a77
+      - *a78
+      - *a79
+      - *a80
+      - *a81
+      - *a82
+      - *a83
+      - *a84
+      - *a85
+      - *a86
+      - *a87
+      - *a88
+      - *a89
+      - *a90
+      - *a91
+      - *a92
+      - *a93
+      - *a94
+      - *a95
+      - *a96
+      - *a97
+      - *a98
+      - *a99
+      - *a100
+      - *a101
+      - *a102
+      - *a103
+      - *a104
+      - *a105
+      - *a106
+      - *a107
+      - *a108
+      - *a109
+      - *a110
+      - *a111
+      - *a112
+      - *a113
+      - *a114
+      - *a115
+      - *a116
+releases: []
+externalContributions: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T17:34:11Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T17:34:12Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T17:34:14Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T17:34:15Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T17:34:17Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T17:34:18Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T17:34:19Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T17:44:03Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T17:44:04Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T17:44:06Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T17:59:34Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T18:10:41Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T18:10:42Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T18:10:44Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T18:22:21Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T18:22:22Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T18:32:27Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T18:32:29Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T18:32:30Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T18:43:29Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T18:43:31Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T18:43:32Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T18:53:13Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T18:53:15Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T18:53:17Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T19:03:59Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T19:14:02Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T19:39:23Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T19:39:24Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T19:49:12Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T19:49:13Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T20:01:51Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T20:01:52Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T20:13:48Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T20:13:50Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T20:13:51Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T20:22:29Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T20:22:31Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T20:36:13Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T20:36:15Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T20:44:38Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T20:44:40Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T20:48:55Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T20:55:13Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T20:58:53Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T21:08:29Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T21:13:27Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T21:13:29Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T21:13:30Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T21:13:31Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T21:13:32Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T21:13:33Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T21:13:35Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T21:21:14Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T21:21:16Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T21:26:17Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T21:26:18Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T21:49:11Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T21:49:12Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T21:49:14Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T21:49:15Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T21:49:17Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T21:49:18Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T21:49:20Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T21:58:52Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T21:58:53Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prTitle: "feat(compass): add Microsoft 365 client intelligence app"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    state: commented
+    submittedAt: 2026-10-09T21:58:55Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 162
+    prTitle: "feat(ui): shared settings page across apps"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/162
+    state: commented
+    submittedAt: 2026-10-09T12:41:06Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 162
+    prTitle: "feat(ui): shared settings page across apps"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/162
+    state: commented
+    submittedAt: 2026-10-09T12:41:08Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 162
+    prTitle: "feat(ui): shared settings page across apps"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/162
+    state: commented
+    submittedAt: 2026-10-09T12:46:39Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 162
+    prTitle: "feat(ui): shared settings page across apps"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/162
+    state: commented
+    submittedAt: 2026-10-09T12:58:24Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 162
+    prTitle: "feat(ui): shared settings page across apps"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/162
+    state: commented
+    submittedAt: 2026-10-09T18:27:51Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 162
+    prTitle: "feat(ui): shared settings page across apps"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/162
+    state: commented
+    submittedAt: 2026-10-09T18:27:52Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 162
+    prTitle: "feat(ui): shared settings page across apps"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/162
+    state: commented
+    submittedAt: 2026-10-09T20:47:30Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-09T14:13:17Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-09T14:13:19Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-09T17:31:11Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-09T17:38:41Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-09T17:38:42Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-09T17:38:43Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-09T17:38:44Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-09T17:51:25Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-09T18:23:53Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-09T18:23:55Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-09T20:37:20Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-09T20:44:56Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-09T21:13:20Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-09T21:21:28Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-09T21:29:42Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-09T21:38:33Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prTitle: "feat(transition): add guided onboarding tour"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    state: commented
+    submittedAt: 2026-10-09T21:45:55Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4232842452
+    body: "Fixed in 829f831: added an anonymous /api/compass/microsoft/callback route ahead of the Compass wildcard in
+      hub/staticwebapp.config.json, so the OAuth callback is no longer redirected by the 401 override."
+    path: hub/staticwebapp.config.json
+    createdAt: 2026-10-09T17:34:11Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4232842739
+    body: "Fixed in 829f831: read_only is removed from the Compass SWA routes and hidden from the Hub launcher
+      (hub/lib/apps.ts), so only compass_user, myriadas_user, and admin reach Compass."
+    path: hub/staticwebapp.config.json
+    createdAt: 2026-10-09T17:34:12Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4232842948
+    body: "Fixed in 829f831: the copilotGraphBaseUrl default in infra/azure/compass/serverless.bicep is now the beta Graph
+      endpoint, matching the adapter default."
+    path: infra/azure/compass/serverless.bicep
+    createdAt: 2026-10-09T17:34:14Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4232843342
+    body: Valid, but not changed in this PR. The dark-mode collision comes from the monotone-actions change in stacked brand
+      PR 161 (packages/brand/src/styles.css), where --action and --secondary both resolve to --neutral-10 in dark mode.
+      Left for the human to migrate foregrounds to primary-foreground and act...
+    path: packages/brand/src/styles.css
+    createdAt: 2026-10-09T17:34:15Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4232843833
+    body: Left for human decision, no change in this PR. Hub runtime settings in infra/azure/static-web-apps.bicep
+      intentionally set AZURE_COSMOS_KEY to empty and use the app-records container (partition /partitionKey, no TTL),
+      so Compass Microsoft 365 reports unconfigured in preview. Fixing it needs a Cosmos...
+    path: .github/workflows/azure-static-web-apps.yml
+    createdAt: 2026-10-09T17:34:17Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4232844200
+    body: "Fixed in 829f831: every Ask turn now sends the connectionKey from the preflight status check as
+      expectedConnectionKey; saved questions keep their original key. A stability fixture scenario
+      (ask-bound-connection) covers the normal turn."
+    path: compass/src/components/compass-provider.tsx
+    createdAt: 2026-10-09T17:34:18Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4232844442
+    body: "Fixed in 829f831: a new compassApiUrl helper (compass/src/lib/compass-api.ts) builds all browser Compass API
+      calls from NEXT_PUBLIC_COMPASS_API_BASE_URL, and the next.config default is now /api/compass. Unit tests added."
+    path: compass/src/lib/chat-history.ts
+    createdAt: 2026-10-09T17:34:19Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4232929025
+    body: "Fixed in 696c46a: Disconnect now sends the displayed connection key and the server returns 401 (auth_required,
+      same as Ask and calendar create) without deleting anything when another account is connected."
+    path: compass/functions/src/compass-microsoft.ts
+    createdAt: 2026-10-09T17:44:03Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4232929310
+    body: "Fixed in 696c46a: To Do PATCH now sends the loaded connection key, and the server checks it with accessTokenFor
+      before any Graph write, so a replaced account gets a 401 and no PATCH."
+    path: compass/functions/src/compass-microsoft.ts
+    createdAt: 2026-10-09T17:44:04Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4232929545
+    body: "Fixed in 696c46a: the palette now keeps the exact loaded message or event object by identity instead of matching
+      on subject and body preview."
+    path: compass/src/components/command-palette.tsx
+    createdAt: 2026-10-09T17:44:05Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4233087199
+    body: "Fixed in d748ca6: saved chats are now stored with the Microsoft connection key and list/read return only chats
+      matching the current connection, and saves must send the key the tab loaded or are rejected. Chats saved before
+      this change stay hidden rather than being attributed to whichever account is ..."
+    path: compass/functions/src/compass-chat-history.ts
+    createdAt: 2026-10-09T17:59:34Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4233178431
+    body: "Fixed in f148463: disconnect now deletes the connection only if the verified snapshot is still current (Cosmos
+      `if-match` etag, or a guarded SQLite DELETE), and mappings are cleared only after that succeeds. A stale or
+      changed connection returns the same 401 auth_required. Tests cover the guarded lo..."
+    path: compass/functions/src/compass-microsoft.ts
+    createdAt: 2026-10-09T18:10:41Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4233178632
+    body: "Fixed in f148463: the Compass Bicep output and README now point browsers at the same-origin SWA `/api/compass`
+      path, not the Function App host. compassApiUrl also falls back to `/api/compass` for cross-origin absolute bases
+      in the browser, with a test."
+    path: infra/azure/compass/serverless.bicep
+    createdAt: 2026-10-09T18:10:42Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4233178836
+    body: "Fixed in f148463: docs/authorization-roles.md now states that Compass accepts only compass_user, myriadas_user,
+      and admin, so read_only does not grant Compass access."
+    path: docs/authorization-roles.md
+    createdAt: 2026-10-09T18:10:44Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4233275105
+    body: 'Fixed in 1bb32ad: saved chats are now keyed by a short prefix of the Microsoft connection key in Cosmos document
+      ids and SQLite keys, so A and B can each save the same chat id. The partition key is unchanged, the "another
+      connection" rejection is removed, and a stale PUT with a mismatched key is sti...'
+    path: compass/functions/src/compass-conversations.ts
+    createdAt: 2026-10-09T18:22:21Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4233275331
+    body: "Fixed in 1bb32ad: the Compass shell now reads NEXT_PUBLIC_MYRIAD_HUB_URL, the same way packages/ui AppShell does,
+      with the same /hub fallback."
+    path: compass/src/components/compass-shell.tsx
+    createdAt: 2026-10-09T18:22:22Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4233359274
+    body: "Fixed in f31413a: old Copilot mappings are now deleted only after the replacement connection is persisted, so a
+      failed or lost conditional write keeps them."
+    path: compass/functions/src/compass-microsoft.ts
+    createdAt: 2026-10-09T18:32:27Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4233359458
+    body: "Fixed in f31413a: legacy disconnects now read the checked snapshot and delete it with the same conditional delete
+      (etag or SQLite full-row match), so a concurrent reconnect is kept."
+    path: compass/functions/src/compass-microsoft.ts
+    createdAt: 2026-10-09T18:32:29Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4233359627
+    body: "Fixed in f31413a: compass_user now counts toward Compass access, so read_only plus compass_user keeps the Compass
+      tile; read_only alone still hides it."
+    path: hub/lib/apps.ts
+    createdAt: 2026-10-09T18:32:30Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4233447181
+    body: "Fixed in 3269265: a streamed Ask now re-reads the stored connection once before emitting its completed answer and
+      ends with the auth_required error on key mismatch. Partial answer chunks are not re-checked, per the
+      one-read-at-completion constraint."
+    path: compass/functions/src/compass-microsoft.ts
+    createdAt: 2026-10-09T18:43:29Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4233447399
+    body: "Fixed in 3269265: mappings now record their connectionKey on write, and replacement cleanup deletes only mappings
+      with the replaced key plus legacy unkeyed mappings, which predate scoping. Mappings bound to account B survive."
+    path: compass/functions/src/compass-microsoft.ts
+    createdAt: 2026-10-09T18:43:31Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4233447516
+    body: "Fixed in 3269265: the Compass row is now labeled preview only, and a note after the table cites previewOnly in
+      scripts/app-registry.ts."
+    path: docs/azure-serverless-plan.md
+    createdAt: 2026-10-09T18:43:32Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4233524377
+    body: "Fixed in 2a237da: disconnect now passes the verified snapshot connection key to the scoped delete, so only that
+      connection mappings and legacy unkeyed ones are removed. A test confirms a keyed mapping for account B survives
+      disconnecting A."
+    path: compass/functions/src/compass-microsoft.ts
+    createdAt: 2026-10-09T18:53:13Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4233524572
+    body: "Fixed in 2a237da: the JSON Ask path now calls the same requireConnectionStillBound helper before returning the
+      answer, and a test confirms a mid-request account switch returns auth_required instead of the answer."
+    path: compass/functions/src/compass-microsoft.ts
+    createdAt: 2026-10-09T18:53:15Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4233524791
+    body: "Not changed server-side, by design: demo mode is client-only and server auth is never bypassed, even in dev. The
+      README now documents that demo mode is UI-only and that full local testing uses the SWA emulator in front of func
+      start, which injects the principal (2a237da)."
+    path: compass/functions/src/compass-microsoft.ts
+    createdAt: 2026-10-09T18:53:16Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4233615505
+    body: "Fixed in 0f27fd0: the dashboard data path now re-reads the bound connection after the Graph fetches and returns
+      the auth_required response on mismatch. Added a regression test for an account switch during the fetch."
+    path: compass/functions/src/compass-microsoft.ts
+    createdAt: 2026-10-09T19:03:59Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4233696558
+    body: "Fixed in e79abb1: GET /chats now requires the connectionKey the tab loaded and returns the auth_required 401 on
+      mismatch or missing key, and the client refreshes the connection instead of merging remote chats."
+    path: compass/functions/src/compass-chat-history.ts
+    createdAt: 2026-10-09T19:14:02Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4233904835
+    body: "Fixed in ae7ba73: all-day brief events now use their date-only Graph values instead of converting midnight
+      through the advisor time zone, with a western-zone test."
+    path: compass/functions/src/compass-scheduled-brief.ts
+    createdAt: 2026-10-09T19:39:22Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4233905051
+    body: "Fixed in ae7ba73: after reading saved chats, the handler re-reads the Microsoft connection key and returns the
+      auth_required response if it changed."
+    path: compass/functions/src/compass-chat-history.ts
+    createdAt: 2026-10-09T19:39:24Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4233979643
+    body: "Fixed in 95a4a84: retention rewrites and deletes now carry the ETag they read, a lost race re-reads and retries,
+      and the newer chat is never reverted."
+    path: compass/functions/src/compass-conversations.ts
+    createdAt: 2026-10-09T19:49:12Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4233979798
+    body: "Fixed in 95a4a84: expired-chat cleanup deletes with If-Match on the queried ETag, and a 404 or 412 from a
+      concurrent save is treated as benign."
+    path: compass/functions/src/compass-conversations.ts
+    createdAt: 2026-10-09T19:49:13Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234080769
+    body: "Fixed in c615ef7: a same-ID message payload already stored with a newer save time is no longer replaced by a save
+      from an older chat revision."
+    path: compass/functions/src/compass-conversations.ts
+    createdAt: 2026-10-09T20:01:51Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234080959
+    body: "Fixed in ac5a418: retention is now claimed via an ETag-conditional preference write first, and TTL rewrites
+      repeat until the preference is unchanged across the rewrite, so the last claim wins and documents converge on it."
+    path: compass/functions/src/compass-conversations.ts
+    createdAt: 2026-10-09T20:01:52Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234173440
+    body: "Fixed in cffb1e8: the SQLite path now keeps stored same-ID payloads (and the newer chat timestamp) when the
+      incoming save is from an older chat revision."
+    path: compass/functions/src/compass-conversations.ts
+    createdAt: 2026-10-09T20:13:48Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234173627
+    body: "Fixed in ea0da75: the Copilot mapping TTL rewrite now runs inside the fenced retention loop, and any conflicting
+      replace or delete forces a retry against the current preference before the ETag-unchanged check."
+    path: compass/functions/src/compass-conversations.ts
+    createdAt: 2026-10-09T20:13:50Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234173793
+    body: "Fixed in 26db4d6: reusing a stored Copilot conversation now rewrites its mapping with a fresh updatedAt, so
+      retention counts from last use."
+    path: compass/functions/src/compass-microsoft.ts
+    createdAt: 2026-10-09T20:13:51Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234236475
+    body: "Fixed in 385bf0d: the PUT parser now validates and keeps the client chat.updatedAt (invalid values rejected,
+      future values clamped to receipt time), so the storage-layer stale-save comparison sees the real revision."
+    path: compass/functions/src/compass-chat-history.ts
+    createdAt: 2026-10-09T20:22:29Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234236692
+    body: "Fixed in f6cc732: ordinary Ask (streaming and non-streaming) now revalidates the connection generation snapshot
+      after the answer, so an answer from a replaced generation is rejected with auth_required."
+    path: compass/functions/src/compass-microsoft.ts
+    createdAt: 2026-10-09T20:22:31Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234336781
+    body: "Fixed in a846166: calendar event creation and To Do updates now re-read the connection and require the same
+      generation/account immediately before the Graph request is dispatched, returning auth_required otherwise."
+    path: compass/functions/src/compass-microsoft.ts
+    createdAt: 2026-10-09T20:36:13Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234337025
+    body: "Fixed in 6e69780: Cosmos chat saves now write the chat document and each message conditionally (if-match, or
+      create-only with 409 handling) and re-read and re-merge on conflict, up to 5 attempts."
+    path: compass/functions/src/compass-conversations.ts
+    createdAt: 2026-10-09T20:36:15Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234397283
+    body: "Fixed in 46d6170: Copilot mappings now record an optional connectionGenerationId (written at the chat and
+      scheduled-brief creation sites), and disconnect cleanup skips mappings whose recorded generation differs from the
+      removed connection's; older mappings keep account-key scoping."
+    path: compass/functions/src/compass-microsoft.ts
+    createdAt: 2026-10-09T20:44:38Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234397544
+    body: "Fixed in 808b8e8: infra/azure/static-web-apps.bicep now provisions a dedicated 'compass' container (partition key
+      /pk, defaultTtl -1) in the existing database and sets COMPASS_COSMOS_CONTAINER, which Compass reads ahead of
+      AZURE_COSMOS_CONTAINER. The container exists only after the bicep template is..."
+    path: compass/functions/src/compass-microsoft.ts
+    createdAt: 2026-10-09T20:44:40Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234428853
+    body: "Fixed in 744e176: the connection-change reset now also clears the scheduled-brief attempt set, matching the
+      user-change reset."
+    path: compass/src/components/compass-provider.tsx
+    createdAt: 2026-10-09T20:48:55Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234474971
+    body: "Fixed in dba04a7: Cosmos chat saves now read the retention preference inside the retry loop and re-check its ETag
+      after the writes, retrying with the current value if it changed."
+    path: compass/functions/src/compass-chat-history.ts
+    createdAt: 2026-10-09T20:55:13Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234501301
+    body: "Fixed in 852ac1e: slot selections now pass an explicit timed flag to the draft builder, so the 12:00 AM slot
+      stays a timed one-hour event."
+    path: compass/src/lib/outlook-calendar.ts
+    createdAt: 2026-10-09T20:58:53Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234565738
+    body: "Fixed in a8b3f96: Copilot mapping writes (plain and scheduled-brief) now record the preference ETag they used
+      and, after the write, re-apply the current expiry with ETag-conditional replaces (bounded retries) if the
+      retention preference changed."
+    path: compass/functions/src/compass-conversations.ts
+    createdAt: 2026-10-09T21:08:29Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234597912
+    body: "Fixed in 9f51818: the SQLite chat save now begins an IMMEDIATE transaction and reads the stored retention inside
+      it, so a concurrent retention change cannot leave a stale expiry."
+    path: compass/functions/src/compass-conversations.ts
+    createdAt: 2026-10-09T21:13:27Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234598029
+    body: "Fixed in dd21ba4: an expired Copilot mapping whose conditional delete loses the ETag race is now re-read (bounded
+      retries) and the refreshed mapping is used instead of creating a new provider conversation."
+    path: compass/functions/src/compass-conversations.ts
+    createdAt: 2026-10-09T21:13:29Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234598178
+    body: "Fixed in fa69a17: the streaming Ask path now verifies the connection generation before the first partial answer
+      and at most every 500 ms afterwards, so a replaced account's partial text is not emitted."
+    path: compass/functions/src/compass-microsoft.ts
+    createdAt: 2026-10-09T21:13:30Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234598362
+    body: "Deferred to a follow-up: Compass's Cosmos client currently needs a key, and the unified Hub preview runtime
+      authenticates with managed identity. Compass will be moved to the shared identity-based Cosmos client in a
+      separate change; until then Compass persistence is unavailable on labeled previews."
+    path: infra/azure/static-web-apps.bicep
+    createdAt: 2026-10-09T21:13:31Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234598511
+    body: "Deferred to a follow-up: advancing a brief's revision needs a per-message revision field (protocol and
+      stored-data change) because the brief's updatedAt is intentionally pinned to its period for retention."
+    path: compass/src/components/ask-compass-workspace.tsx
+    createdAt: 2026-10-09T21:13:32Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234598646
+    body: "Deferred to a follow-up: binding legacy (null-key) dashboard reads needs an opaque connection snapshot in the
+      status response and server-side validation, which is larger than a contained fix."
+    path: compass/src/components/compass-provider.tsx
+    createdAt: 2026-10-09T21:13:33Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234598787
+    body: "Deferred to a follow-up: legacy (null-key) disconnect binding depends on the same opaque connection snapshot work
+      as the legacy dashboard read binding."
+    path: compass/functions/src/compass-microsoft.ts
+    createdAt: 2026-10-09T21:13:35Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234647400
+    body: "Fixed in 27691bc: a chat save bound to a replaced account now returns 401 auth_required, saveRemoteChat raises
+      ChatConnectionChangedError, and the workspace propagates it to onMicrosoftConnectionChanged."
+    path: compass/functions/src/compass-chat-history.ts
+    createdAt: 2026-10-09T21:21:14Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234647535
+    body: "Fixed in 8d961d1: after the preflight, a non-recovery Ask is rejected (and the connection status refreshed) when
+      the server's current account key differs from the key the tab displays, so no request or transcript context is
+      sent to the replaced account."
+    path: compass/src/components/compass-provider.tsx
+    createdAt: 2026-10-09T21:21:15Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234678764
+    body: "Fixed in 99b61e9: the throttle is gone; each streamed partial is verified against the current connection
+      generation before it is emitted (the stream is consumed sequentially, so no partial can slip past a replacement)."
+    path: compass/functions/src/compass-microsoft.ts
+    createdAt: 2026-10-09T21:26:17Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234678922
+    body: "Fixed in ab89265: timed event top/height now come from local hour/minute components (clamped to the day) instead
+      of elapsed milliseconds, so DST transition days place events in the correct row."
+    path: compass/src/components/today/calendar.tsx
+    createdAt: 2026-10-09T21:26:18Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234820652
+    body: "Fixed in 5ee0e44: the reuse path now refreshes the mapping with an ETag-conditional replace (retry on 412) and
+      returns null when it was deleted, so a reset mapping is never restored."
+    path: compass/functions/src/compass-microsoft.ts
+    createdAt: 2026-10-09T21:49:11Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234820808
+    body: "Fixed in 452b6e6: pending state is tracked per task id and a failed update rolls back only that task."
+    path: compass/src/components/microsoft-todo-panel.tsx
+    createdAt: 2026-10-09T21:49:12Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234820982
+    body: "Fixed in 2a9453f: a changed chat owner clears the in-memory saved chats, the active chat and sync bookkeeping
+      before the new owner's chats hydrate."
+    path: compass/src/components/ask-compass-workspace.tsx
+    createdAt: 2026-10-09T21:49:14Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234821108
+    body: "Fixed in 04d59c7: BEGIN IMMEDIATE now runs outside the rollback handler, so a failed BEGIN rethrows the original
+      error."
+    path: compass/functions/src/compass-conversations.ts
+    createdAt: 2026-10-09T21:49:15Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234821268
+    body: "Fixed in 66a52ac: local mapping writes read retention and write inside one BEGIN IMMEDIATE transaction."
+    path: compass/functions/src/compass-conversations.ts
+    createdAt: 2026-10-09T21:49:17Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234821434
+    body: "Fixed in 69c9ae4: a failed container-TTL check now raises a retryable storage error instead of silently skipping
+      the mapping write; only a confirmed-disabled TTL skips it."
+    path: compass/functions/src/compass-conversations.ts
+    createdAt: 2026-10-09T21:49:18Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234821561
+    body: "Fixed in 7da1cf8: the preference write, expiry rewrites and purges now run in one BEGIN IMMEDIATE transaction,
+      rolled back together on failure."
+    path: compass/functions/src/compass-conversations.ts
+    createdAt: 2026-10-09T21:49:20Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234877470
+    body: "Fixed in 66d7209: timed event height is now the larger of the wall-clock span, the elapsed span and a 15-minute
+      minimum, so events in the repeated fall-back hour stay visible."
+    path: compass/src/components/today/calendar.tsx
+    createdAt: 2026-10-09T21:58:52Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234877659
+    body: "Fixed in 0495d9e: the local mapping refresh now reads retention and updates inside one BEGIN IMMEDIATE
+      transaction."
+    path: compass/functions/src/compass-conversations.ts
+    createdAt: 2026-10-09T21:58:53Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 164
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164#discussion_r4234877785
+    body: "Fixed in d4c7439: new mappings are published create-only (SQLite INSERT OR IGNORE, Cosmos POST with 409 handling)
+      and a lost race uses the already published mapping."
+    path: compass/functions/src/compass-conversations.ts
+    createdAt: 2026-10-09T21:58:55Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 162
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/162
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/162#discussion_r4230188015
+    body: "Fixed in 4d87360: the change event now carries the user id and new value, and listeners apply that value instead
+      of rereading storage."
+    path: proforma/src/components/use-proforma-edit-view.ts
+    createdAt: 2026-10-09T12:41:06Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 162
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/162
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/162#discussion_r4230188228
+    body: "Fixed in 4d87360: the settings page and quick-settings menu pass no user id until the session resolves, so the
+      Editing controls stay disabled and nothing is written under the anonymous key."
+    path: proforma/src/components/proforma-settings-page.tsx
+    createdAt: 2026-10-09T12:41:08Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 162
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/162
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/162#discussion_r4230234319
+    body: "Fixed in e8dc90f: a rejected session now falls back to the anonymous user, so the Editing controls enable
+      (settings page and account menu)."
+    path: proforma/src/components/proforma-settings-page.tsx
+    createdAt: 2026-10-09T12:46:39Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 162
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/162
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/162#discussion_r4230333317
+    body: "Fixed in 2af73b7: the color select's label ID now replaces whitespace with hyphens, so `aria-labelledby` resolves
+      to a single ID for \"Jury Duty\"."
+    path: pto-tracker/src/app/settings/CalendarColorSettings.tsx
+    createdAt: 2026-10-09T12:58:24Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 162
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/162
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/162#discussion_r4233321107
+    body: "Fixed in 4d77a3c: SettingsSection takes an optional headingLevel (2 | 3, default 2) and the Excelerate,
+      Valuation, PTO, and Onboarding settings pages pass 3 where their page title is an h2."
+    path: packages/ui/src/settings/settings-section.tsx
+    createdAt: 2026-10-09T18:27:51Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 162
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/162
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/162#discussion_r4233321255
+    body: "Fixed in 4d77a3c: non-row content in PTO and Onboarding section bodies is wrapped in a new SettingsSectionContent
+      with the same padding as .ui-settings-row."
+    path: packages/ui/src/settings/settings-section.tsx
+    createdAt: 2026-10-09T18:27:52Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 162
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/162
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/162#discussion_r4234418588
+    body: "Fixed in 5f056a2: Excelerate now passes headingLevel={3} to AppearanceSettings so Appearance sits below the h2
+      page title."
+    path: excelerate/src/app/settings/page.tsx
+    createdAt: 2026-10-09T20:47:30Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4231050875
+    body: "Fixed in f633f76: the Accounts queue steps now open with an explicit default query (?sort=account), so the page
+      skips remembered-filter restoration and the exact-destination match succeeds; remembered filters are left intact."
+    path: transition/src/lib/tour.ts
+    createdAt: 2026-10-09T14:13:17Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4231051095
+    body: "Deferring to a follow-up: this only affects a tour following a record that fails to load or was deleted, and the
+      cost is a bounded wait before a centered card. Tracked separately."
+    path: transition/src/components/tour/tour-layer.tsx
+    createdAt: 2026-10-09T14:13:18Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4232817082
+    body: "Fixed in e114a26: households with accounts are now preferred before the first row. Rows expose a
+      data-tour-has-accounts marker, and the tour falls back to it after the preparation and open-work selectors."
+    path: transition/src/lib/tour.ts
+    createdAt: 2026-10-09T17:31:11Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4232883727
+    body: "Fixed in dee61a4: the step now names the single Blocked/Exception follow-up status that the task status list
+      uses."
+    path: transition/src/lib/tour.ts
+    createdAt: 2026-10-09T17:38:41Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4232883892
+    body: "Fixed in d05d779: the form dialog now registers its unsaved edits with the shared guard, so starting the tour
+      asks before discarding them."
+    path: transition/src/components/command-palette.tsx
+    createdAt: 2026-10-09T17:38:42Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4232884023
+    body: "By design: the tour no longer shows an automatic welcome prompt; it starts from Settings or the command palette."
+    path: transition/src/components/tour/tour-provider.tsx
+    createdAt: 2026-10-09T17:38:43Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4232884177
+    body: "Fixed in 8da05b9: while the phone sheet is shown, the page reserves bottom space equal to the sheet's maximum
+      height so a target near the end can scroll above it; desktop is unchanged."
+    path: transition/src/components/tour/tour-layer.tsx
+    createdAt: 2026-10-09T17:38:44Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4232999675
+    body: "Fixed in 7e96264: the households tour step now passes sort=default and the households page honors a sort in the
+      address, so a remembered sort is not restored."
+    path: transition/src/lib/tour.ts
+    createdAt: 2026-10-09T17:51:25Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4233288739
+    body: "Fixed in 0ccd658: the tour's sort from the address is applied without being remembered, so the remembered
+      household sort survives the tour."
+    path: transition/src/components/households/households-page.tsx
+    createdAt: 2026-10-09T18:23:53Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4233288943
+    body: "Fixed in 0ccd658: choosing a sort now removes the tour's sort from the address, so a reload keeps the person's
+      choice."
+    path: transition/src/components/households/households-page.tsx
+    createdAt: 2026-10-09T18:23:55Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4234344650
+    body: "Fixed in c08fbce: the tour now walks through a built-in synthetic demo household (John Doe and Jane Doe) instead
+      of searching tenant data, so empty or paged tenants no longer break the account steps."
+    path: transition/src/lib/tour.ts
+    createdAt: 2026-10-09T20:37:19Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4234399833
+    body: "Fixed in 08f47cc: a role change mid-tour now turns the demo flag off synchronously and replaces a demo URL with
+      /households, the same cleanup as closing the tour."
+    path: transition/src/components/tour/tour-provider.tsx
+    createdAt: 2026-10-09T20:44:56Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4234597105
+    body: "Fixed in 7d96c0b: when the sort override leaves the address on the same mounted page, the remembered sort is
+      restored (without being re-remembered), mirroring the direction fix."
+    path: transition/src/components/households/households-page.tsx
+    createdAt: 2026-10-09T21:13:20Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4234648963
+    body: "Fixed in 15adba4: the identity-change branch now goes through leaveDemo() like the role-change and close paths,
+      turning the demo flag off and leaving any demo record."
+    path: transition/src/components/tour/tour-provider.tsx
+    createdAt: 2026-10-09T21:21:28Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4234700276
+    body: "Fixed in c4a3527: the Home worklist step no longer claims filters and sort are remembered; its tip now just says
+      to select an item to open and resolve it."
+    path: transition/src/lib/tour.ts
+    createdAt: 2026-10-09T21:29:42Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4234757703
+    body: "Fixed in 6029826: a popstate listener now ends the tour (through the normal skip/close path, including demo
+      cleanup) when Back interrupts navigation before the tour has arrived at the step's page."
+    path: transition/src/components/tour/tour-layer.tsx
+    createdAt: 2026-10-09T21:38:33Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 158
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4234801644
+    body: "Fixed in a700681: Clear filters now drops both the direction and sort URL overrides in one address change (and no
+      longer lets the sort reset issue a competing one)."
+    path: transition/src/components/households/households-page.tsx
+    createdAt: 2026-10-09T21:45:55Z
+aiReviews:
+  codex:
+    prsReviewed: 5
+    comments: 94
+    reviews: 51
+    fixed: 82
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 5
+  comments: 94
+  reviews: 51
+  fixed: 82
+hoursInputs:
+  timestamps:
+    - 2026-10-09T12:15:55Z
+    - 2026-10-09T12:27:56Z
+    - 2026-10-09T12:27:56Z
+    - 2026-10-09T12:29:47Z
+    - 2026-10-09T12:29:49Z
+    - 2026-10-09T12:30:05Z
+    - 2026-10-09T12:30:12Z
+    - 2026-10-09T12:30:27Z
+    - 2026-10-09T12:31:00Z
+    - 2026-10-09T12:31:09Z
+    - 2026-10-09T12:41:04Z
+    - 2026-10-09T12:46:35Z
+    - 2026-10-09T12:58:23Z
+    - 2026-10-09T14:13:13Z
+    - 2026-10-09T14:13:24Z
+    - 2026-10-09T16:04:49Z
+    - 2026-10-09T17:13:58Z
+    - 2026-10-09T17:18:06Z
+    - 2026-10-09T17:31:06Z
+    - 2026-10-09T17:31:18Z
+    - 2026-10-09T17:34:04Z
+    - 2026-10-09T17:38:37Z
+    - 2026-10-09T17:38:51Z
+    - 2026-10-09T17:43:59Z
+    - 2026-10-09T17:59:30Z
+    - 2026-10-09T18:09:57Z
+    - 2026-10-09T18:10:36Z
+    - 2026-10-09T18:11:38Z
+    - 2026-10-09T18:12:29Z
+    - 2026-10-09T18:12:45Z
+    - 2026-10-09T18:21:40Z
+    - 2026-10-09T18:21:41Z
+    - 2026-10-09T18:22:17Z
+    - 2026-10-09T18:27:47Z
+    - 2026-10-09T18:32:23Z
+    - 2026-10-09T18:43:24Z
+    - 2026-10-09T18:52:27Z
+    - 2026-10-09T18:53:08Z
+    - 2026-10-09T18:53:30Z
+    - 2026-10-09T19:03:56Z
+    - 2026-10-09T19:13:57Z
+    - 2026-10-09T19:31:23Z
+    - 2026-10-09T19:36:36Z
+    - 2026-10-09T19:39:18Z
+    - 2026-10-09T19:49:07Z
+    - 2026-10-09T19:56:47Z
+    - 2026-10-09T19:56:47Z
+    - 2026-10-09T20:09:48Z
+    - 2026-10-09T20:09:53Z
+    - 2026-10-09T20:09:53Z
+    - 2026-10-09T20:18:36Z
+    - 2026-10-09T20:18:36Z
+    - 2026-10-09T20:28:57Z
+    - 2026-10-09T20:31:38Z
+    - 2026-10-09T20:37:14Z
+    - 2026-10-09T20:37:24Z
+    - 2026-10-09T20:37:24Z
+    - 2026-10-09T20:38:08Z
+    - 2026-10-09T20:42:22Z
+    - 2026-10-09T20:42:32Z
+    - 2026-10-09T20:42:32Z
+    - 2026-10-09T20:44:57Z
+    - 2026-10-09T20:45:02Z
+    - 2026-10-09T20:45:06Z
+    - 2026-10-09T20:51:12Z
+    - 2026-10-09T20:55:22Z
+    - 2026-10-09T20:59:17Z
+    - 2026-10-09T21:08:26Z
+    - 2026-10-09T21:08:49Z
+    - 2026-10-09T21:09:06Z
+    - 2026-10-09T21:09:37Z
+    - 2026-10-09T21:10:52Z
+    - 2026-10-09T21:13:21Z
+    - 2026-10-09T21:15:19Z
+    - 2026-10-09T21:16:59Z
+    - 2026-10-09T21:19:15Z
+    - 2026-10-09T21:21:29Z
+    - 2026-10-09T21:21:42Z
+    - 2026-10-09T21:22:12Z
+    - 2026-10-09T21:26:35Z
+    - 2026-10-09T21:27:11Z
+    - 2026-10-09T21:29:44Z
+    - 2026-10-09T21:33:01Z
+    - 2026-10-09T21:33:37Z
+    - 2026-10-09T21:34:05Z
+    - 2026-10-09T21:34:56Z
+    - 2026-10-09T21:36:26Z
+    - 2026-10-09T21:38:34Z
+    - 2026-10-09T21:39:16Z
+    - 2026-10-09T21:39:16Z
+    - 2026-10-09T21:41:51Z
+    - 2026-10-09T21:43:53Z
+    - 2026-10-09T21:44:58Z
+    - 2026-10-09T21:45:09Z
+    - 2026-10-09T21:45:56Z
+    - 2026-10-09T21:46:05Z
+    - 2026-10-09T21:50:01Z
+    - 2026-10-09T21:50:53Z
+    - 2026-10-09T21:55:18Z
+    - 2026-10-09T21:55:18Z
+    - 2026-10-09T18:52:36Z
+    - 2026-10-09T18:52:27Z
+    - 2026-10-09T17:14:26Z
+    - 2026-10-09T17:13:58Z
+    - 2026-10-09T12:33:38Z
+    - 2026-10-09T12:27:56Z
+    - 2026-10-09T12:27:56Z
+    - 2026-10-09T12:29:47Z
+    - 2026-10-09T12:29:49Z
+    - 2026-10-09T12:30:05Z
+    - 2026-10-09T12:30:12Z
+    - 2026-10-09T12:30:27Z
+    - 2026-10-09T12:31:00Z
+    - 2026-10-09T12:31:09Z
+    - 2026-10-09T12:41:04Z
+    - 2026-10-09T12:46:35Z
+    - 2026-10-09T12:58:23Z
+    - 2026-10-09T14:13:24Z
+    - 2026-10-09T17:31:18Z
+    - 2026-10-09T17:38:51Z
+    - 2026-10-09T18:12:45Z
+    - 2026-10-09T18:21:41Z
+    - 2026-10-09T18:27:47Z
+    - 2026-10-09T20:37:24Z
+    - 2026-10-09T20:44:57Z
+    - 2026-10-09T20:45:02Z
+    - 2026-10-09T21:13:21Z
+    - 2026-10-09T21:21:29Z
+    - 2026-10-09T21:29:44Z
+    - 2026-10-09T21:38:34Z
+    - 2026-10-09T21:45:56Z
+    - 2026-10-09T16:05:01Z
+    - 2026-10-09T16:04:49Z
+    - 2026-10-09T17:18:06Z
+    - 2026-10-09T17:34:04Z
+    - 2026-10-09T17:43:59Z
+    - 2026-10-09T17:59:30Z
+    - 2026-10-09T18:10:36Z
+    - 2026-10-09T18:22:17Z
+    - 2026-10-09T18:32:23Z
+    - 2026-10-09T18:43:24Z
+    - 2026-10-09T18:53:08Z
+    - 2026-10-09T18:53:30Z
+    - 2026-10-09T19:03:56Z
+    - 2026-10-09T19:13:57Z
+    - 2026-10-09T19:31:23Z
+    - 2026-10-09T19:36:36Z
+    - 2026-10-09T19:39:18Z
+    - 2026-10-09T19:49:07Z
+    - 2026-10-09T19:56:47Z
+    - 2026-10-09T19:56:47Z
+    - 2026-10-09T20:09:48Z
+    - 2026-10-09T20:09:53Z
+    - 2026-10-09T20:09:53Z
+    - 2026-10-09T20:18:36Z
+    - 2026-10-09T20:18:36Z
+    - 2026-10-09T20:28:57Z
+    - 2026-10-09T20:31:38Z
+    - 2026-10-09T20:37:24Z
+    - 2026-10-09T20:38:08Z
+    - 2026-10-09T20:42:22Z
+    - 2026-10-09T20:45:06Z
+    - 2026-10-09T20:51:12Z
+    - 2026-10-09T20:55:22Z
+    - 2026-10-09T20:59:17Z
+    - 2026-10-09T21:08:26Z
+    - 2026-10-09T21:08:49Z
+    - 2026-10-09T21:09:06Z
+    - 2026-10-09T21:09:37Z
+    - 2026-10-09T21:15:19Z
+    - 2026-10-09T21:16:59Z
+    - 2026-10-09T21:21:42Z
+    - 2026-10-09T21:22:12Z
+    - 2026-10-09T21:26:35Z
+    - 2026-10-09T21:33:01Z
+    - 2026-10-09T21:33:37Z
+    - 2026-10-09T21:34:05Z
+    - 2026-10-09T21:34:56Z
+    - 2026-10-09T21:39:16Z
+    - 2026-10-09T21:39:16Z
+    - 2026-10-09T21:41:51Z
+    - 2026-10-09T21:44:58Z
+    - 2026-10-09T21:45:09Z
+    - 2026-10-09T21:46:05Z
+    - 2026-10-09T21:50:01Z
+    - 2026-10-09T21:50:53Z
+    - 2026-10-09T21:55:18Z
+    - 2026-10-09T21:55:18Z
+    - 2026-10-09T17:34:11Z
+    - 2026-10-09T17:34:12Z
+    - 2026-10-09T17:34:14Z
+    - 2026-10-09T17:34:15Z
+    - 2026-10-09T17:34:17Z
+    - 2026-10-09T17:34:18Z
+    - 2026-10-09T17:34:19Z
+    - 2026-10-09T17:44:03Z
+    - 2026-10-09T17:44:04Z
+    - 2026-10-09T17:44:06Z
+    - 2026-10-09T17:59:34Z
+    - 2026-10-09T18:10:41Z
+    - 2026-10-09T18:10:42Z
+    - 2026-10-09T18:10:44Z
+    - 2026-10-09T18:22:21Z
+    - 2026-10-09T18:22:22Z
+    - 2026-10-09T18:32:27Z
+    - 2026-10-09T18:32:29Z
+    - 2026-10-09T18:32:30Z
+    - 2026-10-09T18:43:29Z
+    - 2026-10-09T18:43:31Z
+    - 2026-10-09T18:43:32Z
+    - 2026-10-09T18:53:13Z
+    - 2026-10-09T18:53:15Z
+    - 2026-10-09T18:53:17Z
+    - 2026-10-09T19:03:59Z
+    - 2026-10-09T19:14:02Z
+    - 2026-10-09T19:39:23Z
+    - 2026-10-09T19:39:24Z
+    - 2026-10-09T19:49:12Z
+    - 2026-10-09T19:49:13Z
+    - 2026-10-09T20:01:51Z
+    - 2026-10-09T20:01:52Z
+    - 2026-10-09T20:13:48Z
+    - 2026-10-09T20:13:50Z
+    - 2026-10-09T20:13:51Z
+    - 2026-10-09T20:22:29Z
+    - 2026-10-09T20:22:31Z
+    - 2026-10-09T20:36:13Z
+    - 2026-10-09T20:36:15Z
+    - 2026-10-09T20:44:38Z
+    - 2026-10-09T20:44:40Z
+    - 2026-10-09T20:48:55Z
+    - 2026-10-09T20:55:13Z
+    - 2026-10-09T20:58:53Z
+    - 2026-10-09T21:08:29Z
+    - 2026-10-09T21:13:27Z
+    - 2026-10-09T21:13:29Z
+    - 2026-10-09T21:13:30Z
+    - 2026-10-09T21:13:31Z
+    - 2026-10-09T21:13:32Z
+    - 2026-10-09T21:13:33Z
+    - 2026-10-09T21:13:35Z
+    - 2026-10-09T21:21:14Z
+    - 2026-10-09T21:21:16Z
+    - 2026-10-09T21:26:17Z
+    - 2026-10-09T21:26:18Z
+    - 2026-10-09T21:49:11Z
+    - 2026-10-09T21:49:12Z
+    - 2026-10-09T21:49:14Z
+    - 2026-10-09T21:49:15Z
+    - 2026-10-09T21:49:17Z
+    - 2026-10-09T21:49:18Z
+    - 2026-10-09T21:49:20Z
+    - 2026-10-09T21:58:52Z
+    - 2026-10-09T21:58:53Z
+    - 2026-10-09T21:58:55Z
+    - 2026-10-09T12:41:06Z
+    - 2026-10-09T12:41:08Z
+    - 2026-10-09T12:46:39Z
+    - 2026-10-09T12:58:24Z
+    - 2026-10-09T18:27:51Z
+    - 2026-10-09T18:27:52Z
+    - 2026-10-09T20:47:30Z
+    - 2026-10-09T14:13:17Z
+    - 2026-10-09T14:13:19Z
+    - 2026-10-09T17:31:11Z
+    - 2026-10-09T17:38:41Z
+    - 2026-10-09T17:38:42Z
+    - 2026-10-09T17:38:43Z
+    - 2026-10-09T17:38:44Z
+    - 2026-10-09T17:51:25Z
+    - 2026-10-09T18:23:53Z
+    - 2026-10-09T18:23:55Z
+    - 2026-10-09T20:37:20Z
+    - 2026-10-09T20:44:56Z
+    - 2026-10-09T21:13:20Z
+    - 2026-10-09T21:21:28Z
+    - 2026-10-09T21:29:42Z
+    - 2026-10-09T21:38:33Z
+    - 2026-10-09T21:45:55Z
+    - 2026-10-09T17:34:11Z
+    - 2026-10-09T17:34:12Z
+    - 2026-10-09T17:34:14Z
+    - 2026-10-09T17:34:15Z
+    - 2026-10-09T17:34:17Z
+    - 2026-10-09T17:34:18Z
+    - 2026-10-09T17:34:19Z
+    - 2026-10-09T17:44:03Z
+    - 2026-10-09T17:44:04Z
+    - 2026-10-09T17:44:05Z
+    - 2026-10-09T17:59:34Z
+    - 2026-10-09T18:10:41Z
+    - 2026-10-09T18:10:42Z
+    - 2026-10-09T18:10:44Z
+    - 2026-10-09T18:22:21Z
+    - 2026-10-09T18:22:22Z
+    - 2026-10-09T18:32:27Z
+    - 2026-10-09T18:32:29Z
+    - 2026-10-09T18:32:30Z
+    - 2026-10-09T18:43:29Z
+    - 2026-10-09T18:43:31Z
+    - 2026-10-09T18:43:32Z
+    - 2026-10-09T18:53:13Z
+    - 2026-10-09T18:53:15Z
+    - 2026-10-09T18:53:16Z
+    - 2026-10-09T19:03:59Z
+    - 2026-10-09T19:14:02Z
+    - 2026-10-09T19:39:22Z
+    - 2026-10-09T19:39:24Z
+    - 2026-10-09T19:49:12Z
+    - 2026-10-09T19:49:13Z
+    - 2026-10-09T20:01:51Z
+    - 2026-10-09T20:01:52Z
+    - 2026-10-09T20:13:48Z
+    - 2026-10-09T20:13:50Z
+    - 2026-10-09T20:13:51Z
+    - 2026-10-09T20:22:29Z
+    - 2026-10-09T20:22:31Z
+    - 2026-10-09T20:36:13Z
+    - 2026-10-09T20:36:15Z
+    - 2026-10-09T20:44:38Z
+    - 2026-10-09T20:44:40Z
+    - 2026-10-09T20:48:55Z
+    - 2026-10-09T20:55:13Z
+    - 2026-10-09T20:58:53Z
+    - 2026-10-09T21:08:29Z
+    - 2026-10-09T21:13:27Z
+    - 2026-10-09T21:13:29Z
+    - 2026-10-09T21:13:30Z
+    - 2026-10-09T21:13:31Z
+    - 2026-10-09T21:13:32Z
+    - 2026-10-09T21:13:33Z
+    - 2026-10-09T21:13:35Z
+    - 2026-10-09T21:21:14Z
+    - 2026-10-09T21:21:15Z
+    - 2026-10-09T21:26:17Z
+    - 2026-10-09T21:26:18Z
+    - 2026-10-09T21:49:11Z
+    - 2026-10-09T21:49:12Z
+    - 2026-10-09T21:49:14Z
+    - 2026-10-09T21:49:15Z
+    - 2026-10-09T21:49:17Z
+    - 2026-10-09T21:49:18Z
+    - 2026-10-09T21:49:20Z
+    - 2026-10-09T21:58:52Z
+    - 2026-10-09T21:58:53Z
+    - 2026-10-09T21:58:55Z
+    - 2026-10-09T12:41:06Z
+    - 2026-10-09T12:41:08Z
+    - 2026-10-09T12:46:39Z
+    - 2026-10-09T12:58:24Z
+    - 2026-10-09T18:27:51Z
+    - 2026-10-09T18:27:52Z
+    - 2026-10-09T20:47:30Z
+    - 2026-10-09T14:13:17Z
+    - 2026-10-09T14:13:18Z
+    - 2026-10-09T17:31:11Z
+    - 2026-10-09T17:38:41Z
+    - 2026-10-09T17:38:42Z
+    - 2026-10-09T17:38:43Z
+    - 2026-10-09T17:38:44Z
+    - 2026-10-09T17:51:25Z
+    - 2026-10-09T18:23:53Z
+    - 2026-10-09T18:23:55Z
+    - 2026-10-09T20:37:19Z
+    - 2026-10-09T20:44:56Z
+    - 2026-10-09T21:13:20Z
+    - 2026-10-09T21:21:28Z
+    - 2026-10-09T21:29:42Z
+    - 2026-10-09T21:38:33Z
+    - 2026-10-09T21:45:55Z
+  volume:
+    pullRequests:
+      - additions: 672
+        deletions: 18
+        state: open
+        dailyWork: true
+        filesChanged: 46
+        testFilesChanged: 4
+        commitCount: 1
+      - additions: 455
+        deletions: 5
+        state: open
+        dailyWork: true
+        filesChanged: 7
+        testFilesChanged: 2
+        commitCount: 1
+      - additions: 387
+        deletions: 251
+        state: merged
+        dailyWork: true
+        filesChanged: 20
+        testFilesChanged: 5
+        commitCount: 16
+      - additions: 1077
+        deletions: 812
+        state: merged
+        dailyWork: true
+        filesChanged: 48
+        testFilesChanged: 10
+        commitCount: 26
+      - additions: 27392
+        deletions: 1570
+        state: merged
+        dailyWork: true
+        filesChanged: 258
+        testFilesChanged: 58
+        commitCount: 56
+    reviewCount: 91
+    reviewCommentCount: 91
+    commitCount: 0
+    commitAdditions: 0
+    commitDeletions: 0
+    commitStatsCount: 0
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 148.7
+  sessions: 2
+  sessionHours: 7.9
+  volumeHours: 148.7
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
