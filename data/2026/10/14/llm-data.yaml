@@ -1,0 +1,56 @@
+title: Oct 14
+subtitle: northstar & release 2026-10-15
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/ohcpwm-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 3 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 104 commits with +30,156 / −14,696 lines.
+    chips:
+      - label: Commits
+        value: "104"
+        color: green
+      - label: Additions
+        value: +30,156
+        color: green
+      - label: Deletions
+        value: −14,696
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 23 reviews with 23 comments.
+    chips:
+      - label: Reviews
+        value: "23"
+      - label: Comments
+        value: "23"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 16 reviews, 27 comments, 4 PRs."
+    chips:
+      - label: Codex
+        value: 16 reviews · 27 comments · 4 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~92.6h
+highlights:
+  - type: pr
+    title: "release: 2026-10-15: design system, Next 16, Northstar commands and PDF, Entra group access"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +29571 −14673
+    body: "One combined release for Thursday 2026-10-15. It replaces the individually reviewed PRs listed below, which were
+      closed unmerged on 2026-10-14. Each was merged in unchanged as a real merge commit, so "
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "release: 2026-10-15: design system, Next 16, Northstar commands and PDF, Entra group
+      access" in Myriad-Advisor-Solutions/ohcpwm-apps'
