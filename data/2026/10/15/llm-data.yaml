@@ -1,0 +1,58 @@
+title: Oct 15
+subtitle: northstar, auth & transition
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/ohcpwm-apps and Myriad-Advisor-Solutions/myriadas-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 3 PRs
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 0 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 7 commits with +2,411 / −237 lines.
+    chips:
+      - label: Commits
+        value: "7"
+        color: green
+      - label: Additions
+        value: +2,411
+        color: green
+      - label: Deletions
+        value: −237
+        color: red
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 5 reviews, 12 comments, 4 PRs."
+    chips:
+      - label: Codex
+        value: 5 reviews · 12 comments · 4 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~30.7h
+highlights:
+  - type: pr
+    title: "feat(northstar): create open To Do tasks in Microsoft 365"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +293 −19
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/166
+  - type: pr
+    title: "fix(northstar): retry transient stream failures once"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +130 −53
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/165
+  - type: pr
+    title: "perf(northstar): speed up Copilot chat turns"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +1966 −143
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167
+ticker: []
