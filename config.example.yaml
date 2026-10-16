@@ -26,3 +26,32 @@ output_dir: ./output
 # llm:
 #   provider: openrouter
 #   model: YOUR_MODEL_NAME
+
+# Effort allocation: which stakeholder-facing initiative each piece of work
+# belongs to. Computed at render time from stored data (no extra API calls).
+# Each initiative key is one of:
+#   - an exact PR label, e.g. "app: hub"
+#   - "scope:<x>"          conventional-commit scope, e.g. "scope:pricing"
+#   - "repo:<owner/name>"  whole repository, e.g. "repo:org/app"
+# Precedence for each item (first match wins):
+#   1. a label starting with label_prefix (its name is the initiative)
+#   2. a mapped exact label
+#   3. a mapped scope
+#   4. a mapped repo
+#   5. default_initiative (if set)
+#   6. the repository name
+allocation:
+  label_prefix: "app:"        # labels starting with this name an initiative
+  default_initiative: null    # fallback initiative name, or null for repo name
+  trend_weeks: 8              # number of Thu–Wed weeks in the trend (1–52)
+  initiatives:
+    "app: hub": Hub
+    "scope:ofac": OFAC
+    "repo:org/name": Something
+
+# Optional self-reported time GitHub can't see (meetings, design, support).
+# It is shown in the allocation as "self-reported", separate from estimates.
+# work_type is one of: new-capability, quality, maintenance, documentation,
+# team-support, unlogged. Invalid entries are ignored.
+# manual_time:
+#   - { date: 2026-10-07, initiative: Hub, hours: 1.5, work_type: team-support, note: "Stakeholder sync" }

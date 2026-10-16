@@ -13,6 +13,7 @@ import type {
   AiReviewActivity,
   AiReviewFixCounts,
 } from "../types.js";
+import { formatWorkDeliveredLabel } from "./work-delivered.js";
 import {
   hasAiReviewActivity,
   normalizeAiReviewActivity,
@@ -188,13 +189,13 @@ export const buildFallbackAIContent = (data: WeeklyReportData): AIContent => {
   if ((data.hoursEstimate?.hours ?? data.stats.estimatedHours) > 0) {
     summaries.push({
       type: "activity-pattern",
-      heading: "Estimated engineering hours",
+      heading: "Work delivered",
       body: data.hoursEstimate?.note ??
-        "Estimated conventional engineering effort. Not tracked, elapsed, or billed time.",
+        "What a typical engineer would need to build these changes. Measures output, not hours worked.",
       chips: [
         {
-          label: "Estimated engineering hours",
-          value: `~${data.hoursEstimate?.hours ?? data.stats.estimatedHours}h`,
+          label: "Work delivered",
+          value: formatWorkDeliveredLabel(data.hoursEstimate?.hours ?? data.stats.estimatedHours),
         },
       ],
     });

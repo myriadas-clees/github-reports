@@ -6,6 +6,9 @@ import sanitizeHtml from "sanitize-html";
 import type { RepositoryActivity, Language } from "../types.js";
 import { getLocale, formatNumber as fmtNumber } from "../i18n/index.js";
 import { parseLocalDate } from "../collector/date-range.js";
+import { formatWorkDeliveredLabel } from "../collector/work-delivered.js";
+
+export { formatWorkDeliveredLabel };
 
 const sanitize = (html: string): string =>
   sanitizeHtml(html, {
@@ -97,6 +100,10 @@ export const registerHelpers = (
 
   hbs.registerHelper("formatNumber", (n: number): string =>
     fmtNumber(n, options.language),
+  );
+
+  hbs.registerHelper("workDelivered", (hours: number): string =>
+    formatWorkDeliveredLabel(Number(hours)),
   );
 
   hbs.registerHelper(

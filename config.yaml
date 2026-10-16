@@ -8,3 +8,39 @@ repositories:
   - Myriad-Advisor-Solutions/myriadas-apps
 data_dir: ./data
 output_dir: ./output
+
+# Stakeholder-facing initiative names for effort allocation.
+allocation:
+  label_prefix: "app:"
+  trend_weeks: 8
+  initiatives:
+    "app: hub": Hub
+    "app: pto-tracker": PTO Tracker
+    "app: onboarding": Onboarding
+    "app: proforma": Proforma
+    "app: transition": Transition
+    "app: excelerate": Excelerate
+    "app: valuation": Valuation
+    "app: pricing": Pricing
+    platform: Platform & infrastructure
+    infrastructure: Platform & infrastructure
+    github-automation: Platform & infrastructure
+    "scope:hub": Hub
+    "scope:pto": PTO Tracker
+    "scope:onboarding": Onboarding
+    "scope:proforma": Proforma
+    "scope:transition": Transition
+    "scope:excelerate": Excelerate
+    "scope:valuation": Valuation
+    "scope:pricing": Pricing
+    "scope:ofac": OFAC
+    "scope:northstar": Northstar
+    "scope:auth": Platform & infrastructure
+    "scope:ci": Platform & infrastructure
+    "scope:deploy": Platform & infrastructure
+    "scope:workflows": Platform & infrastructure
+    "scope:dependabot": Platform & infrastructure
+
+# Optional self-reported time GitHub can't see (meetings, design, support).
+# manual_time:
+#   - { date: 2026-10-07, initiative: Hub, hours: 1.5, note: "Stakeholder sync" }

@@ -1,0 +1,160 @@
+{{#if allocation}}
+<article class="panel panel-alloc">
+{{#with allocation}}
+<section class="section-group alloc" aria-labelledby="alloc-title">
+  <div class="section-group-header">
+    <h2 class="section-group-title" id="alloc-title">{{title}}</h2>
+    <div class="section-group-line"></div>
+  </div>
+  <p class="alloc-lede">{{lede}}</p>
+
+  {{#if hasWeek}}
+  <div class="alloc-block alloc-week">
+    <h3 class="alloc-sub"><span>This work week</span><span class="alloc-sub-meta">{{periodLabel}} &middot; share of work delivered</span></h3>
+    <div class="alloc-bar" role="img" aria-label="{{weekBar.ariaLabel}}">
+      {{#each weekBar.segments}}
+      <span class="alloc-seg {{colorClass}}" style="--grow:{{grow}}" title="{{title}}">{{#if showLabel}}{{#if showName}}<span class="alloc-seg-name">{{name}}</span> {{/if}}<span>{{percent}}</span>{{/if}}</span>
+      {{/each}}
+    </div>
+    <ul class="alloc-legend" aria-label="Initiatives">
+      {{#each weekLegend}}
+      <li><span class="alloc-swatch {{colorClass}}" aria-hidden="true"></span><span>{{name}}</span> <span class="alloc-legend-pct">{{percent}}</span></li>
+      {{/each}}
+    </ul>
+
+    {{#if weekWorkTypeBar}}
+    <div class="alloc-worktypes">
+      <h3 class="alloc-sub"><span>By type of work</span></h3>
+      <div class="alloc-bar alloc-bar--md" role="img" aria-label="{{weekWorkTypeBar.ariaLabel}}">
+        {{#each weekWorkTypeBar.segments}}
+        <span class="alloc-seg {{colorClass}}" style="--grow:{{grow}}" title="{{title}}">{{#if showLabel}}<span>{{percent}}</span>{{/if}}</span>
+        {{/each}}
+      </div>
+      <ul class="alloc-legend" aria-label="Work types">
+        {{#each weekWorkTypes}}
+        <li><span class="alloc-swatch {{colorClass}}" aria-hidden="true"></span><span>{{name}}</span> <span class="alloc-legend-pct">{{percent}}</span></li>
+        {{/each}}
+      </ul>
+    </div>
+    {{/if}}
+  </div>
+  {{/if}}
+
+  {{#if hasInitiatives}}
+  <div class="alloc-block">
+    <h3 class="alloc-sub"><span>By initiative</span></h3>
+    <ul class="alloc-list">
+      {{#each initiatives}}
+      <li class="alloc-item">
+        <div class="alloc-item-head">
+          <span class="alloc-item-name {{colorClass}}"><span class="alloc-swatch" aria-hidden="true"></span><span>{{name}}</span></span>
+          <span class="alloc-item-pct" title="{{title}}">{{percent}}</span>
+          <span class="alloc-item-track {{colorClass}}" aria-hidden="true"><span class="alloc-item-fill" style="width:{{width}}"></span></span>
+        </div>
+        {{#if hasShipped}}
+        <div class="alloc-work">
+          <div class="alloc-work-row"><span class="alloc-work-label">Shipped</span>
+            <ul class="alloc-work-links">
+              {{#each shipped}}<li>{{#if impact}}<span class="alloc-impact alloc-impact--{{impact}}">{{impactLabel}}<span class="alloc-sr"> impact</span></span>{{/if}}{{#if url}}<a href="{{url}}" target="_blank" rel="noopener nofollow">{{title}}</a>{{else}}{{title}}{{/if}}{{#if selfReported}}<span class="alloc-tag alloc-tag--self">Self-reported</span>{{/if}}{{#if repository}}<span class="alloc-repo">{{repository}}</span>{{/if}}</li>{{/each}}
+            </ul>
+          </div>
+          {{#if hasShippedMore}}
+          <details class="alloc-more alloc-more--shipped">
+            <summary>{{shippedMoreCount}} more shipped</summary>
+            <ul class="alloc-work-links">
+              {{#each shippedMore}}<li>{{#if impact}}<span class="alloc-impact alloc-impact--{{impact}}">{{impactLabel}}<span class="alloc-sr"> impact</span></span>{{/if}}{{#if url}}<a href="{{url}}" target="_blank" rel="noopener nofollow">{{title}}</a>{{else}}{{title}}{{/if}}{{#if selfReported}}<span class="alloc-tag alloc-tag--self">Self-reported</span>{{/if}}{{#if repository}}<span class="alloc-repo">{{repository}}</span>{{/if}}</li>{{/each}}
+            </ul>
+          </details>
+          {{/if}}
+        </div>
+        {{/if}}
+        {{#if hasInProgress}}
+        <div class="alloc-work">
+          <div class="alloc-work-row"><span class="alloc-work-label">In progress</span>
+            <ul class="alloc-work-links">
+              {{#each inProgress}}<li>{{#if impact}}<span class="alloc-impact alloc-impact--{{impact}}">{{impactLabel}}<span class="alloc-sr"> impact</span></span>{{/if}}{{#if url}}<a href="{{url}}" target="_blank" rel="noopener nofollow">{{title}}</a>{{else}}{{title}}{{/if}}{{#if selfReported}}<span class="alloc-tag alloc-tag--self">Self-reported</span>{{/if}}{{#if repository}}<span class="alloc-repo">{{repository}}</span>{{/if}}</li>{{/each}}
+            </ul>
+          </div>
+        </div>
+        {{/if}}
+        {{#if hasOther}}
+        <details class="alloc-more">
+          <summary>Other work ({{otherCount}}){{#if hasSelfReported}} <span class="alloc-tag alloc-tag--self">includes self-reported</span>{{/if}}</summary>
+          <ul>
+            {{#each other}}<li><span class="alloc-kind">{{kindLabel}}</span>{{#if url}}<a href="{{url}}" target="_blank" rel="noopener nofollow">{{title}}</a>{{else}}{{title}}{{/if}}{{#if selfReported}}<span class="alloc-tag alloc-tag--self">Self-reported</span>{{/if}}{{#if repository}}<span class="alloc-repo">{{repository}}</span>{{/if}}</li>{{/each}}
+          </ul>
+        </details>
+        {{/if}}
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+  {{/if}}
+
+  {{#if hasDay}}
+  <div class="alloc-block alloc-day">
+    <h3 class="alloc-sub"><span>Today</span><span class="alloc-sub-meta">share of work delivered</span></h3>
+    <div class="alloc-bar alloc-bar--md" role="img" aria-label="{{dayBar.ariaLabel}}">
+      {{#each dayBar.segments}}
+      <span class="alloc-seg {{colorClass}}" style="--grow:{{grow}}" title="{{title}}">{{#if showLabel}}<span>{{percent}}</span>{{/if}}</span>
+      {{/each}}
+    </div>
+    <ul class="alloc-legend" aria-label="Initiatives today">
+      {{#each dayLegend}}
+      <li><span class="alloc-swatch {{colorClass}}" aria-hidden="true"></span><span>{{name}}</span> <span class="alloc-legend-pct">{{percent}}</span></li>
+      {{/each}}
+    </ul>
+  </div>
+  {{/if}}
+
+  {{#if hasTrend}}
+  <div class="alloc-block alloc-trend-block">
+    <h3 class="alloc-sub"><span>Last {{trendRows.length}} weeks</span><span class="alloc-sub-meta">share of each week's delivered work</span></h3>
+    <ol class="alloc-trend">
+      {{#each trendRows}}
+      <li class="alloc-trend-row{{#if isCurrent}} is-current{{/if}}">
+        <span class="alloc-trend-label">{{label}}{{#if isCurrent}} (so far){{/if}}</span>
+        <span class="alloc-trend-bar">
+          {{#if bar.segments.length}}
+          <span class="alloc-bar alloc-bar--trend" role="img" aria-label="{{bar.ariaLabel}}">
+            {{#each bar.segments}}<span class="alloc-seg {{colorClass}}" style="--grow:{{grow}}" title="{{title}}"></span>{{/each}}
+          </span>
+          {{else}}
+          <span class="alloc-trend-empty">{{emptyText}}</span>
+          {{/if}}
+        </span>
+        <span class="alloc-trend-total">{{total}}</span>
+      </li>
+      {{/each}}
+    </ol>
+    <ul class="alloc-legend" aria-label="Initiative colors">
+      {{#each trendLegend}}
+      <li><span class="alloc-swatch {{colorClass}}" aria-hidden="true"></span><span>{{name}}</span></li>
+      {{/each}}
+    </ul>
+    {{#if trendTable}}
+    <details class="alloc-table-wrap">
+      <summary>View as data table</summary>
+      <div class="alloc-table-scroll">
+        <table class="alloc-table">
+          <caption class="alloc-sr">Share of work delivered per initiative, by work week</caption>
+          <thead><tr>{{#each trendTable.headers}}<th scope="col">{{this}}</th>{{/each}}</tr></thead>
+          <tbody>
+            {{#each trendTable.rows}}
+            <tr><th scope="row">{{label}}</th><td>{{days}}</td><td>{{total}}</td>{{#each cells}}<td>{{this}}</td>{{/each}}</tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </details>
+    {{/if}}
+  </div>
+  {{/if}}
+
+  <div class="alloc-foot">
+    <p><strong class="alloc-foot-title">{{measureTitle}}.</strong> {{measureNote}}</p>
+  </div>
+</section>
+{{/with}}
+</article>
+{{/if}}

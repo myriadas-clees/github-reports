@@ -790,3 +790,55 @@ describe("withRecomputedHours", () => {
     expect(withRecomputedHours(withInputs as never).stats.estimatedHours).toBe(9);
   });
 });
+
+describe("buildAllocationInput", () => {
+  const report = (date: string, hours: number) => ({
+    username: "u",
+    avatarUrl: "",
+    dateRange: { from: date, to: date },
+    stats: { estimatedHours: hours, totalCommits: 1 },
+    pullRequests: [],
+    commitMessages: [],
+  }) as unknown as import("../../types.js").WeeklyReportData;
+
+  it("builds day, week and trend up to the current day only", async () => {
+    const { buildAllocationInput } = await import("./render.js");
+    const daily = new Map([
+      ["2026-10-01", report("2026-10-01", 4)],
+      ["2026-10-02", report("2026-10-02", 4)],
+      ["2026-10-09", report("2026-10-09", 99)],
+    ]);
+    const input = buildAllocationInput({
+      current: { date: "2026-10-02", data: report("2026-10-02", 4) },
+      dailyReports: daily,
+    })!;
+    expect(input.day).toBeDefined();
+    expect(input.trend!.periods.length).toBe(8);
+    expect(input.week!.label).toBe(input.trend!.periods.at(-1)!.label);
+    expect(input.week!.allocation.totalHours).toBeLessThan(50);
+  });
+
+  it("weekly mode returns only the week", async () => {
+    const { buildAllocationInput } = await import("./render.js");
+    const input = buildAllocationInput({
+      mode: "weekly",
+      current: { date: "2026-W40", data: report("2026-10-02", 6) },
+      dailyReports: new Map(),
+    })!;
+    expect(input.day).toBeUndefined();
+    expect(input.trend).toBeUndefined();
+    expect(input.week!.allocation.totalHours).toBeGreaterThan(0);
+  });
+
+  it("warns and returns undefined instead of throwing", async () => {
+    const { buildAllocationInput } = await import("./render.js");
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    const input = buildAllocationInput({
+      current: { date: "2026-10-02", data: null as never },
+      dailyReports: new Map(),
+    });
+    expect(input).toBeUndefined();
+    expect(warn).toHaveBeenCalled();
+    warn.mockRestore();
+  });
+});

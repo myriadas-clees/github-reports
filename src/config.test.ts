@@ -16,6 +16,97 @@ describe("parseConfigObject", () => {
     expect(partial.sessionGapMinutes).toBe(60);
     expect(partial.llm?.provider).toBe("openai");
   });
+
+  it("parses allocation with snake_case and camelCase keys", () => {
+    const partial = parseConfigObject({
+      allocation: {
+        label_prefix: "team:",
+        defaultInitiative: "Misc",
+        trend_weeks: 4,
+        initiatives: { "app: hub": " Hub ", "scope:ofac": "OFAC", bad: 42, "": "x", empty: "  " },
+      },
+    });
+    expect(partial.allocation).toEqual({
+      labelPrefix: "team:",
+      defaultInitiative: "Misc",
+      trendWeeks: 4,
+      initiatives: { "app: hub": "Hub", "scope:ofac": "OFAC" },
+    });
+  });
+
+  it("keeps allocation defaults for unset keys", () => {
+    const partial = parseConfigObject({ allocation: { initiatives: { platform: "Platform" } } });
+    expect(partial.allocation?.labelPrefix).toBe(DEFAULT_CONFIG.allocation.labelPrefix);
+    expect(partial.allocation?.defaultInitiative).toBeNull();
+    expect(partial.allocation?.trendWeeks).toBe(DEFAULT_CONFIG.allocation.trendWeeks);
+  });
+
+  it("clamps trend_weeks to 1..52", () => {
+    expect(parseConfigObject({ allocation: { trend_weeks: 0 } }).allocation?.trendWeeks).toBe(1);
+    expect(parseConfigObject({ allocation: { trend_weeks: 900 } }).allocation?.trendWeeks).toBe(52);
+  });
+
+  it("parses manual_time and drops invalid entries", () => {
+    const partial = parseConfigObject({
+      manual_time: [
+        { date: "2026-10-07", initiative: "Hub", hours: 2, work_type: "unlogged", note: " Design review " },
+        { date: "2026-10-08", initiative: "  Ops ", hours: 1.5, workType: "team-support" },
+        { date: "10/07/2026", initiative: "Hub", hours: 1 },
+        { date: "2026-10-07", initiative: "", hours: 1 },
+        { date: "2026-10-07", initiative: "Hub", hours: 0 },
+        { date: "2026-10-07", initiative: "Hub", hours: 25 },
+        { date: "2026-10-07", initiative: "Hub", hours: "2" },
+        { date: "2026-10-07", initiative: "Hub", hours: 1, work_type: "bogus" },
+        null,
+      ],
+    });
+    expect(partial.manualTime).toEqual([
+      { date: "2026-10-07", initiative: "Hub", hours: 2, workType: "unlogged", note: "Design review" },
+      { date: "2026-10-08", initiative: "Ops", hours: 1.5, workType: "team-support" },
+      { date: "2026-10-07", initiative: "Hub", hours: 1 },
+    ]);
+  });
+
+  it("converts Date-object dates (unquoted YAML dates) to YYYY-MM-DD", () => {
+    const partial = parseConfigObject({
+      manualTime: [{ date: new Date("2026-10-07T00:00:00Z") as unknown as string, initiative: "Hub", hours: 2 }],
+    });
+    expect(partial.manualTime).toEqual([{ date: "2026-10-07", initiative: "Hub", hours: 2 }]);
+  });
+
+  it("returns empty manualTime when absent or not a list", () => {
+    expect(parseConfigObject({ username: "x" }).manualTime).toBeUndefined();
+    expect(parseConfigObject({ manual_time: "nope" as unknown as [] }).manualTime).toEqual([]);
+  });
+});
+
+describe("resolveConfig allocation and manual time", () => {
+  it("defaults allocation and manualTime when file has none", () => {
+    const cfg = resolveConfig({}, {});
+    expect(cfg.allocation).toEqual({
+      initiatives: {},
+      labelPrefix: "app:",
+      defaultInitiative: null,
+      trendWeeks: 8,
+    });
+    expect(cfg.manualTime).toEqual([]);
+    // Defaults must not be shared mutable state.
+    expect(cfg.allocation.initiatives).not.toBe(DEFAULT_CONFIG.allocation.initiatives);
+  });
+
+  it("merges file allocation over defaults", () => {
+    const cfg = resolveConfig(
+      parseConfigObject({
+        allocation: { label_prefix: "team:", initiatives: { "scope:ofac": "OFAC" } },
+        manual_time: [{ date: "2026-10-07", initiative: "OFAC", hours: 1 }],
+      }),
+      {},
+    );
+    expect(cfg.allocation.labelPrefix).toBe("team:");
+    expect(cfg.allocation.trendWeeks).toBe(8);
+    expect(cfg.allocation.initiatives).toEqual({ "scope:ofac": "OFAC" });
+    expect(cfg.manualTime).toEqual([{ date: "2026-10-07", initiative: "OFAC", hours: 1 }]);
+  });
 });
 
 describe("resolveConfig", () => {

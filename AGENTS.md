@@ -7,6 +7,7 @@ Private weekly GitHub status-page generator. Work week is **Thu–Wed** (Actions
 - `src/cli/` — CLI entrypoints
 - `src/collector/` — GitHub API + hours estimate + stakeholder summary + AI review activity
 - `src/config.ts` — YAML + env (secrets never from HTML)
+- `src/collector/allocation.ts` — effort allocation by initiative / work type, computed at render time from stored data
 - `src/llm/` — optional LLM narratives
 - `src/renderer/` — Handlebars themes
 - `config.example.yaml`, `.github/workflows/`
