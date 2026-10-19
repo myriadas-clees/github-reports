@@ -12,7 +12,9 @@ import {
   classifyWorkType,
   computeAllocation,
   mergeAllocations,
+  prWeight,
 } from "./allocation.js";
+import { estimatePrHours } from "./estimate-hours.js";
 import type { AllocationConfig, ManualTimeEntry, PullRequest } from "../types.js";
 
 type Data = Parameters<typeof computeAllocation>[0];
@@ -171,6 +173,24 @@ describe("computeAllocation", () => {
     const w = a.initiatives.find((i) => i.initiative === "App")!;
     const bg = a.initiatives.find((i) => i.initiative === "Big")!;
     expect(bg.hours).toBeGreaterThan(w.hours);
+  });
+
+  it("uses lifetime churn for merge-only PRs with zero daily additions", () => {
+    const mergeOnly = pr({ workAdditions: 0, workDeletions: 0, workCommits: [], additions: 500, deletions: 50 });
+    const daily = pr({ url: "daily", workAdditions: 5, workDeletions: 0, workCommits: [], workFiles: ["a.ts"] });
+    expect(prWeight(mergeOnly)).toBe(estimatePrHours(500, 50));
+    expect(prWeight(mergeOnly)).toBeGreaterThan(prWeight(daily));
+    const allocation = computeAllocation(data({ pullRequests: [mergeOnly, daily] }, 10));
+    expect(allocation.initiatives.find((i) => i.initiative === "App")!.hours)
+      .toBeGreaterThan(allocation.initiatives.find((i) => i.initiative === "Daily")?.hours ?? 0);
+  });
+
+  it("does not give weight to an in-progress-only PR with zero daily additions", () => {
+    const inProgress = pr({ url: "progress", state: "open", workAdditions: 0, workDeletions: 0, workCommits: [] });
+    const a = computeAllocation(data({ prsInProgress: [inProgress] }, 10));
+    expect(a.totalHours).toBe(10);
+    expect(a.initiatives.find((i) => i.initiative === "App")?.hours ?? 0).toBe(0);
+    expect(a.initiatives.find((i) => i.initiative === "General engineering")?.hours).toBe(10);
   });
 
   it("attributes reviews and comments as team-support, one item per PR", () => {

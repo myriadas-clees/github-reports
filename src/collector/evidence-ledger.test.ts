@@ -75,4 +75,17 @@ describe("collectPrRefsFromData", () => {
     expect(since).toEqual([{ repo: "o/r", number: 1, url: "https://github.com/o/r/pull/1" }, { repo: "o/r", number: 2, url: "https://github.com/o/r/pull/2" }]);
     expect(await collectPrRefsFromData(dir, "2026-06-11")).toEqual([]);
   });
+
+  it("applies since to weekly archives using their stored dateRange", async () => {
+    dir = await mkdtemp(join(tmpdir(), "ev-"));
+    const write = async (rel: string, body: string) => {
+      await mkdir(join(dir, rel), { recursive: true });
+      await writeFile(join(dir, rel, "github-data.yaml"), body, "utf-8");
+    };
+    await write("2026/W20", "dateRange:\n  from: 2026-05-14\n  to: 2026-05-20\npullRequests:\n  - url: https://github.com/o/r/pull/1\n");
+    await write("2026/W24", "dateRange:\n  from: 2026-06-11\n  to: 2026-06-17T23:59:59Z\npullRequests:\n  - url: https://github.com/o/r/pull/2\n");
+    await write("2026/W25", "pullRequests:\n  - url: https://github.com/o/r/pull/3\n");
+    expect((await collectPrRefsFromData(dir, "2026-06-01")).map((r) => r.number)).toEqual([2]);
+    expect((await collectPrRefsFromData(dir)).map((r) => r.number)).toEqual([1, 2, 3]);
+  });
 });

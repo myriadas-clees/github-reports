@@ -58,6 +58,13 @@ vi.mock("../../deployer/estimate-page.js", () => ({
   renderEstimatePage: (...args: unknown[]) => mockRenderEstimatePage(...args),
 }));
 
+// Calibration built from daily reports; undefined by default. Tests override it to control app history.
+const mockBuildEstimateCalibration = vi.fn();
+vi.mock("../../collector/estimate-calibration.js", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("../../collector/estimate-calibration.js")>()),
+  buildEstimateCalibration: (...args: unknown[]) => mockBuildEstimateCalibration(...args),
+}));
+
 // Mock OG image
 const mockGenerateOGImage = vi.fn().mockResolvedValue(Buffer.from("png-data"));
 const mockGenerateIndexOGImage = vi.fn().mockResolvedValue(Buffer.from("index-png-data"));
@@ -266,6 +273,61 @@ describe("registerRender", () => {
     ]);
     const paths = mockWriteFile.mock.calls.map((c: unknown[]) => String(c[0]));
     expect(paths.some((x) => x.includes("estimate/"))).toBe(false);
+  });
+
+  describe("homepage app-estimate link", () => {
+    const calibration = (initiatives: { name: string; activeDays: number; spanWeeks: number; effortDays: number; mergedPrs: number }[]) => {
+      const p = { p50: 0, p90: 0 };
+      return {
+        version: "1.0", asOf: "2026-10-07", since: "2026-06", sampleSize: 20,
+        groups: [], apps: { initiatives, activeDays: p, spanWeeks: p, effortDays: p },
+      };
+    };
+    const runDailyRender = async () => {
+      mockReadFile.mockImplementation((path: string) => {
+        if (path.includes("github-data.yaml")) return Promise.resolve(GITHUB_DATA_YAML);
+        if (path.includes("llm-data.yaml")) return Promise.resolve(LLM_DATA_YAML);
+        return Promise.reject(new Error("not found"));
+      });
+      mockReaddir.mockImplementation((dir: string) => {
+        if (dir.endsWith("data")) return Promise.resolve(["2026"]);
+        if (dir.includes("2026")) return Promise.resolve(["W14"]);
+        return Promise.resolve([]);
+      });
+      const { registerRender } = await import("./render.js");
+      const program = new Command();
+      registerRender(program);
+      await program.parseAsync([
+        "node", "cli", "render",
+        "--data-dir", "./data", "--output-dir", "./output",
+        "--base-url", "https://user.github.io/repo",
+        "--language", "en", "--timezone", "UTC", "--date", "2026-04-01",
+      ]);
+      // renderIndexPage(entries, pageData, language, siteTitle, base, repoUrl, theme, options)
+      return mockRenderIndexPage.mock.calls.at(-1)![7] as Record<string, unknown>;
+    };
+
+    it("passes hasAppEstimates false when the calibration has no app history", async () => {
+      mockBuildEstimateCalibration.mockReturnValueOnce(calibration([]));
+      mockRenderEstimatePage.mockReturnValueOnce("<html>estimate</html>");
+      const options = await runDailyRender();
+      expect(options).toMatchObject({ hasEstimatePage: true, hasAppEstimates: false });
+    });
+
+    it("passes hasAppEstimates true when past apps exist", async () => {
+      mockBuildEstimateCalibration.mockReturnValueOnce(
+        calibration([{ name: "Hub", activeDays: 30, spanWeeks: 6, effortDays: 12, mergedPrs: 4 }]),
+      );
+      mockRenderEstimatePage.mockReturnValueOnce("<html>estimate</html>");
+      const options = await runDailyRender();
+      expect(options).toMatchObject({ hasEstimatePage: true, hasAppEstimates: true });
+    });
+
+    it("passes hasAppEstimates false when no estimate page renders", async () => {
+      mockBuildEstimateCalibration.mockReturnValueOnce(undefined);
+      const options = await runDailyRender();
+      expect(options).toMatchObject({ hasEstimatePage: false, hasAppEstimates: false });
+    });
   });
 
   it("exits when github-data.yaml is missing", async () => {

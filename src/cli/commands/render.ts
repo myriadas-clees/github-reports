@@ -40,6 +40,7 @@ import { type AllocationInput } from "../../renderer/allocation-view.js";
 import { annotateAllocation } from "../../collector/readiness.js";
 import { readEvidenceLedger } from "../../collector/evidence-ledger.js";
 import { buildEstimateCalibration, type EstimateCalibration } from "../../collector/estimate-calibration.js";
+import { buildEstimateCalculatorView } from "../../renderer/estimate-view.js";
 import { AVAILABLE_THEMES } from "../../renderer/themes/index.js";
 
 /** Prefer current formula from hoursInputs; fall back to stored estimate. */
@@ -552,6 +553,8 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
     }
   }
 
+  // Same source as the estimate page's calculator, so the homepage never advertises an app estimate the page lacks.
+  const calculatorView = buildEstimateCalculatorView(calculator);
   const estimateHtml = renderEstimatePage(calculator, {
     username: githubData.username,
     language: options.language,
@@ -599,6 +602,7 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
     options.theme,
     {
       hasEstimatePage: estimateHtml !== undefined && estimateHtml !== null,
+      hasAppEstimates: calculatorView?.hasApps === true,
       colorOrder,
       weekAllocations: new Map(
         [...weekAllocations].flatMap(([id, input]) => (input.week ? [[id, input.week.allocation] as const] : [])),

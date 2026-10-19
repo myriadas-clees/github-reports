@@ -71,6 +71,7 @@ export const parsePrUrl = (url: string): { repo: string; number: number } | null
 
 export const collectPrRefsFromData = async (dataDir: string, since?: string): Promise<PrRef[]> => {
   const files: string[] = [];
+  const weeklyFiles: string[] = [];
   for (const year of (await listDir(dataDir)).filter((n) => /^\d{4}$/.test(n)).sort()) {
     const entries = await listDir(join(dataDir, year));
     for (const month of entries.filter((n) => /^\d{2}$/.test(n)).sort()) {
@@ -80,18 +81,24 @@ export const collectPrRefsFromData = async (dataDir: string, since?: string): Pr
       }
     }
     for (const week of entries.filter((n) => /^W\d{2}$/.test(n)).sort()) {
-      files.push(join(dataDir, year, week, "github-data.yaml"));
+      weeklyFiles.push(join(dataDir, year, week, "github-data.yaml"));
     }
   }
+  files.push(...weeklyFiles);
 
   const seen = new Map<string, PrRef>();
   for (const file of files) {
     if (!(await exists(file))) continue;
-    let data: { pullRequests?: Array<{ url?: string }>; prsInProgress?: Array<{ url?: string }> };
+    let data: { pullRequests?: Array<{ url?: string }>; prsInProgress?: Array<{ url?: string }>; dateRange?: { to?: unknown } };
     try {
       data = parseYaml(await readFile(file, "utf-8")) ?? {};
     } catch {
       continue;
+    }
+    if (weeklyFiles.includes(file) && since) {
+      const endDate = typeof data.dateRange?.to === "string" ? data.dateRange.to.slice(0, 10) : "";
+      // Legacy weekly archives without a usable end date cannot be safely included in a cutoff query.
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(endDate) || endDate < since.slice(0, 10)) continue;
     }
     for (const pr of [...(data.pullRequests ?? []), ...(data.prsInProgress ?? [])]) {
       if (!pr?.url || seen.has(pr.url)) continue;

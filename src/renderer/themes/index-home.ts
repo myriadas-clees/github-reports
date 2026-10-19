@@ -40,7 +40,7 @@ export const INDEX_PLANNING_PARTIAL = `{{#if hasEstimatePage}}
   <section class="planning" aria-labelledby="planning-title">
     <h2 class="planning-title" id="planning-title">Thinking about new work?</h2>
     <ul class="planning-links">
-      <li><a href="estimate/?kind=app">Have a new app idea?</a></li>
+      {{#if hasAppEstimates}}<li><a href="estimate/?kind=app">Have a new app idea?</a></li>{{/if}}
       <li><a href="estimate/?kind=feature">A feature you'd like added?</a></li>
       <li><a href="estimate/?kind=change">A change you'd like to make?</a></li>
       <li><a href="estimate/?kind=bug">Found a bug?</a></li>

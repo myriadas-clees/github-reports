@@ -229,7 +229,7 @@ export const fetchPrEvidence = async (
 
 // ---------- Deployments ----------
 
-type RawDeployment = { id: number; environment: string; ref: string; sha: string; created_at: string };
+type RawDeployment = { id: number; environment: string; production_environment?: boolean | null; transient_environment?: boolean | null; ref: string; sha: string; created_at: string };
 type RawStatus = { state: string; created_at: string };
 
 export const isProductionEnvironment = (environment: string): boolean =>
@@ -263,7 +263,7 @@ export const fetchDeployments = async (
     if (!success) return;
     records.push({
       environment: d.environment,
-      production: isProductionEnvironment(d.environment),
+      production: d.transient_environment !== true && (d.production_environment === true || (d.production_environment == null && isProductionEnvironment(d.environment))),
       ref: d.ref,
       sha: d.sha,
       createdAt: d.created_at,

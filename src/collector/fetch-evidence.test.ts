@@ -65,6 +65,21 @@ describe("fetchPrEvidence", () => {
 });
 
 describe("fetchDeployments", () => {
+  it("uses GitHub's production flag and falls back to the environment name only when absent", async () => {
+    mockRoutes([
+      [/deployments\/1\/statuses/, () => json([{ state: "success", created_at: "2026-06-10T00:05:00Z" }])],
+      [/deployments\/2\/statuses/, () => json([{ state: "success", created_at: "2026-06-10T00:05:00Z" }])],
+      [/deployments\/3\/statuses/, () => json([{ state: "success", created_at: "2026-06-10T00:05:00Z" }])],
+      [/deployments\?/, () => json([
+        { id: 1, environment: "github-pages", production_environment: true, ref: "main", sha: "a", created_at: "2026-06-10T00:00:00Z" },
+        { id: 2, environment: "production", production_environment: false, ref: "main", sha: "b", created_at: "2026-06-10T00:00:00Z" },
+        { id: 3, environment: "production", ref: "main", sha: "c", created_at: "2026-06-10T00:00:00Z" },
+      ])],
+    ]);
+    const out = await fetchDeployments("t", "o/r", "2026-06-01T00:00:00Z");
+    expect(Object.fromEntries(out.map((r) => [r.sha, r.production]))).toEqual({ a: true, b: false, c: true });
+  });
+
   it("keeps only successful deployments, detects production and skips known", async () => {
     const d = (id: number, environment: string, created_at: string) => ({ id, environment, ref: "main", sha: `sha${id}`, created_at });
     mockRoutes([

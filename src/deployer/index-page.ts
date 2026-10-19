@@ -401,6 +401,8 @@ const buildOverview = (
 export type IndexPageOptions = {
   /** Show the "Thinking about new work?" links to estimate/?kind=... (the calculator page exists). */
   hasEstimatePage?: boolean;
+  /** Show the "Have a new app idea?" link; false until past apps/products exist (matches the calculator's app option). */
+  hasAppEstimates?: boolean;
   /** Allocation per work week (key: Thursday YYYY-MM-DD) for the top-initiatives line. */
   weekAllocations?: ReadonlyMap<string, Allocation>;
   /** Archive-wide initiative order so colors match the report pages. */
@@ -438,6 +440,7 @@ export const renderIndexPage = (
     overview: buildOverview(reports, options.weekAllocations, colorOrder),
     estimateNote: ESTIMATE_NOTE,
     hasEstimatePage: options.hasEstimatePage === true,
+    hasAppEstimates: options.hasAppEstimates === true,
     css: theme.buildCSS(language),
     indexCss: theme.buildIndexCSS(language),
     username,

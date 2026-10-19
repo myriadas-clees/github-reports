@@ -176,11 +176,36 @@ describe("renderIndexPage", () => {
       const off = renderIndexPage(one, undefined, "en", undefined, undefined, undefined, theme);
       expect(off, theme).not.toContain("estimate/?kind=");
       expect(off, theme).not.toContain("Thinking about new work?");
-      const on = renderIndexPage(one, undefined, "en", undefined, undefined, undefined, theme, { hasEstimatePage: true });
+      const on = renderIndexPage(one, undefined, "en", undefined, undefined, undefined, theme,
+        { hasEstimatePage: true, hasAppEstimates: true });
       expect(on, theme).toContain("Thinking about new work?");
       for (const kind of ["app", "feature", "change", "bug"]) expect(on, theme).toContain(`href="estimate/?kind=${kind}"`);
       expect(on, theme).toContain("Have a new app idea?");
       expect(on, theme).toContain("Found a bug?");
+    }
+  });
+
+  it("links to the app estimate only when app history exists, keeping the other planning links", () => {
+    const one = [buildReportEntry("2026/10/01", "x", undefined, { commits: 1, prs: 0, reviews: 0, hours: 8 })];
+    for (const theme of AVAILABLE_THEMES as Theme[]) {
+      const withApps = renderIndexPage(one, undefined, "en", undefined, undefined, undefined, theme,
+        { hasEstimatePage: true, hasAppEstimates: true });
+      expect(withApps, theme).toContain("Have a new app idea?");
+      expect(withApps, theme).toContain('href="estimate/?kind=app"');
+
+      const noApps = renderIndexPage(one, undefined, "en", undefined, undefined, undefined, theme,
+        { hasEstimatePage: true, hasAppEstimates: false });
+      expect(noApps, theme).not.toContain("Have a new app idea?");
+      expect(noApps, theme).not.toContain("estimate/?kind=app");
+      expect(noApps, theme).toContain("Thinking about new work?");
+      expect(noApps, theme).toContain('href="estimate/?kind=feature"');
+      expect(noApps, theme).toContain('href="estimate/?kind=change"');
+      expect(noApps, theme).toContain('href="estimate/?kind=bug"');
+      expect(noApps, theme).toContain("Found a bug?");
+
+      const unset = renderIndexPage(one, undefined, "en", undefined, undefined, undefined, theme,
+        { hasEstimatePage: true });
+      expect(unset, theme).not.toContain("estimate/?kind=app");
     }
   });
 

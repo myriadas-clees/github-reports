@@ -231,7 +231,7 @@ const placeItem = (accs: Map<string, Acc>, placed: Placed): void => {
 };
 
 export const prWeight = (pr: PullRequest): number => {
-  const hasDailyWork = (pr.workCommits?.length ?? 0) > 0 || pr.workAdditions != null;
+  const hasDailyWork = (pr.workCommits?.length ?? 0) > 0 || (pr.workAdditions ?? 0) + (pr.workDeletions ?? 0) > 0;
   if (!hasDailyWork) return estimatePrHours(pr.additions ?? 0, pr.deletions ?? 0);
   const files = pr.workFiles ?? [];
   return estimateDailyPrWorkHours({
@@ -269,7 +269,7 @@ export const computeAllocation = (
   // someone else updated it stays visible but must not pull the day's hours toward it.
   const reportUrls = new Set((data.pullRequests ?? []).map((pr) => pr.url));
   const countsTowardEstimate = (pr: PullRequest): boolean =>
-    reportUrls.has(pr.url) || (pr.workCommits?.length ?? 0) > 0 || pr.workAdditions != null;
+    reportUrls.has(pr.url) || (pr.workCommits?.length ?? 0) > 0 || (pr.workAdditions ?? 0) + (pr.workDeletions ?? 0) > 0;
   for (const pr of prs.values()) {
     const labels = pr.labels ?? [];
     entries.push({
