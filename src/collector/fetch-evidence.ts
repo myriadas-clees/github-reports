@@ -139,6 +139,7 @@ type RawCheckRun = {
   started_at?: string | null;
   completed_at?: string | null;
 };
+type RawCommitStatus = { context: string; state: "success" | "failure" | "error" | "pending"; created_at?: string };
 
 const FAILED = new Set(["failure", "timed_out", "action_required", "cancelled", "startup_failure"]);
 const SKIPPED = new Set(["skipped", "neutral", "stale"]);
@@ -161,6 +162,56 @@ export const summarizeCheckRuns = (runs: RawCheckRun[]): NonNullable<PrEvidence[
   }
   out.names = [...new Set(out.names)].sort();
   return out;
+};
+
+const summarizeCommitStatuses = (statuses: RawCommitStatus[]): NonNullable<PrEvidence["checks"]> => {
+  const latest = new Map<string, RawCommitStatus>();
+  for (const status of statuses) {
+    const previous = latest.get(status.context);
+    if (!previous || new Date(status.created_at ?? 0).getTime() >= new Date(previous.created_at ?? 0).getTime()) {
+      latest.set(status.context, status);
+    }
+  }
+  const out = { passed: 0, failed: 0, skipped: 0, pending: 0, names: [] as string[] };
+  for (const status of latest.values()) {
+    if (status.state === "success") out.passed++;
+    else if (status.state === "pending") out.pending++;
+    else out.failed++;
+    out.names.push(status.context);
+  }
+  out.names.sort();
+  return out;
+};
+
+const mergeChecks = (
+  runs: NonNullable<PrEvidence["checks"]> | null,
+  statuses: RawCommitStatus[] | null,
+): NonNullable<PrEvidence["checks"]> | null => {
+  if (!runs && !statuses) return null;
+  if (!statuses) return runs;
+  const statusSummary = summarizeCommitStatuses(statuses);
+  if (!runs) return statusSummary;
+  const runNames = new Set(runs.names);
+  const uniqueStatuses = statusSummary.names.filter((name) => !runNames.has(name));
+  const statusCounts = { passed: 0, failed: 0, skipped: 0, pending: 0 };
+  const latest = new Map<string, RawCommitStatus>();
+  for (const status of statuses) {
+    const prev = latest.get(status.context);
+    if (!prev || new Date(status.created_at ?? 0).getTime() >= new Date(prev.created_at ?? 0).getTime()) latest.set(status.context, status);
+  }
+  for (const name of uniqueStatuses) {
+    const state = latest.get(name)?.state;
+    if (state === "success") statusCounts.passed++;
+    else if (state === "pending") statusCounts.pending++;
+    else if (state) statusCounts.failed++;
+  }
+  return {
+    passed: runs.passed + statusCounts.passed,
+    failed: runs.failed + statusCounts.failed,
+    skipped: runs.skipped,
+    pending: runs.pending + statusCounts.pending,
+    names: [...new Set([...runs.names, ...uniqueStatuses])].sort(),
+  };
 };
 
 export const filterReviews = (raw: RawReview[], author: string): PrReviewRecord[] =>
@@ -188,13 +239,13 @@ export const fetchPrEvidence = async (
   const reviewsRaw = await getPages<RawReview>(token, `${base}/pulls/${ref.number}/reviews?per_page=100`, `Review fetch failed for ${label}`);
   const files = await getPages<{ filename: string }>(token, `${base}/pulls/${ref.number}/files?per_page=100`, `Files fetch failed for ${label}`, { cap: MAX_FILES });
 
-  let checks: PrEvidence["checks"] = null;
   const checkRes = await getJson<{ check_runs: RawCheckRun[] }>(
     token,
     `${base}/commits/${pr.head.sha}/check-runs?per_page=100`,
     `Check-run fetch failed for ${label}`,
     true,
   );
+  let checkSummary: NonNullable<PrEvidence["checks"]> | null = null;
   if (checkRes.ok) {
     const runs = [...checkRes.data.check_runs];
     let next = checkRes.next;
@@ -204,8 +255,15 @@ export const fetchPrEvidence = async (
       runs.push(...page.data.check_runs);
       next = page.next;
     }
-    checks = summarizeCheckRuns(runs);
+    checkSummary = summarizeCheckRuns(runs);
   }
+  const statusRes = await getJson<{ statuses: RawCommitStatus[] }>(
+    token,
+    `${base}/commits/${pr.head.sha}/status`,
+    `Commit-status fetch failed for ${label}`,
+    true,
+  );
+  const checks = mergeChecks(checkSummary, statusRes.ok ? statusRes.data.statuses ?? [] : null);
 
   return {
     url: ref.url ?? `https://github.com/${ref.repo}/pull/${ref.number}`,

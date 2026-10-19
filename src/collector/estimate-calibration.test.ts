@@ -58,6 +58,30 @@ describe("buildEstimateCalibration", () => {
     expect(g.effortDays.p50).toBeGreaterThan(0);
   });
 
+  it("counts a PR present in both daily lists once and keeps its merged state", () => {
+    const work = pr(30, "feat: duplicate daily snapshot");
+    const mergedSnapshot = merged(30, work.title, "2026-09-01T12:00:00Z", { workCommits: [], workAdditions: 0, workFiles: [] });
+    const duplicate = report([mergedSnapshot]);
+    duplicate.prsInProgress = [work];
+    const single = buildEstimateCalibration(new Map([["2026-09-01", report([merged(30, work.title, "2026-09-01T12:00:00Z")])]]), DEFAULT_ALLOCATION_CONFIG);
+    const deduped = buildEstimateCalibration(new Map([["2026-09-01", duplicate]]), DEFAULT_ALLOCATION_CONFIG);
+    const group = deduped.groups.find((x) => x.kind === "feature" && x.size === "S")!;
+    expect(group.effortDays).toEqual(single.groups.find((x) => x.kind === "feature" && x.size === "S")!.effortDays);
+    expect(group.activeDays.p50).toBe(1);
+    expect(deduped.sampleSize).toBe(1);
+  });
+
+  it("does not double-count effort for a work-bearing PR listed in both daily lists", () => {
+    const opened = merged(31, "feat: opened and worked today", "2026-09-01T12:00:00Z");
+    const both = report([opened]);
+    both.prsInProgress = [opened];
+    const once = buildEstimateCalibration(new Map([["2026-09-01", report([opened])]]), DEFAULT_ALLOCATION_CONFIG);
+    const twice = buildEstimateCalibration(new Map([["2026-09-01", both]]), DEFAULT_ALLOCATION_CONFIG);
+    const effort = (c: typeof once) => c.groups.find((x) => x.kind === "feature" && x.size === "S")!.effortDays;
+    expect(effort(twice)).toEqual(effort(once));
+    expect(twice.sampleSize).toBe(1);
+  });
+
   it("starts turnaround at first work even when the PR was created earlier", () => {
     const cal = buildEstimateCalibration(new Map([["2026-08-17", report([
       merged(20, "feat: delayed work", "2026-08-19T12:00:00Z", {

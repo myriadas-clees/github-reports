@@ -51,6 +51,44 @@ describe("fetchPrEvidence", () => {
     expect(ev?.checks?.passed).toBe(1);
   });
 
+  it("counts commit statuses when check runs are empty", async () => {
+    mockRoutes([
+      [/pulls\/5\/reviews/, () => json([])], [/pulls\/5\/files/, () => json([])],
+      [/check-runs/, () => json({ check_runs: [] })],
+      [/commits\/abc\/status/, () => json({ statuses: [
+        { context: "unit", state: "success", created_at: "2026-06-01T00:00:00Z" },
+        { context: "deploy", state: "failure", created_at: "2026-06-01T00:01:00Z" },
+        { context: "queue", state: "pending", created_at: "2026-06-01T00:02:00Z" },
+      ] })], [/pulls\/5$/, () => json(pr)],
+    ]);
+    const ev = await fetchPrEvidence("t", { repo: "o/r", number: 5 });
+    expect(ev?.checks).toEqual({ passed: 1, failed: 1, skipped: 0, pending: 1, names: ["deploy", "queue", "unit"] });
+  });
+
+  it("merges status contexts while check runs win duplicate names", async () => {
+    mockRoutes([
+      [/pulls\/5\/reviews/, () => json([])], [/pulls\/5\/files/, () => json([])],
+      [/check-runs/, () => json({ check_runs: [{ name: "same", status: "completed", conclusion: "success" }] })],
+      [/commits\/abc\/status/, () => json({ statuses: [
+        { context: "same", state: "failure", created_at: "2026-06-01T00:00:00Z" },
+        { context: "legacy", state: "success", created_at: "2026-06-01T00:01:00Z" },
+      ] })], [/pulls\/5$/, () => json(pr)],
+    ]);
+    const ev = await fetchPrEvidence("t", { repo: "o/r", number: 5 });
+    expect(ev?.checks).toEqual({ passed: 2, failed: 0, skipped: 0, pending: 0, names: ["legacy", "same"] });
+  });
+
+  it("uses check runs when the commit status endpoint returns 404", async () => {
+    mockRoutes([
+      [/pulls\/5\/reviews/, () => json([])], [/pulls\/5\/files/, () => json([])],
+      [/check-runs/, () => json({ check_runs: [{ name: "ci", status: "completed", conclusion: "success" }] })],
+      [/commits\/abc\/status/, () => json({ message: "nf" }, 404)], [/pulls\/5$/, () => json(pr)],
+    ]);
+    const ev = await fetchPrEvidence("t", { repo: "o/r", number: 5 });
+    expect(ev?.checks).toEqual({ passed: 1, failed: 0, skipped: 0, pending: 0, names: ["ci"] });
+    expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/commits\/abc\/status$/), expect.anything());
+  });
+
   it("sets checks to null when check-runs are forbidden", async () => {
     mockRoutes([
       [/pulls\/5\/reviews/, () => json([])],

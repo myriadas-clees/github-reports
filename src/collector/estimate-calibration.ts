@@ -127,7 +127,26 @@ export const buildEstimateCalibration = (
   const prs = new Map<string, PrAcc>();
   for (const day of days) {
     const report = dailyReports.get(day)!;
+    const terminality: Record<PullRequest["state"], number> = { open: 0, closed: 1, merged: 2 };
+    const daily = new Map<string, PullRequest>();
     for (const pr of [...(report.pullRequests ?? []), ...(report.prsInProgress ?? [])]) {
+      const previous = daily.get(pr.url);
+      // Keep the work-bearing copy for effort, while carrying terminal state and
+      // merge metadata forward from either copy of this same day's snapshot.
+      if (!previous) {
+        daily.set(pr.url, pr);
+      } else {
+        const work = hasWork(pr) && !hasWork(previous) ? pr : previous;
+        const terminal = terminality[pr.state] > terminality[previous.state] ? pr : previous;
+        daily.set(pr.url, {
+          ...work,
+          state: terminal.state,
+          mergedAt: pr.mergedAt ?? previous.mergedAt,
+          changedFiles: Math.max(pr.changedFiles ?? 0, previous.changedFiles ?? 0),
+        });
+      }
+    }
+    for (const pr of daily.values()) {
       let acc = prs.get(pr.url);
       if (!hasWork(pr)) {
         if (acc) {
