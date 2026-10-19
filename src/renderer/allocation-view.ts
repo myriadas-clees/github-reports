@@ -9,6 +9,7 @@ import type {
   WorkType,
 } from "../types.js";
 import { summarizeVerification } from "../collector/readiness.js";
+import { NO_ACTIVITY_INITIATIVE } from "../collector/allocation.js";
 import { INITIATIVE_PALETTE } from "./themes/allocation-css.js";
 import { engineerDayUnit, formatEngineerDaysValue } from "../collector/work-delivered.js";
 
@@ -36,9 +37,11 @@ const WORK_TYPE_SLOTS: Record<WorkType, string> = {
   documentation: "alloc-w4",
   "team-support": "alloc-w5",
   unlogged: "alloc-wn",
+  "no-activity": "alloc-wn",
 };
 
 const WORK_TYPE_FALLBACK_LABELS: Record<WorkType, string> = {
+  "no-activity": "No GitHub activity",
   "new-capability": "New capability",
   quality: "Quality & bug fixes",
   maintenance: "Maintenance & tooling",
@@ -244,11 +247,14 @@ type ColorMap = {
 const buildColorMap = (order: string[]): ColorMap => {
   const slots = new Map<string, number>();
   for (const name of order) {
+    // The no-activity minimum day is neutral gray and never takes a palette slot.
+    if (name === NO_ACTIVITY_INITIATIVE) continue;
     if (!slots.has(name) && slots.size < MAX_INITIATIVE_COLORS) slots.set(name, slots.size + 1);
   }
   return {
     classFor: (name) => (slots.has(name) ? `alloc-c${slots.get(name)}` : "alloc-other"),
-    isOther: (name) => !slots.has(name),
+    // Not folded into "Other": it keeps its own name and only shares the gray color.
+    isOther: (name) => name !== NO_ACTIVITY_INITIATIVE && !slots.has(name),
   };
 };
 

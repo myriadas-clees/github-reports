@@ -6,6 +6,8 @@ import {
   MAX_VISIBLE_SHIPPED,
   formatPercent,
   MAX_INITIATIVE_COLORS,
+  buildInitiativeMix,
+  OTHER_LABEL,
 } from "./allocation-view.js";
 import { emptyAllocation, makeAllocation, makeTrend } from "./allocation-fixtures.js";
 
@@ -357,6 +359,36 @@ describe("buildAllocationView day and week panels", () => {
     const v = buildAllocationView({ day: dy, week: { label: "Oct 1–7", allocation: week } })!;
     expect(dayPanel(v).label).toBe("Today");
     expect(dayPanel(v).lede).toContain("Work delivered today ");
+  });
+});
+
+describe("no-activity minimum day colors", () => {
+  const NO_ACTIVITY = "No GitHub activity (minimum day)";
+
+  it("is neutral gray with its own name and takes no palette slot", () => {
+    const a = makeAllocation([["Hub", 10], [NO_ACTIVITY, 8]]);
+    const mix = buildInitiativeMix(a, [NO_ACTIVITY, "Hub"], "size");
+    const hub = mix.find((s) => s.name === "Hub")!;
+    const idle = mix.find((s) => s.name === NO_ACTIVITY)!;
+    expect(hub.colorClass).toBe("alloc-c1");
+    expect(idle.colorClass).toBe("alloc-other");
+    expect(idle.isOther).toBe(false);
+    expect(mix.some((s) => s.name === OTHER_LABEL)).toBe(false);
+  });
+
+  it("stays named and gray even when the palette overflows into Other", () => {
+    const names = Array.from({ length: 10 }, (_, i) => `Init ${i + 1}`);
+    const a = makeAllocation([...names.map((n, i) => [n, 20 - i] as [string, number]), [NO_ACTIVITY, 1]]);
+    const mix = buildInitiativeMix(a, [...names, NO_ACTIVITY], "size");
+    expect(mix.find((s) => s.name === NO_ACTIVITY)).toMatchObject({ colorClass: "alloc-other", isOther: false });
+    expect(mix.find((s) => s.name === OTHER_LABEL)).toMatchObject({ colorClass: "alloc-other", isOther: true });
+    expect(mix.find((s) => s.name === "Init 10")).toBeUndefined();
+  });
+
+  it("gives the no-activity work type the neutral work-type class", () => {
+    const a = makeAllocation([["Hub", 10]], [["no-activity", "No GitHub activity", 8]]);
+    const week = weekPanel(buildAllocationView({ week: { label: "w", allocation: a } })!);
+    expect(week.workTypes[0]).toMatchObject({ name: "No GitHub activity", colorClass: "alloc-wn" });
   });
 });
 

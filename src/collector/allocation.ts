@@ -33,6 +33,7 @@ export const WORK_TYPE_LABELS: Record<WorkType, string> = {
   documentation: "Documentation",
   "team-support": "Supporting the team",
   unlogged: "Meetings & unlogged (self-reported)",
+  "no-activity": "No GitHub activity",
 };
 
 const ALLOCATION_NOTE =
@@ -71,6 +72,7 @@ const byEffortDesc = (items: AllocationItem[]): AllocationItem[] =>
 const REVIEW_HOURS = 0.75;
 const REVIEW_COMMENT_HOURS = 0.25;
 const FALLBACK_INITIATIVE = "General engineering";
+export const NO_ACTIVITY_INITIATIVE = "No GitHub activity (minimum day)";
 export const TEST_FILE_RE = /(^|\/)(__tests__|tests?)(\/|$)|\.(test|spec)\.[^/]+$/i;
 const CONVENTIONAL_RE = /^\s*([a-z]+)(?:\(([^)]*)\))?!?:/i;
 
@@ -400,7 +402,13 @@ export const computeAllocation = (
   if (weightSum > 0) {
     for (const entry of entries) addHours(accs, entry.initiative, entry.workType, (entry.weight / weightSum) * target);
   } else if (target > 0) {
-    addHours(accs, config.defaultInitiative ?? FALLBACK_INITIATIVE, "maintenance", target);
+    // Session-only time is real uncategorized activity. Without session time, a positive
+    // target can be only the daily minimum (including zero-weight PR snapshots).
+    if ((data.hoursEstimate?.sessionHours ?? 0) > 0) {
+      addHours(accs, config.defaultInitiative ?? FALLBACK_INITIATIVE, "maintenance", target);
+    } else {
+      addHours(accs, NO_ACTIVITY_INITIATIVE, "no-activity", target);
+    }
   }
   if (weightSum > 0) {
     for (const { item, weight, labels } of prEffort) {

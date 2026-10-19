@@ -28,6 +28,7 @@ import type {
 } from "../../types.js";
 import {
   DEFAULT_ALLOCATION_CONFIG,
+  NO_ACTIVITY_INITIATIVE,
   buildAllocationTrend,
   computeAllocation,
   weekEnd,
@@ -229,7 +230,10 @@ export const buildInitiativeColorOrder = (
     const recentTotal = sum(recent);
     const score = (name: string): number =>
       Math.max((recent.get(name) ?? 0) / recentTotal, totals.get(name)! / allTotal);
-    return [...totals.keys()].sort((a, b) => score(b) - score(a) || totals.get(b)! - totals.get(a)! || a.localeCompare(b));
+    // The no-activity minimum day is always neutral gray, so it never takes a palette slot.
+    return [...totals.keys()]
+      .filter((name) => name !== NO_ACTIVITY_INITIATIVE)
+      .sort((a, b) => score(b) - score(a) || totals.get(b)! - totals.get(a)! || a.localeCompare(b));
   } catch {
     return [];
   }

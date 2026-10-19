@@ -6,6 +6,7 @@ import {
   DEFAULT_ALLOCATION_CONFIG,
   MAJOR_IMPACT_HOURS,
   NOTABLE_IMPACT_HOURS,
+  NO_ACTIVITY_INITIATIVE,
   deriveImpact,
   buildAllocationTrend,
   classifyInitiative,
@@ -184,13 +185,29 @@ describe("computeAllocation", () => {
     expect(z.initiatives.every((i) => i.share === 0)).toBe(true);
   });
 
-  it("puts the target in the default initiative when nothing has weight", () => {
-    const a = computeAllocation(data({}, 8), cfg({ defaultInitiative: "Platform" }));
+  it("labels an empty daily minimum without inventing General engineering work", () => {
+    const a = computeAllocation(data({ hoursEstimate: { hours: 8, sessionHours: 0 } as Data["hoursEstimate"] }, 8));
     expect(a.initiatives).toHaveLength(1);
-    expect(a.initiatives[0]).toMatchObject({ initiative: "Platform", hours: 8 });
-    expect(a.workTypes[0].workType).toBe("maintenance");
-    expect(computeAllocation(data({}, 8)).initiatives[0].initiative).toBe("General engineering");
+    expect(a.initiatives[0]).toMatchObject({
+      initiative: NO_ACTIVITY_INITIATIVE,
+      hours: 8,
+      byWorkType: { "no-activity": 8 },
+      shipped: [],
+      inProgress: [],
+      other: [],
+    });
+    expect(a.workTypes).toEqual([{ workType: "no-activity", label: "No GitHub activity", hours: 8, share: 1 }]);
+    expect(a.initiatives.some(({ initiative }) => initiative === "General engineering")).toBe(false);
+    expect(a.totalHours).toBe(8);
     expect(computeAllocation(data({}, 0)).initiatives).toEqual([]);
+  });
+
+  it("keeps session-only time in the general maintenance fallback", () => {
+    const a = computeAllocation(data({ hoursEstimate: { hours: 8, sessionHours: 1 } as Data["hoursEstimate"] }, 8));
+    expect(a.totalHours).toBe(8);
+    expect(a.initiatives).toHaveLength(1);
+    expect(a.initiatives[0]).toMatchObject({ initiative: "General engineering", hours: 8, byWorkType: { maintenance: 8 } });
+    expect(a.workTypes[0]).toMatchObject({ workType: "maintenance", label: "Maintenance & tooling" });
   });
 
   it("sections PRs by state and dedupes across pullRequests and prsInProgress", () => {
@@ -229,7 +246,7 @@ describe("computeAllocation", () => {
     const a = computeAllocation(data({ prsInProgress: [inProgress] }, 10));
     expect(a.totalHours).toBe(10);
     expect(a.initiatives.find((i) => i.initiative === "App")?.hours ?? 0).toBe(0);
-    expect(a.initiatives.find((i) => i.initiative === "General engineering")?.hours).toBe(10);
+    expect(a.initiatives.find((i) => i.initiative === NO_ACTIVITY_INITIATIVE)?.hours).toBe(10);
   });
 
   it("attributes reviews and comments as team-support, one item per PR", () => {

@@ -192,3 +192,15 @@ describe("daily page week link", () => {
     });
   }
 });
+
+describe("no-activity minimum day rendering", () => {
+  it("shows the gray no-activity segment under its own name in every theme", () => {
+    const a = makeAllocation([["Hub", 10], ["No GitHub activity (minimum day)", 8]]);
+    for (const theme of AVAILABLE_THEMES as Theme[]) {
+      const html = renderReport(DATA, { theme, allocation: { week: { label: "Oct 1-7", allocation: a } } });
+      expect(html, theme).toContain("No GitHub activity (minimum day)");
+      expect(html, theme).toMatch(/class="alloc-seg alloc-other"[^>]*title="No GitHub activity \(minimum day\)/);
+      expect(html, theme).not.toContain("[object Object]");
+    }
+  });
+});

@@ -348,7 +348,8 @@ export type WorkType =
   | "maintenance"
   | "documentation"
   | "team-support"
-  | "unlogged";
+  | "unlogged"
+  | "no-activity";
 
 export type AllocationItem = {
   kind: "pr" | "review" | "commits" | "manual";

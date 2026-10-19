@@ -24,6 +24,30 @@ describe("summarizeCheckRuns", () => {
     ]);
     expect(s).toEqual({ passed: 1, failed: 1, skipped: 1, pending: 1, names: ["ci", "e2e", "lint"] });
   });
+
+  it("keeps same-named checks from different suites as independent totals", () => {
+    const s = summarizeCheckRuns([
+      { name: "build", app: { id: 1 }, check_suite: { id: 10 }, status: "completed", conclusion: "failure", completed_at: "2026-01-01T00:00:00Z" },
+      { name: "build", app: { id: 1 }, check_suite: { id: 20 }, status: "completed", conclusion: "success", completed_at: "2026-01-01T01:00:00Z" },
+    ]);
+    expect(s).toEqual({ passed: 1, failed: 1, skipped: 0, pending: 0, names: ["build"] });
+  });
+
+  it("dedupes reruns within the same app and check suite", () => {
+    const s = summarizeCheckRuns([
+      { name: "build", app: { id: 1 }, check_suite: { id: 10 }, status: "completed", conclusion: "failure", completed_at: "2026-01-01T00:00:00Z" },
+      { name: "build", app: { id: 1 }, check_suite: { id: 10 }, status: "completed", conclusion: "success", completed_at: "2026-01-01T01:00:00Z" },
+    ]);
+    expect(s).toEqual({ passed: 1, failed: 0, skipped: 0, pending: 0, names: ["build"] });
+  });
+
+  it("falls back to name-only deduplication when app or suite metadata is missing", () => {
+    const s = summarizeCheckRuns([
+      { name: "build", app: { id: 1 }, status: "completed", conclusion: "failure", completed_at: "2026-01-01T00:00:00Z" },
+      { name: "build", check_suite: { id: 10 }, status: "completed", conclusion: "success", completed_at: "2026-01-01T01:00:00Z" },
+    ]);
+    expect(s).toEqual({ passed: 1, failed: 0, skipped: 0, pending: 0, names: ["build"] });
+  });
 });
 
 describe("fetchPrEvidence", () => {

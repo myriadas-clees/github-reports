@@ -1081,4 +1081,22 @@ describe("buildInitiativeColorOrder", () => {
     ]));
     expect(order).toEqual(["Fresh", "Legacy", "Older"]);
   });
+
+  it("leaves the no-activity minimum day out of the palette order", async () => {
+    const { buildInitiativeColorOrder } = await import("./render.js");
+    const { computeAllocation, NO_ACTIVITY_INITIATIVE } = await import("../../collector/allocation.js");
+    const idle = {
+      username: "u", avatarUrl: "", dateRange: { from: "2026-10-07", to: "2026-10-07" },
+      // The 8-hour daily minimum is carried as the estimate on a day with no activity.
+      stats: { estimatedHours: 8, totalCommits: 0 }, pullRequests: [], commitMessages: [],
+    } as unknown as import("../../types.js").WeeklyReportData;
+    // Precondition: an idle day is put in the no-activity bucket.
+    expect(computeAllocation(idle).initiatives.map((b) => b.initiative)).toContain(NO_ACTIVITY_INITIATIVE);
+    const order = buildInitiativeColorOrder(new Map([
+      ["2026-10-06", report("2026-10-06", 4, "org/fresh")],
+      ["2026-10-07", idle],
+    ]));
+    expect(order).not.toContain(NO_ACTIVITY_INITIATIVE);
+    expect(order).toEqual(["Fresh"]);
+  });
 });

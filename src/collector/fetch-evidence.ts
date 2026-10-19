@@ -136,6 +136,8 @@ type RawCheckRun = {
   name: string;
   status: string;
   conclusion: string | null;
+  app?: { id?: number; slug?: string } | null;
+  check_suite?: { id?: number } | null;
   started_at?: string | null;
   completed_at?: string | null;
 };
@@ -148,8 +150,11 @@ export const summarizeCheckRuns = (runs: RawCheckRun[]): NonNullable<PrEvidence[
   const stamp = (r: RawCheckRun): number => new Date(r.completed_at ?? r.started_at ?? 0).getTime() || 0;
   const latest = new Map<string, RawCheckRun>();
   for (const run of runs) {
-    const prev = latest.get(run.name);
-    if (!prev || stamp(run) >= stamp(prev)) latest.set(run.name, run);
+    const key = run.app?.id != null && run.check_suite?.id != null
+      ? `${run.app.id}:${run.check_suite.id}:${run.name}`
+      : run.name;
+    const prev = latest.get(key);
+    if (!prev || stamp(run) >= stamp(prev)) latest.set(key, run);
   }
   const out = { passed: 0, failed: 0, skipped: 0, pending: 0, names: [] as string[] };
   for (const run of latest.values()) {
@@ -160,6 +165,7 @@ export const summarizeCheckRuns = (runs: RawCheckRun[]): NonNullable<PrEvidence[
     else out.skipped++;
     if (!(run.status === "completed" && (!run.conclusion || SKIPPED.has(run.conclusion)))) out.names.push(run.name);
   }
+  // Names are unique display labels; same-named checks from distinct suites still count separately above.
   out.names = [...new Set(out.names)].sort();
   return out;
 };

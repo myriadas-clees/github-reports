@@ -57,6 +57,7 @@ describe("parseConfigObject", () => {
         { date: "2026-10-07", initiative: "Hub", hours: 25 },
         { date: "2026-10-07", initiative: "Hub", hours: "2" },
         { date: "2026-10-07", initiative: "Hub", hours: 1, work_type: "bogus" },
+        { date: "2026-10-07", initiative: "Hub", hours: 1, work_type: "no-activity" },
         null,
       ],
     });
@@ -64,7 +65,9 @@ describe("parseConfigObject", () => {
       { date: "2026-10-07", initiative: "Hub", hours: 2, workType: "unlogged", note: "Design review" },
       { date: "2026-10-08", initiative: "Ops", hours: 1.5, workType: "team-support" },
       { date: "2026-10-07", initiative: "Hub", hours: 1 },
+      { date: "2026-10-07", initiative: "Hub", hours: 1 },
     ]);
+    expect(partial.manualTime?.[3]).not.toHaveProperty("workType");
   });
 
   it("converts Date-object dates (unquoted YAML dates) to YYYY-MM-DD", () => {
