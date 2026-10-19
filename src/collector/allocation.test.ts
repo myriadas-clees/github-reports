@@ -113,6 +113,13 @@ describe("classifyInitiative", () => {
     expect(classifyInitiative({ ...base, title: "x" }, cfg({ defaultInitiative: "Platform" }))).toBe("Platform");
     expect(classifyInitiative({ ...base, title: "x" }, cfg())).toBe("Ohcpwm Apps");
   });
+  it("prefers repo mapping over another initiative named in the title", () => {
+    const c = cfg({ initiatives: {
+      "repo:Org/ohcpwm-apps": "Platform",
+      "app: hub": "Hub",
+    } });
+    expect(classifyInitiative({ ...base, title: "Fix Hub integration", labels: [] }, c)).toBe("Platform");
+  });
   it("label precedence beats scope and repo", () => {
     const c = cfg({ initiatives: { "scope:a": "A", "repo:Org/ohcpwm-apps": "R" } });
     expect(classifyInitiative({ ...base, title: "feat(a): x", labels: ["app: z"] }, c)).toBe("Z");
@@ -449,6 +456,13 @@ describe("classifyInitiative title fallback", () => {
     expect(classifyInitiative(
       { title: "Fix Northstar scheduled brief recovery", labels: [], repository: "o/ohcpwm-apps" },
       config,
+    )).toBe("Northstar");
+  });
+
+  it("uses title fallback before default initiative", () => {
+    expect(classifyInitiative(
+      { title: "Fix Northstar scheduled brief recovery", labels: [], repository: "o/unmapped" },
+      { ...config, defaultInitiative: "Platform" },
     )).toBe("Northstar");
   });
 

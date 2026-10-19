@@ -132,7 +132,7 @@ const lookup = (map: Record<string, string>, key: string): string | undefined =>
   return found ? map[found] : undefined;
 };
 
-/** Resolve the stakeholder initiative for a PR / commit. */
+/** Resolve initiative by label prefix, exact label, scope, repo, title name, default, then repo name. */
 export const classifyInitiative = (
   input: { title: string; labels?: string[]; repository: string },
   config: AllocationConfig,
@@ -159,13 +159,13 @@ export const classifyInitiative = (
       if (mapped) return mapped;
     }
   }
-  // Unlabeled titles often name the product ("Fix Northstar brief retries").
+  const byRepo = lookup(config.initiatives, `repo:${input.repository}`);
+  if (byRepo) return byRepo;
+  // Unmapped repositories may still name the product ("Fix Northstar brief retries").
   const named = [...new Set(Object.values(config.initiatives))]
     .sort((a, b) => b.length - a.length)
     .find((name) => new RegExp(`\\b${name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "i").test(input.title));
   if (named) return named;
-  const byRepo = config.initiatives[`repo:${input.repository}`];
-  if (byRepo) return byRepo;
   if (config.defaultInitiative) return config.defaultInitiative;
   return humanize(input.repository.split("/").pop() ?? input.repository) || FALLBACK_INITIATIVE;
 };

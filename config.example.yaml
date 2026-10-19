@@ -38,8 +38,9 @@ output_dir: ./output
 #   2. a mapped exact label
 #   3. a mapped scope
 #   4. a mapped repo
-#   5. default_initiative (if set)
-#   6. the repository name
+#   5. a configured initiative named in the title
+#   6. default_initiative (if set)
+#   7. the repository name
 allocation:
   label_prefix: "app:"        # labels starting with this name an initiative
   default_initiative: null    # fallback initiative name, or null for repo name

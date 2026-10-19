@@ -345,6 +345,61 @@ describe("homepage effort summary", () => {
   });
 });
 
+describe("effort totals follow the week allocations (manual time included)", () => {
+  // Week of Oct 1: 8h from GitHub reports, but its allocation totals 24h (16h manual time).
+  // Week of Oct 8: 16h from GitHub reports, with an allocation of 16h.
+  const reports = [
+    buildReportEntry("2026/10/01", "a", undefined, { commits: 1, prs: 0, reviews: 0, hours: 8 }),
+    buildReportEntry("2026/10/08", "b", undefined, { commits: 1, prs: 0, reviews: 0, hours: 16 }),
+  ];
+  const width = (html: string, id: string) => {
+    const row = html.slice(html.indexOf(`href="weeks/${id}/" class="week-row"`));
+    return /class="week-mix-fill" style="width: ([\d.]+)%"/.exec(row.slice(0, row.indexOf("</a>")))?.[1];
+  };
+  const hero = (html: string) => html.slice(html.indexOf('class="home-hero'), html.indexOf('class="ledger"'));
+  const weekAllocations = new Map([
+    ["2026-10-01", makeAllocation([["Pricing", 24]])],
+    ["2026-10-08", makeAllocation([["Hub", 16]])],
+  ]);
+
+  it("uses allocation totals for week labels, bar widths, month and hero totals", () => {
+    for (const theme of AVAILABLE_THEMES as Theme[]) {
+      const html = renderIndexPage(reports, undefined, "en", undefined, undefined, undefined, theme,
+        { weekAllocations, hasEstimatePage: false });
+      expect(html, theme).toContain("≈ 3 engineer-days");
+      expect(html, theme).toContain("≈ 2 engineer-days");
+      expect(hero(html), theme).toContain('<span class="home-hero-value">≈ 5</span>');
+      expect(html, theme).toContain("≈ 5 engineer-days");
+      expect(width(html, "2026-10-01"), theme).toBe("100");
+      expect(width(html, "2026-10-08"), theme).toBe("66.7");
+    }
+  });
+
+  it("builds the hero mix and hero total from the same allocation hours", () => {
+    const html = renderIndexPage(reports, undefined, "en", undefined, undefined, undefined, "brutalist",
+      { weekAllocations, hasEstimatePage: false });
+    // 24h Pricing + 16h Hub = 40h total, so Pricing is 60% and Hub 40%.
+    expect(hero(html)).toContain('title="Pricing 60%"');
+    expect(hero(html)).toContain('title="Hub 40%"');
+    expect(hero(html)).toContain('<span class="home-hero-value">≈ 5</span>');
+  });
+
+  it("falls back to report hours when no allocations are provided", () => {
+    const html = renderIndexPage(reports, undefined, "en", undefined, undefined, undefined, "brutalist");
+    expect(hero(html)).toContain('<span class="home-hero-value">≈ 3</span>');
+    expect(html).toContain("≈ 3 engineer-days");
+    expect(html).toContain("≈ 1 engineer-day");
+    expect(html).toContain("≈ 2 engineer-days");
+  });
+
+  it("keeps report hours for a week whose allocation has no hours", () => {
+    const html = renderIndexPage(reports, undefined, "en", undefined, undefined, undefined, "brutalist",
+      { weekAllocations: new Map([["2026-10-01", makeAllocation([])]]) });
+    expect(html).toContain("≈ 1 engineer-day");
+    expect(hero(html)).toContain('<span class="home-hero-value">≈ 3</span>');
+  });
+});
+
 describe("hoursToActivityPercent", () => {
   it("maps 0/missing hours to a min tick, 8h to ~33%, and 24h+ to full", () => {
     expect(hoursToActivityPercent(0)).toBe(4);

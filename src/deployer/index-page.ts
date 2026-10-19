@@ -142,8 +142,10 @@ export type WeekRow = {
   from: string;
   to: string;
   open: boolean;
-  /** Estimated effort of the week's daily reports (summed hours / 8). */
+  /** Estimated effort (summed hours / 8): the allocation total when present (includes manual time), else the reports' hours. */
   estimate?: EffortEstimate;
+  /** Hours behind `estimate`; month and archive totals are sums of these. */
+  effortHours: number;
   /** Week effort relative to the largest week on the page (largest = 100). */
   barWidth: string;
   mixBar: MixBar;
@@ -237,6 +239,10 @@ const topInitiatives = (allocation: Allocation | undefined): WeekInitiativeShare
     .map((b) => ({ name: b.initiative, percent: formatPercent(b.hours / allocation.totalHours) }));
 };
 
+/** A week's effort: its allocation's total (which includes manual time) when it has hours, else the reports' hours. */
+const effortHoursFor = (allocation: Allocation | undefined, reportHours: number): number =>
+  allocation && allocation.totalHours > 0 ? allocation.totalHours : reportHours;
+
 const buildWeekRows = (
   daily: ReportEntry[],
   latest: string,
@@ -248,7 +254,10 @@ const buildWeekRows = (
     const id = workWeekOf(dailyPathToDate(report.path)!).id;
     byWeek.set(id, [...(byWeek.get(id) ?? []), report]);
   }
-  const weekHours = new Map([...byWeek.entries()].map(([id, reports]) => [id, sumStats(reports).hours ?? 0]));
+  const weekHours = new Map([...byWeek.entries()].map(([id, reports]) => [
+    id,
+    effortHoursFor(weekAllocations?.get(id), sumStats(reports).hours ?? 0),
+  ]));
   // Shared scale: the busiest week on the page is a full-width bar.
   const maxHours = Math.max(0, ...weekHours.values());
   return [...byWeek.entries()].map(([id, reports]) => {
@@ -272,6 +281,7 @@ const buildWeekRows = (
         to: span.to,
         open: isWeekOpen(span, latest),
         estimate: toEstimate(hours),
+        effortHours: hours,
         barWidth: maxHours > 0 ? ((hours / maxHours) * 100).toFixed(1).replace(/\.0$/, "") : "0",
         mixBar: toMixBar(mix, `Initiatives, week of ${span.label}`),
         initiatives,
@@ -320,7 +330,7 @@ const groupByMonth = (
       weeks,
       looseReports: [],
       stats: sumStats(monthReports),
-      estimate: toEstimate(sumStats(monthReports).hours),
+      estimate: toEstimate(weeks.reduce((total, week) => total + week.effortHours, 0)),
     };
   });
   const looseByYear = new Map<string, ReportEntry[]>();
@@ -370,6 +380,7 @@ const mergeAllocations = (allocations: Iterable<Allocation>): Pick<Allocation, "
 
 const buildOverview = (
   reports: ReportEntry[],
+  monthGroups: MonthGroup[],
   weekAllocations: ReadonlyMap<string, Allocation> | undefined,
   colorOrder: string[],
 ): ArchiveOverview => {
@@ -379,12 +390,21 @@ const buildOverview = (
     prs: total.prs + (report.stats?.prs ?? 0),
     reviews: total.reviews + (report.stats?.reviews ?? 0),
   }), { commits: 0, prs: 0, reviews: 0 });
+  // Hero total and mix come from the same weeks as the week rows, so they share one source.
+  const weeks = monthGroups.flatMap((group) => group.weeks);
+  const weekPaths = new Set(weeks.flatMap((week) => week.reports.map((report) => report.path)));
+  const otherHours = sumStats(reports.filter((report) => !weekPaths.has(report.path))).hours ?? 0;
+  const effortHours = weeks.reduce((total, week) => total + week.effortHours, 0) + otherHours;
+  const weekAllocationList = weeks.flatMap((week) => {
+    const allocation = weekAllocations?.get(week.id);
+    return allocation ? [allocation] : [];
+  });
   return {
     reportCount: reports.length,
     ...totals,
-    estimate: toEstimate(sumStats(reports).hours),
+    estimate: toEstimate(effortHours),
     ...(() => {
-      const merged = mergeAllocations(weekAllocations?.values() ?? []);
+      const merged = mergeAllocations(weekAllocationList);
       const segments = merged.totalHours > 0 ? buildInitiativeMix(merged, colorOrder, "size") : [];
       return {
         mixBar: toMixBar(segments, "Initiative mix, reporting window"),
@@ -433,11 +453,12 @@ export const renderIndexPage = (
   hbs.registerPartial("index-ledger", INDEX_LEDGER_PARTIAL);
   hbs.registerPartial("index-planning", INDEX_PLANNING_PARTIAL);
   const colorOrder = options.colorOrder ?? [];
+  const monthGroups = groupByMonth(reports, language, options.weekAllocations, colorOrder);
   const template = hbs.compile(indexTemplate);
   return template({
     yearGroups: groupByYear(reports),
-    monthGroups: groupByMonth(reports, language, options.weekAllocations, colorOrder),
-    overview: buildOverview(reports, options.weekAllocations, colorOrder),
+    monthGroups,
+    overview: buildOverview(reports, monthGroups, options.weekAllocations, colorOrder),
     estimateNote: ESTIMATE_NOTE,
     hasEstimatePage: options.hasEstimatePage === true,
     hasAppEstimates: options.hasAppEstimates === true,
