@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { applyDeploymentFetch, evidenceRepositories } from "./evidence.js";
+import { applyDeploymentFetch, evidenceRepositories, selectDeploymentCandidates } from "./evidence.js";
 import { emptyLedger } from "../../collector/evidence-ledger.js";
 import { evidenceArgs } from "./report.js";
 
@@ -28,6 +28,23 @@ it("preserves deployments and marks failed refreshes unavailable", () => {
   expect(ledger.deploymentsUnavailable).toEqual({ "org/app": "2026-10-19T00:00:00Z" });
   applyDeploymentFetch(ledger, "org/app", { records: [], failed: false }, "2026-10-20T00:00:00Z");
   expect(ledger.deploymentsUnavailable).toEqual({});
+});
+
+it("selects tag deployments by commit sha while excluding already matched branch refs", () => {
+  const common = { environment: "production", production: true, createdAt: "2026-10-20T00:00:00Z", succeededAt: "2026-10-20T00:01:00Z" };
+  const candidates = selectDeploymentCandidates([
+    { ...common, ref: "v1.2.0", sha: "abcdef1234567890" },
+    { ...common, ref: "main", sha: "1234567890abcdef" },
+  ], true, { baseRef: "release", mergeCommitSha: "fedcba9876543210", mergedAt: "2026-10-19T00:00:00Z" }, "main");
+  expect(candidates.map((d) => d.ref)).toEqual(["v1.2.0"]);
+});
+
+it("merges partial deployment results and marks the repository unavailable", () => {
+  const ledger = emptyLedger();
+  const record = { environment: "production", production: true, ref: "v1.2.0", sha: "abcdef1234567890", createdAt: "2026-10-20T00:00:00Z", succeededAt: "2026-10-20T00:01:00Z" };
+  applyDeploymentFetch(ledger, "org/app", { records: [record], failed: true }, "2026-10-20T00:02:00Z");
+  expect(ledger.deployments["org/app"]).toEqual([record]);
+  expect(ledger.deploymentsUnavailable).toEqual({ "org/app": "2026-10-20T00:02:00Z" });
 });
 
 describe("report evidence step args", () => {

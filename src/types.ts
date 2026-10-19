@@ -403,7 +403,7 @@ export type Complexity = {
 
 export type PrChecks = {
   /** Non-skipped automated checks on the final version; null when not collected. */
-  automated: { passed: number; failed: number; pending: number; total: number } | null;
+  automated: { passed: number; failed: number; pending: number; total: number; partial?: boolean } | null;
   humanReviews: number;
   automatedReviews: number;
   testsUpdated: boolean;
@@ -446,7 +446,7 @@ export type PrEvidence = {
   /** Reviews received on this PR (excluding the author's own). */
   reviews: PrReviewRecord[];
   /** Check runs on headSha. skipped/neutral are not counted as passed. */
-  checks: { passed: number; failed: number; skipped: number; pending: number; names: string[] } | null;
+  checks: { passed: number; failed: number; skipped: number; pending: number; names: string[]; statusesUnavailable?: boolean } | null;
   /** Changed file paths (capped). */
   files: string[];
   fetchedAt: string;

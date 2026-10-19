@@ -372,11 +372,14 @@ const checksText = (item: AllocationItem): string | undefined => {
   if (!c.automated) parts.push("Checks not collected");
   else if (c.automated.total === 0) parts.push("No automated checks");
   else {
-    const { passed, pending, total } = c.automated;
+    const { passed, pending, total, partial } = c.automated;
+    // Partial: commit statuses were unreadable, so "all passed" would overstate what was checked.
     if (pending > 0) parts.push(`${passed} of ${total} automated checks passed · ${pending} still running`);
+    else if (partial) parts.push(`${passed} of ${total} automated checks passed`);
     else parts.push(passed === total
       ? `${total === 1 ? "Automated check" : total === 2 ? "Both automated checks" : `All ${total} automated checks`} passed`
       : `${passed} of ${total} automated checks passed`);
+    if (partial) parts.push("commit statuses not collected");
   }
   if (c.automatedReviews > 0) parts.push(`${c.automatedReviews} automated ${plural(c.automatedReviews, "review", "reviews")}`);
   if (c.humanReviews > 0) parts.push(`${c.humanReviews} human ${plural(c.humanReviews, "review", "reviews")}`);
@@ -452,6 +455,7 @@ const buildVerification = (a: Allocation): AllocationVerificationView | undefine
   const checksLine = joinParts([
     checksLead(),
     s.checksCollected > 0 && s.withPendingChecks > 0 && `${s.withPendingChecks} still running`,
+    s.checksCollected > 0 && s.withPartialChecks > 0 && `${s.withPartialChecks} without commit-status results`,
     s.checksCollected > 0 && s.withoutChecks > 0 && `${s.withoutChecks} had no automated checks`,
     s.checksCollected > 0 && s.checksUnknown > 0 && `${s.checksUnknown} not collected`,
     s.withAutomatedReview > 0 && `${s.withAutomatedReview} had automated code review`,

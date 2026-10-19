@@ -50,6 +50,9 @@ describe("needsRefresh", () => {
     expect(needsRefresh(recent, now)).toBe(true);
     expect(needsRefresh({ ...recent, fetchedAt: "2026-06-19T12:00:00Z" }, now)).toBe(false);
   });
+  it("refreshes merged PRs when commit statuses were unavailable", () => {
+    expect(needsRefresh(pr({ checks: { passed: 1, failed: 0, skipped: 0, pending: 0, names: [], statusesUnavailable: true } }), now)).toBe(true);
+  });
 });
 
 describe("mergeDeployments", () => {

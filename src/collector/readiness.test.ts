@@ -269,6 +269,11 @@ describe("derivePrChecks", () => {
     const l = ledger({ checks: { passed: 3, failed: 0, skipped: 0, pending: 1, names: [] } });
     expect(derivePrChecks({ url: URL }, l, []).automated).toEqual({ passed: 3, failed: 0, pending: 1, total: 4 });
   });
+
+  it("marks check-run evidence partial when commit statuses were unavailable", () => {
+    const l = ledger({ checks: { passed: 1, failed: 0, skipped: 0, pending: 0, names: ["ci"], statusesUnavailable: true } });
+    expect(derivePrChecks({ url: URL }, l, []).automated).toEqual({ passed: 1, failed: 0, pending: 0, total: 1, partial: true });
+  });
 });
 
 const alloc = (shipped: AllocationItem[], inProgress: AllocationItem[] = []): Allocation => ({
@@ -304,6 +309,7 @@ describe("annotateAllocation + summarizeVerification", () => {
     expect(summarizeVerification(out)).toEqual({
       completed: 1, live: 1, awaitingRelease: 0, preview: 0, inReview: 0, drafts: 1,
       withoutChecks: 0, withPassingChecks: 1, withPendingChecks: 0, checksCollected: 1, checksUnknown: 1, withAutomatedReview: 1, withHumanReview: 0, withTests: 1,
+      withPartialChecks: 0,
       aiFindingsAddressed: 4,
     });
   });
@@ -365,6 +371,12 @@ describe("annotateAllocation + summarizeVerification", () => {
       { withPassingChecks: 0, withPendingChecks: 1, checksCollected: 1 },
       { withPassingChecks: 0, withPendingChecks: 0, checksCollected: 1 },
     ]);
+  });
+
+  it("does not count partial passing evidence as fully passing", () => {
+    const partial = ledger({ checks: { passed: 1, failed: 0, skipped: 0, pending: 0, names: ["ci"], statusesUnavailable: true } });
+    const allocation = annotateAllocation(alloc([{ kind: "pr", title: "partial", url: URL, repository: "org/app", state: "merged" }]), partial);
+    expect(summarizeVerification(allocation)).toMatchObject({ checksCollected: 1, withPassingChecks: 0, withPartialChecks: 1 });
   });
 });
 

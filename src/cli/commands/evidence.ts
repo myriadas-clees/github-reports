@@ -20,13 +20,23 @@ const env = (key: string): string | undefined => process.env[key];
 export const evidenceRepositories = (configured: string[], refs: PrRef[]): string[] =>
   [...new Set([...configured, ...refs.map((ref) => ref.repo)])];
 
+export const selectDeploymentCandidates = (
+  deployments: import("../../types.js").DeploymentRecord[],
+  production: boolean,
+  pe: Pick<import("../../types.js").PrEvidence, "baseRef" | "mergeCommitSha" | "mergedAt">,
+  defaultBranch: string,
+): import("../../types.js").DeploymentRecord[] => deployments.filter((d) =>
+  d.production === production && d.ref !== pe.baseRef && d.ref !== defaultBranch && d.ref !== pe.mergeCommitSha &&
+  d.sha !== pe.mergeCommitSha && Date.parse(d.createdAt) >= Date.parse(pe.mergedAt!) && /^[0-9a-f]{7,40}$/i.test(d.sha),
+).sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt));
+
 export const applyDeploymentFetch = (ledger: import("../../types.js").EvidenceLedger, repo: string, result: Awaited<ReturnType<typeof fetchDeployments>>, now: string): void => {
+  ledger.deployments[repo] = mergeDeployments(ledger.deployments[repo] ?? [], result.records);
   if (result.failed) {
     ledger.deploymentsUnavailable ??= {};
     ledger.deploymentsUnavailable[repo] = now;
     return;
   }
-  ledger.deployments[repo] = mergeDeployments(ledger.deployments[repo] ?? [], result.records);
   if (ledger.deploymentsUnavailable) delete ledger.deploymentsUnavailable[repo];
 };
 
@@ -94,9 +104,7 @@ export const registerEvidence = (program: Command): void => {
           const alreadyFound = known.some((entry) => deployments.some((d) => d.production === production && d.environment === entry.environment && d.sha === entry.sha));
           if (alreadyFound) continue;
           const defaultBranch = ledger.defaultBranches[ref.repo] ?? "main";
-          const candidates = deployments.filter((d) => d.production === production && d.ref !== pe.baseRef && d.ref !== defaultBranch && d.ref !== pe.mergeCommitSha && d.sha !== pe.mergeCommitSha &&
-            Date.parse(d.createdAt) >= Date.parse(pe.mergedAt!) && /^[0-9a-f]{7,40}$/i.test(d.ref) && /^[0-9a-f]{7,40}$/i.test(d.sha))
-            .sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt));
+          const candidates = selectDeploymentCandidates(deployments, production, pe, defaultBranch);
           for (const deployment of candidates) {
             if (calls >= 5) break;
             calls++;

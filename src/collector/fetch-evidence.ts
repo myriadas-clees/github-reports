@@ -267,6 +267,7 @@ export const fetchPrEvidence = async (
     true,
   );
   const checks = mergeChecks(checkSummary, statusRes.ok ? statusRes.data.statuses ?? [] : null);
+  if (checks && checkSummary && !statusRes.ok) checks.statusesUnavailable = true;
 
   return {
     url: ref.url ?? `https://github.com/${ref.repo}/pull/${ref.number}`,
@@ -313,11 +314,12 @@ export const fetchDeployments = async (
   );
 
   const records: DeploymentRecord[] = [];
+  let statusFailed = false;
   await mapWithConcurrency(deployments, async (d) => {
     const key = deploymentKey({ environment: d.environment, sha: d.sha, createdAt: d.created_at });
     if (known.has(key)) return;
     const res = await getJson<RawStatus[]>(token, `${base}/deployments/${d.id}/statuses?per_page=20`, `Deployment status fetch failed for ${repo}`, true);
-    if (!res.ok) return;
+    if (!res.ok) { statusFailed = true; return; }
     const success = res.data
       .filter((s) => s.state === "success")
       .sort((a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime())[0];
@@ -331,5 +333,5 @@ export const fetchDeployments = async (
       succeededAt: success.created_at,
     });
   });
-  return { records, failed };
+  return { records, failed: failed || statusFailed };
 };

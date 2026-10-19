@@ -132,7 +132,7 @@ describe("fetchPrEvidence", () => {
       [/commits\/abc\/status/, () => json({ message: "nf" }, 404)], [/pulls\/5$/, () => json(pr)],
     ]);
     const ev = await fetchPrEvidence("t", { repo: "o/r", number: 5 });
-    expect(ev?.checks).toEqual({ passed: 1, failed: 0, skipped: 0, pending: 0, names: ["ci"] });
+    expect(ev?.checks).toEqual({ passed: 1, failed: 0, skipped: 0, pending: 0, names: ["ci"], statusesUnavailable: true });
     expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/commits\/abc\/status$/), expect.anything());
   });
 
@@ -168,7 +168,7 @@ describe("fetchPrEvidence", () => {
       [/pulls\/5\/reviews/, () => json([])], [/pulls\/5\/files/, () => json([])],
       [/check-runs/, () => json({ check_runs: [] })], [/commits\/abc\/status/, () => json({}, 404)], [/pulls\/5$/, () => json(pr)],
     ]);
-    expect((await fetchPrEvidence("t", { repo: "o/r", number: 5 }))?.checks).toEqual({ passed: 0, failed: 0, skipped: 0, pending: 0, names: [] });
+    expect((await fetchPrEvidence("t", { repo: "o/r", number: 5 }))?.checks).toEqual({ passed: 0, failed: 0, skipped: 0, pending: 0, names: [], statusesUnavailable: true });
   });
 });
 
@@ -214,5 +214,19 @@ describe("fetchDeployments", () => {
   it("reports forbidden deployment collection as unavailable", async () => {
     mockRoutes([[/deployments\?/, () => new Response("forbidden", { status: 403 })]]);
     await expect(fetchDeployments("t", "o/r", "2026-06-01T00:00:00Z")).resolves.toEqual({ records: [], failed: true });
+  });
+
+  it("returns successful records and marks failed deployment statuses unavailable", async () => {
+    mockRoutes([
+      [/deployments\/1\/statuses/, () => json([{ state: "success", created_at: "2026-06-10T00:05:00Z" }])],
+      [/deployments\/2\/statuses/, () => json({ message: "forbidden" }, 403)],
+      [/deployments\?/, () => json([
+        { id: 1, environment: "production", ref: "main", sha: "one", created_at: "2026-06-10T00:00:00Z" },
+        { id: 2, environment: "production", ref: "main", sha: "two", created_at: "2026-06-10T00:01:00Z" },
+      ])],
+    ]);
+    const out = await fetchDeployments("t", "o/r", "2026-06-01T00:00:00Z");
+    expect(out.records.map((record) => record.sha)).toEqual(["one"]);
+    expect(out.failed).toBe(true);
   });
 });

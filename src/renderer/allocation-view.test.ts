@@ -566,6 +566,30 @@ describe("readiness, complexity and verification views", () => {
     );
   });
 
+  it("never says all checks passed when commit statuses were not collected", () => {
+    const partialPass = (passed: number, failed: number, total: number, n: number) => ({
+      kind: "pr" as const, title: `Partial ${n}`, url: `https://github.com/o/r/pull/${40 + n}`, state: "open" as const,
+      readiness: { stage: "in-review" as const, label: "In review" },
+      checks: { automated: { passed, failed, pending: 0, total, partial: true }, humanReviews: 0, automatedReviews: 0, testsUpdated: false },
+    });
+    const a = makeAllocation([["A", 10, { inProgress: [partialPass(2, 0, 2, 1), partialPass(1, 1, 2, 2)] }]]);
+    const items = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.initiatives[0]!.inProgress;
+    expect(items[0]!.checksText).toBe("2 of 2 automated checks passed · commit statuses not collected");
+    expect(items[1]!.checksText).toBe("1 of 2 automated checks passed · commit statuses not collected");
+    expect(items[0]!.checksText).not.toMatch(/^All |^Both /);
+  });
+
+  it("counts a partial item as collected but not passing in the period line", () => {
+    const partial = {
+      kind: "pr" as const, title: "Partial", url: "https://github.com/o/r/pull/50", state: "open" as const,
+      readiness: { stage: "in-review" as const, label: "In review" },
+      checks: { automated: { passed: 1, failed: 0, pending: 0, total: 1, partial: true }, humanReviews: 0, automatedReviews: 0, testsUpdated: false },
+    };
+    const a = makeAllocation([["A", 10, { inProgress: [partial] }]]);
+    const v = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification!;
+    expect(v.checksLine).toBe("0 of 1 passed automated checks · 1 without commit-status results");
+  });
+
   it("has no verification block without PR items", () => {
     const a = makeAllocation([["A", 10]]);
     expect(buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification).toBeUndefined();
