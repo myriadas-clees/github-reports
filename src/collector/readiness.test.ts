@@ -56,16 +56,27 @@ describe("deriveReadiness", () => {
   it("live uses the earliest production deployment after merge", () => {
     const l = ledger({}, {
       "org/app": [
-        dep({ succeededAt: "2026-10-10T10:00:00Z" }),
-        dep({ succeededAt: "2026-10-08T10:00:00Z" }),
-        dep({ succeededAt: "2026-10-06T10:00:00Z" }),
+        dep({ createdAt: "2026-10-10T09:00:00Z", succeededAt: "2026-10-10T10:00:00Z" }),
+        dep({ createdAt: "2026-10-08T09:00:00Z", succeededAt: "2026-10-08T10:00:00Z" }),
+        dep({ createdAt: "2026-10-06T09:00:00Z", succeededAt: "2026-10-06T10:00:00Z" }),
       ],
     });
     expect(deriveReadiness(item(), l)).toMatchObject({ stage: "live", label: "Live", detail: "Live since Oct 8", since: "2026-10-08" });
   });
 
+  it("does not treat an overlapping deployment as live, but uses success time for live since", () => {
+    const overlapping = ledger({}, { "org/app": [dep({
+      createdAt: "2026-10-07T11:59:00Z", succeededAt: "2026-10-07T12:10:00Z",
+    })] });
+    expect(deriveReadiness(item(), overlapping)?.stage).toBe("awaiting-release");
+    const afterMerge = ledger({}, { "org/app": [dep({
+      createdAt: "2026-10-07T12:01:00Z", succeededAt: "2026-10-08T10:00:00Z",
+    })] });
+    expect(deriveReadiness(item(), afterMerge)).toMatchObject({ stage: "live", detail: "Live since Oct 8", since: "2026-10-08" });
+  });
+
   it("live via merge commit sha even if timestamps are odd", () => {
-    const l = ledger({}, { "org/app": [dep({ sha: "mmm", succeededAt: "2026-10-07T11:00:00Z" })] });
+    const l = ledger({}, { "org/app": [dep({ createdAt: "2026-10-07T11:00:00Z", sha: "mmm", succeededAt: "2026-10-07T11:00:00Z" })] });
     expect(deriveReadiness(item(), l)?.stage).toBe("live");
   });
 
@@ -79,8 +90,8 @@ describe("deriveReadiness", () => {
   it("preview only", () => {
     const l = ledger({}, {
       "org/app": [
-        dep({ production: false, environment: "preview", succeededAt: "2026-10-09T10:00:00Z" }),
-        dep({ succeededAt: "2026-10-01T10:00:00Z" }),
+        dep({ production: false, environment: "preview", createdAt: "2026-10-09T09:00:00Z", succeededAt: "2026-10-09T10:00:00Z" }),
+        dep({ createdAt: "2026-10-01T09:00:00Z", succeededAt: "2026-10-01T10:00:00Z" }),
       ],
     });
     expect(deriveReadiness(item(), l)).toMatchObject({
@@ -96,7 +107,7 @@ describe("deriveReadiness", () => {
   });
 
   it("awaiting release when repo deploys but not since merge", () => {
-    const l = ledger({}, { "org/app": [dep({ succeededAt: "2026-10-01T10:00:00Z" })] });
+    const l = ledger({}, { "org/app": [dep({ createdAt: "2026-10-01T09:00:00Z", succeededAt: "2026-10-01T10:00:00Z" })] });
     expect(deriveReadiness(item(), l)).toMatchObject({
       stage: "awaiting-release", label: "Done · not live yet", detail: "Merged Oct 7; not deployed to production yet",
     });

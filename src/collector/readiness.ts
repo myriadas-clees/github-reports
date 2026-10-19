@@ -87,7 +87,7 @@ export const deriveReadiness = (item: ReadinessItem, evidence: EvidenceLedger | 
   const targetRef = pe.baseRef || defaultBranch;
   const mergedMs = ms(mergedAt);
   const after = (d: DeploymentRecord): boolean =>
-    (Number.isFinite(mergedMs) && ms(d.succeededAt) >= mergedMs) ||
+    (Number.isFinite(mergedMs) && ms(d.createdAt) >= mergedMs) ||
     isMergeCommitDeployment(d);
 
   const live = earliest(deps.filter((d) => d.production && (d.ref === targetRef || isMergeCommitDeployment(d)) && after(d)));

@@ -27,11 +27,12 @@ export const registerEvidence = (program: Command): void => {
     .option("--config <path>", "Config file (default ./config.yaml or CONFIG_PATH)")
     .option("--data-dir <path>", "Data directory")
     .option("--since <date>", "Only consider activity since YYYY-MM-DD (default: 90 days ago)")
+    .option("-t, --token <token>", "GitHub token (env: GITHUB_TOKEN / GH_PAT)")
     .option("--force", "Refresh evidence for all PRs")
-    .action(async (opts: { config?: string; dataDir?: string; since?: string; force?: boolean }) => {
+    .action(async (opts: { config?: string; dataDir?: string; since?: string; force?: boolean; token?: string }) => {
       const configPath = opts.config ?? env("CONFIG_PATH") ?? "./config.yaml";
       const cfg = resolveConfig(await loadConfigFile(configPath), { dataDir: opts.dataDir });
-      const token = env("GITHUB_TOKEN") ?? env("GH_PAT");
+      const token = opts.token ?? env("GITHUB_TOKEN") ?? env("GH_PAT");
       if (!token) throw new Error("GitHub token required. Set GITHUB_TOKEN / GH_PAT.");
 
       const now = new Date();
