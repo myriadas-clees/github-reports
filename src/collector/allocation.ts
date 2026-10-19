@@ -504,15 +504,32 @@ export const mergeAllocations = (allocations: Allocation[]): Allocation => {
   }
   // A PR shipped later in the period supersedes its in-progress appearances; the effort
   // spent while it was in progress moves onto the shipped item so its badge covers the period.
-  const shippedByUrl = new Map<string, AllocationItem>();
-  for (const acc of accs.values()) for (const item of acc.shipped) if (item.url && !shippedByUrl.has(item.url)) shippedByUrl.set(item.url, item);
-  for (const acc of accs.values()) {
+  const shippedByUrl = new Map<string, { initiative: string; item: AllocationItem }>();
+  for (const [initiative, acc] of accs) for (const item of acc.shipped) {
+    if (item.url && !shippedByUrl.has(item.url)) shippedByUrl.set(item.url, { initiative, item });
+  }
+  for (const [initiative, acc] of accs) {
     acc.inProgress = acc.inProgress.filter((item) => {
-      const shipped = item.url ? shippedByUrl.get(item.url) : undefined;
-      if (!shipped) return true;
-      absorbPrItem(shipped, item);
+      const destination = item.url ? shippedByUrl.get(item.url) : undefined;
+      if (!destination) return true;
+      // Classify both copies before absorbing, which unions the in-progress labels into the shipped item.
+      const sourceType = classifyWorkType(item.title, item.labels ?? []);
+      const destinationType = classifyWorkType(destination.item.title, destination.item.labels ?? []);
+      absorbPrItem(destination.item, item);
+      if (initiative !== destination.initiative && item.effortHours != null) {
+        const hours = item.effortHours;
+        const destinationAcc = accs.get(destination.initiative)!;
+        acc.hours = Math.max(0, acc.hours - hours);
+        acc.byWorkType[sourceType] = Math.max(0, (acc.byWorkType[sourceType] ?? 0) - hours);
+        destinationAcc.hours += hours;
+        destinationAcc.byWorkType[destinationType] = (destinationAcc.byWorkType[destinationType] ?? 0) + hours;
+      }
       return false;
     });
+  }
+  for (const [initiative, acc] of accs) {
+    const hasItems = acc.shipped.length + acc.inProgress.length + acc.other.length > 0;
+    if (!hasItems && acc.hours <= 0.000001) accs.delete(initiative);
   }
   return finalize(accs, manualHours, aiFindingsAddressed);
 };

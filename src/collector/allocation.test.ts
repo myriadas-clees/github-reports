@@ -631,6 +631,36 @@ describe("PR #4 review fixes", () => {
     expect(bucket.shipped[0]).toMatchObject({ url: "p", effortHours: 26, impact: "major" });
   });
 
+  it("moves cross-initiative in-progress totals to the shipped initiative", () => {
+    const inProgress = pr({ url: "p", title: "feat: hub", state: "open", mergedAt: null });
+    const open = computeAllocation(data({ pullRequests: [inProgress], prsInProgress: [inProgress] }, 10));
+    const merged = computeAllocation(data({ pullRequests: [pr({ url: "p", title: "feat: hub", labels: ["app: hub"] })] }, 6));
+    const m = mergeAllocations([open, merged]);
+    expect(m.totalHours).toBe(16);
+    expect(m.initiatives.map((b) => b.initiative)).toEqual(["Hub"]);
+    expect(m.initiatives[0]).toMatchObject({ hours: 16, byWorkType: { "new-capability": 16 } });
+    expect(m.initiatives[0]!.shipped).toMatchObject([{ url: "p", effortHours: 16 }]);
+    expect(m.workTypes).toMatchObject([{ workType: "new-capability", hours: 16, share: 1 }]);
+    expect(m.initiatives.reduce((sum, b) => sum + b.share, 0)).toBeCloseTo(1, 5);
+  });
+
+  it("subtracts moved effort from the old initiative while retaining its other work", () => {
+    const inProgress = [
+      pr({ url: "p", title: "feat: hub", state: "open", mergedAt: null }),
+      pr({ url: "q", title: "feat: other", state: "open", mergedAt: null }),
+    ];
+    const open = computeAllocation(data({ pullRequests: inProgress, prsInProgress: inProgress }, 10));
+    const merged = computeAllocation(data({ pullRequests: [pr({ url: "p", title: "feat: hub", labels: ["app: hub"] })] }, 6));
+    const m = mergeAllocations([open, merged]);
+    const app = m.initiatives.find((b) => b.initiative === "App")!;
+    const hub = m.initiatives.find((b) => b.initiative === "Hub")!;
+    expect(app).toMatchObject({ hours: 5, byWorkType: { "new-capability": 5 } });
+    expect(app.inProgress.map((item) => item.url)).toEqual(["q"]);
+    expect(hub).toMatchObject({ hours: 11, byWorkType: { "new-capability": 11 } });
+    expect(m.totalHours).toBe(16);
+    expect(m.initiatives.reduce((sum, b) => sum + b.share, 0)).toBeCloseTo(1, 5);
+  });
+
   it("keeps an impact: low override when merged days cross the badge threshold", () => {
     const day = () => computeAllocation(data({ pullRequests: [pr({ url: "p", labels: ["impact: low"] })] }, 10));
     const m = mergeAllocations([day(), day(), day()]);
