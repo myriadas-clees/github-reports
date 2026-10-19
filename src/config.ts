@@ -166,6 +166,9 @@ const parseManualTime = (raw: unknown): ManualTimeEntry[] => {
           ? e.date.trim()
           : "";
     if (!DATE_RE.test(date)) continue;
+    const [, year, month, day] = /^(\d{4})-(\d{2})-(\d{2})$/.exec(date)!;
+    const parsedDate = new Date(Date.UTC(Number(year), Number(month) - 1, Number(day)));
+    if (parsedDate.getUTCFullYear() !== Number(year) || parsedDate.getUTCMonth() !== Number(month) - 1 || parsedDate.getUTCDate() !== Number(day)) continue;
     const initiative = typeof e.initiative === "string" ? e.initiative.trim() : "";
     if (!initiative) continue;
     const hours = e.hours;

@@ -190,7 +190,7 @@ const mergeChecks = (
   if (!runs && !statuses) return null;
   if (!statuses) return runs;
   const statusSummary = summarizeCommitStatuses(statuses);
-  if (!runs) return statusSummary;
+  if (!runs) return statuses.length ? statusSummary : null;
   const runNames = new Set(runs.names);
   const uniqueStatuses = statusSummary.names.filter((name) => !runNames.has(name));
   const statusCounts = { passed: 0, failed: 0, skipped: 0, pending: 0 };

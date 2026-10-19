@@ -100,6 +100,29 @@ describe("fetchPrEvidence", () => {
     expect(ev?.checks).toBeNull();
     expect(ev?.state).toBe("open");
   });
+
+  it("keeps checks unknown when check-runs fail and statuses are empty", async () => {
+    mockRoutes([
+      [/pulls\/5\/reviews/, () => json([])], [/pulls\/5\/files/, () => json([])],
+      [/check-runs/, () => json({ message: "no" }, 403)],
+      [/commits\/abc\/status/, () => json({ statuses: [] })], [/pulls\/5$/, () => json(pr)],
+    ]);
+    expect((await fetchPrEvidence("t", { repo: "o/r", number: 5 }))?.checks).toBeNull();
+  });
+
+  it("counts statuses when check-runs fail and preserves zero checks when statuses fail", async () => {
+    mockRoutes([
+      [/pulls\/5\/reviews/, () => json([])], [/pulls\/5\/files/, () => json([])],
+      [/check-runs/, () => json({ message: "no" }, 403)],
+      [/commits\/abc\/status/, () => json({ statuses: [{ context: "ci", state: "success" }] })], [/pulls\/5$/, () => json(pr)],
+    ]);
+    expect((await fetchPrEvidence("t", { repo: "o/r", number: 5 }))?.checks?.passed).toBe(1);
+    mockRoutes([
+      [/pulls\/5\/reviews/, () => json([])], [/pulls\/5\/files/, () => json([])],
+      [/check-runs/, () => json({ check_runs: [] })], [/commits\/abc\/status/, () => json({}, 404)], [/pulls\/5$/, () => json(pr)],
+    ]);
+    expect((await fetchPrEvidence("t", { repo: "o/r", number: 5 }))?.checks).toEqual({ passed: 0, failed: 0, skipped: 0, pending: 0, names: [] });
+  });
 });
 
 describe("fetchDeployments", () => {

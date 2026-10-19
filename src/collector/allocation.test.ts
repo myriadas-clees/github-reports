@@ -127,6 +127,38 @@ describe("classifyInitiative", () => {
 });
 
 describe("computeAllocation", () => {
+  it("keeps a PR in progress before its later merge, then folds effort into shipped", () => {
+    const historical = computeAllocation(data({
+      dateRange: { from: "2026-09-01", to: "2026-09-01" },
+      prsInProgress: [pr({ url: "p", state: "merged", mergedAt: "2026-09-05T12:00:00Z", workAdditions: 20 })],
+    }, 10));
+    expect(historical.initiatives[0]!.inProgress[0]).toMatchObject({ state: "open", url: "p" });
+    // Merged inside the window: the fetcher lists it in pullRequests (and may also in prsInProgress).
+    const mergedWithin = computeAllocation(data({
+      dateRange: { from: "2026-09-01", to: "2026-09-05" },
+      pullRequests: [pr({ url: "p", state: "merged", mergedAt: "2026-09-05T12:00:00Z", workAdditions: 20 })],
+      prsInProgress: [pr({ url: "p", state: "merged", mergedAt: "2026-09-05T12:00:00Z", workAdditions: 20 })],
+    }, 10));
+    expect(mergedWithin.initiatives[0]!.shipped[0]).toMatchObject({ state: "merged", url: "p" });
+    const later = computeAllocation(data({
+      dateRange: { from: "2026-09-05", to: "2026-09-05" },
+      pullRequests: [pr({ url: "p", state: "merged", mergedAt: "2026-09-05T12:00:00Z" })],
+    }, 10));
+    const combined = mergeAllocations([historical, later]).initiatives[0]!;
+    expect(combined.shipped).toHaveLength(1);
+    expect(combined.shipped[0]!.effortHours).toBe(20);
+  });
+  it("keeps an evening merge shipped on its local report day even when its UTC date is the next day", () => {
+    // America/New_York day 2026-10-07, merged 21:00 local = 01:00Z on 2026-10-08.
+    const evening = pr({ url: "e", state: "merged", mergedAt: "2026-10-08T01:00:00Z", workAdditions: 20 });
+    const a = computeAllocation(data({
+      dateRange: { from: "2026-10-07", to: "2026-10-07" },
+      pullRequests: [evening],
+      prsInProgress: [evening],
+    }, 10));
+    expect(a.initiatives[0]!.shipped[0]).toMatchObject({ state: "merged", url: "e" });
+    expect(a.initiatives[0]!.inProgress).toEqual([]);
+  });
   it("scales GitHub weights to the target", () => {
     const d = data({
       pullRequests: [

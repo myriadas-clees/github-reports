@@ -271,6 +271,12 @@ export const computeAllocation = (
   const countsTowardEstimate = (pr: PullRequest): boolean =>
     reportUrls.has(pr.url) || (pr.workCommits?.length ?? 0) > 0 || (pr.workAdditions ?? 0) + (pr.workDeletions ?? 0) > 0;
   for (const pr of prs.values()) {
+    // PRs merged/closed inside the window are in `pullRequests` with their state as of the
+    // window (the fetcher classifies by the report timezone). A merged/closed snapshot that is
+    // only in `prsInProgress` is the PR's current state, reached after this window (e.g. a
+    // backfilled day), so on this day it was still open. No timestamp math: dateRange is a
+    // local date and a UTC comparison would misfile evening merges behind UTC.
+    const state = pr.state !== "open" && !reportUrls.has(pr.url) ? "open" : pr.state;
     const labels = pr.labels ?? [];
     entries.push({
       initiative: classifyInitiative({ title: pr.title, labels, repository: pr.repository }, config),
@@ -278,13 +284,13 @@ export const computeAllocation = (
       weight: countsTowardEstimate(pr) ? prWeight(pr) : 0,
     });
     const initiative = entries[entries.length - 1].initiative;
-    const section: Section = pr.state === "merged" ? "shipped" : pr.state === "open" ? "inProgress" : "other";
+    const section: Section = state === "merged" ? "shipped" : state === "open" ? "inProgress" : "other";
     const item: AllocationItem = {
       kind: "pr",
       title: pr.title,
       url: pr.url,
       repository: pr.repository,
-      state: pr.state,
+      state,
       ...(labels.length > 0 ? { labels: [...labels] } : {}),
       ...(pr.workFiles?.length ? { files: [...pr.workFiles] } : {}),
     };

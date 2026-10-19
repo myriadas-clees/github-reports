@@ -74,6 +74,12 @@ describe("parseConfigObject", () => {
     expect(partial.manualTime).toEqual([{ date: "2026-10-07", initiative: "Hub", hours: 2 }]);
   });
 
+  it("drops impossible manual-time dates and keeps valid leap/calendar dates", () => {
+    const entries = ["2026-02-30", "2026-13-01", "2026-04-31", "2024-02-29", "2026-02-28"]
+      .map((date) => ({ date, initiative: "Hub", hours: 1 }));
+    expect(parseConfigObject({ manual_time: entries }).manualTime).toEqual(entries.slice(3));
+  });
+
   it("returns empty manualTime when absent or not a list", () => {
     expect(parseConfigObject({ username: "x" }).manualTime).toBeUndefined();
     expect(parseConfigObject({ manual_time: "nope" as unknown as [] }).manualTime).toEqual([]);
