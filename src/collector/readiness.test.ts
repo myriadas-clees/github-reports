@@ -158,6 +158,18 @@ describe("deriveComplexity", () => {
     });
   });
 
+  it("counts root source files as project code while keeping root support files out", () => {
+    expect(deriveComplexity(["main.go"])).toMatchObject({
+      level: "contained", reason: "Touches 1 area: project root", risks: [],
+    });
+    expect(deriveComplexity(["package.json", "tsconfig.json"])).toMatchObject({
+      level: "contained", reason: "Docs, tests or tooling only",
+    });
+    expect(deriveComplexity(["app.py", "src/billing/x.py"])?.reason).toBe("Touches 2 areas: billing, project root");
+    expect(deriveComplexity(["auth.ts"])?.risks).toEqual(["Sign-in & permissions"]);
+    expect(deriveComplexity(["main.test.ts"])?.reason).toBe("Docs, tests or tooling only");
+  });
+
   it("areas are ordered by how much of the change they hold", () => {
     expect(deriveComplexity(["transition/a.ts", "transition/b.ts", "hub/c.ts"])?.reason).toBe("Touches 2 areas: transition, hub");
   });
@@ -177,6 +189,14 @@ describe("deriveComplexity", () => {
   it("detects risks in order", () => {
     const c = deriveComplexity([".github/workflows/ci.yml", "src/billing/x.ts", "db/migrations/1.sql", "src/auth/login.ts"]);
     expect(c?.risks).toEqual(["Sign-in & permissions", "Payments", "Data changes", "Infrastructure"]);
+  });
+});
+
+describe("deriveComplexity root-level metadata", () => {
+  it("does not count root dotfiles or JSON metadata as code", () => {
+    expect(deriveComplexity([".prettierignore", ".env.example", "renovate.json", "vite.config.ts"])).toMatchObject({
+      level: "contained", reason: "Docs, tests or tooling only",
+    });
   });
 });
 

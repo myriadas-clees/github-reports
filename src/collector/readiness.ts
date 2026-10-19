@@ -125,6 +125,9 @@ const CONTAINER_DIRS = new Set(["apps", "packages", "services", "libs", "modules
 const SHARED_DIRS = new Set(["packages", "libs", "modules"]);
 /** Supporting files: real work, but they don't widen the set of systems a change touches. */
 const SUPPORT_RE = /\.(md|mdx|txt)$|(^|\/)(docs?|\.github|\.agents|\.vscode|scripts|research|templates)\//i;
+/** Root files that describe or configure the project rather than implement it. */
+const ROOT_SUPPORT_RE = /^(?:package\.json|tsconfig[^/]*\.json|[^/]+\.config\.(?:js|ts|mjs|cjs)|\.eslintrc[^/]*|\.prettierrc[^/]*|\.editorconfig|\.git(?:ignore|attributes|modules)|\.npmrc|\.nvmrc|Dockerfile|docker-compose[^/]*|Makefile|go\.(?:mod|sum)|Cargo\.toml|pyproject\.toml|requirements[^/]*\.txt|setup\.cfg|[^/]+\.(?:md|mdx|txt)|LICENSE[^/]*|[^/.]+\.lock)$/i;
+const ROOT_SOURCE_RE = /\.(?:tsx?|jsx?|mjs|cjs|py|go|rb|rs|java|kt|swift|cs|php|c|cc|cpp|h|hpp|scala|ex|exs|sql|vue|svelte)$/i;
 /** A risk tag needs at least this share of the relevant files, so one incidental file doesn't flag a change. */
 const RISK_MIN_SHARE = 0.2;
 
@@ -146,6 +149,7 @@ const areaOf = (file: string, systems: Record<string, string> | undefined): stri
     if (match) return systems[match]!;
   }
   const parts = file.split("/");
+  if (parts.length === 1) return "project root";
   if (CONTAINER_DIRS.has(parts[0]!) && parts.length > 2) {
     return SHARED_DIRS.has(parts[0]!) ? `${parts[1]!} (shared)` : parts[1]!;
   }
@@ -168,7 +172,12 @@ const meetsShare = (matches: number, total: number): boolean =>
 export const deriveComplexity = (files: string[], systems?: Record<string, string>): Complexity | undefined => {
   const relevant = files.filter((f) => f && !IGNORED_RE.test(f) && !GENERATED_RE.test(f));
   if (relevant.length === 0) return undefined;
-  const code = relevant.filter((f) => f.includes("/") && !TEST_FILE_RE.test(f) && !SUPPORT_RE.test(f));
+  const code = relevant.filter((f) =>
+    !TEST_FILE_RE.test(f) && !SUPPORT_RE.test(f) &&
+    // Root files count as code only with a source extension (and not a known config file
+    // like vite.config.ts); other root dotfiles/metadata (.prettierignore, renovate.json) are support.
+    (f.includes("/") || (ROOT_SOURCE_RE.test(f) && !ROOT_SUPPORT_RE.test(f))),
+  );
   const risks = RISK_RULES.filter(({ re, codeOnly }) => {
     const pool = codeOnly ? code : relevant;
     return meetsShare(pool.filter((f) => re.test(f)).length, pool.length);

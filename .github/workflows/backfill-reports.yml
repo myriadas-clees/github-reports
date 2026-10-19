@@ -100,7 +100,8 @@ jobs:
             fi
             report_date=$(date -u -d "$report_date + 1 day" +%F)
           done
-          bun dist/cli/index.js evidence || echo "Evidence refresh failed (non-fatal)"
+          # Cover every backfilled report, not just the default last 90 days.
+          bun dist/cli/index.js evidence --since "$START_DATE" || echo "Evidence refresh failed (non-fatal)"
           commit_progress
 
       - name: Recompute hours from stored inputs
