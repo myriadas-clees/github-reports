@@ -433,10 +433,11 @@ const buildVerification = (a: Allocation): AllocationVerificationView | undefine
       ])
     : undefined;
   const checksLine = s.checksCollected === 0
-    ? "Automated check results not collected yet"
+    ? (s.withoutChecks > 0 ? "No automated checks ran on these changes" : "Automated check results not collected yet")
     : joinParts([
       `${s.withPassingChecks} of ${s.checksCollected} passed automated checks`,
       s.withPendingChecks > 0 && `${s.withPendingChecks} still running`,
+      s.withoutChecks > 0 && `${s.withoutChecks} had no automated checks`,
       s.withAutomatedReview > 0 && `${s.withAutomatedReview} had automated code review`,
       s.withHumanReview > 0 && `${s.withHumanReview} had human review`,
       s.withTests > 0 && `${s.withTests} included test updates`,

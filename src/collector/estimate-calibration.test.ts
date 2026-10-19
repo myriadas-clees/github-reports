@@ -91,6 +91,22 @@ describe("buildEstimateCalibration", () => {
     expect(cal.groups.find((x) => x.kind === "feature" && x.size === "S")!.turnaroundDays.p50).toBe(3);
   });
 
+  it("uses the report day for a merge observed after UTC midnight", () => {
+    const cal = buildEstimateCalibration(new Map([["2026-09-01", report([
+      merged(21, "feat: late local merge", "2026-09-02T02:30:00Z"),
+    ])]]), DEFAULT_ALLOCATION_CONFIG);
+    expect(cal.groups.find((x) => x.kind === "feature" && x.size === "S")!.turnaroundDays.p50).toBe(1);
+  });
+
+  it("does not stretch turnaround when the merge is first seen in a later report", () => {
+    // Worked Fri Sep 4, merged Sat Sep 5 (no report that day), first seen merged in Mon Sep 7's report.
+    const cal = buildEstimateCalibration(new Map<string, WeeklyReportData>([
+      ["2026-09-04", report([pr(22, "feat: weekend merge")])],
+      ["2026-09-07", report([merged(22, "feat: weekend merge", "2026-09-05T15:00:00Z", { workCommits: [], workAdditions: 0, workFiles: [] })])],
+    ]), DEFAULT_ALLOCATION_CONFIG);
+    expect(cal.groups.find((x) => x.kind === "feature" && x.size === "S")!.turnaroundDays.p50).toBe(1);
+  });
+
   it("keeps merge-only snapshots for PRs with prior work, but ignores never-worked PRs", () => {
     const work = pr(10, "feat: merge later");
     const mergeOnly = merged(10, "feat: merge later", "2026-09-03T12:00:00Z", {

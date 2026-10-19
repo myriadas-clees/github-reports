@@ -115,7 +115,16 @@ type PrAcc = {
   hours: number;
   days: Set<string>;
   latestDay: string;
+  mergeDay: string | null;
 };
+
+/**
+ * True when `day` (a local report-day key) is the day this snapshot saw the merge. The UTC
+ * merge date differs from the local day by at most one (timezone skew); a merged snapshot first
+ * seen later than that (no report on the merge day) must not stretch turnaround.
+ */
+const observedMergeDay = (pr: PullRequest, day: string): boolean =>
+  pr.state === "merged" && (!pr.mergedAt || Math.abs(toUtcDay(pr.mergedAt.slice(0, 10)) - toUtcDay(day)) <= 1);
 
 const hasWork = (pr: PullRequest): boolean => (pr.workCommits?.length ?? 0) > 0 || (pr.workAdditions ?? 0) > 0;
 
@@ -156,6 +165,7 @@ export const buildEstimateCalibration = (
           acc.state = pr.state;
           acc.changedFiles = pr.changedFiles ?? acc.changedFiles;
           if (pr.mergedAt) acc.mergedAt = pr.mergedAt;
+          if (!acc.mergeDay && observedMergeDay(pr, day)) acc.mergeDay = day;
           acc.latestDay = day;
         }
         continue;
@@ -164,7 +174,7 @@ export const buildEstimateCalibration = (
         acc = {
           title: pr.title, labels: pr.labels ?? [], repository: pr.repository, state: pr.state, mergedAt: null,
           createdAt: pr.createdAt, files: new Set(), changedFiles: pr.changedFiles ?? 0, hours: 0,
-          days: new Set(), latestDay: "",
+          days: new Set(), latestDay: "", mergeDay: observedMergeDay(pr, day) ? day : null,
         };
         prs.set(pr.url, acc);
       }
@@ -177,6 +187,7 @@ export const buildEstimateCalibration = (
       acc.state = pr.state;
       acc.changedFiles = pr.changedFiles ?? acc.changedFiles;
       if (pr.mergedAt) acc.mergedAt = pr.mergedAt;
+      if (!acc.mergeDay && observedMergeDay(pr, day)) acc.mergeDay = day;
       acc.latestDay = day;
     }
   }
@@ -192,7 +203,7 @@ export const buildEstimateCalibration = (
     merged.push({
       kind: estimateKind(acc.title, acc.labels),
       size: sizeBand(files),
-      turnaround: workingDaysBetween(first, acc.mergedAt),
+      turnaround: workingDaysBetween(first, acc.mergeDay ?? acc.mergedAt.slice(0, 10)),
       active: acc.days.size,
       effort: acc.hours / HOURS_PER_DAY,
     });

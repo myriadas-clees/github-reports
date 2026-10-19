@@ -239,7 +239,7 @@ describe("annotateAllocation + summarizeVerification", () => {
     const out = annotateAllocation(alloc([merged, { ...merged }], [open]), l);
     expect(summarizeVerification(out)).toEqual({
       completed: 1, live: 1, awaitingRelease: 0, preview: 0, inReview: 0, drafts: 1,
-      withPassingChecks: 1, withPendingChecks: 0, checksCollected: 1, withAutomatedReview: 1, withHumanReview: 0, withTests: 1,
+      withoutChecks: 0, withPassingChecks: 1, withPendingChecks: 0, checksCollected: 1, withAutomatedReview: 1, withHumanReview: 0, withTests: 1,
       aiFindingsAddressed: 4,
     });
   });
@@ -251,6 +251,30 @@ describe("annotateAllocation + summarizeVerification", () => {
     const summary = summarizeVerification(annotateAllocation(alloc([prototype, live], [review]), null));
     expect(summary).toMatchObject({ completed: 1, drafts: 1, live: 1, inReview: 1 });
     expect(summary.completed + summary.inReview + summary.drafts).toBe(3);
+  });
+
+  it("puts label-overridden open PRs in review and release stages only under completed", () => {
+    const openBeta: AllocationItem = { kind: "pr", title: "beta", url: "https://github.com/org/app/pull/4", repository: "org/app", state: "open", labels: ["stage: beta"] };
+    const openPilot: AllocationItem = { ...openBeta, title: "pilot", url: "https://github.com/org/app/pull/5", labels: ["readiness: pilot"] };
+    const mergedLive: AllocationItem = { ...openBeta, title: "live", url: "https://github.com/org/app/pull/6", state: "merged", labels: ["stage: live"] };
+    const betaSummary = summarizeVerification(annotateAllocation(alloc([], [openBeta]), null));
+    expect(betaSummary).toMatchObject({ inReview: 1, preview: 0 });
+    expect(betaSummary.completed + betaSummary.inReview + betaSummary.drafts).toBe(1);
+    const summary = summarizeVerification(annotateAllocation(alloc([mergedLive], [openPilot]), null));
+    expect(summary).toMatchObject({ completed: 1, live: 1, inReview: 1, preview: 0 });
+    expect(summary.completed + summary.inReview + summary.drafts).toBe(2);
+  });
+
+  it("excludes empty automated check sets from the pass-rate denominator", () => {
+    const empty = ledger({ checks: { passed: 0, failed: 0, skipped: 0, pending: 0, names: [] } });
+    const make = (url: string) => ({ kind: "pr" as const, title: "checks", url, repository: "org/app", state: "open" as const });
+    const emptyOnly = annotateAllocation(alloc([], [make(URL)]), empty);
+    expect(summarizeVerification(emptyOnly)).toMatchObject({ checksCollected: 0, withoutChecks: 1 });
+    const mixed = alloc([], [make(URL), make("https://github.com/org/app/pull/7")]);
+    const evidence = ledger({ checks: { passed: 1, failed: 0, skipped: 0, pending: 0, names: ["ci"] } });
+    evidence.prs!["https://github.com/org/app/pull/7"] = pr({ url: "https://github.com/org/app/pull/7", checks: { passed: 0, failed: 0, skipped: 0, pending: 0, names: [] } });
+    const mixedSummary = summarizeVerification(annotateAllocation(mixed, evidence));
+    expect(mixedSummary).toMatchObject({ checksCollected: 1, withPassingChecks: 1, withoutChecks: 1 });
   });
 
   it("counts pending and failed checks as not passing", () => {

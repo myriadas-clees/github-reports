@@ -429,6 +429,46 @@ describe("readiness, complexity and verification views", () => {
     expect(v.checksLine).toBe("Automated check results not collected yet");
   });
 
+  it("reports PRs that ran no automated checks apart from the collected ones", () => {
+    const noChecks = {
+      kind: "pr" as const, title: "Docs only", url: "https://github.com/o/r/pull/7", state: "open" as const,
+      readiness: { stage: "in-review" as const, label: "In review" },
+      checks: { automated: { passed: 0, failed: 0, pending: 0, total: 0 }, humanReviews: 0, automatedReviews: 0, testsUpdated: false },
+    };
+    const a = makeAllocation([["A", 10, { shipped: [annotated], inProgress: [noChecks] }]]);
+    const v = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification!;
+    expect(v.checksLine).toBe(
+      "1 of 1 passed automated checks · 1 had no automated checks · 1 had automated code review · 1 included test updates",
+    );
+  });
+
+  it("says no automated checks ran when every PR with evidence has zero checks", () => {
+    const noChecks = {
+      kind: "pr" as const, title: "Docs only", url: "https://github.com/o/r/pull/7", state: "open" as const,
+      readiness: { stage: "in-review" as const, label: "In review" },
+      checks: { automated: { passed: 0, failed: 0, pending: 0, total: 0 }, humanReviews: 0, automatedReviews: 0, testsUpdated: false },
+    };
+    const a = makeAllocation([["A", 10, { inProgress: [noChecks] }]]);
+    const v = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification!;
+    expect(v.checksLine).toBe("No automated checks ran on these changes");
+  });
+
+  it("keeps the not-collected wording when no automated data exists at all", () => {
+    const a = makeAllocation([["A", 10, { inProgress: [{ ...open, checks: undefined }] }]]);
+    const v = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification!;
+    expect(v.checksLine).toBe("Automated check results not collected yet");
+  });
+
+  it("counts a lone open pilot PR as one change in review", () => {
+    const pilot = {
+      kind: "pr" as const, title: "Pilot: new onboarding", url: "https://github.com/o/r/pull/8", state: "open" as const,
+      readiness: { stage: "in-review" as const, label: "In review" },
+    };
+    const a = makeAllocation([["A", 10, { inProgress: [pilot] }]]);
+    const v = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification!;
+    expect(v.readinessLine).toBe("Of 1 change: 1 in review");
+  });
+
   it("has no verification block without PR items", () => {
     const a = makeAllocation([["A", 10]]);
     expect(buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification).toBeUndefined();

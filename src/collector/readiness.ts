@@ -254,6 +254,7 @@ export type VerificationSummary = {
   preview: number;
   inReview: number;
   drafts: number;
+  withoutChecks: number;
   withPassingChecks: number;
   withPendingChecks: number;
   checksCollected: number;
@@ -267,7 +268,7 @@ export type VerificationSummary = {
 export const summarizeVerification = (allocation: Allocation): VerificationSummary => {
   const s: VerificationSummary = {
     completed: 0, live: 0, awaitingRelease: 0, preview: 0, inReview: 0, drafts: 0,
-    withPassingChecks: 0, withPendingChecks: 0, checksCollected: 0, withAutomatedReview: 0, withHumanReview: 0, withTests: 0,
+    withoutChecks: 0, withPassingChecks: 0, withPendingChecks: 0, checksCollected: 0, withAutomatedReview: 0, withHumanReview: 0, withTests: 0,
     aiFindingsAddressed: allocation.aiFindingsAddressed ?? 0,
   };
   const seen = new Set<string>();
@@ -278,22 +279,26 @@ export const summarizeVerification = (allocation: Allocation): VerificationSumma
       if (seen.has(key)) continue;
       seen.add(key);
       const stage = item.readiness?.stage;
-      if (item.state === "merged" && stage !== "draft" && stage !== "prototype") s.completed += 1;
-      switch (stage) {
-        case "live": s.live += 1; break;
-        case "awaiting-release": s.awaitingRelease += 1; break;
-        case "preview": s.preview += 1; break;
-        case "in-review": s.inReview += 1; break;
-        case "draft":
-        case "prototype": s.drafts += 1; break;
-        default: break;
+      if (stage === "draft" || stage === "prototype") {
+        s.drafts += 1;
+      } else if (item.state === "merged") {
+        s.completed += 1;
+        if (stage === "live") s.live += 1;
+        else if (stage === "awaiting-release") s.awaitingRelease += 1;
+        else if (stage === "preview") s.preview += 1;
+      } else {
+        s.inReview += 1;
       }
       const c = item.checks;
       if (!c) continue;
       if (c.automated) {
-        s.checksCollected += 1;
-        if (c.automated.pending > 0) s.withPendingChecks += 1;
-        if (c.automated.total > 0 && c.automated.failed === 0 && c.automated.pending === 0) s.withPassingChecks += 1;
+        if (c.automated.total > 0) {
+          s.checksCollected += 1;
+          if (c.automated.pending > 0) s.withPendingChecks += 1;
+          if (c.automated.failed === 0 && c.automated.pending === 0) s.withPassingChecks += 1;
+        } else {
+          s.withoutChecks += 1;
+        }
       }
       if (c.automatedReviews > 0) s.withAutomatedReview += 1;
       if (c.humanReviews > 0) s.withHumanReview += 1;
