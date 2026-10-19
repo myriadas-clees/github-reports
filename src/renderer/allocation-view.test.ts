@@ -451,7 +451,8 @@ describe("readiness, complexity and verification views", () => {
     const v = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification!;
     expect(v.title).toBe("Checks behind this work");
     expect(v.readinessLine).toBe("Of 2 changes: 1 live · 1 in review");
-    expect(v.checksLine).toBe("1 of 1 passed automated checks · 1 had automated code review · 1 included test updates · 5 review findings addressed");
+    // The open PR in this fixture has no check evidence, so it is named as not collected.
+    expect(v.checksLine).toBe("1 of 1 passed automated checks · 1 not collected · 1 had automated code review · 1 included test updates · 5 review findings addressed");
     expect(v.note).toContain("No process catches every bug");
   });
 
@@ -534,6 +535,35 @@ describe("readiness, complexity and verification views", () => {
     const a = makeAllocation([["A", 10, { inProgress: [pilot] }]]);
     const v = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification!;
     expect(v.readinessLine).toBe("Of 1 change: 1 in review");
+  });
+
+  it("does not claim no checks ran when some PRs have no check evidence", () => {
+    const zeroChecks = {
+      kind: "pr" as const, title: "Docs only", url: "https://github.com/o/r/pull/7", state: "open" as const,
+      readiness: { stage: "in-review" as const, label: "In review" },
+      checks: { automated: { passed: 0, failed: 0, pending: 0, total: 0 }, humanReviews: 0, automatedReviews: 0, testsUpdated: false },
+    };
+    const unknown = {
+      kind: "pr" as const, title: "Unknown", url: "https://github.com/o/r/pull/8", state: "open" as const,
+      readiness: { stage: "in-review" as const, label: "In review" },
+      checks: { automated: null, humanReviews: 0, automatedReviews: 0, testsUpdated: false },
+    };
+    const a = makeAllocation([["A", 10, { inProgress: [zeroChecks, unknown] }]]);
+    const v = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification!;
+    expect(v.checksLine).toBe("1 had no automated checks · 1 not collected");
+  });
+
+  it("names PRs without check evidence next to collected checks", () => {
+    const unknown = {
+      kind: "pr" as const, title: "Unknown", url: "https://github.com/o/r/pull/8", state: "open" as const,
+      readiness: { stage: "in-review" as const, label: "In review" },
+      checks: { automated: null, humanReviews: 0, automatedReviews: 0, testsUpdated: false },
+    };
+    const a = makeAllocation([["A", 10, { shipped: [annotated], inProgress: [unknown] }]]);
+    const v = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification!;
+    expect(v.checksLine).toBe(
+      "1 of 1 passed automated checks · 1 not collected · 1 had automated code review · 1 included test updates",
+    );
   });
 
   it("has no verification block without PR items", () => {

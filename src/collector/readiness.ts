@@ -264,6 +264,7 @@ export type VerificationSummary = {
   inReview: number;
   drafts: number;
   withoutChecks: number;
+  checksUnknown: number;
   withPassingChecks: number;
   withPendingChecks: number;
   checksCollected: number;
@@ -277,7 +278,7 @@ export type VerificationSummary = {
 export const summarizeVerification = (allocation: Allocation): VerificationSummary => {
   const s: VerificationSummary = {
     completed: 0, live: 0, awaitingRelease: 0, preview: 0, inReview: 0, drafts: 0,
-    withoutChecks: 0, withPassingChecks: 0, withPendingChecks: 0, checksCollected: 0, withAutomatedReview: 0, withHumanReview: 0, withTests: 0,
+    withoutChecks: 0, checksUnknown: 0, withPassingChecks: 0, withPendingChecks: 0, checksCollected: 0, withAutomatedReview: 0, withHumanReview: 0, withTests: 0,
     aiFindingsAddressed: allocation.aiFindingsAddressed ?? 0,
   };
   const seen = new Set<string>();
@@ -299,19 +300,19 @@ export const summarizeVerification = (allocation: Allocation): VerificationSumma
         s.inReview += 1;
       }
       const c = item.checks;
-      if (!c) continue;
-      if (c.automated) {
-        if (c.automated.total > 0) {
-          s.checksCollected += 1;
-          if (c.automated.pending > 0) s.withPendingChecks += 1;
-          if (c.automated.failed === 0 && c.automated.pending === 0) s.withPassingChecks += 1;
-        } else {
-          s.withoutChecks += 1;
-        }
+      if (!c?.automated) {
+        s.checksUnknown += 1;
+      } else if (c.automated.total > 0) {
+        s.checksCollected += 1;
+        if (c.automated.pending > 0) s.withPendingChecks += 1;
+        if (c.automated.failed === 0 && c.automated.pending === 0) s.withPassingChecks += 1;
+      } else {
+        s.withoutChecks += 1;
       }
-      if (c.automatedReviews > 0) s.withAutomatedReview += 1;
-      if (c.humanReviews > 0) s.withHumanReview += 1;
-      if (c.testsUpdated) s.withTests += 1;
+      // Review and test evidence is independent of whether check runs were collected.
+      if (c && c.automatedReviews > 0) s.withAutomatedReview += 1;
+      if (c && c.humanReviews > 0) s.withHumanReview += 1;
+      if (c?.testsUpdated) s.withTests += 1;
     }
   }
   return s;

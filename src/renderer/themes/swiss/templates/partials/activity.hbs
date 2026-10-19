@@ -18,7 +18,9 @@
     <span class="chip"><span class="chip-label">PRs merged</span> <span class="chip-value chip-green">{{stats.prsMerged}}</span></span>
     <span class="chip"><span class="chip-label">Lines</span> <span class="chip-value chip-green">+{{formatNumber stats.totalAdditions}}</span> <span class="chip-value chip-red">−{{formatNumber stats.totalDeletions}}</span></span>
     {{#if hoursEstimate}}
+    {{#if hoursEstimate.hours}}
     <span class="chip"><span class="chip-label">Work delivered</span> <span class="chip-value">{{workDelivered hoursEstimate.hours}}</span></span>
+    {{/if}}
     {{else}}
     {{#if stats.estimatedHours}}
     <span class="chip"><span class="chip-label">Work delivered</span> <span class="chip-value">{{workDelivered stats.estimatedHours}}</span></span>
@@ -26,7 +28,7 @@
     {{/if}}
   </div>
 
-  {{#if hoursEstimate}}
+  {{#if hoursEstimate.hours}}
   <p class="estimate-note"><em>What a typical engineer would need to build these changes. Measures output, not hours worked.</em></p>
   {{/if}}
 

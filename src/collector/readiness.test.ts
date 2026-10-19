@@ -263,7 +263,7 @@ describe("annotateAllocation + summarizeVerification", () => {
     const out = annotateAllocation(alloc([merged, { ...merged }], [open]), l);
     expect(summarizeVerification(out)).toEqual({
       completed: 1, live: 1, awaitingRelease: 0, preview: 0, inReview: 0, drafts: 1,
-      withoutChecks: 0, withPassingChecks: 1, withPendingChecks: 0, checksCollected: 1, withAutomatedReview: 1, withHumanReview: 0, withTests: 1,
+      withoutChecks: 0, withPassingChecks: 1, withPendingChecks: 0, checksCollected: 1, checksUnknown: 1, withAutomatedReview: 1, withHumanReview: 0, withTests: 1,
       aiFindingsAddressed: 4,
     });
   });
@@ -301,6 +301,20 @@ describe("annotateAllocation + summarizeVerification", () => {
     expect(mixedSummary).toMatchObject({ checksCollected: 1, withPassingChecks: 1, withoutChecks: 1 });
   });
 
+  it("partitions unique PRs into collected checks, no checks, and unknown checks", () => {
+    const empty = ledger({ checks: { passed: 0, failed: 0, skipped: 0, pending: 0, names: [] } });
+    const zeroChecks: AllocationItem = { kind: "pr", title: "zero", url: URL, repository: "org/app", state: "open" };
+    const unknownChecks: AllocationItem = { kind: "pr", title: "unknown", url: "https://github.com/org/app/pull/2", repository: "org/app", state: "open" };
+    const mixed = summarizeVerification(annotateAllocation(alloc([], [zeroChecks, unknownChecks]), empty));
+    expect(mixed).toMatchObject({ checksCollected: 0, withoutChecks: 1, checksUnknown: 1 });
+    expect(mixed.checksCollected + mixed.withoutChecks + mixed.checksUnknown).toBe(2);
+
+    const collectedLedger = ledger({ checks: { passed: 1, failed: 0, skipped: 0, pending: 0, names: ["ci"] } });
+    const collected = summarizeVerification(annotateAllocation(alloc([zeroChecks]), collectedLedger));
+    expect(collected.checksUnknown).toBe(0);
+    expect(collected.checksCollected + collected.withoutChecks + collected.checksUnknown).toBe(1);
+  });
+
   it("counts pending and failed checks as not passing", () => {
     const pending = ledger({ checks: { passed: 3, failed: 0, skipped: 0, pending: 1, names: [] } });
     const failed = ledger({ checks: { passed: 2, failed: 1, skipped: 0, pending: 0, names: [] } });
@@ -311,5 +325,19 @@ describe("annotateAllocation + summarizeVerification", () => {
       { withPassingChecks: 0, withPendingChecks: 1, checksCollected: 1 },
       { withPassingChecks: 0, withPendingChecks: 0, checksCollected: 1 },
     ]);
+  });
+});
+
+describe("summarizeVerification with uncollected checks", () => {
+  it("still counts reviews and test updates when automated checks were not collected", () => {
+    const a: Allocation = {
+      version: "1", totalHours: 1, manualHours: 0, workTypes: [], note: "",
+      initiatives: [{ initiative: "A", hours: 1, share: 1, byWorkType: {}, other: [], inProgress: [], shipped: [{
+        kind: "pr", title: "x", url: "https://github.com/o/r/pull/9", state: "merged",
+        checks: { automated: null, humanReviews: 1, automatedReviews: 1, testsUpdated: true },
+      }] }],
+    };
+    const s = summarizeVerification(a);
+    expect(s).toMatchObject({ checksUnknown: 1, withHumanReview: 1, withAutomatedReview: 1, withTests: 1 });
   });
 });

@@ -438,15 +438,22 @@ const buildVerification = (a: Allocation): AllocationVerificationView | undefine
         s.drafts > 0 && `${s.drafts} ${plural(s.drafts, "draft or prototype", "drafts or prototypes")}`,
       ])
     : undefined;
+  // The blanket "no checks ran" claim needs every PR to be known zero-check; unknown PRs are named separately.
   // Review, test and finding counts are appended even when no PR has automated checks, since they can be the only evidence.
+  const checksLead = (): string => {
+    if (s.checksCollected > 0) return `${s.withPassingChecks} of ${s.checksCollected} passed automated checks`;
+    if (s.withoutChecks > 0) {
+      return s.checksUnknown > 0
+        ? `${s.withoutChecks} had no automated checks · ${s.checksUnknown} not collected`
+        : "No automated checks ran on these changes";
+    }
+    return "Automated check results not collected yet";
+  };
   const checksLine = joinParts([
-    s.checksCollected > 0
-      ? `${s.withPassingChecks} of ${s.checksCollected} passed automated checks`
-      : s.withoutChecks > 0
-        ? "No automated checks ran on these changes"
-        : "Automated check results not collected yet",
+    checksLead(),
     s.checksCollected > 0 && s.withPendingChecks > 0 && `${s.withPendingChecks} still running`,
     s.checksCollected > 0 && s.withoutChecks > 0 && `${s.withoutChecks} had no automated checks`,
+    s.checksCollected > 0 && s.checksUnknown > 0 && `${s.checksUnknown} not collected`,
     s.withAutomatedReview > 0 && `${s.withAutomatedReview} had automated code review`,
     s.withHumanReview > 0 && `${s.withHumanReview} had human review`,
     s.withTests > 0 && `${s.withTests} included test updates`,

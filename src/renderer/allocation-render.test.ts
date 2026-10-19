@@ -193,6 +193,22 @@ describe("daily page week link", () => {
   }
 });
 
+describe("work delivered chip", () => {
+  const withHours = (hours: number) => ({ ...DATA, hoursEstimate: { hours, sessions: 1 } }) as unknown as WeeklyReportData;
+  for (const theme of AVAILABLE_THEMES as Theme[]) {
+    it(`hides the chip and its note for a zero-hour estimate in the ${theme} theme`, () => {
+      const html = renderReport(withHours(0), { theme });
+      expect(html, theme).not.toContain("Work delivered");
+      expect(html, theme).not.toContain("What a typical engineer would need to build these changes");
+    });
+    it(`shows the chip and its note for an 8-hour estimate in the ${theme} theme`, () => {
+      const html = renderReport(withHours(8), { theme });
+      expect(html, theme).toContain("Work delivered");
+      expect(html, theme).toContain("What a typical engineer would need to build these changes");
+    });
+  }
+});
+
 describe("no-activity minimum day rendering", () => {
   it("shows the gray no-activity segment under its own name in every theme", () => {
     const a = makeAllocation([["Hub", 10], ["No GitHub activity (minimum day)", 8]]);
