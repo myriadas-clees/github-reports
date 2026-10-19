@@ -58,9 +58,28 @@ describe("buildEstimateCalibration", () => {
     expect(g.effortDays.p50).toBeGreaterThan(0);
   });
 
+  it("counts deletion-only work before a later merge", () => {
+    const days = new Map<string, WeeklyReportData>([
+      ["2026-09-01", report([pr(2, "feat: deletion-only work", {
+        workCommits: [], workAdditions: 0, workDeletions: 120, workFiles: [],
+      })])],
+      ["2026-09-02", report([merged(2, "feat: deletion-only work", "2026-09-02T12:00:00Z", {
+        workCommits: [], workAdditions: 0, workDeletions: 0, workFiles: [],
+      })])],
+    ]);
+    const cal = buildEstimateCalibration(days, DEFAULT_ALLOCATION_CONFIG);
+    const feature = cal.groups.find((group) => group.kind === "feature" && group.size === "S")!;
+    expect(cal.sampleSize).toBe(1);
+    expect(feature.n).toBe(1);
+    expect(feature.effortDays.p50).toBeGreaterThan(0);
+    expect(feature.activeDays.p50).toBe(1);
+  });
+
   it("counts a PR present in both daily lists once and keeps its merged state", () => {
     const work = pr(30, "feat: duplicate daily snapshot");
-    const mergedSnapshot = merged(30, work.title, "2026-09-01T12:00:00Z", { workCommits: [], workAdditions: 0, workFiles: [] });
+    const mergedSnapshot = merged(30, work.title, "2026-09-01T12:00:00Z", {
+      workCommits: [], workAdditions: 0, workDeletions: 0, workFiles: [],
+    });
     const duplicate = report([mergedSnapshot]);
     duplicate.prsInProgress = [work];
     const single = buildEstimateCalibration(new Map([["2026-09-01", report([merged(30, work.title, "2026-09-01T12:00:00Z")])]]), DEFAULT_ALLOCATION_CONFIG);
@@ -110,10 +129,10 @@ describe("buildEstimateCalibration", () => {
   it("keeps merge-only snapshots for PRs with prior work, but ignores never-worked PRs", () => {
     const work = pr(10, "feat: merge later");
     const mergeOnly = merged(10, "feat: merge later", "2026-09-03T12:00:00Z", {
-      workCommits: [], workAdditions: 0, workFiles: [], changedFiles: 2,
+      workCommits: [], workAdditions: 0, workDeletions: 0, workFiles: [], changedFiles: 2,
     });
     const neverWorked = merged(11, "feat: idle forever", "2026-09-03T12:00:00Z", {
-      workCommits: [], workAdditions: 0, workFiles: [],
+      workCommits: [], workAdditions: 0, workDeletions: 0, workFiles: [],
     });
     const days = new Map<string, WeeklyReportData>([
       ["2026-09-01", report([work])],
@@ -132,7 +151,9 @@ describe("buildEstimateCalibration", () => {
     const days = new Map<string, WeeklyReportData>();
     const prs: PullRequest[] = [pr(100, "feat: open one")];
     for (let i = 0; i < 6; i++) prs.push(merged(i, `fix: bug ${i}`, "2026-09-02T12:00:00Z"));
-    prs.push(merged(50, "feat: idle", "2026-09-02T12:00:00Z", { workCommits: [], workAdditions: 0 }));
+    prs.push(merged(50, "feat: idle", "2026-09-02T12:00:00Z", {
+      workCommits: [], workAdditions: 0, workDeletions: 0,
+    }));
     days.set("2026-09-01", report(prs));
     const cal = buildEstimateCalibration(days, DEFAULT_ALLOCATION_CONFIG);
     expect(cal.sampleSize).toBe(6);

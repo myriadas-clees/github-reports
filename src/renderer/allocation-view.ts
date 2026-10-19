@@ -420,8 +420,8 @@ const buildVerification = (a: Allocation): AllocationVerificationView | undefine
   const s = summarizeVerification(a);
   const total = s.completed + s.inReview + s.drafts;
   if (total === 0 && s.aiFindingsAddressed === 0) return undefined;
-  const readinessLine = s.completed + s.inReview > 0
-    ? `Of ${s.completed + s.inReview + s.drafts} ${plural(s.completed + s.inReview + s.drafts, "change", "changes")}: ` +
+  const readinessLine = total > 0
+    ? `Of ${total} ${plural(total, "change", "changes")}: ` +
       joinParts([
         s.live > 0 && `${s.live} live`,
         s.preview > 0 && `${s.preview} in testing`,
@@ -432,17 +432,20 @@ const buildVerification = (a: Allocation): AllocationVerificationView | undefine
         s.drafts > 0 && `${s.drafts} ${plural(s.drafts, "draft or prototype", "drafts or prototypes")}`,
       ])
     : undefined;
-  const checksLine = s.checksCollected === 0
-    ? (s.withoutChecks > 0 ? "No automated checks ran on these changes" : "Automated check results not collected yet")
-    : joinParts([
-      `${s.withPassingChecks} of ${s.checksCollected} passed automated checks`,
-      s.withPendingChecks > 0 && `${s.withPendingChecks} still running`,
-      s.withoutChecks > 0 && `${s.withoutChecks} had no automated checks`,
-      s.withAutomatedReview > 0 && `${s.withAutomatedReview} had automated code review`,
-      s.withHumanReview > 0 && `${s.withHumanReview} had human review`,
-      s.withTests > 0 && `${s.withTests} included test updates`,
-      s.aiFindingsAddressed > 0 && `${s.aiFindingsAddressed} review findings addressed`,
-    ]);
+  // Review, test and finding counts are appended even when no PR has automated checks, since they can be the only evidence.
+  const checksLine = joinParts([
+    s.checksCollected > 0
+      ? `${s.withPassingChecks} of ${s.checksCollected} passed automated checks`
+      : s.withoutChecks > 0
+        ? "No automated checks ran on these changes"
+        : "Automated check results not collected yet",
+    s.checksCollected > 0 && s.withPendingChecks > 0 && `${s.withPendingChecks} still running`,
+    s.checksCollected > 0 && s.withoutChecks > 0 && `${s.withoutChecks} had no automated checks`,
+    s.withAutomatedReview > 0 && `${s.withAutomatedReview} had automated code review`,
+    s.withHumanReview > 0 && `${s.withHumanReview} had human review`,
+    s.withTests > 0 && `${s.withTests} included test updates`,
+    s.aiFindingsAddressed > 0 && `${s.aiFindingsAddressed} review findings addressed`,
+  ]);
   return {
     title: VERIFICATION_TITLE,
     ...(readinessLine ? { readinessLine } : {}),

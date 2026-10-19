@@ -126,7 +126,9 @@ type PrAcc = {
 const observedMergeDay = (pr: PullRequest, day: string): boolean =>
   pr.state === "merged" && (!pr.mergedAt || Math.abs(toUtcDay(pr.mergedAt.slice(0, 10)) - toUtcDay(day)) <= 1);
 
-const hasWork = (pr: PullRequest): boolean => (pr.workCommits?.length ?? 0) > 0 || (pr.workAdditions ?? 0) > 0;
+// Keep this predicate aligned with prWeight in allocation.ts: either churn direction is work.
+const hasWork = (pr: PullRequest): boolean =>
+  (pr.workCommits?.length ?? 0) > 0 || (pr.workAdditions ?? 0) + (pr.workDeletions ?? 0) > 0;
 
 export const buildEstimateCalibration = (
   dailyReports: Map<string, WeeklyReportData>,

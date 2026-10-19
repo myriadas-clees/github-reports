@@ -429,6 +429,41 @@ describe("readiness, complexity and verification views", () => {
     expect(v.checksLine).toBe("Automated check results not collected yet");
   });
 
+  it("keeps review, test and finding counts when no PR has automated checks", () => {
+    const reviewed = {
+      kind: "pr" as const, title: "Docs only", url: "https://github.com/o/r/pull/7", state: "open" as const,
+      readiness: { stage: "in-review" as const, label: "In review" },
+      checks: { automated: { passed: 0, failed: 0, pending: 0, total: 0 }, humanReviews: 1, automatedReviews: 0, testsUpdated: true },
+    };
+    const a = makeAllocation([["A", 10, { inProgress: [reviewed] }]]);
+    a.aiFindingsAddressed = 3;
+    const v = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification!;
+    expect(v.checksLine).toBe(
+      "No automated checks ran on these changes · 1 had human review · 1 included test updates · 3 review findings addressed",
+    );
+  });
+
+  it("keeps an automated review count when automated checks were not collected", () => {
+    const reviewed = {
+      kind: "pr" as const, title: "Reviewed", url: "https://github.com/o/r/pull/6", state: "open" as const,
+      readiness: { stage: "in-review" as const, label: "In review" },
+      checks: { automated: null, humanReviews: 0, automatedReviews: 1, testsUpdated: false },
+    };
+    const a = makeAllocation([["A", 10, { inProgress: [reviewed] }]]);
+    const v = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification!;
+    expect(v.checksLine).toBe("Automated check results not collected yet · 1 had automated code review");
+  });
+
+  it("summarizes a draft-only period", () => {
+    const draft = (n: number, stage: "draft" | "prototype") => ({
+      kind: "pr" as const, title: `Draft ${n}`, url: `https://github.com/o/r/pull/${20 + n}`, state: "open" as const,
+      readiness: { stage, label: "Draft" },
+    });
+    const a = makeAllocation([["A", 10, { inProgress: [draft(1, "draft"), draft(2, "prototype")] }]]);
+    const v = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification!;
+    expect(v.readinessLine).toBe("Of 2 changes: 2 drafts or prototypes");
+  });
+
   it("reports PRs that ran no automated checks apart from the collected ones", () => {
     const noChecks = {
       kind: "pr" as const, title: "Docs only", url: "https://github.com/o/r/pull/7", state: "open" as const,
