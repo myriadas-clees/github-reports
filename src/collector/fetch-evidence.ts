@@ -197,26 +197,12 @@ const mergeChecks = (
   if (!statuses) return runs;
   const statusSummary = summarizeCommitStatuses(statuses);
   if (!runs) return statuses.length ? statusSummary : null;
-  const runNames = new Set(runs.names);
-  const uniqueStatuses = statusSummary.names.filter((name) => !runNames.has(name));
-  const statusCounts = { passed: 0, failed: 0, skipped: 0, pending: 0 };
-  const latest = new Map<string, RawCommitStatus>();
-  for (const status of statuses) {
-    const prev = latest.get(status.context);
-    if (!prev || new Date(status.created_at ?? 0).getTime() >= new Date(prev.created_at ?? 0).getTime()) latest.set(status.context, status);
-  }
-  for (const name of uniqueStatuses) {
-    const state = latest.get(name)?.state;
-    if (state === "success") statusCounts.passed++;
-    else if (state === "pending") statusCounts.pending++;
-    else if (state) statusCounts.failed++;
-  }
   return {
-    passed: runs.passed + statusCounts.passed,
-    failed: runs.failed + statusCounts.failed,
+    passed: runs.passed + statusSummary.passed,
+    failed: runs.failed + statusSummary.failed,
     skipped: runs.skipped,
-    pending: runs.pending + statusCounts.pending,
-    names: [...new Set([...runs.names, ...uniqueStatuses])].sort(),
+    pending: runs.pending + statusSummary.pending,
+    names: [...new Set([...runs.names, ...statusSummary.names])].sort(),
   };
 };
 

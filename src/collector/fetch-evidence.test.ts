@@ -89,7 +89,7 @@ describe("fetchPrEvidence", () => {
     expect(ev?.checks).toEqual({ passed: 1, failed: 1, skipped: 0, pending: 1, names: ["deploy", "queue", "unit"] });
   });
 
-  it("merges status contexts while check runs win duplicate names", async () => {
+  it("counts same-named commit statuses independently from check runs", async () => {
     mockRoutes([
       [/pulls\/5\/reviews/, () => json([])], [/pulls\/5\/files/, () => json([])],
       [/check-runs/, () => json({ check_runs: [{ name: "same", status: "completed", conclusion: "success" }] })],
@@ -99,7 +99,19 @@ describe("fetchPrEvidence", () => {
       ] })], [/pulls\/5$/, () => json(pr)],
     ]);
     const ev = await fetchPrEvidence("t", { repo: "o/r", number: 5 });
-    expect(ev?.checks).toEqual({ passed: 2, failed: 0, skipped: 0, pending: 0, names: ["legacy", "same"] });
+    expect(ev?.checks).toEqual({ passed: 2, failed: 1, skipped: 0, pending: 0, names: ["legacy", "same"] });
+  });
+
+  it("counts a passing build check run and failing build status separately", async () => {
+    mockRoutes([
+      [/pulls\/5\/reviews/, () => json([])], [/pulls\/5\/files/, () => json([])],
+      [/check-runs/, () => json({ check_runs: [{ name: "build", status: "completed", conclusion: "success" }] })],
+      [/commits\/abc\/status/, () => json({ statuses: [
+        { context: "build", state: "failure", created_at: "2026-06-01T00:00:00Z" },
+      ] })], [/pulls\/5$/, () => json(pr)],
+    ]);
+    const ev = await fetchPrEvidence("t", { repo: "o/r", number: 5 });
+    expect(ev?.checks).toEqual({ passed: 1, failed: 1, skipped: 0, pending: 0, names: ["build"] });
   });
 
   it("uses check runs when the commit status endpoint returns 404", async () => {
