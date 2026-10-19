@@ -167,8 +167,8 @@ export const buildEstimateCalibration = (
   for (const acc of prs.values()) {
     if (acc.state !== "merged" || !acc.mergedAt) continue;
     const workDays = [...acc.days].sort();
-    const created = acc.createdAt ? acc.createdAt.slice(0, 10) : workDays[0]!;
-    const first = created < workDays[0]! ? created : workDays[0]!;
+    const first = workDays[0] ?? acc.createdAt?.slice(0, 10);
+    if (!first) continue;
     const files = acc.files.size > 0 ? acc.files.size : acc.changedFiles;
     merged.push({
       kind: estimateKind(acc.title, acc.labels),

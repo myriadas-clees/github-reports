@@ -230,6 +230,15 @@ describe("annotateAllocation + summarizeVerification", () => {
     });
   });
 
+  it("keeps readiness summary categories mutually exclusive", () => {
+    const prototype: AllocationItem = { kind: "pr", title: "prototype", url: URL, repository: "org/app", state: "merged", labels: ["stage: prototype"] };
+    const live: AllocationItem = { kind: "pr", title: "live", url: "https://github.com/org/app/pull/2", repository: "org/app", state: "merged", labels: ["readiness: production"] };
+    const review: AllocationItem = { kind: "pr", title: "review", url: "https://github.com/org/app/pull/3", repository: "org/app", state: "open", readiness: { stage: "in-review", label: "In review", detail: "Review" } };
+    const summary = summarizeVerification(annotateAllocation(alloc([prototype, live], [review]), null));
+    expect(summary).toMatchObject({ completed: 1, drafts: 1, live: 1, inReview: 1 });
+    expect(summary.completed + summary.inReview + summary.drafts).toBe(3);
+  });
+
   it("counts pending and failed checks as not passing", () => {
     const pending = ledger({ checks: { passed: 3, failed: 0, skipped: 0, pending: 1, names: [] } });
     const failed = ledger({ checks: { passed: 2, failed: 1, skipped: 0, pending: 0, names: [] } });

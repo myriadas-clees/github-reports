@@ -274,8 +274,9 @@ export const summarizeVerification = (allocation: Allocation): VerificationSumma
       const key = item.url ?? `${item.repository}|${item.title}`;
       if (seen.has(key)) continue;
       seen.add(key);
-      if (item.state === "merged") s.completed += 1;
-      switch (item.readiness?.stage) {
+      const stage = item.readiness?.stage;
+      if (item.state === "merged" && stage !== "draft" && stage !== "prototype") s.completed += 1;
+      switch (stage) {
         case "live": s.live += 1; break;
         case "awaiting-release": s.awaitingRelease += 1; break;
         case "preview": s.preview += 1; break;

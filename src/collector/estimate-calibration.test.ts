@@ -58,6 +58,15 @@ describe("buildEstimateCalibration", () => {
     expect(g.effortDays.p50).toBeGreaterThan(0);
   });
 
+  it("starts turnaround at first work even when the PR was created earlier", () => {
+    const cal = buildEstimateCalibration(new Map([["2026-08-17", report([
+      merged(20, "feat: delayed work", "2026-08-19T12:00:00Z", {
+        createdAt: "2026-08-03T09:00:00Z", workCommits: [commit("2026-08-17")],
+      }),
+    ])]]), DEFAULT_ALLOCATION_CONFIG);
+    expect(cal.groups.find((x) => x.kind === "feature" && x.size === "S")!.turnaroundDays.p50).toBe(3);
+  });
+
   it("keeps merge-only snapshots for PRs with prior work, but ignores never-worked PRs", () => {
     const work = pr(10, "feat: merge later");
     const mergeOnly = merged(10, "feat: merge later", "2026-09-03T12:00:00Z", {
