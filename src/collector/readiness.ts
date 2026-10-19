@@ -127,7 +127,7 @@ const SHARED_DIRS = new Set(["packages", "libs", "modules"]);
 const SUPPORT_RE = /\.(md|mdx|txt)$|(^|\/)(docs?|\.github|\.agents|\.vscode|scripts|research|templates)\//i;
 /** Root files that describe or configure the project rather than implement it. */
 const ROOT_SUPPORT_RE = /^(?:package\.json|tsconfig[^/]*\.json|[^/]+\.config\.(?:js|ts|mjs|cjs)|\.eslintrc[^/]*|\.prettierrc[^/]*|\.editorconfig|\.git(?:ignore|attributes|modules)|\.npmrc|\.nvmrc|Dockerfile|docker-compose[^/]*|Makefile|go\.(?:mod|sum)|Cargo\.toml|pyproject\.toml|requirements[^/]*\.txt|setup\.cfg|[^/]+\.(?:md|mdx|txt)|LICENSE[^/]*|[^/.]+\.lock)$/i;
-const ROOT_SOURCE_RE = /\.(?:tsx?|jsx?|mjs|cjs|py|go|rb|rs|java|kt|swift|cs|php|c|cc|cpp|h|hpp|scala|ex|exs|sql|vue|svelte)$/i;
+const ROOT_SOURCE_RE = /\.(?:tsx?|jsx?|mjs|cjs|html?|css|scss|sass|less|styl|astro|py|go|rb|rs|java|kt|swift|cs|php|c|cc|cpp|h|hpp|scala|ex|exs|sql|vue|svelte)$/i;
 /** A risk tag needs at least this share of the relevant files, so one incidental file doesn't flag a change. */
 const RISK_MIN_SHARE = 0.2;
 

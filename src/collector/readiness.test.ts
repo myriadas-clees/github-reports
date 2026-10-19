@@ -168,6 +168,10 @@ describe("deriveComplexity", () => {
     expect(deriveComplexity(["app.py", "src/billing/x.py"])?.reason).toBe("Touches 2 areas: billing, project root");
     expect(deriveComplexity(["auth.ts"])?.risks).toEqual(["Sign-in & permissions"]);
     expect(deriveComplexity(["main.test.ts"])?.reason).toBe("Docs, tests or tooling only");
+    expect(deriveComplexity(["index.html", "styles.css"])).toMatchObject({
+      level: "contained", reason: "Touches 1 area: project root",
+    });
+    expect(deriveComplexity(["main.scss"])?.reason).toBe("Touches 1 area: project root");
   });
 
   it("areas are ordered by how much of the change they hold", () => {

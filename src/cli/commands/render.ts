@@ -484,9 +484,10 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
     const prevGhData = await tryReadYaml<WeeklyReportData>(join(options.dataDir, prevWeek, "github-data.yaml"));
     const prevAiContent = await tryReadYaml<AIContent>(join(options.dataDir, prevWeek, "llm-data.yaml"));
     if (prevGhData && prevAiContent) {
+      const prevData = withRecomputedHours(normalizeReportData(prevGhData));
       const prevIdx = currentIdx - 1;
       const prevPrev = prevIdx > 0 ? allPaths[prevIdx - 1] : undefined;
-      const prevHtml = renderReport({ ...normalizeReportData(prevGhData), aiContent: prevAiContent }, {
+      const prevHtml = renderReport({ ...prevData, aiContent: prevAiContent }, {
         language: options.language,
         timezone: options.timezone,
         baseUrl: base,
@@ -496,7 +497,7 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
         theme: options.theme,
         prevWeek: prevPrev ? `${"../".repeat(prevWeek.split("/").length)}${prevPrev}/` : undefined,
         nextWeek: `${"../".repeat(prevWeek.split("/").length)}${dayId.path}/`,
-        allocation: allocationFor(prevWeek, prevGhData),
+        allocation: allocationFor(prevWeek, prevData),
         weekLink: weekLinkFor(prevWeek, "../".repeat(prevWeek.split("/").length)),
       });
       const prevOutputDir = join(options.outputDir, prevWeek);

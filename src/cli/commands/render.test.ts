@@ -445,7 +445,7 @@ describe("registerRender", () => {
   });
 
   it("re-renders previous week with next-week link", async () => {
-    const PREV_GITHUB_YAML = GITHUB_DATA_YAML.replace("2026-03-28", "2026-03-21").replace("2026-04-03", "2026-03-27");
+    const PREV_GITHUB_YAML = `${GITHUB_DATA_YAML.replace("2026-03-28", "2026-03-21").replace("2026-04-03", "2026-03-27").replace("estimatedHours: 0", "estimatedHours: 2")}\nhoursInputs:\n  timestamps: []\n  volume:\n    commitCount: 3\n    commitAdditions: 4000\n    commitDeletions: 200\n    commitStatsCount: 3\n  options:\n    gapMinutes: 90\n    maxSessionHours: 6\n    minimumHours: 8\n`;
     const PREV_LLM_YAML = LLM_DATA_YAML.replace("Weekly Summary", "Previous Week Summary");
 
     mockReadFile.mockImplementation((path: string) => {
@@ -482,6 +482,7 @@ describe("registerRender", () => {
     // Second call should include nextWeek link
     const prevWeekCall = mockRenderReport.mock.calls[1];
     expect(prevWeekCall[1]).toHaveProperty("nextWeek", "../../../2026/04/01/");
+    expect(prevWeekCall[0]).toMatchObject({ stats: { estimatedHours: 9 }, hoursEstimate: { hours: 9 } });
   });
 
   it("links nextWeek and prevPrev when current week sits in the middle", async () => {
