@@ -15,9 +15,16 @@ export const ESTIMATE_KIND_CARDS = [
   { param: "bug", value: "bug-fix", label: "A bug fix" },
 ] as const;
 
-/** Inline JS: preselect from ?kind=, wire the cards, keep the URL param in sync. */
-export const buildEstimateKindScript = (): string => `(function () {
-  var map = ${safeEmbedJson(Object.fromEntries(ESTIMATE_KIND_CARDS.map((c) => [c.param, c.value])))};
+/** Cards offered on the page; the app card needs at least one past app/product. */
+export const visibleKindCards = (hasApps: boolean) =>
+  hasApps ? ESTIMATE_KIND_CARDS : ESTIMATE_KIND_CARDS.filter((c) => c.param !== "app");
+
+/**
+ * Inline JS: preselect from ?kind=, wire the cards, keep the URL param in sync.
+ * Without app history, ?kind=app is ignored so the select keeps its default ("feature").
+ */
+export const buildEstimateKindScript = (hasApps = true): string => `(function () {
+  var map = ${safeEmbedJson(Object.fromEntries(visibleKindCards(hasApps).map((c) => [c.param, c.value])))};
   var select = document.getElementById("est-kind");
   if (!select) return;
   var cards = document.querySelectorAll("[data-est-card]");
@@ -77,8 +84,8 @@ export const renderEstimatePage = (
   const template = hbs.compile(readThemeTemplate(theme, "estimate-page.hbs"));
   return template({
     calculator,
-    cards: ESTIMATE_KIND_CARDS,
-    kindScript: buildEstimateKindScript(),
+    cards: visibleKindCards(calculator.hasApps),
+    kindScript: buildEstimateKindScript(calculator.hasApps),
     css: theme.buildCSS(language),
     indexCss: theme.buildIndexCSS(language),
     username: options.username ?? "",

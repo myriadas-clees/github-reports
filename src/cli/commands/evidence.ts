@@ -8,12 +8,17 @@ import {
   emptyLedger,
   mergeDeployments,
   needsRefresh,
+  type PrRef,
   readEvidenceLedger,
   writeEvidenceLedger,
 } from "../../collector/evidence-ledger.js";
 import { fetchDefaultBranch, fetchDeployments, fetchPrEvidence, mapWithConcurrency } from "../../collector/fetch-evidence.js";
 
 const env = (key: string): string | undefined => process.env[key];
+
+/** Configured repositories first, followed by repositories discovered from activity. */
+export const evidenceRepositories = (configured: string[], refs: PrRef[]): string[] =>
+  [...new Set([...configured, ...refs.map((ref) => ref.repo)])];
 
 export const registerEvidence = (program: Command): void => {
   program
@@ -35,8 +40,9 @@ export const registerEvidence = (program: Command): void => {
       const sinceIso = `${since}T00:00:00.000Z`;
 
       const ledger = (await readEvidenceLedger(cfg.dataDir)) ?? emptyLedger();
+      const refs = await collectPrRefsFromData(cfg.dataDir, since);
 
-      for (const repo of cfg.repositories) {
+      for (const repo of evidenceRepositories(cfg.repositories, refs)) {
         try {
           const branch = await fetchDefaultBranch(token, repo);
           if (branch) ledger.defaultBranches[repo] = branch;
@@ -50,7 +56,6 @@ export const registerEvidence = (program: Command): void => {
         }
       }
 
-      const refs = await collectPrRefsFromData(cfg.dataDir, since);
       const todo = refs.filter((r) => opts.force || needsRefresh(ledger.prs[r.url], now));
       let refreshed = 0;
       await mapWithConcurrency(todo, async (ref) => {

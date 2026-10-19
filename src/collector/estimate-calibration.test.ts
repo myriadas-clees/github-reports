@@ -58,6 +58,27 @@ describe("buildEstimateCalibration", () => {
     expect(g.effortDays.p50).toBeGreaterThan(0);
   });
 
+  it("keeps merge-only snapshots for PRs with prior work, but ignores never-worked PRs", () => {
+    const work = pr(10, "feat: merge later");
+    const mergeOnly = merged(10, "feat: merge later", "2026-09-03T12:00:00Z", {
+      workCommits: [], workAdditions: 0, workFiles: [], changedFiles: 2,
+    });
+    const neverWorked = merged(11, "feat: idle forever", "2026-09-03T12:00:00Z", {
+      workCommits: [], workAdditions: 0, workFiles: [],
+    });
+    const days = new Map<string, WeeklyReportData>([
+      ["2026-09-01", report([work])],
+      ["2026-09-03", report([mergeOnly, neverWorked])],
+    ]);
+    const cal = buildEstimateCalibration(days, DEFAULT_ALLOCATION_CONFIG);
+    expect(cal.sampleSize).toBe(1);
+    const g = cal.groups.find((x) => x.kind === "feature" && x.size === "S")!;
+    expect(g.n).toBe(1);
+    expect(g.turnaroundDays.p50).toBe(3);
+    expect(g.activeDays.p50).toBe(1);
+    expect(g.effortDays.p50).toBeGreaterThan(0);
+  });
+
   it("ignores unmerged PRs and PRs without work, and flags thin groups with pooling", () => {
     const days = new Map<string, WeeklyReportData>();
     const prs: PullRequest[] = [pr(100, "feat: open one")];

@@ -128,8 +128,19 @@ export const buildEstimateCalibration = (
   for (const day of days) {
     const report = dailyReports.get(day)!;
     for (const pr of [...(report.pullRequests ?? []), ...(report.prsInProgress ?? [])]) {
-      if (!hasWork(pr)) continue;
       let acc = prs.get(pr.url);
+      if (!hasWork(pr)) {
+        if (acc) {
+          // A later snapshot can carry the merge transition without new authored work.
+          acc.title = pr.title;
+          acc.labels = pr.labels ?? acc.labels;
+          acc.state = pr.state;
+          acc.changedFiles = pr.changedFiles ?? acc.changedFiles;
+          if (pr.mergedAt) acc.mergedAt = pr.mergedAt;
+          acc.latestDay = day;
+        }
+        continue;
+      }
       if (!acc) {
         acc = {
           title: pr.title, labels: pr.labels ?? [], repository: pr.repository, state: pr.state, mergedAt: null,

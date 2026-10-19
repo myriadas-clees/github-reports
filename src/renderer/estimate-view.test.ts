@@ -28,6 +28,11 @@ describe("estimate view", () => {
     expect(view.json).not.toContain("</script>");
     expect(view.sinceLabel).toBe("Jun 2026");
   });
+  it("reports hasApps only when past apps/products exist", () => {
+    expect(buildEstimateCalculatorView(calibration())!.hasApps).toBe(true);
+    const noApps = { ...calibration(), apps: { ...calibration().apps, initiatives: [] } };
+    expect(buildEstimateCalculatorView(noApps)!.hasApps).toBe(false);
+  });
 });
 
 describe("calculator script", () => {
@@ -38,6 +43,11 @@ describe("calculator script", () => {
     expect(ESTIMATE_SCRIPT).toContain('"engineer-days"');
     // Calendar span stays in weeks.
     expect(ESTIMATE_SCRIPT).toContain("spread over roughly");
+  });
+  it("falls back from app to a non-app kind when there is no app history", () => {
+    expect(ESTIMATE_SCRIPT).toContain("var hasApps = data.apps.initiatives.length > 0;");
+    expect(ESTIMATE_SCRIPT).toContain('if (kind === "app" && !hasApps)');
+    expect(ESTIMATE_SCRIPT).toContain("firstNonAppKind()");
   });
 });
 

@@ -402,7 +402,7 @@ export type Complexity = {
 
 export type PrChecks = {
   /** Non-skipped automated checks on the final version; null when not collected. */
-  automated: { passed: number; failed: number; total: number } | null;
+  automated: { passed: number; failed: number; pending: number; total: number } | null;
   humanReviews: number;
   automatedReviews: number;
   testsUpdated: boolean;

@@ -98,12 +98,27 @@ describe("allocation section", () => {
     }
   });
 
+  it("shows still-running checks instead of all-passed wording in every theme", () => {
+    const shipped = [{
+      kind: "pr" as const, title: "Add tiers", url: "https://github.com/o/r/pull/1", state: "open" as const,
+      readiness: { stage: "in-review" as const, label: "In review" },
+      checks: { automated: { passed: 1, failed: 0, pending: 1, total: 2 }, humanReviews: 0, automatedReviews: 0, testsUpdated: false },
+    }];
+    const a = makeAllocation([["Pricing", 30, { inProgress: shipped }]]);
+    for (const theme of AVAILABLE_THEMES as Theme[]) {
+      const html = renderReport(DATA, { theme, allocation: { week: { label: "Oct 1–7", allocation: a } } });
+      expect(html, theme).toContain("1 of 2 automated checks passed · 1 still running");
+      expect(html, theme).not.toContain("Both automated checks passed");
+      expect(html, theme).not.toContain("[object Object]");
+    }
+  });
+
   it("renders readiness, complexity, risk chips and the checks block in every theme", () => {
     const shipped = [{
       kind: "pr" as const, title: "Add tiers", url: "https://github.com/o/r/pull/1", state: "merged" as const,
       readiness: { stage: "live" as const, label: "Live", detail: "Live since Oct 8" },
       complexity: { level: "cross-system" as const, label: "Cross-system", reason: "Touches 4 areas: a, b, c, d", risks: ["Payments"] },
-      checks: { automated: { passed: 2, failed: 0, total: 2 }, humanReviews: 1, automatedReviews: 0, testsUpdated: false },
+      checks: { automated: { passed: 2, failed: 0, pending: 0, total: 2 }, humanReviews: 1, automatedReviews: 0, testsUpdated: false },
     }];
     const a = makeAllocation([["Pricing", 30, { shipped }]]);
     for (const theme of AVAILABLE_THEMES as Theme[]) {

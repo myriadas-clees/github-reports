@@ -14,8 +14,9 @@
         <option value="bug-fix">Bug fix</option>
         <option value="change">Small change</option>
         <option value="feature" selected>New feature</option>
-        <option value="app">New app or product</option>
+        {{#if hasApps}}<option value="app">New app or product</option>{{/if}}
       </select>
+      {{#unless hasApps}}<span class="est-caption">App estimates appear once there's enough history from past apps.</span>{{/unless}}
     </label>
     <label class="est-field" data-est-size><span class="est-label">How big</span>
       <select class="est-select" name="size">

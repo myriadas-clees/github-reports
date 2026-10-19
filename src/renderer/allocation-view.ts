@@ -366,8 +366,9 @@ const checksText = (item: AllocationItem): string | undefined => {
   if (!c.automated) parts.push("Checks not collected");
   else if (c.automated.total === 0) parts.push("No automated checks");
   else {
-    const { passed, total } = c.automated;
-    parts.push(passed === total
+    const { passed, pending, total } = c.automated;
+    if (pending > 0) parts.push(`${passed} of ${total} automated checks passed · ${pending} still running`);
+    else parts.push(passed === total
       ? `${total === 1 ? "Automated check" : total === 2 ? "Both automated checks" : `All ${total} automated checks`} passed`
       : `${passed} of ${total} automated checks passed`);
   }
@@ -435,6 +436,7 @@ const buildVerification = (a: Allocation): AllocationVerificationView | undefine
     ? "Automated check results not collected yet"
     : joinParts([
       `${s.withPassingChecks} of ${s.checksCollected} passed automated checks`,
+      s.withPendingChecks > 0 && `${s.withPendingChecks} still running`,
       s.withAutomatedReview > 0 && `${s.withAutomatedReview} had automated code review`,
       s.withHumanReview > 0 && `${s.withHumanReview} had human review`,
       s.withTests > 0 && `${s.withTests} included test updates`,

@@ -202,7 +202,7 @@ export const derivePrChecks = (
   const unique = (bot: boolean): number => new Set(reviews.filter((r) => !!r.bot === bot).map((r) => r.reviewer)).size;
   const c = pe?.checks;
   return {
-    automated: c ? { passed: c.passed, failed: c.failed, total: c.passed + c.failed } : null,
+    automated: c ? { passed: c.passed, failed: c.failed, pending: c.pending ?? 0, total: c.passed + c.failed + (c.pending ?? 0) } : null,
     humanReviews: unique(false),
     automatedReviews: unique(true),
     testsUpdated: files.some((f) => TEST_FILE_RE.test(f)),
@@ -252,6 +252,7 @@ export type VerificationSummary = {
   inReview: number;
   drafts: number;
   withPassingChecks: number;
+  withPendingChecks: number;
   checksCollected: number;
   withAutomatedReview: number;
   withHumanReview: number;
@@ -263,7 +264,7 @@ export type VerificationSummary = {
 export const summarizeVerification = (allocation: Allocation): VerificationSummary => {
   const s: VerificationSummary = {
     completed: 0, live: 0, awaitingRelease: 0, preview: 0, inReview: 0, drafts: 0,
-    withPassingChecks: 0, checksCollected: 0, withAutomatedReview: 0, withHumanReview: 0, withTests: 0,
+    withPassingChecks: 0, withPendingChecks: 0, checksCollected: 0, withAutomatedReview: 0, withHumanReview: 0, withTests: 0,
     aiFindingsAddressed: allocation.aiFindingsAddressed ?? 0,
   };
   const seen = new Set<string>();
@@ -287,7 +288,8 @@ export const summarizeVerification = (allocation: Allocation): VerificationSumma
       if (!c) continue;
       if (c.automated) {
         s.checksCollected += 1;
-        if (c.automated.failed === 0 && c.automated.passed > 0) s.withPassingChecks += 1;
+        if (c.automated.pending > 0) s.withPendingChecks += 1;
+        if (c.automated.total > 0 && c.automated.failed === 0 && c.automated.pending === 0) s.withPassingChecks += 1;
       }
       if (c.automatedReviews > 0) s.withAutomatedReview += 1;
       if (c.humanReviews > 0) s.withHumanReview += 1;

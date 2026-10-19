@@ -368,7 +368,7 @@ describe("readiness, complexity and verification views", () => {
     state: "merged" as const,
     readiness: { stage: "live" as const, label: "Live", detail: "Live since Oct 8" },
     complexity: { level: "connected" as const, label: "Connected", reason: "Touches 2 areas: a, b", risks: ["Payments"] },
-    checks: { automated: { passed: 3, failed: 0, total: 3 }, humanReviews: 0, automatedReviews: 1, testsUpdated: true },
+    checks: { automated: { passed: 3, failed: 0, pending: 0, total: 3 }, humanReviews: 0, automatedReviews: 1, testsUpdated: true },
   };
   const open = {
     kind: "pr" as const, title: "Draft thing", url: "https://github.com/o/r/pull/2", state: "open" as const,
@@ -384,6 +384,33 @@ describe("readiness, complexity and verification views", () => {
     expect(item!.complexity).toMatchObject({ level: "connected", hasRisks: true, risks: ["Payments"] });
     expect(item!.checksText).toBe("All 3 automated checks passed · 1 automated review · tests updated");
     expect(v.panels[0]!.initiatives[0]!.inProgress[0]!.checksText).toBe("Checks not collected");
+  });
+
+  it("never says all checks passed while some are still running", () => {
+    const checks = (automated: { passed: number; failed: number; pending: number; total: number }) =>
+      ({ kind: "pr" as const, title: "t", url: "https://github.com/o/r/pull/9", state: "open" as const,
+        checks: { automated, humanReviews: 0, automatedReviews: 0, testsUpdated: false } });
+    const a = makeAllocation([["A", 10, { inProgress: [
+      checks({ passed: 2, failed: 0, pending: 1, total: 3 }),
+      checks({ passed: 1, failed: 0, pending: 1, total: 2 }),
+      checks({ passed: 1, failed: 1, pending: 0, total: 2 }),
+      checks({ passed: 2, failed: 0, pending: 0, total: 2 }),
+    ] }]]);
+    const items = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.initiatives[0]!.inProgress;
+    expect(items.map((i) => i.checksText)).toEqual([
+      "2 of 3 automated checks passed · 1 still running",
+      "1 of 2 automated checks passed · 1 still running",
+      "1 of 2 automated checks passed",
+      "Both automated checks passed",
+    ]);
+  });
+
+  it("adds a still-running count to the verification checks line", () => {
+    const pending = { ...open, title: "Still building", url: "https://github.com/o/r/pull/3", state: "open" as const,
+      checks: { automated: { passed: 0, failed: 0, pending: 1, total: 1 }, humanReviews: 0, automatedReviews: 0, testsUpdated: false } };
+    const a = makeAllocation([["A", 10, { shipped: [annotated], inProgress: [pending] }]]);
+    const v = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification!;
+    expect(v.checksLine).toBe("1 of 2 passed automated checks · 1 still running · 1 had automated code review · 1 included test updates");
   });
 
   it("summarizes verification lines", () => {

@@ -183,8 +183,13 @@ describe("derivePrChecks", () => {
       ],
     });
     expect(derivePrChecks({ url: URL }, l, ["src/a.ts"])).toEqual({
-      automated: { passed: 3, failed: 1, total: 4 }, humanReviews: 1, automatedReviews: 1, testsUpdated: false,
+      automated: { passed: 3, failed: 1, pending: 0, total: 4 }, humanReviews: 1, automatedReviews: 1, testsUpdated: false,
     });
+  });
+
+  it("keeps pending checks separate from passing checks", () => {
+    const l = ledger({ checks: { passed: 3, failed: 0, skipped: 0, pending: 1, names: [] } });
+    expect(derivePrChecks({ url: URL }, l, []).automated).toEqual({ passed: 3, failed: 0, pending: 1, total: 4 });
   });
 });
 
@@ -220,8 +225,20 @@ describe("annotateAllocation + summarizeVerification", () => {
     const out = annotateAllocation(alloc([merged, { ...merged }], [open]), l);
     expect(summarizeVerification(out)).toEqual({
       completed: 1, live: 1, awaitingRelease: 0, preview: 0, inReview: 0, drafts: 1,
-      withPassingChecks: 1, checksCollected: 1, withAutomatedReview: 1, withHumanReview: 0, withTests: 1,
+      withPassingChecks: 1, withPendingChecks: 0, checksCollected: 1, withAutomatedReview: 1, withHumanReview: 0, withTests: 1,
       aiFindingsAddressed: 4,
     });
+  });
+
+  it("counts pending and failed checks as not passing", () => {
+    const pending = ledger({ checks: { passed: 3, failed: 0, skipped: 0, pending: 1, names: [] } });
+    const failed = ledger({ checks: { passed: 2, failed: 1, skipped: 0, pending: 0, names: [] } });
+    const items = [pending, failed].map((l) => annotateAllocation(
+      alloc([{ kind: "pr", title: "checks", url: URL, repository: "org/app", state: "open" }]), l,
+    ));
+    expect(items.map((a) => summarizeVerification(a))).toMatchObject([
+      { withPassingChecks: 0, withPendingChecks: 1, checksCollected: 1 },
+      { withPassingChecks: 0, withPendingChecks: 0, checksCollected: 1 },
+    ]);
   });
 });

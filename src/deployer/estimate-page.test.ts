@@ -49,4 +49,40 @@ describe("renderEstimatePage", () => {
     expect(script).toContain('"bug":"bug-fix"');
     expect(script).toContain('"app":"app"');
   });
+  it("keeps the app card only when past apps exist", () => {
+    const withApps = renderEstimatePage(calibration(), { themeName: "brutalist" })!;
+    expect(withApps).toContain('data-est-card="app"');
+    const noApps = renderEstimatePage(
+      { ...calibration(), apps: { ...calibration().apps, initiatives: [] } },
+      { themeName: "brutalist" },
+    )!;
+    expect(noApps).not.toContain('data-est-card="app"');
+    expect(noApps).not.toContain("A new app or product");
+    expect(noApps).toContain('data-est-card="feature"');
+  });
+});
+
+describe("app option visibility", () => {
+  const noApps = (): EstimateCalibration => ({ ...calibration(), apps: { ...calibration().apps, initiatives: [] } });
+  const APP_LABEL = "New app or product";
+  const NOTE = "App estimates appear once there's enough history from past apps.";
+  for (const theme of AVAILABLE_THEMES as Theme[]) {
+    it(`omits the app option in the ${theme} calculator without app history`, () => {
+      const html = renderEstimatePage(noApps(), { username: "u", themeName: theme })!;
+      expect(html).not.toContain(APP_LABEL);
+      expect(html).not.toContain('data-est-card="app"');
+      expect(html).toContain(NOTE);
+      expect(html).toContain("A new feature");
+    });
+    it(`shows the app option in the ${theme} calculator with app history`, () => {
+      const html = renderEstimatePage(calibration(), { username: "u", themeName: theme })!;
+      expect(html).toContain(`<option value="app">${APP_LABEL}</option>`);
+      expect(html).toContain('data-est-card="app"');
+      expect(html).not.toContain(NOTE);
+    });
+  }
+  it("ignores ?kind=app in the page script when there is no app history", () => {
+    expect(buildEstimateKindScript(false)).not.toContain('"app":"app"');
+    expect(buildEstimateKindScript(true)).toContain('"app":"app"');
+  });
 });

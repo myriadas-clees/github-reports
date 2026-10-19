@@ -5,6 +5,8 @@ import { MIN_SAMPLE_SIZE, type EstimateCalibration } from "../collector/estimate
 
 export type EstimateCalculatorView = {
   sampleSize: number;
+  /** False until at least one past app/product exists; the "New app or product" option is hidden then. */
+  hasApps: boolean;
   /** e.g. "Jun 2026" */
   sinceLabel: string;
   /** JSON safe to embed in a <script type="application/json"> element. */
@@ -54,8 +56,19 @@ export const ESTIMATE_SCRIPT = `(function () {
     return MONTHS[Number(p[1]) - 1] + " " + p[0];
   }
   function field(name) { return form.elements[name].value; }
+  function firstNonAppKind() {
+    var opts = form.elements.kind.options;
+    for (var i = 0; i < opts.length; i++) if (opts[i].value !== "app") return opts[i].value;
+    return "feature";
+  }
   function update() {
-    var kind = field("kind"), isApp = kind === "app";
+    var hasApps = data.apps.initiatives.length > 0;
+    var kind = field("kind");
+    if (kind === "app" && !hasApps) {
+      kind = firstNonAppKind();
+      form.elements.kind.value = kind;
+    }
+    var isApp = kind === "app";
     var fam = Number(field("familiar")), integ = Number(field("integrations"));
     var scale = INTEG[integ] * (field("target") === "prototype" ? 0.5 : 1);
     var m50 = FAM50[fam] * scale, m90 = FAM90[fam] * scale;
@@ -107,6 +120,7 @@ export const buildEstimateCalculatorView = (
   if (!calibration || calibration.sampleSize < MIN_SAMPLE_SIZE) return undefined;
   return {
     sampleSize: calibration.sampleSize,
+    hasApps: calibration.apps.initiatives.length > 0,
     sinceLabel: formatSince(calibration.since),
     json: safeEmbedJson(calibration),
     script: ESTIMATE_SCRIPT,
