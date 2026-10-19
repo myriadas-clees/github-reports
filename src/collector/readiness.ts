@@ -76,7 +76,12 @@ export const deriveReadiness = (item: ReadinessItem, evidence: EvidenceLedger | 
   const isContainingDeployment = (d: DeploymentRecord): boolean =>
     !!pe?.containingDeployments?.some((entry) => entry.environment === d.environment && entry.sha === d.sha);
 
-  if (pe?.baseRef && pe.baseRef !== defaultBranch && !deps.some((d) => d.ref === pe.baseRef || isMergeCommitDeployment(d))) {
+  // When the latest deployment refresh failed, known deployments still count, but the
+  // absence of a match is unknown rather than "not live yet" / "not tracked".
+  const unavailable = Boolean(evidence.deploymentsUnavailable?.[repo]);
+  const notCollected = { stage: "done" as const, label: "Done", detail: `${mergedText}; release status not collected` };
+
+  if (!unavailable && pe?.baseRef && pe.baseRef !== defaultBranch && !deps.some((d) => d.ref === pe.baseRef || isMergeCommitDeployment(d) || isContainingDeployment(d))) {
     return {
       stage: "awaiting-release",
       label: "Done · not live yet",
@@ -107,6 +112,7 @@ export const deriveReadiness = (item: ReadinessItem, evidence: EvidenceLedger | 
       since: preview.succeededAt.slice(0, 10),
     };
   }
+  if (unavailable) return notCollected;
   if (deps.some((d) => d.production)) {
     return {
       stage: "awaiting-release",

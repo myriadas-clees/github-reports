@@ -461,9 +461,10 @@ export const mergeAllocations = (allocations: Allocation[]): Allocation => {
   const accs = new Map<string, Acc>();
   const seen = new Map<string, AllocationItem>();
   const commitItems = new Map<string, { item: AllocationItem; count: number }>();
+  const appearanceIndex = new WeakMap<AllocationItem, number>();
   let manualHours = 0;
   let aiFindingsAddressed = 0;
-  for (const allocation of allocations) {
+  for (const [allocationIndex, allocation] of allocations.entries()) {
     manualHours += allocation.manualHours;
     aiFindingsAddressed += allocation.aiFindingsAddressed ?? 0;
     for (const bucket of allocation.initiatives) {
@@ -498,11 +499,13 @@ export const mergeAllocations = (allocations: Allocation[]): Allocation => {
           if (prior) {
             // Same PR on another day: effort, files and labels accumulate.
             absorbPrItem(prior, item);
+            if (section === "inProgress") appearanceIndex.set(prior, allocationIndex);
             continue;
           }
           const copy = { ...item, ...(item.files ? { files: [...item.files] } : {}), ...(item.labels ? { labels: [...item.labels] } : {}) };
           seen.set(key, copy);
           acc[section].push(copy);
+          if (section === "inProgress") appearanceIndex.set(copy, allocationIndex);
         }
       }
     }
@@ -534,6 +537,33 @@ export const mergeAllocations = (allocations: Allocation[]): Allocation => {
       }
       return false;
     });
+  }
+  const inProgressByUrl = new Map<string, { initiative: string; item: AllocationItem }[]>();
+  for (const [initiative, acc] of accs) for (const item of acc.inProgress) if (item.url) {
+    const appearances = inProgressByUrl.get(item.url) ?? [];
+    appearances.push({ initiative, item });
+    inProgressByUrl.set(item.url, appearances);
+  }
+  for (const appearances of inProgressByUrl.values()) {
+    if (appearances.length < 2) continue;
+    const destination = appearances.reduce((latest, appearance) =>
+      appearanceIndex.get(appearance.item)! > appearanceIndex.get(latest.item)! ? appearance : latest);
+    const targetAcc = accs.get(destination.initiative)!;
+    for (const appearance of appearances) {
+      if (appearance === destination) continue;
+      const sourceAcc = accs.get(appearance.initiative)!;
+      const sourceType = classifyWorkType(appearance.item.title, appearance.item.labels ?? []);
+      const targetType = classifyWorkType(destination.item.title, destination.item.labels ?? []);
+      absorbPrItem(destination.item, appearance.item);
+      if (appearance.initiative !== destination.initiative && appearance.item.effortHours != null) {
+        const hours = appearance.item.effortHours;
+        sourceAcc.hours = Math.max(0, sourceAcc.hours - hours);
+        sourceAcc.byWorkType[sourceType] = Math.max(0, (sourceAcc.byWorkType[sourceType] ?? 0) - hours);
+        targetAcc.hours += hours;
+        targetAcc.byWorkType[targetType] = (targetAcc.byWorkType[targetType] ?? 0) + hours;
+      }
+      sourceAcc.inProgress = sourceAcc.inProgress.filter((item) => item !== appearance.item);
+    }
   }
   for (const [initiative, acc] of accs) {
     const hasItems = acc.shipped.length + acc.inProgress.length + acc.other.length > 0;

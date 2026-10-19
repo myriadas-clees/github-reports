@@ -301,11 +301,11 @@ export const fetchDeployments = async (
   repo: string,
   sinceIso: string,
   known: Set<string> = new Set(),
-): Promise<DeploymentRecord[]> => {
+): Promise<{ records: DeploymentRecord[]; failed: boolean }> => {
   const base = `${API}/repos/${repo}`;
   const sinceMs = new Date(sinceIso).getTime();
   // Deployments carry their own environment name, so /environments is not needed.
-  const { items: deployments } = await getPages<RawDeployment>(
+  const { items: deployments, failed } = await getPages<RawDeployment>(
     token,
     `${base}/deployments?per_page=100`,
     `Deployment fetch failed for ${repo}`,
@@ -331,5 +331,5 @@ export const fetchDeployments = async (
       succeededAt: success.created_at,
     });
   });
-  return records;
+  return { records, failed };
 };

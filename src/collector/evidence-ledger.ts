@@ -33,6 +33,7 @@ export const readEvidenceLedger = async (dataDir: string): Promise<EvidenceLedge
       updatedAt: typeof parsed.updatedAt === "string" ? parsed.updatedAt : new Date(0).toISOString(),
       defaultBranches: isObject(parsed.defaultBranches) ? (parsed.defaultBranches as Record<string, string>) : {},
       deployments: isObject(parsed.deployments) ? (parsed.deployments as Record<string, DeploymentRecord[]>) : {},
+      deploymentsUnavailable: isObject(parsed.deploymentsUnavailable) ? (parsed.deploymentsUnavailable as Record<string, string>) : undefined,
       prs: isObject(parsed.prs) ? (parsed.prs as Record<string, PrEvidence>) : {},
     };
   } catch {

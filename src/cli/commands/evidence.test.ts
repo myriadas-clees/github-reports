@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { evidenceRepositories } from "./evidence.js";
+import { applyDeploymentFetch, evidenceRepositories } from "./evidence.js";
+import { emptyLedger } from "../../collector/evidence-ledger.js";
 import { evidenceArgs } from "./report.js";
 
 describe("evidenceRepositories", () => {
@@ -16,6 +17,17 @@ describe("evidenceRepositories", () => {
       { repo: "org/activity", number: 1, url: "https://github.com/org/activity/pull/1" },
     ])).toEqual(["org/activity"]);
   });
+});
+
+it("preserves deployments and marks failed refreshes unavailable", () => {
+  const ledger = emptyLedger();
+  const prior = { environment: "production", production: true, ref: "main", sha: "old", createdAt: "2026-01-01T00:00:00Z", succeededAt: "2026-01-01T00:01:00Z" };
+  ledger.deployments["org/app"] = [prior];
+  applyDeploymentFetch(ledger, "org/app", { records: [], failed: true }, "2026-10-19T00:00:00Z");
+  expect(ledger.deployments["org/app"]).toEqual([prior]);
+  expect(ledger.deploymentsUnavailable).toEqual({ "org/app": "2026-10-19T00:00:00Z" });
+  applyDeploymentFetch(ledger, "org/app", { records: [], failed: false }, "2026-10-20T00:00:00Z");
+  expect(ledger.deploymentsUnavailable).toEqual({});
 });
 
 describe("report evidence step args", () => {

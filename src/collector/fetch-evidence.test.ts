@@ -185,7 +185,8 @@ describe("fetchDeployments", () => {
       ])],
     ]);
     const out = await fetchDeployments("t", "o/r", "2026-06-01T00:00:00Z");
-    expect(Object.fromEntries(out.map((r) => [r.sha, r.production]))).toEqual({ a: true, b: false, c: true });
+    expect(Object.fromEntries(out.records.map((r) => [r.sha, r.production]))).toEqual({ a: true, b: false, c: true });
+    expect(out.failed).toBe(false);
   });
 
   it("keeps only successful deployments, detects production and skips known", async () => {
@@ -204,9 +205,14 @@ describe("fetchDeployments", () => {
       ])],
     ]);
     const out = await fetchDeployments("t", "o/r", "2026-06-01T00:00:00Z", new Set(["production|sha4|2026-06-07T00:00:00Z"]));
-    expect(out.map((r) => [r.sha, r.production, r.succeededAt])).toEqual([
+    expect(out.records.map((r) => [r.sha, r.production, r.succeededAt])).toEqual([
       ["sha1", true, "2026-06-10T00:05:00Z"],
       ["sha3", false, "2026-06-08T00:05:00Z"],
     ]);
+  });
+
+  it("reports forbidden deployment collection as unavailable", async () => {
+    mockRoutes([[/deployments\?/, () => new Response("forbidden", { status: 403 })]]);
+    await expect(fetchDeployments("t", "o/r", "2026-06-01T00:00:00Z")).resolves.toEqual({ records: [], failed: true });
   });
 });

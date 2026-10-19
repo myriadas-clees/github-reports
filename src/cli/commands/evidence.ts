@@ -20,6 +20,16 @@ const env = (key: string): string | undefined => process.env[key];
 export const evidenceRepositories = (configured: string[], refs: PrRef[]): string[] =>
   [...new Set([...configured, ...refs.map((ref) => ref.repo)])];
 
+export const applyDeploymentFetch = (ledger: import("../../types.js").EvidenceLedger, repo: string, result: Awaited<ReturnType<typeof fetchDeployments>>, now: string): void => {
+  if (result.failed) {
+    ledger.deploymentsUnavailable ??= {};
+    ledger.deploymentsUnavailable[repo] = now;
+    return;
+  }
+  ledger.deployments[repo] = mergeDeployments(ledger.deployments[repo] ?? [], result.records);
+  if (ledger.deploymentsUnavailable) delete ledger.deploymentsUnavailable[repo];
+};
+
 export const registerEvidence = (program: Command): void => {
   program
     .command("evidence")
@@ -49,9 +59,9 @@ export const registerEvidence = (program: Command): void => {
           if (branch) ledger.defaultBranches[repo] = branch;
           const existing = ledger.deployments[repo] ?? [];
           const known = new Set(existing.map(deploymentKey));
-          const fresh = await fetchDeployments(token, repo, sinceIso, known);
-          ledger.deployments[repo] = mergeDeployments(existing, fresh);
-          console.log(`${repo}: +${fresh.length} deployments (default branch ${branch ?? "unknown"})`);
+          const result = await fetchDeployments(token, repo, sinceIso, known);
+          applyDeploymentFetch(ledger, repo, result, now.toISOString());
+          console.log(`${repo}: +${result.records.length} deployments (default branch ${branch ?? "unknown"})`);
         } catch (err) {
           console.warn(`Warning: deployments for ${repo} failed: ${err instanceof Error ? err.message : err}`);
         }

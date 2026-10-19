@@ -88,6 +88,27 @@ describe("deriveReadiness", () => {
     expect(deriveReadiness(item(), unmatched)?.stage).toBe("awaiting-release");
   });
 
+  it("containing deployment releases a stacked PR and unavailable deployment data stays unknown", () => {
+    const stacked = pr({ baseRef: "feature/x", containingDeployments: [{ environment: "production", sha: "abc1234" }] });
+    const shaDeploy = dep({ ref: "abc1234", sha: "abc1234" });
+    expect(deriveReadiness(item(), ledger(stacked, { "org/app": [shaDeploy] }))?.stage).toBe("live");
+    expect(deriveReadiness(item(), ledger({ baseRef: "feature/x" }, { "org/app": [shaDeploy] }) as EvidenceLedger)?.stage).toBe("awaiting-release");
+    const unavailable = ledger({}, {});
+    unavailable.deploymentsUnavailable = { "org/app": "2026-10-19T00:00:00Z" };
+    expect(deriveReadiness(item(), unavailable)).toMatchObject({ stage: "done", label: "Done", detail: "Merged Oct 7; release status not collected" });
+  });
+
+  it("still uses known deployments when the latest deployment refresh failed", () => {
+    // Previously collected main deployment after the merge, with no baseRef recorded.
+    const known = ledger({ baseRef: "" }, { "org/app": [dep({})] });
+    known.deploymentsUnavailable = { "org/app": "2026-10-19T00:00:00Z" };
+    expect(deriveReadiness(item(), known)).toMatchObject({ stage: "live", since: "2026-10-08" });
+    // Unknown, not "merged into a larger change", for a stacked PR when deployments couldn't be read.
+    const stacked = ledger({ baseRef: "feature/x" }, {});
+    stacked.deploymentsUnavailable = { "org/app": "2026-10-19T00:00:00Z" };
+    expect(deriveReadiness(item(), stacked)).toMatchObject({ stage: "done", detail: "Merged Oct 7; release status not collected" });
+  });
+
   it("live when production deployment ref is the merge commit sha", () => {
     const l = ledger({}, { "org/app": [dep({ ref: "mmm", sha: "zzz", succeededAt: "2026-10-08T10:00:00Z" })] });
     expect(deriveReadiness(item(), l)).toMatchObject({

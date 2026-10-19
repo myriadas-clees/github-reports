@@ -460,6 +460,8 @@ export type EvidenceLedger = {
   defaultBranches: Record<string, string>;
   /** Successful deployments per repo, newest first. */
   deployments: Record<string, DeploymentRecord[]>;
+  /** Repositories whose deployment history could not be collected, keyed to last failure time. */
+  deploymentsUnavailable?: Record<string, string>;
   prs: Record<string, PrEvidence>;
 };
 
