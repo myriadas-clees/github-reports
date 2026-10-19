@@ -400,6 +400,47 @@ describe("effort totals follow the week allocations (manual time included)", () 
   });
 });
 
+describe("self-reported-only weeks on the homepage", () => {
+  // Week of Oct 8: 16h from a daily report. Week of Oct 1: no daily report, 24h of manual time only.
+  const reports = [buildReportEntry("2026/10/08", "b", undefined, { commits: 1, prs: 0, reviews: 0, hours: 16 })];
+  const weekAllocations = new Map([
+    ["2026-10-01", makeAllocation([["Pricing", 24]])],
+    ["2026-10-08", makeAllocation([["Hub", 16]])],
+  ]);
+
+  it("adds a row for the manual-only week and counts it in the month and hero totals", () => {
+    for (const theme of AVAILABLE_THEMES as Theme[]) {
+      const html = renderIndexPage(reports, undefined, "en", undefined, undefined, undefined, theme, { weekAllocations });
+      const row = html.slice(html.indexOf('href="weeks/2026-10-01/" class="week-row"'));
+      expect(row, theme).toContain("≈ 3 engineer-days");
+      expect(html, theme).toContain("No daily reports · self-reported time only");
+      // Only the week with reports keeps a day list.
+      expect(html.match(/<details class="week-days">/g), theme).toHaveLength(1);
+      // 24h + 16h = 40h: the month and hero totals include the manual-only week.
+      expect(html, theme).toContain("≈ 5 engineer-days");
+      const hero = html.slice(html.indexOf('class="home-hero'), html.indexOf('class="ledger"'));
+      expect(hero, theme).toContain('<span class="home-hero-value">≈ 5</span>');
+    }
+  });
+
+  it("keeps the manual-only week in the bar scale", () => {
+    const html = renderIndexPage(reports, undefined, "en", undefined, undefined, undefined, "brutalist", { weekAllocations });
+    const width = (id: string) => {
+      const row = html.slice(html.indexOf(`href="weeks/${id}/" class="week-row"`));
+      return /class="week-mix-fill" style="width: ([\d.]+)%"/.exec(row.slice(0, row.indexOf("</a>")))?.[1];
+    };
+    expect(width("2026-10-01")).toBe("100");
+    expect(width("2026-10-08")).toBe("66.7");
+  });
+
+  it("ignores allocations with no hours", () => {
+    const html = renderIndexPage(reports, undefined, "en", undefined, undefined, undefined, "brutalist",
+      { weekAllocations: new Map([["2026-10-01", makeAllocation([])]]) });
+    expect(html).not.toContain("self-reported time only");
+    expect(html).not.toContain('href="weeks/2026-10-01/" class="week-row"');
+  });
+});
+
 describe("hoursToActivityPercent", () => {
   it("maps 0/missing hours to a min tick, 8h to ~33%, and 24h+ to full", () => {
     expect(hoursToActivityPercent(0)).toBe(4);

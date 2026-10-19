@@ -119,6 +119,7 @@ export const INDEX_LEDGER_PARTIAL = `<section class="ledger" aria-label="Work we
             </div>
             <span class="day-open" aria-hidden="true">↗</span>
           </a>
+          {{#if this.reports.length}}
           <details class="week-days">
             <summary>{{this.dayCountLabel}}</summary>
             <div class="day-list">
@@ -127,6 +128,9 @@ export const INDEX_LEDGER_PARTIAL = `<section class="ledger" aria-label="Work we
               {{/each}}
             </div>
           </details>
+          {{else}}
+          <p class="week-days week-days--none">{{this.dayCountLabel}}</p>
+          {{/if}}
         </div>
         {{/each}}
       </div>

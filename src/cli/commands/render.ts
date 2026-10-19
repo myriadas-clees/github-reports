@@ -259,7 +259,11 @@ export const buildWeekAllocationInputs = (params: {
       .map(([date, data]) => ({ date, data: withRecomputedHours(normalizeReportData(data)) }));
     const latest = list.at(-1)?.date;
     if (!latest) return result;
-    for (const id of new Set(list.map(({ date }) => weekStart(date)))) {
+    // Weeks with only self-reported time (no daily report) still need an allocation, so seed them from manual entries.
+    const manualWeeks = manual
+      .filter((entry) => entry.hours > 0 && entry.date <= latest)
+      .map((entry) => weekStart(entry.date));
+    for (const id of new Set([...list.map(({ date }) => weekStart(date)), ...manualWeeks])) {
       try {
         const endDate = weekEnd(id) < latest ? weekEnd(id) : latest;
         const trend = buildAllocationTrend(list.filter(({ date }) => date <= endDate), endDate, config, manual);
@@ -298,7 +302,10 @@ export const sortReportPathsChronologically = (
 const WEEK_MONTH = new Intl.DateTimeFormat("en", { month: "long", year: "numeric", timeZone: "UTC" });
 const WEEK_DAY = new Intl.DateTimeFormat("en", { weekday: "short", month: "short", day: "numeric", timeZone: "UTC" });
 
-/** Write weeks/YYYY-MM-DD/index.html for every work week with a daily report; returns the week ids (oldest first). */
+/**
+ * Write weeks/YYYY-MM-DD/index.html for every work week with a daily report or an allocation
+ * (self-reported time only); returns the week ids (oldest first).
+ */
 const writeWeekPages = async (params: {
   entries: ReportEntry[];
   weekAllocations: ReadonlyMap<string, AllocationInput>;
@@ -320,7 +327,7 @@ const writeWeekPages = async (params: {
     const id = workWeekOf(item.date).id;
     byWeek.set(id, [...(byWeek.get(id) ?? []), item]);
   }
-  const ids = [...byWeek.keys()].sort();
+  const ids = [...new Set([...byWeek.keys(), ...params.weekAllocations.keys()])].sort();
   for (const [index, id] of ids.entries()) {
     const span = workWeekOf(id);
     const monthKey = weekMonthKey(span, latest);
@@ -336,7 +343,7 @@ const writeWeekPages = async (params: {
       open: isWeekOpen(span, latest),
       monthLabel: WEEK_MONTH.format(new Date(Date.UTC(year, month - 1, 1))),
       monthAnchor: `month-${monthKey}`,
-      days: byWeek.get(id)!.map(({ entry, date }) => {
+      days: (byWeek.get(id) ?? []).map(({ entry, date }) => {
         const [y, m, d] = date.split("-").map(Number);
         return {
           date,

@@ -68,6 +68,19 @@ describe("renderWeekPage", () => {
     expect(html).not.toContain('rel="next"');
   });
 
+  it("renders a self-reported-only week with no daily links and no errors in every theme", () => {
+    for (const theme of AVAILABLE_THEMES as Theme[]) {
+      const html = renderWeekPage(base({ days: [] }), { themeName: theme, baseUrl: "https://example.com/" });
+      expect(html, theme).toContain("No daily reports this week; effort is self-reported.");
+      expect(html, theme).not.toContain('<ul class="week-day-links">');
+      expect(html, theme).not.toContain("{{");
+      expect(html, theme).toContain('rel="prev"');
+      expect(html, theme).toContain('rel="next"');
+      expect(html, theme).toContain("Where the effort went</h2>");
+      expect(() => assertNoSecretsInHtml(html), theme).not.toThrow();
+    }
+  });
+
   it("still renders without allocation data", () => {
     const html = renderWeekPage(base({ allocation: undefined }));
     expect(html).toContain('<a href="../../2026/10/02/">Fri, Oct 2</a>');

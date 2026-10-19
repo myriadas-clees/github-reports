@@ -69,6 +69,13 @@ describe("deriveReadiness", () => {
     expect(deriveReadiness(item(), l)?.stage).toBe("live");
   });
 
+  it("live when production deployment ref is the merge commit sha", () => {
+    const l = ledger({}, { "org/app": [dep({ ref: "mmm", sha: "zzz", succeededAt: "2026-10-08T10:00:00Z" })] });
+    expect(deriveReadiness(item(), l)).toMatchObject({
+      stage: "live", label: "Live", detail: "Live since Oct 8", since: "2026-10-08",
+    });
+  });
+
   it("preview only", () => {
     const l = ledger({}, {
       "org/app": [
@@ -78,6 +85,13 @@ describe("deriveReadiness", () => {
     });
     expect(deriveReadiness(item(), l)).toMatchObject({
       stage: "preview", label: "In testing", detail: "On the preview site since Oct 9",
+    });
+  });
+
+  it("preview deployment ref may be the merge commit sha", () => {
+    const l = ledger({}, { "org/app": [dep({ production: false, environment: "preview", ref: "mmm", sha: "zzz", succeededAt: "2026-10-09T10:00:00Z" })] });
+    expect(deriveReadiness(item(), l)).toMatchObject({
+      stage: "preview", label: "In testing", detail: "On the preview site since Oct 9", since: "2026-10-09",
     });
   });
 

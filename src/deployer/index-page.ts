@@ -254,6 +254,10 @@ const buildWeekRows = (
     const id = workWeekOf(dailyPathToDate(report.path)!).id;
     byWeek.set(id, [...(byWeek.get(id) ?? []), report]);
   }
+  // Weeks with self-reported time only (no daily report) still get a row, so their effort is counted.
+  for (const [id, allocation] of weekAllocations ?? []) {
+    if (!byWeek.has(id) && allocation.totalHours > 0) byWeek.set(id, []);
+  }
   const weekHours = new Map([...byWeek.entries()].map(([id, reports]) => [
     id,
     effortHoursFor(weekAllocations?.get(id), sumStats(reports).hours ?? 0),
@@ -289,7 +293,9 @@ const buildWeekRows = (
         outcome: buildOutcomeLine(allocation),
         stats,
         dayCount: reports.length,
-        dayCountLabel: `${reports.length} daily ${reports.length === 1 ? "report" : "reports"}`,
+        dayCountLabel: reports.length === 0
+          ? "No daily reports · self-reported time only"
+          : `${reports.length} daily ${reports.length === 1 ? "report" : "reports"}`,
         reports: [...reports].sort((a, b) => b.path.localeCompare(a.path)),
       },
     };

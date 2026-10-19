@@ -71,7 +71,10 @@ export const deriveReadiness = (item: ReadinessItem, evidence: EvidenceLedger | 
   const mergedDay = mergedAt ? formatDay(mergedAt) : undefined;
   const mergedText = mergedDay ? `Merged ${mergedDay}` : "Merged";
 
-  if (pe?.baseRef && pe.baseRef !== defaultBranch && !deps.some((d) => d.ref === pe.baseRef)) {
+  const isMergeCommitDeployment = (d: DeploymentRecord): boolean =>
+    !!pe?.mergeCommitSha && (d.sha === pe.mergeCommitSha || d.ref === pe.mergeCommitSha);
+
+  if (pe?.baseRef && pe.baseRef !== defaultBranch && !deps.some((d) => d.ref === pe.baseRef || isMergeCommitDeployment(d))) {
     return {
       stage: "awaiting-release",
       label: "Done · not live yet",
@@ -85,14 +88,14 @@ export const deriveReadiness = (item: ReadinessItem, evidence: EvidenceLedger | 
   const mergedMs = ms(mergedAt);
   const after = (d: DeploymentRecord): boolean =>
     (Number.isFinite(mergedMs) && ms(d.succeededAt) >= mergedMs) ||
-    (!!pe.mergeCommitSha && d.sha === pe.mergeCommitSha);
+    isMergeCommitDeployment(d);
 
-  const live = earliest(deps.filter((d) => d.production && d.ref === targetRef && after(d)));
+  const live = earliest(deps.filter((d) => d.production && (d.ref === targetRef || isMergeCommitDeployment(d)) && after(d)));
   if (live) {
     return { stage: "live", label: "Live", detail: `Live since ${formatDay(live.succeededAt)}`, since: live.succeededAt.slice(0, 10) };
   }
   const preview = earliest(
-    deps.filter((d) => !d.production && (d.ref === targetRef || d.ref === pe.headRef) && after(d)),
+    deps.filter((d) => !d.production && (d.ref === targetRef || d.ref === pe.headRef || isMergeCommitDeployment(d)) && after(d)),
   );
   if (preview) {
     return {

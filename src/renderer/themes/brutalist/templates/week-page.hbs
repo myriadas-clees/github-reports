@@ -52,9 +52,9 @@
 <article class="page">
   <nav class="week-days-section" aria-label="Daily reports this week">
     <span class="week-days-label">Daily reports</span>
-    <ul class="week-day-links">
+    {{#if days.length}}<ul class="week-day-links">
       {{#each days}}<li><a href="{{this.href}}">{{this.label}}</a></li>{{/each}}
-    </ul>
+    </ul>{{else}}<p class="week-dates">No daily reports this week; effort is self-reported.</p>{{/if}}
   </nav>
   {{> allocation}}
   <nav class="week-pager" aria-label="Other work weeks">

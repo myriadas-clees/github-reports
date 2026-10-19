@@ -1030,6 +1030,27 @@ describe("buildWeekAllocationInputs", () => {
     expect(closed.week!.allocation.totalHours).toBeLessThan(open.trend!.periods.reduce((t, x) => t + x.allocation.totalHours, 0));
   });
 
+  it("includes a manual-only week between reported weeks and ignores manual time after the latest report", async () => {
+    const { buildWeekAllocationInputs } = await import("./render.js");
+    const daily = new Map([
+      ["2026-09-30", report("2026-09-30", 4)], // week of Sep 24
+      ["2026-10-15", report("2026-10-15", 4)], // week of Oct 15 (latest report)
+    ]);
+    const manualTime = [
+      { date: "2026-10-03", initiative: "Hub", hours: 6 }, // week of Oct 1: no daily report
+      { date: "2026-10-22", initiative: "Hub", hours: 5 }, // after the latest report: excluded
+      { date: "2026-10-05", initiative: "Hub", hours: 0 }, // zero hours: ignored
+    ];
+    const weeks = buildWeekAllocationInputs({ dailyReports: daily, manualTime });
+    expect([...weeks.keys()].sort()).toEqual(["2026-09-24", "2026-10-01", "2026-10-15"]);
+    const manualWeek = weeks.get("2026-10-01")!;
+    expect(manualWeek.week!.label).toBe("Oct 1-7");
+    expect(manualWeek.week!.allocation.totalHours).toBe(6);
+    expect(manualWeek.asOf).toBe("2026-10-07");
+    // The after-latest entry (Oct 22) must not create a week of its own.
+    expect(weeks.has("2026-10-22")).toBe(false);
+  });
+
   it("warns and returns nothing instead of throwing", async () => {
     const { buildWeekAllocationInputs } = await import("./render.js");
     const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
