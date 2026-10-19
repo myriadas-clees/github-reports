@@ -531,3 +531,53 @@ describe("impact badges", () => {
     expect(item.impact).toBe("major");
   });
 });
+
+describe("PR #4 review fixes", () => {
+  it("gives no allocation weight to an in-progress PR without the user's work in the window", () => {
+    // Updated by someone else today: listed in prsInProgress, no workCommits, not opened/merged today.
+    const touched = pr({ url: "touched", title: "Pricing tiers", state: "open", additions: 30_000, deletions: 0, labels: ["app: pricing"] });
+    const worked = pr({ url: "worked", title: "Hub nav", state: "open", labels: ["app: hub"],
+      workCommits: [{ sha: "s1", message: "feat: nav", additions: 50, deletions: 0 }] as PullRequest["workCommits"], workAdditions: 50, workDeletions: 0 });
+    const a = computeAllocation(data({ prsInProgress: [touched, worked] }, 10));
+    const pricing = a.initiatives.find((b) => b.initiative === "Pricing")!;
+    const hub = a.initiatives.find((b) => b.initiative === "Hub")!;
+    expect(hub.hours).toBe(10);
+    expect(pricing.hours).toBe(0);
+    // Still listed so the reader sees it is in progress.
+    expect(pricing.inProgress.map((i) => i.url)).toEqual(["touched"]);
+    expect(pricing.inProgress[0]!.effortHours).toBe(0);
+  });
+
+  it("still weights in-progress PRs opened in the window (they are in pullRequests)", () => {
+    const opened = pr({ url: "opened", state: "open", labels: ["app: pricing"] });
+    const a = computeAllocation(data({ pullRequests: [opened], prsInProgress: [opened] }, 8));
+    expect(a.initiatives.find((b) => b.initiative === "Pricing")!.hours).toBe(8);
+  });
+
+  it("carries in-progress effort into the item once the PR ships later in the period", () => {
+    const open = (hours: number) => computeAllocation(data({ prsInProgress: [pr({ url: "p", state: "open", mergedAt: null,
+      workCommits: [{ sha: `s${hours}`, message: "feat: x", additions: 100, deletions: 0 }] as PullRequest["workCommits"], workAdditions: 100, workDeletions: 0 })] }, hours));
+    const merged = computeAllocation(data({ pullRequests: [pr({ url: "p", state: "merged" })] }, 6));
+    const m = mergeAllocations([open(10), open(10), merged]);
+    const bucket = m.initiatives[0]!;
+    expect(bucket.inProgress).toEqual([]);
+    expect(bucket.shipped).toHaveLength(1);
+    expect(bucket.shipped[0]).toMatchObject({ url: "p", effortHours: 26, impact: "major" });
+  });
+
+  it("keeps an impact: low override when merged days cross the badge threshold", () => {
+    const day = () => computeAllocation(data({ pullRequests: [pr({ url: "p", labels: ["impact: low"] })] }, 10));
+    const m = mergeAllocations([day(), day(), day()]);
+    expect(m.initiatives[0]!.shipped[0]!.effortHours).toBe(30);
+    expect(m.initiatives[0]!.shipped[0]!.impact).toBeUndefined();
+  });
+
+  it("keeps an impact: minor override when in-progress effort moves onto the shipped item", () => {
+    const labels = ["impact: minor"];
+    const open = computeAllocation(data({ pullRequests: [pr({ url: "p", state: "open", labels })] }, 20));
+    const shipped = computeAllocation(data({ pullRequests: [pr({ url: "p", labels })] }, 20));
+    const item = mergeAllocations([open, shipped]).initiatives[0]!.shipped[0]!;
+    expect(item.effortHours).toBe(40);
+    expect(item.impact).toBeUndefined();
+  });
+});

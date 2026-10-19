@@ -493,7 +493,8 @@ const buildTrend = (
   const last = trend.periods.length - 1;
   const rows = trend.periods.map((p, i): AllocationTrendRowView => {
     const hasReports = p.days > 0;
-    const hasEffort = hasReports && p.allocation.totalHours > 0;
+    // Self-reported time can fill a week with no daily reports; show it.
+    const hasEffort = p.allocation.totalHours > 0;
     return {
       label: p.label,
       days: p.days,

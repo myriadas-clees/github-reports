@@ -215,6 +215,13 @@ describe("buildAllocationView", () => {
       expect(v.trendRows.map((r) => r.label)).toEqual(["Sep 3–9", "Sep 10–16", "Sep 17–23", "Sep 24–30"]);
       expect(v.trendRows.map((r) => r.isCurrent)).toEqual([false, false, false, true]);
     });
+    it("shows self-reported effort in a week with no daily reports", () => {
+      const manualOnly = buildAllocationView({ trend: makeTrend(["Hub"], [
+        { label: "Sep 3–9", days: 0, allocation: makeAllocation([["Hub", 8]]) },
+      ]) })!;
+      expect(manualOnly.trendRows[0]).toMatchObject({ hasReports: false, total: "~1 day" });
+      expect(manualOnly.trendRows[0]!.bar.segments.map((s) => s.name)).toEqual(["Hub"]);
+    });
     it("marks empty weeks", () => {
       expect(v.trendRows[0]).toMatchObject({ hasReports: false, emptyText: "No reports", total: "" });
       expect(v.trendRows[0]!.bar.segments).toEqual([]);

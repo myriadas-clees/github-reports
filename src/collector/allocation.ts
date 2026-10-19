@@ -264,12 +264,18 @@ export const computeAllocation = (
     if (!prs.has(pr.url)) prs.set(pr.url, pr);
   }
   const workShas = new Set<string>();
+  // Mirror the hours estimator: it counts PRs with the reporting user's work in the window
+  // plus PRs opened/merged in it (`pullRequests`). An in-progress PR listed only because
+  // someone else updated it stays visible but must not pull the day's hours toward it.
+  const reportUrls = new Set((data.pullRequests ?? []).map((pr) => pr.url));
+  const countsTowardEstimate = (pr: PullRequest): boolean =>
+    reportUrls.has(pr.url) || (pr.workCommits?.length ?? 0) > 0 || pr.workAdditions != null;
   for (const pr of prs.values()) {
     const labels = pr.labels ?? [];
     entries.push({
       initiative: classifyInitiative({ title: pr.title, labels, repository: pr.repository }, config),
       workType: classifyWorkType(pr.title, labels),
-      weight: prWeight(pr),
+      weight: countsTowardEstimate(pr) ? prWeight(pr) : 0,
     });
     const initiative = entries[entries.length - 1].initiative;
     const section: Section = pr.state === "merged" ? "shipped" : pr.state === "open" ? "inProgress" : "other";
@@ -419,6 +425,23 @@ export const computeAllocation = (
 
 const itemKey = (item: AllocationItem): string => `${item.kind}|${item.url ?? item.title}`;
 
+/**
+ * Fold another appearance of the same item into `target`: effort sums; for PRs files and
+ * labels union and the badge is re-derived with the labels, so an "impact: low" override
+ * still suppresses it and an explicit "major" label still forces it. A badge never drops.
+ */
+const absorbPrItem = (target: AllocationItem, other: AllocationItem): void => {
+  if (other.effortHours != null) target.effortHours = round1((target.effortHours ?? 0) + other.effortHours);
+  if (target.kind !== "pr") return;
+  if (other.files?.length) target.files = [...new Set([...(target.files ?? []), ...other.files])];
+  if (other.labels?.length) target.labels = [...new Set([...(target.labels ?? []), ...other.labels])];
+  const derived = deriveImpact(target.effortHours, target.labels ?? []);
+  const suppressed = (target.labels ?? []).some((label) => IMPACT_DOWN_LABEL_RE.test(label.trim()));
+  const impact = suppressed ? undefined : maxImpact(maxImpact(target.impact, other.impact), derived);
+  if (impact) target.impact = impact;
+  else delete target.impact;
+};
+
 /** Merge several allocations (e.g. days in a week) into one. */
 export const mergeAllocations = (allocations: Allocation[]): Allocation => {
   const accs = new Map<string, Acc>();
@@ -459,14 +482,8 @@ export const mergeAllocations = (allocations: Allocation[]): Allocation => {
           const key = `${bucket.initiative}|${section}|${itemKey(item)}`;
           const prior = seen.get(key);
           if (prior) {
-            // Same PR on another day: effort accumulates; impact never drops (labels are not on items).
-            if (item.effortHours != null) prior.effortHours = round1((prior.effortHours ?? 0) + item.effortHours);
-            if (item.kind === "pr") {
-              if (item.files?.length) prior.files = [...new Set([...(prior.files ?? []), ...item.files])];
-              if (item.labels?.length) prior.labels = [...new Set([...(prior.labels ?? []), ...item.labels])];
-              prior.impact = maxImpact(maxImpact(prior.impact, item.impact), deriveImpact(prior.effortHours));
-              if (!prior.impact) delete prior.impact;
-            }
+            // Same PR on another day: effort, files and labels accumulate.
+            absorbPrItem(prior, item);
             continue;
           }
           const copy = { ...item, ...(item.files ? { files: [...item.files] } : {}), ...(item.labels ? { labels: [...item.labels] } : {}) };
@@ -479,11 +496,17 @@ export const mergeAllocations = (allocations: Allocation[]): Allocation => {
   for (const { item, count } of commitItems.values()) {
     item.title = `${count} direct commit${count === 1 ? "" : "s"}`;
   }
-  // A PR shipped later in the period supersedes its in-progress appearances.
-  const shippedUrls = new Set<string>();
-  for (const acc of accs.values()) for (const item of acc.shipped) if (item.url) shippedUrls.add(item.url);
+  // A PR shipped later in the period supersedes its in-progress appearances; the effort
+  // spent while it was in progress moves onto the shipped item so its badge covers the period.
+  const shippedByUrl = new Map<string, AllocationItem>();
+  for (const acc of accs.values()) for (const item of acc.shipped) if (item.url && !shippedByUrl.has(item.url)) shippedByUrl.set(item.url, item);
   for (const acc of accs.values()) {
-    acc.inProgress = acc.inProgress.filter((item) => !item.url || !shippedUrls.has(item.url));
+    acc.inProgress = acc.inProgress.filter((item) => {
+      const shipped = item.url ? shippedByUrl.get(item.url) : undefined;
+      if (!shipped) return true;
+      absorbPrItem(shipped, item);
+      return false;
+    });
   }
   return finalize(accs, manualHours, aiFindingsAddressed);
 };
