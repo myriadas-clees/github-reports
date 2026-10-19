@@ -439,6 +439,8 @@ export type PrEvidence = {
   headRef: string;
   headSha: string;
   mergeCommitSha: string | null;
+  /** Deployments verified to contain mergeCommitSha. */
+  containingDeployments?: { environment: string; sha: string }[];
   createdAt: string;
   mergedAt: string | null;
   /** Reviews received on this PR (excluding the author's own). */

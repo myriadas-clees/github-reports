@@ -80,6 +80,14 @@ describe("deriveReadiness", () => {
     expect(deriveReadiness(item(), l)?.stage).toBe("live");
   });
 
+  it("uses verified SHA deployment containment for live readiness", () => {
+    const deployment = dep({ ref: "a1b2c3d", sha: "a1b2c3d", createdAt: "2026-10-08T09:00:00Z", succeededAt: "2026-10-09T10:00:00Z" });
+    const matched = ledger({ containingDeployments: [{ environment: "production", sha: "a1b2c3d" }] }, { "org/app": [deployment] });
+    expect(deriveReadiness(item(), matched)).toMatchObject({ stage: "live", detail: "Live since Oct 9", since: "2026-10-09" });
+    const unmatched = ledger({}, { "org/app": [deployment] });
+    expect(deriveReadiness(item(), unmatched)?.stage).toBe("awaiting-release");
+  });
+
   it("live when production deployment ref is the merge commit sha", () => {
     const l = ledger({}, { "org/app": [dep({ ref: "mmm", sha: "zzz", succeededAt: "2026-10-08T10:00:00Z" })] });
     expect(deriveReadiness(item(), l)).toMatchObject({

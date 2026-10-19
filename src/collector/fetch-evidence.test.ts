@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
-import { fetchDeployments, fetchPrEvidence, summarizeCheckRuns } from "./fetch-evidence.js";
+import { fetchDeployments, fetchPrEvidence, isCommitContained, summarizeCheckRuns } from "./fetch-evidence.js";
 
 const json = (body: unknown, status = 200) =>
   new Response(JSON.stringify(body), { status, headers: { "content-type": "application/json" } });
@@ -12,6 +12,17 @@ const mockRoutes = (routes: Array<[RegExp, () => Response]>) => {
 };
 
 afterEach(() => vi.unstubAllGlobals());
+
+describe("isCommitContained", () => {
+  it.each([["ahead", true], ["identical", true], ["behind", false], ["diverged", false]] as const)("maps %s comparisons", async (status, expected) => {
+    mockRoutes([[ /compare\//, () => json({ status }) ]]);
+    expect(await isCommitContained("t", "o/r", "base", "head")).toBe(expected);
+  });
+  it("returns null for inaccessible comparisons", async () => {
+    mockRoutes([[ /compare\//, () => json({ message: "not found" }, 404) ]]);
+    expect(await isCommitContained("t", "o/r", "base", "head")).toBeNull();
+  });
+});
 
 describe("summarizeCheckRuns", () => {
   it("counts conclusions and dedupes by name keeping the latest", () => {

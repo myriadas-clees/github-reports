@@ -12,7 +12,7 @@ import {
   readEvidenceLedger,
   writeEvidenceLedger,
 } from "../../collector/evidence-ledger.js";
-import { fetchDefaultBranch, fetchDeployments, fetchPrEvidence, mapWithConcurrency } from "../../collector/fetch-evidence.js";
+import { fetchDefaultBranch, fetchDeployments, fetchPrEvidence, isCommitContained, mapWithConcurrency } from "../../collector/fetch-evidence.js";
 
 const env = (key: string): string | undefined => process.env[key];
 
@@ -63,6 +63,7 @@ export const registerEvidence = (program: Command): void => {
         try {
           const ev = await fetchPrEvidence(token, ref, now);
           if (ev) {
+            ev.containingDeployments = ledger.prs[ref.url]?.containingDeployments;
             ledger.prs[ref.url] = ev;
             refreshed++;
           }
@@ -70,6 +71,33 @@ export const registerEvidence = (program: Command): void => {
           console.warn(`Warning: ${ref.repo}#${ref.number} failed: ${err instanceof Error ? err.message : err}`);
         }
       });
+
+      // Verify SHA-based deployments only. Branch refs already have an explicit association.
+      for (const ref of refs) {
+        const pe = ledger.prs[ref.url];
+        const deployments = ledger.deployments[ref.repo] ?? [];
+        if (!pe?.mergeCommitSha || !pe.mergedAt || !deployments.length) continue;
+        const known = pe.containingDeployments ?? [];
+        if (known.some((entry) => deployments.some((d) => d.production && d.environment === entry.environment && d.sha === entry.sha))) continue;
+        let calls = 0;
+        for (const production of [true, false]) {
+          const alreadyFound = known.some((entry) => deployments.some((d) => d.production === production && d.environment === entry.environment && d.sha === entry.sha));
+          if (alreadyFound) continue;
+          const defaultBranch = ledger.defaultBranches[ref.repo] ?? "main";
+          const candidates = deployments.filter((d) => d.production === production && d.ref !== pe.baseRef && d.ref !== defaultBranch && d.ref !== pe.mergeCommitSha && d.sha !== pe.mergeCommitSha &&
+            Date.parse(d.createdAt) >= Date.parse(pe.mergedAt!) && /^[0-9a-f]{7,40}$/i.test(d.ref) && /^[0-9a-f]{7,40}$/i.test(d.sha))
+            .sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt));
+          for (const deployment of candidates) {
+            if (calls >= 5) break;
+            calls++;
+            if (await isCommitContained(token, ref.repo, pe.mergeCommitSha, deployment.sha)) {
+              known.push({ environment: deployment.environment, sha: deployment.sha });
+              break;
+            }
+          }
+        }
+        if (known.length) pe.containingDeployments = known;
+      }
 
       ledger.updatedAt = new Date().toISOString();
       await writeEvidenceLedger(cfg.dataDir, ledger);

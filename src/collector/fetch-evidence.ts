@@ -113,6 +113,17 @@ export const fetchDefaultBranch = async (token: string, repo: string): Promise<s
   return res.ok ? (res.data.default_branch ?? null) : null;
 };
 
+/** Whether head contains base according to GitHub's compare API; unavailable comparisons are unknown. */
+export const isCommitContained = async (token: string, repo: string, base: string, head: string): Promise<boolean | null> => {
+  try {
+    const res = await getJson<{ status?: string }>(token, `${API}/repos/${repo}/compare/${base}...${head}`, `Commit compare failed for ${repo}`, true);
+    if (!res.ok) return null;
+    return res.data.status === "ahead" || res.data.status === "identical";
+  } catch {
+    return null;
+  }
+};
+
 // ---------- PR evidence ----------
 
 type RawPr = {

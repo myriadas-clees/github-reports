@@ -73,6 +73,8 @@ export const deriveReadiness = (item: ReadinessItem, evidence: EvidenceLedger | 
 
   const isMergeCommitDeployment = (d: DeploymentRecord): boolean =>
     !!pe?.mergeCommitSha && (d.sha === pe.mergeCommitSha || d.ref === pe.mergeCommitSha);
+  const isContainingDeployment = (d: DeploymentRecord): boolean =>
+    !!pe?.containingDeployments?.some((entry) => entry.environment === d.environment && entry.sha === d.sha);
 
   if (pe?.baseRef && pe.baseRef !== defaultBranch && !deps.some((d) => d.ref === pe.baseRef || isMergeCommitDeployment(d))) {
     return {
@@ -90,12 +92,12 @@ export const deriveReadiness = (item: ReadinessItem, evidence: EvidenceLedger | 
     (Number.isFinite(mergedMs) && ms(d.createdAt) >= mergedMs) ||
     isMergeCommitDeployment(d);
 
-  const live = earliest(deps.filter((d) => d.production && (d.ref === targetRef || isMergeCommitDeployment(d)) && after(d)));
+  const live = earliest(deps.filter((d) => d.production && (d.ref === targetRef || isMergeCommitDeployment(d) || isContainingDeployment(d)) && after(d)));
   if (live) {
     return { stage: "live", label: "Live", detail: `Live since ${formatDay(live.succeededAt)}`, since: live.succeededAt.slice(0, 10) };
   }
   const preview = earliest(
-    deps.filter((d) => !d.production && (d.ref === targetRef || d.ref === pe.headRef || isMergeCommitDeployment(d)) && after(d)),
+    deps.filter((d) => !d.production && (d.ref === targetRef || d.ref === pe.headRef || isMergeCommitDeployment(d) || isContainingDeployment(d)) && after(d)),
   );
   if (preview) {
     return {
