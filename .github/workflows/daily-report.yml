@@ -86,7 +86,8 @@ jobs:
             bun dist/cli/index.js daily-fetch --date "$INPUT_DATE"
             echo "Generating $INPUT_DATE"
             bun dist/cli/index.js generate --date "$INPUT_DATE"
-            bun dist/cli/index.js evidence || echo "Evidence refresh failed (non-fatal)"
+            # Cover the requested day even when it is older than the default 90-day window.
+            bun dist/cli/index.js evidence --since "$INPUT_DATE" || echo "Evidence refresh failed (non-fatal)"
             exit 0
           fi
 

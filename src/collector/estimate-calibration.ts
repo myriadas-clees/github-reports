@@ -138,23 +138,31 @@ export const buildEstimateCalibration = (
   const prs = new Map<string, PrAcc>();
   for (const day of days) {
     const report = dailyReports.get(day)!;
-    const terminality: Record<PullRequest["state"], number> = { open: 0, closed: 1, merged: 2 };
+    const reportUrls = new Set((report.pullRequests ?? []).map((pr) => pr.url));
     const daily = new Map<string, PullRequest>();
     for (const pr of [...(report.pullRequests ?? []), ...(report.prsInProgress ?? [])]) {
       const previous = daily.get(pr.url);
-      // Keep the work-bearing copy for effort, while carrying terminal state and
-      // merge metadata forward from either copy of this same day's snapshot.
       if (!previous) {
         daily.set(pr.url, pr);
       } else {
         const work = hasWork(pr) && !hasWork(previous) ? pr : previous;
-        const terminal = terminality[pr.state] > terminality[previous.state] ? pr : previous;
+        // Match computeAllocation: pullRequests is the as-of-window state. A terminal copy
+        // only in prsInProgress is current state reached after this day, so normalize it open.
+        const asOfWindow = reportUrls.has(pr.url)
+          ? (report.pullRequests ?? []).find((candidate) => candidate.url === pr.url)!
+          : { ...pr, state: "open" as const, mergedAt: null };
         daily.set(pr.url, {
           ...work,
-          state: terminal.state,
-          mergedAt: pr.mergedAt ?? previous.mergedAt,
+          state: asOfWindow.state,
+          mergedAt: asOfWindow.mergedAt,
           changedFiles: Math.max(pr.changedFiles ?? 0, previous.changedFiles ?? 0),
         });
+      }
+    }
+    // A single prsInProgress-only snapshot also represents the current state, not this day's.
+    for (const [url, pr] of daily) {
+      if (!reportUrls.has(url) && pr.state !== "open") {
+        daily.set(url, { ...pr, state: "open", mergedAt: null });
       }
     }
     for (const pr of daily.values()) {

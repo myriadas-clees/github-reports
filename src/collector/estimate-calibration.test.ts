@@ -101,6 +101,32 @@ describe("buildEstimateCalibration", () => {
     expect(twice.sampleSize).toBe(1);
   });
 
+  it("does not use a prsInProgress-only merge as the state for an earlier report day", () => {
+    const open = pr(32, "feat: future merge");
+    const mergedLater = merged(32, open.title, "2026-09-05T12:00:00Z", {
+      workCommits: [], workAdditions: 0, workDeletions: 0, workFiles: [],
+    });
+    const early = report([open]);
+    early.prsInProgress = [mergedLater];
+    const cal = buildEstimateCalibration(new Map([["2026-09-01", early]]), DEFAULT_ALLOCATION_CONFIG);
+    expect(cal.sampleSize).toBe(0);
+  });
+
+  it("uses the as-of-window merged copy when a later report observes the merge", () => {
+    const open = pr(33, "feat: merge observed later");
+    const mergedLater = merged(33, open.title, "2026-09-05T12:00:00Z", {
+      workCommits: [], workAdditions: 0, workDeletions: 0, workFiles: [],
+    });
+    const early = report([open]);
+    early.prsInProgress = [mergedLater];
+    const cal = buildEstimateCalibration(new Map<string, WeeklyReportData>([
+      ["2026-09-01", early],
+      ["2026-09-05", report([mergedLater])],
+    ]), DEFAULT_ALLOCATION_CONFIG);
+    expect(cal.sampleSize).toBe(1);
+    expect(cal.groups.find((x) => x.kind === "feature" && x.size === "S")!.turnaroundDays.p50).toBe(4);
+  });
+
   it("starts turnaround at first work even when the PR was created earlier", () => {
     const cal = buildEstimateCalibration(new Map([["2026-08-17", report([
       merged(20, "feat: delayed work", "2026-08-19T12:00:00Z", {
