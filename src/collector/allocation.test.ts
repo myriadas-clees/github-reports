@@ -227,6 +227,21 @@ describe("computeAllocation", () => {
     expect(stats.initiatives[0].initiative).toBe("A");
   });
 
+  it("weights direct commits per scope unit, consistent with the hours estimate", () => {
+    const commit = (sha: string, message: string, additions: number) =>
+      ({ sha, message, url: "", authoredAt: "", additions, deletions: 0 });
+    // Two scope units in o/a (pricing x2, ui x1) vs one lumped band before.
+    const a = computeAllocation(data({
+      commitMessages: [{ repo: "o/a", messages: [], commits: [
+        commit("1", "feat(pricing): a", 100),
+        commit("2", "fix(pricing): b", 100),
+        commit("3", "feat(ui): c", 100),
+      ] }],
+    }, 10));
+    expect(a.initiatives[0].other[0].title).toBe("3 direct commits");
+    expect(sum(a.initiatives.map((i) => i.hours))).toBeCloseTo(10, 1);
+  });
+
   it("adds manual time unscaled, within the date range only", () => {
     const manual: ManualTimeEntry[] = [
       { date: "2026-10-07", initiative: "Ops", hours: 2, note: "Planning" },

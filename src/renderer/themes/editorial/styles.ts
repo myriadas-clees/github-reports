@@ -4,6 +4,8 @@
 import type { Language } from "../../../types.js";
 import { getFontConfig } from "../../../i18n/index.js";
 import { buildAllocationCSS } from "../allocation-css.js";
+import { buildEstimateCSS } from "../estimate-css.js";
+import { buildLedgerCSS, buildWeekCSS } from "../nav-css.js";
 
 const c = {
   bg: "#faf8f5",
@@ -672,6 +674,34 @@ export const buildCSS = (language: Language = "en"): string => {
       mono: `${f.monoFamily}`,
       radius: "2px",
     })}
+
+    ${buildEstimateCSS({
+      defaultMode: "light",
+      text: "var(--e-text)",
+      textSecondary: "var(--e-text-secondary)",
+      textTertiary: "var(--e-text-tertiary)",
+      heading: "var(--e-heading)",
+      border: "var(--e-border)",
+      borderSubtle: "var(--e-border-subtle)",
+      surface: "var(--e-bg)",
+      accent: "var(--e-accent)",
+      mono: `${f.monoFamily}`,
+      radius: "2px",
+    })}
+
+    ${buildWeekCSS({
+      defaultMode: "light",
+      text: "var(--e-text)",
+      textSecondary: "var(--e-text-secondary)",
+      textTertiary: "var(--e-text-tertiary)",
+      heading: "var(--e-heading)",
+      border: "var(--e-border)",
+      borderSubtle: "var(--e-border-subtle)",
+      surface: "var(--e-bg)",
+      accent: "var(--e-accent)",
+      mono: `${f.monoFamily}`,
+      radius: "2px",
+    })}
   `;
 };
 
@@ -773,5 +803,19 @@ export const buildIndexCSS = (language: Language = "en"): string => {
     @media print {
       body { background: #fff; }
     }
+    ${buildLedgerCSS({
+      defaultMode: "light",
+      text: "var(--e-text)",
+      textSecondary: "var(--e-text-secondary)",
+      textTertiary: "var(--e-text-tertiary)",
+      heading: "var(--e-heading)",
+      border: "var(--e-border)",
+      borderSubtle: "var(--e-border-subtle)",
+      surface: "var(--e-bg)",
+      accent: "var(--e-accent)",
+      mono: `${f.monoFamily}`,
+      radius: "2px",
+    })}
+
   `;
 };

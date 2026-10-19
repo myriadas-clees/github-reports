@@ -6,6 +6,9 @@ import {
   estimateDailyPrWorkHours,
   estimateVolumeHours,
   applyHoursEstimate,
+  compressDailyVolume,
+  buildCommitUnits,
+  estimateCommitUnitHours,
   ESTIMATOR_VERSION,
 } from "./estimate-hours.js";
 
@@ -68,7 +71,7 @@ describe("estimateHours hybrid", () => {
     expect(result.sessionHours).toBeLessThan(2);
     expect(result.volumeHours).toBeGreaterThanOrEqual(22);
     expect(result.hours).toBe(result.volumeHours);
-    expect(result.version).toBe("2.1");
+    expect(result.version).toBe("2.3");
     expect(result.note).toMatch(/work delivered/i);
     expect(result.note).toMatch(/measures output, not hours worked/i);
   });
@@ -180,6 +183,65 @@ describe("weekday hour floor", () => {
   });
 });
 
+describe("compressDailyVolume", () => {
+  it("counts the first 16h at full value", () => {
+    expect(compressDailyVolume(10)).toBe(10);
+    expect(compressDailyVolume(16)).toBe(16);
+  });
+
+  it("counts 16–40h at 50%", () => {
+    expect(compressDailyVolume(30)).toBe(23);
+    expect(compressDailyVolume(40)).toBe(28);
+  });
+
+  it("counts hours above 40h at 25%", () => {
+    expect(compressDailyVolume(132.9)).toBe(51.2);
+  });
+
+  it("returns 0 for zero, negative, and NaN input", () => {
+    expect(compressDailyVolume(0)).toBe(0);
+    expect(compressDailyVolume(-5)).toBe(0);
+    expect(compressDailyVolume(Number.NaN)).toBe(0);
+  });
+});
+
+describe("daily vs weekly volume compression", () => {
+  // 132.9h of raw volume: 10 PRs' worth of churn plus reviews, mirroring a very busy day.
+  const busyDay = {
+    pullRequests: Array.from({ length: 10 }, () => ({
+      additions: 40_000,
+      deletions: 20_000,
+      state: "merged",
+    })),
+    reviewCount: 36,
+  };
+
+  it("compresses volume when minimumHours marks a daily estimate", () => {
+    const result = estimateHours([], busyDay, { minimumHours: 8 });
+    expect(result.volumeHours).toBeGreaterThan(100);
+    expect(result.compressedVolumeHours).toBe(compressDailyVolume(result.volumeHours));
+    expect(result.hours).toBe(result.compressedVolumeHours);
+    expect(result.hours).toBeLessThan(result.volumeHours);
+  });
+
+  it("does not compress when minimumHours is 0 (weekly estimate)", () => {
+    const result = estimateHours([], busyDay, { minimumHours: 0 });
+    expect(result.compressedVolumeHours).toBeUndefined();
+    expect(result.hours).toBe(result.volumeHours);
+  });
+
+  it("does not compress when minimumHours is omitted", () => {
+    const result = estimateHours([], busyDay);
+    expect(result.compressedVolumeHours).toBeUndefined();
+    expect(result.hours).toBe(result.volumeHours);
+  });
+
+  it("keeps the raw volume in the result and mentions diminishing returns in the note", () => {
+    const result = estimateHours([], busyDay, { minimumHours: 8 });
+    expect(result.note).toMatch(/diminishing returns/i);
+  });
+});
+
 describe("applyHoursEstimate", () => {
   it("leaves data unchanged when hoursInputs is missing", () => {
     const data = { stats: { estimatedHours: 3 }, hoursEstimate: { hours: 3 } as never };
@@ -214,5 +276,78 @@ describe("applyHoursEstimate", () => {
     expect(next.stats.estimatedHours).toBe(9);
     expect(next.hoursEstimate?.hours).toBe(9);
     expect(next.hoursEstimate?.version).toBe(ESTIMATOR_VERSION);
+  });
+});
+
+describe("buildCommitUnits", () => {
+  const c = (message: string, extra: Record<string, unknown> = {}) => ({ message, repo: "o/a", additions: 10, deletions: 0, ...extra });
+
+  it("groups by conventional scope across types", () => {
+    const units = buildCommitUnits([c("feat(pricing): a"), c("fix(pricing): b"), c("fix(ui): c")]);
+    expect(units.map((u) => u.commitCount).sort()).toEqual([1, 2]);
+    expect(units.find((u) => u.commitCount === 2)?.additions).toBe(20);
+  });
+
+  it("falls back to type, then misc", () => {
+    const units = buildCommitUnits([c("fix: a"), c("fix: b"), c("random words"), c("more words")]);
+    expect(units.map((u) => u.commitCount).sort()).toEqual([2, 2]);
+  });
+
+  it("separates repos", () => {
+    expect(buildCommitUnits([c("fix(x): a"), { ...c("fix(x): b"), repo: "o/b" }])).toHaveLength(2);
+  });
+
+  it("sums file counts and detects test files", () => {
+    const [u] = buildCommitUnits([c("feat(x): a", { files: ["a.ts", "a.test.ts"] }), c("feat(x): b", { filesChanged: 3 })]);
+    expect(u.filesChanged).toBe(5);
+    expect(u.testFilesChanged).toBe(1);
+  });
+
+  it("uses capped 0.5h per commit without stats", () => {
+    const noStats = (n: number) => buildCommitUnits(Array.from({ length: n }, () => ({ message: "fix(x): a", repo: "o/a" })));
+    expect(estimateCommitUnitHours(noStats(2)[0])).toBe(1);
+    expect(estimateCommitUnitHours(noStats(20)[0])).toBe(2.25);
+  });
+});
+
+describe("commit units in the volume estimate", () => {
+  it("estimates each unit like a PR's daily work instead of one lumped band", () => {
+    const units = buildCommitUnits([
+      { message: "feat(a): x", repo: "o/a", additions: 100, deletions: 0 },
+      { message: "feat(b): y", repo: "o/a", additions: 100, deletions: 0 },
+    ]);
+    const legacy = estimateVolumeHours({ commitCount: 2, commitAdditions: 200, commitDeletions: 0, commitStatsCount: 2 });
+    const withUnits = estimateVolumeHours({ commitCount: 2, commitAdditions: 200, commitDeletions: 0, commitStatsCount: 2, commitUnits: units });
+    expect(legacy).toBe(2.5);
+    expect(withUnits).toBe(2 * estimateDailyPrWorkHours({ additions: 100, deletions: 0, state: "merged", dailyWork: true, commitCount: 1 }));
+  });
+
+  it("applyHoursEstimate derives units and excludes PR work commits", () => {
+    const base = {
+      stats: { estimatedHours: 0 },
+      hoursInputs: {
+        timestamps: [],
+        volume: { commitCount: 2, commitAdditions: 20, commitDeletions: 0, commitStatsCount: 2 },
+        options: { gapMinutes: 90, maxSessionHours: 6 },
+      },
+      commitMessages: [{
+        repo: "o/a",
+        messages: ["feat(x): a", "feat(x): b"],
+        commits: [
+          { sha: "1", message: "feat(x): a", additions: 10, deletions: 0 },
+          { sha: "2", message: "feat(x): b", additions: 10, deletions: 0 },
+        ],
+      }],
+      pullRequests: [],
+    };
+    const volumeOf = (d: Parameters<typeof applyHoursEstimate>[0]): number | undefined =>
+      (applyHoursEstimate(d) as { hoursEstimate?: { volumeHours?: number } }).hoursEstimate?.volumeHours;
+    const all = volumeOf(base);
+    const unit = estimateDailyPrWorkHours({ additions: 20, deletions: 0, state: "merged", dailyWork: true, commitCount: 2 });
+    expect(all).toBe(unit);
+    const excluded = volumeOf({ ...base, pullRequests: [{ workCommits: [{ sha: "2" }] }] });
+    expect(excluded).toBe(
+      estimateDailyPrWorkHours({ additions: 10, deletions: 0, state: "merged", dailyWork: true, commitCount: 1 }),
+    );
   });
 });

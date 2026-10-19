@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import {
   buildAllocationView,
+  type AllocationView,
   formatWorkDelivered,
   MAX_VISIBLE_SHIPPED,
   formatPercent,
@@ -31,22 +32,26 @@ const week = makeAllocation(
   { manualHours: 4 },
 );
 
+const weekPanel = (v: AllocationView) => v.panels.find((p) => p.kind === "week")!;
+const dayPanel = (v: AllocationView) => v.panels.find((p) => p.kind === "day")!;
+
 describe("formatters", () => {
-  it("formats work delivered in engineer-days below 80h and weeks above", () => {
-    expect(formatWorkDelivered(510)).toEqual({ short: "~13 eng-wks", long: "about 13 engineer-weeks", plain: "about 13 weeks" });
-    expect(formatWorkDelivered(93)).toEqual({ short: "~2.5 eng-wks", long: "about 2.5 engineer-weeks", plain: "about 2.5 weeks" });
-    expect(formatWorkDelivered(36)).toEqual({ short: "~4.5 eng-days", long: "about 4.5 engineer-days", plain: "about 4.5 days" });
-    expect(formatWorkDelivered(4)).toEqual({ short: "~0.5 eng-days", long: "about 0.5 engineer-days", plain: "about 0.5 days" });
+  it("formats work delivered in engineer-days only, never weeks", () => {
+    expect(formatWorkDelivered(510)).toEqual({ short: "~64 days", long: "about 64 engineer-days", plain: "about 64 days" });
+    expect(formatWorkDelivered(93)).toEqual({ short: "~12 days", long: "about 12 engineer-days", plain: "about 12 days" });
+    expect(formatWorkDelivered(36)).toEqual({ short: "~4.5 days", long: "about 4.5 engineer-days", plain: "about 4.5 days" });
+    expect(formatWorkDelivered(4)).toEqual({ short: "~0.5 days", long: "about 0.5 engineer-days", plain: "about 0.5 days" });
     expect(formatWorkDelivered(0).long).toBe("about 0.5 engineer-days");
-    expect(formatWorkDelivered(Number.NaN).short).toBe("~0.5 eng-days");
+    expect(formatWorkDelivered(Number.NaN).short).toBe("~0.5 days");
     expect(formatWorkDelivered(79).long).toBe("about 10 engineer-days");
-    expect(formatWorkDelivered(80).long).toBe("about 2 engineer-weeks");
+    expect(formatWorkDelivered(80).long).toBe("about 10 engineer-days");
   });
-  it("uses singular forms for exactly one", () => {
-    expect(formatWorkDelivered(8)).toEqual({ short: "~1 eng-day", long: "about 1 engineer-day", plain: "about 1 day" });
+  it("uses singular forms for exactly one and thousands separators", () => {
+    expect(formatWorkDelivered(8)).toEqual({ short: "~1 day", long: "about 1 engineer-day", plain: "about 1 day" });
     expect(formatWorkDelivered(8.3).long).toBe("about 1 engineer-day");
-    expect(formatWorkDelivered(1000).long).toBe("about 25 engineer-weeks");
-    expect(formatWorkDelivered(40 * 1).long).toBe("about 5 engineer-days");
+    expect(formatWorkDelivered(1000).long).toBe("about 125 engineer-days");
+    expect(formatWorkDelivered(10272).long).toBe("about 1,284 engineer-days");
+    expect(formatWorkDelivered(40).long).toBe("about 5 engineer-days");
   });
   it("formats percents", () => {
     expect(formatPercent(0.42)).toBe("42%");
@@ -69,45 +74,48 @@ describe("buildAllocationView", () => {
   it("builds the week bar, lede and legend", () => {
     const v = buildAllocationView({ week: { label: "Oct 1–7", allocation: week } })!;
     expect(v.title).toBe("Where the effort went");
-    expect(v.lede).toBe("Work delivered this week (Oct 1–7) would typically take one engineer about 4.5 days. Here's where it went across 3 initiatives.");
-    const names = v.weekBar!.segments.map((s) => s.name);
+    const w = weekPanel(v);
+    expect(w.lede).toBe("Work delivered in the week of Oct 1–7 would typically take one engineer about 4.5 days. Here's where it went across 3 initiatives.");
+    const names = w.bar.segments.map((s) => s.name);
     expect(names).toEqual(["Pricing", "Hub", "Platform"]);
-    const pricing = v.weekBar!.segments[0]!;
+    const pricing = w.bar.segments[0]!;
     expect(pricing.percent).toBe("41%");
     expect(pricing.title).toBe("Pricing: 41% of work delivered");
     expect(pricing.colorClass).toBe("alloc-c1");
-    expect(v.weekBar!.ariaLabel).toContain("Pricing 41%");
-    expect(v.weekLegend).toHaveLength(3);
+    expect(w.bar.ariaLabel).toContain("Pricing 41%");
+    expect(w.legend).toHaveLength(3);
   });
 
   it("uses singular wording for one initiative", () => {
     const v = buildAllocationView({ week: { label: "w", allocation: makeAllocation([["Solo", 5]]) } })!;
-    expect(v.lede).toContain("across 1 initiative.");
+    expect(weekPanel(v).lede).toContain("across 1 initiative.");
   });
 
   it("falls back to day wording when there is no week", () => {
     const v = buildAllocationView({ day: makeAllocation([["A", 6]]) })!;
-    expect(v.lede).toBe("Work delivered today would typically take one engineer about 1 day. Here's where it went across 1 initiative.");
-    expect(v.hasWeek).toBe(false);
-    expect(v.hasDay).toBe(true);
+    expect(v.panels).toHaveLength(1);
+    expect(v.hasSwitch).toBe(false);
+    expect(v.script).toBe("");
+    expect(v.panels[0]).toMatchObject({ kind: "day", label: "Today", isDefault: true });
+    expect(v.panels[0]!.lede).toBe("Work delivered today would typically take one engineer about 1 day. Here's where it went across 1 initiative.");
   });
 
   it("builds the work type bar with its own palette", () => {
     const v = buildAllocationView({ week: { label: "w", allocation: week } })!;
-    const classes = v.weekWorkTypeBar!.segments.map((s) => s.colorClass);
+    const classes = weekPanel(v).workTypeBar!.segments.map((s) => s.colorClass);
     expect(classes).toEqual(["alloc-w1", "alloc-w2", "alloc-wn"]);
-    expect(v.weekWorkTypes[0]!.title).toBe("New capability: 71% of work delivered");
+    expect(weekPanel(v).workTypes[0]!.title).toBe("New capability: 71% of work delivered");
   });
 
   it("omits the work type bar when there are no work types", () => {
     const v = buildAllocationView({ week: { label: "w", allocation: makeAllocation([["A", 3]]) } })!;
-    expect(v.weekWorkTypeBar).toBeUndefined();
+    expect(weekPanel(v).workTypeBar).toBeUndefined();
   });
 
   it("hides inline labels for tiny segments but still renders them", () => {
     const a = makeAllocation([["Big", 97], ["Small", 2], ["Tiny", 0.2]]);
     const v = buildAllocationView({ week: { label: "w", allocation: a } })!;
-    const [big, small, tiny] = v.weekBar!.segments;
+    const [big, small, tiny] = weekPanel(v).bar.segments;
     expect(big!.showLabel).toBe(true);
     expect(big!.showName).toBe(true);
     expect(small!.showLabel).toBe(false);
@@ -119,7 +127,7 @@ describe("buildAllocationView", () => {
 
   it("builds per-initiative list with items and self-reported labelling", () => {
     const v = buildAllocationView({ week: { label: "w", allocation: week } })!;
-    const pricing = v.initiatives[0]!;
+    const pricing = weekPanel(v).initiatives[0]!;
     expect(pricing.name).toBe("Pricing");
     expect(pricing.hasShipped && pricing.hasInProgress && pricing.hasOther).toBe(true);
     expect(pricing.shipped[0]).toMatchObject({ title: "Add tiers", url: "https://github.com/o/r/pull/1" });
@@ -127,49 +135,54 @@ describe("buildAllocationView", () => {
     expect(pricing.hasSelfReported).toBe(true);
     expect(pricing.other.find((i) => i.kindLabel === "Self-reported")!.selfReported).toBe(true);
     expect(pricing.width).toBe("41.18%");
-    expect(v.initiatives[1]!.isEmpty).toBe(true);
+    expect(weekPanel(v).initiatives[1]!.isEmpty).toBe(true);
   });
 
   it("drops non-http urls from items", () => {
     const a = makeAllocation([["A", 1, { shipped: [{ kind: "pr", title: "x", url: "javascript:alert(1)" }] }]]);
     const v = buildAllocationView({ week: { label: "w", allocation: a } })!;
-    expect(v.initiatives[0]!.shipped[0]!.url).toBeUndefined();
+    expect(weekPanel(v).initiatives[0]!.shipped[0]!.url).toBeUndefined();
   });
 
   it("skips today when identical to the week", () => {
     const same = buildAllocationView({ day: week, week: { label: "w", allocation: week } })!;
-    expect(same.hasDay).toBe(false);
-    expect(same.dayBar).toBeUndefined();
+    expect(same.panels).toHaveLength(1);
+    expect(same.panels[0]!.kind).toBe("week");
+    expect(same.hasSwitch).toBe(false);
+    expect(same.script).toBe("");
     const different = makeAllocation([["Pricing", 6], ["Hub", 2]]);
     const v = buildAllocationView({ day: different, week: { label: "w", allocation: week } })!;
-    expect(v.hasDay).toBe(true);
-    expect(v.dayBar!.segments[0]!.colorClass).toBe("alloc-c1");
+    expect(v.panels).toHaveLength(2);
+    expect(v.hasSwitch).toBe(true);
+    expect(dayPanel(v).bar.segments[0]!.colorClass).toBe("alloc-c1");
   });
 
   it("skips today when it has no hours", () => {
     const v = buildAllocationView({ day: emptyAllocation(), week: { label: "w", allocation: week } })!;
-    expect(v.hasDay).toBe(false);
+    expect(v.panels.map((p) => p.kind)).toEqual(["week"]);
+    expect(v.hasSwitch).toBe(false);
   });
 
   it("assigns colors by trend order and folds extras into Other", () => {
-    const names = ["I1", "I2", "I3", "I4", "I5", "I6", "I7", "I8"];
-    const a = makeAllocation(names.map((n, i) => [n, 10 - i] as [string, number]));
+    const names = Array.from({ length: 11 }, (_, i) => `I${i + 1}`);
+    const a = makeAllocation(names.map((n, i) => [n, 20 - i] as [string, number]));
     const trend = makeTrend(names, [{ label: "w1", days: 5, allocation: a }]);
     const v = buildAllocationView({ week: { label: "w1", allocation: a }, trend })!;
-    expect(MAX_INITIATIVE_COLORS).toBe(6);
-    const seg = v.weekBar!.segments;
-    expect(seg).toHaveLength(7);
-    expect(seg[6]).toMatchObject({ name: "Other", colorClass: "alloc-other", isOther: true });
-    expect(seg[6]!.value).toBe(7); // I7 (4) + I8 (3)
+    expect(MAX_INITIATIVE_COLORS).toBe(9);
+    const seg = weekPanel(v).bar.segments;
+    expect(seg).toHaveLength(10);
+    expect(seg[9]).toMatchObject({ name: "Other", colorClass: "alloc-other", isOther: true });
+    expect(seg[9]!.value).toBe(21); // I10 (11) + I11 (10)
   });
 
   it("keeps all initiatives in the list even when bars fold them", () => {
-    const names = ["I1", "I2", "I3", "I4", "I5", "I6", "I7", "I8"];
-    const a = makeAllocation(names.map((n, i) => [n, 10 - i] as [string, number]));
+    const names = Array.from({ length: 11 }, (_, i) => `I${i + 1}`);
+    const a = makeAllocation(names.map((n, i) => [n, 20 - i] as [string, number]));
     const v = buildAllocationView({ week: { label: "w", allocation: a } })!;
-    expect(v.initiatives).toHaveLength(8);
-    expect(v.initiatives[7]!.colorClass).toBe("alloc-other");
-    expect(v.initiatives[0]!.colorClass).toBe("alloc-c1");
+    const inits = weekPanel(v).initiatives;
+    expect(inits).toHaveLength(11);
+    expect(inits[10]!.colorClass).toBe("alloc-other");
+    expect(inits[0]!.colorClass).toBe("alloc-c1");
   });
 
   it("keeps colors consistent between week, day and trend", () => {
@@ -181,11 +194,11 @@ describe("buildAllocationView", () => {
     ]);
     const v = buildAllocationView({ day: dy, week: { label: "w2", allocation: wk }, trend })!;
     const cls = (segs: { name: string; colorClass: string }[], n: string) => segs.find((s) => s.name === n)!.colorClass;
-    expect(cls(v.weekBar!.segments, "Pricing")).toBe("alloc-c1");
-    expect(cls(v.dayBar!.segments, "Pricing")).toBe("alloc-c1");
+    expect(cls(weekPanel(v).bar.segments, "Pricing")).toBe("alloc-c1");
+    expect(cls(dayPanel(v).bar.segments, "Pricing")).toBe("alloc-c1");
     expect(cls(v.trendRows[0]!.bar.segments, "Pricing")).toBe("alloc-c1");
     expect(cls(v.trendRows[1]!.bar.segments, "Hub")).toBe("alloc-c2");
-    expect(v.initiatives.find((i) => i.name === "Hub")!.colorClass).toBe("alloc-c2");
+    expect(weekPanel(v).initiatives.find((i) => i.name === "Hub")!.colorClass).toBe("alloc-c2");
   });
 
   describe("trend", () => {
@@ -209,12 +222,12 @@ describe("buildAllocationView", () => {
     });
     it("orders trend segments by palette slot", () => {
       expect(v.trendRows[1]!.bar.segments.map((s) => s.name)).toEqual(["Pricing", "Hub"]);
-      expect(v.trendRows[1]!.total).toBe("~1 eng-day");
+      expect(v.trendRows[1]!.total).toBe("~1 day");
     });
     it("provides an accessible data table", () => {
       expect(v.trendTable!.headers).toEqual(["Work week", "Days", "Work delivered", "Pricing", "Hub"]);
       expect(v.trendTable!.rows[1]).toEqual({
-        label: "Sep 10–16", days: 5, total: "~1 eng-day", cells: ["25%", "75%"],
+        label: "Sep 10–16", days: 5, total: "~1 day", cells: ["25%", "75%"],
       });
       expect(v.trendTable!.rows[0]!.cells).toEqual(["-", "-"]);
     });
@@ -238,7 +251,7 @@ describe("buildAllocationView", () => {
     const trend = makeTrend(["Pricing", "Hub", "Platform"], [{ label: "Oct 1–7", days: 5, allocation: week }]);
     const v = buildAllocationView({ day: makeAllocation([["Pricing", 3]]), week: { label: "Oct 1–7", allocation: week }, trend })!;
     expect(JSON.stringify(v)).not.toMatch(/~\d+(\.\d+)?h\b/);
-    expect(v.trendRows[0]!.total).toBe("~4.5 eng-days");
+    expect(v.trendRows[0]!.total).toBe("~4.5 days");
   });
 });
 
@@ -254,7 +267,7 @@ describe("buildAllocationView stakeholder polish", () => {
 
   it("strips conventional-commit prefixes from PR titles", () => {
     const v = buildAllocationView({ week: { label: "Aug 1-7", allocation: alloc } });
-    expect(v?.initiatives[0].shipped[0].title).toBe("Plan household outreach");
+    expect(v?.panels[0].initiatives[0].shipped[0].title).toBe("Plan household outreach");
   });
 
   it("marks the last trend week as so-far only while it is still open", () => {
@@ -276,17 +289,17 @@ describe("buildAllocationView impact and shipped cap", () => {
   it("passes impact badges through with labels", () => {
     const a = makeAllocation([["A", 10, { shipped: prs(3) }]]);
     const v = buildAllocationView({ week: { label: "w", allocation: a } })!;
-    const [first, second, third] = v.initiatives[0]!.shipped;
-    expect(first).toMatchObject({ impact: "major", impactLabel: "Major" });
-    expect(second).toMatchObject({ impact: "notable", impactLabel: "Notable" });
+    const [first, second, third] = v.panels[0]!.initiatives[0]!.shipped;
+    expect(first).toMatchObject({ impact: "major", impactLabel: "Large change" });
+    expect(second).toMatchObject({ impact: "notable", impactLabel: "Substantial change" });
     expect(third!.impact).toBeUndefined();
-    expect(v.initiatives[0]!.hasShippedMore).toBe(false);
+    expect(v.panels[0]!.initiatives[0]!.hasShippedMore).toBe(false);
   });
 
   it("caps visible shipped items and folds the rest", () => {
     expect(MAX_VISIBLE_SHIPPED).toBe(8);
     const a = makeAllocation([["A", 10, { shipped: prs(11) }]]);
-    const i = buildAllocationView({ week: { label: "w", allocation: a } })!.initiatives[0]!;
+    const i = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.initiatives[0]!;
     expect(i.shipped).toHaveLength(8);
     expect(i.shippedMore).toHaveLength(3);
     expect(i.shippedMoreCount).toBe(3);
@@ -296,7 +309,94 @@ describe("buildAllocationView impact and shipped cap", () => {
 
   it("does not fold exactly eight", () => {
     const a = makeAllocation([["A", 10, { shipped: prs(8) }]]);
-    const i = buildAllocationView({ week: { label: "w", allocation: a } })!.initiatives[0]!;
+    const i = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.initiatives[0]!;
     expect(i.hasShippedMore).toBe(false);
+  });
+});
+
+describe("buildAllocationView day and week panels", () => {
+  const dy = makeAllocation([["Pricing", 6], ["Hub", 2]]);
+  const trend = makeTrend(["Pricing", "Hub", "Platform"], [{ label: "Oct 1–7", days: 5, allocation: week }]);
+  // makeTrend: period 1 is 2026-08-01..2026-08-07
+  const build = (asOf: string) =>
+    buildAllocationView({ day: dy, week: { label: "Oct 1–7", allocation: week }, trend, asOf })!;
+
+  it("orders day first as the default, then week", () => {
+    const v = build("2026-08-05");
+    expect(v.hasSwitch).toBe(true);
+    expect(v.script).toContain("<script>");
+    expect(v.panels.map((p) => [p.kind, p.isDefault])).toEqual([["day", true], ["week", false]]);
+    expect(new Set(v.panels.map((p) => p.id)).size).toBe(2);
+  });
+
+  it("builds open-week ledes, headings and labels", () => {
+    const [d, w] = build("2026-08-05").panels as [ReturnType<typeof dayPanel>, ReturnType<typeof weekPanel>];
+    expect(d.label).toBe("Aug 5");
+    expect(d.heading).toBe("Aug 5");
+    expect(d.lede).toBe("Work delivered on Aug 5 would typically take one engineer about 1 day. Here's where it went across 2 initiatives.");
+    expect(w.label).toBe("Oct 1–7 (so far)");
+    expect(w.heading).toBe("Work week of Oct 1–7 (so far)");
+    expect(w.lede).toBe("Work delivered this week so far (Oct 1–7) would typically take one engineer about 4.5 days. Here's where it went across 3 initiatives.");
+  });
+
+  it("builds closed-week wording once the week has ended", () => {
+    const w = weekPanel(build("2026-08-07"));
+    expect(w.label).toBe("Oct 1–7");
+    expect(w.heading).toBe("Work week of Oct 1–7");
+    expect(w.lede).toContain("Work delivered in the week of Oct 1–7 ");
+  });
+
+  it("labels the day panel Today without asOf", () => {
+    const v = buildAllocationView({ day: dy, week: { label: "Oct 1–7", allocation: week } })!;
+    expect(dayPanel(v).label).toBe("Today");
+    expect(dayPanel(v).lede).toContain("Work delivered today ");
+  });
+});
+
+describe("readiness, complexity and verification views", () => {
+  const annotated = {
+    kind: "pr" as const,
+    title: "feat: Add tiers",
+    url: "https://github.com/o/r/pull/1",
+    state: "merged" as const,
+    readiness: { stage: "live" as const, label: "Live", detail: "Live since Oct 8" },
+    complexity: { level: "connected" as const, label: "Connected", reason: "Touches 2 areas: a, b", risks: ["Payments"] },
+    checks: { automated: { passed: 3, failed: 0, total: 3 }, humanReviews: 0, automatedReviews: 1, testsUpdated: true },
+  };
+  const open = {
+    kind: "pr" as const, title: "Draft thing", url: "https://github.com/o/r/pull/2", state: "open" as const,
+    readiness: { stage: "in-review" as const, label: "In review" },
+    checks: { automated: null, humanReviews: 0, automatedReviews: 0, testsUpdated: false },
+  };
+
+  it("builds chips and checks text per item", () => {
+    const a = makeAllocation([["A", 10, { shipped: [annotated], inProgress: [open] }]]);
+    const v = buildAllocationView({ week: { label: "w", allocation: a } })!;
+    const [item] = v.panels[0]!.initiatives[0]!.shipped;
+    expect(item!.readiness).toMatchObject({ label: "Live", stage: "live", ariaLabel: "Live: Live since Oct 8" });
+    expect(item!.complexity).toMatchObject({ level: "connected", hasRisks: true, risks: ["Payments"] });
+    expect(item!.checksText).toBe("All 3 automated checks passed · 1 automated review · tests updated");
+    expect(v.panels[0]!.initiatives[0]!.inProgress[0]!.checksText).toBe("Checks not collected");
+  });
+
+  it("summarizes verification lines", () => {
+    const a = makeAllocation([["A", 10, { shipped: [annotated], inProgress: [open] }]]);
+    a.aiFindingsAddressed = 5;
+    const v = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification!;
+    expect(v.title).toBe("Checks behind this work");
+    expect(v.readinessLine).toBe("Of 2 changes: 1 live · 1 in review");
+    expect(v.checksLine).toBe("1 of 1 passed automated checks · 1 had automated code review · 1 included test updates · 5 review findings addressed");
+    expect(v.note).toContain("No process catches every bug");
+  });
+
+  it("says checks were not collected when no automated data exists", () => {
+    const a = makeAllocation([["A", 10, { shipped: [{ ...annotated, checks: undefined, readiness: undefined }] }]]);
+    const v = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification!;
+    expect(v.checksLine).toBe("Automated check results not collected yet");
+  });
+
+  it("has no verification block without PR items", () => {
+    const a = makeAllocation([["A", 10]]);
+    expect(buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification).toBeUndefined();
   });
 });

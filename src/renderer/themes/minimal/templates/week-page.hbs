@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+<head>
+  <title>Work week of {{label}} - {{siteTitleInline}}</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="{{description}}" />
+  <meta property="og:title" content="Work week of {{label}}" />
+  <meta property="og:description" content="{{description}}" />
+  <meta property="og:type" content="article" />
+  {{#if canonicalUrl}}<meta property="og:url" content="{{{canonicalUrl}}}" />
+  <link rel="canonical" href="{{{canonicalUrl}}}" />{{/if}}
+  <meta name="theme-color" content="{{themeColor}}" />
+  {{#if avatarUrl}}<link rel="icon" href="{{avatarUrl}}" />{{/if}}
+  {{#if baseUrl}}<link rel="alternate" type="application/rss+xml" title="RSS Feed" href="{{{baseUrl}}}/feed.xml" />{{/if}}
+  <style>{{{css}}}</style>
+  {{{themeInitScript}}}
+</head>
+<body>
+
+<nav>
+  <a href="{{rootPrefix}}" class="nav-site-title">{{siteTitleInline}}</a>
+  <a href="{{rootPrefix}}">&larr; All months</a>
+</nav>
+
+<div class="header">
+<nav class="week-crumbs" aria-label="Breadcrumb">
+  <a href="{{rootPrefix}}">&larr; All months</a>
+  <span aria-hidden="true">/</span>
+  <a href="{{rootPrefix}}#{{monthAnchor}}">{{monthLabel}}</a>
+</nav>
+<h1 class="header-title week-title">Work week of {{label}}{{#if open}} (so far){{/if}}</h1>
+<p class="week-dates">{{from}} to {{to}} &middot; Thursday to Wednesday</p>
+</div>
+
+<main>
+  <nav class="week-days-section" aria-label="Daily reports this week">
+    <span class="week-days-label">Daily reports</span>
+    <ul class="week-day-links">
+      {{#each days}}<li><a href="{{this.href}}">{{this.label}}</a></li>{{/each}}
+    </ul>
+  </nav>
+  {{> allocation}}
+  <nav class="week-pager" aria-label="Other work weeks">
+    {{#if prev}}<a href="{{prev.href}}" rel="prev">&larr; {{prev.label}}</a>{{else}}<span></span>{{/if}}
+    {{#if next}}<a href="{{next.href}}" rel="next">{{next.label}} &rarr;</a>{{else}}<span></span>{{/if}}
+  </nav>
+</main>
+
+{{> footer}}
+
+{{{themeToggleScript}}}
+</body>
+</html>

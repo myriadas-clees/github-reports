@@ -4,6 +4,8 @@
 import type { Language } from "../../../types.js";
 import { getFontConfig } from "../../../i18n/index.js";
 import { buildAllocationCSS } from "../allocation-css.js";
+import { buildEstimateCSS } from "../estimate-css.js";
+import { buildLedgerCSS, buildWeekCSS } from "../nav-css.js";
 
 const c = {
   bg: "#ffffff",
@@ -425,6 +427,34 @@ export const buildCSS = (_language: Language = "en"): string => {
       mono: `${MONO}`,
       radius: "2px",
     })}
+
+    ${buildEstimateCSS({
+      defaultMode: "light",
+      text: "var(--text)",
+      textSecondary: "var(--text-secondary)",
+      textTertiary: "var(--text-tertiary)",
+      heading: "var(--text)",
+      border: "var(--border)",
+      borderSubtle: "var(--border-subtle)",
+      surface: "var(--bg)",
+      accent: "var(--accent)",
+      mono: `${MONO}`,
+      radius: "2px",
+    })}
+
+    ${buildWeekCSS({
+      defaultMode: "light",
+      text: "var(--text)",
+      textSecondary: "var(--text-secondary)",
+      textTertiary: "var(--text-tertiary)",
+      heading: "var(--text)",
+      border: "var(--border)",
+      borderSubtle: "var(--border-subtle)",
+      surface: "var(--bg)",
+      accent: "var(--accent)",
+      mono: `${MONO}`,
+      radius: "2px",
+    })}
 `;
 };
 
@@ -454,4 +484,18 @@ export const buildIndexCSS = (_language: Language = "en"): string => `
   @media print {
     body { max-width: 100%; padding: 0; }
   }
+    ${buildLedgerCSS({
+      defaultMode: "light",
+      text: "var(--text)",
+      textSecondary: "var(--text-secondary)",
+      textTertiary: "var(--text-tertiary)",
+      heading: "var(--text)",
+      border: "var(--border)",
+      borderSubtle: "var(--border-subtle)",
+      surface: "var(--bg)",
+      accent: "var(--accent)",
+      mono: `${MONO}`,
+      radius: "2px",
+    })}
+
 `;

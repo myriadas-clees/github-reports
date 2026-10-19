@@ -1,0 +1,298 @@
+// Per-PR readiness / complexity / checks indicators for stakeholders.
+// Derived at render time from data/evidence.yaml; every function degrades gracefully when it is missing.
+
+import { TEST_FILE_RE } from "./allocation.js";
+import type {
+  Allocation,
+  AllocationItem,
+  Complexity,
+  DeploymentRecord,
+  EvidenceLedger,
+  PrChecks,
+  PrEvidence,
+  Readiness,
+} from "../types.js";
+
+type ReadinessItem = Pick<AllocationItem, "state" | "title" | "labels" | "url" | "repository">;
+
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+/** "Oct 8" from an ISO timestamp / date (UTC). */
+const formatDay = (iso: string): string => {
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso);
+  if (!m) return iso;
+  return `${MONTHS[Number(m[2]) - 1] ?? m[2]} ${Number(m[3])}`;
+};
+
+const ms = (iso: string | null | undefined): number => {
+  const t = iso ? Date.parse(iso) : NaN;
+  return Number.isFinite(t) ? t : NaN;
+};
+
+const LABEL_STAGE_RE = /^(?:stage|readiness)\s*:\s*(prototype|beta|pilot|production|live)$/i;
+const PROTOTYPE_TITLE_RE = /\b(wip|prototype|poc|proof of concept|spike|experiment(?:al)?|draft)\b/i;
+
+const labelOverride = (labels: string[] | undefined): Readiness | undefined => {
+  for (const label of labels ?? []) {
+    const m = LABEL_STAGE_RE.exec(label.trim());
+    if (!m) continue;
+    const x = m[1]!.toLowerCase();
+    if (x === "prototype") return { stage: "prototype", label: "Prototype", detail: "Exploratory, not production-ready" };
+    if (x === "beta" || x === "pilot") return { stage: "preview", label: "Pilot", detail: "Limited release, not fully rolled out" };
+    return { stage: "live", label: "Live", detail: "Marked as live" };
+  }
+  return undefined;
+};
+
+const earliest = (deps: DeploymentRecord[]): DeploymentRecord | undefined =>
+  [...deps].sort((a, b) => ms(a.succeededAt) - ms(b.succeededAt))[0];
+
+/** Readiness of a PR item; undefined for non-PR items. */
+export const deriveReadiness = (item: ReadinessItem, evidence: EvidenceLedger | null): Readiness | undefined => {
+  if (item.state !== "open" && item.state !== "merged") return undefined;
+  const override = labelOverride(item.labels);
+  if (override) return override;
+  const pe: PrEvidence | undefined = item.url ? evidence?.prs?.[item.url] : undefined;
+
+  if (item.state === "open") {
+    if (pe?.isDraft) return { stage: "draft", label: "Draft", detail: "Early version, not ready for review" };
+    if (PROTOTYPE_TITLE_RE.test(item.title) || /^\s*\[wip\]/i.test(item.title)) {
+      return { stage: "prototype", label: "Prototype", detail: "Exploratory, not production-ready" };
+    }
+    return { stage: "in-review", label: "In review", detail: "Being reviewed, not merged yet" };
+  }
+
+  // merged
+  if (!evidence) return { stage: "done", label: "Done", detail: "Merged" };
+  const repo = item.repository ?? pe?.repository ?? "";
+  const deps = evidence.deployments?.[repo] ?? [];
+  const defaultBranch = evidence.defaultBranches?.[repo] ?? "main";
+  const mergedAt = pe?.mergedAt ?? null;
+  const mergedDay = mergedAt ? formatDay(mergedAt) : undefined;
+  const mergedText = mergedDay ? `Merged ${mergedDay}` : "Merged";
+
+  if (pe?.baseRef && pe.baseRef !== defaultBranch && !deps.some((d) => d.ref === pe.baseRef)) {
+    return {
+      stage: "awaiting-release",
+      label: "Done · not live yet",
+      detail: `Merged into a larger change (${pe.baseRef}) that isn't live yet`,
+      ...(mergedAt ? { since: mergedAt.slice(0, 10) } : {}),
+    };
+  }
+  if (!pe) return { stage: "done", label: "Done", detail: "Merged; release status not collected" };
+
+  const targetRef = pe.baseRef || defaultBranch;
+  const mergedMs = ms(mergedAt);
+  const after = (d: DeploymentRecord): boolean =>
+    (Number.isFinite(mergedMs) && ms(d.succeededAt) >= mergedMs) ||
+    (!!pe.mergeCommitSha && d.sha === pe.mergeCommitSha);
+
+  const live = earliest(deps.filter((d) => d.production && d.ref === targetRef && after(d)));
+  if (live) {
+    return { stage: "live", label: "Live", detail: `Live since ${formatDay(live.succeededAt)}`, since: live.succeededAt.slice(0, 10) };
+  }
+  const preview = earliest(
+    deps.filter((d) => !d.production && (d.ref === targetRef || d.ref === pe.headRef) && after(d)),
+  );
+  if (preview) {
+    return {
+      stage: "preview",
+      label: "In testing",
+      detail: `On the preview site since ${formatDay(preview.succeededAt)}`,
+      since: preview.succeededAt.slice(0, 10),
+    };
+  }
+  if (deps.some((d) => d.production)) {
+    return {
+      stage: "awaiting-release",
+      label: "Done · not live yet",
+      detail: `${mergedText}; not deployed to production yet`,
+      ...(mergedAt ? { since: mergedAt.slice(0, 10) } : {}),
+    };
+  }
+  return { stage: "done", label: "Done", detail: `${mergedText}; release not tracked for this repo` };
+};
+
+// ---------------------------------------------------------------- complexity
+
+const IGNORED_RE = /(^|\/)(bun\.lockb?|package-lock\.json|pnpm-lock\.yaml|yarn\.lock|[^/]+\.lock)$|(^|\/)(dist|build|vendor|node_modules|__generated__)\//i;
+const GENERATED_RE = /\.min\.[^/]+$|\.snap$|\.generated\.[^/]+$|(^|\/)__generated__(\/|$)/i;
+const CONTAINER_DIRS = new Set(["apps", "packages", "services", "libs", "modules", "src", "functions", "api", "infra"]);
+/** Shared-code containers: an area inside them is reported as "<name> (shared)". */
+const SHARED_DIRS = new Set(["packages", "libs", "modules"]);
+/** Supporting files: real work, but they don't widen the set of systems a change touches. */
+const SUPPORT_RE = /\.(md|mdx|txt)$|(^|\/)(docs?|\.github|\.agents|\.vscode|scripts|research|templates)\//i;
+/** A risk tag needs at least this share of the relevant files, so one incidental file doesn't flag a change. */
+const RISK_MIN_SHARE = 0.2;
+
+const RISK_RULES: { re: RegExp; label: string; codeOnly: boolean }[] = [
+  { re: /(^|[/._-])(auth|authn|authz|login|logout|sso|oauth|permissions?|rbac|roles?|claims?)([/._-]|$)/i, label: "Sign-in & permissions", codeOnly: true },
+  { re: /(^|[/._-])(billing|payments?|stripe|invoices?|checkout)([/._-]|$)/i, label: "Payments", codeOnly: true },
+  { re: /(^|[/._-])(migrations?|schema)([/._-]|$)|\.sql$|prisma\//i, label: "Data changes", codeOnly: true },
+  { re: /\.github\/workflows\/|(^|\/)(terraform|bicep|infra)\/|\.(tf|bicep)$/i, label: "Infrastructure", codeOnly: false },
+];
+
+const areaOf = (file: string, systems: Record<string, string> | undefined): string => {
+  if (systems) {
+    const match = Object.keys(systems)
+      .filter((prefix) => {
+        const p = prefix.replace(/\/+$/, "");
+        return p && (file === p || file.startsWith(`${p}/`));
+      })
+      .sort((a, b) => b.length - a.length)[0];
+    if (match) return systems[match]!;
+  }
+  const parts = file.split("/");
+  if (CONTAINER_DIRS.has(parts[0]!) && parts.length > 2) {
+    return SHARED_DIRS.has(parts[0]!) ? `${parts[1]!} (shared)` : parts[1]!;
+  }
+  return parts[0]!;
+};
+
+const LEVELS: Record<Complexity["level"], string> = {
+  contained: "Contained",
+  connected: "Connected",
+  "cross-system": "Cross-system",
+};
+
+const meetsShare = (matches: number, total: number): boolean =>
+  matches > 0 && total > 0 && matches >= Math.max(1, Math.ceil(total * RISK_MIN_SHARE));
+
+/**
+ * How broad a change is, from the files it touches. Undefined when no files are known.
+ * Areas come from product code only; tests, docs, CI and tooling are supporting files.
+ */
+export const deriveComplexity = (files: string[], systems?: Record<string, string>): Complexity | undefined => {
+  const relevant = files.filter((f) => f && !IGNORED_RE.test(f) && !GENERATED_RE.test(f));
+  if (relevant.length === 0) return undefined;
+  const code = relevant.filter((f) => f.includes("/") && !TEST_FILE_RE.test(f) && !SUPPORT_RE.test(f));
+  const risks = RISK_RULES.filter(({ re, codeOnly }) => {
+    const pool = codeOnly ? code : relevant;
+    return meetsShare(pool.filter((f) => re.test(f)).length, pool.length);
+  }).map(({ label }) => label);
+  if (code.length === 0) {
+    return { level: "contained", label: LEVELS.contained, reason: "Docs, tests or tooling only", risks };
+  }
+  const counts = new Map<string, number>();
+  for (const f of code) {
+    const area = areaOf(f, systems);
+    counts.set(area, (counts.get(area) ?? 0) + 1);
+  }
+  const areas = [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(([area]) => area);
+  const level: Complexity["level"] = areas.length === 1 ? "contained" : areas.length <= 3 ? "connected" : "cross-system";
+  const shown = areas.slice(0, 4).join(", ");
+  const more = areas.length > 4 ? ` +${areas.length - 4} more` : "";
+  return {
+    level,
+    label: LEVELS[level],
+    reason: `Touches ${areas.length} ${areas.length === 1 ? "area" : "areas"}: ${shown}${more}`,
+    risks,
+  };
+};
+
+// ---------------------------------------------------------------- checks
+
+export const derivePrChecks = (
+  item: Pick<AllocationItem, "url">,
+  evidence: EvidenceLedger | null,
+  files: string[],
+): PrChecks => {
+  const pe = item.url ? evidence?.prs?.[item.url] : undefined;
+  const reviews = pe?.reviews ?? [];
+  const unique = (bot: boolean): number => new Set(reviews.filter((r) => !!r.bot === bot).map((r) => r.reviewer)).size;
+  const c = pe?.checks;
+  return {
+    automated: c ? { passed: c.passed, failed: c.failed, total: c.passed + c.failed } : null,
+    humanReviews: unique(false),
+    automatedReviews: unique(true),
+    testsUpdated: files.some((f) => TEST_FILE_RE.test(f)),
+  };
+};
+
+/** Names of the checks that ran on a PR (for display), if collected. */
+export const checkNames = (item: Pick<AllocationItem, "url">, evidence: EvidenceLedger | null): string[] =>
+  (item.url ? evidence?.prs?.[item.url]?.checks?.names : undefined) ?? [];
+
+// ---------------------------------------------------------------- annotate / summarize
+
+/** PR item carrying the names of the checks that ran (render-time only, not part of the shared type). */
+export type AnnotatedItem = AllocationItem & { checkNames?: string[] };
+
+/** Deep copy of an allocation with readiness / complexity / checks on every PR item. */
+export const annotateAllocation = (
+  allocation: Allocation,
+  evidence: EvidenceLedger | null,
+  systems?: Record<string, string>,
+): Allocation => {
+  const copy = structuredClone(allocation);
+  for (const bucket of copy.initiatives) {
+    for (const section of ["shipped", "inProgress"] as const) {
+      for (const item of bucket[section]) {
+        if (item.kind !== "pr") continue;
+        const evFiles = item.url ? evidence?.prs?.[item.url]?.files : undefined;
+        const files = evFiles && evFiles.length > 0 ? evFiles : item.files ?? [];
+        const readiness = deriveReadiness(item, evidence);
+        const complexity = deriveComplexity(files, systems);
+        if (readiness) item.readiness = readiness;
+        if (complexity) item.complexity = complexity;
+        item.checks = derivePrChecks(item, evidence, files);
+        const names = checkNames(item, evidence);
+        if (names.length > 0) (item as AnnotatedItem).checkNames = names;
+      }
+    }
+  }
+  return copy;
+};
+
+export type VerificationSummary = {
+  completed: number;
+  live: number;
+  awaitingRelease: number;
+  preview: number;
+  inReview: number;
+  drafts: number;
+  withPassingChecks: number;
+  checksCollected: number;
+  withAutomatedReview: number;
+  withHumanReview: number;
+  withTests: number;
+  aiFindingsAddressed: number;
+};
+
+/** Period-level counts over unique PR items (shipped + in progress). */
+export const summarizeVerification = (allocation: Allocation): VerificationSummary => {
+  const s: VerificationSummary = {
+    completed: 0, live: 0, awaitingRelease: 0, preview: 0, inReview: 0, drafts: 0,
+    withPassingChecks: 0, checksCollected: 0, withAutomatedReview: 0, withHumanReview: 0, withTests: 0,
+    aiFindingsAddressed: allocation.aiFindingsAddressed ?? 0,
+  };
+  const seen = new Set<string>();
+  for (const bucket of allocation.initiatives) {
+    for (const item of [...(bucket.shipped ?? []), ...(bucket.inProgress ?? [])]) {
+      if (item.kind !== "pr") continue;
+      const key = item.url ?? `${item.repository}|${item.title}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      if (item.state === "merged") s.completed += 1;
+      switch (item.readiness?.stage) {
+        case "live": s.live += 1; break;
+        case "awaiting-release": s.awaitingRelease += 1; break;
+        case "preview": s.preview += 1; break;
+        case "in-review": s.inReview += 1; break;
+        case "draft":
+        case "prototype": s.drafts += 1; break;
+        default: break;
+      }
+      const c = item.checks;
+      if (!c) continue;
+      if (c.automated) {
+        s.checksCollected += 1;
+        if (c.automated.failed === 0 && c.automated.passed > 0) s.withPassingChecks += 1;
+      }
+      if (c.automatedReviews > 0) s.withAutomatedReview += 1;
+      if (c.humanReviews > 0) s.withHumanReview += 1;
+      if (c.testsUpdated) s.withTests += 1;
+    }
+  }
+  return s;
+};

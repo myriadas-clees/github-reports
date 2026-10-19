@@ -1,5 +1,8 @@
 import { describe, it, expect } from "vitest";
-import { renderIndexPage, buildReportEntry, hoursToActivityPercent } from "./index-page.js";
+import { AVAILABLE_THEMES } from "../renderer/themes/index.js";
+import { makeAllocation } from "../renderer/allocation-fixtures.js";
+import type { ReadinessStage, Theme } from "../types.js";
+import { renderIndexPage, buildReportEntry, hoursToActivityPercent, buildOutcomeLine } from "./index-page.js";
 
 const entries = (paths: string[]) => paths.map((p) => buildReportEntry(p));
 
@@ -101,7 +104,7 @@ describe("renderIndexPage", () => {
     expect(html).toContain("10</b> commits");
     expect(html).toContain("3</b> PRs");
     expect(html).toContain("April");
-    expect(html).toContain('<details class="month-group" open>');
+    expect(html).toContain('<details class="month-group" open id="month-2026-04">');
     expect(html).toContain("--activity:");
   });
 
@@ -119,11 +122,201 @@ describe("renderIndexPage", () => {
     expect(html.match(/--activity: 100%/g)?.length).toBe(2);
   });
 
+  it("expands months into Thu-Wed work-week rows with nested day lists", () => {
+    const reports = [
+      buildReportEntry("2026/09/30", "Wed day", undefined, { commits: 1, prs: 0, reviews: 0, hours: 8 }),
+      buildReportEntry("2026/10/01", "Thu day", undefined, { commits: 2, prs: 1, reviews: 0, hours: 16 }),
+      buildReportEntry("2026/10/02", "Fri day", undefined, { commits: 3, prs: 1, reviews: 4, hours: 24 }),
+      buildReportEntry("2026/10/08", "Open day", undefined, { commits: 1, prs: 0, reviews: 0, hours: 8 }),
+    ];
+    for (const theme of AVAILABLE_THEMES as Theme[]) {
+      const html = renderIndexPage(reports, undefined, "en", undefined, undefined, undefined, theme);
+      // Sep 24-30 closes in September, Oct 1-7 in October, Oct 8-14 is in progress (latest report month: October).
+      expect(html, theme).toContain('id="month-2026-10"');
+      expect(html, theme).toContain('id="month-2026-09"');
+      expect(html, theme).toContain('href="weeks/2026-10-01/"');
+      expect(html, theme).toContain('href="weeks/2026-10-08/"');
+      expect(html, theme).toContain('href="weeks/2026-09-24/"');
+      expect(html, theme).toContain("<strong>Oct 1-7</strong>");
+      expect(html, theme).toContain("\u2248 5 engineer-days");
+      expect(html, theme).not.toContain("engineer-days delivered");
+      expect(html, theme).not.toMatch(/engineer-weeks?/);
+      expect(html, theme).toContain("(in progress)");
+      expect(html.match(/\(in progress\)/g), theme).toHaveLength(1);
+      expect(html, theme).toContain("2 daily reports");
+      expect(html, theme).toContain("1 daily report<");
+      // Day rows sit inside their week's details; the Oct 1 week holds both Oct days, not Sep 30.
+      const block = html.slice(html.indexOf('href="weeks/2026-10-01/"'), html.indexOf('href="weeks/2026-09-24/"'));
+      expect(block).toContain('href="2026/10/02/"');
+      expect(block).toContain('href="2026/10/01/"');
+      expect(block).not.toContain('href="2026/09/30/"');
+      expect(html, theme).not.toContain("alloc-archive");
+      expect(html, theme).not.toContain("data-est-root");
+      expect(html, theme).not.toContain("data-alloc-root");
+    }
+  });
+
+  it("shows top-3 initiatives per week when allocation is provided", () => {
+    const alloc = makeAllocation([["Pricing", 10], ["Hub", 6], ["Platform", 3], ["Docs", 1]]);
+    const html = renderIndexPage(
+      [buildReportEntry("2026/10/01", "x", undefined, { commits: 1, prs: 0, reviews: 0, hours: 8 })],
+      undefined, "en", undefined, undefined, undefined, "brutalist",
+      { weekAllocations: new Map([["2026-10-01", alloc]]) },
+    );
+    expect(html).toContain("<span>Pricing</span> <b>50%</b>");
+    expect(html).toContain("<span>Hub</span> <b>30%</b>");
+    expect(html).toContain("<span>Platform</span> <b>15%</b>");
+    const topList = html.slice(html.indexOf('aria-label="Top initiatives"'));
+    expect(topList.slice(0, topList.indexOf("</ul>"))).not.toContain("Docs");
+  });
+
+  it("renders planning links only with the estimate-page flag", () => {
+    const one = [buildReportEntry("2026/10/01", "x", undefined, { commits: 1, prs: 0, reviews: 0, hours: 8 })];
+    for (const theme of AVAILABLE_THEMES as Theme[]) {
+      const off = renderIndexPage(one, undefined, "en", undefined, undefined, undefined, theme);
+      expect(off, theme).not.toContain("estimate/?kind=");
+      expect(off, theme).not.toContain("Thinking about new work?");
+      const on = renderIndexPage(one, undefined, "en", undefined, undefined, undefined, theme, { hasEstimatePage: true });
+      expect(on, theme).toContain("Thinking about new work?");
+      for (const kind of ["app", "feature", "change", "bug"]) expect(on, theme).toContain(`href="estimate/?kind=${kind}"`);
+      expect(on, theme).toContain("Have a new app idea?");
+      expect(on, theme).toContain("Found a bug?");
+    }
+  });
+
   it("keeps legacy weekly entries in the brutalist archive", () => {
     const html = renderIndexPage([buildReportEntry("2026/W14", "Weekly delivery")]);
     expect(html).toContain("Weekly delivery");
     expect(html).toContain('href="2026/W14/"');
     expect(html).toContain("Weekly");
+  });
+});
+
+describe("homepage effort summary", () => {
+  const day = (path: string, hours: number, extra: Partial<{ commits: number; prs: number; reviews: number }> = {}) =>
+    buildReportEntry(path, "x", undefined, { commits: 2, prs: 1, reviews: 1, hours, ...extra });
+  // Thu Oct 1 week: 80h (largest); Thu Oct 8 week (open): 40h; Thu Sep 24 week: 8h.
+  const reports = [
+    day("2026/09/24", 8),
+    day("2026/10/01", 40), day("2026/10/02", 40),
+    day("2026/10/08", 40),
+  ];
+  const item = (title: string, effortHours: number, stage?: ReadinessStage, kind: "pr" | "commits" = "pr") => ({
+    kind, title, state: "merged" as const, effortHours,
+    ...(stage ? { readiness: { stage, label: stage } } : {}),
+  });
+  const weekAllocations = new Map([
+    ["2026-10-01", makeAllocation([
+      ["Hub", 60, { shipped: [
+        item("feat(hub): Merged small", 1, "done"),
+        item("feat(hub): Contact methods", 5, "live"),
+        item("fix: Merged big", 20, "done"),
+        item("CSV import", 9, "live"),
+      ] }],
+      ["Pricing", 20],
+    ])],
+    ["2026-10-08", makeAllocation([["Hub", 30, { inProgress: [item("feat: Draft thing", 3, "in-review"), item("Another WIP", 9, "draft")] }], ["Docs", 10]])],
+    ["2026-09-24", makeAllocation([["Pricing", 8]])],
+  ]);
+  const render = (theme: Theme = "brutalist") =>
+    renderIndexPage(reports, undefined, "en", undefined, undefined, undefined, theme, {
+      weekAllocations, colorOrder: ["Hub", "Pricing", "Docs"], hasEstimatePage: true,
+    });
+
+  it("leads with total estimated engineer-days and one initiative mix bar", () => {
+    for (const theme of AVAILABLE_THEMES as Theme[]) {
+      const html = render(theme);
+      expect(html, theme).toContain("≈ 16");
+      expect(html, theme).toContain("engineer-days");
+      expect(html, theme).toContain("estimated");
+      const hero = html.slice(html.indexOf('class="home-hero'), html.indexOf('class="ledger"'));
+      expect(hero, theme).toContain("Estimated effort: how long a typical engineer would need to build the same changes. Not hours worked.");
+      expect(html.match(/Estimated effort: how long a typical engineer/g)?.length, theme).toBeGreaterThanOrEqual(1);
+      expect(hero.match(/class="alloc-bar /g), theme).toHaveLength(1);
+      // Hub = 90 of 128h, same color slot as on report pages (colorOrder[0] -> alloc-c1).
+      expect(hero, theme).toContain('alloc-seg alloc-c1" style="--grow:70.31" title="Hub 70%"');
+      expect(hero, theme).toContain('title="Pricing 22%"');
+      expect(hero, theme).toContain("Docs");
+      // Totals stay, as quiet secondary stats.
+      expect(hero, theme).toContain("<dd>");
+      expect(hero, theme).toContain("pull requests");
+      // Planning links come after the ledger, not between the hero and the ledger.
+      expect(html.indexOf("Thinking about new work?"), theme).toBeGreaterThan(html.indexOf("Activity ledger"));
+    }
+  });
+
+  it("shows month total engineer-days and a labelled daily tape", () => {
+    const html = render();
+    const october = html.slice(html.indexOf('id="month-2026-10"'), html.indexOf('id="month-2026-09"'));
+    expect(october).toContain("≈ 15 engineer-days");
+    expect(october).toContain('aria-label="Estimated effort per day"');
+    expect(october).toContain('title="Estimated effort per day"');
+    expect(october).toContain("<b>6</b> commits");
+    expect(html).toContain('id="month-2026-09"');
+    expect(html).not.toMatch(/<details class="month-group" open id="month-2026-09"/);
+    expect(html).toContain(".month-group[open] .month-tape { display: none; }");
+  });
+
+  it("makes the whole week row the link and keeps the day list outside it", () => {
+    for (const theme of AVAILABLE_THEMES as Theme[]) {
+      const html = render(theme);
+      const row = html.slice(html.indexOf('<a href="weeks/2026-10-01/" class="week-row">'));
+      const link = row.slice(0, row.indexOf("</a>"));
+      expect(link, theme).toContain("<strong>Oct 1-7</strong>");
+      expect(link, theme).toContain("≈ 10 engineer-days");
+      expect(link, theme).toContain("<b>4</b> commits");
+      expect(link, theme).toContain("<b>2</b> PRs");
+      expect(link, theme).toContain("<b>2</b> reviews");
+      expect(link, theme).toContain("week-outcome");
+      expect(link, theme).not.toContain("<details");
+      expect(link, theme).not.toContain("daily reports");
+      expect(row.slice(link.length), theme).toMatch(/^<\/a>\s*<details class="week-days">/);
+    }
+  });
+
+  it("scales week bars on a shared scale with the largest week at 100%", () => {
+    const html = render();
+    const width = (id: string) => {
+      const row = html.slice(html.indexOf(`href="weeks/${id}/" class="week-row"`));
+      return /class="week-mix-fill" style="width: ([\d.]+)%"/.exec(row.slice(0, row.indexOf("</a>")))?.[1];
+    };
+    expect(width("2026-10-01")).toBe("100");
+    expect(width("2026-10-08")).toBe("50");
+    expect(width("2026-09-24")).toBe("10");
+    expect(html).toContain('title="Hub 75%"');
+    expect(html).toContain('title="Pricing 25%"');
+  });
+
+  it("builds the outcome line live-first, by effort, without conventional prefixes", () => {
+    const html = render();
+    expect(html).toContain("Live: CSV import, Contact methods \u00b7 Done: Merged big");
+    expect(html).toContain("In progress: Another WIP, Draft thing");
+    expect(html).not.toContain("feat(hub):");
+  });
+
+  it("caps the outcome line at three items and omits it when there is nothing", () => {
+    const many = makeAllocation([["Hub", 9, { shipped: [item("A", 4, "live"), item("B", 3, "live"), item("C", 2, "live"), item("D", 9, "done")] }]]);
+    expect(buildOutcomeLine(many)).toBe("Live: A, B, C");
+    expect(buildOutcomeLine(makeAllocation([["Hub", 9, { shipped: [item("D", 9, "done"), item("E", 1)] }]]))).toBe("Done: D, E");
+    expect(buildOutcomeLine(makeAllocation([["Hub", 5]]))).toBe("");
+    expect(buildOutcomeLine(undefined)).toBe("");
+    const none = renderIndexPage([day("2026/10/01", 8)], undefined, "en", undefined, undefined, undefined, "brutalist");
+    expect(none).not.toContain('class="week-outcome"');
+  });
+
+  it("uses days only everywhere (no engineer-weeks) even for large totals", () => {
+    const big = [day("2026/10/01", 4000), day("2026/10/02", 4000)];
+    for (const theme of AVAILABLE_THEMES as Theme[]) {
+      const html = renderIndexPage(big, undefined, "en", undefined, undefined, undefined, theme);
+      expect(html, theme).toContain("≈ 1,000");
+      expect(html, theme).not.toMatch(/engineer-weeks?|eng-wks?/);
+    }
+  });
+
+  it("omits effort figures when no hours are known", () => {
+    const html = renderIndexPage([buildReportEntry("2026/10/01", "x", undefined, { commits: 1, prs: 0, reviews: 0 })]);
+    expect(html).not.toContain("≈");
+    expect(html).not.toContain('class="week-mix');
   });
 });
 

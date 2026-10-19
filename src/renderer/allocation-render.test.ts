@@ -47,9 +47,9 @@ describe("allocation section", () => {
         allocation: { day, week: { label: "Oct 1–7", allocation: week }, trend },
       });
       expect(html).toContain("Where the effort went");
-      expect(html).toContain("Work delivered this week (Oct 1–7) would typically take one engineer about 3.5 days. Here&#x27;s where it went across 2 initiatives.");
+      expect(html).toContain("Work delivered in the week of Oct 1–7 would typically take one engineer about 3.5 days. Here&#x27;s where it went across 2 initiatives.");
       expect(html).toContain('title="Pricing: 54% of work delivered"');
-      expect(html).toContain("Shipped");
+      expect(html).toContain("Completed");
       expect(html).toContain("Self-reported");
       expect(html).toContain("No reports");
       expect(html).toContain("View as data table");
@@ -61,7 +61,8 @@ describe("allocation section", () => {
       expect(section).not.toMatch(/~\d+(\.\d+)?h\b/);
       expect(section).not.toContain("alloc-item-hours");
       expect(html).not.toContain("[object Object]");
-      expect(html).toContain("Oct 1–7 &middot; share of work delivered");
+      expect(html).toContain("share of work delivered");
+      expect(html).toContain("Work week of Oct 1–7");
       expect(html).toContain(">Today<");
       expect(html).toContain("alloc-c1");
       // Escaped, not injected.
@@ -90,10 +91,89 @@ describe("allocation section", () => {
     const a = makeAllocation([["Pricing", 30, { shipped }]]);
     for (const theme of AVAILABLE_THEMES as Theme[]) {
       const html = renderReport(DATA, { theme, allocation: { week: { label: "Oct 1–7", allocation: a } } });
-      expect(html, theme).toContain('alloc-impact alloc-impact--major">Major<span class="alloc-sr"> impact</span>');
-      expect(html, theme).toContain('alloc-impact alloc-impact--notable">Notable');
-      expect(html, theme).toContain("2 more shipped");
+      expect(html, theme).toContain('alloc-impact alloc-impact--major">Large change</span>');
+      expect(html, theme).toContain('alloc-impact alloc-impact--notable">Substantial change');
+      expect(html, theme).toContain("2 more completed");
       expect(html, theme).toContain(".alloc-impact--major");
     }
   });
+
+  it("renders readiness, complexity, risk chips and the checks block in every theme", () => {
+    const shipped = [{
+      kind: "pr" as const, title: "Add tiers", url: "https://github.com/o/r/pull/1", state: "merged" as const,
+      readiness: { stage: "live" as const, label: "Live", detail: "Live since Oct 8" },
+      complexity: { level: "cross-system" as const, label: "Cross-system", reason: "Touches 4 areas: a, b, c, d", risks: ["Payments"] },
+      checks: { automated: { passed: 2, failed: 0, total: 2 }, humanReviews: 1, automatedReviews: 0, testsUpdated: false },
+    }];
+    const a = makeAllocation([["Pricing", 30, { shipped }]]);
+    for (const theme of AVAILABLE_THEMES as Theme[]) {
+      const html = renderReport(DATA, { theme, allocation: { week: { label: "Oct 1–7", allocation: a } } });
+      expect(html, theme).toContain('class="alloc-stage alloc-stage--live" title="Live since Oct 8">Live');
+      expect(html, theme).toContain("Live since Oct 8)");
+      expect(html, theme).toContain('class="alloc-cx alloc-cx--cross-system"');
+      expect(html, theme).toContain('<span class="alloc-risk">Payments</span>');
+      expect(html, theme).toContain("Both automated checks passed · 1 human review");
+      expect(html, theme).toContain("Checks behind this work");
+      expect(html, theme).toContain("Of 1 change: 1 live");
+      expect(html, theme).toContain(".alloc-stage--live");
+      expect(html, theme).not.toContain("[object Object]");
+    }
+  });
+
+  for (const theme of AVAILABLE_THEMES as Theme[]) {
+    it(`renders a two-tab switch with one visible panel in the ${theme} theme`, () => {
+      const day = makeAllocation([["Pricing", 4]]);
+      const html = renderReport(DATA, {
+        theme,
+        allocation: { day, week: { label: "Oct 1–7", allocation: week }, trend, asOf: "2026-08-05" },
+      });
+      expect(html).toContain('class="alloc-switch"');
+      expect(html.match(/data-alloc-tab="/g)).toHaveLength(2);
+      const panels = html.match(/<div class="alloc-panel"[^>]*>/g)!;
+      expect(panels).toHaveLength(2);
+      expect(panels.filter((t) => !/\shidden(\s|>)/.test(t))).toHaveLength(1);
+      expect(panels.filter((t) => /\shidden(\s|>)/.test(t))).toHaveLength(1);
+      expect(panels[0]).not.toMatch(/\shidden/);
+      expect(html).toContain("Aug 5");
+      expect(html).toContain("Work week of Oct 1–7 (so far)");
+      expect(html).toContain("data-alloc-root");
+      expect(html).not.toContain("[object Object]");
+    });
+
+    it(`renders no switch for a single panel in the ${theme} theme`, () => {
+      const html = renderReport(DATA, { theme, allocation: { week: { label: "Oct 1–7", allocation: week } } });
+      expect(html).not.toContain("data-alloc-tab=");
+      expect(html.match(/<div class="alloc-panel"[^>]*>/g)).toHaveLength(1);
+      expect(html).not.toMatch(/<div class="alloc-panel"[^>]*\shidden/);
+    });
+  }
+});
+
+describe("daily page week link", () => {
+  for (const theme of AVAILABLE_THEMES as Theme[]) {
+    it(`links to the whole week and shows only the day panel in the ${theme} theme`, () => {
+      const day = makeAllocation([["Pricing", 4]]);
+      const html = renderReport(DATA, {
+        theme,
+        allocation: { day, asOf: "2026-10-07", trend },
+        weekLink: { href: "../../../weeks/2026-10-01/", label: "Oct 1-7" },
+      });
+      expect(html).toContain('href="../../../weeks/2026-10-01/"');
+      expect(html).toContain("See the whole week (Oct 1-7) \u2192");
+      expect(html).not.toContain('class="alloc-switch"');
+      expect(html).not.toContain("data-alloc-tab=");
+      expect(html.match(/<div class="alloc-panel"[^>]*>/g)).toHaveLength(1);
+      expect(() => assertNoSecretsInHtml(html)).not.toThrow();
+    });
+
+    it(`still links to the week without allocation data in the ${theme} theme`, () => {
+      const html = renderReport(DATA, { theme, weekLink: { href: "../../../weeks/2026-10-01/", label: "Oct 1-7" } });
+      expect(html).toContain('href="../../../weeks/2026-10-01/"');
+      expect(html).not.toContain("Where the effort went</h2>");
+    });
+
+    it(`omits the week link when not given in the ${theme} theme`, () => {
+      expect(renderReport(DATA, { theme })).not.toContain("See the whole week");
+    });
+  }
 });

@@ -1,7 +1,7 @@
 // Effort allocation: split estimated hours into stakeholder initiatives and work types.
 // Hours are an estimate distributed by delivered scope; self-reported time is added unscaled.
 
-import { estimateDailyPrWorkHours, estimatePrHours } from "./estimate-hours.js";
+import { buildCommitUnits, estimateCommitUnitHours, estimateDailyPrWorkHours, estimatePrHours, groupCommitUnitIndexes } from "./estimate-hours.js";
 import { formatShortWeekTitle } from "./stakeholder-summary.js";
 import type {
   Allocation,
@@ -70,9 +70,8 @@ const byEffortDesc = (items: AllocationItem[]): AllocationItem[] =>
     .map(({ item }) => item);
 const REVIEW_HOURS = 0.75;
 const REVIEW_COMMENT_HOURS = 0.25;
-const COMMIT_NO_STATS_HOURS = 0.5;
 const FALLBACK_INITIATIVE = "General engineering";
-const TEST_FILE_RE = /(^|\/)(__tests__|tests?)(\/|$)|\.(test|spec)\.[^/]+$/i;
+export const TEST_FILE_RE = /(^|\/)(__tests__|tests?)(\/|$)|\.(test|spec)\.[^/]+$/i;
 const CONVENTIONAL_RE = /^\s*([a-z]+)(?:\(([^)]*)\))?!?:/i;
 
 const round1 = (n: number): number => Math.round(n * 10) / 10;
@@ -178,7 +177,7 @@ type Acc = { hours: number; byWorkType: Partial<Record<WorkType, number>>; shipp
 
 const emptyAcc = (): Acc => ({ hours: 0, byWorkType: {}, shipped: [], inProgress: [], other: [] });
 
-const finalize = (accs: Map<string, Acc>, manualHours: number): Allocation => {
+const finalize = (accs: Map<string, Acc>, manualHours: number, aiFindingsAddressed = 0): Allocation => {
   const total = [...accs.values()].reduce((sum, acc) => sum + acc.hours, 0);
   const typeTotals = new Map<WorkType, number>();
   const initiatives: AllocationBucket[] = [...accs.entries()].map(([initiative, acc]) => {
@@ -213,6 +212,7 @@ const finalize = (accs: Map<string, Acc>, manualHours: number): Allocation => {
     initiatives,
     workTypes,
     manualHours: round1(manualHours),
+    ...(aiFindingsAddressed > 0 ? { aiFindingsAddressed } : {}),
     note: ALLOCATION_NOTE,
   };
 };
@@ -230,7 +230,7 @@ const placeItem = (accs: Map<string, Acc>, placed: Placed): void => {
   accs.set(placed.initiative, acc);
 };
 
-const prWeight = (pr: PullRequest): number => {
+export const prWeight = (pr: PullRequest): number => {
   const hasDailyWork = (pr.workCommits?.length ?? 0) > 0 || pr.workAdditions != null;
   if (!hasDailyWork) return estimatePrHours(pr.additions ?? 0, pr.deletions ?? 0);
   const files = pr.workFiles ?? [];
@@ -250,7 +250,7 @@ export const computeAllocation = (
   data: Pick<
     WeeklyReportData,
     "dateRange" | "stats" | "hoursEstimate" | "pullRequests" | "prsInProgress" | "commitMessages" | "codeReviews" | "reviewComments"
-  >,
+  > & Partial<Pick<WeeklyReportData, "aiReviews">>,
   config: AllocationConfig = DEFAULT_ALLOCATION_CONFIG,
   manualTime: ManualTimeEntry[] = [],
 ): Allocation => {
@@ -273,7 +273,15 @@ export const computeAllocation = (
     });
     const initiative = entries[entries.length - 1].initiative;
     const section: Section = pr.state === "merged" ? "shipped" : pr.state === "open" ? "inProgress" : "other";
-    const item: AllocationItem = { kind: "pr", title: pr.title, url: pr.url, repository: pr.repository, state: pr.state };
+    const item: AllocationItem = {
+      kind: "pr",
+      title: pr.title,
+      url: pr.url,
+      repository: pr.repository,
+      state: pr.state,
+      ...(labels.length > 0 ? { labels: [...labels] } : {}),
+      ...(pr.workFiles?.length ? { files: [...pr.workFiles] } : {}),
+    };
     placed.push({ initiative, section, item });
     prEffort.push({ item, weight: entries[entries.length - 1].weight, labels });
     for (const commit of pr.workCommits ?? []) workShas.add(commit.sha);
@@ -311,35 +319,52 @@ export const computeAllocation = (
     entries.push({ initiative, workType: "team-support", weight: REVIEW_COMMENT_HOURS });
   }
 
-  type Group = { initiative: string; workType: WorkType; count: number; additions: number; deletions: number; withStats: number; repos: Set<string> };
+  type Group = { initiative: string; workType: WorkType; count: number; repos: Set<string> };
+  type DirectCommit = { repo: string; message: string; additions?: number; deletions?: number; filesChanged?: number; key: string };
   const groups = new Map<string, Group>();
+  const directCommits: DirectCommit[] = [];
   for (const repo of data.commitMessages ?? []) {
     const commits = repo.commits?.length
       ? repo.commits
-      : (repo.messages ?? []).map((message) => ({ sha: "", message, additions: undefined, deletions: undefined }));
+      : (repo.messages ?? []).map((message) => ({ sha: "", message, additions: undefined, deletions: undefined, filesChanged: undefined }));
     for (const commit of commits) {
       if (commit.sha && workShas.has(commit.sha)) continue;
       const message = (commit.message ?? "").split("\n")[0];
       const initiative = classifyInitiative({ title: message, labels: [], repository: repo.repo }, config);
       const workType = classifyWorkType(message);
       const key = `${initiative}|${workType}`;
-      const group = groups.get(key) ?? { initiative, workType, count: 0, additions: 0, deletions: 0, withStats: 0, repos: new Set() };
+      const group = groups.get(key) ?? { initiative, workType, count: 0, repos: new Set() };
       group.count += 1;
       group.repos.add(repo.repo);
-      if (commit.additions != null || commit.deletions != null) {
-        group.withStats += 1;
-        group.additions += commit.additions ?? 0;
-        group.deletions += commit.deletions ?? 0;
-      }
       groups.set(key, group);
+      directCommits.push({
+        repo: repo.repo,
+        message,
+        additions: commit.additions,
+        deletions: commit.deletions,
+        filesChanged: commit.filesChanged,
+        key,
+      });
+    }
+  }
+  // Weight direct commits with the same work units the hours estimate uses
+  // (repo + scope), then split each unit's hours across the initiative|workType
+  // groups of its member commits by commit count.
+  const groupWeights = new Map<string, number>();
+  for (const members of groupCommitUnitIndexes(directCommits)) {
+    const [unit] = buildCommitUnits(members.map((index) => directCommits[index]));
+    const hours = estimateCommitUnitHours(unit);
+    for (const index of members) {
+      const key = directCommits[index].key;
+      groupWeights.set(key, (groupWeights.get(key) ?? 0) + hours / members.length);
     }
   }
   const commitCounts = new Map<string, { count: number; repos: Set<string> }>();
-  for (const group of groups.values()) {
+  for (const [key, group] of groups) {
     entries.push({
       initiative: group.initiative,
       workType: group.workType,
-      weight: group.withStats > 0 ? estimatePrHours(group.additions, group.deletions) : group.count * COMMIT_NO_STATS_HOURS,
+      weight: groupWeights.get(key) ?? 0,
     });
     const tally = commitCounts.get(group.initiative) ?? { count: 0, repos: new Set<string>() };
     tally.count += group.count;
@@ -388,7 +413,8 @@ export const computeAllocation = (
     });
     manualHours += entry.hours;
   }
-  return finalize(accs, manualHours);
+  const fixed = data.aiReviews?.fixed ?? 0;
+  return finalize(accs, manualHours, fixed > 0 ? fixed : 0);
 };
 
 const itemKey = (item: AllocationItem): string => `${item.kind}|${item.url ?? item.title}`;
@@ -399,8 +425,10 @@ export const mergeAllocations = (allocations: Allocation[]): Allocation => {
   const seen = new Map<string, AllocationItem>();
   const commitItems = new Map<string, { item: AllocationItem; count: number }>();
   let manualHours = 0;
+  let aiFindingsAddressed = 0;
   for (const allocation of allocations) {
     manualHours += allocation.manualHours;
+    aiFindingsAddressed += allocation.aiFindingsAddressed ?? 0;
     for (const bucket of allocation.initiatives) {
       const acc = accs.get(bucket.initiative) ?? emptyAcc();
       acc.hours += bucket.hours;
@@ -434,12 +462,14 @@ export const mergeAllocations = (allocations: Allocation[]): Allocation => {
             // Same PR on another day: effort accumulates; impact never drops (labels are not on items).
             if (item.effortHours != null) prior.effortHours = round1((prior.effortHours ?? 0) + item.effortHours);
             if (item.kind === "pr") {
+              if (item.files?.length) prior.files = [...new Set([...(prior.files ?? []), ...item.files])];
+              if (item.labels?.length) prior.labels = [...new Set([...(prior.labels ?? []), ...item.labels])];
               prior.impact = maxImpact(maxImpact(prior.impact, item.impact), deriveImpact(prior.effortHours));
               if (!prior.impact) delete prior.impact;
             }
             continue;
           }
-          const copy = { ...item };
+          const copy = { ...item, ...(item.files ? { files: [...item.files] } : {}), ...(item.labels ? { labels: [...item.labels] } : {}) };
           seen.set(key, copy);
           acc[section].push(copy);
         }
@@ -455,7 +485,7 @@ export const mergeAllocations = (allocations: Allocation[]): Allocation => {
   for (const acc of accs.values()) {
     acc.inProgress = acc.inProgress.filter((item) => !item.url || !shippedUrls.has(item.url));
   }
-  return finalize(accs, manualHours);
+  return finalize(accs, manualHours, aiFindingsAddressed);
 };
 
 const DAY_MS = 86_400_000;
@@ -466,11 +496,14 @@ const parseUtc = (date: string): number => {
 const formatUtc = (ms: number): string => new Date(ms).toISOString().slice(0, 10);
 
 /** Thursday on or before a YYYY-MM-DD date (work week starts Thursday). */
-const weekStart = (date: string): string => {
+export const weekStart = (date: string): string => {
   const ms = parseUtc(date);
   const back = (new Date(ms).getUTCDay() - 4 + 7) % 7;
   return formatUtc(ms - back * DAY_MS);
 };
+
+/** Wednesday that closes the Thu–Wed work week starting on `from` (YYYY-MM-DD). */
+export const weekEnd = (from: string): string => formatUtc(parseUtc(from) + 6 * DAY_MS);
 
 /** Group daily reports into Thu–Wed work weeks ending at `endDate`, last `config.trendWeeks` weeks. */
 export const buildAllocationTrend = (

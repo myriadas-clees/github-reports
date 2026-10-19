@@ -342,21 +342,24 @@ describe("registerHelpers", () => {
   });
 
   describe("workDelivered", () => {
-    it("renders engineer-days and engineer-weeks from hours", () => {
+    it("renders engineer-days from hours", () => {
       const hbs = createHbs();
       expect(compile(hbs, "{{workDelivered hours}}", { hours: 36 })).toBe("~4.5 engineer-days");
-      expect(compile(hbs, "{{workDelivered hours}}", { hours: 510 })).toBe("~13 engineer-weeks");
+      expect(compile(hbs, "{{workDelivered hours}}", { hours: 510 })).toBe("~64 engineer-days");
     });
   });
 });
 
 describe("formatWorkDeliveredLabel", () => {
-  it("uses engineer-days below 80 hours and engineer-weeks at 80 and above", () => {
-    expect(formatWorkDeliveredLabel(510)).toBe("~13 engineer-weeks");
-    expect(formatWorkDeliveredLabel(93)).toBe("~2.5 engineer-weeks");
+  it("always uses engineer-days, with thousands separators from 1,000", () => {
+    expect(formatWorkDeliveredLabel(510)).toBe("~64 engineer-days");
+    expect(formatWorkDeliveredLabel(93)).toBe("~12 engineer-days");
     expect(formatWorkDeliveredLabel(36)).toBe("~4.5 engineer-days");
     expect(formatWorkDeliveredLabel(79)).toBe("~10 engineer-days");
-    expect(formatWorkDeliveredLabel(80)).toBe("~2 engineer-weeks");
+    expect(formatWorkDeliveredLabel(80)).toBe("~10 engineer-days");
+    expect(formatWorkDeliveredLabel(10272)).toBe("~1,284 engineer-days");
+    expect(formatWorkDeliveredLabel(8000)).toBe("~1,000 engineer-days");
+    expect(formatWorkDeliveredLabel(7960)).toBe("~995 engineer-days");
   });
 
   it("enforces a 0.5 minimum and singular units when exactly 1", () => {

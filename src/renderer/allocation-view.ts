@@ -8,9 +8,12 @@ import type {
   AllocationTrend,
   WorkType,
 } from "../types.js";
+import { summarizeVerification } from "../collector/readiness.js";
+import { INITIATIVE_PALETTE } from "./themes/allocation-css.js";
+import { engineerDayUnit, formatEngineerDaysValue } from "../collector/work-delivered.js";
 
 /** Categorical slots available to initiatives before folding into "Other". */
-export const MAX_INITIATIVE_COLORS = 6;
+export const MAX_INITIATIVE_COLORS = INITIATIVE_PALETTE.length;
 /** Segments below this share get no inline label (they still render, with a title). */
 export const MIN_LABEL_PERCENT = 3;
 /** Segments at or above this share also show their name inline. */
@@ -50,6 +53,8 @@ export type AllocationInput = {
   trend?: AllocationTrend;
   /** Report date (YYYY-MM-DD); the last trend week is "so far" only while it is still open. */
   asOf?: string;
+  /** Archive-wide initiative order so colors match the index page. */
+  colorOrder?: string[];
 };
 
 export type AllocationSegmentView = {
@@ -84,6 +89,16 @@ export type AllocationItemView = {
   selfReported: boolean;
   impact?: "major" | "notable";
   impactLabel?: string;
+  readiness?: { label: string; stage: string; detail?: string; ariaLabel: string };
+  complexity?: { label: string; level: string; reason: string; risks: string[]; hasRisks: boolean };
+  checksText?: string;
+};
+
+export type AllocationVerificationView = {
+  title: string;
+  readinessLine?: string;
+  checksLine: string;
+  note?: string;
 };
 
 export type AllocationInitiativeView = {
@@ -131,20 +146,44 @@ export type AllocationTableView = {
   rows: { label: string; days: number; total: string; cells: string[] }[];
 };
 
-export type AllocationView = {
-  title: string;
+export type AllocationPeriodKind = "day" | "week" | "month";
+
+/** One period (a day, a work week or a calendar month) to show as a panel. */
+export type AllocationPanelInput = {
+  kind: AllocationPeriodKind;
+  /** Stable, unique DOM id, e.g. "day-2026-10-07". */
+  id: string;
+  /** "Oct 7", "Oct 1–7", "October 2026". */
+  label: string;
+  allocation: Allocation;
+  /** Period still running (this week / this month so far). */
+  open?: boolean;
+};
+
+export type AllocationPanelView = {
+  id: string;
+  kind: AllocationPeriodKind;
+  /** Option / tab text. */
+  label: string;
+  /** Block heading, e.g. "Work week of Oct 1–7 (so far)". */
+  heading: string;
   lede: string;
-  hasWeek: boolean;
-  periodLabel: string;
-  weekBar?: AllocationBarView;
-  weekLegend: AllocationSegmentView[];
-  weekWorkTypeBar?: AllocationBarView;
-  weekWorkTypes: AllocationSegmentView[];
+  bar: AllocationBarView;
+  legend: AllocationSegmentView[];
+  workTypeBar?: AllocationBarView;
+  workTypes: AllocationSegmentView[];
   initiatives: AllocationInitiativeView[];
   hasInitiatives: boolean;
-  hasDay: boolean;
-  dayBar?: AllocationBarView;
-  dayLegend: AllocationSegmentView[];
+  verification?: AllocationVerificationView;
+  isDefault: boolean;
+};
+
+export type AllocationView = {
+  title: string;
+  /** Panels in tab order; exactly one has isDefault. */
+  panels: AllocationPanelView[];
+  /** More than one panel: show the Day / Week switch. */
+  hasSwitch: boolean;
   hasTrend: boolean;
   trendRows: AllocationTrendRowView[];
   trendLegend: AllocationLegendItem[];
@@ -153,37 +192,26 @@ export type AllocationView = {
   note: string;
   measureTitle: string;
   measureNote: string;
+  /** Inline script that wires tabs / selects to panels (static, no data). */
+  script: string;
 };
 
 // ---------------------------------------------------------------- formatting
 
 export const HOURS_PER_ENGINEER_DAY = 8;
-export const HOURS_PER_ENGINEER_WEEK = 40;
-const DAYS_BELOW_HOURS = 80;
-
-/** Nearest 0.5 below 10, integer from 10 up; never below 0.5. */
-const roundUnits = (value: number): number => {
-  const v = Number.isFinite(value) ? Math.max(0, value) : 0;
-  const rounded = v < 10 ? Math.round(v * 2) / 2 : Math.round(v);
-  return Math.max(0.5, rounded);
-};
 
 /**
- * Express an engineer-hour estimate as engineer-days (< 80h) or engineer-weeks so it
- * cannot be read as clock time. 1 day = 8h, 1 week = 40h.
+ * Express an engineer-hour estimate as engineer-days (the only unit used) so it
+ * cannot be read as clock time. 1 day = 8h.
  */
 export const formatWorkDelivered = (hours: number): { short: string; long: string; plain: string } => {
-  const h = Number.isFinite(hours) ? Math.max(0, hours) : 0;
-  const weeks = h >= DAYS_BELOW_HOURS;
-  const n = roundUnits(h / (weeks ? HOURS_PER_ENGINEER_WEEK : HOURS_PER_ENGINEER_DAY));
-  const text = String(n);
-  const unit = weeks ? "week" : "day";
-  const one = n === 1;
+  const text = formatEngineerDaysValue(hours);
+  const one = text === "1";
   return {
-    short: `~${text} eng-${weeks ? "wk" : "day"}${one ? "" : "s"}`,
-    long: `about ${text} engineer-${unit}${one ? "" : "s"}`,
-    /** For sentences that already say "one engineer": "about 13 weeks". */
-    plain: `about ${text} ${unit}${one ? "" : "s"}`,
+    short: `~${text} ${one ? "day" : "days"}`,
+    long: `about ${text} ${engineerDayUnit(text)}`,
+    /** For sentences that already say "one engineer": "about 13 days". */
+    plain: `about ${text} ${one ? "day" : "days"}`,
   };
 };
 
@@ -263,7 +291,7 @@ const toBar = (segments: AllocationSegmentView[], subject: string): AllocationBa
 
 /** Initiative segments; buckets beyond the palette fold into one trailing "Other". */
 const initiativeSegments = (
-  allocation: Allocation,
+  allocation: Pick<Allocation, "totalHours" | "initiatives">,
   colors: ColorMap,
   order: "size" | "palette",
 ): AllocationSegmentView[] => {
@@ -279,6 +307,19 @@ const initiativeSegments = (
   else named.sort((a, b) => b.value - a.value);
   if (otherHours > 0) named.push(makeSegment(OTHER_LABEL, otherHours, total, "alloc-other", true));
   return named;
+};
+
+/**
+ * Initiative mix for the homepage (hero + week rows): same color slots as the report pages
+ * (driven by the archive-wide `colorOrder`), beyond-palette initiatives folded into "Other".
+ */
+export const buildInitiativeMix = (
+  allocation: Pick<Allocation, "totalHours" | "initiatives">,
+  colorOrder: string[],
+  order: "size" | "palette",
+): AllocationSegmentView[] => {
+  const bySize = [...allocation.initiatives].sort((a, b) => b.hours - a.hours).map((b) => b.initiative);
+  return initiativeSegments(allocation, buildColorMap([...colorOrder, ...bySize]), order);
 };
 
 const workTypeSegments = (allocation: Allocation): AllocationSegmentView[] =>
@@ -308,14 +349,32 @@ const STATE_LABELS: Record<NonNullable<AllocationItem["state"]>, string> = {
 };
 
 /** Stakeholder lists read better without "feat(scope):" prefixes. */
-const stripConventionalPrefix = (title: string): string => {
+export const stripConventionalPrefix = (title: string): string => {
   const stripped = title.replace(/^[a-z]+(\([^)]*\))?!?:\s*/i, "").trim();
   return stripped ? stripped.charAt(0).toUpperCase() + stripped.slice(1) : title;
 };
 
 const IMPACT_LABELS: Record<NonNullable<AllocationItem["impact"]>, string> = {
-  major: "Major",
-  notable: "Notable",
+  major: "Large change",
+  notable: "Substantial change",
+};
+
+const checksText = (item: AllocationItem): string | undefined => {
+  const c = item.checks;
+  if (!c) return undefined;
+  const parts: string[] = [];
+  if (!c.automated) parts.push("Checks not collected");
+  else if (c.automated.total === 0) parts.push("No automated checks");
+  else {
+    const { passed, total } = c.automated;
+    parts.push(passed === total
+      ? `${total === 1 ? "Automated check" : total === 2 ? "Both automated checks" : `All ${total} automated checks`} passed`
+      : `${passed} of ${total} automated checks passed`);
+  }
+  if (c.automatedReviews > 0) parts.push(`${c.automatedReviews} automated ${plural(c.automatedReviews, "review", "reviews")}`);
+  if (c.humanReviews > 0) parts.push(`${c.humanReviews} human ${plural(c.humanReviews, "review", "reviews")}`);
+  if (c.testsUpdated) parts.push("tests updated");
+  return parts.join(" · ");
 };
 
 const toItemView = (item: AllocationItem): AllocationItemView => ({
@@ -326,7 +385,68 @@ const toItemView = (item: AllocationItem): AllocationItemView => ({
   stateLabel: item.state ? STATE_LABELS[item.state] : undefined,
   selfReported: item.kind === "manual",
   ...(item.impact ? { impact: item.impact, impactLabel: IMPACT_LABELS[item.impact] } : {}),
+  ...(item.readiness
+    ? {
+      readiness: {
+        label: item.readiness.label,
+        stage: item.readiness.stage,
+        detail: item.readiness.detail,
+        ariaLabel: item.readiness.detail ? `${item.readiness.label}: ${item.readiness.detail}` : item.readiness.label,
+      },
+    }
+    : {}),
+  ...(item.complexity
+    ? {
+      complexity: {
+        label: item.complexity.label,
+        level: item.complexity.level,
+        reason: item.complexity.reason,
+        risks: item.complexity.risks,
+        hasRisks: item.complexity.risks.length > 0,
+      },
+    }
+    : {}),
+  ...(checksText(item) ? { checksText: checksText(item) } : {}),
 });
+
+const joinParts = (parts: (string | false | undefined)[]): string => parts.filter(Boolean).join(" · ");
+
+export const VERIFICATION_TITLE = "Checks behind this work";
+export const VERIFICATION_NOTE =
+  "No process catches every bug. When one gets through, the fix goes through these same checks.";
+
+const buildVerification = (a: Allocation): AllocationVerificationView | undefined => {
+  const s = summarizeVerification(a);
+  const total = s.completed + s.inReview + s.drafts;
+  if (total === 0 && s.aiFindingsAddressed === 0) return undefined;
+  const readinessLine = s.completed + s.inReview > 0
+    ? `Of ${s.completed + s.inReview + s.drafts} ${plural(s.completed + s.inReview + s.drafts, "change", "changes")}: ` +
+      joinParts([
+        s.live > 0 && `${s.live} live`,
+        s.preview > 0 && `${s.preview} in testing`,
+        s.awaitingRelease > 0 && `${s.awaitingRelease} done, not live yet`,
+        s.completed - s.live - s.preview - s.awaitingRelease > 0 &&
+          `${s.completed - s.live - s.preview - s.awaitingRelease} done`,
+        s.inReview > 0 && `${s.inReview} in review`,
+        s.drafts > 0 && `${s.drafts} ${plural(s.drafts, "draft or prototype", "drafts or prototypes")}`,
+      ])
+    : undefined;
+  const checksLine = s.checksCollected === 0
+    ? "Automated check results not collected yet"
+    : joinParts([
+      `${s.withPassingChecks} of ${s.checksCollected} passed automated checks`,
+      s.withAutomatedReview > 0 && `${s.withAutomatedReview} had automated code review`,
+      s.withHumanReview > 0 && `${s.withHumanReview} had human review`,
+      s.withTests > 0 && `${s.withTests} included test updates`,
+      s.aiFindingsAddressed > 0 && `${s.aiFindingsAddressed} review findings addressed`,
+    ]);
+  return {
+    title: VERIFICATION_TITLE,
+    ...(readinessLine ? { readinessLine } : {}),
+    checksLine,
+    ...(s.completed > 0 ? { note: VERIFICATION_NOTE } : {}),
+  };
+};
 
 const toInitiativeView = (
   bucket: AllocationBucket,
@@ -407,6 +527,73 @@ const buildTrend = (
   return { rows, table };
 };
 
+// ---------------------------------------------------------------- panels
+
+const SO_FAR = " (so far)";
+
+const panelHeading = (p: AllocationPanelInput): string => {
+  const suffix = p.open ? SO_FAR : "";
+  if (p.kind === "week") return `Work week of ${p.label}${suffix}`;
+  return `${p.label}${suffix}`;
+};
+
+const panelScope = (p: AllocationPanelInput): string => {
+  if (p.kind === "day") return p.label === "Today" ? "today" : `on ${p.label}`;
+  if (p.kind === "week") return p.open ? `this week so far (${p.label})` : `in the week of ${p.label}`;
+  const month = p.label.replace(/\s+\d{4}$/, "");
+  return p.open ? `in ${month} so far` : `in ${p.label}`;
+};
+
+const buildPanel = (p: AllocationPanelInput, colors: ColorMap, isDefault: boolean): AllocationPanelView => {
+  const a = p.allocation;
+  const legend = initiativeSegments(a, colors, "size");
+  const workTypes = workTypeSegments(a);
+  const initiatives = a.initiatives
+    .filter((b) => b.hours > 0 || b.shipped?.length || b.inProgress?.length || b.other?.length)
+    .map((b) => toInitiativeView(b, a.totalHours, colors));
+  const count = a.initiatives.filter((b) => b.hours > 0).length;
+  const verification = buildVerification(a);
+  const heading = panelHeading(p);
+  return {
+    id: p.id,
+    kind: p.kind,
+    label: p.open ? `${p.label}${SO_FAR}` : p.label,
+    heading,
+    lede: `Work delivered ${panelScope(p)} would typically take one engineer ${formatWorkDelivered(a.totalHours).plain}. ` +
+      `Here's where it went across ${count} ${plural(count, "initiative", "initiatives")}.`,
+    bar: toBar(legend, `Initiatives, ${heading}`),
+    legend,
+    workTypeBar: workTypes.length > 0 ? toBar(workTypes, `Work types, ${heading}`) : undefined,
+    workTypes,
+    initiatives,
+    hasInitiatives: initiatives.length > 0,
+    ...(verification ? { verification } : {}),
+    isDefault,
+  };
+};
+
+/**
+ * Show the panel picked by a tab inside each [data-alloc-root].
+ * Without JS the default panel stays visible and the others stay hidden.
+ */
+export const ALLOCATION_SCRIPT = `<script>(function(){
+document.querySelectorAll("[data-alloc-root]").forEach(function(root){
+var panels=root.querySelectorAll("[data-alloc-panel]");
+var tabs=root.querySelectorAll("[data-alloc-tab]");
+function show(id){
+panels.forEach(function(p){p.hidden=p.id!==id;});
+tabs.forEach(function(t){var on=t.getAttribute("data-alloc-tab")===id;t.setAttribute("aria-selected",on?"true":"false");t.tabIndex=on?0:-1;});
+}
+tabs.forEach(function(t,i){
+t.addEventListener("click",function(){show(t.getAttribute("data-alloc-tab"));});
+t.addEventListener("keydown",function(e){
+var d=e.key==="ArrowRight"?1:e.key==="ArrowLeft"?-1:0;if(!d)return;
+var n=tabs[(i+d+tabs.length)%tabs.length];n.focus();n.click();e.preventDefault();
+});
+});
+});
+})();</script>`;
+
 // ---------------------------------------------------------------- same-as-week check
 
 const round1 = (n: number): number => Math.round(n * 10) / 10;
@@ -422,6 +609,14 @@ const sameAllocation = (a: Allocation, b: Allocation): boolean => {
 
 const hasTotal = (a: Allocation | undefined): a is Allocation => !!a && a.totalHours > 0;
 
+/** "Oct 7" for a YYYY-MM-DD date. */
+export const formatDayLabel = (date: string): string => {
+  const [y, m, d] = date.split("-").map(Number);
+  if (!y || !m || !d) return date;
+  return new Intl.DateTimeFormat("en", { month: "short", day: "numeric", timeZone: "UTC" })
+    .format(new Date(Date.UTC(y, m - 1, d)));
+};
+
 /** Build the section view; undefined when there is nothing worth showing. */
 export const buildAllocationView = (input: AllocationInput | undefined): AllocationView | undefined => {
   if (!input) return undefined;
@@ -432,31 +627,25 @@ export const buildAllocationView = (input: AllocationInput | undefined): Allocat
     : undefined;
   if (!week && !day && !trend) return undefined;
 
-  const primary = week?.allocation ?? day;
   const order = [
+    ...(input.colorOrder ?? []),
     ...(trend?.initiatives ?? []),
     ...(week?.allocation.initiatives.map((b) => b.initiative) ?? []),
     ...(day?.initiatives.map((b) => b.initiative) ?? []),
   ];
   const colors = buildColorMap(order);
 
-  const weekLegend = week ? initiativeSegments(week.allocation, colors, "size") : [];
-  const weekWorkTypes = week ? workTypeSegments(week.allocation) : [];
-  const initiativeSource = primary;
-  const initiatives = initiativeSource
-    ? initiativeSource.initiatives
-        .filter((b) => b.hours > 0 || b.shipped?.length || b.inProgress?.length || b.other?.length)
-        .map((b) => toInitiativeView(b, initiativeSource.totalHours, colors))
-    : [];
-
-  const initiativeCount = primary ? primary.initiatives.filter((b) => b.hours > 0).length : 0;
-  const scope = week ? `this week (${week.label})` : "today";
-  const lede = primary
-    ? `Work delivered ${scope} would typically take one engineer ${formatWorkDelivered(primary.totalHours).plain}. Here's where it went across ${initiativeCount} ${plural(initiativeCount, "initiative", "initiatives")}.`
-    : "Share of delivered work over recent work weeks.";
-
-  const showDay = !!day && !(week && sameAllocation(day, week.allocation));
-  const dayLegend = showDay && day ? initiativeSegments(day, colors, "size") : [];
+  const lastPeriod = trend?.periods.at(-1);
+  const weekOpen = !!input.asOf && !!lastPeriod && input.asOf < lastPeriod.to;
+  const inputs: AllocationPanelInput[] = [];
+  // Identical day and week (first report of the week): one panel says it all.
+  if (day && !(week && sameAllocation(day, week.allocation))) {
+    inputs.push({ kind: "day", id: `alloc-day-${input.asOf ?? "today"}`, label: input.asOf ? formatDayLabel(input.asOf) : "Today", allocation: day });
+  }
+  if (week) {
+    inputs.push({ kind: "week", id: `alloc-week-${lastPeriod?.id ?? "current"}`, label: week.label, allocation: week.allocation, open: weekOpen });
+  }
+  const panels = inputs.map((p, i) => buildPanel(p, colors, i === 0));
 
   const builtTrend = trend ? buildTrend(trend, colors, input.asOf) : undefined;
   const trendLegend: AllocationLegendItem[] = [];
@@ -471,18 +660,8 @@ export const buildAllocationView = (input: AllocationInput | undefined): Allocat
 
   return {
     title: "Where the effort went",
-    lede,
-    hasWeek: !!week,
-    periodLabel: week?.label ?? "",
-    weekBar: week ? toBar(weekLegend, "Initiatives this work week") : undefined,
-    weekLegend,
-    weekWorkTypeBar: week && weekWorkTypes.length > 0 ? toBar(weekWorkTypes, "Work types this work week") : undefined,
-    weekWorkTypes,
-    initiatives,
-    hasInitiatives: initiatives.length > 0,
-    hasDay: showDay,
-    dayBar: showDay ? toBar(dayLegend, "Initiatives today") : undefined,
-    dayLegend,
+    panels,
+    hasSwitch: panels.length > 1,
     hasTrend: !!builtTrend,
     trendRows: builtTrend?.rows ?? [],
     trendLegend,
@@ -490,5 +669,6 @@ export const buildAllocationView = (input: AllocationInput | undefined): Allocat
     note,
     measureTitle: MEASURE_TITLE,
     measureNote: MEASURE_NOTE,
+    script: panels.length > 1 ? ALLOCATION_SCRIPT : "",
   };
 };

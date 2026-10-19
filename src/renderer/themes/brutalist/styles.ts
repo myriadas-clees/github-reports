@@ -4,6 +4,8 @@
 import type { Language } from "../../../types.js";
 import { getFontConfig } from "../../../i18n/index.js";
 import { buildAllocationCSS } from "../allocation-css.js";
+import { buildEstimateCSS } from "../estimate-css.js";
+import { buildWeekCSS } from "../nav-css.js";
 
 const c = {
   bg: "#050505",
@@ -804,6 +806,34 @@ export const buildCSS = (language: Language = "en"): string => {
       mono: `${f.monoFamily}`,
       radius: "0",
     })}
+
+    ${buildEstimateCSS({
+      defaultMode: "dark",
+      text: "var(--b-text)",
+      textSecondary: "var(--b-text-secondary)",
+      textTertiary: "var(--b-text-tertiary)",
+      heading: "var(--b-heading)",
+      border: "var(--b-border)",
+      borderSubtle: "var(--b-border-subtle)",
+      surface: "var(--b-bg)",
+      accent: "var(--b-accent)",
+      mono: `${f.monoFamily}`,
+      radius: "0",
+    })}
+
+    ${buildWeekCSS({
+      defaultMode: "dark",
+      text: "var(--b-text)",
+      textSecondary: "var(--b-text-secondary)",
+      textTertiary: "var(--b-text-tertiary)",
+      heading: "var(--b-heading)",
+      border: "var(--b-border)",
+      borderSubtle: "var(--b-border-subtle)",
+      surface: "var(--b-bg)",
+      accent: "var(--b-accent)",
+      mono: `${f.monoFamily}`,
+      radius: "0",
+    })}
   `;
 };
 
@@ -1101,7 +1131,6 @@ export const buildIndexCSS = (language: Language = "en"): string => {
     }
     .overhead-kicker,
     .overhead-window-label,
-    .overview-label,
     .ledger-heading,
     .month-count,
     .day-stats {
@@ -1126,26 +1155,14 @@ export const buildIndexCSS = (language: Language = "en"): string => {
     .overhead-window-label { display: block; color: var(--b-text-tertiary); margin-bottom: 0.5rem; }
     .overhead-window strong { font-family: ${f.monoFamily}; font-size: 0.8rem; color: var(--b-text); }
 
-    .overview-strip {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border-bottom: 1px solid var(--b-border);
-    }
-    .overview-cell { padding: 1.5rem; border-right: 1px solid var(--b-border); }
-    .overview-cell:first-child { padding-left: 0; }
-    .overview-cell:last-child { border-right: 0; }
-    .overview-value { display: block; color: var(--b-heading); font-size: clamp(2rem, 4vw, 3.5rem); line-height: 0.9; font-weight: 800; letter-spacing: -0.05em; }
-    .overview-cell:first-child .overview-value { color: var(--b-accent); }
-    .overview-label { display: block; color: var(--b-text-tertiary); margin-top: 0.65rem; }
-
-    .ledger { margin-top: 4rem; border-top: 1px solid var(--b-border); }
+    .ledger { margin-top: 2.5rem; border-top: 1px solid var(--b-border); }
     .ledger-heading { display: flex; justify-content: space-between; padding: 0.8rem 0; color: var(--b-text-tertiary); border-bottom: 1px solid var(--b-border); }
     .month-group { border-bottom: 1px solid var(--b-border); }
     .month-summary {
       list-style: none;
       cursor: pointer;
       display: grid;
-      grid-template-columns: 160px minmax(140px, 1fr) auto 72px;
+      grid-template-columns: 130px 220px minmax(120px, 1fr) auto 72px;
       gap: 1.5rem;
       align-items: center;
       padding: 1.5rem 0;
@@ -1156,12 +1173,15 @@ export const buildIndexCSS = (language: Language = "en"): string => {
     .month-summary:hover { color: var(--b-accent); padding-left: 0.5rem; }
     .month-name span { display: block; font-size: 1.35rem; font-weight: 700; letter-spacing: -0.03em; }
     .month-name strong { font-family: ${f.monoFamily}; font-size: 0.65rem; color: var(--b-text-tertiary); }
-    .month-tape { height: 34px; display: flex; align-items: end; gap: 3px; padding: 0 0.25rem; }
+    .month-tape { grid-column: 3; height: 34px; display: flex; align-items: end; gap: 3px; padding: 0 0.25rem; }
     .month-tape i { display: block; flex: 1 1 0; min-width: 3px; max-width: 12px; height: max(3px, var(--activity)); background: var(--b-border); transition: background 180ms ease; }
-    .month-group[open] .month-tape i { background: var(--b-accent); }
-    .month-totals { display: flex; gap: 1.25rem; color: var(--b-text-tertiary); font-size: 0.75rem; white-space: nowrap; }
-    .month-totals b { color: var(--b-text); }
-    .month-count { color: var(--b-text-tertiary); text-align: right; }
+    .month-group[open] .month-tape { display: none; }
+    .month-tape i { background: var(--b-accent); }
+    .month-name { grid-column: 1; }
+    .month-days { grid-column: 2; font-weight: 700; color: var(--b-heading); }
+    .month-totals { grid-column: 4; display: flex; gap: 1.25rem; color: var(--b-text-tertiary); font-size: 0.75rem; white-space: nowrap; }
+    .month-totals b { color: var(--b-text-secondary); font-weight: 500; }
+    .month-count { grid-column: 5; color: var(--b-text-tertiary); text-align: right; }
     .month-count::after { content: '+'; display: inline-block; color: var(--b-accent); margin-left: 0.45rem; font-size: 1rem; transition: transform 180ms ease; }
     .month-group[open] .month-count::after { content: '−'; transform: rotate(180deg); }
 
@@ -1220,13 +1240,12 @@ export const buildIndexCSS = (language: Language = "en"): string => {
       .overhead-shell { width: min(100% - 2rem, 1180px); padding-top: 6.5rem; }
       .overhead-header { grid-template-columns: 1fr; gap: 1.5rem; }
       .overhead-window { text-align: left; }
-      .overview-strip { grid-template-columns: repeat(3, 1fr); }
-      .overview-cell { padding: 1.2rem 0; border-bottom: 1px solid var(--b-border); }
-      .overview-cell:nth-child(2) { padding-left: 1rem; }
-      .overview-cell:nth-child(3) { border-right: 0; padding-left: 1rem; }
-      .month-summary { grid-template-columns: 1fr 60px; gap: 0.75rem; }
-      .month-tape { grid-column: 1 / -1; grid-row: 2; }
-      .month-totals { display: none; }
+      .month-summary { grid-template-columns: 1fr 60px; gap: 0.5rem 0.75rem; }
+      .month-name { grid-column: 1; grid-row: 1; }
+      .month-count { grid-column: 2; grid-row: 1; }
+      .month-days { grid-column: 1 / -1; grid-row: 2; }
+      .month-tape { grid-column: 1 / -1; grid-row: 3; }
+      .month-totals { grid-column: 1 / -1; grid-row: 4; flex-wrap: wrap; gap: 0.2rem 0.9rem; white-space: normal; }
       .day-row { grid-template-columns: 48px minmax(0, 1fr) 20px; gap: 0.8rem; }
       .day-stats { display: none; }
       .day-open { opacity: 1; }

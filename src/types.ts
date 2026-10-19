@@ -358,8 +358,106 @@ export type AllocationItem = {
   state?: "open" | "merged" | "closed";
   /** Scaled engineer-hour estimate for this PR (PR items only). Never shown as hours. */
   effortHours?: number;
-  /** Stakeholder-facing impact badge derived from effort size or labels. */
+  /** Stakeholder-facing size badge derived from effort size or labels ("Large" / "Substantial change"). */
   impact?: "major" | "notable";
+  /** PR items: labels at fetch time (for readiness overrides / keyword hints). */
+  labels?: string[];
+  /** PR items: files touched by the reporting user's work (union across days). */
+  files?: string[];
+  /** PR items: annotated at render time from the evidence ledger. */
+  readiness?: Readiness;
+  complexity?: Complexity;
+  checks?: PrChecks;
+};
+
+// Readiness / complexity / verification (render-time, from data/evidence.yaml).
+
+export type ReadinessStage =
+  | "draft" // GitHub draft PR
+  | "prototype" // title says prototype/WIP/POC/spike, or a stage:/readiness: label
+  | "in-review" // open, not draft
+  | "done" // merged; release not tracked for this repo
+  | "awaiting-release" // merged; repo deploys, but no production deploy since merge (or merged into a parent change)
+  | "preview" // merged; deployed to a preview/test environment only
+  | "live"; // merged and a successful production deploy of the base branch happened after merge
+
+export type Readiness = {
+  stage: ReadinessStage;
+  /** Stakeholder label, e.g. "Live", "Done · not live yet". */
+  label: string;
+  /** One clause, e.g. "Live since Oct 8". */
+  detail?: string;
+  /** Date the stage was reached (YYYY-MM-DD), when known. */
+  since?: string;
+};
+
+export type Complexity = {
+  level: "contained" | "connected" | "cross-system";
+  label: string; // "Contained" | "Connected" | "Cross-system"
+  /** e.g. "Touches 3 areas: hub, shared-ui, api". */
+  reason: string;
+  /** Risk tags independent of size, e.g. "Payments", "Data changes". */
+  risks: string[];
+};
+
+export type PrChecks = {
+  /** Non-skipped automated checks on the final version; null when not collected. */
+  automated: { passed: number; failed: number; total: number } | null;
+  humanReviews: number;
+  automatedReviews: number;
+  testsUpdated: boolean;
+};
+
+/** One successful deployment (from GitHub Deployments API). */
+export type DeploymentRecord = {
+  environment: string;
+  production: boolean;
+  ref: string;
+  sha: string;
+  createdAt: string;
+  /** Time the deployment reached state "success". */
+  succeededAt: string;
+};
+
+export type PrReviewRecord = {
+  reviewer: string;
+  bot: boolean;
+  state: string; // APPROVED | CHANGES_REQUESTED | COMMENTED | DISMISSED
+  submittedAt: string;
+};
+
+/** Per-PR verification evidence, keyed by PR url in the ledger. */
+export type PrEvidence = {
+  url: string;
+  repository: string;
+  number: number;
+  author: string;
+  state: "open" | "merged" | "closed";
+  isDraft: boolean;
+  baseRef: string;
+  headRef: string;
+  headSha: string;
+  mergeCommitSha: string | null;
+  createdAt: string;
+  mergedAt: string | null;
+  /** Reviews received on this PR (excluding the author's own). */
+  reviews: PrReviewRecord[];
+  /** Check runs on headSha. skipped/neutral are not counted as passed. */
+  checks: { passed: number; failed: number; skipped: number; pending: number; names: string[] } | null;
+  /** Changed file paths (capped). */
+  files: string[];
+  fetchedAt: string;
+};
+
+/** data/evidence.yaml — refreshed by `worklog evidence`, read at render time. */
+export type EvidenceLedger = {
+  version: string;
+  updatedAt: string;
+  /** Default branch per repo, e.g. { "org/app": "main" }. */
+  defaultBranches: Record<string, string>;
+  /** Successful deployments per repo, newest first. */
+  deployments: Record<string, DeploymentRecord[]>;
+  prs: Record<string, PrEvidence>;
 };
 
 export type AllocationBucket = {
@@ -391,6 +489,8 @@ export type Allocation = {
   workTypes: WorkTypeShare[];
   /** Self-reported hours included in totalHours. */
   manualHours: number;
+  /** Codex/Cursor review findings reported addressed in the period (from aiReviews.fixed). */
+  aiFindingsAddressed?: number;
   note: string;
 };
 
@@ -434,4 +534,9 @@ export type AllocationConfig = {
   defaultInitiative: string | null;
   /** Number of Thu–Wed weeks in the trend (default 8). */
   trendWeeks: number;
+  /**
+   * Optional path-prefix → system name map for the complexity indicator,
+   * e.g. { "apps/hub": "Hub app", "packages/ui": "Shared UI" }. Unmapped paths use folder names.
+   */
+  systems?: Record<string, string>;
 };

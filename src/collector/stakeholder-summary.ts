@@ -213,7 +213,7 @@ export const buildFallbackAIContent = (data: WeeklyReportData): AIContent => {
     summaries,
     highlights,
     ticker: merged.slice(0, 5).map((pr) => ({
-      label: "SHIPPED",
+      label: "MERGED",
       text: `@${data.username} merged "${pr.title}" in ${pr.repository}`,
     })),
   };

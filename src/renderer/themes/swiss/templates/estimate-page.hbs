@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+<head>
+  <title>{{pageTitle}}</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="{{description}}" />
+  <meta property="og:title" content="{{pageTitle}}" />
+  <meta property="og:description" content="{{description}}" />
+  <meta property="og:type" content="website" />
+  {{#if ogImageUrl}}<meta property="og:image" content="{{ogImageUrl}}" />{{/if}}
+  {{#if baseUrl}}<meta property="og:url" content="{{baseUrl}}/estimate/" />{{/if}}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{pageTitle}}" />
+  <meta name="twitter:description" content="{{description}}" />
+  {{#if baseUrl}}<link rel="alternate" type="application/rss+xml" title="RSS Feed" href="{{baseUrl}}/feed.xml" />{{/if}}
+  <style>{{{css}}}</style>
+  <style>{{{indexCss}}}</style>
+  {{{themeInitScript}}}
+</head>
+<body>
+
+<main class="est-page">
+  <a class="est-page-back" href="../">&larr; Back to the worklog</a>
+  <h1 class="est-page-title">How long would it take?</h1>
+  <p class="est-intro">Pick the kind of work to get a planning range based on my past delivery.</p>
+  <div class="est-cards" role="group" aria-label="Kind of work">
+    {{#each cards}}
+    <button class="est-card" type="button" data-est-card="{{this.param}}" aria-pressed="false">{{this.label}}</button>
+    {{/each}}
+  </div>
+
+  {{> estimate-calculator standalone=true}}
+
+  <section class="est-excludes" aria-label="What this does not include">
+    <h2>What this doesn't include</h2>
+    <ul>
+      <li>Discovery and design time before the work starts.</li>
+      <li>Waiting on others: reviews, vendor access, decisions.</li>
+      <li>A range is not a deadline.</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="theme-toggle-row">
+    <button class="theme-toggle" type="button" aria-label="Toggle theme">&#9790;&#65038; Dark</button>
+  </div>
+  {{poweredBy}} <a href="https://deariary.com?utm_source=github-weekly-reporter&utm_medium=footer" target="_blank" rel="noopener">deariary</a>
+  &middot;
+  {{generatedWith}} <a href="https://github.com/deariary/github-weekly-reporter" target="_blank" rel="noopener">github-weekly-reporter</a>
+</footer>
+
+<script>{{{kindScript}}}</script>
+{{{themeToggleScript}}}
+</body>
+</html>

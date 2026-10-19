@@ -2,7 +2,7 @@
 // Each theme passes its own CSS variables/fonts so the section matches the theme,
 // while the data-viz palette (validated with the dataviz skill) stays identical.
 
-/** Categorical slots 1-6 (light / dark). Same entity -> same slot everywhere. */
+/** Categorical slots 1-9 (light / dark). Same entity -> same slot everywhere. */
 export const INITIATIVE_PALETTE: { light: string; dark: string }[] = [
   { light: "#2a78d6", dark: "#3987e5" }, // blue
   { light: "#eb6834", dark: "#d95926" }, // orange
@@ -10,6 +10,9 @@ export const INITIATIVE_PALETTE: { light: string; dark: string }[] = [
   { light: "#eda100", dark: "#c98500" }, // yellow
   { light: "#e87ba4", dark: "#d55181" }, // magenta
   { light: "#008300", dark: "#008300" }, // green
+  { light: "#7c5cd6", dark: "#9b84ec" }, // violet
+  { light: "#9a6331", dark: "#b67a42" }, // brown
+  { light: "#0e7c86", dark: "#1696a3" }, // teal
 ];
 export const OTHER_COLOR = { light: "#8b8a86", dark: "#8a8984" };
 
@@ -93,12 +96,7 @@ export const buildAllocationCSS = (t: AllocationCssTheme): string => {
       ${colorVars(base)}
     }
 
-    .alloc-c1 { --c: var(--alloc-c1); --ink: var(--alloc-c1-ink); }
-    .alloc-c2 { --c: var(--alloc-c2); --ink: var(--alloc-c2-ink); }
-    .alloc-c3 { --c: var(--alloc-c3); --ink: var(--alloc-c3-ink); }
-    .alloc-c4 { --c: var(--alloc-c4); --ink: var(--alloc-c4-ink); }
-    .alloc-c5 { --c: var(--alloc-c5); --ink: var(--alloc-c5-ink); }
-    .alloc-c6 { --c: var(--alloc-c6); --ink: var(--alloc-c6-ink); }
+${INITIATIVE_PALETTE.map((_, i) => `    .alloc-c${i + 1} { --c: var(--alloc-c${i + 1}); --ink: var(--alloc-c${i + 1}-ink); }`).join("\n")}
     .alloc-other { --c: var(--alloc-other); --ink: var(--alloc-other-ink); }
     .alloc-w1 { --c: var(--alloc-w1); --ink: var(--alloc-w1-ink); }
     .alloc-w2 { --c: var(--alloc-w2); --ink: var(--alloc-w2-ink); }
@@ -108,6 +106,23 @@ export const buildAllocationCSS = (t: AllocationCssTheme): string => {
     .alloc-wn { --c: var(--alloc-wn); --ink: var(--alloc-wn-ink); }
 
     .alloc-lede { color: ${t.textSecondary}; margin: 0 0 1.5rem; max-width: 60ch; }
+    .alloc-panel[hidden] { display: none; }
+
+    /* Day / Week switch (report) and Month / Week / Day picker (archive) */
+    .alloc-switch {
+      display: inline-flex; margin: 0 0 1.25rem; border: 1px solid ${t.border}; border-radius: ${t.radius};
+    }
+    .alloc-switch-opt {
+      font: inherit; font-size: 0.8125rem; padding: 0.4rem 0.9rem; cursor: pointer;
+      background: transparent; color: ${t.textSecondary}; border: 0; border-radius: ${t.radius};
+    }
+    .alloc-switch-opt + .alloc-switch-opt { border-left: 1px solid ${t.border}; }
+    .alloc-switch-opt[aria-selected="true"] { background: ${t.heading}; color: ${t.surface}; font-weight: 600; }
+    .alloc-switch-opt:focus-visible, .alloc-select:focus-visible { outline: 2px solid ${t.accent}; outline-offset: 2px; }
+    .alloc-select {
+      font: inherit; font-size: 0.875rem; padding: 0.35rem 0.6rem; min-width: 9rem;
+      color: ${t.text}; background: ${t.surface}; border: 1px solid ${t.border}; border-radius: ${t.radius};
+    }
     .alloc-block { margin: 0 0 2rem; }
     .alloc-sub {
       display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
@@ -188,6 +203,22 @@ export const buildAllocationCSS = (t: AllocationCssTheme): string => {
     }
     .alloc-impact--major { background: ${t.heading}; color: ${t.surface}; border: 1px solid ${t.heading}; }
     .alloc-impact--notable { background: transparent; color: ${t.textSecondary}; border: 1px solid ${t.border}; }
+    /* Readiness / complexity / checks chips: hue mixed into the theme text color so they hold up in light and dark. */
+    .alloc-stage, .alloc-cx, .alloc-risk {
+      display: inline-block; font-size: 0.6875rem; line-height: 1; padding: 0.2rem 0.45rem; margin-left: 0.4rem;
+      border-radius: 999px; border: 1px solid ${t.border}; color: ${t.textSecondary}; white-space: nowrap; vertical-align: 0.05em;
+    }
+    .alloc-stage { font-weight: 600; }
+    .alloc-stage--live { color: color-mix(in srgb, #1a9a5a 70%, ${t.text}); border-color: color-mix(in srgb, #1a9a5a 55%, transparent); background: color-mix(in srgb, #1a9a5a 14%, transparent); }
+    .alloc-stage--preview { color: color-mix(in srgb, #c98500 65%, ${t.text}); border-color: color-mix(in srgb, #c98500 55%, transparent); background: color-mix(in srgb, #eda100 16%, transparent); }
+    .alloc-stage--in-review { color: color-mix(in srgb, #2a78d6 65%, ${t.text}); border-color: color-mix(in srgb, #2a78d6 55%, transparent); background: color-mix(in srgb, #2a78d6 12%, transparent); }
+    .alloc-stage--awaiting-release, .alloc-stage--done { background: transparent; color: ${t.textSecondary}; border-color: ${t.border}; }
+    .alloc-stage--draft, .alloc-stage--prototype { background: transparent; border-style: dashed; color: ${t.textSecondary}; }
+    .alloc-cx { font-weight: 400; }
+    .alloc-risk { color: color-mix(in srgb, #c2410c 60%, ${t.text}); border-color: color-mix(in srgb, #c2410c 40%, transparent); background: color-mix(in srgb, #eb6834 10%, transparent); margin-left: 0.25rem; }
+    .alloc-checks { display: block; font-size: 0.75rem; color: ${t.textTertiary}; margin-top: 0.15rem; }
+    .alloc-verify-line { margin: 0.35rem 0 0; font-size: 0.875rem; color: ${t.text}; }
+    .alloc-verify-note { margin: 0.5rem 0 0; font-size: 0.8125rem; color: ${t.textSecondary}; max-width: 70ch; }
     .alloc-more--shipped { margin-top: 0.4rem; }
     .alloc-more--shipped ul { display: flex; flex-wrap: wrap; gap: 0.15rem 1rem; }
 

@@ -25,6 +25,8 @@ import {
 const PARTIAL_NAMES = [
   "header",
   "allocation",
+  "allocation-panel",
+  "allocation-item",
   "overview",
   "activity",
   "summaries",
@@ -283,6 +285,8 @@ export type RenderOptions = {
   theme?: Theme;
   /** Optional effort-allocation inputs for the "Where the effort went" section. */
   allocation?: AllocationInput;
+  /** Daily reports: link to the whole Thu–Wed work week page (href relative to this page). */
+  weekLink?: { href: string; label: string };
 };
 
 const createInstance = (language: Language, timezone: string, theme: ReturnType<typeof loadTheme>): typeof Handlebars => {
@@ -331,6 +335,9 @@ export const renderReport = (
     pullRequests: enriched.orphanPullRequests,
     aiReviews: buildAiReviewActivityView(data),
     allocation: buildAllocationView(options.allocation),
+    weekLink: options.weekLink
+      ? { href: options.weekLink.href, text: `See the whole week (${options.weekLink.label}) \u2192` }
+      : undefined,
     dailyCommits: computeHeatmapLevels(data.dailyCommits),
     css: theme.buildCSS(language),
     lang: language,

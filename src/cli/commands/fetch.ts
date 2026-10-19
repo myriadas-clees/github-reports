@@ -13,7 +13,7 @@ import { fetchCommitMessages, mergeCommitMessagesWithPRs } from "../../collector
 import { fetchReleases } from "../../collector/fetch-releases.js";
 import { fetchReviewsForRepos } from "../../collector/fetch-reviews.js";
 import { aggregateRepositories } from "../../collector/aggregate.js";
-import { estimateHours } from "../../collector/estimate-hours.js";
+import { buildCommitUnits, collectDirectCommitInputs, estimateHours } from "../../collector/estimate-hours.js";
 import { buildStakeholderSummary } from "../../collector/stakeholder-summary.js";
 import { getWeekId } from "../../deployer/week.js";
 import { getDayId, getPreviousDayId } from "../../deployer/day.js";
@@ -567,6 +567,14 @@ const runFullFetch = async (
       commitAdditions: directCommitChurn.additions,
       commitDeletions: directCommitChurn.deletions,
       commitStatsCount: directCommitChurn.withStats,
+      ...(commitMessages.some((repo) => (repo.commits?.length ?? 0) > 0)
+        ? {
+          commitUnits: buildCommitUnits(collectDirectCommitInputs(
+            commitMessages,
+            new Set(prActions.workedOn.flatMap((pr) => (pr.workCommits ?? []).map((commit) => commit.sha))),
+          )),
+        }
+        : {}),
     },
     options: {
       gapMinutes: options.sessionGapMinutes,

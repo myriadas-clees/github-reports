@@ -81,6 +81,7 @@
   <div class="report-hero-inner">
     <a href="{{rootPrefix}}" class="report-back">&larr; {{i18n.allWeeks}}</a>
     {{> header}}
+    {{#if weekLink}}<p class="week-link"><a href="{{weekLink.href}}">{{weekLink.text}}</a></p>{{/if}}
   </div>
 </div>
 

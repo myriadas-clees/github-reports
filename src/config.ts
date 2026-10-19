@@ -63,6 +63,7 @@ const WORK_TYPES: readonly WorkType[] = [
 ];
 
 type RawAllocation = {
+  systems?: unknown;
   label_prefix?: unknown;
   labelPrefix?: unknown;
   default_initiative?: unknown;
@@ -134,6 +135,16 @@ const parseAllocation = (raw: RawAllocation): AllocationConfig => {
       const v = value.trim();
       if (k && v) out.initiatives[k] = v;
     }
+  }
+  if (raw.systems && typeof raw.systems === "object" && !Array.isArray(raw.systems)) {
+    const systems: Record<string, string> = {};
+    for (const [key, value] of Object.entries(raw.systems)) {
+      if (typeof value !== "string") continue;
+      const k = key.trim().replace(/^\/+|\/+$/g, "");
+      const v = value.trim();
+      if (k && v) systems[k] = v;
+    }
+    if (Object.keys(systems).length > 0) out.systems = systems;
   }
   return out;
 };
