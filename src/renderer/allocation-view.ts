@@ -93,7 +93,8 @@ export type AllocationItemView = {
   impact?: "major" | "notable";
   impactLabel?: string;
   readiness?: { label: string; stage: string; detail?: string; ariaLabel: string };
-  complexity?: { label: string; level: string; reason: string; risks: string[]; hasRisks: boolean };
+  /** `label` already carries " · partial" when the file list was incomplete; `partial` drives the dashed style. */
+  complexity?: { label: string; level: string; reason: string; risks: string[]; hasRisks: boolean; partial: boolean };
   checksText?: string;
   /** A PR closed without merging (shown under "Other work" with its verification details). */
   closedWithoutMerge?: boolean;
@@ -411,11 +412,13 @@ const toItemView = (item: AllocationItem): AllocationItemView => ({
   ...(item.complexity
     ? {
       complexity: {
-        label: item.complexity.label,
+        // Based on an incomplete file list: say so on the chip, not only in the reason.
+        label: item.complexity.partial ? `${item.complexity.label} · partial` : item.complexity.label,
         level: item.complexity.level,
         reason: item.complexity.reason,
         risks: item.complexity.risks,
         hasRisks: item.complexity.risks.length > 0,
+        partial: item.complexity.partial === true,
       },
     }
     : {}),

@@ -215,6 +215,7 @@ ${INITIATIVE_PALETTE.map((_, i) => `    .alloc-c${i + 1} { --c: var(--alloc-c${i
     .alloc-stage--awaiting-release, .alloc-stage--done { background: transparent; color: ${t.textSecondary}; border-color: ${t.border}; }
     .alloc-stage--draft, .alloc-stage--prototype { background: transparent; border-style: dashed; color: ${t.textSecondary}; }
     .alloc-cx { font-weight: 400; }
+    .alloc-cx--partial { border-style: dashed; }
     .alloc-risk { color: color-mix(in srgb, #c2410c 60%, ${t.text}); border-color: color-mix(in srgb, #c2410c 40%, transparent); background: color-mix(in srgb, #eb6834 10%, transparent); margin-left: 0.25rem; }
     .alloc-checks { display: block; font-size: 0.75rem; color: ${t.textTertiary}; margin-top: 0.15rem; }
     .alloc-verify-line { margin: 0.35rem 0 0; font-size: 0.875rem; color: ${t.text}; }

@@ -116,6 +116,7 @@ export const collectPrRefsFromData = async (dataDir: string, since?: string): Pr
 
 export const needsRefresh = (existing: PrEvidence | undefined, now: Date): boolean => {
   if (!existing) return true;
+  if (existing.refreshFailedAt) return true;
   if (existing.incomplete?.reviews || existing.incomplete?.files) return true;
   if (existing.state === "open") return true;
   if (existing.checks?.statusesUnavailable || existing.checks?.checkRunsUnavailable) return true;

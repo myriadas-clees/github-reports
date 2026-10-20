@@ -44,6 +44,9 @@ describe("needsRefresh", () => {
     expect(needsRefresh(pr({ checks: null }), now)).toBe(true);
     expect(needsRefresh(pr({ checks: { passed: 0, failed: 0, skipped: 0, pending: 1, names: [] } }), now)).toBe(true);
   });
+  it("retries after a failed evidence refresh", () => {
+    expect(needsRefresh(pr({ refreshFailedAt: "2026-10-19T00:00:00Z" }), now)).toBe(true);
+  });
   it("refreshes PRs whose reviews or files were only partially fetched", () => {
     expect(needsRefresh(pr({ incomplete: { reviews: true } }), now)).toBe(true);
     expect(needsRefresh(pr({ incomplete: { files: true } }), now)).toBe(true);

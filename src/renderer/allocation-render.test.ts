@@ -255,3 +255,40 @@ describe("other work items (closed PRs and reviews)", () => {
     }
   });
 });
+
+describe("complexity from a partial file list", () => {
+  const complexity = (partial?: boolean) => ({
+    level: "connected" as const, label: "Connected",
+    reason: "Touches 2 areas: a, b" + (partial ? " (based on a partial file list)" : ""),
+    risks: [] as string[],
+    ...(partial === undefined ? {} : { partial }),
+  });
+  const pr = (n: number, partial?: boolean) => ({
+    kind: "pr" as const, title: `Change ${n}`, url: `https://github.com/o/r/pull/${70 + n}`, repository: "o/r",
+    complexity: complexity(partial),
+  });
+
+  it("marks a partial complexity chip with a suffix and dashed class in every section and theme", () => {
+    const a = makeAllocation([["Pricing", 10, {
+      shipped: [{ ...pr(1, true), state: "merged" as const, readiness: { stage: "live" as const, label: "Live" } }],
+      inProgress: [{ ...pr(2, true), state: "open" as const }],
+      other: [{ ...pr(3, true), state: "closed" as const }],
+    }]]);
+    for (const theme of AVAILABLE_THEMES as Theme[]) {
+      const html = renderReport(DATA, { theme, allocation: { week: { label: "Oct 1-7", allocation: a } } });
+      expect(html, theme).toContain('class="alloc-cx alloc-cx--connected alloc-cx--partial" title="Touches 2 areas: a, b (based on a partial file list)">Connected · partial');
+      expect(html.match(/alloc-cx--connected alloc-cx--partial"/g), theme).toHaveLength(3);
+      expect(html, theme).not.toContain("[object Object]");
+    }
+  });
+
+  it("leaves a complete complexity chip unchanged in every theme", () => {
+    const a = makeAllocation([["Pricing", 10, { shipped: [{ ...pr(4), state: "merged" as const }] }]]);
+    for (const theme of AVAILABLE_THEMES as Theme[]) {
+      const html = renderReport(DATA, { theme, allocation: { week: { label: "Oct 1-7", allocation: a } } });
+      expect(html, theme).toContain('class="alloc-cx alloc-cx--connected" title="Touches 2 areas: a, b">Connected');
+      expect(html, theme).not.toContain("· partial");
+      expect(html, theme).not.toContain('alloc-cx--partial"');
+    }
+  });
+});

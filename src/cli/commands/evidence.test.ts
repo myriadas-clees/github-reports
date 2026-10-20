@@ -1,7 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { allLedgerRefs, applyDeploymentFetch, buildKnownDeploymentKeys, carryOverDerivedEvidence, deploymentCutoffIso, evidenceRepositories, findContainingDeployments, markDeploymentsUnavailable, recordReleaseEvidence, selectDeploymentCandidates } from "./evidence.js";
+import { allLedgerRefs, applyDeploymentFetch, buildKnownDeploymentKeys, carryOverDerivedEvidence, deploymentCutoffIso, evidenceRepositories, findContainingDeployments, markDeploymentsUnavailable, recordReleaseEvidence, refreshPrEvidence, selectDeploymentCandidates } from "./evidence.js";
 import { emptyLedger, pruneDeployments } from "../../collector/evidence-ledger.js";
 import { evidenceArgs } from "./report.js";
+import type { PrEvidence } from "../../types.js";
 
 describe("evidenceRepositories", () => {
   it("unions configured and activity repositories in stable order", () => {
@@ -311,6 +312,31 @@ describe("carryOverDerivedEvidence", () => {
     });
     expect(carryOverDerivedEvidence(base, undefined)).not.toHaveProperty("release");
   });
+});
+
+it("marks existing evidence stale when refresh throws or returns no PR", async () => {
+  const ledger = emptyLedger();
+  const url = "https://github.com/o/r/pull/1";
+  const prior = { url, repository: "o/r", number: 1, author: "me", state: "merged" as const, isDraft: false, baseRef: "main", headRef: "f", headSha: "h", mergeCommitSha: null, createdAt: "2026-01-01", mergedAt: null, reviews: [], checks: { passed: 1, failed: 0, skipped: 0, pending: 0, names: [] }, files: [], fetchedAt: "2026-01-02" };
+  ledger.prs[url] = prior;
+  const ref = { repo: "o/r", number: 1, url };
+  const now = new Date("2026-02-01T00:00:00Z");
+  await expect(refreshPrEvidence(ledger, ref, now, async () => { throw new Error("transient"); })).rejects.toThrow("transient");
+  expect(ledger.prs[url]?.refreshFailedAt).toBe(now.toISOString());
+  expect(refreshPrEvidence(ledger, ref, now, async () => null)).resolves.toBe(false);
+  expect(ledger.prs[url]?.refreshFailedAt).toBe(now.toISOString());
+});
+
+it("clears refresh failure after successful fetch and never carries it over", async () => {
+  const ledger = emptyLedger();
+  const url = "https://github.com/o/r/pull/1";
+  const prior: PrEvidence = { url, repository: "o/r", number: 1, author: "me", state: "merged", isDraft: false, baseRef: "main", headRef: "f", headSha: "h", mergeCommitSha: null, createdAt: "2026-01-01", mergedAt: null, reviews: [], checks: null, files: [], fetchedAt: "2026-01-02", refreshFailedAt: "2026-01-03" };
+  ledger.prs[url] = prior;
+  const fresh = { ...prior, fetchedAt: "2026-02-01" };
+  delete fresh.refreshFailedAt;
+  expect(await refreshPrEvidence(ledger, { repo: "o/r", number: 1, url }, new Date(), async () => fresh)).toBe(true);
+  expect(ledger.prs[url]).not.toHaveProperty("refreshFailedAt");
+  expect(carryOverDerivedEvidence(fresh, prior)).not.toHaveProperty("refreshFailedAt");
 });
 
 describe("release history before age-based pruning", () => {

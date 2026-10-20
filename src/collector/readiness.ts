@@ -264,7 +264,7 @@ export const derivePrChecks = (
   const unique = (bot: boolean): number => new Set(reviews.filter((r) => !!r.bot === bot).map((r) => r.reviewer)).size;
   const c = pe?.checks;
   return {
-    automated: c ? { passed: c.passed, failed: c.failed, pending: c.pending ?? 0, total: c.passed + c.failed + (c.pending ?? 0), ...(c.statusesUnavailable || c.checkRunsUnavailable ? { partial: true } : {}) } : null,
+    automated: c ? { passed: c.passed, failed: c.failed, pending: c.pending ?? 0, total: c.passed + c.failed + (c.pending ?? 0), ...(pe?.refreshFailedAt || c.statusesUnavailable || c.checkRunsUnavailable ? { partial: true } : {}) } : null,
     humanReviews: unique(false),
     automatedReviews: unique(true),
     testsUpdated: files.some((f) => TEST_FILE_RE.test(f)),
@@ -295,7 +295,11 @@ export const annotateAllocation = (
         const evFiles = item.url ? evidence?.prs?.[item.url]?.files : undefined;
         const files = evFiles && evFiles.length > 0 ? evFiles : item.files ?? [];
         const readiness = deriveReadiness(item, evidence, timeZone);
-        const complexity = deriveComplexity(files, systems);
+        let complexity = deriveComplexity(files, systems);
+        const pe = item.url ? evidence?.prs?.[item.url] : undefined;
+        if (complexity && (pe?.incomplete?.files || pe?.filesTruncated)) {
+          complexity = { ...complexity, partial: true, reason: `${complexity.reason} (based on a partial file list)` };
+        }
         if (readiness) item.readiness = readiness;
         if (complexity) item.complexity = complexity;
         item.checks = derivePrChecks(item, evidence, files);

@@ -151,6 +151,27 @@ export const carryOverDerivedEvidence = (
   return out;
 };
 
+/** Refresh one PR and mark retained evidence stale when GitHub cannot provide a fresh record. */
+export const refreshPrEvidence = async (
+  ledger: EvidenceLedger,
+  ref: PrRef,
+  now: Date,
+  fetch: () => Promise<import("../../types.js").PrEvidence | null>,
+): Promise<boolean> => {
+  try {
+    const ev = await fetch();
+    if (!ev) {
+      if (ledger.prs[ref.url]) ledger.prs[ref.url]!.refreshFailedAt = now.toISOString();
+      return false;
+    }
+    ledger.prs[ref.url] = carryOverDerivedEvidence(ev, ledger.prs[ref.url]);
+    return true;
+  } catch (err) {
+    if (ledger.prs[ref.url]) ledger.prs[ref.url]!.refreshFailedAt = now.toISOString();
+    throw err;
+  }
+};
+
 /** Persist release history before old deployment rows are eventually evicted. */
 /** PR refs for every PR stored in the ledger. */
 export const allLedgerRefs = (ledger: EvidenceLedger): PrRef[] =>
@@ -211,11 +232,7 @@ export const registerEvidence = (program: Command): void => {
       let refreshed = 0;
       await mapWithConcurrency(todo, async (ref) => {
         try {
-          const ev = await fetchPrEvidence(token, ref, now);
-          if (ev) {
-            ledger.prs[ref.url] = carryOverDerivedEvidence(ev, ledger.prs[ref.url]);
-            refreshed++;
-          }
+          if (await refreshPrEvidence(ledger, ref, now, () => fetchPrEvidence(token, ref, now))) refreshed++;
         } catch (err) {
           console.warn(`Warning: ${ref.repo}#${ref.number} failed: ${err instanceof Error ? err.message : err}`);
         }

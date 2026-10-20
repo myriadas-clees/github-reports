@@ -401,6 +401,7 @@ export type Complexity = {
   reason: string;
   /** Risk tags independent of size, e.g. "Payments", "Data changes". */
   risks: string[];
+  partial?: boolean;
 };
 
 export type PrChecks = {
@@ -408,6 +409,7 @@ export type PrChecks = {
   automated: { passed: number; failed: number; pending: number; total: number; partial?: boolean } | null;
   humanReviews: number;
   automatedReviews: number;
+  /** Lower bound when file evidence is incomplete: true only if a test file was seen. */
   testsUpdated: boolean;
 };
 
@@ -459,6 +461,7 @@ export type PrEvidence = {
   /** Changed file paths (capped). */
   files: string[];
   fetchedAt: string;
+  refreshFailedAt?: string;
 };
 
 /** data/evidence.yaml — refreshed by `worklog evidence`, read at render time. */

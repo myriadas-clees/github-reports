@@ -318,6 +318,10 @@ describe("derivePrChecks", () => {
     const l = ledger({ checks: { passed: 1, failed: 0, skipped: 0, pending: 0, names: ["ci"], checkRunsUnavailable: true } });
     expect(derivePrChecks({ url: URL }, l, []).automated).toEqual({ passed: 1, failed: 0, pending: 0, total: 1, partial: true });
   });
+  it("marks passing checks partial after a failed PR refresh", () => {
+    const l = ledger({ checks: { passed: 1, failed: 0, skipped: 0, pending: 0, names: ["ci"] }, refreshFailedAt: "2026-10-19T00:00:00Z" });
+    expect(derivePrChecks({ url: URL }, l, []).automated).toMatchObject({ partial: true });
+  });
 });
 
 const alloc = (shipped: AllocationItem[], inProgress: AllocationItem[] = []): Allocation => ({
@@ -372,6 +376,21 @@ describe("annotateAllocation + summarizeVerification", () => {
     const l = ledger({ files: ["apps/a/x.ts", "apps/b/y.ts"] });
     const out = annotateAllocation(alloc([{ kind: "pr", title: "x", url: URL, repository: "org/app", state: "merged", files: ["apps/z/q.ts"] }]), l);
     expect(out.initiatives[0]!.shipped[0]!.complexity?.level).toBe("connected");
+  });
+
+  it.each([{ incomplete: { files: true } }, { filesTruncated: true }])("marks complexity partial for incomplete file evidence %#", (flags) => {
+    const l = ledger({ files: ["apps/a/x.ts", "services/b/y.ts"], ...flags });
+    const result = annotateAllocation(alloc([{ kind: "pr", title: "x", url: URL, repository: "org/app", state: "merged" }]), l).initiatives[0]!.shipped[0]!;
+    expect(result.complexity?.partial).toBe(true);
+    expect(result.complexity?.reason.endsWith(" (based on a partial file list)")).toBe(true);
+    expect(result.checks?.testsUpdated).toBe(false);
+  });
+
+  it("keeps complete file evidence definitive", () => {
+    const l = ledger({ files: ["apps/a/x.ts"] });
+    const result = annotateAllocation(alloc([{ kind: "pr", title: "x", url: URL, repository: "org/app", state: "merged" }]), l).initiatives[0]!.shipped[0]!;
+    expect(result.complexity).not.toHaveProperty("partial");
+    expect(result.complexity?.reason).not.toContain("partial file list");
   });
 
   it("summarizes unique PRs", () => {
