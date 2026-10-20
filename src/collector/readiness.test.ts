@@ -53,6 +53,15 @@ describe("deriveReadiness", () => {
     expect(deriveReadiness(item(), null)).toEqual({ stage: "done", label: "Done", detail: "Merged" });
   });
 
+  it("formats merge and deployment dates in the requested timezone", () => {
+    const merged = ledger({ mergedAt: "2026-10-08T01:00:00Z" });
+    merged.deploymentsUnavailable = { "org/app": "2026-10-19T00:00:00Z" };
+    expect(deriveReadiness(item(), merged, "America/New_York")).toMatchObject({ detail: "Merged Oct 7; release status not collected", since: "2026-10-07" });
+    const live = ledger({}, { "org/app": [dep({ succeededAt: "2026-10-08T02:00:00Z" })] });
+    expect(deriveReadiness(item(), live, "America/New_York")).toMatchObject({ detail: "Live since Oct 7", since: "2026-10-07" });
+    expect(deriveReadiness(item(), live)).toMatchObject({ detail: "Live since Oct 8", since: "2026-10-08" });
+  });
+
   it("live uses the earliest production deployment after merge", () => {
     const l = ledger({}, {
       "org/app": [
@@ -119,6 +128,12 @@ describe("deriveReadiness", () => {
   it("keeps production uncertainty visible alongside a preview match", () => {
     const preview = dep({ environment: "preview", production: false, ref: "feature/x", sha: "preview-sha", succeededAt: "2026-10-08T10:00:00Z" });
     const l = ledger({ ancestryUnknown: { production: true }, containingDeployments: [{ environment: "preview", sha: "preview-sha" }] }, { "org/app": [preview] });
+    expect(deriveReadiness(item(), l)).toMatchObject({ stage: "preview", detail: "On the preview site since Oct 8; production release status not collected" });
+  });
+
+  it("keeps production uncertainty visible for stored previews when deployments are unavailable", () => {
+    const l = ledger({ release: { stage: "preview", environment: "preview", sha: "old", since: "2026-10-08T10:00:00Z" } });
+    l.deploymentsUnavailable = { "org/app": "2026-10-19T00:00:00Z" };
     expect(deriveReadiness(item(), l)).toMatchObject({ stage: "preview", detail: "On the preview site since Oct 8; production release status not collected" });
   });
 
@@ -452,5 +467,14 @@ describe("summarizeVerification with uncollected checks", () => {
     };
     const s = summarizeVerification(a);
     expect(s).toMatchObject({ checksUnknown: 1, withHumanReview: 1, withAutomatedReview: 1, withTests: 1 });
+  });
+});
+
+describe("readiness dates in the report timezone (edge cases)", () => {
+  it("keeps bare calendar dates and falls back to UTC for an invalid zone", () => {
+    const l = ledger({ mergedAt: "2026-10-08T01:00:00Z" }, {});
+    expect(deriveReadiness(item(), l, "Not/AZone")).toMatchObject({ detail: expect.stringContaining("Merged Oct 8") });
+    const stored = ledger({ release: { stage: "live", environment: "production", sha: "s", since: "2026-10-07" } }, {});
+    expect(deriveReadiness(item(), stored, "America/New_York")).toMatchObject({ since: "2026-10-07", detail: "Live since Oct 7" });
   });
 });

@@ -981,6 +981,22 @@ describe("buildAllocationInput", () => {
     expect(stage(weeks.get("2026-10-01")!.week!.allocation)).toBe("live");
   });
 
+  it("passes the report timezone into readiness annotation", async () => {
+    const { buildAllocationInput } = await import("./render.js");
+    const url = "https://github.com/o/r/pull/7";
+    const withPr = {
+      ...report("2026-10-02", 6),
+      pullRequests: [{ title: "Add x", url, repository: "o/r", state: "merged", labels: [], workFiles: ["apps/hub/a.ts"] }],
+    } as unknown as import("../../types.js").WeeklyReportData;
+    const evidence = {
+      version: "1", updatedAt: "", defaultBranches: { "o/r": "main" }, prs: {
+        [url]: { url, repository: "o/r", number: 7, author: "u", state: "merged", isDraft: false, baseRef: "main", headRef: "h", headSha: "x", mergeCommitSha: null, createdAt: "", mergedAt: "2026-10-08T01:00:00Z", reviews: [], checks: null, files: [], fetchedAt: "" },
+      }, deployments: {}, deploymentsUnavailable: { "o/r": "2026-10-19T00:00:00Z" },
+    } as unknown as import("../../types.js").EvidenceLedger;
+    const input = buildAllocationInput({ current: { date: "2026-10-02", data: withPr }, dailyReports: new Map(), evidence, timezone: "America/New_York" })!;
+    expect(input.day!.initiatives[0]!.shipped[0]!.readiness).toMatchObject({ detail: "Merged Oct 7; release status not collected", since: "2026-10-07" });
+  });
+
   it("warns and returns undefined instead of throwing", async () => {
     const { buildAllocationInput } = await import("./render.js");
     const warn = vi.spyOn(console, "warn").mockImplementation(() => {});

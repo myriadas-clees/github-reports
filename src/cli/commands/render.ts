@@ -157,11 +157,12 @@ export const buildAllocationInput = (params: {
   colorOrder?: string[];
   /** Evidence ledger (data/evidence.yaml); null/absent degrades to "not collected". */
   evidence?: EvidenceLedger | null;
+  timezone?: string;
 }): AllocationInput | undefined => {
   try {
     const config = params.config ?? DEFAULT_ALLOCATION_CONFIG;
     const manual = params.manualTime ?? [];
-    const annotate = (a: Allocation): Allocation => annotateAllocation(a, params.evidence ?? null, config.systems);
+    const annotate = (a: Allocation): Allocation => annotateAllocation(a, params.evidence ?? null, config.systems, params.timezone);
     const prepare = (d: WeeklyReportData): WeeklyReportData =>
       withRecomputedHours(normalizeReportData(d));
     const currentData = prepare(params.current.data);
@@ -252,12 +253,13 @@ export const buildWeekAllocationInputs = (params: {
   colorOrder?: string[];
   /** Evidence ledger (data/evidence.yaml); null/absent degrades to "not collected". */
   evidence?: EvidenceLedger | null;
+  timezone?: string;
 }): Map<string, AllocationInput> => {
   const result = new Map<string, AllocationInput>();
   try {
     const config = params.config ?? DEFAULT_ALLOCATION_CONFIG;
     const manual = params.manualTime ?? [];
-    const annotate = (a: Allocation): Allocation => annotateAllocation(a, params.evidence ?? null, config.systems);
+    const annotate = (a: Allocation): Allocation => annotateAllocation(a, params.evidence ?? null, config.systems, params.timezone);
     const list = [...params.dailyReports.entries()]
       .sort(([a], [b]) => a.localeCompare(b))
       .map(([date, data]) => ({ date, data: withRecomputedHours(normalizeReportData(data)) }));
@@ -436,6 +438,7 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
       config: options.allocation,
       manualTime: options.manualTime,
       evidence,
+      timezone: options.timezone,
     });
   /** Link from a daily page to its Thu–Wed work-week page. */
   const weekLinkFor = (path: string, prefix: string): { href: string; label: string } | undefined => {
@@ -591,6 +594,7 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
       manualTime: options.manualTime,
       colorOrder,
       evidence,
+      timezone: options.timezone,
     });
   const weekIds = await writeWeekPages({
     entries,

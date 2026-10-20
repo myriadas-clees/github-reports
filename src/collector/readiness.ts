@@ -17,11 +17,30 @@ export type ReadinessItem = Pick<AllocationItem, "state" | "title" | "labels" | 
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-/** "Oct 8" from an ISO timestamp / date (UTC). */
-const formatDay = (iso: string): string => {
-  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso);
+/** Format an instant as a calendar date in the report timezone. */
+const calendarDate = (iso: string, timeZone: string): string => {
+  // A bare calendar date has no instant to convert (new Date() would read it as UTC midnight).
+  if (/^\d{4}-\d{2}-\d{2}$/.test(iso)) return iso;
+  const date = new Date(iso);
+  if (!Number.isFinite(date.getTime())) return iso.slice(0, 10);
+  let parts: Intl.DateTimeFormatPart[];
+  try {
+    parts = new Intl.DateTimeFormat("en-US", { timeZone, year: "numeric", month: "2-digit", day: "2-digit" }).formatToParts(date);
+  } catch {
+    // Invalid IANA zone in config: fall back to UTC rather than failing the render.
+    return date.toISOString().slice(0, 10);
+  }
+  const part = (type: Intl.DateTimeFormatPartTypes): string => parts.find((x) => x.type === type)?.value ?? "";
+  return `${part("year")}-${part("month")}-${part("day")}`;
+};
+
+/** "Oct 8" from an ISO timestamp / date in the report timezone. */
+const formatDay = (iso: string, timeZone: string): string => {
+  const day = calendarDate(iso, timeZone);
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(day);
   if (!m) return iso;
-  return `${MONTHS[Number(m[2]) - 1] ?? m[2]} ${Number(m[3])}`;
+  const month = Number(m[2]);
+  return `${MONTHS[month - 1] ?? m[2]} ${Number(m[3])}`;
 };
 
 const ms = (iso: string | null | undefined): number => {
@@ -68,7 +87,7 @@ export const matchedReleaseDeployment = (item: ReadinessItem, evidence: Evidence
 };
 
 /** Readiness of a PR item; undefined for non-PR items. */
-export const deriveReadiness = (item: ReadinessItem, evidence: EvidenceLedger | null): Readiness | undefined => {
+export const deriveReadiness = (item: ReadinessItem, evidence: EvidenceLedger | null, timeZone = "UTC"): Readiness | undefined => {
   if (item.state !== "open" && item.state !== "merged") return undefined;
   const override = labelOverride(item.labels);
   if (override) return override;
@@ -83,7 +102,7 @@ export const deriveReadiness = (item: ReadinessItem, evidence: EvidenceLedger | 
   }
 
   if (pe?.release?.stage === "live") {
-    return { stage: "live", label: "Live", detail: `Live since ${formatDay(pe.release.since)}`, since: pe.release.since.slice(0, 10) };
+    return { stage: "live", label: "Live", detail: `Live since ${formatDay(pe.release.since, timeZone)}`, since: calendarDate(pe.release.since, timeZone) };
   }
 
   // merged
@@ -92,7 +111,8 @@ export const deriveReadiness = (item: ReadinessItem, evidence: EvidenceLedger | 
   const deps = evidence.deployments?.[repo] ?? [];
   const defaultBranch = evidence.defaultBranches?.[repo] ?? "main";
   const mergedAt = pe?.mergedAt ?? null;
-  const mergedDay = mergedAt ? formatDay(mergedAt) : undefined;
+  const mergedDay = mergedAt ? formatDay(mergedAt, timeZone) : undefined;
+  const mergedSince = mergedAt ? calendarDate(mergedAt, timeZone) : undefined;
   const mergedText = mergedDay ? `Merged ${mergedDay}` : "Merged";
 
   const isMergeCommitDeployment = (d: DeploymentRecord): boolean =>
@@ -107,14 +127,14 @@ export const deriveReadiness = (item: ReadinessItem, evidence: EvidenceLedger | 
     : Boolean(pe?.ancestryUnknown?.production || pe?.ancestryUnknown?.nonProduction);
   const productionUnknown = typeof pe?.ancestryUnknown === "boolean" ? pe.ancestryUnknown : Boolean(pe?.ancestryUnknown?.production);
   const unavailable = Boolean(evidence.deploymentsUnavailable?.[repo]) || ancestryUnknown;
-  const notCollected = { stage: "done" as const, label: "Done", detail: `${mergedText}; release status not collected` };
+  const notCollected = { stage: "done" as const, label: "Done", detail: `${mergedText}; release status not collected`, ...(mergedSince ? { since: mergedSince } : {}) };
 
   if (!unavailable && pe?.baseRef && pe.baseRef !== defaultBranch && !deps.some((d) => d.ref === pe.baseRef || isMergeCommitDeployment(d) || isContainingDeployment(d))) {
     return {
       stage: "awaiting-release",
       label: "Done · not live yet",
       detail: `Merged into a larger change (${pe.baseRef}) that isn't live yet`,
-      ...(mergedAt ? { since: mergedAt.slice(0, 10) } : {}),
+      ...(mergedSince ? { since: mergedSince } : {}),
     };
   }
   if (!pe) return { stage: "done", label: "Done", detail: "Merged; release status not collected" };
@@ -122,7 +142,7 @@ export const deriveReadiness = (item: ReadinessItem, evidence: EvidenceLedger | 
   const matched = matchedReleaseDeployment(item, evidence);
   if (matched?.stage === "live") {
     const live = matched.deployment;
-    return { stage: "live", label: "Live", detail: `Live since ${formatDay(live.succeededAt)}`, since: live.succeededAt.slice(0, 10) };
+    return { stage: "live", label: "Live", detail: `Live since ${formatDay(live.succeededAt, timeZone)}`, since: calendarDate(live.succeededAt, timeZone) };
   }
   if (matched?.stage === "preview" || pe.release?.stage === "preview") {
     const preview = matched?.stage === "preview" ? matched.deployment : undefined;
@@ -130,8 +150,8 @@ export const deriveReadiness = (item: ReadinessItem, evidence: EvidenceLedger | 
     return {
       stage: "preview",
       label: "In testing",
-      detail: `On the preview site since ${formatDay(since)}${productionUnknown ? "; production release status not collected" : ""}`,
-      since: since.slice(0, 10),
+      detail: `On the preview site since ${formatDay(since, timeZone)}${(productionUnknown || evidence.deploymentsUnavailable?.[repo]) ? "; production release status not collected" : ""}`,
+      since: calendarDate(since, timeZone),
     };
   }
   if (unavailable) return notCollected;
@@ -140,7 +160,7 @@ export const deriveReadiness = (item: ReadinessItem, evidence: EvidenceLedger | 
       stage: "awaiting-release",
       label: "Done · not live yet",
       detail: `${mergedText}; not deployed to production yet`,
-      ...(mergedAt ? { since: mergedAt.slice(0, 10) } : {}),
+      ...(mergedSince ? { since: mergedSince } : {}),
     };
   }
   return { stage: "done", label: "Done", detail: `${mergedText}; release not tracked for this repo` };
@@ -265,6 +285,7 @@ export const annotateAllocation = (
   allocation: Allocation,
   evidence: EvidenceLedger | null,
   systems?: Record<string, string>,
+  timeZone = "UTC",
 ): Allocation => {
   const copy = structuredClone(allocation);
   for (const bucket of copy.initiatives) {
@@ -273,7 +294,7 @@ export const annotateAllocation = (
         if (item.kind !== "pr") continue;
         const evFiles = item.url ? evidence?.prs?.[item.url]?.files : undefined;
         const files = evFiles && evFiles.length > 0 ? evFiles : item.files ?? [];
-        const readiness = deriveReadiness(item, evidence);
+        const readiness = deriveReadiness(item, evidence, timeZone);
         const complexity = deriveComplexity(files, systems);
         if (readiness) item.readiness = readiness;
         if (complexity) item.complexity = complexity;
