@@ -445,7 +445,8 @@ export type PrEvidence = {
   containingDeployments?: { environment: string; sha: string }[];
   release?: { stage: "live" | "preview"; environment: string; sha: string; since: string };
   nonContainingDeploymentShas?: string[];
-  ancestryUnknown?: boolean;
+  unknownDeploymentShas?: string[];
+  ancestryUnknown?: boolean | { production?: boolean; nonProduction?: boolean };
   createdAt: string;
   mergedAt: string | null;
   /** Reviews received on this PR (excluding the author's own). */

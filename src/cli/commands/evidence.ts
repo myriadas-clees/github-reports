@@ -57,41 +57,50 @@ export const selectDeploymentCandidates = (
 ).sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt));
 
 export const findContainingDeployments = async ({
-  deployments, pe, defaultBranch, known, nonContainingShas = [], isContained, maxCallsPerKind = 5,
+  deployments, pe, defaultBranch, known, nonContainingShas = [], unknownShas = [], isContained, maxCallsPerKind = 5,
 }: {
   deployments: import("../../types.js").DeploymentRecord[];
   pe: Pick<import("../../types.js").PrEvidence, "baseRef" | "mergeCommitSha" | "mergedAt">;
   defaultBranch: string;
   known: import("../../types.js").PrEvidence["containingDeployments"];
   nonContainingShas?: string[];
+  unknownShas?: string[];
   isContained: (sha: string) => Promise<boolean | null>;
   maxCallsPerKind?: number;
-}): Promise<{ known: NonNullable<import("../../types.js").PrEvidence["containingDeployments"]>; nonContainingShas: string[]; unknown: boolean; calls: { production: number; nonProduction: number } }> => {
+}): Promise<{ known: NonNullable<import("../../types.js").PrEvidence["containingDeployments"]>; nonContainingShas: string[]; unknownShas: string[]; unknownKinds: { production: boolean; nonProduction: boolean }; calls: { production: number; nonProduction: number } }> => {
   const found = [...(known ?? [])];
   const checkedFalse = new Set(nonContainingShas);
+  const checkedUnknown = new Set(unknownShas);
   const calls = { production: 0, nonProduction: 0 };
-  let unknown = false;
+  const unknownKinds = { production: false, nonProduction: false };
   for (const production of [true, false]) {
-    const alreadyFound = found.some((entry) => deployments.some((d) => d.production === production && d.environment === entry.environment && d.sha === entry.sha));
-    if (alreadyFound) continue;
     const kind = production ? "production" : "nonProduction";
-    for (const deployment of selectDeploymentCandidates(deployments, production, pe, defaultBranch)) {
+    const alreadyFound = found.some((entry) => deployments.some((d) => d.production === production && d.environment === entry.environment && d.sha === entry.sha));
+    if (alreadyFound) { checkedUnknown.delete(found.find((entry) => deployments.some((d) => d.production === production && d.environment === entry.environment && d.sha === entry.sha))!.sha); continue; }
+    const candidates = selectDeploymentCandidates(deployments, production, pe, defaultBranch);
+    for (const deployment of [...candidates.filter((d) => !checkedFalse.has(d.sha) && !checkedUnknown.has(d.sha)), ...candidates.filter((d) => checkedUnknown.has(d.sha))]) {
       if (checkedFalse.has(deployment.sha)) continue;
       if (calls[kind] >= maxCallsPerKind) break;
       calls[kind]++;
       const contained = await isContained(deployment.sha);
       if (contained === true) {
+        checkedUnknown.delete(deployment.sha);
         found.push({ environment: deployment.environment, sha: deployment.sha });
         break;
       }
       if (contained === false) {
+        checkedUnknown.delete(deployment.sha);
         checkedFalse.add(deployment.sha);
       } else {
-        unknown = true;
+        unknownKinds[kind] = true;
+        checkedUnknown.add(deployment.sha);
       }
     }
   }
-  return { known: found, nonContainingShas: [...checkedFalse], unknown, calls };
+  for (const deployment of deployments) {
+    if (checkedUnknown.has(deployment.sha)) unknownKinds[deployment.production ? "production" : "nonProduction"] = true;
+  }
+  return { known: found, nonContainingShas: [...checkedFalse], unknownShas: [...checkedUnknown], unknownKinds, calls };
 };
 
 export const markDeploymentsUnavailable = (ledger: import("../../types.js").EvidenceLedger, repo: string, now: string): void => {
@@ -121,6 +130,7 @@ export const carryOverDerivedEvidence = (
   const out = { ...fresh };
   if (prior?.containingDeployments) out.containingDeployments = prior.containingDeployments;
   if (prior?.nonContainingDeploymentShas) out.nonContainingDeploymentShas = prior.nonContainingDeploymentShas;
+  if (prior?.unknownDeploymentShas) out.unknownDeploymentShas = prior.unknownDeploymentShas;
   if (prior?.ancestryUnknown) out.ancestryUnknown = prior.ancestryUnknown;
   if (prior?.release) out.release = prior.release;
   return out;
@@ -201,19 +211,25 @@ export const registerEvidence = (program: Command): void => {
         const result = await findContainingDeployments({
           deployments, pe, defaultBranch: ledger.defaultBranches[ref.repo] ?? "main", known,
           nonContainingShas: pe.nonContainingDeploymentShas,
+          unknownShas: pe.unknownDeploymentShas,
           isContained: (sha) => isCommitContained(token, ref.repo, pe.mergeCommitSha!, sha),
         });
         // Only persist non-empty lists, so branch-deploying repos don't gain empty fields on every PR.
         if (result.nonContainingShas.length) pe.nonContainingDeploymentShas = result.nonContainingShas;
         else delete pe.nonContainingDeploymentShas;
-        if (result.known.length) {
-          pe.containingDeployments = result.known;
-          delete pe.ancestryUnknown;
-        } else if (result.unknown) {
-          pe.ancestryUnknown = true;
-        } else {
-          delete pe.ancestryUnknown;
+        if (result.unknownShas.length) pe.unknownDeploymentShas = result.unknownShas;
+        else delete pe.unknownDeploymentShas;
+        if (result.known.length) pe.containingDeployments = result.known;
+        const previous = typeof pe.ancestryUnknown === "boolean" ? { production: pe.ancestryUnknown, nonProduction: pe.ancestryUnknown } : (pe.ancestryUnknown ?? {});
+        const ancestryUnknown = { ...previous };
+        for (const kind of ["production", "nonProduction"] as const) {
+          const match = result.known.some((entry) => deployments.some((d) => d.production === (kind === "production") && d.environment === entry.environment && d.sha === entry.sha));
+          if (match) delete ancestryUnknown[kind];
+          else if (result.unknownKinds[kind]) ancestryUnknown[kind] = true;
+          else delete ancestryUnknown[kind];
         }
+        if (ancestryUnknown.production || ancestryUnknown.nonProduction) pe.ancestryUnknown = ancestryUnknown;
+        else delete pe.ancestryUnknown;
       }
 
       recordReleaseEvidence(ledger, refs);

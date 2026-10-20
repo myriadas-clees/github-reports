@@ -102,7 +102,11 @@ export const deriveReadiness = (item: ReadinessItem, evidence: EvidenceLedger | 
 
   // When the latest deployment refresh failed, known deployments still count, but the
   // absence of a match is unknown rather than "not live yet" / "not tracked".
-  const unavailable = Boolean(evidence.deploymentsUnavailable?.[repo]) || Boolean(pe?.ancestryUnknown);
+  const ancestryUnknown = typeof pe?.ancestryUnknown === "boolean"
+    ? pe.ancestryUnknown
+    : Boolean(pe?.ancestryUnknown?.production || pe?.ancestryUnknown?.nonProduction);
+  const productionUnknown = typeof pe?.ancestryUnknown === "boolean" ? pe.ancestryUnknown : Boolean(pe?.ancestryUnknown?.production);
+  const unavailable = Boolean(evidence.deploymentsUnavailable?.[repo]) || ancestryUnknown;
   const notCollected = { stage: "done" as const, label: "Done", detail: `${mergedText}; release status not collected` };
 
   if (!unavailable && pe?.baseRef && pe.baseRef !== defaultBranch && !deps.some((d) => d.ref === pe.baseRef || isMergeCommitDeployment(d) || isContainingDeployment(d))) {
@@ -126,7 +130,7 @@ export const deriveReadiness = (item: ReadinessItem, evidence: EvidenceLedger | 
     return {
       stage: "preview",
       label: "In testing",
-      detail: `On the preview site since ${formatDay(since)}`,
+      detail: `On the preview site since ${formatDay(since)}${productionUnknown ? "; production release status not collected" : ""}`,
       since: since.slice(0, 10),
     };
   }

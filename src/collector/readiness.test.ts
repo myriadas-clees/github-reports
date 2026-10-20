@@ -116,6 +116,12 @@ describe("deriveReadiness", () => {
     expect(deriveReadiness(item(), ledger({ ancestryUnknown: true }, { "org/app": [branchDeployment] }))).toMatchObject({ stage: "live" });
   });
 
+  it("keeps production uncertainty visible alongside a preview match", () => {
+    const preview = dep({ environment: "preview", production: false, ref: "feature/x", sha: "preview-sha", succeededAt: "2026-10-08T10:00:00Z" });
+    const l = ledger({ ancestryUnknown: { production: true }, containingDeployments: [{ environment: "preview", sha: "preview-sha" }] }, { "org/app": [preview] });
+    expect(deriveReadiness(item(), l)).toMatchObject({ stage: "preview", detail: "On the preview site since Oct 8; production release status not collected" });
+  });
+
   it("still uses known deployments when the latest deployment refresh failed", () => {
     // Previously collected main deployment after the merge, with no baseRef recorded.
     const known = ledger({ baseRef: "" }, { "org/app": [dep({})] });

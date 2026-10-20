@@ -83,7 +83,18 @@ it("leaves unknown ancestry unchecked and reports it", async () => {
   });
   expect(result.nonContainingShas).toEqual([]);
   expect(result.known).toEqual([]);
-  expect(result.unknown).toBe(true);
+  expect(result.unknownKinds.production).toBe(true);
+});
+
+it("advances to new candidates before retrying unknown SHAs", async () => {
+  const deployments = Array.from({ length: 6 }, (_, i) => ({ environment: "production", production: true, ref: `v${i}`, sha: `${i + 1}`.repeat(40), createdAt: `2026-10-${String(20 + i).padStart(2, "0")}T00:00:00Z`, succeededAt: "2026-10-30T00:01:00Z" }));
+  const pe = { baseRef: "main", mergeCommitSha: "f".repeat(40), mergedAt: "2026-10-19T00:00:00Z" };
+  const first = await findContainingDeployments({ deployments, pe, defaultBranch: "main", known: [], isContained: async () => null });
+  expect(first.unknownShas).toHaveLength(5);
+  let checked = "";
+  const second = await findContainingDeployments({ deployments, pe, defaultBranch: "main", known: [], unknownShas: first.unknownShas, isContained: async (sha) => { checked = sha; return sha === deployments[5]!.sha; } });
+  expect(checked).toBe(deployments[5]!.sha);
+  expect(second.known).toEqual([{ environment: "production", sha: deployments[5]!.sha }]);
 });
 
 it("preserves deployments and marks failed refreshes unavailable", () => {
