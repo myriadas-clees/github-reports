@@ -1,0 +1,120 @@
+title: Oct 19
+subtitle: northstar, compass & compliance
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/ohcpwm-apps and Myriad-Advisor-Solutions/myriadas-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 0 PRs
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 1 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 157 commits with +29,140 / −2,744 lines.
+    chips:
+      - label: Commits
+        value: "157"
+        color: green
+      - label: Additions
+        value: +29,140
+        color: green
+      - label: Deletions
+        value: −2,744
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 136 reviews with 136 comments.
+    chips:
+      - label: Reviews
+        value: "136"
+      - label: Comments
+        value: "136"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 56 reviews, 102 comments, 9 PRs."
+    chips:
+      - label: Codex
+        value: 56 reviews · 102 comments · 9 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~325h
+highlights:
+  - type: pr
+    title: "feat(compass): port Northstar advisor workflow features"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +540 −33
+    body: >-
+      ## Why
+
+
+      Port the Northstar advisor workflow capabilities into Compass so advisors can manage daily work and client
+      conversations in one workspace.
+
+
+      ## What changed
+
+
+      - Redesigned the Compass dashboard 
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/177
+  - type: pr
+    title: "fix(transition): map registration codes to names"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +13646 −1249
+    body: >-
+      ## Why
+
+
+      Accounts imported from AIRE can store numeric registration codes, which are unclear in the UI and make
+      registration sorting and filtering inconsistent with registration names.
+
+
+      ## What changed
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/176
+  - type: pr
+    title: "feat(pwa): add native install support across Myriad apps"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +14532 −1369
+    body: |-
+      ## Why
+
+      Make Myriad products installable from supported browsers and provide IT with managed deployment guidance.
+
+      ## What changed
+
+      - Added product-specific web app manifests and shared app icons acro
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/175
+  - type: pr
+    title: "ci: reduce GitHub Actions minutes"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +60 −11
+    body: >-
+      ## Why
+
+
+      GitHub Actions minutes were going to pull request work that did not need it: three Verify jobs per push (each
+      billed at least one minute), Hub preview change detection on PRs without `deploy-p
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/170
+  - type: pr
+    title: "fix(compass): filter mail tasks and refine priority data"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +354 −74
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/193
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(compass): port Northstar advisor workflow features" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(transition): map registration codes to names" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(pwa): add native install support across Myriad apps" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "ci: reduce GitHub Actions minutes" in Myriad-Advisor-Solutions/myriadas-apps'
