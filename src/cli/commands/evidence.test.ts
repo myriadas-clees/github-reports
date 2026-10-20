@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { applyDeploymentFetch, deploymentCutoffIso, evidenceRepositories, findContainingDeployments, selectDeploymentCandidates } from "./evidence.js";
+import { applyDeploymentFetch, deploymentCutoffIso, evidenceRepositories, findContainingDeployments, markDeploymentsUnavailable, selectDeploymentCandidates } from "./evidence.js";
 import { emptyLedger } from "../../collector/evidence-ledger.js";
 import { evidenceArgs } from "./report.js";
 
@@ -50,6 +50,32 @@ it("reserves a separate ancestry budget for preview deployments", async () => {
   expect(result.known).toEqual([{ environment: "preview", sha: "abcdefabcdefabcdefabcdefabcdefabcdefabcd" }]);
 });
 
+it("advances past persisted non-containing production candidates", async () => {
+  const deployments = Array.from({ length: 8 }, (_, index) => ({
+    environment: "production", production: true, ref: `v${index}`, sha: `${String(index + 1).repeat(40)}`,
+    createdAt: `2026-10-${String(20 + index).padStart(2, "0")}T00:00:00Z`, succeededAt: "2026-10-30T00:01:00Z",
+  }));
+  const pe = { baseRef: "main", mergeCommitSha: "fedcbafedcbafedcbafedcbafedcbafedcbafedc", mergedAt: "2026-10-19T00:00:00Z" };
+  const check = async (sha: string) => sha === deployments[7]!.sha;
+  const first = await findContainingDeployments({ deployments, pe, defaultBranch: "main", known: [], isContained: check });
+  expect(first.calls.production).toBe(5);
+  expect(first.nonContainingShas).toHaveLength(5);
+  const second = await findContainingDeployments({ deployments, pe, defaultBranch: "main", known: first.known, nonContainingShas: first.nonContainingShas, isContained: check });
+  expect(second.calls.production).toBe(3);
+  expect(second.known).toEqual([{ environment: "production", sha: deployments[7]!.sha }]);
+});
+
+it("leaves unknown ancestry unchecked and reports it", async () => {
+  const deployment = { environment: "production", production: true, ref: "v1", sha: "abcdef1234567", createdAt: "2026-10-20T00:00:00Z", succeededAt: "2026-10-20T00:01:00Z" };
+  const result = await findContainingDeployments({
+    deployments: [deployment], pe: { baseRef: "main", mergeCommitSha: "fedcbafedcbafedcbafedcbafedcbafedcbafedc", mergedAt: "2026-10-19T00:00:00Z" },
+    defaultBranch: "main", known: [], isContained: async () => null,
+  });
+  expect(result.nonContainingShas).toEqual([]);
+  expect(result.known).toEqual([]);
+  expect(result.unknown).toBe(true);
+});
+
 it("preserves deployments and marks failed refreshes unavailable", () => {
   const ledger = emptyLedger();
   const prior = { environment: "production", production: true, ref: "main", sha: "old", createdAt: "2026-01-01T00:00:00Z", succeededAt: "2026-01-01T00:01:00Z" };
@@ -59,6 +85,14 @@ it("preserves deployments and marks failed refreshes unavailable", () => {
   expect(ledger.deploymentsUnavailable).toEqual({ "org/app": "2026-10-19T00:00:00Z" });
   applyDeploymentFetch(ledger, "org/app", { records: [], failed: false }, "2026-10-20T00:00:00Z");
   expect(ledger.deploymentsUnavailable).toEqual({});
+});
+
+it("marks a thrown deployment refresh unavailable without clearing deployments", () => {
+  const ledger = emptyLedger();
+  ledger.deployments["org/app"] = [{ environment: "production", production: true, ref: "main", sha: "old", createdAt: "2026-01-01T00:00:00Z", succeededAt: "2026-01-01T00:01:00Z" }];
+  markDeploymentsUnavailable(ledger, "org/app", "2026-10-19T00:00:00Z");
+  expect(ledger.deploymentsUnavailable).toEqual({ "org/app": "2026-10-19T00:00:00Z" });
+  expect(ledger.deployments["org/app"]).toHaveLength(1);
 });
 
 it("selects tag deployments by commit sha while excluding already matched branch refs", () => {

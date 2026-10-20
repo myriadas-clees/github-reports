@@ -78,7 +78,7 @@ export const deriveReadiness = (item: ReadinessItem, evidence: EvidenceLedger | 
 
   // When the latest deployment refresh failed, known deployments still count, but the
   // absence of a match is unknown rather than "not live yet" / "not tracked".
-  const unavailable = Boolean(evidence.deploymentsUnavailable?.[repo]);
+  const unavailable = Boolean(evidence.deploymentsUnavailable?.[repo]) || Boolean(pe?.ancestryUnknown);
   const notCollected = { stage: "done" as const, label: "Done", detail: `${mergedText}; release status not collected` };
 
   if (!unavailable && pe?.baseRef && pe.baseRef !== defaultBranch && !deps.some((d) => d.ref === pe.baseRef || isMergeCommitDeployment(d) || isContainingDeployment(d))) {

@@ -38,38 +38,52 @@ export const selectDeploymentCandidates = (
 ).sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt));
 
 export const findContainingDeployments = async ({
-  deployments, pe, defaultBranch, known, isContained, maxCallsPerKind = 5,
+  deployments, pe, defaultBranch, known, nonContainingShas = [], isContained, maxCallsPerKind = 5,
 }: {
   deployments: import("../../types.js").DeploymentRecord[];
   pe: Pick<import("../../types.js").PrEvidence, "baseRef" | "mergeCommitSha" | "mergedAt">;
   defaultBranch: string;
   known: import("../../types.js").PrEvidence["containingDeployments"];
-  isContained: (sha: string) => Promise<boolean>;
+  nonContainingShas?: string[];
+  isContained: (sha: string) => Promise<boolean | null>;
   maxCallsPerKind?: number;
-}): Promise<{ known: NonNullable<import("../../types.js").PrEvidence["containingDeployments"]>; calls: { production: number; nonProduction: number } }> => {
+}): Promise<{ known: NonNullable<import("../../types.js").PrEvidence["containingDeployments"]>; nonContainingShas: string[]; unknown: boolean; calls: { production: number; nonProduction: number } }> => {
   const found = [...(known ?? [])];
+  const checkedFalse = new Set(nonContainingShas);
   const calls = { production: 0, nonProduction: 0 };
+  let unknown = false;
   for (const production of [true, false]) {
     const alreadyFound = found.some((entry) => deployments.some((d) => d.production === production && d.environment === entry.environment && d.sha === entry.sha));
     if (alreadyFound) continue;
     const kind = production ? "production" : "nonProduction";
     for (const deployment of selectDeploymentCandidates(deployments, production, pe, defaultBranch)) {
+      if (checkedFalse.has(deployment.sha)) continue;
       if (calls[kind] >= maxCallsPerKind) break;
       calls[kind]++;
-      if (await isContained(deployment.sha)) {
+      const contained = await isContained(deployment.sha);
+      if (contained === true) {
         found.push({ environment: deployment.environment, sha: deployment.sha });
         break;
       }
+      if (contained === false) {
+        checkedFalse.add(deployment.sha);
+      } else {
+        unknown = true;
+      }
     }
   }
-  return { known: found, calls };
+  return { known: found, nonContainingShas: [...checkedFalse], unknown, calls };
+};
+
+export const markDeploymentsUnavailable = (ledger: import("../../types.js").EvidenceLedger, repo: string, now: string): void => {
+  ledger.deploymentsUnavailable ??= {};
+  ledger.deploymentsUnavailable[repo] = now;
 };
 
 export const applyDeploymentFetch = (ledger: import("../../types.js").EvidenceLedger, repo: string, result: Awaited<ReturnType<typeof fetchDeployments>>, now: string): void => {
   ledger.deployments[repo] = mergeDeployments(ledger.deployments[repo] ?? [], result.records);
   if (result.failed) {
-    ledger.deploymentsUnavailable ??= {};
-    ledger.deploymentsUnavailable[repo] = now;
+    markDeploymentsUnavailable(ledger, repo, now);
     return;
   }
   if (ledger.deploymentsUnavailable) delete ledger.deploymentsUnavailable[repo];
@@ -108,6 +122,7 @@ export const registerEvidence = (program: Command): void => {
           applyDeploymentFetch(ledger, repo, result, now.toISOString());
           console.log(`${repo}: +${result.records.length} deployments (default branch ${branch ?? "unknown"})`);
         } catch (err) {
+          markDeploymentsUnavailable(ledger, repo, now.toISOString());
           console.warn(`Warning: deployments for ${repo} failed: ${err instanceof Error ? err.message : err}`);
         }
       }
@@ -118,7 +133,10 @@ export const registerEvidence = (program: Command): void => {
         try {
           const ev = await fetchPrEvidence(token, ref, now);
           if (ev) {
-            ev.containingDeployments = ledger.prs[ref.url]?.containingDeployments;
+            const prior = ledger.prs[ref.url];
+            ev.containingDeployments = prior?.containingDeployments;
+            ev.nonContainingDeploymentShas = prior?.nonContainingDeploymentShas;
+            ev.ancestryUnknown = prior?.ancestryUnknown;
             ledger.prs[ref.url] = ev;
             refreshed++;
           }
@@ -133,12 +151,24 @@ export const registerEvidence = (program: Command): void => {
         const deployments = ledger.deployments[ref.repo] ?? [];
         if (!pe?.mergeCommitSha || !pe.mergedAt || !deployments.length) continue;
         const known = pe.containingDeployments ?? [];
+        // Already live via a verified production deployment: no further compare calls needed.
         if (known.some((entry) => deployments.some((d) => d.production && d.environment === entry.environment && d.sha === entry.sha))) continue;
         const result = await findContainingDeployments({
           deployments, pe, defaultBranch: ledger.defaultBranches[ref.repo] ?? "main", known,
-          isContained: async (sha) => Boolean(await isCommitContained(token, ref.repo, pe.mergeCommitSha!, sha)),
+          nonContainingShas: pe.nonContainingDeploymentShas,
+          isContained: (sha) => isCommitContained(token, ref.repo, pe.mergeCommitSha!, sha),
         });
-        if (result.known.length) pe.containingDeployments = result.known;
+        // Only persist non-empty lists, so branch-deploying repos don't gain empty fields on every PR.
+        if (result.nonContainingShas.length) pe.nonContainingDeploymentShas = result.nonContainingShas;
+        else delete pe.nonContainingDeploymentShas;
+        if (result.known.length) {
+          pe.containingDeployments = result.known;
+          delete pe.ancestryUnknown;
+        } else if (result.unknown) {
+          pe.ancestryUnknown = true;
+        } else {
+          delete pe.ancestryUnknown;
+        }
       }
 
       ledger.updatedAt = new Date().toISOString();

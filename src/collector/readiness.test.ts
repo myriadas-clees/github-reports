@@ -98,6 +98,14 @@ describe("deriveReadiness", () => {
     expect(deriveReadiness(item(), unavailable)).toMatchObject({ stage: "done", label: "Done", detail: "Merged Oct 7; release status not collected" });
   });
 
+  it("treats unknown ancestry as uncollected unless a branch deployment is known live", () => {
+    expect(deriveReadiness(item(), ledger({ ancestryUnknown: true }))).toMatchObject({
+      stage: "done", detail: "Merged Oct 7; release status not collected",
+    });
+    const branchDeployment = dep({ ref: "main", createdAt: "2026-10-08T09:00:00Z", succeededAt: "2026-10-08T10:00:00Z" });
+    expect(deriveReadiness(item(), ledger({ ancestryUnknown: true }, { "org/app": [branchDeployment] }))).toMatchObject({ stage: "live" });
+  });
+
   it("still uses known deployments when the latest deployment refresh failed", () => {
     // Previously collected main deployment after the merge, with no baseRef recorded.
     const known = ledger({ baseRef: "" }, { "org/app": [dep({})] });
