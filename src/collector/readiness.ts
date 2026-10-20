@@ -297,7 +297,7 @@ export const annotateAllocation = (
         const readiness = deriveReadiness(item, evidence, timeZone);
         let complexity = deriveComplexity(files, systems);
         const pe = item.url ? evidence?.prs?.[item.url] : undefined;
-        if (complexity && (pe?.incomplete?.files || pe?.filesTruncated)) {
+        if (complexity && (pe?.incomplete?.files || pe?.filesTruncated || pe?.refreshFailedAt)) {
           complexity = { ...complexity, partial: true, reason: `${complexity.reason} (based on a partial file list)` };
         }
         if (readiness) item.readiness = readiness;

@@ -1,6 +1,6 @@
 // Evidence ledger (data/evidence.yaml): deployments + per-PR verification.
 
-import { access, mkdir, readdir, readFile, writeFile } from "node:fs/promises";
+import { access, mkdir, readdir, readFile, rename, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { parse as parseYaml, stringify as toYaml } from "yaml";
 import type { DeploymentRecord, EvidenceLedger, PrEvidence } from "../types.js";
@@ -32,7 +32,7 @@ export const readEvidenceLedger = async (dataDir: string): Promise<EvidenceLedge
     if ((err as NodeJS.ErrnoException).code === "ENOENT") return null;
     throw new Error(`Failed to read evidence ledger ${path}: ${err instanceof Error ? err.message : err}`, { cause: err });
   }
-  if (!raw.trim()) return null;
+  if (!raw.trim()) throw new Error(`Evidence ledger ${path} is empty`);
   try {
     const parsed = parseYaml(raw) as unknown;
     if (!isObject(parsed)) throw new Error("expected a YAML object at the top level");
@@ -55,7 +55,10 @@ export const readEvidenceLedger = async (dataDir: string): Promise<EvidenceLedge
 
 export const writeEvidenceLedger = async (dataDir: string, ledger: EvidenceLedger): Promise<void> => {
   await mkdir(dataDir, { recursive: true });
-  await writeFile(join(dataDir, EVIDENCE_FILE), toYaml(ledger, { lineWidth: 120 }), "utf-8");
+  const path = join(dataDir, EVIDENCE_FILE);
+  const tempPath = `${path}.tmp-${process.pid}`;
+  await writeFile(tempPath, toYaml(ledger, { lineWidth: 120 }), "utf-8");
+  await rename(tempPath, path);
 };
 
 const exists = async (p: string): Promise<boolean> => {

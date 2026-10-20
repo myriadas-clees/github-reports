@@ -1,5 +1,5 @@
 import { describe, it, expect, afterEach } from "vitest";
-import { mkdtemp, mkdir, writeFile, rm } from "node:fs/promises";
+import { mkdtemp, mkdir, readdir, writeFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import {
@@ -32,6 +32,15 @@ describe("ledger io", () => {
     l.prs["u"] = pr({ release: { stage: "live", environment: "production", sha: "s1", since: "2026-05-03T00:00:00Z" } });
     await writeEvidenceLedger(dir, l);
     expect((await readEvidenceLedger(dir))?.prs["u"]).toMatchObject({ number: 1, release: { stage: "live", environment: "production", sha: "s1", since: "2026-05-03T00:00:00Z" } });
+    expect(await readdir(dir)).toEqual([EVIDENCE_FILE]);
+  });
+
+  it.each(["", " \n\t "]) ("throws for an existing empty ledger", async (content) => {
+    dir = await mkdtemp(join(tmpdir(), "ev-"));
+    const path = join(dir, EVIDENCE_FILE);
+    await writeFile(path, content, "utf-8");
+    await expect(readEvidenceLedger(dir)).rejects.toThrow(/evidence ledger .* is empty/i);
+    await expect(readEvidenceLedger(dir)).rejects.toThrow(path);
   });
 
   it("throws with the ledger path for malformed YAML and non-object content", async () => {

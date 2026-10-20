@@ -386,6 +386,14 @@ describe("annotateAllocation + summarizeVerification", () => {
     expect(result.checks?.testsUpdated).toBe(false);
   });
 
+  it("marks complexity partial when evidence refresh failed", () => {
+    const l = ledger({ files: ["apps/a/x.ts", "services/b/y.ts"], checks: { passed: 1, failed: 0, skipped: 0, pending: 0, names: [] }, refreshFailedAt: "2026-10-19T00:00:00Z" });
+    const result = annotateAllocation(alloc([{ kind: "pr", title: "x", url: URL, repository: "org/app", state: "merged" }]), l).initiatives[0]!.shipped[0]!;
+    expect(result.complexity?.partial).toBe(true);
+    expect(result.complexity?.reason.endsWith(" (based on a partial file list)")).toBe(true);
+    expect(result.checks?.automated).toMatchObject({ partial: true });
+  });
+
   it("keeps complete file evidence definitive", () => {
     const l = ledger({ files: ["apps/a/x.ts"] });
     const result = annotateAllocation(alloc([{ kind: "pr", title: "x", url: URL, repository: "org/app", state: "merged" }]), l).initiatives[0]!.shipped[0]!;
