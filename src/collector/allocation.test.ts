@@ -712,6 +712,21 @@ describe("PR #4 review fixes", () => {
     expect(m.initiatives[0]!.inProgress).toMatchObject([{ url: "p", effortHours: 16 }]);
   });
 
+  it("consolidates closed and open copies under the latest initiative", () => {
+    const appearance = (initiative: string, state: "open" | "closed", hours: number) => {
+      const p = pr({ url: "p", title: "feat: hub", state, mergedAt: null, labels: [`app: ${initiative.toLowerCase()}`] });
+      return computeAllocation(state === "open"
+        ? data({ pullRequests: [p], prsInProgress: [p] }, hours)
+        : data({ prsWorkedOnClosed: [p] }, hours));
+    };
+    const m = mergeAllocations([appearance("A", "closed", 2), appearance("A", "open", 3), appearance("B", "closed", 5)]);
+    expect(m.totalHours).toBe(10);
+    expect(m.initiatives).toHaveLength(1);
+    expect(m.initiatives[0]).toMatchObject({ initiative: "B", hours: 10, byWorkType: { "new-capability": 10 } });
+    expect(m.initiatives[0]!.inProgress).toEqual([]);
+    expect(m.initiatives[0]!.other).toMatchObject([{ url: "p", state: "closed", effortHours: 10 }]);
+  });
+
   it("subtracts moved effort from the old initiative while retaining its other work", () => {
     const inProgress = [
       pr({ url: "p", title: "feat: hub", state: "open", mergedAt: null }),

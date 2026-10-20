@@ -120,6 +120,30 @@ describe("fetchPrEvidence", () => {
     expect(ev?.files).toEqual(["a.ts"]);
   });
 
+  it("flags a first-page reviews 404 as incomplete", async () => {
+    mockRoutes([
+      [/pulls\/5\/reviews/, () => json({}, 404)], [/pulls\/5\/files/, () => json([])],
+      [/check-runs/, () => json({ check_runs: [] })], [/statuses/, () => json([])], [/pulls\/5$/, () => json(pr)],
+    ]);
+    expect((await fetchPrEvidence("t", { repo: "o/r", number: 5 }))?.incomplete).toEqual({ reviews: true });
+  });
+
+  it("flags a later files 404 as incomplete", async () => {
+    const page2 = "<https://api.github.com/repos/o/r/pulls/5/files?per_page=100&page=2>; rel=\"next\"";
+    vi.stubGlobal("fetch", vi.fn(async (url: string) => {
+      if (/pulls\/5\/reviews/.test(url)) return json([]);
+      if (/files\?per_page=100$/.test(url)) return new Response(JSON.stringify([{ filename: "a.ts" }]), { headers: { "content-type": "application/json", link: page2 } });
+      if (/files.*page=2/.test(url)) return json({}, 404);
+      if (/check-runs/.test(url)) return json({ check_runs: [] });
+      if (/statuses/.test(url)) return json([]);
+      if (/pulls\/5$/.test(url)) return json(pr);
+      return json({}, 404);
+    }));
+    const ev = await fetchPrEvidence("t", { repo: "o/r", number: 5 });
+    expect(ev?.incomplete).toEqual({ files: true });
+    expect(ev?.files).toEqual(["a.ts"]);
+  });
+
   it("leaves complete fetches unflagged", async () => {
     mockRoutes([
       [/pulls\/5\/reviews/, () => json([])], [/pulls\/5\/files/, () => json([{ filename: "a.ts" }])],

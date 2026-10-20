@@ -242,8 +242,8 @@ export const fetchPrEvidence = async (
   const pr = prRes.data;
   const author = pr.user?.login ?? "";
 
-  const reviewsRaw = await getPages<RawReview>(token, `${base}/pulls/${ref.number}/reviews?per_page=100`, `Review fetch failed for ${label}`);
-  const files = await getPages<{ filename: string }>(token, `${base}/pulls/${ref.number}/files?per_page=100`, `Files fetch failed for ${label}`, { cap: MAX_FILES });
+  const reviewsRaw = await getPages<RawReview>(token, `${base}/pulls/${ref.number}/reviews?per_page=100`, `Review fetch failed for ${label}`, { failOn404: true });
+  const files = await getPages<{ filename: string }>(token, `${base}/pulls/${ref.number}/files?per_page=100`, `Files fetch failed for ${label}`, { cap: MAX_FILES, failOn404: true });
 
   const checkRes = await getJson<{ check_runs: RawCheckRun[] }>(
     token,
