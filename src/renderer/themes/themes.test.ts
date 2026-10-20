@@ -45,7 +45,7 @@ const MOCK_DATA: WeeklyReportData = {
         type: "pr",
         title: "feat: add OAuth flow",
         repo: "org/backend",
-        meta: "merged Apr 2",
+        meta: "integrated Apr 2",
         body: "## Why\n\nBig PR with `tokens` and a [link](https://example.com).",
       },
     ],

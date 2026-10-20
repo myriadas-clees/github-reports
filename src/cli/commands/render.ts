@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 import { parse as parseYaml } from "yaml";
 import { renderReport } from "../../renderer/index.js";
 import { renderEstimatePage } from "../../deployer/estimate-page.js";
+import { renderFinishedPage } from "../../deployer/finished-page.js";
 import { renderIndexPage, buildReportEntry, type ReportEntry } from "../../deployer/index-page.js";
 import { resolveDayId } from "../../deployer/day.js";
 import { getWeekId } from "../../deployer/week.js";
@@ -588,6 +589,20 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
     console.log(`Estimate page written to ${join(estimateDir, "index.html")}`);
   }
 
+  // Static explainer on how "done" is worded; needs no calibration, so it is always written.
+  const finishedHtml = renderFinishedPage({
+    username: githubData.username,
+    language: options.language,
+    siteTitle: options.siteTitle,
+    baseUrl: base,
+    themeName: options.theme,
+  });
+  assertNoSecretsInHtml(finishedHtml);
+  const finishedDir = join(options.outputDir, "finished");
+  await mkdir(finishedDir, { recursive: true });
+  await writeFile(join(finishedDir, "index.html"), finishedHtml, "utf-8");
+  console.log(`Finished-state page written to ${join(finishedDir, "index.html")}`);
+
   // One page per Thu–Wed work week that has at least one daily report.
   const weekAllocations = options.mode === "weekly"
     ? new Map<string, AllocationInput>()
@@ -652,6 +667,7 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>${base}/</loc></url>${estimateHtml ? `\n  <url><loc>${base}/estimate/</loc></url>` : ""}
+  <url><loc>${base}/finished/</loc></url>
 ${sitemapEntries}
 </urlset>`;
   const sitemapPath = join(options.outputDir, "sitemap.xml");

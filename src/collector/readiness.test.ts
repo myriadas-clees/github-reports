@@ -34,7 +34,7 @@ describe("deriveReadiness", () => {
     expect(deriveReadiness(item({ state: "open" }), ledger({ isDraft: true }))?.stage).toBe("draft");
     expect(deriveReadiness(item({ state: "open", title: "WIP: thing" }), null)?.stage).toBe("prototype");
     expect(deriveReadiness(item({ state: "open", title: "Spike on caching" }), null)?.stage).toBe("prototype");
-    expect(deriveReadiness(item({ state: "open" }), null)).toMatchObject({ stage: "in-review", label: "In review" });
+    expect(deriveReadiness(item({ state: "open" }), null)).toMatchObject({ stage: "in-review", label: "In review", detail: "Being reviewed; not integrated yet" });
   });
 
   it("returns undefined for closed items", () => {
@@ -50,13 +50,13 @@ describe("deriveReadiness", () => {
   });
 
   it("merged without evidence: done, no claim about live", () => {
-    expect(deriveReadiness(item(), null)).toEqual({ stage: "done", label: "Done", detail: "Merged" });
+    expect(deriveReadiness(item(), null)).toEqual({ stage: "done", label: "Code integrated", detail: "Integrated" });
   });
 
   it("formats merge and deployment dates in the requested timezone", () => {
     const merged = ledger({ mergedAt: "2026-10-08T01:00:00Z" });
     merged.deploymentsUnavailable = { "org/app": "2026-10-19T00:00:00Z" };
-    expect(deriveReadiness(item(), merged, "America/New_York")).toMatchObject({ detail: "Merged Oct 7; release status not collected", since: "2026-10-07" });
+    expect(deriveReadiness(item(), merged, "America/New_York")).toMatchObject({ detail: "Integrated Oct 7; release status not collected", since: "2026-10-07" });
     const live = ledger({}, { "org/app": [dep({ succeededAt: "2026-10-08T02:00:00Z" })] });
     expect(deriveReadiness(item(), live, "America/New_York")).toMatchObject({ detail: "Live since Oct 7", since: "2026-10-07" });
     expect(deriveReadiness(item(), live)).toMatchObject({ detail: "Live since Oct 8", since: "2026-10-08" });
@@ -114,7 +114,7 @@ describe("deriveReadiness", () => {
     expect(deriveReadiness(item(), ledger({ baseRef: "feature/x" }, { "org/app": [shaDeploy] }) as EvidenceLedger)?.stage).toBe("awaiting-release");
     const unavailable = ledger({}, {});
     unavailable.deploymentsUnavailable = { "org/app": "2026-10-19T00:00:00Z" };
-    expect(deriveReadiness(item(), unavailable)).toMatchObject({ stage: "done", label: "Done", detail: "Merged Oct 7; release status not collected" });
+    expect(deriveReadiness(item(), unavailable)).toMatchObject({ stage: "done", label: "Code integrated", detail: "Integrated Oct 7; release status not collected" });
   });
 
   it("uses a containing default-branch deployment to release a stacked PR", () => {
@@ -127,10 +127,10 @@ describe("deriveReadiness", () => {
     const failed = { refreshFailedAt: "2026-10-19T00:00:00Z" };
     const production = dep({ ref: "other", sha: "other-sha" });
     expect(deriveReadiness(item(), ledger(failed, { "org/app": [production] }))).toMatchObject({
-      stage: "done", detail: "Merged Oct 7; release status not collected",
+      stage: "done", detail: "Integrated Oct 7; release status not collected",
     });
     expect(deriveReadiness(item(), ledger(failed))).toMatchObject({
-      stage: "done", detail: "Merged Oct 7; release status not collected",
+      stage: "done", detail: "Integrated Oct 7; release status not collected",
     });
     expect(deriveReadiness(item(), ledger({ ...failed, release: { stage: "live", environment: "production", sha: "old", since: "2026-09-01T10:00:00Z" } }))).toMatchObject({
       stage: "live", label: "Live",
@@ -139,7 +139,7 @@ describe("deriveReadiness", () => {
 
   it("treats unknown ancestry as uncollected unless a branch deployment is known live", () => {
     expect(deriveReadiness(item(), ledger({ ancestryUnknown: true }))).toMatchObject({
-      stage: "done", detail: "Merged Oct 7; release status not collected",
+      stage: "done", detail: "Integrated Oct 7; release status not collected",
     });
     const branchDeployment = dep({ ref: "main", createdAt: "2026-10-08T09:00:00Z", succeededAt: "2026-10-08T10:00:00Z" });
     expect(deriveReadiness(item(), ledger({ ancestryUnknown: true }, { "org/app": [branchDeployment] }))).toMatchObject({ stage: "live" });
@@ -162,10 +162,10 @@ describe("deriveReadiness", () => {
     const known = ledger({ baseRef: "" }, { "org/app": [dep({})] });
     known.deploymentsUnavailable = { "org/app": "2026-10-19T00:00:00Z" };
     expect(deriveReadiness(item(), known)).toMatchObject({ stage: "live", since: "2026-10-08" });
-    // Unknown, not "merged into a larger change", for a stacked PR when deployments couldn't be read.
+    // Unknown, not "part of a larger change", for a stacked PR when deployments couldn't be read.
     const stacked = ledger({ baseRef: "feature/x" }, {});
     stacked.deploymentsUnavailable = { "org/app": "2026-10-19T00:00:00Z" };
-    expect(deriveReadiness(item(), stacked)).toMatchObject({ stage: "done", detail: "Merged Oct 7; release status not collected" });
+    expect(deriveReadiness(item(), stacked)).toMatchObject({ stage: "done", detail: "Integrated Oct 7; release status not collected" });
   });
 
   it("live when production deployment ref is the merge commit sha", () => {
@@ -197,13 +197,13 @@ describe("deriveReadiness", () => {
   it("awaiting release when repo deploys but not since merge", () => {
     const l = ledger({}, { "org/app": [dep({ createdAt: "2026-10-01T09:00:00Z", succeededAt: "2026-10-01T10:00:00Z" })] });
     expect(deriveReadiness(item(), l)).toMatchObject({
-      stage: "awaiting-release", label: "Done · not live yet", detail: "Merged Oct 7; not deployed to production yet",
+      stage: "awaiting-release", label: "Code integrated · not live yet", detail: "Integrated Oct 7; not deployed to production yet",
     });
   });
 
   it("done when the repo has no deployments", () => {
     expect(deriveReadiness(item(), ledger())).toMatchObject({
-      stage: "done", label: "Done", detail: "Merged Oct 7; release not tracked for this repo",
+      stage: "done", label: "Code integrated", detail: "Integrated Oct 7; release not tracked for this repo",
     });
   });
 
@@ -211,7 +211,7 @@ describe("deriveReadiness", () => {
     const l = ledger({ baseRef: "feat/parent" }, { "org/app": [dep({})] });
     expect(deriveReadiness(item(), l)).toMatchObject({
       stage: "awaiting-release",
-      detail: "Merged into a larger change (feat/parent) that isn't live yet",
+      detail: "Part of a larger change (feat/parent) that isn't live yet",
     });
   });
 
@@ -529,7 +529,7 @@ describe("summarizeVerification with uncollected checks", () => {
 describe("readiness dates in the report timezone (edge cases)", () => {
   it("keeps bare calendar dates and falls back to UTC for an invalid zone", () => {
     const l = ledger({ mergedAt: "2026-10-08T01:00:00Z" }, {});
-    expect(deriveReadiness(item(), l, "Not/AZone")).toMatchObject({ detail: expect.stringContaining("Merged Oct 8") });
+    expect(deriveReadiness(item(), l, "Not/AZone")).toMatchObject({ detail: expect.stringContaining("Integrated Oct 8") });
     const stored = ledger({ release: { stage: "live", environment: "production", sha: "s", since: "2026-10-07" } }, {});
     expect(deriveReadiness(item(), stored, "America/New_York")).toMatchObject({ since: "2026-10-07", detail: "Live since Oct 7" });
   });

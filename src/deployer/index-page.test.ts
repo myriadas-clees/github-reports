@@ -314,7 +314,7 @@ describe("homepage effort summary", () => {
 
   it("builds the outcome line live-first, by effort, without conventional prefixes", () => {
     const html = render();
-    expect(html).toContain("Live: CSV import, Contact methods \u00b7 Done: Merged big");
+    expect(html).toContain("Live: CSV import, Contact methods \u00b7 Not live yet: Merged big");
     expect(html).toContain("In progress: Another WIP, Draft thing");
     expect(html).not.toContain("feat(hub):");
   });
@@ -322,7 +322,7 @@ describe("homepage effort summary", () => {
   it("caps the outcome line at three items and omits it when there is nothing", () => {
     const many = makeAllocation([["Hub", 9, { shipped: [item("A", 4, "live"), item("B", 3, "live"), item("C", 2, "live"), item("D", 9, "done")] }]]);
     expect(buildOutcomeLine(many)).toBe("Live: A, B, C");
-    expect(buildOutcomeLine(makeAllocation([["Hub", 9, { shipped: [item("D", 9, "done"), item("E", 1)] }]]))).toBe("Done: D, E");
+    expect(buildOutcomeLine(makeAllocation([["Hub", 9, { shipped: [item("D", 9, "done"), item("E", 1)] }]]))).toBe("Not live yet: D, E");
     expect(buildOutcomeLine(makeAllocation([["Hub", 5]]))).toBe("");
     expect(buildOutcomeLine(undefined)).toBe("");
     const none = renderIndexPage([day("2026/10/01", 8)], undefined, "en", undefined, undefined, undefined, "brutalist");

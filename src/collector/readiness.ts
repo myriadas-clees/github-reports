@@ -98,7 +98,7 @@ export const deriveReadiness = (item: ReadinessItem, evidence: EvidenceLedger | 
     if (PROTOTYPE_TITLE_RE.test(item.title) || /^\s*\[wip\]/i.test(item.title)) {
       return { stage: "prototype", label: "Prototype", detail: "Exploratory, not production-ready" };
     }
-    return { stage: "in-review", label: "In review", detail: "Being reviewed, not merged yet" };
+    return { stage: "in-review", label: "In review", detail: "Being reviewed; not integrated yet" };
   }
 
   if (pe?.release?.stage === "live") {
@@ -106,14 +106,14 @@ export const deriveReadiness = (item: ReadinessItem, evidence: EvidenceLedger | 
   }
 
   // merged
-  if (!evidence) return { stage: "done", label: "Done", detail: "Merged" };
+  if (!evidence) return { stage: "done", label: "Code integrated", detail: "Integrated" };
   const repo = item.repository ?? pe?.repository ?? "";
   const deps = evidence.deployments?.[repo] ?? [];
   const defaultBranch = evidence.defaultBranches?.[repo] ?? "main";
   const mergedAt = pe?.mergedAt ?? null;
   const mergedDay = mergedAt ? formatDay(mergedAt, timeZone) : undefined;
   const mergedSince = mergedAt ? calendarDate(mergedAt, timeZone) : undefined;
-  const mergedText = mergedDay ? `Merged ${mergedDay}` : "Merged";
+  const mergedText = mergedDay ? `Integrated ${mergedDay}` : "Integrated";
 
   const isMergeCommitDeployment = (d: DeploymentRecord): boolean =>
     !!pe?.mergeCommitSha && (d.sha === pe.mergeCommitSha || d.ref === pe.mergeCommitSha);
@@ -127,17 +127,17 @@ export const deriveReadiness = (item: ReadinessItem, evidence: EvidenceLedger | 
     : Boolean(pe?.ancestryUnknown?.production || pe?.ancestryUnknown?.nonProduction);
   const productionUnknown = typeof pe?.ancestryUnknown === "boolean" ? pe.ancestryUnknown : Boolean(pe?.ancestryUnknown?.production);
   const unavailable = Boolean(evidence.deploymentsUnavailable?.[repo]) || ancestryUnknown || Boolean(pe?.refreshFailedAt);
-  const notCollected = { stage: "done" as const, label: "Done", detail: `${mergedText}; release status not collected`, ...(mergedSince ? { since: mergedSince } : {}) };
+  const notCollected = { stage: "done" as const, label: "Code integrated", detail: `${mergedText}; release status not collected`, ...(mergedSince ? { since: mergedSince } : {}) };
 
   if (!unavailable && pe?.baseRef && pe.baseRef !== defaultBranch && !deps.some((d) => d.ref === pe.baseRef || isMergeCommitDeployment(d) || isContainingDeployment(d))) {
     return {
       stage: "awaiting-release",
-      label: "Done · not live yet",
-      detail: `Merged into a larger change (${pe.baseRef}) that isn't live yet`,
+      label: "Code integrated · not live yet",
+      detail: `Part of a larger change (${pe.baseRef}) that isn't live yet`,
       ...(mergedSince ? { since: mergedSince } : {}),
     };
   }
-  if (!pe) return { stage: "done", label: "Done", detail: "Merged; release status not collected" };
+  if (!pe) return { stage: "done", label: "Code integrated", detail: "Integrated; release status not collected" };
 
   const matched = matchedReleaseDeployment(item, evidence);
   if (matched?.stage === "live") {
@@ -158,12 +158,12 @@ export const deriveReadiness = (item: ReadinessItem, evidence: EvidenceLedger | 
   if (deps.some((d) => d.production)) {
     return {
       stage: "awaiting-release",
-      label: "Done · not live yet",
+      label: "Code integrated · not live yet",
       detail: `${mergedText}; not deployed to production yet`,
       ...(mergedSince ? { since: mergedSince } : {}),
     };
   }
-  return { stage: "done", label: "Done", detail: `${mergedText}; release not tracked for this repo` };
+  return { stage: "done", label: "Code integrated", detail: `${mergedText}; release not tracked for this repo` };
 };
 
 // ---------------------------------------------------------------- complexity

@@ -115,7 +115,7 @@ const uniqueTitles = (items: { kind: string; title: string }[], limit: number, s
 };
 
 /**
- * One plain line about what a week produced: "Live: A, B · Done: C" (at most 3 items, live
+ * One plain line about what a week produced: "Live: A, B · Not live yet: C" (at most 3 items, live
  * first, then by estimated effort), else "In progress: ..." from open work, else "".
  */
 export const buildOutcomeLine = (allocation: Allocation | undefined): string => {
@@ -125,7 +125,7 @@ export const buildOutcomeLine = (allocation: Allocation | undefined): string => 
   const merged = uniqueTitles(done.filter((i) => i.readiness?.stage !== "live"), MAX_OUTCOMES - live.length, seen);
   const parts: string[] = [];
   if (live.length > 0) parts.push(`Live: ${live.join(", ")}`);
-  if (merged.length > 0) parts.push(`Done: ${merged.join(", ")}`);
+  if (merged.length > 0) parts.push(`Not live yet: ${merged.join(", ")}`);
   if (parts.length > 0) return parts.join(" \u00b7 ");
   const open = (allocation?.initiatives ?? []).flatMap((b) => b.inProgress).sort(byEffortDesc);
   const progress = uniqueTitles(open, MAX_OUTCOMES);
@@ -151,7 +151,7 @@ export type WeekRow = {
   mixBar: MixBar;
   initiatives: WeekInitiativeShare[];
   hasInitiatives: boolean;
-  /** "Live: A, B · Done: C" or "In progress: ..."; empty when nothing to say. */
+  /** "Live: A, B · Not live yet: C" or "In progress: ..."; empty when nothing to say. */
   outcome: string;
   stats: ReportEntryStats;
   dayCount: number;

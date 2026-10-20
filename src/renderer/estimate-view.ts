@@ -91,7 +91,7 @@ export const ESTIMATE_SCRIPT = `(function () {
       lo = show(g.turnaroundDays.p50 * m50);
       hi = show(g.turnaroundDays.p90 * m90);
       eff = g.effortDays.p50 * m50;
-      basis = "Based on " + g.poolN + " similar changes I've merged since " + since();
+      basis = "Based on " + g.poolN + " similar changes I've completed since " + since();
       if (g.thin) basis += ". Thin history (only " + g.n + " exactly like this), so I widened the comparison; treat as a rough guide";
     }
     if (hi < lo) hi = lo;

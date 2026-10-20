@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+<head>
+  <title>{{pageTitle}}</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="{{description}}" />
+  <meta property="og:title" content="{{pageTitle}}" />
+  <meta property="og:description" content="{{description}}" />
+  <meta property="og:type" content="website" />
+  {{#if ogImageUrl}}<meta property="og:image" content="{{ogImageUrl}}" />{{/if}}
+  {{#if baseUrl}}<meta property="og:url" content="{{baseUrl}}/finished/" />{{/if}}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{pageTitle}}" />
+  <meta name="twitter:description" content="{{description}}" />
+  {{#if baseUrl}}<link rel="alternate" type="application/rss+xml" title="RSS Feed" href="{{baseUrl}}/feed.xml" />{{/if}}
+  <style>{{{css}}}</style>
+  <style>{{{indexCss}}}</style>
+  <style>{{{finishedCss}}}</style>
+  {{{themeInitScript}}}
+</head>
+<body>
+
+<nav class="index-nav">
+  <div class="index-nav-inner">
+    <a href="../" class="nav-brand">
+      <img class="nav-logo nav-logo-light" src="../assets/brand/myriad-m-mark.png" alt="Myriad" width="22" height="22" />
+      <img class="nav-logo nav-logo-dark" src="../assets/brand/myriad-m-mark-dark.png" alt="" width="22" height="22" />
+      <span class="nav-site-title">{{siteTitleInline}}</span>
+    </a>
+    <div class="nav-actions">
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+        <span class="theme-toggle-opt" data-mode="light" data-active="true"><span class="theme-toggle-glyph" aria-hidden="true">&#9728;&#65038;</span> Light</span>
+        <span class="theme-toggle-opt" data-mode="dark" data-active="false"><span class="theme-toggle-glyph" aria-hidden="true">&#9790;&#65038;</span> Dark</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main class="fin-page">
+{{{body}}}
+</main>
+
+<footer class="footer">
+  <div class="theme-toggle-row">
+    <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+      <span class="theme-toggle-opt" data-mode="light" data-active="true"><span class="theme-toggle-glyph" aria-hidden="true">&#9728;&#65038;</span> Light</span>
+      <span class="theme-toggle-opt" data-mode="dark" data-active="false"><span class="theme-toggle-glyph" aria-hidden="true">&#9790;&#65038;</span> Dark</span>
+    </button>
+  </div>
+  Myriad Advisor Solutions
+  &nbsp;&middot;&nbsp;
+  <a href="https://myriadas.com" target="_blank" rel="noopener">myriadas.com</a>
+</footer>
+
+{{{themeToggleScript}}}
+</body>
+</html>

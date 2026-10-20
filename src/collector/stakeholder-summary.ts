@@ -105,8 +105,8 @@ export const buildFallbackAIContent = (data: WeeklyReportData): AIContent => {
       type: "pr" as const,
       title: pr.title,
       repo: pr.repository,
-      meta: `merged · +${pr.additions} −${pr.deletions}`,
-      body: pr.body?.slice(0, 200) || "Merged pull request.",
+      meta: `integrated · +${pr.additions} −${pr.deletions}`,
+      body: pr.body?.slice(0, 200) || "Integrated pull request.",
       url: pr.url,
     })),
     ...inProgress.map((pr) => ({
@@ -213,8 +213,8 @@ export const buildFallbackAIContent = (data: WeeklyReportData): AIContent => {
     summaries,
     highlights,
     ticker: merged.slice(0, 5).map((pr) => ({
-      label: "MERGED",
-      text: `@${data.username} merged "${pr.title}" in ${pr.repository}`,
+      label: "INTEGRATED",
+      text: `@${data.username} completed "${pr.title}" in ${pr.repository}`,
     })),
   };
 };

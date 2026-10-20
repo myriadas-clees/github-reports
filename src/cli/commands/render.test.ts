@@ -268,6 +268,39 @@ describe("registerRender", () => {
     );
   });
 
+  it("writes finished/index.html and lists it in the sitemap even without a calculator", async () => {
+    mockRenderEstimatePage.mockReturnValueOnce(undefined);
+    mockReadFile.mockImplementation((path: string) => {
+      if (path.includes("github-data.yaml")) return Promise.resolve(GITHUB_DATA_YAML);
+      if (path.includes("llm-data.yaml")) return Promise.resolve(LLM_DATA_YAML);
+      return Promise.reject(new Error("not found"));
+    });
+    mockReaddir.mockImplementation((dir: string) => {
+      if (dir.endsWith("data")) return Promise.resolve(["2026"]);
+      if (dir.includes("2026")) return Promise.resolve(["W14"]);
+      return Promise.resolve([]);
+    });
+    const { registerRender } = await import("./render.js");
+    const program = new Command();
+    registerRender(program);
+    await program.parseAsync([
+      "node", "cli", "render",
+      "--data-dir", "./data", "--output-dir", "./output",
+      "--base-url", "https://user.github.io/repo",
+      "--language", "en", "--timezone", "UTC", "--date", "2026-04-01",
+    ]);
+    expect(mockWriteFile).toHaveBeenCalledWith(
+      expect.stringMatching(/finished\/index\.html$/),
+      expect.stringContaining("How we say something is finished"),
+      "utf-8",
+    );
+    expect(mockWriteFile).toHaveBeenCalledWith(
+      expect.stringContaining("sitemap.xml"),
+      expect.stringContaining("https://user.github.io/repo/finished/"),
+      "utf-8",
+    );
+  });
+
   it("does not write estimate page when none is rendered", async () => {
     mockReadFile.mockImplementation((path: string) => {
       if (path.includes("github-data.yaml")) return Promise.resolve(GITHUB_DATA_YAML);
@@ -1011,7 +1044,7 @@ describe("buildAllocationInput", () => {
       }, deployments: {}, deploymentsUnavailable: { "o/r": "2026-10-19T00:00:00Z" },
     } as unknown as import("../../types.js").EvidenceLedger;
     const input = buildAllocationInput({ current: { date: "2026-10-02", data: withPr }, dailyReports: new Map(), evidence, timezone: "America/New_York" })!;
-    expect(input.day!.initiatives[0]!.shipped[0]!.readiness).toMatchObject({ detail: "Merged Oct 7; release status not collected", since: "2026-10-07" });
+    expect(input.day!.initiatives[0]!.shipped[0]!.readiness).toMatchObject({ detail: "Integrated Oct 7; release status not collected", since: "2026-10-07" });
   });
 
   it("warns and returns undefined instead of throwing", async () => {

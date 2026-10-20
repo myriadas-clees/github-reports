@@ -413,6 +413,7 @@ describe("readiness, complexity and verification views", () => {
     const v = buildAllocationView({ week: { label: "w", allocation: a } })!;
     const [item] = v.panels[0]!.initiatives[0]!.shipped;
     expect(item!.readiness).toMatchObject({ label: "Live", stage: "live", ariaLabel: "Live: Live since Oct 8" });
+    expect(item!.stateLabel).toBe("Code integrated");
     expect(item!.complexity).toMatchObject({ level: "connected", hasRisks: true, risks: ["Payments"] });
     expect(item!.checksText).toBe("All 3 automated checks passed · 1 automated review · tests updated");
     expect(v.panels[0]!.initiatives[0]!.inProgress[0]!.checksText).toBe("Checks not collected");
@@ -454,6 +455,13 @@ describe("readiness, complexity and verification views", () => {
     // The open PR in this fixture has no check evidence, so it is named as not collected.
     expect(v.checksLine).toBe("1 of 1 passed automated checks · 1 not collected · 1 had automated code review · 1 included test updates · 5 review findings addressed");
     expect(v.note).toContain("No process catches every bug");
+  });
+
+  it("describes integrated changes without implying they are live", () => {
+    const integrated = { ...annotated, readiness: { stage: "awaiting-release" as const, label: "Code integrated · not live yet" } };
+    const a = makeAllocation([["A", 10, { shipped: [integrated] }]]);
+    const v = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification!;
+    expect(v.readinessLine).toBe("Of 1 change: 1 code integrated, not live yet");
   });
 
   it("says checks were not collected when no automated data exists", () => {

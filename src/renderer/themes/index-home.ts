@@ -46,7 +46,12 @@ export const INDEX_PLANNING_PARTIAL = `{{#if hasEstimatePage}}
       <li><a href="estimate/?kind=bug">Found a bug?</a></li>
     </ul>
   </section>
-  {{/if}}`;
+  {{/if}}
+  <section class="planning" aria-label="How we say something is finished">
+    <ul class="planning-links">
+      <li><a href="finished/">How we say something is finished</a></li>
+    </ul>
+  </section>`;
 
 export const INDEX_LEDGER_PARTIAL = `<section class="ledger" aria-label="Work week archive">
     <div class="ledger-heading">

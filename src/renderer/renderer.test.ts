@@ -46,7 +46,7 @@ const MOCK_DATA: WeeklyReportData = {
         type: "pr",
         title: "feat: add OAuth flow",
         repo: "org/backend",
-        meta: "merged Apr 2",
+        meta: "integrated Apr 2",
         body: "Big PR for auth.",
       },
     ],
@@ -133,7 +133,7 @@ describe("renderReport", () => {
       /class="data-chips activity-stats">([\s\S]*?)<\/div>/,
     )?.[1];
     expect(statsBlock).toBeTruthy();
-    expect(statsBlock).toContain("PRs merged");
+    expect(statsBlock).toContain("PRs integrated");
     expect(statsBlock).toContain("Lines");
     expect(statsBlock).toContain("Work delivered");
     expect(statsBlock).toContain("~1.5 engineer-days");
@@ -250,7 +250,7 @@ describe("renderReport", () => {
             type: "pr",
             title: "feat: markdown body",
             repo: "org/backend",
-            meta: "merged",
+            meta: "integrated",
             body: "## Why\n\nUse `code` and a [link](https://example.com).",
           },
         ],
@@ -353,8 +353,8 @@ describe("renderReport", () => {
     expect(html).toMatch(/<details class="activity-block">/);
     expect(html).not.toMatch(/<details[^>]*\sopen[\s>]/);
     expect(html).toMatch(/<summary class="activity-repo">/);
-    expect(html).toContain("10 commits, 2 PRs opened, 1 merged");
-    expect(html).toContain("0 commits, 1 PRs opened, 0 merged");
+    expect(html).toContain("10 commits, 2 PRs opened, 1 integrated");
+    expect(html).toContain("0 commits, 1 PRs opened, 0 integrated");
     expect(html).toContain("activity-repo--static");
     expect(html).toContain('class="activity-repo-ext"');
     expect(html).toContain('aria-label="Open org/backend on GitHub"');
@@ -421,6 +421,8 @@ describe("renderReport", () => {
     expect(html).not.toContain(">Pull requests<");
     expect(html).toContain("activity-children");
     expect(html).toContain('class="activity-block activity-pr-block"');
+    expect(html).toContain('class="pr-state pr-merged">Code integrated</span>');
+    expect(html).not.toContain('class="pr-state pr-merged">merged</span>');
     expect(html).toMatch(/<summary class="activity-pr">/);
     expect(html).toContain('href="https://github.com/org/backend/pull/10"');
     expect(html).toContain("feat: add OAuth");
@@ -469,7 +471,7 @@ describe("renderReport", () => {
     expect(html).toMatch(/<details class="activity-block">/);
     expect(html).not.toMatch(/<details[^>]*\sopen[\s>]/);
     expect(html).toMatch(/<summary class="activity-repo">/);
-    expect(html).toContain("2 commits, 0 PRs opened, 0 merged");
+    expect(html).toContain("2 commits, 0 PRs opened, 0 integrated");
     expect(html).toContain('class="activity-repo-ext"');
     expect(html).toContain('aria-label="Open org/backend on GitHub"');
     expect(html).toContain("Direct commits");

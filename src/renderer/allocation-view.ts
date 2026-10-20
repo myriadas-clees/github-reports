@@ -353,7 +353,7 @@ const KIND_LABELS: Record<AllocationItem["kind"], string> = {
 
 const STATE_LABELS: Record<NonNullable<AllocationItem["state"]>, string> = {
   open: "Open",
-  merged: "Merged",
+  merged: "Code integrated",
   closed: "Closed",
 };
 
@@ -442,9 +442,9 @@ const buildVerification = (a: Allocation): AllocationVerificationView | undefine
       joinParts([
         s.live > 0 && `${s.live} live`,
         s.preview > 0 && `${s.preview} in testing`,
-        s.awaitingRelease > 0 && `${s.awaitingRelease} done, not live yet`,
+        s.awaitingRelease > 0 && `${s.awaitingRelease} code integrated, not live yet`,
         s.completed - s.live - s.preview - s.awaitingRelease > 0 &&
-          `${s.completed - s.live - s.preview - s.awaitingRelease} done`,
+          `${s.completed - s.live - s.preview - s.awaitingRelease} code integrated`,
         s.inReview > 0 && `${s.inReview} in review`,
         s.drafts > 0 && `${s.drafts} ${plural(s.drafts, "draft or prototype", "drafts or prototypes")}`,
       ])
