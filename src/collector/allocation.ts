@@ -499,13 +499,13 @@ export const mergeAllocations = (allocations: Allocation[]): Allocation => {
           if (prior) {
             // Same PR on another day: effort, files and labels accumulate.
             absorbPrItem(prior, item);
-            if (section === "inProgress") appearanceIndex.set(prior, allocationIndex);
+            if (section === "inProgress" || (section === "other" && item.kind === "pr" && item.state === "closed")) appearanceIndex.set(prior, allocationIndex);
             continue;
           }
           const copy = { ...item, ...(item.files ? { files: [...item.files] } : {}), ...(item.labels ? { labels: [...item.labels] } : {}) };
           seen.set(key, copy);
           acc[section].push(copy);
-          if (section === "inProgress") appearanceIndex.set(copy, allocationIndex);
+          if (section === "inProgress" || (section === "other" && item.kind === "pr" && item.state === "closed")) appearanceIndex.set(copy, allocationIndex);
         }
       }
     }
@@ -513,20 +513,28 @@ export const mergeAllocations = (allocations: Allocation[]): Allocation => {
   for (const { item, count } of commitItems.values()) {
     item.title = `${count} direct commit${count === 1 ? "" : "s"}`;
   }
-  // A shipped appearance wins; otherwise a closed appearance supersedes stale open copies.
+  // A shipped appearance wins; otherwise the latest closed or open appearance wins.
   const destinationByUrl = new Map<string, { initiative: string; item: AllocationItem }>();
   for (const [initiative, acc] of accs) for (const item of acc.shipped) {
     if (item.url && !destinationByUrl.has(item.url)) destinationByUrl.set(item.url, { initiative, item });
   }
   for (const [initiative, acc] of accs) for (const item of acc.other) {
     if (item.kind === "pr" && item.state === "closed" && item.url && !destinationByUrl.has(item.url)) {
-      destinationByUrl.set(item.url, { initiative, item });
+      const open = [...accs.entries()].flatMap(([openInitiative, openAcc]) => openAcc.inProgress
+        .filter((candidate) => candidate.url === item.url)
+        .map((candidate) => ({ initiative: openInitiative, item: candidate })));
+      const latestOpen = open.reduce<typeof open[number] | undefined>((latest, current) =>
+        !latest || (appearanceIndex.get(current.item) ?? -1) > (appearanceIndex.get(latest.item) ?? -1) ? current : latest, undefined);
+      // The latest of the closed and open appearances wins (a reopen after a close stays open).
+      if (!latestOpen || (appearanceIndex.get(item) ?? -1) >= (appearanceIndex.get(latestOpen.item) ?? -1)) destinationByUrl.set(item.url, { initiative, item });
+      else destinationByUrl.set(item.url, latestOpen);
     }
   }
   for (const [initiative, acc] of accs) {
     acc.inProgress = acc.inProgress.filter((item) => {
       const destination = item.url ? destinationByUrl.get(item.url) : undefined;
       if (!destination) return true;
+      if (destination.item === item) return true;
       // Classify both copies before absorbing, which unions the in-progress labels into the shipped item.
       const sourceType = classifyWorkType(item.title, item.labels ?? []);
       const destinationType = classifyWorkType(destination.item.title, destination.item.labels ?? []);
@@ -538,6 +546,28 @@ export const mergeAllocations = (allocations: Allocation[]): Allocation => {
         acc.byWorkType[sourceType] = Math.max(0, (acc.byWorkType[sourceType] ?? 0) - hours);
         destinationAcc.hours += hours;
         destinationAcc.byWorkType[destinationType] = (destinationAcc.byWorkType[destinationType] ?? 0) + hours;
+      }
+      return false;
+    });
+  }
+  for (const [initiative, acc] of accs) {
+    acc.other = acc.other.filter((item) => {
+      if (item.kind !== "pr" || item.state !== "closed" || !item.url) return true;
+      const destination = destinationByUrl.get(item.url);
+      if (!destination || destination.item === item) return true;
+      // A later open appearance supersedes this closed copy.
+      if (destination.item.state !== "open") return true;
+      const fromType = classifyWorkType(item.title, item.labels ?? []);
+      const toType = classifyWorkType(destination.item.title, destination.item.labels ?? []);
+      const hours = item.effortHours ?? 0;
+      absorbPrItem(destination.item, item);
+      if (initiative !== destination.initiative && hours) {
+        const source = accs.get(initiative)!;
+        const target = accs.get(destination.initiative)!;
+        source.hours = Math.max(0, source.hours - hours);
+        source.byWorkType[fromType] = Math.max(0, (source.byWorkType[fromType] ?? 0) - hours);
+        target.hours += hours;
+        target.byWorkType[toType] = (target.byWorkType[toType] ?? 0) + hours;
       }
       return false;
     });

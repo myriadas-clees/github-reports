@@ -403,6 +403,18 @@ describe("mergeAllocations", () => {
     expect(summarizeVerification(merged)).toMatchObject({ inReview: 0, completed: 0, checksUnknown: 0, checksCollected: 0 });
   });
 
+  it("keeps a later reopened PR in progress and preserves totals", () => {
+    const closed = computeAllocation(data({ prsWorkedOnClosed: [pr({ url: "p", state: "closed", mergedAt: null })] }, 4));
+    const openPr = pr({ url: "p", state: "open", mergedAt: null });
+    // Reopened (and so listed in the report) on the later day, which carries 8h of attributable work.
+    const open = computeAllocation(data({ pullRequests: [openPr], prsInProgress: [openPr] }, 8));
+    const merged = mergeAllocations([closed, open]);
+    const items = merged.initiatives.flatMap((bucket) => [...bucket.inProgress, ...bucket.other]);
+    expect(items).toMatchObject([{ kind: "pr", state: "open", effortHours: 12 }]);
+    expect(merged.initiatives.flatMap((bucket) => bucket.other)).toEqual([]);
+    expect(merged.totalHours).toBe(12);
+  });
+
   it("sums manual hours and direct-commit counts", () => {
     const manual = (date: string): ManualTimeEntry[] => [{ date, initiative: "Ops", hours: 1.5 }];
     const mk = (date: string) =>

@@ -335,3 +335,37 @@ describe("release history before age-based pruning", () => {
     expect(ledger.prs[url]!.release).toMatchObject({ stage: "live", since: "2026-06-02T02:00:00Z" });
   });
 });
+
+describe("carryOverDerivedEvidence with partial review/file fetches", () => {
+  const base = {
+    url: "https://github.com/o/r/pull/1", repository: "o/r", number: 1, author: "me", state: "merged" as const,
+    isDraft: false, baseRef: "main", headRef: "f", headSha: "h", mergeCommitSha: "m",
+    createdAt: "2026-01-01T00:00:00Z", mergedAt: "2026-01-02T00:00:00Z", checks: null,
+    fetchedAt: "2026-01-03T00:00:00Z",
+  };
+  const prior = {
+    ...base,
+    reviews: [{ reviewer: "bob", bot: false, state: "APPROVED", submittedAt: "2026-01-02T00:00:00Z" }],
+    files: ["a.ts", "b.ts"],
+  };
+
+  it("merges partial reviews and files with the prior evidence instead of replacing them", () => {
+    const fresh = {
+      ...base, fetchedAt: "2026-02-01T00:00:00Z", incomplete: { reviews: true, files: true },
+      reviews: [{ reviewer: "amy", bot: false, state: "COMMENTED", submittedAt: "2026-01-03T00:00:00Z" }],
+      files: ["c.ts"],
+    };
+    const out = carryOverDerivedEvidence(fresh, prior);
+    expect(out.reviews.map((r) => r.reviewer).sort()).toEqual(["amy", "bob"]);
+    expect([...out.files].sort()).toEqual(["a.ts", "b.ts", "c.ts"]);
+    expect(out.incomplete).toEqual({ reviews: true, files: true });
+  });
+
+  it("replaces reviews and files and clears the flag after a complete fetch", () => {
+    const fresh = { ...base, reviews: [], files: ["c.ts"] };
+    const out = carryOverDerivedEvidence(fresh, { ...prior, incomplete: { reviews: true } });
+    expect(out.reviews).toEqual([]);
+    expect(out.files).toEqual(["c.ts"]);
+    expect(out.incomplete).toBeUndefined();
+  });
+});

@@ -138,6 +138,11 @@ export const carryOverDerivedEvidence = (
   prior: import("../../types.js").PrEvidence | undefined,
 ): import("../../types.js").PrEvidence => {
   const out = { ...fresh };
+  if (fresh.incomplete?.reviews && prior) {
+    const reviews = new Map([...prior.reviews, ...fresh.reviews].map((r) => [`${r.reviewer.toLowerCase()}|${r.submittedAt}`, r]));
+    out.reviews = [...reviews.values()];
+  }
+  if (fresh.incomplete?.files && prior) out.files = [...new Set([...prior.files, ...fresh.files])].slice(0, 300);
   if (prior?.containingDeployments) out.containingDeployments = prior.containingDeployments;
   if (prior?.nonContainingDeploymentShas) out.nonContainingDeploymentShas = prior.nonContainingDeploymentShas;
   if (prior?.unknownDeploymentShas) out.unknownDeploymentShas = prior.unknownDeploymentShas;
