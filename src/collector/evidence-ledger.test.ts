@@ -25,15 +25,22 @@ const dep = (n: number, over: Partial<DeploymentRecord> = {}): DeploymentRecord 
 });
 
 describe("ledger io", () => {
-  it("returns null for missing or invalid files and round-trips", async () => {
+  it("returns null for missing files and round-trips", async () => {
     dir = await mkdtemp(join(tmpdir(), "ev-"));
-    expect(await readEvidenceLedger(dir)).toBeNull();
-    await writeFile(join(dir, EVIDENCE_FILE), "- not a map", "utf-8");
     expect(await readEvidenceLedger(dir)).toBeNull();
     const l = emptyLedger();
     l.prs["u"] = pr({ release: { stage: "live", environment: "production", sha: "s1", since: "2026-05-03T00:00:00Z" } });
     await writeEvidenceLedger(dir, l);
     expect((await readEvidenceLedger(dir))?.prs["u"]).toMatchObject({ number: 1, release: { stage: "live", environment: "production", sha: "s1", since: "2026-05-03T00:00:00Z" } });
+  });
+
+  it("throws with the ledger path for malformed YAML and non-object content", async () => {
+    dir = await mkdtemp(join(tmpdir(), "ev-"));
+    const path = join(dir, EVIDENCE_FILE);
+    await writeFile(path, "invalid: [yaml", "utf-8");
+    await expect(readEvidenceLedger(dir)).rejects.toThrow(path);
+    await writeFile(path, "- not a map", "utf-8");
+    await expect(readEvidenceLedger(dir)).rejects.toThrow(path);
   });
 });
 

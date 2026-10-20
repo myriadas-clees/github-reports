@@ -292,7 +292,7 @@ export const fetchPrEvidence = async (
     mergedAt: pr.merged_at,
     reviews: filterReviews(reviewsRaw.items, author),
     ...((reviewsRaw.failed || files.failed) ? { incomplete: { ...(reviewsRaw.failed ? { reviews: true } : {}), ...(files.failed ? { files: true } : {}) } } : {}),
-    ...(files.truncated ? { filesTruncated: true } : {}),
+    ...(files.truncated || files.items.length >= MAX_FILES ? { filesTruncated: true } : {}),
     checks,
     files: files.items.map((f) => f.filename),
     fetchedAt: now.toISOString(),

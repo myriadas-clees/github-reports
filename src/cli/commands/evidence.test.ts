@@ -1,4 +1,7 @@
 import { describe, expect, it } from "vitest";
+import { mkdtemp, readFile, writeFile, rm } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import { allLedgerRefs, applyDeploymentFetch, buildKnownDeploymentKeys, carryOverDerivedEvidence, deploymentCutoffIso, evidenceRepositories, findContainingDeployments, markDeploymentsUnavailable, recordReleaseEvidence, refreshPrEvidence, selectDeploymentCandidates } from "./evidence.js";
 import { emptyLedger, pruneDeployments } from "../../collector/evidence-ledger.js";
 import { evidenceArgs } from "./report.js";
@@ -288,6 +291,26 @@ describe("report evidence step args", () => {
     const flags = evidenceArgs(reportOpts).filter((a) => a.startsWith("--"));
     expect(flags.filter((f) => !known.has(f))).toEqual([]);
   });
+});
+
+it("aborts on a malformed ledger without changing its bytes", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "evidence-cli-"));
+  try {
+    const config = join(dir, "config.yaml");
+    const ledger = join(dir, "evidence.yaml");
+    const original = "prs: [partially written\n";
+    await writeFile(config, `username: test\ndata_dir: ${dir}\nrepositories: []\n`, "utf-8");
+    await writeFile(ledger, original, "utf-8");
+    const { Command } = await import("commander");
+    const { registerEvidence } = await import("./evidence.js");
+    const program = new Command();
+    registerEvidence(program);
+    await expect(program.parseAsync(["node", "cli", "evidence", "--config", config, "--token", "test-token"]))
+      .rejects.toThrow(ledger);
+    expect(await readFile(ledger, "utf-8")).toBe(original);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
 });
 
 describe("carryOverDerivedEvidence", () => {

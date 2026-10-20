@@ -215,6 +215,23 @@ describe("registerRender", () => {
     expect(cardSvg).toContain("2026-04-03");
   });
 
+  it("warns and renders without evidence when the ledger is malformed", async () => {
+    mockReadFile.mockImplementation((path: string) => {
+      if (path.includes("github-data.yaml")) return Promise.resolve(GITHUB_DATA_YAML);
+      if (path.includes("llm-data.yaml")) return Promise.resolve(LLM_DATA_YAML);
+      if (path.endsWith("evidence.yaml")) return Promise.resolve("bad: [yaml");
+      return Promise.reject(new Error("not found"));
+    });
+    mockReaddir.mockImplementation((dir: string) => dir.endsWith("data") ? Promise.resolve(["2026"]) : dir.includes("2026") ? Promise.resolve(["W14"]) : Promise.resolve([]));
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    const { registerRender } = await import("./render.js");
+    const program = new Command();
+    registerRender(program);
+    await program.parseAsync(["node", "cli", "render", "--data-dir", "./data", "--output-dir", "./output", "--base-url", "https://user.github.io/repo", "--language", "en", "--timezone", "UTC", "--date", "2026-04-01"]);
+    expect(mockRenderReport).toHaveBeenCalled();
+    expect(warn).toHaveBeenCalledWith(expect.stringContaining("evidence ledger unavailable"));
+  });
+
   it("writes estimate/index.html and lists it in the sitemap when the page renders", async () => {
     mockRenderEstimatePage.mockReturnValueOnce("<html>estimate</html>");
     mockReadFile.mockImplementation((path: string) => {

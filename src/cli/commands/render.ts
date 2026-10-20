@@ -428,7 +428,10 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
   const allDailyReports = new Map(dailyReports);
   if (DAILY_PATH.test(dayId.path)) allDailyReports.set(dayId.path.replaceAll("/", "-"), githubData);
   const colorOrder = buildInitiativeColorOrder(allDailyReports, options.allocation, options.manualTime);
-  const evidence = await readEvidenceLedger(options.dataDir).catch(() => null);
+  const evidence = await readEvidenceLedger(options.dataDir).catch((err: unknown) => {
+    console.warn(`Warning: evidence ledger unavailable; rendering without evidence: ${err instanceof Error ? err.message : err}`);
+    return null;
+  });
   const allocationFor = (path: string, report: WeeklyReportData): AllocationInput | undefined =>
     buildAllocationInput({
       colorOrder,

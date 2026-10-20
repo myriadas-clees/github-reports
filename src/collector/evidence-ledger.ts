@@ -24,10 +24,18 @@ const isObject = (v: unknown): v is Record<string, unknown> =>
   typeof v === "object" && v !== null && !Array.isArray(v);
 
 export const readEvidenceLedger = async (dataDir: string): Promise<EvidenceLedger | null> => {
+  const path = join(dataDir, EVIDENCE_FILE);
+  let raw: string;
   try {
-    const raw = await readFile(join(dataDir, EVIDENCE_FILE), "utf-8");
+    raw = await readFile(path, "utf-8");
+  } catch (err) {
+    if ((err as NodeJS.ErrnoException).code === "ENOENT") return null;
+    throw new Error(`Failed to read evidence ledger ${path}: ${err instanceof Error ? err.message : err}`, { cause: err });
+  }
+  if (!raw.trim()) return null;
+  try {
     const parsed = parseYaml(raw) as unknown;
-    if (!isObject(parsed)) return null;
+    if (!isObject(parsed)) throw new Error("expected a YAML object at the top level");
     return {
       version: typeof parsed.version === "string" ? parsed.version : EVIDENCE_VERSION,
       updatedAt: typeof parsed.updatedAt === "string" ? parsed.updatedAt : new Date(0).toISOString(),
@@ -40,8 +48,8 @@ export const readEvidenceLedger = async (dataDir: string): Promise<EvidenceLedge
       deploymentsUnavailable: isObject(parsed.deploymentsUnavailable) ? (parsed.deploymentsUnavailable as Record<string, string>) : undefined,
       prs: isObject(parsed.prs) ? (parsed.prs as Record<string, PrEvidence>) : {},
     };
-  } catch {
-    return null;
+  } catch (err) {
+    throw new Error(`Invalid evidence ledger ${path}: ${err instanceof Error ? err.message : err}`, { cause: err });
   }
 };
 
