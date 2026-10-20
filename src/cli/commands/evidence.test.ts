@@ -219,6 +219,52 @@ it("upgrades stored preview release evidence when production is found", () => {
   expect(ledger.prs[url]?.release).toEqual({ stage: "live", environment: "production", sha: "new", since: "2026-01-04T01:00:00Z" });
 });
 
+describe("release evidence updates", () => {
+  const record = (stored: { stage: "live" | "preview"; since: string }, matched: { stage: "live" | "preview"; since: string }) => {
+    const ledger = emptyLedger();
+    const url = "https://github.com/org/app/pull/32";
+    ledger.prs[url] = {
+      url, repository: "org/app", number: 32, author: "a", state: "merged", isDraft: false,
+      baseRef: "main", headRef: "feature", headSha: "head", mergeCommitSha: "merge",
+      createdAt: "2026-10-01T00:00:00Z", mergedAt: "2026-10-02T00:00:00Z", reviews: [], checks: null, files: [], fetchedAt: "2026-10-03T00:00:00Z",
+      release: { ...stored, environment: stored.stage === "live" ? "production" : "preview", sha: "stored" },
+    };
+    const deployment = {
+      environment: matched.stage === "live" ? "production" : "preview",
+      production: matched.stage === "live", ref: matched.stage === "live" ? "main" : "feature",
+      sha: "matched", createdAt: matched.since, succeededAt: matched.since,
+    };
+    ledger.deployments["org/app"] = [deployment];
+    recordReleaseEvidence(ledger, [{ repo: "org/app", number: 32, url }]);
+    return ledger.prs[url]!.release;
+  };
+
+  it("replaces preview with an earlier preview match", () => {
+    expect(record({ stage: "preview", since: "2026-10-10T00:00:00Z" }, { stage: "preview", since: "2026-10-05T00:00:00Z" }))
+      .toEqual({ stage: "preview", environment: "preview", sha: "matched", since: "2026-10-05T00:00:00Z" });
+  });
+
+  it("replaces live with an earlier live match", () => {
+    expect(record({ stage: "live", since: "2026-10-10T00:00:00Z" }, { stage: "live", since: "2026-10-05T00:00:00Z" }))
+      .toEqual({ stage: "live", environment: "production", sha: "matched", since: "2026-10-05T00:00:00Z" });
+  });
+
+  it("keeps live when a preview match is found", () => {
+    expect(record({ stage: "live", since: "2026-10-10T00:00:00Z" }, { stage: "preview", since: "2026-10-05T00:00:00Z" }))
+      .toEqual({ stage: "live", environment: "production", sha: "stored", since: "2026-10-10T00:00:00Z" });
+  });
+
+  it("upgrades preview to live even when the live match is later", () => {
+    expect(record({ stage: "preview", since: "2026-10-05T00:00:00Z" }, { stage: "live", since: "2026-10-10T00:00:00Z" }))
+      .toEqual({ stage: "live", environment: "production", sha: "matched", since: "2026-10-10T00:00:00Z" });
+  });
+
+  it("keeps a preview when the matching preview date is later", () => {
+    expect(record({ stage: "preview", since: "2026-10-05T00:00:00Z" }, { stage: "preview", since: "2026-10-10T00:00:00Z" }))
+      .toEqual({ stage: "preview", environment: "preview", sha: "stored", since: "2026-10-05T00:00:00Z" });
+  });
+});
+
 describe("report evidence step args", () => {
   const reportOpts = {
     token: "secret", config: "cfg.yml", dataDir: "data", date: "2026-10-10",

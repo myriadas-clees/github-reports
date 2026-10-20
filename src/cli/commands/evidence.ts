@@ -156,8 +156,10 @@ export const recordReleaseEvidence = (ledger: EvidenceLedger, refs: PrRef[]): vo
     const pe = ledger.prs[ref.url];
     if (!pe?.mergedAt || pe.state !== "merged") continue;
     const match = matchedReleaseDeployment({ state: "merged", title: "", labels: [], url: ref.url, repository: ref.repo }, ledger);
-    if (!match || (match.stage === "preview" && pe.release)) continue;
-    if (pe.release?.stage === "live" && match.stage !== "live") continue;
+    if (!match) continue;
+    const current = pe.release;
+    if (current?.stage === "live" && match.stage === "preview") continue;
+    if (current?.stage === match.stage && Date.parse(match.deployment.succeededAt) >= Date.parse(current.since)) continue;
     pe.release = { stage: match.stage, environment: match.deployment.environment, sha: match.deployment.sha, since: match.deployment.succeededAt };
   }
 };
