@@ -4,7 +4,7 @@ Daily GitHub status-page generator with private source and a public progress pag
 
 > Reports published to GitHub Pages are public and may include commit messages, pull-request titles, review activity, and line-change totals. Repository file contents and tokens are never included.
 
-Every weekday morning, Worklog reports activity from the **previous completed workday** (Monday reports Friday): commits, pull requests (opened / merged / in progress), reviews, review comments, repositories, line changes, and **estimated engineering hours** (clearly labeled as conventional engineering effort, not tracked time). It publishes a clean static HTML report with daily archives.
+Every weekday morning, Worklog reports activity from the **previous completed workday** (Monday reports Friday): commits, pull requests (opened / merged / in progress), reviews, review comments, repositories, line changes, and **estimated manual engineering effort**. This models the time one engineer might need to deliver the same changes without AI assistance. It is an intended comparison baseline, not actual hours worked or measured time saved, and has not been validated against recorded unassisted work. It publishes a clean static HTML report with daily archives.
 
 ## Quick setup
 

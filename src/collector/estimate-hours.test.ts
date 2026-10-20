@@ -73,7 +73,7 @@ describe("estimateHours hybrid", () => {
     expect(result.hours).toBe(result.volumeHours);
     expect(result.version).toBe("2.3");
     expect(result.note).toMatch(/work delivered/i);
-    expect(result.note).toMatch(/measures output, not hours worked/i);
+    expect(result.note).toMatch(/not actual hours worked/i);
   });
 
   it("uses session hours when they exceed volume", () => {

@@ -63,7 +63,7 @@ export type MixSegment = { name: string; colorClass: string; percent: string; gr
 export type MixBar = { segments: MixSegment[]; ariaLabel: string };
 
 export const ESTIMATE_NOTE =
-  "Estimated effort: how long a typical engineer would need to build the same changes. Not hours worked.";
+  "Estimated manual engineering effort: approximate time one engineer would need to deliver the same changes without AI assistance. A modeled baseline, not actual hours worked.";
 
 const toEstimate = (hours: number | undefined): EffortEstimate | undefined => {
   if (!(typeof hours === "number" && Number.isFinite(hours) && hours > 0)) return undefined;

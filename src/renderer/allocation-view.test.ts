@@ -77,7 +77,7 @@ describe("buildAllocationView", () => {
     const v = buildAllocationView({ week: { label: "Oct 1–7", allocation: week } })!;
     expect(v.title).toBe("Where the effort went");
     const w = weekPanel(v);
-    expect(w.lede).toBe("Work delivered in the week of Oct 1–7 would typically take one engineer about 4.5 days. Here's where it went across 3 initiatives.");
+    expect(w.lede).toBe("Work delivered in the week of Oct 1–7 would typically take one engineer about 4.5 days without AI assistance. Here's where it went across 3 initiatives.");
     const names = w.bar.segments.map((s) => s.name);
     expect(names).toEqual(["Pricing", "Hub", "Platform"]);
     const pricing = w.bar.segments[0]!;
@@ -99,7 +99,7 @@ describe("buildAllocationView", () => {
     expect(v.hasSwitch).toBe(false);
     expect(v.script).toBe("");
     expect(v.panels[0]).toMatchObject({ kind: "day", label: "Today", isDefault: true });
-    expect(v.panels[0]!.lede).toBe("Work delivered today would typically take one engineer about 1 day. Here's where it went across 1 initiative.");
+    expect(v.panels[0]!.lede).toBe("Work delivered today would typically take one engineer about 1 day without AI assistance. Here's where it went across 1 initiative.");
   });
 
   it("builds the work type bar with its own palette", () => {
@@ -252,7 +252,7 @@ describe("buildAllocationView", () => {
     const v = buildAllocationView({ week: { label: "w", allocation: week } })!;
     expect(v.note).toBe("Estimated from PR size and review activity.");
     expect(v.measureTitle).toBe("How we measure this");
-    expect(v.measureNote).toContain("It measures output, not hours worked");
+    expect(v.measureNote).toContain("not actual hours worked or measured time saved");
     expect(v.measureNote).toContain("Items marked Self-reported");
   });
 
@@ -342,10 +342,10 @@ describe("buildAllocationView day and week panels", () => {
     const [d, w] = build("2026-08-05").panels as [ReturnType<typeof dayPanel>, ReturnType<typeof weekPanel>];
     expect(d.label).toBe("Aug 5");
     expect(d.heading).toBe("Aug 5");
-    expect(d.lede).toBe("Work delivered on Aug 5 would typically take one engineer about 1 day. Here's where it went across 2 initiatives.");
+    expect(d.lede).toBe("Work delivered on Aug 5 would typically take one engineer about 1 day without AI assistance. Here's where it went across 2 initiatives.");
     expect(w.label).toBe("Oct 1–7 (so far)");
     expect(w.heading).toBe("Work week of Oct 1–7 (so far)");
-    expect(w.lede).toBe("Work delivered this week so far (Oct 1–7) would typically take one engineer about 4.5 days. Here's where it went across 3 initiatives.");
+    expect(w.lede).toBe("Work delivered this week so far (Oct 1–7) would typically take one engineer about 4.5 days without AI assistance. Here's where it went across 3 initiatives.");
   });
 
   it("builds closed-week wording once the week has ended", () => {

@@ -255,8 +255,8 @@ describe("homepage effort summary", () => {
       expect(html, theme).toContain("engineer-days");
       expect(html, theme).toContain("estimated");
       const hero = html.slice(html.indexOf('class="home-hero'), html.indexOf('class="ledger"'));
-      expect(hero, theme).toContain("Estimated effort: how long a typical engineer would need to build the same changes. Not hours worked.");
-      expect(html.match(/Estimated effort: how long a typical engineer/g)?.length, theme).toBeGreaterThanOrEqual(1);
+      expect(hero, theme).toContain("Estimated manual engineering effort: approximate time one engineer would need to deliver the same changes without AI assistance. A modeled baseline, not actual hours worked.");
+      expect(html.match(/Estimated manual engineering effort: approximate time/g)?.length, theme).toBeGreaterThanOrEqual(1);
       expect(hero.match(/class="alloc-bar /g), theme).toHaveLength(1);
       // Hub = 90 of 128h, same color slot as on report pages (colorOrder[0] -> alloc-c1).
       expect(hero, theme).toContain('alloc-seg alloc-c1" style="--grow:70.31" title="Hub 70%"');

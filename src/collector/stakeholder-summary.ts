@@ -189,12 +189,12 @@ export const buildFallbackAIContent = (data: WeeklyReportData): AIContent => {
   if ((data.hoursEstimate?.hours ?? data.stats.estimatedHours) > 0) {
     summaries.push({
       type: "activity-pattern",
-      heading: "Work delivered",
+      heading: "Manual effort estimate",
       body: data.hoursEstimate?.note ??
-        "What a typical engineer would need to build these changes. Measures output, not hours worked.",
+        "Modeled manual engineering effort for one engineer to deliver these changes without AI assistance; not actual hours worked or measured time saved.",
       chips: [
         {
-          label: "Work delivered",
+          label: "Manual effort estimate",
           value: formatWorkDeliveredLabel(data.hoursEstimate?.hours ?? data.stats.estimatedHours),
         },
       ],

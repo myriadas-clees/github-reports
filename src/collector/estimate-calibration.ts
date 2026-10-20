@@ -33,7 +33,7 @@ export type EstimateGroup = {
   turnaroundDays: Percentiles;
   /** Days with commits on the PR. */
   activeDays: Percentiles;
-  /** Equivalent effort for a typical engineer, in engineer-days. */
+  /** Heuristic equivalent manual effort without AI assistance, in engineer-days. */
   effortDays: Percentiles;
 };
 

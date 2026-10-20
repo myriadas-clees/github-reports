@@ -47,14 +47,14 @@ describe("allocation section", () => {
         allocation: { day, week: { label: "Oct 1–7", allocation: week }, trend },
       });
       expect(html).toContain("Where the effort went");
-      expect(html).toContain("Work delivered in the week of Oct 1–7 would typically take one engineer about 3.5 days. Here&#x27;s where it went across 2 initiatives.");
+      expect(html).toContain("Work delivered in the week of Oct 1–7 would typically take one engineer about 3.5 days without AI assistance. Here&#x27;s where it went across 2 initiatives.");
       expect(html).toContain('title="Pricing: 54% of work delivered"');
       expect(html).toContain("Completed");
       expect(html).toContain("Self-reported");
       expect(html).toContain("No reports");
       expect(html).toContain("View as data table");
       expect(html).toContain("How we measure this");
-      expect(html).toContain("It measures output, not hours worked");
+      expect(html).toContain("not actual hours worked or measured time saved");
       expect(html).not.toContain("Percentages are more reliable");
       expect(html).not.toContain(week.note);
       const section = html.slice(html.indexOf('id="alloc-title"'), html.indexOf("</section>", html.indexOf('id="alloc-title"')));
@@ -226,13 +226,13 @@ describe("work delivered chip", () => {
   for (const theme of AVAILABLE_THEMES as Theme[]) {
     it(`hides the chip and its note for a zero-hour estimate in the ${theme} theme`, () => {
       const html = renderReport(withHours(0), { theme });
-      expect(html, theme).not.toContain("Work delivered");
-      expect(html, theme).not.toContain("What a typical engineer would need to build these changes");
+      expect(html, theme).not.toContain("Manual effort estimate");
+      expect(html, theme).not.toContain("Estimated manual engineering effort for one engineer");
     });
     it(`shows the chip and its note for an 8-hour estimate in the ${theme} theme`, () => {
       const html = renderReport(withHours(8), { theme });
-      expect(html, theme).toContain("Work delivered");
-      expect(html, theme).toContain("What a typical engineer would need to build these changes");
+      expect(html, theme).toContain("Manual effort estimate");
+      expect(html, theme).toContain("Estimated manual engineering effort for one engineer delivering these changes without AI assistance");
     });
   }
 });

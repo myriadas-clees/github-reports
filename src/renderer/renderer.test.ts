@@ -135,7 +135,7 @@ describe("renderReport", () => {
     expect(statsBlock).toBeTruthy();
     expect(statsBlock).toContain("PRs integrated");
     expect(statsBlock).toContain("Lines");
-    expect(statsBlock).toContain("Work delivered");
+    expect(statsBlock).toContain("Manual effort estimate");
     expect(statsBlock).toContain("~1.5 engineer-days");
     expect(statsBlock).not.toContain("Commits");
     expect(statsBlock).not.toContain("PRs opened");
@@ -144,7 +144,7 @@ describe("renderReport", () => {
     expect(statsBlock).not.toContain("Review comments");
     expect(statsBlock).not.toContain("From timestamps");
     expect(statsBlock).not.toContain("From PR volume");
-    expect(html).toContain("What a typical engineer would need to build these changes. Measures output, not hours worked.");
+    expect(html).toContain("Estimated manual engineering effort for one engineer delivering these changes without AI assistance. A modeled baseline, not actual hours worked.");
     expect(html).not.toContain("Combines timestamps and volume.");
   });
 

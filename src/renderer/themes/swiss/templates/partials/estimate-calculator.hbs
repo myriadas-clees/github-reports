@@ -6,7 +6,7 @@
     <h2 class="section-group-title" id="est-title">How long would it take?</h2>
     <div class="section-group-line"></div>
   </div>
-  <p class="est-intro">Pick the kind of work to get a planning range based on my past delivery.</p>
+  <p class="est-intro">Pick the kind of work to see a planning range based on past delivery, alongside estimated effort without AI assistance.</p>
   {{/unless}}
   <form class="est-form" autocomplete="off">
     <label class="est-field"><span class="est-label">What kind of work</span>
@@ -57,7 +57,8 @@
   <details class="est-details">
     <summary>How this is calculated</summary>
     <p>It uses {{sampleSize}} changes I completed since {{sinceLabel}}, grouped by kind of work and how many files they touched.</p>
-    <p>"Likely" is the typical (P50) outcome and "allow up to" is the slow-end (P90) outcome, counted in working days from first activity to code integration.</p>
+    <p>The planning range is historical turnaround from first activity to code integration, counted in working days. "Likely" is the typical (P50) outcome and "allow up to" is the slow-end (P90) outcome.</p>
+    <p>Equivalent manual effort is a modeled baseline for one engineer delivering the same changes without AI assistance. It is not actual hours worked or measured time saved.</p>
     <p>Adjustments for familiarity, outside systems and prototype versus production are rules of thumb, not measurements.</p>
     <p>When few similar changes exist, the comparison widens to nearby sizes and says so.</p>
   </details>

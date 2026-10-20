@@ -78,7 +78,7 @@ export const renderEstimatePage = (
   const theme = loadTheme(options.themeName ?? "brutalist");
   const resolvedSiteTitle = (options.siteTitle ?? "Dev\nPulse").replace(/\\n/g, "\n");
   const siteTitleInline = resolvedSiteTitle.replace(/\n/g, " ");
-  const description = "Pick the kind of work to get a planning range based on my past delivery.";
+  const description = "See past delivery times and estimated effort for one engineer working without AI assistance.";
   const hbs = Handlebars.create();
   hbs.registerPartial("estimate-calculator", readThemeTemplate(theme, "partials/estimate-calculator.hbs"));
   const template = hbs.compile(readThemeTemplate(theme, "estimate-page.hbs"));

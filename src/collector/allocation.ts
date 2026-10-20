@@ -37,7 +37,7 @@ export const WORK_TYPE_LABELS: Record<WorkType, string> = {
 };
 
 const ALLOCATION_NOTE =
-  "Work delivered is an estimate of how long a typical engineer would need to build the same changes, split across initiatives by delivered scope; it is not tracked time.";
+  "Work delivered is a modeled estimate of the manual engineering effort for one engineer to deliver the same changes without AI assistance, split across initiatives by delivered scope. It is not actual hours worked or measured time saved.";
 
 /** Effort (engineer-hours) at or above which a PR is badged "major" (3 engineer-days). */
 export const MAJOR_IMPACT_HOURS = 24;

@@ -144,9 +144,9 @@ describe("buildFallbackAIContent", () => {
 
     expect(content.highlights[0]?.url).toContain("github.com");
     expect(content.summaries.length).toBeGreaterThan(0);
-    const effort = content.summaries.find((summary) => summary.heading === "Work delivered");
-    expect(effort?.chips?.some((chip) => chip.label === "Work delivered")).toBe(true);
-    expect(effort?.chips?.find((chip) => chip.label === "Work delivered")?.value).toBe("~1 engineer-day");
+    const effort = content.summaries.find((summary) => summary.heading === "Manual effort estimate");
+    expect(effort?.chips?.some((chip) => chip.label === "Manual effort estimate")).toBe(true);
+    expect(effort?.chips?.find((chip) => chip.label === "Manual effort estimate")?.value).toBe("~1 engineer-day");
     expect(effort?.chips?.some((chip) => chip.label === "Sessions")).toBe(false);
   });
 });

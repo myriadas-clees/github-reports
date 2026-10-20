@@ -340,8 +340,8 @@ export const estimateHours = (
   );
 
   const note =
-    "Estimated work delivered: how long a typical engineer would need to build the same changes, " +
-    "based on PR scope, reviews, and commits. Measures output, not hours worked. " +
+    "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to deliver the same changes without AI assistance, " +
+    "based on PR scope, reviews, and commits. It is not actual hours worked or measured time saved. " +
     "Very busy days count with diminishing returns.";
 
   return {

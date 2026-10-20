@@ -1,6 +1,6 @@
 // Present the hours estimate as estimated effort in engineer-days, one unit everywhere.
-// The estimate means "how long a typical engineer would need to build the same
-// changes", not clock time, so we avoid hour-based labels in stakeholder output.
+// The estimate means heuristic manual effort for one engineer to deliver the
+// same changes without AI assistance, not clock time or measured time saved.
 
 export const HOURS_PER_ENGINEER_DAY = 8;
 const MIN_SHOWN = 0.5;

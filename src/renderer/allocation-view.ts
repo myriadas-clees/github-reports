@@ -25,8 +25,9 @@ export const OTHER_LABEL = "Other";
 export const MAX_VISIBLE_SHIPPED = 8;
 export const MEASURE_TITLE = "How we measure this";
 export const MEASURE_NOTE =
-  "Work delivered estimates how long a typical engineer would need to build the same changes, based on their size, breadth, tests, and code reviews. " +
-  "It measures output, not hours worked: a major fix finished in one focused session counts the same as one spread across a day. " +
+  "Work delivered estimates the manual engineering effort for one engineer to deliver the same changes without AI assistance, based on size, breadth, tests, and code reviews. " +
+  "It is a modeled baseline, not actual hours worked or measured time saved. " +
+  "A major fix finished in one focused session counts the same as one spread across a day. " +
   "Percentages show where this period's delivered work went. " +
   "Items marked Self-reported (e.g. meetings, design) are logged by hand.";
 
@@ -612,7 +613,7 @@ const buildPanel = (p: AllocationPanelInput, colors: ColorMap, isDefault: boolea
     kind: p.kind,
     label: p.open ? `${p.label}${SO_FAR}` : p.label,
     heading,
-    lede: `Work delivered ${panelScope(p)} would typically take one engineer ${formatWorkDelivered(a.totalHours).plain}. ` +
+    lede: `Work delivered ${panelScope(p)} would typically take one engineer ${formatWorkDelivered(a.totalHours).plain} without AI assistance. ` +
       `Here's where it went across ${count} ${plural(count, "initiative", "initiatives")}.`,
     bar: toBar(legend, `Initiatives, ${heading}`),
     legend,
