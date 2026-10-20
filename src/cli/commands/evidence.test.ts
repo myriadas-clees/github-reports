@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { applyDeploymentFetch, buildKnownDeploymentKeys, carryOverDerivedEvidence, deploymentCutoffIso, evidenceRepositories, findContainingDeployments, markDeploymentsUnavailable, recordReleaseEvidence, selectDeploymentCandidates } from "./evidence.js";
+import { allLedgerRefs, applyDeploymentFetch, buildKnownDeploymentKeys, carryOverDerivedEvidence, deploymentCutoffIso, evidenceRepositories, findContainingDeployments, markDeploymentsUnavailable, recordReleaseEvidence, selectDeploymentCandidates } from "./evidence.js";
 import { emptyLedger, pruneDeployments } from "../../collector/evidence-ledger.js";
 import { evidenceArgs } from "./report.js";
 
@@ -29,14 +29,21 @@ describe("deploymentCutoffIso", () => {
   });
 });
 
-it("retries recently scanned failures while retaining old and successful scanned keys", () => {
+it("retries recent/legacy scans, skips old failures, and keeps recorded successes known", () => {
   const now = new Date("2026-10-20T00:00:00Z");
   const recentFailure = "prod|failed|2026-10-18T00:00:00Z";
   const oldFailure = "prod|failed-old|2026-10-10T00:00:00Z";
   const success = { environment: "prod", production: true, ref: "main", sha: "success", createdAt: "2026-10-18T00:00:00Z", succeededAt: "2026-10-18T01:00:00Z" };
-  expect(buildKnownDeploymentKeys([success], [recentFailure, oldFailure, "prod|success|2026-10-18T00:00:00Z"], now)).toEqual(
+  expect(buildKnownDeploymentKeys([success], { [recentFailure]: "failure", [oldFailure]: "failure", "prod|success|2026-10-18T00:00:00Z": "success" }, now)).toEqual(
     new Set(["prod|failed-old|2026-10-10T00:00:00Z", "prod|success|2026-10-18T00:00:00Z"]),
   );
+  expect(buildKnownDeploymentKeys([], [oldFailure], now)).toEqual(new Set([oldFailure]));
+  expect(buildKnownDeploymentKeys([], [recentFailure], now)).toEqual(new Set());
+});
+
+it("re-fetches an evicted success so its deployment record can be rebuilt", () => {
+  const key = "prod|sha|2026-10-18T00:00:00Z";
+  expect(buildKnownDeploymentKeys([], { [key]: "success" }, new Date("2026-10-20T00:00:00Z"))).not.toContain(key);
 });
 
 it("reserves a separate ancestry budget for preview deployments", async () => {
@@ -97,6 +104,28 @@ it("advances to new candidates before retrying unknown SHAs", async () => {
   expect(second.known).toEqual([{ environment: "production", sha: deployments[5]!.sha }]);
 });
 
+it("rotates null candidates in persisted least-recently-tried order", async () => {
+  const deployments = Array.from({ length: 7 }, (_, i) => ({ environment: "production", production: true, ref: `v${i}`, sha: `${i + 1}`.repeat(40), createdAt: `2026-10-${String(20 + i).padStart(2, "0")}T00:00:00Z`, succeededAt: "2026-10-30T00:01:00Z" }));
+  const pe = { baseRef: "main", mergeCommitSha: "f".repeat(40), mergedAt: "2026-10-19T00:00:00Z" };
+  let queue: string[] = [];
+  const orders: string[][] = [];
+  let result: Awaited<ReturnType<typeof findContainingDeployments>> | undefined;
+  for (let run = 0; run < 5; run++) {
+    const checked: string[] = [];
+    result = await findContainingDeployments({ deployments, pe, defaultBranch: "main", known: [], unknownShas: queue, isContained: async (sha) => { checked.push(sha); return run === 4 && sha === deployments[6]!.sha ? true : null; } });
+    orders.push(checked);
+    queue = result.unknownShas;
+  }
+  expect(orders).toEqual([
+    deployments.slice(0, 5).map((d) => d.sha),
+    deployments.slice(5, 7).map((d) => d.sha).concat(deployments.slice(0, 3).map((d) => d.sha)),
+    deployments.slice(3, 7).map((d) => d.sha).concat(deployments.slice(0, 1).map((d) => d.sha)),
+    deployments.slice(1, 6).map((d) => d.sha),
+    [deployments[6]!.sha],
+  ]);
+  expect(result?.known).toEqual([{ environment: "production", sha: deployments[6]!.sha }]);
+});
+
 it("preserves deployments and marks failed refreshes unavailable", () => {
   const ledger = emptyLedger();
   const prior = { environment: "production", production: true, ref: "main", sha: "old", createdAt: "2026-01-01T00:00:00Z", succeededAt: "2026-01-01T00:01:00Z" };
@@ -108,12 +137,12 @@ it("preserves deployments and marks failed refreshes unavailable", () => {
   expect(ledger.deploymentsUnavailable).toEqual({});
 });
 
-it("retains scanned keys after successful rows are pruned from the render ledger", () => {
+it("records scan outcomes so an evicted success can be re-fetched", () => {
   const ledger = emptyLedger();
   const record = { environment: "production", production: true, ref: "main", sha: "s1", createdAt: "2026-10-10T00:00:00Z", succeededAt: "2026-10-10T00:01:00Z" };
   applyDeploymentFetch(ledger, "org/app", { records: [record], scannedKeys: ["production|s1|2026-10-10T00:00:00Z"], failed: false }, "2026-10-20T00:00:00Z");
   ledger.deployments["org/app"] = [];
-  expect(ledger.scannedDeployments?.["org/app"]).toContain("production|s1|2026-10-10T00:00:00Z");
+  expect(ledger.scannedDeployments?.["org/app"]).toEqual({ "production|s1|2026-10-10T00:00:00Z": "success" });
 });
 
 it("marks a thrown deployment refresh unavailable without clearing deployments", () => {
@@ -171,7 +200,7 @@ it("records release history before pruning its only matching old deployment", ()
   ledger.deployments["org/app"] = [old, ...Array.from({ length: 300 }, (_, i) => ({ ...old, sha: `new-${i}`, createdAt: new Date(Date.UTC(2026, 1, i + 1)).toISOString() }))];
   const refs = [{ repo: "org/app", number: 9, url }];
   recordReleaseEvidence(ledger, refs);
-  pruneDeployments(ledger);
+  pruneDeployments(ledger, "2026-10-19T00:00:00Z");
   expect(ledger.prs[url]?.release).toEqual({ stage: "live", environment: "production", sha: "old-match", since: old.succeededAt });
   expect(ledger.deployments["org/app"]).not.toContainEqual(old);
 });
@@ -235,5 +264,28 @@ describe("carryOverDerivedEvidence", () => {
       nonContainingDeploymentShas: ["x"], ancestryUnknown: true,
     });
     expect(carryOverDerivedEvidence(base, undefined)).not.toHaveProperty("release");
+  });
+});
+
+describe("release history before age-based pruning", () => {
+  it("records releases for PRs outside the current window before their deployments are pruned", () => {
+    const ledger = emptyLedger();
+    const url = "https://github.com/org/app/pull/7";
+    ledger.defaultBranches["org/app"] = "main";
+    ledger.prs[url] = {
+      url, repository: "org/app", number: 7, author: "me", state: "merged", isDraft: false,
+      baseRef: "main", headRef: "f", headSha: "h", mergeCommitSha: "m",
+      createdAt: "2026-06-01T00:00:00Z", mergedAt: "2026-06-02T00:00:00Z",
+      reviews: [], checks: null, files: [], fetchedAt: "2026-06-03T00:00:00Z",
+    };
+    ledger.deployments["org/app"] = [{
+      environment: "production", production: true, ref: "main", sha: "s",
+      createdAt: "2026-06-02T01:00:00Z", succeededAt: "2026-06-02T02:00:00Z",
+    }];
+    // The run's --since window starts long after this PR, so it isn't among this run's refs.
+    recordReleaseEvidence(ledger, allLedgerRefs(ledger));
+    pruneDeployments(ledger, "2026-10-01T00:00:00.000Z");
+    expect(ledger.deployments["org/app"]).toEqual([]);
+    expect(ledger.prs[url]!.release).toMatchObject({ stage: "live", since: "2026-06-02T02:00:00Z" });
   });
 });

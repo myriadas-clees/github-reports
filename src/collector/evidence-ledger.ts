@@ -7,7 +7,7 @@ import type { DeploymentRecord, EvidenceLedger, PrEvidence } from "../types.js";
 
 export const EVIDENCE_FILE = "evidence.yaml";
 export const EVIDENCE_VERSION = "1.0";
-const MAX_DEPLOYMENTS_PER_REPO = 300;
+const MAX_DEPLOYMENTS_PER_REPO = 5000;
 const DAY_MS = 24 * 60 * 60 * 1000;
 
 export type PrRef = { repo: string; number: number; url: string };
@@ -33,7 +33,10 @@ export const readEvidenceLedger = async (dataDir: string): Promise<EvidenceLedge
       updatedAt: typeof parsed.updatedAt === "string" ? parsed.updatedAt : new Date(0).toISOString(),
       defaultBranches: isObject(parsed.defaultBranches) ? (parsed.defaultBranches as Record<string, string>) : {},
       deployments: isObject(parsed.deployments) ? (parsed.deployments as Record<string, DeploymentRecord[]>) : {},
-      scannedDeployments: isObject(parsed.scannedDeployments) ? (parsed.scannedDeployments as Record<string, string[]>) : undefined,
+      scannedDeployments: isObject(parsed.scannedDeployments) ? Object.fromEntries(Object.entries(parsed.scannedDeployments).map(([repo, value]) => [
+        // Legacy arrays mixed successes and failures; retry recent entries, then treat old ones as failures.
+        repo, Array.isArray(value) ? Object.fromEntries(value.map((key) => [key, "unknown"])) : value,
+      ])) as EvidenceLedger["scannedDeployments"] : undefined,
       deploymentsUnavailable: isObject(parsed.deploymentsUnavailable) ? (parsed.deploymentsUnavailable as Record<string, string>) : undefined,
       prs: isObject(parsed.prs) ? (parsed.prs as Record<string, PrEvidence>) : {},
     };
@@ -138,17 +141,18 @@ export const mergeDeployments = (
 };
 
 export const pruneDeployments = (ledger: EvidenceLedger, cutoffIso?: string): void => {
+  const cutoff = cutoffIso ? new Date(cutoffIso).getTime() - 7 * DAY_MS : Number.NEGATIVE_INFINITY;
+  const retainedKeys = new Map<string, Set<string>>();
   for (const [repo, deployments] of Object.entries(ledger.deployments)) {
-    ledger.deployments[repo] = mergeDeployments([], deployments).slice(0, MAX_DEPLOYMENTS_PER_REPO);
+    const retained = mergeDeployments([], deployments).filter((d) => Date.parse(d.createdAt) >= cutoff).slice(0, MAX_DEPLOYMENTS_PER_REPO);
+    ledger.deployments[repo] = retained;
+    retainedKeys.set(repo, new Set(retained.map(deploymentKey)));
   }
-  if (cutoffIso && ledger.scannedDeployments) {
-    const cutoff = new Date(cutoffIso).getTime() - 7 * DAY_MS;
-    for (const [repo, keys] of Object.entries(ledger.scannedDeployments)) {
-      ledger.scannedDeployments[repo] = keys.filter((key) => {
-        const createdAt = key.slice(key.lastIndexOf("|") + 1);
-        const timestamp = new Date(createdAt).getTime();
-        return Number.isFinite(timestamp) && timestamp >= cutoff;
-      });
+  for (const [repo, keys] of Object.entries(ledger.scannedDeployments ?? {})) {
+    for (const [key, outcome] of Object.entries(keys)) {
+      const timestamp = Date.parse(key.slice(key.lastIndexOf("|") + 1));
+      if (!Number.isFinite(timestamp) || timestamp < cutoff) delete keys[key];
+      else if (outcome === "success" && !retainedKeys.get(repo)?.has(key)) delete keys[key];
     }
   }
 };

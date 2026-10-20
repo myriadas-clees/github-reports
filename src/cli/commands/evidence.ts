@@ -32,17 +32,18 @@ export const deploymentCutoffIso = (since: string): string => {
 
 /** Successful records remain cached; recent unsuccessful scans are eligible for status retries. */
 export const buildKnownDeploymentKeys = (
-  deployments: import("../../types.js").DeploymentRecord[], scanned: string[], now: Date,
+  deployments: import("../../types.js").DeploymentRecord[], scanned: Record<string, "success" | "failure" | "unknown"> | string[], now: Date,
 ): Set<string> => {
   const successful = new Set(deployments.map(deploymentKey));
   const retryCutoff = now.getTime() - 7 * 86_400_000;
+  const outcomes = Array.isArray(scanned) ? Object.fromEntries(scanned.map((key) => [key, "unknown"])) : scanned;
   return new Set([
     ...successful,
-    ...scanned.filter((key) => {
+    ...Object.entries(outcomes).filter(([key, outcome]) => {
       if (successful.has(key)) return false;
       const createdAt = Date.parse(key.slice(key.lastIndexOf("|") + 1));
-      return !Number.isFinite(createdAt) || createdAt < retryCutoff;
-    }),
+      return outcome !== "success" && Number.isFinite(createdAt) && createdAt < retryCutoff;
+    }).map(([key]) => key),
   ]);
 };
 
@@ -71,6 +72,7 @@ export const findContainingDeployments = async ({
   const found = [...(known ?? [])];
   const checkedFalse = new Set(nonContainingShas);
   const checkedUnknown = new Set(unknownShas);
+  const unknownQueue = [...unknownShas];
   const calls = { production: 0, nonProduction: 0 };
   const unknownKinds = { production: false, nonProduction: false };
   for (const production of [true, false]) {
@@ -78,29 +80,34 @@ export const findContainingDeployments = async ({
     const alreadyFound = found.some((entry) => deployments.some((d) => d.production === production && d.environment === entry.environment && d.sha === entry.sha));
     if (alreadyFound) { checkedUnknown.delete(found.find((entry) => deployments.some((d) => d.production === production && d.environment === entry.environment && d.sha === entry.sha))!.sha); continue; }
     const candidates = selectDeploymentCandidates(deployments, production, pe, defaultBranch);
-    for (const deployment of [...candidates.filter((d) => !checkedFalse.has(d.sha) && !checkedUnknown.has(d.sha)), ...candidates.filter((d) => checkedUnknown.has(d.sha))]) {
+    const ordered = [...candidates.filter((d) => !checkedFalse.has(d.sha) && !checkedUnknown.has(d.sha)), ...unknownQueue.flatMap((sha) => candidates.filter((d) => d.sha === sha))];
+    for (const deployment of ordered) {
       if (checkedFalse.has(deployment.sha)) continue;
       if (calls[kind] >= maxCallsPerKind) break;
       calls[kind]++;
       const contained = await isContained(deployment.sha);
       if (contained === true) {
         checkedUnknown.delete(deployment.sha);
+        const idx = unknownQueue.indexOf(deployment.sha); if (idx >= 0) unknownQueue.splice(idx, 1);
         found.push({ environment: deployment.environment, sha: deployment.sha });
         break;
       }
       if (contained === false) {
         checkedUnknown.delete(deployment.sha);
+        const idx = unknownQueue.indexOf(deployment.sha); if (idx >= 0) unknownQueue.splice(idx, 1);
         checkedFalse.add(deployment.sha);
       } else {
         unknownKinds[kind] = true;
         checkedUnknown.add(deployment.sha);
+        const idx = unknownQueue.indexOf(deployment.sha); if (idx >= 0) unknownQueue.splice(idx, 1);
+        unknownQueue.push(deployment.sha);
       }
     }
   }
   for (const deployment of deployments) {
     if (checkedUnknown.has(deployment.sha)) unknownKinds[deployment.production ? "production" : "nonProduction"] = true;
   }
-  return { known: found, nonContainingShas: [...checkedFalse], unknownShas: [...checkedUnknown], unknownKinds, calls };
+  return { known: found, nonContainingShas: [...checkedFalse], unknownShas: unknownQueue, unknownKinds, calls };
 };
 
 export const markDeploymentsUnavailable = (ledger: import("../../types.js").EvidenceLedger, repo: string, now: string): void => {
@@ -111,7 +118,10 @@ export const markDeploymentsUnavailable = (ledger: import("../../types.js").Evid
 export const applyDeploymentFetch = (ledger: import("../../types.js").EvidenceLedger, repo: string, result: Awaited<ReturnType<typeof fetchDeployments>>, now: string): void => {
   ledger.deployments[repo] = mergeDeployments(ledger.deployments[repo] ?? [], result.records);
   ledger.scannedDeployments ??= {};
-  ledger.scannedDeployments[repo] = [...new Set([...(ledger.scannedDeployments[repo] ?? []), ...result.scannedKeys])];
+  const scanned = ledger.scannedDeployments[repo] ?? ({} as NonNullable<typeof ledger.scannedDeployments>[string]);
+  const records = new Set(result.records.map(deploymentKey));
+  for (const key of result.scannedKeys) scanned[key] = records.has(key) ? "success" : "failure";
+  ledger.scannedDeployments[repo] = scanned;
   if (result.failed) {
     markDeploymentsUnavailable(ledger, repo, now);
     return;
@@ -137,6 +147,10 @@ export const carryOverDerivedEvidence = (
 };
 
 /** Persist release history before old deployment rows are eventually evicted. */
+/** PR refs for every PR stored in the ledger. */
+export const allLedgerRefs = (ledger: EvidenceLedger): PrRef[] =>
+  Object.values(ledger.prs).map((pe) => ({ repo: pe.repository, number: pe.number, url: pe.url }));
+
 export const recordReleaseEvidence = (ledger: EvidenceLedger, refs: PrRef[]): void => {
   for (const ref of refs) {
     const pe = ledger.prs[ref.url];
@@ -232,7 +246,9 @@ export const registerEvidence = (program: Command): void => {
         else delete pe.ancestryUnknown;
       }
 
-      recordReleaseEvidence(ledger, refs);
+      // Record release history for every stored PR (not only this run's --since window) before
+      // pruning, so PRs older than the window keep "Live since" after their deployments age out.
+      recordReleaseEvidence(ledger, allLedgerRefs(ledger));
 
       pruneDeployments(ledger, sinceIso);
       ledger.updatedAt = new Date().toISOString();

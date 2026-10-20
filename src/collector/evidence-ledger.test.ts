@@ -65,16 +65,28 @@ describe("mergeDeployments", () => {
     const ledger = emptyLedger();
     ledger.deployments.repo = many;
     pruneDeployments(ledger);
-    expect(ledger.deployments.repo).toHaveLength(300);
-    expect(ledger.deployments.repo[0]?.sha).toBe("s349");
+    expect(ledger.deployments.repo).toHaveLength(350);
   });
-  it("prunes scanned deployment keys outside the cutoff margin", () => {
+  it("keeps deployment records and successful cache keys consistent while pruning by age", () => {
     const ledger = emptyLedger();
-    ledger.scannedDeployments = { repo: [
-      "prod|recent|2026-06-10T00:00:00Z", "prod|margin|2026-05-27T00:00:00Z", "prod|old|2026-05-01T00:00:00Z",
-    ] };
+    const recent = dep(1, { sha: "recent", createdAt: "2026-06-10T00:00:00Z" });
+    ledger.deployments.repo = [recent, dep(2, { sha: "old", createdAt: "2026-05-01T00:00:00Z" })];
+    ledger.scannedDeployments = { repo: {
+      "production|recent|2026-06-10T00:00:00Z": "success",
+      "production|old|2026-05-01T00:00:00Z": "success",
+      "production|failed|2026-06-10T00:00:00Z": "failure",
+    } };
     pruneDeployments(ledger, "2026-06-01T00:00:00Z");
-    expect(ledger.scannedDeployments.repo).toEqual(["prod|recent|2026-06-10T00:00:00Z", "prod|margin|2026-05-27T00:00:00Z"]);
+    expect(ledger.deployments.repo).toEqual([recent]);
+    expect(ledger.scannedDeployments.repo).toEqual({
+      "production|recent|2026-06-10T00:00:00Z": "success",
+      "production|failed|2026-06-10T00:00:00Z": "failure",
+    });
+  });
+  it("loads legacy scanned key arrays as unknown outcomes", async () => {
+    dir = await mkdtemp(join(tmpdir(), "ev-"));
+    await writeFile(join(dir, EVIDENCE_FILE), "version: '1.0'\nupdatedAt: now\ndefaultBranches: {}\ndeployments: {}\nscannedDeployments:\n  repo:\n    - prod|sha|2026-06-01T00:00:00Z\nprs: {}\n", "utf-8");
+    expect((await readEvidenceLedger(dir))?.scannedDeployments?.repo).toEqual({ "prod|sha|2026-06-01T00:00:00Z": "unknown" });
   });
 });
 

@@ -467,7 +467,7 @@ export type EvidenceLedger = {
   /** Successful deployments per repo, newest first. */
   deployments: Record<string, DeploymentRecord[]>;
   /** Deployment keys whose status outcome is terminal, including unsuccessful outcomes. */
-  scannedDeployments?: Record<string, string[]>;
+  scannedDeployments?: Record<string, Record<string, "success" | "failure" | "unknown">>;
   /** Repositories whose deployment history could not be collected, keyed to last failure time. */
   deploymentsUnavailable?: Record<string, string>;
   prs: Record<string, PrEvidence>;
