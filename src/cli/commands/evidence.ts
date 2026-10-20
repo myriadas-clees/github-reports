@@ -53,7 +53,7 @@ export const selectDeploymentCandidates = (
   pe: Pick<import("../../types.js").PrEvidence, "baseRef" | "mergeCommitSha" | "mergedAt">,
   defaultBranch: string,
 ): import("../../types.js").DeploymentRecord[] => deployments.filter((d) =>
-  d.production === production && d.ref !== pe.baseRef && d.ref !== defaultBranch && d.ref !== pe.mergeCommitSha &&
+  d.production === production && d.ref !== pe.baseRef && ((!!pe.baseRef && pe.baseRef !== defaultBranch) || d.ref !== defaultBranch) && d.ref !== pe.mergeCommitSha &&
   d.sha !== pe.mergeCommitSha && Date.parse(d.createdAt) >= Date.parse(pe.mergedAt!) && /^[0-9a-f]{7,40}$/i.test(d.sha),
 ).sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt));
 

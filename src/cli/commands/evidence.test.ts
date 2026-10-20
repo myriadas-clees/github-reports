@@ -157,13 +157,22 @@ it("marks a thrown deployment refresh unavailable without clearing deployments",
   expect(ledger.deployments["org/app"]).toHaveLength(1);
 });
 
-it("selects tag deployments by commit sha while excluding already matched branch refs", () => {
+it("selects tag and default-branch deployments for stacked PR ancestry checks", () => {
   const common = { environment: "production", production: true, createdAt: "2026-10-20T00:00:00Z", succeededAt: "2026-10-20T00:01:00Z" };
   const candidates = selectDeploymentCandidates([
     { ...common, ref: "v1.2.0", sha: "abcdef1234567890" },
     { ...common, ref: "main", sha: "1234567890abcdef" },
   ], true, { baseRef: "release", mergeCommitSha: "fedcba9876543210", mergedAt: "2026-10-19T00:00:00Z" }, "main");
-  expect(candidates.map((d) => d.ref)).toEqual(["v1.2.0"]);
+  expect(candidates.map((d) => d.ref)).toEqual(["v1.2.0", "main"]);
+});
+
+it("checks default-branch deployment ancestry only for stacked PRs", () => {
+  const deployment = { environment: "production", production: true, ref: "main", sha: "abcdef1234567890", createdAt: "2026-10-20T00:00:00Z", succeededAt: "2026-10-20T00:01:00Z" };
+  const candidates = (baseRef: string) => selectDeploymentCandidates([deployment], true, {
+    baseRef, mergeCommitSha: "fedcba9876543210", mergedAt: "2026-10-19T00:00:00Z",
+  }, "main");
+  expect(candidates("feature/parent")).toEqual([deployment]);
+  expect(candidates("main")).toEqual([]);
 });
 
 it("merges partial deployment results and marks the repository unavailable", () => {

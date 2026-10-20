@@ -126,7 +126,7 @@ export const deriveReadiness = (item: ReadinessItem, evidence: EvidenceLedger | 
     ? pe.ancestryUnknown
     : Boolean(pe?.ancestryUnknown?.production || pe?.ancestryUnknown?.nonProduction);
   const productionUnknown = typeof pe?.ancestryUnknown === "boolean" ? pe.ancestryUnknown : Boolean(pe?.ancestryUnknown?.production);
-  const unavailable = Boolean(evidence.deploymentsUnavailable?.[repo]) || ancestryUnknown;
+  const unavailable = Boolean(evidence.deploymentsUnavailable?.[repo]) || ancestryUnknown || Boolean(pe?.refreshFailedAt);
   const notCollected = { stage: "done" as const, label: "Done", detail: `${mergedText}; release status not collected`, ...(mergedSince ? { since: mergedSince } : {}) };
 
   if (!unavailable && pe?.baseRef && pe.baseRef !== defaultBranch && !deps.some((d) => d.ref === pe.baseRef || isMergeCommitDeployment(d) || isContainingDeployment(d))) {

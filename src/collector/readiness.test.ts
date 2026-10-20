@@ -117,6 +117,26 @@ describe("deriveReadiness", () => {
     expect(deriveReadiness(item(), unavailable)).toMatchObject({ stage: "done", label: "Done", detail: "Merged Oct 7; release status not collected" });
   });
 
+  it("uses a containing default-branch deployment to release a stacked PR", () => {
+    const deployment = dep({ ref: "main", sha: "abc1234" });
+    const stacked = pr({ baseRef: "feature/parent", containingDeployments: [{ environment: "production", sha: "abc1234" }] });
+    expect(deriveReadiness(item(), ledger(stacked, { "org/app": [deployment] }))).toMatchObject({ stage: "live", label: "Live" });
+  });
+
+  it("treats failed PR refreshes as unavailable while preserving known releases", () => {
+    const failed = { refreshFailedAt: "2026-10-19T00:00:00Z" };
+    const production = dep({ ref: "other", sha: "other-sha" });
+    expect(deriveReadiness(item(), ledger(failed, { "org/app": [production] }))).toMatchObject({
+      stage: "done", detail: "Merged Oct 7; release status not collected",
+    });
+    expect(deriveReadiness(item(), ledger(failed))).toMatchObject({
+      stage: "done", detail: "Merged Oct 7; release status not collected",
+    });
+    expect(deriveReadiness(item(), ledger({ ...failed, release: { stage: "live", environment: "production", sha: "old", since: "2026-09-01T10:00:00Z" } }))).toMatchObject({
+      stage: "live", label: "Live",
+    });
+  });
+
   it("treats unknown ancestry as uncollected unless a branch deployment is known live", () => {
     expect(deriveReadiness(item(), ledger({ ancestryUnknown: true }))).toMatchObject({
       stage: "done", detail: "Merged Oct 7; release status not collected",
