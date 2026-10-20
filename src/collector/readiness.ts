@@ -360,6 +360,8 @@ export const summarizeVerification = (allocation: Allocation): VerificationSumma
       const c = item.checks;
       if (!c?.automated) {
         s.checksUnknown += 1;
+      } else if (c.automated.total === 0 && c.automated.partial) {
+        s.checksUnknown += 1;
       } else if (c.automated.total > 0) {
         s.checksCollected += 1;
         if (c.automated.pending > 0) s.withPendingChecks += 1;

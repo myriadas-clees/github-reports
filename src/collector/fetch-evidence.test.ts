@@ -219,6 +219,23 @@ describe("fetchPrEvidence", () => {
     expect(calls).toContain("https://api.github.com/repos/o/r/commits/abc/statuses?per_page=100&page=2");
   });
 
+  it("marks commit statuses unavailable when a next page exists beyond the 1,000 record cap", async () => {
+    vi.stubGlobal("fetch", vi.fn(async (url: string) => {
+      if (/pulls\/5\/reviews|pulls\/5\/files/.test(url)) return json([]);
+      if (/check-runs/.test(url)) return json({ check_runs: [] });
+      if (/statuses/.test(url)) {
+        const page = Number(new URL(url).searchParams.get("page") ?? 1);
+        return new Response(JSON.stringify(Array.from({ length: 100 }, (_, i) => ({ context: `status-${page}-${i}`, state: "success" }))), {
+          headers: { "content-type": "application/json", link: `<https://api.github.com/repos/o/r/commits/abc/statuses?per_page=100&page=${page + 1}>; rel="next"` },
+        });
+      }
+      if (/pulls\/5$/.test(url)) return json(pr);
+      return json({}, 404);
+    }));
+    const ev = await fetchPrEvidence("t", { repo: "o/r", number: 5 });
+    expect(ev?.checks).toMatchObject({ statusesUnavailable: true });
+  });
+
   it("marks paginated commit statuses unavailable on a soft 403", async () => {
     mockRoutes([
       [/pulls\/5\/reviews/, () => json([])], [/pulls\/5\/files/, () => json([])],

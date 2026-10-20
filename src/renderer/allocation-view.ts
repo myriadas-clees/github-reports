@@ -373,10 +373,11 @@ const checksText = (item: AllocationItem): string | undefined => {
   if (!c) return undefined;
   const parts: string[] = [];
   if (!c.automated) parts.push("Checks not collected");
-  else if (c.automated.total === 0) parts.push("No automated checks");
+  // A zero count with partial evidence is unknown, not a definitive "no checks".
+  else if (c.automated.total === 0) parts.push(c.automated.partial ? "Check results not collected" : "No automated checks");
   else {
     const { passed, pending, total, partial } = c.automated;
-    // Partial: commit statuses were unreadable, so "all passed" would overstate what was checked.
+    // Partial: some check evidence (check runs, statuses, or a refresh) is missing, so "all passed" would overstate what was checked.
     if (pending > 0) parts.push(`${passed} of ${total} automated checks passed · ${pending} still running`);
     else if (partial) parts.push(`${passed} of ${total} automated checks passed`);
     else parts.push(passed === total

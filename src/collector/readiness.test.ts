@@ -473,6 +473,15 @@ describe("annotateAllocation + summarizeVerification", () => {
     const allocation = annotateAllocation(alloc([{ kind: "pr", title: "partial", url: URL, repository: "org/app", state: "merged" }]), partial);
     expect(summarizeVerification(allocation)).toMatchObject({ checksCollected: 1, withPassingChecks: 0, withPartialChecks: 1 });
   });
+
+  it("treats zero partial checks as unknown while complete zero checks mean none ran", () => {
+    const partial = ledger({ checks: { passed: 0, failed: 0, skipped: 0, pending: 0, names: [], statusesUnavailable: true } });
+    const item: AllocationItem = { kind: "pr", title: "partial zero", url: URL, repository: "org/app", state: "open" };
+    expect(summarizeVerification(annotateAllocation(alloc([], [item]), partial))).toMatchObject({ checksUnknown: 1, withoutChecks: 0 });
+
+    const complete = ledger({ checks: { passed: 0, failed: 0, skipped: 0, pending: 0, names: [] } });
+    expect(summarizeVerification(annotateAllocation(alloc([], [item]), complete))).toMatchObject({ checksUnknown: 0, withoutChecks: 1 });
+  });
 });
 
 describe("summarizeVerification with uncollected checks", () => {

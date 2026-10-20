@@ -616,6 +616,32 @@ describe("readiness, complexity and verification views", () => {
     }
   });
 
+  it("does not treat a zero count from partial evidence as definitive no checks", () => {
+    const zero = (partial: boolean | undefined, n: number) => ({
+      kind: "pr" as const, title: `Zero ${n}`, url: `https://github.com/o/r/pull/${80 + n}`, state: "open" as const,
+      readiness: { stage: "in-review" as const, label: "In review" },
+      checks: {
+        automated: { passed: 0, failed: 0, pending: 0, total: 0, ...(partial === undefined ? {} : { partial }) },
+        humanReviews: 0, automatedReviews: n === 2 ? 1 : 0, testsUpdated: false,
+      },
+    });
+    const a = makeAllocation([["A", 10, { inProgress: [zero(true, 1), zero(false, 2)] }]]);
+    const items = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.initiatives[0]!.inProgress;
+    expect(items[0]!.checksText).toBe("Check results not collected");
+    expect(items[1]!.checksText).toBe("No automated checks · 1 automated review");
+  });
+
+  it("keeps review counts after a partial zero-count check result", () => {
+    const partialZero = {
+      kind: "pr" as const, title: "Partial zero", url: "https://github.com/o/r/pull/90", state: "open" as const,
+      readiness: { stage: "in-review" as const, label: "In review" },
+      checks: { automated: { passed: 0, failed: 0, pending: 0, total: 0, partial: true }, humanReviews: 1, automatedReviews: 0, testsUpdated: false },
+    };
+    const a = makeAllocation([["A", 10, { inProgress: [partialZero] }]]);
+    const items = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.initiatives[0]!.inProgress;
+    expect(items[0]!.checksText).toBe("Check results not collected · 1 human review");
+  });
+
   it("has no verification block without PR items", () => {
     const a = makeAllocation([["A", 10]]);
     expect(buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification).toBeUndefined();

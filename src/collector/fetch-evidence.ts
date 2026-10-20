@@ -269,7 +269,7 @@ export const fetchPrEvidence = async (
     token,
     `${base}/commits/${pr.head.sha}/statuses?per_page=100`,
     `Commit-status fetch failed for ${label}`,
-    { soft: true, maxPages: 10, cap: 1000, failOn404: true },
+    { soft: true, maxPages: 10, cap: 1000, failOn404: true, failOnCap: true },
   );
   const checks = mergeChecks(checkSummary, statusPages.failed ? null : statusPages.items);
   if (checks) {
