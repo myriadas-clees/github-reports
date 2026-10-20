@@ -574,8 +574,8 @@ describe("readiness, complexity and verification views", () => {
     });
     const a = makeAllocation([["A", 10, { inProgress: [partialPass(2, 0, 2, 1), partialPass(1, 1, 2, 2)] }]]);
     const items = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.initiatives[0]!.inProgress;
-    expect(items[0]!.checksText).toBe("2 of 2 automated checks passed · commit statuses not collected");
-    expect(items[1]!.checksText).toBe("1 of 2 automated checks passed · commit statuses not collected");
+    expect(items[0]!.checksText).toBe("2 of 2 automated checks passed · some check results not collected");
+    expect(items[1]!.checksText).toBe("1 of 2 automated checks passed · some check results not collected");
     expect(items[0]!.checksText).not.toMatch(/^All |^Both /);
   });
 
@@ -587,7 +587,33 @@ describe("readiness, complexity and verification views", () => {
     };
     const a = makeAllocation([["A", 10, { inProgress: [partial] }]]);
     const v = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification!;
-    expect(v.checksLine).toBe("0 of 1 passed automated checks · 1 without commit-status results");
+    expect(v.checksLine).toBe("0 of 1 passed automated checks · 1 with incomplete check results");
+  });
+
+  it("uses source-neutral wording for incomplete checks and drops the commit-status-only phrases", () => {
+    const partialItem = (automated: { passed: number; failed: number; pending: number; total: number }, n: number) => ({
+      kind: "pr" as const, title: `Incomplete ${n}`, url: `https://github.com/o/r/pull/${60 + n}`, state: "open" as const,
+      readiness: { stage: "in-review" as const, label: "In review" },
+      checks: { automated: { ...automated, partial: true }, humanReviews: 0, automatedReviews: 0, testsUpdated: false },
+    });
+    const a = makeAllocation([["A", 10, { inProgress: [
+      partialItem({ passed: 2, failed: 0, pending: 0, total: 2 }, 1),
+      partialItem({ passed: 1, failed: 1, pending: 0, total: 2 }, 2),
+      partialItem({ passed: 1, failed: 0, pending: 1, total: 2 }, 3),
+    ] }]]);
+    const view = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!;
+    const texts = view.initiatives[0]!.inProgress.map((i) => i.checksText);
+    expect(texts).toEqual([
+      "2 of 2 automated checks passed · some check results not collected",
+      "1 of 2 automated checks passed · some check results not collected",
+      "1 of 2 automated checks passed · 1 still running · some check results not collected",
+    ]);
+    // Partial items never count as passing, so the lead is 0 of 3 even though one check passed.
+    expect(view.verification!.checksLine).toBe("0 of 3 passed automated checks · 1 still running · 3 with incomplete check results");
+    for (const text of [...texts, view.verification!.checksLine]) {
+      expect(text).not.toContain("commit status");
+      expect(text).not.toContain("without commit-status");
+    }
   });
 
   it("has no verification block without PR items", () => {

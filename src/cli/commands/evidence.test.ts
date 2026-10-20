@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { applyDeploymentFetch, carryOverDerivedEvidence, deploymentCutoffIso, evidenceRepositories, findContainingDeployments, markDeploymentsUnavailable, recordReleaseEvidence, selectDeploymentCandidates } from "./evidence.js";
+import { applyDeploymentFetch, buildKnownDeploymentKeys, carryOverDerivedEvidence, deploymentCutoffIso, evidenceRepositories, findContainingDeployments, markDeploymentsUnavailable, recordReleaseEvidence, selectDeploymentCandidates } from "./evidence.js";
 import { emptyLedger, pruneDeployments } from "../../collector/evidence-ledger.js";
 import { evidenceArgs } from "./report.js";
 
@@ -27,6 +27,16 @@ describe("deploymentCutoffIso", () => {
   it("handles month and year boundaries", () => {
     expect(deploymentCutoffIso("2026-01-01")).toBe("2025-12-31T00:00:00.000Z");
   });
+});
+
+it("retries recently scanned failures while retaining old and successful scanned keys", () => {
+  const now = new Date("2026-10-20T00:00:00Z");
+  const recentFailure = "prod|failed|2026-10-18T00:00:00Z";
+  const oldFailure = "prod|failed-old|2026-10-10T00:00:00Z";
+  const success = { environment: "prod", production: true, ref: "main", sha: "success", createdAt: "2026-10-18T00:00:00Z", succeededAt: "2026-10-18T01:00:00Z" };
+  expect(buildKnownDeploymentKeys([success], [recentFailure, oldFailure, "prod|success|2026-10-18T00:00:00Z"], now)).toEqual(
+    new Set(["prod|failed-old|2026-10-10T00:00:00Z", "prod|success|2026-10-18T00:00:00Z"]),
+  );
 });
 
 it("reserves a separate ancestry budget for preview deployments", async () => {

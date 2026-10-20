@@ -292,6 +292,11 @@ describe("derivePrChecks", () => {
     const l = ledger({ checks: { passed: 1, failed: 0, skipped: 0, pending: 0, names: ["ci"], statusesUnavailable: true } });
     expect(derivePrChecks({ url: URL }, l, []).automated).toEqual({ passed: 1, failed: 0, pending: 0, total: 1, partial: true });
   });
+
+  it("marks check evidence partial when check runs were unavailable", () => {
+    const l = ledger({ checks: { passed: 1, failed: 0, skipped: 0, pending: 0, names: ["ci"], checkRunsUnavailable: true } });
+    expect(derivePrChecks({ url: URL }, l, []).automated).toEqual({ passed: 1, failed: 0, pending: 0, total: 1, partial: true });
+  });
 });
 
 const alloc = (shipped: AllocationItem[], inProgress: AllocationItem[] = []): Allocation => ({

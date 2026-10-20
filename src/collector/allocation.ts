@@ -513,15 +513,19 @@ export const mergeAllocations = (allocations: Allocation[]): Allocation => {
   for (const { item, count } of commitItems.values()) {
     item.title = `${count} direct commit${count === 1 ? "" : "s"}`;
   }
-  // A PR shipped later in the period supersedes its in-progress appearances; the effort
-  // spent while it was in progress moves onto the shipped item so its badge covers the period.
-  const shippedByUrl = new Map<string, { initiative: string; item: AllocationItem }>();
+  // A shipped appearance wins; otherwise a closed appearance supersedes stale open copies.
+  const destinationByUrl = new Map<string, { initiative: string; item: AllocationItem }>();
   for (const [initiative, acc] of accs) for (const item of acc.shipped) {
-    if (item.url && !shippedByUrl.has(item.url)) shippedByUrl.set(item.url, { initiative, item });
+    if (item.url && !destinationByUrl.has(item.url)) destinationByUrl.set(item.url, { initiative, item });
+  }
+  for (const [initiative, acc] of accs) for (const item of acc.other) {
+    if (item.kind === "pr" && item.state === "closed" && item.url && !destinationByUrl.has(item.url)) {
+      destinationByUrl.set(item.url, { initiative, item });
+    }
   }
   for (const [initiative, acc] of accs) {
     acc.inProgress = acc.inProgress.filter((item) => {
-      const destination = item.url ? shippedByUrl.get(item.url) : undefined;
+      const destination = item.url ? destinationByUrl.get(item.url) : undefined;
       if (!destination) return true;
       // Classify both copies before absorbing, which unions the in-progress labels into the shipped item.
       const sourceType = classifyWorkType(item.title, item.labels ?? []);

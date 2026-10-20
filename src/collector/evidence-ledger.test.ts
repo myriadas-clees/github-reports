@@ -52,6 +52,7 @@ describe("needsRefresh", () => {
   });
   it("refreshes merged PRs when commit statuses were unavailable", () => {
     expect(needsRefresh(pr({ checks: { passed: 1, failed: 0, skipped: 0, pending: 0, names: [], statusesUnavailable: true } }), now)).toBe(true);
+    expect(needsRefresh(pr({ checks: { passed: 1, failed: 0, skipped: 0, pending: 0, names: [], checkRunsUnavailable: true } }), now)).toBe(true);
   });
 });
 

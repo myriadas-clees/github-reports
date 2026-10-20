@@ -252,12 +252,13 @@ export const fetchPrEvidence = async (
     true,
   );
   let checkSummary: NonNullable<PrEvidence["checks"]> | null = null;
+  let checkRunsUnavailable = !checkRes.ok;
   if (checkRes.ok) {
     const runs = [...checkRes.data.check_runs];
     let next = checkRes.next;
     while (next) {
       const page = await getJson<{ check_runs: RawCheckRun[] }>(token, next, `Check-run fetch failed for ${label}`, true);
-      if (!page.ok) break;
+      if (!page.ok) { checkRunsUnavailable = true; break; }
       runs.push(...page.data.check_runs);
       next = page.next;
     }
@@ -270,7 +271,10 @@ export const fetchPrEvidence = async (
     { soft: true, maxPages: 10, cap: 1000, failOn404: true },
   );
   const checks = mergeChecks(checkSummary, statusPages.failed ? null : statusPages.items);
-  if (checks && checkSummary && statusPages.failed) checks.statusesUnavailable = true;
+  if (checks) {
+    if (statusPages.failed) checks.statusesUnavailable = true;
+    if (checkRunsUnavailable) checks.checkRunsUnavailable = true;
+  }
 
   return {
     url: ref.url ?? `https://github.com/${ref.repo}/pull/${ref.number}`,

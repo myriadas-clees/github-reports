@@ -240,7 +240,7 @@ export const derivePrChecks = (
   const unique = (bot: boolean): number => new Set(reviews.filter((r) => !!r.bot === bot).map((r) => r.reviewer)).size;
   const c = pe?.checks;
   return {
-    automated: c ? { passed: c.passed, failed: c.failed, pending: c.pending ?? 0, total: c.passed + c.failed + (c.pending ?? 0), ...(c.statusesUnavailable ? { partial: true } : {}) } : null,
+    automated: c ? { passed: c.passed, failed: c.failed, pending: c.pending ?? 0, total: c.passed + c.failed + (c.pending ?? 0), ...(c.statusesUnavailable || c.checkRunsUnavailable ? { partial: true } : {}) } : null,
     humanReviews: unique(false),
     automatedReviews: unique(true),
     testsUpdated: files.some((f) => TEST_FILE_RE.test(f)),
@@ -310,6 +310,8 @@ export const summarizeVerification = (allocation: Allocation): VerificationSumma
   };
   const seen = new Set<string>();
   for (const bucket of allocation.initiatives) {
+    // Closed, unmerged PRs sit in `other` and are neither completed nor in review, so they are
+    // left out of every count (readiness and checks alike) to keep the lines consistent.
     for (const item of [...(bucket.shipped ?? []), ...(bucket.inProgress ?? [])]) {
       if (item.kind !== "pr") continue;
       const key = item.url ?? `${item.repository}|${item.title}`;

@@ -30,6 +30,22 @@ export const deploymentCutoffIso = (since: string): string => {
   return date.toISOString();
 };
 
+/** Successful records remain cached; recent unsuccessful scans are eligible for status retries. */
+export const buildKnownDeploymentKeys = (
+  deployments: import("../../types.js").DeploymentRecord[], scanned: string[], now: Date,
+): Set<string> => {
+  const successful = new Set(deployments.map(deploymentKey));
+  const retryCutoff = now.getTime() - 7 * 86_400_000;
+  return new Set([
+    ...successful,
+    ...scanned.filter((key) => {
+      if (successful.has(key)) return false;
+      const createdAt = Date.parse(key.slice(key.lastIndexOf("|") + 1));
+      return !Number.isFinite(createdAt) || createdAt < retryCutoff;
+    }),
+  ]);
+};
+
 export const selectDeploymentCandidates = (
   deployments: import("../../types.js").DeploymentRecord[],
   production: boolean,
@@ -150,7 +166,7 @@ export const registerEvidence = (program: Command): void => {
           const branch = await fetchDefaultBranch(token, repo);
           if (branch) ledger.defaultBranches[repo] = branch;
           const existing = ledger.deployments[repo] ?? [];
-          const known = new Set([...existing.map(deploymentKey), ...(ledger.scannedDeployments?.[repo] ?? [])]);
+          const known = buildKnownDeploymentKeys(existing, ledger.scannedDeployments?.[repo] ?? [], now);
           const result = await fetchDeployments(token, repo, sinceIso, known);
           applyDeploymentFetch(ledger, repo, result, now.toISOString());
           console.log(`${repo}: +${result.records.length} deployments (default branch ${branch ?? "unknown"})`);

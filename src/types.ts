@@ -451,7 +451,7 @@ export type PrEvidence = {
   /** Reviews received on this PR (excluding the author's own). */
   reviews: PrReviewRecord[];
   /** Check runs on headSha. skipped/neutral are not counted as passed. */
-  checks: { passed: number; failed: number; skipped: number; pending: number; names: string[]; statusesUnavailable?: boolean } | null;
+  checks: { passed: number; failed: number; skipped: number; pending: number; names: string[]; statusesUnavailable?: boolean; checkRunsUnavailable?: boolean } | null;
   /** Changed file paths (capped). */
   files: string[];
   fetchedAt: string;

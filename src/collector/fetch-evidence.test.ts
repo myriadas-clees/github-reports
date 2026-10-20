@@ -190,12 +190,26 @@ describe("fetchPrEvidence", () => {
       [/check-runs/, () => json({ message: "no" }, 403)],
       [/statuses\?per_page=100/, () => json([{ context: "ci", state: "success" }])], [/pulls\/5$/, () => json(pr)],
     ]);
-    expect((await fetchPrEvidence("t", { repo: "o/r", number: 5 }))?.checks?.passed).toBe(1);
+    expect((await fetchPrEvidence("t", { repo: "o/r", number: 5 }))?.checks).toMatchObject({ passed: 1, checkRunsUnavailable: true });
     mockRoutes([
       [/pulls\/5\/reviews/, () => json([])], [/pulls\/5\/files/, () => json([])],
       [/check-runs/, () => json({ check_runs: [] })], [/statuses\?per_page=100/, () => json({}, 404)], [/pulls\/5$/, () => json(pr)],
     ]);
     expect((await fetchPrEvidence("t", { repo: "o/r", number: 5 }))?.checks).toEqual({ passed: 0, failed: 0, skipped: 0, pending: 0, names: [], statusesUnavailable: true });
+  });
+
+  it("marks check runs unavailable when a later page fails while retaining passing statuses", async () => {
+    vi.stubGlobal("fetch", vi.fn(async (url: string) => {
+      if (/pulls\/5\/reviews|pulls\/5\/files/.test(url)) return json([]);
+      if (/check-runs\?page=2/.test(url)) return json({ message: "no" }, 403);
+      if (/check-runs\?/.test(url)) return new Response(JSON.stringify({ check_runs: [] }), {
+        headers: { "content-type": "application/json", link: '<https://api.github.com/repos/o/r/commits/abc/check-runs?page=2>; rel="next"' },
+      });
+      if (/statuses\?/.test(url)) return json([{ context: "ci", state: "success" }]);
+      if (/pulls\/5$/.test(url)) return json(pr);
+      return json({}, 404);
+    }));
+    expect((await fetchPrEvidence("t", { repo: "o/r", number: 5 }))?.checks).toMatchObject({ passed: 1, checkRunsUnavailable: true });
   });
 });
 

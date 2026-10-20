@@ -114,7 +114,7 @@ export const collectPrRefsFromData = async (dataDir: string, since?: string): Pr
 export const needsRefresh = (existing: PrEvidence | undefined, now: Date): boolean => {
   if (!existing) return true;
   if (existing.state === "open") return true;
-  if (existing.checks?.statusesUnavailable) return true;
+  if (existing.checks?.statusesUnavailable || existing.checks?.checkRunsUnavailable) return true;
   if (existing.checks === null || existing.checks.pending > 0) return true;
   if (existing.mergedAt) {
     const mergedAgo = now.getTime() - new Date(existing.mergedAt).getTime();

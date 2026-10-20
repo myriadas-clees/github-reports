@@ -16,6 +16,7 @@ import {
   prWeight,
 } from "./allocation.js";
 import { estimatePrHours } from "./estimate-hours.js";
+import { summarizeVerification } from "./readiness.js";
 import type { AllocationConfig, ManualTimeEntry, PullRequest } from "../types.js";
 
 type Data = Parameters<typeof computeAllocation>[0];
@@ -387,6 +388,19 @@ describe("mergeAllocations", () => {
     expect(b.inProgress).toEqual([]);
     const onlyOpen = mergeAllocations([day1, day1]).initiatives[0];
     expect(onlyOpen.inProgress).toHaveLength(1);
+  });
+
+  it("moves earlier open effort onto a later closed PR appearance", () => {
+    const openPr = pr({ url: "p", state: "open", mergedAt: null });
+    const open = computeAllocation(data({ pullRequests: [openPr], prsInProgress: [openPr] }, 8));
+    const closed = computeAllocation(data({ prsWorkedOnClosed: [pr({ url: "p", state: "closed", mergedAt: null })] }, 4));
+    const merged = mergeAllocations([open, closed]);
+    const items = merged.initiatives.flatMap((bucket) => [...bucket.inProgress, ...bucket.other]);
+    expect(items.filter((item) => item.kind === "pr" && item.url === "p")).toHaveLength(1);
+    expect(items).toMatchObject([{ kind: "pr", state: "closed", effortHours: 12 }]);
+    expect(merged.totalHours).toBe(12);
+    // The closed PR is neither completed nor in review, and is left out of every verification count.
+    expect(summarizeVerification(merged)).toMatchObject({ inReview: 0, completed: 0, checksUnknown: 0, checksCollected: 0 });
   });
 
   it("sums manual hours and direct-commit counts", () => {
