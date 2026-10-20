@@ -317,7 +317,7 @@ export const fetchDeployments = async (
     token,
     `${base}/deployments?per_page=100`,
     `Deployment fetch failed for ${repo}`,
-    { cap: MAX_DEPLOYMENTS_PER_FETCH, failOnCap: true, soft: true, stop: (d) => new Date(d.created_at).getTime() < sinceMs },
+    { cap: MAX_DEPLOYMENTS_PER_FETCH, failOnCap: true, failOn404: true, soft: true, stop: (d) => new Date(d.created_at).getTime() < sinceMs },
   );
 
   const records: DeploymentRecord[] = [];

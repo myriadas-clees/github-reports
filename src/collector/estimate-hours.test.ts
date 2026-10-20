@@ -350,4 +350,35 @@ describe("commit units in the volume estimate", () => {
       estimateDailyPrWorkHours({ additions: 10, deletions: 0, state: "merged", dailyWork: true, commitCount: 1 }),
     );
   });
+
+  it("excludes closed worked-on PR commits when rebuilding direct commit units", () => {
+    const base = {
+      stats: { estimatedHours: 0 },
+      hoursInputs: {
+        timestamps: [],
+        volume: {
+          pullRequests: [{ additions: 10, deletions: 0, state: "closed", dailyWork: true, commitCount: 1 }],
+          commitCount: 1,
+          commitAdditions: 10,
+          commitDeletions: 0,
+          commitStatsCount: 1,
+        },
+        options: { gapMinutes: 90, maxSessionHours: 6 },
+      },
+      commitMessages: [{ repo: "o/a", messages: ["fix(x): a"], commits: [
+        { sha: "closed-pr-sha", message: "fix(x): a", additions: 10, deletions: 0 },
+      ] }],
+    };
+    const withPr = applyHoursEstimate({
+      ...base,
+      prsWorkedOnClosed: [{ workCommits: [{ sha: "closed-pr-sha" }] }],
+    });
+    const withoutDuplicate = applyHoursEstimate({
+      ...base,
+      hoursInputs: { ...base.hoursInputs, volume: { ...base.hoursInputs.volume, commitCount: 0, commitAdditions: 0, commitDeletions: 0, commitStatsCount: 0 } },
+      commitMessages: [],
+    });
+    expect((withPr as { hoursEstimate?: { volumeHours?: number } }).hoursEstimate?.volumeHours)
+      .toBe((withoutDuplicate as { hoursEstimate?: { volumeHours?: number } }).hoursEstimate?.volumeHours);
+  });
 });

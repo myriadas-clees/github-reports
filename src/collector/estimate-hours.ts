@@ -378,6 +378,7 @@ type HoursBearing = {
   stats: { estimatedHours: number };
   pullRequests?: { workCommits?: { sha: string }[] }[];
   prsInProgress?: { workCommits?: { sha: string }[] }[];
+  prsWorkedOnClosed?: { workCommits?: { sha: string }[] }[];
   commitMessages?: CommitMessagesLike;
 };
 
@@ -386,7 +387,7 @@ const withCommitUnits = (data: HoursBearing, volume: VolumeInput): VolumeInput =
   const hasCommitDetail = (data.commitMessages ?? []).some((repo) => (repo.commits?.length ?? 0) > 0);
   if (!hasCommitDetail) return volume;
   const prWorkShas = new Set(
-    [...(data.pullRequests ?? []), ...(data.prsInProgress ?? [])]
+    [...(data.pullRequests ?? []), ...(data.prsInProgress ?? []), ...(data.prsWorkedOnClosed ?? [])]
       .flatMap((pr) => (pr.workCommits ?? []).map((commit) => commit.sha)),
   );
   const inputs = collectDirectCommitInputs(data.commitMessages ?? [], prWorkShas);

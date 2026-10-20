@@ -315,6 +315,11 @@ describe("fetchDeployments", () => {
     await expect(fetchDeployments("t", "o/r", "2026-06-01T00:00:00Z")).resolves.toEqual({ records: [], scannedKeys: [], failed: true });
   });
 
+  it("reports a missing deployment collection as unavailable", async () => {
+    mockRoutes([[/deployments\?/, () => json({ message: "not found" }, 404)]]);
+    await expect(fetchDeployments("t", "o/r", "2026-06-01T00:00:00Z")).resolves.toEqual({ records: [], scannedKeys: [], failed: true });
+  });
+
   it("returns successful records and marks failed deployment statuses unavailable", async () => {
     mockRoutes([
       [/deployments\/1\/statuses/, () => json([{ state: "success", created_at: "2026-06-10T00:05:00Z" }])],
