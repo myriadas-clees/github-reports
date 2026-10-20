@@ -85,6 +85,8 @@ export const markDeploymentsUnavailable = (ledger: import("../../types.js").Evid
 
 export const applyDeploymentFetch = (ledger: import("../../types.js").EvidenceLedger, repo: string, result: Awaited<ReturnType<typeof fetchDeployments>>, now: string): void => {
   ledger.deployments[repo] = mergeDeployments(ledger.deployments[repo] ?? [], result.records);
+  ledger.scannedDeployments ??= {};
+  ledger.scannedDeployments[repo] = [...new Set([...(ledger.scannedDeployments[repo] ?? []), ...result.scannedKeys])];
   if (result.failed) {
     markDeploymentsUnavailable(ledger, repo, now);
     return;
@@ -148,7 +150,7 @@ export const registerEvidence = (program: Command): void => {
           const branch = await fetchDefaultBranch(token, repo);
           if (branch) ledger.defaultBranches[repo] = branch;
           const existing = ledger.deployments[repo] ?? [];
-          const known = new Set(existing.map(deploymentKey));
+          const known = new Set([...existing.map(deploymentKey), ...(ledger.scannedDeployments?.[repo] ?? [])]);
           const result = await fetchDeployments(token, repo, sinceIso, known);
           applyDeploymentFetch(ledger, repo, result, now.toISOString());
           console.log(`${repo}: +${result.records.length} deployments (default branch ${branch ?? "unknown"})`);
@@ -200,7 +202,7 @@ export const registerEvidence = (program: Command): void => {
 
       recordReleaseEvidence(ledger, refs);
 
-      pruneDeployments(ledger);
+      pruneDeployments(ledger, sinceIso);
       ledger.updatedAt = new Date().toISOString();
       await writeEvidenceLedger(cfg.dataDir, ledger);
       console.log(`Evidence: ${refreshed}/${todo.length} PRs refreshed (${refs.length} referenced, ${Object.keys(ledger.prs).length} stored)`);

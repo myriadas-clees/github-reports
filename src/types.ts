@@ -247,6 +247,8 @@ export type WeeklyReportData = {
   pullRequests: PullRequest[];
   /** PRs still open / in progress at end of the week. */
   prsInProgress?: PullRequest[];
+  /** Closed without merging after work during this report window. */
+  prsWorkedOnClosed?: PullRequest[];
   issues: Issue[];
   events: GitHubEvent[];
   commitMessages: RepoCommitMessages[];
@@ -463,6 +465,8 @@ export type EvidenceLedger = {
   defaultBranches: Record<string, string>;
   /** Successful deployments per repo, newest first. */
   deployments: Record<string, DeploymentRecord[]>;
+  /** Deployment keys whose status outcome is terminal, including unsuccessful outcomes. */
+  scannedDeployments?: Record<string, string[]>;
   /** Repositories whose deployment history could not be collected, keyed to last failure time. */
   deploymentsUnavailable?: Record<string, string>;
   prs: Record<string, PrEvidence>;

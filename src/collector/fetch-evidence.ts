@@ -305,7 +305,7 @@ export const fetchDeployments = async (
   repo: string,
   sinceIso: string,
   known: Set<string> = new Set(),
-): Promise<{ records: DeploymentRecord[]; failed: boolean }> => {
+): Promise<{ records: DeploymentRecord[]; scannedKeys: string[]; failed: boolean }> => {
   const base = `${API}/repos/${repo}`;
   const sinceMs = new Date(sinceIso).getTime();
   // Deployments carry their own environment name, so /environments is not needed.
@@ -317,6 +317,7 @@ export const fetchDeployments = async (
   );
 
   const records: DeploymentRecord[] = [];
+  const scannedKeys: string[] = [];
   let statusFailed = false;
   await mapWithConcurrency(deployments, async (d) => {
     const key = deploymentKey({ environment: d.environment, sha: d.sha, createdAt: d.created_at });
@@ -326,6 +327,9 @@ export const fetchDeployments = async (
     const success = res.items
       .filter((s) => s.state === "success")
       .sort((a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime())[0];
+    const latest = res.items.reduce<RawStatus | undefined>((current, status) =>
+      !current || new Date(status.created_at).getTime() > new Date(current.created_at).getTime() ? status : current, undefined);
+    if (success || (!res.failed && latest && ["failure", "error", "inactive"].includes(latest.state))) scannedKeys.push(key);
     if (!success) return;
     records.push({
       environment: d.environment,
@@ -336,5 +340,5 @@ export const fetchDeployments = async (
       succeededAt: success.created_at,
     });
   });
-  return { records, failed: failed || statusFailed };
+  return { records, scannedKeys, failed: failed || statusFailed };
 };

@@ -637,6 +637,19 @@ describe("PR #4 review fixes", () => {
     expect(a.initiatives.find((b) => b.initiative === "Pricing")!.hours).toBe(8);
   });
 
+  it("allocates closed worked-on PRs as other items and excludes their commits from direct work", () => {
+    const closed = pr({ url: "closed", title: "fix: pricing validation", state: "closed", labels: ["app: pricing"],
+      workCommits: [{ sha: "closed-sha", message: "fix", url: "commit", authoredAt: "2026-10-07T12:00:00Z" }],
+      workAdditions: 20, workDeletions: 2, workFiles: ["src/pricing.ts"] });
+    const allocation = computeAllocation(data({
+      prsWorkedOnClosed: [closed],
+      commitMessages: [{ repo: "o/app", messages: ["fix"], commits: [{ sha: "closed-sha", message: "fix", url: "commit", authoredAt: "2026-10-07T12:00:00Z" }] }],
+    }, 10));
+    const pricing = allocation.initiatives.find((bucket) => bucket.initiative === "Pricing")!;
+    expect(pricing.other).toMatchObject([{ url: "closed", state: "closed", effortHours: 10 }]);
+    expect(allocation.initiatives.flatMap((bucket) => bucket.other).filter((item) => item.kind === "commits")).toHaveLength(0);
+  });
+
   it("carries in-progress effort into the item once the PR ships later in the period", () => {
     const open = (hours: number) => computeAllocation(data({ prsInProgress: [pr({ url: "p", state: "open", mergedAt: null,
       workCommits: [{ sha: `s${hours}`, message: "feat: x", additions: 100, deletions: 0 }] as PullRequest["workCommits"], workAdditions: 100, workDeletions: 0 })] }, hours));

@@ -33,6 +33,7 @@ export const readEvidenceLedger = async (dataDir: string): Promise<EvidenceLedge
       updatedAt: typeof parsed.updatedAt === "string" ? parsed.updatedAt : new Date(0).toISOString(),
       defaultBranches: isObject(parsed.defaultBranches) ? (parsed.defaultBranches as Record<string, string>) : {},
       deployments: isObject(parsed.deployments) ? (parsed.deployments as Record<string, DeploymentRecord[]>) : {},
+      scannedDeployments: isObject(parsed.scannedDeployments) ? (parsed.scannedDeployments as Record<string, string[]>) : undefined,
       deploymentsUnavailable: isObject(parsed.deploymentsUnavailable) ? (parsed.deploymentsUnavailable as Record<string, string>) : undefined,
       prs: isObject(parsed.prs) ? (parsed.prs as Record<string, PrEvidence>) : {},
     };
@@ -136,8 +137,18 @@ export const mergeDeployments = (
     .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
 };
 
-export const pruneDeployments = (ledger: EvidenceLedger): void => {
+export const pruneDeployments = (ledger: EvidenceLedger, cutoffIso?: string): void => {
   for (const [repo, deployments] of Object.entries(ledger.deployments)) {
     ledger.deployments[repo] = mergeDeployments([], deployments).slice(0, MAX_DEPLOYMENTS_PER_REPO);
+  }
+  if (cutoffIso && ledger.scannedDeployments) {
+    const cutoff = new Date(cutoffIso).getTime() - 7 * DAY_MS;
+    for (const [repo, keys] of Object.entries(ledger.scannedDeployments)) {
+      ledger.scannedDeployments[repo] = keys.filter((key) => {
+        const createdAt = key.slice(key.lastIndexOf("|") + 1);
+        const timestamp = new Date(createdAt).getTime();
+        return Number.isFinite(timestamp) && timestamp >= cutoff;
+      });
+    }
   }
 };

@@ -80,11 +80,19 @@ it("preserves deployments and marks failed refreshes unavailable", () => {
   const ledger = emptyLedger();
   const prior = { environment: "production", production: true, ref: "main", sha: "old", createdAt: "2026-01-01T00:00:00Z", succeededAt: "2026-01-01T00:01:00Z" };
   ledger.deployments["org/app"] = [prior];
-  applyDeploymentFetch(ledger, "org/app", { records: [], failed: true }, "2026-10-19T00:00:00Z");
+  applyDeploymentFetch(ledger, "org/app", { records: [], scannedKeys: [], failed: true }, "2026-10-19T00:00:00Z");
   expect(ledger.deployments["org/app"]).toEqual([prior]);
   expect(ledger.deploymentsUnavailable).toEqual({ "org/app": "2026-10-19T00:00:00Z" });
-  applyDeploymentFetch(ledger, "org/app", { records: [], failed: false }, "2026-10-20T00:00:00Z");
+  applyDeploymentFetch(ledger, "org/app", { records: [], scannedKeys: [], failed: false }, "2026-10-20T00:00:00Z");
   expect(ledger.deploymentsUnavailable).toEqual({});
+});
+
+it("retains scanned keys after successful rows are pruned from the render ledger", () => {
+  const ledger = emptyLedger();
+  const record = { environment: "production", production: true, ref: "main", sha: "s1", createdAt: "2026-10-10T00:00:00Z", succeededAt: "2026-10-10T00:01:00Z" };
+  applyDeploymentFetch(ledger, "org/app", { records: [record], scannedKeys: ["production|s1|2026-10-10T00:00:00Z"], failed: false }, "2026-10-20T00:00:00Z");
+  ledger.deployments["org/app"] = [];
+  expect(ledger.scannedDeployments?.["org/app"]).toContain("production|s1|2026-10-10T00:00:00Z");
 });
 
 it("marks a thrown deployment refresh unavailable without clearing deployments", () => {
@@ -107,7 +115,7 @@ it("selects tag deployments by commit sha while excluding already matched branch
 it("merges partial deployment results and marks the repository unavailable", () => {
   const ledger = emptyLedger();
   const record = { environment: "production", production: true, ref: "v1.2.0", sha: "abcdef1234567890", createdAt: "2026-10-20T00:00:00Z", succeededAt: "2026-10-20T00:01:00Z" };
-  applyDeploymentFetch(ledger, "org/app", { records: [record], failed: true }, "2026-10-20T00:02:00Z");
+  applyDeploymentFetch(ledger, "org/app", { records: [record], scannedKeys: ["production|abcdef1234567890|2026-10-20T00:00:00Z"], failed: true }, "2026-10-20T00:02:00Z");
   expect(ledger.deployments["org/app"]).toEqual([record]);
   expect(ledger.deploymentsUnavailable).toEqual({ "org/app": "2026-10-20T00:02:00Z" });
 });

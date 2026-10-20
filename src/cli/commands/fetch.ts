@@ -102,6 +102,8 @@ export type DailyPullRequestActions = {
   inProgress: PullRequest[];
   /** Authored PRs with reporting-user branch commits in the exact window. */
   workedOn: PullRequest[];
+  /** Worked-on PRs closed without merging, absent from the report and in-progress lists. */
+  workedOnClosed: PullRequest[];
 };
 
 export const deriveContributionStats = (
@@ -226,6 +228,7 @@ export const classifyPullRequestsForRange = (
     report,
     inProgress: [...inProgressByUrl.values()],
     workedOn,
+    workedOnClosed: workedOn.filter((pr) => pr.state === "closed" && !pr.mergedAt && !reportByUrl.has(pr.url) && !inProgressByUrl.has(pr.url)),
   };
 };
 
@@ -444,6 +447,7 @@ const runFullFetch = async (
         merged: report.filter((pr) => pr.state === "merged"),
         inProgress: report.filter((pr) => pr.state === "open"),
         workedOn: [],
+        workedOnClosed: [],
         report,
       };
     })();
@@ -457,6 +461,7 @@ const runFullFetch = async (
   const prsOpened = prActions.opened.length;
   const prsMerged = prActions.merged.length;
   const prsInProgress = prActions.inProgress;
+  const prsWorkedOnClosed = prActions.workedOnClosed;
 
   console.log("Fetching contribution stats...");
   const gql = graphql.defaults({ headers: { authorization: `token ${options.token}` } });
@@ -614,6 +619,7 @@ const runFullFetch = async (
     repositories,
     pullRequests: prActions.report,
     prsInProgress,
+    ...(prsWorkedOnClosed.length ? { prsWorkedOnClosed } : {}),
     issues: [],
     events: events.filter((e) => e.payload.kind === "review" || e.payload.kind === "push"),
     commitMessages,

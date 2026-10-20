@@ -251,7 +251,7 @@ export const prWeight = (pr: PullRequest): number => {
 export const computeAllocation = (
   data: Pick<
     WeeklyReportData,
-    "dateRange" | "stats" | "hoursEstimate" | "pullRequests" | "prsInProgress" | "commitMessages" | "codeReviews" | "reviewComments"
+    "dateRange" | "stats" | "hoursEstimate" | "pullRequests" | "prsInProgress" | "prsWorkedOnClosed" | "commitMessages" | "codeReviews" | "reviewComments"
   > & Partial<Pick<WeeklyReportData, "aiReviews">>,
   config: AllocationConfig = DEFAULT_ALLOCATION_CONFIG,
   manualTime: ManualTimeEntry[] = [],
@@ -262,14 +262,14 @@ export const computeAllocation = (
   const prEffort: { item: AllocationItem; weight: number; labels: string[] }[] = [];
 
   const prs = new Map<string, PullRequest>();
-  for (const pr of [...(data.pullRequests ?? []), ...(data.prsInProgress ?? [])]) {
+  for (const pr of [...(data.pullRequests ?? []), ...(data.prsInProgress ?? []), ...(data.prsWorkedOnClosed ?? [])]) {
     if (!prs.has(pr.url)) prs.set(pr.url, pr);
   }
   const workShas = new Set<string>();
   // Mirror the hours estimator: it counts PRs with the reporting user's work in the window
   // plus PRs opened/merged in it (`pullRequests`). An in-progress PR listed only because
   // someone else updated it stays visible but must not pull the day's hours toward it.
-  const reportUrls = new Set((data.pullRequests ?? []).map((pr) => pr.url));
+  const reportUrls = new Set([...(data.pullRequests ?? []), ...(data.prsWorkedOnClosed ?? [])].map((pr) => pr.url));
   const countsTowardEstimate = (pr: PullRequest): boolean =>
     reportUrls.has(pr.url) || (pr.workCommits?.length ?? 0) > 0 || (pr.workAdditions ?? 0) + (pr.workDeletions ?? 0) > 0;
   for (const pr of prs.values()) {

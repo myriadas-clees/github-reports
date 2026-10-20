@@ -67,6 +67,14 @@ describe("mergeDeployments", () => {
     expect(ledger.deployments.repo).toHaveLength(300);
     expect(ledger.deployments.repo[0]?.sha).toBe("s349");
   });
+  it("prunes scanned deployment keys outside the cutoff margin", () => {
+    const ledger = emptyLedger();
+    ledger.scannedDeployments = { repo: [
+      "prod|recent|2026-06-10T00:00:00Z", "prod|margin|2026-05-27T00:00:00Z", "prod|old|2026-05-01T00:00:00Z",
+    ] };
+    pruneDeployments(ledger, "2026-06-01T00:00:00Z");
+    expect(ledger.scannedDeployments.repo).toEqual(["prod|recent|2026-06-10T00:00:00Z", "prod|margin|2026-05-27T00:00:00Z"]);
+  });
 });
 
 describe("collectPrRefsFromData", () => {

@@ -216,7 +216,7 @@ describe("fetchDeployments", () => {
     const known = new Set(deployments.map((d) => `preview|${d.sha}|${d.created_at}`));
     const out = await fetchDeployments("t", "o/r", "2026-06-01T00:00:00Z", known);
     expect(calls.filter((url) => url.includes("/deployments?")).length).toBe(4);
-    expect(out).toEqual({ records: [], failed: false });
+    expect(out).toEqual({ records: [], scannedKeys: [], failed: false });
   });
 
   it("marks a safety-cap truncation as failed before reaching the cutoff", async () => {
@@ -281,11 +281,24 @@ describe("fetchDeployments", () => {
       ["sha1", true, "2026-06-10T00:05:00Z"],
       ["sha3", false, "2026-06-08T00:05:00Z"],
     ]);
+    expect(out.scannedKeys).toContain("production|sha2|2026-06-09T00:00:00Z");
+    expect(out.scannedKeys).not.toContain("production|sha4|2026-06-07T00:00:00Z");
+  });
+
+  it("caches terminal failures but leaves pending and status-less deployments retryable", async () => {
+    mockRoutes([
+      [/deployments\/1\/statuses/, () => json([{ state: "failure", created_at: "2026-06-10T01:00:00Z" }])],
+      [/deployments\/2\/statuses/, () => json([{ state: "pending", created_at: "2026-06-10T01:00:00Z" }])],
+      [/deployments\/3\/statuses/, () => json([])],
+      [/deployments\?/, () => json([1, 2, 3].map((id) => ({ id, environment: "production", ref: "main", sha: `s${id}`, created_at: `2026-06-10T00:0${id}:00Z` })))],
+    ]);
+    const out = await fetchDeployments("t", "o/r", "2026-06-01T00:00:00Z");
+    expect(out.scannedKeys).toEqual(["production|s1|2026-06-10T00:01:00Z"]);
   });
 
   it("reports forbidden deployment collection as unavailable", async () => {
     mockRoutes([[/deployments\?/, () => new Response("forbidden", { status: 403 })]]);
-    await expect(fetchDeployments("t", "o/r", "2026-06-01T00:00:00Z")).resolves.toEqual({ records: [], failed: true });
+    await expect(fetchDeployments("t", "o/r", "2026-06-01T00:00:00Z")).resolves.toEqual({ records: [], scannedKeys: [], failed: true });
   });
 
   it("returns successful records and marks failed deployment statuses unavailable", async () => {
