@@ -1,0 +1,58 @@
+title: Oct 16
+subtitle: northstar, compass & hub
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps and Myriad-Advisor-Solutions/ohcpwm-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 1 PRs
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 2 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 12 commits with +11,073 / −901 lines.
+    chips:
+      - label: Commits
+        value: "12"
+        color: green
+      - label: Additions
+        value: +11,073
+        color: green
+      - label: Deletions
+        value: −901
+        color: red
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 8 reviews, 14 comments, 5 PRs."
+    chips:
+      - label: Codex
+        value: 8 reviews · 14 comments · 5 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~42.5h
+highlights:
+  - type: pr
+    title: "feat(hub): add Claude for Financial Advisors"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +81 −11
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/169
+  - type: pr
+    title: "feat(northstar): save custom brief instructions and regenerate briefs"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +127 −27
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168
+  - type: pr
+    title: "feat(compass): port Northstar advisor workflow features"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +13080 −1210
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/177
+ticker: []

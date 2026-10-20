@@ -1,0 +1,583 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-10-13
+  to: 2026-10-13
+stats:
+  totalCommits: 18
+  totalAdditions: 16108
+  totalDeletions: 12866
+  prsOpened: 1
+  prsMerged: 0
+  prsInProgress: 1
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 22.8
+dailyCommits:
+  - date: 2026-10-13
+    count: 18
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 18
+    prsOpened: 1
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests:
+  - title: "feat(design): align OHCPWM Apps with the Myriad design system"
+    body: >-
+      ## Why
+
+      OHCPWM Apps should follow Myriad's component and page layouts while keeping OHCPWM colors, logos, and fonts. The
+      previous screens differed in navigation, page hierarchy, tables, authentication cards, and recruit intake.
+
+
+      ## Changes
+
+      - Port the Myriad brand-token and UI contracts into `@ohpwm/b...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/159
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a1
+      - deploy-preview
+    additions: 16108
+    deletions: 12866
+    changedFiles: 230
+    author: myriadas-clees
+    createdAt: 2026-10-13T16:41:04Z
+    updatedAt: 2026-10-13T20:20:47Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a2
+      - &a5
+        sha: 97a3be0eaa7765fa36af8844abaf950994967eb5
+        message: "build: upgrade apps to Next 16 and add Tailwind v4 toolchain"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/97a3be0eaa7765fa36af8844abaf950994967eb5
+        authoredAt: 2026-10-13T16:10:20Z
+      - &a6
+        sha: 616dcec4a6941d869e216793ee5b55ebbc6571d1
+        message: "feat(ui): align @ohpwm/brand and @ohpwm/ui with the Myriad design system"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/616dcec4a6941d869e216793ee5b55ebbc6571d1
+        authoredAt: 2026-10-13T16:22:34Z
+      - &a7
+        sha: 27e86bbc976847142a94b63a1070acaa2b015099
+        message: "feat(hub): adopt the shared shell and Tailwind design system"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/27e86bbc976847142a94b63a1070acaa2b015099
+        authoredAt: 2026-10-13T16:28:08Z
+      - &a8
+        sha: 01e611d98206c0a55ffcd135140ac88a62af0a45
+        message: "feat(ofac): adopt the shared shell and Tailwind design system"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/01e611d98206c0a55ffcd135140ac88a62af0a45
+        authoredAt: 2026-10-13T16:28:23Z
+      - &a9
+        sha: 4a524baa09fbaec7f17152ee57a677d31ceb60b2
+        message: "feat(northstar): move to shared tokens, fonts and theme providers"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4a524baa09fbaec7f17152ee57a677d31ceb60b2
+        authoredAt: 2026-10-13T16:30:25Z
+      - &a10
+        sha: 00c47a47b34802d23979a2b3e8fced3ec7fdd79f
+        message: "feat(pricing): adopt the shared shell, tokens and theme providers"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/00c47a47b34802d23979a2b3e8fced3ec7fdd79f
+        authoredAt: 2026-10-13T16:31:40Z
+      - &a11
+        sha: 96df69eb16b7571aecc980f393c0701961cda12c
+        message: "refactor(ui): share hero, auth card and Microsoft mark; drop compatibility shims"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/96df69eb16b7571aecc980f393c0701961cda12c
+        authoredAt: 2026-10-13T16:40:47Z
+      - &a12
+        sha: 0d7661ecfeec6f8fc41d4ca987d042efb656e213
+        message: "feat(hub): match Myriad hub home, library, settings, login and error pages"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0d7661ecfeec6f8fc41d4ca987d042efb656e213
+        authoredAt: 2026-10-13T17:04:13Z
+      - &a13
+        sha: b73c080a84dff470c8aaa673a8c7847bc4edbdb1
+        message: "fix(ui): match Myriad sidebar, page header, auth card, metrics and type roles"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b73c080a84dff470c8aaa673a8c7847bc4edbdb1
+        authoredAt: 2026-10-13T17:09:16Z
+      - &a14
+        sha: db88fd46fd45de933882c1b2a4753ca7f44d0790
+        message: "feat(pricing): port Proforma dashboard, recruits, intake wizard and model layouts"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/db88fd46fd45de933882c1b2a4753ca7f44d0790
+        authoredAt: 2026-10-13T17:11:06Z
+      - &a15
+        sha: 5fbf834eecd9171806572a54ee33f36316e928e1
+        message: "fix(northstar): restore focus rings, readable actions and Myriad type scale"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/5fbf834eecd9171806572a54ee33f36316e928e1
+        authoredAt: 2026-10-13T17:15:00Z
+      - &a16
+        sha: f46554decae3d2f938f1db89ba611ab4f4f1cae7
+        message: "fix(ofac): match Myriad tables, filters, forms, empty and error states"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f46554decae3d2f938f1db89ba611ab4f4f1cae7
+        authoredAt: 2026-10-13T17:15:27Z
+      - &a17
+        sha: 7501d11d29ebceeee6b4ecd7839f7712f5989d7d
+        message: "fix(hub): finish Myriad parity for library header, login, mobile search and stats"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7501d11d29ebceeee6b4ecd7839f7712f5989d7d
+        authoredAt: 2026-10-13T17:19:17Z
+      - &a18
+        sha: 169e4ea44cf36905e935fcf608360c56abbdbc88
+        message: "fix(ui): finish visual alignment and OFAC health error states"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/169e4ea44cf36905e935fcf608360c56abbdbc88
+        authoredAt: 2026-10-13T18:34:16Z
+      - &a19
+        sha: 9eaf475b6e026f72e5086cdb31f4e80f2caeb237
+        message: "fix(northstar): clarify retention actions and hide brief diagnostics"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/9eaf475b6e026f72e5086cdb31f4e80f2caeb237
+        authoredAt: 2026-10-13T19:05:08Z
+      - &a20
+        sha: 00a07aa1e5b2013c0c4c49c5c67a7975856d5a43
+        message: "fix(pricing): restore product layout and admin-only deletion"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/00a07aa1e5b2013c0c4c49c5c67a7975856d5a43
+        authoredAt: 2026-10-13T19:12:12Z
+      - &a21
+        sha: 095510fcfa558ec7aac6a98591dd27ab916777e3
+        message: "feat(northstar): integrate advisor context, command cards and PDF export"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/095510fcfa558ec7aac6a98591dd27ab916777e3
+        authoredAt: 2026-10-13T19:21:39Z
+      - &a22
+        sha: 522fb268e0fc64c6a5025fae6954304f7922e627
+        message: "docs(gui): add OHCPWM guide and graphical agent skills"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/522fb268e0fc64c6a5025fae6954304f7922e627
+        authoredAt: 2026-10-13T20:17:56Z
+    workTimestamps: &a3
+      - 2026-10-13T16:10:20Z
+      - 2026-10-13T16:22:34Z
+      - 2026-10-13T16:28:08Z
+      - 2026-10-13T16:28:23Z
+      - 2026-10-13T16:30:25Z
+      - 2026-10-13T16:31:40Z
+      - 2026-10-13T16:40:47Z
+      - 2026-10-13T17:04:13Z
+      - 2026-10-13T17:09:16Z
+      - 2026-10-13T17:11:06Z
+      - 2026-10-13T17:15:00Z
+      - 2026-10-13T17:15:27Z
+      - 2026-10-13T17:19:17Z
+      - 2026-10-13T18:34:16Z
+      - 2026-10-13T19:05:08Z
+      - 2026-10-13T19:12:12Z
+      - 2026-10-13T19:21:39Z
+      - 2026-10-13T20:17:56Z
+    workAdditions: 16108
+    workDeletions: 12866
+    workFiles: &a4
+      - .agents/skills/graphical-audit/SKILL.md
+      - .agents/skills/graphical-audit/references/drift-rules.md
+      - .agents/skills/graphical-audit/references/report-format.md
+      - .agents/skills/graphical-convert/SKILL.md
+      - .agents/skills/graphical-convert/references/mapping-examples.md
+      - .agents/skills/graphical-ui/SKILL.md
+      - .agents/skills/ohcpwm-branding/SKILL.md
+      - AGENTS.md
+      - GUI.md
+      - bun.lock
+      - eslint.config.mjs
+      - gui/custom-components.md
+      - gui/foundations.md
+      - gui/interface-judgment.md
+      - gui/theme-contract.md
+      - gui/themes.md
+      - gui/verification.md
+      - hub/app/403/page.tsx
+      - hub/app/error.tsx
+      - hub/app/globals.css
+      - hub/app/layout.tsx
+      - hub/app/loading.tsx
+      - hub/app/login/page.tsx
+      - hub/app/not-found.tsx
+      - hub/components/hub-launcher.fixture.tsx
+      - hub/components/hub-launcher.tsx
+      - hub/components/hub-loading-screen.tsx
+      - hub/eslint.config.mjs
+      - hub/functions/src/northstar-brief-journeys.test.ts
+      - hub/functions/src/northstar-chat-history.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-copilot.test.ts
+      - hub/functions/src/northstar-copilot.ts
+      - hub/functions/src/northstar-cosmos-recovery.test.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/functions/src/northstar-scheduled-brief.test.ts
+      - hub/functions/src/northstar-scheduled-brief.ts
+      - hub/next-env.d.ts
+      - hub/package.json
+      - hub/postcss.config.mjs
+      - northstar/app/globals.css
+      - northstar/app/layout.tsx
+      - northstar/app/retention-controls.css
+      - northstar/components/answer-markdown.test.tsx
+      - northstar/components/answer-markdown.tsx
+      - northstar/components/ask-northstar-workspace.dom.test.tsx
+      - northstar/components/ask-northstar-workspace.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/northstar-consent.fixture.tsx
+      - northstar/components/northstar-dashboard-lifecycle.fixture.ts
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/northstar-quick-settings.tsx
+      - northstar/components/northstar-retention.dom.test.ts
+      - northstar/components/northstar-retention.fixture.tsx
+      - northstar/components/settings-workspace.tsx
+      - northstar/components/streaming-markdown.tsx
+      - northstar/eslint.config.mjs
+      - northstar/lib/ask-stream.test.ts
+      - northstar/lib/ask-stream.ts
+      - northstar/lib/at-commands.test.ts
+      - northstar/lib/at-commands.ts
+      - northstar/lib/background-briefs.test.ts
+      - northstar/lib/background-briefs.ts
+      - northstar/lib/chat-history.test.ts
+      - northstar/lib/chat-history.ts
+      - northstar/lib/chat-pdf-label.ts
+      - northstar/lib/chat-pdf.test.ts
+      - northstar/lib/chat-pdf.tsx
+      - northstar/lib/draft-fences.test.ts
+      - northstar/lib/draft-fences.ts
+      - northstar/lib/email-draft.test.ts
+      - northstar/lib/email-draft.ts
+      - northstar/lib/northstar-context.test.ts
+      - northstar/lib/northstar-context.ts
+      - northstar/lib/settings-preferences.test.ts
+      - northstar/lib/settings-preferences.ts
+      - northstar/next-env.d.ts
+      - northstar/package.json
+      - northstar/postcss.config.mjs
+      - northstar/public/pdf-fonts/NotoSansArabic.woff
+      - northstar/public/pdf-fonts/NotoSansCJKsc-Bold.otf
+      - northstar/public/pdf-fonts/NotoSansCJKsc-Regular.otf
+      - northstar/public/pdf-fonts/NotoSansDevanagari.woff
+      - northstar/public/pdf-fonts/NotoSansHebrew.woff
+      - northstar/public/pdf-fonts/OFL.txt
+      - ofac/eslint.config.mjs
+      - ofac/next-env.d.ts
+      - ofac/package.json
+      - ofac/postcss.config.mjs
+      - ofac/src/app/clients/new/page.tsx
+      - ofac/src/app/globals.css
+      - ofac/src/app/layout.tsx
+      - ofac/src/app/login/page.tsx
+      - ofac/src/app/page.tsx
+      - ofac/src/app/screenings/page.tsx
+      - ofac/src/app/search/page.tsx
+      - ofac/src/app/sync/page.tsx
+      - ofac/src/components/app-shell-brand.test.tsx
+      - ofac/src/components/client-intake-form.tsx
+      - ofac/src/components/data-table.tsx
+      - ofac/src/components/microsoft-mark.tsx
+      - ofac/src/components/ofac-app-shell.tsx
+      - ofac/src/components/ofac-auth-card.tsx
+      - ofac/src/components/ofac-iframe-auth-boundary.tsx
+      - ofac/src/components/ofac-iframe-auth-relay.tsx
+      - ofac/src/components/ofac-settings-page.tsx
+      - ofac/src/components/ofac-user-menu.tsx
+      - ofac/src/components/page-hero.tsx
+      - ofac/src/components/pdf-report-viewer.tsx
+      - ofac/src/components/report-viewer-shell.tsx
+      - ofac/src/components/screening-detail.tsx
+      - ofac/src/components/screening-filter-form.tsx
+      - ofac/src/components/workbook-report-viewer.tsx
+      - ofac/src/lib/__tests__/ofac-api-client.test.ts
+      - ofac/src/lib/__tests__/ofac-shell-presentation.test.ts
+      - ofac/src/lib/ofac-api-client.ts
+      - ofac/src/lib/ofac-nav.ts
+      - ofac/src/lib/ofac-shell-presentation.ts
+      - ofac/src/lib/ofac-theme.ts
+      - package.json
+      - packages/AGENTS.md
+      - packages/brand/assets/fonts/CORMORANT-GARAMOND-LICENSE.txt
+      - packages/brand/assets/fonts/IBM-PLEX-LICENSE.txt
+      - packages/brand/assets/fonts/cormorant-garamond-latin.woff2
+      - packages/brand/assets/fonts/ibm-plex-sans-medium.woff2
+      - packages/brand/assets/fonts/ibm-plex-sans-regular.woff2
+      - packages/brand/assets/fonts/ibm-plex-sans-semibold.woff2
+      - packages/brand/package.json
+      - packages/brand/src/fonts.css
+      - packages/brand/src/graphical-theme.css
+      - packages/brand/src/index.ts
+      - packages/brand/src/styles.css
+      - packages/ui/package.json
+      - packages/ui/src/app-user-menu.tsx
+      - packages/ui/src/appearance-quick-settings.tsx
+      - packages/ui/src/auth-card.tsx
+      - packages/ui/src/badge.tsx
+      - packages/ui/src/brand-logo.tsx
+      - packages/ui/src/brand/ohpwm-logo.tsx
+      - packages/ui/src/button.tsx
+      - packages/ui/src/card.tsx
+      - packages/ui/src/client-password-field.tsx
+      - packages/ui/src/dialog.tsx
+      - packages/ui/src/form.tsx
+      - packages/ui/src/index.ts
+      - packages/ui/src/input.tsx
+      - packages/ui/src/legacy-theme.ts
+      - packages/ui/src/metric-card.tsx
+      - packages/ui/src/microsoft-mark.tsx
+      - packages/ui/src/modal.tsx
+      - packages/ui/src/native-controls.tsx
+      - packages/ui/src/navigation/app-nav.tsx
+      - packages/ui/src/navigation/app-shell.test.tsx
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/navigation/compat-app-shell.tsx
+      - packages/ui/src/navigation/index.ts
+      - packages/ui/src/navigation/legacy-app-shell.tsx
+      - packages/ui/src/navigation/mode-storage.ts
+      - packages/ui/src/navigation/nav-badge.test.ts
+      - packages/ui/src/navigation/nav-badge.ts
+      - packages/ui/src/navigation/navigation-mode-picker.tsx
+      - packages/ui/src/navigation/preferences.test.ts
+      - packages/ui/src/navigation/preferences.tsx
+      - packages/ui/src/navigation/types.ts
+      - packages/ui/src/page-hero.tsx
+      - packages/ui/src/pager.tsx
+      - packages/ui/src/paging.test.ts
+      - packages/ui/src/paging.ts
+      - packages/ui/src/select.tsx
+      - packages/ui/src/settings/appearance-settings.tsx
+      - packages/ui/src/settings/index.ts
+      - packages/ui/src/settings/preference-options.test.ts
+      - packages/ui/src/settings/preference-options.ts
+      - packages/ui/src/settings/settings-folio.tsx
+      - packages/ui/src/settings/settings-section.tsx
+      - packages/ui/src/shell-bootstrap.test.ts
+      - packages/ui/src/shell-bootstrap.ts
+      - packages/ui/src/styles.css
+      - packages/ui/src/summary-metric.tsx
+      - packages/ui/src/tabs.tsx
+      - packages/ui/src/textarea.tsx
+      - packages/ui/src/theme-bootstrap.test.ts
+      - packages/ui/src/theme-bootstrap.ts
+      - packages/ui/src/theme-preferences.tsx
+      - packages/ui/src/theme-toggle.tsx
+      - packages/ui/src/user-menu.test.ts
+      - packages/ui/src/user-menu.test.tsx
+      - packages/ui/src/user-menu.tsx
+      - packages/ui/src/utils.ts
+      - pricing/AGENTS.md
+      - pricing/empty-module.ts
+      - pricing/eslint.config.mjs
+      - pricing/functions/src/index.ts
+      - pricing/next-env.d.ts
+      - pricing/next.config.ts
+      - pricing/package.json
+      - pricing/postcss.config.mjs
+      - pricing/src/app/fonts/CORMORANT-GARAMOND-LICENSE.txt
+      - pricing/src/app/fonts/IBM-PLEX-LICENSE.txt
+      - pricing/src/app/fonts/cormorant-garamond-latin.woff2
+      - pricing/src/app/fonts/ibm-plex-sans-medium.woff2
+      - pricing/src/app/fonts/ibm-plex-sans-regular.woff2
+      - pricing/src/app/fonts/ibm-plex-sans-semibold.woff2
+      - pricing/src/app/globals.css
+      - pricing/src/app/intake.css
+      - pricing/src/app/layout.tsx
+      - pricing/src/app/login/page.tsx
+      - pricing/src/components/__tests__/dashboard-metrics-charts.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/__tests__/pricing-workstation-client.test.tsx
+      - pricing/src/components/__tests__/recruit-archive-section.test.tsx
+      - pricing/src/components/__tests__/recruit-model-shell.test.tsx
+      - pricing/src/components/archive-recruit-form.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/dashboard-get-started.tsx
+      - pricing/src/components/dashboard-metrics-charts.tsx
+      - pricing/src/components/dashboard-recruits-panel.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/page-hero.tsx
+      - pricing/src/components/payout-breakdown-donut.tsx
+      - pricing/src/components/pricing-app-shell.tsx
+      - pricing/src/components/pricing-graphs.tsx
+      - pricing/src/components/pricing-intake-layout.tsx
+      - pricing/src/components/pricing-quick-settings.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/components/pricing-theme-controller.tsx
+      - pricing/src/components/pricing-theme-toggle.tsx
+      - pricing/src/components/pricing-user-menu.tsx
+      - pricing/src/components/pricing-workstation-client.tsx
+      - pricing/src/components/recruit-archive-section.tsx
+      - pricing/src/components/recruit-detail-panels.tsx
+      - pricing/src/components/recruit-filters.tsx
+      - pricing/src/components/recruit-form.tsx
+      - pricing/src/components/recruit-model-shell.tsx
+      - pricing/src/components/recruit-pipeline-summary.tsx
+      - pricing/src/components/recruit-row-actions.tsx
+      - pricing/src/components/recruits-table.tsx
+      - pricing/src/components/report-sort-control.tsx
+      - pricing/src/components/report-viewer-shell.tsx
+      - pricing/src/components/scenario-model-tab.tsx
+      - pricing/src/components/settings-previews.tsx
+      - pricing/src/components/use-pricing-edit-view.ts
+      - pricing/src/lib/__tests__/pricing-recruit-delete-route.test.ts
+      - pricing/src/lib/__tests__/pricing-user-settings.test.ts
+      - pricing/src/lib/edit-view.ts
+      - pricing/src/lib/pricing-nav.ts
+      - pricing/src/lib/pricing-theme.ts
+      - pricing/src/lib/pricing-user-settings.ts
+      - scripts/dev-pricing-api.ts
+prsInProgress:
+  - title: "feat(design): align OHCPWM Apps with the Myriad design system"
+    body: >-
+      ## Why
+
+      OHCPWM Apps should follow Myriad's component and page layouts while keeping OHCPWM colors, logos, and fonts. The
+      previous screens differed in navigation, page hierarchy, tables, authentication cards, and recruit intake.
+
+
+      ## Changes
+
+      - Port the Myriad brand-token and UI contracts into `@ohpwm/b...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/159
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: *a1
+    additions: 11974
+    deletions: 8732
+    changedFiles: 230
+    author: myriadas-clees
+    createdAt: 2026-10-13T16:41:04Z
+    updatedAt: 2026-10-13T20:20:47Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 16108
+    workDeletions: 12866
+    workFiles: *a4
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "build: upgrade apps to Next 16 and add Tailwind v4 toolchain"
+      - "feat(ui): align @ohpwm/brand and @ohpwm/ui with the Myriad design system"
+      - "feat(hub): adopt the shared shell and Tailwind design system"
+      - "feat(ofac): adopt the shared shell and Tailwind design system"
+      - "feat(northstar): move to shared tokens, fonts and theme providers"
+      - "feat(pricing): adopt the shared shell, tokens and theme providers"
+      - "refactor(ui): share hero, auth card and Microsoft mark; drop compatibility shims"
+      - "feat(hub): match Myriad hub home, library, settings, login and error pages"
+      - "fix(ui): match Myriad sidebar, page header, auth card, metrics and type roles"
+      - "feat(pricing): port Proforma dashboard, recruits, intake wizard and model layouts"
+      - "fix(northstar): restore focus rings, readable actions and Myriad type scale"
+      - "fix(ofac): match Myriad tables, filters, forms, empty and error states"
+      - "fix(hub): finish Myriad parity for library header, login, mobile search and stats"
+      - "fix(ui): finish visual alignment and OFAC health error states"
+      - "fix(northstar): clarify retention actions and hide brief diagnostics"
+      - "fix(pricing): restore product layout and admin-only deletion"
+      - "feat(northstar): integrate advisor context, command cards and PDF export"
+      - "docs(gui): add OHCPWM guide and graphical agent skills"
+    commits:
+      - *a5
+      - *a6
+      - *a7
+      - *a8
+      - *a9
+      - *a10
+      - *a11
+      - *a12
+      - *a13
+      - *a14
+      - *a15
+      - *a16
+      - *a17
+      - *a18
+      - *a19
+      - *a20
+      - *a21
+      - *a22
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 0
+  comments: 0
+  reviews: 0
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-10-13T16:10:20Z
+    - 2026-10-13T16:22:34Z
+    - 2026-10-13T16:28:08Z
+    - 2026-10-13T16:28:23Z
+    - 2026-10-13T16:30:25Z
+    - 2026-10-13T16:31:40Z
+    - 2026-10-13T16:40:47Z
+    - 2026-10-13T17:04:13Z
+    - 2026-10-13T17:09:16Z
+    - 2026-10-13T17:11:06Z
+    - 2026-10-13T17:15:00Z
+    - 2026-10-13T17:15:27Z
+    - 2026-10-13T17:19:17Z
+    - 2026-10-13T18:34:16Z
+    - 2026-10-13T19:05:08Z
+    - 2026-10-13T19:12:12Z
+    - 2026-10-13T19:21:39Z
+    - 2026-10-13T20:17:56Z
+    - 2026-10-13T16:41:04Z
+    - 2026-10-13T16:10:20Z
+    - 2026-10-13T16:22:34Z
+    - 2026-10-13T16:28:08Z
+    - 2026-10-13T16:28:23Z
+    - 2026-10-13T16:30:25Z
+    - 2026-10-13T16:31:40Z
+    - 2026-10-13T16:40:47Z
+    - 2026-10-13T17:04:13Z
+    - 2026-10-13T17:09:16Z
+    - 2026-10-13T17:11:06Z
+    - 2026-10-13T17:15:00Z
+    - 2026-10-13T17:15:27Z
+    - 2026-10-13T17:19:17Z
+    - 2026-10-13T18:34:16Z
+    - 2026-10-13T19:05:08Z
+    - 2026-10-13T19:12:12Z
+    - 2026-10-13T19:21:39Z
+    - 2026-10-13T20:17:56Z
+  volume:
+    pullRequests:
+      - additions: 16108
+        deletions: 12866
+        state: open
+        dailyWork: true
+        filesChanged: 250
+        testFilesChanged: 37
+        commitCount: 18
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 0
+    commitAdditions: 0
+    commitDeletions: 0
+    commitStatsCount: 0
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 22.8
+  sessions: 1
+  sessionHours: 4.1
+  volumeHours: 22.8
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""

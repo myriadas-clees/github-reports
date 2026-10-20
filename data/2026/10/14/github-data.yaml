@@ -1,0 +1,1986 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-10-14
+  to: 2026-10-14
+stats:
+  totalCommits: 104
+  totalAdditions: 30156
+  totalDeletions: 14696
+  prsOpened: 3
+  prsMerged: 1
+  prsInProgress: 0
+  prsReviewed: 23
+  reviewComments: 23
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 92.6
+dailyCommits:
+  - date: 2026-10-14
+    count: 104
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 104
+    prsOpened: 3
+    prsMerged: 1
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests:
+  - title: "test(northstar): pin the clock for the daily brief cache fixture"
+    body: >-
+      ## Problem
+
+      `chat history cache > preserves daily brief metadata in the local history cache` writes a chat stamped
+      `2026-09-14T12:00Z`, then reads it back with the 30-day retention window measured against the **real** clock. On
+      2026-10-14 that chat aged out, so `bun run --cwd northstar test` fails on...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/161
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: closed
+    labels: []
+    additions: 4
+    deletions: 2
+    changedFiles: 1
+    author: myriadas-clees
+    createdAt: 2026-10-14T13:00:39Z
+    updatedAt: 2026-10-14T13:32:56Z
+    closedAt: 2026-10-14T13:32:56Z
+    mergedAt: null
+    workCommits:
+      - &a3
+        sha: dc6b7b708dfa597909ba194071909aa7556eae0a
+        message: "test(northstar): pin the clock for the daily brief cache fixture"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/dc6b7b708dfa597909ba194071909aa7556eae0a
+        authoredAt: 2026-10-14T13:00:37Z
+    workTimestamps:
+      - 2026-10-14T13:00:37Z
+    workAdditions: 4
+    workDeletions: 2
+    workFiles:
+      - northstar/lib/chat-history.test.ts
+  - title: "feat(northstar): [4/4] PDF polish: safe emoji, header logo, spacing, document editor"
+    body: >-
+      Stacked on #157.
+
+
+      ## Why
+
+      Real exports had three problems. Status emoji printed as mojibake: "Overall health: =Ø On track". Paragraphs were
+      nearly double-spaced. The PDF draft editor was a short box, smaller than the preview it edits. There was also no
+      brand mark on the PDF.
+
+
+      ## What
+
+      - **Emoji and sy...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/162
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: closed
+    labels: []
+    additions: 581
+    deletions: 21
+    changedFiles: 9
+    author: myriadas-clees
+    createdAt: 2026-10-14T13:34:03Z
+    updatedAt: 2026-10-14T13:51:45Z
+    closedAt: 2026-10-14T13:48:43Z
+    mergedAt: null
+    workCommits:
+      - &a7
+        sha: 21b1fb711b90e1b4258a6cba1bf537595e881f2a
+        message: "fix(northstar): render status emoji safely and brand chat PDFs with the logo"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/21b1fb711b90e1b4258a6cba1bf537595e881f2a
+        authoredAt: 2026-10-14T13:14:41Z
+      - &a10
+        sha: 91edc0e58cd57a1dc8e42605239c153893bde0bd
+        message: "feat(northstar): document-style PDF draft editor with formatting toolbar"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/91edc0e58cd57a1dc8e42605239c153893bde0bd
+        authoredAt: 2026-10-14T13:20:24Z
+      - &a12
+        sha: 7adbb0ff357116838053a8edd14b5134a152629b
+        message: "fix(northstar): normal PDF line spacing, inherited mark weight, aligned list markers"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7adbb0ff357116838053a8edd14b5134a152629b
+        authoredAt: 2026-10-14T13:26:39Z
+      - &a13
+        sha: 69e8ede1d5fe5586aeeafadea6ab368bcd9c14e0
+        message: "test(northstar): skip poppler-backed PDF checks when poppler is absent"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/69e8ede1d5fe5586aeeafadea6ab368bcd9c14e0
+        authoredAt: 2026-10-14T13:27:18Z
+      - &a14
+        sha: 575568d837ca476ac5dd2b88032d79ee394f46f1
+        message: Merge remote-tracking branch 'origin/northstar/stack-3-pdf-export' into feat/northstar-pdf-polish
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/575568d837ca476ac5dd2b88032d79ee394f46f1
+        authoredAt: 2026-10-14T13:33:03Z
+    workTimestamps:
+      - 2026-10-14T13:14:41Z
+      - 2026-10-14T13:20:24Z
+      - 2026-10-14T13:26:39Z
+      - 2026-10-14T13:27:18Z
+      - 2026-10-14T13:33:03Z
+    workAdditions: 581
+    workDeletions: 21
+    workFiles:
+      - northstar/app/globals.css
+      - northstar/components/answer-markdown.tsx
+      - northstar/components/pdf-draft-editor.test.tsx
+      - northstar/components/pdf-draft-editor.tsx
+      - northstar/lib/chat-history.test.ts
+      - northstar/lib/chat-pdf-text.ts
+      - northstar/lib/chat-pdf.test.ts
+      - northstar/lib/chat-pdf.tsx
+      - northstar/lib/markdown-edit.test.ts
+      - northstar/lib/markdown-edit.ts
+  - title: "release: 2026-10-15: design system, Next 16, Northstar commands and PDF, Entra group access"
+    body: One combined release for Thursday 2026-10-15. It replaces the individually reviewed PRs listed below, which were
+      closed unmerged on 2026-10-14. Each was merged in unchanged as a real merge commit, so their history and Codex
+      review threads stay the record of what was already flagged and handled. **Pl...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels:
+      - deploy-preview
+    additions: 29571
+    deletions: 14673
+    changedFiles: 288
+    author: myriadas-clees
+    createdAt: 2026-10-14T13:51:30Z
+    updatedAt: 2026-10-15T03:11:33Z
+    closedAt: 2026-10-15T03:11:33Z
+    mergedAt: 2026-10-15T03:11:33Z
+    workCommits:
+      - &a1
+        sha: 2262878531fe7aae1f0532e03cbcad06640470ee
+        message: "fix(northstar): scope saved chat cache to the Microsoft connection"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2262878531fe7aae1f0532e03cbcad06640470ee
+        authoredAt: 2026-10-14T12:54:44Z
+      - &a2
+        sha: a5662e5bfc5dff162b87db9debde3d9500429438
+        message: "fix(northstar): keep @ command expansion out of scheduled brief prompts"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a5662e5bfc5dff162b87db9debde3d9500429438
+        authoredAt: 2026-10-14T12:56:40Z
+      - &a4
+        sha: 7ea4a3957e8085db87351df22faf2885d379a88e
+        message: "feat(northstar): inline @command tokens, auto commands and readable command picker"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7ea4a3957e8085db87351df22faf2885d379a88e
+        authoredAt: 2026-10-14T13:05:38Z
+      - &a5
+        sha: 58e8f4161d4ad9ddca451cc0b32f4c59543f86db
+        message: "fix(northstar): keep @email replies to one clean card"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/58e8f4161d4ad9ddca451cc0b32f4c59543f86db
+        authoredAt: 2026-10-14T13:11:55Z
+      - &a6
+        sha: c65442f8e746d7d16b1a95d65597077751806a37
+        message: "feat(northstar): copy the email and count down before opening Outlook"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c65442f8e746d7d16b1a95d65597077751806a37
+        authoredAt: 2026-10-14T13:12:36Z
+      - sha: 21b1fb711b90e1b4258a6cba1bf537595e881f2a
+        message: "fix(northstar): render status emoji safely and brand chat PDFs with the logo"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/21b1fb711b90e1b4258a6cba1bf537595e881f2a
+        authoredAt: 2026-10-14T13:14:41Z
+      - &a8
+        sha: 78bc323039958e1aec349192776c255cd0bc0d2c
+        message: "feat(northstar): show meaningful progress phases for every request"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/78bc323039958e1aec349192776c255cd0bc0d2c
+        authoredAt: 2026-10-14T13:15:48Z
+      - &a9
+        sha: 55576d6110d86f95880e7e4df0aa663a176f56c0
+        message: "feat(northstar): show the progress phase under streaming answers"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/55576d6110d86f95880e7e4df0aa663a176f56c0
+        authoredAt: 2026-10-14T13:19:05Z
+      - sha: 91edc0e58cd57a1dc8e42605239c153893bde0bd
+        message: "feat(northstar): document-style PDF draft editor with formatting toolbar"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/91edc0e58cd57a1dc8e42605239c153893bde0bd
+        authoredAt: 2026-10-14T13:20:24Z
+      - &a11
+        sha: ecce6f51a826dec58293c6dc3daeea7ea6aa64a7
+        message: "fix(northstar): show the auto command hint inline at the start of the composer"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ecce6f51a826dec58293c6dc3daeea7ea6aa64a7
+        authoredAt: 2026-10-14T13:22:49Z
+      - sha: 7adbb0ff357116838053a8edd14b5134a152629b
+        message: "fix(northstar): normal PDF line spacing, inherited mark weight, aligned list markers"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7adbb0ff357116838053a8edd14b5134a152629b
+        authoredAt: 2026-10-14T13:26:39Z
+      - sha: 69e8ede1d5fe5586aeeafadea6ab368bcd9c14e0
+        message: "test(northstar): skip poppler-backed PDF checks when poppler is absent"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/69e8ede1d5fe5586aeeafadea6ab368bcd9c14e0
+        authoredAt: 2026-10-14T13:27:18Z
+      - sha: 77efc1f587e49b78f649c327f3b4f80a226b1a12
+        message: "test(northstar): pin the clock for the daily brief cache fixture"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/77efc1f587e49b78f649c327f3b4f80a226b1a12
+        authoredAt: 2026-10-14T13:00:37Z
+      - sha: 0d58fc19c8e32b5247b2ad71a5abbb2cb6585161
+        message: Merge branch 'northstar/stack-1-context-settings' into northstar/stack-2-at-commands
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0d58fc19c8e32b5247b2ad71a5abbb2cb6585161
+        authoredAt: 2026-10-14T13:29:33Z
+      - sha: 5051d0fcc629e52afa6b010548507376df474c8d
+        message: Merge branch 'northstar/stack-2-at-commands' into ops/stack-3
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/5051d0fcc629e52afa6b010548507376df474c8d
+        authoredAt: 2026-10-14T13:31:03Z
+      - sha: 575568d837ca476ac5dd2b88032d79ee394f46f1
+        message: Merge remote-tracking branch 'origin/northstar/stack-3-pdf-export' into feat/northstar-pdf-polish
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/575568d837ca476ac5dd2b88032d79ee394f46f1
+        authoredAt: 2026-10-14T13:33:03Z
+      - &a15
+        sha: 4feb2f9cf5e705e3dc64f19aff89c91e73daad5f
+        message: "fix(northstar): keep the composer column the same width when a Chats or Context panel opens"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4feb2f9cf5e705e3dc64f19aff89c91e73daad5f
+        authoredAt: 2026-10-14T13:33:32Z
+      - &a16
+        sha: db894262d1f4a0809f234268f4c96b4457b65de9
+        message: "fix(northstar): highlight auto command triggers in place and pause spellcheck around command words"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/db894262d1f4a0809f234268f4c96b4457b65de9
+        authoredAt: 2026-10-14T13:34:24Z
+      - &a17
+        sha: a6bffa1c49c18fbb5cadcb4f55958ebbc66934bc
+        message: Merge remote-tracking branch 'origin/chore/deps-2026-10-15' into release/2026-10-15
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a6bffa1c49c18fbb5cadcb4f55958ebbc66934bc
+        authoredAt: 2026-10-14T13:37:47Z
+      - &a18
+        sha: 578c4a0ae9f6bdbd8e4e51f2e98ac18e3eeb4d1b
+        message: Merge remote-tracking branch 'origin/feat/northstar-pdf-polish' into release/2026-10-15
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/578c4a0ae9f6bdbd8e4e51f2e98ac18e3eeb4d1b
+        authoredAt: 2026-10-14T13:37:47Z
+      - &a19
+        sha: 0ce661a0d76a537ca965cc93d80de8ea0e873df2
+        message: Merge branch 'fix/northstar-chat-owner-scope' into release/2026-10-15
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0ce661a0d76a537ca965cc93d80de8ea0e873df2
+        authoredAt: 2026-10-14T13:37:58Z
+      - &a20
+        sha: 1eb60e6b8a0d47e61986d5cdc8498124dcf40fa5
+        message: Merge branch 'feat/northstar-inline-commands' into release/2026-10-15
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/1eb60e6b8a0d47e61986d5cdc8498124dcf40fa5
+        authoredAt: 2026-10-14T13:40:31Z
+      - &a21
+        sha: 66e5b4249ca45e4cdd8a8600c6282258526ff637
+        message: Merge remote-tracking branch 'origin/feat/design-system-overhaul' into release/2026-10-15
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/66e5b4249ca45e4cdd8a8600c6282258526ff637
+        authoredAt: 2026-10-14T13:47:33Z
+      - &a22
+        sha: d647c78d9ba748bc1e29dc3a63a3e632fe741656
+        message: "fix(ofac): keep the /ofac base path on client-name detail links"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d647c78d9ba748bc1e29dc3a63a3e632fe741656
+        authoredAt: 2026-10-14T14:02:41Z
+      - &a23
+        sha: 1107dbb30d70a8b581d81089e4541291ff6690b0
+        message: "docs(ofac): note which detail links need the base path helper"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/1107dbb30d70a8b581d81089e4541291ff6690b0
+        authoredAt: 2026-10-14T14:02:46Z
+      - &a24
+        sha: d4fc6703fd617fa42b514120ae464ec6206e3aac
+        message: "fix(northstar): polish dialog, editor focus ring, command token icon and panel buttons after token conversion"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d4fc6703fd617fa42b514120ae464ec6206e3aac
+        authoredAt: 2026-10-14T14:03:57Z
+      - &a25
+        sha: f08ffb637a7fa5dbc1eabba34a678f0717392b95
+        message: "fix(northstar): show auto-applied command inline in sent bubbles"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f08ffb637a7fa5dbc1eabba34a678f0717392b95
+        authoredAt: 2026-10-14T14:26:23Z
+      - &a26
+        sha: e63b4b3e64708fee8c528911a17aaca933c70fc7
+        message: "feat(northstar): edit PDF drafts visually with a lazy TipTap editor, Markdown as the power-user mode"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e63b4b3e64708fee8c528911a17aaca933c70fc7
+        authoredAt: 2026-10-14T14:33:17Z
+      - &a27
+        sha: db55fcdc8e85a5b3b7a8d8d11091773e22756a40
+        message: "fix(northstar): keep the waiting label moving while Copilot gathers context"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/db55fcdc8e85a5b3b7a8d8d11091773e22756a40
+        authoredAt: 2026-10-14T14:36:45Z
+      - &a28
+        sha: cded11d1eb2a3165157ba42fbe05c1a98fefcc09
+        message: "feat(northstar): add Summarize this to quick peeks with Continue this chat"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cded11d1eb2a3165157ba42fbe05c1a98fefcc09
+        authoredAt: 2026-10-14T14:39:08Z
+      - &a29
+        sha: cd8111befeb2bcd1e4ad9be3db83a787b08e1052
+        message: "fix(northstar): hide the conversation Export PDF button in favor of @pdf"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cd8111befeb2bcd1e4ad9be3db83a787b08e1052
+        authoredAt: 2026-10-14T14:39:26Z
+      - &a30
+        sha: cca28116e6b75a0783593f2bf8b6dcee2939fc57
+        message: "fix(northstar): keep the same chat when editing a user message"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cca28116e6b75a0783593f2bf8b6dcee2939fc57
+        authoredAt: 2026-10-14T14:46:18Z
+      - &a31
+        sha: eb3a1fd5c92ed074adc67eaa9759d3d091801f3e
+        message: "docs(northstar): add roadmap and UX audit"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/eb3a1fd5c92ed074adc67eaa9759d3d091801f3e
+        authoredAt: 2026-10-14T14:56:44Z
+      - &a32
+        sha: a7576b0bfdc056e70618229a5985ee45fa1a32c6
+        message: "fix(northstar): chat icon opens a new chat and retry stays in the same chat"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a7576b0bfdc056e70618229a5985ee45fa1a32c6
+        authoredAt: 2026-10-14T15:01:29Z
+      - &a33
+        sha: 144fc5f6e9e8c97e4e071f7e664957002641afdc
+        message: "fix(northstar): adopt the pre-scoping chat cache so delivered briefs aren't regenerated"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/144fc5f6e9e8c97e4e071f7e664957002641afdc
+        authoredAt: 2026-10-14T15:01:41Z
+      - &a34
+        sha: de9a29ed128700e1f82efb312c78f51ecfb26021
+        message: "test(northstar): give the chat cache storage mock removeItem"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/de9a29ed128700e1f82efb312c78f51ecfb26021
+        authoredAt: 2026-10-14T15:02:39Z
+      - &a35
+        sha: 8057d21a423614774326b2825a1de79cf18b3f3e
+        message: "fix(northstar): give quick-peek summaries the item and the chat look"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8057d21a423614774326b2825a1de79cf18b3f3e
+        authoredAt: 2026-10-14T15:17:41Z
+      - &a36
+        sha: 5384be6f9984a8a7d683c3561a24319d961df7d0
+        message: "fix(northstar): render PDF drafts at full length and make checklists usable"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/5384be6f9984a8a7d683c3561a24319d961df7d0
+        authoredAt: 2026-10-14T15:29:20Z
+      - &a37
+        sha: 363499adacf3f7c6fbb825cbc03054ba6205e1a4
+        message: "feat(northstar): polished calendar, To Do and meeting cards"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/363499adacf3f7c6fbb825cbc03054ba6205e1a4
+        authoredAt: 2026-10-14T15:30:09Z
+      - &a38
+        sha: cd0afb99df9ff249763af0e9d77084e9011e5545
+        message: "fix(northstar): auto-apply @meeting for meeting and call creation requests"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cd0afb99df9ff249763af0e9d77084e9011e5545
+        authoredAt: 2026-10-14T15:30:39Z
+      - &a39
+        sha: 46f03a17441dd35d5b8e7fbb6553e4ece44aa1aa
+        message: "feat(northstar): show meeting attendees in quick peek and summaries"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/46f03a17441dd35d5b8e7fbb6553e4ece44aa1aa
+        authoredAt: 2026-10-14T15:33:05Z
+      - &a40
+        sha: 0757a6c6c5fec033adc90cfa52488354f5cd271b
+        message: Merge branch 'feat/northstar-deliverable-cards' into release/2026-10-15
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0757a6c6c5fec033adc90cfa52488354f5cd271b
+        authoredAt: 2026-10-14T15:33:21Z
+      - &a41
+        sha: 2e97280492c474852ea7f764e00fc3f28cd67a15
+        message: "test(northstar): give subprocess dashboard fixtures a CI-sized timeout"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2e97280492c474852ea7f764e00fc3f28cd67a15
+        authoredAt: 2026-10-14T15:42:14Z
+      - &a42
+        sha: 30b66acbf4d7cd804cb146ecabad1cbf7a27e647
+        message: "fix(northstar): accept calendar, To Do and meeting draft edits in chat sync"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/30b66acbf4d7cd804cb146ecabad1cbf7a27e647
+        authoredAt: 2026-10-14T15:44:00Z
+      - &a43
+        sha: 2363652d2e208a4fa1e3a4c8c0889080486faf93
+        message: "fix(northstar): apply calendar, To Do and meeting card edits to copy, export and context"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2363652d2e208a4fa1e3a4c8c0889080486faf93
+        authoredAt: 2026-10-14T15:46:41Z
+      - &a44
+        sha: cf47ce97b58cef2ad8c9ec0e843b71892a1ade67
+        message: "fix(northstar): polish quick-peek summary streaming, headings and actions"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cf47ce97b58cef2ad8c9ec0e843b71892a1ade67
+        authoredAt: 2026-10-14T16:05:24Z
+      - &a45
+        sha: 5fb6157525548ad02065b58727b8c29542ec58fc
+        message: "fix(northstar): pause chat auto-follow when the reader scrolls up, floating jump pill, sticky card action
+          rows"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/5fb6157525548ad02065b58727b8c29542ec58fc
+        authoredAt: 2026-10-14T16:06:31Z
+      - &a46
+        sha: f74e48348bab9bbb5e82f95692b83c81588597d4
+        message: "feat(northstar): edit calendar and meeting times with date, time and duration controls"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f74e48348bab9bbb5e82f95692b83c81588597d4
+        authoredAt: 2026-10-14T16:06:41Z
+      - &a47
+        sha: b059b4b8eb6271c968ea1e338f10aae3624f8543
+        message: "fix(northstar): keep midnight-start events timed when the end is not a day boundary"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b059b4b8eb6271c968ea1e338f10aae3624f8543
+        authoredAt: 2026-10-14T16:18:58Z
+      - &a48
+        sha: 4fc8205429729bebabf7361dfe8e9055088a4ed7
+        message: "fix(northstar): type the quick-peek summary in even when it arrives with completion"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4fc8205429729bebabf7361dfe8e9055088a4ed7
+        authoredAt: 2026-10-14T16:22:07Z
+      - &a49
+        sha: c139b6c9b1deeaf48e32c37ccba349fd73b66e17
+        message: "feat(northstar): themed date picker and selects for calendar and meeting time controls"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c139b6c9b1deeaf48e32c37ccba349fd73b66e17
+        authoredAt: 2026-10-14T16:33:09Z
+      - &a50
+        sha: cc2c0cc3fb2e1f7c2ee2b8a9ec561ec2067d5bd5
+        message: "feat(northstar): score auto command detection with fuzzy nouns and verbs"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cc2c0cc3fb2e1f7c2ee2b8a9ec561ec2067d5bd5
+        authoredAt: 2026-10-14T16:34:46Z
+      - &a51
+        sha: 377ce3fa64599dca58f311d540a1ab7af5258ff6
+        message: "feat(northstar): read natural calendar When values and time ranges"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/377ce3fa64599dca58f311d540a1ab7af5258ff6
+        authoredAt: 2026-10-14T16:36:38Z
+      - &a52
+        sha: 75f96f48e79ad8eef5a9b1edee2ea55318e2faec
+        message: "feat(northstar): give dated @calendar, @meeting and @todo prompts the current date"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/75f96f48e79ad8eef5a9b1edee2ea55318e2faec
+        authoredAt: 2026-10-14T16:37:30Z
+      - &a53
+        sha: deec35615b7a2b822b4dba7e9309cbc2e1dfaa6b
+        message: "fix(northstar): stop trapping PDF drafts in Markdown mode"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/deec35615b7a2b822b4dba7e9309cbc2e1dfaa6b
+        authoredAt: 2026-10-14T16:38:46Z
+      - &a54
+        sha: bb383c80d7981a5f295b938c186b4262dada1bd6
+        message: "feat(northstar): tell the model when an unmarked message fits two auto commands"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/bb383c80d7981a5f295b938c186b4262dada1bd6
+        authoredAt: 2026-10-14T16:43:06Z
+      - &a55
+        sha: 22798dd947eee4fd94b43a4adde4b1e02dccccf8
+        message: "feat(northstar): tell the model when a request is an unavailable action or a calendar item lacks a time"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/22798dd947eee4fd94b43a4adde4b1e02dccccf8
+        authoredAt: 2026-10-14T17:00:29Z
+      - &a56
+        sha: 4e3d7ec1ecf042fa9c20ab3f72eaaadda7b13e3a
+        message: "fix(northstar): merge draft edits when stale chat saves replace a message"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4e3d7ec1ecf042fa9c20ab3f72eaaadda7b13e3a
+        authoredAt: 2026-10-14T17:10:14Z
+      - &a57
+        sha: da752e3c787b1f2e7cf25f92155555685d0f6e96
+        message: "fix(northstar): have summaries report description text instead of discarding it as a directive"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/da752e3c787b1f2e7cf25f92155555685d0f6e96
+        authoredAt: 2026-10-14T17:27:04Z
+      - &a58
+        sha: ca35302e446dbf1dd425ccde56c62f0db2605fb1
+        message: "fix(northstar): keep Ask draft on New chat, confirm email draft discard, open empty start time at now"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ca35302e446dbf1dd425ccde56c62f0db2605fb1
+        authoredAt: 2026-10-14T17:47:34Z
+      - &a59
+        sha: 7573fefeb9e6a1532138d13bf3d441a8eecd925e
+        message: "feat(northstar): move the Northstar shell onto the shared AppShell"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7573fefeb9e6a1532138d13bf3d441a8eecd925e
+        authoredAt: 2026-10-14T17:47:38Z
+      - &a60
+        sha: 064bcd6529ebd9c7e392f018f4d838a42da72c41
+        message: "feat(northstar): compose Today, Ask and Settings from shared page components"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/064bcd6529ebd9c7e392f018f4d838a42da72c41
+        authoredAt: 2026-10-14T17:58:54Z
+      - &a61
+        sha: a9ef1674740526d358d4e1ed103f9c9432626b22
+        message: "fix(northstar): copy only the body for prefilled Outlook drafts"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a9ef1674740526d358d4e1ed103f9c9432626b22
+        authoredAt: 2026-10-14T17:59:18Z
+      - &a62
+        sha: 4dcedbd577b0454494901c8bb14163a8d048893e
+        message: "fix(northstar): disable command card actions until their fence closes"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4dcedbd577b0454494901c8bb14163a8d048893e
+        authoredAt: 2026-10-14T17:59:18Z
+      - &a63
+        sha: e2b03ebb00398085f1573da32cbbd5879c011fc4
+        message: "chore(northstar): prune CSS replaced by the shared shell and update GUI guidance"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e2b03ebb00398085f1573da32cbbd5879c011fc4
+        authoredAt: 2026-10-14T18:03:10Z
+      - &a64
+        sha: 0ffbdc64dbba909e0b847af30720581d97707642
+        message: "feat(northstar): put the search bar back in the shell header"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0ffbdc64dbba909e0b847af30720581d97707642
+        authoredAt: 2026-10-14T18:10:25Z
+      - &a65
+        sha: 7af8e1210d1ee321c4b5bfd2c1e8da38d9466a68
+        message: "fix(northstar): center the search clear button in the search bar"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7af8e1210d1ee321c4b5bfd2c1e8da38d9466a68
+        authoredAt: 2026-10-14T18:15:11Z
+      - &a66
+        sha: 639d38db8b0cbbf70417dc40b3ca8ad27f68533f
+        message: "feat(northstar): make Today a customizable widget grid"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/639d38db8b0cbbf70417dc40b3ca8ad27f68533f
+        authoredAt: 2026-10-14T18:15:17Z
+      - &a67
+        sha: f2cd22c8ba3a2eccd1dad9e233704447bcc3430d
+        message: "feat(northstar): add a themed 404 page"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f2cd22c8ba3a2eccd1dad9e233704447bcc3430d
+        authoredAt: 2026-10-14T18:16:26Z
+      - &a68
+        sha: 8aea4c683ac683501457fd92b285db8f56bfdef2
+        message: "fix(northstar): lay the sidebar search out full width above the results"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8aea4c683ac683501457fd92b285db8f56bfdef2
+        authoredAt: 2026-10-14T18:18:05Z
+      - &a69
+        sha: 85086f552379a268c3cf685f9f128b12dce32a7b
+        message: "feat(northstar): style the pre-shell screens with the shared AuthCard"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/85086f552379a268c3cf685f9f128b12dce32a7b
+        authoredAt: 2026-10-14T18:21:20Z
+      - &a70
+        sha: 3dcc9ea261a48d2cffcc7e79f4aa9cba856e05a6
+        message: "feat(northstar): use the shared appearance quick settings in the user menu"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3dcc9ea261a48d2cffcc7e79f4aa9cba856e05a6
+        authoredAt: 2026-10-14T18:21:20Z
+      - &a71
+        sha: ea8dd2aefeab00f319296da44a05e0c18ddac06e
+        message: "fix(northstar): truncate the user menu role badge inside the panel"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ea8dd2aefeab00f319296da44a05e0c18ddac06e
+        authoredAt: 2026-10-14T18:22:03Z
+      - &a72
+        sha: 056b509125852daefc0d02fab6aa48745732500b
+        message: "fix(northstar): fit Ask to the viewport with a docked composer"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/056b509125852daefc0d02fab6aa48745732500b
+        authoredAt: 2026-10-14T18:26:07Z
+      - &a73
+        sha: 01e63b1bde536cc34bc16ce679f427074d807e74
+        message: "feat(northstar): move search into Today as a widget and restore the header search button"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/01e63b1bde536cc34bc16ce679f427074d807e74
+        authoredAt: 2026-10-14T18:36:08Z
+      - &a74
+        sha: 0d8f04418702104effc5ae9cf21a696409f567b7
+        message: "fix(northstar): size Today widgets by width and strengthen card contrast"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0d8f04418702104effc5ae9cf21a696409f567b7
+        authoredAt: 2026-10-14T18:51:03Z
+      - &a75
+        sha: 405e70db55e1df2b09b183d9e6b5033b6179b950
+        message: "feat(northstar): make the Add widget menu a proper popover"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/405e70db55e1df2b09b183d9e6b5033b6179b950
+        authoredAt: 2026-10-14T19:00:41Z
+      - &a76
+        sha: 84a0b4e0db60ad809480bf3e7e3acefa02b38690
+        message: "feat(northstar): render the Today loading state with the saved widget grid"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/84a0b4e0db60ad809480bf3e7e3acefa02b38690
+        authoredAt: 2026-10-14T19:00:41Z
+      - &a77
+        sha: 71aafbcd03acf76a16ffbfcab418da5f1bf8383e
+        message: "fix(northstar): keep Today widget layers below the shell header popovers"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/71aafbcd03acf76a16ffbfcab418da5f1bf8383e
+        authoredAt: 2026-10-14T19:00:41Z
+      - &a78
+        sha: ff6895ce46d57ee0a2bedd37410e0906983b0826
+        message: "fix(ui): centre the topbar nav between the header start and end regions"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ff6895ce46d57ee0a2bedd37410e0906983b0826
+        authoredAt: 2026-10-14T19:01:53Z
+      - &a79
+        sha: a0cb56e4a17f6af326d150ebdfe560a5e4d4c429
+        message: "feat(northstar): show only Today, Ask and Settings in the navigation"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a0cb56e4a17f6af326d150ebdfe560a5e4d4c429
+        authoredAt: 2026-10-14T19:03:23Z
+      - &a80
+        sha: 13e742b1fcaba7eb7fd82d3f08ca3ec08fe90961
+        message: "feat(northstar): pack Today widgets into full-width, equal-height shelves"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/13e742b1fcaba7eb7fd82d3f08ca3ec08fe90961
+        authoredAt: 2026-10-14T19:20:20Z
+      - &a81
+        sha: 519803e4ad62c4886f7051f2d22ae13f37d9c3d9
+        message: "fix(northstar): size Today grid tiers to the dashboard container"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/519803e4ad62c4886f7051f2d22ae13f37d9c3d9
+        authoredAt: 2026-10-14T19:36:46Z
+      - &a82
+        sha: ea00c6d0dd5a6e18134204f30828e178e459dde9
+        message: "feat(northstar): let Today widget size change what each widget shows"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ea00c6d0dd5a6e18134204f30828e178e459dde9
+        authoredAt: 2026-10-14T19:36:46Z
+      - &a83
+        sha: 770412de88eb30f8d461867d85ca2cee4d05363a
+        message: Merge branch 'feat/northstar-shell-redesign' into release/2026-10-15
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/770412de88eb30f8d461867d85ca2cee4d05363a
+        authoredAt: 2026-10-14T19:45:07Z
+      - &a84
+        sha: 60372ff85de15425b6c9f74d23894991a243e654
+        message: "fix(northstar): scope chat history to the Microsoft connection"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/60372ff85de15425b6c9f74d23894991a243e654
+        authoredAt: 2026-10-14T19:54:37Z
+      - &a85
+        sha: 87036ccc5d122964b00f38ecd9687e0c941e45d1
+        message: "fix(northstar): drop superseded turns from synced chat history"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/87036ccc5d122964b00f38ecd9687e0c941e45d1
+        authoredAt: 2026-10-14T19:56:25Z
+      - &a86
+        sha: af877d6fbabb32814c56c1929296d569d5eb7b83
+        message: "fix(northstar): delete only the failed provider's conversation mapping"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/af877d6fbabb32814c56c1929296d569d5eb7b83
+        authoredAt: 2026-10-14T19:57:21Z
+      - &a87
+        sha: 9e13dec762bb0c4a83ed036c4e4946a2e383ce6c
+        message: "fix(northstar): reuse the period's existing brief instead of regenerating it"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/9e13dec762bb0c4a83ed036c4e4946a2e383ce6c
+        authoredAt: 2026-10-14T20:04:22Z
+      - &a88
+        sha: a217a3d7a6cc52e8d38f0352490ae7ea84664814
+        message: "test(hub): use const for the unchanged stored mapping"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a217a3d7a6cc52e8d38f0352490ae7ea84664814
+        authoredAt: 2026-10-14T20:07:41Z
+      - &a89
+        sha: 04e0147d6ba054beb06f8cce09cc2e37d45ef99c
+        message: Reuse completed scheduled briefs for the period
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/04e0147d6ba054beb06f8cce09cc2e37d45ef99c
+        authoredAt: 2026-10-14T20:22:35Z
+      - &a90
+        sha: 18c1775cca5d413c4879d23af514169330e5ea1f
+        message: "fix(northstar): reject invalid To Do deadlines"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/18c1775cca5d413c4879d23af514169330e5ea1f
+        authoredAt: 2026-10-14T20:33:15Z
+      - &a91
+        sha: f3b4a1490a9e964cffb562165d0fed84d24137ba
+        message: "fix(northstar): guard Cosmos chat writes with ETags"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f3b4a1490a9e964cffb562165d0fed84d24137ba
+        authoredAt: 2026-10-14T20:45:28Z
+      - &a92
+        sha: c2fa7f648a67b0362c91f610be94bcb0f1421a00
+        message: "fix(northstar): accept concurrent tombstone during chat save"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c2fa7f648a67b0362c91f610be94bcb0f1421a00
+        authoredAt: 2026-10-14T20:50:43Z
+      - &a93
+        sha: aac17bcfdae5365c9ee70310228befdc08a3047d
+        message: "fix: preserve Northstar ownership and draft state"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/aac17bcfdae5365c9ee70310228befdc08a3047d
+        authoredAt: 2026-10-14T21:06:27Z
+      - &a94
+        sha: 6e34a064eb9651b012c4a1d239a85975ae6350cb
+        message: "fix(northstar): preserve calendar location and invitees"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6e34a064eb9651b012c4a1d239a85975ae6350cb
+        authoredAt: 2026-10-14T21:14:37Z
+      - &a95
+        sha: 3aa0a3b4f832cab7140ba8762efe8769d2826cac
+        message: "fix(hub): satisfy prefer-const lint"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3aa0a3b4f832cab7140ba8762efe8769d2826cac
+        authoredAt: 2026-10-14T21:15:42Z
+      - &a96
+        sha: e62ba8ae1c873c1de42565c30f3136c01907dd8f
+        message: "fix(northstar): accept Graph calendar event payload"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e62ba8ae1c873c1de42565c30f3136c01907dd8f
+        authoredAt: 2026-10-14T21:17:25Z
+      - &a97
+        sha: 4dbf3c591d3978c018c7e47edb3b5453a1d4fd7e
+        message: "fix(hub): preserve scoped chats during legacy adoption"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4dbf3c591d3978c018c7e47edb3b5453a1d4fd7e
+        authoredAt: 2026-10-14T21:26:00Z
+      - &a98
+        sha: d16d6e6c5cb0072ab709dbe30a6a9ad067d38a99
+        message: "fix: preserve Northstar and Pricing preferences"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d16d6e6c5cb0072ab709dbe30a6a9ad067d38a99
+        authoredAt: 2026-10-14T21:37:55Z
+      - &a99
+        sha: fde90716b848a76429dcc1b15582a34e84d8fd6b
+        message: "fix(northstar): preserve multi-day all-day events"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/fde90716b848a76429dcc1b15582a34e84d8fd6b
+        authoredAt: 2026-10-14T21:46:00Z
+      - &a100
+        sha: 68049115aefc5cd0c14f10e41162200def082ada
+        message: "fix(hub): retain bounded chat tombstones"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/68049115aefc5cd0c14f10e41162200def082ada
+        authoredAt: 2026-10-14T21:48:09Z
+    workTimestamps:
+      - 2026-10-14T12:54:44Z
+      - 2026-10-14T12:56:40Z
+      - 2026-10-14T13:05:38Z
+      - 2026-10-14T13:11:55Z
+      - 2026-10-14T13:12:36Z
+      - 2026-10-14T13:14:41Z
+      - 2026-10-14T13:15:48Z
+      - 2026-10-14T13:19:05Z
+      - 2026-10-14T13:20:24Z
+      - 2026-10-14T13:22:49Z
+      - 2026-10-14T13:26:39Z
+      - 2026-10-14T13:27:18Z
+      - 2026-10-14T13:00:37Z
+      - 2026-10-14T13:29:33Z
+      - 2026-10-14T13:31:03Z
+      - 2026-10-14T13:33:03Z
+      - 2026-10-14T13:33:32Z
+      - 2026-10-14T13:34:24Z
+      - 2026-10-14T13:37:47Z
+      - 2026-10-14T13:37:47Z
+      - 2026-10-14T13:37:58Z
+      - 2026-10-14T13:40:31Z
+      - 2026-10-14T13:47:33Z
+      - 2026-10-14T14:02:41Z
+      - 2026-10-14T14:02:46Z
+      - 2026-10-14T14:03:57Z
+      - 2026-10-14T14:26:23Z
+      - 2026-10-14T14:33:17Z
+      - 2026-10-14T14:36:45Z
+      - 2026-10-14T14:39:08Z
+      - 2026-10-14T14:39:26Z
+      - 2026-10-14T14:46:18Z
+      - 2026-10-14T14:56:44Z
+      - 2026-10-14T15:01:29Z
+      - 2026-10-14T15:01:41Z
+      - 2026-10-14T15:02:39Z
+      - 2026-10-14T15:17:41Z
+      - 2026-10-14T15:29:20Z
+      - 2026-10-14T15:30:09Z
+      - 2026-10-14T15:30:39Z
+      - 2026-10-14T15:33:05Z
+      - 2026-10-14T15:33:21Z
+      - 2026-10-14T15:42:14Z
+      - 2026-10-14T15:44:00Z
+      - 2026-10-14T15:46:41Z
+      - 2026-10-14T16:05:24Z
+      - 2026-10-14T16:06:31Z
+      - 2026-10-14T16:06:41Z
+      - 2026-10-14T16:18:58Z
+      - 2026-10-14T16:22:07Z
+      - 2026-10-14T16:33:09Z
+      - 2026-10-14T16:34:46Z
+      - 2026-10-14T16:36:38Z
+      - 2026-10-14T16:37:30Z
+      - 2026-10-14T16:38:46Z
+      - 2026-10-14T16:43:06Z
+      - 2026-10-14T17:00:29Z
+      - 2026-10-14T17:10:14Z
+      - 2026-10-14T17:27:04Z
+      - 2026-10-14T17:47:34Z
+      - 2026-10-14T17:47:38Z
+      - 2026-10-14T17:58:54Z
+      - 2026-10-14T17:59:18Z
+      - 2026-10-14T17:59:18Z
+      - 2026-10-14T18:03:10Z
+      - 2026-10-14T18:10:25Z
+      - 2026-10-14T18:15:11Z
+      - 2026-10-14T18:15:17Z
+      - 2026-10-14T18:16:26Z
+      - 2026-10-14T18:18:05Z
+      - 2026-10-14T18:21:20Z
+      - 2026-10-14T18:21:20Z
+      - 2026-10-14T18:22:03Z
+      - 2026-10-14T18:26:07Z
+      - 2026-10-14T18:36:08Z
+      - 2026-10-14T18:51:03Z
+      - 2026-10-14T19:00:41Z
+      - 2026-10-14T19:00:41Z
+      - 2026-10-14T19:00:41Z
+      - 2026-10-14T19:01:53Z
+      - 2026-10-14T19:03:23Z
+      - 2026-10-14T19:20:20Z
+      - 2026-10-14T19:36:46Z
+      - 2026-10-14T19:36:46Z
+      - 2026-10-14T19:45:07Z
+      - 2026-10-14T19:54:37Z
+      - 2026-10-14T19:56:25Z
+      - 2026-10-14T19:57:21Z
+      - 2026-10-14T20:04:22Z
+      - 2026-10-14T20:07:41Z
+      - 2026-10-14T20:22:35Z
+      - 2026-10-14T20:33:15Z
+      - 2026-10-14T20:45:28Z
+      - 2026-10-14T20:50:43Z
+      - 2026-10-14T21:06:27Z
+      - 2026-10-14T21:14:37Z
+      - 2026-10-14T21:15:42Z
+      - 2026-10-14T21:17:25Z
+      - 2026-10-14T21:26:00Z
+      - 2026-10-14T21:37:55Z
+      - 2026-10-14T21:46:00Z
+      - 2026-10-14T21:48:09Z
+    workAdditions: 29571
+    workDeletions: 14673
+    workFiles:
+      - .agents/skills/graphical-audit/SKILL.md
+      - .agents/skills/graphical-audit/references/drift-rules.md
+      - .agents/skills/graphical-audit/references/report-format.md
+      - .agents/skills/graphical-convert/SKILL.md
+      - .agents/skills/graphical-convert/references/mapping-examples.md
+      - .agents/skills/graphical-ui/SKILL.md
+      - .agents/skills/ohcpwm-branding/SKILL.md
+      - AGENTS.md
+      - GUI.md
+      - bun.lock
+      - docs/northstar-roadmap.md
+      - eslint.config.mjs
+      - gui/custom-components.md
+      - gui/foundations.md
+      - gui/interface-judgment.md
+      - gui/theme-contract.md
+      - gui/themes.md
+      - gui/verification.md
+      - hub/app/403/page.tsx
+      - hub/app/error.tsx
+      - hub/app/globals.css
+      - hub/app/layout.tsx
+      - hub/app/loading.tsx
+      - hub/app/login/page.tsx
+      - hub/app/not-found.tsx
+      - hub/components/hub-launcher.fixture.tsx
+      - hub/components/hub-launcher.tsx
+      - hub/components/hub-loading-screen.tsx
+      - hub/eslint.config.mjs
+      - hub/functions/package.json
+      - hub/functions/src/northstar-brief-journeys.test.ts
+      - hub/functions/src/northstar-chat-history.test.ts
+      - hub/functions/src/northstar-chat-history.ts
+      - hub/functions/src/northstar-conversations.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-copilot.test.ts
+      - hub/functions/src/northstar-copilot.ts
+      - hub/functions/src/northstar-cosmos-recovery.test.ts
+      - hub/functions/src/northstar-daily-flow.test.ts
+      - hub/functions/src/northstar-draft-edits.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/functions/src/northstar-scheduled-brief.test.ts
+      - hub/functions/src/northstar-scheduled-brief.ts
+      - hub/next-env.d.ts
+      - hub/package.json
+      - hub/postcss.config.mjs
+      - northstar/app/globals.css
+      - northstar/app/layout.tsx
+      - northstar/app/not-found.tsx
+      - northstar/app/retention-controls.css
+      - northstar/bunfig.toml
+      - northstar/components/answer-markdown.test.tsx
+      - northstar/components/answer-markdown.tsx
+      - northstar/components/ask-northstar-workspace.dom.test.tsx
+      - northstar/components/ask-northstar-workspace.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/command-cards.dom.test.tsx
+      - northstar/components/command-cards.tsx
+      - northstar/components/date-picker.dom.test.tsx
+      - northstar/components/date-picker.tsx
+      - northstar/components/microsoft-todo-panel.tsx
+      - northstar/components/northstar-consent.dom.test.ts
+      - northstar/components/northstar-consent.fixture.tsx
+      - northstar/components/northstar-dashboard-lifecycle.fixture.ts
+      - northstar/components/northstar-dashboard-lifecycle.test.ts
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/northstar-quick-settings.tsx
+      - northstar/components/northstar-recovery.dom.test.ts
+      - northstar/components/northstar-recovery.fixture.tsx
+      - northstar/components/northstar-retention.dom.test.ts
+      - northstar/components/northstar-retention.fixture.tsx
+      - northstar/components/northstar-stability.dom.test.ts
+      - northstar/components/northstar-stability.fixture.tsx
+      - northstar/components/open-outlook-dialog.dom.test.tsx
+      - northstar/components/open-outlook-dialog.tsx
+      - northstar/components/pdf-draft-editor.test.tsx
+      - northstar/components/pdf-draft-editor.tsx
+      - northstar/components/pdf-editor-parts.tsx
+      - northstar/components/pdf-rich-editor.tsx
+      - northstar/components/settings-workspace.tsx
+      - northstar/components/streaming-markdown.tsx
+      - northstar/components/summarize-peek.dom.test.tsx
+      - northstar/components/summarize-peek.tsx
+      - northstar/components/today-widget-grid.dom.test.tsx
+      - northstar/components/today-widget-grid.tsx
+      - northstar/eslint.config.mjs
+      - northstar/lib/ask-stream.test.ts
+      - northstar/lib/ask-stream.ts
+      - northstar/lib/at-commands.test.ts
+      - northstar/lib/at-commands.ts
+      - northstar/lib/background-briefs.test.ts
+      - northstar/lib/background-briefs.ts
+      - northstar/lib/chat-history.test.ts
+      - northstar/lib/chat-history.ts
+      - northstar/lib/chat-pdf-label.ts
+      - northstar/lib/chat-pdf-text.ts
+      - northstar/lib/chat-pdf.test.ts
+      - northstar/lib/chat-pdf.tsx
+      - northstar/lib/command-cards.test.ts
+      - northstar/lib/command-cards.ts
+      - northstar/lib/draft-fences.test.ts
+      - northstar/lib/draft-fences.ts
+      - northstar/lib/email-draft.test.ts
+      - northstar/lib/email-draft.ts
+      - northstar/lib/markdown-edit.test.ts
+      - northstar/lib/markdown-edit.ts
+      - northstar/lib/northstar-context.test.ts
+      - northstar/lib/northstar-context.ts
+      - northstar/lib/outlook-calendar.test.ts
+      - northstar/lib/outlook-calendar.ts
+      - northstar/lib/pdf-rich-markdown.test.ts
+      - northstar/lib/pdf-rich-markdown.ts
+      - northstar/lib/progress-phase.test.ts
+      - northstar/lib/progress-phase.ts
+      - northstar/lib/settings-preferences.test.ts
+      - northstar/lib/settings-preferences.ts
+      - northstar/lib/summarize-item.test.ts
+      - northstar/lib/summarize-item.ts
+      - northstar/lib/today-layout.test.ts
+      - northstar/lib/today-layout.ts
+      - northstar/next-env.d.ts
+      - northstar/package.json
+      - northstar/postcss.config.mjs
+      - northstar/public/pdf-fonts/NotoSansArabic.woff
+      - northstar/public/pdf-fonts/NotoSansCJKsc-Bold.otf
+      - northstar/public/pdf-fonts/NotoSansCJKsc-Regular.otf
+      - northstar/public/pdf-fonts/NotoSansDevanagari.woff
+      - northstar/public/pdf-fonts/NotoSansHebrew.woff
+      - northstar/public/pdf-fonts/OFL.txt
+      - northstar/test/dom-document-preload.ts
+      - ofac/eslint.config.mjs
+      - ofac/functions/package.json
+      - ofac/next-env.d.ts
+      - ofac/package.json
+      - ofac/postcss.config.mjs
+      - ofac/src/app/clients/new/page.tsx
+      - ofac/src/app/globals.css
+      - ofac/src/app/layout.tsx
+      - ofac/src/app/login/page.tsx
+      - ofac/src/app/page.tsx
+      - ofac/src/app/screenings/page.tsx
+      - ofac/src/app/search/page.tsx
+      - ofac/src/app/sync/page.tsx
+      - ofac/src/components/app-shell-brand.test.tsx
+      - ofac/src/components/client-intake-form.tsx
+      - ofac/src/components/data-table.tsx
+      - ofac/src/components/ofac-app-shell.tsx
+      - ofac/src/components/ofac-iframe-auth-boundary.tsx
+      - ofac/src/components/ofac-iframe-auth-relay.tsx
+      - ofac/src/components/ofac-settings-page.tsx
+      - ofac/src/components/ofac-user-menu.tsx
+      - ofac/src/components/pdf-report-viewer.tsx
+      - ofac/src/components/report-viewer-shell.tsx
+      - ofac/src/components/screening-detail.tsx
+      - ofac/src/components/screening-filter-form.tsx
+      - ofac/src/components/workbook-report-viewer.tsx
+      - ofac/src/lib/__tests__/ofac-api-client.test.ts
+      - ofac/src/lib/__tests__/ofac-shell-presentation.test.ts
+      - ofac/src/lib/ofac-api-client.ts
+      - ofac/src/lib/ofac-nav.ts
+      - ofac/src/lib/ofac-routes.ts
+      - ofac/src/lib/ofac-shell-presentation.ts
+      - ofac/src/lib/ofac-theme.ts
+      - package.json
+      - packages/AGENTS.md
+      - packages/audit/package.json
+      - packages/auth/package.json
+      - packages/brand/assets/fonts/CORMORANT-GARAMOND-LICENSE.txt
+      - packages/brand/assets/fonts/IBM-PLEX-LICENSE.txt
+      - packages/brand/assets/fonts/cormorant-garamond-latin.woff2
+      - packages/brand/assets/fonts/ibm-plex-sans-medium.woff2
+      - packages/brand/assets/fonts/ibm-plex-sans-regular.woff2
+      - packages/brand/assets/fonts/ibm-plex-sans-semibold.woff2
+      - packages/brand/package.json
+      - packages/brand/src/fonts.css
+      - packages/brand/src/graphical-theme.css
+      - packages/brand/src/index.ts
+      - packages/brand/src/styles.css
+      - packages/contracts/package.json
+      - packages/db/package.json
+      - packages/ui/package.json
+      - packages/ui/src/app-user-menu.tsx
+      - packages/ui/src/appearance-quick-settings.tsx
+      - packages/ui/src/auth-card.tsx
+      - packages/ui/src/badge.tsx
+      - packages/ui/src/brand-logo.tsx
+      - packages/ui/src/brand/ohpwm-logo.tsx
+      - packages/ui/src/button.tsx
+      - packages/ui/src/card.tsx
+      - packages/ui/src/client-password-field.tsx
+      - packages/ui/src/dialog.tsx
+      - packages/ui/src/form.tsx
+      - packages/ui/src/index.ts
+      - packages/ui/src/input.tsx
+      - packages/ui/src/legacy-theme.ts
+      - packages/ui/src/metric-card.tsx
+      - packages/ui/src/microsoft-mark.tsx
+      - packages/ui/src/modal.tsx
+      - packages/ui/src/native-controls.tsx
+      - packages/ui/src/navigation/app-nav.test.tsx
+      - packages/ui/src/navigation/app-nav.tsx
+      - packages/ui/src/navigation/app-shell.test.tsx
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/navigation/index.ts
+      - packages/ui/src/navigation/mode-storage.ts
+      - packages/ui/src/navigation/nav-badge.test.ts
+      - packages/ui/src/navigation/nav-badge.ts
+      - packages/ui/src/navigation/navigation-mode-picker.tsx
+      - packages/ui/src/navigation/preferences.test.ts
+      - packages/ui/src/navigation/preferences.tsx
+      - packages/ui/src/navigation/types.ts
+      - packages/ui/src/page-hero.tsx
+      - packages/ui/src/pager.tsx
+      - packages/ui/src/paging.test.ts
+      - packages/ui/src/paging.ts
+      - packages/ui/src/select.tsx
+      - packages/ui/src/settings.tsx
+      - packages/ui/src/settings/appearance-settings.tsx
+      - packages/ui/src/settings/index.ts
+      - packages/ui/src/settings/preference-options.test.ts
+      - packages/ui/src/settings/preference-options.ts
+      - packages/ui/src/settings/settings-section.tsx
+      - packages/ui/src/shell-bootstrap.test.ts
+      - packages/ui/src/shell-bootstrap.ts
+      - packages/ui/src/styles.css
+      - packages/ui/src/summary-metric.tsx
+      - packages/ui/src/tabs.tsx
+      - packages/ui/src/textarea.tsx
+      - packages/ui/src/theme-bootstrap.test.ts
+      - packages/ui/src/theme-bootstrap.ts
+      - packages/ui/src/theme-preferences.tsx
+      - packages/ui/src/theme-toggle.tsx
+      - packages/ui/src/theme.ts
+      - packages/ui/src/user-menu.test.ts
+      - packages/ui/src/user-menu.test.tsx
+      - packages/ui/src/user-menu.tsx
+      - packages/ui/src/utils.ts
+      - pricing/AGENTS.md
+      - pricing/empty-module.ts
+      - pricing/eslint.config.mjs
+      - pricing/functions/package.json
+      - pricing/functions/src/index.ts
+      - pricing/next-env.d.ts
+      - pricing/next.config.ts
+      - pricing/package.json
+      - pricing/postcss.config.mjs
+      - pricing/src/app/globals.css
+      - pricing/src/app/layout.tsx
+      - pricing/src/app/login/page.tsx
+      - pricing/src/components/__tests__/recruit-archive-section.test.tsx
+      - pricing/src/components/__tests__/recruit-model-shell.test.tsx
+      - pricing/src/components/archive-recruit-form.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/payout-breakdown-donut.tsx
+      - pricing/src/components/pricing-app-shell.tsx
+      - pricing/src/components/pricing-graphs.tsx
+      - pricing/src/components/pricing-quick-settings.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/components/pricing-theme-controller.tsx
+      - pricing/src/components/pricing-theme-toggle.tsx
+      - pricing/src/components/pricing-user-menu.tsx
+      - pricing/src/components/pricing-workstation-client.tsx
+      - pricing/src/components/recruit-archive-section.tsx
+      - pricing/src/components/recruit-detail-panels.tsx
+      - pricing/src/components/recruit-filters.tsx
+      - pricing/src/components/recruit-form.tsx
+      - pricing/src/components/recruit-model-shell.tsx
+      - pricing/src/components/recruit-row-actions.tsx
+      - pricing/src/components/recruits-table.tsx
+      - pricing/src/components/report-sort-control.tsx
+      - pricing/src/components/report-viewer-shell.tsx
+      - pricing/src/components/scenario-model-tab.tsx
+      - pricing/src/components/settings-previews.tsx
+      - pricing/src/components/use-pricing-edit-view.ts
+      - pricing/src/lib/__tests__/pricing-recruit-delete-route.test.ts
+      - pricing/src/lib/__tests__/pricing-user-settings.test.ts
+      - pricing/src/lib/edit-view.ts
+      - pricing/src/lib/pricing-nav.ts
+      - pricing/src/lib/pricing-theme.ts
+      - pricing/src/lib/pricing-user-settings.ts
+      - scripts/dev-pricing-api.ts
+prsInProgress: []
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "fix(northstar): scope saved chat cache to the Microsoft connection"
+      - "fix(northstar): keep @ command expansion out of scheduled brief prompts"
+      - "test(northstar): pin the clock for the daily brief cache fixture"
+      - "test(northstar): pin the clock for the daily brief cache fixture"
+      - "feat(northstar): inline @command tokens, auto commands and readable command picker"
+      - "fix(northstar): keep @email replies to one clean card"
+      - "feat(northstar): copy the email and count down before opening Outlook"
+      - "fix(northstar): render status emoji safely and brand chat PDFs with the logo"
+      - "feat(northstar): show meaningful progress phases for every request"
+      - "feat(northstar): show the progress phase under streaming answers"
+      - "feat(northstar): document-style PDF draft editor with formatting toolbar"
+      - "fix(northstar): show the auto command hint inline at the start of the composer"
+      - "fix(northstar): normal PDF line spacing, inherited mark weight, aligned list markers"
+      - "test(northstar): skip poppler-backed PDF checks when poppler is absent"
+      - Merge branch 'northstar/stack-1-context-settings' into northstar/stack-2-at-commands
+      - Merge branch 'northstar/stack-2-at-commands' into ops/stack-3
+      - Merge remote-tracking branch 'origin/northstar/stack-3-pdf-export' into feat/northstar-pdf-polish
+      - "fix(northstar): keep the composer column the same width when a Chats or Context panel opens"
+      - "fix(northstar): highlight auto command triggers in place and pause spellcheck around command words"
+      - Merge remote-tracking branch 'origin/chore/deps-2026-10-15' into release/2026-10-15
+      - Merge remote-tracking branch 'origin/feat/northstar-pdf-polish' into release/2026-10-15
+      - Merge branch 'fix/northstar-chat-owner-scope' into release/2026-10-15
+      - Merge branch 'feat/northstar-inline-commands' into release/2026-10-15
+      - Merge remote-tracking branch 'origin/feat/design-system-overhaul' into release/2026-10-15
+      - "fix(ofac): keep the /ofac base path on client-name detail links"
+      - "docs(ofac): note which detail links need the base path helper"
+      - "fix(northstar): polish dialog, editor focus ring, command token icon and panel buttons after token conversion"
+      - "fix(northstar): show auto-applied command inline in sent bubbles"
+      - "feat(northstar): edit PDF drafts visually with a lazy TipTap editor, Markdown as the power-user mode"
+      - "fix(northstar): keep the waiting label moving while Copilot gathers context"
+      - "feat(northstar): add Summarize this to quick peeks with Continue this chat"
+      - "fix(northstar): hide the conversation Export PDF button in favor of @pdf"
+      - "fix(northstar): keep the same chat when editing a user message"
+      - "docs(northstar): add roadmap and UX audit"
+      - "fix(northstar): chat icon opens a new chat and retry stays in the same chat"
+      - "fix(northstar): adopt the pre-scoping chat cache so delivered briefs aren't regenerated"
+      - "test(northstar): give the chat cache storage mock removeItem"
+      - "fix(northstar): give quick-peek summaries the item and the chat look"
+      - "fix(northstar): render PDF drafts at full length and make checklists usable"
+      - "feat(northstar): polished calendar, To Do and meeting cards"
+      - "fix(northstar): auto-apply @meeting for meeting and call creation requests"
+      - "feat(northstar): show meeting attendees in quick peek and summaries"
+      - Merge branch 'feat/northstar-deliverable-cards' into release/2026-10-15
+      - "test(northstar): give subprocess dashboard fixtures a CI-sized timeout"
+      - "fix(northstar): accept calendar, To Do and meeting draft edits in chat sync"
+      - "fix(northstar): apply calendar, To Do and meeting card edits to copy, export and context"
+      - "fix(northstar): polish quick-peek summary streaming, headings and actions"
+      - "fix(northstar): pause chat auto-follow when the reader scrolls up, floating jump pill, sticky card action rows"
+      - "feat(northstar): edit calendar and meeting times with date, time and duration controls"
+      - "fix(northstar): keep midnight-start events timed when the end is not a day boundary"
+      - "fix(northstar): type the quick-peek summary in even when it arrives with completion"
+      - "feat(northstar): themed date picker and selects for calendar and meeting time controls"
+      - "feat(northstar): score auto command detection with fuzzy nouns and verbs"
+      - "feat(northstar): read natural calendar When values and time ranges"
+      - "feat(northstar): give dated @calendar, @meeting and @todo prompts the current date"
+      - "fix(northstar): stop trapping PDF drafts in Markdown mode"
+      - "feat(northstar): tell the model when an unmarked message fits two auto commands"
+      - "feat(northstar): tell the model when a request is an unavailable action or a calendar item lacks a time"
+      - "fix(northstar): merge draft edits when stale chat saves replace a message"
+      - "fix(northstar): have summaries report description text instead of discarding it as a directive"
+      - "fix(northstar): keep Ask draft on New chat, confirm email draft discard, open empty start time at now"
+      - "feat(northstar): move the Northstar shell onto the shared AppShell"
+      - "feat(northstar): compose Today, Ask and Settings from shared page components"
+      - "fix(northstar): copy only the body for prefilled Outlook drafts"
+      - "fix(northstar): disable command card actions until their fence closes"
+      - "chore(northstar): prune CSS replaced by the shared shell and update GUI guidance"
+      - "feat(northstar): put the search bar back in the shell header"
+      - "fix(northstar): center the search clear button in the search bar"
+      - "feat(northstar): make Today a customizable widget grid"
+      - "feat(northstar): add a themed 404 page"
+      - "fix(northstar): lay the sidebar search out full width above the results"
+      - "feat(northstar): style the pre-shell screens with the shared AuthCard"
+      - "feat(northstar): use the shared appearance quick settings in the user menu"
+      - "fix(northstar): truncate the user menu role badge inside the panel"
+      - "fix(northstar): fit Ask to the viewport with a docked composer"
+      - "feat(northstar): move search into Today as a widget and restore the header search button"
+      - "fix(northstar): size Today widgets by width and strengthen card contrast"
+      - "feat(northstar): make the Add widget menu a proper popover"
+      - "feat(northstar): render the Today loading state with the saved widget grid"
+      - "fix(northstar): keep Today widget layers below the shell header popovers"
+      - "fix(ui): centre the topbar nav between the header start and end regions"
+      - "feat(northstar): show only Today, Ask and Settings in the navigation"
+      - "feat(northstar): pack Today widgets into full-width, equal-height shelves"
+      - "fix(northstar): size Today grid tiers to the dashboard container"
+      - "feat(northstar): let Today widget size change what each widget shows"
+      - Merge branch 'feat/northstar-shell-redesign' into release/2026-10-15
+      - "fix(northstar): scope chat history to the Microsoft connection"
+      - "fix(northstar): drop superseded turns from synced chat history"
+      - "fix(northstar): delete only the failed provider's conversation mapping"
+      - "fix(northstar): reuse the period's existing brief instead of regenerating it"
+      - "test(hub): use const for the unchanged stored mapping"
+      - Reuse completed scheduled briefs for the period
+      - "fix(northstar): reject invalid To Do deadlines"
+      - "fix(northstar): guard Cosmos chat writes with ETags"
+      - "fix(northstar): accept concurrent tombstone during chat save"
+      - "fix: preserve Northstar ownership and draft state"
+      - "fix(northstar): preserve calendar location and invitees"
+      - "fix(hub): satisfy prefer-const lint"
+      - "fix(northstar): accept Graph calendar event payload"
+      - "fix(hub): preserve scoped chats during legacy adoption"
+      - "fix: preserve Northstar and Pricing preferences"
+      - "fix(northstar): preserve multi-day all-day events"
+      - "fix(hub): retain bounded chat tombstones"
+      - "release: 2026-10-15: design system, Next 16, Northstar commands and PDF, Entra group access (#163)"
+    commits:
+      - *a1
+      - *a2
+      - *a3
+      - sha: 77efc1f587e49b78f649c327f3b4f80a226b1a12
+        message: "test(northstar): pin the clock for the daily brief cache fixture"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/77efc1f587e49b78f649c327f3b4f80a226b1a12
+        authoredAt: 2026-10-14T13:00:37Z
+      - *a4
+      - *a5
+      - *a6
+      - *a7
+      - *a8
+      - *a9
+      - *a10
+      - *a11
+      - *a12
+      - *a13
+      - sha: 0d58fc19c8e32b5247b2ad71a5abbb2cb6585161
+        message: Merge branch 'northstar/stack-1-context-settings' into northstar/stack-2-at-commands
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0d58fc19c8e32b5247b2ad71a5abbb2cb6585161
+        authoredAt: 2026-10-14T13:29:33Z
+      - sha: 5051d0fcc629e52afa6b010548507376df474c8d
+        message: Merge branch 'northstar/stack-2-at-commands' into ops/stack-3
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/5051d0fcc629e52afa6b010548507376df474c8d
+        authoredAt: 2026-10-14T13:31:03Z
+      - *a14
+      - *a15
+      - *a16
+      - *a17
+      - *a18
+      - *a19
+      - *a20
+      - *a21
+      - *a22
+      - *a23
+      - *a24
+      - *a25
+      - *a26
+      - *a27
+      - *a28
+      - *a29
+      - *a30
+      - *a31
+      - *a32
+      - *a33
+      - *a34
+      - *a35
+      - *a36
+      - *a37
+      - *a38
+      - *a39
+      - *a40
+      - *a41
+      - *a42
+      - *a43
+      - *a44
+      - *a45
+      - *a46
+      - *a47
+      - *a48
+      - *a49
+      - *a50
+      - *a51
+      - *a52
+      - *a53
+      - *a54
+      - *a55
+      - *a56
+      - *a57
+      - *a58
+      - *a59
+      - *a60
+      - *a61
+      - *a62
+      - *a63
+      - *a64
+      - *a65
+      - *a66
+      - *a67
+      - *a68
+      - *a69
+      - *a70
+      - *a71
+      - *a72
+      - *a73
+      - *a74
+      - *a75
+      - *a76
+      - *a77
+      - *a78
+      - *a79
+      - *a80
+      - *a81
+      - *a82
+      - *a83
+      - *a84
+      - *a85
+      - *a86
+      - *a87
+      - *a88
+      - *a89
+      - *a90
+      - *a91
+      - *a92
+      - *a93
+      - *a94
+      - *a95
+      - *a96
+      - *a97
+      - *a98
+      - *a99
+      - *a100
+      - sha: 8c4fcd5a116cdf38c25e32d9acff519bc922c80b
+        message: "release: 2026-10-15: design system, Next 16, Northstar commands and PDF, Entra group access (#163)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8c4fcd5a116cdf38c25e32d9acff519bc922c80b
+        authoredAt: 2026-10-15T03:11:32Z
+        additions: 22586
+        deletions: 10435
+        filesChanged: 288
+releases: []
+externalContributions: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prTitle: "release: 2026-10-15: design system, Next 16, Northstar commands and PDF, Entra group access"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    state: commented
+    submittedAt: 2026-10-14T14:04:12Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prTitle: "release: 2026-10-15: design system, Next 16, Northstar commands and PDF, Entra group access"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    state: commented
+    submittedAt: 2026-10-14T15:46:54Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prTitle: "release: 2026-10-15: design system, Next 16, Northstar commands and PDF, Entra group access"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    state: commented
+    submittedAt: 2026-10-14T15:46:56Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prTitle: "release: 2026-10-15: design system, Next 16, Northstar commands and PDF, Entra group access"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    state: commented
+    submittedAt: 2026-10-14T17:02:36Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prTitle: "release: 2026-10-15: design system, Next 16, Northstar commands and PDF, Entra group access"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    state: commented
+    submittedAt: 2026-10-14T17:10:22Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prTitle: "release: 2026-10-15: design system, Next 16, Northstar commands and PDF, Entra group access"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    state: commented
+    submittedAt: 2026-10-14T17:59:28Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prTitle: "release: 2026-10-15: design system, Next 16, Northstar commands and PDF, Entra group access"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    state: commented
+    submittedAt: 2026-10-14T17:59:30Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prTitle: "release: 2026-10-15: design system, Next 16, Northstar commands and PDF, Entra group access"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    state: commented
+    submittedAt: 2026-10-14T19:54:50Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prTitle: "release: 2026-10-15: design system, Next 16, Northstar commands and PDF, Entra group access"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    state: commented
+    submittedAt: 2026-10-14T20:04:23Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prTitle: "release: 2026-10-15: design system, Next 16, Northstar commands and PDF, Entra group access"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    state: commented
+    submittedAt: 2026-10-14T20:04:25Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prTitle: "release: 2026-10-15: design system, Next 16, Northstar commands and PDF, Entra group access"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    state: commented
+    submittedAt: 2026-10-14T20:56:27Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prTitle: "release: 2026-10-15: design system, Next 16, Northstar commands and PDF, Entra group access"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    state: commented
+    submittedAt: 2026-10-14T20:56:35Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prTitle: "release: 2026-10-15: design system, Next 16, Northstar commands and PDF, Entra group access"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    state: commented
+    submittedAt: 2026-10-14T21:07:30Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prTitle: "release: 2026-10-15: design system, Next 16, Northstar commands and PDF, Entra group access"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    state: commented
+    submittedAt: 2026-10-14T21:07:39Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prTitle: "release: 2026-10-15: design system, Next 16, Northstar commands and PDF, Entra group access"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    state: commented
+    submittedAt: 2026-10-14T21:07:45Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prTitle: "release: 2026-10-15: design system, Next 16, Northstar commands and PDF, Entra group access"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    state: commented
+    submittedAt: 2026-10-14T21:17:57Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prTitle: "release: 2026-10-15: design system, Next 16, Northstar commands and PDF, Entra group access"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    state: commented
+    submittedAt: 2026-10-14T21:26:45Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prTitle: "release: 2026-10-15: design system, Next 16, Northstar commands and PDF, Entra group access"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    state: commented
+    submittedAt: 2026-10-14T21:38:47Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prTitle: "release: 2026-10-15: design system, Next 16, Northstar commands and PDF, Entra group access"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    state: commented
+    submittedAt: 2026-10-14T21:38:53Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prTitle: "release: 2026-10-15: design system, Next 16, Northstar commands and PDF, Entra group access"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    state: commented
+    submittedAt: 2026-10-14T21:38:58Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prTitle: "release: 2026-10-15: design system, Next 16, Northstar commands and PDF, Entra group access"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    state: commented
+    submittedAt: 2026-10-14T21:48:45Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prTitle: "release: 2026-10-15: design system, Next 16, Northstar commands and PDF, Entra group access"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    state: commented
+    submittedAt: 2026-10-14T21:48:51Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 157
+    prTitle: "feat(northstar): [3/3] PDF export"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/157
+    state: commented
+    submittedAt: 2026-10-14T13:34:13Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4271814211
+    body: "Fixed in d647c78d: the raw client-name anchors on the dashboard, screenings and search tables now use
+      `ofacBrowserHref(screeningDetailHref(id))`, matching client-intake-form. The static build sets
+      NEXT_PUBLIC_OFAC_BASE_PATH=/ofac in scripts/build-static-next.ts. Added a note at `screeningDetailHref`..."
+    path: ofac/src/app/page.tsx
+    createdAt: 2026-10-14T14:04:12Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4273024311
+    body: "Fixed in 30b66acb: chat sync now accepts calendar, todo and meeting draft edits alongside email and pdf, keeping
+      every other check and size cap."
+    path: hub/functions/src/northstar-chat-history.ts
+    createdAt: 2026-10-14T15:46:54Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4273024881
+    body: "Fixed in 2363652d: Copy, response PDF export and follow-up context now apply calendar, To Do and meeting card
+      edits. Email and pdf keep their saved-edit indexes, so earlier saved drafts still resolve."
+    path: northstar/components/ask-northstar-workspace.tsx
+    createdAt: 2026-10-14T15:46:56Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4273830134
+    body: "Fixed in b059b4b8: calendarDraftFrom treats a midnight start as all-day only when the end is also on a day
+      boundary, so a 00:00 start with a 45-minute end stays timed. Regression test in lib/outlook-calendar.test.ts."
+    path: northstar/components/command-cards.tsx
+    createdAt: 2026-10-14T17:02:36Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4273906445
+    body: "Fixed in 4e3d7ec1: both chat writers (SQLite in northstar-conversations.ts and Cosmos) now merge the stored
+      message's draftEdits with the incoming ones via a shared helper in northstar-draft-edits.ts, keyed by
+      kind:index:source. The newest editedAt wins, ties go to incoming, and the incoming payload..."
+    path: hub/functions/src/northstar-chat-history.ts
+    createdAt: 2026-10-14T17:10:22Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4274391279
+    body: "Fixed in a9ef1674: the Open in Outlook dialog now copies only the message body (the deeplink already prefills
+      To/Cc/Subject/Body), and the copy is reworded to say the draft opens prefilled and to paste only if the body is
+      empty. The countdown, Cancel/Open now, popup-blocked fallback and clipboard-fa..."
+    path: northstar/components/open-outlook-dialog.tsx
+    createdAt: 2026-10-14T17:59:27Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4274391678
+    body: "Fixed in 4dcedbd5: calendar, To Do and meeting command cards now use the same per-fence completion check as the
+      email/PDF branch, so Add to calendar, Open in Outlook/To Do, Edit and Copy stay disabled when that fence has no
+      closing marker. Added a test with an unclosed calendar block in a completed ..."
+    path: northstar/components/answer-markdown.tsx
+    createdAt: 2026-10-14T17:59:30Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4275562510
+    body: "Fixed in 60372ff8: the workspace now resets chats/active chat/hydration synchronously during render when the
+      owner changes and guards saves by the owner the chats were loaded for. Remote GET/PUT send the connection key; the
+      server rejects mismatches with 409 connection_changed and stores/reads chats..."
+    path: northstar/components/ask-northstar-workspace.tsx
+    createdAt: 2026-10-14T19:54:50Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4275658799
+    body: "Fixed in 87036ccc: edits and retries now send tombstones (removedMessages with timestamps) for the superseded
+      turns. SQLite and Cosmos drop tombstoned ids instead of unioning them back, while a stale save still cannot wipe
+      newer turns, and mergeChatHistories applies the same rule client-side. Tests ..."
+    path: northstar/components/ask-northstar-workspace.tsx
+    createdAt: 2026-10-14T20:04:23Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4275659212
+    body: "Fixed in af877d6f: deleteCopilotConversationMappingIfProvider is one conditional operation (SQLite DELETE ... AND
+      copilot_conversation_id = ?; Cosmos delete with If-Match on the read ETag plus a provider-id check, 404/412 are
+      no-ops). discardUnusedConversation uses it, with race tests on both adapte..."
+    path: hub/functions/src/northstar-microsoft.ts
+    createdAt: 2026-10-14T20:04:25Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4276176620
+    body: "[from Codex]: Luna fixed concurrent Cosmos metadata/message saves with conditional create/replace and bounded
+      re-read/merge retries in f3b4a149. c2fa7f64 also handles a concurrently tombstoned message as an intentional
+      no-op. Conflict and tombstone regressions and Functions typecheck passed; the rep..."
+    path: hub/functions/src/northstar-conversations.ts
+    createdAt: 2026-10-14T20:56:27Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4276177723
+    body: "[from Codex]: Luna fixed this in 18c1775c by validating local date/time components before formatting. Impossible
+      dates/times remain unnormalized instead of silently shifting to another deadline. Focused tests and Northstar
+      typecheck/lint passed. The commit is now pushed; fresh CI is running."
+    path: northstar/lib/command-cards.ts
+    createdAt: 2026-10-14T20:56:35Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4276274729
+    body: "[from Codex]: Fixed in aac17bcf. A deterministic create-only Cosmos claim assigns each legacy chat to one
+      connection before copying it. A concurrent two-connection regression passes."
+    path: hub/functions/src/northstar-conversations.ts
+    createdAt: 2026-10-14T21:07:30Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4276275938
+    body: "[from Codex]: Fixed in aac17bcf. Moving a timed calendar draft now preserves its existing duration. Tests cover
+      45-minute and 90-minute drafts moved across days and slots."
+    path: northstar/components/northstar-dashboard.tsx
+    createdAt: 2026-10-14T21:07:39Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4276276822
+    body: "[from Codex]: Fixed in aac17bcf. Widget customization operations now use stored preferences instead of responsive
+      display sizes. A standard-width regression verifies unrelated widget sizes remain preserved."
+    path: northstar/components/today-widget-grid.tsx
+    createdAt: 2026-10-14T21:07:45Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4276366876
+    body: "[from Codex]: Fixed in 6e34a064 and e62ba8ae. Calendar and meeting cards now carry location and valid invitees
+      through the draft and the Graph-shaped browser request into the Functions handler. The handler validates addresses
+      and preserves the 50-attendee limit. Focused card, draft, and Functions re..."
+    path: northstar/components/command-cards.tsx
+    createdAt: 2026-10-14T21:17:57Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4276446878
+    body: "[from Codex]: Fixed in 4dbf3c59. Adoption creates scoped copies conditionally, preserves verified existing copies
+      and message tombstones, and removes legacy documents only after safe copying. The delayed-adoption regression
+      preserves a newer rename and deletion. All 21 conversation tests, Functions ..."
+    path: hub/functions/src/northstar-conversations.ts
+    createdAt: 2026-10-14T21:26:45Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4276550509
+    body: "[from Codex]: Fixed in d16d6e6c. The meeting output contract now requests Duration, Location, and Attendees so
+      scheduling details reach existing cards. Focused command tests passed."
+    path: northstar/lib/at-commands.ts
+    createdAt: 2026-10-14T21:38:46Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4276551289
+    body: "[from Codex]: Fixed in d16d6e6c. Calendar cards pass known valid attendee emails into the Outlook draft deeplink.
+      URL and card regressions passed."
+    path: northstar/components/command-cards.tsx
+    createdAt: 2026-10-14T21:38:52Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4276551993
+    body: "[from Codex]: Fixed in d16d6e6c. Pricing reads the authenticated user legacy settings and uses the existing theme
+      migration helper, preserving any existing shared preference. Pricing regressions, typecheck, and lint passed."
+    path: pricing/src/app/layout.tsx
+    createdAt: 2026-10-14T21:38:58Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4276631431
+    body: "[from Codex]: Fixed in fde90716. Explicit multi-day all-day ranges are preserved when created and moved, using
+      calendar-day arithmetic across DST. DST tests, Northstar typecheck, and lint passed."
+    path: northstar/lib/outlook-calendar.ts
+    createdAt: 2026-10-14T21:48:45Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 163
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4276632337
+    body: "[from Codex]: Fixed in 68049115 without pruning deletion evidence. Sync and persisted merges retain all
+      tombstones within a 256 KiB UTF-8 metadata ceiling instead of rejecting or truncating at 1,000 entries. SQLite and
+      Cosmos regressions verify 1,001 deletions survive stale saves and oversized paylo..."
+    path: northstar/components/ask-northstar-workspace.tsx
+    createdAt: 2026-10-14T21:48:51Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 157
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/157
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/157#discussion_r4271460544
+    body: "Deferred: whether exported PDFs should carry the answer's supporting sources is a product decision for the client
+      (the UI shows them; the export intentionally contains the deliverable only for now). Tracked as a follow-up rather
+      than changed in this PR."
+    path: northstar/components/ask-northstar-workspace.tsx
+    createdAt: 2026-10-14T13:34:13Z
+aiReviews:
+  codex:
+    prsReviewed: 4
+    comments: 27
+    reviews: 16
+    fixed: 10
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 4
+  comments: 27
+  reviews: 16
+  fixed: 10
+hoursInputs:
+  timestamps:
+    - 2026-10-14T12:54:44Z
+    - 2026-10-14T12:56:40Z
+    - 2026-10-14T13:00:37Z
+    - 2026-10-14T13:00:37Z
+    - 2026-10-14T13:05:38Z
+    - 2026-10-14T13:11:55Z
+    - 2026-10-14T13:12:36Z
+    - 2026-10-14T13:14:41Z
+    - 2026-10-14T13:15:48Z
+    - 2026-10-14T13:19:05Z
+    - 2026-10-14T13:20:24Z
+    - 2026-10-14T13:22:49Z
+    - 2026-10-14T13:26:39Z
+    - 2026-10-14T13:27:18Z
+    - 2026-10-14T13:29:33Z
+    - 2026-10-14T13:31:03Z
+    - 2026-10-14T13:33:03Z
+    - 2026-10-14T13:33:32Z
+    - 2026-10-14T13:34:24Z
+    - 2026-10-14T13:37:47Z
+    - 2026-10-14T13:37:47Z
+    - 2026-10-14T13:37:58Z
+    - 2026-10-14T13:40:31Z
+    - 2026-10-14T13:47:33Z
+    - 2026-10-14T14:02:41Z
+    - 2026-10-14T14:02:46Z
+    - 2026-10-14T14:03:57Z
+    - 2026-10-14T14:26:23Z
+    - 2026-10-14T14:33:17Z
+    - 2026-10-14T14:36:45Z
+    - 2026-10-14T14:39:08Z
+    - 2026-10-14T14:39:26Z
+    - 2026-10-14T14:46:18Z
+    - 2026-10-14T14:56:44Z
+    - 2026-10-14T15:01:29Z
+    - 2026-10-14T15:01:41Z
+    - 2026-10-14T15:02:39Z
+    - 2026-10-14T15:17:41Z
+    - 2026-10-14T15:29:20Z
+    - 2026-10-14T15:30:09Z
+    - 2026-10-14T15:30:39Z
+    - 2026-10-14T15:33:05Z
+    - 2026-10-14T15:33:21Z
+    - 2026-10-14T15:42:14Z
+    - 2026-10-14T15:44:00Z
+    - 2026-10-14T15:46:41Z
+    - 2026-10-14T16:05:24Z
+    - 2026-10-14T16:06:31Z
+    - 2026-10-14T16:06:41Z
+    - 2026-10-14T16:18:58Z
+    - 2026-10-14T16:22:07Z
+    - 2026-10-14T16:33:09Z
+    - 2026-10-14T16:34:46Z
+    - 2026-10-14T16:36:38Z
+    - 2026-10-14T16:37:30Z
+    - 2026-10-14T16:38:46Z
+    - 2026-10-14T16:43:06Z
+    - 2026-10-14T17:00:29Z
+    - 2026-10-14T17:10:14Z
+    - 2026-10-14T17:27:04Z
+    - 2026-10-14T17:47:34Z
+    - 2026-10-14T17:47:38Z
+    - 2026-10-14T17:58:54Z
+    - 2026-10-14T17:59:18Z
+    - 2026-10-14T17:59:18Z
+    - 2026-10-14T18:03:10Z
+    - 2026-10-14T18:10:25Z
+    - 2026-10-14T18:15:11Z
+    - 2026-10-14T18:15:17Z
+    - 2026-10-14T18:16:26Z
+    - 2026-10-14T18:18:05Z
+    - 2026-10-14T18:21:20Z
+    - 2026-10-14T18:21:20Z
+    - 2026-10-14T18:22:03Z
+    - 2026-10-14T18:26:07Z
+    - 2026-10-14T18:36:08Z
+    - 2026-10-14T18:51:03Z
+    - 2026-10-14T19:00:41Z
+    - 2026-10-14T19:00:41Z
+    - 2026-10-14T19:00:41Z
+    - 2026-10-14T19:01:53Z
+    - 2026-10-14T19:03:23Z
+    - 2026-10-14T19:20:20Z
+    - 2026-10-14T19:36:46Z
+    - 2026-10-14T19:36:46Z
+    - 2026-10-14T19:45:07Z
+    - 2026-10-14T19:54:37Z
+    - 2026-10-14T19:56:25Z
+    - 2026-10-14T19:57:21Z
+    - 2026-10-14T20:04:22Z
+    - 2026-10-14T20:07:41Z
+    - 2026-10-14T20:22:35Z
+    - 2026-10-14T20:33:15Z
+    - 2026-10-14T20:45:28Z
+    - 2026-10-14T20:50:43Z
+    - 2026-10-14T21:06:27Z
+    - 2026-10-14T21:14:37Z
+    - 2026-10-14T21:15:42Z
+    - 2026-10-14T21:17:25Z
+    - 2026-10-14T21:26:00Z
+    - 2026-10-14T21:37:55Z
+    - 2026-10-14T21:46:00Z
+    - 2026-10-14T21:48:09Z
+    - 2026-10-15T03:11:32Z
+    - 2026-10-14T13:00:39Z
+    - 2026-10-14T13:00:37Z
+    - 2026-10-14T13:34:03Z
+    - 2026-10-14T13:14:41Z
+    - 2026-10-14T13:20:24Z
+    - 2026-10-14T13:26:39Z
+    - 2026-10-14T13:27:18Z
+    - 2026-10-14T13:33:03Z
+    - 2026-10-14T13:51:30Z
+    - 2026-10-15T03:11:33Z
+    - 2026-10-14T12:54:44Z
+    - 2026-10-14T12:56:40Z
+    - 2026-10-14T13:05:38Z
+    - 2026-10-14T13:11:55Z
+    - 2026-10-14T13:12:36Z
+    - 2026-10-14T13:14:41Z
+    - 2026-10-14T13:15:48Z
+    - 2026-10-14T13:19:05Z
+    - 2026-10-14T13:20:24Z
+    - 2026-10-14T13:22:49Z
+    - 2026-10-14T13:26:39Z
+    - 2026-10-14T13:27:18Z
+    - 2026-10-14T13:00:37Z
+    - 2026-10-14T13:29:33Z
+    - 2026-10-14T13:31:03Z
+    - 2026-10-14T13:33:03Z
+    - 2026-10-14T13:33:32Z
+    - 2026-10-14T13:34:24Z
+    - 2026-10-14T13:37:47Z
+    - 2026-10-14T13:37:47Z
+    - 2026-10-14T13:37:58Z
+    - 2026-10-14T13:40:31Z
+    - 2026-10-14T13:47:33Z
+    - 2026-10-14T14:02:41Z
+    - 2026-10-14T14:02:46Z
+    - 2026-10-14T14:03:57Z
+    - 2026-10-14T14:26:23Z
+    - 2026-10-14T14:33:17Z
+    - 2026-10-14T14:36:45Z
+    - 2026-10-14T14:39:08Z
+    - 2026-10-14T14:39:26Z
+    - 2026-10-14T14:46:18Z
+    - 2026-10-14T14:56:44Z
+    - 2026-10-14T15:01:29Z
+    - 2026-10-14T15:01:41Z
+    - 2026-10-14T15:02:39Z
+    - 2026-10-14T15:17:41Z
+    - 2026-10-14T15:29:20Z
+    - 2026-10-14T15:30:09Z
+    - 2026-10-14T15:30:39Z
+    - 2026-10-14T15:33:05Z
+    - 2026-10-14T15:33:21Z
+    - 2026-10-14T15:42:14Z
+    - 2026-10-14T15:44:00Z
+    - 2026-10-14T15:46:41Z
+    - 2026-10-14T16:05:24Z
+    - 2026-10-14T16:06:31Z
+    - 2026-10-14T16:06:41Z
+    - 2026-10-14T16:18:58Z
+    - 2026-10-14T16:22:07Z
+    - 2026-10-14T16:33:09Z
+    - 2026-10-14T16:34:46Z
+    - 2026-10-14T16:36:38Z
+    - 2026-10-14T16:37:30Z
+    - 2026-10-14T16:38:46Z
+    - 2026-10-14T16:43:06Z
+    - 2026-10-14T17:00:29Z
+    - 2026-10-14T17:10:14Z
+    - 2026-10-14T17:27:04Z
+    - 2026-10-14T17:47:34Z
+    - 2026-10-14T17:47:38Z
+    - 2026-10-14T17:58:54Z
+    - 2026-10-14T17:59:18Z
+    - 2026-10-14T17:59:18Z
+    - 2026-10-14T18:03:10Z
+    - 2026-10-14T18:10:25Z
+    - 2026-10-14T18:15:11Z
+    - 2026-10-14T18:15:17Z
+    - 2026-10-14T18:16:26Z
+    - 2026-10-14T18:18:05Z
+    - 2026-10-14T18:21:20Z
+    - 2026-10-14T18:21:20Z
+    - 2026-10-14T18:22:03Z
+    - 2026-10-14T18:26:07Z
+    - 2026-10-14T18:36:08Z
+    - 2026-10-14T18:51:03Z
+    - 2026-10-14T19:00:41Z
+    - 2026-10-14T19:00:41Z
+    - 2026-10-14T19:00:41Z
+    - 2026-10-14T19:01:53Z
+    - 2026-10-14T19:03:23Z
+    - 2026-10-14T19:20:20Z
+    - 2026-10-14T19:36:46Z
+    - 2026-10-14T19:36:46Z
+    - 2026-10-14T19:45:07Z
+    - 2026-10-14T19:54:37Z
+    - 2026-10-14T19:56:25Z
+    - 2026-10-14T19:57:21Z
+    - 2026-10-14T20:04:22Z
+    - 2026-10-14T20:07:41Z
+    - 2026-10-14T20:22:35Z
+    - 2026-10-14T20:33:15Z
+    - 2026-10-14T20:45:28Z
+    - 2026-10-14T20:50:43Z
+    - 2026-10-14T21:06:27Z
+    - 2026-10-14T21:14:37Z
+    - 2026-10-14T21:15:42Z
+    - 2026-10-14T21:17:25Z
+    - 2026-10-14T21:26:00Z
+    - 2026-10-14T21:37:55Z
+    - 2026-10-14T21:46:00Z
+    - 2026-10-14T21:48:09Z
+    - 2026-10-14T14:04:12Z
+    - 2026-10-14T15:46:54Z
+    - 2026-10-14T15:46:56Z
+    - 2026-10-14T17:02:36Z
+    - 2026-10-14T17:10:22Z
+    - 2026-10-14T17:59:28Z
+    - 2026-10-14T17:59:30Z
+    - 2026-10-14T19:54:50Z
+    - 2026-10-14T20:04:23Z
+    - 2026-10-14T20:04:25Z
+    - 2026-10-14T20:56:27Z
+    - 2026-10-14T20:56:35Z
+    - 2026-10-14T21:07:30Z
+    - 2026-10-14T21:07:39Z
+    - 2026-10-14T21:07:45Z
+    - 2026-10-14T21:17:57Z
+    - 2026-10-14T21:26:45Z
+    - 2026-10-14T21:38:47Z
+    - 2026-10-14T21:38:53Z
+    - 2026-10-14T21:38:58Z
+    - 2026-10-14T21:48:45Z
+    - 2026-10-14T21:48:51Z
+    - 2026-10-14T13:34:13Z
+    - 2026-10-14T14:04:12Z
+    - 2026-10-14T15:46:54Z
+    - 2026-10-14T15:46:56Z
+    - 2026-10-14T17:02:36Z
+    - 2026-10-14T17:10:22Z
+    - 2026-10-14T17:59:27Z
+    - 2026-10-14T17:59:30Z
+    - 2026-10-14T19:54:50Z
+    - 2026-10-14T20:04:23Z
+    - 2026-10-14T20:04:25Z
+    - 2026-10-14T20:56:27Z
+    - 2026-10-14T20:56:35Z
+    - 2026-10-14T21:07:30Z
+    - 2026-10-14T21:07:39Z
+    - 2026-10-14T21:07:45Z
+    - 2026-10-14T21:17:57Z
+    - 2026-10-14T21:26:45Z
+    - 2026-10-14T21:38:46Z
+    - 2026-10-14T21:38:52Z
+    - 2026-10-14T21:38:58Z
+    - 2026-10-14T21:48:45Z
+    - 2026-10-14T21:48:51Z
+    - 2026-10-14T13:34:13Z
+  volume:
+    pullRequests:
+      - additions: 4
+        deletions: 2
+        state: closed
+        dailyWork: true
+        filesChanged: 1
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 4
+        deletions: 2
+        state: closed
+        dailyWork: true
+        filesChanged: 1
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 4
+        deletions: 2
+        state: closed
+        dailyWork: true
+        filesChanged: 1
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 581
+        deletions: 21
+        state: closed
+        dailyWork: true
+        filesChanged: 10
+        testFilesChanged: 4
+        commitCount: 5
+      - additions: 4
+        deletions: 2
+        state: closed
+        dailyWork: true
+        filesChanged: 1
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 29571
+        deletions: 14673
+        state: merged
+        dailyWork: true
+        filesChanged: 283
+        testFilesChanged: 56
+        commitCount: 102
+    reviewCount: 23
+    reviewCommentCount: 23
+    commitCount: 1
+    commitAdditions: 22586
+    commitDeletions: 10435
+    commitStatsCount: 1
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 92.6
+  sessions: 2
+  sessionHours: 6.5
+  volumeHours: 92.6
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""

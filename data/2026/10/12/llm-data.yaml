@@ -1,0 +1,125 @@
+title: Oct 12
+subtitle: compass, northstar & transition
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/ohcpwm-apps and Myriad-Advisor-Solutions/myriadas-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 5 PRs
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 8 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 88 commits with +8,374 / −1,782 lines.
+    chips:
+      - label: Commits
+        value: "88"
+        color: green
+      - label: Additions
+        value: +8,374
+        color: green
+      - label: Deletions
+        value: −1,782
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 4 reviews with 4 comments.
+    chips:
+      - label: Reviews
+        value: "4"
+      - label: Comments
+        value: "4"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 42 reviews, 52 comments, 10 PRs."
+    chips:
+      - label: Codex
+        value: 42 reviews · 52 comments · 10 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~150.2h
+highlights:
+  - type: pr
+    title: "test(northstar): keep persisted brief fixture inside the current period"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +1 −1
+    body: "- `returns a persisted scheduled brief without generating it again` hardcoded the stored brief's `updatedAt` as
+      `2026-09-12`. Once the weekly brief period moved past that date, the cached brief was co"
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/154
+  - type: pr
+    title: "feat(compass): deploy Compass in production"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +70 −29
+    body: >-
+      ## What changes
+
+
+      - `azure-static-web-apps.yml`: Compass is built, cached, staged (`compass.js` in the Hub Functions bundle) and
+      composed in every environment, like the other product apps. Removed the 
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/169
+  - type: pr
+    title: "fix(ci): retry Hub smoke probes on HTTP errors after deploy"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +1 −1
+    body: >-
+      ## What failed
+
+      Production deploy run 38207420318 (push to main for #164) failed in job "Deploy Hub Static Web App", step "Smoke
+      Hub deployment". The deploy itself succeeded. The probe for `/api/health
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/167
+  - type: pr
+    title: "feat(compass): add Microsoft 365 client intelligence app"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +0 −0
+    body: |-
+      Stacked on #162 (which stacks on #158 / #161); merge after it.
+
+      ## Why
+
+      Add a focused workspace for advisors to review daily priorities and client context from Microsoft 365.
+
+      ## What changed
+
+      - Add C
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
+  - type: pr
+    title: "feat(brand): make app actions and progress monotone"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +0 −0
+    body: >-
+      Stacked on #156; merge after it.
+
+
+      ## Why
+
+
+      The app theme used Myriad reds for actions and focus treatments, which conflicts with the brand guidance that
+      reserves red for accents.
+
+
+      ## What changed
+
+
+      - De
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/161
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "test(northstar): keep persisted brief fixture inside the current period" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(compass): deploy Compass in production" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(ci): retry Hub smoke probes on HTTP errors after deploy" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(compass): add Microsoft 365 client intelligence app" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(brand): make app actions and progress monotone" in
+      Myriad-Advisor-Solutions/myriadas-apps'

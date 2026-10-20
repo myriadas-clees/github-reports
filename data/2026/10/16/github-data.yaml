@@ -1,0 +1,652 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-10-16
+  to: 2026-10-16
+stats:
+  totalCommits: 12
+  totalAdditions: 11073
+  totalDeletions: 901
+  prsOpened: 3
+  prsMerged: 0
+  prsInProgress: 7
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 42.5
+dailyCommits:
+  - date: 2026-10-16
+    count: 12
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 8
+    prsOpened: 1
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 4
+    prsOpened: 2
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests:
+  - title: "feat(hub): add Claude for Financial Advisors"
+    body: |-
+      - Add Claude for Financial Advisors as an external Hub app, opening in a new tab.
+      - Add the Claude mark and update app card styling and Northstar copy.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/169
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a1 []
+    additions: 81
+    deletions: 11
+    changedFiles: 4
+    author: myriadas-clees
+    createdAt: 2026-10-16T13:47:52Z
+    updatedAt: 2026-10-16T13:50:44Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a2
+      - &a14
+        sha: df9808b99fd8987781c979096e09b43437ff511d
+        message: "feat(hub): add Claude for Financial Advisors"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/df9808b99fd8987781c979096e09b43437ff511d
+        authoredAt: 2026-10-16T13:47:43Z
+    workTimestamps: &a3
+      - 2026-10-16T13:47:43Z
+    workAdditions: 81
+    workDeletions: 11
+    workFiles: &a4
+      - hub/app/globals.css
+      - hub/components/hub-launcher.tsx
+      - hub/lib/apps.ts
+      - hub/public/claude.svg
+  - title: "feat(northstar): save custom brief instructions and regenerate briefs"
+    body: |-
+      - Add an explicit save flow for Northstar instructions and brief prompts.
+      - Offer to regenerate saved briefs affected by instruction changes.
+      - Apply custom focus and formatting requests while retaining scheduled brief evidence rules.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a5 []
+    additions: 127
+    deletions: 27
+    changedFiles: 8
+    author: myriadas-clees
+    createdAt: 2026-10-16T12:44:27Z
+    updatedAt: 2026-10-16T12:50:04Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a6
+      - &a13
+        sha: 0cc24fbb45525baa27ad34cbdbde771d06054a15
+        message: "feat(northstar): save custom brief instructions and regenerate briefs"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0cc24fbb45525baa27ad34cbdbde771d06054a15
+        authoredAt: 2026-10-16T12:44:19Z
+    workTimestamps: &a7
+      - 2026-10-16T12:44:19Z
+    workAdditions: 127
+    workDeletions: 27
+    workFiles: &a8
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/functions/src/northstar-scheduled-brief.test.ts
+      - hub/functions/src/northstar-scheduled-brief.ts
+      - northstar/app/globals.css
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/settings-workspace.tsx
+      - northstar/lib/background-briefs.test.ts
+      - northstar/lib/background-briefs.ts
+  - title: "feat(compass): port Northstar advisor workflow features"
+    body: >-
+      ## Why
+
+
+      Port the Northstar advisor workflow capabilities into Compass so advisors can manage daily work and client
+      conversations in one workspace.
+
+
+      ## What changed
+
+
+      - Redesigned the Compass dashboard and Ask workspace, with command cards, conversation history, richer answer
+      rendering, and contextual...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/177
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a9
+      - documentation
+      - platform
+      - "app: compass"
+    additions: 10865
+    deletions: 863
+    changedFiles: 110
+    author: myriadas-clees
+    createdAt: 2026-10-16T14:26:29Z
+    updatedAt: 2026-10-16T19:12:01Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a10
+      - &a18
+        sha: 565e68793d2936aa1aee272b0e12ff7ab9708f94
+        message: Merge remote-tracking branch 'origin/fix/microsoft-oauth-callback' into feat/port-northstar-features
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/565e68793d2936aa1aee272b0e12ff7ab9708f94
+        authoredAt: 2026-10-16T14:00:51Z
+      - &a19
+        sha: c934b33b1e9941a7ac7de39ed0eee1b5c6aefd87
+        message: "feat(compass): port Northstar advisor workflow features"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c934b33b1e9941a7ac7de39ed0eee1b5c6aefd87
+        authoredAt: 2026-10-16T14:26:15Z
+      - &a20
+        sha: d1bc6977b73a49dd35f57e28745753d99af57f96
+        message: "fix(compass): address PR review findings and port custom brief instructions"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d1bc6977b73a49dd35f57e28745753d99af57f96
+        authoredAt: 2026-10-16T15:07:52Z
+      - &a21
+        sha: 7814c872098d068147e119a73855eca2e40827df
+        message: "fix(compass): bind quick summaries to the displayed connection and keep list context whole"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7814c872098d068147e119a73855eca2e40827df
+        authoredAt: 2026-10-16T15:21:53Z
+      - &a22
+        sha: bdca1bd40fea3d6b3aeec4fd3dc5abb2a3b74dc8
+        message: "fix(compass): keep a calendar card's duration when moving its day or slot"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/bdca1bd40fea3d6b3aeec4fd3dc5abb2a3b74dc8
+        authoredAt: 2026-10-16T15:30:07Z
+      - &a23
+        sha: d0046e5909fe41bf2b0f2eb0bdef4746ddc02cfa
+        message: "fix(compass): leave the dashboard snapshot out of scheduled brief requests"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d0046e5909fe41bf2b0f2eb0bdef4746ddc02cfa
+        authoredAt: 2026-10-16T15:41:11Z
+      - &a24
+        sha: 63b0340fedefc3856eb69baa437f3deb0d5f9ceb
+        message: "fix(compass): bound scheduled brief context and calendar subjects, and stop test fixtures rotting"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/63b0340fedefc3856eb69baa437f3deb0d5f9ceb
+        authoredAt: 2026-10-16T19:07:39Z
+    workTimestamps: &a11
+      - 2026-10-16T14:00:51Z
+      - 2026-10-16T14:26:15Z
+      - 2026-10-16T15:07:52Z
+      - 2026-10-16T15:21:53Z
+      - 2026-10-16T15:30:07Z
+      - 2026-10-16T15:41:11Z
+      - 2026-10-16T19:07:39Z
+    workAdditions: 10865
+    workDeletions: 863
+    workFiles: &a12
+      - bun.lock
+      - compass/README.md
+      - compass/bunfig.toml
+      - compass/functions/PORT-CONTRACT.md
+      - compass/functions/src/compass-brief-journeys.test.ts
+      - compass/functions/src/compass-chat-history.test.ts
+      - compass/functions/src/compass-chat-history.ts
+      - compass/functions/src/compass-consent.fixture.ts
+      - compass/functions/src/compass-conversations.test.ts
+      - compass/functions/src/compass-conversations.ts
+      - compass/functions/src/compass-copilot.ts
+      - compass/functions/src/compass-cosmos-recovery.test.ts
+      - compass/functions/src/compass-daily-flow.test.ts
+      - compass/functions/src/compass-draft-edits.test.ts
+      - compass/functions/src/compass-draft-edits.ts
+      - compass/functions/src/compass-mapping-upgrade.test.ts
+      - compass/functions/src/compass-microsoft.test.ts
+      - compass/functions/src/compass-microsoft.ts
+      - compass/functions/src/compass-scheduled-brief.test.ts
+      - compass/functions/src/compass-scheduled-brief.ts
+      - compass/functions/src/index.ts
+      - compass/package.json
+      - compass/public/pdf-fonts/NotoSansArabic.woff
+      - compass/public/pdf-fonts/NotoSansCJKsc-Bold.otf
+      - compass/public/pdf-fonts/NotoSansCJKsc-Regular.otf
+      - compass/public/pdf-fonts/NotoSansDevanagari.woff
+      - compass/public/pdf-fonts/NotoSansHebrew.woff
+      - compass/public/pdf-fonts/OFL.txt
+      - compass/src/app/advisor-context.css
+      - compass/src/app/ask.css
+      - compass/src/app/globals.css
+      - compass/src/app/pdf-editor.css
+      - compass/src/components/answer-markdown.test.tsx
+      - compass/src/components/answer-markdown.tsx
+      - compass/src/components/ask-compass-workspace.dom.test.tsx
+      - compass/src/components/ask-compass-workspace.test.tsx
+      - compass/src/components/ask-compass-workspace.tsx
+      - compass/src/components/ask/ask-composer.tsx
+      - compass/src/components/ask/at-command-token.tsx
+      - compass/src/components/command-cards.dom.test.tsx
+      - compass/src/components/command-cards.tsx
+      - compass/src/components/command-palette.tsx
+      - compass/src/components/compass-consent.fixture.tsx
+      - compass/src/components/compass-dashboard.tsx
+      - compass/src/components/compass-provider.tsx
+      - compass/src/components/compass-routes.tsx
+      - compass/src/components/compass-stability.dom.test.ts
+      - compass/src/components/compass-stability.fixture.tsx
+      - compass/src/components/date-picker.dom.test.tsx
+      - compass/src/components/date-picker.tsx
+      - compass/src/components/microsoft-todo-panel.tsx
+      - compass/src/components/open-outlook-dialog.dom.test.tsx
+      - compass/src/components/open-outlook-dialog.tsx
+      - compass/src/components/pdf-draft-editor.test.tsx
+      - compass/src/components/pdf-draft-editor.tsx
+      - compass/src/components/pdf-editor-parts.tsx
+      - compass/src/components/pdf-rich-editor.tsx
+      - compass/src/components/settings-workspace.tsx
+      - compass/src/components/streaming-markdown.tsx
+      - compass/src/components/summarize-peek.dom.test.tsx
+      - compass/src/components/summarize-peek.tsx
+      - compass/src/components/today/calendar-draft-dialog.tsx
+      - compass/src/components/today/mail-list.tsx
+      - compass/src/components/today/previews.tsx
+      - compass/src/components/today/widget-grid.dom.test.tsx
+      - compass/src/components/today/widget-grid.tsx
+      - compass/src/components/ui/toggle-group.tsx
+      - compass/src/lib/at-commands.test.ts
+      - compass/src/lib/at-commands.ts
+      - compass/src/lib/background-briefs.test.ts
+      - compass/src/lib/background-briefs.ts
+      - compass/src/lib/chat-history.test.ts
+      - compass/src/lib/chat-history.ts
+      - compass/src/lib/chat-pdf-label.ts
+      - compass/src/lib/chat-pdf-text.ts
+      - compass/src/lib/chat-pdf.test.ts
+      - compass/src/lib/chat-pdf.tsx
+      - compass/src/lib/command-cards.test.ts
+      - compass/src/lib/command-cards.ts
+      - compass/src/lib/compass-context.test.ts
+      - compass/src/lib/compass-context.ts
+      - compass/src/lib/draft-fences.test.ts
+      - compass/src/lib/draft-fences.ts
+      - compass/src/lib/email-draft.test.ts
+      - compass/src/lib/email-draft.ts
+      - compass/src/lib/markdown-edit.test.ts
+      - compass/src/lib/markdown-edit.ts
+      - compass/src/lib/outlook-calendar.test.ts
+      - compass/src/lib/outlook-calendar.ts
+      - compass/src/lib/pdf-rich-markdown.test.ts
+      - compass/src/lib/pdf-rich-markdown.ts
+      - compass/src/lib/progress-phase.test.ts
+      - compass/src/lib/progress-phase.ts
+      - compass/src/lib/settings-preferences.test.ts
+      - compass/src/lib/settings-preferences.ts
+      - compass/src/lib/summarize-item.test.ts
+      - compass/src/lib/summarize-item.ts
+      - compass/src/lib/today-layout.test.ts
+      - compass/src/lib/today-layout.ts
+      - compass/test/dom-document-preload.ts
+prsInProgress:
+  - title: "feat(hub): add Claude for Financial Advisors"
+    body: |-
+      - Add Claude for Financial Advisors as an external Hub app, opening in a new tab.
+      - Add the Claude mark and update app card styling and Northstar copy.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/169
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: *a1
+    additions: 81
+    deletions: 11
+    changedFiles: 4
+    author: myriadas-clees
+    createdAt: 2026-10-16T13:47:52Z
+    updatedAt: 2026-10-16T13:50:44Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 81
+    workDeletions: 11
+    workFiles: *a4
+  - title: "feat(northstar): save custom brief instructions and regenerate briefs"
+    body: |-
+      - Add an explicit save flow for Northstar instructions and brief prompts.
+      - Offer to regenerate saved briefs affected by instruction changes.
+      - Apply custom focus and formatting requests while retaining scheduled brief evidence rules.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: *a5
+    additions: 127
+    deletions: 27
+    changedFiles: 8
+    author: myriadas-clees
+    createdAt: 2026-10-16T12:44:27Z
+    updatedAt: 2026-10-16T12:50:04Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a6
+    workTimestamps: *a7
+    workAdditions: 127
+    workDeletions: 27
+    workFiles: *a8
+  - title: "feat(compass): port Northstar advisor workflow features"
+    body: >-
+      ## Why
+
+
+      Port the Northstar advisor workflow capabilities into Compass so advisors can manage daily work and client
+      conversations in one workspace.
+
+
+      ## What changed
+
+
+      - Redesigned the Compass dashboard and Ask workspace, with command cards, conversation history, richer answer
+      rendering, and contextual...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/177
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a9
+    additions: 13080
+    deletions: 1210
+    changedFiles: 110
+    author: myriadas-clees
+    createdAt: 2026-10-16T14:26:29Z
+    updatedAt: 2026-10-16T19:12:01Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a10
+    workTimestamps: *a11
+    workAdditions: 10865
+    workDeletions: 863
+    workFiles: *a12
+  - title: "perf(northstar): speed up Copilot chat turns"
+    body: |-
+      - Reuse valid Microsoft access tokens and warm Copilot conversations to reduce chat startup time.
+      - Run chat turns independently of browser connections, with result polling and Stop cancellation.
+      - Use Cosmos point reads for conversation mappings and keep Copilot web search disabled by default.
+      - Im...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: []
+    additions: 2235
+    deletions: 148
+    changedFiles: 35
+    author: myriadas-clees
+    createdAt: 2026-10-15T19:48:27Z
+    updatedAt: 2026-10-16T20:15:42Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a15
+        sha: 6efdac6d99b9f6cf03d7c64771f5b2f1584baafd
+        message: "fix(northstar): address review findings on Copilot turn recovery and @web"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6efdac6d99b9f6cf03d7c64771f5b2f1584baafd
+        authoredAt: 2026-10-16T20:12:15Z
+    workTimestamps:
+      - 2026-10-16T20:12:15Z
+    workAdditions: 305
+    workDeletions: 41
+    workFiles:
+      - docs/northstar-roadmap.md
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - northstar/components/ask-northstar-workspace.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/northstar-recovery.dom.test.ts
+      - northstar/components/northstar-recovery.fixture.tsx
+      - northstar/components/northstar-stability.dom.test.ts
+      - northstar/components/northstar-stability.fixture.tsx
+      - northstar/lib/ask-turns.test.ts
+      - northstar/lib/ask-turns.ts
+      - northstar/lib/at-commands.test.ts
+      - northstar/lib/at-commands.ts
+  - title: "feat(northstar): create open To Do tasks in Microsoft 365"
+    body: |-
+      - Add an action to create open tasks from Northstar To Do cards in Microsoft 365.
+      - Preserve due date and owner details, and report partial task creation.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/166
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: []
+    additions: 545
+    deletions: 73
+    changedFiles: 14
+    author: myriadas-clees
+    createdAt: 2026-10-15T15:34:14Z
+    updatedAt: 2026-10-16T20:14:40Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a16
+        sha: 9c4c5dc90069af47988e08e6c1e49582362f9afb
+        message: "fix(northstar): keep To Do creation safe on retry, partial failure and unknown outcomes"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/9c4c5dc90069af47988e08e6c1e49582362f9afb
+        authoredAt: 2026-10-16T20:12:16Z
+    workTimestamps:
+      - 2026-10-16T20:12:16Z
+    workAdditions: 297
+    workDeletions: 99
+    workFiles:
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - northstar/app/globals.css
+      - northstar/components/answer-markdown.tsx
+      - northstar/components/command-cards.dom.test.tsx
+      - northstar/components/command-cards.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/lib/todo-create.test.ts
+      - northstar/lib/todo-create.ts
+  - title: "fix(transition): map registration codes to names"
+    body: >-
+      ## Why
+
+
+      Accounts imported from AIRE can store numeric registration codes, which are unclear in the UI and make
+      registration sorting and filtering inconsistent with registration names.
+
+
+      ## What changed
+
+
+      - Map known AIRE registration codes to names when parsing workbooks and displaying account registr...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/176
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - "app: transition"
+    additions: 113
+    deletions: 13
+    changedFiles: 7
+    author: myriadas-clees
+    createdAt: 2026-10-12T18:17:16Z
+    updatedAt: 2026-10-16T13:45:28Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a17
+        sha: b3fe893126e9390506af3e4a2787226082b79d4d
+        message: "fix(transition): select the mapped name for coded registration filters"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b3fe893126e9390506af3e4a2787226082b79d4d
+        authoredAt: 2026-10-16T13:43:27Z
+    workTimestamps:
+      - 2026-10-16T13:43:27Z
+    workAdditions: 2
+    workDeletions: 2
+    workFiles:
+      - transition/src/components/accounts/accounts-page.tsx
+  - title: "ci: reduce GitHub Actions minutes"
+    body: >-
+      ## Why
+
+
+      GitHub Actions minutes were going to pull request work that did not need it: three Verify jobs per push (each
+      billed at least one minute), Hub preview change detection on PRs without `deploy-preview`, full 8-app rebuilds for
+      documentation-only changes, and verification of draft PRs.
+
+
+      ## What...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/170
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - github-automation
+      - platform
+    additions: 47
+    deletions: 31
+    changedFiles: 6
+    author: myriadas-clees
+    createdAt: 2026-10-12T13:06:16Z
+    updatedAt: 2026-10-16T16:11:10Z
+    closedAt: null
+    mergedAt: null
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "feat(northstar): save custom brief instructions and regenerate briefs"
+      - "feat(hub): add Claude for Financial Advisors"
+      - "fix(northstar): address review findings on Copilot turn recovery and @web"
+      - "fix(northstar): keep To Do creation safe on retry, partial failure and unknown outcomes"
+    commits:
+      - *a13
+      - *a14
+      - *a15
+      - *a16
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "fix(transition): select the mapped name for coded registration filters"
+      - Merge remote-tracking branch 'origin/fix/microsoft-oauth-callback' into feat/port-northstar-features
+      - "feat(compass): port Northstar advisor workflow features"
+      - "fix(compass): address PR review findings and port custom brief instructions"
+      - "fix(compass): bind quick summaries to the displayed connection and keep list context whole"
+      - "fix(compass): keep a calendar card's duration when moving its day or slot"
+      - "fix(compass): leave the dashboard snapshot out of scheduled brief requests"
+      - "fix(compass): bound scheduled brief context and calendar subjects, and stop test fixtures rotting"
+    commits:
+      - *a17
+      - *a18
+      - *a19
+      - *a20
+      - *a21
+      - *a22
+      - *a23
+      - *a24
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 5
+    comments: 14
+    reviews: 8
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 5
+  comments: 14
+  reviews: 8
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-10-16T12:44:19Z
+    - 2026-10-16T13:47:43Z
+    - 2026-10-16T20:12:15Z
+    - 2026-10-16T20:12:16Z
+    - 2026-10-16T13:43:27Z
+    - 2026-10-16T14:00:51Z
+    - 2026-10-16T14:26:15Z
+    - 2026-10-16T15:07:52Z
+    - 2026-10-16T15:21:53Z
+    - 2026-10-16T15:30:07Z
+    - 2026-10-16T15:41:11Z
+    - 2026-10-16T19:07:39Z
+    - 2026-10-16T13:47:52Z
+    - 2026-10-16T13:47:43Z
+    - 2026-10-16T12:44:27Z
+    - 2026-10-16T12:44:19Z
+    - 2026-10-16T14:26:29Z
+    - 2026-10-16T14:00:51Z
+    - 2026-10-16T14:26:15Z
+    - 2026-10-16T15:07:52Z
+    - 2026-10-16T15:21:53Z
+    - 2026-10-16T15:30:07Z
+    - 2026-10-16T15:41:11Z
+    - 2026-10-16T19:07:39Z
+  volume:
+    pullRequests:
+      - additions: 81
+        deletions: 11
+        state: open
+        dailyWork: true
+        filesChanged: 4
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 305
+        deletions: 41
+        state: open
+        dailyWork: true
+        filesChanged: 14
+        testFilesChanged: 6
+        commitCount: 1
+      - additions: 127
+        deletions: 27
+        state: open
+        dailyWork: true
+        filesChanged: 8
+        testFilesChanged: 2
+        commitCount: 1
+      - additions: 297
+        deletions: 99
+        state: open
+        dailyWork: true
+        filesChanged: 9
+        testFilesChanged: 3
+        commitCount: 1
+      - additions: 2
+        deletions: 2
+        state: open
+        dailyWork: true
+        filesChanged: 1
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 10865
+        deletions: 863
+        state: open
+        dailyWork: true
+        filesChanged: 100
+        testFilesChanged: 35
+        commitCount: 7
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 0
+    commitAdditions: 0
+    commitDeletions: 0
+    commitStatsCount: 0
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 42.5
+  sessions: 2
+  sessionHours: 4
+  volumeHours: 42.5
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
