@@ -18,12 +18,14 @@
   <style>{{{indexCss}}}</style>
   <style>{{{finishedCss}}}</style>
   {{{themeInitScript}}}
+  {{{finishedHeadScript}}}
 </head>
 <body>
 
-<main class="fin-page">
+<main class="fin-page" data-fin-theme="{{themeName}}">
 {{{body}}}
 </main>
+{{{finishedScript}}}
 
 <footer class="footer">
   <div class="theme-toggle-row">
