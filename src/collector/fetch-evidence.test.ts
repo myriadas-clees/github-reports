@@ -90,24 +90,51 @@ describe("fetchPrEvidence", () => {
     mockRoutes([
       [/pulls\/5\/reviews/, () => json([])], [/pulls\/5\/files/, () => json([])],
       [/check-runs/, () => json({ check_runs: [] })],
-      [/commits\/abc\/status/, () => json({ statuses: [
+      [/statuses\?per_page=100/, () => json([
         { context: "unit", state: "success", created_at: "2026-06-01T00:00:00Z" },
         { context: "deploy", state: "failure", created_at: "2026-06-01T00:01:00Z" },
         { context: "queue", state: "pending", created_at: "2026-06-01T00:02:00Z" },
-      ] })], [/pulls\/5$/, () => json(pr)],
+      ])], [/pulls\/5$/, () => json(pr)],
     ]);
     const ev = await fetchPrEvidence("t", { repo: "o/r", number: 5 });
     expect(ev?.checks).toEqual({ passed: 1, failed: 1, skipped: 0, pending: 1, names: ["deploy", "queue", "unit"] });
+  });
+
+  it("paginates commit statuses so older distinct contexts are included", async () => {
+    const calls: string[] = [];
+    vi.stubGlobal("fetch", vi.fn(async (url: string) => {
+      calls.push(url);
+      if (/pulls\/5\/reviews/.test(url) || /pulls\/5\/files/.test(url)) return json([]);
+      if (/check-runs/.test(url)) return json({ check_runs: [] });
+      if (/statuses\?per_page=100$/.test(url)) return new Response(JSON.stringify([{ context: "new", state: "success", created_at: "2026-06-02T00:00:00Z" }]), {
+        headers: { "content-type": "application/json", link: '<https://api.github.com/repos/o/r/commits/abc/statuses?per_page=100&page=2>; rel="next"' },
+      });
+      if (/statuses\?per_page=100&page=2/.test(url)) return json([{ context: "old", state: "failure", created_at: "2026-06-01T00:00:00Z" }]);
+      if (/pulls\/5$/.test(url)) return json(pr);
+      return json({}, 404);
+    }));
+    const ev = await fetchPrEvidence("t", { repo: "o/r", number: 5 });
+    expect(ev?.checks).toEqual({ passed: 1, failed: 1, skipped: 0, pending: 0, names: ["new", "old"] });
+    expect(calls).toContain("https://api.github.com/repos/o/r/commits/abc/statuses?per_page=100&page=2");
+  });
+
+  it("marks paginated commit statuses unavailable on a soft 403", async () => {
+    mockRoutes([
+      [/pulls\/5\/reviews/, () => json([])], [/pulls\/5\/files/, () => json([])],
+      [/check-runs/, () => json({ check_runs: [{ name: "ci", status: "completed", conclusion: "success" }] })],
+      [/statuses\?per_page=100/, () => json({ message: "no" }, 403)], [/pulls\/5$/, () => json(pr)],
+    ]);
+    expect((await fetchPrEvidence("t", { repo: "o/r", number: 5 }))?.checks).toMatchObject({ passed: 1, statusesUnavailable: true });
   });
 
   it("counts same-named commit statuses independently from check runs", async () => {
     mockRoutes([
       [/pulls\/5\/reviews/, () => json([])], [/pulls\/5\/files/, () => json([])],
       [/check-runs/, () => json({ check_runs: [{ name: "same", status: "completed", conclusion: "success" }] })],
-      [/commits\/abc\/status/, () => json({ statuses: [
+      [/statuses\?per_page=100/, () => json([
         { context: "same", state: "failure", created_at: "2026-06-01T00:00:00Z" },
         { context: "legacy", state: "success", created_at: "2026-06-01T00:01:00Z" },
-      ] })], [/pulls\/5$/, () => json(pr)],
+      ])], [/pulls\/5$/, () => json(pr)],
     ]);
     const ev = await fetchPrEvidence("t", { repo: "o/r", number: 5 });
     expect(ev?.checks).toEqual({ passed: 2, failed: 1, skipped: 0, pending: 0, names: ["legacy", "same"] });
@@ -117,9 +144,9 @@ describe("fetchPrEvidence", () => {
     mockRoutes([
       [/pulls\/5\/reviews/, () => json([])], [/pulls\/5\/files/, () => json([])],
       [/check-runs/, () => json({ check_runs: [{ name: "build", status: "completed", conclusion: "success" }] })],
-      [/commits\/abc\/status/, () => json({ statuses: [
+      [/statuses\?per_page=100/, () => json([
         { context: "build", state: "failure", created_at: "2026-06-01T00:00:00Z" },
-      ] })], [/pulls\/5$/, () => json(pr)],
+      ])], [/pulls\/5$/, () => json(pr)],
     ]);
     const ev = await fetchPrEvidence("t", { repo: "o/r", number: 5 });
     expect(ev?.checks).toEqual({ passed: 1, failed: 1, skipped: 0, pending: 0, names: ["build"] });
@@ -129,11 +156,11 @@ describe("fetchPrEvidence", () => {
     mockRoutes([
       [/pulls\/5\/reviews/, () => json([])], [/pulls\/5\/files/, () => json([])],
       [/check-runs/, () => json({ check_runs: [{ name: "ci", status: "completed", conclusion: "success" }] })],
-      [/commits\/abc\/status/, () => json({ message: "nf" }, 404)], [/pulls\/5$/, () => json(pr)],
+      [/statuses\?per_page=100/, () => json({ message: "nf" }, 404)], [/pulls\/5$/, () => json(pr)],
     ]);
     const ev = await fetchPrEvidence("t", { repo: "o/r", number: 5 });
     expect(ev?.checks).toEqual({ passed: 1, failed: 0, skipped: 0, pending: 0, names: ["ci"], statusesUnavailable: true });
-    expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/commits\/abc\/status$/), expect.anything());
+    expect(fetch).toHaveBeenCalledWith(expect.stringMatching(/commits\/abc\/statuses\?per_page=100$/), expect.anything());
   });
 
   it("sets checks to null when check-runs are forbidden", async () => {
@@ -152,7 +179,7 @@ describe("fetchPrEvidence", () => {
     mockRoutes([
       [/pulls\/5\/reviews/, () => json([])], [/pulls\/5\/files/, () => json([])],
       [/check-runs/, () => json({ message: "no" }, 403)],
-      [/commits\/abc\/status/, () => json({ statuses: [] })], [/pulls\/5$/, () => json(pr)],
+      [/statuses\?per_page=100/, () => json([])], [/pulls\/5$/, () => json(pr)],
     ]);
     expect((await fetchPrEvidence("t", { repo: "o/r", number: 5 }))?.checks).toBeNull();
   });
@@ -161,12 +188,12 @@ describe("fetchPrEvidence", () => {
     mockRoutes([
       [/pulls\/5\/reviews/, () => json([])], [/pulls\/5\/files/, () => json([])],
       [/check-runs/, () => json({ message: "no" }, 403)],
-      [/commits\/abc\/status/, () => json({ statuses: [{ context: "ci", state: "success" }] })], [/pulls\/5$/, () => json(pr)],
+      [/statuses\?per_page=100/, () => json([{ context: "ci", state: "success" }])], [/pulls\/5$/, () => json(pr)],
     ]);
     expect((await fetchPrEvidence("t", { repo: "o/r", number: 5 }))?.checks?.passed).toBe(1);
     mockRoutes([
       [/pulls\/5\/reviews/, () => json([])], [/pulls\/5\/files/, () => json([])],
-      [/check-runs/, () => json({ check_runs: [] })], [/commits\/abc\/status/, () => json({}, 404)], [/pulls\/5$/, () => json(pr)],
+      [/check-runs/, () => json({ check_runs: [] })], [/statuses\?per_page=100/, () => json({}, 404)], [/pulls\/5$/, () => json(pr)],
     ]);
     expect((await fetchPrEvidence("t", { repo: "o/r", number: 5 }))?.checks).toEqual({ passed: 0, failed: 0, skipped: 0, pending: 0, names: [], statusesUnavailable: true });
   });

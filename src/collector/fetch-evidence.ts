@@ -72,13 +72,15 @@ const getPages = async <T>(
   token: string,
   startUrl: string,
   context: string,
-  opts: { cap?: number; soft?: boolean; stop?: (item: T) => boolean } = {},
+  opts: { cap?: number; maxPages?: number; soft?: boolean; failOn404?: boolean; stop?: (item: T) => boolean } = {},
 ): Promise<{ items: T[]; failed: boolean }> => {
   const items: T[] = [];
   let url: string | null = startUrl;
-  while (url) {
+  let pages = 0;
+  while (url && pages < (opts.maxPages ?? Number.POSITIVE_INFINITY)) {
     const res: Fetched<T[]> = await getJson<T[]>(token, url, context, opts.soft);
-    if (!res.ok) return { items, failed: res.status !== 404 };
+    pages++;
+    if (!res.ok) return { items, failed: res.status !== 404 || Boolean(opts.failOn404) };
     let stopped = false;
     for (const item of res.data) {
       if (opts.stop?.(item)) {
@@ -260,14 +262,14 @@ export const fetchPrEvidence = async (
     }
     checkSummary = summarizeCheckRuns(runs);
   }
-  const statusRes = await getJson<{ statuses: RawCommitStatus[] }>(
+  const statusPages = await getPages<RawCommitStatus>(
     token,
-    `${base}/commits/${pr.head.sha}/status`,
+    `${base}/commits/${pr.head.sha}/statuses?per_page=100`,
     `Commit-status fetch failed for ${label}`,
-    true,
+    { soft: true, maxPages: 10, cap: 1000, failOn404: true },
   );
-  const checks = mergeChecks(checkSummary, statusRes.ok ? statusRes.data.statuses ?? [] : null);
-  if (checks && checkSummary && !statusRes.ok) checks.statusesUnavailable = true;
+  const checks = mergeChecks(checkSummary, statusPages.failed ? null : statusPages.items);
+  if (checks && checkSummary && statusPages.failed) checks.statusesUnavailable = true;
 
   return {
     url: ref.url ?? `https://github.com/${ref.repo}/pull/${ref.number}`,

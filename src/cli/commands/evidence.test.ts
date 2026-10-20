@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { applyDeploymentFetch, deploymentCutoffIso, evidenceRepositories, findContainingDeployments, markDeploymentsUnavailable, selectDeploymentCandidates } from "./evidence.js";
+import { applyDeploymentFetch, carryOverDerivedEvidence, deploymentCutoffIso, evidenceRepositories, findContainingDeployments, markDeploymentsUnavailable, recordReleaseEvidence, selectDeploymentCandidates } from "./evidence.js";
 import { emptyLedger } from "../../collector/evidence-ledger.js";
 import { evidenceArgs } from "./report.js";
 
@@ -112,6 +112,38 @@ it("merges partial deployment results and marks the repository unavailable", () 
   expect(ledger.deploymentsUnavailable).toEqual({ "org/app": "2026-10-20T00:02:00Z" });
 });
 
+it("records a live release once and preserves it after deployment eviction", () => {
+  const ledger = emptyLedger();
+  const url = "https://github.com/org/app/pull/1";
+  ledger.prs[url] = {
+    url, repository: "org/app", number: 1, author: "a", state: "merged", isDraft: false,
+    baseRef: "main", headRef: "feature", headSha: "head", mergeCommitSha: "merge",
+    createdAt: "2026-01-01T00:00:00Z", mergedAt: "2026-01-02T00:00:00Z", reviews: [], checks: null, files: [], fetchedAt: "2026-01-03T00:00:00Z",
+  };
+  const deployment = { environment: "production", production: true, ref: "main", sha: "deploy-sha", createdAt: "2026-01-03T00:00:00Z", succeededAt: "2026-01-03T01:00:00Z" };
+  ledger.deployments["org/app"] = [deployment];
+  const refs = [{ repo: "org/app", number: 1, url }];
+  recordReleaseEvidence(ledger, refs);
+  expect(ledger.prs[url]?.release).toEqual({ stage: "live", environment: "production", sha: "deploy-sha", since: deployment.succeededAt });
+  ledger.deployments["org/app"] = [];
+  recordReleaseEvidence(ledger, refs);
+  expect(ledger.prs[url]?.release).toEqual({ stage: "live", environment: "production", sha: "deploy-sha", since: deployment.succeededAt });
+});
+
+it("upgrades stored preview release evidence when production is found", () => {
+  const ledger = emptyLedger();
+  const url = "https://github.com/org/app/pull/2";
+  ledger.prs[url] = {
+    url, repository: "org/app", number: 2, author: "a", state: "merged", isDraft: false,
+    baseRef: "main", headRef: "feature", headSha: "head", mergeCommitSha: "merge",
+    createdAt: "2026-01-01T00:00:00Z", mergedAt: "2026-01-02T00:00:00Z", reviews: [], checks: null, files: [], fetchedAt: "2026-01-03T00:00:00Z",
+    release: { stage: "preview", environment: "preview", sha: "old", since: "2026-01-03T01:00:00Z" },
+  };
+  ledger.deployments["org/app"] = [{ environment: "production", production: true, ref: "main", sha: "new", createdAt: "2026-01-04T00:00:00Z", succeededAt: "2026-01-04T01:00:00Z" }];
+  recordReleaseEvidence(ledger, [{ repo: "org/app", number: 2, url }]);
+  expect(ledger.prs[url]?.release).toEqual({ stage: "live", environment: "production", sha: "new", since: "2026-01-04T01:00:00Z" });
+});
+
 describe("report evidence step args", () => {
   const reportOpts = {
     token: "secret", config: "cfg.yml", dataDir: "data", date: "2026-10-10",
@@ -133,5 +165,29 @@ describe("report evidence step args", () => {
     const known = new Set(program.commands.find((c) => c.name() === "evidence")!.options.map((o) => o.long));
     const flags = evidenceArgs(reportOpts).filter((a) => a.startsWith("--"));
     expect(flags.filter((f) => !known.has(f))).toEqual([]);
+  });
+});
+
+describe("carryOverDerivedEvidence", () => {
+  it("keeps release history and ancestry results across a PR evidence refresh", () => {
+    const base = {
+      url: "https://github.com/o/r/pull/1", repository: "o/r", number: 1, author: "me", state: "merged" as const,
+      isDraft: false, baseRef: "main", headRef: "f", headSha: "h", mergeCommitSha: "m",
+      createdAt: "2026-01-01T00:00:00Z", mergedAt: "2026-01-02T00:00:00Z", reviews: [], checks: null, files: [],
+      fetchedAt: "2026-01-03T00:00:00Z",
+    };
+    const prior = {
+      ...base,
+      release: { stage: "live" as const, environment: "production", sha: "s", since: "2026-01-02T10:00:00Z" },
+      containingDeployments: [{ environment: "production", sha: "s" }],
+      nonContainingDeploymentShas: ["x"],
+      ancestryUnknown: true,
+    };
+    const out = carryOverDerivedEvidence({ ...base, fetchedAt: "2026-02-01T00:00:00Z" }, prior);
+    expect(out).toMatchObject({
+      fetchedAt: "2026-02-01T00:00:00Z", release: prior.release, containingDeployments: prior.containingDeployments,
+      nonContainingDeploymentShas: ["x"], ancestryUnknown: true,
+    });
+    expect(carryOverDerivedEvidence(base, undefined)).not.toHaveProperty("release");
   });
 });

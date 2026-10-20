@@ -13,7 +13,7 @@ import type {
   Readiness,
 } from "../types.js";
 
-type ReadinessItem = Pick<AllocationItem, "state" | "title" | "labels" | "url" | "repository">;
+export type ReadinessItem = Pick<AllocationItem, "state" | "title" | "labels" | "url" | "repository">;
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -47,6 +47,26 @@ const labelOverride = (labels: string[] | undefined): Readiness | undefined => {
 const earliest = (deps: DeploymentRecord[]): DeploymentRecord | undefined =>
   [...deps].sort((a, b) => ms(a.succeededAt) - ms(b.succeededAt))[0];
 
+/** Deployment currently supporting a merged PR's live/preview readiness. */
+export const matchedReleaseDeployment = (item: ReadinessItem, evidence: EvidenceLedger): { stage: "live" | "preview"; deployment: DeploymentRecord } | undefined => {
+  const pe = item.url ? evidence.prs?.[item.url] : undefined;
+  if (!pe || item.state !== "merged") return undefined;
+  const repo = item.repository ?? pe.repository ?? "";
+  const deps = evidence.deployments?.[repo] ?? [];
+  const targetRef = pe.baseRef || evidence.defaultBranches?.[repo] || "main";
+  const mergedMs = ms(pe.mergedAt);
+  const isMergeCommitDeployment = (d: DeploymentRecord): boolean =>
+    !!pe.mergeCommitSha && (d.sha === pe.mergeCommitSha || d.ref === pe.mergeCommitSha);
+  const isContainingDeployment = (d: DeploymentRecord): boolean =>
+    !!pe.containingDeployments?.some((entry) => entry.environment === d.environment && entry.sha === d.sha);
+  const after = (d: DeploymentRecord): boolean =>
+    (Number.isFinite(mergedMs) && ms(d.createdAt) >= mergedMs) || isMergeCommitDeployment(d);
+  const live = earliest(deps.filter((d) => d.production && (d.ref === targetRef || isMergeCommitDeployment(d) || isContainingDeployment(d)) && after(d)));
+  if (live) return { stage: "live", deployment: live };
+  const preview = earliest(deps.filter((d) => !d.production && (d.ref === targetRef || d.ref === pe.headRef || isMergeCommitDeployment(d) || isContainingDeployment(d)) && after(d)));
+  return preview ? { stage: "preview", deployment: preview } : undefined;
+};
+
 /** Readiness of a PR item; undefined for non-PR items. */
 export const deriveReadiness = (item: ReadinessItem, evidence: EvidenceLedger | null): Readiness | undefined => {
   if (item.state !== "open" && item.state !== "merged") return undefined;
@@ -60,6 +80,10 @@ export const deriveReadiness = (item: ReadinessItem, evidence: EvidenceLedger | 
       return { stage: "prototype", label: "Prototype", detail: "Exploratory, not production-ready" };
     }
     return { stage: "in-review", label: "In review", detail: "Being reviewed, not merged yet" };
+  }
+
+  if (pe?.release?.stage === "live") {
+    return { stage: "live", label: "Live", detail: `Live since ${formatDay(pe.release.since)}`, since: pe.release.since.slice(0, 10) };
   }
 
   // merged
@@ -91,25 +115,19 @@ export const deriveReadiness = (item: ReadinessItem, evidence: EvidenceLedger | 
   }
   if (!pe) return { stage: "done", label: "Done", detail: "Merged; release status not collected" };
 
-  const targetRef = pe.baseRef || defaultBranch;
-  const mergedMs = ms(mergedAt);
-  const after = (d: DeploymentRecord): boolean =>
-    (Number.isFinite(mergedMs) && ms(d.createdAt) >= mergedMs) ||
-    isMergeCommitDeployment(d);
-
-  const live = earliest(deps.filter((d) => d.production && (d.ref === targetRef || isMergeCommitDeployment(d) || isContainingDeployment(d)) && after(d)));
-  if (live) {
+  const matched = matchedReleaseDeployment(item, evidence);
+  if (matched?.stage === "live") {
+    const live = matched.deployment;
     return { stage: "live", label: "Live", detail: `Live since ${formatDay(live.succeededAt)}`, since: live.succeededAt.slice(0, 10) };
   }
-  const preview = earliest(
-    deps.filter((d) => !d.production && (d.ref === targetRef || d.ref === pe.headRef || isMergeCommitDeployment(d) || isContainingDeployment(d)) && after(d)),
-  );
-  if (preview) {
+  if (matched?.stage === "preview" || pe.release?.stage === "preview") {
+    const preview = matched?.stage === "preview" ? matched.deployment : undefined;
+    const since = preview?.succeededAt ?? pe.release!.since;
     return {
       stage: "preview",
       label: "In testing",
-      detail: `On the preview site since ${formatDay(preview.succeededAt)}`,
-      since: preview.succeededAt.slice(0, 10),
+      detail: `On the preview site since ${formatDay(since)}`,
+      since: since.slice(0, 10),
     };
   }
   if (unavailable) return notCollected;

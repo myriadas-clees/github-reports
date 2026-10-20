@@ -31,9 +31,9 @@ describe("ledger io", () => {
     await writeFile(join(dir, EVIDENCE_FILE), "- not a map", "utf-8");
     expect(await readEvidenceLedger(dir)).toBeNull();
     const l = emptyLedger();
-    l.prs["u"] = pr();
+    l.prs["u"] = pr({ release: { stage: "live", environment: "production", sha: "s1", since: "2026-05-03T00:00:00Z" } });
     await writeEvidenceLedger(dir, l);
-    expect((await readEvidenceLedger(dir))?.prs["u"]?.number).toBe(1);
+    expect((await readEvidenceLedger(dir))?.prs["u"]).toMatchObject({ number: 1, release: { stage: "live", environment: "production", sha: "s1", since: "2026-05-03T00:00:00Z" } });
   });
 });
 

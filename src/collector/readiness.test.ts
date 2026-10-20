@@ -64,6 +64,16 @@ describe("deriveReadiness", () => {
     expect(deriveReadiness(item(), l)).toMatchObject({ stage: "live", label: "Live", detail: "Live since Oct 8", since: "2026-10-08" });
   });
 
+  it("uses stored live release history after its deployment has been evicted", () => {
+    const l = ledger({ release: { stage: "live", environment: "production", sha: "old", since: "2026-09-01T10:00:00Z" } });
+    expect(deriveReadiness(item(), l)).toMatchObject({ stage: "live", label: "Live", detail: "Live since Sep 1", since: "2026-09-01" });
+  });
+
+  it("keeps a stored preview when no live deployment remains", () => {
+    const l = ledger({ release: { stage: "preview", environment: "preview", sha: "old", since: "2026-09-01T10:00:00Z" } });
+    expect(deriveReadiness(item(), l)).toMatchObject({ stage: "preview", detail: "On the preview site since Sep 1", since: "2026-09-01" });
+  });
+
   it("does not treat an overlapping deployment as live, but uses success time for live since", () => {
     const overlapping = ledger({}, { "org/app": [dep({
       createdAt: "2026-10-07T11:59:00Z", succeededAt: "2026-10-07T12:10:00Z",

@@ -13,6 +13,8 @@ import {
   writeEvidenceLedger,
 } from "../../collector/evidence-ledger.js";
 import { fetchDefaultBranch, fetchDeployments, fetchPrEvidence, isCommitContained, mapWithConcurrency } from "../../collector/fetch-evidence.js";
+import { matchedReleaseDeployment } from "../../collector/readiness.js";
+import type { EvidenceLedger } from "../../types.js";
 
 const env = (key: string): string | undefined => process.env[key];
 
@@ -89,6 +91,34 @@ export const applyDeploymentFetch = (ledger: import("../../types.js").EvidenceLe
   if (ledger.deploymentsUnavailable) delete ledger.deploymentsUnavailable[repo];
 };
 
+/**
+ * Fields computed by earlier evidence runs (not returned by the PR fetch) that a refresh must
+ * keep: verified ancestry results and release history, which outlives evicted deployment rows.
+ */
+export const carryOverDerivedEvidence = (
+  fresh: import("../../types.js").PrEvidence,
+  prior: import("../../types.js").PrEvidence | undefined,
+): import("../../types.js").PrEvidence => {
+  const out = { ...fresh };
+  if (prior?.containingDeployments) out.containingDeployments = prior.containingDeployments;
+  if (prior?.nonContainingDeploymentShas) out.nonContainingDeploymentShas = prior.nonContainingDeploymentShas;
+  if (prior?.ancestryUnknown) out.ancestryUnknown = prior.ancestryUnknown;
+  if (prior?.release) out.release = prior.release;
+  return out;
+};
+
+/** Persist release history before old deployment rows are eventually evicted. */
+export const recordReleaseEvidence = (ledger: EvidenceLedger, refs: PrRef[]): void => {
+  for (const ref of refs) {
+    const pe = ledger.prs[ref.url];
+    if (!pe?.mergedAt || pe.state !== "merged") continue;
+    const match = matchedReleaseDeployment({ state: "merged", title: "", labels: [], url: ref.url, repository: ref.repo }, ledger);
+    if (!match || (match.stage === "preview" && pe.release)) continue;
+    if (pe.release?.stage === "live" && match.stage !== "live") continue;
+    pe.release = { stage: match.stage, environment: match.deployment.environment, sha: match.deployment.sha, since: match.deployment.succeededAt };
+  }
+};
+
 export const registerEvidence = (program: Command): void => {
   program
     .command("evidence")
@@ -133,11 +163,7 @@ export const registerEvidence = (program: Command): void => {
         try {
           const ev = await fetchPrEvidence(token, ref, now);
           if (ev) {
-            const prior = ledger.prs[ref.url];
-            ev.containingDeployments = prior?.containingDeployments;
-            ev.nonContainingDeploymentShas = prior?.nonContainingDeploymentShas;
-            ev.ancestryUnknown = prior?.ancestryUnknown;
-            ledger.prs[ref.url] = ev;
+            ledger.prs[ref.url] = carryOverDerivedEvidence(ev, ledger.prs[ref.url]);
             refreshed++;
           }
         } catch (err) {
@@ -170,6 +196,8 @@ export const registerEvidence = (program: Command): void => {
           delete pe.ancestryUnknown;
         }
       }
+
+      recordReleaseEvidence(ledger, refs);
 
       ledger.updatedAt = new Date().toISOString();
       await writeEvidenceLedger(cfg.dataDir, ledger);
