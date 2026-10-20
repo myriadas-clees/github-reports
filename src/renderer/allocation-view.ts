@@ -95,6 +95,8 @@ export type AllocationItemView = {
   readiness?: { label: string; stage: string; detail?: string; ariaLabel: string };
   complexity?: { label: string; level: string; reason: string; risks: string[]; hasRisks: boolean };
   checksText?: string;
+  /** A PR closed without merging (shown under "Other work" with its verification details). */
+  closedWithoutMerge?: boolean;
 };
 
 export type AllocationVerificationView = {
@@ -418,6 +420,7 @@ const toItemView = (item: AllocationItem): AllocationItemView => ({
     }
     : {}),
   ...(checksText(item) ? { checksText: checksText(item) } : {}),
+  ...(item.kind === "pr" && item.state === "closed" ? { closedWithoutMerge: true } : {}),
 });
 
 const joinParts = (parts: (string | false | undefined)[]): string => parts.filter(Boolean).join(" · ");

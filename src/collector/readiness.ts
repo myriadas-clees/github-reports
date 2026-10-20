@@ -268,7 +268,7 @@ export const annotateAllocation = (
 ): Allocation => {
   const copy = structuredClone(allocation);
   for (const bucket of copy.initiatives) {
-    for (const section of ["shipped", "inProgress"] as const) {
+    for (const section of ["shipped", "inProgress", "other"] as const) {
       for (const item of bucket[section]) {
         if (item.kind !== "pr") continue;
         const evFiles = item.url ? evidence?.prs?.[item.url]?.files : undefined;

@@ -311,6 +311,38 @@ const alloc = (shipped: AllocationItem[], inProgress: AllocationItem[] = []): Al
 });
 
 describe("annotateAllocation + summarizeVerification", () => {
+  it("annotates closed PRs in other without adding them to verification summaries", () => {
+    const closedUrl = "https://github.com/org/app/pull/8";
+    const closedEvidence = pr({
+      url: closedUrl,
+      state: "closed",
+      mergedAt: null,
+      files: ["apps/hub/a.ts", "services/api/b.ts"],
+      checks: { passed: 2, failed: 1, skipped: 0, pending: 1, names: ["lint", "tests"] },
+    });
+    const evidence = ledger();
+    evidence.prs![closedUrl] = closedEvidence;
+    const closed: AllocationItem = {
+      kind: "pr", title: "Closed without merge", url: closedUrl, repository: "org/app",
+      state: "closed", files: ["apps/fallback/file.ts"],
+    };
+    const allocation = alloc([]);
+    allocation.initiatives[0]!.other.push(closed);
+
+    const annotated = annotateAllocation(allocation, evidence);
+    const annotatedClosed = annotated.initiatives[0]!.other[0]!;
+    expect(annotatedClosed.complexity).toMatchObject({ level: "connected" });
+    expect(annotatedClosed.checks).toEqual({
+      automated: { passed: 2, failed: 1, pending: 1, total: 4 },
+      humanReviews: 0, automatedReviews: 0, testsUpdated: false,
+    });
+    expect((annotatedClosed as typeof annotatedClosed & { checkNames?: string[] }).checkNames).toEqual(["lint", "tests"]);
+    expect(annotatedClosed.readiness).toBeUndefined();
+    expect(summarizeVerification(annotated)).toMatchObject({
+      completed: 0, inReview: 0, checksCollected: 0, checksUnknown: 0, withoutChecks: 0,
+    });
+  });
+
   it("annotates a copy without mutating input and tolerates null evidence", () => {
     const a = alloc([{ kind: "pr", title: "x", url: URL, repository: "org/app", state: "merged", files: ["apps/hub/a.test.ts"] }]);
     const out = annotateAllocation(a, null);

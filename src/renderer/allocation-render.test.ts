@@ -220,3 +220,38 @@ describe("no-activity minimum day rendering", () => {
     }
   });
 });
+
+describe("other work items (closed PRs and reviews)", () => {
+  const closedPr = {
+    kind: "pr" as const, title: "feat: Try new cache", url: "https://github.com/o/r/pull/9", state: "closed" as const,
+    repository: "o/r",
+    complexity: { level: "connected" as const, label: "Connected", reason: "Touches 2 areas: a, b", risks: ["Payments"] },
+    checks: { automated: { passed: 2, failed: 0, pending: 0, total: 2 }, humanReviews: 0, automatedReviews: 0, testsUpdated: false },
+  };
+  const review = { kind: "review" as const, title: "Review: billing", url: "https://github.com/o/r/pull/3", repository: "o/r" };
+
+  it("shows the closed-without-merging tag, complexity and checks for a closed PR in every theme", () => {
+    const a = makeAllocation([["Pricing", 10, { other: [closedPr] }]]);
+    for (const theme of AVAILABLE_THEMES as Theme[]) {
+      const html = renderReport(DATA, { theme, allocation: { week: { label: "Oct 1-7", allocation: a } } });
+      expect(html, theme).toContain('<span class="alloc-tag">Closed without merging</span>');
+      expect(html, theme).toContain('<span class="alloc-cx alloc-cx--connected" title="Touches 2 areas: a, b">Connected');
+      expect(html, theme).toContain('<span class="alloc-risk">Payments</span>');
+      expect(html, theme).toContain('<span class="alloc-checks">Both automated checks passed</span>');
+      expect(html, theme).not.toContain("[object Object]");
+    }
+  });
+
+  it("renders a review item in other work unchanged in every theme", () => {
+    const a = makeAllocation([["Pricing", 10, { other: [review] }]]);
+    for (const theme of AVAILABLE_THEMES as Theme[]) {
+      const html = renderReport(DATA, { theme, allocation: { week: { label: "Oct 1-7", allocation: a } } });
+      const start = html.indexOf('<li><span class="alloc-kind">Review</span>');
+      const li = html.slice(start, html.indexOf("</li>", start) + "</li>".length);
+      expect(li, theme).toBe(
+        '<li><span class="alloc-kind">Review</span><a href="https://github.com/o/r/pull/3" target="_blank" rel="noopener nofollow">Review: billing</a><span class="alloc-repo">o/r</span></li>',
+      );
+      expect(html, theme).not.toContain("Closed without merging");
+    }
+  });
+});
