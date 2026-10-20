@@ -99,6 +99,10 @@ Tokens and API keys are read only from the environment / Actions secrets. Render
 bun run build && bun run lint && bun run test
 ```
 
+The default theme (config key `brutalist`, kept for compatibility) is the Myriad Apps Graphical theme. Its tokens live in `src/renderer/themes/brutalist/tokens.ts`, copied from `gui/source/graphical-theme.css`; component rules in `styles.ts` consume those names only. It has warm neutral surfaces in light and dark (light by default, then the OS setting, then the reader's Light/Dark choice), a neutral top bar, and monotone actions, focus and progress. Brand red appears only in the logo mark and one short rule on the homepage. Positive statuses stay green, and the initiative chart colours are unchanged.
+
+Roboto and Lora are self-hosted (SIL OFL 1.1, licences in `assets/fonts/`). `render` copies them to `<output>/assets/fonts/`, so the theme makes no Google Fonts requests. Non-Latin locales keep their script font after Roboto but only use it when it is installed locally. Design QA evidence is in `design-qa.md`.
+
 Local preview of the generated site (serves `output/`, re-renders when themes or data change):
 
 ```bash

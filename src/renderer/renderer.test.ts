@@ -516,27 +516,30 @@ describe("renderReport", () => {
     expect(html).toContain("All days");
   });
 
-  it("uses Zen Kaku Gothic New for Japanese", () => {
+  it("keeps Zen Kaku Gothic New after Roboto for Japanese without a font request", () => {
     const html = renderReport(MOCK_DATA, { language: "ja" });
-    expect(html).toContain("Zen+Kaku+Gothic+New");
-    expect(html).toContain("Zen Kaku Gothic New");
+    expect(html).toContain("--font-ui: Roboto, 'Zen Kaku Gothic New'");
+    expect(html).not.toContain("fonts.googleapis.com");
   });
 
-  it("uses Schibsted Grotesk and Space Mono for English", () => {
+  it("self-hosts Myriad Roboto and Lora for English", () => {
     const html = renderReport(MOCK_DATA, { language: "en" });
-    expect(html).toContain("Schibsted Grotesk");
-    expect(html).toContain("Space Mono");
+    expect(html).toMatch(/<link rel="stylesheet" href="(\.\.\/)*assets\/fonts\/fonts\.css" \/>/);
+    expect(html).toContain("--font-ui: Roboto, Arial, sans-serif");
+    expect(html).toContain("--font-editorial: Lora, Georgia, serif");
+    expect(html).not.toContain("fonts.googleapis.com");
+    expect(html).not.toContain("fonts.gstatic.com");
   });
 
-  it("uses Space Mono for UI labels in English", () => {
+  it("uses the Myriad UI font role for labels in English", () => {
     const html = renderReport(MOCK_DATA, { language: "en" });
-    expect(html).toContain("'Space Mono'");
+    expect(html).toContain("font-family: var(--font-ui)");
   });
 
-  it("uses IBM Plex Sans KR for Korean", () => {
+  it("keeps IBM Plex Sans KR after Roboto for Korean", () => {
     const html = renderReport(MOCK_DATA, { language: "ko" });
-    expect(html).toContain("IBM+Plex+Sans+KR");
     expect(html).toContain("IBM Plex Sans KR");
+    expect(html).not.toContain("fonts.googleapis.com");
   });
 
   it("uses Urbanist for Russian", () => {

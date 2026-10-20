@@ -32,13 +32,22 @@
   </div>
 
   {{#if verification}}
-  <div class="alloc-block alloc-verify">
-    <h3 class="alloc-sub"><span>{{verification.title}}</span></h3>
-    {{#if verification.readinessLine}}<p class="alloc-verify-line">{{verification.readinessLine}}</p>{{/if}}
-    <p class="alloc-verify-line">{{verification.checksLine}}</p>
-    {{#if verification.note}}<p class="alloc-verify-note">{{verification.note}}</p>{{/if}}
-    <p class="alloc-verify-note"><a href="{{@root.rootPrefix}}finished/">How we say something is finished</a></p>
-  </div>
+  <section class="alloc-block alloc-verify" aria-labelledby="{{id}}-verify">
+    <h3 class="alloc-sub" id="{{id}}-verify"><span>{{verification.title}}</span>{{#if verification.scope}}<span class="alloc-sub-meta">across {{verification.scope}}</span>{{/if}}</h3>
+    <div class="alloc-verify-groups">
+      {{#each verification.groups}}
+      <div class="alloc-verify-group alloc-verify-group--{{key}}">
+        <h4 class="alloc-verify-heading" id="{{../id}}-verify-{{key}}">{{heading}}</h4>
+        <ul class="alloc-verify-facts" aria-labelledby="{{../id}}-verify-{{key}}">
+          {{#each facts}}
+          <li class="alloc-verify-fact{{#if tone}} alloc-verify-fact--{{tone}}{{/if}}">{{#if value}}<span class="alloc-verify-value">{{value}}</span> {{/if}}<span class="alloc-verify-label">{{label}}</span></li>
+          {{/each}}
+        </ul>
+      </div>
+      {{/each}}
+    </div>
+    <p class="alloc-verify-foot">{{#if verification.note}}<span>{{verification.note}}</span> {{/if}}<a href="{{@root.rootPrefix}}finished/">How we say something is finished</a></p>
+  </section>
   {{/if}}
 
   {{#if hasInitiatives}}

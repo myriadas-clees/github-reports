@@ -13,6 +13,8 @@
   <meta name="theme-color" content="{{themeColor}}" />
   {{#if avatarUrl}}<link rel="icon" href="{{avatarUrl}}" />{{/if}}
   {{#if baseUrl}}<link rel="alternate" type="application/rss+xml" title="RSS Feed" href="{{{baseUrl}}}/feed.xml" />{{/if}}
+  <link rel="preload" href="{{rootPrefix}}assets/fonts/roboto-latin-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="{{rootPrefix}}assets/fonts/fonts.css" />
   <style>{{{css}}}</style>
   {{{themeInitScript}}}
 </head>
@@ -24,7 +26,7 @@
   <div class="nav-inner">
     <a href="{{rootPrefix}}" class="nav-brand">
       <img class="nav-logo nav-logo-light" src="{{rootPrefix}}assets/brand/myriad-m-mark.png" alt="Myriad" width="22" height="22" />
-      <img class="nav-logo nav-logo-dark" src="{{rootPrefix}}assets/brand/myriad-m-mark-dark.png" alt="" width="22" height="22" />
+      <img class="nav-logo nav-logo-dark" src="{{rootPrefix}}assets/brand/myriad-m-mark-dark.png" alt="Myriad" width="22" height="22" />
       <span class="nav-site-title">{{siteTitleInline}}</span>
     </a>
     <div class="nav-actions">

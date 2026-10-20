@@ -52,6 +52,7 @@ export const withRecomputedHours = (data: WeeklyReportData): WeeklyReportData =>
 const env = (key: string): string | undefined => process.env[key];
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const brandAssetsSrc = resolve(__dirname, "../../../assets/brand");
+const fontAssetsSrc = resolve(__dirname, "../../../assets/fonts");
 
 export type RenderCommandOptions = {
   dataDir: string;
@@ -467,6 +468,14 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
     await cp(brandAssetsSrc, brandOut, { recursive: true });
   } catch {
     console.warn(`Brand assets not found at ${brandAssetsSrc}; logo may be missing.`);
+  }
+  // Self-hosted Roboto and Lora (OFL) for the default theme; pages link assets/fonts/fonts.css.
+  const fontsOut = join(options.outputDir, "assets", "fonts");
+  await mkdir(fontsOut, { recursive: true });
+  try {
+    await cp(fontAssetsSrc, fontsOut, { recursive: true });
+  } catch {
+    console.warn(`Font assets not found at ${fontAssetsSrc}; pages fall back to system fonts.`);
   }
 
   console.log(`Rendering report (lang: ${options.language}, theme: ${options.theme})...`);

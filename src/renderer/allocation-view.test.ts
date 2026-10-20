@@ -457,6 +457,36 @@ describe("readiness, complexity and verification views", () => {
     expect(v.note).toContain("No process catches every bug");
   });
 
+  it("groups the same facts as the lines, with tones only where evidence supports them", () => {
+    const a = makeAllocation([["A", 10, { shipped: [annotated], inProgress: [open] }]]);
+    a.aiFindingsAddressed = 5;
+    const v = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification!;
+    expect(v.scope).toBe("2 changes");
+    expect(v.groups).toEqual([
+      { key: "readiness", heading: "Where the changes are", facts: [
+        { value: "1", label: "live", tone: "positive" },
+        { value: "1", label: "in review" },
+      ] },
+      { key: "checks", heading: "Automated checks", facts: [
+        { value: "1 of 1", label: "passed automated checks" },
+        { value: "1", label: "not collected", tone: "tentative" },
+      ] },
+      { key: "reviews", heading: "Reviews and tests", facts: [
+        { value: "1", label: "had automated code review" },
+        { value: "1", label: "included test updates" },
+        { value: "5", label: "review findings addressed" },
+      ] },
+    ]);
+  });
+
+  it("marks uncollected checks as tentative and omits empty groups", () => {
+    const a = makeAllocation([["A", 10, { shipped: [{ ...annotated, checks: undefined, readiness: undefined }] }]]);
+    const v = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification!;
+    expect(v.groups.map((g) => g.key)).toEqual(["readiness", "checks"]);
+    expect(v.groups[0]!.facts).toEqual([{ value: "1", label: "code integrated" }]);
+    expect(v.groups[1]!.facts).toEqual([{ label: "Automated check results not collected yet", tone: "tentative" }]);
+  });
+
   it("describes integrated changes without implying they are live", () => {
     const integrated = { ...annotated, readiness: { stage: "awaiting-release" as const, label: "Code integrated · not live yet" } };
     const a = makeAllocation([["A", 10, { shipped: [integrated] }]]);

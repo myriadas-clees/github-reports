@@ -113,6 +113,25 @@ describe("allocation section", () => {
     }
   });
 
+  it("groups checks evidence in the default theme without green-lighting missing or running checks", () => {
+    const pr = (n: number, state: "merged" | "open", stage: "awaiting-release" | "in-review", automated: { passed: number; failed: number; pending: number; total: number; partial?: boolean } | null) => ({
+      kind: "pr" as const, title: `Change ${n}`, url: `https://github.com/o/r/pull/${n}`, state,
+      readiness: { stage, label: stage },
+      checks: { automated, humanReviews: 0, automatedReviews: 0, testsUpdated: false },
+    });
+    const a = makeAllocation([["Pricing", 30, {
+      shipped: [pr(1, "merged", "awaiting-release", { passed: 2, failed: 0, pending: 0, total: 2 })],
+      inProgress: [pr(2, "open", "in-review", { passed: 1, failed: 0, pending: 1, total: 2 }), pr(3, "open", "in-review", null)],
+    }]]);
+    const html = renderReport(DATA, { theme: "brutalist", allocation: { week: { label: "Oct 1–7", allocation: a } } });
+    const block = html.slice(html.indexOf('class="alloc-block alloc-verify"'), html.indexOf("</section>", html.indexOf('class="alloc-block alloc-verify"')));
+    expect(block).toContain('<li class="alloc-verify-fact"><span class="alloc-verify-value">1</span> <span class="alloc-verify-label">code integrated, not live yet</span></li>');
+    expect(block).toContain('alloc-verify-fact--pending"><span class="alloc-verify-value">1</span> <span class="alloc-verify-label">still running</span>');
+    expect(block).toContain('alloc-verify-fact--tentative"><span class="alloc-verify-value">1</span> <span class="alloc-verify-label">not collected</span>');
+    expect(block).not.toContain("alloc-verify-fact--positive");
+    expect(block).not.toContain("Reviews and tests");
+  });
+
   it("renders readiness, complexity, risk chips and the checks block in every theme", () => {
     const shipped = [{
       kind: "pr" as const, title: "Add tiers", url: "https://github.com/o/r/pull/1", state: "merged" as const,
@@ -129,7 +148,16 @@ describe("allocation section", () => {
       expect(html, theme).toContain('<span class="alloc-risk">Payments</span>');
       expect(html, theme).toContain("Both automated checks passed · 1 human review");
       expect(html, theme).toContain("Checks behind this work");
-      expect(html, theme).toContain("Of 1 change: 1 live");
+      if (theme === "brutalist") {
+        // The default theme lays the same facts out as grouped counts instead of sentences.
+        expect(html, theme).toContain('<span class="alloc-sub-meta">across 1 change</span>');
+        expect(html, theme).toContain('<li class="alloc-verify-fact alloc-verify-fact--positive"><span class="alloc-verify-value">1</span> <span class="alloc-verify-label">live</span></li>');
+        expect(html, theme).toContain('<span class="alloc-verify-value">1 of 1</span> <span class="alloc-verify-label">passed automated checks</span>');
+        expect(html, theme).toContain('<span class="alloc-verify-label">had human review</span>');
+        expect(html, theme).toContain("How we say something is finished");
+      } else {
+        expect(html, theme).toContain("Of 1 change: 1 live");
+      }
       expect(html, theme).toContain(".alloc-stage--live");
       expect(html, theme).not.toContain("[object Object]");
     }

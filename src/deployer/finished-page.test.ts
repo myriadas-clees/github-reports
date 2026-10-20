@@ -138,7 +138,7 @@ describe("renderFinishedPage", () => {
 
   it("uses theme tokens, not hard-coded page colors, and stacks the layout on narrow columns", () => {
     const brutalist = renderFinishedPage({ themeName: "brutalist" });
-    expect(finishedCssOf(brutalist)).toContain("var(--b-text)");
+    expect(finishedCssOf(brutalist)).toContain("var(--neutral-10)");
     expect(finishedCssOf(renderFinishedPage({ themeName: "swiss" }))).toContain("var(--s-text)");
     expect(finishedCssOf(renderFinishedPage({ themeName: "editorial" }))).toContain("var(--e-text)");
     expect(finishedCssOf(renderFinishedPage({ themeName: "minimal" }))).toContain("var(--text)");
@@ -156,7 +156,7 @@ describe("renderFinishedPage", () => {
   });
 
   it("defines the success tokens for light and dark in every theme, switched like the theme switches", () => {
-    const darkFirst: Record<Theme, boolean> = { brutalist: true, minimal: false, editorial: false, swiss: false };
+    const darkFirst: Record<Theme, boolean> = { brutalist: false, minimal: false, editorial: false, swiss: false };
     for (const theme of themes) {
       const css = finishedCssOf(renderFinishedPage({ themeName: theme }));
       const tone = theme === "editorial" ? STATUS_PALETTES.calm : STATUS_PALETTES.forest;
@@ -215,8 +215,8 @@ describe("renderFinishedPage", () => {
   });
 
   it("keeps the success colours at AA contrast on fills and tints in light and dark", () => {
-    // Page surfaces of the four themes (--b-bg, --bg, --e-bg, --s-bg).
-    const surfaces = { light: ["#fafafa", "#ffffff", "#faf8f5"], dark: ["#050505", "#111111", "#1a1816", "#0a0a0a"] };
+    // Page surfaces of the four themes (Myriad --neutral-1/--neutral-2, --bg, --e-bg, --s-bg).
+    const surfaces = { light: ["#f2f1ee", "#f8f7f4", "#ffffff", "#faf8f5"], dark: ["#1a1817", "#211f1e", "#111111", "#1a1816", "#0a0a0a"] };
     for (const [tone, modes] of Object.entries(STATUS_PALETTES)) {
       for (const mode of ["light", "dark"] as const) {
         const p = modes[mode];

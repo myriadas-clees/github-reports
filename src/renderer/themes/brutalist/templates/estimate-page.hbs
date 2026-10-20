@@ -14,6 +14,8 @@
   <meta name="twitter:title" content="{{pageTitle}}" />
   <meta name="twitter:description" content="{{description}}" />
   {{#if baseUrl}}<link rel="alternate" type="application/rss+xml" title="RSS Feed" href="{{baseUrl}}/feed.xml" />{{/if}}
+  <link rel="preload" href="../assets/fonts/roboto-latin-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="../assets/fonts/fonts.css" />
   <style>{{{css}}}</style>
   <style>{{{indexCss}}}</style>
   {{{themeInitScript}}}
@@ -24,7 +26,7 @@
   <div class="index-nav-inner">
     <a href="../" class="nav-brand">
       <img class="nav-logo nav-logo-light" src="../assets/brand/myriad-m-mark.png" alt="Myriad" width="22" height="22" />
-      <img class="nav-logo nav-logo-dark" src="../assets/brand/myriad-m-mark-dark.png" alt="" width="22" height="22" />
+      <img class="nav-logo nav-logo-dark" src="../assets/brand/myriad-m-mark-dark.png" alt="Myriad" width="22" height="22" />
       <span class="nav-site-title">{{siteTitleInline}}</span>
     </a>
     <div class="nav-actions">

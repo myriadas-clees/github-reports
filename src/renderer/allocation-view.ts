@@ -100,10 +100,22 @@ export type AllocationItemView = {
   closedWithoutMerge?: boolean;
 };
 
+/**
+ * One counted fact. `positive` is reserved for live changes; `pending` marks checks still running;
+ * `tentative` marks missing or incomplete evidence and drafts, so they never read as a pass.
+ */
+export type VerificationFact = { value?: string; label: string; tone?: "positive" | "pending" | "tentative" };
+
+export type VerificationGroup = { key: "readiness" | "checks" | "reviews"; heading: string; facts: VerificationFact[] };
+
 export type AllocationVerificationView = {
   title: string;
+  /** Number of changes the counts describe, e.g. "6 changes"; absent when only review findings exist. */
+  scope?: string;
   readinessLine?: string;
   checksLine: string;
+  /** The same facts as the lines, grouped for themes that lay them out. */
+  groups: VerificationGroup[];
   note?: string;
 };
 
@@ -427,54 +439,63 @@ const toItemView = (item: AllocationItem): AllocationItemView => ({
   ...(item.kind === "pr" && item.state === "closed" ? { closedWithoutMerge: true } : {}),
 });
 
-const joinParts = (parts: (string | false | undefined)[]): string => parts.filter(Boolean).join(" · ");
-
 export const VERIFICATION_TITLE = "Checks behind this work";
 export const VERIFICATION_NOTE =
   "No process catches every bug. When one gets through, the fix goes through these same checks.";
+
+const factText = (f: VerificationFact): string => (f.value ? `${f.value} ${f.label}` : f.label);
 
 const buildVerification = (a: Allocation): AllocationVerificationView | undefined => {
   const s = summarizeVerification(a);
   const total = s.completed + s.inReview + s.drafts;
   if (total === 0 && s.aiFindingsAddressed === 0) return undefined;
-  const readinessLine = total > 0
-    ? `Of ${total} ${plural(total, "change", "changes")}: ` +
-      joinParts([
-        s.live > 0 && `${s.live} live`,
-        s.preview > 0 && `${s.preview} in testing`,
-        s.awaitingRelease > 0 && `${s.awaitingRelease} code integrated, not live yet`,
-        s.completed - s.live - s.preview - s.awaitingRelease > 0 &&
-          `${s.completed - s.live - s.preview - s.awaitingRelease} code integrated`,
-        s.inReview > 0 && `${s.inReview} in review`,
-        s.drafts > 0 && `${s.drafts} ${plural(s.drafts, "draft or prototype", "drafts or prototypes")}`,
-      ])
-    : undefined;
+  const fact = (n: number, label: string, tone?: VerificationFact["tone"]): VerificationFact | false =>
+    n > 0 && { value: String(n), label, ...(tone ? { tone } : {}) };
+  const keep = (facts: (VerificationFact | false)[]): VerificationFact[] => facts.filter((f): f is VerificationFact => f !== false);
+  const integratedOnly = s.completed - s.live - s.preview - s.awaitingRelease;
+  const readiness = keep([
+    fact(s.live, "live", "positive"),
+    fact(s.preview, "in testing"),
+    fact(s.awaitingRelease, "code integrated, not live yet"),
+    fact(integratedOnly, "code integrated"),
+    fact(s.inReview, "in review"),
+    fact(s.drafts, plural(s.drafts, "draft or prototype", "drafts or prototypes"), "tentative"),
+  ]);
   // The blanket "no checks ran" claim needs every PR to be known zero-check; unknown PRs are named separately.
-  // Review, test and finding counts are appended even when no PR has automated checks, since they can be the only evidence.
-  const checksLead = (): string => {
-    if (s.checksCollected > 0) return `${s.withPassingChecks} of ${s.checksCollected} passed automated checks`;
+  // Review, test and finding counts are kept even when no PR has automated checks, since they can be the only evidence.
+  const checksLead = (): (VerificationFact | false)[] => {
+    if (s.checksCollected > 0) return [{ value: `${s.withPassingChecks} of ${s.checksCollected}`, label: "passed automated checks" }];
     if (s.withoutChecks > 0) {
       return s.checksUnknown > 0
-        ? `${s.withoutChecks} had no automated checks · ${s.checksUnknown} not collected`
-        : "No automated checks ran on these changes";
+        ? [fact(s.withoutChecks, "had no automated checks"), fact(s.checksUnknown, "not collected", "tentative")]
+        : [{ label: "No automated checks ran on these changes" }];
     }
-    return "Automated check results not collected yet";
+    return [{ label: "Automated check results not collected yet", tone: "tentative" }];
   };
-  const checksLine = joinParts([
-    checksLead(),
-    s.checksCollected > 0 && s.withPendingChecks > 0 && `${s.withPendingChecks} still running`,
-    s.checksCollected > 0 && s.withPartialChecks > 0 && `${s.withPartialChecks} with incomplete check results`,
-    s.checksCollected > 0 && s.withoutChecks > 0 && `${s.withoutChecks} had no automated checks`,
-    s.checksCollected > 0 && s.checksUnknown > 0 && `${s.checksUnknown} not collected`,
-    s.withAutomatedReview > 0 && `${s.withAutomatedReview} had automated code review`,
-    s.withHumanReview > 0 && `${s.withHumanReview} had human review`,
-    s.withTests > 0 && `${s.withTests} included test updates`,
-    s.aiFindingsAddressed > 0 && `${s.aiFindingsAddressed} review findings addressed`,
+  const checks = keep([
+    ...checksLead(),
+    s.checksCollected > 0 && fact(s.withPendingChecks, "still running", "pending"),
+    s.checksCollected > 0 && fact(s.withPartialChecks, "with incomplete check results", "tentative"),
+    s.checksCollected > 0 && fact(s.withoutChecks, "had no automated checks"),
+    s.checksCollected > 0 && fact(s.checksUnknown, "not collected", "tentative"),
   ]);
+  const reviews = keep([
+    fact(s.withAutomatedReview, "had automated code review"),
+    fact(s.withHumanReview, "had human review"),
+    fact(s.withTests, "included test updates"),
+    fact(s.aiFindingsAddressed, "review findings addressed"),
+  ]);
+  const groups: VerificationGroup[] = [
+    ...(readiness.length > 0 ? [{ key: "readiness" as const, heading: "Where the changes are", facts: readiness }] : []),
+    { key: "checks", heading: "Automated checks", facts: checks },
+    ...(reviews.length > 0 ? [{ key: "reviews" as const, heading: "Reviews and tests", facts: reviews }] : []),
+  ];
   return {
     title: VERIFICATION_TITLE,
-    ...(readinessLine ? { readinessLine } : {}),
-    checksLine,
+    ...(total > 0 ? { scope: `${total} ${plural(total, "change", "changes")}` } : {}),
+    ...(total > 0 ? { readinessLine: `Of ${total} ${plural(total, "change", "changes")}: ${readiness.map(factText).join(" · ")}` } : {}),
+    checksLine: [...checks, ...reviews].map(factText).join(" · "),
+    groups,
     ...(s.completed > 0 ? { note: VERIFICATION_NOTE } : {}),
   };
 };

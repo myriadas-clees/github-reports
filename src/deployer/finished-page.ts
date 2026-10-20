@@ -26,13 +26,14 @@ const SOFT_SHADOW_HOVER = "0 2px 4px rgba(0,0,0,0.05), 0 16px 32px -14px rgba(0,
 
 /** Theme tokens (CSS variables), status green and shape per theme, so each theme keeps its own character. */
 const THEME_TOKENS: Record<Theme, Omit<FinishedCssTheme, "mono">> = {
+  // Default theme: Myriad Apps tokens (src/renderer/themes/brutalist/tokens.ts), light first.
   brutalist: {
-    text: "var(--b-text)", textSecondary: "var(--b-text-secondary)", heading: "var(--b-heading)",
-    border: "var(--b-border)", surface: "var(--b-bg)", statusTone: "forest", darkFirst: true,
-    labelFont: "'Space Mono', ui-monospace, monospace",
-    radius: "0", radiusSmall: "0", pillRadius: "0", dotRadius: "0",
-    shadow: "none", hoverShadow: "4px 4px 0 var(--b-heading)",
-    padX: "3rem", padXNarrow: "1.5rem", padTop: "7rem",
+    text: "var(--neutral-10)", textSecondary: "var(--neutral-7)", heading: "var(--neutral-10)",
+    border: "var(--border)", surface: "var(--page-bg)", statusTone: "forest", darkFirst: false,
+    labelFont: "var(--font-ui)",
+    radius: "var(--radius-m)", radiusSmall: "var(--radius-s)", pillRadius: "var(--radius-full)", dotRadius: "50%",
+    shadow: "var(--shadow-s)", hoverShadow: "var(--shadow-l)",
+    padX: "var(--space-l)", padXNarrow: "var(--space-s)", padTop: "var(--space-xl)",
   },
   minimal: {
     text: "var(--text)", textSecondary: "var(--text-secondary)", heading: "var(--text)",

@@ -201,6 +201,14 @@ describe("registerRender", () => {
     // Should render index page
     expect(mockRenderIndexPage).toHaveBeenCalled();
 
+    // Should copy the self-hosted theme fonts beside the brand assets
+    const { cp } = await import("node:fs/promises");
+    expect(cp).toHaveBeenCalledWith(
+      expect.stringMatching(/assets[\\/]fonts$/),
+      expect.stringMatching(/output[\\/]assets[\\/]fonts$/),
+      { recursive: true },
+    );
+
     // Should generate index OG image
     expect(mockGenerateIndexOGImage).toHaveBeenCalled();
 
