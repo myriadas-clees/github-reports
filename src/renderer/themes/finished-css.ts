@@ -1,5 +1,5 @@
 // Shared CSS for the static "How we say something is finished" page.
-// Colors come only from theme tokens (CSS variables), so light and dark follow the theme.
+// Colors come from theme tokens (CSS variables) plus a page-scoped status palette, so light and dark follow the theme.
 // Without JavaScript every panel is shown stacked; the inline script adds `fin-js` to <html> and the
 // tabbed explorer, toggles and animations switch on from there.
 
@@ -10,8 +10,11 @@ export type FinishedCssTheme = {
   heading: string;
   border: string;
   surface: string;
-  accent: string;
   mono: string;
+  /** Which green the page uses for success states (see STATUS_PALETTES). */
+  statusTone: StatusTone;
+  /** True when the theme is dark unless the reader picks light (brutalist); false for light-first themes. */
+  darkFirst: boolean;
   /** Font for small uppercase labels (mono for most themes, the body face for editorial). */
   labelFont: string;
   /** Card corner radius ("0" for square themes). */
@@ -32,6 +35,48 @@ export type FinishedCssTheme = {
   padTop: string;
 };
 
+export type StatusTone = "forest" | "calm";
+
+/** One mode's success colours: solid fill, text on that fill, green text on tints, and the tint mix strengths. */
+type StatusPalette = { ok: string; okOn: string; okInk: string; soft: string; line: string };
+
+/*
+ * Status colour mapping (the theme accent is never used for status, so red only appears in the shared header brand):
+ * - Success (green, --fin-ok*): Ready to release badge and verdict, the filled Venn overlap and its check, the Both
+ *   toggle, Met tags, ticked checklist items, "Reads from GitHub" ticks, the winning scenario, Closed/Launched on the
+ *   board card, Live (and the whole track once a change is Live), and the Ready to release / Live entries in the key.
+ * - Not ready / not met / can't see: neutral grey (--fin-text-2, --fin-line-strong) with dashed or hollow shapes.
+ * - Selection and active UI (tab thumb, focus ring, "This change" marker, current stage, pressed toggles, links,
+ *   callout stripe, eyebrow dash, hovers): the theme's strong ink (--fin-heading).
+ * - In progress (In review, Code integrated, In testing before Live): the same neutral ink, never green.
+ * Text labels and icons ("Ready to release", "Met", the check) always carry the meaning too, not colour alone.
+ */
+export const STATUS_PALETTES: Record<StatusTone, { light: StatusPalette; dark: StatusPalette }> = {
+  forest: {
+    light: { ok: "#1b7a3d", okOn: "#ffffff", okInk: "#145c2e", soft: "11%", line: "55%" },
+    dark: { ok: "#3fb96b", okOn: "#04210f", okInk: "#6fdc97", soft: "15%", line: "55%" },
+  },
+  calm: {
+    light: { ok: "#3a7754", okOn: "#ffffff", okInk: "#2a5a3f", soft: "12%", line: "55%" },
+    dark: { ok: "#7cc39b", okOn: "#0f261a", okInk: "#a2d8b8", soft: "15%", line: "55%" },
+  },
+};
+
+const statusVars = (p: StatusPalette): string =>
+  `--fin-ok: ${p.ok}; --fin-ok-on: ${p.okOn}; --fin-ok-ink: ${p.okInk}; ` +
+  `--fin-ok-soft: color-mix(in srgb, var(--fin-ok) ${p.soft}, var(--fin-surface)); ` +
+  `--fin-ok-line: color-mix(in srgb, var(--fin-ok) ${p.line}, var(--fin-surface));`;
+
+/** Status tokens in light and dark, switched the same way the theme switches (data-theme wins, then the OS setting). */
+const statusTokens = (t: FinishedCssTheme): string => {
+  const { light, dark } = STATUS_PALETTES[t.statusTone];
+  const [base, alt, altMode, altQuery] = t.darkFirst ? [dark, light, "light", "dark"] : [light, dark, "dark", "light"];
+  return `
+    .fin-page { ${statusVars(base)} }
+    @media (prefers-color-scheme: ${altMode}) { html:not([data-theme="${altQuery}"]) .fin-page { ${statusVars(alt)} } }
+    html[data-theme="${altMode}"] .fin-page { ${statusVars(alt)} }`;
+};
+
 export const buildFinishedCSS = (t: FinishedCssTheme): string => `
     /* ==================== FINISHED-STATE EXPLAINER ==================== */
     /* Report themes lock html/body to the viewport (app-style scroll); this page is a normal long document. */
@@ -43,12 +88,9 @@ export const buildFinishedCSS = (t: FinishedCssTheme): string => `
       --fin-heading: ${t.heading};
       --fin-line: ${t.border};
       --fin-surface: ${t.surface};
-      --fin-accent: ${t.accent};
       --fin-raised: color-mix(in srgb, var(--fin-heading) 3.5%, var(--fin-surface));
       --fin-sunk: color-mix(in srgb, var(--fin-heading) 7%, var(--fin-surface));
       --fin-line-strong: color-mix(in srgb, var(--fin-heading) 30%, var(--fin-surface));
-      --fin-accent-soft: color-mix(in srgb, var(--fin-accent) 13%, var(--fin-surface));
-      --fin-accent-line: color-mix(in srgb, var(--fin-accent) 60%, var(--fin-surface));
       --fin-r: ${t.radius};
       --fin-r-sm: ${t.radiusSmall};
       --fin-r-pill: ${t.pillRadius};
@@ -62,13 +104,14 @@ export const buildFinishedCSS = (t: FinishedCssTheme): string => `
       box-sizing: border-box; color: var(--fin-text); container: fin / inline-size;
     }
     @media (max-width: 768px) { .fin-page { --fin-pad-x: ${t.padXNarrow}; } }
+${statusTokens(t)}
     .fin-page *, .fin-page *::before, .fin-page *::after { box-sizing: border-box; }
     .fin-page [hidden] { display: none !important; }
     .fin-page h1, .fin-page h2, .fin-page h3, .fin-page h4 { color: var(--fin-heading); padding: 0; border: 0; }
     :where(.fin-page) p { margin: 0; }
     .fin-page abbr { text-decoration: underline dotted; text-underline-offset: 3px; cursor: help; }
     :where(.fin-page) button { font: inherit; letter-spacing: inherit; text-transform: none; }
-    .fin-page :is(a, button, summary, [tabindex]):focus-visible { outline: 2px solid var(--fin-accent); outline-offset: 3px; }
+    .fin-page :is(a, button, summary, [tabindex]):focus-visible { outline: 2px solid var(--fin-heading); outline-offset: 3px; }
     html:not(.fin-js) .fin-js-only { display: none !important; }
 
     .fin-page .fin-label {
@@ -79,7 +122,7 @@ export const buildFinishedCSS = (t: FinishedCssTheme): string => `
     /* ---------- Hero ---------- */
     .fin-hero { margin: 0 0 3rem; }
     .fin-eyebrow { display: flex; align-items: center; gap: 0.6rem; margin: 0 0 1rem; }
-    .fin-eyebrow::before { content: ""; width: 1.75rem; height: 2px; background: var(--fin-accent); }
+    .fin-eyebrow::before { content: ""; width: 1.75rem; height: 2px; background: var(--fin-heading); }
     .fin-page h1 {
       margin: 0 0 1rem; max-width: 22ch; font-size: clamp(2.1rem, 6.4cqi, 3.4rem); line-height: 1.05;
       letter-spacing: -0.03em; overflow-wrap: anywhere;
@@ -138,8 +181,8 @@ export const buildFinishedCSS = (t: FinishedCssTheme): string => `
       line-height: 1.2; white-space: nowrap; border-radius: var(--fin-r-pill);
     }
     .fin-badge::before { content: ""; flex: none; width: 0.5rem; height: 0.5rem; border-radius: var(--fin-r-dot); }
-    .fin-badge--ready { color: var(--fin-heading); background: var(--fin-accent-soft); border: 1px solid var(--fin-accent-line); }
-    .fin-badge--ready::before { background: var(--fin-accent); }
+    .fin-badge--ready { color: var(--fin-ok-ink); background: var(--fin-ok-soft); border: 1px solid var(--fin-ok-line); }
+    .fin-badge--ready::before { background: var(--fin-ok); }
     .fin-badge--no { color: var(--fin-text-2); background: transparent; border: 1px dashed var(--fin-line-strong); }
     .fin-badge--no::before { border: 1.5px solid currentColor; }
     .fin-pill {
@@ -161,7 +204,7 @@ export const buildFinishedCSS = (t: FinishedCssTheme): string => `
     .fin-btn--small { min-height: 44px; padding: 0.4rem 1rem; font-size: 0.8125rem; }
     .fin-page .fin-callout {
       display: flex; gap: 0.75rem; align-items: flex-start; margin: 2rem 0 0; padding: 1rem 1.2rem;
-      color: var(--fin-text); background: var(--fin-raised); border: 1px solid var(--fin-line); border-left: 3px solid var(--fin-accent);
+      color: var(--fin-text); background: var(--fin-raised); border: 1px solid var(--fin-line); border-left: 3px solid var(--fin-heading);
       border-radius: var(--fin-r-sm); line-height: 1.55;
     }
     .fin-callout strong { color: var(--fin-heading); }
@@ -176,7 +219,7 @@ export const buildFinishedCSS = (t: FinishedCssTheme): string => `
     }
     .fin-seg-btn:hover { color: var(--fin-heading); }
     .fin-seg-btn[aria-pressed="true"] { color: var(--fin-heading); background: var(--fin-surface); border-color: var(--fin-line-strong); box-shadow: var(--fin-shadow); }
-    .fin-seg-btn[data-fin-venn-set="both"][aria-pressed="true"] { background: var(--fin-accent-soft); border-color: var(--fin-accent-line); }
+    .fin-seg-btn[data-fin-venn-set="both"][aria-pressed="true"] { color: var(--fin-ok-ink); background: var(--fin-ok-soft); border-color: var(--fin-ok-line); }
     .fin-short { display: none; }
     .fin-venn-main .fin-seg { grid-auto-columns: auto; }
 
@@ -194,7 +237,7 @@ export const buildFinishedCSS = (t: FinishedCssTheme): string => `
       fill: var(--fin-heading); fill-opacity: 0.07; stroke: var(--fin-heading); stroke-dasharray: none;
     }
     .fin-lens {
-      fill: var(--fin-accent); fill-opacity: 0; stroke: var(--fin-accent); stroke-width: 2; stroke-opacity: 0;
+      fill: var(--fin-ok); fill-opacity: 0; stroke: var(--fin-ok); stroke-width: 2; stroke-opacity: 0;
       transform-box: fill-box; transform-origin: center; transition: fill-opacity 380ms ease, stroke-opacity 380ms ease;
     }
     .fin-venn[data-state="both"] .fin-lens { fill-opacity: 0.18; stroke-opacity: 1; }
@@ -226,11 +269,11 @@ export const buildFinishedCSS = (t: FinishedCssTheme): string => `
       border: 1.5px dashed var(--fin-line-strong); transform: scale(0.86);
       transition: background 320ms ease, color 320ms ease, border-color 320ms ease, transform 320ms var(--fin-ease);
     }
-    .fin-venn[data-state="both"] .fin-venn-check { color: var(--fin-surface); background: var(--fin-accent); border: 1.5px solid var(--fin-accent); transform: none; }
+    .fin-venn[data-state="both"] .fin-venn-check { color: var(--fin-ok-on); background: var(--fin-ok); border: 1.5px solid var(--fin-ok); transform: none; }
     .fin-venn.is-pulsing[data-state="both"] .fin-venn-check { animation: fin-pop 560ms var(--fin-ease) 1; }
     @keyframes fin-pop { 0% { transform: scale(0.6); } 60% { transform: scale(1.14); } 100% { transform: scale(1); } }
     .fin-venn-ready { font-size: clamp(0.74rem, 3.9cqi, 1.05rem); font-weight: 800; line-height: 1.15; color: var(--fin-text-2); transition: color 320ms ease; }
-    .fin-venn[data-state="both"] .fin-venn-ready { color: var(--fin-heading); }
+    .fin-venn[data-state="both"] .fin-venn-ready { color: var(--fin-ok-ink); }
 
     .fin-venn-side { display: flex; flex-direction: column; gap: 1.1rem; min-width: 0; }
     .fin-venn-side > .fin-label { margin: 0.4rem 0 -0.5rem; }
@@ -239,7 +282,7 @@ export const buildFinishedCSS = (t: FinishedCssTheme): string => `
       background: var(--fin-raised); border: 1px solid var(--fin-line); border-radius: var(--fin-r);
       transition: background 320ms ease, border-color 320ms ease;
     }
-    .fin-venn[data-state="both"] .fin-verdict { background: color-mix(in srgb, var(--fin-accent) 6%, var(--fin-surface)); border-color: var(--fin-accent-line); }
+    .fin-venn[data-state="both"] .fin-verdict { background: color-mix(in srgb, var(--fin-ok) 6%, var(--fin-surface)); border-color: var(--fin-ok-line); }
     .fin-verdict-text { line-height: 1.5; color: var(--fin-text); }
     .fin-scenarios { display: grid; gap: 0.5rem; margin: 0; padding: 0; list-style: none; }
     .fin-scenario {
@@ -251,6 +294,7 @@ export const buildFinishedCSS = (t: FinishedCssTheme): string => `
     .fin-scenario:hover { border-color: var(--fin-line-strong); transform: translateY(-1px); box-shadow: var(--fin-shadow); }
     html:not(.fin-js) .fin-scenario { cursor: default; transform: none; box-shadow: none; }
     .fin-scenario[aria-pressed="true"] { border-color: var(--fin-heading); box-shadow: inset 0 0 0 1px var(--fin-heading); }
+    .fin-scenario[data-fin-venn-set="both"][aria-pressed="true"] { border-color: var(--fin-ok); box-shadow: inset 0 0 0 1px var(--fin-ok); }
     .fin-scenario-title { font-size: 0.9rem; font-weight: 600; line-height: 1.3; color: var(--fin-heading); }
     .fin-scenario .fin-badge { font-size: 0.72rem; padding: 0.2rem 0.55rem; }
 
@@ -262,7 +306,7 @@ export const buildFinishedCSS = (t: FinishedCssTheme): string => `
     .fin-list-top { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; min-height: 1.6rem; margin: 0 0 0.55rem; }
     .fin-list h3 { margin: 0 0 0.25rem; font-size: 1.15rem; line-height: 1.3; }
     .fin-met { display: none; padding: 0.15rem 0.55rem; font-size: 0.72rem; font-weight: 700; border-radius: var(--fin-r-pill); white-space: nowrap; }
-    .fin-met--yes { color: var(--fin-surface); background: var(--fin-heading); }
+    .fin-met--yes { color: var(--fin-ok-on); background: var(--fin-ok); }
     .fin-met--no { color: var(--fin-text-2); border: 1px dashed var(--fin-line-strong); }
     .fin-venn[data-state="dod"] .fin-list--dod .fin-met--yes, .fin-venn[data-state="ac"] .fin-list--ac .fin-met--yes,
     .fin-venn[data-state="both"] .fin-met--yes, .fin-venn[data-state="dod"] .fin-list--ac .fin-met--no,
@@ -272,7 +316,7 @@ export const buildFinishedCSS = (t: FinishedCssTheme): string => `
     .fin-checklist li { display: flex; align-items: flex-start; gap: 0.65rem; line-height: 1.4; }
     .fin-checklist li::before {
       content: "\\2713"; flex: none; display: grid; place-items: center; width: 1.3rem; height: 1.3rem; margin-top: 0.05rem;
-      font-size: 0.72rem; font-weight: 800; color: var(--fin-surface); background: var(--fin-heading); border-radius: var(--fin-r-dot);
+      font-size: 0.72rem; font-weight: 800; color: var(--fin-ok-on); background: var(--fin-ok); border-radius: var(--fin-r-dot);
       transition: background 320ms ease, color 320ms ease, box-shadow 320ms ease;
     }
     .fin-venn[data-state="dod"] .fin-list--ac li::before, .fin-venn[data-state="ac"] .fin-list--dod li::before {
@@ -280,13 +324,13 @@ export const buildFinishedCSS = (t: FinishedCssTheme): string => `
     }
 
     /* ---------- Panel 2: stages pipeline ---------- */
-    .fin-pipe { position: relative; padding-top: 2.6rem; }
+    .fin-pipe { --fin-track: var(--fin-heading); position: relative; padding-top: 2.6rem; }
     html:not(.fin-js) .fin-pipe { padding-top: 0; }
     .fin-pipe-track { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; }
     .fin-node { position: relative; min-width: 0; padding: 0 0.4rem; text-align: center; }
     .fin-node + .fin-node::before {
       content: ""; position: absolute; z-index: 0; top: calc(1.4rem - 1px); right: 50%; width: 100%; height: 2px;
-      background: linear-gradient(var(--fin-heading), var(--fin-heading)) 0 0 / 0 100% no-repeat,
+      background: linear-gradient(var(--fin-track), var(--fin-track)) 0 0 / 0 100% no-repeat,
         repeating-linear-gradient(to right, var(--fin-line-strong) 0 6px, transparent 6px 12px);
       transition: background-size 420ms var(--fin-ease);
     }
@@ -304,6 +348,10 @@ export const buildFinishedCSS = (t: FinishedCssTheme): string => `
     .fin-node-btn:hover .fin-node-dot { border-color: var(--fin-heading); }
     .fin-node.is-done .fin-node-dot, .fin-node.is-current .fin-node-dot { color: var(--fin-surface); background: var(--fin-heading); border-color: var(--fin-heading); }
     .fin-node.is-current .fin-node-dot { transform: scale(1.08); }
+    /* Live is the finished stage: once the change is Live, the dots and the whole track turn green. */
+    .fin-pipe[data-step="3"] { --fin-track: var(--fin-ok); }
+    .fin-pipe[data-step="3"] .fin-node .fin-node-dot { color: var(--fin-ok-on); background: var(--fin-ok); border-color: var(--fin-ok); }
+    .fin-pipe[data-step="3"] .fin-pipe-marker::before { border-color: var(--fin-ok); }
     .fin-node-label { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
     .fin-node-name { font-size: 1rem; font-weight: 700; line-height: 1.25; color: var(--fin-heading); transition: color 320ms ease; }
     html.fin-js .fin-node:not(.is-current) .fin-node-name { color: var(--fin-text-2); }
@@ -405,7 +453,7 @@ export const buildFinishedCSS = (t: FinishedCssTheme): string => `
       font-size: 0.625rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fin-text-2);
       background: var(--fin-sunk); border-radius: var(--fin-r-pill); transition: background 300ms ease, color 300ms ease;
     }
-    .fin-mover[data-col="2"] .fin-mover-status { color: var(--fin-surface); background: var(--fin-heading); }
+    .fin-mover[data-col="2"] .fin-mover-status { color: var(--fin-ok-on); background: var(--fin-ok); }
     .fin-mover-title { display: block; }
     .fin-bullets { display: grid; gap: 0.45rem; margin: 0 0 1.2rem; padding: 0; list-style: none; font-size: 0.9375rem; line-height: 1.45; }
     .fin-bullets li { position: relative; padding-left: 1.15rem; }
@@ -426,13 +474,13 @@ export const buildFinishedCSS = (t: FinishedCssTheme): string => `
     .fin-see li { display: flex; align-items: flex-start; gap: 0.6rem; line-height: 1.4; }
     .fin-see li::before {
       content: "\\2713"; flex: none; display: grid; place-items: center; width: 1.25rem; height: 1.25rem; margin-top: 0.05rem;
-      font-size: 0.7rem; font-weight: 800; color: var(--fin-surface); background: var(--fin-heading); border-radius: var(--fin-r-dot);
+      font-size: 0.7rem; font-weight: 800; color: var(--fin-ok-on); background: var(--fin-ok); border-radius: var(--fin-r-dot);
     }
     .fin-see--cant li::before { content: ""; background: transparent; box-shadow: inset 0 0 0 1.5px var(--fin-line-strong); }
     .fin-see-notes li { position: relative; padding-left: 1.15rem; line-height: 1.55; color: var(--fin-text); }
     .fin-see-notes li::before {
       content: ""; position: absolute; top: 0.62em; left: 0.1rem; width: 0.42rem; height: 0.42rem;
-      background: var(--fin-accent); border-radius: var(--fin-r-dot);
+      background: var(--fin-text-2); border-radius: var(--fin-r-dot);
     }
     .fin-nc {
       display: inline-block; padding: 0 0.45rem; font-family: ${t.mono}; font-size: 0.8em; white-space: nowrap; color: var(--fin-text-2);
@@ -460,6 +508,8 @@ export const buildFinishedCSS = (t: FinishedCssTheme): string => `
     .fin-key-group dl { display: grid; gap: 0.55rem; margin: 0; }
     .fin-term { padding: 0.85rem 1rem 0.9rem; background: var(--fin-raised); border: 1px solid var(--fin-line); border-radius: var(--fin-r-sm); }
     .fin-term dt { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.55rem; margin: 0 0 0.25rem; font-weight: 700; color: var(--fin-heading); }
+    .fin-term--ok dt { align-items: center; color: var(--fin-ok-ink); }
+    .fin-term--ok dt::before { content: ""; flex: none; width: 0.5rem; height: 0.5rem; background: var(--fin-ok); border-radius: var(--fin-r-dot); }
     .fin-term-full { font-size: 0.8125rem; font-weight: 500; color: var(--fin-text-2); }
     .fin-term dd { margin: 0; font-size: 0.9rem; line-height: 1.5; color: var(--fin-text); }
 
@@ -496,7 +546,7 @@ export const buildFinishedCSS = (t: FinishedCssTheme): string => `
       .fin-node { padding: 0; text-align: left; }
       .fin-node + .fin-node::before {
         top: auto; right: auto; bottom: calc(100% - 1.4rem); left: calc(1.4rem - 1px); width: 2px; height: calc(100% + 1.1rem);
-        background: linear-gradient(var(--fin-heading), var(--fin-heading)) 0 0 / 100% 0 no-repeat,
+        background: linear-gradient(var(--fin-track), var(--fin-track)) 0 0 / 100% 0 no-repeat,
           repeating-linear-gradient(to bottom, var(--fin-line-strong) 0 6px, transparent 6px 12px);
       }
       .fin-node.is-done::before, .fin-node.is-current::before { background-size: 100% 100%, auto; }

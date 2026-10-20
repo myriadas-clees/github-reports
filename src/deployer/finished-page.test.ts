@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { renderFinishedPage, FINISHED_BODY, FINISHED_PANELS, FINISHED_SCRIPT } from "./finished-page.js";
 import { AVAILABLE_THEMES } from "../renderer/themes/index.js";
+import { STATUS_PALETTES } from "../renderer/themes/finished-css.js";
 import { assertNoSecretsInHtml } from "../config.js";
 import type { Theme } from "../types.js";
 
@@ -8,6 +9,27 @@ const TERMS = ["DoD", "AC", "PR", "Ready to release", "Merged", "our team's word
 const themes = AVAILABLE_THEMES as Theme[];
 const mainOf = (html: string) => html.slice(html.indexOf('<main class="fin-page"'), html.indexOf("</main>"));
 const attrs = (tag: string) => Object.fromEntries([...tag.matchAll(/([\w-]+)="([^"]*)"/g)].map((m) => [m[1], m[2]]));
+/** The page's own stylesheet (not the shared theme CSS). */
+const finishedCssOf = (html: string) => html.match(/<style>(\s*\/\* =+ FINISHED-STATE EXPLAINER[\s\S]*?)<\/style>/)?.[1] ?? "";
+/** Declarations of the rule whose selector list is exactly `selector`. */
+const ruleOf = (css: string, selector: string) => {
+  const esc = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return css.match(new RegExp(`(?:^|[\\n}])\\s*${esc}\\s*\\{([^}]*)\\}`))?.[1] ?? "";
+};
+const STATUS_VARS = ["--fin-ok:", "--fin-ok-on:", "--fin-ok-ink:", "--fin-ok-soft:", "--fin-ok-line:"];
+const luminance = (hex: string) => {
+  const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255)
+    .map((v) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+};
+const contrast = (a: string, b: string) => {
+  const [hi, lo] = [luminance(a), luminance(b)].sort((x, y) => y - x);
+  return (hi + 0.05) / (lo + 0.05);
+};
+/** sRGB color-mix(in srgb, a p%, b) for #rrggbb. */
+const mix = (a: string, pct: number, b: string) =>
+  "#" + [1, 3, 5].map((i) => Math.round(parseInt(a.slice(i, i + 2), 16) * pct + parseInt(b.slice(i, i + 2), 16) * (1 - pct))
+    .toString(16).padStart(2, "0")).join("");
 
 describe("renderFinishedPage", () => {
   for (const theme of themes) {
@@ -116,14 +138,96 @@ describe("renderFinishedPage", () => {
 
   it("uses theme tokens, not hard-coded page colors, and stacks the layout on narrow columns", () => {
     const brutalist = renderFinishedPage({ themeName: "brutalist" });
-    expect(brutalist).toContain("var(--b-text)");
-    expect(brutalist).toContain("var(--b-accent)");
-    expect(renderFinishedPage({ themeName: "swiss" })).toContain("var(--s-text)");
-    expect(renderFinishedPage({ themeName: "editorial" })).toContain("var(--e-accent)");
-    expect(renderFinishedPage({ themeName: "minimal" })).toContain("var(--accent)");
+    expect(finishedCssOf(brutalist)).toContain("var(--b-text)");
+    expect(finishedCssOf(renderFinishedPage({ themeName: "swiss" }))).toContain("var(--s-text)");
+    expect(finishedCssOf(renderFinishedPage({ themeName: "editorial" }))).toContain("var(--e-text)");
+    expect(finishedCssOf(renderFinishedPage({ themeName: "minimal" }))).toContain("var(--text)");
     expect(brutalist).toMatch(/@container fin \(max-width: 760px\) \{\s*\.fin-venn \{ grid-template-columns: minmax\(0, 1fr\);/);
     expect(brutalist).toMatch(/@container fin \(max-width: 600px\)[\s\S]*\.fin-pipe-track \{ grid-template-columns: minmax\(0, 1fr\);/);
     expect(brutalist).toContain("theme-toggle");
+  });
+
+  it("never uses the theme accent (red in brutalist and swiss) for status or selection", () => {
+    for (const theme of themes) {
+      const css = finishedCssOf(renderFinishedPage({ themeName: theme }));
+      expect(css.length, theme).toBeGreaterThan(1000);
+      expect(css, theme).not.toMatch(/accent/i);
+    }
+  });
+
+  it("defines the success tokens for light and dark in every theme, switched like the theme switches", () => {
+    const darkFirst: Record<Theme, boolean> = { brutalist: true, minimal: false, editorial: false, swiss: false };
+    for (const theme of themes) {
+      const css = finishedCssOf(renderFinishedPage({ themeName: theme }));
+      const tone = theme === "editorial" ? STATUS_PALETTES.calm : STATUS_PALETTES.forest;
+      const [base, alt] = darkFirst[theme] ? [tone.dark, tone.light] : [tone.light, tone.dark];
+      const [altMode, otherMode] = darkFirst[theme] ? ["light", "dark"] : ["dark", "light"];
+      const blocks = {
+        base: css.match(/\n\s*\.fin-page \{ (--fin-ok:[^}]*)\}/)?.[1] ?? "",
+        media: css.match(new RegExp(`@media \\(prefers-color-scheme: ${altMode}\\) \\{ html:not\\(\\[data-theme="${otherMode}"\\]\\) \\.fin-page \\{([^}]*)\\} \\}`))?.[1] ?? "",
+        attr: ruleOf(css, `html[data-theme="${altMode}"] .fin-page`),
+      };
+      for (const [where, block] of Object.entries(blocks)) {
+        for (const v of STATUS_VARS) expect(block, `${theme} ${where} ${v}`).toContain(v);
+      }
+      expect(blocks.base, theme).toContain(`--fin-ok: ${base.ok};`);
+      expect(blocks.media, theme).toContain(`--fin-ok: ${alt.ok};`);
+      expect(blocks.attr, theme).toContain(`--fin-ok: ${alt.ok};`);
+      expect(base.ok, theme).not.toBe(alt.ok);
+    }
+  });
+
+  it("marks ready, met, ticked and Live states with the success token, and not-ready states in neutral grey", () => {
+    for (const theme of themes) {
+      const html = renderFinishedPage({ themeName: theme });
+      const css = finishedCssOf(html);
+      const ok: Array<[string, RegExp]> = [
+        [".fin-badge--ready", /color: var\(--fin-ok-ink\); background: var\(--fin-ok-soft\); border: 1px solid var\(--fin-ok-line\)/],
+        [".fin-badge--ready::before", /background: var\(--fin-ok\)/],
+        [".fin-met--yes", /color: var\(--fin-ok-on\); background: var\(--fin-ok\)/],
+        ['.fin-venn[data-state="both"] .fin-venn-check', /color: var\(--fin-ok-on\); background: var\(--fin-ok\)/],
+        ['.fin-venn[data-state="both"] .fin-venn-ready', /color: var\(--fin-ok-ink\)/],
+        ['.fin-venn[data-state="both"] .fin-verdict', /var\(--fin-ok-line\)/],
+        ['.fin-seg-btn[data-fin-venn-set="both"][aria-pressed="true"]', /background: var\(--fin-ok-soft\)/],
+        ['.fin-scenario[data-fin-venn-set="both"][aria-pressed="true"]', /border-color: var\(--fin-ok\)/],
+        [".fin-checklist li::before", /background: var\(--fin-ok\)/],
+        [".fin-see li::before", /background: var\(--fin-ok\)/],
+        ['.fin-pipe[data-step="3"]', /--fin-track: var\(--fin-ok\)/],
+        ['.fin-pipe[data-step="3"] .fin-node .fin-node-dot', /background: var\(--fin-ok\)/],
+        ['.fin-mover[data-col="2"] .fin-mover-status', /background: var\(--fin-ok\)/],
+        [".fin-term--ok dt::before", /background: var\(--fin-ok\)/],
+      ];
+      for (const [sel, re] of ok) expect(ruleOf(css, sel), `${theme} ${sel}`).toMatch(re);
+      for (const sel of [".fin-badge--no", ".fin-met--no", ".fin-see--cant li::before", ".fin-node-tag", ".fin-nc"]) {
+        const rule = ruleOf(css, sel);
+        expect(rule, `${theme} ${sel}`).toMatch(/--fin-line-strong/);
+        expect(rule, `${theme} ${sel}`).not.toMatch(/--fin-ok/);
+      }
+      // Selection and in-progress UI stays in neutral ink.
+      for (const sel of [".fin-tabs-thumb", ".fin-pipe-marker-label", ".fin-btn--primary"]) {
+        expect(ruleOf(css, sel), `${theme} ${sel}`).toMatch(/var\(--fin-heading\)/);
+      }
+      expect(css, theme).toContain("outline: 2px solid var(--fin-heading)");
+      expect(css, theme).toMatch(/\.fin-pipe \{ --fin-track: var\(--fin-heading\);/);
+      expect(html, theme).toContain('<div class="fin-term fin-term--ok"><dt>Ready to release</dt>');
+      expect(html, theme).toContain('<div class="fin-term fin-term--ok"><dt>Live</dt>');
+    }
+  });
+
+  it("keeps the success colours at AA contrast on fills and tints in light and dark", () => {
+    // Page surfaces of the four themes (--b-bg, --bg, --e-bg, --s-bg).
+    const surfaces = { light: ["#fafafa", "#ffffff", "#faf8f5"], dark: ["#050505", "#111111", "#1a1816", "#0a0a0a"] };
+    for (const [tone, modes] of Object.entries(STATUS_PALETTES)) {
+      for (const mode of ["light", "dark"] as const) {
+        const p = modes[mode];
+        expect(contrast(p.ok, p.okOn), `${tone} ${mode} text on fill`).toBeGreaterThanOrEqual(4.5);
+        for (const bg of surfaces[mode]) {
+          const soft = mix(p.ok, parseFloat(p.soft) / 100, bg);
+          expect(contrast(p.okInk, soft), `${tone} ${mode} ink on tint over ${bg}`).toBeGreaterThanOrEqual(4.5);
+          expect(contrast(p.ok, bg), `${tone} ${mode} fill against page ${bg}`).toBeGreaterThanOrEqual(3);
+        }
+      }
+    }
   });
 
   it("turns off motion under prefers-reduced-motion", () => {

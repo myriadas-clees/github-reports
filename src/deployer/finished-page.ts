@@ -24,11 +24,11 @@ export const FINISHED_PANELS = [
 const SOFT_SHADOW = "0 1px 2px rgba(0,0,0,0.04), 0 4px 14px -6px rgba(0,0,0,0.10)";
 const SOFT_SHADOW_HOVER = "0 2px 4px rgba(0,0,0,0.05), 0 16px 32px -14px rgba(0,0,0,0.28)";
 
-/** Theme tokens (CSS variables) and shape per theme, so each theme keeps its own character. */
+/** Theme tokens (CSS variables), status green and shape per theme, so each theme keeps its own character. */
 const THEME_TOKENS: Record<Theme, Omit<FinishedCssTheme, "mono">> = {
   brutalist: {
     text: "var(--b-text)", textSecondary: "var(--b-text-secondary)", heading: "var(--b-heading)",
-    border: "var(--b-border)", surface: "var(--b-bg)", accent: "var(--b-accent)",
+    border: "var(--b-border)", surface: "var(--b-bg)", statusTone: "forest", darkFirst: true,
     labelFont: "'Space Mono', ui-monospace, monospace",
     radius: "0", radiusSmall: "0", pillRadius: "0", dotRadius: "0",
     shadow: "none", hoverShadow: "4px 4px 0 var(--b-heading)",
@@ -36,7 +36,7 @@ const THEME_TOKENS: Record<Theme, Omit<FinishedCssTheme, "mono">> = {
   },
   minimal: {
     text: "var(--text)", textSecondary: "var(--text-secondary)", heading: "var(--text)",
-    border: "var(--border)", surface: "var(--bg)", accent: "var(--accent)",
+    border: "var(--border)", surface: "var(--bg)", statusTone: "forest", darkFirst: false,
     labelFont: "inherit",
     radius: "14px", radiusSmall: "8px", pillRadius: "999px", dotRadius: "50%",
     shadow: SOFT_SHADOW, hoverShadow: SOFT_SHADOW_HOVER,
@@ -44,7 +44,7 @@ const THEME_TOKENS: Record<Theme, Omit<FinishedCssTheme, "mono">> = {
   },
   editorial: {
     text: "var(--e-text)", textSecondary: "var(--e-text-secondary)", heading: "var(--e-heading)",
-    border: "var(--e-border)", surface: "var(--e-bg)", accent: "var(--e-accent)",
+    border: "var(--e-border)", surface: "var(--e-bg)", statusTone: "calm", darkFirst: false,
     labelFont: "inherit",
     radius: "6px", radiusSmall: "4px", pillRadius: "999px", dotRadius: "50%",
     shadow: SOFT_SHADOW, hoverShadow: SOFT_SHADOW_HOVER,
@@ -52,7 +52,7 @@ const THEME_TOKENS: Record<Theme, Omit<FinishedCssTheme, "mono">> = {
   },
   swiss: {
     text: "var(--s-text)", textSecondary: "var(--s-text-secondary)", heading: "var(--s-text)",
-    border: "var(--s-border-subtle)", surface: "var(--s-bg)", accent: "var(--s-accent)",
+    border: "var(--s-border-subtle)", surface: "var(--s-bg)", statusTone: "forest", darkFirst: false,
     labelFont: "inherit",
     radius: "0", radiusSmall: "0", pillRadius: "0", dotRadius: "50%",
     shadow: "none", hoverShadow: "0 14px 28px -18px rgba(0,0,0,0.45)",
@@ -379,7 +379,7 @@ export const FINISHED_BODY = `
           <dl>
             <div class="fin-term"><dt>${DOD} <span class="fin-term-full">Definition of Done</span></dt><dd>The team's checklist for how a change is built. Same checklist every time: code reviewed, automated tests pass, automated checks pass with no new errors, the GitHub issue is updated.</dd></div>
             <div class="fin-term"><dt>${AC} <span class="fin-term-full">Acceptance Criteria</span></dt><dd>What this particular request must do, agreed with the client. A new list for each request.</dd></div>
-            <div class="fin-term"><dt>Ready to release</dt><dd>The change meets both its DoD and its AC, so it may go out to all users and clients.</dd></div>
+            <div class="fin-term fin-term--ok"><dt>Ready to release</dt><dd>The change meets both its DoD and its AC, so it may go out to all users and clients.</dd></div>
             <div class="fin-term"><dt>Merged <span class="fin-term-full">our team's word</span></dt><dd>The change has gone out to users or clients with the DoD and AC both met. GitHub's “Merge” button means something narrower, so this site avoids the word.</dd></div>
           </dl>
         </section>
@@ -390,7 +390,7 @@ export const FINISHED_BODY = `
           <dl>
             <div class="fin-term"><dt>Code integrated</dt><dd>The PR's changes are in the target branch. This is not a release, and not DoD or AC sign-off.</dd></div>
             <div class="fin-term"><dt>In testing</dt><dd>The change is on the preview site.</dd></div>
-            <div class="fin-term"><dt>Live</dt><dd>The change is running in production.</dd></div>
+            <div class="fin-term fin-term--ok"><dt>Live</dt><dd>The change is running in production.</dd></div>
           </dl>
         </section>
         <section class="fin-key-group" aria-labelledby="fin-key-words">
