@@ -13,7 +13,7 @@ import {
   readEvidenceLedger,
   writeEvidenceLedger,
 } from "../../collector/evidence-ledger.js";
-import { fetchDefaultBranch, fetchDeployments, fetchPrEvidence, isCommitContained, mapWithConcurrency } from "../../collector/fetch-evidence.js";
+import { fetchDefaultBranch, fetchDeployments, fetchPrEvidence, isCommitContained, mapWithConcurrency, MAX_FILES } from "../../collector/fetch-evidence.js";
 import { matchedReleaseDeployment } from "../../collector/readiness.js";
 import type { EvidenceLedger } from "../../types.js";
 
@@ -142,7 +142,7 @@ export const carryOverDerivedEvidence = (
     const reviews = new Map([...prior.reviews, ...fresh.reviews].map((r) => [`${r.reviewer.toLowerCase()}|${r.submittedAt}`, r]));
     out.reviews = [...reviews.values()];
   }
-  if (fresh.incomplete?.files && prior) out.files = [...new Set([...prior.files, ...fresh.files])].slice(0, 300);
+  if (fresh.incomplete?.files && prior) out.files = [...new Set([...prior.files, ...fresh.files])].slice(0, MAX_FILES);
   if (prior?.containingDeployments) out.containingDeployments = prior.containingDeployments;
   if (prior?.nonContainingDeploymentShas) out.nonContainingDeploymentShas = prior.nonContainingDeploymentShas;
   if (prior?.unknownDeploymentShas) out.unknownDeploymentShas = prior.unknownDeploymentShas;

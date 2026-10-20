@@ -452,6 +452,8 @@ export type PrEvidence = {
   /** Reviews received on this PR (excluding the author's own). */
   reviews: PrReviewRecord[];
   incomplete?: { reviews?: boolean; files?: boolean };
+  /** GitHub's 3000-file response ceiling was reached and more files may exist. */
+  filesTruncated?: boolean;
   /** Check runs on headSha. skipped/neutral are not counted as passed. */
   checks: { passed: number; failed: number; skipped: number; pending: number; names: string[]; statusesUnavailable?: boolean; checkRunsUnavailable?: boolean } | null;
   /** Changed file paths (capped). */

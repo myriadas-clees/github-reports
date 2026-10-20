@@ -15,7 +15,7 @@ const MAX_RETRIES = 3;
 const DEFAULT_RETRY_DELAY_MS = 5_000;
 const SECONDARY_RATE_LIMIT_DELAY_MS = 60_000;
 const CONCURRENCY = 4;
-const MAX_FILES = 300;
+export const MAX_FILES = 3_000;
 const MAX_DEPLOYMENTS_PER_FETCH = 5_000;
 const API = "https://api.github.com";
 
@@ -73,14 +73,14 @@ const getPages = async <T>(
   startUrl: string,
   context: string,
   opts: { cap?: number; maxPages?: number; soft?: boolean; failOn404?: boolean; failOnCap?: boolean; stop?: (item: T) => boolean } = {},
-): Promise<{ items: T[]; failed: boolean }> => {
+): Promise<{ items: T[]; failed: boolean; truncated: boolean }> => {
   const items: T[] = [];
   let url: string | null = startUrl;
   let pages = 0;
   while (url && pages < (opts.maxPages ?? Number.POSITIVE_INFINITY)) {
     const res: Fetched<T[]> = await getJson<T[]>(token, url, context, opts.soft);
     pages++;
-    if (!res.ok) return { items, failed: res.status !== 404 || Boolean(opts.failOn404) };
+    if (!res.ok) return { items, failed: res.status !== 404 || Boolean(opts.failOn404), truncated: false };
     let stopped = false;
     for (const item of res.data) {
       if (opts.stop?.(item)) {
@@ -90,13 +90,14 @@ const getPages = async <T>(
       items.push(item);
       if (opts.cap && items.length >= opts.cap) {
         stopped = true;
-        if (opts.failOnCap && res.next) return { items, failed: true };
+        if (opts.failOnCap && res.next) return { items, failed: true, truncated: false };
+        if (res.next) return { items, failed: false, truncated: true };
         break;
       }
     }
     url = stopped ? null : res.next;
   }
-  return { items, failed: Boolean(url) };
+  return { items, failed: Boolean(url), truncated: false };
 };
 
 export const mapWithConcurrency = async <T>(items: T[], fn: (item: T) => Promise<void>): Promise<void> => {
@@ -291,6 +292,7 @@ export const fetchPrEvidence = async (
     mergedAt: pr.merged_at,
     reviews: filterReviews(reviewsRaw.items, author),
     ...((reviewsRaw.failed || files.failed) ? { incomplete: { ...(reviewsRaw.failed ? { reviews: true } : {}), ...(files.failed ? { files: true } : {}) } } : {}),
+    ...(files.truncated ? { filesTruncated: true } : {}),
     checks,
     files: files.items.map((f) => f.filename),
     fetchedAt: now.toISOString(),

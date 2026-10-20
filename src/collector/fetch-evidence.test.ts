@@ -152,6 +152,55 @@ describe("fetchPrEvidence", () => {
     expect((await fetchPrEvidence("t", { repo: "o/r", number: 5 }))?.incomplete).toBeUndefined();
   });
 
+  it("fetches all 350 files across four pages", async () => {
+    const files = Array.from({ length: 350 }, (_, i) => ({ filename: `file-${i}.ts` }));
+    const calls: string[] = [];
+    vi.stubGlobal("fetch", vi.fn(async (url: string) => {
+      calls.push(url);
+      const match = url.match(/pulls\/5\/files\?per_page=100(?:&page=(\d+))?/);
+      if (match) {
+        const page = Number(match[1] ?? 1);
+        return new Response(JSON.stringify(files.slice((page - 1) * 100, page * 100)), {
+          headers: { "content-type": "application/json", ...(page < 4 ? { link: `<https://api.github.com/repos/o/r/pulls/5/files?per_page=100&page=${page + 1}>; rel="next"` } : {}) },
+        });
+      }
+      if (/pulls\/5\/reviews/.test(url)) return json([]);
+      if (/check-runs/.test(url)) return json({ check_runs: [] });
+      if (/statuses/.test(url)) return json([]);
+      if (/pulls\/5$/.test(url)) return json(pr);
+      return json({}, 404);
+    }));
+    const ev = await fetchPrEvidence("t", { repo: "o/r", number: 5 });
+    expect(ev?.files).toHaveLength(350);
+    expect(ev?.filesTruncated).toBeUndefined();
+    expect(ev?.incomplete).toBeUndefined();
+    expect(calls.filter((url) => url.includes("/files?")).length).toBe(4);
+  });
+
+  it("marks the GitHub file ceiling as truncated without marking it incomplete", async () => {
+    const calls: string[] = [];
+    vi.stubGlobal("fetch", vi.fn(async (url: string) => {
+      calls.push(url);
+      const match = url.match(/pulls\/5\/files\?per_page=100(?:&page=(\d+))?/);
+      if (match) {
+        const page = Number(match[1] ?? 1);
+        return new Response(JSON.stringify(Array.from({ length: 100 }, (_, i) => ({ filename: `file-${(page - 1) * 100 + i}.ts` }))), {
+          headers: { "content-type": "application/json", link: `<https://api.github.com/repos/o/r/pulls/5/files?per_page=100&page=${page + 1}>; rel="next"` },
+        });
+      }
+      if (/pulls\/5\/reviews/.test(url)) return json([]);
+      if (/check-runs/.test(url)) return json({ check_runs: [] });
+      if (/statuses/.test(url)) return json([]);
+      if (/pulls\/5$/.test(url)) return json(pr);
+      return json({}, 404);
+    }));
+    const ev = await fetchPrEvidence("t", { repo: "o/r", number: 5 });
+    expect(ev?.files).toHaveLength(3_000);
+    expect(ev?.filesTruncated).toBe(true);
+    expect(ev?.incomplete).toBeUndefined();
+    expect(calls.filter((url) => url.includes("/files?")).length).toBe(30);
+  });
+
   it("paginates commit statuses so older distinct contexts are included", async () => {
     const calls: string[] = [];
     vi.stubGlobal("fetch", vi.fn(async (url: string) => {
