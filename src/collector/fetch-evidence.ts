@@ -16,7 +16,7 @@ const DEFAULT_RETRY_DELAY_MS = 5_000;
 const SECONDARY_RATE_LIMIT_DELAY_MS = 60_000;
 const CONCURRENCY = 4;
 const MAX_FILES = 300;
-const MAX_DEPLOYMENTS = 300;
+const MAX_DEPLOYMENTS_PER_FETCH = 5_000;
 const API = "https://api.github.com";
 
 const sleep = (ms: number): Promise<void> => new Promise((r) => setTimeout(r, ms));
@@ -72,7 +72,7 @@ const getPages = async <T>(
   token: string,
   startUrl: string,
   context: string,
-  opts: { cap?: number; maxPages?: number; soft?: boolean; failOn404?: boolean; stop?: (item: T) => boolean } = {},
+  opts: { cap?: number; maxPages?: number; soft?: boolean; failOn404?: boolean; failOnCap?: boolean; stop?: (item: T) => boolean } = {},
 ): Promise<{ items: T[]; failed: boolean }> => {
   const items: T[] = [];
   let url: string | null = startUrl;
@@ -90,12 +90,13 @@ const getPages = async <T>(
       items.push(item);
       if (opts.cap && items.length >= opts.cap) {
         stopped = true;
+        if (opts.failOnCap && res.next) return { items, failed: true };
         break;
       }
     }
     url = stopped ? null : res.next;
   }
-  return { items, failed: false };
+  return { items, failed: Boolean(url) };
 };
 
 export const mapWithConcurrency = async <T>(items: T[], fn: (item: T) => Promise<void>): Promise<void> => {
@@ -312,7 +313,7 @@ export const fetchDeployments = async (
     token,
     `${base}/deployments?per_page=100`,
     `Deployment fetch failed for ${repo}`,
-    { cap: MAX_DEPLOYMENTS, soft: true, stop: (d) => new Date(d.created_at).getTime() < sinceMs },
+    { cap: MAX_DEPLOYMENTS_PER_FETCH, failOnCap: true, soft: true, stop: (d) => new Date(d.created_at).getTime() < sinceMs },
   );
 
   const records: DeploymentRecord[] = [];
@@ -320,9 +321,9 @@ export const fetchDeployments = async (
   await mapWithConcurrency(deployments, async (d) => {
     const key = deploymentKey({ environment: d.environment, sha: d.sha, createdAt: d.created_at });
     if (known.has(key)) return;
-    const res = await getJson<RawStatus[]>(token, `${base}/deployments/${d.id}/statuses?per_page=20`, `Deployment status fetch failed for ${repo}`, true);
-    if (!res.ok) { statusFailed = true; return; }
-    const success = res.data
+    const res = await getPages<RawStatus>(token, `${base}/deployments/${d.id}/statuses?per_page=100`, `Deployment status fetch failed for ${repo}`, { maxPages: 5, soft: true });
+    if (res.failed) statusFailed = true;
+    const success = res.items
       .filter((s) => s.state === "success")
       .sort((a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime())[0];
     if (!success) return;

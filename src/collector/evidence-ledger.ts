@@ -133,6 +133,11 @@ export const mergeDeployments = (
   const map = new Map<string, DeploymentRecord>();
   for (const d of [...existing, ...fresh]) map.set(deploymentKey(d), d);
   return [...map.values()]
-    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-    .slice(0, MAX_DEPLOYMENTS_PER_REPO);
+    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+};
+
+export const pruneDeployments = (ledger: EvidenceLedger): void => {
+  for (const [repo, deployments] of Object.entries(ledger.deployments)) {
+    ledger.deployments[repo] = mergeDeployments([], deployments).slice(0, MAX_DEPLOYMENTS_PER_REPO);
+  }
 };

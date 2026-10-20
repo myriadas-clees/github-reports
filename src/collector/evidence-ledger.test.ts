@@ -3,7 +3,7 @@ import { mkdtemp, mkdir, writeFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import {
-  collectPrRefsFromData, emptyLedger, mergeDeployments, needsRefresh,
+  collectPrRefsFromData, emptyLedger, mergeDeployments, pruneDeployments, needsRefresh,
   readEvidenceLedger, writeEvidenceLedger, EVIDENCE_FILE,
 } from "./evidence-ledger.js";
 import type { DeploymentRecord, PrEvidence } from "../types.js";
@@ -56,11 +56,16 @@ describe("needsRefresh", () => {
 });
 
 describe("mergeDeployments", () => {
-  it("dedupes, sorts newest first and caps at 300", () => {
+  it("dedupes and sorts newest first without pruning fetched rows", () => {
     const merged = mergeDeployments([dep(1), dep(2)], [dep(2), dep(3)]);
     expect(merged.map((d) => d.sha)).toEqual(["s3", "s2", "s1"]);
     const many = Array.from({ length: 350 }, (_, i) => dep(i));
-    expect(mergeDeployments([], many)).toHaveLength(300);
+    expect(mergeDeployments([], many)).toHaveLength(350);
+    const ledger = emptyLedger();
+    ledger.deployments.repo = many;
+    pruneDeployments(ledger);
+    expect(ledger.deployments.repo).toHaveLength(300);
+    expect(ledger.deployments.repo[0]?.sha).toBe("s349");
   });
 });
 

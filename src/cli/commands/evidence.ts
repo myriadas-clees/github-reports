@@ -7,6 +7,7 @@ import {
   deploymentKey,
   emptyLedger,
   mergeDeployments,
+  pruneDeployments,
   needsRefresh,
   type PrRef,
   readEvidenceLedger,
@@ -199,6 +200,7 @@ export const registerEvidence = (program: Command): void => {
 
       recordReleaseEvidence(ledger, refs);
 
+      pruneDeployments(ledger);
       ledger.updatedAt = new Date().toISOString();
       await writeEvidenceLedger(cfg.dataDir, ledger);
       console.log(`Evidence: ${refreshed}/${todo.length} PRs refreshed (${refs.length} referenced, ${Object.keys(ledger.prs).length} stored)`);

@@ -200,6 +200,51 @@ describe("fetchPrEvidence", () => {
 });
 
 describe("fetchDeployments", () => {
+  it("fetches all 350 deployments within the window", async () => {
+    const deployments = Array.from({ length: 350 }, (_, i) => ({ id: i + 1, environment: "preview", ref: "main", sha: `s${i}`, created_at: `2026-06-${String(30 - Math.floor(i / 100)).padStart(2, "0")}T00:00:00Z` }));
+    const calls: string[] = [];
+    vi.stubGlobal("fetch", vi.fn(async (url: string) => {
+      calls.push(url);
+      const match = url.match(/deployments\?per_page=100(?:&page=(\d+))?/);
+      if (match) {
+        const page = Number(match[1] ?? 1);
+        const data = deployments.slice((page - 1) * 100, page * 100);
+        return new Response(JSON.stringify(data), { headers: { "content-type": "application/json", ...(page < 4 ? { link: `<https://api.github.com/repos/o/r/deployments?per_page=100&page=${page + 1}>; rel="next"` } : {}) } });
+      }
+      return json([]);
+    }));
+    const known = new Set(deployments.map((d) => `preview|${d.sha}|${d.created_at}`));
+    const out = await fetchDeployments("t", "o/r", "2026-06-01T00:00:00Z", known);
+    expect(calls.filter((url) => url.includes("/deployments?")).length).toBe(4);
+    expect(out).toEqual({ records: [], failed: false });
+  });
+
+  it("marks a safety-cap truncation as failed before reaching the cutoff", async () => {
+    vi.stubGlobal("fetch", vi.fn(async (url: string) => {
+      const match = url.match(/deployments\?per_page=100(?:&page=(\d+))?/);
+      if (!match) return json([]);
+      const page = Number(match[1] ?? 1);
+      const data = Array.from({ length: 100 }, (_, i) => ({ id: (page - 1) * 100 + i + 1, environment: "preview", ref: "main", sha: `s${page}-${i}`, created_at: "2026-06-30T00:00:00Z" }));
+      return new Response(JSON.stringify(data), { headers: { "content-type": "application/json", link: `<https://api.github.com/repos/o/r/deployments?per_page=100&page=${page + 1}>; rel="next"` } });
+    }));
+    const out = await fetchDeployments("t", "o/r", "2026-06-01T00:00:00Z", new Set());
+    expect(out.failed).toBe(true);
+  });
+
+  it("finds a deployment success on the second status page", async () => {
+    vi.stubGlobal("fetch", vi.fn(async (url: string) => {
+      if (/deployments\?/.test(url)) return json([{ id: 1, environment: "production", ref: "main", sha: "s", created_at: "2026-06-10T00:00:00Z" }]);
+      if (/statuses\?per_page=100$/.test(url)) return new Response(JSON.stringify(Array.from({ length: 100 }, (_, i) => ({ state: "failure", created_at: `2026-06-10T00:${String(i).padStart(2, "0")}:00Z` }))), {
+        headers: { "content-type": "application/json", link: '<https://api.github.com/repos/o/r/deployments/1/statuses?per_page=100&page=2>; rel="next"' },
+      });
+      if (/statuses\?per_page=100&page=2/.test(url)) return json([{ state: "success", created_at: "2026-06-10T03:00:00Z" }]);
+      return json({}, 404);
+    }));
+    const out = await fetchDeployments("t", "o/r", "2026-06-01T00:00:00Z");
+    expect(out.records[0]?.succeededAt).toBe("2026-06-10T03:00:00Z");
+    expect(out.failed).toBe(false);
+  });
+
   it("uses GitHub's production flag and falls back to the environment name only when absent", async () => {
     mockRoutes([
       [/deployments\/1\/statuses/, () => json([{ state: "success", created_at: "2026-06-10T00:05:00Z" }])],

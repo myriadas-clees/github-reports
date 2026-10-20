@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { applyDeploymentFetch, carryOverDerivedEvidence, deploymentCutoffIso, evidenceRepositories, findContainingDeployments, markDeploymentsUnavailable, recordReleaseEvidence, selectDeploymentCandidates } from "./evidence.js";
-import { emptyLedger } from "../../collector/evidence-ledger.js";
+import { emptyLedger, pruneDeployments } from "../../collector/evidence-ledger.js";
 import { evidenceArgs } from "./report.js";
 
 describe("evidenceRepositories", () => {
@@ -128,6 +128,23 @@ it("records a live release once and preserves it after deployment eviction", () 
   ledger.deployments["org/app"] = [];
   recordReleaseEvidence(ledger, refs);
   expect(ledger.prs[url]?.release).toEqual({ stage: "live", environment: "production", sha: "deploy-sha", since: deployment.succeededAt });
+});
+
+it("records release history before pruning its only matching old deployment", () => {
+  const ledger = emptyLedger();
+  const url = "https://github.com/org/app/pull/9";
+  ledger.prs[url] = {
+    url, repository: "org/app", number: 9, author: "a", state: "merged", isDraft: false,
+    baseRef: "main", headRef: "feature", headSha: "head", mergeCommitSha: "merge",
+    createdAt: "2026-01-01T00:00:00Z", mergedAt: "2026-01-02T00:00:00Z", reviews: [], checks: null, files: [], fetchedAt: "2026-01-03T00:00:00Z",
+  };
+  const old = { environment: "production", production: true, ref: "main", sha: "old-match", createdAt: "2026-01-03T00:00:00Z", succeededAt: "2026-01-03T01:00:00Z" };
+  ledger.deployments["org/app"] = [old, ...Array.from({ length: 300 }, (_, i) => ({ ...old, sha: `new-${i}`, createdAt: new Date(Date.UTC(2026, 1, i + 1)).toISOString() }))];
+  const refs = [{ repo: "org/app", number: 9, url }];
+  recordReleaseEvidence(ledger, refs);
+  pruneDeployments(ledger);
+  expect(ledger.prs[url]?.release).toEqual({ stage: "live", environment: "production", sha: "old-match", since: old.succeededAt });
+  expect(ledger.deployments["org/app"]).not.toContainEqual(old);
 });
 
 it("upgrades stored preview release evidence when production is found", () => {
