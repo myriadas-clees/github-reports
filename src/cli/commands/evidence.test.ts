@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { applyDeploymentFetch, evidenceRepositories, selectDeploymentCandidates } from "./evidence.js";
+import { applyDeploymentFetch, deploymentCutoffIso, evidenceRepositories, findContainingDeployments, selectDeploymentCandidates } from "./evidence.js";
 import { emptyLedger } from "../../collector/evidence-ledger.js";
 import { evidenceArgs } from "./report.js";
 
@@ -17,6 +17,37 @@ describe("evidenceRepositories", () => {
       { repo: "org/activity", number: 1, url: "https://github.com/org/activity/pull/1" },
     ])).toEqual(["org/activity"]);
   });
+});
+
+describe("deploymentCutoffIso", () => {
+  it("starts one UTC day before the local report date", () => {
+    expect(deploymentCutoffIso("2026-10-10")).toBe("2026-10-09T00:00:00.000Z");
+  });
+
+  it("handles month and year boundaries", () => {
+    expect(deploymentCutoffIso("2026-01-01")).toBe("2025-12-31T00:00:00.000Z");
+  });
+});
+
+it("reserves a separate ancestry budget for preview deployments", async () => {
+  const deployments = Array.from({ length: 6 }, (_, index) => ({
+    environment: "production", production: true, ref: `v${index}`, sha: `${String(index + 1).repeat(40)}`,
+    createdAt: `2026-10-${String(20 + index).padStart(2, "0")}T00:00:00Z`, succeededAt: "2026-10-30T00:01:00Z",
+  }));
+  deployments.push({
+    environment: "preview", production: false, ref: "preview", sha: "abcdefabcdefabcdefabcdefabcdefabcdefabcd",
+    createdAt: "2026-10-30T00:00:00Z", succeededAt: "2026-10-30T00:01:00Z",
+  });
+  const checked: string[] = [];
+  const result = await findContainingDeployments({
+    deployments,
+    pe: { baseRef: "main", mergeCommitSha: "fedcbafedcbafedcbafedcbafedcbafedcbafedc", mergedAt: "2026-10-19T00:00:00Z" },
+    defaultBranch: "main", known: [],
+    isContained: async (sha) => { checked.push(sha); return sha.startsWith("abcdef"); },
+  });
+  expect(result.calls).toEqual({ production: 5, nonProduction: 1 });
+  expect(checked).toContain("abcdefabcdefabcdefabcdefabcdefabcdefabcd");
+  expect(result.known).toEqual([{ environment: "preview", sha: "abcdefabcdefabcdefabcdefabcdefabcdefabcd" }]);
 });
 
 it("preserves deployments and marks failed refreshes unavailable", () => {

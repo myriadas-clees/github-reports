@@ -20,6 +20,13 @@ const env = (key: string): string | undefined => process.env[key];
 export const evidenceRepositories = (configured: string[], refs: PrRef[]): string[] =>
   [...new Set([...configured, ...refs.map((ref) => ref.repo)])];
 
+/** Fetch from the previous UTC day to cover deployments on the local since date in any timezone. */
+export const deploymentCutoffIso = (since: string): string => {
+  const date = new Date(`${since}T00:00:00.000Z`);
+  date.setUTCDate(date.getUTCDate() - 1);
+  return date.toISOString();
+};
+
 export const selectDeploymentCandidates = (
   deployments: import("../../types.js").DeploymentRecord[],
   production: boolean,
@@ -29,6 +36,34 @@ export const selectDeploymentCandidates = (
   d.production === production && d.ref !== pe.baseRef && d.ref !== defaultBranch && d.ref !== pe.mergeCommitSha &&
   d.sha !== pe.mergeCommitSha && Date.parse(d.createdAt) >= Date.parse(pe.mergedAt!) && /^[0-9a-f]{7,40}$/i.test(d.sha),
 ).sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt));
+
+export const findContainingDeployments = async ({
+  deployments, pe, defaultBranch, known, isContained, maxCallsPerKind = 5,
+}: {
+  deployments: import("../../types.js").DeploymentRecord[];
+  pe: Pick<import("../../types.js").PrEvidence, "baseRef" | "mergeCommitSha" | "mergedAt">;
+  defaultBranch: string;
+  known: import("../../types.js").PrEvidence["containingDeployments"];
+  isContained: (sha: string) => Promise<boolean>;
+  maxCallsPerKind?: number;
+}): Promise<{ known: NonNullable<import("../../types.js").PrEvidence["containingDeployments"]>; calls: { production: number; nonProduction: number } }> => {
+  const found = [...(known ?? [])];
+  const calls = { production: 0, nonProduction: 0 };
+  for (const production of [true, false]) {
+    const alreadyFound = found.some((entry) => deployments.some((d) => d.production === production && d.environment === entry.environment && d.sha === entry.sha));
+    if (alreadyFound) continue;
+    const kind = production ? "production" : "nonProduction";
+    for (const deployment of selectDeploymentCandidates(deployments, production, pe, defaultBranch)) {
+      if (calls[kind] >= maxCallsPerKind) break;
+      calls[kind]++;
+      if (await isContained(deployment.sha)) {
+        found.push({ environment: deployment.environment, sha: deployment.sha });
+        break;
+      }
+    }
+  }
+  return { known: found, calls };
+};
 
 export const applyDeploymentFetch = (ledger: import("../../types.js").EvidenceLedger, repo: string, result: Awaited<ReturnType<typeof fetchDeployments>>, now: string): void => {
   ledger.deployments[repo] = mergeDeployments(ledger.deployments[repo] ?? [], result.records);
@@ -58,7 +93,7 @@ export const registerEvidence = (program: Command): void => {
       const now = new Date();
       const since = opts.since ?? new Date(now.getTime() - 90 * 86_400_000).toISOString().slice(0, 10);
       if (!/^\d{4}-\d{2}-\d{2}$/.test(since)) throw new Error("--since must be YYYY-MM-DD");
-      const sinceIso = `${since}T00:00:00.000Z`;
+      const sinceIso = deploymentCutoffIso(since);
 
       const ledger = (await readEvidenceLedger(cfg.dataDir)) ?? emptyLedger();
       const refs = await collectPrRefsFromData(cfg.dataDir, since);
@@ -99,22 +134,11 @@ export const registerEvidence = (program: Command): void => {
         if (!pe?.mergeCommitSha || !pe.mergedAt || !deployments.length) continue;
         const known = pe.containingDeployments ?? [];
         if (known.some((entry) => deployments.some((d) => d.production && d.environment === entry.environment && d.sha === entry.sha))) continue;
-        let calls = 0;
-        for (const production of [true, false]) {
-          const alreadyFound = known.some((entry) => deployments.some((d) => d.production === production && d.environment === entry.environment && d.sha === entry.sha));
-          if (alreadyFound) continue;
-          const defaultBranch = ledger.defaultBranches[ref.repo] ?? "main";
-          const candidates = selectDeploymentCandidates(deployments, production, pe, defaultBranch);
-          for (const deployment of candidates) {
-            if (calls >= 5) break;
-            calls++;
-            if (await isCommitContained(token, ref.repo, pe.mergeCommitSha, deployment.sha)) {
-              known.push({ environment: deployment.environment, sha: deployment.sha });
-              break;
-            }
-          }
-        }
-        if (known.length) pe.containingDeployments = known;
+        const result = await findContainingDeployments({
+          deployments, pe, defaultBranch: ledger.defaultBranches[ref.repo] ?? "main", known,
+          isContained: async (sha) => Boolean(await isCommitContained(token, ref.repo, pe.mergeCommitSha!, sha)),
+        });
+        if (result.known.length) pe.containingDeployments = result.known;
       }
 
       ledger.updatedAt = new Date().toISOString();
