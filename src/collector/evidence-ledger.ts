@@ -91,7 +91,7 @@ export const collectPrRefsFromData = async (dataDir: string, since?: string): Pr
   const seen = new Map<string, PrRef>();
   for (const file of files) {
     if (!(await exists(file))) continue;
-    let data: { pullRequests?: Array<{ url?: string }>; prsInProgress?: Array<{ url?: string }>; dateRange?: { to?: unknown } };
+    let data: { pullRequests?: Array<{ url?: string }>; prsInProgress?: Array<{ url?: string }>; prsWorkedOnClosed?: Array<{ url?: string }>; dateRange?: { to?: unknown } };
     try {
       data = parseYaml(await readFile(file, "utf-8")) ?? {};
     } catch {
@@ -102,7 +102,7 @@ export const collectPrRefsFromData = async (dataDir: string, since?: string): Pr
       // Legacy weekly archives without a usable end date cannot be safely included in a cutoff query.
       if (!/^\d{4}-\d{2}-\d{2}$/.test(endDate) || endDate < since.slice(0, 10)) continue;
     }
-    for (const pr of [...(data.pullRequests ?? []), ...(data.prsInProgress ?? [])]) {
+    for (const pr of [...(data.pullRequests ?? []), ...(data.prsInProgress ?? []), ...(data.prsWorkedOnClosed ?? [])]) {
       if (!pr?.url || seen.has(pr.url)) continue;
       const parsed = parsePrUrl(pr.url);
       if (parsed) seen.set(pr.url, { ...parsed, url: pr.url });

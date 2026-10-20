@@ -105,4 +105,15 @@ describe("collectPrRefsFromData", () => {
     expect((await collectPrRefsFromData(dir, "2026-06-01")).map((r) => r.number)).toEqual([2]);
     expect((await collectPrRefsFromData(dir)).map((r) => r.number)).toEqual([1, 2, 3]);
   });
+
+  it("collects PRs present only in prsWorkedOnClosed from daily and weekly files", async () => {
+    dir = await mkdtemp(join(tmpdir(), "ev-"));
+    const write = async (rel: string, body: string) => {
+      await mkdir(join(dir, rel), { recursive: true });
+      await writeFile(join(dir, rel, "github-data.yaml"), body, "utf-8");
+    };
+    await write("2026/06/10", "prsWorkedOnClosed:\n  - url: https://github.com/o/r/pull/7\n");
+    await write("2026/W24", "dateRange:\n  to: 2026-06-17\nprsWorkedOnClosed:\n  - url: https://github.com/o/r/pull/8\n");
+    expect((await collectPrRefsFromData(dir)).map((r) => r.number)).toEqual([7, 8]);
+  });
 });

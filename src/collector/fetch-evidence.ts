@@ -326,7 +326,7 @@ export const fetchDeployments = async (
   await mapWithConcurrency(deployments, async (d) => {
     const key = deploymentKey({ environment: d.environment, sha: d.sha, createdAt: d.created_at });
     if (known.has(key)) return;
-    const res = await getPages<RawStatus>(token, `${base}/deployments/${d.id}/statuses?per_page=100`, `Deployment status fetch failed for ${repo}`, { maxPages: 5, soft: true });
+    const res = await getPages<RawStatus>(token, `${base}/deployments/${d.id}/statuses?per_page=100`, `Deployment status fetch failed for ${repo}`, { maxPages: 5, soft: true, failOn404: true });
     if (res.failed) statusFailed = true;
     const success = res.items
       .filter((s) => s.state === "success")

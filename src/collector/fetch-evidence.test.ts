@@ -320,6 +320,14 @@ describe("fetchDeployments", () => {
     await expect(fetchDeployments("t", "o/r", "2026-06-01T00:00:00Z")).resolves.toEqual({ records: [], scannedKeys: [], failed: true });
   });
 
+  it("treats missing deployment statuses as unavailable and leaves the deployment unscanned", async () => {
+    mockRoutes([
+      [/deployments\/1\/statuses/, () => json({ message: "not found" }, 404)],
+      [/deployments\?/, () => json([{ id: 1, environment: "production", ref: "main", sha: "s1", created_at: "2026-06-10T00:00:00Z" }])],
+    ]);
+    await expect(fetchDeployments("t", "o/r", "2026-06-01T00:00:00Z")).resolves.toEqual({ records: [], scannedKeys: [], failed: true });
+  });
+
   it("returns successful records and marks failed deployment statuses unavailable", async () => {
     mockRoutes([
       [/deployments\/1\/statuses/, () => json([{ state: "success", created_at: "2026-06-10T00:05:00Z" }])],

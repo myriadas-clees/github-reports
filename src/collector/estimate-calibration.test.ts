@@ -75,6 +75,22 @@ describe("buildEstimateCalibration", () => {
     expect(feature.activeDays.p50).toBe(1);
   });
 
+  it("keeps work history from a closed PR that is later reopened and merged", () => {
+    const closed = pr(23, "feat: reopened after closure", {
+      state: "closed", mergedAt: null, workCommits: [commit("2026-09-01")],
+    });
+    const laterMerge = merged(23, closed.title, "2026-09-03T12:00:00Z", {
+      workCommits: [], workAdditions: 0, workDeletions: 0, workFiles: [],
+    });
+    const firstDay = report([]);
+    firstDay.prsWorkedOnClosed = [closed];
+    const cal = buildEstimateCalibration(new Map<string, WeeklyReportData>([
+      ["2026-09-01", firstDay], ["2026-09-03", report([laterMerge])],
+    ]), DEFAULT_ALLOCATION_CONFIG);
+    expect(cal.sampleSize).toBe(1);
+    expect(cal.groups.find((x) => x.kind === "feature" && x.size === "S")!.turnaroundDays.p50).toBe(3);
+  });
+
   it("counts a PR present in both daily lists once and keeps its merged state", () => {
     const work = pr(30, "feat: duplicate daily snapshot");
     const mergedSnapshot = merged(30, work.title, "2026-09-01T12:00:00Z", {

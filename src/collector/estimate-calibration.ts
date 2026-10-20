@@ -138,9 +138,9 @@ export const buildEstimateCalibration = (
   const prs = new Map<string, PrAcc>();
   for (const day of days) {
     const report = dailyReports.get(day)!;
-    const reportUrls = new Set((report.pullRequests ?? []).map((pr) => pr.url));
+    const reportUrls = new Set([...(report.pullRequests ?? []), ...(report.prsWorkedOnClosed ?? [])].map((pr) => pr.url));
     const daily = new Map<string, PullRequest>();
-    for (const pr of [...(report.pullRequests ?? []), ...(report.prsInProgress ?? [])]) {
+    for (const pr of [...(report.pullRequests ?? []), ...(report.prsInProgress ?? []), ...(report.prsWorkedOnClosed ?? [])]) {
       const previous = daily.get(pr.url);
       if (!previous) {
         daily.set(pr.url, pr);
@@ -149,7 +149,7 @@ export const buildEstimateCalibration = (
         // Match computeAllocation: pullRequests is the as-of-window state. A terminal copy
         // only in prsInProgress is current state reached after this day, so normalize it open.
         const asOfWindow = reportUrls.has(pr.url)
-          ? (report.pullRequests ?? []).find((candidate) => candidate.url === pr.url)!
+          ? ([...(report.pullRequests ?? []), ...(report.prsWorkedOnClosed ?? [])].find((candidate) => candidate.url === pr.url)!)
           : { ...pr, state: "open" as const, mergedAt: null };
         daily.set(pr.url, {
           ...work,
