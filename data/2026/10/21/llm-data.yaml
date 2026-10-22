@@ -1,0 +1,107 @@
+title: Oct 21
+subtitle: northstar, transition & compass
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps and Myriad-Advisor-Solutions/ohcpwm-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 3 PRs
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 0 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 82 commits with +7,675 / −631 lines.
+    chips:
+      - label: Commits
+        value: "82"
+        color: green
+      - label: Additions
+        value: +7,675
+        color: green
+      - label: Deletions
+        value: −631
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 45 reviews with 45 comments.
+    chips:
+      - label: Reviews
+        value: "45"
+      - label: Comments
+        value: "45"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 26 reviews, 43 comments, 5 PRs."
+    chips:
+      - label: Codex
+        value: 26 reviews · 43 comments · 5 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~142.2h
+highlights:
+  - type: pr
+    title: "perf(transition): cut demo seed and workbook test time"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +123 −78
+    body: |-
+      Stacked on #198 (base is `chore/evaluate-tsrc-port`); retarget to `main` once #198 merges.
+
+      ## Why
+      Transition's `vitest run` (86 files / 960 tests) runs on a single worker on the 2-vCPU CI runner and 
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/199
+  - type: pr
+    title: "fix(northstar): retry transient stream failures once"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +0 −0
+    body: >-
+      - Retry a transient Microsoft 5xx (e.g. `UnknownError`) once in a fresh Copilot conversation, only before any
+      answer text has streamed, so the transcript context is resent.
+
+      - The retry replaces only t
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/165
+  - type: pr
+    title: "feat(northstar): save custom brief instructions and regenerate briefs"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +265 −57
+    body: |-
+      - Add an explicit save flow for Northstar instructions and brief prompts.
+      - Offer to regenerate saved briefs affected by instruction changes.
+      - Apply custom focus and formatting requests while retaini
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168
+  - type: pr
+    title: "perf(northstar): speed up Copilot chat turns"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +265 −57
+    body: |-
+      - Reuse valid Microsoft access tokens and warm Copilot conversations to reduce chat startup time.
+      - Run chat turns independently of browser connections, with result polling and Stop cancellation.
+      - Us
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167
+  - type: pr
+    title: "feat(hub): add Claude for Financial Advisors"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +477 −69
+    body: |-
+      - Add Claude for Financial Advisors as an external Hub app, opening in a new tab.
+      - Add the Claude mark and update app card styling and Northstar copy.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/169
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "perf(transition): cut demo seed and workbook test time" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(northstar): retry transient stream failures once" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(northstar): save custom brief instructions and regenerate briefs" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "perf(northstar): speed up Copilot chat turns" in Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(hub): add Claude for Financial Advisors" in Myriad-Advisor-Solutions/ohcpwm-apps'
