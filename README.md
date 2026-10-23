@@ -4,7 +4,7 @@ Daily GitHub status-page generator with private source and a public progress pag
 
 > Reports published to GitHub Pages are public and may include commit messages, pull-request titles, review activity, and line-change totals. Repository file contents and tokens are never included.
 
-Every weekday morning, Worklog reports activity from the **previous completed workday** (Monday reports Friday): commits, pull requests (opened / merged / in progress), reviews, review comments, repositories, line changes, and **estimated engineering hours** (clearly labeled as conventional engineering effort, not tracked time). It publishes a clean static HTML report with daily archives.
+Every weekday morning, Worklog reports activity from the **previous completed workday** (Monday reports Friday): commits, pull requests (opened / merged / in progress), reviews, review comments, repositories, line changes, and **estimated manual engineering effort**. This models the time one engineer might need to deliver the same changes without AI assistance. It is an intended comparison baseline, not actual hours worked or measured time saved, and has not been validated against recorded unassisted work. It publishes a clean static HTML report with daily archives.
 
 ## Quick setup
 
@@ -98,6 +98,10 @@ Tokens and API keys are read only from the environment / Actions secrets. Render
 ```bash
 bun run build && bun run lint && bun run test
 ```
+
+The default theme (config key `brutalist`, kept for compatibility) is the Myriad Apps Graphical theme. Its tokens live in `src/renderer/themes/brutalist/tokens.ts`, copied from `gui/source/graphical-theme.css`; component rules in `styles.ts` consume those names only. It has warm neutral surfaces in light and dark (light by default, then the OS setting, then the reader's Light/Dark choice), a neutral top bar, and monotone actions, focus and progress. Brand red appears only in the logo mark and one short rule on the homepage. Positive statuses stay green, and the initiative chart colours are unchanged.
+
+Roboto and Lora are self-hosted (SIL OFL 1.1, licences in `assets/fonts/`). `render` copies them to `<output>/assets/fonts/`, so the theme makes no Google Fonts requests. Non-Latin locales keep their script font after Roboto but only use it when it is installed locally. Design QA evidence is in `design-qa.md`.
 
 Local preview of the generated site (serves `output/`, re-renders when themes or data change):
 

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+<head>
+  <title>Work week of {{label}} - {{siteTitleInline}}</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="{{description}}" />
+  <meta property="og:title" content="Work week of {{label}}" />
+  <meta property="og:description" content="{{description}}" />
+  <meta property="og:type" content="article" />
+  {{#if canonicalUrl}}<meta property="og:url" content="{{{canonicalUrl}}}" />
+  <link rel="canonical" href="{{{canonicalUrl}}}" />{{/if}}
+  <meta name="theme-color" content="{{themeColor}}" />
+  {{#if avatarUrl}}<link rel="icon" href="{{avatarUrl}}" />{{/if}}
+  {{#if baseUrl}}<link rel="alternate" type="application/rss+xml" title="RSS Feed" href="{{{baseUrl}}}/feed.xml" />{{/if}}
+  <style>{{{css}}}</style>
+  {{{themeInitScript}}}
+</head>
+<body>
+
+<div class="scroll-strip">
+
+  <article class="panel panel-cover">
+    <div class="cover-inner">
+<nav class="week-crumbs" aria-label="Breadcrumb">
+  <a href="{{rootPrefix}}">&larr; All months</a>
+  <span aria-hidden="true">/</span>
+  <a href="{{rootPrefix}}#{{monthAnchor}}">{{monthLabel}}</a>
+</nav>
+<h1 class="week-title">Work week of {{label}}{{#if open}} (so far){{/if}}</h1>
+<p class="week-dates">{{from}} to {{to}} &middot; Thursday to Wednesday</p>
+    </div>
+  </article>
+
+  <nav class="week-days-section" aria-label="Daily reports this week">
+    <span class="week-days-label">Daily reports</span>
+    {{#if days.length}}<ul class="week-day-links">
+      {{#each days}}<li><a href="{{this.href}}">{{this.label}}</a></li>{{/each}}
+    </ul>{{else}}<p class="week-dates">No daily reports this week; effort is self-reported.</p>{{/if}}
+  </nav>
+  {{> allocation}}
+  <nav class="week-pager" aria-label="Other work weeks">
+    {{#if prev}}<a href="{{prev.href}}" rel="prev">&larr; {{prev.label}}</a>{{else}}<span></span>{{/if}}
+    {{#if next}}<a href="{{next.href}}" rel="next">{{next.label}} &rarr;</a>{{else}}<span></span>{{/if}}
+  </nav>
+
+  <article class="panel panel-text">
+    <div class="text-inner">
+    </div>
+  </article>
+
+</div>
+
+<footer class="fixed-footer">
+  <nav class="footer-breadcrumb" aria-label="Breadcrumb">
+    <a href="{{rootPrefix}}">All months</a>
+    <span class="footer-sep">/</span>
+    <span class="footer-current">{{label}}</span>
+  </nav>
+  <div class="footer-right">
+    {{#if prev}}<a href="{{prev.href}}" aria-label="Previous work week">&larr;</a>{{/if}}
+    {{#if next}}<a href="{{next.href}}" aria-label="Next work week">&rarr;</a>{{/if}}
+    <span class="footer-sep">&middot;</span>
+    <button class="theme-toggle" type="button" aria-label="Toggle theme">&#9790;&#65038; Dark</button>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var strip = document.querySelector('.scroll-strip');
+  if (!strip) return;
+  strip.addEventListener('wheel', function(e) {
+    var isHorizontal = strip.scrollWidth > strip.clientWidth;
+    if (!isHorizontal || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+    e.preventDefault();
+    strip.scrollLeft += e.deltaY;
+  }, { passive: false });
+})();
+</script>
+
+{{{themeToggleScript}}}
+</body>
+</html>

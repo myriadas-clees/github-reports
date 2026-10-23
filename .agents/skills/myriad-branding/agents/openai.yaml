@@ -1,0 +1,5 @@
+interface:
+  display_name: "Myriad Branding"
+  short_description: "Align Myriad apps, visuals, and voice"
+  brand_color: "#cc2647"
+  default_prompt: "Use $myriad-branding to align a Myriad app, dashboard, document, page, or visual asset with the Myriad website and brand guidelines."

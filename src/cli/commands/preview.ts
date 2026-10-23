@@ -9,7 +9,7 @@ import { fileURLToPath } from "node:url";
 import { spawn } from "node:child_process";
 import { parseLocalDate } from "../../collector/date-range.js";
 import { loadConfigFile, resolveConfig } from "../../config.js";
-import type { Language, Theme } from "../../types.js";
+import type { AllocationConfig, Language, ManualTimeEntry, Theme } from "../../types.js";
 import { AVAILABLE_THEMES } from "../../renderer/themes/index.js";
 import { runRender, type RenderCommandOptions } from "./render.js";
 
@@ -132,6 +132,8 @@ type PreviewOptions = {
   timezone: string;
   theme: Theme;
   date?: Date;
+  allocation?: AllocationConfig;
+  manualTime?: ManualTimeEntry[];
   watch: boolean;
   open: boolean;
 };
@@ -161,6 +163,8 @@ export const startPreview = async (options: PreviewOptions): Promise<Server> => 
     timezone: options.timezone,
     theme: options.theme,
     date: options.date,
+    allocation: options.allocation,
+    manualTime: options.manualTime,
   };
 
   console.log("Rendering site for preview...");
@@ -288,6 +292,8 @@ export const registerPreview = (program: Command): void => {
           timezone: opts.timezone ?? cfg.timezone,
           theme,
           date: opts.date ? parseLocalDate(opts.date, opts.timezone ?? cfg.timezone) : undefined,
+          allocation: cfg.allocation,
+          manualTime: cfg.manualTime,
           watch: opts.watch !== false,
           open: opts.open !== false,
         });

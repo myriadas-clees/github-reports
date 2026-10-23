@@ -64,9 +64,11 @@
 
 <div class="header">
   {{> header}}
+    {{#if weekLink}}<p class="week-link"><a href="{{weekLink.href}}">{{weekLink.text}}</a></p>{{/if}}
 </div>
 
 <main>
+  {{> allocation}}
   {{> overview}}
   {{> activity}}
   {{> highlights}}

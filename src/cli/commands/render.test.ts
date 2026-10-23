@@ -52,6 +52,19 @@ vi.mock("../../deployer/index-page.js", () => ({
   buildReportEntry: (...args: unknown[]) => mockBuildReportEntry(...args),
 }));
 
+// Mock estimate page (undefined = no calibration, as in most tests)
+const mockRenderEstimatePage = vi.fn().mockReturnValue(undefined);
+vi.mock("../../deployer/estimate-page.js", () => ({
+  renderEstimatePage: (...args: unknown[]) => mockRenderEstimatePage(...args),
+}));
+
+// Calibration built from daily reports; undefined by default. Tests override it to control app history.
+const mockBuildEstimateCalibration = vi.fn();
+vi.mock("../../collector/estimate-calibration.js", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("../../collector/estimate-calibration.js")>()),
+  buildEstimateCalibration: (...args: unknown[]) => mockBuildEstimateCalibration(...args),
+}));
+
 // Mock OG image
 const mockGenerateOGImage = vi.fn().mockResolvedValue(Buffer.from("png-data"));
 const mockGenerateIndexOGImage = vi.fn().mockResolvedValue(Buffer.from("index-png-data"));
@@ -188,6 +201,14 @@ describe("registerRender", () => {
     // Should render index page
     expect(mockRenderIndexPage).toHaveBeenCalled();
 
+    // Should copy the self-hosted theme fonts beside the brand assets
+    const { cp } = await import("node:fs/promises");
+    expect(cp).toHaveBeenCalledWith(
+      expect.stringMatching(/assets[\\/]fonts$/),
+      expect.stringMatching(/output[\\/]assets[\\/]fonts$/),
+      { recursive: true },
+    );
+
     // Should generate index OG image
     expect(mockGenerateIndexOGImage).toHaveBeenCalled();
 
@@ -200,6 +221,171 @@ describe("registerRender", () => {
     expect(cardSvg).toContain("2026-04-01");
     expect(cardSvg).toContain("2026-03-28");
     expect(cardSvg).toContain("2026-04-03");
+  });
+
+  it("warns and renders without evidence when the ledger is malformed", async () => {
+    mockReadFile.mockImplementation((path: string) => {
+      if (path.includes("github-data.yaml")) return Promise.resolve(GITHUB_DATA_YAML);
+      if (path.includes("llm-data.yaml")) return Promise.resolve(LLM_DATA_YAML);
+      if (path.endsWith("evidence.yaml")) return Promise.resolve("bad: [yaml");
+      return Promise.reject(new Error("not found"));
+    });
+    mockReaddir.mockImplementation((dir: string) => dir.endsWith("data") ? Promise.resolve(["2026"]) : dir.includes("2026") ? Promise.resolve(["W14"]) : Promise.resolve([]));
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    const { registerRender } = await import("./render.js");
+    const program = new Command();
+    registerRender(program);
+    await program.parseAsync(["node", "cli", "render", "--data-dir", "./data", "--output-dir", "./output", "--base-url", "https://user.github.io/repo", "--language", "en", "--timezone", "UTC", "--date", "2026-04-01"]);
+    expect(mockRenderReport).toHaveBeenCalled();
+    expect(warn).toHaveBeenCalledWith(expect.stringContaining("evidence ledger unavailable"));
+  });
+
+  it("writes estimate/index.html and lists it in the sitemap when the page renders", async () => {
+    mockRenderEstimatePage.mockReturnValueOnce("<html>estimate</html>");
+    mockReadFile.mockImplementation((path: string) => {
+      if (path.includes("github-data.yaml")) return Promise.resolve(GITHUB_DATA_YAML);
+      if (path.includes("llm-data.yaml")) return Promise.resolve(LLM_DATA_YAML);
+      return Promise.reject(new Error("not found"));
+    });
+    mockReaddir.mockImplementation((dir: string) => {
+      if (dir.endsWith("data")) return Promise.resolve(["2026"]);
+      if (dir.includes("2026")) return Promise.resolve(["W14"]);
+      return Promise.resolve([]);
+    });
+
+    const { registerRender } = await import("./render.js");
+    const program = new Command();
+    registerRender(program);
+    await program.parseAsync([
+      "node", "cli", "render",
+      "--data-dir", "./data", "--output-dir", "./output",
+      "--base-url", "https://user.github.io/repo",
+      "--language", "en", "--timezone", "UTC", "--date", "2026-04-01",
+    ]);
+
+    expect(mockMkdir).toHaveBeenCalledWith(expect.stringMatching(/output\/estimate$/), { recursive: true });
+    expect(mockWriteFile).toHaveBeenCalledWith(
+      expect.stringMatching(/estimate\/index\.html$/),
+      "<html>estimate</html>",
+      "utf-8",
+    );
+    expect(mockWriteFile).toHaveBeenCalledWith(
+      expect.stringContaining("sitemap.xml"),
+      expect.stringContaining("https://user.github.io/repo/estimate/"),
+      "utf-8",
+    );
+  });
+
+  it("writes finished/index.html and lists it in the sitemap even without a calculator", async () => {
+    mockRenderEstimatePage.mockReturnValueOnce(undefined);
+    mockReadFile.mockImplementation((path: string) => {
+      if (path.includes("github-data.yaml")) return Promise.resolve(GITHUB_DATA_YAML);
+      if (path.includes("llm-data.yaml")) return Promise.resolve(LLM_DATA_YAML);
+      return Promise.reject(new Error("not found"));
+    });
+    mockReaddir.mockImplementation((dir: string) => {
+      if (dir.endsWith("data")) return Promise.resolve(["2026"]);
+      if (dir.includes("2026")) return Promise.resolve(["W14"]);
+      return Promise.resolve([]);
+    });
+    const { registerRender } = await import("./render.js");
+    const program = new Command();
+    registerRender(program);
+    await program.parseAsync([
+      "node", "cli", "render",
+      "--data-dir", "./data", "--output-dir", "./output",
+      "--base-url", "https://user.github.io/repo",
+      "--language", "en", "--timezone", "UTC", "--date", "2026-04-01",
+    ]);
+    expect(mockWriteFile).toHaveBeenCalledWith(
+      expect.stringMatching(/finished\/index\.html$/),
+      expect.stringContaining("How we say something is finished"),
+      "utf-8",
+    );
+    expect(mockWriteFile).toHaveBeenCalledWith(
+      expect.stringContaining("sitemap.xml"),
+      expect.stringContaining("https://user.github.io/repo/finished/"),
+      "utf-8",
+    );
+  });
+
+  it("does not write estimate page when none is rendered", async () => {
+    mockReadFile.mockImplementation((path: string) => {
+      if (path.includes("github-data.yaml")) return Promise.resolve(GITHUB_DATA_YAML);
+      if (path.includes("llm-data.yaml")) return Promise.resolve(LLM_DATA_YAML);
+      return Promise.reject(new Error("not found"));
+    });
+    mockReaddir.mockImplementation((dir: string) => {
+      if (dir.endsWith("data")) return Promise.resolve(["2026"]);
+      if (dir.includes("2026")) return Promise.resolve(["W14"]);
+      return Promise.resolve([]);
+    });
+    const { registerRender } = await import("./render.js");
+    const program = new Command();
+    registerRender(program);
+    await program.parseAsync([
+      "node", "cli", "render",
+      "--data-dir", "./data", "--output-dir", "./output",
+      "--base-url", "https://user.github.io/repo",
+      "--language", "en", "--timezone", "UTC", "--date", "2026-04-01",
+    ]);
+    const paths = mockWriteFile.mock.calls.map((c: unknown[]) => String(c[0]));
+    expect(paths.some((x) => x.includes("estimate/"))).toBe(false);
+  });
+
+  describe("homepage app-estimate link", () => {
+    const calibration = (initiatives: { name: string; activeDays: number; spanWeeks: number; effortDays: number; mergedPrs: number }[]) => {
+      const p = { p50: 0, p90: 0 };
+      return {
+        version: "1.0", asOf: "2026-10-07", since: "2026-06", sampleSize: 20,
+        groups: [], apps: { initiatives, activeDays: p, spanWeeks: p, effortDays: p },
+      };
+    };
+    const runDailyRender = async () => {
+      mockReadFile.mockImplementation((path: string) => {
+        if (path.includes("github-data.yaml")) return Promise.resolve(GITHUB_DATA_YAML);
+        if (path.includes("llm-data.yaml")) return Promise.resolve(LLM_DATA_YAML);
+        return Promise.reject(new Error("not found"));
+      });
+      mockReaddir.mockImplementation((dir: string) => {
+        if (dir.endsWith("data")) return Promise.resolve(["2026"]);
+        if (dir.includes("2026")) return Promise.resolve(["W14"]);
+        return Promise.resolve([]);
+      });
+      const { registerRender } = await import("./render.js");
+      const program = new Command();
+      registerRender(program);
+      await program.parseAsync([
+        "node", "cli", "render",
+        "--data-dir", "./data", "--output-dir", "./output",
+        "--base-url", "https://user.github.io/repo",
+        "--language", "en", "--timezone", "UTC", "--date", "2026-04-01",
+      ]);
+      // renderIndexPage(entries, pageData, language, siteTitle, base, repoUrl, theme, options)
+      return mockRenderIndexPage.mock.calls.at(-1)![7] as Record<string, unknown>;
+    };
+
+    it("passes hasAppEstimates false when the calibration has no app history", async () => {
+      mockBuildEstimateCalibration.mockReturnValueOnce(calibration([]));
+      mockRenderEstimatePage.mockReturnValueOnce("<html>estimate</html>");
+      const options = await runDailyRender();
+      expect(options).toMatchObject({ hasEstimatePage: true, hasAppEstimates: false });
+    });
+
+    it("passes hasAppEstimates true when past apps exist", async () => {
+      mockBuildEstimateCalibration.mockReturnValueOnce(
+        calibration([{ name: "Hub", activeDays: 30, spanWeeks: 6, effortDays: 12, mergedPrs: 4 }]),
+      );
+      mockRenderEstimatePage.mockReturnValueOnce("<html>estimate</html>");
+      const options = await runDailyRender();
+      expect(options).toMatchObject({ hasEstimatePage: true, hasAppEstimates: true });
+    });
+
+    it("passes hasAppEstimates false when no estimate page renders", async () => {
+      mockBuildEstimateCalibration.mockReturnValueOnce(undefined);
+      const options = await runDailyRender();
+      expect(options).toMatchObject({ hasEstimatePage: false, hasAppEstimates: false });
+    });
   });
 
   it("exits when github-data.yaml is missing", async () => {
@@ -317,7 +503,7 @@ describe("registerRender", () => {
   });
 
   it("re-renders previous week with next-week link", async () => {
-    const PREV_GITHUB_YAML = GITHUB_DATA_YAML.replace("2026-03-28", "2026-03-21").replace("2026-04-03", "2026-03-27");
+    const PREV_GITHUB_YAML = `${GITHUB_DATA_YAML.replace("2026-03-28", "2026-03-21").replace("2026-04-03", "2026-03-27").replace("estimatedHours: 0", "estimatedHours: 2")}\nhoursInputs:\n  timestamps: []\n  volume:\n    commitCount: 3\n    commitAdditions: 4000\n    commitDeletions: 200\n    commitStatsCount: 3\n  options:\n    gapMinutes: 90\n    maxSessionHours: 6\n    minimumHours: 8\n`;
     const PREV_LLM_YAML = LLM_DATA_YAML.replace("Weekly Summary", "Previous Week Summary");
 
     mockReadFile.mockImplementation((path: string) => {
@@ -354,6 +540,7 @@ describe("registerRender", () => {
     // Second call should include nextWeek link
     const prevWeekCall = mockRenderReport.mock.calls[1];
     expect(prevWeekCall[1]).toHaveProperty("nextWeek", "../../../2026/04/01/");
+    expect(prevWeekCall[0]).toMatchObject({ stats: { estimatedHours: 9 }, hoursEstimate: { hours: 9 } });
   });
 
   it("links nextWeek and prevPrev when current week sits in the middle", async () => {
@@ -788,5 +975,202 @@ describe("withRecomputedHours", () => {
       },
     };
     expect(withRecomputedHours(withInputs as never).stats.estimatedHours).toBe(9);
+  });
+});
+
+describe("buildAllocationInput", () => {
+  const report = (date: string, hours: number) => ({
+    username: "u",
+    avatarUrl: "",
+    dateRange: { from: date, to: date },
+    stats: { estimatedHours: hours, totalCommits: 1 },
+    pullRequests: [],
+    commitMessages: [],
+  }) as unknown as import("../../types.js").WeeklyReportData;
+
+  it("builds day and trend (no week panel) up to the current day only", async () => {
+    const { buildAllocationInput } = await import("./render.js");
+    const daily = new Map([
+      ["2026-10-01", report("2026-10-01", 4)],
+      ["2026-10-02", report("2026-10-02", 4)],
+      ["2026-10-09", report("2026-10-09", 99)],
+    ]);
+    const input = buildAllocationInput({
+      current: { date: "2026-10-02", data: report("2026-10-02", 4) },
+      dailyReports: daily,
+    })!;
+    expect(input.day).toBeDefined();
+    expect(input.trend!.periods.length).toBe(8);
+    expect(input.week).toBeUndefined();
+    expect(input.trend!.periods.at(-1)!.allocation.totalHours).toBeLessThan(50);
+  });
+
+  it("weekly mode returns only the week", async () => {
+    const { buildAllocationInput } = await import("./render.js");
+    const input = buildAllocationInput({
+      mode: "weekly",
+      current: { date: "2026-W40", data: report("2026-10-02", 6) },
+      dailyReports: new Map(),
+    })!;
+    expect(input.day).toBeUndefined();
+    expect(input.trend).toBeUndefined();
+    expect(input.week!.allocation.totalHours).toBeGreaterThan(0);
+  });
+
+  it("annotates PR items with readiness whether or not evidence exists", async () => {
+    const { buildAllocationInput, buildWeekAllocationInputs } = await import("./render.js");
+    const url = "https://github.com/o/r/pull/7";
+    const withPr = {
+      ...report("2026-10-02", 6),
+      pullRequests: [{ title: "Add x", url, repository: "o/r", state: "merged", labels: [], workFiles: ["apps/hub/a.ts"] }],
+    } as unknown as import("../../types.js").WeeklyReportData;
+    const stage = (a?: import("../../types.js").Allocation) => a?.initiatives[0]?.shipped[0]?.readiness?.stage;
+    const without = buildAllocationInput({ current: { date: "2026-10-02", data: withPr }, dailyReports: new Map() })!;
+    expect(stage(without.day)).toBe("done");
+    expect(without.day!.initiatives[0]!.shipped[0]!.complexity?.level).toBe("contained");
+    const evidence = {
+      version: "1", updatedAt: "", defaultBranches: { "o/r": "main" }, prs: {},
+      deployments: { "o/r": [{ environment: "production", production: true, ref: "main", sha: "s", createdAt: "2026-10-03T00:00:00Z", succeededAt: "2026-10-03T00:00:00Z" }] },
+    };
+    evidence.prs = { [url]: { url, repository: "o/r", number: 7, author: "u", state: "merged", isDraft: false, baseRef: "main", headRef: "h", headSha: "x", mergeCommitSha: null, createdAt: "", mergedAt: "2026-10-02T12:00:00Z", reviews: [], checks: null, files: [], fetchedAt: "" } } as never;
+    const withEv = buildAllocationInput({ current: { date: "2026-10-02", data: withPr }, dailyReports: new Map(), evidence })!;
+    expect(stage(withEv.day)).toBe("live");
+    const weeks = buildWeekAllocationInputs({ dailyReports: new Map([["2026-10-02", withPr]]), evidence });
+    expect(stage(weeks.get("2026-10-01")!.week!.allocation)).toBe("live");
+  });
+
+  it("passes the report timezone into readiness annotation", async () => {
+    const { buildAllocationInput } = await import("./render.js");
+    const url = "https://github.com/o/r/pull/7";
+    const withPr = {
+      ...report("2026-10-02", 6),
+      pullRequests: [{ title: "Add x", url, repository: "o/r", state: "merged", labels: [], workFiles: ["apps/hub/a.ts"] }],
+    } as unknown as import("../../types.js").WeeklyReportData;
+    const evidence = {
+      version: "1", updatedAt: "", defaultBranches: { "o/r": "main" }, prs: {
+        [url]: { url, repository: "o/r", number: 7, author: "u", state: "merged", isDraft: false, baseRef: "main", headRef: "h", headSha: "x", mergeCommitSha: null, createdAt: "", mergedAt: "2026-10-08T01:00:00Z", reviews: [], checks: null, files: [], fetchedAt: "" },
+      }, deployments: {}, deploymentsUnavailable: { "o/r": "2026-10-19T00:00:00Z" },
+    } as unknown as import("../../types.js").EvidenceLedger;
+    const input = buildAllocationInput({ current: { date: "2026-10-02", data: withPr }, dailyReports: new Map(), evidence, timezone: "America/New_York" })!;
+    expect(input.day!.initiatives[0]!.shipped[0]!.readiness).toMatchObject({ detail: "Integrated Oct 7; release status not collected", since: "2026-10-07" });
+  });
+
+  it("warns and returns undefined instead of throwing", async () => {
+    const { buildAllocationInput } = await import("./render.js");
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    const input = buildAllocationInput({
+      current: { date: "2026-10-02", data: null as never },
+      dailyReports: new Map(),
+    });
+    expect(input).toBeUndefined();
+    expect(warn).toHaveBeenCalled();
+    warn.mockRestore();
+  });
+});
+
+describe("buildWeekAllocationInputs", () => {
+  const report = (date: string, hours: number) => ({
+    username: "u",
+    avatarUrl: "",
+    dateRange: { from: date, to: date },
+    stats: { estimatedHours: hours, totalCommits: 1 },
+    pullRequests: [],
+    commitMessages: [],
+  }) as unknown as import("../../types.js").WeeklyReportData;
+
+  it("is empty without reports", async () => {
+    const { buildWeekAllocationInputs } = await import("./render.js");
+    expect(buildWeekAllocationInputs({ dailyReports: new Map() }).size).toBe(0);
+  });
+
+  it("builds one Thu-Wed week input per week with reports, ending at the latest report while open", async () => {
+    const { buildWeekAllocationInputs } = await import("./render.js");
+    const daily = new Map([
+      ["2026-09-30", report("2026-09-30", 4)], // Wed: week of Sep 24
+      ["2026-10-01", report("2026-10-01", 4)], // Thu: week of Oct 1
+      ["2026-10-07", report("2026-10-07", 4)], // Wed
+      ["2026-10-08", report("2026-10-08", 4)], // Thu: week of Oct 8 (open)
+    ]);
+    const weeks = buildWeekAllocationInputs({ dailyReports: daily });
+    expect([...weeks.keys()].sort()).toEqual(["2026-09-24", "2026-10-01", "2026-10-08"]);
+    const closed = weeks.get("2026-10-01")!;
+    expect(closed.week!.label).toBe("Oct 1-7");
+    expect(closed.asOf).toBe("2026-10-07");
+    expect(closed.trend!.periods.at(-1)!.id).toBe("2026-10-01");
+    expect(closed.day).toBeUndefined();
+    const open = weeks.get("2026-10-08")!;
+    expect(open.asOf).toBe("2026-10-08");
+    expect(open.week!.allocation.totalHours).toBeGreaterThan(0);
+    // The Oct 1 week never includes later days.
+    expect(closed.week!.allocation.totalHours).toBeLessThan(open.trend!.periods.reduce((t, x) => t + x.allocation.totalHours, 0));
+  });
+
+  it("includes a manual-only week between reported weeks and ignores manual time after the latest report", async () => {
+    const { buildWeekAllocationInputs } = await import("./render.js");
+    const daily = new Map([
+      ["2026-09-30", report("2026-09-30", 4)], // week of Sep 24
+      ["2026-10-15", report("2026-10-15", 4)], // week of Oct 15 (latest report)
+    ]);
+    const manualTime = [
+      { date: "2026-10-03", initiative: "Hub", hours: 6 }, // week of Oct 1: no daily report
+      { date: "2026-10-22", initiative: "Hub", hours: 5 }, // after the latest report: excluded
+      { date: "2026-10-05", initiative: "Hub", hours: 0 }, // zero hours: ignored
+    ];
+    const weeks = buildWeekAllocationInputs({ dailyReports: daily, manualTime });
+    expect([...weeks.keys()].sort()).toEqual(["2026-09-24", "2026-10-01", "2026-10-15"]);
+    const manualWeek = weeks.get("2026-10-01")!;
+    expect(manualWeek.week!.label).toBe("Oct 1-7");
+    expect(manualWeek.week!.allocation.totalHours).toBe(6);
+    expect(manualWeek.asOf).toBe("2026-10-07");
+    // The after-latest entry (Oct 22) must not create a week of its own.
+    expect(weeks.has("2026-10-22")).toBe(false);
+  });
+
+  it("warns and returns nothing instead of throwing", async () => {
+    const { buildWeekAllocationInputs } = await import("./render.js");
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    const weeks = buildWeekAllocationInputs({ dailyReports: new Map([["2026-10-01", null as never]]) });
+    expect(weeks.size).toBe(0);
+    expect(warn).toHaveBeenCalled();
+    warn.mockRestore();
+  });
+});
+
+describe("buildInitiativeColorOrder", () => {
+  const report = (date: string, hours: number, repo: string) => ({
+    username: "u",
+    avatarUrl: "",
+    dateRange: { from: date, to: date },
+    stats: { estimatedHours: hours, totalCommits: 1 },
+    pullRequests: [],
+    commitMessages: [{ repo, messages: ["feat: work"] }],
+  }) as unknown as import("../../types.js").WeeklyReportData;
+
+  it("gives recent initiatives the first color slots, then all-time effort", async () => {
+    const { buildInitiativeColorOrder } = await import("./render.js");
+    const order = buildInitiativeColorOrder(new Map([
+      ["2026-06-01", report("2026-06-01", 40, "org/legacy")],
+      ["2026-06-02", report("2026-06-02", 20, "org/older")],
+      ["2026-10-07", report("2026-10-07", 4, "org/fresh")],
+    ]));
+    expect(order).toEqual(["Fresh", "Legacy", "Older"]);
+  });
+
+  it("leaves the no-activity minimum day out of the palette order", async () => {
+    const { buildInitiativeColorOrder } = await import("./render.js");
+    const { computeAllocation, NO_ACTIVITY_INITIATIVE } = await import("../../collector/allocation.js");
+    const idle = {
+      username: "u", avatarUrl: "", dateRange: { from: "2026-10-07", to: "2026-10-07" },
+      // The 8-hour daily minimum is carried as the estimate on a day with no activity.
+      stats: { estimatedHours: 8, totalCommits: 0 }, pullRequests: [], commitMessages: [],
+    } as unknown as import("../../types.js").WeeklyReportData;
+    // Precondition: an idle day is put in the no-activity bucket.
+    expect(computeAllocation(idle).initiatives.map((b) => b.initiative)).toContain(NO_ACTIVITY_INITIATIVE);
+    const order = buildInitiativeColorOrder(new Map([
+      ["2026-10-06", report("2026-10-06", 4, "org/fresh")],
+      ["2026-10-07", idle],
+    ]));
+    expect(order).not.toContain(NO_ACTIVITY_INITIATIVE);
+    expect(order).toEqual(["Fresh"]);
   });
 });

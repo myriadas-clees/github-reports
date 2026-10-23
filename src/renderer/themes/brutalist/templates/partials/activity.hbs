@@ -15,19 +15,21 @@
   </div>
 
   <div class="data-chips activity-stats">
-    <span class="chip"><span class="chip-label">PRs merged</span> <span class="chip-value chip-green">{{stats.prsMerged}}</span></span>
+    <span class="chip"><span class="chip-label">PRs integrated</span> <span class="chip-value chip-green">{{stats.prsMerged}}</span></span>
     <span class="chip"><span class="chip-label">Lines</span> <span class="chip-value chip-green">+{{formatNumber stats.totalAdditions}}</span> <span class="chip-value chip-red">−{{formatNumber stats.totalDeletions}}</span></span>
     {{#if hoursEstimate}}
-    <span class="chip"><span class="chip-label">Estimated engineering hours</span> <span class="chip-value">~{{hoursEstimate.hours}}h</span></span>
+    {{#if hoursEstimate.hours}}
+    <span class="chip"><span class="chip-label">Manual effort estimate</span> <span class="chip-value">{{workDelivered hoursEstimate.hours}}</span></span>
+    {{/if}}
     {{else}}
     {{#if stats.estimatedHours}}
-    <span class="chip"><span class="chip-label">Estimated engineering hours</span> <span class="chip-value">~{{stats.estimatedHours}}h</span></span>
+    <span class="chip"><span class="chip-label">Manual effort estimate</span> <span class="chip-value">{{workDelivered stats.estimatedHours}}</span></span>
     {{/if}}
     {{/if}}
   </div>
 
-  {{#if hoursEstimate}}
-  <p class="estimate-note"><em>Conventional engineering effort estimate — not tracked, elapsed, or billed time.</em></p>
+  {{#if hoursEstimate.hours}}
+  <p class="estimate-note"><em>Estimated manual engineering effort for one engineer delivering these changes without AI assistance. A modeled baseline, not actual hours worked.</em></p>
   {{/if}}
 
   {{#if dailyCommits.length}}
@@ -51,13 +53,13 @@
         <a class="activity-repo-ext" href="{{this.url}}" target="_blank" rel="noopener nofollow" aria-label="Open {{this.name}} on GitHub">{{> github-mark}}</a>
         <span class="activity-repo-name">{{this.name}}</span>
       </span>
-      <span class="activity-count">{{this.commits}} commits, {{this.prsOpened}} PRs opened, {{this.prsMerged}} merged</span>
+      <span class="activity-count">{{this.commits}} commits, {{this.prsOpened}} PRs opened, {{this.prsMerged}} integrated</span>
     </summary>
     <div class="activity-children">
       {{#each this.pullRequests}}
       <details class="activity-block activity-pr-block">
         <summary class="activity-pr">
-          <span class="pr-state pr-{{this.state}}">{{this.state}}</span>
+          <span class="pr-state pr-{{this.state}}">{{#eq this.state "merged"}}Code integrated{{else}}{{this.state}}{{/eq}}</span>
           <a class="activity-pr-title" href="{{this.url}}" target="_blank" rel="noopener nofollow">{{this.title}}</a>
           <span class="activity-count"><span class="activity-pr-add">+{{this.additions}}</span> <span class="activity-pr-del">−{{this.deletions}}</span></span>
         </summary>
@@ -105,7 +107,7 @@
         <a class="activity-repo-ext" href="{{this.url}}" target="_blank" rel="noopener nofollow" aria-label="Open {{this.name}} on GitHub">{{> github-mark}}</a>
         <span class="activity-repo-name">{{this.name}}</span>
       </span>
-      <span class="activity-count">{{this.commits}} commits, {{this.prsOpened}} PRs opened, {{this.prsMerged}} merged</span>
+      <span class="activity-count">{{this.commits}} commits, {{this.prsOpened}} PRs opened, {{this.prsMerged}} integrated</span>
     </div>
   </div>
   {{/if}}
@@ -117,7 +119,7 @@
   <ul class="activity-list">
     {{#each pullRequests}}
     <li>
-      <span class="pr-state pr-{{this.state}}">{{this.state}}</span>
+      <span class="pr-state pr-{{this.state}}">{{#eq this.state "merged"}}Code integrated{{else}}{{this.state}}{{/eq}}</span>
       <a href="{{this.url}}" target="_blank" rel="noopener nofollow">{{this.title}}</a>
       <span class="activity-meta">{{this.repository}} · +{{this.additions}} −{{this.deletions}}</span>
     </li>

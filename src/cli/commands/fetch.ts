@@ -13,7 +13,7 @@ import { fetchCommitMessages, mergeCommitMessagesWithPRs } from "../../collector
 import { fetchReleases } from "../../collector/fetch-releases.js";
 import { fetchReviewsForRepos } from "../../collector/fetch-reviews.js";
 import { aggregateRepositories } from "../../collector/aggregate.js";
-import { estimateHours } from "../../collector/estimate-hours.js";
+import { buildCommitUnits, collectDirectCommitInputs, estimateHours } from "../../collector/estimate-hours.js";
 import { buildStakeholderSummary } from "../../collector/stakeholder-summary.js";
 import { getWeekId } from "../../deployer/week.js";
 import { getDayId, getPreviousDayId } from "../../deployer/day.js";
@@ -102,6 +102,8 @@ export type DailyPullRequestActions = {
   inProgress: PullRequest[];
   /** Authored PRs with reporting-user branch commits in the exact window. */
   workedOn: PullRequest[];
+  /** Worked-on PRs closed without merging, absent from the report and in-progress lists. */
+  workedOnClosed: PullRequest[];
 };
 
 export const deriveContributionStats = (
@@ -226,6 +228,7 @@ export const classifyPullRequestsForRange = (
     report,
     inProgress: [...inProgressByUrl.values()],
     workedOn,
+    workedOnClosed: workedOn.filter((pr) => pr.state === "closed" && !pr.mergedAt && !reportByUrl.has(pr.url) && !inProgressByUrl.has(pr.url)),
   };
 };
 
@@ -444,6 +447,7 @@ const runFullFetch = async (
         merged: report.filter((pr) => pr.state === "merged"),
         inProgress: report.filter((pr) => pr.state === "open"),
         workedOn: [],
+        workedOnClosed: [],
         report,
       };
     })();
@@ -457,6 +461,7 @@ const runFullFetch = async (
   const prsOpened = prActions.opened.length;
   const prsMerged = prActions.merged.length;
   const prsInProgress = prActions.inProgress;
+  const prsWorkedOnClosed = prActions.workedOnClosed;
 
   console.log("Fetching contribution stats...");
   const gql = graphql.defaults({ headers: { authorization: `token ${options.token}` } });
@@ -567,6 +572,14 @@ const runFullFetch = async (
       commitAdditions: directCommitChurn.additions,
       commitDeletions: directCommitChurn.deletions,
       commitStatsCount: directCommitChurn.withStats,
+      ...(commitMessages.some((repo) => (repo.commits?.length ?? 0) > 0)
+        ? {
+          commitUnits: buildCommitUnits(collectDirectCommitInputs(
+            commitMessages,
+            new Set(prActions.workedOn.flatMap((pr) => (pr.workCommits ?? []).map((commit) => commit.sha))),
+          )),
+        }
+        : {}),
     },
     options: {
       gapMinutes: options.sessionGapMinutes,
@@ -606,6 +619,7 @@ const runFullFetch = async (
     repositories,
     pullRequests: prActions.report,
     prsInProgress,
+    ...(prsWorkedOnClosed.length ? { prsWorkedOnClosed } : {}),
     issues: [],
     events: events.filter((e) => e.payload.kind === "review" || e.payload.kind === "push"),
     commitMessages,

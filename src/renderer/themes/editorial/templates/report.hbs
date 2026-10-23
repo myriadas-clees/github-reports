@@ -69,8 +69,11 @@
       </div>
       <h1>{{aiContent.title}}</h1>
       <p class="cover-sub">{{aiContent.subtitle}}</p>
+      {{#if weekLink}}<p class="week-link"><a href="{{weekLink.href}}">{{weekLink.text}}</a></p>{{/if}}
     </div>
   </article>
+
+  {{> allocation}}
 
   {{!-- OVERVIEW (skip when it duplicates stakeholder summary) --}}
   {{#if aiContent.overview}}
