@@ -1,0 +1,81 @@
+title: Oct 22
+subtitle: northstar, bound workflow & brand
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/ohcpwm-apps and Myriad-Advisor-Solutions/myriadas-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 8 PRs
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 1 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 32 commits with +30,360 / −26,613 lines.
+    chips:
+      - label: Commits
+        value: "32"
+        color: green
+      - label: Additions
+        value: +30,360
+        color: green
+      - label: Deletions
+        value: −26,613
+        color: red
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 11 reviews, 21 comments, 8 PRs."
+    chips:
+      - label: Codex
+        value: 11 reviews · 21 comments · 8 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~112.3h
+highlights:
+  - type: pr
+    title: "fix(northstar): honor custom brief instructions"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +91 −26
+    body: |-
+      - Give custom advisor brief instructions precedence over default focus, formatting, tone, and length guidance.
+      - Keep fixed accuracy and privacy rules, clarify that free text in Microsoft data is untr
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/178
+  - type: pr
+    title: "fix(northstar): prevent duplicate turns, smooth answer streaming, and clearer wait labels"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +228 −63
+    body: >-
+      - Prevent duplicate messages by reconciling provisional questions with their turn IDs, including after a reload
+      recovers a pending turn.
+
+      - Link To Do cards to the selected list and keep the link disab
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/177
+  - type: pr
+    title: "feat(brand): add app icons and Harriman branding"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +330 −4
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/184
+  - type: pr
+    title: "feat(northstar): add Calendly scheduling connector"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +1158 −10
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/183
+  - type: pr
+    title: "fix(northstar): preserve @web search intent for Copilot"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +11 −4
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/182
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(northstar): honor custom brief instructions" in Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(northstar): prevent duplicate turns, smooth answer streaming, and clearer wait
+      labels" in Myriad-Advisor-Solutions/ohcpwm-apps'
