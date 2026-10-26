@@ -1,0 +1,104 @@
+title: Oct 23
+subtitle: transition, proforma & auth
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 8 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 43 commits with +8,436 / −1,856 lines.
+    chips:
+      - label: Commits
+        value: "43"
+        color: green
+      - label: Additions
+        value: +8,436
+        color: green
+      - label: Deletions
+        value: −1,856
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 1 reviews with 1 comments.
+    chips:
+      - label: Reviews
+        value: "1"
+      - label: Comments
+        value: "1"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 10 reviews, 16 comments, 4 PRs."
+    chips:
+      - label: Codex
+        value: 10 reviews · 16 comments · 4 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~109.3h
+highlights:
+  - type: pr
+    title: "fix(hub): move admin APIs off reserved routes"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +28 −24
+    body: >-
+      Azure Functions rejects routes beginning with its reserved `admin` prefix. The Hub company and transfer functions
+      therefore fail to register, leaving the Admin page unable to load companies.
+
+
+      This mov
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/208
+  - type: pr
+    title: "fix(transition): count shared paperwork once per household"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +0 −0
+    body: >-
+      ## Why
+
+
+      Shared Custodian and Advisor paperwork was counted once per account, inflating household progress as account
+      counts grew.
+
+
+      ## What changed
+
+
+      - Count shared paperwork once per household while re
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/203
+  - type: pr
+    title: "feat: isolate company data across Myriad apps"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +0 −0
+    body: >-
+      ## Problem
+
+
+      Company-scoped data in shared Cosmos storage needs the same server-side company boundary across the Myriad app
+      registry. Proforma also needs a complete scoped workflow, including model per
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
+  - type: pr
+    title: "fix(proforma): rename Betterment scenarios to Trade PMR"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +128 −123
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/216
+  - type: pr
+    title: "feat(transition): allow admins demo access"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +12 −8
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/213
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(hub): move admin APIs off reserved routes" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(transition): count shared paperwork once per household" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat: isolate company data across Myriad apps" in Myriad-Advisor-Solutions/myriadas-apps'

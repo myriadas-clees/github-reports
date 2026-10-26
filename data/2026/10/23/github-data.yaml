@@ -1,0 +1,1675 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-10-23
+  to: 2026-10-23
+stats:
+  totalCommits: 43
+  totalAdditions: 8436
+  totalDeletions: 1856
+  prsOpened: 8
+  prsMerged: 3
+  prsInProgress: 9
+  prsReviewed: 1
+  reviewComments: 1
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 109.3
+dailyCommits:
+  - date: 2026-10-23
+    count: 43
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 43
+    prsOpened: 8
+    prsMerged: 3
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests:
+  - title: "fix(hub): move admin APIs off reserved routes"
+    body: >-
+      Azure Functions rejects routes beginning with its reserved `admin` prefix. The Hub company and transfer functions
+      therefore fail to register, leaving the Admin page unable to load companies.
+
+
+      This moves both APIs under `/api/hub/admin/*` and updates the browser client, SWA admin-only authorization r...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/208
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - "app: hub"
+      - platform
+    additions: 28
+    deletions: 24
+    changedFiles: 7
+    author: myriadas-clees
+    createdAt: 2026-10-23T05:55:35Z
+    updatedAt: 2026-10-23T05:59:51Z
+    closedAt: 2026-10-23T05:59:51Z
+    mergedAt: 2026-10-23T05:59:51Z
+    workCommits:
+      - &a29
+        sha: d8e06cc956643e078964848408874bcb7bce8a8b
+        message: "fix(hub): move admin APIs off reserved routes"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d8e06cc956643e078964848408874bcb7bce8a8b
+        authoredAt: 2026-10-23T05:55:27Z
+    workTimestamps:
+      - 2026-10-23T05:55:27Z
+    workAdditions: 28
+    workDeletions: 24
+    workFiles:
+      - docs/platform-cosmos-operations.md
+      - hub/functions/src/company-transfer.test.ts
+      - hub/functions/src/index.ts
+      - hub/lib/admin-api.test.ts
+      - hub/lib/admin-api.ts
+      - hub/staticwebapp.config.json
+      - scripts/tooling.test.ts
+  - title: "fix(proforma): rename Betterment scenarios to Trade PMR"
+    body: >-
+      ## Why
+
+
+      Proforma scenario labels still referred to Betterment, and the hybrid scenario used the longer Schwab-Betterment
+      name. The labels needed to match the updated Trade PMR terminology.
+
+
+      ## What changed
+
+
+      - Renamed Betterment labels to Trade PMR across the Proforma interface and generated reports....
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/216
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a1
+      - "app: proforma"
+    additions: 128
+    deletions: 123
+    changedFiles: 25
+    author: myriadas-clees
+    createdAt: 2026-10-23T19:55:03Z
+    updatedAt: 2026-10-23T20:03:32Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a2
+      - &a48
+        sha: 8e4add739ae60b371ec090fc80bff0a89136488c
+        message: "fix(proforma): rename Betterment scenarios to Trade PMR"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8e4add739ae60b371ec090fc80bff0a89136488c
+        authoredAt: 2026-10-23T19:54:55Z
+      - &a49
+        sha: 471fe3ad5ddf270ede418694adf6d6857f9339ee
+        message: "fix(proforma): rename Orion to Portfolio Management System"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/471fe3ad5ddf270ede418694adf6d6857f9339ee
+        authoredAt: 2026-10-23T20:02:08Z
+    workTimestamps: &a3
+      - 2026-10-23T19:54:55Z
+      - 2026-10-23T20:02:08Z
+    workAdditions: 128
+    workDeletions: 123
+    workFiles: &a4
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/hybrid-fee-editor.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/report-filenames.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report-filenames.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation-sections.ts
+      - proforma/src/lib/workstation.ts
+  - title: "feat(transition): allow admins demo access"
+    body: |-
+      - Allow non-read-only admins to use Transition demo mode alongside myriadas_user.
+      - Keep read_only precedence and transition_user ineligibility; update tests and docs.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/213
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a5
+      - documentation
+      - "app: hub"
+      - "app: onboarding"
+      - "app: pto-tracker"
+      - "app: proforma"
+      - "app: excelerate"
+      - "app: valuation"
+      - platform
+      - "app: transition"
+      - "app: compass"
+    additions: 629
+    deletions: 110
+    changedFiles: 5
+    author: myriadas-clees
+    createdAt: 2026-10-23T18:58:27Z
+    updatedAt: 2026-10-26T03:53:30Z
+    closedAt: 2026-10-26T03:53:30Z
+    mergedAt: 2026-10-26T03:53:30Z
+    workCommits: &a6
+      - &a39
+        sha: 8bb94184dc2e1e5e2e20141992b4ecb7a86ee4de
+        message: "feat(transition): allow admins demo access"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8bb94184dc2e1e5e2e20141992b4ecb7a86ee4de
+        authoredAt: 2026-10-23T18:58:11Z
+      - &a43
+        sha: e946d0d2cb88ea45c1f317e10a765bf99e794637
+        message: Merge shared transfer and settings fixes into Transition release
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e946d0d2cb88ea45c1f317e10a765bf99e794637
+        authoredAt: 2026-10-23T19:10:32Z
+    workTimestamps: &a7
+      - 2026-10-23T18:58:11Z
+      - 2026-10-23T19:10:32Z
+    workAdditions: 629
+    workDeletions: 110
+    workFiles: &a8
+      - compass/src/app/layout.tsx
+      - compass/src/components/settings-workspace.tsx
+      - docs/authorization-roles.md
+      - excelerate/src/app/layout.tsx
+      - excelerate/src/app/settings/page.tsx
+      - hub/app/layout.tsx
+      - hub/components/HubSettingsPage.tsx
+      - hub/components/admin/TransferRunView.test.tsx
+      - hub/components/admin/TransferRunView.tsx
+      - hub/components/admin/TransfersPanel.test.tsx
+      - hub/components/admin/TransfersPanel.tsx
+      - hub/functions/src/company-transfer.test.ts
+      - hub/lib/admin-api.test.ts
+      - hub/lib/admin-api.ts
+      - onboarding/apps/dashboard/app/layout.tsx
+      - onboarding/apps/dashboard/app/settings/page.test.tsx
+      - onboarding/apps/dashboard/app/settings/page.tsx
+      - packages/db/src/bucket-transfer/index.test.ts
+      - packages/db/src/bucket-transfer/index.ts
+      - packages/ui/src/navigation/app-shell.test.tsx
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/settings/company-settings.test.tsx
+      - packages/ui/src/settings/company-settings.tsx
+      - packages/ui/src/settings/index.ts
+      - proforma/src/app/layout.tsx
+      - proforma/src/components/proforma-settings-page.tsx
+      - pto-tracker/src/app/layout.tsx
+      - pto-tracker/src/app/settings/page.tsx
+      - scripts/tooling.test.ts
+      - transition/README.md
+      - transition/src/app/layout.tsx
+      - transition/src/components/settings/settings-page.test.ts
+      - transition/src/components/settings/settings-page.tsx
+      - transition/src/lib/api/azure-functions-demo.test.ts
+      - transition/src/lib/auth.test.ts
+      - transition/src/lib/auth.ts
+      - transition/src/lib/transfer-adapter.test.ts
+      - transition/src/lib/transfer-adapter.ts
+      - valuation/src/app/layout.tsx
+      - valuation/src/app/settings/page.tsx
+  - title: "feat(transition): improve checklist and account usability"
+    body: Transition users need clearer checklist ownership and account workflows, including a way to reset paperwork to “No
+      paperwork.” This change adds item ownership, Open/All and hide/show controls, account and household workflow
+      improvements, and a confirmed paperwork reset that preserves checklist progr...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/211
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a9
+      - documentation
+      - "app: transition"
+    additions: 1381
+    deletions: 244
+    changedFiles: 35
+    author: myriadas-clees
+    createdAt: 2026-10-23T18:44:06Z
+    updatedAt: 2026-10-26T03:53:32Z
+    closedAt: 2026-10-26T03:53:31Z
+    mergedAt: 2026-10-26T03:53:31Z
+    workCommits: &a10
+      - &a37
+        sha: 0b7c36e8dd1be219dc97c7b9af170fa2485377df
+        message: "feat(transition): improve checklist and account usability"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0b7c36e8dd1be219dc97c7b9af170fa2485377df
+        authoredAt: 2026-10-23T18:43:58Z
+      - &a40
+        sha: 1b7d52be4201f04593e5b1e29d25c0370b0ff869
+        message: "fix(transition): keep checklist Details drafts when rows hide or refilter"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/1b7d52be4201f04593e5b1e29d25c0370b0ff869
+        authoredAt: 2026-10-23T19:06:15Z
+      - &a41
+        sha: 16e6e4473e0b9d5e7c4ad554f6c335c45ef5e77b
+        message: Merge admin demo access into Transition release
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/16e6e4473e0b9d5e7c4ad554f6c335c45ef5e77b
+        authoredAt: 2026-10-23T19:06:55Z
+      - &a42
+        sha: 578ba60b7038ee6a8ff82b7f856885bd1c1c321c
+        message: "fix(transition): retain drafts after cancelled checklist saves"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/578ba60b7038ee6a8ff82b7f856885bd1c1c321c
+        authoredAt: 2026-10-23T19:08:03Z
+      - &a44
+        sha: efce2ced380d81c90088d7d13b141ec8d9a9edf2
+        message: Integrate shared fixes into complete Transition release
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/efce2ced380d81c90088d7d13b141ec8d9a9edf2
+        authoredAt: 2026-10-23T19:10:32Z
+    workTimestamps: &a11
+      - 2026-10-23T18:43:58Z
+      - 2026-10-23T19:06:15Z
+      - 2026-10-23T19:06:55Z
+      - 2026-10-23T19:08:03Z
+      - 2026-10-23T19:10:32Z
+    workAdditions: 1381
+    workDeletions: 244
+    workFiles: &a12
+      - compass/src/app/layout.tsx
+      - compass/src/components/settings-workspace.tsx
+      - docs/authorization-roles.md
+      - excelerate/src/app/layout.tsx
+      - excelerate/src/app/settings/page.tsx
+      - hub/app/layout.tsx
+      - hub/components/HubSettingsPage.tsx
+      - hub/components/admin/TransferRunView.test.tsx
+      - hub/components/admin/TransferRunView.tsx
+      - hub/components/admin/TransfersPanel.test.tsx
+      - hub/components/admin/TransfersPanel.tsx
+      - hub/functions/src/company-transfer.test.ts
+      - hub/lib/admin-api.test.ts
+      - hub/lib/admin-api.ts
+      - onboarding/apps/dashboard/app/layout.tsx
+      - onboarding/apps/dashboard/app/settings/page.test.tsx
+      - onboarding/apps/dashboard/app/settings/page.tsx
+      - packages/db/src/bucket-transfer/index.test.ts
+      - packages/db/src/bucket-transfer/index.ts
+      - packages/ui/src/navigation/app-shell.test.tsx
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/settings/company-settings.test.tsx
+      - packages/ui/src/settings/company-settings.tsx
+      - packages/ui/src/settings/index.ts
+      - proforma/src/app/layout.tsx
+      - proforma/src/components/proforma-settings-page.tsx
+      - pto-tracker/src/app/layout.tsx
+      - pto-tracker/src/app/settings/page.tsx
+      - scripts/tooling.test.ts
+      - transition/AGENTS.md
+      - transition/README.md
+      - transition/src/app/globals.css
+      - transition/src/app/layout.tsx
+      - transition/src/components/accounts/account-detail.test.ts
+      - transition/src/components/accounts/account-detail.tsx
+      - transition/src/components/accounts/accounts-page.tsx
+      - transition/src/components/accounts/use-checklist-visibility.ts
+      - transition/src/components/bulk-status.tsx
+      - transition/src/components/dashboard/dashboard.tsx
+      - transition/src/components/households/household-overview.tsx
+      - transition/src/components/households/household-paperwork-ui.tsx
+      - transition/src/components/households/households-page.tsx
+      - transition/src/components/settings/settings-page.test.ts
+      - transition/src/components/settings/settings-page.tsx
+      - transition/src/components/workspace/shared.tsx
+      - transition/src/lib/account-status-preview.test.ts
+      - transition/src/lib/account-verification-persistence.test.ts
+      - transition/src/lib/api/azure-functions-demo.test.ts
+      - transition/src/lib/auth.test.ts
+      - transition/src/lib/auth.ts
+      - transition/src/lib/checklist-view.test.ts
+      - transition/src/lib/checklist-view.ts
+      - transition/src/lib/excel-backup.test.ts
+      - transition/src/lib/excel-backup.ts
+      - transition/src/lib/feature-owner.test.ts
+      - transition/src/lib/handlers.ts
+      - transition/src/lib/household-paperwork.test.ts
+      - transition/src/lib/household-paperwork.ts
+      - transition/src/lib/household-selection.test.ts
+      - transition/src/lib/household-selection.ts
+      - transition/src/lib/model.ts
+      - transition/src/lib/navigation-performance.test.ts
+      - transition/src/lib/paperwork-link-handlers.test.ts
+      - transition/src/lib/rep-codes.test.ts
+      - transition/src/lib/rep-codes.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
+      - transition/src/lib/transfer-adapter.test.ts
+      - transition/src/lib/transfer-adapter.ts
+      - transition/src/lib/transition-workbook.test.ts
+      - transition/src/lib/undo.test.ts
+      - transition/src/lib/undo.ts
+      - transition/src/lib/workbook.ts
+      - valuation/src/app/layout.tsx
+      - valuation/src/app/settings/page.tsx
+  - title: "feat(transition): keep household and account controls sticky"
+    body: >-
+      Accounts and Households list controls now remain visible while scrolling when the full controls fit below
+      navigation. On shorter viewports they scroll with the page, so filters cannot cover the account rows. Both
+      navigation layouts use the measured topbar offset.
+
+
+      First, Previous, Next and Last retu...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/217
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a13
+      - documentation
+      - "app: hub"
+      - "app: onboarding"
+      - "app: pto-tracker"
+      - "app: proforma"
+      - "app: excelerate"
+      - "app: valuation"
+      - platform
+      - "app: transition"
+      - "app: compass"
+    additions: 1506
+    deletions: 266
+    changedFiles: 5
+    author: myriadas-clees
+    createdAt: 2026-10-23T20:20:37Z
+    updatedAt: 2026-10-26T03:53:33Z
+    closedAt: 2026-10-26T03:53:33Z
+    mergedAt: 2026-10-26T03:53:33Z
+    workCommits: &a14
+      - &a50
+        sha: 6a60a18356e6c7e1c7793090febd42903ff8745d
+        message: "feat(transition): keep household and account controls sticky"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6a60a18356e6c7e1c7793090febd42903ff8745d
+        authoredAt: 2026-10-23T20:20:30Z
+      - &a52
+        sha: 056304d32884914752814b7d33c573e6452bc2b5
+        message: Integrate Transition controls into release stack
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/056304d32884914752814b7d33c573e6452bc2b5
+        authoredAt: 2026-10-23T20:27:26Z
+      - &a57
+        sha: 5eb016369bf2bbd0ecd391f37e8cce5f98df8539
+        message: "fix(transition): keep tall sticky list controls from covering rows"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5eb016369bf2bbd0ecd391f37e8cce5f98df8539
+        authoredAt: 2026-10-23T20:48:32Z
+      - &a64
+        sha: 0d20866ec6c008408974c80e40dfc8da2ea9ccd0
+        message: "fix(transition): pin list controls only while they fit below navigation"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0d20866ec6c008408974c80e40dfc8da2ea9ccd0
+        authoredAt: 2026-10-23T21:18:49Z
+      - &a65
+        sha: 39d8fc78d60edf2f807d60014cdd6ff94b41503d
+        message: "fix(transition): return list to view after any pagination action"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/39d8fc78d60edf2f807d60014cdd6ff94b41503d
+        authoredAt: 2026-10-23T21:24:17Z
+      - &a66
+        sha: 9895a009cdb0fceee9cbc709a6ad7341a613ccd0
+        message: "fix(transition): scope pager focus handling to sticky controls"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9895a009cdb0fceee9cbc709a6ad7341a613ccd0
+        authoredAt: 2026-10-23T21:25:54Z
+    workTimestamps: &a15
+      - 2026-10-23T20:20:30Z
+      - 2026-10-23T20:27:26Z
+      - 2026-10-23T20:48:32Z
+      - 2026-10-23T21:18:49Z
+      - 2026-10-23T21:24:17Z
+      - 2026-10-23T21:25:54Z
+    workAdditions: 1506
+    workDeletions: 266
+    workFiles: &a16
+      - compass/src/app/layout.tsx
+      - compass/src/components/settings-workspace.tsx
+      - docs/authorization-roles.md
+      - excelerate/src/app/layout.tsx
+      - excelerate/src/app/settings/page.tsx
+      - hub/app/layout.tsx
+      - hub/components/HubSettingsPage.tsx
+      - hub/components/admin/TransferRunView.test.tsx
+      - hub/components/admin/TransferRunView.tsx
+      - hub/components/admin/TransfersPanel.test.tsx
+      - hub/components/admin/TransfersPanel.tsx
+      - hub/functions/src/company-transfer.test.ts
+      - hub/lib/admin-api.test.ts
+      - hub/lib/admin-api.ts
+      - onboarding/apps/dashboard/app/layout.tsx
+      - onboarding/apps/dashboard/app/settings/page.test.tsx
+      - onboarding/apps/dashboard/app/settings/page.tsx
+      - packages/db/src/bucket-transfer/index.test.ts
+      - packages/db/src/bucket-transfer/index.ts
+      - packages/ui/src/navigation/app-shell.test.tsx
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/settings/company-settings.test.tsx
+      - packages/ui/src/settings/company-settings.tsx
+      - packages/ui/src/settings/index.ts
+      - proforma/src/app/layout.tsx
+      - proforma/src/components/proforma-settings-page.tsx
+      - pto-tracker/src/app/layout.tsx
+      - pto-tracker/src/app/settings/page.tsx
+      - scripts/tooling.test.ts
+      - transition/AGENTS.md
+      - transition/README.md
+      - transition/src/app/globals.css
+      - transition/src/app/layout.tsx
+      - transition/src/components/accounts/account-detail.test.ts
+      - transition/src/components/accounts/account-detail.tsx
+      - transition/src/components/accounts/accounts-page.tsx
+      - transition/src/components/accounts/use-checklist-visibility.ts
+      - transition/src/components/bulk-status.tsx
+      - transition/src/components/dashboard/dashboard.tsx
+      - transition/src/components/households/household-overview.tsx
+      - transition/src/components/households/household-paperwork-ui.tsx
+      - transition/src/components/households/households-page.tsx
+      - transition/src/components/settings/settings-page.test.ts
+      - transition/src/components/settings/settings-page.tsx
+      - transition/src/components/transition-shell.tsx
+      - transition/src/components/ui/layout.tsx
+      - transition/src/components/workspace/shared.tsx
+      - transition/src/lib/account-status-preview.test.ts
+      - transition/src/lib/account-verification-persistence.test.ts
+      - transition/src/lib/api/azure-functions-demo.test.ts
+      - transition/src/lib/auth.test.ts
+      - transition/src/lib/auth.ts
+      - transition/src/lib/checklist-view.test.ts
+      - transition/src/lib/checklist-view.ts
+      - transition/src/lib/excel-backup.test.ts
+      - transition/src/lib/excel-backup.ts
+      - transition/src/lib/feature-owner.test.ts
+      - transition/src/lib/handlers.ts
+      - transition/src/lib/household-paperwork.test.ts
+      - transition/src/lib/household-paperwork.ts
+      - transition/src/lib/household-selection.test.ts
+      - transition/src/lib/household-selection.ts
+      - transition/src/lib/model.ts
+      - transition/src/lib/navigation-performance.test.ts
+      - transition/src/lib/paperwork-link-handlers.test.ts
+      - transition/src/lib/rep-codes.test.ts
+      - transition/src/lib/rep-codes.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
+      - transition/src/lib/transfer-adapter.test.ts
+      - transition/src/lib/transfer-adapter.ts
+      - transition/src/lib/transition-workbook.test.ts
+      - transition/src/lib/undo.test.ts
+      - transition/src/lib/undo.ts
+      - transition/src/lib/workbook.ts
+      - valuation/src/app/layout.tsx
+      - valuation/src/app/settings/page.tsx
+  - title: "fix(proforma): preserve latest version when deleting recruits"
+    body: Deleting a recruit could appear to do nothing after a pipeline refresh replaced a newer cached version with an
+      older projection. The client now preserves the newer version, and a failed delete remains visible in the open
+      confirmation dialog with retry available. The dialog also follows the app's sel...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/210
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a17
+      - documentation
+      - "app: hub"
+      - "app: onboarding"
+      - "app: pto-tracker"
+      - "app: proforma"
+      - "app: excelerate"
+      - "app: valuation"
+      - platform
+      - "app: transition"
+      - "app: compass"
+    additions: 2097
+    deletions: 482
+    changedFiles: 6
+    author: myriadas-clees
+    createdAt: 2026-10-23T18:42:45Z
+    updatedAt: 2026-10-26T03:53:35Z
+    closedAt: 2026-10-26T03:53:35Z
+    mergedAt: 2026-10-26T03:53:35Z
+    workCommits: &a18
+      - &a36
+        sha: 2da6fb7378e20658f250ed34491093480e710111
+        message: "fix(proforma): preserve latest version when deleting recruits"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2da6fb7378e20658f250ed34491093480e710111
+        authoredAt: 2026-10-23T18:42:37Z
+      - &a53
+        sha: cbd0906aee6980c4502d027129ea80bd2eb43609
+        message: Integrate recruit deletion into release stack
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/cbd0906aee6980c4502d027129ea80bd2eb43609
+        authoredAt: 2026-10-23T20:27:47Z
+      - &a60
+        sha: 5876bbd1704116a121f85597e8e6dd724cf61f1e
+        message: Integrate reviewed logout and control contrast fixes
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5876bbd1704116a121f85597e8e6dd724cf61f1e
+        authoredAt: 2026-10-23T20:53:26Z
+      - &a59
+        sha: e5eb58b8a9a1ee9a16eb5bc0413503ab38330827
+        message: "fix(proforma): follow app data-theme for the delete recruit dialog"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e5eb58b8a9a1ee9a16eb5bc0413503ab38330827
+        authoredAt: 2026-10-23T20:51:55Z
+      - &a63
+        sha: c86ea4b5e36225475cb975a37be67c869299be11
+        message: Carry complete logout fixes into release head
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c86ea4b5e36225475cb975a37be67c869299be11
+        authoredAt: 2026-10-23T21:01:23Z
+      - &a67
+        sha: afbb84a7f433c0b4675af357fa57c54a73b62ee5
+        message: Carry final sticky-control fixes into release head
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/afbb84a7f433c0b4675af357fa57c54a73b62ee5
+        authoredAt: 2026-10-23T21:25:54Z
+    workTimestamps: &a19
+      - 2026-10-23T18:42:37Z
+      - 2026-10-23T20:27:47Z
+      - 2026-10-23T20:53:26Z
+      - 2026-10-23T20:51:55Z
+      - 2026-10-23T21:01:23Z
+      - 2026-10-23T21:25:54Z
+    workAdditions: 2097
+    workDeletions: 482
+    workFiles: &a20
+      - compass/src/app/layout.tsx
+      - compass/src/components/compass-provider.tsx
+      - compass/src/components/compass-shell.tsx
+      - compass/src/components/compass-stability.fixture.tsx
+      - compass/src/components/settings-workspace.tsx
+      - compass/src/lib/swa-session.ts
+      - compass/staticwebapp.config.json
+      - docs/authorization-roles.md
+      - excelerate/src/app/layout.tsx
+      - excelerate/src/app/settings/page.tsx
+      - hub/app/layout.tsx
+      - hub/components/HubSettingsPage.tsx
+      - hub/components/admin/TransferRunView.test.tsx
+      - hub/components/admin/TransferRunView.tsx
+      - hub/components/admin/TransfersPanel.test.tsx
+      - hub/components/admin/TransfersPanel.tsx
+      - hub/functions/src/company-transfer.test.ts
+      - hub/lib/admin-api.test.ts
+      - hub/lib/admin-api.ts
+      - hub/staticwebapp.config.json
+      - onboarding/apps/dashboard/app/globals.css
+      - onboarding/apps/dashboard/app/layout.tsx
+      - onboarding/apps/dashboard/app/settings/page.test.tsx
+      - onboarding/apps/dashboard/app/settings/page.tsx
+      - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - onboarding/apps/dashboard/lib/swa-session.test.ts
+      - onboarding/apps/dashboard/lib/swa-session.ts
+      - onboarding/apps/dashboard/staticwebapp.config.json
+      - packages/db/src/bucket-transfer/index.test.ts
+      - packages/db/src/bucket-transfer/index.ts
+      - packages/ui/src/company/context.test.tsx
+      - packages/ui/src/company/context.tsx
+      - packages/ui/src/index.ts
+      - packages/ui/src/navigation/app-shell.test.tsx
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/settings/company-settings.test.tsx
+      - packages/ui/src/settings/company-settings.tsx
+      - packages/ui/src/settings/index.ts
+      - packages/ui/src/signed-out.tsx
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/delete-recruit-form.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/delete-recruit-form.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-settings-page.tsx
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-auth-routes.test.ts
+      - proforma/src/lib/__tests__/proforma-session-client.test.ts
+      - proforma/src/lib/__tests__/scoped-e2e-lifecycle.test.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/proforma-auth-routes.ts
+      - proforma/src/lib/proforma-session-client.ts
+      - pto-tracker/src/app/layout.tsx
+      - pto-tracker/src/app/settings/page.tsx
+      - pto-tracker/src/components/PtoAppShell.tsx
+      - scripts/tooling.test.ts
+      - transition/AGENTS.md
+      - transition/README.md
+      - transition/src/app/globals.css
+      - transition/src/app/layout.tsx
+      - transition/src/components/accounts/account-detail.test.ts
+      - transition/src/components/accounts/account-detail.tsx
+      - transition/src/components/accounts/accounts-page.tsx
+      - transition/src/components/accounts/use-checklist-visibility.ts
+      - transition/src/components/bulk-status.tsx
+      - transition/src/components/dashboard/dashboard.tsx
+      - transition/src/components/households/household-overview.tsx
+      - transition/src/components/households/household-paperwork-ui.tsx
+      - transition/src/components/households/households-page.tsx
+      - transition/src/components/settings/settings-page.test.ts
+      - transition/src/components/settings/settings-page.tsx
+      - transition/src/components/transition-shell.tsx
+      - transition/src/components/ui/layout.tsx
+      - transition/src/components/workspace/shared.tsx
+      - transition/src/lib/account-status-preview.test.ts
+      - transition/src/lib/account-verification-persistence.test.ts
+      - transition/src/lib/api/azure-functions-demo.test.ts
+      - transition/src/lib/auth.test.ts
+      - transition/src/lib/auth.ts
+      - transition/src/lib/checklist-view.test.ts
+      - transition/src/lib/checklist-view.ts
+      - transition/src/lib/excel-backup.test.ts
+      - transition/src/lib/excel-backup.ts
+      - transition/src/lib/feature-owner.test.ts
+      - transition/src/lib/handlers.ts
+      - transition/src/lib/household-paperwork.test.ts
+      - transition/src/lib/household-paperwork.ts
+      - transition/src/lib/household-selection.test.ts
+      - transition/src/lib/household-selection.ts
+      - transition/src/lib/model.ts
+      - transition/src/lib/navigation-performance.test.ts
+      - transition/src/lib/paperwork-link-handlers.test.ts
+      - transition/src/lib/rep-codes.test.ts
+      - transition/src/lib/rep-codes.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
+      - transition/src/lib/swa-session.test.ts
+      - transition/src/lib/swa-session.ts
+      - transition/src/lib/transfer-adapter.test.ts
+      - transition/src/lib/transfer-adapter.ts
+      - transition/src/lib/transition-workbook.test.ts
+      - transition/src/lib/undo.test.ts
+      - transition/src/lib/undo.ts
+      - transition/src/lib/workbook.ts
+      - transition/staticwebapp.config.json
+      - valuation/src/app/layout.tsx
+      - valuation/src/app/settings/page.tsx
+      - valuation/src/components/valuation-runtime-shell.tsx
+      - valuation/src/components/valuation-shell.tsx
+      - valuation/src/lib/api/client.ts
+      - valuation/src/lib/swa-session.test.ts
+      - valuation/src/lib/swa-session.ts
+      - valuation/staticwebapp.config.json
+  - title: "fix(auth): keep logout landing pages accessible"
+    body: >-
+      Logout now leaves users on an accessible signed-out screen with an explicit Microsoft sign-in action, rather than
+      restarting authentication or presenting an outage. The shared screen is used by Proforma, Transition, Valuation,
+      Onboarding, PTO and Compass; Hub retains its public homepage.
+
+
+      Public lan...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/212
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a21
+      - documentation
+      - "app: hub"
+      - "app: onboarding"
+      - "app: pto-tracker"
+      - "app: proforma"
+      - "app: excelerate"
+      - "app: valuation"
+      - platform
+      - "app: transition"
+      - "app: compass"
+    additions: 2031
+    deletions: 486
+    changedFiles: 38
+    author: myriadas-clees
+    createdAt: 2026-10-23T18:56:14Z
+    updatedAt: 2026-10-26T03:53:34Z
+    closedAt: 2026-10-26T03:53:34Z
+    mergedAt: 2026-10-26T03:53:34Z
+    workCommits: &a22
+      - &a38
+        sha: 7dc54c0e3d6cab2c8ed85cd15cbed6e5c915d29f
+        message: "fix(auth): keep logout landing pages accessible"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7dc54c0e3d6cab2c8ed85cd15cbed6e5c915d29f
+        authoredAt: 2026-10-23T18:56:04Z
+      - &a47
+        sha: a7b1a01e3d9e7db50e54611ced536b8637f91429
+        message: "test(auth): lock logout routes ahead of protected catch-alls"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a7b1a01e3d9e7db50e54611ced536b8637f91429
+        authoredAt: 2026-10-23T19:23:54Z
+      - &a51
+        sha: 820b195c290851829d1d11530eb1ba60a9acd6c9
+        message: "feat(ui): show shared signed-out pages across apps"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/820b195c290851829d1d11530eb1ba60a9acd6c9
+        authoredAt: 2026-10-23T20:24:48Z
+      - &a54
+        sha: 9f5c11bc1a303b66e3414b0bce08da0a2c487d5b
+        message: Integrate logout fixes with sticky Transition controls
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9f5c11bc1a303b66e3414b0bce08da0a2c487d5b
+        authoredAt: 2026-10-23T20:27:47Z
+      - &a55
+        sha: 3be1566440ae6f0cce0d5745c6a3da35aa3fac7a
+        message: "fix(auth): detect signed-out landing sessions"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3be1566440ae6f0cce0d5745c6a3da35aa3fac7a
+        authoredAt: 2026-10-23T20:35:14Z
+      - &a56
+        sha: eb246b1c72c2f15948f8c0d6bb8c03f34307ff6b
+        message: "fix(proforma): use action tokens for selected workstation and theme controls"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/eb246b1c72c2f15948f8c0d6bb8c03f34307ff6b
+        authoredAt: 2026-10-23T20:47:00Z
+      - &a58
+        sha: dc3bf10cfc247b39ab230cbedbf28172e522edc8
+        message: "fix(proforma): use theme shadow for active workstation view option"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/dc3bf10cfc247b39ab230cbedbf28172e522edc8
+        authoredAt: 2026-10-23T20:48:49Z
+      - &a61
+        sha: cb69180ab3c0834069c6b8cf3493ce3933c35ab7
+        message: "fix(auth): keep public login landings signed out"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/cb69180ab3c0834069c6b8cf3493ce3933c35ab7
+        authoredAt: 2026-10-23T20:58:16Z
+      - &a62
+        sha: 66ae3445191814c1421cb399c8a7aee774b647b6
+        message: "fix(auth): preserve explicit sign-in return destinations"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/66ae3445191814c1421cb399c8a7aee774b647b6
+        authoredAt: 2026-10-23T20:59:40Z
+      - &a68
+        sha: a5caf05facfe9afc0429081d618369fb747b5689
+        message: Carry final sticky-control fixes into logout layer
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a5caf05facfe9afc0429081d618369fb747b5689
+        authoredAt: 2026-10-23T21:25:54Z
+    workTimestamps: &a23
+      - 2026-10-23T18:56:04Z
+      - 2026-10-23T19:23:54Z
+      - 2026-10-23T20:24:48Z
+      - 2026-10-23T20:27:47Z
+      - 2026-10-23T20:35:14Z
+      - 2026-10-23T20:47:00Z
+      - 2026-10-23T20:48:49Z
+      - 2026-10-23T20:58:16Z
+      - 2026-10-23T20:59:40Z
+      - 2026-10-23T21:25:54Z
+    workAdditions: 2031
+    workDeletions: 486
+    workFiles: &a24
+      - compass/src/app/layout.tsx
+      - compass/src/components/compass-provider.tsx
+      - compass/src/components/compass-shell.tsx
+      - compass/src/components/compass-stability.fixture.tsx
+      - compass/src/components/settings-workspace.tsx
+      - compass/src/lib/swa-session.ts
+      - compass/staticwebapp.config.json
+      - docs/authorization-roles.md
+      - excelerate/src/app/layout.tsx
+      - excelerate/src/app/settings/page.tsx
+      - hub/app/layout.tsx
+      - hub/components/HubSettingsPage.tsx
+      - hub/components/admin/TransferRunView.test.tsx
+      - hub/components/admin/TransferRunView.tsx
+      - hub/components/admin/TransfersPanel.test.tsx
+      - hub/components/admin/TransfersPanel.tsx
+      - hub/functions/src/company-transfer.test.ts
+      - hub/lib/admin-api.test.ts
+      - hub/lib/admin-api.ts
+      - hub/staticwebapp.config.json
+      - onboarding/apps/dashboard/app/globals.css
+      - onboarding/apps/dashboard/app/layout.tsx
+      - onboarding/apps/dashboard/app/settings/page.test.tsx
+      - onboarding/apps/dashboard/app/settings/page.tsx
+      - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - onboarding/apps/dashboard/lib/swa-session.test.ts
+      - onboarding/apps/dashboard/lib/swa-session.ts
+      - onboarding/apps/dashboard/staticwebapp.config.json
+      - packages/db/src/bucket-transfer/index.test.ts
+      - packages/db/src/bucket-transfer/index.ts
+      - packages/ui/src/company/context.test.tsx
+      - packages/ui/src/company/context.tsx
+      - packages/ui/src/index.ts
+      - packages/ui/src/navigation/app-shell.test.tsx
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/settings/company-settings.test.tsx
+      - packages/ui/src/settings/company-settings.tsx
+      - packages/ui/src/settings/index.ts
+      - packages/ui/src/signed-out.tsx
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-settings-page.tsx
+      - proforma/src/lib/__tests__/proforma-auth-routes.test.ts
+      - proforma/src/lib/__tests__/proforma-session-client.test.ts
+      - proforma/src/lib/proforma-auth-routes.ts
+      - proforma/src/lib/proforma-session-client.ts
+      - pto-tracker/src/app/layout.tsx
+      - pto-tracker/src/app/settings/page.tsx
+      - pto-tracker/src/components/PtoAppShell.tsx
+      - scripts/tooling.test.ts
+      - transition/AGENTS.md
+      - transition/README.md
+      - transition/src/app/globals.css
+      - transition/src/app/layout.tsx
+      - transition/src/components/accounts/account-detail.test.ts
+      - transition/src/components/accounts/account-detail.tsx
+      - transition/src/components/accounts/accounts-page.tsx
+      - transition/src/components/accounts/use-checklist-visibility.ts
+      - transition/src/components/bulk-status.tsx
+      - transition/src/components/dashboard/dashboard.tsx
+      - transition/src/components/households/household-overview.tsx
+      - transition/src/components/households/household-paperwork-ui.tsx
+      - transition/src/components/households/households-page.tsx
+      - transition/src/components/settings/settings-page.test.ts
+      - transition/src/components/settings/settings-page.tsx
+      - transition/src/components/transition-shell.tsx
+      - transition/src/components/ui/layout.tsx
+      - transition/src/components/workspace/shared.tsx
+      - transition/src/lib/account-status-preview.test.ts
+      - transition/src/lib/account-verification-persistence.test.ts
+      - transition/src/lib/api/azure-functions-demo.test.ts
+      - transition/src/lib/auth.test.ts
+      - transition/src/lib/auth.ts
+      - transition/src/lib/checklist-view.test.ts
+      - transition/src/lib/checklist-view.ts
+      - transition/src/lib/excel-backup.test.ts
+      - transition/src/lib/excel-backup.ts
+      - transition/src/lib/feature-owner.test.ts
+      - transition/src/lib/handlers.ts
+      - transition/src/lib/household-paperwork.test.ts
+      - transition/src/lib/household-paperwork.ts
+      - transition/src/lib/household-selection.test.ts
+      - transition/src/lib/household-selection.ts
+      - transition/src/lib/model.ts
+      - transition/src/lib/navigation-performance.test.ts
+      - transition/src/lib/paperwork-link-handlers.test.ts
+      - transition/src/lib/rep-codes.test.ts
+      - transition/src/lib/rep-codes.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
+      - transition/src/lib/swa-session.test.ts
+      - transition/src/lib/swa-session.ts
+      - transition/src/lib/transfer-adapter.test.ts
+      - transition/src/lib/transfer-adapter.ts
+      - transition/src/lib/transition-workbook.test.ts
+      - transition/src/lib/undo.test.ts
+      - transition/src/lib/undo.ts
+      - transition/src/lib/workbook.ts
+      - transition/staticwebapp.config.json
+      - valuation/src/app/layout.tsx
+      - valuation/src/app/settings/page.tsx
+      - valuation/src/components/valuation-runtime-shell.tsx
+      - valuation/src/components/valuation-shell.tsx
+      - valuation/src/lib/api/client.ts
+      - valuation/src/lib/swa-session.test.ts
+      - valuation/src/lib/swa-session.ts
+      - valuation/staticwebapp.config.json
+  - title: "fix: improve transfer diagnostics, company settings, and favicons"
+    body: Company transfers previously exposed only generic failures, and Transition retries could reject identical
+      snapshots because read timestamps changed. This adds capped, safe per-run diagnostic history, a visible report, a
+      Markdown download, and fenced Markdown clipboard copy. Retry equality now ignore...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/209
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a25
+      - "app: hub"
+      - "app: onboarding"
+      - "app: pto-tracker"
+      - "app: proforma"
+      - "app: excelerate"
+      - "app: valuation"
+      - platform
+      - "app: transition"
+      - "app: compass"
+    additions: 636
+    deletions: 121
+    changedFiles: 35
+    author: myriadas-clees
+    createdAt: 2026-10-23T06:37:31Z
+    updatedAt: 2026-10-26T03:53:29Z
+    closedAt: 2026-10-26T03:53:29Z
+    mergedAt: 2026-10-26T03:53:29Z
+    workCommits: &a26
+      - &a30
+        sha: 52332c951df7489eeea4272c7e11a5ecfad66509
+        message: "feat(hub): add safe transfer diagnostic reports"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/52332c951df7489eeea4272c7e11a5ecfad66509
+        authoredAt: 2026-10-23T06:37:24Z
+      - &a31
+        sha: 790022b8feb8f8663489233f868c11852bc674f3
+        message: "feat(ui): add company settings and app icons"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/790022b8feb8f8663489233f868c11852bc674f3
+        authoredAt: 2026-10-23T15:12:25Z
+      - &a32
+        sha: 9e8bff65cee161a3f33911ba5cddb73be1990927
+        message: "fix(transfers): preserve accurate failure diagnostics"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9e8bff65cee161a3f33911ba5cddb73be1990927
+        authoredAt: 2026-10-23T15:18:39Z
+      - &a33
+        sha: 6233751067336f5052845ee808c628509f362f81
+        message: "fix(transfers): refresh reports and attribute scan failures"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6233751067336f5052845ee808c628509f362f81
+        authoredAt: 2026-10-23T15:29:40Z
+      - &a34
+        sha: 07e215d70b1bdd293677c6ae98776ecf0d1c4886
+        message: "fix(transfers): keep global checks free of stale app labels"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/07e215d70b1bdd293677c6ae98776ecf0d1c4886
+        authoredAt: 2026-10-23T15:37:59Z
+      - &a35
+        sha: 0d490a8f6d08eb0f57e5b6f6ad8271dc9a947778
+        message: "fix(transfers): retain safe Cosmos context for abort failures"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0d490a8f6d08eb0f57e5b6f6ad8271dc9a947778
+        authoredAt: 2026-10-23T15:45:34Z
+    workTimestamps: &a27
+      - 2026-10-23T06:37:24Z
+      - 2026-10-23T15:12:25Z
+      - 2026-10-23T15:18:39Z
+      - 2026-10-23T15:29:40Z
+      - 2026-10-23T15:37:59Z
+      - 2026-10-23T15:45:34Z
+    workAdditions: 636
+    workDeletions: 121
+    workFiles: &a28
+      - compass/src/app/layout.tsx
+      - compass/src/components/settings-workspace.tsx
+      - excelerate/src/app/layout.tsx
+      - excelerate/src/app/settings/page.tsx
+      - hub/app/layout.tsx
+      - hub/components/HubSettingsPage.tsx
+      - hub/components/admin/TransferRunView.test.tsx
+      - hub/components/admin/TransferRunView.tsx
+      - hub/components/admin/TransfersPanel.test.tsx
+      - hub/components/admin/TransfersPanel.tsx
+      - hub/functions/src/company-transfer.test.ts
+      - hub/lib/admin-api.test.ts
+      - hub/lib/admin-api.ts
+      - onboarding/apps/dashboard/app/layout.tsx
+      - onboarding/apps/dashboard/app/settings/page.test.tsx
+      - onboarding/apps/dashboard/app/settings/page.tsx
+      - packages/db/src/bucket-transfer/index.test.ts
+      - packages/db/src/bucket-transfer/index.ts
+      - packages/ui/src/navigation/app-shell.test.tsx
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/settings/company-settings.test.tsx
+      - packages/ui/src/settings/company-settings.tsx
+      - packages/ui/src/settings/index.ts
+      - proforma/src/app/layout.tsx
+      - proforma/src/components/proforma-settings-page.tsx
+      - pto-tracker/src/app/layout.tsx
+      - pto-tracker/src/app/settings/page.tsx
+      - scripts/tooling.test.ts
+      - transition/src/app/layout.tsx
+      - transition/src/components/settings/settings-page.test.ts
+      - transition/src/components/settings/settings-page.tsx
+      - transition/src/lib/transfer-adapter.test.ts
+      - transition/src/lib/transfer-adapter.ts
+      - valuation/src/app/layout.tsx
+      - valuation/src/app/settings/page.tsx
+  - title: "fix(transition): count shared paperwork once per household"
+    body: >-
+      ## Why
+
+
+      Shared Custodian and Advisor paperwork was counted once per account, inflating household progress as account
+      counts grew.
+
+
+      ## What changed
+
+
+      - Count shared paperwork once per household while requiring every applicable active account row to be complete.
+
+      - Keep account-specific and household re...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/203
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - github-automation
+      - "app: hub"
+      - "app: onboarding"
+      - "app: pto-tracker"
+      - "app: proforma"
+      - "app: excelerate"
+      - "app: valuation"
+      - platform
+      - infrastructure
+      - "app: transition"
+      - "app: compass"
+    additions: 0
+    deletions: 0
+    changedFiles: 3
+    author: myriadas-clees
+    createdAt: 2026-10-21T19:58:12Z
+    updatedAt: 2026-10-23T05:22:16Z
+    closedAt: 2026-10-23T05:22:16Z
+    mergedAt: 2026-10-23T05:22:16Z
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "feat: isolate company data across Myriad apps"
+    body: >-
+      ## Problem
+
+
+      Company-scoped data in shared Cosmos storage needs the same server-side company boundary across the Myriad app
+      registry. Proforma also needs a complete scoped workflow, including model persistence, reports, lifecycle
+      commands, and reliable retries.
+
+
+      ## Changes
+
+
+      - Extend the existing tena...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - github-automation
+      - "app: hub"
+      - "app: onboarding"
+      - "app: pto-tracker"
+      - "app: proforma"
+      - "app: excelerate"
+      - "app: valuation"
+      - platform
+      - infrastructure
+      - "app: transition"
+      - "app: compass"
+    additions: 0
+    deletions: 0
+    changedFiles: 382
+    author: myriadas-clees
+    createdAt: 2026-09-11T15:10:29Z
+    updatedAt: 2026-10-23T05:22:15Z
+    closedAt: 2026-10-23T05:22:15Z
+    mergedAt: 2026-10-23T05:22:15Z
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+prsInProgress:
+  - title: "fix(proforma): rename Betterment scenarios to Trade PMR"
+    body: >-
+      ## Why
+
+
+      Proforma scenario labels still referred to Betterment, and the hybrid scenario used the longer Schwab-Betterment
+      name. The labels needed to match the updated Trade PMR terminology.
+
+
+      ## What changed
+
+
+      - Renamed Betterment labels to Trade PMR across the Proforma interface and generated reports....
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/216
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a1
+    additions: 128
+    deletions: 123
+    changedFiles: 25
+    author: myriadas-clees
+    createdAt: 2026-10-23T19:55:03Z
+    updatedAt: 2026-10-23T20:03:32Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 128
+    workDeletions: 123
+    workFiles: *a4
+  - title: "feat(transition): allow admins demo access"
+    body: |-
+      - Allow non-read-only admins to use Transition demo mode alongside myriadas_user.
+      - Keep read_only precedence and transition_user ineligibility; update tests and docs.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/213
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels: *a5
+    additions: 12
+    deletions: 8
+    changedFiles: 5
+    author: myriadas-clees
+    createdAt: 2026-10-23T18:58:27Z
+    updatedAt: 2026-10-26T03:53:30Z
+    closedAt: 2026-10-26T03:53:30Z
+    mergedAt: 2026-10-26T03:53:30Z
+    workCommits: *a6
+    workTimestamps: *a7
+    workAdditions: 629
+    workDeletions: 110
+    workFiles: *a8
+  - title: "feat(transition): improve checklist and account usability"
+    body: Transition users need clearer checklist ownership and account workflows, including a way to reset paperwork to “No
+      paperwork.” This change adds item ownership, Open/All and hide/show controls, account and household workflow
+      improvements, and a confirmed paperwork reset that preserves checklist progr...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/211
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels: *a9
+    additions: 750
+    deletions: 132
+    changedFiles: 35
+    author: myriadas-clees
+    createdAt: 2026-10-23T18:44:06Z
+    updatedAt: 2026-10-26T03:53:32Z
+    closedAt: 2026-10-26T03:53:31Z
+    mergedAt: 2026-10-26T03:53:31Z
+    workCommits: *a10
+    workTimestamps: *a11
+    workAdditions: 1381
+    workDeletions: 244
+    workFiles: *a12
+  - title: "feat(transition): keep household and account controls sticky"
+    body: >-
+      Accounts and Households list controls now remain visible while scrolling when the full controls fit below
+      navigation. On shorter viewports they scroll with the page, so filters cannot cover the account rows. Both
+      navigation layouts use the measured topbar offset.
+
+
+      First, Previous, Next and Last retu...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/217
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels: *a13
+    additions: 108
+    deletions: 5
+    changedFiles: 5
+    author: myriadas-clees
+    createdAt: 2026-10-23T20:20:37Z
+    updatedAt: 2026-10-26T03:53:33Z
+    closedAt: 2026-10-26T03:53:33Z
+    mergedAt: 2026-10-26T03:53:33Z
+    workCommits: *a14
+    workTimestamps: *a15
+    workAdditions: 1506
+    workDeletions: 266
+    workFiles: *a16
+  - title: "fix(proforma): preserve latest version when deleting recruits"
+    body: Deleting a recruit could appear to do nothing after a pipeline refresh replaced a newer cached version with an
+      older projection. The client now preserves the newer version, and a failed delete remains visible in the open
+      confirmation dialog with retry available. The dialog also follows the app's sel...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/210
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels: *a17
+    additions: 72
+    deletions: 2
+    changedFiles: 6
+    author: myriadas-clees
+    createdAt: 2026-10-23T18:42:45Z
+    updatedAt: 2026-10-26T03:53:35Z
+    closedAt: 2026-10-26T03:53:35Z
+    mergedAt: 2026-10-26T03:53:35Z
+    workCommits: *a18
+    workTimestamps: *a19
+    workAdditions: 2097
+    workDeletions: 482
+    workFiles: *a20
+  - title: "fix(auth): keep logout landing pages accessible"
+    body: >-
+      Logout now leaves users on an accessible signed-out screen with an explicit Microsoft sign-in action, rather than
+      restarting authentication or presenting an outage. The shared screen is used by Proforma, Transition, Valuation,
+      Onboarding, PTO and Compass; Hub retains its public homepage.
+
+
+      Public lan...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/212
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels: *a21
+    additions: 525
+    deletions: 220
+    changedFiles: 38
+    author: myriadas-clees
+    createdAt: 2026-10-23T18:56:14Z
+    updatedAt: 2026-10-26T03:53:34Z
+    closedAt: 2026-10-26T03:53:34Z
+    mergedAt: 2026-10-26T03:53:34Z
+    workCommits: *a22
+    workTimestamps: *a23
+    workAdditions: 2031
+    workDeletions: 486
+    workFiles: *a24
+  - title: "fix: improve transfer diagnostics, company settings, and favicons"
+    body: Company transfers previously exposed only generic failures, and Transition retries could reject identical
+      snapshots because read timestamps changed. This adds capped, safe per-run diagnostic history, a visible report, a
+      Markdown download, and fenced Markdown clipboard copy. Retry equality now ignore...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/209
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels: *a25
+    additions: 617
+    deletions: 102
+    changedFiles: 35
+    author: myriadas-clees
+    createdAt: 2026-10-23T06:37:31Z
+    updatedAt: 2026-10-26T03:53:29Z
+    closedAt: 2026-10-26T03:53:29Z
+    mergedAt: 2026-10-26T03:53:29Z
+    workCommits: *a26
+    workTimestamps: *a27
+    workAdditions: 636
+    workDeletions: 121
+    workFiles: *a28
+  - title: "feat(compass): port todo progress and chat workflows"
+    body: >-
+      ## Why
+
+
+      Bring the Compass-relevant workflows from the PR stack into one change, improving Ask reliability and performance
+      while adding safer brief instructions and Microsoft To Do task creation.
+
+
+      ## What changed
+
+
+      - Improved Ask retries, conversation recovery, grounding, and response rendering; added...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/202
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - "app: compass"
+    additions: 6448
+    deletions: 284
+    changedFiles: 51
+    author: myriadas-clees
+    createdAt: 2026-10-21T14:36:39Z
+    updatedAt: 2026-10-23T19:15:37Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a45
+        sha: ee052811d3dba91ae7cbb91d77b2fa865f914f59
+        message: "fix(compass): serialize To Do progress and improve status UX"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ee052811d3dba91ae7cbb91d77b2fa865f914f59
+        authoredAt: 2026-10-23T19:13:02Z
+    workTimestamps:
+      - 2026-10-23T19:13:02Z
+    workAdditions: 548
+    workDeletions: 66
+    workFiles:
+      - compass/functions/src/compass-conversations.test.ts
+      - compass/functions/src/compass-conversations.ts
+      - compass/src/app/ask.css
+      - compass/src/components/ask-compass-workspace.dom.test.tsx
+      - compass/src/components/ask/ask-composer.test.ts
+      - compass/src/components/ask/ask-composer.tsx
+      - compass/src/components/command-cards.tsx
+      - compass/src/components/todo-command-card.dom.test.tsx
+  - title: "ci: bound workflow jobs with timeouts"
+    body: >-
+      ## Why
+
+
+      Workflow jobs without an explicit timeout can run for up to GitHub Actions’ six-hour default if they hang, wasting
+      CI minutes. The repository already uses `tsrs` for app type checks, so the relevant CI improvement from PR #179
+      was to bound every workflow job and add regression coverage for e...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/204
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - documentation
+      - github-automation
+      - "app: hub"
+      - "app: onboarding"
+      - "app: pto-tracker"
+      - "app: proforma"
+      - "app: excelerate"
+      - "app: valuation"
+      - platform
+      - infrastructure
+      - "app: transition"
+      - "app: compass"
+    additions: 65
+    deletions: 0
+    changedFiles: 6
+    author: myriadas-clees
+    createdAt: 2026-10-22T06:26:12Z
+    updatedAt: 2026-10-23T19:23:35Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a46
+        sha: 9a438653226d82c62a878f0c2fda036784133441
+        message: "test: catch workflow jobs the timeout check skipped"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9a438653226d82c62a878f0c2fda036784133441
+        authoredAt: 2026-10-23T19:22:15Z
+    workTimestamps:
+      - 2026-10-23T19:22:15Z
+    workAdditions: 13
+    workDeletions: 4
+    workFiles:
+      - scripts/tooling.test.ts
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "feat: isolate company data across Myriad apps (#118)"
+      - "fix(transition): count shared paperwork once per household (#203)"
+      - "fix(hub): move admin APIs off reserved routes"
+      - "fix(hub): move admin APIs off reserved routes (#208)"
+      - "feat(hub): add safe transfer diagnostic reports"
+      - "feat(ui): add company settings and app icons"
+      - "fix(transfers): preserve accurate failure diagnostics"
+      - "fix(transfers): refresh reports and attribute scan failures"
+      - "fix(transfers): keep global checks free of stale app labels"
+      - "fix(transfers): retain safe Cosmos context for abort failures"
+      - "fix(proforma): preserve latest version when deleting recruits"
+      - "feat(transition): improve checklist and account usability"
+      - "fix(auth): keep logout landing pages accessible"
+      - "feat(transition): allow admins demo access"
+      - "fix(transition): keep checklist Details drafts when rows hide or refilter"
+      - Merge admin demo access into Transition release
+      - "fix(transition): retain drafts after cancelled checklist saves"
+      - Merge shared transfer and settings fixes into Transition release
+      - Integrate shared fixes into complete Transition release
+      - "fix(compass): serialize To Do progress and improve status UX"
+      - "test: catch workflow jobs the timeout check skipped"
+      - "test(auth): lock logout routes ahead of protected catch-alls"
+      - "fix(proforma): rename Betterment scenarios to Trade PMR"
+      - "fix(proforma): rename Orion to Portfolio Management System"
+      - "feat(transition): keep household and account controls sticky"
+      - "feat(ui): show shared signed-out pages across apps"
+      - Integrate Transition controls into release stack
+      - Integrate recruit deletion into release stack
+      - Integrate logout fixes with sticky Transition controls
+      - "fix(auth): detect signed-out landing sessions"
+      - "fix(proforma): use action tokens for selected workstation and theme controls"
+      - "fix(transition): keep tall sticky list controls from covering rows"
+      - "fix(proforma): use theme shadow for active workstation view option"
+      - "fix(proforma): follow app data-theme for the delete recruit dialog"
+      - Integrate reviewed logout and control contrast fixes
+      - "fix(auth): keep public login landings signed out"
+      - "fix(auth): preserve explicit sign-in return destinations"
+      - Carry complete logout fixes into release head
+      - "fix(transition): pin list controls only while they fit below navigation"
+      - "fix(transition): return list to view after any pagination action"
+      - "fix(transition): scope pager focus handling to sticky controls"
+      - Carry final sticky-control fixes into release head
+      - Carry final sticky-control fixes into logout layer
+    commits:
+      - sha: 55ecb4dfd281822fb660d4dedcd6f31b8499c4cb
+        message: "feat: isolate company data across Myriad apps (#118)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/55ecb4dfd281822fb660d4dedcd6f31b8499c4cb
+        authoredAt: 2026-10-23T05:22:12Z
+        additions: 24181
+        deletions: 2172
+        filesChanged: 300
+      - sha: 8bc8a1b48d95edeeb7a7b43a2dcd3d8bd7bdf006
+        message: "fix(transition): count shared paperwork once per household (#203)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8bc8a1b48d95edeeb7a7b43a2dcd3d8bd7bdf006
+        authoredAt: 2026-10-23T05:22:13Z
+        additions: 84
+        deletions: 9
+        filesChanged: 3
+      - *a29
+      - sha: 68eeb78933236df26c567c7f7a36e00f90328995
+        message: "fix(hub): move admin APIs off reserved routes (#208)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/68eeb78933236df26c567c7f7a36e00f90328995
+        authoredAt: 2026-10-23T05:59:50Z
+        additions: 28
+        deletions: 24
+        filesChanged: 7
+      - *a30
+      - *a31
+      - *a32
+      - *a33
+      - *a34
+      - *a35
+      - *a36
+      - *a37
+      - *a38
+      - *a39
+      - *a40
+      - *a41
+      - *a42
+      - *a43
+      - *a44
+      - *a45
+      - *a46
+      - *a47
+      - *a48
+      - *a49
+      - *a50
+      - *a51
+      - *a52
+      - *a53
+      - *a54
+      - *a55
+      - *a56
+      - *a57
+      - *a58
+      - *a59
+      - *a60
+      - *a61
+      - *a62
+      - *a63
+      - *a64
+      - *a65
+      - *a66
+      - *a67
+      - *a68
+releases: []
+externalContributions: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 202
+    prTitle: "feat(compass): port todo progress and chat workflows"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/202
+    state: commented
+    submittedAt: 2026-10-23T19:15:16Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 202
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/202
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/202#discussion_r4363344231
+    body: Fixed in ee052811. Local create-only writes and provider-conditional renewals now read retention and update the
+      mapping inside the same immediate transaction, with tests that a concurrent retention reduction is blocked until
+      that transaction commits.
+    path: compass/functions/src/compass-conversations.ts
+    createdAt: 2026-10-23T19:15:16Z
+aiReviews:
+  codex:
+    prsReviewed: 4
+    comments: 16
+    reviews: 10
+    fixed: 1
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 4
+  comments: 16
+  reviews: 10
+  fixed: 1
+hoursInputs:
+  timestamps:
+    - 2026-10-23T05:22:12Z
+    - 2026-10-23T05:22:13Z
+    - 2026-10-23T05:55:27Z
+    - 2026-10-23T05:59:50Z
+    - 2026-10-23T06:37:24Z
+    - 2026-10-23T15:12:25Z
+    - 2026-10-23T15:18:39Z
+    - 2026-10-23T15:29:40Z
+    - 2026-10-23T15:37:59Z
+    - 2026-10-23T15:45:34Z
+    - 2026-10-23T18:42:37Z
+    - 2026-10-23T18:43:58Z
+    - 2026-10-23T18:56:04Z
+    - 2026-10-23T18:58:11Z
+    - 2026-10-23T19:06:15Z
+    - 2026-10-23T19:06:55Z
+    - 2026-10-23T19:08:03Z
+    - 2026-10-23T19:10:32Z
+    - 2026-10-23T19:10:32Z
+    - 2026-10-23T19:13:02Z
+    - 2026-10-23T19:22:15Z
+    - 2026-10-23T19:23:54Z
+    - 2026-10-23T19:54:55Z
+    - 2026-10-23T20:02:08Z
+    - 2026-10-23T20:20:30Z
+    - 2026-10-23T20:24:48Z
+    - 2026-10-23T20:27:26Z
+    - 2026-10-23T20:27:47Z
+    - 2026-10-23T20:27:47Z
+    - 2026-10-23T20:35:14Z
+    - 2026-10-23T20:47:00Z
+    - 2026-10-23T20:48:32Z
+    - 2026-10-23T20:48:49Z
+    - 2026-10-23T20:51:55Z
+    - 2026-10-23T20:53:26Z
+    - 2026-10-23T20:58:16Z
+    - 2026-10-23T20:59:40Z
+    - 2026-10-23T21:01:23Z
+    - 2026-10-23T21:18:49Z
+    - 2026-10-23T21:24:17Z
+    - 2026-10-23T21:25:54Z
+    - 2026-10-23T21:25:54Z
+    - 2026-10-23T21:25:54Z
+    - 2026-10-23T05:55:35Z
+    - 2026-10-23T05:59:51Z
+    - 2026-10-23T05:55:27Z
+    - 2026-10-23T19:55:03Z
+    - 2026-10-23T19:54:55Z
+    - 2026-10-23T20:02:08Z
+    - 2026-10-23T18:58:27Z
+    - 2026-10-23T18:58:11Z
+    - 2026-10-23T19:10:32Z
+    - 2026-10-23T18:44:06Z
+    - 2026-10-23T18:43:58Z
+    - 2026-10-23T19:06:15Z
+    - 2026-10-23T19:06:55Z
+    - 2026-10-23T19:08:03Z
+    - 2026-10-23T19:10:32Z
+    - 2026-10-23T20:20:37Z
+    - 2026-10-23T20:20:30Z
+    - 2026-10-23T20:27:26Z
+    - 2026-10-23T20:48:32Z
+    - 2026-10-23T21:18:49Z
+    - 2026-10-23T21:24:17Z
+    - 2026-10-23T21:25:54Z
+    - 2026-10-23T18:42:45Z
+    - 2026-10-23T18:42:37Z
+    - 2026-10-23T20:27:47Z
+    - 2026-10-23T20:53:26Z
+    - 2026-10-23T20:51:55Z
+    - 2026-10-23T21:01:23Z
+    - 2026-10-23T21:25:54Z
+    - 2026-10-23T18:56:14Z
+    - 2026-10-23T18:56:04Z
+    - 2026-10-23T19:23:54Z
+    - 2026-10-23T20:24:48Z
+    - 2026-10-23T20:27:47Z
+    - 2026-10-23T20:35:14Z
+    - 2026-10-23T20:47:00Z
+    - 2026-10-23T20:48:49Z
+    - 2026-10-23T20:58:16Z
+    - 2026-10-23T20:59:40Z
+    - 2026-10-23T21:25:54Z
+    - 2026-10-23T06:37:31Z
+    - 2026-10-23T06:37:24Z
+    - 2026-10-23T15:12:25Z
+    - 2026-10-23T15:18:39Z
+    - 2026-10-23T15:29:40Z
+    - 2026-10-23T15:37:59Z
+    - 2026-10-23T15:45:34Z
+    - 2026-10-23T05:22:16Z
+    - 2026-10-23T05:22:15Z
+    - 2026-10-23T19:15:16Z
+    - 2026-10-23T19:15:16Z
+  volume:
+    pullRequests:
+      - additions: 28
+        deletions: 24
+        state: merged
+        dailyWork: true
+        filesChanged: 7
+        testFilesChanged: 3
+        commitCount: 1
+      - additions: 548
+        deletions: 66
+        state: open
+        dailyWork: true
+        filesChanged: 8
+        testFilesChanged: 4
+        commitCount: 1
+      - additions: 128
+        deletions: 123
+        state: open
+        dailyWork: true
+        filesChanged: 25
+        testFilesChanged: 11
+        commitCount: 2
+      - additions: 13
+        deletions: 4
+        state: open
+        dailyWork: true
+        filesChanged: 1
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 629
+        deletions: 110
+        state: merged
+        dailyWork: true
+        filesChanged: 40
+        testFilesChanged: 13
+        commitCount: 2
+      - additions: 1381
+        deletions: 244
+        state: merged
+        dailyWork: true
+        filesChanged: 75
+        testFilesChanged: 27
+        commitCount: 5
+      - additions: 1506
+        deletions: 266
+        state: merged
+        dailyWork: true
+        filesChanged: 77
+        testFilesChanged: 27
+        commitCount: 6
+      - additions: 2097
+        deletions: 482
+        state: merged
+        dailyWork: true
+        filesChanged: 116
+        testFilesChanged: 37
+        commitCount: 6
+      - additions: 2031
+        deletions: 486
+        state: merged
+        dailyWork: true
+        filesChanged: 111
+        testFilesChanged: 34
+        commitCount: 10
+      - additions: 636
+        deletions: 121
+        state: merged
+        dailyWork: true
+        filesChanged: 35
+        testFilesChanged: 11
+        commitCount: 6
+      - additions: 0
+        deletions: 0
+        state: merged
+      - additions: 0
+        deletions: 0
+        state: merged
+    reviewCount: 1
+    reviewCommentCount: 1
+    commitCount: 3
+    commitAdditions: 24293
+    commitDeletions: 2205
+    commitStatsCount: 3
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 109.3
+  sessions: 3
+  sessionHours: 4.5
+  volumeHours: 109.3
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
