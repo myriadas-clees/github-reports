@@ -84,11 +84,13 @@ export const findContainingDeployments = async ({
     const kind = production ? "production" : "nonProduction";
     const alreadyFound = found.some((entry) => deployments.some((d) => d.production === production && d.environment === entry.environment && d.sha === entry.sha));
     if (alreadyFound) { checkedUnknown.delete(found.find((entry) => deployments.some((d) => d.production === production && d.environment === entry.environment && d.sha === entry.sha))!.sha); continue; }
-    const candidates = selectDeploymentCandidates(deployments, production, pe, defaultBranch);
+    const seen = new Set<string>();
+    const candidates = selectDeploymentCandidates(deployments, production, pe, defaultBranch)
+      .filter((deployment) => !seen.has(deployment.sha) && !!seen.add(deployment.sha));
     const ordered = [...candidates.filter((d) => !checkedFalse.has(d.sha) && !checkedUnknown.has(d.sha)), ...unknownQueue.flatMap((sha) => candidates.filter((d) => d.sha === sha))];
     for (const deployment of ordered) {
       if (checkedFalse.has(deployment.sha)) continue;
-      if (calls[kind] >= maxCallsPerKind) break;
+      if (calls[kind] >= maxCallsPerKind) { unknownKinds[kind] = true; break; }
       calls[kind]++;
       const contained = await isContained(deployment.sha);
       if (contained === true) {

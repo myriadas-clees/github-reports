@@ -6,6 +6,7 @@ import { allLedgerRefs, applyDeploymentFetch, buildKnownDeploymentKeys, carryOve
 import { emptyLedger, pruneDeployments } from "../../collector/evidence-ledger.js";
 import { evidenceArgs } from "./report.js";
 import type { PrEvidence } from "../../types.js";
+import { parse } from "yaml";
 
 describe("evidenceRepositories", () => {
   it("unions configured and activity repositories in stable order", () => {
@@ -102,9 +103,39 @@ it("advances past persisted non-containing production candidates", async () => {
   const first = await findContainingDeployments({ deployments, pe, defaultBranch: "main", known: [], isContained: check });
   expect(first.calls.production).toBe(5);
   expect(first.nonContainingShas).toHaveLength(5);
+  expect(first.unknownKinds.production).toBe(true);
   const second = await findContainingDeployments({ deployments, pe, defaultBranch: "main", known: first.known, nonContainingShas: first.nonContainingShas, isContained: check });
   expect(second.calls.production).toBe(3);
   expect(second.known).toEqual([{ environment: "production", sha: deployments[7]!.sha }]);
+  expect(second.unknownKinds.production).toBe(false);
+});
+
+it("compares duplicate deployment SHAs only once per kind, including queued unknowns", async () => {
+  const pe = { baseRef: "main", mergeCommitSha: "f".repeat(40), mergedAt: "2026-10-19T00:00:00Z" };
+  const deployment = (sha: string) => ({ environment: "production", production: true, ref: "v1", sha, createdAt: "2026-10-20T00:00:00Z", succeededAt: "2026-10-20T01:00:00Z" });
+  const firstSha = "a".repeat(40);
+  const nextSha = "b".repeat(40);
+  const deployments = [...Array.from({ length: 6 }, () => deployment(firstSha)), deployment(nextSha)];
+  const checked: string[] = [];
+  const result = await findContainingDeployments({
+    deployments, pe, defaultBranch: "main", known: [], unknownShas: [firstSha, nextSha],
+    isContained: async (sha) => { checked.push(sha); return sha === nextSha ? true : null; },
+  });
+  expect(checked).toEqual([firstSha, nextSha]);
+  expect(result.known).toEqual([{ environment: "production", sha: nextSha }]);
+});
+
+it("refreshes evidence in the composite action before committing and rendering", async () => {
+  const action = parse(await readFile("action.yml", "utf8"));
+  const steps = action.runs.steps as Array<{ name: string; if?: string; run?: string; env?: Record<string, string> }>;
+  const index = steps.findIndex((step) => step.name === "Refresh evidence");
+  const step = steps[index]!;
+  expect(index).toBeGreaterThan(steps.findIndex((s) => s.name === "Generate AI content"));
+  expect(index).toBeLessThan(steps.findIndex((s) => s.name === "Commit and push report data"));
+  expect(index).toBeLessThan(steps.findIndex((s) => s.name === "Render HTML report"));
+  expect(step.if).toBe("inputs.mode == 'daily' || inputs.mode == 'weekly'");
+  expect(step.env?.GITHUB_TOKEN).toBe("${{ inputs.github-token }}");
+  expect(step.run).toContain('evidence ${INPUT_DATE:+--since "$INPUT_DATE"}');
 });
 
 it("leaves unknown ancestry unchecked and reports it", async () => {
