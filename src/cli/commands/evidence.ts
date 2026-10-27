@@ -30,6 +30,11 @@ export const deploymentCutoffIso = (since: string): string => {
   return date.toISOString();
 };
 
+/** A narrowed fetch must not shorten the normal deployment retention window. */
+export const pruneEvidenceDeployments = (ledger: EvidenceLedger, since: string, defaultSince: string): void => {
+  pruneDeployments(ledger, deploymentCutoffIso(since < defaultSince ? since : defaultSince));
+};
+
 /** Successful records remain cached; recent unsuccessful scans are eligible for status retries. */
 export const buildKnownDeploymentKeys = (
   deployments: import("../../types.js").DeploymentRecord[], scanned: Record<string, "success" | "failure" | "unknown"> | string[], now: Date,
@@ -206,7 +211,8 @@ export const registerEvidence = (program: Command): void => {
       if (!token) throw new Error("GitHub token required. Set GITHUB_TOKEN / GH_PAT.");
 
       const now = new Date();
-      const since = opts.since ?? new Date(now.getTime() - 90 * 86_400_000).toISOString().slice(0, 10);
+      const defaultSince = new Date(now.getTime() - 90 * 86_400_000).toISOString().slice(0, 10);
+      const since = opts.since ?? defaultSince;
       if (!/^\d{4}-\d{2}-\d{2}$/.test(since)) throw new Error("--since must be YYYY-MM-DD");
       const sinceIso = deploymentCutoffIso(since);
 
@@ -274,7 +280,7 @@ export const registerEvidence = (program: Command): void => {
       // pruning, so PRs older than the window keep "Live since" after their deployments age out.
       recordReleaseEvidence(ledger, allLedgerRefs(ledger));
 
-      pruneDeployments(ledger, sinceIso);
+      pruneEvidenceDeployments(ledger, since, defaultSince);
       ledger.updatedAt = new Date().toISOString();
       await writeEvidenceLedger(cfg.dataDir, ledger);
       console.log(`Evidence: ${refreshed}/${todo.length} PRs refreshed (${refs.length} referenced, ${Object.keys(ledger.prs).length} stored)`);

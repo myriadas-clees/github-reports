@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { mkdtemp, readFile, writeFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { allLedgerRefs, applyDeploymentFetch, buildKnownDeploymentKeys, carryOverDerivedEvidence, deploymentCutoffIso, evidenceRepositories, findContainingDeployments, markDeploymentsUnavailable, recordReleaseEvidence, refreshPrEvidence, selectDeploymentCandidates } from "./evidence.js";
+import { allLedgerRefs, applyDeploymentFetch, buildKnownDeploymentKeys, carryOverDerivedEvidence, deploymentCutoffIso, evidenceRepositories, findContainingDeployments, markDeploymentsUnavailable, pruneEvidenceDeployments, recordReleaseEvidence, refreshPrEvidence, selectDeploymentCandidates } from "./evidence.js";
 import { emptyLedger, pruneDeployments } from "../../collector/evidence-ledger.js";
 import { evidenceArgs } from "./report.js";
 import type { PrEvidence } from "../../types.js";
@@ -31,6 +31,27 @@ describe("deploymentCutoffIso", () => {
   it("handles month and year boundaries", () => {
     expect(deploymentCutoffIso("2026-01-01")).toBe("2025-12-31T00:00:00.000Z");
   });
+});
+
+it("retains the normal deployment history for recent report dates and extends it for older dates", () => {
+  const ledger = emptyLedger();
+  const deployment = (sha: string, createdAt: string) => ({
+    environment: "production", production: true, ref: "main", sha, createdAt, succeededAt: createdAt,
+  });
+  const recent = deployment("recent", "2026-09-20T00:00:00Z");
+  const older = deployment("older", "2026-03-01T00:00:00Z");
+  ledger.deployments.repo = [recent, older];
+  ledger.scannedDeployments = { repo: {
+    "production|recent|2026-09-20T00:00:00Z": "success",
+    "production|older|2026-03-01T00:00:00Z": "success",
+  } };
+  const expanded = structuredClone(ledger);
+  pruneEvidenceDeployments(ledger, "2026-10-26", "2026-07-29");
+  expect(ledger.deployments.repo).toEqual([recent]);
+  expect(ledger.scannedDeployments!.repo).toEqual({ "production|recent|2026-09-20T00:00:00Z": "success" });
+  pruneEvidenceDeployments(expanded, "2026-02-01", "2026-07-29");
+  expect(expanded.deployments.repo).toEqual([recent, older]);
+  expect(Object.keys(expanded.scannedDeployments!.repo)).toHaveLength(2);
 });
 
 it("retries recent/legacy scans, skips old failures, and keeps recorded successes known", () => {
