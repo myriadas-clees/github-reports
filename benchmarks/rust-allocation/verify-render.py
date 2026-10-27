@@ -37,7 +37,10 @@ def main():
 
     with tempfile.TemporaryDirectory(prefix="worklog-rust-render-") as directory:
         tmp = Path(directory)
-        shutil.copytree(ROOT / "dist", tmp / "dist")
+        # Compile the current source in the temporary directory; the workspace's
+        # dist may predate uncommitted TypeScript changes.
+        run([str(ROOT / "node_modules" / ".bin" / "tsrs"), "--outDir", str(tmp / "baseline-dist")], env=env)
+        shutil.copytree(tmp / "baseline-dist", tmp / "dist")
         shutil.copy2(ROOT / "package.json", tmp / "package.json")
         for name in ("src", "assets", "node_modules"):
             (tmp / name).symlink_to(ROOT / name, target_is_directory=True)
@@ -72,7 +75,7 @@ def main():
         module.write_text(source)
 
         env["OUTPUT_DIR"] = str(tmp / "baseline")
-        run(["bun", "dist/cli/index.js", "render", "--archive"], env=env)
+        run(["bun", str(tmp / "baseline-dist" / "cli" / "index.js"), "render", "--archive"], env=env)
         env["OUTPUT_DIR"] = str(tmp / "rust")
         run(["bun", "--preload", str(preload), str(tmp / "dist" / "cli" / "index.js"), "render", "--archive"], env=env)
         counts = json.loads((tmp / "counts.json").read_text())

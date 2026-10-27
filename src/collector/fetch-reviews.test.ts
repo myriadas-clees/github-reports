@@ -7,10 +7,29 @@ describe("fetchReviewsForRepos", () => {
     vi.restoreAllMocks();
   });
 
+  it.each([false, true])("retains candidate metadata for comment-only reviews (historical: %s)", async (historical) => {
+    const candidate = { number: 7, title: "feat(pricing): tiers", html_url: "https://github.com/org/app/pull/7", labels: [{ name: "app: pricing" }], created_at: "2026-08-01T00:00:00Z", updated_at: "2026-08-10T20:00:00Z" };
+    const comment = { id: 1, user: { login: "alice" }, body: "Looks good", html_url: "comment", path: "a.ts", created_at: "2026-08-10T20:00:00Z", pull_request_url: "https://api.github.com/repos/org/app/pulls/7" };
+    vi.spyOn(globalThis, "fetch").mockImplementation(async (input) => {
+      const url = String(input);
+      if (url.endsWith("/graphql")) return new Response(JSON.stringify({ data: {} }));
+      if (url.includes("/pulls/comments?")) return new Response(JSON.stringify([comment]));
+      if (url.includes("/pulls?")) return new Response(JSON.stringify([candidate]));
+      if (url.endsWith("/pulls/7")) return new Response(JSON.stringify(candidate));
+      if (url.endsWith("/pulls/7/comments")) return new Response(JSON.stringify([comment]));
+      return new Response("[]");
+    });
+    const result = await fetchReviewsForRepos("token", "alice", ["org/app"],
+      { from: new Date("2026-08-10T00:00:00Z"), to: new Date("2026-08-10T23:59:59Z") },
+      new Date("2026-08-11T00:00:00Z"), historical);
+    expect(result.reviews).toEqual([]);
+    expect(result.comments).toMatchObject([{ prTitle: "feat(pricing): tiers", prLabels: ["app: pricing"] }]);
+  });
+
   it("matches the conservative scan while avoiding inactive comment threads", async () => {
     const range = { from: new Date("2026-08-10T04:00:00Z"), to: new Date("2026-08-11T03:59:59.999Z") };
     const candidates = Array.from({ length: 40 }, (_, i) => ({
-      repo: "private/app", number: i + 1, title: `PR ${i + 1}`, url: `https://github.com/private/app/pull/${i + 1}`,
+      repo: "private/app", number: i + 1, title: `PR ${i + 1}`, url: `https://github.com/private/app/pull/${i + 1}`, labels: [],
     }));
     const parent = { id: 1, in_reply_to_id: null, user: { login: "codex[bot]" }, body: "Please fix", created_at: "2026-08-09T12:00:00Z", pull_request_url: "https://api.github.com/repos/private/app/pulls/2", html_url: "parent", path: "a.ts" };
     const reply = { ...parent, id: 2, in_reply_to_id: 1, user: { login: "alice" }, body: "Fixed", created_at: range.from.toISOString(), html_url: "reply" };

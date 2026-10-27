@@ -38,6 +38,7 @@ export type ReviewCandidate = {
   number: number;
   title?: string;
   url?: string;
+  labels?: string[];
 };
 
 const parseRetryDelay = (response: Response, attempt: number = 0): number => {
@@ -169,6 +170,7 @@ type CandidatePR = {
   html_url: string;
   created_at: string;
   updated_at: string;
+  labels?: { name: string }[];
 };
 
 const fetchCandidatePR = async (
@@ -276,12 +278,11 @@ export const fetchReviewsForRepos = async (
         }
       }
       if (commentStatus.complete) commentCandidates = activeNumbers;
-      // Reuse titles/URLs already hydrated by fetchPRsByRefs. Only GET candidates
-      // that are still missing metadata — never burst-fetch the whole set.
+      // Reuse hydrated candidates; fetch missing labels for PRs with possible comments.
       const fetchedByNumber = new Map<number, CandidatePR>();
       for (const number of numbers) {
         const known = knownByNumber.get(number);
-        if (known?.title && known.url) continue;
+        if (known?.title && known.url && (known.labels || (commentStatus.complete && !activeNumbers.has(number)))) continue;
         const fetched = await fetchCandidatePR(token, repo, number);
         if (fetched) fetchedByNumber.set(number, fetched);
         await sleep(REQUEST_DELAY_MS);
@@ -293,6 +294,7 @@ export const fetchReviewsForRepos = async (
           number,
           title: known?.title ?? fetched?.title ?? `#${number}`,
           html_url: known?.url ?? fetched?.html_url ?? `https://github.com/${repo}/pull/${number}`,
+          labels: known?.labels?.map((name) => ({ name })) ?? fetched?.labels,
           created_at: fetched?.created_at ?? range.from.toISOString(),
           updated_at: fetched?.updated_at ?? range.from.toISOString(),
         };
@@ -370,6 +372,8 @@ export const fetchReviewsForRepos = async (
             repository: repo,
             prNumber: pr.number,
             prUrl: pr.html_url,
+            prTitle: pr.title,
+            ...(pr.labels ? { prLabels: pr.labels.map((label) => label.name) } : {}),
             url: c.html_url,
             body: cleanBody(c.body)?.slice(0, 500) ?? "",
             path: c.path,

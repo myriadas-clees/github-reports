@@ -58,6 +58,46 @@ const unicodePrefix = {
 const manualOnly = {
   reports: [], config: config(), manual: [{ date: "2026-10-04", initiative: "Ops", hours: 3 }], requests,
 };
+// Multiple rounded PR efforts share one bucket and later move to different initiatives.
+const roundingMovement = {
+  reports: [
+    report("2026-10-01", {
+      stats: { estimatedHours: 0.1 },
+      pullRequests: [pr(10, "feat: a", ["app:Alpha"], "open"), pr(11, "feat: b", ["app:Alpha"], "open"), pr(12, "fix: c", ["app:Alpha"], "open")],
+    }),
+    report("2026-10-02", {
+      stats: { estimatedHours: 0.2 },
+      pullRequests: [pr(10, "fix: a", ["app:Beta"]), pr(11, "docs: b", ["app:Gamma"])],
+    }),
+  ], config: config(), manual: [], requests,
+};
+// Shipped placement wins, but later appearances supply the title and labels.
+const latestMetadata = {
+  reports: [
+    report("2026-10-01", { pullRequests: [pr(20, "feat: original", ["app:Alpha", "impact: low"])] }),
+    report("2026-10-02", { pullRequests: [pr(20, "fix: renamed", ["app:Beta", "impact: high"], "open")] }),
+    report("2026-10-03", { pullRequests: [pr(20, "docs: final", [], "open")] }),
+  ], config: config(), manual: [], requests,
+};
+const commentMetadata = {
+  reports: [report("2026-10-01", {
+    pullRequests: [pr(30, "feat: original", ["app:Alpha"])],
+    codeReviews: [{ repository: "example/app", prTitle: "feat: reviewed", prUrl: "https://example.com/pull/30", prNumber: 30 }],
+    reviewComments: [
+      { repository: "example/app", prNumber: 31, prTitle: "feat(core): comment only", prLabels: ["app:Comment"] },
+      { repository: "example/app", prNumber: 30, prTitle: "fix(core): changed", prLabels: [] },
+      { repository: "example/app", prNumber: 30, prLabels: ["app:Override"] },
+      { repository: "example/app", prNumber: 30 },
+      { repository: "example/app", prNumber: 32 },
+    ],
+  })], config: config({ "scope:core": "Core" }), manual: [], requests,
+};
+const reviewAndComment = {
+  reports: [report("2026-10-01", {
+    codeReviews: [{ repository: "example/app", prTitle: "Tweak pricing", prUrl: "https://example.com/pull/40", prNumber: 40 }],
+    reviewComments: [{ repository: "example/app", prNumber: 40, prTitle: "Tweak pricing", prLabels: ["app:Northstar"] }],
+  })], config: config(), manual: [], requests,
+};
 process.stdout.write(JSON.stringify([
   { name: "dedup-movement-and-manual", input: moved },
   { name: "locale-ties", input: ties },
@@ -65,4 +105,8 @@ process.stdout.write(JSON.stringify([
   { name: "case-colliding-config", input: collisions },
   { name: "unicode-label-prefix", input: unicodePrefix },
   { name: "manual-only-week", input: manualOnly },
+  { name: "rounding-and-multiple-pr-movement", input: roundingMovement },
+  { name: "latest-pr-metadata", input: latestMetadata },
+  { name: "comment-only-metadata", input: commentMetadata },
+  { name: "review-and-comment-metadata", input: reviewAndComment },
 ]));

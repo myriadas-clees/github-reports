@@ -1,7 +1,7 @@
 //! Benchmark-only rollups of precomputed daily allocations.
 use crate::{
     classify_work_type,
-    daily::{compute_allocation, impact, label, round1, NOTE},
+    daily::{compute_allocation_precise, impact, label, round1, strip_precision, NOTE},
 };
 use serde_json::{json, Value};
 use std::borrow::Borrow;
@@ -49,6 +49,7 @@ struct Item {
     section: usize,
     last: usize,
     active: bool,
+    contributions: Vec<(String, f64)>,
 }
 fn bucket(buckets: &mut Vec<Bucket>, name: &str) -> usize {
     if let Some(i) = buckets.iter().position(|b| b.name == name) {
@@ -68,46 +69,42 @@ fn add_type(b: &mut Bucket, typ: &str, hours: f64) {
         b.types.push((typ.into(), hours));
     }
 }
-fn absorb(target: &mut Value, other: &Value) {
+fn absorb(target: &mut Value, other: &Value, other_is_latest: bool) {
     if !other["effortHours"].is_null() {
         target["effortHours"] = json!(round1(n(&target["effortHours"]) + n(&other["effortHours"])));
     }
     if s(&target["kind"]) != "pr" {
         return;
     }
-    for field in ["files", "labels"] {
-        if !arr(&other[field]).is_empty() {
-            let mut values = arr(&target[field]).to_vec();
-            for v in arr(&other[field]) {
-                if !values.contains(v) {
-                    values.push(v.clone());
-                }
+    if !arr(&other["files"]).is_empty() {
+        let mut files = arr(&target["files"]).to_vec();
+        for file in arr(&other["files"]) {
+            if !files.contains(file) {
+                files.push(file.clone());
             }
-            target[field] = json!(values);
+        }
+        target["files"] = json!(files);
+    }
+    if other_is_latest {
+        target["title"] = other["title"].clone();
+        if let Some(labels) = other.get("labels") {
+            target["labels"] = labels.clone();
+        } else {
+            target.as_object_mut().unwrap().remove("labels");
         }
     }
     let labels = strings(&target["labels"]);
-    let suppressed = labels.iter().any(|l| {
-        let l = l.trim().to_lowercase();
-        l.split_once(':').is_some_and(|(a, b)| {
-            ["impact", "priority", "severity"].contains(&a.trim())
-                && ["minor", "low"].contains(&b.trim())
-        })
-    });
-    let derived = impact(n(&target["effortHours"]), &labels).unwrap_or("");
-    let best = [s(&target["impact"]), s(&other["impact"]), derived]
-        .into_iter()
-        .max_by_key(|x| match *x {
-            "major" => 2,
-            "notable" => 1,
-            _ => 0,
-        })
-        .unwrap_or("")
-        .to_owned();
-    if suppressed || best.is_empty() {
-        target.as_object_mut().unwrap().remove("impact");
+    if let Some(derived) = impact(n(&target["effortHours"]), &labels) {
+        target["impact"] = json!(derived);
     } else {
-        target["impact"] = json!(best);
+        target.as_object_mut().unwrap().remove("impact");
+    }
+}
+fn add_contribution(contributions: &mut Vec<(String, f64)>, typ: &str, hours: f64) {
+    if let Some((_, sum)) = contributions.iter_mut().find(|(t, _)| t == typ) {
+        *sum += hours;
+    } else {
+        contributions.push((typ.into(), hours));
     }
 }
 fn cmp_text(a: &str, b: &str) -> std::cmp::Ordering {
@@ -125,8 +122,49 @@ pub fn merge_allocations<A: Borrow<Value>>(allocations: &[A]) -> Value {
         ai += n(&allocation["aiFindingsAddressed"]);
         for b in arr(&allocation["initiatives"]) {
             let bi = bucket(&mut buckets, s(&b["initiative"]));
-            buckets[bi].hours += n(&b["hours"]);
-            if let Some(types) = b["byWorkType"].as_object() {
+            let hours = b.get("_hours").map(n).unwrap_or_else(|| n(&b["hours"]));
+            let types = b.get("_types").unwrap_or(&b["byWorkType"]);
+            let pr_items: Vec<&Value> = ["shipped", "inProgress", "other"]
+                .iter()
+                .flat_map(|section| arr(&b[*section]))
+                .filter(|item| s(&item["kind"]) == "pr")
+                .collect();
+            let mut type_hours = Vec::<(String, f64)>::new();
+            for item in &pr_items {
+                let typ = classify_work_type(s(&item["title"]), &strings(&item["labels"]));
+                add_contribution(
+                    &mut type_hours,
+                    typ,
+                    item.get("_hours")
+                        .map(n)
+                        .unwrap_or_else(|| n(&item["effortHours"])),
+                );
+            }
+            let contribution = |item: &Value| {
+                let typ = classify_work_type(s(&item["title"]), &strings(&item["labels"]));
+                let sum = type_hours
+                    .iter()
+                    .find(|(t, _)| t == typ)
+                    .map(|(_, h)| *h)
+                    .unwrap_or(0.);
+                let scale = if sum > 0. {
+                    (n(&types[typ]) / sum).min(1.)
+                } else {
+                    0.
+                };
+                item.get("_hours")
+                    .map(n)
+                    .unwrap_or_else(|| n(&item["effortHours"]))
+                    * scale
+            };
+            let pr_hours: f64 = pr_items.iter().map(|item| contribution(item)).sum();
+            let bucket_scale = if pr_hours > 0. {
+                (hours / pr_hours).min(1.)
+            } else {
+                0.
+            };
+            buckets[bi].hours += hours;
+            if let Some(types) = types.as_object() {
                 for (t, h) in types {
                     add_type(&mut buckets[bi], t, n(h));
                 }
@@ -166,16 +204,33 @@ pub fn merge_allocations<A: Borrow<Value>>(allocations: &[A]) -> Value {
                                     .unwrap_or(&x.value["title"])
                                     == key
                         }) {
-                            absorb(&mut items[i].value, item);
-                            if section == 1
-                                || (section == 2 && kind == "pr" && s(&item["state"]) == "closed")
-                            {
+                            absorb(&mut items[i].value, item, true);
+                            if kind == "pr" {
+                                let typ = classify_work_type(
+                                    s(&item["title"]),
+                                    &strings(&item["labels"]),
+                                );
+                                add_contribution(
+                                    &mut items[i].contributions,
+                                    typ,
+                                    contribution(item) * bucket_scale,
+                                );
                                 items[i].last = index;
                             }
                             continue;
                         }
                     }
                     let mut copy = item.clone();
+                    strip_precision(&mut copy);
+                    let mut contributions = Vec::new();
+                    if kind == "pr" {
+                        let typ = classify_work_type(s(&item["title"]), &strings(&item["labels"]));
+                        add_contribution(
+                            &mut contributions,
+                            typ,
+                            contribution(item) * bucket_scale,
+                        );
+                    }
                     if kind == "commits" {
                         let count = commit_count(s(&item["title"]));
                         copy["title"] = json!(format!(
@@ -190,6 +245,7 @@ pub fn merge_allocations<A: Borrow<Value>>(allocations: &[A]) -> Value {
                         section,
                         last: index,
                         active: true,
+                        contributions,
                     });
                     buckets[bi].items[section].push(i);
                 }
@@ -251,24 +307,18 @@ pub fn merge_allocations<A: Borrow<Value>>(allocations: &[A]) -> Value {
             let source = items[i].value.clone();
             let from = items[i].bucket;
             let to = items[dest].bucket;
-            let from_type = classify_work_type(s(&source["title"]), &strings(&source["labels"]));
-            let to_type = classify_work_type(
-                s(&items[dest].value["title"]),
-                &strings(&items[dest].value["labels"]),
-            );
-            let hours = n(&source["effortHours"]);
-            absorb(&mut items[dest].value, &source);
-            if from != to && hours != 0. {
-                buckets[from].hours = (buckets[from].hours - hours).max(0.);
-                let old = buckets[from]
-                    .types
-                    .iter()
-                    .find(|(t, _)| t == from_type)
-                    .map(|(_, h)| *h)
-                    .unwrap_or(0.);
-                add_type(&mut buckets[from], from_type, (old - hours).max(0.) - old);
-                buckets[to].hours += hours;
-                add_type(&mut buckets[to], to_type, hours);
+            let other_is_latest = items[i].last > items[dest].last;
+            absorb(&mut items[dest].value, &source, other_is_latest);
+            if other_is_latest {
+                items[dest].last = items[i].last;
+            }
+            if from != to {
+                for (typ, hours) in items[i].contributions.clone() {
+                    buckets[from].hours -= hours;
+                    add_type(&mut buckets[from], &typ, -hours);
+                    buckets[to].hours += hours;
+                    add_type(&mut buckets[to], &typ, hours);
+                }
             }
             items[i].active = false;
         }
@@ -431,7 +481,7 @@ pub fn build_allocation_trend_cached(
             .cloned()
             .collect();
         if !extra.is_empty() {
-            allocations.push(Cow::Owned(compute_allocation(
+            allocations.push(Cow::Owned(compute_allocation_precise(
                 &json!({"dateRange":{"from":from,"to":to},"stats":{"estimatedHours":0},"pullRequests":[],"commitMessages":[]}),
                 config,
                 &extra,
@@ -467,10 +517,11 @@ pub struct Trend {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::daily::compute_allocation;
 
     // Captured from computeAllocation, mergeAllocations and buildAllocationTrend.
     fn fixture() -> Value {
-        serde_json::from_str(r###"{"config":{"initiatives":{},"labelPrefix":"app:","defaultInitiative":null,"trendWeeks":8},"manual":[{"date":"2026-10-07","initiative":"Ops","hours":1.25,"note":"sync"},{"date":"2026-10-04","initiative":"Ops","hours":3},{"date":"2026-09-26","initiative":"Ops","hours":1},{"date":"2026-10-09","initiative":"Future","hours":9}],"prepared":[{"date":"2026-10-01","data":{"dateRange":{"from":"2026-10-01","to":"2026-10-01"},"stats":{"estimatedHours":10},"pullRequests":[{"url":"p","state":"open","labels":["app: alpha","impact: low"],"title":"feat: hub","repository":"o/app","additions":10,"deletions":0,"workFiles":["a"]}],"commitMessages":[{"repo":"o/app","messages":["fix: first"]}],"aiReviews":{"fixed":2}},"allocation":{"version":"1.0","totalHours":10,"initiatives":[{"initiative":"Alpha","hours":6,"share":0.6,"byWorkType":{"new-capability":6},"shipped":[],"inProgress":[{"kind":"pr","title":"feat: hub","url":"p","repository":"o/app","state":"open","labels":["app: alpha","impact: low"],"files":["a"],"effortHours":6}],"other":[]},{"initiative":"App","hours":4,"share":0.4,"byWorkType":{"quality":4},"shipped":[],"inProgress":[],"other":[{"kind":"commits","title":"1 direct commit","repository":"o/app"}]}],"workTypes":[{"workType":"new-capability","label":"New capability","hours":6,"share":0.6},{"workType":"quality","label":"Quality & bug fixes","hours":4,"share":0.4}],"manualHours":0,"aiFindingsAddressed":2,"note":"Work delivered is a modeled estimate of the manual engineering effort for one engineer to deliver the same changes without AI assistance, split across initiatives by delivered scope. It is not actual hours worked or measured time saved."}},{"date":"2026-10-03","data":{"dateRange":{"from":"2026-10-03","to":"2026-10-03"},"stats":{"estimatedHours":6},"pullRequests":[{"url":"p","state":"open","labels":["app: beta"],"title":"fix: hub","repository":"o/app","additions":10,"deletions":0,"workFiles":["b"]}],"commitMessages":[{"repo":"o/app","messages":["fix: next"]}],"aiReviews":{"fixed":2}},"allocation":{"version":"1.0","totalHours":6,"initiatives":[{"initiative":"Beta","hours":3.6,"share":0.6,"byWorkType":{"quality":3.6},"shipped":[],"inProgress":[{"kind":"pr","title":"fix: hub","url":"p","repository":"o/app","state":"open","labels":["app: beta"],"files":["b"],"effortHours":3.6}],"other":[]},{"initiative":"App","hours":2.4,"share":0.4000000000000001,"byWorkType":{"quality":2.4},"shipped":[],"inProgress":[],"other":[{"kind":"commits","title":"1 direct commit","repository":"o/app"}]}],"workTypes":[{"workType":"quality","label":"Quality & bug fixes","hours":6,"share":1}],"manualHours":0,"aiFindingsAddressed":2,"note":"Work delivered is a modeled estimate of the manual engineering effort for one engineer to deliver the same changes without AI assistance, split across initiatives by delivered scope. It is not actual hours worked or measured time saved."}},{"date":"2026-10-07","data":{"dateRange":{"from":"2026-10-07","to":"2026-10-07"},"stats":{"estimatedHours":8},"pullRequests":[{"url":"p","state":"merged","labels":["app: gamma","impact: high"],"title":"fix: hub","repository":"o/app","additions":10,"deletions":0,"workFiles":["c"]},{"url":"q","state":"merged","labels":["app: gamma"],"title":"feat: hub","repository":"o/app","additions":10,"deletions":0,"workFiles":[]}],"commitMessages":[],"aiReviews":{"fixed":2}},"allocation":{"version":"1.0","totalHours":9.3,"initiatives":[{"initiative":"Gamma","hours":8,"share":0.8648648648648649,"byWorkType":{"quality":4,"new-capability":4},"shipped":[{"kind":"pr","title":"fix: hub","url":"p","repository":"o/app","state":"merged","labels":["app: gamma","impact: high"],"files":["c"],"effortHours":4,"impact":"major"},{"kind":"pr","title":"feat: hub","url":"q","repository":"o/app","state":"merged","labels":["app: gamma"],"effortHours":4}],"inProgress":[],"other":[]},{"initiative":"Ops","hours":1.3,"share":0.13513513513513514,"byWorkType":{"unlogged":1.3},"shipped":[],"inProgress":[],"other":[{"kind":"manual","title":"sync"}]}],"workTypes":[{"workType":"new-capability","label":"New capability","hours":4,"share":0.43243243243243246},{"workType":"quality","label":"Quality & bug fixes","hours":4,"share":0.43243243243243246},{"workType":"unlogged","label":"Meetings & unlogged (self-reported)","hours":1.3,"share":0.13513513513513514}],"manualHours":1.3,"aiFindingsAddressed":2,"note":"Work delivered is a modeled estimate of the manual engineering effort for one engineer to deliver the same changes without AI assistance, split across initiatives by delivered scope. It is not actual hours worked or measured time saved."}},{"date":"2026-10-09","data":{"dateRange":{"from":"2026-10-09","to":"2026-10-09"},"stats":{"estimatedHours":7},"pullRequests":[{"url":"future","state":"merged","labels":[],"title":"feat: hub","repository":"o/app","additions":10,"deletions":0,"workFiles":[]}],"commitMessages":[],"aiReviews":{"fixed":2}},"allocation":{"version":"1.0","totalHours":16,"initiatives":[{"initiative":"Future","hours":9,"share":0.5625,"byWorkType":{"unlogged":9},"shipped":[],"inProgress":[],"other":[{"kind":"manual","title":"Self-reported time"}]},{"initiative":"App","hours":7,"share":0.4375,"byWorkType":{"new-capability":7},"shipped":[{"kind":"pr","title":"feat: hub","url":"future","repository":"o/app","state":"merged","effortHours":7}],"inProgress":[],"other":[]}],"workTypes":[{"workType":"unlogged","label":"Meetings & unlogged (self-reported)","hours":9,"share":0.5625},{"workType":"new-capability","label":"New capability","hours":7,"share":0.4375}],"manualHours":9,"aiFindingsAddressed":2,"note":"Work delivered is a modeled estimate of the manual engineering effort for one engineer to deliver the same changes without AI assistance, split across initiatives by delivered scope. It is not actual hours worked or measured time saved."}}],"windows":[{"from":"2026-09-24","to":"2026-09-30"},{"from":"2026-10-01","to":"2026-10-07"}],"allocations":[{"version":"1.0","totalHours":10,"initiatives":[{"initiative":"Alpha","hours":6,"share":0.6,"byWorkType":{"new-capability":6},"shipped":[],"inProgress":[{"kind":"pr","title":"feat: hub","url":"p","repository":"o/app","state":"open","labels":["app: alpha","impact: low"],"files":["a"],"effortHours":6}],"other":[]},{"initiative":"App","hours":4,"share":0.4,"byWorkType":{"quality":4},"shipped":[],"inProgress":[],"other":[{"kind":"commits","title":"1 direct commit","repository":"o/app"}]}],"workTypes":[{"workType":"new-capability","label":"New capability","hours":6,"share":0.6},{"workType":"quality","label":"Quality & bug fixes","hours":4,"share":0.4}],"manualHours":0,"aiFindingsAddressed":2,"note":"Work delivered is a modeled estimate of the manual engineering effort for one engineer to deliver the same changes without AI assistance, split across initiatives by delivered scope. It is not actual hours worked or measured time saved."},{"version":"1.0","totalHours":6,"initiatives":[{"initiative":"Beta","hours":3.6,"share":0.6,"byWorkType":{"quality":3.6},"shipped":[],"inProgress":[{"kind":"pr","title":"fix: hub","url":"p","repository":"o/app","state":"open","labels":["app: beta"],"files":["b"],"effortHours":3.6}],"other":[]},{"initiative":"App","hours":2.4,"share":0.4000000000000001,"byWorkType":{"quality":2.4},"shipped":[],"inProgress":[],"other":[{"kind":"commits","title":"1 direct commit","repository":"o/app"}]}],"workTypes":[{"workType":"quality","label":"Quality & bug fixes","hours":6,"share":1}],"manualHours":0,"aiFindingsAddressed":2,"note":"Work delivered is a modeled estimate of the manual engineering effort for one engineer to deliver the same changes without AI assistance, split across initiatives by delivered scope. It is not actual hours worked or measured time saved."},{"version":"1.0","totalHours":9.3,"initiatives":[{"initiative":"Gamma","hours":8,"share":0.8648648648648649,"byWorkType":{"quality":4,"new-capability":4},"shipped":[{"kind":"pr","title":"fix: hub","url":"p","repository":"o/app","state":"merged","labels":["app: gamma","impact: high"],"files":["c"],"effortHours":4,"impact":"major"},{"kind":"pr","title":"feat: hub","url":"q","repository":"o/app","state":"merged","labels":["app: gamma"],"effortHours":4}],"inProgress":[],"other":[]},{"initiative":"Ops","hours":1.3,"share":0.13513513513513514,"byWorkType":{"unlogged":1.3},"shipped":[],"inProgress":[],"other":[{"kind":"manual","title":"sync"}]}],"workTypes":[{"workType":"new-capability","label":"New capability","hours":4,"share":0.43243243243243246},{"workType":"quality","label":"Quality & bug fixes","hours":4,"share":0.43243243243243246},{"workType":"unlogged","label":"Meetings & unlogged (self-reported)","hours":1.3,"share":0.13513513513513514}],"manualHours":1.3,"aiFindingsAddressed":2,"note":"Work delivered is a modeled estimate of the manual engineering effort for one engineer to deliver the same changes without AI assistance, split across initiatives by delivered scope. It is not actual hours worked or measured time saved."},{"version":"1.0","totalHours":16,"initiatives":[{"initiative":"Future","hours":9,"share":0.5625,"byWorkType":{"unlogged":9},"shipped":[],"inProgress":[],"other":[{"kind":"manual","title":"Self-reported time"}]},{"initiative":"App","hours":7,"share":0.4375,"byWorkType":{"new-capability":7},"shipped":[{"kind":"pr","title":"feat: hub","url":"future","repository":"o/app","state":"merged","effortHours":7}],"inProgress":[],"other":[]}],"workTypes":[{"workType":"unlogged","label":"Meetings & unlogged (self-reported)","hours":9,"share":0.5625},{"workType":"new-capability","label":"New capability","hours":7,"share":0.4375}],"manualHours":9,"aiFindingsAddressed":2,"note":"Work delivered is a modeled estimate of the manual engineering effort for one engineer to deliver the same changes without AI assistance, split across initiatives by delivered scope. It is not actual hours worked or measured time saved."}],"expectedMerge":{"version":"1.0","totalHours":25.3,"initiatives":[{"initiative":"Gamma","hours":17.6,"share":0.6956521739130436,"byWorkType":{"quality":13.6,"new-capability":4},"shipped":[{"kind":"pr","title":"fix: hub","url":"p","repository":"o/app","state":"merged","labels":["app: gamma","impact: high","app: alpha","impact: low","app: beta"],"files":["c","a","b"],"effortHours":13.6},{"kind":"pr","title":"feat: hub","url":"q","repository":"o/app","state":"merged","labels":["app: gamma"],"effortHours":4}],"inProgress":[],"other":[]},{"initiative":"App","hours":6.4,"share":0.25296442687747034,"byWorkType":{"quality":6.4},"shipped":[],"inProgress":[],"other":[{"kind":"commits","title":"2 direct commits","repository":"o/app"}]},{"initiative":"Ops","hours":1.3,"share":0.05138339920948617,"byWorkType":{"unlogged":1.3},"shipped":[],"inProgress":[],"other":[{"kind":"manual","title":"sync"}]}],"workTypes":[{"workType":"quality","label":"Quality & bug fixes","hours":20,"share":0.7905138339920948},{"workType":"new-capability","label":"New capability","hours":4,"share":0.15810276679841898},{"workType":"unlogged","label":"Meetings & unlogged (self-reported)","hours":1.3,"share":0.05138339920948617}],"manualHours":1.3,"aiFindingsAddressed":6,"note":"Work delivered is a modeled estimate of the manual engineering effort for one engineer to deliver the same changes without AI assistance, split across initiatives by delivered scope. It is not actual hours worked or measured time saved."},"expectedTrend":{"initiatives":["Gamma","App","Ops"],"periods":[{"id":"2026-09-24","label":"Sep 24-30","from":"2026-09-24","to":"2026-09-30","days":0,"allocation":{"version":"1.0","totalHours":1,"initiatives":[{"initiative":"Ops","hours":1,"share":1,"byWorkType":{"unlogged":1},"shipped":[],"inProgress":[],"other":[{"kind":"manual","title":"Self-reported time"}]}],"workTypes":[{"workType":"unlogged","label":"Meetings & unlogged (self-reported)","hours":1,"share":1}],"manualHours":1,"note":"Work delivered is a modeled estimate of the manual engineering effort for one engineer to deliver the same changes without AI assistance, split across initiatives by delivered scope. It is not actual hours worked or measured time saved."}},{"id":"2026-10-01","label":"Oct 1-7","from":"2026-10-01","to":"2026-10-07","days":3,"allocation":{"version":"1.0","totalHours":28.3,"initiatives":[{"initiative":"Gamma","hours":17.6,"share":0.6219081272084807,"byWorkType":{"quality":13.6,"new-capability":4},"shipped":[{"kind":"pr","title":"fix: hub","url":"p","repository":"o/app","state":"merged","labels":["app: gamma","impact: high","app: alpha","impact: low","app: beta"],"files":["c","a","b"],"effortHours":13.6},{"kind":"pr","title":"feat: hub","url":"q","repository":"o/app","state":"merged","labels":["app: gamma"],"effortHours":4}],"inProgress":[],"other":[]},{"initiative":"App","hours":6.4,"share":0.22614840989399293,"byWorkType":{"quality":6.4},"shipped":[],"inProgress":[],"other":[{"kind":"commits","title":"2 direct commits","repository":"o/app"}]},{"initiative":"Ops","hours":4.3,"share":0.1519434628975265,"byWorkType":{"unlogged":4.3},"shipped":[],"inProgress":[],"other":[{"kind":"manual","title":"sync"},{"kind":"manual","title":"Self-reported time"}]}],"workTypes":[{"workType":"quality","label":"Quality & bug fixes","hours":20,"share":0.7067137809187279},{"workType":"unlogged","label":"Meetings & unlogged (self-reported)","hours":4.3,"share":0.1519434628975265},{"workType":"new-capability","label":"New capability","hours":4,"share":0.1413427561837456}],"manualHours":4.3,"aiFindingsAddressed":6,"note":"Work delivered is a modeled estimate of the manual engineering effort for one engineer to deliver the same changes without AI assistance, split across initiatives by delivered scope. It is not actual hours worked or measured time saved."}}]},"reopened":[{"version":"1.0","totalHours":3,"initiatives":[{"initiative":"Alpha","hours":3,"share":1,"byWorkType":{"new-capability":3},"shipped":[],"inProgress":[],"other":[{"kind":"pr","title":"feat: hub","url":"r","repository":"o/app","state":"closed","labels":["app: alpha"],"effortHours":3}]}],"workTypes":[{"workType":"new-capability","label":"New capability","hours":3,"share":1}],"manualHours":0,"aiFindingsAddressed":2,"note":"Work delivered is a modeled estimate of the manual engineering effort for one engineer to deliver the same changes without AI assistance, split across initiatives by delivered scope. It is not actual hours worked or measured time saved."},{"version":"1.0","totalHours":5,"initiatives":[{"initiative":"Beta","hours":5,"share":1,"byWorkType":{"new-capability":5},"shipped":[],"inProgress":[{"kind":"pr","title":"feat: hub","url":"r","repository":"o/app","state":"open","labels":["app: beta"],"effortHours":5}],"other":[]}],"workTypes":[{"workType":"new-capability","label":"New capability","hours":5,"share":1}],"manualHours":0,"aiFindingsAddressed":2,"note":"Work delivered is a modeled estimate of the manual engineering effort for one engineer to deliver the same changes without AI assistance, split across initiatives by delivered scope. It is not actual hours worked or measured time saved."}],"expectedReopened":{"version":"1.0","totalHours":8,"initiatives":[{"initiative":"Beta","hours":8,"share":1,"byWorkType":{"new-capability":8},"shipped":[],"inProgress":[{"kind":"pr","title":"feat: hub","url":"r","repository":"o/app","state":"open","labels":["app: beta","app: alpha"],"effortHours":8}],"other":[]}],"workTypes":[{"workType":"new-capability","label":"New capability","hours":8,"share":1}],"manualHours":0,"aiFindingsAddressed":4,"note":"Work delivered is a modeled estimate of the manual engineering effort for one engineer to deliver the same changes without AI assistance, split across initiatives by delivered scope. It is not actual hours worked or measured time saved."}}"###).unwrap()
+        serde_json::from_str(r###"{"config":{"initiatives":{},"labelPrefix":"app:","defaultInitiative":null,"trendWeeks":8},"manual":[{"date":"2026-10-07","initiative":"Ops","hours":1.25,"note":"sync"},{"date":"2026-10-04","initiative":"Ops","hours":3},{"date":"2026-09-26","initiative":"Ops","hours":1},{"date":"2026-10-09","initiative":"Future","hours":9}],"prepared":[{"date":"2026-10-01","data":{"dateRange":{"from":"2026-10-01","to":"2026-10-01"},"stats":{"estimatedHours":10},"pullRequests":[{"url":"p","state":"open","labels":["app: alpha","impact: low"],"title":"feat: hub","repository":"o/app","additions":10,"deletions":0,"workFiles":["a"]}],"commitMessages":[{"repo":"o/app","messages":["fix: first"]}],"aiReviews":{"fixed":2}},"allocation":{"version":"1.0","totalHours":10,"initiatives":[{"initiative":"Alpha","hours":6,"share":0.6,"byWorkType":{"new-capability":6},"shipped":[],"inProgress":[{"kind":"pr","title":"feat: hub","url":"p","repository":"o/app","state":"open","labels":["app: alpha","impact: low"],"files":["a"],"effortHours":6}],"other":[]},{"initiative":"App","hours":4,"share":0.4,"byWorkType":{"quality":4},"shipped":[],"inProgress":[],"other":[{"kind":"commits","title":"1 direct commit","repository":"o/app"}]}],"workTypes":[{"workType":"new-capability","label":"New capability","hours":6,"share":0.6},{"workType":"quality","label":"Quality & bug fixes","hours":4,"share":0.4}],"manualHours":0,"aiFindingsAddressed":2,"note":"Work delivered is a modeled estimate of the manual engineering effort for one engineer to deliver the same changes without AI assistance, split across initiatives by delivered scope. It is not actual hours worked or measured time saved."}},{"date":"2026-10-03","data":{"dateRange":{"from":"2026-10-03","to":"2026-10-03"},"stats":{"estimatedHours":6},"pullRequests":[{"url":"p","state":"open","labels":["app: beta"],"title":"fix: hub","repository":"o/app","additions":10,"deletions":0,"workFiles":["b"]}],"commitMessages":[{"repo":"o/app","messages":["fix: next"]}],"aiReviews":{"fixed":2}},"allocation":{"version":"1.0","totalHours":6,"initiatives":[{"initiative":"Beta","hours":3.6,"share":0.6,"byWorkType":{"quality":3.6},"shipped":[],"inProgress":[{"kind":"pr","title":"fix: hub","url":"p","repository":"o/app","state":"open","labels":["app: beta"],"files":["b"],"effortHours":3.6}],"other":[]},{"initiative":"App","hours":2.4,"share":0.4000000000000001,"byWorkType":{"quality":2.4},"shipped":[],"inProgress":[],"other":[{"kind":"commits","title":"1 direct commit","repository":"o/app"}]}],"workTypes":[{"workType":"quality","label":"Quality & bug fixes","hours":6,"share":1}],"manualHours":0,"aiFindingsAddressed":2,"note":"Work delivered is a modeled estimate of the manual engineering effort for one engineer to deliver the same changes without AI assistance, split across initiatives by delivered scope. It is not actual hours worked or measured time saved."}},{"date":"2026-10-07","data":{"dateRange":{"from":"2026-10-07","to":"2026-10-07"},"stats":{"estimatedHours":8},"pullRequests":[{"url":"p","state":"merged","labels":["app: gamma","impact: high"],"title":"fix: hub","repository":"o/app","additions":10,"deletions":0,"workFiles":["c"]},{"url":"q","state":"merged","labels":["app: gamma"],"title":"feat: hub","repository":"o/app","additions":10,"deletions":0,"workFiles":[]}],"commitMessages":[],"aiReviews":{"fixed":2}},"allocation":{"version":"1.0","totalHours":9.3,"initiatives":[{"initiative":"Gamma","hours":8,"share":0.8648648648648649,"byWorkType":{"quality":4,"new-capability":4},"shipped":[{"kind":"pr","title":"fix: hub","url":"p","repository":"o/app","state":"merged","labels":["app: gamma","impact: high"],"files":["c"],"effortHours":4,"impact":"major"},{"kind":"pr","title":"feat: hub","url":"q","repository":"o/app","state":"merged","labels":["app: gamma"],"effortHours":4}],"inProgress":[],"other":[]},{"initiative":"Ops","hours":1.3,"share":0.13513513513513514,"byWorkType":{"unlogged":1.3},"shipped":[],"inProgress":[],"other":[{"kind":"manual","title":"sync"}]}],"workTypes":[{"workType":"new-capability","label":"New capability","hours":4,"share":0.43243243243243246},{"workType":"quality","label":"Quality & bug fixes","hours":4,"share":0.43243243243243246},{"workType":"unlogged","label":"Meetings & unlogged (self-reported)","hours":1.3,"share":0.13513513513513514}],"manualHours":1.3,"aiFindingsAddressed":2,"note":"Work delivered is a modeled estimate of the manual engineering effort for one engineer to deliver the same changes without AI assistance, split across initiatives by delivered scope. It is not actual hours worked or measured time saved."}},{"date":"2026-10-09","data":{"dateRange":{"from":"2026-10-09","to":"2026-10-09"},"stats":{"estimatedHours":7},"pullRequests":[{"url":"future","state":"merged","labels":[],"title":"feat: hub","repository":"o/app","additions":10,"deletions":0,"workFiles":[]}],"commitMessages":[],"aiReviews":{"fixed":2}},"allocation":{"version":"1.0","totalHours":16,"initiatives":[{"initiative":"Future","hours":9,"share":0.5625,"byWorkType":{"unlogged":9},"shipped":[],"inProgress":[],"other":[{"kind":"manual","title":"Self-reported time"}]},{"initiative":"App","hours":7,"share":0.4375,"byWorkType":{"new-capability":7},"shipped":[{"kind":"pr","title":"feat: hub","url":"future","repository":"o/app","state":"merged","effortHours":7}],"inProgress":[],"other":[]}],"workTypes":[{"workType":"unlogged","label":"Meetings & unlogged (self-reported)","hours":9,"share":0.5625},{"workType":"new-capability","label":"New capability","hours":7,"share":0.4375}],"manualHours":9,"aiFindingsAddressed":2,"note":"Work delivered is a modeled estimate of the manual engineering effort for one engineer to deliver the same changes without AI assistance, split across initiatives by delivered scope. It is not actual hours worked or measured time saved."}}],"windows":[{"from":"2026-09-24","to":"2026-09-30"},{"from":"2026-10-01","to":"2026-10-07"}],"allocations":[{"version":"1.0","totalHours":10,"initiatives":[{"initiative":"Alpha","hours":6,"share":0.6,"byWorkType":{"new-capability":6},"shipped":[],"inProgress":[{"kind":"pr","title":"feat: hub","url":"p","repository":"o/app","state":"open","labels":["app: alpha","impact: low"],"files":["a"],"effortHours":6}],"other":[]},{"initiative":"App","hours":4,"share":0.4,"byWorkType":{"quality":4},"shipped":[],"inProgress":[],"other":[{"kind":"commits","title":"1 direct commit","repository":"o/app"}]}],"workTypes":[{"workType":"new-capability","label":"New capability","hours":6,"share":0.6},{"workType":"quality","label":"Quality & bug fixes","hours":4,"share":0.4}],"manualHours":0,"aiFindingsAddressed":2,"note":"Work delivered is a modeled estimate of the manual engineering effort for one engineer to deliver the same changes without AI assistance, split across initiatives by delivered scope. It is not actual hours worked or measured time saved."},{"version":"1.0","totalHours":6,"initiatives":[{"initiative":"Beta","hours":3.6,"share":0.6,"byWorkType":{"quality":3.6},"shipped":[],"inProgress":[{"kind":"pr","title":"fix: hub","url":"p","repository":"o/app","state":"open","labels":["app: beta"],"files":["b"],"effortHours":3.6}],"other":[]},{"initiative":"App","hours":2.4,"share":0.4000000000000001,"byWorkType":{"quality":2.4},"shipped":[],"inProgress":[],"other":[{"kind":"commits","title":"1 direct commit","repository":"o/app"}]}],"workTypes":[{"workType":"quality","label":"Quality & bug fixes","hours":6,"share":1}],"manualHours":0,"aiFindingsAddressed":2,"note":"Work delivered is a modeled estimate of the manual engineering effort for one engineer to deliver the same changes without AI assistance, split across initiatives by delivered scope. It is not actual hours worked or measured time saved."},{"version":"1.0","totalHours":9.3,"initiatives":[{"initiative":"Gamma","hours":8,"share":0.8648648648648649,"byWorkType":{"quality":4,"new-capability":4},"shipped":[{"kind":"pr","title":"fix: hub","url":"p","repository":"o/app","state":"merged","labels":["app: gamma","impact: high"],"files":["c"],"effortHours":4,"impact":"major"},{"kind":"pr","title":"feat: hub","url":"q","repository":"o/app","state":"merged","labels":["app: gamma"],"effortHours":4}],"inProgress":[],"other":[]},{"initiative":"Ops","hours":1.3,"share":0.13513513513513514,"byWorkType":{"unlogged":1.3},"shipped":[],"inProgress":[],"other":[{"kind":"manual","title":"sync"}]}],"workTypes":[{"workType":"new-capability","label":"New capability","hours":4,"share":0.43243243243243246},{"workType":"quality","label":"Quality & bug fixes","hours":4,"share":0.43243243243243246},{"workType":"unlogged","label":"Meetings & unlogged (self-reported)","hours":1.3,"share":0.13513513513513514}],"manualHours":1.3,"aiFindingsAddressed":2,"note":"Work delivered is a modeled estimate of the manual engineering effort for one engineer to deliver the same changes without AI assistance, split across initiatives by delivered scope. It is not actual hours worked or measured time saved."},{"version":"1.0","totalHours":16,"initiatives":[{"initiative":"Future","hours":9,"share":0.5625,"byWorkType":{"unlogged":9},"shipped":[],"inProgress":[],"other":[{"kind":"manual","title":"Self-reported time"}]},{"initiative":"App","hours":7,"share":0.4375,"byWorkType":{"new-capability":7},"shipped":[{"kind":"pr","title":"feat: hub","url":"future","repository":"o/app","state":"merged","effortHours":7}],"inProgress":[],"other":[]}],"workTypes":[{"workType":"unlogged","label":"Meetings & unlogged (self-reported)","hours":9,"share":0.5625},{"workType":"new-capability","label":"New capability","hours":7,"share":0.4375}],"manualHours":9,"aiFindingsAddressed":2,"note":"Work delivered is a modeled estimate of the manual engineering effort for one engineer to deliver the same changes without AI assistance, split across initiatives by delivered scope. It is not actual hours worked or measured time saved."}],"expectedMerge":{"version":"1.0","totalHours":25.3,"initiatives":[{"initiative":"Gamma","hours":17.6,"share":0.6956521739130436,"byWorkType":{"quality":7.6,"new-capability":10},"shipped":[{"kind":"pr","title":"fix: hub","url":"p","repository":"o/app","state":"merged","labels":["app: gamma","impact: high"],"files":["c","a","b"],"effortHours":13.6,"impact":"major"},{"kind":"pr","title":"feat: hub","url":"q","repository":"o/app","state":"merged","labels":["app: gamma"],"effortHours":4}],"inProgress":[],"other":[]},{"initiative":"App","hours":6.4,"share":0.25296442687747034,"byWorkType":{"quality":6.4},"shipped":[],"inProgress":[],"other":[{"kind":"commits","title":"2 direct commits","repository":"o/app"}]},{"initiative":"Ops","hours":1.3,"share":0.05138339920948617,"byWorkType":{"unlogged":1.3},"shipped":[],"inProgress":[],"other":[{"kind":"manual","title":"sync"}]}],"workTypes":[{"workType":"quality","label":"Quality & bug fixes","hours":14,"share":0.5533596837944664},{"workType":"new-capability","label":"New capability","hours":10,"share":0.3952569169960474},{"workType":"unlogged","label":"Meetings & unlogged (self-reported)","hours":1.3,"share":0.05138339920948617}],"manualHours":1.3,"aiFindingsAddressed":6,"note":"Work delivered is a modeled estimate of the manual engineering effort for one engineer to deliver the same changes without AI assistance, split across initiatives by delivered scope. It is not actual hours worked or measured time saved."},"expectedTrend":{"initiatives":["Gamma","App","Ops"],"periods":[{"id":"2026-09-24","label":"Sep 24-30","from":"2026-09-24","to":"2026-09-30","days":0,"allocation":{"version":"1.0","totalHours":1,"initiatives":[{"initiative":"Ops","hours":1,"share":1,"byWorkType":{"unlogged":1},"shipped":[],"inProgress":[],"other":[{"kind":"manual","title":"Self-reported time"}]}],"workTypes":[{"workType":"unlogged","label":"Meetings & unlogged (self-reported)","hours":1,"share":1}],"manualHours":1,"note":"Work delivered is a modeled estimate of the manual engineering effort for one engineer to deliver the same changes without AI assistance, split across initiatives by delivered scope. It is not actual hours worked or measured time saved."}},{"id":"2026-10-01","label":"Oct 1-7","from":"2026-10-01","to":"2026-10-07","days":3,"allocation":{"version":"1.0","totalHours":28.3,"initiatives":[{"initiative":"Gamma","hours":17.6,"share":0.6219081272084807,"byWorkType":{"quality":7.6,"new-capability":10},"shipped":[{"kind":"pr","title":"fix: hub","url":"p","repository":"o/app","state":"merged","labels":["app: gamma","impact: high"],"files":["c","a","b"],"effortHours":13.6,"impact":"major"},{"kind":"pr","title":"feat: hub","url":"q","repository":"o/app","state":"merged","labels":["app: gamma"],"effortHours":4}],"inProgress":[],"other":[]},{"initiative":"App","hours":6.4,"share":0.22614840989399293,"byWorkType":{"quality":6.4},"shipped":[],"inProgress":[],"other":[{"kind":"commits","title":"2 direct commits","repository":"o/app"}]},{"initiative":"Ops","hours":4.3,"share":0.1519434628975265,"byWorkType":{"unlogged":4.3},"shipped":[],"inProgress":[],"other":[{"kind":"manual","title":"sync"},{"kind":"manual","title":"Self-reported time"}]}],"workTypes":[{"workType":"quality","label":"Quality & bug fixes","hours":14,"share":0.4946996466431095},{"workType":"new-capability","label":"New capability","hours":10,"share":0.35335689045936397},{"workType":"unlogged","label":"Meetings & unlogged (self-reported)","hours":4.3,"share":0.1519434628975265}],"manualHours":4.3,"aiFindingsAddressed":6,"note":"Work delivered is a modeled estimate of the manual engineering effort for one engineer to deliver the same changes without AI assistance, split across initiatives by delivered scope. It is not actual hours worked or measured time saved."}}]},"reopened":[{"version":"1.0","totalHours":3,"initiatives":[{"initiative":"Alpha","hours":3,"share":1,"byWorkType":{"new-capability":3},"shipped":[],"inProgress":[],"other":[{"kind":"pr","title":"feat: hub","url":"r","repository":"o/app","state":"closed","labels":["app: alpha"],"effortHours":3}]}],"workTypes":[{"workType":"new-capability","label":"New capability","hours":3,"share":1}],"manualHours":0,"aiFindingsAddressed":2,"note":"Work delivered is a modeled estimate of the manual engineering effort for one engineer to deliver the same changes without AI assistance, split across initiatives by delivered scope. It is not actual hours worked or measured time saved."},{"version":"1.0","totalHours":5,"initiatives":[{"initiative":"Beta","hours":5,"share":1,"byWorkType":{"new-capability":5},"shipped":[],"inProgress":[{"kind":"pr","title":"feat: hub","url":"r","repository":"o/app","state":"open","labels":["app: beta"],"effortHours":5}],"other":[]}],"workTypes":[{"workType":"new-capability","label":"New capability","hours":5,"share":1}],"manualHours":0,"aiFindingsAddressed":2,"note":"Work delivered is a modeled estimate of the manual engineering effort for one engineer to deliver the same changes without AI assistance, split across initiatives by delivered scope. It is not actual hours worked or measured time saved."}],"expectedReopened":{"version":"1.0","totalHours":8,"initiatives":[{"initiative":"Beta","hours":8,"share":1,"byWorkType":{"new-capability":8},"shipped":[],"inProgress":[{"kind":"pr","title":"feat: hub","url":"r","repository":"o/app","state":"open","labels":["app: beta"],"effortHours":8}],"other":[]}],"workTypes":[{"workType":"new-capability","label":"New capability","hours":8,"share":1}],"manualHours":0,"aiFindingsAddressed":4,"note":"Work delivered is a modeled estimate of the manual engineering effort for one engineer to deliver the same changes without AI assistance, split across initiatives by delivered scope. It is not actual hours worked or measured time saved."}}"###).unwrap()
     }
     fn equal(a: &Value, b: &Value, path: &str) {
         match (a, b) {
@@ -523,13 +574,43 @@ mod tests {
             make(20, json!(["impact: low"])),
             make(20, json!(["impact: high"])),
         ]);
-        assert!(suppressed["initiatives"][0]["shipped"][0]
-            .get("impact")
-            .is_none());
+        assert_eq!(
+            suppressed["initiatives"][0]["shipped"][0]["impact"],
+            "major"
+        );
         assert_eq!(week_label("2025-12-25", "2025-12-31"), "Dec 25-31");
         assert_eq!(
             week_label("2025-12-25", "2026-01-01"),
             "Dec 25, 2025-Jan 1, 2026"
+        );
+    }
+    #[test]
+    fn serialized_rounding_does_not_create_hours() {
+        let config = json!({"initiatives":{}, "labelPrefix":"app:"});
+        let day = |initiative: &str, state: &str, hours: f64| {
+            let prs: Vec<_> = (1..=3)
+                .map(|i| {
+                    json!({
+                        "title":"feat: work", "url":format!("p{i}"), "repository":"o/app",
+                        "state":state, "labels":[format!("app:{initiative}")], "additions":1
+                    })
+                })
+                .collect();
+            compute_allocation(
+                &json!({
+                    "dateRange":{"from":"2026-10-01","to":"2026-10-01"},
+                    "stats":{"estimatedHours":hours}, "pullRequests":prs
+                }),
+                &config,
+                &[],
+            )
+        };
+        let merged = merge_allocations(&[day("alpha", "open", 0.2), day("beta", "merged", 0.3)]);
+        assert_eq!(merged["totalHours"], json!(0.5));
+        assert_eq!(merged["initiatives"][0]["hours"], json!(0.5));
+        assert_eq!(
+            merged["initiatives"][0]["byWorkType"]["new-capability"],
+            json!(0.5)
         );
     }
     #[test]

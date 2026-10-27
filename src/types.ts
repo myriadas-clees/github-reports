@@ -172,6 +172,8 @@ export type ReviewComment = {
   repository: string;
   prNumber: number;
   prUrl: string;
+  prTitle?: string;
+  prLabels?: string[];
   url: string;
   body: string;
   path: string | null;

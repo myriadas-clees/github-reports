@@ -59,10 +59,6 @@ export const deriveImpact = (effortHours: number | undefined, labels: string[] =
   return undefined;
 };
 
-const IMPACT_RANK: Record<Impact, number> = { notable: 1, major: 2 };
-const maxImpact = (a: Impact | undefined, b: Impact | undefined): Impact | undefined =>
-  (a ? IMPACT_RANK[a] : 0) >= (b ? IMPACT_RANK[b] : 0) ? a : b;
-
 /** Stable sort by effortHours desc, items without effort last. */
 const byEffortDesc = (items: AllocationItem[]): AllocationItem[] =>
   items
@@ -179,6 +175,10 @@ type Acc = { hours: number; byWorkType: Partial<Record<WorkType, number>>; shipp
 
 const emptyAcc = (): Acc => ({ hours: 0, byWorkType: {}, shipped: [], inProgress: [], other: [] });
 
+// Keep full precision while daily allocations are merged in memory. Serialized
+// allocations still use their rounded public values as a fallback.
+const allocationPrecision = new WeakMap<Allocation, { accs: Map<string, Acc>; prHours: WeakMap<AllocationItem, number> }>();
+
 const finalize = (accs: Map<string, Acc>, manualHours: number, aiFindingsAddressed = 0): Allocation => {
   const total = [...accs.values()].reduce((sum, acc) => sum + acc.hours, 0);
   const typeTotals = new Map<WorkType, number>();
@@ -260,6 +260,7 @@ export const computeAllocation = (
   const entries: Entry[] = [];
   const placed: Placed[] = [];
   const prEffort: { item: AllocationItem; weight: number; labels: string[] }[] = [];
+  const precisePrHours = new WeakMap<AllocationItem, number>();
 
   const prs = new Map<string, PullRequest>();
   for (const pr of [...(data.pullRequests ?? []), ...(data.prsInProgress ?? []), ...(data.prsWorkedOnClosed ?? [])]) {
@@ -303,18 +304,24 @@ export const computeAllocation = (
 
   const prByRepoNumber = (repository: string, prNumber: number): PullRequest | undefined =>
     [...prs.values()].find((pr) => pr.repository === repository && pr.url.endsWith(`/pull/${prNumber}`));
-  const reviewInitiative = (repository: string, title: string, url: string): string =>
-    classifyInitiative({ title, labels: prs.get(url)?.labels ?? [], repository }, config);
+  const reviewInitiative = (repository: string, title: string, url: string, labels?: string[]): string =>
+    classifyInitiative({ title, labels: prs.get(url)?.labels ?? labels ?? [], repository }, config);
 
-  const reviewTitles = new Map<string, { title: string; url: string }>();
+  const commentMetadata = new Map<string, NonNullable<WeeklyReportData["reviewComments"]>[number]>();
+  for (const comment of data.reviewComments ?? []) {
+    const key = `${comment.repository}#${comment.prNumber}`;
+    if (!commentMetadata.has(key) && (comment.prTitle != null || comment.prLabels != null)) commentMetadata.set(key, comment);
+  }
+  const reviewInitiatives = new Map<string, string>();
   const reviewedItems = new Set<string>();
   for (const review of data.codeReviews ?? []) {
-    const initiative = reviewInitiative(review.repository, review.prTitle, review.prUrl);
+    const key = `${review.repository}#${review.prNumber}`;
+    const initiative = reviewInitiatives.get(key) ?? reviewInitiative(review.repository, review.prTitle, review.prUrl, commentMetadata.get(key)?.prLabels);
     entries.push({ initiative, workType: "team-support", weight: REVIEW_HOURS });
-    reviewTitles.set(`${review.repository}#${review.prNumber}`, { title: review.prTitle, url: review.prUrl });
-    const key = `${initiative}|${review.prUrl}`;
-    if (!reviewedItems.has(key)) {
-      reviewedItems.add(key);
+    reviewInitiatives.set(key, initiative);
+    const itemKey = `${initiative}|${review.prUrl}`;
+    if (!reviewedItems.has(itemKey)) {
+      reviewedItems.add(itemKey);
       placed.push({
         initiative,
         section: "other",
@@ -323,10 +330,12 @@ export const computeAllocation = (
     }
   }
   for (const comment of data.reviewComments ?? []) {
-    const known = reviewTitles.get(`${comment.repository}#${comment.prNumber}`);
+    const known = reviewInitiatives.get(`${comment.repository}#${comment.prNumber}`);
     const pr = prByRepoNumber(comment.repository, comment.prNumber);
-    const initiative = known
-      ? reviewInitiative(comment.repository, known.title, known.url)
+    const initiative = known !== undefined
+      ? known
+      : comment.prTitle != null || comment.prLabels != null
+      ? classifyInitiative({ title: comment.prTitle ?? pr?.title ?? "", labels: comment.prLabels ?? pr?.labels, repository: comment.repository }, config)
       : pr
       ? reviewInitiative(comment.repository, pr.title, pr.url)
       : classifyInitiative({ title: "", labels: [], repository: comment.repository }, config);
@@ -412,7 +421,9 @@ export const computeAllocation = (
   }
   if (weightSum > 0) {
     for (const { item, weight, labels } of prEffort) {
-      item.effortHours = round1((weight / weightSum) * target);
+      const hours = (weight / weightSum) * target;
+      precisePrHours.set(item, hours);
+      item.effortHours = round1(hours);
       const impact = deriveImpact(item.effortHours, labels);
       if (impact) item.impact = impact;
     }
@@ -434,34 +445,37 @@ export const computeAllocation = (
     manualHours += entry.hours;
   }
   const fixed = data.aiReviews?.fixed ?? 0;
-  return finalize(accs, manualHours, fixed > 0 ? fixed : 0);
+  const allocation = finalize(accs, manualHours, fixed > 0 ? fixed : 0);
+  allocationPrecision.set(allocation, { accs, prHours: precisePrHours });
+  return allocation;
 };
 
 const itemKey = (item: AllocationItem): string => `${item.kind}|${item.url ?? item.title}`;
 
 /**
- * Fold another appearance of the same item into `target`: effort sums; for PRs files and
- * labels union and the badge is re-derived with the labels, so an "impact: low" override
- * still suppresses it and an explicit "major" label still forces it. A badge never drops.
+ * Fold another appearance into `target`: effort sums, files union, and PR metadata stays current.
  */
-const absorbPrItem = (target: AllocationItem, other: AllocationItem): void => {
+const absorbPrItem = (target: AllocationItem, other: AllocationItem, otherIsLatest: boolean): void => {
   if (other.effortHours != null) target.effortHours = round1((target.effortHours ?? 0) + other.effortHours);
   if (target.kind !== "pr") return;
   if (other.files?.length) target.files = [...new Set([...(target.files ?? []), ...other.files])];
-  if (other.labels?.length) target.labels = [...new Set([...(target.labels ?? []), ...other.labels])];
+  if (otherIsLatest) {
+    target.title = other.title;
+    if (other.labels) target.labels = [...other.labels];
+    else delete target.labels;
+  }
   const derived = deriveImpact(target.effortHours, target.labels ?? []);
-  const suppressed = (target.labels ?? []).some((label) => IMPACT_DOWN_LABEL_RE.test(label.trim()));
-  const impact = suppressed ? undefined : maxImpact(maxImpact(target.impact, other.impact), derived);
-  if (impact) target.impact = impact;
+  if (derived) target.impact = derived;
   else delete target.impact;
 };
 
-const moveItemEffort = (from: Acc, to: Acc, hours: number, fromType: WorkType, toType: WorkType): void => {
-  if (!hours) return;
-  from.hours = Math.max(0, from.hours - hours);
-  from.byWorkType[fromType] = Math.max(0, (from.byWorkType[fromType] ?? 0) - hours);
-  to.hours += hours;
-  to.byWorkType[toType] = (to.byWorkType[toType] ?? 0) + hours;
+const moveItemEffort = (from: Acc, to: Acc, contributions: Partial<Record<WorkType, number>>): void => {
+  for (const [type, hours] of Object.entries(contributions) as [WorkType, number][]) {
+    from.hours -= hours;
+    from.byWorkType[type] = (from.byWorkType[type] ?? 0) - hours;
+    to.hours += hours;
+    to.byWorkType[type] = (to.byWorkType[type] ?? 0) + hours;
+  }
 };
 
 /** Merge several allocations (e.g. days in a week) into one. */
@@ -470,15 +484,34 @@ export const mergeAllocations = (allocations: Allocation[]): Allocation => {
   const seen = new Map<string, AllocationItem>();
   const commitItems = new Map<string, { item: AllocationItem; count: number }>();
   const appearanceIndex = new WeakMap<AllocationItem, number>();
+  const contributions = new WeakMap<AllocationItem, Partial<Record<WorkType, number>>>();
   let manualHours = 0;
   let aiFindingsAddressed = 0;
   for (const [allocationIndex, allocation] of allocations.entries()) {
+    const precision = allocationPrecision.get(allocation);
     manualHours += allocation.manualHours;
     aiFindingsAddressed += allocation.aiFindingsAddressed ?? 0;
     for (const bucket of allocation.initiatives) {
+      const preciseBucket = precision?.accs.get(bucket.initiative);
+      // Item and bucket hours are rounded independently. Reconcile all PRs in this
+      // daily bucket together so moving several of them cannot spend the same hours.
+      const prItems = [...bucket.shipped, ...bucket.inProgress, ...bucket.other].filter((item) => item.kind === "pr");
+      const prTypeHours: Partial<Record<WorkType, number>> = {};
+      for (const item of prItems) {
+        const type = classifyWorkType(item.title, item.labels);
+        prTypeHours[type] = (prTypeHours[type] ?? 0) + (precision?.prHours.get(item) ?? item.effortHours ?? 0);
+      }
+      const prContributions = new Map(prItems.map((item) => {
+        const type = classifyWorkType(item.title, item.labels);
+        const sum = prTypeHours[type] ?? 0;
+        const scale = sum > 0 ? Math.min(1, ((preciseBucket?.byWorkType ?? bucket.byWorkType)[type] ?? 0) / sum) : 0;
+        return [item, (precision?.prHours.get(item) ?? item.effortHours ?? 0) * scale] as const;
+      }));
+      const prHours = [...prContributions.values()].reduce((sum, hours) => sum + hours, 0);
+      const bucketScale = prHours > 0 ? Math.min(1, (preciseBucket?.hours ?? bucket.hours) / prHours) : 0;
       const acc = accs.get(bucket.initiative) ?? emptyAcc();
-      acc.hours += bucket.hours;
-      for (const [type, hours] of Object.entries(bucket.byWorkType) as [WorkType, number][]) {
+      acc.hours += preciseBucket?.hours ?? bucket.hours;
+      for (const [type, hours] of Object.entries(preciseBucket?.byWorkType ?? bucket.byWorkType) as [WorkType, number][]) {
         acc.byWorkType[type] = (acc.byWorkType[type] ?? 0) + hours;
       }
       accs.set(bucket.initiative, acc);
@@ -505,15 +538,22 @@ export const mergeAllocations = (allocations: Allocation[]): Allocation => {
           const key = `${bucket.initiative}|${section}|${itemKey(item)}`;
           const prior = seen.get(key);
           if (prior) {
-            // Same PR on another day: effort, files and labels accumulate.
-            absorbPrItem(prior, item);
-            if (section === "inProgress" || (section === "other" && item.kind === "pr" && item.state === "closed")) appearanceIndex.set(prior, allocationIndex);
+            absorbPrItem(prior, item, true);
+            if (item.kind === "pr") {
+              const type = classifyWorkType(item.title, item.labels);
+              const amounts = contributions.get(prior)!;
+              amounts[type] = (amounts[type] ?? 0) + prContributions.get(item)! * bucketScale;
+              appearanceIndex.set(prior, allocationIndex);
+            }
             continue;
           }
           const copy = { ...item, ...(item.files ? { files: [...item.files] } : {}), ...(item.labels ? { labels: [...item.labels] } : {}) };
           seen.set(key, copy);
           acc[section].push(copy);
-          if (section === "inProgress" || (section === "other" && item.kind === "pr" && item.state === "closed")) appearanceIndex.set(copy, allocationIndex);
+          if (item.kind === "pr") {
+            contributions.set(copy, { [classifyWorkType(item.title, item.labels)]: prContributions.get(item)! * bucketScale });
+            appearanceIndex.set(copy, allocationIndex);
+          }
         }
       }
     }
@@ -543,12 +583,11 @@ export const mergeAllocations = (allocations: Allocation[]): Allocation => {
       (appearanceIndex.get(current.item) ?? -1) > (appearanceIndex.get(latest.item) ?? -1) ? current : latest);
     for (const appearance of appearances) {
       if (appearance.item === destination.item) continue;
-      const fromType = classifyWorkType(appearance.item.title, appearance.item.labels ?? []);
-      const toType = classifyWorkType(destination.item.title, destination.item.labels ?? []);
-      const hours = appearance.item.effortHours ?? 0;
-      absorbPrItem(destination.item, appearance.item);
+      const otherIsLatest = (appearanceIndex.get(appearance.item) ?? -1) > (appearanceIndex.get(destination.item) ?? -1);
+      absorbPrItem(destination.item, appearance.item, otherIsLatest);
+      if (otherIsLatest) appearanceIndex.set(destination.item, appearanceIndex.get(appearance.item)!);
       if (appearance.initiative !== destination.initiative) {
-        moveItemEffort(accs.get(appearance.initiative)!, accs.get(destination.initiative)!, hours, fromType, toType);
+        moveItemEffort(accs.get(appearance.initiative)!, accs.get(destination.initiative)!, contributions.get(appearance.item)!);
       }
       const source = accs.get(appearance.initiative)!;
       source[appearance.section] = source[appearance.section].filter((item) => item !== appearance.item);

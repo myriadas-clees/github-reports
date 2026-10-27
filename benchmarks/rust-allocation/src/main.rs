@@ -35,7 +35,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let daily: Vec<_> = reports
         .iter()
         .map(|report| {
-            worklog_allocation_bench::daily::compute_allocation(&report["data"], config, manual)
+            worklog_allocation_bench::daily::compute_allocation_precise(
+                &report["data"],
+                config,
+                manual,
+            )
         })
         .collect();
     let prepared: Vec<_> = reports.iter().zip(&daily).map(|(report, allocation)| {
@@ -61,6 +65,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             )
         })
         .collect();
+    let mut public_daily = daily.clone();
+    for allocation in &mut public_daily {
+        worklog_allocation_bench::daily::strip_precision(allocation);
+    }
     let mut output = BufWriter::new(io::stdout().lock());
     #[derive(Serialize)]
     struct Output<'a> {
@@ -70,7 +78,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     serde_json::to_writer(
         &mut output,
         &Output {
-            daily: &daily,
+            daily: &public_daily,
             trends: &trends,
         },
     )?;

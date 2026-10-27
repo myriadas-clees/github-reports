@@ -242,6 +242,26 @@ fn date(v: &Value) -> String {
 }
 
 pub fn compute_allocation(data: &Value, config: &Value, manual: &[Value]) -> Value {
+    let mut result = compute_allocation_precise(data, config, manual);
+    strip_precision(&mut result);
+    result
+}
+
+pub fn strip_precision(value: &mut Value) {
+    match value {
+        Value::Object(fields) => {
+            fields.remove("_hours");
+            fields.remove("_types");
+            for value in fields.values_mut() {
+                strip_precision(value);
+            }
+        }
+        Value::Array(values) => values.iter_mut().for_each(strip_precision),
+        _ => {}
+    }
+}
+
+pub fn compute_allocation_precise(data: &Value, config: &Value, manual: &[Value]) -> Value {
     let target = data
         .pointer("/hoursEstimate/hours")
         .and_then(Value::as_f64)
@@ -310,13 +330,21 @@ pub fn compute_allocation(data: &Value, config: &Value, manual: &[Value]) -> Val
             shas.insert(s(&commit["sha"]).to_owned());
         }
     }
-    let mut review_titles: HashMap<String, (String, String)> = HashMap::new();
+    let mut review_initiatives: HashMap<String, String> = HashMap::new();
+    let mut comment_metadata: HashMap<String, &Value> = HashMap::new();
+    for comment in arr(&data["reviewComments"]) {
+        if !comment["prTitle"].is_null() || !comment["prLabels"].is_null() {
+            let key = format!("{}#{}", s(&comment["repository"]), comment["prNumber"]);
+            comment_metadata.entry(key).or_insert(comment);
+        }
+    }
     let mut reviewed = HashSet::new();
-    let review_initiative = |repo: &str, title: &str, url: &str| {
+    let review_initiative = |repo: &str, title: &str, url: &str, fallback: Option<&Value>| {
         let labels = prs
             .iter()
             .find(|pr| s(&pr["url"]) == url)
-            .map(|pr| strings(&pr["labels"]))
+            .and_then(|pr| pr["labels"].as_array().map(|_| strings(&pr["labels"])))
+            .or_else(|| fallback.filter(|value| !value.is_null()).map(strings))
             .unwrap_or_default();
         classify_initiative(title, &labels, repo, config)
     };
@@ -324,12 +352,19 @@ pub fn compute_allocation(data: &Value, config: &Value, manual: &[Value]) -> Val
         let repo = s(&review["repository"]);
         let title = s(&review["prTitle"]);
         let url = s(&review["prUrl"]);
-        let initiative = review_initiative(repo, title, url);
+        let key = format!("{}#{}", repo, review["prNumber"]);
+        let initiative = review_initiatives.get(&key).cloned().unwrap_or_else(|| {
+            review_initiative(
+                repo,
+                title,
+                url,
+                comment_metadata
+                    .get(&key)
+                    .map(|comment| &comment["prLabels"]),
+            )
+        });
         entries.push((initiative.clone(), "team-support".into(), 0.75));
-        review_titles.insert(
-            format!("{}#{}", repo, review["prNumber"]),
-            (title.into(), url.into()),
-        );
+        review_initiatives.insert(key, initiative.clone());
         if reviewed.insert(format!("{initiative}|{url}")) {
             placed.push((initiative,"other",json!({"kind":"review","title":format!("Reviewed: {title}"),"url":url,"repository":repo}),None));
         }
@@ -337,13 +372,25 @@ pub fn compute_allocation(data: &Value, config: &Value, manual: &[Value]) -> Val
     for comment in arr(&data["reviewComments"]) {
         let repo = s(&comment["repository"]);
         let number = &comment["prNumber"];
-        let initiative = if let Some((title, url)) = review_titles.get(&format!("{repo}#{number}"))
-        {
-            review_initiative(repo, title, url)
-        } else if let Some(pr) = prs.iter().find(|pr| {
+        let known = review_initiatives.get(&format!("{repo}#{number}"));
+        let pr = prs.iter().find(|pr| {
             s(&pr["repository"]) == repo && s(&pr["url"]).ends_with(&format!("/pull/{number}"))
-        }) {
-            review_initiative(repo, s(&pr["title"]), s(&pr["url"]))
+        });
+        let initiative = if let Some(initiative) = known {
+            initiative.clone()
+        } else if !comment["prTitle"].is_null() || !comment["prLabels"].is_null() {
+            let title = comment["prTitle"]
+                .as_str()
+                .or_else(|| pr.map(|pr| s(&pr["title"])))
+                .unwrap_or("");
+            let labels = if !comment["prLabels"].is_null() {
+                strings(&comment["prLabels"])
+            } else {
+                pr.map(|pr| strings(&pr["labels"])).unwrap_or_default()
+            };
+            classify_initiative(title, &labels, repo, config)
+        } else if let Some(pr) = pr {
+            review_initiative(repo, s(&pr["title"]), s(&pr["url"]), None)
         } else {
             classify_initiative("", &[], repo, config)
         };
@@ -489,7 +536,9 @@ pub fn compute_allocation(data: &Value, config: &Value, manual: &[Value]) -> Val
     for (initiative, section, mut item, effort) in placed {
         if weight_sum > 0. {
             if let Some((weight, labels)) = effort {
-                let hours = round1(weight / weight_sum * target);
+                let precise = weight / weight_sum * target;
+                let hours = round1(precise);
+                item["_hours"] = json!(precise);
                 item["effortHours"] = json!(hours);
                 if let Some(impact) = impact(hours, &labels) {
                     item["impact"] = json!(impact);
@@ -526,7 +575,9 @@ pub fn compute_allocation(data: &Value, config: &Value, manual: &[Value]) -> Val
     let mut buckets = Vec::new();
     for mut a in accs {
         let mut by_type = serde_json::Map::new();
+        let mut precise_types = serde_json::Map::new();
         for (typ, hours) in a.types {
+            precise_types.insert(typ.clone(), json!(hours));
             if let Some((_, h)) = type_totals.iter_mut().find(|(t, _)| t == &typ) {
                 *h += hours;
             } else {
@@ -546,7 +597,7 @@ pub fn compute_allocation(data: &Value, config: &Value, manual: &[Value]) -> Val
         };
         sort(&mut a.shipped);
         sort(&mut a.progress);
-        buckets.push(json!({"initiative":a.name,"hours":round1(a.hours),"share":if total > 0. {a.hours / total} else {0.},"byWorkType":by_type,"shipped":a.shipped,"inProgress":a.progress,"other":a.other}));
+        buckets.push(json!({"initiative":a.name,"_hours":a.hours,"_types":precise_types,"hours":round1(a.hours),"share":if total > 0. {a.hours / total} else {0.},"byWorkType":by_type,"shipped":a.shipped,"inProgress":a.progress,"other":a.other}));
     }
     buckets.sort_by(|a, b| {
         n(&b["hours"])

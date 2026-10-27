@@ -276,6 +276,24 @@ describe("computeAllocation", () => {
     expect(a.workTypes[0].workType).toBe("team-support");
   });
 
+  it("classifies comment-only reviews using retained PR metadata and supports older reports", () => {
+    const comment = { repository: "o/app", prNumber: 7, prUrl: "p", url: "c", body: "x", path: null, createdAt: "" };
+    const config = cfg({ initiatives: { "scope:pricing": "Pricing" } });
+    for (const metadata of [{ prTitle: "feat(pricing): tiers" }, { prTitle: "Other", prLabels: ["app: pricing"] }]) {
+      const allocation = computeAllocation(data({ reviewComments: [{ ...comment, ...metadata }] }), config);
+      expect(allocation.initiatives[0]).toMatchObject({ initiative: "Pricing", byWorkType: { "team-support": 10 } });
+    }
+    expect(computeAllocation(data({ reviewComments: [comment] }), config).initiatives[0]!.initiative).toBe("App");
+  });
+
+  it("keeps reviews and inline comments on a teammate's labelled PR in the same initiative", () => {
+    const review = { repository: "o/app", prNumber: 7, prUrl: "https://github.com/o/app/pull/7", prTitle: "Tweak pricing", state: "APPROVED", body: "", submittedAt: "", url: "review" };
+    const comment = { repository: "o/app", prNumber: 7, prUrl: review.prUrl, prTitle: review.prTitle, prLabels: ["app: northstar"], url: "comment", body: "x", path: null, createdAt: "" };
+    const allocation = computeAllocation(data({ codeReviews: [review], reviewComments: [comment] }, 2));
+    expect(allocation.initiatives).toHaveLength(1);
+    expect(allocation.initiatives[0]).toMatchObject({ initiative: "Northstar", hours: 2, byWorkType: { "team-support": 2 }, other: [{ title: "Reviewed: Tweak pricing" }] });
+  });
+
   it("excludes PR work commits from direct commits", () => {
     const shared = { sha: "s1", message: "feat: a", url: "", authoredAt: "", additions: 10, deletions: 0 };
     const direct = { sha: "s2", message: "fix: b\n\nbody", url: "", authoredAt: "", additions: 10, deletions: 0 };
@@ -714,6 +732,92 @@ describe("PR #4 review fixes", () => {
     expect(m.initiatives[0]!.shipped).toMatchObject([{ url: "p", effortHours: 16 }]);
     expect(m.workTypes).toMatchObject([{ workType: "new-capability", hours: 16, share: 1 }]);
     expect(m.initiatives.reduce((sum, b) => sum + b.share, 0)).toBeCloseTo(1, 5);
+  });
+
+  it("moves each daily work type without consuming other PRs' effort", () => {
+    const day = (title: string, initiative: string, hours: number, extra = false) => {
+      const p = pr({ url: "p", title, state: "open", labels: [`app: ${initiative}`] });
+      const prs = extra ? [p, pr({ url: "q", title: "feat: unrelated", state: "open", labels: ["app: a"] })] : [p];
+      return computeAllocation(data({ pullRequests: prs }, hours));
+    };
+    const merged = mergeAllocations([day("feat: original", "a", 4, true), day("fix: updated", "a", 3), day("fix: updated", "b", 5)]);
+    expect(merged.initiatives.find((b) => b.initiative === "A")).toMatchObject({ hours: 2, byWorkType: { "new-capability": 2 } });
+    expect(merged.initiatives.find((b) => b.initiative === "B")).toMatchObject({ hours: 10, byWorkType: { "new-capability": 2, quality: 8 } });
+    expect(merged.workTypes).toEqual(expect.arrayContaining([expect.objectContaining({ workType: "new-capability", hours: 4 }), expect.objectContaining({ workType: "quality", hours: 8 })]));
+  });
+
+  it("conserves total hours when rounded PR efforts move to another initiative", () => {
+    const day = (initiative: string, state: "open" | "merged", hours: number) => computeAllocation(data({
+      pullRequests: ["1", "2", "3"].map((id) => pr({ url: id, title: `feat: ${id}`, state, labels: [`app: ${initiative}`], additions: 1, deletions: 0 })),
+    }, hours));
+    const merged = mergeAllocations([day("alpha", "open", 0.2), day("beta", "merged", 0.3)]);
+    expect(merged.totalHours).toBe(0.5);
+    expect(merged.initiatives.reduce((sum, bucket) => sum + bucket.hours, 0)).toBeCloseTo(0.5);
+    expect(merged.workTypes.find((type) => type.workType === "new-capability")?.hours).toBe(0.5);
+    const serialized = [day("alpha", "open", 0.2), day("beta", "merged", 0.3)].map((allocation) => JSON.parse(JSON.stringify(allocation)) as typeof allocation);
+    expect(mergeAllocations(serialized).totalHours).toBe(0.5);
+  });
+
+  it("retains unrelated same-type work when rounded PR items move", () => {
+    const prs = (initiative: string, state: "open" | "merged") => ["1", "2", "3"].map((url) =>
+      pr({ url, title: "feat: work", state, labels: [`app: ${initiative}`], additions: 1, deletions: 0 }));
+    const first = computeAllocation(data({
+      pullRequests: prs("alpha", "open"),
+      commitMessages: [{ repo: "o/alpha", messages: ["feat: unrelated"] }],
+    }, 0.3));
+    const second = computeAllocation(data({ pullRequests: prs("beta", "merged") }, 0.3));
+    const merged = mergeAllocations([first, second]);
+    expect(merged.totalHours).toBe(0.6);
+    expect(merged.initiatives.find((bucket) => bucket.initiative === "Alpha")).toMatchObject({
+      hours: 0.1, byWorkType: { "new-capability": 0.1 },
+      other: [expect.objectContaining({ kind: "commits" })],
+    });
+    expect(merged.initiatives.find((bucket) => bucket.initiative === "Beta")).toMatchObject({
+      hours: 0.5, byWorkType: { "new-capability": 0.5 },
+    });
+  });
+
+  it("shares rounded source effort across multiple moves and keeps unrelated work", () => {
+    const item = (url: string, initiative: string, title = "feat: work", state: "open" | "merged" = "open") =>
+      pr({ url, title, state, labels: [`app: ${initiative}`], additions: 1, deletions: 0 });
+    const allocation = (pullRequests: PullRequest[], hours: number) => computeAllocation(data({ pullRequests }, hours));
+    const merged = mergeAllocations([
+      allocation([item("1", "alpha"), item("2", "alpha"), item("3", "alpha")], 0.2),
+      allocation([item("unrelated", "alpha")], 0.2),
+      allocation([item("quality", "alpha", "fix: bug")], 0.2),
+      allocation([item("1", "beta"), item("2", "beta"), item("3", "beta")], 0.3),
+      allocation([item("1", "gamma", "fix: bug", "merged")], 0.1),
+    ]);
+    expect(merged.totalHours).toBe(1);
+    expect(merged.initiatives.reduce((sum, bucket) => sum + bucket.hours, 0)).toBeCloseTo(1);
+    expect(merged.initiatives.find((bucket) => bucket.initiative === "Alpha")).toMatchObject({
+      hours: 0.4, byWorkType: { "new-capability": 0.2, quality: 0.2 },
+    });
+    expect(merged.initiatives.find((bucket) => bucket.initiative === "Beta")).toMatchObject({
+      hours: 0.3, byWorkType: { "new-capability": 0.3 },
+    });
+    expect(merged.initiatives.find((bucket) => bucket.initiative === "Gamma")).toMatchObject({
+      hours: 0.3, byWorkType: { "new-capability": 0.2, quality: 0.1 },
+    });
+    expect(merged.workTypes).toEqual(expect.arrayContaining([
+      expect.objectContaining({ workType: "new-capability", hours: 0.7 }),
+      expect.objectContaining({ workType: "quality", hours: 0.3 }),
+    ]));
+  });
+
+  it("uses latest PR title and labels while accumulating effort and files", () => {
+    const day = (title: string, labels: string[], file: string, state: "open" | "merged" = "open") =>
+      computeAllocation(data({ pullRequests: [pr({ url: "p", title, state, labels, workFiles: [file] })] }, 4));
+    const merged = mergeAllocations([
+      day("WIP: dashboard", ["app: hub", "impact: low", "prototype"], "old.ts"),
+      day("feat: dashboard", ["app: hub"], "new.ts"),
+      day("fix: dashboard", ["app: hub"], "last.ts", "merged"),
+    ]);
+    const item = merged.initiatives[0]!.shipped[0]!;
+    expect(item).toMatchObject({ title: "fix: dashboard", labels: ["app: hub"], effortHours: 12, impact: "notable" });
+    expect(item.files?.sort()).toEqual(["last.ts", "new.ts", "old.ts"]);
+    const openOnly = mergeAllocations([day("WIP: dashboard", ["app: hub", "prototype"], "old.ts"), day("feat: dashboard", ["app: hub"], "new.ts")]);
+    expect(openOnly.initiatives[0]!.inProgress[0]).toMatchObject({ title: "feat: dashboard", labels: ["app: hub"], effortHours: 8 });
   });
 
   it("consolidates an open PR under its latest initiative", () => {

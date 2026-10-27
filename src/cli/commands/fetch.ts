@@ -488,7 +488,7 @@ const runFullFetch = async (
   console.log(`Collected ${totalMsgs} commit messages from ${commitMessages.length} repositories.`);
 
   console.log(`Fetching reviews and review comments...`);
-  const reviewCandidates = new Map<string, { repo: string; number: number; title?: string; url?: string }>();
+  const reviewCandidates = new Map<string, { repo: string; number: number; title?: string; url?: string; labels?: string[] }>();
   for (const ref of uniqueRefs.values()) {
     reviewCandidates.set(`${ref.repo}#${ref.number}`, ref);
   }
@@ -500,6 +500,7 @@ const runFullFetch = async (
       number,
       title: pr.title,
       url: pr.url,
+      labels: pr.labels,
     });
   }
   const reviewData = await fetchReviewsForRepos(
