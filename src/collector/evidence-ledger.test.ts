@@ -73,6 +73,13 @@ describe("needsRefresh", () => {
     expect(needsRefresh(recent, now)).toBe(true);
     expect(needsRefresh({ ...recent, fetchedAt: "2026-06-19T12:00:00Z" }, now)).toBe(false);
   });
+  it("refreshes closed PRs after newer activity and periodically for legacy reports", () => {
+    const closed = pr({ state: "closed", mergedAt: null, fetchedAt: "2026-06-19T12:00:00Z" });
+    expect(needsRefresh(closed, now, "2026-06-19T13:00:00Z")).toBe(true);
+    expect(needsRefresh(closed, now, "2026-06-19T11:00:00Z")).toBe(false);
+    expect(needsRefresh({ ...closed, fetchedAt: "2026-06-17T00:00:00Z" }, now)).toBe(true);
+    expect(needsRefresh({ ...closed, fetchedAt: "invalid" }, now)).toBe(true);
+  });
   it("refreshes merged PRs when commit statuses were unavailable", () => {
     expect(needsRefresh(pr({ checks: { passed: 1, failed: 0, skipped: 0, pending: 0, names: [], statusesUnavailable: true } }), now)).toBe(true);
     expect(needsRefresh(pr({ checks: { passed: 1, failed: 0, skipped: 0, pending: 0, names: [], checkRunsUnavailable: true } }), now)).toBe(true);
@@ -139,6 +146,18 @@ describe("collectPrRefsFromData", () => {
     await write("2026/W25", "pullRequests:\n  - url: https://github.com/o/r/pull/3\n");
     expect((await collectPrRefsFromData(dir, "2026-06-01")).map((r) => r.number)).toEqual([2]);
     expect((await collectPrRefsFromData(dir)).map((r) => r.number)).toEqual([1, 2, 3]);
+  });
+
+  it("keeps the latest PR update timestamp across daily and weekly reports", async () => {
+    dir = await mkdtemp(join(tmpdir(), "ev-"));
+    const write = async (rel: string, updatedAt: string) => {
+      await mkdir(join(dir, rel), { recursive: true });
+      await writeFile(join(dir, rel, "github-data.yaml"), `dateRange:\n  to: '2026-06-18'\npullRequests:\n  - url: https://github.com/o/r/pull/1\n    updatedAt: '${updatedAt}'\n`);
+    };
+    await write("2026/06/10", "2026-06-10T00:00:00Z");
+    await write("2026/06/18", "2026-06-18T00:00:00Z");
+    await write("2026/W24", "2026-06-15T00:00:00Z");
+    expect(await collectPrRefsFromData(dir)).toEqual([{ repo: "o/r", number: 1, url: "https://github.com/o/r/pull/1", updatedAt: "2026-06-18T00:00:00Z" }]);
   });
 
   it("collects PRs present only in prsWorkedOnClosed from daily and weekly files", async () => {

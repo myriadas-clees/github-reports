@@ -10,7 +10,7 @@ export const EVIDENCE_VERSION = "1.0";
 const MAX_DEPLOYMENTS_PER_REPO = 5000;
 const DAY_MS = 24 * 60 * 60 * 1000;
 
-export type PrRef = { repo: string; number: number; url: string };
+export type PrRef = { repo: string; number: number; url: string; updatedAt?: string };
 
 export const emptyLedger = (): EvidenceLedger => ({
   version: EVIDENCE_VERSION,
@@ -105,7 +105,7 @@ export const collectPrRefsFromData = async (dataDir: string, since?: string): Pr
   const seen = new Map<string, PrRef>();
   for (const file of files) {
     if (!(await exists(file))) continue;
-    let data: { pullRequests?: Array<{ url?: string }>; prsInProgress?: Array<{ url?: string }>; prsWorkedOnClosed?: Array<{ url?: string }>; dateRange?: { to?: unknown } };
+    let data: { pullRequests?: Array<{ url?: string; updatedAt?: string }>; prsInProgress?: Array<{ url?: string; updatedAt?: string }>; prsWorkedOnClosed?: Array<{ url?: string; updatedAt?: string }>; dateRange?: { to?: unknown } };
     try {
       data = parseYaml(await readFile(file, "utf-8")) ?? {};
     } catch {
@@ -117,21 +117,30 @@ export const collectPrRefsFromData = async (dataDir: string, since?: string): Pr
       if (!/^\d{4}-\d{2}-\d{2}$/.test(endDate) || endDate < since.slice(0, 10)) continue;
     }
     for (const pr of [...(data.pullRequests ?? []), ...(data.prsInProgress ?? []), ...(data.prsWorkedOnClosed ?? [])]) {
-      if (!pr?.url || seen.has(pr.url)) continue;
+      if (!pr?.url) continue;
       const parsed = parsePrUrl(pr.url);
-      if (parsed) seen.set(pr.url, { ...parsed, url: pr.url });
+      if (!parsed) continue;
+      const previous = seen.get(pr.url);
+      const updated = typeof pr.updatedAt === "string" && Number.isFinite(Date.parse(pr.updatedAt)) ? pr.updatedAt : undefined;
+      if (!previous) seen.set(pr.url, { ...parsed, url: pr.url, ...(updated ? { updatedAt: updated } : {}) });
+      else if (updated && (!previous.updatedAt || Date.parse(updated) > Date.parse(previous.updatedAt))) previous.updatedAt = updated;
     }
   }
   return [...seen.values()];
 };
 
-export const needsRefresh = (existing: PrEvidence | undefined, now: Date): boolean => {
+export const needsRefresh = (existing: PrEvidence | undefined, now: Date, updatedAt?: string): boolean => {
   if (!existing) return true;
   if (existing.refreshFailedAt) return true;
   if (existing.incomplete?.reviews || existing.incomplete?.files) return true;
   if (existing.state === "open") return true;
+  const fetchedAt = Date.parse(existing.fetchedAt);
+  const updated = updatedAt ? Date.parse(updatedAt) : NaN;
+  if (Number.isFinite(updated) && (!Number.isFinite(fetchedAt) || updated > fetchedAt)) return true;
   if (existing.checks?.statusesUnavailable || existing.checks?.checkRunsUnavailable) return true;
   if (existing.checks === null || existing.checks.pending > 0) return true;
+  // Closed PRs can be reopened, including when older reports lack update timestamps.
+  if (existing.state === "closed" && (!Number.isFinite(fetchedAt) || now.getTime() - fetchedAt > 2 * DAY_MS)) return true;
   if (existing.mergedAt) {
     const mergedAgo = now.getTime() - new Date(existing.mergedAt).getTime();
     const fetchedAgo = now.getTime() - new Date(existing.fetchedAt).getTime();

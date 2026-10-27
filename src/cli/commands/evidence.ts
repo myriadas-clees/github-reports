@@ -236,7 +236,7 @@ export const registerEvidence = (program: Command): void => {
         }
       }
 
-      const todo = refs.filter((r) => opts.force || needsRefresh(ledger.prs[r.url], now));
+      const todo = refs.filter((r) => opts.force || needsRefresh(ledger.prs[r.url], now, r.updatedAt));
       let refreshed = 0;
       await mapWithConcurrency(todo, async (ref) => {
         try {
