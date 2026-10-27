@@ -81,7 +81,7 @@ vi.mock("../../renderer/rss.js", () => ({
 
 vi.mock("../../deployer/day.js", () => {
   return {
-    resolveDayId: () => ({ date: "2026-04-01", year: 2026, month: 4, day: 1, path: "2026/04/01" }),
+    resolveDayId: (date?: Date) => ({ date: date?.toISOString().slice(0, 10) ?? "2026-04-01", year: 2026, month: 4, day: date?.getUTCDate() ?? 1, path: `2026/04/${String(date?.getUTCDate() ?? 1).padStart(2, "0")}` }),
   };
 });
 
@@ -221,6 +221,83 @@ describe("registerRender", () => {
     expect(cardSvg).toContain("2026-04-01");
     expect(cardSvg).toContain("2026-03-28");
     expect(cardSvg).toContain("2026-04-03");
+  });
+
+  it("renders every dated report and writes shared archive output once", async () => {
+    mockReadFile.mockImplementation((path: string) => path.includes("github-data.yaml")
+      ? Promise.resolve(GITHUB_DATA_YAML) : path.includes("llm-data.yaml")
+        ? Promise.resolve(LLM_DATA_YAML) : Promise.reject(new Error("not found")));
+    mockReaddir.mockImplementation((dir: string) => dir.endsWith("data") ? Promise.resolve(["2026"])
+      : dir.endsWith("2026") ? Promise.resolve(["04"])
+        : dir.endsWith("2026/04") ? Promise.resolve(["01", "02"]) : Promise.resolve([]));
+    const { registerRender } = await import("./render.js");
+    const program = new Command();
+    registerRender(program);
+    await program.parseAsync(["node", "cli", "render", "--archive", "--data-dir", "./data", "--output-dir", "./output", "--base-url", "https://user.github.io/repo"]);
+    expect(mockRenderReport).toHaveBeenCalledTimes(2); // each date once, with complete navigation
+    expect(mockGenerateOGImage).toHaveBeenCalledTimes(2);
+    // Each input is read once for the entire archive, including index generation.
+    expect(mockReadFile.mock.calls.filter((c: unknown[]) => String(c[0]).endsWith("github-data.yaml"))).toHaveLength(2);
+    expect(mockReadFile.mock.calls.filter((c: unknown[]) => String(c[0]).endsWith("llm-data.yaml"))).toHaveLength(2);
+    const reports = mockRenderReport.mock.calls;
+    expect(reports[0]![1].nextWeek).toBe("../../../2026/04/02/");
+    expect(reports[1]![1].prevWeek).toBe("../../../2026/04/01/");
+    expect(mockRenderIndexPage).toHaveBeenCalledTimes(1);
+    expect(mockGenerateIndexOGImage).toHaveBeenCalledTimes(1);
+    expect(mockWriteFile.mock.calls.filter((c: unknown[]) => String(c[0]).endsWith("sitemap.xml"))).toHaveLength(1);
+    expect(mockWriteFile.mock.calls.some((c: unknown[]) => String(c[0]).includes("2026/04/01/index.html"))).toBe(true);
+    expect(mockWriteFile.mock.calls.some((c: unknown[]) => String(c[0]).includes("2026/04/02/index.html"))).toBe(true);
+  });
+
+  it("fails when no dated archive input exists", async () => {
+    mockReaddir.mockResolvedValue([]);
+    const { runRenderArchive } = await import("./render.js");
+    await expect(runRenderArchive({ dataDir: "./data", outputDir: "./output", baseUrl: "https://example.com", language: "en", timezone: "UTC", theme: "brutalist" }))
+      .rejects.toThrow("No daily reports found");
+  });
+
+  it("fails the archive when a dated report is missing LLM input", async () => {
+    mockReaddir.mockImplementation((dir: string) => dir.endsWith("data") ? Promise.resolve(["2026"])
+      : dir.endsWith("2026") ? Promise.resolve(["04"])
+        : dir.endsWith("2026/04") ? Promise.resolve(["01"]) : Promise.resolve([]));
+    mockReadFile.mockImplementation((path: string) => path.includes("github-data.yaml")
+      ? Promise.resolve(GITHUB_DATA_YAML) : Promise.reject(new Error("not found")));
+    const { runRenderArchive } = await import("./render.js");
+    await expect(runRenderArchive({ dataDir: "./data", outputDir: "./output", baseUrl: "https://example.com", language: "en", timezone: "UTC", theme: "brutalist" }))
+      .rejects.toThrow("LLM data not found");
+  });
+
+  it("rejects weekly mode for a dated archive", async () => {
+    const { runRenderArchive } = await import("./render.js");
+    await expect(runRenderArchive({ dataDir: "./data", outputDir: "./output", baseUrl: "https://example.com", language: "en", timezone: "UTC", theme: "brutalist", mode: "weekly" }))
+      .rejects.toThrow("--archive only supports daily reports");
+    expect(mockWriteFile).not.toHaveBeenCalled();
+  });
+
+  it("rejects combining a single date with the complete archive", async () => {
+    const error = vi.spyOn(console, "error").mockImplementation(() => {});
+    const { registerRender } = await import("./render.js");
+    const program = new Command();
+    registerRender(program);
+    await expect(program.parseAsync(["node", "cli", "render", "--archive", "--date", "2026-04-01", "--base-url", "https://example.com"]))
+      .rejects.toThrow("process.exit");
+    expect(error.mock.calls.flat().join(" ")).toContain("Use either --archive or --date");
+    expect(mockWriteFile).not.toHaveBeenCalled();
+  });
+
+  it("rejects secrets in an archive report before writing its HTML", async () => {
+    vi.stubEnv("OPENAI_API_KEY", "archive-secret-sentinel");
+    mockReadFile.mockImplementation((path: string) => path.includes("github-data.yaml")
+      ? Promise.resolve(GITHUB_DATA_YAML) : path.includes("llm-data.yaml")
+        ? Promise.resolve(LLM_DATA_YAML) : Promise.reject(new Error("not found")));
+    mockReaddir.mockImplementation((dir: string) => dir.endsWith("data") ? Promise.resolve(["2026"])
+      : dir.endsWith("2026") ? Promise.resolve(["04"])
+        : dir.endsWith("2026/04") ? Promise.resolve(["01"]) : Promise.resolve([]));
+    mockRenderReport.mockReturnValueOnce("<html>archive-secret-sentinel</html>");
+    const { runRenderArchive } = await import("./render.js");
+    await expect(runRenderArchive({ dataDir: "./data", outputDir: "./output", baseUrl: "https://example.com", language: "en", timezone: "UTC", theme: "brutalist" }))
+      .rejects.toThrow("Refusing to write HTML");
+    expect(mockWriteFile).not.toHaveBeenCalled();
   });
 
   it("warns and renders without evidence when the ledger is malformed", async () => {

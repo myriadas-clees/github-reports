@@ -124,7 +124,7 @@ const inRange = (iso: string | null, range: DateRange): boolean => {
   return t >= range.from.getTime() && t <= range.to.getTime();
 };
 
-const fetchJsonPages = async <T>(token: string, startUrl: string): Promise<T[]> => {
+const fetchJsonPages = async <T>(token: string, startUrl: string, status?: { complete: boolean }): Promise<T[]> => {
   const items: T[] = [];
   let url: string | null = startUrl;
 
@@ -138,6 +138,7 @@ const fetchJsonPages = async <T>(token: string, startUrl: string): Promise<T[]> 
         break;
       }
       if (response.status === 404) {
+        if (status) status.complete = false;
         return items;
       }
       if (attempt < MAX_RETRIES && await isRetryableGitHubLimit(response)) {
@@ -146,6 +147,7 @@ const fetchJsonPages = async <T>(token: string, startUrl: string): Promise<T[]> 
       }
       throwOnGitHubAccessError(response, "Review fetch failed");
       console.warn(`  Failed review fetch: ${response.status} ${response.statusText}`);
+      if (status) status.complete = false;
       return items;
     }
     if (!page) break;
@@ -241,6 +243,7 @@ export const fetchReviewsForRepos = async (
       per_page: "50",
     });
     let prs: CandidatePR[];
+    let commentCandidates: Set<number> | undefined;
     if (historicalBackfill) {
       const knownByNumber = new Map(
         knownCandidates
@@ -251,14 +254,28 @@ export const fetchReviewsForRepos = async (
         ...knownByNumber.keys(),
         ...(contributionCandidates.get(repo) ?? []),
       ]);
+      const commentStatus = { complete: true };
       const activityComments = await fetchJsonPages<RawComment>(
         token,
-        `https://api.github.com/repos/${repo}/pulls/comments?since=${encodeURIComponent(range.from.toISOString())}&per_page=100`,
+        `https://api.github.com/repos/${repo}/pulls/comments?since=${encodeURIComponent(new Date(range.from.getTime() - 1000).toISOString())}&per_page=100`,
+        commentStatus,
       );
-      for (const comment of activityComments.filter((comment) => inRange(comment.created_at, range))) {
+      const activeNumbers = new Set<number>();
+      for (const comment of activityComments) {
+        if (!comment.created_at || !comment.pull_request_url || !Number.isFinite(Date.parse(comment.created_at))) {
+          commentStatus.complete = false;
+          continue;
+        }
+        if (!inRange(comment.created_at, range)) continue;
         const number = Number(comment.pull_request_url.split("/").at(-1));
-        if (Number.isInteger(number)) numbers.add(number);
+        if (Number.isInteger(number) && number > 0) {
+          numbers.add(number);
+          activeNumbers.add(number);
+        } else {
+          commentStatus.complete = false;
+        }
       }
+      if (commentStatus.complete) commentCandidates = activeNumbers;
       // Reuse titles/URLs already hydrated by fetchPRsByRefs. Only GET candidates
       // that are still missing metadata — never burst-fetch the whole set.
       const fetchedByNumber = new Map<number, CandidatePR>();
@@ -325,7 +342,9 @@ export const fetchReviewsForRepos = async (
           });
         });
 
-      const rawComments = await fetchJsonPages<RawComment>(
+      // A complete repository-wide listing proves which PRs can contribute an
+      // in-range comment. Fetch their full threads, including older AI parents.
+      const rawComments = commentCandidates && !commentCandidates.has(pr.number) ? [] : await fetchJsonPages<RawComment>(
         token,
         `https://api.github.com/repos/${repo}/pulls/${pr.number}/comments`,
       );

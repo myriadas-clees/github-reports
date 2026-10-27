@@ -527,6 +527,13 @@ describe("summarizeVerification with uncollected checks", () => {
 });
 
 describe("readiness dates in the report timezone (edge cases)", () => {
+  it("keeps dates correct when the report timezone changes", () => {
+    const l = ledger({ release: { stage: "live", environment: "production", sha: "s", since: "2026-10-08T01:00:00Z" } });
+    const zones = ["America/New_York", "UTC", "Not/AZone", "America/New_York"];
+    expect(zones.map((zone) => deriveReadiness(item(), l, zone)?.since))
+      .toEqual(["2026-10-07", "2026-10-08", "2026-10-08", "2026-10-07"]);
+  });
+
   it("keeps bare calendar dates and falls back to UTC for an invalid zone", () => {
     const l = ledger({ mergedAt: "2026-10-08T01:00:00Z" }, {});
     expect(deriveReadiness(item(), l, "Not/AZone")).toMatchObject({ detail: expect.stringContaining("Integrated Oct 8") });

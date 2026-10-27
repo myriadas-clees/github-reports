@@ -7,6 +7,59 @@ describe("fetchReviewsForRepos", () => {
     vi.restoreAllMocks();
   });
 
+  it("matches the conservative scan while avoiding inactive comment threads", async () => {
+    const range = { from: new Date("2026-08-10T04:00:00Z"), to: new Date("2026-08-11T03:59:59.999Z") };
+    const candidates = Array.from({ length: 40 }, (_, i) => ({
+      repo: "private/app", number: i + 1, title: `PR ${i + 1}`, url: `https://github.com/private/app/pull/${i + 1}`,
+    }));
+    const parent = { id: 1, in_reply_to_id: null, user: { login: "codex[bot]" }, body: "Please fix", created_at: "2026-08-09T12:00:00Z", pull_request_url: "https://api.github.com/repos/private/app/pulls/2", html_url: "parent", path: "a.ts" };
+    const reply = { ...parent, id: 2, in_reply_to_id: 1, user: { login: "alice" }, body: "Fixed", created_at: range.from.toISOString(), html_url: "reply" };
+    let fallback = false;
+    let calls = 0;
+    vi.spyOn(globalThis, "fetch").mockImplementation(async (input) => {
+      calls++;
+      const url = String(input);
+      if (url.endsWith("/graphql")) return new Response(JSON.stringify({ data: {} }));
+      if (url.includes("/pulls/comments?")) return fallback
+        ? new Response("", { status: 404 })
+        : new Response(JSON.stringify([reply]));
+      if (url.endsWith("/pulls/2/comments")) return new Response(JSON.stringify([parent, reply]));
+      if (url.endsWith("/pulls/3/reviews")) return new Response(JSON.stringify([{
+        user: { login: "alice" }, state: "APPROVED", body: "ok", submitted_at: "2026-08-10T12:00:00Z", html_url: "review", pull_request_url: "https://api.github.com/repos/private/app/pulls/3",
+      }, {
+        user: { login: "cursor[bot]" }, state: "COMMENTED", body: "", submitted_at: "2026-08-10T13:00:00Z", html_url: "ai", pull_request_url: "https://api.github.com/repos/private/app/pulls/3",
+      }]));
+      return new Response(JSON.stringify([]));
+    });
+    const collect = () => fetchReviewsForRepos("token", "alice", ["private/app"], range, new Date("2026-09-01"), true, candidates);
+    const optimized = await collect();
+    const optimizedCalls = calls;
+    fallback = true;
+    calls = 0;
+    const conservative = await collect();
+    expect(optimized).toEqual(conservative);
+    expect(optimized.comments).toHaveLength(1);
+    expect(optimized.reviews).toHaveLength(1);
+    expect(optimized.aiReviews.codex.fixed).toBe(1);
+    expect(optimizedCalls).toBe(43);
+    expect(calls).toBe(82);
+  });
+
+  it("falls back to full threads if a later repository comment page fails", async () => {
+    const urls: string[] = [];
+    vi.spyOn(globalThis, "fetch").mockImplementation(async (input) => {
+      const url = String(input);
+      urls.push(url);
+      if (url.includes("/pulls/comments?since=")) return new Response("[]", { headers: { link: '<https://api.github.com/page2>; rel="next"' } });
+      if (url.endsWith("/page2")) return new Response("", { status: 404 });
+      return new Response("[]");
+    });
+    await fetchReviewsForRepos("token", "alice", ["private/app"],
+      { from: new Date("2026-08-10"), to: new Date("2026-08-11") }, new Date(), true,
+      [{ repo: "private/app", number: 1, title: "Old", url: "https://github.com/private/app/pull/1" }]);
+    expect(urls).toContain("https://api.github.com/repos/private/app/pulls/1/comments");
+  });
+
   it("retains in-range reviews when the PR changes after midnight", async () => {
     const range = {
       from: new Date("2026-08-10T04:00:00Z"),

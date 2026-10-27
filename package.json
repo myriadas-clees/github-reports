@@ -24,13 +24,15 @@
     "config.example.yaml"
   ],
   "scripts": {
-    "build": "tsc && chmod +x dist/cli/index.js",
+    "build": "tsrs && chmod +x dist/cli/index.js",
     "dev": "tsc --watch",
     "lint": "eslint src/",
     "test": "vitest run",
     "test:watch": "vitest",
     "report": "bun dist/cli/index.js report",
-    "preview": "bun dist/cli/index.js preview"
+    "preview": "bun dist/cli/index.js preview",
+    "build:tsc": "tsc && chmod +x dist/cli/index.js",
+    "typecheck": "tsrs --noEmit"
   },
   "keywords": [
     "github",
@@ -69,6 +71,7 @@
     "@types/sanitize-html": "^2.16.1",
     "@vitest/coverage-v8": "^4.1.2",
     "eslint": "^10.2.0",
+    "tsrs": "0.18.0-ts7.1.0-dev.20260929",
     "typescript": "^6.0.2",
     "typescript-eslint": "^8.29.1",
     "vitest": "^4.1.2"

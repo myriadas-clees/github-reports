@@ -9,6 +9,7 @@ import {
   NO_ACTIVITY_INITIATIVE,
   deriveImpact,
   buildAllocationTrend,
+  createAllocationTrendBatch,
   classifyInitiative,
   classifyWorkType,
   computeAllocation,
@@ -506,6 +507,21 @@ describe("buildAllocationTrend", () => {
       cfg({ trendWeeks: 2 }),
     );
     expect(t.initiatives).toEqual(["Big", "Small"]);
+  });
+
+  it("reuses completed weeks without leaking later reports or manual time into earlier trends", () => {
+    const reports = [report("2026-10-01", 3), report("2026-10-03", 5), report("2026-10-08", 7)];
+    const config = cfg({ trendWeeks: 2 });
+    const manual: ManualTimeEntry[] = [
+      { date: "2026-10-02", initiative: "Ops", hours: 2 },
+      { date: "2026-10-06", initiative: "Ops", hours: 4 },
+    ];
+    const batch = createAllocationTrendBatch(reports, config, manual);
+    for (const end of ["2026-10-03", "2026-10-08", "2026-10-05", "2026-10-09", "2026-10-03"]) {
+      expect(batch.trend(end)).toEqual(buildAllocationTrend(reports, end, config, manual));
+    }
+    expect(batch.allocationForDate("2026-10-03")).toEqual(computeAllocation(reports[1].data, config, manual));
+    expect(batch.allocationForDate("2026-10-04")).toBeUndefined();
   });
 });
 

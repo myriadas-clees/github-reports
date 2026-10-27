@@ -30,7 +30,7 @@ import type {
 import {
   DEFAULT_ALLOCATION_CONFIG,
   NO_ACTIVITY_INITIATIVE,
-  buildAllocationTrend,
+  createAllocationTrendBatch,
   computeAllocation,
   weekEnd,
   weekStart,
@@ -113,12 +113,13 @@ const tryReadYaml = async <T>(path: string): Promise<T | null> => {
 const buildReportEntries = async (
   dataDir: string,
   reportPaths: string[],
+  archive?: RenderArchiveContext,
 ): Promise<ReportEntry[]> => {
   const entries = await Promise.all(
     reportPaths.map(async (path) => {
       const [llmData, ghData] = await Promise.all([
-        tryReadYaml<AIContent>(join(dataDir, path, "llm-data.yaml")),
-        tryReadYaml<WeeklyReportData>(join(dataDir, path, "github-data.yaml")),
+        archive ? archive.contents.get(path) : tryReadYaml<AIContent>(join(dataDir, path, "llm-data.yaml")),
+        archive ? archive.reports.get(path) : tryReadYaml<WeeklyReportData>(join(dataDir, path, "github-data.yaml")),
       ]);
       if (!llmData) return null;
       const hoursData = ghData ? withRecomputedHours(ghData) : null;
@@ -160,6 +161,8 @@ export const buildAllocationInput = (params: {
   /** Evidence ledger (data/evidence.yaml); null/absent degrades to "not collected". */
   evidence?: EvidenceLedger | null;
   timezone?: string;
+  /** Cache tied to the current archive snapshot, if rendering a batch. */
+  allocationBatch?: ReturnType<typeof createAllocationTrendBatch>;
 }): AllocationInput | undefined => {
   try {
     const config = params.config ?? DEFAULT_ALLOCATION_CONFIG;
@@ -176,6 +179,16 @@ export const buildAllocationInput = (params: {
     }
 
     const date = params.current.date;
+    if (params.allocationBatch) {
+      const rawTrend = params.allocationBatch.trend(date);
+      const trend = { ...rawTrend, periods: rawTrend.periods.map((p) => ({ ...p, allocation: annotate(p.allocation) })) };
+      return {
+        day: annotate(params.allocationBatch.allocationForDate(date) ?? computeAllocation(currentData, config, manual)),
+        asOf: date,
+        colorOrder: params.colorOrder,
+        trend,
+      };
+    }
     const reports = new Map<string, WeeklyReportData>();
     for (const [d, data] of params.dailyReports) {
       if (d < date) reports.set(d, prepare(data));
@@ -185,7 +198,7 @@ export const buildAllocationInput = (params: {
       .sort(([a], [b]) => a.localeCompare(b))
       .map(([d, data]) => ({ date: d, data }));
 
-    const rawTrend = buildAllocationTrend(list, date, config, manual);
+    const rawTrend = createAllocationTrendBatch(list, config, manual).trend(date);
     const trend = { ...rawTrend, periods: rawTrend.periods.map((p) => ({ ...p, allocation: annotate(p.allocation) })) };
     // The whole-week breakdown lives on the week page; daily pages show only their day + trend.
     return {
@@ -256,6 +269,7 @@ export const buildWeekAllocationInputs = (params: {
   /** Evidence ledger (data/evidence.yaml); null/absent degrades to "not collected". */
   evidence?: EvidenceLedger | null;
   timezone?: string;
+  allocationBatch?: ReturnType<typeof createAllocationTrendBatch>;
 }): Map<string, AllocationInput> => {
   const result = new Map<string, AllocationInput>();
   try {
@@ -267,6 +281,7 @@ export const buildWeekAllocationInputs = (params: {
       .map(([date, data]) => ({ date, data: withRecomputedHours(normalizeReportData(data)) }));
     const latest = list.at(-1)?.date;
     if (!latest) return result;
+    const batch = params.allocationBatch ?? createAllocationTrendBatch(list, config, manual);
     // Weeks with only self-reported time (no daily report) still need an allocation, so seed them from manual entries.
     const manualWeeks = manual
       .filter((entry) => entry.hours > 0 && entry.date <= latest)
@@ -274,7 +289,7 @@ export const buildWeekAllocationInputs = (params: {
     for (const id of new Set([...list.map(({ date }) => weekStart(date)), ...manualWeeks])) {
       try {
         const endDate = weekEnd(id) < latest ? weekEnd(id) : latest;
-        const trend = buildAllocationTrend(list.filter(({ date }) => date <= endDate), endDate, config, manual);
+        const trend = batch.trend(endDate);
         const annotated = { ...trend, periods: trend.periods.map((p) => ({ ...p, allocation: annotate(p.allocation) })) };
         const period = annotated.periods.find((p) => p.id === id);
         if (!period) continue;
@@ -381,8 +396,18 @@ const writeWeekPages = async (params: {
   return ids;
 };
 
+/** Shared inputs for one archive invocation; never persisted or reused across runs. */
+type RenderArchiveContext = {
+  paths: string[];
+  reports: Map<string, WeeklyReportData>;
+  contents: Map<string, AIContent>;
+  colorOrder: string[];
+  evidence: EvidenceLedger | null;
+  allocationBatch?: ReturnType<typeof createAllocationTrendBatch>;
+};
+
 /** Render HTML for a day from github-data + llm-data. Throws if data is missing. */
-export const runRender = async (options: RenderCommandOptions): Promise<void> => {
+const runRenderWithContext = async (options: RenderCommandOptions, archive?: RenderArchiveContext): Promise<void> => {
   const dayId = options.mode === "weekly"
     ? getWeekId(options.date ?? new Date(), options.timezone)
     : resolveDayId(options.date, options.timezone);
@@ -391,13 +416,13 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
 
   const githubDataPath = join(dataWeekDir, "github-data.yaml");
   console.log(`Reading ${githubDataPath}...`);
-  const githubData = await tryReadYaml<WeeklyReportData>(githubDataPath);
+  const githubData = archive ? archive.reports.get(dayId.path) : await tryReadYaml<WeeklyReportData>(githubDataPath);
   if (!githubData) {
     throw new Error(`GitHub data not found at ${githubDataPath}. Run 'fetch' or 'report' first.`);
   }
 
   const llmDataPath = join(dataWeekDir, "llm-data.yaml");
-  const aiContent = await tryReadYaml<AIContent>(llmDataPath);
+  const aiContent = archive ? archive.contents.get(dayId.path) : await tryReadYaml<AIContent>(llmDataPath);
   if (!aiContent) {
     throw new Error(`LLM data not found at ${llmDataPath}. Run 'generate' or 'report' first.`);
   }
@@ -409,7 +434,7 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
   };
 
   // Determine previous/next report paths for internal linking.
-  let allPaths = await listCompletedReportDirs(options.dataDir);
+  let allPaths = archive ? [...archive.paths] : await listCompletedReportDirs(options.dataDir);
   if (options.mode !== "weekly") {
     allPaths = allPaths.filter((path) => /^\d{4}\/\d{2}\/\d{2}$/.test(path));
   }
@@ -418,7 +443,7 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
   // Raw github-data of every other report, kept for the allocation trend / previous-report re-render.
   const loadedReports = new Map<string, WeeklyReportData>();
   await Promise.all(allPaths.filter((path) => path !== dayId.path).map(async (path) => {
-    const report = await tryReadYaml<WeeklyReportData>(join(options.dataDir, path, "github-data.yaml"));
+    const report = archive ? archive.reports.get(path) : await tryReadYaml<WeeklyReportData>(join(options.dataDir, path, "github-data.yaml"));
     if (report) loadedReports.set(path, report);
     if (report?.dateRange?.to) reportDates.set(path, report.dateRange.to);
   }));
@@ -429,8 +454,8 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
   // Every daily report, including the one being rendered.
   const allDailyReports = new Map(dailyReports);
   if (DAILY_PATH.test(dayId.path)) allDailyReports.set(dayId.path.replaceAll("/", "-"), githubData);
-  const colorOrder = buildInitiativeColorOrder(allDailyReports, options.allocation, options.manualTime);
-  const evidence = await readEvidenceLedger(options.dataDir).catch((err: unknown) => {
+  const colorOrder = archive?.colorOrder ?? buildInitiativeColorOrder(allDailyReports, options.allocation, options.manualTime);
+  const evidence = archive ? archive.evidence : await readEvidenceLedger(options.dataDir).catch((err: unknown) => {
     console.warn(`Warning: evidence ledger unavailable; rendering without evidence: ${err instanceof Error ? err.message : err}`);
     return null;
   });
@@ -444,6 +469,7 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
       manualTime: options.manualTime,
       evidence,
       timezone: options.timezone,
+      allocationBatch: archive?.allocationBatch,
     });
   /** Link from a daily page to its Thu–Wed work-week page. */
   const weekLinkFor = (path: string, prefix: string): { href: string; label: string } | undefined => {
@@ -462,20 +488,23 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
   const rootPrefix = "../".repeat(dayId.path.split("/").length);
 
   // Brand assets for Myriad logo in nav.
+  const writeShared = !archive || dayId.path === archive.paths.at(-1);
   const brandOut = join(options.outputDir, "assets", "brand");
-  await mkdir(brandOut, { recursive: true });
-  try {
-    await cp(brandAssetsSrc, brandOut, { recursive: true });
-  } catch {
-    console.warn(`Brand assets not found at ${brandAssetsSrc}; logo may be missing.`);
-  }
-  // Self-hosted Roboto and Lora (OFL) for the default theme; pages link assets/fonts/fonts.css.
-  const fontsOut = join(options.outputDir, "assets", "fonts");
-  await mkdir(fontsOut, { recursive: true });
-  try {
-    await cp(fontAssetsSrc, fontsOut, { recursive: true });
-  } catch {
-    console.warn(`Font assets not found at ${fontAssetsSrc}; pages fall back to system fonts.`);
+  if (writeShared) {
+    await mkdir(brandOut, { recursive: true });
+    try {
+      await cp(brandAssetsSrc, brandOut, { recursive: true });
+    } catch {
+      console.warn(`Brand assets not found at ${brandAssetsSrc}; logo may be missing.`);
+    }
+    // Self-hosted Roboto and Lora (OFL) for the default theme; pages link assets/fonts/fonts.css.
+    const fontsOut = join(options.outputDir, "assets", "fonts");
+    await mkdir(fontsOut, { recursive: true });
+    try {
+      await cp(fontAssetsSrc, fontsOut, { recursive: true });
+    } catch {
+      console.warn(`Font assets not found at ${fontAssetsSrc}; pages fall back to system fonts.`);
+    }
   }
 
   console.log(`Rendering report (lang: ${options.language}, theme: ${options.theme})...`);
@@ -500,7 +529,7 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
   console.log(`Report written to ${reportPath}`);
 
   // Re-render the previous report so its "next day" link points here.
-  if (prevWeek) {
+  if (prevWeek && !archive) {
     const prevGhData = await tryReadYaml<WeeklyReportData>(join(options.dataDir, prevWeek, "github-data.yaml"));
     const prevAiContent = await tryReadYaml<AIContent>(join(options.dataDir, prevWeek, "llm-data.yaml"));
     if (prevGhData && prevAiContent) {
@@ -544,6 +573,8 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
   await writeFile(ogPath, ogImage);
   console.log(`OG image written to ${ogPath}`);
 
+  // Archive-wide output is needed once; dated HTML and OG images above are per report.
+  if (!writeShared) return;
   // Generate animated SVG summary cards (light + dark)
   const dateRange = `${githubData.dateRange.from} – ${githubData.dateRange.to}`;
   const cardData = {
@@ -566,7 +597,7 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
   console.log(`SVG cards written to ${cardPath} and ${cardDarkPath}`);
 
   // Write index page with titles from each day's report data.
-  const entries = await buildReportEntries(options.dataDir, allPaths);
+  const entries = await buildReportEntries(options.dataDir, allPaths, archive);
   const ghRepo = env("GITHUB_REPOSITORY");
   const repoUrl = ghRepo ? `https://github.com/${ghRepo}` : undefined;
   let calculator: EstimateCalibration | undefined;
@@ -622,6 +653,7 @@ export const runRender = async (options: RenderCommandOptions): Promise<void> =>
       colorOrder,
       evidence,
       timezone: options.timezone,
+      allocationBatch: archive?.allocationBatch,
     });
   const weekIds = await writeWeekPages({
     entries,
@@ -710,6 +742,63 @@ ${sitemapEntries}
   }
 };
 
+/** Render a single report and refresh its shared navigation pages. */
+export const runRender = (options: RenderCommandOptions): Promise<void> => runRenderWithContext(options);
+
+/** Render every complete daily archive in one process. */
+export const runRenderArchive = async (options: RenderCommandOptions): Promise<void> => {
+  if (options.mode === "weekly") throw new Error("--archive only supports daily reports");
+  const paths: string[] = [];
+  for (const year of (await readdir(options.dataDir)).filter((n) => /^\d{4}$/.test(n))) {
+    for (const month of (await readdir(join(options.dataDir, year))).filter((n) => /^\d{2}$/.test(n))) {
+      for (const day of (await readdir(join(options.dataDir, year, month))).filter((n) => /^\d{2}$/.test(n))) {
+        const path = `${year}/${month}/${day}`;
+        if (await fileExists(join(options.dataDir, path, "github-data.yaml"))) paths.push(path);
+      }
+    }
+  }
+  paths.sort();
+  if (paths.length === 0) throw new Error(`No daily reports found in ${options.dataDir}`);
+  // Validate and parse the complete snapshot before writing anything. Reuse it for every page.
+  const reports = new Map<string, WeeklyReportData>();
+  const contents = new Map<string, AIContent>();
+  await Promise.all(paths.map(async (path) => {
+    const dir = join(options.dataDir, path);
+    const [report, content] = await Promise.all([
+      tryReadYaml<WeeklyReportData>(join(dir, "github-data.yaml")),
+      tryReadYaml<AIContent>(join(dir, "llm-data.yaml")),
+    ]);
+    if (!report) throw new Error(`GitHub data not found at ${join(dir, "github-data.yaml")}`);
+    if (!content) throw new Error(`LLM data not found at ${join(dir, "llm-data.yaml")}`);
+    reports.set(path, report);
+    contents.set(path, content);
+  }));
+  const dailyReports = new Map(paths.map((path) => [path.replaceAll("/", "-"), reports.get(path)!]));
+  let allocationBatch: ReturnType<typeof createAllocationTrendBatch> | undefined;
+  try {
+    allocationBatch = createAllocationTrendBatch(
+      [...dailyReports].map(([date, report]) => ({ date, data: withRecomputedHours(normalizeReportData(report)) })),
+      options.allocation,
+      options.manualTime,
+    );
+  } catch (error) {
+    console.warn(`Skipping archive allocation cache: ${error instanceof Error ? error.message : String(error)}`);
+  }
+  const archive: RenderArchiveContext = {
+    paths, reports, contents, allocationBatch,
+    colorOrder: buildInitiativeColorOrder(dailyReports, options.allocation, options.manualTime),
+    evidence: await readEvidenceLedger(options.dataDir).catch((err: unknown) => {
+      console.warn(`Warning: evidence ledger unavailable; rendering without evidence: ${err instanceof Error ? err.message : err}`);
+      return null;
+    }),
+  };
+  for (const path of paths) {
+    const date = path.replaceAll("/", "-");
+    console.log(`Rendering archived report ${date}`);
+    await runRenderWithContext({ ...options, date: parseLocalDate(date, options.timezone) }, archive);
+  }
+};
+
 export const registerRender = (program: Command): void => {
   program
     .command("render")
@@ -722,6 +811,7 @@ export const registerRender = (program: Command): void => {
     .option("--timezone <tz>", "IANA timezone (env: TIMEZONE, default: UTC)")
     .option("--theme <name>", `Theme name: ${AVAILABLE_THEMES.join(", ")} (env: THEME, default: brutalist)`)
     .option("--date <date>", "Report date (YYYY-MM-DD, default: previous workday)")
+    .option("--archive", "Render every dated report and shared archive output in one process")
     .option("--mode <mode>", "Archive mode: daily or weekly (env: REPORT_MODE, default: daily)")
     .option("--config <path>", "Path to config.yaml (env: CONFIG_PATH)")
     .action(async (opts) => {
@@ -729,6 +819,7 @@ export const registerRender = (program: Command): void => {
         const baseUrl = opts.baseUrl ?? env("BASE_URL");
         if (!baseUrl) throw new Error("Base URL required. Pass --base-url or set BASE_URL (e.g. https://user.github.io/repo).");
         const mode = opts.mode ?? env("REPORT_MODE") ?? "daily";
+        if (opts.archive && opts.date) throw new Error("Use either --archive or --date, not both");
         if (mode !== "daily" && mode !== "weekly") throw new Error(`Unknown report mode "${mode}". Use daily or weekly.`);
 
         const fileCfg = await loadConfigFile(opts.config ?? env("CONFIG_PATH"));
@@ -760,7 +851,8 @@ export const registerRender = (program: Command): void => {
           allocation: cfg.allocation,
           manualTime: cfg.manualTime,
         };
-        await runRender(options);
+        if (opts.archive) await runRenderArchive(options);
+        else await runRender(options);
       } catch (error) {
         console.error("Error:", error instanceof Error ? error.message : error);
         process.exit(1);

@@ -578,12 +578,51 @@ export const weekStart = (date: string): string => {
 /** Wednesday that closes the Thu–Wed work week starting on `from` (YYYY-MM-DD). */
 export const weekEnd = (from: string): string => formatUtc(parseUtc(from) + 6 * DAY_MS);
 
+type TrendReport = { date: string; data: Parameters<typeof computeAllocation>[0] };
+
+/** Reuse results only for this fixed snapshot, configuration and manual-time list. */
+export const createAllocationTrendBatch = (
+  reports: TrendReport[],
+  config: AllocationConfig = DEFAULT_ALLOCATION_CONFIG,
+  manualTime: ManualTimeEntry[] = [],
+) => {
+  const daily = new Map<TrendReport, Allocation>();
+  const periods = new Map<string, AllocationPeriod>();
+  const byDate = new Map(reports.map((report) => [report.date, report]));
+  const allocation = (report: TrendReport): Allocation => {
+    let value = daily.get(report);
+    if (!value) {
+      value = computeAllocation(report.data, config, manualTime);
+      daily.set(report, value);
+    }
+    return value;
+  };
+  return {
+    allocationForDate: (date: string): Allocation | undefined => {
+      const report = byDate.get(date);
+      return report ? allocation(report) : undefined;
+    },
+    trend: (endDate: string): AllocationTrend => calculateAllocationTrend(reports, endDate, config, manualTime, allocation, periods),
+  };
+};
+
 /** Group daily reports into Thu–Wed work weeks ending at `endDate`, last `config.trendWeeks` weeks. */
 export const buildAllocationTrend = (
-  reports: { date: string; data: Parameters<typeof computeAllocation>[0] }[],
+  reports: TrendReport[],
   endDate: string,
   config: AllocationConfig = DEFAULT_ALLOCATION_CONFIG,
   manualTime: ManualTimeEntry[] = [],
+): AllocationTrend => {
+  return calculateAllocationTrend(reports, endDate, config, manualTime, (report) => computeAllocation(report.data, config, manualTime), new Map());
+};
+
+const calculateAllocationTrend = (
+  reports: TrendReport[],
+  endDate: string,
+  config: AllocationConfig,
+  manualTime: ManualTimeEntry[],
+  allocationFor: (report: TrendReport) => Allocation,
+  cache: Map<string, AllocationPeriod>,
 ): AllocationTrend => {
   const end = day(endDate);
   const lastStart = parseUtc(weekStart(end));
@@ -593,11 +632,17 @@ export const buildAllocationTrend = (
     const startMs = lastStart - i * 7 * DAY_MS;
     const from = formatUtc(startMs);
     const to = formatUtc(startMs + 6 * DAY_MS);
+    const key = `${from}/${end < to ? end : to}`;
+    const cached = cache.get(key);
+    if (cached) {
+      periods.push(cached);
+      continue;
+    }
     const inWeek = reports.filter((report) => {
       const date = day(report.date);
       return date >= from && date <= to && date <= end;
     });
-    const allocations = inWeek.map((report) => computeAllocation(report.data, config, manualTime));
+    const allocations = inWeek.map(allocationFor);
     const covered = (date: string): boolean =>
       inWeek.some((report) =>
         day(report.date) === date ||
@@ -619,14 +664,16 @@ export const buildAllocationTrend = (
         extra,
       ));
     }
-    periods.push({
+    const period = {
       id: from,
       label: formatShortWeekTitle(from, to),
       from,
       to,
       days: inWeek.length,
       allocation: mergeAllocations(allocations),
-    });
+    };
+    cache.set(key, period);
+    periods.push(period);
   }
   const totals = new Map<string, number>();
   for (const period of periods) {

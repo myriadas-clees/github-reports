@@ -16,6 +16,9 @@ import type {
 export type ReadinessItem = Pick<AllocationItem, "state" | "title" | "labels" | "url" | "repository">;
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+// A report normally uses one timezone; keep the cache bounded when it changes.
+let calendarFormatter: Intl.DateTimeFormat | undefined;
+let calendarFormatterZone: string | undefined;
 
 /** Format an instant as a calendar date in the report timezone. */
 const calendarDate = (iso: string, timeZone: string): string => {
@@ -25,7 +28,11 @@ const calendarDate = (iso: string, timeZone: string): string => {
   if (!Number.isFinite(date.getTime())) return iso.slice(0, 10);
   let parts: Intl.DateTimeFormatPart[];
   try {
-    parts = new Intl.DateTimeFormat("en-US", { timeZone, year: "numeric", month: "2-digit", day: "2-digit" }).formatToParts(date);
+    if (!calendarFormatter || calendarFormatterZone !== timeZone) {
+      calendarFormatter = new Intl.DateTimeFormat("en-US", { timeZone, year: "numeric", month: "2-digit", day: "2-digit" });
+      calendarFormatterZone = timeZone;
+    }
+    parts = calendarFormatter.formatToParts(date);
   } catch {
     // Invalid IANA zone in config: fall back to UTC rather than failing the render.
     return date.toISOString().slice(0, 10);
