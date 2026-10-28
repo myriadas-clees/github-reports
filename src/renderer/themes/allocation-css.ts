@@ -105,6 +105,24 @@ ${INITIATIVE_PALETTE.map((_, i) => `    .alloc-c${i + 1} { --c: var(--alloc-c${i
     .alloc-w5 { --c: var(--alloc-w5); --ink: var(--alloc-w5-ink); }
     .alloc-wn { --c: var(--alloc-wn); --ink: var(--alloc-wn-ink); }
 
+    /* ==================== REPORT SUMMARY (lead figures + jump links) ==================== */
+    .report-key { display: grid; grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr)); gap: 0.9rem 1.5rem; margin: 1.25rem 0 0; padding: 1rem 0 0; border-top: 1px solid ${t.borderSubtle}; }
+    .report-key-item { min-width: 0; }
+    .report-key-item--effort { grid-column: span 2; }
+    .report-key-item dt { margin: 0 0 0.2rem; font-size: 0.75rem; color: ${t.textSecondary}; }
+    .report-key-item dd { margin: 0; }
+    .report-key-value { font-size: 1.5rem; line-height: 1.2; font-weight: 500; color: ${t.heading}; font-variant-numeric: tabular-nums; }
+    .report-key-sub { font-size: 0.8125rem; color: ${t.textSecondary}; }
+    .report-key-note { margin: 0.9rem 0 0; font-size: 0.8125rem; color: ${t.textSecondary}; max-width: 70ch; }
+    .report-jump { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 1.25rem; margin: 1.25rem 0 0; font-size: 0.875rem; }
+    .report-jump-label { font-size: 0.75rem; color: ${t.textSecondary}; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    @media (max-width: 640px) {
+      .report-key { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .report-key-item--effort { grid-column: 1 / -1; }
+    }
+
     .alloc-lede { color: ${t.textSecondary}; margin: 0 0 1.5rem; max-width: 60ch; }
     .alloc-panel[hidden] { display: none; }
 
@@ -175,6 +193,7 @@ ${INITIATIVE_PALETTE.map((_, i) => `    .alloc-c${i + 1} { --c: var(--alloc-c${i
     .alloc-item-name { display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 600; color: ${t.heading}; min-width: 0; }
     .alloc-item-name span:last-child { overflow-wrap: anywhere; }
     .alloc-item-pct { font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; }
+    .alloc-item-hours { margin-top: 0.35rem; font-size: 0.75rem; color: ${t.textTertiary}; }
     .alloc-item-track { height: 6px; background: ${t.borderSubtle}; border-radius: ${t.radius}; overflow: hidden; }
     .alloc-item-fill { display: block; height: 100%; background: var(--c); min-width: 2px; border-radius: ${t.radius}; }
     .alloc-work { margin: 0.6rem 0 0; display: grid; gap: 0.35rem; font-size: 0.875rem; }

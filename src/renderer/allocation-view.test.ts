@@ -3,6 +3,7 @@ import {
   buildAllocationView,
   type AllocationView,
   formatWorkDelivered,
+  formatEstimatedHours,
   MAX_VISIBLE_SHIPPED,
   formatPercent,
   MAX_INITIATIVE_COLORS,
@@ -77,7 +78,7 @@ describe("buildAllocationView", () => {
     const v = buildAllocationView({ week: { label: "Oct 1–7", allocation: week } })!;
     expect(v.title).toBe("Where the effort went");
     const w = weekPanel(v);
-    expect(w.lede).toBe("Work delivered in the week of Oct 1–7 would typically take one engineer about 4.5 days without AI assistance. Here's where it went across 3 initiatives.");
+    expect(w.lede).toBe("Work delivered in the week of Oct 1–7 would typically take one engineer about 4.5 days (34 estimated manual-effort hours) without AI assistance. Here's where it went across 3 initiatives.");
     const names = w.bar.segments.map((s) => s.name);
     expect(names).toEqual(["Pricing", "Hub", "Platform"]);
     const pricing = w.bar.segments[0]!;
@@ -99,7 +100,7 @@ describe("buildAllocationView", () => {
     expect(v.hasSwitch).toBe(false);
     expect(v.script).toBe("");
     expect(v.panels[0]).toMatchObject({ kind: "day", label: "Today", isDefault: true });
-    expect(v.panels[0]!.lede).toBe("Work delivered today would typically take one engineer about 1 day without AI assistance. Here's where it went across 1 initiative.");
+    expect(v.panels[0]!.lede).toBe("Work delivered today would typically take one engineer about 1 day (6 estimated manual-effort hours) without AI assistance. Here's where it went across 1 initiative.");
   });
 
   it("builds the work type bar with its own palette", () => {
@@ -342,10 +343,10 @@ describe("buildAllocationView day and week panels", () => {
     const [d, w] = build("2026-08-05").panels as [ReturnType<typeof dayPanel>, ReturnType<typeof weekPanel>];
     expect(d.label).toBe("Aug 5");
     expect(d.heading).toBe("Aug 5");
-    expect(d.lede).toBe("Work delivered on Aug 5 would typically take one engineer about 1 day without AI assistance. Here's where it went across 2 initiatives.");
+    expect(d.lede).toBe("Work delivered on Aug 5 would typically take one engineer about 1 day (8 estimated manual-effort hours) without AI assistance. Here's where it went across 2 initiatives.");
     expect(w.label).toBe("Oct 1–7 (so far)");
     expect(w.heading).toBe("Work week of Oct 1–7 (so far)");
-    expect(w.lede).toBe("Work delivered this week so far (Oct 1–7) would typically take one engineer about 4.5 days without AI assistance. Here's where it went across 3 initiatives.");
+    expect(w.lede).toBe("Work delivered this week so far (Oct 1–7) would typically take one engineer about 4.5 days (34 estimated manual-effort hours) without AI assistance. Here's where it went across 3 initiatives.");
   });
 
   it("builds closed-week wording once the week has ended", () => {
@@ -433,7 +434,7 @@ describe("readiness, complexity and verification views", () => {
     expect(items.map((i) => i.checksText)).toEqual([
       "2 of 3 automated checks passed · 1 still running",
       "1 of 2 automated checks passed · 1 still running",
-      "1 of 2 automated checks passed",
+      "1 of 2 automated checks passed · 1 check failed",
       "Both automated checks passed",
     ]);
   });
@@ -444,6 +445,15 @@ describe("readiness, complexity and verification views", () => {
     const a = makeAllocation([["A", 10, { shipped: [annotated], inProgress: [pending] }]]);
     const v = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification!;
     expect(v.checksLine).toBe("1 of 2 passed automated checks · 1 still running · 1 had automated code review · 1 included test updates");
+  });
+
+  it("identifies failed checks even when results are partial or still running", () => {
+    const failed = { ...open, title: "Needs attention", url: "https://github.com/o/r/pull/4", state: "open" as const,
+      checks: { automated: { passed: 1, failed: 1, pending: 1, total: 3, partial: true }, humanReviews: 0, automatedReviews: 0, testsUpdated: false } };
+    const a = makeAllocation([["A", 10, { inProgress: [failed] }]]);
+    const panel = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!;
+    expect(panel.initiatives[0]!.inProgress[0]!.checksText).toBe("1 of 3 automated checks passed · 1 still running · 1 check failed · some check results not collected");
+    expect(panel.verification!.checksLine).toBe("0 of 1 passed automated checks · 1 with failed checks · 1 still running · 1 with incomplete check results");
   });
 
   it("summarizes verification lines", () => {
@@ -613,7 +623,7 @@ describe("readiness, complexity and verification views", () => {
     const a = makeAllocation([["A", 10, { inProgress: [partialPass(2, 0, 2, 1), partialPass(1, 1, 2, 2)] }]]);
     const items = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.initiatives[0]!.inProgress;
     expect(items[0]!.checksText).toBe("2 of 2 automated checks passed · some check results not collected");
-    expect(items[1]!.checksText).toBe("1 of 2 automated checks passed · some check results not collected");
+    expect(items[1]!.checksText).toBe("1 of 2 automated checks passed · 1 check failed · some check results not collected");
     expect(items[0]!.checksText).not.toMatch(/^All |^Both /);
   });
 
@@ -643,11 +653,11 @@ describe("readiness, complexity and verification views", () => {
     const texts = view.initiatives[0]!.inProgress.map((i) => i.checksText);
     expect(texts).toEqual([
       "2 of 2 automated checks passed · some check results not collected",
-      "1 of 2 automated checks passed · some check results not collected",
+      "1 of 2 automated checks passed · 1 check failed · some check results not collected",
       "1 of 2 automated checks passed · 1 still running · some check results not collected",
     ]);
     // Partial items never count as passing, so the lead is 0 of 3 even though one check passed.
-    expect(view.verification!.checksLine).toBe("0 of 3 passed automated checks · 1 still running · 3 with incomplete check results");
+    expect(view.verification!.checksLine).toBe("0 of 3 passed automated checks · 1 with failed checks · 1 still running · 3 with incomplete check results");
     for (const text of [...texts, view.verification!.checksLine]) {
       expect(text).not.toContain("commit status");
       expect(text).not.toContain("without commit-status");
@@ -683,5 +693,46 @@ describe("readiness, complexity and verification views", () => {
   it("has no verification block without PR items", () => {
     const a = makeAllocation([["A", 10]]);
     expect(buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification).toBeUndefined();
+  });
+});
+
+describe("lead summary figures", () => {
+  it("preserves the model's tenth-hour precision", () => {
+    expect(formatEstimatedHours(0.2)).toBe("0.2");
+    expect(formatEstimatedHours(7.76)).toBe("7.8");
+    expect(formatEstimatedHours(9.2)).toBe("9.2");
+    expect(formatEstimatedHours(103.6)).toBe("103.6");
+    expect(formatEstimatedHours(1284)).toBe("1,284");
+    expect(formatEstimatedHours(Number.NaN)).toBe("0");
+  });
+
+  it("exposes the estimate as modeled manual effort on the panel and headline, never as time worked", () => {
+    const a = makeAllocation([["A", 12]]);
+    const view = buildAllocationView({ week: { label: "Oct 1–7", allocation: a } })!;
+    expect(view.panels[0]!.effort).toEqual({ days: "~1.5 days", hours: "12", hoursLabel: "12 estimated manual-effort hours" });
+    expect(view.headline!.effort).toEqual(view.panels[0]!.effort);
+    expect(view.headline!.scope).toBe("Work week of Oct 1–7");
+    expect(view.measureNote).toContain("eight-hour day and are rounded for display");
+    expect(view.measureNote).toContain("not actual hours worked");
+    expect(JSON.stringify(view.headline)).not.toMatch(/hours (worked|spent|saved)/);
+  });
+
+  it("counts completed, live, in-progress and failed-check changes for the headline", () => {
+    const checks = (failed: number) => ({ automated: { passed: 1, failed, pending: 0, total: 1 + failed }, humanReviews: 0, automatedReviews: 0, testsUpdated: false });
+    const merged = { kind: "pr" as const, title: "Shipped", url: "https://github.com/o/r/pull/1", state: "merged" as const, readiness: { stage: "live" as const, label: "Live" }, checks: checks(0) };
+    const open = { kind: "pr" as const, title: "WIP", url: "https://github.com/o/r/pull/2", state: "open" as const, readiness: { stage: "in-review" as const, label: "In review" }, checks: checks(1) };
+    const a = makeAllocation([["A", 10, { shipped: [merged], inProgress: [open] }]]);
+    const { facts } = buildAllocationView({ week: { label: "w", allocation: a } })!.headline!;
+    expect(facts).toEqual([
+      { value: "1", label: "completed" },
+      { value: "1", label: "live", tone: "positive" },
+      { value: "1", label: "in progress" },
+      { value: "1", label: "change with failed checks", tone: "attention" },
+    ]);
+  });
+
+  it("omits the headline when only a trend is available", () => {
+    const trend = makeTrend(["A"], [{ label: "Oct 1–7", days: 3, allocation: makeAllocation([["A", 8]]) }]);
+    expect(buildAllocationView({ trend })!.headline).toBeUndefined();
   });
 });

@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { AVAILABLE_THEMES } from "../renderer/themes/index.js";
 import { makeAllocation } from "../renderer/allocation-fixtures.js";
 import type { ReadinessStage, Theme } from "../types.js";
-import { renderIndexPage, buildReportEntry, hoursToActivityPercent, buildOutcomeLine } from "./index-page.js";
+import { renderIndexPage, buildReportEntry, hoursToActivityPercent, buildOutcomeLine, buildOutcomeSummary } from "./index-page.js";
 
 const entries = (paths: string[]) => paths.map((p) => buildReportEntry(p));
 
@@ -299,6 +299,79 @@ describe("homepage effort summary", () => {
     }
   });
 
+  it("keeps day titles, subtitles and counts discoverable, expanding only the newest week", () => {
+    const detailed = [
+      buildReportEntry("2026/10/01", "Invoice export live", "CSV and PDF released", { commits: 4, prs: 2, reviews: 1, hours: 8 }),
+      buildReportEntry("2026/10/08", "Role editor draft", "First admin pass", { commits: 7, prs: 3, reviews: 5, hours: 8 }),
+    ];
+    for (const theme of AVAILABLE_THEMES as Theme[]) {
+      const html = renderIndexPage(detailed, undefined, "en", undefined, undefined, undefined, theme);
+      expect(html, theme).toContain('title="Invoice export live">Invoice export live</div>');
+      expect(html, theme).toContain('title="CSV and PDF released">CSV and PDF released</div>');
+      expect(html, theme).toContain('aria-label="7 commits, 3 pull requests, 5 reviews"');
+      expect(html, theme).toContain('<span title="pull requests"><b>3</b> PR</span>');
+      // Newest week's day list starts open; the older week is one click away.
+      expect(html, theme).toContain('<details class="week-days" open>');
+      expect(html.match(/<details class="week-days"/g), theme).toHaveLength(2);
+      expect(html.match(/<details class="week-days" open>/g), theme).toHaveLength(1);
+      const newest = html.slice(html.indexOf('href="weeks/2026-10-08/"'));
+      expect(newest.slice(0, newest.indexOf("</details>")), theme).toContain('<details class="week-days" open>');
+    }
+  });
+
+  it("points capped outcome and initiative summaries at the full week", () => {
+    const many = makeAllocation([
+      ["Hub", 30, { shipped: [item("A", 9, "live"), item("B", 8, "live"), item("C", 7, "done"), item("D", 6, "done")] }],
+      ["Pricing", 20], ["Docs", 10], ["Platform", 5], ["Search", 3],
+    ]);
+    const html = renderIndexPage(
+      [buildReportEntry("2026/10/01", "x", undefined, { commits: 1, prs: 0, reviews: 0, hours: 8 })],
+      undefined, "en", undefined, undefined, undefined, "brutalist",
+      { weekAllocations: new Map([["2026-10-01", many]]) },
+    );
+    expect(html).toContain('<div class="week-flag week-more">+1 more completed, +2 more initiatives: see the full week</div>');
+    expect(html).toContain('class="week-outcome" title="Live: A, B \u00b7 Code integrated: C"');
+    // The cue sits inside the week row link, so it leads to the week page.
+    const row = html.slice(html.indexOf('<a href="weeks/2026-10-01/" class="week-row">'));
+    expect(row.slice(0, row.indexOf("</a>"))).toContain("week-more");
+  });
+
+  it("omits the more cue when the week row already shows everything", () => {
+    const small = makeAllocation([["Hub", 10, { shipped: [item("A", 4, "live")] }], ["Docs", 5]]);
+    const html = renderIndexPage(
+      [buildReportEntry("2026/10/01", "x", undefined, { commits: 1, prs: 0, reviews: 0, hours: 8 })],
+      undefined, "en", undefined, undefined, undefined, "brutalist",
+      { weekAllocations: new Map([["2026-10-01", small]]) },
+    );
+    expect(html).not.toContain('class="week-flag week-more"');
+  });
+
+  it("counts names hidden inside the Other segment", () => {
+    const allocation = makeAllocation([["One", 4], ["Two", 3], ["Three", 2]]);
+    const html = renderIndexPage(
+      [buildReportEntry("2026/10/01", "x", undefined, { commits: 1, prs: 0, reviews: 0, hours: 8 })],
+      undefined, "en", undefined, undefined, undefined, "brutalist",
+      { weekAllocations: new Map([["2026-10-01", allocation]]), colorOrder: Array.from({ length: 9 }, (_, i) => `Another ${i}`) },
+    );
+    expect(html).toContain("+3 more initiatives: see the full week");
+  });
+
+  it("counts hidden in-progress items and deduplicates titles", () => {
+    const wip = makeAllocation([["Hub", 9, { inProgress: [item("W1", 4), item("W2", 3), item("W3", 2), item("feat: W2", 1), item("W4", 1)] }]]);
+    expect(buildOutcomeSummary(wip)).toEqual({ line: "In progress: W1, W2, W3", more: 1, moreNoun: "in progress" });
+    expect(buildOutcomeSummary(undefined)).toEqual({ line: "", more: 0, moreNoun: "completed" });
+  });
+
+  it("shows that in-progress work exists when completed changes lead the outcome", () => {
+    const mixed = makeAllocation([["Hub", 10, { shipped: [item("Done", 4, "live")], inProgress: [item("WIP", 3)] }]]);
+    const html = renderIndexPage(
+      [buildReportEntry("2026/10/01", "x", undefined, { commits: 1, prs: 1, reviews: 0, hours: 8 })],
+      undefined, "en", undefined, undefined, undefined, "brutalist",
+      { weekAllocations: new Map([["2026-10-01", mixed]]) },
+    );
+    expect(html).toContain("+1 in progress: see the full week");
+  });
+
   it("scales week bars on a shared scale with the largest week at 100%", () => {
     const html = render();
     const width = (id: string) => {
@@ -314,7 +387,7 @@ describe("homepage effort summary", () => {
 
   it("builds the outcome line live-first, by effort, without conventional prefixes", () => {
     const html = render();
-    expect(html).toContain("Live: CSV import, Contact methods \u00b7 Not live yet: Merged big");
+    expect(html).toContain("Live: CSV import, Contact methods \u00b7 Code integrated: Merged big");
     expect(html).toContain("In progress: Another WIP, Draft thing");
     expect(html).not.toContain("feat(hub):");
   });
@@ -322,7 +395,8 @@ describe("homepage effort summary", () => {
   it("caps the outcome line at three items and omits it when there is nothing", () => {
     const many = makeAllocation([["Hub", 9, { shipped: [item("A", 4, "live"), item("B", 3, "live"), item("C", 2, "live"), item("D", 9, "done")] }]]);
     expect(buildOutcomeLine(many)).toBe("Live: A, B, C");
-    expect(buildOutcomeLine(makeAllocation([["Hub", 9, { shipped: [item("D", 9, "done"), item("E", 1)] }]]))).toBe("Not live yet: D, E");
+    expect(buildOutcomeLine(makeAllocation([["Hub", 9, { shipped: [item("D", 9, "done"), item("E", 1)] }]]))).toBe("Code integrated: D, E");
+    expect(buildOutcomeLine(makeAllocation([["Hub", 9, { shipped: [item("A", 9, "done"), item("B", 5, "preview"), item("C", 3, "awaiting-release")] }]]))).toBe("Not live yet: B, C \u00b7 Code integrated: A");
     expect(buildOutcomeLine(makeAllocation([["Hub", 5]]))).toBe("");
     expect(buildOutcomeLine(undefined)).toBe("");
     const none = renderIndexPage([day("2026/10/01", 8)], undefined, "en", undefined, undefined, undefined, "brutalist");
@@ -415,7 +489,7 @@ describe("self-reported-only weeks on the homepage", () => {
       expect(row, theme).toContain("≈ 3 engineer-days");
       expect(html, theme).toContain("No daily reports · self-reported time only");
       // Only the week with reports keeps a day list.
-      expect(html.match(/<details class="week-days">/g), theme).toHaveLength(1);
+      expect(html.match(/<details class="week-days"/g), theme).toHaveLength(1);
       // 24h + 16h = 40h: the month and hero totals include the manual-only week.
       expect(html, theme).toContain("≈ 5 engineer-days");
       const hero = html.slice(html.indexOf('class="home-hero'), html.indexOf('class="ledger"'));

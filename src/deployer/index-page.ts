@@ -7,6 +7,7 @@ import { loadTheme, readThemeTemplate } from "../renderer/themes/index.js";
 import {
   buildInitiativeMix,
   formatPercent,
+  OTHER_LABEL,
   stripConventionalPrefix,
   type AllocationSegmentView,
 } from "../renderer/allocation-view.js";
@@ -114,23 +115,49 @@ const uniqueTitles = (items: { kind: string; title: string }[], limit: number, s
   return titles;
 };
 
-/**
- * One plain line about what a week produced: "Live: A, B · Not live yet: C" (at most 3 items, live
- * first, then by estimated effort), else "In progress: ..." from open work, else "".
- */
-export const buildOutcomeLine = (allocation: Allocation | undefined): string => {
+export type OutcomeSummary = {
+  /** At most 3 items: release-known work first, else "In progress: ...", else "". */
+  line: string;
+  /** Items beyond the line's cap. */
+  more: number;
+  /** What `more` counts: "completed" or "in progress". */
+  moreNoun: string;
+  /** Open work omitted when the summary leads with completed changes. */
+  otherInProgress?: number;
+};
+
+const countUniqueTitles = (items: { kind: string; title: string }[]): number =>
+  new Set(items.map((item) => cleanTitle(item).toLowerCase())).size;
+
+export const buildOutcomeSummary = (allocation: Allocation | undefined): OutcomeSummary => {
   const done = completedItems(allocation).sort(byEffortDesc);
   const seen = new Set<string>();
   const live = uniqueTitles(done.filter((i) => i.readiness?.stage === "live"), MAX_OUTCOMES, seen);
-  const merged = uniqueTitles(done.filter((i) => i.readiness?.stage !== "live"), MAX_OUTCOMES - live.length, seen);
+  const pending = uniqueTitles(done.filter((i) => i.readiness?.stage === "awaiting-release" || i.readiness?.stage === "preview"), MAX_OUTCOMES - live.length, seen);
+  const integrated = uniqueTitles(done.filter((i) => i.readiness?.stage !== "live" && i.readiness?.stage !== "awaiting-release" && i.readiness?.stage !== "preview"), MAX_OUTCOMES - live.length - pending.length, seen);
   const parts: string[] = [];
   if (live.length > 0) parts.push(`Live: ${live.join(", ")}`);
-  if (merged.length > 0) parts.push(`Not live yet: ${merged.join(", ")}`);
-  if (parts.length > 0) return parts.join(" \u00b7 ");
-  const open = (allocation?.initiatives ?? []).flatMap((b) => b.inProgress).sort(byEffortDesc);
+  if (pending.length > 0) parts.push(`Not live yet: ${pending.join(", ")}`);
+  if (integrated.length > 0) parts.push(`Code integrated: ${integrated.join(", ")}`);
+  if (parts.length > 0) {
+    const open = (allocation?.initiatives ?? []).flatMap((b) => b.inProgress).filter((item) => item.title.trim() !== "");
+    const otherInProgress = countUniqueTitles(open);
+    return {
+      line: parts.join(" \u00b7 "),
+      more: Math.max(0, countUniqueTitles(done) - live.length - pending.length - integrated.length),
+      moreNoun: "completed",
+      ...(otherInProgress > 0 ? { otherInProgress } : {}),
+    };
+  }
+  const open = (allocation?.initiatives ?? []).flatMap((b) => b.inProgress).filter((item) => item.title.trim() !== "").sort(byEffortDesc);
   const progress = uniqueTitles(open, MAX_OUTCOMES);
-  return progress.length > 0 ? `In progress: ${progress.join(", ")}` : "";
+  return progress.length > 0
+    ? { line: `In progress: ${progress.join(", ")}`, more: Math.max(0, countUniqueTitles(open) - progress.length), moreNoun: "in progress" }
+    : { line: "", more: 0, moreNoun: "completed" };
 };
+
+/** One plain line about what a week produced (at most 3 items); "" when there is nothing to say. */
+export const buildOutcomeLine = (allocation: Allocation | undefined): string => buildOutcomeSummary(allocation).line;
 
 /** One Thu–Wed work week row under a month. */
 export type WeekRow = {
@@ -151,8 +178,12 @@ export type WeekRow = {
   mixBar: MixBar;
   initiatives: WeekInitiativeShare[];
   hasInitiatives: boolean;
-  /** "Live: A, B · Not live yet: C" or "In progress: ..."; empty when nothing to say. */
+  /** Release-aware outcome or "In progress: ..."; empty when nothing to say. */
   outcome: string;
+  /** "+2 more completed, +3 more initiatives: see the full week"; empty when the row shows everything. */
+  moreLabel: string;
+  /** Show the day list expanded (the newest week), so day titles, subtitles and counts are in view. */
+  daysOpen: boolean;
   stats: ReportEntryStats;
   dayCount: number;
   dayCountLabel: string;
@@ -239,6 +270,27 @@ const topInitiatives = (allocation: Allocation | undefined): WeekInitiativeShare
     .map((b) => ({ name: b.initiative, percent: formatPercent(b.hours / allocation.totalHours) }));
 };
 
+const plural = (n: number, one: string, many: string): string => `${n} ${n === 1 ? one : many}`;
+
+/** Count initiatives whose names are not visible in the top-three line. */
+const hiddenInitiativeCount = (
+  allocation: Allocation | undefined,
+  shown: WeekInitiativeShare[],
+): number => {
+  const total = (allocation?.initiatives ?? []).filter((b) => b.hours > 0).length;
+  const visibleNames = shown.filter((s) => !(s.name === OTHER_LABEL && s.colorClass === "alloc-other")).length;
+  return Math.max(0, total - visibleNames);
+};
+
+const buildMoreLabel = (outcome: OutcomeSummary, hiddenInitiatives: number): string => {
+  const parts = [
+    ...(outcome.more > 0 ? [`+${outcome.more} more ${outcome.moreNoun}`] : []),
+    ...(outcome.otherInProgress ? [`+${outcome.otherInProgress} in progress`] : []),
+    ...(hiddenInitiatives > 0 ? [`+${plural(hiddenInitiatives, "more initiative", "more initiatives")}`] : []),
+  ];
+  return parts.length > 0 ? `${parts.join(", ")}: see the full week` : "";
+};
+
 /** A week's effort: its allocation's total (which includes manual time) when it has hours, else the reports' hours. */
 const effortHoursFor = (allocation: Allocation | undefined, reportHours: number): number =>
   allocation && allocation.totalHours > 0 ? allocation.totalHours : reportHours;
@@ -275,6 +327,7 @@ const buildWeekRows = (
     const initiatives: WeekInitiativeShare[] = mix.length > 0
       ? mix.slice(0, TOP_INITIATIVES).map((seg) => ({ name: seg.name, percent: seg.percent, colorClass: seg.colorClass }))
       : topInitiatives(allocation);
+    const outcome = buildOutcomeSummary(allocation);
     return {
       monthKey: weekMonthKey(span, latest),
       row: {
@@ -290,7 +343,9 @@ const buildWeekRows = (
         mixBar: toMixBar(mix, `Initiatives, week of ${span.label}`),
         initiatives,
         hasInitiatives: initiatives.length > 0,
-        outcome: buildOutcomeLine(allocation),
+        outcome: outcome.line,
+        moreLabel: buildMoreLabel(outcome, hiddenInitiativeCount(allocation, initiatives)),
+        daysOpen: false,
         stats,
         dayCount: reports.length,
         dayCountLabel: reports.length === 0
@@ -318,7 +373,11 @@ const groupByMonth = (
   const latest = daily.length > 0 ? dailyPathToDate(daily[0].path)! : "";
 
   const weeksByMonth = new Map<string, WeekRow[]>();
-  for (const { monthKey, row } of buildWeekRows(daily, latest, weekAllocations, colorOrder)) {
+  const weekRows = buildWeekRows(daily, latest, weekAllocations, colorOrder);
+  // The newest week with daily reports starts expanded; the rest stay one click away.
+  const newestWithDays = weekRows.filter(({ row }) => row.reports.length > 0).map(({ row }) => row.id).sort().pop();
+  for (const { monthKey, row } of weekRows) {
+    row.daysOpen = row.id === newestWithDays;
     weeksByMonth.set(monthKey, [...(weeksByMonth.get(monthKey) ?? []), row]);
   }
   const keys = [...weeksByMonth.keys()].sort((a, b) => b.localeCompare(a));

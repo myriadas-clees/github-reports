@@ -24,6 +24,7 @@ import {
 
 const PARTIAL_NAMES = [
   "header",
+  "report-summary",
   "allocation",
   "allocation-panel",
   "allocation-item",

@@ -369,6 +369,16 @@ const allocationCSS = (): string => buildAllocationCSS({
   extra: `
     .alloc { margin-bottom: 0; }
     .alloc.alloc--inline { margin: 0; }
+    .report-key { margin-top: var(--space-m); padding-top: var(--space-m); border-top: 0; box-shadow: ${RULE_ABOVE}; gap: var(--space-s) var(--space-l); }
+    .report-key-item dt { ${LABEL} }
+    .report-key-value { font-family: var(--font-brand); ${text("l")} font-weight: var(--weight-brand-medium); color: var(--neutral-10); }
+    .report-key-sub, .report-key-note, .report-jump { ${text("s")} color: var(--neutral-7); }
+    .report-key-note { margin-top: var(--space-s); }
+    .report-key-item--positive .report-key-value { color: var(--status-positive-text); }
+    .report-key-item--attention .report-key-value { color: var(--danger-text); }
+    .report-jump { margin-top: var(--space-m); gap: var(--space-xs) var(--space-m); }
+    .report-jump-label { ${LABEL} }
+    .report-jump a { font-weight: var(--weight-ui-medium); }
     .alloc-lede, .alloc-foot { ${text("s")} }
     .alloc-switch {
       display: inline-grid; grid-auto-flow: column; gap: var(--space-xxs); padding: var(--space-xxs);
@@ -708,8 +718,12 @@ export const buildIndexCSS = (_language: Language = "en"): string => `
       .week-story { grid-column: 1 / -1; grid-row: 2; }
       .week-counts { grid-column: 1 / -1; grid-row: 3; flex-wrap: wrap; gap: 0 var(--space-s); }
       .week-days { margin: 0 var(--space-m) var(--space-s); }
-      .day-row { grid-template-columns: 3.25rem minmax(0, 1fr) 1rem; gap: var(--space-xs); padding-inline: var(--space-s); }
-      .day-stats { display: none; }
+      .week-outcome, .day-title, .day-subtitle { white-space: normal; overflow: visible; text-overflow: clip; overflow-wrap: anywhere; }
+      .day-row { grid-template-columns: 3.25rem minmax(0, 1fr) 1rem; gap: var(--space-xxs) var(--space-xs); align-items: start; padding-inline: var(--space-s); }
+      .day-date { grid-column: 1; grid-row: 1; }
+      .day-story { grid-column: 2; grid-row: 1; }
+      .day-stats { grid-column: 2; grid-row: 2; flex-wrap: wrap; gap: 0 var(--space-s); }
+      .day-row .day-open { grid-column: 3; grid-row: 1; }
     }
 
     /* ---- Finished explainer: Myriad typography on the shared explainer layout ---- */

@@ -63,14 +63,14 @@ export const INDEX_LEDGER_PARTIAL = `<section class="ledger" aria-label="Work we
         <a href="{{this.path}}/" class="day-row">
           <div class="day-date"><strong>{{this.dayLabel}}</strong><span>{{this.weekdayLabel}}</span></div>
           <div class="day-story">
-            <div class="day-title">{{#if this.title}}{{this.title}}{{else}}{{this.dateLabel}}{{/if}}</div>
-            {{#if this.subtitle}}<div class="day-subtitle">{{this.subtitle}}</div>{{/if}}
+            <div class="day-title" title="{{#if this.title}}{{this.title}}{{else}}{{this.dateLabel}}{{/if}}">{{#if this.title}}{{this.title}}{{else}}{{this.dateLabel}}{{/if}}</div>
+            {{#if this.subtitle}}<div class="day-subtitle" title="{{this.subtitle}}">{{this.subtitle}}</div>{{/if}}
           </div>
           {{#if this.stats}}
-          <div class="day-stats">
-            <span><b>{{this.stats.commits}}</b> C</span>
-            <span><b>{{this.stats.prs}}</b> PR</span>
-            <span><b>{{this.stats.reviews}}</b> R</span>
+          <div class="day-stats" aria-label="{{this.stats.commits}} commits, {{this.stats.prs}} pull requests, {{this.stats.reviews}} reviews" role="group">
+            <span title="commits"><b>{{this.stats.commits}}</b> C</span>
+            <span title="pull requests"><b>{{this.stats.prs}}</b> PR</span>
+            <span title="reviews"><b>{{this.stats.reviews}}</b> R</span>
           </div>
           {{/if}}
           <span class="day-open" aria-hidden="true">↗</span>
@@ -115,7 +115,8 @@ export const INDEX_LEDGER_PARTIAL = `<section class="ledger" aria-label="Work we
                 {{#each this.initiatives}}<li><span class="alloc-swatch {{this.colorClass}}" aria-hidden="true"></span><span>{{this.name}}</span> <b>{{this.percent}}</b></li>{{/each}}
               </ul>
               {{/if}}
-              {{#if this.outcome}}<div class="week-outcome">{{this.outcome}}</div>{{/if}}
+              {{#if this.outcome}}<div class="week-outcome" title="{{this.outcome}}">{{this.outcome}}</div>{{/if}}
+              {{#if this.moreLabel}}<div class="week-flag week-more">{{this.moreLabel}}</div>{{/if}}
             </div>
             <div class="week-counts">
               <span><b>{{this.stats.commits}}</b> commits</span>
@@ -125,7 +126,7 @@ export const INDEX_LEDGER_PARTIAL = `<section class="ledger" aria-label="Work we
             <span class="day-open" aria-hidden="true">↗</span>
           </a>
           {{#if this.reports.length}}
-          <details class="week-days">
+          <details class="week-days"{{#if this.daysOpen}} open{{/if}}>
             <summary>{{this.dayCountLabel}}</summary>
             <div class="day-list">
               {{#each this.reports}}

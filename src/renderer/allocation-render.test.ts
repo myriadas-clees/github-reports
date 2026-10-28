@@ -47,7 +47,7 @@ describe("allocation section", () => {
         allocation: { day, week: { label: "Oct 1–7", allocation: week }, trend },
       });
       expect(html).toContain("Where the effort went");
-      expect(html).toContain("Work delivered in the week of Oct 1–7 would typically take one engineer about 3.5 days without AI assistance. Here&#x27;s where it went across 2 initiatives.");
+      expect(html).toContain("Work delivered in the week of Oct 1–7 would typically take one engineer about 3.5 days (26 estimated manual-effort hours) without AI assistance. Here&#x27;s where it went across 2 initiatives.");
       expect(html).toContain('title="Pricing: 54% of work delivered"');
       expect(html).toContain("Completed");
       expect(html).toContain("Self-reported");
@@ -59,7 +59,7 @@ describe("allocation section", () => {
       expect(html).not.toContain(week.note);
       const section = html.slice(html.indexOf('id="alloc-title"'), html.indexOf("</section>", html.indexOf('id="alloc-title"')));
       expect(section).not.toMatch(/~\d+(\.\d+)?h\b/);
-      expect(section).not.toContain("alloc-item-hours");
+      expect(html).toContain('<div class="alloc-item-hours">14 estimated manual-effort hours</div>');
       expect(html).not.toContain("[object Object]");
       expect(html).toContain("share of work delivered");
       expect(html).toContain("Work week of Oct 1–7");
@@ -318,5 +318,48 @@ describe("complexity from a partial file list", () => {
       expect(html, theme).not.toContain("· partial");
       expect(html, theme).not.toContain('alloc-cx--partial"');
     }
+  });
+});
+
+describe("report summary leads the page", () => {
+  const withSummary = {
+    ...DATA,
+    stakeholderSummary: "The team shipped export and has one change in review.",
+    hoursEstimate: { hours: 26, sessions: 1 },
+    aiContent: { ...DATA.aiContent, overview: "A distinct narrative." },
+  } as unknown as WeeklyReportData;
+  for (const theme of AVAILABLE_THEMES as Theme[]) {
+    it(`puts the summary, estimated hours and section links before the allocation in the ${theme} theme`, () => {
+      const html = renderReport(withSummary, { theme, allocation: { week: { label: "Oct 1–7", allocation: week } } });
+      const summaryAt = html.indexOf('id="summary"');
+      expect(summaryAt, theme).toBeGreaterThan(-1);
+      expect(summaryAt, theme).toBeLessThan(html.indexOf('id="alloc-title"'));
+      const summary = html.slice(summaryAt, html.indexOf("</section>", summaryAt));
+      expect(summary, theme).toContain("The team shipped export and has one change in review.");
+      expect(summary, theme).toContain("26 estimated manual-effort hours");
+      expect(summary, theme).toContain("Figures for Work week of Oct 1–7");
+      expect(summary, theme).toContain("It is not time worked");
+      // Deeper detail stays reachable from the summary.
+      for (const id of ["alloc-title", "narrative", "activity"]) {
+        expect(summary, theme).toContain(`href="#${id}"`);
+        expect(html, theme).toMatch(new RegExp(`id="${id}"`));
+      }
+      // The summary appears once, at the top, not again inside Activity.
+      expect(html.split("The team shipped export and has one change in review.").length - 1, theme).toBe(1);
+      expect(html, theme).toContain("Manual effort estimate");
+      expect(html, theme).toContain("~3.5 engineer-days · 26 estimated manual-effort hours");
+    });
+  }
+
+  it("falls back to the stored estimate without allocation input and links only what exists", () => {
+    const html = renderReport(withSummary, { theme: "brutalist" });
+    const summary = html.slice(html.indexOf('id="summary"'), html.indexOf("</section>", html.indexOf('id="summary"')));
+    expect(summary).toContain("26 estimated manual-effort hours");
+    expect(summary).not.toContain('href="#alloc-title"');
+    expect(summary).toContain('href="#activity"');
+  });
+
+  it("renders no summary block without a stakeholder summary", () => {
+    expect(renderReport(DATA, { theme: "brutalist" })).not.toContain('id="summary"');
   });
 });

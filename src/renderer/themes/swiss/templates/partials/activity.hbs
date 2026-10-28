@@ -1,14 +1,4 @@
-{{#if stakeholderSummary}}
-<div class="stakeholder">
-  <div class="section-group-header">
-    <h2 class="section-group-title">Summary</h2>
-    <div class="section-group-line"></div>
-  </div>
-  <p class="stakeholder-body">{{stakeholderSummary}}</p>
-</div>
-{{/if}}
-
-<div class="section-group activity-section">
+<div class="section-group activity-section" id="activity">
   <div class="section-group-header">
     <h2 class="section-group-title">Activity</h2>
     <div class="section-group-line"></div>
@@ -19,11 +9,11 @@
     <span class="chip"><span class="chip-label">Lines</span> <span class="chip-value chip-green">+{{formatNumber stats.totalAdditions}}</span> <span class="chip-value chip-red">−{{formatNumber stats.totalDeletions}}</span></span>
     {{#if hoursEstimate}}
     {{#if hoursEstimate.hours}}
-    <span class="chip"><span class="chip-label">Manual effort estimate</span> <span class="chip-value">{{workDelivered hoursEstimate.hours}}</span></span>
+    <span class="chip"><span class="chip-label">Manual effort estimate</span> <span class="chip-value">{{workDelivered hoursEstimate.hours}} · {{manualHours hoursEstimate.hours}}</span></span>
     {{/if}}
     {{else}}
     {{#if stats.estimatedHours}}
-    <span class="chip"><span class="chip-label">Manual effort estimate</span> <span class="chip-value">{{workDelivered stats.estimatedHours}}</span></span>
+    <span class="chip"><span class="chip-label">Manual effort estimate</span> <span class="chip-value">{{workDelivered stats.estimatedHours}} · {{manualHours stats.estimatedHours}}</span></span>
     {{/if}}
     {{/if}}
   </div>

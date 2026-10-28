@@ -328,6 +328,7 @@ export type VerificationSummary = {
   withoutChecks: number;
   checksUnknown: number;
   withPassingChecks: number;
+  withFailedChecks: number;
   withPartialChecks: number;
   withPendingChecks: number;
   checksCollected: number;
@@ -341,7 +342,7 @@ export type VerificationSummary = {
 export const summarizeVerification = (allocation: Allocation): VerificationSummary => {
   const s: VerificationSummary = {
     completed: 0, live: 0, awaitingRelease: 0, preview: 0, inReview: 0, drafts: 0,
-    withoutChecks: 0, checksUnknown: 0, withPassingChecks: 0, withPartialChecks: 0, withPendingChecks: 0, checksCollected: 0, withAutomatedReview: 0, withHumanReview: 0, withTests: 0,
+    withoutChecks: 0, checksUnknown: 0, withPassingChecks: 0, withFailedChecks: 0, withPartialChecks: 0, withPendingChecks: 0, checksCollected: 0, withAutomatedReview: 0, withHumanReview: 0, withTests: 0,
     aiFindingsAddressed: allocation.aiFindingsAddressed ?? 0,
   };
   const seen = new Set<string>();
@@ -371,6 +372,7 @@ export const summarizeVerification = (allocation: Allocation): VerificationSumma
         s.checksUnknown += 1;
       } else if (c.automated.total > 0) {
         s.checksCollected += 1;
+        if (c.automated.failed > 0) s.withFailedChecks += 1;
         if (c.automated.pending > 0) s.withPendingChecks += 1;
         if (c.automated.partial) s.withPartialChecks += 1;
         else if (c.automated.failed === 0 && c.automated.pending === 0) s.withPassingChecks += 1;

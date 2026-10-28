@@ -58,8 +58,12 @@ export const buildLedgerCSS = (t: AllocationCssTheme): string => `
       .month-days { grid-column: 1 / -1; grid-row: 2; }
       .month-tape { grid-column: 1 / -1; grid-row: 3; }
       .month-totals { grid-column: 1 / -1; grid-row: 4; flex-wrap: wrap; gap: 0.2rem 0.9rem; white-space: normal; }
-      .day-row { grid-template-columns: 3.25rem minmax(0, 1fr) 1rem; gap: 0.7rem; }
-      .day-stats { display: none; }
+      .day-row { grid-template-columns: 3.25rem minmax(0, 1fr) 1rem; gap: 0.2rem 0.7rem; align-items: start; }
+      .day-title, .day-subtitle { white-space: normal; overflow: visible; text-overflow: clip; overflow-wrap: anywhere; }
+      .day-date { grid-column: 1; grid-row: 1; }
+      .day-story { grid-column: 2; grid-row: 1; }
+      .day-stats { grid-column: 2; grid-row: 2; flex-wrap: wrap; gap: 0.1rem 0.7rem; }
+      .day-row .day-open { grid-column: 3; grid-row: 1; }
       .day-open { opacity: 1; }
     }
 `;
@@ -119,6 +123,7 @@ export const buildWeekCSS = (t: AllocationCssTheme): string => `
       .week-story { grid-column: 1 / -1; grid-row: 2; }
       .week-counts { grid-column: 1 / -1; grid-row: 3; flex-wrap: wrap; gap: 0.1rem 0.9rem; padding-top: 0; }
       .week-flag { margin-top: 0; }
+      .week-outcome { white-space: normal; overflow: visible; text-overflow: clip; overflow-wrap: anywhere; }
       .week-days { margin-left: 0; }
       .home-hero-top { flex-direction: column; align-items: flex-start; }
     }

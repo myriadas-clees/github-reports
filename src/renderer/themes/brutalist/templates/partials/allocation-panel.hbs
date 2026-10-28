@@ -61,6 +61,7 @@
           <span class="alloc-item-pct" title="{{title}}">{{percent}}</span>
           <span class="alloc-item-track {{colorClass}}" aria-hidden="true"><span class="alloc-item-fill" style="width:{{width}}"></span></span>
         </div>
+        {{#if hoursLabel}}<div class="alloc-item-hours">{{hoursLabel}}</div>{{/if}}
         {{#if hasShipped}}
         <div class="alloc-work">
           <div class="alloc-work-row"><span class="alloc-work-label">Completed</span>

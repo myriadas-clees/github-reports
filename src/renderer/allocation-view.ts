@@ -27,6 +27,7 @@ export const MEASURE_TITLE = "How we measure this";
 export const MEASURE_NOTE =
   "Work delivered estimates the manual engineering effort for one engineer to deliver the same changes without AI assistance, based on size, breadth, tests, and code reviews. " +
   "It is a modeled baseline, not actual hours worked or measured time saved. " +
+  "Engineer-days use an eight-hour day and are rounded for display. " +
   "A major fix finished in one focused session counts the same as one spread across a day. " +
   "Percentages show where this period's delivered work went. " +
   "Items marked Self-reported (e.g. meetings, design) are logged by hand.";
@@ -127,6 +128,7 @@ export type AllocationInitiativeView = {
   percentValue: number;
   width: string;
   title: string;
+  hoursLabel?: string;
   /** First MAX_VISIBLE_SHIPPED shipped items. */
   shipped: AllocationItemView[];
   /** Remaining shipped items, folded into a <details>. */
@@ -179,6 +181,26 @@ export type AllocationPanelInput = {
   open?: boolean;
 };
 
+/** The underlying hour estimate, shown beside engineer-days. Always labelled as modeled effort, never time worked. */
+export type AllocationEffortView = {
+  /** "~13 days". */
+  days: string;
+  /** "104". */
+  hours: string;
+  /** "104 estimated manual-effort hours". */
+  hoursLabel: string;
+};
+
+export type HeadlineFact = { value: string; label: string; tone?: "positive" | "attention" };
+
+/** Lead figures for the report summary: the default period's estimate and where its changes stand. */
+export type AllocationHeadlineView = {
+  /** Period the figures describe, e.g. "Oct 28" or "Work week of Oct 22–28". */
+  scope: string;
+  effort: AllocationEffortView;
+  facts: HeadlineFact[];
+};
+
 export type AllocationPanelView = {
   id: string;
   kind: AllocationPeriodKind;
@@ -187,6 +209,7 @@ export type AllocationPanelView = {
   /** Block heading, e.g. "Work week of Oct 1–7 (so far)". */
   heading: string;
   lede: string;
+  effort: AllocationEffortView;
   bar: AllocationBarView;
   legend: AllocationSegmentView[];
   workTypeBar?: AllocationBarView;
@@ -201,6 +224,8 @@ export type AllocationView = {
   title: string;
   /** Panels in tab order; exactly one has isDefault. */
   panels: AllocationPanelView[];
+  /** Lead figures for the report summary (the default panel's period). */
+  headline?: AllocationHeadlineView;
   /** More than one panel: show the Day / Week switch. */
   hasSwitch: boolean;
   hasTrend: boolean;
@@ -231,6 +256,25 @@ export const formatWorkDelivered = (hours: number): { short: string; long: strin
     long: `about ${text} ${engineerDayUnit(text)}`,
     /** For sentences that already say "one engineer": "about 13 days". */
     plain: `about ${text} ${one ? "day" : "days"}`,
+  };
+};
+
+/**
+ * The underlying hour estimate behind {@link formatWorkDelivered}, to the model's tenth-hour precision.
+ * Always presented as modeled manual effort, never as time worked.
+ */
+export const formatEstimatedHours = (hours: number): string => {
+  const safe = Number.isFinite(hours) && hours > 0 ? hours : 0;
+  const value = Math.round(safe * 10) / 10;
+  return String(value).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
+
+const buildEffort = (hours: number): AllocationEffortView => {
+  const text = formatEstimatedHours(hours);
+  return {
+    days: formatWorkDelivered(hours).short,
+    hours: text,
+    hoursLabel: `${text} estimated manual-effort ${text === "1" ? "hour" : "hours"}`,
   };
 };
 
@@ -389,13 +433,14 @@ const checksText = (item: AllocationItem): string | undefined => {
   // A zero count with partial evidence is unknown, not a definitive "no checks".
   else if (c.automated.total === 0) parts.push(c.automated.partial ? "Check results not collected" : "No automated checks");
   else {
-    const { passed, pending, total, partial } = c.automated;
+    const { passed, failed, pending, total, partial } = c.automated;
     // Partial: some check evidence (check runs, statuses, or a refresh) is missing, so "all passed" would overstate what was checked.
     if (pending > 0) parts.push(`${passed} of ${total} automated checks passed · ${pending} still running`);
     else if (partial) parts.push(`${passed} of ${total} automated checks passed`);
     else parts.push(passed === total
       ? `${total === 1 ? "Automated check" : total === 2 ? "Both automated checks" : `All ${total} automated checks`} passed`
       : `${passed} of ${total} automated checks passed`);
+    if (failed > 0) parts.push(`${failed} ${plural(failed, "check failed", "checks failed")}`);
     // Source-neutral: either the check runs or the commit statuses may be the incomplete source.
     if (partial) parts.push("some check results not collected");
   }
@@ -475,6 +520,7 @@ const buildVerification = (a: Allocation): AllocationVerificationView | undefine
   };
   const checks = keep([
     ...checksLead(),
+    s.checksCollected > 0 && fact(s.withFailedChecks, "with failed checks"),
     s.checksCollected > 0 && fact(s.withPendingChecks, "still running", "pending"),
     s.checksCollected > 0 && fact(s.withPartialChecks, "with incomplete check results", "tentative"),
     s.checksCollected > 0 && fact(s.withoutChecks, "had no automated checks"),
@@ -520,6 +566,7 @@ const toInitiativeView = (
     percentValue,
     width: `${Math.min(100, percentValue).toFixed(2)}%`,
     title: segmentTitle(bucket.initiative, percent),
+    ...(bucket.hours > 0 ? { hoursLabel: buildEffort(bucket.hours).hoursLabel } : {}),
     shipped,
     shippedMore,
     hasShippedMore: shippedMore.length > 0,
@@ -598,6 +645,23 @@ const panelScope = (p: AllocationPanelInput): string => {
   return p.open ? `in ${month} so far` : `in ${p.label}`;
 };
 
+const buildHeadline = (panel: AllocationPanelView, a: Allocation): AllocationHeadlineView => {
+  const s = summarizeVerification(a);
+  const inProgress = s.inReview + s.drafts;
+  const fact = (n: number, label: string, tone?: HeadlineFact["tone"]): HeadlineFact[] =>
+    n > 0 ? [{ value: String(n), label, ...(tone ? { tone } : {}) }] : [];
+  return {
+    scope: panel.heading,
+    effort: panel.effort,
+    facts: [
+      ...fact(s.completed, "completed"),
+      ...fact(s.live, "live", "positive"),
+      ...fact(inProgress, "in progress"),
+      ...fact(s.withFailedChecks, plural(s.withFailedChecks, "change with failed checks", "changes with failed checks"), "attention"),
+    ],
+  };
+};
+
 const buildPanel = (p: AllocationPanelInput, colors: ColorMap, isDefault: boolean): AllocationPanelView => {
   const a = p.allocation;
   const legend = initiativeSegments(a, colors, "size");
@@ -613,7 +677,8 @@ const buildPanel = (p: AllocationPanelInput, colors: ColorMap, isDefault: boolea
     kind: p.kind,
     label: p.open ? `${p.label}${SO_FAR}` : p.label,
     heading,
-    lede: `Work delivered ${panelScope(p)} would typically take one engineer ${formatWorkDelivered(a.totalHours).plain} without AI assistance. ` +
+    effort: buildEffort(a.totalHours),
+    lede: `Work delivered ${panelScope(p)} would typically take one engineer ${formatWorkDelivered(a.totalHours).plain} (${buildEffort(a.totalHours).hoursLabel}) without AI assistance. ` +
       `Here's where it went across ${count} ${plural(count, "initiative", "initiatives")}.`,
     bar: toBar(legend, `Initiatives, ${heading}`),
     legend,
@@ -700,6 +765,7 @@ export const buildAllocationView = (input: AllocationInput | undefined): Allocat
     inputs.push({ kind: "week", id: `alloc-week-${lastPeriod?.id ?? "current"}`, label: week.label, allocation: week.allocation, open: weekOpen });
   }
   const panels = inputs.map((p, i) => buildPanel(p, colors, i === 0));
+  const headline = panels.length > 0 ? buildHeadline(panels[0]!, inputs[0]!.allocation) : undefined;
 
   const builtTrend = trend ? buildTrend(trend, colors, input.asOf) : undefined;
   const trendLegend: AllocationLegendItem[] = [];
@@ -715,6 +781,7 @@ export const buildAllocationView = (input: AllocationInput | undefined): Allocat
   return {
     title: "Where the effort went",
     panels,
+    ...(headline ? { headline } : {}),
     hasSwitch: panels.length > 1,
     hasTrend: !!builtTrend,
     trendRows: builtTrend?.rows ?? [],

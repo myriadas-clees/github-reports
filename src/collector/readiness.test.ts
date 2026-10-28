@@ -431,7 +431,7 @@ describe("annotateAllocation + summarizeVerification", () => {
     const out = annotateAllocation(alloc([merged, { ...merged }], [open]), l);
     expect(summarizeVerification(out)).toEqual({
       completed: 1, live: 1, awaitingRelease: 0, preview: 0, inReview: 0, drafts: 1,
-      withoutChecks: 0, withPassingChecks: 1, withPendingChecks: 0, checksCollected: 1, checksUnknown: 1, withAutomatedReview: 1, withHumanReview: 0, withTests: 1,
+      withoutChecks: 0, withPassingChecks: 1, withFailedChecks: 0, withPendingChecks: 0, checksCollected: 1, checksUnknown: 1, withAutomatedReview: 1, withHumanReview: 0, withTests: 1,
       withPartialChecks: 0,
       aiFindingsAddressed: 4,
     });
