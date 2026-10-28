@@ -1,0 +1,698 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-10-27
+  to: 2026-10-27
+stats:
+  totalCommits: 17
+  totalAdditions: 8532
+  totalDeletions: 514
+  prsOpened: 2
+  prsMerged: 0
+  prsInProgress: 6
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 45
+dailyCommits:
+  - date: 2026-10-27
+    count: 17
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 10
+    prsOpened: 0
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 7
+    prsOpened: 2
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests:
+  - title: "fix(compass): fall back when To Do expansion is rejected"
+    body: >-
+      ## Why
+
+
+      Some Microsoft Graph accounts reject To Do task requests that expand linked resources, causing the task fetch to
+      fail with HTTP 400.
+
+
+      ## What changed
+
+
+      Removed `$select` from To Do list discovery and added a fallback that retries task requests without
+      `$expand=linkedResources` when Graph retu...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/223
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a1
+      - "app: compass"
+    additions: 44
+    deletions: 13
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-10-27T14:16:48Z
+    updatedAt: 2026-10-27T14:19:59Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a2
+      - &a21
+        sha: 0612a5d8b7a95e488fc0437b79a93edf9b9ea51e
+        message: "fix(compass): fall back when To Do expansion is rejected"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0612a5d8b7a95e488fc0437b79a93edf9b9ea51e
+        authoredAt: 2026-10-27T14:16:39Z
+    workTimestamps: &a3
+      - 2026-10-27T14:16:39Z
+    workAdditions: 44
+    workDeletions: 13
+    workFiles: &a4
+      - compass/functions/src/compass-microsoft.test.ts
+      - compass/functions/src/compass-microsoft.ts
+  - title: "feat(compass): render validated visual replies in Ask"
+    body: >-
+      ## Why
+
+
+      Ask replies could describe charts and visual summaries but could not render them as useful, accessible visuals.
+      This change adds bounded rendering for validated visual replies while keeping model-provided content inert.
+
+
+      ## What changed
+
+
+      - Added read-only chart rendering for `chart` blocks a...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/222
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a5
+      - documentation
+      - github-automation
+      - platform
+      - "app: compass"
+    additions: 8488
+    deletions: 501
+    changedFiles: 30
+    author: myriadas-clees
+    createdAt: 2026-10-27T04:07:22Z
+    updatedAt: 2026-10-28T02:03:08Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a6
+      - &a19
+        sha: 1b311462437e9846ce55a82d5c55821eb5d7f1fd
+        message: "feat(compass): render validated visual replies in Ask"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/1b311462437e9846ce55a82d5c55821eb5d7f1fd
+        authoredAt: 2026-10-27T04:07:13Z
+      - &a20
+        sha: 8726f35cb17ba7b1037f9a16b180156f1d94d2f8
+        message: Merge main into chat visual rendering
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8726f35cb17ba7b1037f9a16b180156f1d94d2f8
+        authoredAt: 2026-10-27T04:11:11Z
+      - &a23
+        sha: 170ef4733a337df26bf2bce04c6ffb8b2d62e7f1
+        message: Merge commit '0612a5d8b7a95e488fc0437b79a93edf9b9ea51e' into HEAD
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/170ef4733a337df26bf2bce04c6ffb8b2d62e7f1
+        authoredAt: 2026-10-27T16:11:49Z
+      - &a25
+        sha: 5b5b9beea008639c10d1d031325c11237446486c
+        message: "fix(compass): reject nonfinite nested chart values"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5b5b9beea008639c10d1d031325c11237446486c
+        authoredAt: 2026-10-28T02:00:27Z
+    workTimestamps: &a7
+      - 2026-10-27T04:07:13Z
+      - 2026-10-27T04:11:11Z
+      - 2026-10-27T16:11:49Z
+      - 2026-10-28T02:00:27Z
+    workAdditions: 8488
+    workDeletions: 501
+    workFiles: &a8
+      - .github/actions/setup-bun/action.yml
+      - bun.lock
+      - compass/README.md
+      - compass/functions/src/company-http.test.ts
+      - compass/functions/src/company-routes.test.ts
+      - compass/functions/src/compass-chat-history.test.ts
+      - compass/functions/src/compass-chat-history.ts
+      - compass/functions/src/compass-conversations.test.ts
+      - compass/functions/src/compass-conversations.ts
+      - compass/functions/src/compass-copilot.test.ts
+      - compass/functions/src/compass-copilot.ts
+      - compass/functions/src/compass-cosmos-recovery.test.ts
+      - compass/functions/src/compass-mapping-upgrade.test.ts
+      - compass/functions/src/compass-microsoft-deadline.fixture.ts
+      - compass/functions/src/compass-microsoft.test.ts
+      - compass/functions/src/compass-microsoft.ts
+      - compass/functions/src/compass-stack-port.test.ts
+      - compass/functions/src/compass-todo-progress-api.test.ts
+      - compass/functions/src/compass-todo-progress.test.ts
+      - compass/functions/src/index.ts
+      - compass/package.json
+      - compass/src/app/ask.css
+      - compass/src/app/globals.css
+      - compass/src/components/answer-chart.test.tsx
+      - compass/src/components/answer-chart.tsx
+      - compass/src/components/answer-markdown.tsx
+      - compass/src/components/answer-openui.test.tsx
+      - compass/src/components/answer-openui.tsx
+      - compass/src/components/answer-visual.test.tsx
+      - compass/src/components/answer-visual.tsx
+      - compass/src/components/ask-compass-workspace.dom.test.tsx
+      - compass/src/components/ask-compass-workspace.tsx
+      - compass/src/components/ask/ask-composer.test.ts
+      - compass/src/components/ask/ask-composer.tsx
+      - compass/src/components/ask/at-command-token.tsx
+      - compass/src/components/command-cards.tsx
+      - compass/src/components/compass-provider.tsx
+      - compass/src/components/compass-routes.tsx
+      - compass/src/components/compass-stability.dom.test.ts
+      - compass/src/components/compass-stability.fixture.tsx
+      - compass/src/components/settings-workspace.dom.test.tsx
+      - compass/src/components/settings-workspace.tsx
+      - compass/src/components/streaming-markdown.tsx
+      - compass/src/components/todo-command-card.dom.test.tsx
+      - compass/src/lib/answer-chart.test.ts
+      - compass/src/lib/answer-chart.ts
+      - compass/src/lib/answer-openui-composition.test.ts
+      - compass/src/lib/answer-openui-composition.ts
+      - compass/src/lib/answer-openui.fixture.ts
+      - compass/src/lib/answer-openui.test.ts
+      - compass/src/lib/answer-openui.ts
+      - compass/src/lib/answer-visual.fixture.ts
+      - compass/src/lib/answer-visual.test.ts
+      - compass/src/lib/answer-visual.ts
+      - compass/src/lib/ask-turns.test.ts
+      - compass/src/lib/ask-turns.ts
+      - compass/src/lib/at-commands.test.ts
+      - compass/src/lib/at-commands.ts
+      - compass/src/lib/background-briefs.ts
+      - compass/src/lib/chat-history.test.ts
+      - compass/src/lib/chat-history.ts
+      - compass/src/lib/compass-context.test.ts
+      - compass/src/lib/compass-context.ts
+      - compass/src/lib/draft-fences.test.ts
+      - compass/src/lib/draft-fences.ts
+      - compass/src/lib/microsoft-data-cache.test.ts
+      - compass/src/lib/microsoft-data-cache.ts
+      - compass/src/lib/microsoft-data.test.ts
+      - compass/src/lib/microsoft-data.ts
+      - compass/src/lib/openui-disable-devtools.ts
+      - compass/src/lib/serial-queue.ts
+      - compass/src/lib/todo-create.test.ts
+      - compass/src/lib/todo-create.ts
+      - compass/src/lib/todo-lists.test.ts
+      - compass/src/lib/todo-lists.ts
+      - compass/src/lib/typing-reveal.test.ts
+      - compass/src/lib/typing-reveal.ts
+      - packages/contracts/src/proforma-model/calculation.ts
+      - platform/src/__tests__/runtime.test.ts
+      - platform/src/master-command.ts
+      - platform/src/user-api.ts
+      - proforma/docs/client-reference-alignment.md
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/hybrid-fee-editor.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/components/workbook-fee-table.tsx
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/report-filenames.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/scoped-e2e-lifecycle.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report-filenames.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation-sections.ts
+      - proforma/src/lib/workstation.ts
+prsInProgress:
+  - title: "fix(compass): fall back when To Do expansion is rejected"
+    body: >-
+      ## Why
+
+
+      Some Microsoft Graph accounts reject To Do task requests that expand linked resources, causing the task fetch to
+      fail with HTTP 400.
+
+
+      ## What changed
+
+
+      Removed `$select` from To Do list discovery and added a fallback that retries task requests without
+      `$expand=linkedResources` when Graph retu...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/223
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a1
+    additions: 44
+    deletions: 13
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-10-27T14:16:48Z
+    updatedAt: 2026-10-27T14:19:59Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 44
+    workDeletions: 13
+    workFiles: *a4
+  - title: "feat(compass): render validated visual replies in Ask"
+    body: >-
+      ## Why
+
+
+      Ask replies could describe charts and visual summaries but could not render them as useful, accessible visuals.
+      This change adds bounded rendering for validated visual replies while keeping model-provided content inert.
+
+
+      ## What changed
+
+
+      - Added read-only chart rendering for `chart` blocks a...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/222
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a5
+    additions: 1697
+    deletions: 19
+    changedFiles: 30
+    author: myriadas-clees
+    createdAt: 2026-10-27T04:07:22Z
+    updatedAt: 2026-10-28T02:03:08Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a6
+    workTimestamps: *a7
+    workAdditions: 8488
+    workDeletions: 501
+    workFiles: *a8
+  - title: "fix(northstar): repair reopened deliverable fences"
+    body: >-
+      - Repair reopened deliverable fences so repeated email content no longer appears inside the draft preview or
+      Outlook message.
+
+      - Add coverage for streaming replies, saved edits, and distinct calendar events.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/180
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 133
+    deletions: 5
+    changedFiles: 5
+    author: myriadas-clees
+    createdAt: 2026-10-22T14:05:51Z
+    updatedAt: 2026-10-28T04:07:53Z
+    closedAt: 2026-10-28T04:07:53Z
+    mergedAt: 2026-10-28T04:07:53Z
+    workCommits:
+      - &a17
+        sha: 2e03b6cdce21a51fd3695a50ce853db709ecdfa5
+        message: "fix(northstar): preserve reopened fence indentation"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2e03b6cdce21a51fd3695a50ce853db709ecdfa5
+        authoredAt: 2026-10-27T18:47:01Z
+    workTimestamps:
+      - 2026-10-27T18:47:01Z
+    workAdditions: 40
+    workDeletions: 7
+    workFiles:
+      - northstar/components/answer-markdown.test.tsx
+      - northstar/components/open-outlook-dialog.dom.test.tsx
+      - northstar/lib/draft-fences.test.ts
+      - northstar/lib/draft-fences.ts
+  - title: "fix(northstar): preserve @web search intent for Copilot"
+    body: |-
+      - Add a model-only instruction to search the public web when `@web` is used.
+      - Update tests to verify the instruction is included only for web searches.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/182
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 17
+    deletions: 8
+    changedFiles: 3
+    author: myriadas-clees
+    createdAt: 2026-10-22T15:03:50Z
+    updatedAt: 2026-10-28T04:07:52Z
+    closedAt: 2026-10-28T04:07:52Z
+    mergedAt: 2026-10-28T04:07:52Z
+    workCommits:
+      - &a18
+        sha: 3aa7b06831867159637ff6899fad106b36b2d51f
+        message: "test(northstar): use relative chat activity times"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3aa7b06831867159637ff6899fad106b36b2d51f
+        authoredAt: 2026-10-28T01:54:58Z
+    workTimestamps:
+      - 2026-10-28T01:54:58Z
+    workAdditions: 6
+    workDeletions: 4
+    workFiles:
+      - hub/functions/src/northstar-conversations.test.ts
+  - title: "build: migrate frontend apps from Next.js to Vite"
+    body: >-
+      ## Why
+
+
+      Move the frontend apps to a shared Vite and TanStack Router setup while retaining their static deployment model
+      and app-local Azure Functions.
+
+
+      ## What changed
+
+
+      - Migrated the frontend apps from Next.js to Vite and TanStack Router, including routing, development API
+      handlers, and static buil...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/221
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - documentation
+      - github-automation
+      - "app: hub"
+      - "app: onboarding"
+      - "app: pto-tracker"
+      - "app: proforma"
+      - "app: excelerate"
+      - "app: valuation"
+      - platform
+      - deploy-preview
+      - "app: transition"
+      - "app: compass"
+    additions: 4354
+    deletions: 2058
+    changedFiles: 316
+    author: myriadas-clees
+    createdAt: 2026-10-26T20:35:47Z
+    updatedAt: 2026-10-27T16:57:19Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a22
+        sha: b48440c7c073d5709456010cd7d1911847dca526
+        message: "fix: clean stale Vite assets and harden serverless smoke routing"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b48440c7c073d5709456010cd7d1911847dca526
+        authoredAt: 2026-10-27T16:08:55Z
+      - &a24
+        sha: 79499e833459d34e9f8c9b244fa97465b35d35ba
+        message: "ci: bound workflow job runtimes"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/79499e833459d34e9f8c9b244fa97465b35d35ba
+        authoredAt: 2026-10-27T16:54:50Z
+    workTimestamps:
+      - 2026-10-27T16:08:55Z
+      - 2026-10-27T16:54:50Z
+    workAdditions: 83
+    workDeletions: 8
+    workFiles:
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/codeql.yml
+      - .github/workflows/issue-triage.yml
+      - .github/workflows/labeler.yml
+      - docs/azure-serverless-plan.md
+      - excelerate/vite.config.ts
+      - "onboarding/apps/dashboard/:memory:"
+      - onboarding/apps/dashboard/:memory:-shm
+      - onboarding/apps/dashboard/:memory:-wal
+      - onboarding/apps/dashboard/lib/api/vm-transfer-adapter.test.ts
+      - pto-tracker/scripts/serverless-smoke.ts
+      - scripts/tooling.test.ts
+  - title: "feat(northstar): add Claude for Ask and scheduled briefs"
+    body: >-
+      - Add Claude as an option for Northstar Ask and scheduled briefs, with per-chat model and thinking controls and
+      Copilot fallback.
+
+      - Keep long answers and briefs recoverable after a connection drops, and continue Claude turns paused for server
+      tools.
+
+      - Document Claude configuration and add coverage f...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/181
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 2699
+    deletions: 162
+    changedFiles: 38
+    author: myriadas-clees
+    createdAt: 2026-10-22T14:39:44Z
+    updatedAt: 2026-10-28T04:07:54Z
+    closedAt: 2026-10-28T04:07:54Z
+    mergedAt: 2026-10-28T04:07:54Z
+    workCommits:
+      - &a9
+        sha: 642a56b6a706329029a6d39d2eab3046f6798a12
+        message: "fix(northstar): address review recovery issues"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/642a56b6a706329029a6d39d2eab3046f6798a12
+        authoredAt: 2026-10-27T16:13:17Z
+      - &a10
+        sha: d82b3d3bc21e133c3de70b29a0e111401f167d1f
+        message: "fix(northstar): keep chat choices aligned with submitted requests"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d82b3d3bc21e133c3de70b29a0e111401f167d1f
+        authoredAt: 2026-10-27T16:16:33Z
+      - &a11
+        sha: 1a53c3362378bdeb92f03f8c3abab66514363b3b
+        message: "fix(northstar): address Claude context and task review"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/1a53c3362378bdeb92f03f8c3abab66514363b3b
+        authoredAt: 2026-10-27T16:32:06Z
+      - &a12
+        sha: a78fd91caf12f3b20598a72ab963111e011dfb05
+        message: "fix(northstar): preserve visible conversation across providers"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a78fd91caf12f3b20598a72ab963111e011dfb05
+        authoredAt: 2026-10-27T17:00:58Z
+      - &a13
+        sha: a21bfad1109e740d8490950d0537efea9b94c31b
+        message: "fix(northstar): retain supported Outlook links"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a21bfad1109e740d8490950d0537efea9b94c31b
+        authoredAt: 2026-10-27T17:02:32Z
+      - &a14
+        sha: 2068ac256e66e9864436e20931a027f2003ffa53
+        message: "fix(northstar): address settings and theme review"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2068ac256e66e9864436e20931a027f2003ffa53
+        authoredAt: 2026-10-27T17:10:39Z
+      - &a15
+        sha: 4d980dc6d29bc50d7fd730a088da15742f4899a8
+        message: "fix(northstar): retain Claude brief sources"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4d980dc6d29bc50d7fd730a088da15742f4899a8
+        authoredAt: 2026-10-27T17:15:19Z
+      - &a16
+        sha: 8574491a45b77f0612031bdfd1427df1a4e0c884
+        message: "fix(northstar): recover Claude without Copilot consent"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8574491a45b77f0612031bdfd1427df1a4e0c884
+        authoredAt: 2026-10-27T17:20:21Z
+    workTimestamps:
+      - 2026-10-27T16:13:17Z
+      - 2026-10-27T16:16:33Z
+      - 2026-10-27T16:32:06Z
+      - 2026-10-27T17:00:58Z
+      - 2026-10-27T17:02:32Z
+      - 2026-10-27T17:10:39Z
+      - 2026-10-27T17:15:19Z
+      - 2026-10-27T17:20:21Z
+    workAdditions: 1045
+    workDeletions: 246
+    workFiles:
+      - docs/northstar-roadmap.md
+      - hub/functions/src/northstar-claude-ask.test.ts
+      - hub/functions/src/northstar-claude-brief.test.ts
+      - hub/functions/src/northstar-claude-brief.ts
+      - hub/functions/src/northstar-copilot.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/functions/src/northstar-scheduled-brief.ts
+      - northstar/app/globals.css
+      - northstar/components/ask-northstar-workspace.dom.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/brief-effort-confirm.tsx
+      - northstar/components/northstar-dashboard-instructions.dom.test.ts
+      - northstar/components/northstar-dashboard-instructions.fixture.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/northstar-recovery.dom.test.ts
+      - northstar/components/northstar-recovery.fixture.tsx
+      - northstar/components/northstar-retention.dom.test.ts
+      - northstar/components/northstar-retention.fixture.tsx
+      - northstar/components/settings-workspace.dom.test.tsx
+      - northstar/components/settings-workspace.tsx
+      - northstar/lib/ask-stream.ts
+      - northstar/lib/ask-turns.test.ts
+      - northstar/lib/ask-turns.ts
+      - northstar/lib/microsoft-reauth.test.ts
+      - northstar/lib/microsoft-reauth.ts
+      - northstar/lib/settings-preferences.test.ts
+      - northstar/lib/settings-preferences.ts
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "fix(northstar): address review recovery issues"
+      - "fix(northstar): keep chat choices aligned with submitted requests"
+      - "fix(northstar): address Claude context and task review"
+      - "fix(northstar): preserve visible conversation across providers"
+      - "fix(northstar): retain supported Outlook links"
+      - "fix(northstar): address settings and theme review"
+      - "fix(northstar): retain Claude brief sources"
+      - "fix(northstar): recover Claude without Copilot consent"
+      - "fix(northstar): preserve reopened fence indentation"
+      - "test(northstar): use relative chat activity times"
+    commits:
+      - *a9
+      - *a10
+      - *a11
+      - *a12
+      - *a13
+      - *a14
+      - *a15
+      - *a16
+      - *a17
+      - *a18
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "feat(compass): render validated visual replies in Ask"
+      - Merge main into chat visual rendering
+      - "fix(compass): fall back when To Do expansion is rejected"
+      - "fix: clean stale Vite assets and harden serverless smoke routing"
+      - Merge commit '0612a5d8b7a95e488fc0437b79a93edf9b9ea51e' into HEAD
+      - "ci: bound workflow job runtimes"
+      - "fix(compass): reject nonfinite nested chart values"
+    commits:
+      - *a19
+      - *a20
+      - *a21
+      - *a22
+      - *a23
+      - *a24
+      - *a25
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 2
+    comments: 12
+    reviews: 8
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 2
+  comments: 12
+  reviews: 8
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-10-27T16:13:17Z
+    - 2026-10-27T16:16:33Z
+    - 2026-10-27T16:32:06Z
+    - 2026-10-27T17:00:58Z
+    - 2026-10-27T17:02:32Z
+    - 2026-10-27T17:10:39Z
+    - 2026-10-27T17:15:19Z
+    - 2026-10-27T17:20:21Z
+    - 2026-10-27T18:47:01Z
+    - 2026-10-28T01:54:58Z
+    - 2026-10-27T04:07:13Z
+    - 2026-10-27T04:11:11Z
+    - 2026-10-27T14:16:39Z
+    - 2026-10-27T16:08:55Z
+    - 2026-10-27T16:11:49Z
+    - 2026-10-27T16:54:50Z
+    - 2026-10-28T02:00:27Z
+    - 2026-10-27T14:16:48Z
+    - 2026-10-27T14:16:39Z
+    - 2026-10-27T04:07:22Z
+    - 2026-10-27T04:07:13Z
+    - 2026-10-27T04:11:11Z
+    - 2026-10-27T16:11:49Z
+    - 2026-10-28T02:00:27Z
+  volume:
+    pullRequests:
+      - additions: 40
+        deletions: 7
+        state: merged
+        dailyWork: true
+        filesChanged: 4
+        testFilesChanged: 3
+        commitCount: 1
+      - additions: 6
+        deletions: 4
+        state: merged
+        dailyWork: true
+        filesChanged: 1
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 44
+        deletions: 13
+        state: open
+        dailyWork: true
+        filesChanged: 2
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 83
+        deletions: 8
+        state: open
+        dailyWork: true
+        filesChanged: 13
+        testFilesChanged: 2
+        commitCount: 2
+      - additions: 8488
+        deletions: 501
+        state: open
+        dailyWork: true
+        filesChanged: 111
+        testFilesChanged: 46
+        commitCount: 4
+      - additions: 1045
+        deletions: 246
+        state: merged
+        dailyWork: true
+        filesChanged: 27
+        testFilesChanged: 10
+        commitCount: 8
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 0
+    commitAdditions: 0
+    commitDeletions: 0
+    commitStatsCount: 0
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 45
+  sessions: 4
+  sessionHours: 4.1
+  volumeHours: 45
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""

@@ -1,0 +1,58 @@
+title: Oct 27
+subtitle: compass, northstar & migrate frontend
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/ohcpwm-apps and Myriad-Advisor-Solutions/myriadas-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 0 PRs
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 2 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 17 commits with +8,532 / −514 lines.
+    chips:
+      - label: Commits
+        value: "17"
+        color: green
+      - label: Additions
+        value: +8,532
+        color: green
+      - label: Deletions
+        value: −514
+        color: red
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 8 reviews, 12 comments, 2 PRs."
+    chips:
+      - label: Codex
+        value: 8 reviews · 12 comments · 2 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~45h
+highlights:
+  - type: pr
+    title: "fix(compass): fall back when To Do expansion is rejected"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +44 −13
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/223
+  - type: pr
+    title: "feat(compass): render validated visual replies in Ask"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +1697 −19
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/222
+  - type: pr
+    title: "fix(northstar): repair reopened deliverable fences"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +133 −5
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/180
+ticker: []
