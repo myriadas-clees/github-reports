@@ -198,6 +198,8 @@ export type AllocationHeadlineView = {
   /** Period the figures describe, e.g. "Oct 28" or "Work week of Oct 22–28". */
   scope: string;
   effort: AllocationEffortView;
+  bar: AllocationBarView;
+  legend: AllocationSegmentView[];
   facts: HeadlineFact[];
 };
 
@@ -653,6 +655,8 @@ const buildHeadline = (panel: AllocationPanelView, a: Allocation): AllocationHea
   return {
     scope: panel.heading,
     effort: panel.effort,
+    bar: panel.bar,
+    legend: panel.legend,
     facts: [
       ...fact(s.completed, "completed"),
       ...fact(s.live, "live", "positive"),

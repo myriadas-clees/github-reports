@@ -338,6 +338,8 @@ describe("report summary leads the page", () => {
       expect(summary, theme).toContain("The team shipped export and has one change in review.");
       expect(summary, theme).toContain("26 estimated manual-effort hours");
       expect(summary, theme).toContain("Figures for Work week of Oct 1–7");
+      expect(summary, theme).toContain('class="alloc alloc--inline report-mix"');
+      expect(summary, theme).toContain('aria-label="Initiatives, Work week of Oct 1–7: Pricing 54%, Hub 46%"');
       expect(summary, theme).toContain("It is not time worked");
       // Deeper detail stays reachable from the summary.
       for (const id of ["alloc-title", "narrative", "activity"]) {

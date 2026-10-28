@@ -114,6 +114,7 @@ ${INITIATIVE_PALETTE.map((_, i) => `    .alloc-c${i + 1} { --c: var(--alloc-c${i
     .report-key-value { font-size: 1.5rem; line-height: 1.2; font-weight: 500; color: ${t.heading}; font-variant-numeric: tabular-nums; }
     .report-key-sub { font-size: 0.8125rem; color: ${t.textSecondary}; }
     .report-key-note { margin: 0.9rem 0 0; font-size: 0.8125rem; color: ${t.textSecondary}; max-width: 70ch; }
+    .alloc.alloc--inline.report-mix { margin-top: 1rem; }
     .report-jump { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 1.25rem; margin: 1.25rem 0 0; font-size: 0.875rem; }
     .report-jump-label { font-size: 0.75rem; color: ${t.textSecondary}; }
     html { scroll-behavior: smooth; }

@@ -20,6 +20,12 @@
     </div>
     {{/each}}
   </dl>
+  {{#if bar.segments.length}}
+  <div class="alloc alloc--inline report-mix">
+    <div class="alloc-bar alloc-bar--md" role="img" aria-label="{{bar.ariaLabel}}">{{#each bar.segments}}<span class="alloc-seg {{colorClass}}" style="--grow:{{grow}}" title="{{title}}">{{#if showLabel}}{{#if showName}}<span class="alloc-seg-name">{{name}}</span> {{/if}}<span>{{percent}}</span>{{/if}}</span>{{/each}}</div>
+    <ul class="alloc-legend" aria-label="Initiatives">{{#each legend}}<li><span class="alloc-swatch {{colorClass}}" aria-hidden="true"></span><span>{{name}}</span> <span class="alloc-legend-pct">{{percent}}</span></li>{{/each}}</ul>
+  </div>
+  {{/if}}
   {{/with}}
   {{else}}{{#if hoursEstimate.hours}}
   <dl class="report-key" aria-label="Key figures">
