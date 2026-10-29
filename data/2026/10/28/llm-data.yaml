@@ -1,0 +1,93 @@
+title: Oct 28
+subtitle: northstar, compass & transition
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/ohcpwm-apps and Myriad-Advisor-Solutions/myriadas-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 12 PRs
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 8 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 62 commits with +24,152 / −7,119 lines.
+    chips:
+      - label: Commits
+        value: "62"
+        color: green
+      - label: Additions
+        value: +24,152
+        color: green
+      - label: Deletions
+        value: −7,119
+        color: red
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 13 reviews, 15 comments, 8 PRs."
+    chips:
+      - label: Codex
+        value: 13 reviews · 15 comments · 8 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~171.6h
+highlights:
+  - type: pr
+    title: "fix(northstar): honor saved model defaults when Claude is unavailable"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +36 −41
+    body: >-
+      - Preserve the saved model and reasoning level in new chats and opened briefs while Claude availability is loading
+      or unavailable.
+
+      - Wait for the selected provider before generating scheduled briefs, 
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/197
+  - type: pr
+    title: "fix(northstar): preserve retry context"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +11 −1
+    body: Retrying an Ask turn with no earlier visible messages discarded the context supplied with the original request,
+      such as a quick-summary handoff. Preserve that context when retrying in the same chat; v
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/194
+  - type: pr
+    title: "feat(northstar): keep and browse regenerated brief versions"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +223 −67
+    body: |-
+      - Preserve completed brief generations and let advisors browse earlier versions.
+      - Show a thinking state during regeneration and retain prior versions after a failure.
+      - Restore the latest complete br
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/196
+  - type: pr
+    title: "fix(northstar): remove duplicate Copilot answers"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +31 −2
+    body: Copilot can return the same complete answer twice, causing Northstar to display and save duplicated content.
+      Normalize exact whole-answer repetitions before deriving the Markdown and summary, matching
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/193
+  - type: pr
+    title: "fix(northstar): smooth streamed answer reveals"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +173 −69
+    body: |-
+      - Add eased pacing to streamed answer reveals, with a quick ramp up and a brief slowdown at the end.
+      - Keep restored answers visible immediately and pause animation frames while waiting for more strea
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/189
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(northstar): honor saved model defaults when Claude is unavailable" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(northstar): preserve retry context" in Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(northstar): keep and browse regenerated brief versions" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(northstar): remove duplicate Copilot answers" in Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(northstar): smooth streamed answer reveals" in Myriad-Advisor-Solutions/ohcpwm-apps'
