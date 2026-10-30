@@ -1,0 +1,11 @@
+[package]
+name = "worklog-allocation-bench"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+icu_collator = "2.3"
+regex = "1"
+serde = { version = "1", features = ["derive", "rc"] }
+serde_json = { version = "1", features = ["preserve_order"] }

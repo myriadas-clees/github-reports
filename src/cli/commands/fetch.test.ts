@@ -352,6 +352,24 @@ describe("classifyPullRequestsForRange", () => {
     expect(result.workedOn).toEqual([older]);
   });
 
+  it("stores older closed worked-on PRs as closed report-window snapshots without counting them opened", () => {
+    const older = pr({
+      createdAt: "2026-08-01T12:00:00Z", updatedAt: "2026-08-10T20:00:00Z",
+      closedAt: "2026-08-10T20:00:00Z", state: "closed",
+      workTimestamps: ["2026-08-10T17:00:00Z"],
+      workCommits: [{ sha: "closed-work", message: "fix", url: "commit", authoredAt: "2026-08-10T17:00:00Z" }],
+      labels: ["app: pricing"],
+    });
+    const result = classifyPullRequestsForRange([older], "alice", range);
+    const closedSnapshot = result.workedOn.find((item) => item.url === older.url);
+    expect(result.opened).toEqual([]);
+    expect(result.merged).toEqual([]);
+    expect(result.report).toEqual([]);
+    expect(result.inProgress).toEqual([]);
+    expect(result.workedOnClosed).toEqual([expect.objectContaining({ state: "closed", labels: ["app: pricing"] })]);
+    expect(closedSnapshot).toMatchObject({ state: "closed", labels: ["app: pricing"] });
+  });
+
   it("preserves an unmerged PR closed during the window", () => {
     const result = classifyPullRequestsForRange([
       pr({ state: "closed", closedAt: "2026-08-10T20:00:00Z", updatedAt: "2026-08-10T20:00:00Z" }),

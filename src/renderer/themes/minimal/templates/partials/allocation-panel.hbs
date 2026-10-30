@@ -1,0 +1,96 @@
+<div class="alloc-panel" id="{{id}}" data-alloc-panel{{#if hasSwitch}} role="tabpanel" aria-labelledby="{{id}}-tab"{{/if}}{{#unless isDefault}} hidden{{/unless}}>
+  <p class="alloc-lede">{{lede}}</p>
+
+  <div class="alloc-block alloc-week">
+    <h3 class="alloc-sub"><span>{{heading}}</span><span class="alloc-sub-meta">share of work delivered</span></h3>
+    <div class="alloc-bar" role="img" aria-label="{{bar.ariaLabel}}">
+      {{#each bar.segments}}
+      <span class="alloc-seg {{colorClass}}" style="--grow:{{grow}}" title="{{title}}">{{#if showLabel}}{{#if showName}}<span class="alloc-seg-name">{{name}}</span> {{/if}}<span>{{percent}}</span>{{/if}}</span>
+      {{/each}}
+    </div>
+    <ul class="alloc-legend" aria-label="Initiatives">
+      {{#each legend}}
+      <li><span class="alloc-swatch {{colorClass}}" aria-hidden="true"></span><span>{{name}}</span> <span class="alloc-legend-pct">{{percent}}</span></li>
+      {{/each}}
+    </ul>
+
+    {{#if workTypeBar}}
+    <div class="alloc-worktypes">
+      <h3 class="alloc-sub"><span>By type of work</span></h3>
+      <div class="alloc-bar alloc-bar--md" role="img" aria-label="{{workTypeBar.ariaLabel}}">
+        {{#each workTypeBar.segments}}
+        <span class="alloc-seg {{colorClass}}" style="--grow:{{grow}}" title="{{title}}">{{#if showLabel}}<span>{{percent}}</span>{{/if}}</span>
+        {{/each}}
+      </div>
+      <ul class="alloc-legend" aria-label="Work types">
+        {{#each workTypes}}
+        <li><span class="alloc-swatch {{colorClass}}" aria-hidden="true"></span><span>{{name}}</span> <span class="alloc-legend-pct">{{percent}}</span></li>
+        {{/each}}
+      </ul>
+    </div>
+    {{/if}}
+  </div>
+
+  {{#if verification}}
+  <div class="alloc-block alloc-verify">
+    <h3 class="alloc-sub"><span>{{verification.title}}</span></h3>
+    {{#if verification.readinessLine}}<p class="alloc-verify-line">{{verification.readinessLine}}</p>{{/if}}
+    <p class="alloc-verify-line">{{verification.checksLine}}</p>
+    {{#if verification.note}}<p class="alloc-verify-note">{{verification.note}}</p>{{/if}}
+    <p class="alloc-verify-note"><a href="{{@root.rootPrefix}}finished/">How we say something is finished</a></p>
+  </div>
+  {{/if}}
+
+  {{#if hasInitiatives}}
+  <div class="alloc-block">
+    <h3 class="alloc-sub"><span>By initiative</span></h3>
+    <ul class="alloc-list">
+      {{#each initiatives}}
+      <li class="alloc-item">
+        <div class="alloc-item-head">
+          <span class="alloc-item-name {{colorClass}}"><span class="alloc-swatch" aria-hidden="true"></span><span>{{name}}</span></span>
+          <span class="alloc-item-pct" title="{{title}}">{{percent}}</span>
+          <span class="alloc-item-track {{colorClass}}" aria-hidden="true"><span class="alloc-item-fill" style="width:{{width}}"></span></span>
+        </div>
+        {{#if hoursLabel}}<div class="alloc-item-hours">{{hoursLabel}}</div>{{/if}}
+        {{#if hasShipped}}
+        <div class="alloc-work">
+          <div class="alloc-work-row"><span class="alloc-work-label">Completed</span>
+            <ul class="alloc-work-links">
+              {{#each shipped}}{{> allocation-item}}{{/each}}
+            </ul>
+          </div>
+          {{#if hasShippedMore}}
+          <details class="alloc-more alloc-more--shipped">
+            <summary>{{shippedMoreCount}} more completed</summary>
+            <ul class="alloc-work-links">
+              {{#each shippedMore}}{{> allocation-item}}{{/each}}
+            </ul>
+          </details>
+          {{/if}}
+        </div>
+        {{/if}}
+        {{#if hasInProgress}}
+        <div class="alloc-work">
+          <div class="alloc-work-row"><span class="alloc-work-label">In progress</span>
+            <ul class="alloc-work-links">
+              {{#each inProgress}}{{> allocation-item}}{{/each}}
+            </ul>
+          </div>
+        </div>
+        {{/if}}
+        {{#if hasOther}}
+        <details class="alloc-more">
+          <summary>Other work ({{otherCount}}){{#if hasSelfReported}} <span class="alloc-tag alloc-tag--self">includes self-reported</span>{{/if}}</summary>
+          <ul>
+            {{#each other}}<li><span class="alloc-kind">{{kindLabel}}</span>{{#if url}}<a href="{{url}}" target="_blank" rel="noopener nofollow">{{title}}</a>{{else}}{{title}}{{/if}}{{#if closedWithoutMerge}}<span class="alloc-tag">Closed without merging</span>{{/if}}{{#if complexity}}<span class="alloc-cx alloc-cx--{{complexity.level}}{{#if complexity.partial}} alloc-cx--partial{{/if}}" title="{{complexity.reason}}">{{complexity.label}}<span class="alloc-sr"> ({{complexity.reason}})</span></span>{{#each complexity.risks}}<span class="alloc-risk">{{this}}</span>{{/each}}{{/if}}{{#if selfReported}}<span class="alloc-tag alloc-tag--self">Self-reported</span>{{/if}}{{#if repository}}<span class="alloc-repo">{{repository}}</span>{{/if}}{{#if checksText}}<span class="alloc-checks">{{checksText}}</span>{{/if}}</li>{{/each}}
+          </ul>
+        </details>
+        {{/if}}
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+  {{/if}}
+
+</div>

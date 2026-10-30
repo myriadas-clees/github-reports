@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import Handlebars from "handlebars";
-import { registerHelpers } from "./helpers.js";
+import { registerHelpers, formatWorkDeliveredLabel } from "./helpers.js";
 import type { RepositoryActivity } from "../types.js";
 
 const createHbs = (language: "en" | "ja" = "en", timezone = "UTC") => {
@@ -339,5 +339,36 @@ describe("registerHelpers", () => {
       expect(compile(hbs, "{{{colorizeLineStats meta}}}", { meta: null })).toBe("");
       expect(compile(hbs, "{{{colorizeLineStats meta}}}", { meta: "" })).toBe("");
     });
+  });
+
+  describe("workDelivered", () => {
+    it("renders engineer-days from hours", () => {
+      const hbs = createHbs();
+      expect(compile(hbs, "{{workDelivered hours}}", { hours: 36 })).toBe("~4.5 engineer-days");
+      expect(compile(hbs, "{{workDelivered hours}}", { hours: 510 })).toBe("~64 engineer-days");
+    });
+  });
+});
+
+describe("formatWorkDeliveredLabel", () => {
+  it("always uses engineer-days, with thousands separators from 1,000", () => {
+    expect(formatWorkDeliveredLabel(510)).toBe("~64 engineer-days");
+    expect(formatWorkDeliveredLabel(93)).toBe("~12 engineer-days");
+    expect(formatWorkDeliveredLabel(36)).toBe("~4.5 engineer-days");
+    expect(formatWorkDeliveredLabel(79)).toBe("~10 engineer-days");
+    expect(formatWorkDeliveredLabel(80)).toBe("~10 engineer-days");
+    expect(formatWorkDeliveredLabel(10272)).toBe("~1,284 engineer-days");
+    expect(formatWorkDeliveredLabel(8000)).toBe("~1,000 engineer-days");
+    expect(formatWorkDeliveredLabel(7960)).toBe("~995 engineer-days");
+  });
+
+  it("enforces a 0.5 minimum and singular units when exactly 1", () => {
+    expect(formatWorkDeliveredLabel(4)).toBe("~0.5 engineer-days");
+    expect(formatWorkDeliveredLabel(0)).toBe("~0.5 engineer-days");
+    expect(formatWorkDeliveredLabel(8)).toBe("~1 engineer-day");
+  });
+
+  it("treats non-finite input as zero", () => {
+    expect(formatWorkDeliveredLabel(Number.NaN)).toBe("~0.5 engineer-days");
   });
 });

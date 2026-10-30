@@ -5,8 +5,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="{{aiContent.subtitle}}" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <meta property="og:title" content="{{aiContent.title}}" />
   <meta property="og:description" content="{{aiContent.subtitle}}" />
   <meta property="og:image" content="{{{ogImageUrl}}}" />
@@ -54,6 +52,8 @@
   }
   </script>
   {{/if}}
+  <link rel="preload" href="{{rootPrefix}}assets/fonts/roboto-latin-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="{{rootPrefix}}assets/fonts/fonts.css" />
   <style>{{{css}}}</style>
   {{{themeInitScript}}}
 </head>
@@ -65,7 +65,7 @@
   <div class="nav-inner">
     <a href="{{rootPrefix}}" class="nav-brand">
       <img class="nav-logo nav-logo-light" src="{{rootPrefix}}assets/brand/myriad-m-mark.png" alt="Myriad" width="22" height="22" />
-      <img class="nav-logo nav-logo-dark" src="{{rootPrefix}}assets/brand/myriad-m-mark-dark.png" alt="" width="22" height="22" />
+      <img class="nav-logo nav-logo-dark" src="{{rootPrefix}}assets/brand/myriad-m-mark-dark.png" alt="Myriad" width="22" height="22" />
       <span class="nav-site-title">{{siteTitleInline}}</span>
     </a>
     <div class="nav-actions">
@@ -81,11 +81,14 @@
   <div class="report-hero-inner">
     <a href="{{rootPrefix}}" class="report-back">&larr; {{i18n.allWeeks}}</a>
     {{> header}}
+    {{#if weekLink}}<p class="week-link"><a href="{{weekLink.href}}">{{weekLink.text}}</a></p>{{/if}}
   </div>
 </div>
 
 <main id="main-content">
 <article class="page">
+  {{> report-summary}}
+  {{> allocation}}
   {{> overview}}
   {{> activity}}
   {{> highlights}}
