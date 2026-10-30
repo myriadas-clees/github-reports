@@ -1,0 +1,109 @@
+title: Oct 29
+subtitle: northstar, proforma & ci
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/ohcpwm-apps and Myriad-Advisor-Solutions/myriadas-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 3 PRs
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 1 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 14 commits with +3,749 / −265 lines.
+    chips:
+      - label: Commits
+        value: "14"
+        color: green
+      - label: Additions
+        value: +3,749
+        color: green
+      - label: Deletions
+        value: −265
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 1 reviews with 1 comments.
+    chips:
+      - label: Reviews
+        value: "1"
+      - label: Comments
+        value: "1"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 2 reviews, 3 comments, 2 PRs."
+    chips:
+      - label: Codex
+        value: 2 reviews · 3 comments · 2 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~56h
+highlights:
+  - type: pr
+    title: "fix(ci): wait for managed APIs before production smoke checks"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +61 −5
+    body: The production smoke job failed seconds after a successful Azure deployment because `/api/ofac/me` briefly
+      returned 404. The existing curl retry flags treated that HTTP response as a successful transf
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/203
+  - type: pr
+    title: "fix(northstar): improve visual rendering and clarify brand identity"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +69 −15
+    body: |-
+      - Correct a single missing comma in otherwise valid OpenUI visuals without guessing or repairing truncated data.
+      - Add a smooth, reduced-motion-aware entrance for validated visuals.
+      - Clarify Northsta
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/204
+  - type: pr
+    title: "fix(northstar): preserve partial briefs and remove retry prompts"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +572 −148
+    body: >-
+      - Preserve available calendar, inbox, and task data when later Graph pages fail, and report incomplete sources
+      accurately.
+
+      - Retain legacy read permissions and correctly include zero-duration calendar
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/202
+  - type: pr
+    title: "feat(northstar): add Office file commands and editing"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +391 −94
+    body: |-
+      - Add `@powerpoint`, `@word`, and `@excel` commands with automatic suggestions for clear file requests.
+      - Let users request changes to the latest generated Office file, with ownership and availability
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/200
+  - type: pr
+    title: "fix(northstar): guide Claude briefs to include useful visuals"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +0 −0
+    body: >-
+      - Encourage Claude scheduled briefs to include a supported OpenUI visual when visual guidance is available and it
+      would help.
+
+      - Keep visuals optional and defer to advisor instructions.
+
+      - Correct the o
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/198
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(ci): wait for managed APIs before production smoke checks" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(northstar): improve visual rendering and clarify brand identity" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(northstar): preserve partial briefs and remove retry prompts" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(northstar): add Office file commands and editing" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(northstar): guide Claude briefs to include useful visuals" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'
