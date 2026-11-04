@@ -1,0 +1,377 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-11-03
+  to: 2026-11-03
+stats:
+  totalCommits: 3
+  totalAdditions: 11750
+  totalDeletions: 20
+  prsOpened: 1
+  prsMerged: 0
+  prsInProgress: 2
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 22.1
+dailyCommits:
+  - date: 2026-11-03
+    count: 3
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 1
+    prsOpened: 1
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 2
+    prsOpened: 0
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests:
+  - title: "feat(address-book): add company-scoped CRM"
+    body: >-
+      ## Why
+
+
+      Add a company-scoped CRM for managing households, accounts, contacts, addresses and assigned tasks, with access
+      controls that keep records isolated by company.
+
+
+      ## What changed
+
+
+      - Added Address Book with record management, relationships, task assignment, search, notes and history.
+
+      - Added se...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a1
+      - documentation
+      - github-automation
+      - "app: hub"
+      - platform
+    additions: 11750
+    deletions: 20
+    changedFiles: 137
+    author: myriadas-clees
+    createdAt: 2026-11-03T21:04:05Z
+    updatedAt: 2026-11-03T21:18:48Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a2
+      - &a7
+        sha: fb8f1f3d49e22d8c13398440203db8d166940a9a
+        message: "feat(address-book): add company-scoped CRM"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/fb8f1f3d49e22d8c13398440203db8d166940a9a
+        authoredAt: 2026-11-03T21:03:52Z
+    workTimestamps: &a3
+      - 2026-11-03T21:03:52Z
+    workAdditions: 11750
+    workDeletions: 20
+    workFiles: &a4
+      - .github/workflows/azure-static-web-apps.yml
+      - address-book/AGENTS.md
+      - address-book/DESIGN.md
+      - address-book/functions/host.json
+      - address-book/functions/local.settings.json.example
+      - address-book/functions/package.json
+      - address-book/functions/scripts/build.ts
+      - address-book/functions/src/index.ts
+      - address-book/functions/tsconfig.json
+      - address-book/next-env.d.ts
+      - address-book/next.config.ts
+      - address-book/package.json
+      - address-book/postcss.config.mjs
+      - address-book/scripts/build-static.ts
+      - address-book/scripts/seed-dev-data.ts
+      - address-book/scripts/seed-dev.ts
+      - address-book/src/app/accounts/page.tsx
+      - address-book/src/app/accounts/record/page.tsx
+      - address-book/src/app/api/address-book/[...path]/route.ts
+      - address-book/src/app/contacts/page.tsx
+      - address-book/src/app/contacts/record/page.tsx
+      - address-book/src/app/globals.css
+      - address-book/src/app/households/page.tsx
+      - address-book/src/app/households/record/page.tsx
+      - address-book/src/app/icon.svg
+      - address-book/src/app/layout.tsx
+      - address-book/src/app/manifest.ts
+      - address-book/src/app/page.tsx
+      - address-book/src/app/settings/page.tsx
+      - address-book/src/app/tasks/page.tsx
+      - address-book/src/components/accounts.tsx
+      - address-book/src/components/address-book-shell.tsx
+      - address-book/src/components/contact-addresses.tsx
+      - address-book/src/components/contact-methods.tsx
+      - address-book/src/components/contacts.tsx
+      - address-book/src/components/editors.tsx
+      - address-book/src/components/feedback.tsx
+      - address-book/src/components/global-search.tsx
+      - address-book/src/components/home.tsx
+      - address-book/src/components/households.tsx
+      - address-book/src/components/link-dialogs.tsx
+      - address-book/src/components/list-page.tsx
+      - address-book/src/components/pickers.tsx
+      - address-book/src/components/record-parts.tsx
+      - address-book/src/components/record-tasks.tsx
+      - address-book/src/components/session.tsx
+      - address-book/src/components/settings-page.tsx
+      - address-book/src/components/task-board.tsx
+      - address-book/src/components/task-drawer.tsx
+      - address-book/src/components/task-extras.tsx
+      - address-book/src/components/task-parts.tsx
+      - address-book/src/components/task-priorities.tsx
+      - address-book/src/components/tasks.tsx
+      - address-book/src/components/timeline.tsx
+      - address-book/src/components/ui/copy-button.tsx
+      - address-book/src/components/ui/discard-dialog.tsx
+      - address-book/src/components/ui/fields.tsx
+      - address-book/src/components/ui/inline-edit.tsx
+      - address-book/src/components/ui/layout.tsx
+      - address-book/src/components/ui/search-field.tsx
+      - address-book/src/components/ui/select-field.tsx
+      - address-book/src/components/ui/skeleton.tsx
+      - address-book/src/components/ui/table-sort.tsx
+      - address-book/src/components/ui/undo-toast.tsx
+      - address-book/src/components/ui/unsaved-changes-guard.tsx
+      - address-book/src/lib/addresses.ts
+      - address-book/src/lib/api-client.ts
+      - address-book/src/lib/clipboard.ts
+      - address-book/src/lib/contracts.ts
+      - address-book/src/lib/download.ts
+      - address-book/src/lib/draft-error.ts
+      - address-book/src/lib/features.ts
+      - address-book/src/lib/insights.ts
+      - address-book/src/lib/links.ts
+      - address-book/src/lib/lookup.ts
+      - address-book/src/lib/money.ts
+      - address-book/src/lib/notes.ts
+      - address-book/src/lib/paged-state.ts
+      - address-book/src/lib/palette.ts
+      - address-book/src/lib/pending-saves.ts
+      - address-book/src/lib/records.ts
+      - address-book/src/lib/relationships.ts
+      - address-book/src/lib/remembered.ts
+      - address-book/src/lib/server/handlers.ts
+      - address-book/src/lib/server/repository.ts
+      - address-book/src/lib/server/validation.ts
+      - address-book/src/lib/task-views.ts
+      - address-book/src/lib/undo.ts
+      - address-book/src/lib/unsaved-guard.ts
+      - address-book/src/lib/use-lookup.ts
+      - address-book/src/lib/use-paged-list.ts
+      - address-book/src/lib/use-record.ts
+      - address-book/src/lib/use-reload-on.ts
+      - address-book/src/lib/use-today.ts
+      - address-book/src/lib/use-unsaved-changes.ts
+      - address-book/staticwebapp.config.json
+      - address-book/tests/server/address-book.test.ts
+      - address-book/tests/server/address-mode-search-money.test.ts
+      - address-book/tests/server/composition.test.ts
+      - address-book/tests/server/cosmos.test.ts
+      - address-book/tests/server/migration.test.ts
+      - address-book/tests/server/review-fixes.test.ts
+      - address-book/tests/server/seed-dev.test.ts
+      - address-book/tests/server/workspace-features.test.ts
+      - address-book/tests/ui/api-client.test.ts
+      - address-book/tests/ui/features.test.ts
+      - address-book/tests/ui/insights.test.ts
+      - address-book/tests/ui/notes.test.ts
+      - address-book/tests/ui/paged-state.test.ts
+      - address-book/tests/ui/pending-saves.test.ts
+      - address-book/tests/ui/records.test.ts
+      - address-book/tests/ui/relationships.test.ts
+      - address-book/tests/ui/review-fixes.test.ts
+      - address-book/tests/ui/task-views.test.ts
+      - address-book/tests/ui/ux-logic.test.ts
+      - address-book/tests/ui/workflows.test.ts
+      - address-book/tsconfig.json
+      - bun.lock
+      - docs/authorization-roles.md
+      - hub/components/HubLauncher.tsx
+      - hub/functions/dist-entry.js
+      - hub/lib/apps.test.ts
+      - hub/lib/apps.ts
+      - hub/public/icons/apps/address-book/apple-touch-icon.png
+      - hub/public/icons/apps/address-book/icon-192.png
+      - hub/public/icons/apps/address-book/icon-512.png
+      - hub/public/icons/apps/address-book/icon-maskable-512.png
+      - hub/staticwebapp.config.json
+      - package.json
+      - packages/auth/src/access.test.ts
+      - packages/auth/src/access.ts
+      - packages/contracts/src/access.ts
+      - scripts/app-registry.ts
+      - scripts/company-matrix.test.ts
+      - scripts/company-selection.test.ts
+      - scripts/generate-app-icons.ts
+      - scripts/tooling.test.ts
+prsInProgress:
+  - title: "feat(address-book): add company-scoped CRM"
+    body: >-
+      ## Why
+
+
+      Add a company-scoped CRM for managing households, accounts, contacts, addresses and assigned tasks, with access
+      controls that keep records isolated by company.
+
+
+      ## What changed
+
+
+      - Added Address Book with record management, relationships, task assignment, search, notes and history.
+
+      - Added se...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a1
+    additions: 11750
+    deletions: 20
+    changedFiles: 137
+    author: myriadas-clees
+    createdAt: 2026-11-03T21:04:05Z
+    updatedAt: 2026-11-03T21:18:48Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 11750
+    workDeletions: 20
+    workFiles: *a4
+  - title: "feat(northstar): add approved Copilot consultations and retries"
+    body: >-
+      - Add Claude-proposed Copilot questions that require approval before dispatch, with status and retry support.
+
+      - Show consultation progress and results in Ask, and preserve decisions and completed work through failures,
+      retries, and reconnects.
+
+      - Add separate chat and brief model defaults, and use th...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/210
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: []
+    additions: 3918
+    deletions: 366
+    changedFiles: 49
+    author: myriadas-clees
+    createdAt: 2026-11-01T01:51:36Z
+    updatedAt: 2026-11-03T15:22:37Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a5
+        sha: 32bd1c00b94a3a379682aa818e0f79354b691193
+        message: "fix(northstar): validate consultation tools and deployment policy"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/32bd1c00b94a3a379682aa818e0f79354b691193
+        authoredAt: 2026-11-03T13:56:41Z
+      - &a6
+        sha: 86e5f72de5cb3293d23b84bb7aca251adc9ad300
+        message: "fix(northstar): allow time for consultation decisions"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/86e5f72de5cb3293d23b84bb7aca251adc9ad300
+        authoredAt: 2026-11-03T14:54:32Z
+    workTimestamps:
+      - 2026-11-03T13:56:41Z
+      - 2026-11-03T14:54:32Z
+    workAdditions: 111
+    workDeletions: 11
+    workFiles:
+      - hub/functions/src/northstar-claude-ask.test.ts
+      - hub/functions/src/northstar-claude-brief.ts
+      - hub/functions/src/northstar-consultation.test.ts
+      - hub/functions/src/northstar-consultation.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/functions/src/northstar-subagent.ts
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "fix(northstar): validate consultation tools and deployment policy"
+      - "fix(northstar): allow time for consultation decisions"
+    commits:
+      - *a5
+      - *a6
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "feat(address-book): add company-scoped CRM"
+    commits:
+      - *a7
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 1
+    comments: 1
+    reviews: 1
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 1
+  comments: 1
+  reviews: 1
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-11-03T13:56:41Z
+    - 2026-11-03T14:54:32Z
+    - 2026-11-03T21:03:52Z
+    - 2026-11-03T21:04:05Z
+    - 2026-11-03T21:03:52Z
+  volume:
+    pullRequests:
+      - additions: 111
+        deletions: 11
+        state: open
+        dailyWork: true
+        filesChanged: 6
+        testFilesChanged: 2
+        commitCount: 2
+      - additions: 11750
+        deletions: 20
+        state: open
+        dailyWork: true
+        filesChanged: 137
+        testFilesChanged: 25
+        commitCount: 1
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 0
+    commitAdditions: 0
+    commitDeletions: 0
+    commitStatsCount: 0
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 22.1
+  sessions: 2
+  sessionHours: 1.5
+  volumeHours: 22.1
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
