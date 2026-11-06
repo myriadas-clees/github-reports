@@ -1,4 +1,4 @@
-// report command: daily-fetch → generate → render in one local invocation
+// report command: daily-fetch → generate → evidence → render in one local invocation
 
 import { Command } from "commander";
 import { spawn } from "node:child_process";
@@ -48,6 +48,20 @@ const forwardFlags = (opts: Record<string, string | boolean | undefined>): strin
   return args;
 };
 
+/** `evidence` only accepts these options; forwarding the full report flag set would fail. */
+export const evidenceArgs = (opts: Record<string, string | boolean | undefined>): string[] => {
+  const args = ["evidence"];
+  const pass = (key: string, flag: string): void => {
+    const val = opts[key];
+    if (typeof val === "string" && val.length > 0) args.push(flag, val);
+  };
+  pass("config", "--config");
+  pass("dataDir", "--data-dir");
+  pass("token", "--token");
+  pass("date", "--since");
+  return args;
+};
+
 export const registerReport = (program: Command): void => {
   program
     .command("report")
@@ -70,11 +84,17 @@ export const registerReport = (program: Command): void => {
     .action(async (opts) => {
       try {
         const flags = forwardFlags(opts);
-        console.log("=== 1/3 daily-fetch ===");
+        console.log("=== 1/4 daily-fetch ===");
         await runSub(["daily-fetch", ...flags]);
-        console.log("=== 2/3 generate ===");
+        console.log("=== 2/4 generate ===");
         await runSub(["generate", ...flags]);
-        console.log("=== 3/3 render ===");
+        console.log("=== 3/4 evidence ===");
+        try {
+          await runSub(evidenceArgs(opts));
+        } catch (error) {
+          console.warn("Warning: evidence refresh failed; continuing to render:", error instanceof Error ? error.message : error);
+        }
+        console.log("=== 4/4 render ===");
         await runSub(["render", ...flags]);
         console.log("Report complete. Open the HTML under the output directory (archived by date).");
       } catch (error) {

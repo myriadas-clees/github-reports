@@ -1,0 +1,1799 @@
+@import "./graphical-theme.css";
+
+:root {
+  /* Myriad aliases resolve to the Graphical theme tokens in graphical-theme.css. */
+  /* Actions, links, progress, and focus use monotone ink; brand reds stay accents (see GUI.md "Brand colors").
+     --primary-dark keeps the red tone: proforma uses it for danger, warning, and cost, and no action consumes it. */
+  --primary: var(--action);
+  --primary-hover: var(--neutral-9);
+  --primary-dark: var(--color-5);
+  --primary-light: var(--neutral-3);
+  --secondary: var(--cte-accent-text);
+  --black: #000000;
+  /* Charcoal remains the Myriad app-shell and hero band; it is brand chrome, not a theme neutral. */
+  --charcoal: #111718;
+  --charcoal-soft: #1b2021;
+  --charcoal-raised: #232b2c;
+  --tertiary: var(--neutral-10);
+  --tertiary-muted: var(--neutral-7);
+  --teal: var(--color-3);
+  --teal-deep: var(--color-4);
+  --surface: var(--neutral-2);
+  --page-bg: var(--neutral-1);
+  /* Dividers follow the Separator assignment; control edges follow the Text field assignment. */
+  --border: var(--neutral-4);
+  --input: var(--neutral-7);
+  --ring: var(--neutral-10);
+  --foreground: var(--tertiary);
+  --background: var(--surface);
+  --card: var(--surface);
+  --card-foreground: var(--tertiary);
+  --muted: var(--neutral-3);
+  --muted-foreground: var(--neutral-7);
+  --accent: var(--neutral-3);
+  --accent-foreground: var(--tertiary);
+  --destructive: var(--error);
+  --destructive-foreground: var(--danger-foreground);
+  --popover: var(--neutral-1);
+  --popover-foreground: var(--tertiary);
+  --radius: var(--radius-s);
+  --shadow: var(--shadow-s);
+  --font-display: var(--font-brand);
+  --font-body: var(--font-ui);
+  /* Primary actions use the theme's primaryActionColor (neutral-10). */
+  --action: var(--neutral-10);
+  --action-foreground: var(--neutral-1);
+  --link: var(--neutral-10);
+  /* Text and edges on the fixed charcoal brand bands. */
+  --on-dark: var(--cte-accent-text);
+  --edge: var(--neutral-4);
+  /* Accessibility exceptions: theme neutral-1 on --error is 2.8:1 in light mode and --error
+     text is under 4.5:1 on light surfaces, so light mode uses existing palette steps. */
+  --danger-foreground: var(--neutral-10);
+  --danger-text: var(--color-2);
+  /* Danger text placed on the red tint (--color-1-transparent), such as danger badges. */
+  --danger-tint-text: var(--danger-text);
+  --positive-text: var(--color-4);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --secondary: var(--neutral-10);
+  --danger-foreground: var(--neutral-1);
+  --danger-text: var(--error);
+  /* --error on its red tint is 4.0:1 over neutral-3; lifting it toward the ink keeps the hue at 5.2:1+. */
+  --danger-tint-text: color-mix(in srgb, var(--error) 70%, var(--neutral-10));
+  /* Teal and red text fall under 4.5:1 on dark surfaces; status keeps its tinted fill. */
+  --positive-text: var(--neutral-9);
+  --edge: var(--neutral-5);
+}
+
+/* Dark brand bands (hero, auth) invert the focus ring so it stays visible; light popups
+   opened inside them restore the mode's ring. The app shell sits on theme neutrals and keeps it. */
+:root {
+  --focus-ring-default: var(--focus-ring-outline);
+}
+
+.myriad-page-hero,
+.myriad-auth-card {
+  --focus-ring-outline: 2px solid color-mix(in srgb, var(--on-dark) 70%, transparent);
+}
+
+.ui-popover-panel,
+.ui-dialog,
+.ui-select-content {
+  --focus-ring-outline: var(--focus-ring-default);
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
+  --color-primary-foreground: var(--action-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--tertiary);
+  --color-black: var(--black);
+  --color-charcoal: var(--charcoal);
+  --color-charcoal-soft: var(--charcoal-soft);
+  --color-charcoal-raised: var(--charcoal-raised);
+  --color-tertiary: var(--tertiary);
+  --color-tertiary-muted: var(--tertiary-muted);
+  --color-teal: var(--teal);
+  --color-teal-deep: var(--teal-deep);
+  --color-myriad-primary: var(--primary);
+  --color-myriad-secondary: var(--secondary);
+  --color-myriad-tertiary: var(--tertiary);
+  --color-surface: var(--surface);
+  --color-page-bg: var(--page-bg);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-editorial: var(--font-editorial);
+
+  /* Graphical theme bridges: named token utilities such as text-step-m, gap-space-s,
+     rounded-m, shadow-l, font-ui, and font-ui-medium. */
+  --color-neutral-1: var(--neutral-1);
+  --color-neutral-2: var(--neutral-2);
+  --color-neutral-3: var(--neutral-3);
+  --color-neutral-4: var(--neutral-4);
+  --color-neutral-6: var(--neutral-6);
+  --color-neutral-7: var(--neutral-7);
+  --color-neutral-9: var(--neutral-9);
+  --color-neutral-10: var(--neutral-10);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  --color-on-dark: var(--on-dark);
+  --color-action: var(--action);
+  --color-action-foreground: var(--action-foreground);
+  --color-edge: var(--edge);
+  --color-danger-text: var(--danger-text);
+  --color-positive-text: var(--positive-text);
+  --font-ui: var(--font-ui);
+  --font-brand: var(--font-brand);
+  --font-data: var(--font-data);
+  --font-weight-ui-regular: var(--weight-ui-regular);
+  --font-weight-ui-medium: var(--weight-ui-medium);
+  --font-weight-ui-heavy: var(--weight-ui-heavy);
+  --font-weight-brand-regular: var(--weight-brand-regular);
+  --font-weight-brand-medium: var(--weight-brand-medium);
+  --font-weight-brand-heavy: var(--weight-brand-heavy);
+  --text-step-xxs: var(--size-xxs);
+  --text-step-xxs--line-height: var(--line-xxs);
+  --text-step-xxs--letter-spacing: var(--letter-spacing-xxs);
+  --text-step-xs: var(--size-xs);
+  --text-step-xs--line-height: var(--line-xs);
+  --text-step-xs--letter-spacing: var(--letter-spacing-xs);
+  --text-step-s: var(--size-s);
+  --text-step-s--line-height: var(--line-s);
+  --text-step-s--letter-spacing: var(--letter-spacing-s);
+  --text-step-m: var(--size-m);
+  --text-step-m--line-height: var(--line-m);
+  --text-step-m--letter-spacing: var(--letter-spacing-m);
+  --text-step-l: var(--size-l);
+  --text-step-l--line-height: var(--line-l);
+  --text-step-l--letter-spacing: var(--letter-spacing-l);
+  --text-step-xl: var(--size-xl);
+  --text-step-xl--line-height: var(--line-xl);
+  --text-step-xl--letter-spacing: var(--letter-spacing-xl);
+  --text-step-xxl: var(--size-xxl);
+  --text-step-xxl--line-height: var(--line-xxl);
+  --text-step-xxl--letter-spacing: var(--letter-spacing-xxl);
+  --spacing-space-xxs: var(--space-xxs);
+  --spacing-space-xs: var(--space-xs);
+  --spacing-space-s: var(--space-s);
+  --spacing-space-m: var(--space-m);
+  --spacing-space-l: var(--space-l);
+  --spacing-space-xl: var(--space-xl);
+  --spacing-space-xxl: var(--space-xxl);
+  --radius-s: var(--radius-s);
+  --radius-m: var(--radius-m);
+  --radius-l: var(--radius-l);
+  --shadow-s: var(--shadow-s);
+  --shadow-m: var(--shadow-m);
+  --shadow-l: var(--shadow-l);
+  /* Theme radius-xs/xl share Tailwind names; keep Tailwind's existing rounded-xs/xl output. */
+  --radius-xs: 0.125rem;
+  --radius-xl: 0.75rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--tertiary);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--charcoal) 8%, var(--page-bg)) 0, var(--page-bg) 18rem),
+    var(--page-bg);
+  font-family: var(--font-body);
+  font-size: var(--size-m);
+  line-height: var(--line-m);
+  letter-spacing: var(--letter-spacing-m);
+  font-weight: var(--weight-ui-regular);
+  position: relative;
+}
+
+:root[data-theme="dark"] body {
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--charcoal-soft) 72%, var(--page-bg)) 0, var(--page-bg) 18rem),
+    var(--page-bg);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.15;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  z-index: 0;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-editorial {
+  font-family: var(--font-editorial);
+}
+
+.myriad-top-rule {
+  height: 3px;
+  width: 100%;
+  background: var(--color-1);
+  flex-shrink: 0;
+}
+
+.myriad-header-surface {
+  background: var(--surface);
+  box-shadow: inset 0 calc(-1 * var(--border-s)) 0 var(--border);
+}
+
+.myriad-app-shell {
+  min-height: 100vh;
+  background: var(--page-bg);
+}
+
+/* ---- App shell -----------------------------------------------------------------
+   The sidebar and top bar sit on the theme's raised neutral (neutral-2) with one composed
+   edge toward the canvas, the same surface language as panels. Items follow the Navigation
+   menu assignment: transparent at rest, neutral-3 on hover, --navigation-active-* when
+   current. Red is a small accent only (indicator bar), tuned per mode for 3:1 contrast. */
+
+:root {
+  --nav-hover: color-mix(in srgb, var(--neutral-3) 60%, transparent);
+}
+
+.myriad-app-header,
+.myriad-app-sidebar {
+  /* Legacy `text-secondary` / `--secondary` consumers inside shell slots resolve to the theme ink. */
+  --secondary: var(--neutral-10);
+  --nav-accent: var(--color-1);
+  background: var(--neutral-2);
+  color: var(--neutral-10);
+  font-family: var(--font-ui);
+}
+
+:root[data-theme="dark"] .myriad-app-header,
+:root[data-theme="dark"] .myriad-app-sidebar {
+  /* #cc2647 is 2.7:1 on the dark active background; the theme error red clears 3:1. */
+  --nav-accent: var(--error);
+}
+
+.myriad-app-header {
+  box-shadow: inset 0 calc(-1 * var(--border-s)) 0 var(--border);
+}
+
+.myriad-app-sidebar {
+  box-shadow: inset 0 calc(-1 * var(--border-s)) 0 var(--border);
+}
+
+@media (min-width: 40rem) {
+  .myriad-app-sidebar {
+    box-shadow: inset calc(-1 * var(--border-s)) 0 0 var(--border);
+  }
+}
+
+.myriad-app-brand {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-s);
+}
+
+@media (min-width: 40rem) {
+  .myriad-app-brand {
+    min-height: 4.25rem;
+    padding-inline: var(--space-s);
+    box-shadow: inset 0 calc(-1 * var(--border-s)) 0 var(--border);
+  }
+}
+
+.myriad-app-account {
+  display: flex;
+  align-items: center;
+  padding: var(--space-xs) var(--space-s) var(--space-xs) 0;
+}
+
+@media (min-width: 40rem) {
+  .myriad-app-account {
+    margin-top: auto;
+    padding: var(--space-xs);
+    box-shadow: inset 0 var(--border-s) 0 var(--border);
+  }
+}
+
+.myriad-app-title {
+  color: var(--neutral-10);
+  font-family: var(--font-brand);
+  font-size: var(--size-m);
+  line-height: var(--line-m);
+  letter-spacing: var(--letter-spacing-m);
+  font-weight: var(--weight-brand-medium);
+  text-decoration: none;
+}
+
+/* Pre-hydration shell: both chrome variants are in the DOM; show the one matching the
+   nav mode the bootstrap script put on <html> (sidebar when absent). */
+html[data-nav-mode="topbar"] [data-shell-prehydrate] [data-shell-chrome="sidebar"],
+html:not([data-nav-mode="topbar"]) [data-shell-prehydrate] [data-shell-chrome="topbar"] {
+  display: none;
+}
+
+html[data-nav-mode="topbar"] .myriad-shell-body {
+  max-width: 80rem;
+  margin-inline: auto;
+}
+
+@media (min-width: 40rem) {
+  html:not([data-nav-mode="topbar"]) .myriad-shell-body {
+    flex-direction: row;
+  }
+}
+
+/* The bootstrap marks embedded windows; the hub link only belongs on top-level loads. */
+html[data-framed] .ui-shell-icon-button[data-return-to-hub] {
+  display: none;
+}
+
+.ui-shell-icon-button {
+  display: inline-flex;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-s);
+  color: var(--neutral-7);
+  transition:
+    background-color var(--motion-duration) var(--motion-easing),
+    color var(--motion-duration) var(--motion-easing);
+}
+
+.ui-shell-icon-button:hover {
+  background: var(--nav-hover);
+  color: var(--neutral-10);
+}
+
+.ui-shell-icon-button svg {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.ui-nav-link {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: var(--space-xs);
+  border-radius: var(--radius-s);
+  padding: var(--space-xs) var(--space-s);
+  color: var(--neutral-10);
+  font-family: var(--font-ui);
+  font-size: var(--size-s);
+  line-height: var(--line-s);
+  letter-spacing: var(--letter-spacing-s);
+  font-weight: var(--weight-ui-medium);
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color var(--motion-duration) var(--motion-easing),
+    color var(--motion-duration) var(--motion-easing);
+}
+
+.ui-nav-link > svg {
+  width: 1.125rem;
+  height: 1.125rem;
+  flex-shrink: 0;
+  color: var(--neutral-7);
+  transition: color var(--motion-duration) var(--motion-easing);
+}
+
+.ui-nav-link:hover {
+  background: var(--nav-hover);
+}
+
+.ui-nav-link[data-active="true"] {
+  background: var(--navigation-active-background);
+  color: var(--navigation-active-foreground);
+}
+
+.ui-nav-link[data-active="true"] > svg {
+  color: var(--navigation-active-foreground);
+}
+
+/* Current-page indicator: a short accent bar on the leading edge (sidebar) or foot (top bar). */
+.ui-nav-link[data-active="true"]::after {
+  content: "";
+  position: absolute;
+  border-radius: var(--radius-full);
+  background: var(--nav-accent);
+}
+
+.ui-nav-link--sidebar[data-active="true"]::after {
+  top: 50%;
+  left: 0;
+  width: 3px;
+  height: 1.125rem;
+  transform: translateY(-50%);
+}
+
+.ui-nav-link--topbar[data-active="true"]::after {
+  right: var(--space-s);
+  bottom: 3px;
+  left: var(--space-s);
+  height: 2px;
+}
+
+.ui-nav-link--topbar {
+  min-height: 2.25rem;
+  padding-block: var(--space-xxs);
+}
+
+/* Count pill on a navigation item: a neutral chip with a box-shadow edge, red-tinted when the count is urgent. */
+.ui-nav-badge {
+  display: inline-flex;
+  min-width: 1.25rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background: var(--neutral-3);
+  box-shadow: inset 0 0 0 var(--border-s) var(--border);
+  padding: 0 var(--space-xxs);
+  color: var(--neutral-10);
+  font-size: var(--size-xxs);
+  line-height: var(--line-xxs);
+  letter-spacing: var(--letter-spacing-xxs);
+  font-weight: var(--weight-ui-medium);
+  font-variant-numeric: tabular-nums;
+}
+
+.ui-nav-badge[data-tone="danger"] {
+  background: var(--color-1-transparent);
+  box-shadow: none;
+  color: var(--danger-tint-text);
+}
+
+.ui-nav-link--sidebar .ui-nav-badge {
+  margin-left: auto;
+}
+
+.ui-nav-group {
+  display: flex;
+  align-items: center;
+  border-radius: var(--radius-s);
+}
+
+.ui-nav-group > .ui-nav-link {
+  flex: 1 1 auto;
+}
+
+.ui-nav-group:hover {
+  background: var(--nav-hover);
+}
+
+.ui-nav-group:has(> .ui-nav-link[data-active="true"]) {
+  background: var(--navigation-active-background);
+}
+
+.ui-nav-group > .ui-nav-link:hover,
+.ui-nav-group > .ui-nav-link[data-active="true"] {
+  background: transparent;
+}
+
+.ui-nav-group__toggle {
+  display: inline-flex;
+  width: 2rem;
+  height: 2rem;
+  margin-right: var(--space-xxs);
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-xs);
+  color: var(--neutral-7);
+}
+
+.ui-nav-group__toggle:hover {
+  color: var(--neutral-10);
+}
+
+.ui-nav-group__toggle svg {
+  width: 1rem;
+  height: 1rem;
+  transition: transform var(--motion-duration) var(--motion-easing);
+}
+
+.ui-nav-group__toggle[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
+.ui-nav-children {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 2px 0 0 calc(var(--space-s) + 0.5625rem - 1px);
+  padding-left: var(--space-xs);
+  box-shadow: inset var(--border-s) 0 0 var(--border);
+}
+
+.ui-nav-link--child {
+  padding: var(--space-xxs) var(--space-xs);
+  font-size: var(--size-xs);
+  line-height: var(--line-xs);
+  letter-spacing: var(--letter-spacing-xs);
+  color: var(--neutral-7);
+}
+
+.ui-nav-link--child[data-active="true"] {
+  color: var(--navigation-active-foreground);
+}
+
+.ui-nav-link--child[data-active="true"]::after {
+  top: 50%;
+  left: calc(-1 * var(--space-xs) - 1px);
+  width: 3px;
+  height: 0.875rem;
+  transform: translateY(-50%);
+}
+
+.ui-nav-menu-panel {
+  position: absolute;
+  top: calc(100% + var(--space-xxs));
+  left: 0;
+  z-index: 30;
+  display: flex;
+  width: 14rem;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-xxs);
+}
+
+.ui-nav-menu-panel .ui-nav-link {
+  white-space: normal;
+}
+
+.ui-nav-mobile {
+  display: flex;
+  gap: var(--space-xxs);
+  overflow-x: auto;
+  padding: var(--space-xxs) var(--space-s) var(--space-xs);
+  scrollbar-width: none;
+}
+
+.ui-nav-mobile::-webkit-scrollbar {
+  display: none;
+}
+
+/* The top bar keeps the compact nav row until the inline nav and account menu fit side by side. */
+@media (min-width: 80rem) {
+  .ui-nav-mobile {
+    display: none;
+  }
+}
+
+.ui-nav-mobile .ui-nav-link {
+  flex-shrink: 0;
+}
+
+/* The mobile sidebar puts the account menu at the end of the brand row, so its popover opens
+   downward from the trailing edge instead of upward from the footer. */
+@media (max-width: 39.999rem) {
+  /* The phone sidebar is a horizontal strip, so the current page uses the top bar's foot indicator. */
+  .ui-nav-link--sidebar[data-active="true"]::after {
+    top: auto;
+    right: var(--space-s);
+    bottom: 3px;
+    left: var(--space-s);
+    width: auto;
+    height: 2px;
+    transform: none;
+  }
+
+  .myriad-app-sidebar .ui-user-menu-chevron {
+    transform: rotate(180deg);
+  }
+
+  .myriad-app-sidebar .ui-user-menu-panel {
+    top: calc(100% + var(--space-xxs));
+    bottom: auto;
+    right: 0;
+    left: auto;
+  }
+}
+
+@media (min-width: 40rem) {
+  .myriad-app-sidebar .ui-user-menu-label {
+    display: flex;
+  }
+}
+
+/* Account menu trigger (shell footer / top bar end) and its popover sections. */
+.ui-user-menu-trigger {
+  display: flex;
+  width: 100%;
+  min-height: 2.5rem;
+  align-items: center;
+  gap: var(--space-xs);
+  border: 0;
+  border-radius: var(--radius-s);
+  background: transparent;
+  padding: var(--space-xxs) var(--space-xs);
+  color: var(--neutral-10);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--motion-duration) var(--motion-easing);
+}
+
+.ui-user-menu-trigger:hover,
+.ui-user-menu-trigger[aria-expanded="true"] {
+  background: var(--nav-hover);
+}
+
+.ui-user-menu-trigger:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.ui-user-menu-avatar {
+  display: flex;
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background: var(--neutral-3);
+  box-shadow: inset 0 0 0 var(--border-s) var(--border);
+  color: var(--neutral-10);
+  font-size: var(--size-xxs);
+  line-height: var(--line-xxs);
+  font-weight: var(--weight-ui-medium);
+  letter-spacing: 0.02em;
+}
+
+.ui-user-menu-name,
+.ui-user-menu-role {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ui-user-menu-name {
+  font-size: var(--size-s);
+  line-height: var(--line-s);
+  font-weight: var(--weight-ui-medium);
+}
+
+.ui-user-menu-role {
+  color: var(--neutral-7);
+  font-size: var(--size-xxs);
+  line-height: var(--line-xxs);
+  text-transform: capitalize;
+}
+
+.ui-user-menu-chevron {
+  width: 1rem;
+  height: 1rem;
+  margin-left: auto;
+  flex-shrink: 0;
+  color: var(--neutral-7);
+}
+
+.ui-user-menu-meta,
+.ui-user-menu-quick-settings {
+  box-shadow: inset 0 calc(-1 * var(--border-s)) 0 var(--border);
+}
+
+.myriad-mark-ink {
+  fill: #000000;
+}
+
+:root[data-theme="dark"] .myriad-mark-ink {
+  fill: #ffffff;
+}
+
+.myriad-app-main {
+  background: transparent;
+}
+
+.ui-skip-link {
+  position: absolute;
+  left: var(--space-s);
+  top: var(--space-s);
+  z-index: 300;
+  transform: translateY(-200%);
+  border-radius: var(--radius-s);
+  background: var(--action);
+  color: var(--action-foreground);
+  padding: var(--space-xs) var(--space-m);
+  font-weight: var(--weight-ui-medium);
+}
+
+.ui-skip-link:focus-visible {
+  transform: none;
+}
+
+.myriad-logo-tile {
+  border-radius: var(--radius-s);
+  background: var(--on-dark);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--on-dark) 20%, transparent);
+}
+
+/* ---- Brand bands --------------------------------------------------------------
+   The charcoal hero/auth bands are Myriad brand chrome. Their text uses fixed light
+   tones in both modes because the band itself does not change with the color mode. */
+
+.myriad-page-hero,
+.myriad-auth-card {
+  --band-text: var(--on-dark);
+  --band-muted: color-mix(in srgb, var(--on-dark) 74%, var(--charcoal));
+}
+
+.myriad-page-hero {
+  display: grid;
+  gap: var(--space-m);
+  align-items: stretch;
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius-m);
+  background:
+    linear-gradient(90deg, var(--color-1) 0 4px, transparent 4px),
+    linear-gradient(135deg, var(--charcoal), var(--charcoal-soft));
+  box-shadow: 0 0 0 var(--border-s) color-mix(in srgb, var(--on-dark) 12%, transparent), var(--shadow-l);
+  color: var(--band-text);
+  padding: var(--space-m) var(--space-m) var(--space-m) var(--space-l);
+}
+
+.myriad-page-hero__kicker {
+  color: var(--band-muted);
+  font-size: var(--size-xxs);
+  line-height: var(--line-xxs);
+  font-weight: var(--weight-ui-heavy);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.myriad-page-hero__title {
+  margin-top: var(--space-xxs);
+  color: var(--band-text);
+  font-family: var(--font-brand);
+  font-size: var(--size-l);
+  line-height: var(--line-l);
+  letter-spacing: var(--letter-spacing-l);
+  font-weight: var(--weight-brand-medium);
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+.myriad-page-hero__copy {
+  margin-top: var(--space-xs);
+  max-width: 44rem;
+  color: var(--band-muted);
+  font-family: var(--font-editorial);
+  font-size: var(--size-s);
+  line-height: var(--line-s);
+  letter-spacing: var(--letter-spacing-s);
+}
+
+.myriad-page-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-top: var(--space-m);
+}
+
+.myriad-page-hero__actions .bg-secondary,
+.myriad-page-hero__actions .border-border,
+.myriad-page-hero__actions .ui-button-secondary,
+.myriad-page-hero__actions .ui-button-outline {
+  border-color: color-mix(in srgb, var(--on-dark) 24%, transparent);
+  background: color-mix(in srgb, var(--on-dark) 10%, transparent);
+  box-shadow: inset 0 0 0 var(--border-s) color-mix(in srgb, var(--on-dark) 24%, transparent);
+  color: var(--band-text);
+}
+
+.myriad-page-hero__actions .bg-secondary:hover,
+.myriad-page-hero__actions .border-border:hover,
+.myriad-page-hero__actions .ui-button-secondary:hover,
+.myriad-page-hero__actions .ui-button-outline:hover {
+  background: color-mix(in srgb, var(--on-dark) 16%, transparent);
+}
+
+.myriad-page-hero__actions .text-tertiary-muted {
+  color: var(--band-muted);
+}
+
+.myriad-page-hero__actions .hover\:bg-page-bg:hover {
+  background: color-mix(in srgb, var(--on-dark) 12%, transparent);
+}
+
+.myriad-page-hero__actions .hover\:text-tertiary:hover {
+  color: var(--band-text);
+}
+
+.myriad-page-hero__panel {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  border: 0;
+  border-radius: var(--radius-s);
+  background: color-mix(in srgb, var(--on-dark) 8%, transparent);
+  box-shadow: inset 0 0 0 var(--border-s) color-mix(in srgb, var(--on-dark) 14%, transparent);
+  padding: var(--space-s) var(--space-m);
+}
+
+.myriad-page-hero__panel-label {
+  color: var(--band-muted);
+  font-size: var(--size-xxs);
+  line-height: var(--line-xxs);
+  font-weight: var(--weight-ui-heavy);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.myriad-page-hero__panel-value {
+  color: var(--band-text);
+  font-family: var(--font-brand);
+  font-size: var(--size-l);
+  line-height: var(--line-l);
+  letter-spacing: var(--letter-spacing-l);
+  font-weight: var(--weight-brand-medium);
+  font-variant-numeric: tabular-nums;
+}
+
+.myriad-page-hero__panel-copy {
+  color: var(--band-muted);
+  font-size: var(--size-xs);
+  line-height: var(--line-xs);
+  letter-spacing: var(--letter-spacing-xs);
+}
+
+.myriad-auth-card {
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius-m);
+  background:
+    linear-gradient(90deg, var(--color-1) 0 4px, transparent 4px),
+    linear-gradient(135deg, var(--charcoal), var(--charcoal-soft));
+  box-shadow: 0 0 0 var(--border-s) color-mix(in srgb, var(--on-dark) 12%, transparent), var(--shadow-l);
+  color: var(--band-text);
+  padding: var(--space-xl);
+}
+
+/* Primary actions on the charcoal bands invert to stay visible. */
+.myriad-page-hero .ui-button-primary,
+.myriad-auth-card .ui-button-primary {
+  background: var(--on-dark);
+  color: var(--charcoal);
+}
+
+.myriad-footer-band {
+  background: var(--primary);
+  color: var(--action-foreground);
+  width: 100%;
+}
+
+.myriad-footer-band a {
+  color: var(--action-foreground);
+  text-decoration: none;
+}
+
+.myriad-footer-band a:hover {
+  text-decoration: underline;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up var(--motion-large-duration) var(--motion-large-easing) both;
+}
+
+.animate-delay-1 {
+  animation-delay: 0.05s;
+}
+
+.animate-delay-2 {
+  animation-delay: 0.1s;
+}
+
+.animate-delay-3 {
+  animation-delay: 0.15s;
+}
+
+.animate-delay-4 {
+  animation-delay: 0.2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up {
+    animation: none;
+  }
+}
+
+/* ---- Surfaces ------------------------------------------------------------------
+   Edges are composed box shadows with zero native border width. */
+
+.card {
+  background: var(--surface);
+  color: var(--card-foreground);
+  border: 0;
+  border-radius: var(--radius-m);
+  box-shadow: 0 0 0 var(--border-s) var(--border), var(--shadow-s);
+}
+
+/* ---- Buttons (legacy class names share the Button assignments) ----------------- */
+
+.btn-primary,
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  border: 0;
+  border-radius: var(--radius-s);
+  padding: var(--space-xs) var(--space-m);
+  font-family: var(--font-ui);
+  font-size: var(--size-m);
+  line-height: var(--line-m);
+  letter-spacing: var(--letter-spacing-m);
+  font-weight: var(--weight-ui-medium);
+  cursor: pointer;
+  transition:
+    background-color var(--motion-duration) var(--motion-easing),
+    box-shadow var(--motion-duration) var(--motion-easing),
+    color var(--motion-duration) var(--motion-easing);
+}
+
+.btn-primary {
+  background: var(--action);
+  color: var(--action-foreground);
+  box-shadow: inset 0 0 0 var(--border-s) var(--neutral-10-transparent);
+}
+
+.btn-primary:hover {
+  box-shadow: inset 0 0 0 var(--border-s) var(--neutral-10-transparent), var(--shadow-s);
+}
+
+.btn-primary:active:not(:disabled),
+.btn-secondary:active:not(:disabled) {
+  transform: translateY(var(--motion-press-distance));
+}
+
+.btn-primary:disabled,
+.btn-secondary:disabled {
+  background: var(--neutral-3);
+  color: var(--neutral-6);
+  box-shadow: 0 0 0 var(--border-s) var(--neutral-4-transparent);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-danger {
+  background: var(--error);
+  color: var(--danger-foreground);
+  box-shadow: inset 0 0 0 var(--border-s) var(--error-transparent);
+}
+
+.btn-danger:hover {
+  box-shadow: inset 0 0 0 var(--border-s) var(--error-transparent), var(--shadow-s);
+}
+
+.btn-secondary {
+  background: var(--neutral-3);
+  color: var(--neutral-10);
+  box-shadow: 0 0 0 var(--border-s) var(--neutral-3-transparent);
+}
+
+.btn-secondary:hover {
+  background: var(--neutral-4-transparent);
+  box-shadow: 0 0 0 var(--border-s) var(--neutral-4-transparent);
+}
+
+/* ---- Text fields (Text field / Field assignments) ------------------------------ */
+
+.input-field {
+  width: 100%;
+  padding: var(--space-xs) var(--space-s);
+  border: 0;
+  border-radius: var(--radius-s);
+  background-color: var(--neutral-1);
+  box-shadow: inset 0 0 0 var(--border-s) var(--input);
+  font-family: var(--font-ui);
+  font-size: var(--size-m);
+  line-height: var(--line-m);
+  letter-spacing: var(--letter-spacing-m);
+  font-weight: var(--weight-ui-regular);
+  color: var(--neutral-10);
+}
+
+.input-field::placeholder {
+  color: var(--neutral-6);
+}
+
+.input-field:focus,
+.input-field:focus-visible {
+  outline: var(--focus-ring-outline);
+  outline-offset: 2px;
+}
+
+.input-field[aria-invalid="true"],
+.input-field:user-invalid {
+  box-shadow: inset 0 0 0 var(--border-s) var(--error);
+}
+
+.input-field:disabled,
+.input-field[aria-disabled="true"] {
+  background-color: var(--neutral-3);
+  color: var(--neutral-7);
+  cursor: not-allowed;
+}
+
+/* Programmatic focus targets (tabindex="-1", e.g. dialog content, <main>) get no ring. */
+:where(a, button, input, select, textarea, summary, [tabindex]:not([tabindex="-1"])):focus-visible {
+  outline: var(--focus-ring-outline);
+  outline-offset: 2px;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--neutral-9);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---- Badges ---------------------------------------------------------------------- */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xxs);
+  padding: 0 var(--space-xs);
+  border-radius: var(--radius-full);
+  font-size: var(--size-xs);
+  line-height: var(--line-xs);
+  letter-spacing: var(--letter-spacing-xs);
+  font-weight: var(--weight-ui-medium);
+  padding-block: 2px;
+}
+
+.badge-submitted {
+  background: var(--color-3-transparent);
+  color: var(--positive-text);
+}
+
+.badge-approved {
+  background: var(--option-badge-background);
+  color: var(--option-badge-foreground);
+}
+
+.badge-status-approved {
+  border: 0;
+  background: color-mix(in srgb, var(--on-dark) 10%, transparent);
+  box-shadow: inset 0 0 0 var(--border-s) color-mix(in srgb, var(--on-dark) 14%, transparent);
+  color: var(--on-dark);
+}
+
+.badge-status-approved {
+  background: var(--color-3-transparent);
+  color: var(--positive-text);
+}
+
+.badge-denied {
+  background: var(--color-1-transparent);
+  color: var(--danger-tint-text);
+}
+
+.badge-cancelled {
+  background: var(--neutral-3);
+  color: var(--neutral-7);
+}
+
+@media (min-width: 900px) {
+  .myriad-page-hero {
+    grid-template-columns: minmax(0, 1.35fr) minmax(16rem, 0.65fr);
+    padding: var(--space-l) var(--space-l) var(--space-l) var(--space-xl);
+  }
+
+  .myriad-page-hero__title {
+    font-size: var(--size-xl);
+    line-height: var(--line-xl);
+    letter-spacing: var(--letter-spacing-xl);
+  }
+
+  .myriad-page-hero__panel-value {
+    font-size: var(--size-xl);
+    line-height: var(--line-xl);
+    letter-spacing: var(--letter-spacing-xl);
+  }
+}
+
+/* ---- Shared @myriad/ui components ------------------------------------------------
+   Layered as components so caller utility classes still refine a single instance. */
+
+@layer components {
+  .ui-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    white-space: nowrap;
+    border: 0;
+    border-radius: var(--radius-s);
+    padding: var(--space-xs) var(--space-m);
+    font-family: var(--font-ui);
+    font-size: var(--size-m);
+    line-height: var(--line-m);
+    letter-spacing: var(--letter-spacing-m);
+    font-weight: var(--weight-ui-medium);
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background-color var(--motion-duration) var(--motion-easing),
+      box-shadow var(--motion-duration) var(--motion-easing),
+      color var(--motion-duration) var(--motion-easing),
+      transform var(--motion-duration) var(--motion-easing);
+  }
+
+  .ui-button svg {
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+  }
+
+  .ui-button:active:not(:disabled) {
+    transform: translateY(var(--motion-press-distance));
+  }
+
+  .ui-button:disabled,
+  .ui-button[aria-disabled="true"] {
+    color: var(--neutral-6);
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .ui-button-primary {
+    background: var(--action);
+    color: var(--action-foreground);
+    box-shadow: inset 0 0 0 var(--border-s) var(--neutral-10-transparent);
+  }
+
+  .ui-button-primary:hover:not(:disabled) {
+    box-shadow: inset 0 0 0 var(--border-s) var(--neutral-10-transparent), var(--shadow-s);
+  }
+
+  .ui-button-danger {
+    background: var(--error);
+    color: var(--danger-foreground);
+    box-shadow: inset 0 0 0 var(--border-s) var(--error-transparent);
+  }
+
+  .ui-button-danger:hover:not(:disabled) {
+    box-shadow: inset 0 0 0 var(--border-s) var(--error-transparent), var(--shadow-s);
+  }
+
+  .ui-button-primary:disabled,
+  .ui-button-danger:disabled {
+    background: var(--neutral-3);
+    box-shadow: inset 0 0 0 var(--border-s) var(--neutral-4-transparent);
+  }
+
+  .ui-button-secondary {
+    background: var(--neutral-3);
+    color: var(--neutral-10);
+    box-shadow: 0 0 0 var(--border-s) var(--neutral-3-transparent);
+  }
+
+  .ui-button-secondary:hover:not(:disabled) {
+    background: var(--neutral-4-transparent);
+    box-shadow: 0 0 0 var(--border-s) var(--neutral-4-transparent);
+  }
+
+  .ui-button-outline {
+    background: transparent;
+    color: var(--neutral-10);
+    box-shadow: inset 0 0 0 var(--border-s) var(--neutral-7);
+  }
+
+  .ui-button-outline:hover:not(:disabled) {
+    background: var(--neutral-3-transparent);
+  }
+
+  .ui-button-outline:disabled {
+    box-shadow: inset 0 0 0 var(--border-s) var(--neutral-4-transparent);
+  }
+
+  .ui-button-ghost {
+    background: transparent;
+    color: var(--neutral-10);
+  }
+
+  .ui-button-ghost:hover:not(:disabled) {
+    background: var(--neutral-3-transparent);
+  }
+
+  .ui-button-primary:focus-visible,
+  .ui-button-danger:focus-visible,
+  .ui-button-ghost:focus-visible {
+    box-shadow: inset 0 0 0 var(--border-s) var(--neutral-7);
+  }
+
+  .ui-button-link {
+    padding: 0;
+    background: transparent;
+    color: var(--link);
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+    text-underline-offset: 3px;
+  }
+
+  .ui-button-link:hover:not(:disabled) {
+    color: var(--primary);
+    text-decoration-color: currentColor;
+  }
+
+  .ui-button-size-sm {
+    gap: var(--space-xxs);
+    padding: var(--space-xxs) var(--space-s);
+    font-size: var(--size-s);
+    line-height: var(--line-s);
+    letter-spacing: var(--letter-spacing-s);
+  }
+
+  .ui-button-size-lg {
+    padding: var(--space-s) var(--space-l);
+  }
+
+  .ui-button-size-icon {
+    padding: var(--space-xs);
+    width: calc(var(--line-m) + 2 * var(--space-xs));
+    height: calc(var(--line-m) + 2 * var(--space-xs));
+  }
+
+  .ui-label {
+    display: grid;
+    gap: var(--space-xxs);
+    color: var(--neutral-10);
+    font-size: var(--size-s);
+    line-height: var(--line-s);
+    letter-spacing: var(--letter-spacing-s);
+    font-weight: var(--weight-ui-medium);
+  }
+
+  .ui-select {
+    appearance: none;
+    padding-right: calc(var(--space-s) + 1.25rem);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23625d52' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-position: right var(--space-s) center;
+    background-repeat: no-repeat;
+    background-size: 1rem;
+    cursor: pointer;
+  }
+
+  :root[data-theme="dark"] .ui-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a6a3a1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  }
+
+  .ui-select-content {
+    background: var(--neutral-1);
+    color: var(--neutral-10);
+    border: 0;
+    border-radius: var(--radius-s);
+    box-shadow: var(--shadow-m), var(--shadow-l);
+    font-family: var(--font-ui);
+    font-size: var(--size-m);
+    line-height: var(--line-m);
+  }
+
+  .ui-select-viewport {
+    padding: var(--space-xxs);
+  }
+
+  .ui-select-item {
+    border-radius: var(--radius-xs);
+    padding: var(--space-xxs) var(--space-xs) var(--space-xxs) calc(var(--space-xs) + 1.5rem);
+    color: var(--neutral-10);
+  }
+
+  .ui-select-item[data-state="checked"] {
+    background: var(--neutral-2);
+  }
+
+  .ui-select-item[data-highlighted] {
+    background: var(--neutral-3);
+  }
+
+  .ui-dialog-overlay {
+    background: var(--neutral-10-transparent);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  .ui-dialog {
+    background: var(--neutral-1);
+    color: var(--neutral-10);
+    border: 0;
+    border-radius: var(--radius-m);
+    padding: var(--space-l);
+    gap: var(--space-s);
+    box-shadow: inset 0 0 0 var(--border-s) var(--neutral-6), var(--shadow-l);
+    font-family: var(--font-ui);
+  }
+
+  .ui-dialog-title {
+    color: var(--neutral-10);
+    font-family: var(--font-ui);
+    font-size: var(--size-l);
+    line-height: var(--line-l);
+    letter-spacing: var(--letter-spacing-l);
+    font-weight: var(--weight-ui-medium);
+    padding-right: calc(var(--line-m) + 2 * var(--space-xs));
+  }
+
+  .ui-dialog-description {
+    color: var(--neutral-7);
+    font-size: var(--size-s);
+    line-height: var(--line-s);
+    letter-spacing: var(--letter-spacing-s);
+  }
+
+  .ui-card-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xxs);
+    padding: var(--space-m) var(--space-m) var(--space-s);
+  }
+
+  .ui-card-title {
+    color: var(--neutral-10);
+    font-family: var(--font-ui);
+    font-size: var(--size-m);
+    line-height: var(--line-m);
+    letter-spacing: var(--letter-spacing-m);
+    font-weight: var(--weight-ui-medium);
+  }
+
+  .ui-card-content {
+    padding: 0 var(--space-m) var(--space-m);
+  }
+
+  .ui-badge-default {
+    background: var(--neutral-10);
+    color: var(--neutral-1);
+  }
+
+  .ui-badge-outline {
+    background: transparent;
+    color: var(--neutral-10);
+    box-shadow: inset 0 0 0 var(--border-s) var(--edge);
+  }
+
+  .ui-badge-warning {
+    background: var(--warning-transparent);
+    color: var(--neutral-10);
+  }
+
+  .ui-tabs-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-l);
+    box-shadow: inset 0 calc(-1 * var(--border-s)) 0 var(--neutral-4);
+  }
+
+  .ui-tabs-trigger {
+    position: relative;
+    padding: var(--space-xs) 0;
+    background: transparent;
+    color: var(--neutral-6);
+    font-family: var(--font-ui);
+    font-size: var(--size-m);
+    line-height: var(--line-m);
+    letter-spacing: var(--letter-spacing-m);
+    font-weight: var(--weight-ui-regular);
+    cursor: pointer;
+    transition: color var(--motion-duration) var(--motion-easing);
+  }
+
+  .ui-tabs-trigger:hover {
+    color: var(--neutral-9);
+  }
+
+  .ui-tabs-trigger[data-state="active"] {
+    color: var(--neutral-9);
+    box-shadow: inset 0 calc(-1 * var(--border-l)) 0 var(--neutral-9);
+  }
+
+  .ui-tabs-trigger:disabled {
+    color: var(--neutral-5);
+    cursor: not-allowed;
+  }
+
+  .ui-tabs-content {
+    margin-top: var(--space-s);
+  }
+
+  .ui-meter {
+    height: 6px;
+    overflow: hidden;
+    border-radius: var(--radius-full);
+    background: var(--neutral-3);
+    box-shadow: inset 0 0 0 var(--border-s) var(--neutral-4-transparent);
+  }
+
+  .ui-meter__indicator {
+    height: 100%;
+    border-radius: var(--radius-full);
+    background: var(--neutral-9);
+    transition: width var(--motion-large-duration) var(--motion-large-easing);
+  }
+
+  .ui-popover-panel {
+    background: var(--neutral-1);
+    color: var(--neutral-10);
+    border: 0;
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow-m), var(--shadow-l);
+    font-family: var(--font-ui);
+  }
+
+  .ui-menu-item {
+    border-radius: var(--radius-xs);
+    color: var(--neutral-10);
+  }
+
+  .ui-menu-item:hover,
+  .ui-menu-item:focus-visible {
+    background: var(--neutral-3);
+  }
+
+  .ui-segmented {
+    display: grid;
+    gap: var(--space-xxs);
+    border-radius: var(--radius-s);
+    background: var(--neutral-3);
+    padding: var(--space-xxs);
+  }
+
+  .ui-segmented__option {
+    display: flex;
+    min-height: 2rem;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xxs);
+    border-radius: var(--radius-xs);
+    color: var(--neutral-10);
+    font-size: var(--size-xs);
+    line-height: var(--line-xs);
+    font-weight: var(--weight-ui-medium);
+    transition: background-color var(--motion-duration) var(--motion-easing), color var(--motion-duration) var(--motion-easing);
+  }
+
+  .peer:checked + .ui-segmented__option {
+    background: var(--neutral-10);
+    color: var(--neutral-1);
+  }
+
+  .peer:focus-visible + .ui-segmented__option {
+    outline: var(--focus-ring-outline);
+    outline-offset: 2px;
+  }
+
+  .peer:disabled + .ui-segmented__option {
+    color: var(--neutral-6);
+    cursor: not-allowed;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-button,
+  .btn-primary,
+  .btn-secondary,
+  .ui-meter__indicator,
+  .ui-tabs-trigger,
+  .ui-segmented__option {
+    transition: none;
+  }
+
+  .ui-button:active:not(:disabled),
+  .btn-primary:active:not(:disabled),
+  .btn-secondary:active:not(:disabled) {
+    transform: none;
+  }
+}
+
+/* ---- Pager (@myriad/ui Pager and PagedBody) -------------------------------------
+   The pager is a single row of range and buttons. It carries no padding or rules of its own: the host
+   (a toolbar or other controls row) supplies the spacing and the separator. It aligns to the end of its
+   row and never wraps internally; a host may lay its range and buttons out separately with `display: contents`; in a narrow container (`@container`) the buttons drop their words and
+   keep their glyphs, with the aria-label still naming each action. */
+
+.myriad-pager {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xs) var(--space-s);
+  margin-inline-start: auto;
+  color: var(--muted-foreground);
+  font-size: var(--size-xs);
+  line-height: var(--line-xs);
+  white-space: nowrap;
+}
+
+.myriad-pager__range {
+  font-variant-numeric: tabular-nums;
+}
+
+.myriad-pager__actions {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+@container (max-width: 32rem) {
+  .myriad-pager__word {
+    display: none;
+  }
+}
+
+.myriad-paged-body {
+  overflow: clip;
+  overflow-clip-margin: var(--space-xxs);
+}
+
+.myriad-paged-body[data-ready] {
+  transition: height var(--motion-duration) var(--motion-easing);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .myriad-paged-body[data-ready] {
+    transition: none;
+  }
+}
+
+/* ---- Settings (@myriad/ui SettingsSection, SettingsRow, AppearanceSettings) -------
+   A section is a top-level surface with a title and rows; each row puts its label and description on the start side and
+   its control on the end side, wrapping under the text in a narrow container. */
+
+.ui-settings-stack {
+  display: grid;
+  gap: var(--space-m);
+}
+
+.ui-settings-section {
+  min-width: 0;
+  overflow: hidden;
+  container-type: inline-size;
+  border-radius: var(--radius-m);
+  background: var(--surface);
+  box-shadow: 0 0 0 var(--border-s) var(--border), var(--shadow-s);
+}
+
+.ui-settings-section__header {
+  padding: var(--space-s) var(--space-m);
+  box-shadow: inset 0 calc(-1 * var(--border-s)) 0 var(--border);
+}
+
+.ui-settings-section__title {
+  color: var(--neutral-10);
+  font-family: var(--font-ui);
+  font-size: var(--size-m);
+  line-height: var(--line-m);
+  font-weight: var(--weight-ui-medium);
+}
+
+.ui-settings-section__description {
+  color: var(--muted-foreground);
+  font-size: var(--size-xs);
+  line-height: var(--line-xs);
+}
+
+.ui-settings-section__content {
+  padding: var(--space-s) var(--space-m);
+}
+
+.ui-settings-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xs) var(--space-m);
+  padding: var(--space-s) var(--space-m);
+  box-shadow: inset 0 calc(-1 * var(--border-s)) 0 var(--border);
+}
+
+.ui-settings-row:last-child {
+  box-shadow: none;
+}
+
+.ui-settings-row__text {
+  min-width: min(14rem, 100%);
+  flex: 1 1 14rem;
+}
+
+.ui-settings-row__label {
+  color: var(--neutral-10);
+  font-weight: var(--weight-ui-medium);
+}
+
+.ui-settings-row__description {
+  margin-top: 2px;
+  color: var(--muted-foreground);
+  font-size: var(--size-xs);
+  line-height: var(--line-xs);
+}
+
+.ui-settings-row__control {
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+.ui-settings-choice {
+  min-width: min(18rem, 100%);
+}
+
+.ui-settings-choice .ui-segmented__option {
+  padding-inline: var(--space-xs);
+  white-space: nowrap;
+}
+
+@container (max-width: 32rem) {
+  .ui-settings-row__control {
+    flex-basis: 100%;
+  }
+}
+
+/* ---- Sectioned settings (@myriad/ui SettingsLayout, SettingsGroupPanel) ---------
+   Opt-in. A sub-navigation of groups beside one visible group panel. In a narrow container the navigation is a
+   horizontally scrolling row above the panel; in a wide one it is a sticky column on the start side. Items follow the
+   Navigation menu assignment: transparent at rest, --nav-hover on hover, --navigation-active-* when current. */
+
+.ui-settings-layout {
+  container-type: inline-size;
+  min-width: 0;
+}
+
+.ui-settings-layout__grid {
+  display: grid;
+  gap: var(--space-m);
+}
+
+.ui-settings-layout__content {
+  min-width: 0;
+}
+
+.ui-settings-stack[hidden] {
+  display: none;
+}
+
+.ui-settings-nav {
+  min-width: 0;
+}
+
+.ui-settings-nav__list {
+  display: flex;
+  gap: var(--space-xxs);
+  overflow-x: auto;
+  margin: 0;
+  padding: var(--space-xxs);
+  list-style: none;
+  scrollbar-width: thin;
+}
+
+.ui-settings-nav__link {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: var(--space-xs);
+  border-radius: var(--radius-s);
+  padding: var(--space-xs) var(--space-s);
+  color: var(--neutral-10);
+  font-family: var(--font-ui);
+  font-size: var(--size-s);
+  line-height: var(--line-s);
+  letter-spacing: var(--letter-spacing-s);
+  font-weight: var(--weight-ui-medium);
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color var(--motion-duration) var(--motion-easing),
+    color var(--motion-duration) var(--motion-easing);
+}
+
+.ui-settings-nav__link > svg {
+  width: 1.125rem;
+  height: 1.125rem;
+  flex-shrink: 0;
+  color: var(--neutral-7);
+  transition: color var(--motion-duration) var(--motion-easing);
+}
+
+.ui-settings-nav__link:hover {
+  background: var(--nav-hover);
+}
+
+.ui-settings-nav__link:focus-visible {
+  outline: var(--focus-ring-outline);
+  outline-offset: 2px;
+}
+
+.ui-settings-nav__link[aria-current="page"] {
+  background: var(--navigation-active-background);
+  color: var(--navigation-active-foreground);
+}
+
+.ui-settings-nav__link[aria-current="page"] > svg {
+  color: var(--navigation-active-foreground);
+}
+
+@container (min-width: 48rem) {
+  .ui-settings-layout__grid {
+    grid-template-columns: 13rem minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .ui-settings-nav {
+    position: sticky;
+    top: var(--space-m);
+  }
+
+  .ui-settings-nav__list {
+    flex-direction: column;
+    overflow-x: visible;
+    padding: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-settings-nav__link,
+  .ui-settings-nav__link > svg {
+    transition: none;
+  }
+}

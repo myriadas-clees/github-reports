@@ -13,6 +13,7 @@ import type {
   AiReviewActivity,
   AiReviewFixCounts,
 } from "../types.js";
+import { formatWorkDeliveredLabel } from "./work-delivered.js";
 import {
   hasAiReviewActivity,
   normalizeAiReviewActivity,
@@ -104,8 +105,8 @@ export const buildFallbackAIContent = (data: WeeklyReportData): AIContent => {
       type: "pr" as const,
       title: pr.title,
       repo: pr.repository,
-      meta: `merged · +${pr.additions} −${pr.deletions}`,
-      body: pr.body?.slice(0, 200) || "Merged pull request.",
+      meta: `integrated · +${pr.additions} −${pr.deletions}`,
+      body: pr.body?.slice(0, 200) || "Integrated pull request.",
       url: pr.url,
     })),
     ...inProgress.map((pr) => ({
@@ -188,13 +189,13 @@ export const buildFallbackAIContent = (data: WeeklyReportData): AIContent => {
   if ((data.hoursEstimate?.hours ?? data.stats.estimatedHours) > 0) {
     summaries.push({
       type: "activity-pattern",
-      heading: "Estimated engineering hours",
+      heading: "Manual effort estimate",
       body: data.hoursEstimate?.note ??
-        "Estimated conventional engineering effort. Not tracked, elapsed, or billed time.",
+        "Modeled manual engineering effort for one engineer to deliver these changes without AI assistance; not actual hours worked or measured time saved.",
       chips: [
         {
-          label: "Estimated engineering hours",
-          value: `~${data.hoursEstimate?.hours ?? data.stats.estimatedHours}h`,
+          label: "Manual effort estimate",
+          value: formatWorkDeliveredLabel(data.hoursEstimate?.hours ?? data.stats.estimatedHours),
         },
       ],
     });
@@ -212,8 +213,8 @@ export const buildFallbackAIContent = (data: WeeklyReportData): AIContent => {
     summaries,
     highlights,
     ticker: merged.slice(0, 5).map((pr) => ({
-      label: "SHIPPED",
-      text: `@${data.username} merged "${pr.title}" in ${pr.repository}`,
+      label: "INTEGRATED",
+      text: `@${data.username} completed "${pr.title}" in ${pr.repository}`,
     })),
   };
 };

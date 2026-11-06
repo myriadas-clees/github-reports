@@ -4,6 +4,9 @@
 
 import type { Language } from "../../../types.js";
 import { getFontConfig } from "../../../i18n/index.js";
+import { buildAllocationCSS } from "../allocation-css.js";
+import { buildEstimateCSS } from "../estimate-css.js";
+import { buildLedgerCSS, buildWeekCSS } from "../nav-css.js";
 
 const c = {
   bg: "#ffffff",
@@ -735,6 +738,48 @@ export const buildCSS = (language: Language = "en"): string => {
       nav, .share-bar, .week-nav { display: none; }
       .section-num { color: #ddd; }
     }
+
+    ${buildAllocationCSS({
+      defaultMode: "light",
+      text: "var(--s-text)",
+      textSecondary: "var(--s-text-secondary)",
+      textTertiary: "var(--s-text-tertiary)",
+      heading: "var(--s-text)",
+      border: "var(--s-border)",
+      borderSubtle: "var(--s-border-subtle)",
+      surface: "var(--s-bg)",
+      accent: "var(--s-accent)",
+      mono: `${mono}`,
+      radius: "0",
+    })}
+
+    ${buildEstimateCSS({
+      defaultMode: "light",
+      text: "var(--s-text)",
+      textSecondary: "var(--s-text-secondary)",
+      textTertiary: "var(--s-text-tertiary)",
+      heading: "var(--s-text)",
+      border: "var(--s-border)",
+      borderSubtle: "var(--s-border-subtle)",
+      surface: "var(--s-bg)",
+      accent: "var(--s-accent)",
+      mono: `${mono}`,
+      radius: "0",
+    })}
+
+    ${buildWeekCSS({
+      defaultMode: "light",
+      text: "var(--s-text)",
+      textSecondary: "var(--s-text-secondary)",
+      textTertiary: "var(--s-text-tertiary)",
+      heading: "var(--s-text)",
+      border: "var(--s-border)",
+      borderSubtle: "var(--s-border-subtle)",
+      surface: "var(--s-bg)",
+      accent: "var(--s-accent)",
+      mono: `${mono}`,
+      radius: "0",
+    })}
   `;
 };
 
@@ -859,5 +904,19 @@ export const buildIndexCSS = (language: Language = "en"): string => {
     @media print {
       body { background: #fff; }
     }
+    ${buildLedgerCSS({
+      defaultMode: "light",
+      text: "var(--s-text)",
+      textSecondary: "var(--s-text-secondary)",
+      textTertiary: "var(--s-text-tertiary)",
+      heading: "var(--s-text)",
+      border: "var(--s-border)",
+      borderSubtle: "var(--s-border-subtle)",
+      surface: "var(--s-bg)",
+      accent: "var(--s-accent)",
+      mono: `${mono}`,
+      radius: "0",
+    })}
+
   `;
 };

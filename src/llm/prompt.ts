@@ -69,8 +69,10 @@ Examples: "deep-dive", "tech-debt", "learning", "debugging-story", "architecture
 "testing", "devops", "content-creation", or anything else that captures a theme of the day.
 Use custom types when the predefined ones don't capture something interesting about the day.
 
+In prose, do not call code changes "merged". Say "completed" or "integrated"; "merged" means shipped to users with both DoD and acceptance criteria met. Keep field names unchanged.
+
 Available highlight types:
-- pr: a notable pull request. meta format: "merged Apr 2 · +320 -45 · 12 files"
+- pr: a notable pull request. meta format: "integrated Apr 2 · +320 -45 · 12 files"
 - release: a release that shipped. meta format: "released Apr 3"
 - issue: a notable issue. meta format: "opened Apr 3" or "closed Apr 2"
 - discussion: a GitHub discussion (if any)
@@ -117,7 +119,7 @@ highlights:
   - type: "pr"
     title: "exact PR title from data"
     repo: "owner/repo"
-    meta: "merged Apr 2 · +320 -45 · 12 files"
+    meta: "integrated Apr 2 · +320 -45 · 12 files"
     body: "1-2 sentences"
   - type: "release"
     title: "v1.2.0"

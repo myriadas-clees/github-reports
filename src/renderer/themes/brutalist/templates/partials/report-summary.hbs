@@ -1,0 +1,49 @@
+{{#if stakeholderSummary}}
+<section class="stakeholder" id="summary" aria-labelledby="summary-title">
+  <div class="section-group-header">
+    <h2 class="section-group-title" id="summary-title">Summary</h2>
+    <div class="section-group-line"></div>
+  </div>
+  <p class="stakeholder-body">{{stakeholderSummary}}</p>
+  {{#if allocation.headline}}
+  {{#with allocation.headline}}
+  <p class="report-key-note">Figures for {{scope}}</p>
+  <dl class="report-key" aria-label="Key figures for {{scope}}">
+    <div class="report-key-item report-key-item--effort">
+      <dt>Estimated manual effort</dt>
+      <dd class="report-key-value">{{effort.days}}</dd>
+      <dd class="report-key-sub">{{effort.hoursLabel}}</dd>
+    </div>
+    {{#each facts}}
+    <div class="report-key-item{{#if tone}} report-key-item--{{tone}}{{/if}}">
+      <dt>{{label}}</dt>
+      <dd class="report-key-value">{{value}}</dd>
+    </div>
+    {{/each}}
+  </dl>
+  {{#if bar.segments.length}}
+  <div class="alloc alloc--inline report-mix">
+    <div class="alloc-bar alloc-bar--md" role="img" aria-label="{{bar.ariaLabel}}">{{#each bar.segments}}<span class="alloc-seg {{colorClass}}" style="--grow:{{grow}}" title="{{title}}">{{#if showLabel}}{{#if showName}}<span class="alloc-seg-name">{{name}}</span> {{/if}}<span>{{percent}}</span>{{/if}}</span>{{/each}}</div>
+    <ul class="alloc-legend" aria-label="Initiatives">{{#each legend}}<li><span class="alloc-swatch {{colorClass}}" aria-hidden="true"></span><span>{{name}}</span> <span class="alloc-legend-pct">{{percent}}</span></li>{{/each}}</ul>
+  </div>
+  {{/if}}
+  {{/with}}
+  {{else}}{{#if hoursEstimate.hours}}
+  <dl class="report-key" aria-label="Key figures">
+    <div class="report-key-item report-key-item--effort">
+      <dt>Estimated manual effort</dt>
+      <dd class="report-key-value">{{workDelivered hoursEstimate.hours}}</dd>
+      <dd class="report-key-sub">{{manualHours hoursEstimate.hours}}</dd>
+    </div>
+  </dl>
+  {{/if}}{{/if}}
+  {{#if allocation.headline}}<p class="report-key-note">A modeled estimate of manual effort for one engineer without AI assistance. It is not time worked.</p>{{/if}}
+  <nav class="report-jump" aria-label="Report sections">
+    <span class="report-jump-label">Details</span>
+    {{#if allocation}}<a href="#alloc-title">Where the effort went</a>{{/if}}
+    {{#if aiContent.overview}}{{#neq aiContent.overview stakeholderSummary}}<a href="#narrative">Narrative</a>{{/neq}}{{/if}}
+    <a href="#activity">Activity</a>
+    {{#if aiContent.highlights.length}}<a href="#highlights">Highlights</a>{{/if}}
+  </nav>
+</section>
+{{/if}}

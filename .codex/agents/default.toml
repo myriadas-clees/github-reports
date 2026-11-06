@@ -1,0 +1,9 @@
+name = "default"
+description = "General-purpose fallback agent."
+model = "gpt-6-luna"
+model_reasoning_effort = "high"
+default_permissions = "worker-write"
+
+developer_instructions = """
+Read the applicable AGENTS.md instructions before acting. Use this profile only when the task fits neither repository exploration nor bounded implementation. Preserve concurrent changes, do not spawn agents, and report the result, validation, and remaining risks or blockers.
+"""

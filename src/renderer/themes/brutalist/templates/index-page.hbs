@@ -18,6 +18,8 @@
   <meta name="twitter:description" content="{{description}}" />
   {{#if ogImageUrl}}<meta name="twitter:image" content="{{ogImageUrl}}" />{{/if}}
   {{#if baseUrl}}<link rel="alternate" type="application/rss+xml" title="RSS Feed" href="{{baseUrl}}/feed.xml" />{{/if}}
+  <link rel="preload" href="assets/fonts/roboto-latin-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="assets/fonts/fonts.css" />
   <style>{{{css}}}</style>
   <style>{{{indexCss}}}</style>
   {{{themeInitScript}}}
@@ -28,7 +30,7 @@
   <div class="index-nav-inner">
     <a href="./" class="nav-brand">
       <img class="nav-logo nav-logo-light" src="assets/brand/myriad-m-mark.png" alt="Myriad" width="22" height="22" />
-      <img class="nav-logo nav-logo-dark" src="assets/brand/myriad-m-mark-dark.png" alt="" width="22" height="22" />
+      <img class="nav-logo nav-logo-dark" src="assets/brand/myriad-m-mark-dark.png" alt="Myriad" width="22" height="22" />
       <span class="nav-site-title">{{siteTitleInline}}</span>
     </a>
     <div class="nav-actions">
@@ -57,64 +59,12 @@
     </div>
   </header>
 
-  <section class="overview-strip" aria-label="Archive totals">
-    <div class="overview-cell">
-      <span class="overview-value">{{overview.commits}}</span>
-      <span class="overview-label">commits</span>
-    </div>
-    <div class="overview-cell">
-      <span class="overview-value">{{overview.prs}}</span>
-      <span class="overview-label">pull requests</span>
-    </div>
-    <div class="overview-cell">
-      <span class="overview-value">{{overview.reviews}}</span>
-      <span class="overview-label">reviews</span>
-    </div>
-  </section>
+  {{> index-hero}}
 
-  <section class="ledger" aria-label="Daily report archive">
-    <div class="ledger-heading">
-      <span>Activity ledger</span>
-      <span>{{overview.reportCount}} reports</span>
-    </div>
 
-    {{#each monthGroups}}
-    <details class="month-group" {{#if @first}}open{{/if}}>
-      <summary class="month-summary">
-        <div class="month-name"><span>{{this.label}}</span><strong>{{this.year}}</strong></div>
-        <div class="month-tape" aria-hidden="true">
-          {{#each this.reports}}<i style="--activity: {{this.activityPercent}}%"></i>{{/each}}
-        </div>
-        <div class="month-totals">
-          <span><b>{{this.stats.commits}}</b> commits</span>
-          <span><b>{{this.stats.prs}}</b> PRs</span>
-          <span><b>{{this.stats.reviews}}</b> reviews</span>
-        </div>
-        <span class="month-count" aria-label="Expand or collapse month"></span>
-      </summary>
+  {{> index-ledger}}
 
-      <div class="day-list">
-        {{#each this.reports}}
-        <a href="{{this.path}}/" class="day-row">
-          <div class="day-date"><strong>{{this.dayLabel}}</strong><span>{{this.weekdayLabel}}</span></div>
-          <div class="day-story">
-            <div class="day-title">{{#if this.title}}{{this.title}}{{else}}{{this.dateLabel}}{{/if}}</div>
-            {{#if this.subtitle}}<div class="day-subtitle">{{this.subtitle}}</div>{{/if}}
-          </div>
-          {{#if this.stats}}
-          <div class="day-stats">
-            <span><b>{{this.stats.commits}}</b> C</span>
-            <span><b>{{this.stats.prs}}</b> PR</span>
-            <span><b>{{this.stats.reviews}}</b> R</span>
-          </div>
-          {{/if}}
-          <span class="day-open" aria-hidden="true">↗</span>
-        </a>
-        {{/each}}
-      </div>
-    </details>
-    {{/each}}
-  </section>
+  {{> index-planning}}
 </main>
 
 <footer class="footer">

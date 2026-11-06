@@ -66,7 +66,7 @@ describe("buildLLMContext", () => {
   it("includes stats as compact strings", () => {
     const context = buildLLMContext(MOCK_INPUT);
     expect(context).toContain("+1200 -300");
-    expect(context).toContain("5 opened, 3 merged");
+    expect(context).toContain("5 opened, 3 integrated");
   });
 
   it("omits empty sections", () => {

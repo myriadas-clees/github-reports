@@ -34,7 +34,7 @@ export const buildLLMContext = (input: NarrativeInput): string => {
     stats: {
       commits: input.stats.totalCommits,
       lines: `+${input.stats.totalAdditions} -${input.stats.totalDeletions}`,
-      prs: `${input.stats.prsOpened} opened, ${input.stats.prsMerged} merged`,
+      prs: `${input.stats.prsOpened} opened, ${input.stats.prsMerged} integrated`,
       reviews: input.stats.prsReviewed,
       issues: `${input.stats.issuesOpened} opened, ${input.stats.issuesClosed} closed`,
     },

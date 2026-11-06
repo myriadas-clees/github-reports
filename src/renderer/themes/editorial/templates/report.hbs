@@ -69,13 +69,18 @@
       </div>
       <h1>{{aiContent.title}}</h1>
       <p class="cover-sub">{{aiContent.subtitle}}</p>
+      {{#if weekLink}}<p class="week-link"><a href="{{weekLink.href}}">{{weekLink.text}}</a></p>{{/if}}
     </div>
   </article>
+
+  {{> report-summary}}
+
+  {{> allocation}}
 
   {{!-- OVERVIEW (skip when it duplicates stakeholder summary) --}}
   {{#if aiContent.overview}}
   {{#neq aiContent.overview stakeholderSummary}}
-  <article class="panel panel-text">
+  <article class="panel panel-text" id="narrative">
     <div class="text-inner md">
       {{{md aiContent.overview}}}
     </div>
@@ -87,7 +92,7 @@
 
   {{!-- HIGHLIGHTS (summaries dropped — duplicated Activity) --}}
   {{#if aiContent.highlights.length}}
-  <div class="column-stack">
+  <div class="column-stack" id="highlights">
     {{#each aiContent.highlights}}
     <article class="stack-card">
       <div class="highlight-heading">

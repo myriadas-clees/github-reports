@@ -1,0 +1,253 @@
+// Myriad Advisor Solutions Graphical theme tokens for the default Worklog theme.
+// Literal values are copied from gui/source/graphical-theme.css (Myriad Apps origin/main c48e160); keep
+// them in sync with that reference. Everything else in this theme consumes these names, never literals.
+
+/** Light-mode token definitions (the :root default). */
+export const LIGHT_TOKENS = `
+  --theme-name: Myriad Advisor Solutions;
+  --theme-icon-family: Lucide;
+  --theme-icon-style: outlined;
+  --toolbar-divider-bleed: 1;
+  --focus-ring-outline: 2px solid color-mix(in srgb, #202326 50%, transparent);
+  --icon-stroke-width: 2;
+  --icon-light-display: none;
+  --icon-regular-display: inline;
+  --icon-bold-display: none;
+  --motion-duration: 400ms;
+  --motion-easing: linear(0, 0.2375, 0.5904, 0.8358, 0.9599, 1.0061, 1.0152, 1.0116, 1.0062, 1.0025, 1.0006, 0.9999, 1);
+  --motion-type: spring;
+  --motion-visual-duration: 0.2;
+  --motion-bounce: 0.2;
+  --motion-enabled: 1;
+  --motion-small-iterations: infinite;
+  --motion-large-duration: 600ms;
+  --motion-large-easing: linear(0, 0.0846, 0.2691, 0.4778, 0.6674, 0.8179, 0.9249, 0.9926, 1.0293, 1.0442, 1.0452, 1.0388, 1.0296, 1.0202, 1.0121, 1.0061, 1.0019, 0.9995, 0.9983, 1);
+  --motion-large-type: spring;
+  --motion-large-visual-duration: 0.36;
+  --motion-large-bounce: 0.3;
+  --motion-large-iterations: infinite;
+  --motion-popup-scale: 0.96;
+  --motion-press-distance: 1px;
+  --option-badge-background: #e7e4dd;
+  --option-badge-foreground: #202326;
+  --navigation-active-foreground: #202326;
+  --emphasis-chart-fill: transparent;
+  --emphasis-balance-background: #e7e4dd;
+  --emphasis-rewards-background: #e7e4dd;
+  --emphasis-icon-background: #e7e4dd;
+  --emphasis-icon-foreground: #202326;
+  --emphasis-type-background: #e7e4dd;
+  --emphasis-type-foreground: #202326;
+  --navigation-active-background: #e7e4dd;
+  --surface-raised-image: none;
+  --surface-raised-shadow: 0 0 0 0 transparent;
+  --surface-recessed-image: none;
+  --surface-recessed-shadow: 0 0 0 0 transparent;
+  --space-zero: 0px;
+  --space-xxs: 5px;
+  --space-xs: 9px;
+  --space-s: 14px;
+  --space-m: 19px;
+  --space-l: 28px;
+  --space-xl: 37px;
+  --space-xxl: 56px;
+  --size-xxs: 11px;
+  --line-xxs: 15px;
+  --letter-spacing-xxs: 0em;
+  --size-xs: 13px;
+  --line-xs: 17px;
+  --letter-spacing-xs: 0em;
+  --size-s: 15px;
+  --line-s: 21px;
+  --letter-spacing-s: 0em;
+  --size-m: 17px;
+  --line-m: 25px;
+  --letter-spacing-m: 0em;
+  --size-l: 25px;
+  --line-l: 34px;
+  --letter-spacing-l: 0em;
+  --size-xl: 38px;
+  --line-xl: 42px;
+  --letter-spacing-xl: 0em;
+  --size-xxl: 51px;
+  --line-xxl: 55px;
+  --letter-spacing-xxl: 0em;
+  --radius-zero: 0px;
+  --radius-xs: 5px;
+  --radius-s: 10px;
+  --radius-m: 14px;
+  --radius-l: 29px;
+  --radius-xl: 43px;
+  --radius-full: 9999px;
+  --border-none: 0px;
+  --border-s: 1px;
+  --border-m: 1px;
+  --border-l: 2px;
+  --border-default-color: rgb(0 0 0 / 0.1);
+  --border-shadow-none: 0 0 0 0 transparent;
+  --border-shadow-s: 0 0 0 1px rgb(0 0 0 / 0.1);
+  --border-shadow-m: 0 0 0 1px rgb(0 0 0 / 0.1);
+  --border-shadow-l: 0 0 0 2px rgb(0 0 0 / 0.1);
+  --font-ui: Roboto, Arial, sans-serif;
+  --weight-ui-regular: 400;
+  --weight-ui-medium: 500;
+  --weight-ui-heavy: 500;
+  --font-brand: Roboto, Arial, sans-serif;
+  --weight-brand-regular: 200;
+  --weight-brand-medium: 300;
+  --weight-brand-heavy: 500;
+  --font-editorial: Lora, Georgia, serif;
+  --weight-editorial-regular: 200;
+  --weight-editorial-medium: 300;
+  --weight-editorial-heavy: 500;
+  --font-data: "Sidebar Geist Mono", monospace;
+  --weight-data-regular: 200;
+  --weight-data-medium: 300;
+  --weight-data-heavy: 500;
+  --color-none: transparent;
+  --color-1: #cc2647;
+  --color-1-transparent: #cc264733;
+  --color-2: #a8233e;
+  --color-2-transparent: #a8233e33;
+  --color-3: #577781;
+  --color-3-transparent: #57778133;
+  --color-4: #3d646b;
+  --color-4-transparent: #3d646b33;
+  --color-5: #a12339;
+  --color-5-transparent: #a1233933;
+  --neutral-1: #f2f1ee;
+  --neutral-1-transparent: #f2f1ee33;
+  --neutral-2: #f8f7f4;
+  --neutral-2-transparent: #f8f7f433;
+  --neutral-3: #e7e4dd;
+  --neutral-3-transparent: #e7e4dd33;
+  --neutral-4: #e1ddd5;
+  --neutral-4-transparent: #e1ddd533;
+  --neutral-5: #c1bbaf;
+  --neutral-5-transparent: #c1bbaf33;
+  --neutral-6: #6f6a61;
+  --neutral-6-transparent: #6f6a6133;
+  --neutral-7: #625d52;
+  --neutral-7-transparent: #625d5233;
+  --neutral-8: #4a453b;
+  --neutral-8-transparent: #4a453b33;
+  --neutral-9: #29241b;
+  --neutral-9-transparent: #29241b33;
+  --neutral-10: #202326;
+  --neutral-10-transparent: #20232633;
+  --success: #76ef6b;
+  --success-transparent: #76ef6b33;
+  --warning: #ffa344;
+  --warning-transparent: #ffa34433;
+  --error: #ff5263;
+  --error-transparent: #ff526333;
+  --shadow-none: none;
+  --shadow-s: 0px 0.25px 0.75px 0px #20232605, 0px 1px 3px 0px #20232608;
+  --shadow-m: inset 0px 0px 0px 1px #6f6a61cc;
+  --shadow-l: 0px 3px 7.5px 0px #20232608, 0px 12px 30px 0px #2023260c;
+  --cte-canvas: #f2f1ee;
+  --cte-surface: #f8f7f4;
+  --cte-surface-muted: #e7e4dd;
+  --cte-text: #202326;
+  --cte-text-muted: #625d52;
+  --cte-border: rgb(0 0 0 / 0.1);
+  --cte-accent: #cc2647;
+  --cte-accent-text: #ffffff;
+  --cte-danger: #ff5263;
+  --cte-focus: var(--neutral-10);
+  --cte-font: Roboto, Arial, sans-serif;
+  --cte-font-size: 17px;
+  --cte-font-weight: 400;
+  --cte-line-height: 25px;
+  --cte-letter-spacing: 0em;
+  --cte-detail-font-size: 17px;
+  --cte-detail-line-height: 25px;
+  --cte-detail-letter-spacing: 0em;
+`;
+
+/** Dark-mode overrides: warm dark grey neutrals (OKLCH hue ~50, very low chroma). */
+export const DARK_TOKENS = `
+  --focus-ring-outline: 2px solid color-mix(in srgb, #f6f3f1 50%, transparent);
+  --option-badge-background: #2c2a29;
+  --option-badge-foreground: #f6f3f1;
+  --navigation-active-foreground: #f6f3f1;
+  --emphasis-balance-background: #2c2a29;
+  --emphasis-rewards-background: #2c2a29;
+  --emphasis-icon-background: #2c2a29;
+  --emphasis-icon-foreground: #f6f3f1;
+  --emphasis-type-background: #2c2a29;
+  --emphasis-type-foreground: #f6f3f1;
+  --navigation-active-background: #2c2a29;
+  --neutral-1: #1a1817;
+  --neutral-1-transparent: #1a181733;
+  --neutral-2: #211f1e;
+  --neutral-2-transparent: #211f1e33;
+  --neutral-3: #2c2a29;
+  --neutral-3-transparent: #2c2a2933;
+  --neutral-4: #393736;
+  --neutral-4-transparent: #39373633;
+  --neutral-5: #5f5c5a;
+  --neutral-5-transparent: #5f5c5a33;
+  --neutral-6: #999593;
+  --neutral-6-transparent: #99959333;
+  --neutral-7: #a6a3a1;
+  --neutral-7-transparent: #a6a3a133;
+  --neutral-8: #bfbcba;
+  --neutral-8-transparent: #bfbcba33;
+  --neutral-9: #e8e5e3;
+  --neutral-9-transparent: #e8e5e333;
+  --neutral-10: #f6f3f1;
+  --neutral-10-transparent: #f6f3f133;
+  --shadow-s: 0px 0.25px 0.75px 0px #1a181705, 0px 1px 3px 0px #1a181708;
+  --shadow-m: inset 0px 0px 0px 1px #999593cc;
+  --shadow-l: 0px 3px 7.5px 0px #1a181708, 0px 12px 30px 0px #1a18170c;
+  --cte-canvas: #1a1817;
+  --cte-surface: #211f1e;
+  --cte-surface-muted: #2c2a29;
+  --cte-text: #f6f3f1;
+  --cte-text-muted: #a6a3a1;
+`;
+
+/** Myriad aliases (gui/source/styles.css) that this theme consumes, light values. */
+const ALIASES = `
+  --surface: var(--neutral-2);
+  --page-bg: var(--neutral-1);
+  --border: var(--neutral-4);
+  --input: var(--neutral-7);
+  --muted-foreground: var(--neutral-7);
+  --font-display: var(--font-brand);
+  --font-body: var(--font-ui);
+  --action: var(--neutral-10);
+  --action-foreground: var(--neutral-1);
+  --link: var(--neutral-10);
+  --edge: var(--neutral-4);
+  --danger-text: var(--color-2);
+  --nav-hover: color-mix(in srgb, var(--neutral-3) 60%, transparent);
+  --nav-accent: var(--color-1);
+  /* Worklog status exception: positive states stay green. The theme's --success (#76ef6b) is a fill and
+     falls under 4.5:1 as text on light neutrals, so text and fills use the explainer's forest greens. */
+  --status-positive: #1b7a3d;
+  --status-positive-text: #1b7a3d;
+`;
+
+/** Dark-mode alias overrides (gui/source/styles.css :root[data-theme="dark"]). */
+const DARK_ALIASES = `
+  --danger-text: var(--error);
+  --edge: var(--neutral-5);
+  /* #cc2647 is 2.7:1 on the dark surfaces; the theme error red clears 3:1 for the small indicator. */
+  --nav-accent: var(--error);
+  --status-positive: #3fb96b;
+  --status-positive-text: #6fdc97;
+`;
+
+/**
+ * Both modes in one place. Light is the default; the reader's toggle (`data-theme`) wins, then the OS setting.
+ * Aliases are declared on the same element as the tokens so they resolve against the active mode.
+ */
+export const TOKEN_CSS = `
+  :root { color-scheme: light; ${LIGHT_TOKENS} ${ALIASES} }
+  html[data-theme="dark"] { color-scheme: dark; ${DARK_TOKENS} ${DARK_ALIASES} }
+  @media (prefers-color-scheme: dark) {
+    html:not([data-theme="light"]) { color-scheme: dark; ${DARK_TOKENS} ${DARK_ALIASES} }
+  }
+`;

@@ -53,7 +53,7 @@ const HEIGHT = CARD_HEIGHT;
 const TICKER_H = 24;
 const REPEATS = 50;
 const SCROLL_PX_PER_SEC = 30;
-const FALLBACK_LABELS = ["BREAKING", "UPDATE", "STATS", "SHIPPED", "REVIEW", "MERGED"];
+const FALLBACK_LABELS = ["BREAKING", "UPDATE", "STATS", "SHIPPED", "REVIEW", "INTEGRATED"];
 
 const escapeXml = (s: string): string =>
   s.replace(/&/g, "&amp;")

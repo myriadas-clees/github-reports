@@ -105,7 +105,7 @@ highlights:
   - type: pr
     title: "feat: add OAuth flow"
     repo: org/repo
-    meta: merged Apr 2
+    meta: integrated Apr 2
     body: Big PR.
   - type: issue
     title: Bug in parser

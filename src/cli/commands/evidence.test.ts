@@ -1,0 +1,481 @@
+import { describe, expect, it } from "vitest";
+import { mkdtemp, readFile, writeFile, rm } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { allLedgerRefs, applyDeploymentFetch, buildKnownDeploymentKeys, carryOverDerivedEvidence, deploymentCutoffIso, evidenceRepositories, findContainingDeployments, markDeploymentsUnavailable, pruneEvidenceDeployments, recordReleaseEvidence, refreshPrEvidence, selectDeploymentCandidates } from "./evidence.js";
+import { emptyLedger, pruneDeployments } from "../../collector/evidence-ledger.js";
+import { evidenceArgs } from "./report.js";
+import type { PrEvidence } from "../../types.js";
+import { parse } from "yaml";
+
+describe("evidenceRepositories", () => {
+  it("unions configured and activity repositories in stable order", () => {
+    expect(evidenceRepositories(["org/configured", "org/shared"], [
+      { repo: "org/activity", number: 1, url: "https://github.com/org/activity/pull/1" },
+      { repo: "org/shared", number: 2, url: "https://github.com/org/shared/pull/2" },
+      { repo: "org/other", number: 3, url: "https://github.com/org/other/pull/3" },
+    ])).toEqual(["org/configured", "org/shared", "org/activity", "org/other"]);
+  });
+
+  it("discovers repositories when configuration is empty", () => {
+    expect(evidenceRepositories([], [
+      { repo: "org/activity", number: 1, url: "https://github.com/org/activity/pull/1" },
+    ])).toEqual(["org/activity"]);
+  });
+});
+
+describe("deploymentCutoffIso", () => {
+  it("starts one UTC day before the local report date", () => {
+    expect(deploymentCutoffIso("2026-10-10")).toBe("2026-10-09T00:00:00.000Z");
+  });
+
+  it("handles month and year boundaries", () => {
+    expect(deploymentCutoffIso("2026-01-01")).toBe("2025-12-31T00:00:00.000Z");
+  });
+});
+
+it("retains the normal deployment history for recent report dates and extends it for older dates", () => {
+  const ledger = emptyLedger();
+  const deployment = (sha: string, createdAt: string) => ({
+    environment: "production", production: true, ref: "main", sha, createdAt, succeededAt: createdAt,
+  });
+  const recent = deployment("recent", "2026-09-20T00:00:00Z");
+  const older = deployment("older", "2026-03-01T00:00:00Z");
+  ledger.deployments.repo = [recent, older];
+  ledger.scannedDeployments = { repo: {
+    "production|recent|2026-09-20T00:00:00Z": "success",
+    "production|older|2026-03-01T00:00:00Z": "success",
+  } };
+  const expanded = structuredClone(ledger);
+  pruneEvidenceDeployments(ledger, "2026-10-26", "2026-07-29");
+  expect(ledger.deployments.repo).toEqual([recent]);
+  expect(ledger.scannedDeployments!.repo).toEqual({ "production|recent|2026-09-20T00:00:00Z": "success" });
+  pruneEvidenceDeployments(expanded, "2026-02-01", "2026-07-29");
+  expect(expanded.deployments.repo).toEqual([recent, older]);
+  expect(Object.keys(expanded.scannedDeployments!.repo)).toHaveLength(2);
+});
+
+it("retries recent/legacy scans, skips old failures, and keeps recorded successes known", () => {
+  const now = new Date("2026-10-20T00:00:00Z");
+  const recentFailure = "prod|failed|2026-10-18T00:00:00Z";
+  const oldFailure = "prod|failed-old|2026-10-10T00:00:00Z";
+  const success = { environment: "prod", production: true, ref: "main", sha: "success", createdAt: "2026-10-18T00:00:00Z", succeededAt: "2026-10-18T01:00:00Z" };
+  expect(buildKnownDeploymentKeys([success], { [recentFailure]: "failure", [oldFailure]: "failure", "prod|success|2026-10-18T00:00:00Z": "success" }, now)).toEqual(
+    new Set(["prod|failed-old|2026-10-10T00:00:00Z", "prod|success|2026-10-18T00:00:00Z"]),
+  );
+  expect(buildKnownDeploymentKeys([], [oldFailure], now)).toEqual(new Set([oldFailure]));
+  expect(buildKnownDeploymentKeys([], [recentFailure], now)).toEqual(new Set());
+});
+
+it("re-fetches an evicted success so its deployment record can be rebuilt", () => {
+  const key = "prod|sha|2026-10-18T00:00:00Z";
+  expect(buildKnownDeploymentKeys([], { [key]: "success" }, new Date("2026-10-20T00:00:00Z"))).not.toContain(key);
+});
+
+it("reserves a separate ancestry budget for preview deployments", async () => {
+  const deployments = Array.from({ length: 6 }, (_, index) => ({
+    environment: "production", production: true, ref: `v${index}`, sha: `${String(index + 1).repeat(40)}`,
+    createdAt: `2026-10-${String(20 + index).padStart(2, "0")}T00:00:00Z`, succeededAt: "2026-10-30T00:01:00Z",
+  }));
+  deployments.push({
+    environment: "preview", production: false, ref: "preview", sha: "abcdefabcdefabcdefabcdefabcdefabcdefabcd",
+    createdAt: "2026-10-30T00:00:00Z", succeededAt: "2026-10-30T00:01:00Z",
+  });
+  const checked: string[] = [];
+  const result = await findContainingDeployments({
+    deployments,
+    pe: { baseRef: "main", mergeCommitSha: "fedcbafedcbafedcbafedcbafedcbafedcbafedc", mergedAt: "2026-10-19T00:00:00Z" },
+    defaultBranch: "main", known: [],
+    isContained: async (sha) => { checked.push(sha); return sha.startsWith("abcdef"); },
+  });
+  expect(result.calls).toEqual({ production: 5, nonProduction: 1 });
+  expect(checked).toContain("abcdefabcdefabcdefabcdefabcdefabcdefabcd");
+  expect(result.known).toEqual([{ environment: "preview", sha: "abcdefabcdefabcdefabcdefabcdefabcdefabcd" }]);
+});
+
+it("advances past persisted non-containing production candidates", async () => {
+  const deployments = Array.from({ length: 8 }, (_, index) => ({
+    environment: "production", production: true, ref: `v${index}`, sha: `${String(index + 1).repeat(40)}`,
+    createdAt: `2026-10-${String(20 + index).padStart(2, "0")}T00:00:00Z`, succeededAt: "2026-10-30T00:01:00Z",
+  }));
+  const pe = { baseRef: "main", mergeCommitSha: "fedcbafedcbafedcbafedcbafedcbafedcbafedc", mergedAt: "2026-10-19T00:00:00Z" };
+  const check = async (sha: string) => sha === deployments[7]!.sha;
+  const first = await findContainingDeployments({ deployments, pe, defaultBranch: "main", known: [], isContained: check });
+  expect(first.calls.production).toBe(5);
+  expect(first.nonContainingShas).toHaveLength(5);
+  expect(first.unknownKinds.production).toBe(true);
+  const second = await findContainingDeployments({ deployments, pe, defaultBranch: "main", known: first.known, nonContainingShas: first.nonContainingShas, isContained: check });
+  expect(second.calls.production).toBe(3);
+  expect(second.known).toEqual([{ environment: "production", sha: deployments[7]!.sha }]);
+  expect(second.unknownKinds.production).toBe(false);
+});
+
+it("compares duplicate deployment SHAs only once per kind, including queued unknowns", async () => {
+  const pe = { baseRef: "main", mergeCommitSha: "f".repeat(40), mergedAt: "2026-10-19T00:00:00Z" };
+  const deployment = (sha: string) => ({ environment: "production", production: true, ref: "v1", sha, createdAt: "2026-10-20T00:00:00Z", succeededAt: "2026-10-20T01:00:00Z" });
+  const firstSha = "a".repeat(40);
+  const nextSha = "b".repeat(40);
+  const deployments = [...Array.from({ length: 6 }, () => deployment(firstSha)), deployment(nextSha)];
+  const checked: string[] = [];
+  const result = await findContainingDeployments({
+    deployments, pe, defaultBranch: "main", known: [], unknownShas: [firstSha, nextSha],
+    isContained: async (sha) => { checked.push(sha); return sha === nextSha ? true : null; },
+  });
+  expect(checked).toEqual([firstSha, nextSha]);
+  expect(result.known).toEqual([{ environment: "production", sha: nextSha }]);
+});
+
+it("refreshes evidence in the composite action before committing and rendering", async () => {
+  const action = parse(await readFile("action.yml", "utf8"));
+  const steps = action.runs.steps as Array<{ name: string; if?: string; run?: string; env?: Record<string, string> }>;
+  const index = steps.findIndex((step) => step.name === "Refresh evidence");
+  const step = steps[index]!;
+  expect(index).toBeGreaterThan(steps.findIndex((s) => s.name === "Generate AI content"));
+  expect(index).toBeLessThan(steps.findIndex((s) => s.name === "Commit and push report data"));
+  expect(index).toBeLessThan(steps.findIndex((s) => s.name === "Render HTML report"));
+  expect(step.if).toBe("inputs.mode == 'daily' || inputs.mode == 'weekly'");
+  expect(step.env?.GITHUB_TOKEN).toBe("${{ inputs.github-token }}");
+  expect(step.run).toContain('evidence ${INPUT_DATE:+--since "$INPUT_DATE"}');
+});
+
+it("leaves unknown ancestry unchecked and reports it", async () => {
+  const deployment = { environment: "production", production: true, ref: "v1", sha: "abcdef1234567", createdAt: "2026-10-20T00:00:00Z", succeededAt: "2026-10-20T00:01:00Z" };
+  const result = await findContainingDeployments({
+    deployments: [deployment], pe: { baseRef: "main", mergeCommitSha: "fedcbafedcbafedcbafedcbafedcbafedcbafedc", mergedAt: "2026-10-19T00:00:00Z" },
+    defaultBranch: "main", known: [], isContained: async () => null,
+  });
+  expect(result.nonContainingShas).toEqual([]);
+  expect(result.known).toEqual([]);
+  expect(result.unknownKinds.production).toBe(true);
+});
+
+it("advances to new candidates before retrying unknown SHAs", async () => {
+  const deployments = Array.from({ length: 6 }, (_, i) => ({ environment: "production", production: true, ref: `v${i}`, sha: `${i + 1}`.repeat(40), createdAt: `2026-10-${String(20 + i).padStart(2, "0")}T00:00:00Z`, succeededAt: "2026-10-30T00:01:00Z" }));
+  const pe = { baseRef: "main", mergeCommitSha: "f".repeat(40), mergedAt: "2026-10-19T00:00:00Z" };
+  const first = await findContainingDeployments({ deployments, pe, defaultBranch: "main", known: [], isContained: async () => null });
+  expect(first.unknownShas).toHaveLength(5);
+  let checked = "";
+  const second = await findContainingDeployments({ deployments, pe, defaultBranch: "main", known: [], unknownShas: first.unknownShas, isContained: async (sha) => { checked = sha; return sha === deployments[5]!.sha; } });
+  expect(checked).toBe(deployments[5]!.sha);
+  expect(second.known).toEqual([{ environment: "production", sha: deployments[5]!.sha }]);
+});
+
+it("rotates null candidates in persisted least-recently-tried order", async () => {
+  const deployments = Array.from({ length: 7 }, (_, i) => ({ environment: "production", production: true, ref: `v${i}`, sha: `${i + 1}`.repeat(40), createdAt: `2026-10-${String(20 + i).padStart(2, "0")}T00:00:00Z`, succeededAt: "2026-10-30T00:01:00Z" }));
+  const pe = { baseRef: "main", mergeCommitSha: "f".repeat(40), mergedAt: "2026-10-19T00:00:00Z" };
+  let queue: string[] = [];
+  const orders: string[][] = [];
+  let result: Awaited<ReturnType<typeof findContainingDeployments>> | undefined;
+  for (let run = 0; run < 5; run++) {
+    const checked: string[] = [];
+    result = await findContainingDeployments({ deployments, pe, defaultBranch: "main", known: [], unknownShas: queue, isContained: async (sha) => { checked.push(sha); return run === 4 && sha === deployments[6]!.sha ? true : null; } });
+    orders.push(checked);
+    queue = result.unknownShas;
+  }
+  expect(orders).toEqual([
+    deployments.slice(0, 5).map((d) => d.sha),
+    deployments.slice(5, 7).map((d) => d.sha).concat(deployments.slice(0, 3).map((d) => d.sha)),
+    deployments.slice(3, 7).map((d) => d.sha).concat(deployments.slice(0, 1).map((d) => d.sha)),
+    deployments.slice(1, 6).map((d) => d.sha),
+    [deployments[6]!.sha],
+  ]);
+  expect(result?.known).toEqual([{ environment: "production", sha: deployments[6]!.sha }]);
+});
+
+it("preserves deployments and marks failed refreshes unavailable", () => {
+  const ledger = emptyLedger();
+  const prior = { environment: "production", production: true, ref: "main", sha: "old", createdAt: "2026-01-01T00:00:00Z", succeededAt: "2026-01-01T00:01:00Z" };
+  ledger.deployments["org/app"] = [prior];
+  applyDeploymentFetch(ledger, "org/app", { records: [], scannedKeys: [], failed: true }, "2026-10-19T00:00:00Z");
+  expect(ledger.deployments["org/app"]).toEqual([prior]);
+  expect(ledger.deploymentsUnavailable).toEqual({ "org/app": "2026-10-19T00:00:00Z" });
+  applyDeploymentFetch(ledger, "org/app", { records: [], scannedKeys: [], failed: false }, "2026-10-20T00:00:00Z");
+  expect(ledger.deploymentsUnavailable).toEqual({});
+});
+
+it("records scan outcomes so an evicted success can be re-fetched", () => {
+  const ledger = emptyLedger();
+  const record = { environment: "production", production: true, ref: "main", sha: "s1", createdAt: "2026-10-10T00:00:00Z", succeededAt: "2026-10-10T00:01:00Z" };
+  applyDeploymentFetch(ledger, "org/app", { records: [record], scannedKeys: ["production|s1|2026-10-10T00:00:00Z"], failed: false }, "2026-10-20T00:00:00Z");
+  ledger.deployments["org/app"] = [];
+  expect(ledger.scannedDeployments?.["org/app"]).toEqual({ "production|s1|2026-10-10T00:00:00Z": "success" });
+});
+
+it("marks a thrown deployment refresh unavailable without clearing deployments", () => {
+  const ledger = emptyLedger();
+  ledger.deployments["org/app"] = [{ environment: "production", production: true, ref: "main", sha: "old", createdAt: "2026-01-01T00:00:00Z", succeededAt: "2026-01-01T00:01:00Z" }];
+  markDeploymentsUnavailable(ledger, "org/app", "2026-10-19T00:00:00Z");
+  expect(ledger.deploymentsUnavailable).toEqual({ "org/app": "2026-10-19T00:00:00Z" });
+  expect(ledger.deployments["org/app"]).toHaveLength(1);
+});
+
+it("selects tag and default-branch deployments for stacked PR ancestry checks", () => {
+  const common = { environment: "production", production: true, createdAt: "2026-10-20T00:00:00Z", succeededAt: "2026-10-20T00:01:00Z" };
+  const candidates = selectDeploymentCandidates([
+    { ...common, ref: "v1.2.0", sha: "abcdef1234567890" },
+    { ...common, ref: "main", sha: "1234567890abcdef" },
+  ], true, { baseRef: "release", mergeCommitSha: "fedcba9876543210", mergedAt: "2026-10-19T00:00:00Z" }, "main");
+  expect(candidates.map((d) => d.ref)).toEqual(["v1.2.0", "main"]);
+});
+
+it("checks default-branch deployment ancestry only for stacked PRs", () => {
+  const deployment = { environment: "production", production: true, ref: "main", sha: "abcdef1234567890", createdAt: "2026-10-20T00:00:00Z", succeededAt: "2026-10-20T00:01:00Z" };
+  const candidates = (baseRef: string) => selectDeploymentCandidates([deployment], true, {
+    baseRef, mergeCommitSha: "fedcba9876543210", mergedAt: "2026-10-19T00:00:00Z",
+  }, "main");
+  expect(candidates("feature/parent")).toEqual([deployment]);
+  expect(candidates("main")).toEqual([]);
+});
+
+it("merges partial deployment results and marks the repository unavailable", () => {
+  const ledger = emptyLedger();
+  const record = { environment: "production", production: true, ref: "v1.2.0", sha: "abcdef1234567890", createdAt: "2026-10-20T00:00:00Z", succeededAt: "2026-10-20T00:01:00Z" };
+  applyDeploymentFetch(ledger, "org/app", { records: [record], scannedKeys: ["production|abcdef1234567890|2026-10-20T00:00:00Z"], failed: true }, "2026-10-20T00:02:00Z");
+  expect(ledger.deployments["org/app"]).toEqual([record]);
+  expect(ledger.deploymentsUnavailable).toEqual({ "org/app": "2026-10-20T00:02:00Z" });
+});
+
+it("records a live release once and preserves it after deployment eviction", () => {
+  const ledger = emptyLedger();
+  const url = "https://github.com/org/app/pull/1";
+  ledger.prs[url] = {
+    url, repository: "org/app", number: 1, author: "a", state: "merged", isDraft: false,
+    baseRef: "main", headRef: "feature", headSha: "head", mergeCommitSha: "merge",
+    createdAt: "2026-01-01T00:00:00Z", mergedAt: "2026-01-02T00:00:00Z", reviews: [], checks: null, files: [], fetchedAt: "2026-01-03T00:00:00Z",
+  };
+  const deployment = { environment: "production", production: true, ref: "main", sha: "deploy-sha", createdAt: "2026-01-03T00:00:00Z", succeededAt: "2026-01-03T01:00:00Z" };
+  ledger.deployments["org/app"] = [deployment];
+  const refs = [{ repo: "org/app", number: 1, url }];
+  recordReleaseEvidence(ledger, refs);
+  expect(ledger.prs[url]?.release).toEqual({ stage: "live", environment: "production", sha: "deploy-sha", since: deployment.succeededAt });
+  ledger.deployments["org/app"] = [];
+  recordReleaseEvidence(ledger, refs);
+  expect(ledger.prs[url]?.release).toEqual({ stage: "live", environment: "production", sha: "deploy-sha", since: deployment.succeededAt });
+});
+
+it("records release history before pruning its only matching old deployment", () => {
+  const ledger = emptyLedger();
+  const url = "https://github.com/org/app/pull/9";
+  ledger.prs[url] = {
+    url, repository: "org/app", number: 9, author: "a", state: "merged", isDraft: false,
+    baseRef: "main", headRef: "feature", headSha: "head", mergeCommitSha: "merge",
+    createdAt: "2026-01-01T00:00:00Z", mergedAt: "2026-01-02T00:00:00Z", reviews: [], checks: null, files: [], fetchedAt: "2026-01-03T00:00:00Z",
+  };
+  const old = { environment: "production", production: true, ref: "main", sha: "old-match", createdAt: "2026-01-03T00:00:00Z", succeededAt: "2026-01-03T01:00:00Z" };
+  ledger.deployments["org/app"] = [old, ...Array.from({ length: 300 }, (_, i) => ({ ...old, sha: `new-${i}`, createdAt: new Date(Date.UTC(2026, 1, i + 1)).toISOString() }))];
+  const refs = [{ repo: "org/app", number: 9, url }];
+  recordReleaseEvidence(ledger, refs);
+  pruneDeployments(ledger, "2026-10-19T00:00:00Z");
+  expect(ledger.prs[url]?.release).toEqual({ stage: "live", environment: "production", sha: "old-match", since: old.succeededAt });
+  expect(ledger.deployments["org/app"]).not.toContainEqual(old);
+});
+
+it("upgrades stored preview release evidence when production is found", () => {
+  const ledger = emptyLedger();
+  const url = "https://github.com/org/app/pull/2";
+  ledger.prs[url] = {
+    url, repository: "org/app", number: 2, author: "a", state: "merged", isDraft: false,
+    baseRef: "main", headRef: "feature", headSha: "head", mergeCommitSha: "merge",
+    createdAt: "2026-01-01T00:00:00Z", mergedAt: "2026-01-02T00:00:00Z", reviews: [], checks: null, files: [], fetchedAt: "2026-01-03T00:00:00Z",
+    release: { stage: "preview", environment: "preview", sha: "old", since: "2026-01-03T01:00:00Z" },
+  };
+  ledger.deployments["org/app"] = [{ environment: "production", production: true, ref: "main", sha: "new", createdAt: "2026-01-04T00:00:00Z", succeededAt: "2026-01-04T01:00:00Z" }];
+  recordReleaseEvidence(ledger, [{ repo: "org/app", number: 2, url }]);
+  expect(ledger.prs[url]?.release).toEqual({ stage: "live", environment: "production", sha: "new", since: "2026-01-04T01:00:00Z" });
+});
+
+describe("release evidence updates", () => {
+  const record = (stored: { stage: "live" | "preview"; since: string }, matched: { stage: "live" | "preview"; since: string }) => {
+    const ledger = emptyLedger();
+    const url = "https://github.com/org/app/pull/32";
+    ledger.prs[url] = {
+      url, repository: "org/app", number: 32, author: "a", state: "merged", isDraft: false,
+      baseRef: "main", headRef: "feature", headSha: "head", mergeCommitSha: "merge",
+      createdAt: "2026-10-01T00:00:00Z", mergedAt: "2026-10-02T00:00:00Z", reviews: [], checks: null, files: [], fetchedAt: "2026-10-03T00:00:00Z",
+      release: { ...stored, environment: stored.stage === "live" ? "production" : "preview", sha: "stored" },
+    };
+    const deployment = {
+      environment: matched.stage === "live" ? "production" : "preview",
+      production: matched.stage === "live", ref: matched.stage === "live" ? "main" : "feature",
+      sha: "matched", createdAt: matched.since, succeededAt: matched.since,
+    };
+    ledger.deployments["org/app"] = [deployment];
+    recordReleaseEvidence(ledger, [{ repo: "org/app", number: 32, url }]);
+    return ledger.prs[url]!.release;
+  };
+
+  it("replaces preview with an earlier preview match", () => {
+    expect(record({ stage: "preview", since: "2026-10-10T00:00:00Z" }, { stage: "preview", since: "2026-10-05T00:00:00Z" }))
+      .toEqual({ stage: "preview", environment: "preview", sha: "matched", since: "2026-10-05T00:00:00Z" });
+  });
+
+  it("replaces live with an earlier live match", () => {
+    expect(record({ stage: "live", since: "2026-10-10T00:00:00Z" }, { stage: "live", since: "2026-10-05T00:00:00Z" }))
+      .toEqual({ stage: "live", environment: "production", sha: "matched", since: "2026-10-05T00:00:00Z" });
+  });
+
+  it("keeps live when a preview match is found", () => {
+    expect(record({ stage: "live", since: "2026-10-10T00:00:00Z" }, { stage: "preview", since: "2026-10-05T00:00:00Z" }))
+      .toEqual({ stage: "live", environment: "production", sha: "stored", since: "2026-10-10T00:00:00Z" });
+  });
+
+  it("upgrades preview to live even when the live match is later", () => {
+    expect(record({ stage: "preview", since: "2026-10-05T00:00:00Z" }, { stage: "live", since: "2026-10-10T00:00:00Z" }))
+      .toEqual({ stage: "live", environment: "production", sha: "matched", since: "2026-10-10T00:00:00Z" });
+  });
+
+  it("keeps a preview when the matching preview date is later", () => {
+    expect(record({ stage: "preview", since: "2026-10-05T00:00:00Z" }, { stage: "preview", since: "2026-10-10T00:00:00Z" }))
+      .toEqual({ stage: "preview", environment: "preview", sha: "stored", since: "2026-10-05T00:00:00Z" });
+  });
+});
+
+describe("report evidence step args", () => {
+  const reportOpts = {
+    token: "secret", config: "cfg.yml", dataDir: "data", date: "2026-10-10",
+    username: "u", outputDir: "out", timezone: "America/New_York", theme: "brutalist",
+    language: "en", baseUrl: "https://x", siteTitle: "W", llmProvider: "openai", llmApiKey: "k", llmModel: "m",
+  };
+
+  it("forwards only evidence's options and applies the report date as since", () => {
+    expect(evidenceArgs(reportOpts))
+      .toEqual(["evidence", "--config", "cfg.yml", "--data-dir", "data", "--token", "secret", "--since", "2026-10-10"]);
+    expect(evidenceArgs({})).toEqual(["evidence"]);
+  });
+
+  it("emits only flags the evidence command actually registers", async () => {
+    const { Command } = await import("commander");
+    const { registerEvidence } = await import("./evidence.js");
+    const program = new Command();
+    registerEvidence(program);
+    const known = new Set(program.commands.find((c) => c.name() === "evidence")!.options.map((o) => o.long));
+    const flags = evidenceArgs(reportOpts).filter((a) => a.startsWith("--"));
+    expect(flags.filter((f) => !known.has(f))).toEqual([]);
+  });
+});
+
+it("aborts on a malformed ledger without changing its bytes", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "evidence-cli-"));
+  try {
+    const config = join(dir, "config.yaml");
+    const ledger = join(dir, "evidence.yaml");
+    const original = "prs: [partially written\n";
+    await writeFile(config, `username: test\ndata_dir: ${dir}\nrepositories: []\n`, "utf-8");
+    await writeFile(ledger, original, "utf-8");
+    const { Command } = await import("commander");
+    const { registerEvidence } = await import("./evidence.js");
+    const program = new Command();
+    registerEvidence(program);
+    await expect(program.parseAsync(["node", "cli", "evidence", "--config", config, "--token", "test-token"]))
+      .rejects.toThrow(ledger);
+    expect(await readFile(ledger, "utf-8")).toBe(original);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+describe("carryOverDerivedEvidence", () => {
+  it("keeps release history and ancestry results across a PR evidence refresh", () => {
+    const base = {
+      url: "https://github.com/o/r/pull/1", repository: "o/r", number: 1, author: "me", state: "merged" as const,
+      isDraft: false, baseRef: "main", headRef: "f", headSha: "h", mergeCommitSha: "m",
+      createdAt: "2026-01-01T00:00:00Z", mergedAt: "2026-01-02T00:00:00Z", reviews: [], checks: null, files: [],
+      fetchedAt: "2026-01-03T00:00:00Z",
+    };
+    const prior = {
+      ...base,
+      release: { stage: "live" as const, environment: "production", sha: "s", since: "2026-01-02T10:00:00Z" },
+      containingDeployments: [{ environment: "production", sha: "s" }],
+      nonContainingDeploymentShas: ["x"],
+      ancestryUnknown: true,
+    };
+    const out = carryOverDerivedEvidence({ ...base, fetchedAt: "2026-02-01T00:00:00Z" }, prior);
+    expect(out).toMatchObject({
+      fetchedAt: "2026-02-01T00:00:00Z", release: prior.release, containingDeployments: prior.containingDeployments,
+      nonContainingDeploymentShas: ["x"], ancestryUnknown: true,
+    });
+    expect(carryOverDerivedEvidence(base, undefined)).not.toHaveProperty("release");
+  });
+});
+
+it("marks existing evidence stale when refresh throws or returns no PR", async () => {
+  const ledger = emptyLedger();
+  const url = "https://github.com/o/r/pull/1";
+  const prior = { url, repository: "o/r", number: 1, author: "me", state: "merged" as const, isDraft: false, baseRef: "main", headRef: "f", headSha: "h", mergeCommitSha: null, createdAt: "2026-01-01", mergedAt: null, reviews: [], checks: { passed: 1, failed: 0, skipped: 0, pending: 0, names: [] }, files: [], fetchedAt: "2026-01-02" };
+  ledger.prs[url] = prior;
+  const ref = { repo: "o/r", number: 1, url };
+  const now = new Date("2026-02-01T00:00:00Z");
+  await expect(refreshPrEvidence(ledger, ref, now, async () => { throw new Error("transient"); })).rejects.toThrow("transient");
+  expect(ledger.prs[url]?.refreshFailedAt).toBe(now.toISOString());
+  expect(refreshPrEvidence(ledger, ref, now, async () => null)).resolves.toBe(false);
+  expect(ledger.prs[url]?.refreshFailedAt).toBe(now.toISOString());
+});
+
+it("clears refresh failure after successful fetch and never carries it over", async () => {
+  const ledger = emptyLedger();
+  const url = "https://github.com/o/r/pull/1";
+  const prior: PrEvidence = { url, repository: "o/r", number: 1, author: "me", state: "merged", isDraft: false, baseRef: "main", headRef: "f", headSha: "h", mergeCommitSha: null, createdAt: "2026-01-01", mergedAt: null, reviews: [], checks: null, files: [], fetchedAt: "2026-01-02", refreshFailedAt: "2026-01-03" };
+  ledger.prs[url] = prior;
+  const fresh = { ...prior, fetchedAt: "2026-02-01" };
+  delete fresh.refreshFailedAt;
+  expect(await refreshPrEvidence(ledger, { repo: "o/r", number: 1, url }, new Date(), async () => fresh)).toBe(true);
+  expect(ledger.prs[url]).not.toHaveProperty("refreshFailedAt");
+  expect(carryOverDerivedEvidence(fresh, prior)).not.toHaveProperty("refreshFailedAt");
+});
+
+describe("release history before age-based pruning", () => {
+  it("records releases for PRs outside the current window before their deployments are pruned", () => {
+    const ledger = emptyLedger();
+    const url = "https://github.com/org/app/pull/7";
+    ledger.defaultBranches["org/app"] = "main";
+    ledger.prs[url] = {
+      url, repository: "org/app", number: 7, author: "me", state: "merged", isDraft: false,
+      baseRef: "main", headRef: "f", headSha: "h", mergeCommitSha: "m",
+      createdAt: "2026-06-01T00:00:00Z", mergedAt: "2026-06-02T00:00:00Z",
+      reviews: [], checks: null, files: [], fetchedAt: "2026-06-03T00:00:00Z",
+    };
+    ledger.deployments["org/app"] = [{
+      environment: "production", production: true, ref: "main", sha: "s",
+      createdAt: "2026-06-02T01:00:00Z", succeededAt: "2026-06-02T02:00:00Z",
+    }];
+    // The run's --since window starts long after this PR, so it isn't among this run's refs.
+    recordReleaseEvidence(ledger, allLedgerRefs(ledger));
+    pruneDeployments(ledger, "2026-10-01T00:00:00.000Z");
+    expect(ledger.deployments["org/app"]).toEqual([]);
+    expect(ledger.prs[url]!.release).toMatchObject({ stage: "live", since: "2026-06-02T02:00:00Z" });
+  });
+});
+
+describe("carryOverDerivedEvidence with partial review/file fetches", () => {
+  const base = {
+    url: "https://github.com/o/r/pull/1", repository: "o/r", number: 1, author: "me", state: "merged" as const,
+    isDraft: false, baseRef: "main", headRef: "f", headSha: "h", mergeCommitSha: "m",
+    createdAt: "2026-01-01T00:00:00Z", mergedAt: "2026-01-02T00:00:00Z", checks: null,
+    fetchedAt: "2026-01-03T00:00:00Z",
+  };
+  const prior = {
+    ...base,
+    reviews: [{ reviewer: "bob", bot: false, state: "APPROVED", submittedAt: "2026-01-02T00:00:00Z" }],
+    files: ["a.ts", "b.ts"],
+  };
+
+  it("merges partial reviews and files with the prior evidence instead of replacing them", () => {
+    const fresh = {
+      ...base, fetchedAt: "2026-02-01T00:00:00Z", incomplete: { reviews: true, files: true },
+      reviews: [{ reviewer: "amy", bot: false, state: "COMMENTED", submittedAt: "2026-01-03T00:00:00Z" }],
+      files: ["c.ts"],
+    };
+    const out = carryOverDerivedEvidence(fresh, prior);
+    expect(out.reviews.map((r) => r.reviewer).sort()).toEqual(["amy", "bob"]);
+    expect([...out.files].sort()).toEqual(["a.ts", "b.ts", "c.ts"]);
+    expect(out.incomplete).toEqual({ reviews: true, files: true });
+  });
+
+  it("replaces reviews and files and clears the flag after a complete fetch", () => {
+    const fresh = { ...base, reviews: [], files: ["c.ts"] };
+    const out = carryOverDerivedEvidence(fresh, { ...prior, incomplete: { reviews: true } });
+    expect(out.reviews).toEqual([]);
+    expect(out.files).toEqual(["c.ts"]);
+    expect(out.incomplete).toBeUndefined();
+  });
+});

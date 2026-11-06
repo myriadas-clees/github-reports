@@ -44,22 +44,12 @@
   {{/if}}
 </div>
 
-{{#each yearGroups}}
-<div class="year-group">
-  <div class="year-label">{{this.year}}</div>
-  <div class="week-list">
-    {{#each this.reports}}
-    <a href="{{this.path}}/" class="week-item">
-      <div class="week-item-header">
-        <span class="week-item-title">{{#if this.title}}{{this.title}}{{else}}{{this.dateLabel}}{{/if}}</span>
-        <span class="week-item-week">{{this.week}}</span>
-      </div>
-      {{#if this.subtitle}}<div class="week-item-subtitle">{{this.subtitle}}</div>{{/if}}
-    </a>
-    {{/each}}
-  </div>
-</div>
-{{/each}}
+
+  {{> index-hero}}
+
+  {{> index-ledger}}
+
+  {{> index-planning}}
 
 
 <footer class="footer">
