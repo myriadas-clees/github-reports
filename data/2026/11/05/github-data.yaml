@@ -1,0 +1,605 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-11-05
+  to: 2026-11-05
+stats:
+  totalCommits: 14
+  totalAdditions: 775
+  totalDeletions: 167
+  prsOpened: 2
+  prsMerged: 1
+  prsInProgress: 3
+  prsReviewed: 5
+  reviewComments: 5
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 50.4
+dailyCommits:
+  - date: 2026-11-05
+    count: 14
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 13
+    prsOpened: 2
+    prsMerged: 1
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 1
+    prsOpened: 0
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests:
+  - title: "fix(northstar): stream Copilot startup and lookup activity"
+    body: >-
+      - Stream Copilot startup and lookup progress into the Northstar workspace, including partial results while a
+      lookup is running.
+
+      - Update Copilot chat handling and consultation tests for streamed responses.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/220
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a1 []
+    additions: 368
+    deletions: 98
+    changedFiles: 15
+    author: myriadas-clees
+    createdAt: 2026-11-05T14:46:59Z
+    updatedAt: 2026-11-05T15:23:20Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a2
+      - &a12
+        sha: d5f4649af6c09d918c9daa1d6ad6a3617d0c9418
+        message: "fix(northstar): stream Copilot startup and lookup activity"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d5f4649af6c09d918c9daa1d6ad6a3617d0c9418
+        authoredAt: 2026-11-05T14:46:48Z
+      - &a13
+        sha: a47fc681e2a5e65f1cd3d4df15773439f9032adc
+        message: "fix(northstar): isolate transient Copilot task snapshots"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a47fc681e2a5e65f1cd3d4df15773439f9032adc
+        authoredAt: 2026-11-05T14:56:04Z
+      - &a14
+        sha: e700ae4b75a596fa5ca33a5f424685d68bb09bfc
+        message: "fix(northstar): retain live Copilot sibling responses"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e700ae4b75a596fa5ca33a5f424685d68bb09bfc
+        authoredAt: 2026-11-05T15:04:45Z
+    workTimestamps: &a3
+      - 2026-11-05T14:46:48Z
+      - 2026-11-05T14:56:04Z
+      - 2026-11-05T15:04:45Z
+    workAdditions: 368
+    workDeletions: 98
+    workFiles: &a4
+      - hub/functions/src/northstar-claude-ask.test.ts
+      - hub/functions/src/northstar-claude-brief.test.ts
+      - hub/functions/src/northstar-claude-brief.ts
+      - hub/functions/src/northstar-claude-consultation.test.ts
+      - hub/functions/src/northstar-consultation-flow.test.ts
+      - hub/functions/src/northstar-consultation-restart.fixture.ts
+      - hub/functions/src/northstar-copilot.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/functions/src/northstar-retry-recovery.test.ts
+      - hub/functions/src/northstar-subagent.test.ts
+      - hub/functions/src/northstar-subagent.ts
+      - northstar/components/ask-northstar-workspace.dom.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/lib/ask-stream.test.ts
+      - northstar/lib/ask-stream.ts
+  - title: "fix(northstar): prepare Copilot requests across Claude models"
+    body: >-
+      Explicit `@copilot` requests could fail when Claude answered normally instead of proposing a lookup. Prepare
+      structured approval questions across Haiku, Sonnet, and Opus, validate them server-side, and retain existing
+      tool-based approval tokens. Copilot still runs only after approval.
+
+
+      The backend e...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/219
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 407
+    deletions: 69
+    changedFiles: 13
+    author: myriadas-clees
+    createdAt: 2026-11-05T05:17:23Z
+    updatedAt: 2026-11-05T13:47:38Z
+    closedAt: 2026-11-05T13:47:30Z
+    mergedAt: 2026-11-05T13:47:29Z
+    workCommits:
+      - &a5
+        sha: 90a2fada06572838578ed9fea66fa17f42afefed
+        message: "fix(northstar): force Haiku Copilot proposals"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/90a2fada06572838578ed9fea66fa17f42afefed
+        authoredAt: 2026-11-05T05:16:52Z
+      - &a6
+        sha: bfa13fece1272488565db73f33c3d78f45310966
+        message: "fix(northstar): support structured Copilot proposals"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/bfa13fece1272488565db73f33c3d78f45310966
+        authoredAt: 2026-11-05T06:19:17Z
+      - &a7
+        sha: d3094cbd6af8feaa3f177f14cfa774f2af04e33d
+        message: "fix(northstar): report Copilot startup accurately"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d3094cbd6af8feaa3f177f14cfa774f2af04e33d
+        authoredAt: 2026-11-05T06:35:48Z
+      - &a8
+        sha: 8c50927cbc5b2b227b54ff77f9fda3ba43580e89
+        message: "fix(northstar): delimit Copilot reference results"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8c50927cbc5b2b227b54ff77f9fda3ba43580e89
+        authoredAt: 2026-11-05T06:44:43Z
+      - &a9
+        sha: 155fa6aed3f5adeb3c109b061bc4776988591197
+        message: "test(northstar): verify tool work precedes Copilot auth"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/155fa6aed3f5adeb3c109b061bc4776988591197
+        authoredAt: 2026-11-05T06:52:20Z
+      - &a10
+        sha: f48a0499577a4b0f98a6457e94a5b0fbb4ae3df9
+        message: "fix(northstar): report approved Copilot progress accurately"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f48a0499577a4b0f98a6457e94a5b0fbb4ae3df9
+        authoredAt: 2026-11-05T13:22:50Z
+    workTimestamps:
+      - 2026-11-05T05:16:52Z
+      - 2026-11-05T06:19:17Z
+      - 2026-11-05T06:35:48Z
+      - 2026-11-05T06:44:43Z
+      - 2026-11-05T06:52:20Z
+      - 2026-11-05T13:22:50Z
+    workAdditions: 407
+    workDeletions: 69
+    workFiles:
+      - hub/functions/src/northstar-claude-ask.test.ts
+      - hub/functions/src/northstar-claude-brief.ts
+      - hub/functions/src/northstar-claude-consultation.test.ts
+      - hub/functions/src/northstar-consultation.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/functions/src/northstar-subagent.ts
+      - northstar/components/ask-northstar-workspace.dom.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/lib/ask-stream.test.ts
+      - northstar/lib/ask-stream.ts
+      - northstar/lib/progress-phase.test.ts
+      - northstar/lib/progress-phase.ts
+prsInProgress:
+  - title: "fix(northstar): stream Copilot startup and lookup activity"
+    body: >-
+      - Stream Copilot startup and lookup progress into the Northstar workspace, including partial results while a
+      lookup is running.
+
+      - Update Copilot chat handling and consultation tests for streamed responses.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/220
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: *a1
+    additions: 366
+    deletions: 96
+    changedFiles: 15
+    author: myriadas-clees
+    createdAt: 2026-11-05T14:46:59Z
+    updatedAt: 2026-11-05T15:23:20Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 368
+    workDeletions: 98
+    workFiles: *a4
+  - title: "feat(repo): automate Azure staging, isolated PR testing, and release promotion"
+    body: >-
+      ## Why
+
+
+      Provide persistent staging and isolated PR testing of the actual production build, without exposing production
+      data or credentials. After a one-time administrator setup, routine configuration lives in Bicep/parameter files
+      and GitHub Actions rather than portal edits or copied Azure keys.
+
+
+      ##...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/237
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - documentation
+      - github-automation
+      - "app: hub"
+      - "app: proforma"
+      - platform
+      - infrastructure
+      - "app: transition"
+    additions: 5519
+    deletions: 1912
+    changedFiles: 100
+    author: myriadas-clees
+    createdAt: 2026-10-30T19:43:25Z
+    updatedAt: 2026-11-05T19:27:11Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a17
+        sha: fb47591f9a68708bd487699fdb53df160b17029d
+        message: Store staging identity secrets in GitHub instead of Key Vault
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/fb47591f9a68708bd487699fdb53df160b17029d
+        authoredAt: 2026-11-05T19:12:30Z
+    workTimestamps:
+      - 2026-11-05T19:12:30Z
+    workAdditions: 93
+    workDeletions: 92
+    workFiles:
+      - .github/workflows/staging-infrastructure.yml
+      - docs/staging-and-testing.md
+      - infra/azure/staging/README.md
+      - infra/azure/staging/bootstrap.bicep
+      - scripts/staging-azure.test.ts
+      - scripts/staging-azure.ts
+      - scripts/staging-runtime.test.ts
+  - title: "fix(northstar): prevent prompt leaks and bound Claude turns"
+    body: |-
+      - Prevent Northstar from revealing or referring to internal prompts and mechanics, and improve direct answers.
+      - Bound Claude turns, keep fallback work within the remaining deadline, and limit streamed snapshot size.
+      - Improve Cosmos-backed reads and saves, add content-free timing metrics, and strea...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/215
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: []
+    additions: 5548
+    deletions: 1622
+    changedFiles: 114
+    author: myriadas-clees
+    createdAt: 2026-11-04T19:13:19Z
+    updatedAt: 2026-11-05T15:49:40Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a11
+        sha: 78b183c78c292cdd350d22d65ffe29fcccc16eae
+        message: "fix(pricing): prevent stale roster refreshes and clear financials"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/78b183c78c292cdd350d22d65ffe29fcccc16eae
+        authoredAt: 2026-11-05T13:26:06Z
+      - &a15
+        sha: d09978dac1df0eb9c8de37bf0c0ccd0298da8ce4
+        message: Merge main into Northstar performance and privacy fixes
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d09978dac1df0eb9c8de37bf0c0ccd0298da8ce4
+        authoredAt: 2026-11-05T15:18:07Z
+      - &a16
+        sha: df710928f3fa630cc885459ca78f286eb7484887
+        message: Merge latest Copilot preparation changes from main
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/df710928f3fa630cc885459ca78f286eb7484887
+        authoredAt: 2026-11-05T15:45:02Z
+    workTimestamps:
+      - 2026-11-05T13:26:06Z
+      - 2026-11-05T15:18:07Z
+      - 2026-11-05T15:45:02Z
+    workAdditions: 7274
+    workDeletions: 1170
+    workFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - bun.lock
+      - hub/functions/package.json
+      - hub/functions/src/index.ts
+      - hub/functions/src/northstar-archive.test.ts
+      - hub/functions/src/northstar-archive.ts
+      - hub/functions/src/northstar-claude-ask.test.ts
+      - hub/functions/src/northstar-claude-brief.test.ts
+      - hub/functions/src/northstar-claude-brief.ts
+      - hub/functions/src/northstar-claude-consultation.test.ts
+      - hub/functions/src/northstar-claude-documents.test.ts
+      - hub/functions/src/northstar-claude-files.ts
+      - hub/functions/src/northstar-consent.fixture.ts
+      - hub/functions/src/northstar-consent.test.ts
+      - hub/functions/src/northstar-consultation-flow.test.ts
+      - hub/functions/src/northstar-consultation-restart.fixture.ts
+      - hub/functions/src/northstar-consultation.test.ts
+      - hub/functions/src/northstar-consultation.ts
+      - hub/functions/src/northstar-conversations.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-copilot.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/functions/src/northstar-outputs.test.ts
+      - hub/functions/src/northstar-outputs.ts
+      - hub/functions/src/northstar-retry-recovery.test.ts
+      - hub/functions/src/northstar-subagent.test.ts
+      - hub/functions/src/northstar-subagent.ts
+      - hub/package.json
+      - northstar/app/globals.css
+      - northstar/components/answer-markdown.test.tsx
+      - northstar/components/answer-markdown.tsx
+      - northstar/components/ask-northstar-workspace.dom.test.tsx
+      - northstar/components/ask-northstar-workspace.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/brief-model-logo.tsx
+      - northstar/components/claude-manage-dialog.tsx
+      - northstar/components/command-cards.dom.test.tsx
+      - northstar/components/command-cards.tsx
+      - northstar/components/command-mark.tsx
+      - northstar/components/generated-files.tsx
+      - northstar/components/northstar-consent.dom.test.ts
+      - northstar/components/northstar-consent.fixture.tsx
+      - northstar/components/northstar-dashboard-instructions.dom.test.ts
+      - northstar/components/northstar-dashboard-instructions.fixture.tsx
+      - northstar/components/northstar-dashboard-lifecycle.fixture.ts
+      - northstar/components/northstar-dashboard-lifecycle.test.ts
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/northstar-dom-globals.ts
+      - northstar/components/northstar-recovery.dom.test.ts
+      - northstar/components/northstar-recovery.fixture.tsx
+      - northstar/components/northstar-retention.fixture.tsx
+      - northstar/components/settings-workspace.dom.test.tsx
+      - northstar/components/settings-workspace.tsx
+      - northstar/components/streaming-markdown.tsx
+      - northstar/components/todo-destination.tsx
+      - northstar/lib/ask-stream.test.ts
+      - northstar/lib/ask-stream.ts
+      - northstar/lib/ask-turns.test.ts
+      - northstar/lib/ask-turns.ts
+      - northstar/lib/at-commands.test.ts
+      - northstar/lib/at-commands.ts
+      - northstar/lib/draft-fences.ts
+      - northstar/lib/files-model.test.ts
+      - northstar/lib/files-model.ts
+      - northstar/lib/microsoft-reauth.test.ts
+      - northstar/lib/microsoft-reauth.ts
+      - northstar/lib/progress-phase.test.ts
+      - northstar/lib/progress-phase.ts
+      - northstar/lib/settings-deeplink.test.ts
+      - northstar/lib/settings-deeplink.ts
+      - northstar/lib/settings-preferences.test.ts
+      - northstar/lib/settings-preferences.ts
+      - northstar/lib/todo-tasks.test.ts
+      - northstar/lib/todo-tasks.ts
+      - northstar/package.json
+      - ofac/package.json
+      - package.json
+      - packages/auth/package.json
+      - packages/contracts/package.json
+      - packages/contracts/src/northstar-consultation.ts
+      - packages/contracts/src/northstar-drafts.ts
+      - packages/ui/package.json
+      - pricing/package.json
+      - pricing/src/app/globals.css
+      - pricing/src/components/__tests__/pricing-page-clients.test.tsx
+      - pricing/src/components/__tests__/recruits-table-responsive-css.test.ts
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/components/recruits-page-client.tsx
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "fix(northstar): force Haiku Copilot proposals"
+      - "fix(northstar): support structured Copilot proposals"
+      - "fix(northstar): report Copilot startup accurately"
+      - "fix(northstar): delimit Copilot reference results"
+      - "test(northstar): verify tool work precedes Copilot auth"
+      - "fix(northstar): report approved Copilot progress accurately"
+      - "fix(pricing): prevent stale roster refreshes and clear financials"
+      - "fix(northstar): prepare Copilot requests across Claude models (#219)"
+      - "fix(northstar): stream Copilot startup and lookup activity"
+      - "fix(northstar): isolate transient Copilot task snapshots"
+      - "fix(northstar): retain live Copilot sibling responses"
+      - Merge main into Northstar performance and privacy fixes
+      - Merge latest Copilot preparation changes from main
+    commits:
+      - *a5
+      - *a6
+      - *a7
+      - *a8
+      - *a9
+      - *a10
+      - *a11
+      - sha: 3c3cb3137d02caa68167a10b184cc819416bbf49
+        message: "fix(northstar): prepare Copilot requests across Claude models (#219)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3c3cb3137d02caa68167a10b184cc819416bbf49
+        authoredAt: 2026-11-05T13:47:29Z
+        additions: 390
+        deletions: 52
+        filesChanged: 13
+      - *a12
+      - *a13
+      - *a14
+      - *a15
+      - *a16
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - Store staging identity secrets in GitHub instead of Key Vault
+    commits:
+      - *a17
+releases: []
+externalContributions: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 220
+    prTitle: "fix(northstar): stream Copilot startup and lookup activity"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/220
+    state: commented
+    submittedAt: 2026-11-05T15:05:45Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 220
+    prTitle: "fix(northstar): stream Copilot startup and lookup activity"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/220
+    state: commented
+    submittedAt: 2026-11-05T15:06:28Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 219
+    prTitle: "fix(northstar): prepare Copilot requests across Claude models"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/219
+    state: commented
+    submittedAt: 2026-11-05T06:53:49Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 219
+    prTitle: "fix(northstar): prepare Copilot requests across Claude models"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/219
+    state: commented
+    submittedAt: 2026-11-05T13:31:01Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 219
+    prTitle: "fix(northstar): prepare Copilot requests across Claude models"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/219
+    state: commented
+    submittedAt: 2026-11-05T13:46:05Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 220
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/220
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/220#discussion_r4482127794
+    body: "[from Codex]: Fixed in e700ae4b75a596fa5ca33a5f424685d68bb09bfc at the SSE emission boundary. A separate live
+      snapshot retains same-attempt partial replies and sources across sibling updates; saved checkpoints still receive
+      only durable task results. The gated HTTP regression proves both live retent..."
+    path: hub/functions/src/northstar-subagent.ts
+    createdAt: 2026-11-05T15:05:44Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 220
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/220
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/220#discussion_r4482136188
+    body: "[from Codex]: This is the same live-partial retention defect fixed by e700ae4b75a596fa5ca33a5f424685d68bb09bfc.
+      The streaming handler now keeps an in-memory live overlay for UI emission, while saveConsultationProgress still
+      receives only durable task results. A gated two-question HTTP regression ver..."
+    path: hub/functions/src/northstar-subagent.ts
+    createdAt: 2026-11-05T15:06:28Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 219
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/219
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/219#discussion_r4477463239
+    body: "[from Codex]: The production path already stops this deadline before authorization: claudeChat invokes onToolWork
+      before the subagent, and the streaming caller binds onToolWork to firstTokenDeadline.stop. 155fa6ae adds gated
+      ordering evidence showing tool_work before authorization, alongside the exi..."
+    path: hub/functions/src/northstar-microsoft.ts
+    createdAt: 2026-11-05T06:53:49Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 219
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/219
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/219#discussion_r4481039122
+    body: "[from Codex]: Addressed in f48a0499577a4b0f98a6457e94a5b0fbb4ae3df9. The browser reader now accepts all four
+      consultation phases, the dashboard consumes them and clears stale phases, and stream regressions cover phase
+      delivery and error clearing. The 126 focused UI tests and Northstar typecheck pass..."
+    path: hub/functions/src/northstar-microsoft.ts
+    createdAt: 2026-11-05T13:31:01Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 219
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/219
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/219#discussion_r4481193248
+    body: "[from Codex]: Screenshot approval is now recorded for the exact UI patch in f48a049. Required Verify passed on
+      this head, and the browser-parser fix and its regression coverage are present. Closing this addressed finding."
+    path: hub/functions/src/northstar-microsoft.ts
+    createdAt: 2026-11-05T13:46:05Z
+aiReviews:
+  codex:
+    prsReviewed: 2
+    comments: 2
+    reviews: 2
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 2
+  comments: 2
+  reviews: 2
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-11-05T05:16:52Z
+    - 2026-11-05T06:19:17Z
+    - 2026-11-05T06:35:48Z
+    - 2026-11-05T06:44:43Z
+    - 2026-11-05T06:52:20Z
+    - 2026-11-05T13:22:50Z
+    - 2026-11-05T13:26:06Z
+    - 2026-11-05T13:47:29Z
+    - 2026-11-05T14:46:48Z
+    - 2026-11-05T14:56:04Z
+    - 2026-11-05T15:04:45Z
+    - 2026-11-05T15:18:07Z
+    - 2026-11-05T15:45:02Z
+    - 2026-11-05T19:12:30Z
+    - 2026-11-05T14:46:59Z
+    - 2026-11-05T14:46:48Z
+    - 2026-11-05T14:56:04Z
+    - 2026-11-05T15:04:45Z
+    - 2026-11-05T05:17:23Z
+    - 2026-11-05T13:47:29Z
+    - 2026-11-05T05:16:52Z
+    - 2026-11-05T06:19:17Z
+    - 2026-11-05T06:35:48Z
+    - 2026-11-05T06:44:43Z
+    - 2026-11-05T06:52:20Z
+    - 2026-11-05T13:22:50Z
+    - 2026-11-05T15:05:45Z
+    - 2026-11-05T15:06:28Z
+    - 2026-11-05T06:53:49Z
+    - 2026-11-05T13:31:01Z
+    - 2026-11-05T13:46:05Z
+    - 2026-11-05T15:05:44Z
+    - 2026-11-05T15:06:28Z
+    - 2026-11-05T06:53:49Z
+    - 2026-11-05T13:31:01Z
+    - 2026-11-05T13:46:05Z
+  volume:
+    pullRequests:
+      - additions: 368
+        deletions: 98
+        state: open
+        dailyWork: true
+        filesChanged: 15
+        testFilesChanged: 8
+        commitCount: 3
+      - additions: 93
+        deletions: 92
+        state: open
+        dailyWork: true
+        filesChanged: 7
+        testFilesChanged: 2
+        commitCount: 1
+      - additions: 7274
+        deletions: 1170
+        state: open
+        dailyWork: true
+        filesChanged: 89
+        testFilesChanged: 33
+        commitCount: 3
+      - additions: 407
+        deletions: 69
+        state: merged
+        dailyWork: true
+        filesChanged: 13
+        testFilesChanged: 5
+        commitCount: 6
+    reviewCount: 5
+    reviewCommentCount: 5
+    commitCount: 1
+    commitAdditions: 390
+    commitDeletions: 52
+    commitStatsCount: 1
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 50.4
+  sessions: 3
+  sessionHours: 4.5
+  volumeHours: 50.4
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
