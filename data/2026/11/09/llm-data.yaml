@@ -1,0 +1,94 @@
+title: Nov 9
+subtitle: repo, northstar & compass
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps and Myriad-Advisor-Solutions/ohcpwm-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 5 PRs
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 0 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 36 commits with +2,708 / −146 lines.
+    chips:
+      - label: Commits
+        value: "36"
+        color: green
+      - label: Additions
+        value: +2,708
+        color: green
+      - label: Deletions
+        value: −146
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 38 reviews with 38 comments.
+    chips:
+      - label: Reviews
+        value: "38"
+      - label: Comments
+        value: "38"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 10 reviews, 19 comments, 2 PRs."
+    chips:
+      - label: Codex
+        value: 10 reviews · 19 comments · 2 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~159.7h
+highlights:
+  - type: pr
+    title: "fix(repo): stop automatic human review requests"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +0 −0
+    body: >-
+      GitHub automatically requests CODEOWNERS on ready pull requests even when required approvals are zero. That caused
+      unwanted human review requests on dependency updates.
+
+
+      Make CODEOWNERS comment-only, 
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/248
+  - type: pr
+    title: "fix(repo): remove staging auth discovery dependency and bound smoke retries"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +145 −42
+    body: >-
+      Staging uploads succeed, but the homepage and API never return HTTP responses. The existing smoke script then
+      repeats ten probes for roughly 90 minutes, delaying the failure report.
+
+
+      This candidate re
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/250
+  - type: pr
+    title: "ci(repo): run Docker E2E only for relevant changes"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +143 −18
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/252
+  - type: pr
+    title: "fix(repo): permit staging role assignment before app authorization"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +22 −3
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/251
+  - type: pr
+    title: "feat(compass): port North Star workflows and archives"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +2398 −83
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(repo): stop automatic human review requests" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(repo): remove staging auth discovery dependency and bound smoke retries" in
+      Myriad-Advisor-Solutions/myriadas-apps'

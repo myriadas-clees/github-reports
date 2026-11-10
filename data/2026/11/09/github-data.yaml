@@ -1,0 +1,2345 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-11-09
+  to: 2026-11-09
+stats:
+  totalCommits: 36
+  totalAdditions: 2708
+  totalDeletions: 146
+  prsOpened: 5
+  prsMerged: 2
+  prsInProgress: 8
+  prsReviewed: 38
+  reviewComments: 38
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 159.7
+dailyCommits:
+  - date: 2026-11-09
+    count: 36
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 31
+    prsOpened: 5
+    prsMerged: 2
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 5
+    prsOpened: 0
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests:
+  - title: "ci(repo): run Docker E2E only for relevant changes"
+    body: >-
+      PRs that only change deployment-time authentication configuration or repository administration currently build and
+      seed the full Docker stack and install Chromium, even though local SWA CLI cannot validate Azure OIDC behavior.
+
+
+      Add a lightweight impact job using the existing Git diff resolver before...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/252
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a1
+      - documentation
+      - github-automation
+      - platform
+    additions: 143
+    deletions: 18
+    changedFiles: 4
+    author: myriadas-clees
+    createdAt: 2026-11-09T20:40:40Z
+    updatedAt: 2026-11-10T14:33:07Z
+    closedAt: 2026-11-10T14:33:07Z
+    mergedAt: 2026-11-10T14:33:07Z
+    workCommits: &a2
+      - &a41
+        sha: ce83e9ef533f841e8bafd6ddfd4645950a656b58
+        message: "ci(repo): run Docker E2E only for relevant changes"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ce83e9ef533f841e8bafd6ddfd4645950a656b58
+        authoredAt: 2026-11-09T20:40:37Z
+    workTimestamps: &a3
+      - 2026-11-09T20:40:37Z
+    workAdditions: 143
+    workDeletions: 18
+    workFiles: &a4
+      - .github/workflows/pr-e2e.yml
+      - docker/README.md
+      - scripts/affected-apps.ts
+      - scripts/tooling.test.ts
+  - title: "fix(repo): permit staging role assignment before app authorization"
+    body: Staging now passes deployment, smoke and synthetic seeding, but live sign-in loops from the Azure callback back to
+      the test provider without creating a session. The generated staging config leaves `/api/auth/roles` under the
+      `/api/*` rule requiring application roles, even though this function assign...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/251
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a5
+      - platform
+    additions: 22
+    deletions: 3
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-11-09T20:19:38Z
+    updatedAt: 2026-11-10T14:33:09Z
+    closedAt: 2026-11-10T14:33:08Z
+    mergedAt: 2026-11-10T14:33:08Z
+    workCommits: &a6
+      - &a40
+        sha: 511bed59e18d210662f1d73bcc867ab98ee6bab3
+        message: "fix(repo): permit staging role assignment before app authorization"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/511bed59e18d210662f1d73bcc867ab98ee6bab3
+        authoredAt: 2026-11-09T20:19:35Z
+    workTimestamps: &a7
+      - 2026-11-09T20:19:35Z
+    workAdditions: 22
+    workDeletions: 3
+    workFiles: &a8
+      - scripts/swa-environment-config.test.ts
+      - scripts/swa-environment-config.ts
+  - title: "fix(repo): stop automatic human review requests"
+    body: >-
+      GitHub automatically requests CODEOWNERS on ready pull requests even when required approvals are zero. That caused
+      unwanted human review requests on dependency updates.
+
+
+      Make CODEOWNERS comment-only, with myriadas-clees as the sole listed owner, and make the deployment readiness
+      audit reject active ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/248
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - github-automation
+      - platform
+    additions: 0
+    deletions: 0
+    changedFiles: 5
+    author: myriadas-clees
+    createdAt: 2026-11-09T14:49:45Z
+    updatedAt: 2026-11-09T16:49:06Z
+    closedAt: 2026-11-09T16:49:06Z
+    mergedAt: 2026-11-09T16:49:06Z
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "feat(compass): port North Star workflows and archives"
+    body: >-
+      ## Why
+
+
+      Bring the North Star priorities into Compass to expand advisor workflows while preserving Compass’s existing
+      Microsoft 365 authorization and chat behavior.
+
+
+      ## What changed
+
+
+      - Add Claude model and effort selection, advisor preferences, and scheduled briefs.
+
+      - Generate Word, Excel, and PowerP...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a9
+      - documentation
+      - platform
+      - "app: compass"
+    additions: 2398
+    deletions: 83
+    changedFiles: 46
+    author: myriadas-clees
+    createdAt: 2026-11-09T18:53:19Z
+    updatedAt: 2026-11-09T19:10:05Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a10
+      - &a25
+        sha: 8f5f52317a8068a44a0e7ccc8b8b3d6584c0e411
+        message: "feat(compass): add Claude workflows and durable archives"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8f5f52317a8068a44a0e7ccc8b8b3d6584c0e411
+        authoredAt: 2026-11-09T18:53:07Z
+    workTimestamps: &a11
+      - 2026-11-09T18:53:07Z
+    workAdditions: 2398
+    workDeletions: 83
+    workFiles: &a12
+      - bun.lock
+      - compass/README.md
+      - compass/functions/local.settings.json.example
+      - compass/functions/package.json
+      - compass/functions/src/company-http.test.ts
+      - compass/functions/src/company-routes.test.ts
+      - compass/functions/src/compass-archive-files.ts
+      - compass/functions/src/compass-archive.test.ts
+      - compass/functions/src/compass-archive.ts
+      - compass/functions/src/compass-bounded-bytes.ts
+      - compass/functions/src/compass-chat-history.test.ts
+      - compass/functions/src/compass-claude-brief.ts
+      - compass/functions/src/compass-claude-files.test.ts
+      - compass/functions/src/compass-claude-files.ts
+      - compass/functions/src/compass-claude-integration.test.ts
+      - compass/functions/src/compass-claude-preferences.ts
+      - compass/functions/src/compass-consultation.test.ts
+      - compass/functions/src/compass-consultation.ts
+      - compass/functions/src/compass-conversations.test.ts
+      - compass/functions/src/compass-conversations.ts
+      - compass/functions/src/compass-copilot.ts
+      - compass/functions/src/compass-graph-diagnostics.ts
+      - compass/functions/src/compass-mapping-upgrade.test.ts
+      - compass/functions/src/compass-microsoft.ts
+      - compass/functions/src/compass-outputs.test.ts
+      - compass/functions/src/compass-outputs.ts
+      - compass/functions/src/compass-scheduled-brief.ts
+      - compass/functions/src/compass-subagent.test.ts
+      - compass/functions/src/compass-subagent.ts
+      - compass/functions/src/index.ts
+      - compass/src/components/ask-compass-workspace.dom.test.tsx
+      - compass/src/components/ask-compass-workspace.test.tsx
+      - compass/src/components/ask-compass-workspace.tsx
+      - compass/src/components/ask/at-command-token.tsx
+      - compass/src/components/claude-settings.tsx
+      - compass/src/components/compass-provider.tsx
+      - compass/src/components/compass-routes.tsx
+      - compass/src/components/copilot-consultation-card.test.tsx
+      - compass/src/components/copilot-consultation-card.tsx
+      - compass/src/components/generated-file-card.test.tsx
+      - compass/src/components/generated-file-card.tsx
+      - compass/src/components/settings-workspace.tsx
+      - compass/src/lib/at-commands.test.ts
+      - compass/src/lib/at-commands.ts
+      - compass/src/lib/claude-settings.ts
+      - compass/src/lib/progress-phase.ts
+  - title: "fix(repo): remove staging auth discovery dependency and bound smoke retries"
+    body: >-
+      Staging uploads succeed, but the homepage and API never return HTTP responses. The existing smoke script then
+      repeats ten probes for roughly 90 minutes, delaying the failure report.
+
+
+      This candidate replaces the staging provider's same-host discovery lookup with explicit issuer, authorization,
+      token ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/250
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - platform
+    additions: 145
+    deletions: 42
+    changedFiles: 4
+    author: myriadas-clees
+    createdAt: 2026-11-09T18:59:46Z
+    updatedAt: 2026-11-09T19:42:09Z
+    closedAt: 2026-11-09T19:42:09Z
+    mergedAt: 2026-11-09T19:42:08Z
+    workCommits:
+      - &a26
+        sha: f189ff7af420b717dae562ce5229378fd89b0873
+        message: "fix(repo): remove staging auth discovery dependency and bound smoke retries"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f189ff7af420b717dae562ce5229378fd89b0873
+        authoredAt: 2026-11-09T18:59:43Z
+      - &a29
+        sha: 9495c0a3a13992b416b2d6a9c6f98d2c73998d2e
+        message: "fix(repo): retry transient refused smoke connections within bounds"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9495c0a3a13992b416b2d6a9c6f98d2c73998d2e
+        authoredAt: 2026-11-09T19:08:58Z
+      - &a31
+        sha: 64230dd3407439812bf24df65d85116f422b72ea
+        message: "test(repo): cover fail-fast invalid smoke health responses"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/64230dd3407439812bf24df65d85116f422b72ea
+        authoredAt: 2026-11-09T19:21:45Z
+    workTimestamps:
+      - 2026-11-09T18:59:43Z
+      - 2026-11-09T19:08:58Z
+      - 2026-11-09T19:21:45Z
+    workAdditions: 145
+    workDeletions: 42
+    workFiles:
+      - scripts/smoke-hub.sh
+      - scripts/swa-environment-config.test.ts
+      - scripts/swa-environment-config.ts
+      - scripts/tooling.test.ts
+prsInProgress:
+  - title: "ci(repo): run Docker E2E only for relevant changes"
+    body: >-
+      PRs that only change deployment-time authentication configuration or repository administration currently build and
+      seed the full Docker stack and install Chromium, even though local SWA CLI cannot validate Azure OIDC behavior.
+
+
+      Add a lightweight impact job using the existing Git diff resolver before...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/252
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels: *a1
+    additions: 143
+    deletions: 18
+    changedFiles: 4
+    author: myriadas-clees
+    createdAt: 2026-11-09T20:40:40Z
+    updatedAt: 2026-11-10T14:33:07Z
+    closedAt: 2026-11-10T14:33:07Z
+    mergedAt: 2026-11-10T14:33:07Z
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 143
+    workDeletions: 18
+    workFiles: *a4
+  - title: "fix(repo): permit staging role assignment before app authorization"
+    body: Staging now passes deployment, smoke and synthetic seeding, but live sign-in loops from the Azure callback back to
+      the test provider without creating a session. The generated staging config leaves `/api/auth/roles` under the
+      `/api/*` rule requiring application roles, even though this function assign...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/251
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels: *a5
+    additions: 22
+    deletions: 3
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-11-09T20:19:38Z
+    updatedAt: 2026-11-10T14:33:09Z
+    closedAt: 2026-11-10T14:33:08Z
+    mergedAt: 2026-11-10T14:33:08Z
+    workCommits: *a6
+    workTimestamps: *a7
+    workAdditions: 22
+    workDeletions: 3
+    workFiles: *a8
+  - title: "feat(compass): port North Star workflows and archives"
+    body: >-
+      ## Why
+
+
+      Bring the North Star priorities into Compass to expand advisor workflows while preserving Compass’s existing
+      Microsoft 365 authorization and chat behavior.
+
+
+      ## What changed
+
+
+      - Add Claude model and effort selection, advisor preferences, and scheduled briefs.
+
+      - Generate Word, Excel, and PowerP...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a9
+    additions: 2398
+    deletions: 83
+    changedFiles: 46
+    author: myriadas-clees
+    createdAt: 2026-11-09T18:53:19Z
+    updatedAt: 2026-11-09T19:10:05Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a10
+    workTimestamps: *a11
+    workAdditions: 2398
+    workDeletions: 83
+    workFiles: *a12
+  - title: "fix(northstar): prevent prompt leaks and bound Claude turns"
+    body: |-
+      - Prevent Northstar from revealing or referring to internal prompts and mechanics, and improve direct answers.
+      - Bound Claude turns, keep fallback work within the remaining deadline, and limit streamed snapshot size.
+      - Improve Cosmos-backed reads and saves, add content-free timing metrics, and strea...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/215
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: []
+    additions: 5548
+    deletions: 1622
+    changedFiles: 114
+    author: myriadas-clees
+    createdAt: 2026-11-04T19:13:19Z
+    updatedAt: 2026-11-09T19:24:57Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a43
+        sha: f772543cfaaa799482a8df972586010c69819c37
+        message: "fix(northstar): integrate message threads with bounded Claude turns"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f772543cfaaa799482a8df972586010c69819c37
+        authoredAt: 2026-11-09T19:20:22Z
+    workTimestamps:
+      - 2026-11-09T19:20:22Z
+    workAdditions: 145
+    workDeletions: 16
+    workFiles:
+      - README.md
+      - hub/functions/local.settings.json.example
+      - hub/functions/src/northstar-claude-ask.test.ts
+      - hub/functions/src/northstar-claude-brief.ts
+  - title: "feat(northstar): add Anthropic message threads"
+    body: >-
+      - Use Anthropic message threads across tool rounds in Northstar Claude briefs and Ask, enabled by default with a
+      configuration switch to disable them.
+
+      - Recover from expired or unsupported threads by replaying the conversation or continuing without threads.
+
+      - Document the setting and add coverage fo...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/214
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: []
+    additions: 145
+    deletions: 16
+    changedFiles: 4
+    author: myriadas-clees
+    createdAt: 2026-11-04T15:49:02Z
+    updatedAt: 2026-11-09T19:27:10Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a42
+        sha: cda4e860889d6558d6418d21954803ebe8962218
+        message: "fix(northstar): preserve thread deltas across current Copilot flows"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cda4e860889d6558d6418d21954803ebe8962218
+        authoredAt: 2026-11-09T19:17:05Z
+    workTimestamps:
+      - 2026-11-09T19:17:05Z
+    workAdditions: 6986
+    workDeletions: 1111
+    workFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - bun.lock
+      - hub/functions/package.json
+      - hub/functions/src/index.ts
+      - hub/functions/src/northstar-archive.test.ts
+      - hub/functions/src/northstar-archive.ts
+      - hub/functions/src/northstar-claude-ask.test.ts
+      - hub/functions/src/northstar-claude-brief.test.ts
+      - hub/functions/src/northstar-claude-brief.ts
+      - hub/functions/src/northstar-claude-consultation.test.ts
+      - hub/functions/src/northstar-claude-documents.test.ts
+      - hub/functions/src/northstar-claude-files.ts
+      - hub/functions/src/northstar-consent.fixture.ts
+      - hub/functions/src/northstar-consent.test.ts
+      - hub/functions/src/northstar-consultation-flow.test.ts
+      - hub/functions/src/northstar-consultation-restart.fixture.ts
+      - hub/functions/src/northstar-consultation.test.ts
+      - hub/functions/src/northstar-consultation.ts
+      - hub/functions/src/northstar-conversations.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-copilot.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/functions/src/northstar-outputs.test.ts
+      - hub/functions/src/northstar-outputs.ts
+      - hub/functions/src/northstar-retry-recovery.test.ts
+      - hub/functions/src/northstar-subagent.test.ts
+      - hub/functions/src/northstar-subagent.ts
+      - hub/package.json
+      - northstar/app/globals.css
+      - northstar/components/answer-markdown.test.tsx
+      - northstar/components/answer-markdown.tsx
+      - northstar/components/ask-northstar-workspace.dom.test.tsx
+      - northstar/components/ask-northstar-workspace.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/brief-model-logo.tsx
+      - northstar/components/claude-manage-dialog.tsx
+      - northstar/components/command-cards.dom.test.tsx
+      - northstar/components/command-cards.tsx
+      - northstar/components/command-mark.tsx
+      - northstar/components/generated-files.tsx
+      - northstar/components/northstar-consent.dom.test.ts
+      - northstar/components/northstar-consent.fixture.tsx
+      - northstar/components/northstar-dashboard-instructions.dom.test.ts
+      - northstar/components/northstar-dashboard-instructions.fixture.tsx
+      - northstar/components/northstar-dashboard-lifecycle.fixture.ts
+      - northstar/components/northstar-dashboard-lifecycle.test.ts
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/northstar-dom-globals.ts
+      - northstar/components/northstar-recovery.dom.test.ts
+      - northstar/components/northstar-recovery.fixture.tsx
+      - northstar/components/northstar-retention.fixture.tsx
+      - northstar/components/settings-workspace.dom.test.tsx
+      - northstar/components/settings-workspace.tsx
+      - northstar/components/streaming-markdown.tsx
+      - northstar/components/todo-destination.tsx
+      - northstar/lib/ask-stream.test.ts
+      - northstar/lib/ask-stream.ts
+      - northstar/lib/ask-turns.test.ts
+      - northstar/lib/ask-turns.ts
+      - northstar/lib/at-commands.test.ts
+      - northstar/lib/at-commands.ts
+      - northstar/lib/draft-fences.ts
+      - northstar/lib/files-model.test.ts
+      - northstar/lib/files-model.ts
+      - northstar/lib/microsoft-reauth.test.ts
+      - northstar/lib/microsoft-reauth.ts
+      - northstar/lib/progress-phase.test.ts
+      - northstar/lib/progress-phase.ts
+      - northstar/lib/settings-deeplink.test.ts
+      - northstar/lib/settings-deeplink.ts
+      - northstar/lib/settings-preferences.test.ts
+      - northstar/lib/settings-preferences.ts
+      - northstar/lib/todo-tasks.test.ts
+      - northstar/lib/todo-tasks.ts
+      - northstar/package.json
+      - ofac/package.json
+      - package.json
+      - packages/auth/package.json
+      - packages/contracts/package.json
+      - packages/contracts/src/northstar-consultation.ts
+      - packages/contracts/src/northstar-drafts.ts
+      - packages/ui/package.json
+      - pricing/package.json
+  - title: "fix(northstar): stream Copilot startup and lookup activity"
+    body: >-
+      - Stream Copilot startup and lookup progress into the Northstar workspace, including partial results while a
+      lookup is running.
+
+      - Update Copilot chat handling and consultation tests for streamed responses.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/220
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: []
+    additions: 423
+    deletions: 97
+    changedFiles: 15
+    author: myriadas-clees
+    createdAt: 2026-11-05T14:46:59Z
+    updatedAt: 2026-11-09T19:57:11Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a44
+        sha: 60e3cde98685a86496c9f3159270a7cd6473444a
+        message: "fix(northstar): integrate startup activity with thread safety"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/60e3cde98685a86496c9f3159270a7cd6473444a
+        authoredAt: 2026-11-09T19:33:57Z
+      - &a45
+        sha: 026f20a8cd80f5f875952bb40bda4f5bc3b62829
+        message: "fix(northstar): keep transient Copilot updates out of recovery state"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/026f20a8cd80f5f875952bb40bda4f5bc3b62829
+        authoredAt: 2026-11-09T19:47:43Z
+      - &a46
+        sha: 52d014b888cc142ca9eda91ef3326b059b422300
+        message: "fix(northstar): tolerate transient Copilot delivery failures"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/52d014b888cc142ca9eda91ef3326b059b422300
+        authoredAt: 2026-11-09T19:55:28Z
+    workTimestamps:
+      - 2026-11-09T19:33:57Z
+      - 2026-11-09T19:47:43Z
+      - 2026-11-09T19:55:28Z
+    workAdditions: 5756
+    workDeletions: 1645
+    workFiles:
+      - .dockerignore
+      - Dockerfile
+      - README.md
+      - bun.lock
+      - docs/advisor-pricing-architecture.md
+      - hub/components/hub-launcher.fixture.tsx
+      - hub/components/hub-launcher.tsx
+      - hub/functions/local.settings.json.example
+      - hub/functions/src/northstar-archive.test.ts
+      - hub/functions/src/northstar-archive.ts
+      - hub/functions/src/northstar-claude-ask.test.ts
+      - hub/functions/src/northstar-claude-brief.test.ts
+      - hub/functions/src/northstar-claude-brief.ts
+      - hub/functions/src/northstar-claude-consultation.test.ts
+      - hub/functions/src/northstar-conversations.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/functions/src/northstar-scheduled-brief.test.ts
+      - hub/functions/src/northstar-scheduled-brief.ts
+      - northstar/LOCAL-BENCHMARK.md
+      - northstar/components/answer-markdown.test.tsx
+      - northstar/components/answer-markdown.tsx
+      - northstar/components/answer-star.tsx
+      - northstar/components/ask-northstar-workspace.dom.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/command-cards.dom.test.tsx
+      - northstar/components/deferred-workspace.test.tsx
+      - northstar/components/deferred-workspace.tsx
+      - northstar/components/northstar-dashboard-instructions.fixture.tsx
+      - northstar/components/northstar-dashboard-lifecycle.fixture.ts
+      - northstar/components/northstar-dashboard-lifecycle.test.ts
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/northstar-recovery.fixture.tsx
+      - northstar/components/northstar-retention.fixture.tsx
+      - northstar/components/northstar-stability.fixture.tsx
+      - northstar/components/streaming-markdown.tsx
+      - northstar/lib/ask-stream.test.ts
+      - northstar/lib/ask-stream.ts
+      - northstar/lib/background-briefs.ts
+      - northstar/lib/chat-history.test.ts
+      - northstar/lib/chat-history.ts
+      - northstar/lib/command-cards.ts
+      - northstar/lib/mail-priority.ts
+      - northstar/lib/northstar-context.test.ts
+      - northstar/lib/northstar-context.ts
+      - northstar/lib/northstar-policy.ts
+      - northstar/lib/typing-reveal.test.ts
+      - northstar/lib/typing-reveal.ts
+      - northstar/test/deferred-workspace.fixture.tsx
+      - northstar/test/wait-for-deferred-workspace.ts
+      - ofac/functions/OPERATIONS.md
+      - ofac/functions/config/cosmos-indexing.json
+      - ofac/functions/src/ofac-repository.test.ts
+      - ofac/functions/src/ofac-repository.ts
+      - ofac/src/lib/__tests__/screening-provider.test.ts
+      - ofac/src/lib/__tests__/sync-runner.test.ts
+      - ofac/src/lib/screening-provider.ts
+      - ofac/src/lib/sync-runner.ts
+      - packages/db/src/ofac.test.ts
+      - packages/db/src/ofac.ts
+      - packages/ui/src/index.ts
+      - packages/ui/src/modal.tsx
+      - pricing/functions/src/index.ts
+      - pricing/package.json
+      - pricing/src/app/globals.css
+      - pricing/src/app/page.tsx
+      - pricing/src/app/recruits/detail/page.tsx
+      - pricing/src/app/recruits/model/page.tsx
+      - pricing/src/app/recruits/new/page.tsx
+      - pricing/src/app/recruits/page.tsx
+      - pricing/src/app/settings/page.tsx
+      - pricing/src/components/__tests__/dashboard-metrics-charts.test.tsx
+      - pricing/src/components/__tests__/pricing-page-clients.test.tsx
+      - pricing/src/components/__tests__/recruit-report-readiness.test.tsx
+      - pricing/src/components/__tests__/recruits-table-responsive-css.test.ts
+      - pricing/src/components/__tests__/recruits-table.test.tsx
+      - pricing/src/components/__tests__/scenario-memoization.test.tsx
+      - pricing/src/components/dashboard-metrics-charts.tsx
+      - pricing/src/components/dashboard-page-client.tsx
+      - pricing/src/components/generate-report-form.tsx
+      - pricing/src/components/new-recruit-page-client.tsx
+      - pricing/src/components/percent-slider.tsx
+      - pricing/src/components/pricing-settings-page-client.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/components/pricing-workstation-client.tsx
+      - pricing/src/components/recruit-detail-page-client.tsx
+      - pricing/src/components/recruit-detail-scenario-skeleton.tsx
+      - pricing/src/components/recruit-detail-scenario-view.tsx
+      - pricing/src/components/recruit-model-page-client.tsx
+      - pricing/src/components/recruit-model-shell.tsx
+      - pricing/src/components/recruit-page-model.ts
+      - pricing/src/components/recruits-page-client.tsx
+      - pricing/src/components/recruits-table.tsx
+      - pricing/src/components/scenario-brief-grid.tsx
+      - pricing/src/components/scenario-model-tab.tsx
+      - pricing/src/components/workstation-report-table.tsx
+      - pricing/src/lib/__tests__/cosmos-data.test.ts
+      - pricing/src/lib/__tests__/dashboard-summary.test.ts
+      - pricing/src/lib/__tests__/pricing-api-client.test.ts
+      - pricing/src/lib/__tests__/pricing-api-commands.test.ts
+      - pricing/src/lib/__tests__/pricing-backend-routes.test.ts
+      - pricing/src/lib/__tests__/pricing-recruit-delete-route.test.ts
+      - pricing/src/lib/__tests__/pricing-route-dependencies.test.ts
+      - pricing/src/lib/__tests__/pricing-session-client.test.ts
+      - pricing/src/lib/__tests__/workbook-preview.test.ts
+      - pricing/src/lib/cosmos-data.ts
+      - pricing/src/lib/dashboard-summary.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/pricing-api-commands.ts
+      - pricing/src/lib/pricing-session-client.ts
+      - pricing/src/lib/report-storage.ts
+      - pricing/src/lib/report.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/workbook-preview.ts
+      - pricing/src/lib/reports.ts
+      - scripts/dev-pricing-api.ts
+  - title: "feat(compliance): add scaffold and planning draft"
+    body: >-
+      ## Why
+
+
+      Compliance needs an app foundation and an agreed planning draft before implementation can begin.
+
+
+      ## What changed
+
+
+      - Added a Compliance app scaffold with shared navigation, placeholder pages, role mapping, and health and auth
+      endpoints.
+
+      - Documented the proposed product scope, architecture, ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/166
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - documentation
+      - github-automation
+      - "app: hub"
+      - "app: proforma"
+      - platform
+    additions: 978
+    deletions: 44
+    changedFiles: 75
+    author: myriadas-clees
+    createdAt: 2026-10-09T18:52:36Z
+    updatedAt: 2026-11-09T20:14:27Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a27
+        sha: 072155d21637ff4a6da9bb911e9f5a8bc0cc88f6
+        message: Merge origin/main into feat/4c-compliance-scaffold
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/072155d21637ff4a6da9bb911e9f5a8bc0cc88f6
+        authoredAt: 2026-11-09T19:02:19Z
+      - &a28
+        sha: 026dbfc85d0ac043f8f9339d38f4d65a446ef3f4
+        message: "fix(compliance): align company contracts and release packaging"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/026dbfc85d0ac043f8f9339d38f4d65a446ef3f4
+        authoredAt: 2026-11-09T19:07:23Z
+      - &a33
+        sha: 9ed8386fcf88492e102fd0f82798b8f46d58871b
+        message: "fix(e2e): preserve sign-in rewrites and production health probes"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9ed8386fcf88492e102fd0f82798b8f46d58871b
+        authoredAt: 2026-11-09T19:27:21Z
+      - &a34
+        sha: 5f2ef17036a6e576a46cba1ea61bc8693eb5bceb
+        message: "fix(hub): normalize return targets before route checks"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5f2ef17036a6e576a46cba1ea61bc8693eb5bceb
+        authoredAt: 2026-11-09T19:32:08Z
+      - &a36
+        sha: 3a2459e54372671adf958689b83f7539d335b6ff
+        message: Merge origin/main into feat/4c-compliance-scaffold
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3a2459e54372671adf958689b83f7539d335b6ff
+        authoredAt: 2026-11-09T19:47:09Z
+      - &a38
+        sha: 60a896a60be72828011a27a2156e4da83c2e7fef
+        message: "fix(proforma): handle HTML sign-in responses"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/60a896a60be72828011a27a2156e4da83c2e7fef
+        authoredAt: 2026-11-09T19:53:32Z
+    workTimestamps:
+      - 2026-11-09T19:02:19Z
+      - 2026-11-09T19:07:23Z
+      - 2026-11-09T19:27:21Z
+      - 2026-11-09T19:32:08Z
+      - 2026-11-09T19:47:09Z
+      - 2026-11-09T19:53:32Z
+    workAdditions: 54526
+    workDeletions: 6625
+    workFiles:
+      - .dockerignore
+      - .github/CODEOWNERS
+      - .github/ISSUE_TEMPLATE/feature.yml
+      - .github/actions/setup-bun/action.yml
+      - .github/dependabot.yml
+      - .github/deployment-policy.json
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/codeql.yml
+      - .github/workflows/platform-functions.yml
+      - .github/workflows/pr-e2e.yml
+      - .github/workflows/promote-release.yml
+      - .github/workflows/staging-infrastructure.yml
+      - .github/workflows/staging.yml
+      - .github/workflows/verify.yml
+      - .gitignore
+      - PLAN.md
+      - README.md
+      - SECURITY.md
+      - bun.lock
+      - compass/AGENTS.md
+      - compass/README.md
+      - compass/functions/PORT-CONTRACT.md
+      - compass/functions/package.json
+      - compass/functions/src/company-http.test.ts
+      - compass/functions/src/company-isolation.test.ts
+      - compass/functions/src/company-routes.test.ts
+      - compass/functions/src/compass-chat-history.test.ts
+      - compass/functions/src/compass-chat-history.ts
+      - compass/functions/src/compass-conversations.test.ts
+      - compass/functions/src/compass-conversations.ts
+      - compass/functions/src/compass-copilot.test.ts
+      - compass/functions/src/compass-copilot.ts
+      - compass/functions/src/compass-cosmos-recovery.test.ts
+      - compass/functions/src/compass-local-store.test.ts
+      - compass/functions/src/compass-mapping-upgrade.test.ts
+      - compass/functions/src/compass-microsoft-deadline.fixture.ts
+      - compass/functions/src/compass-microsoft.test.ts
+      - compass/functions/src/compass-microsoft.ts
+      - compass/functions/src/compass-stack-port.test.ts
+      - compass/functions/src/compass-todo-progress-api.test.ts
+      - compass/functions/src/compass-todo-progress.test.ts
+      - compass/functions/src/index.ts
+      - compass/functions/tsconfig.json
+      - compass/next-env.d.ts
+      - compass/next.config.ts
+      - compass/package.json
+      - compass/src/app/ask.css
+      - compass/src/app/globals.css
+      - compass/src/app/layout.tsx
+      - compass/src/components/answer-advisor.test.tsx
+      - compass/src/components/answer-advisor.tsx
+      - compass/src/components/answer-chart.dom.test.tsx
+      - compass/src/components/answer-chart.test.tsx
+      - compass/src/components/answer-chart.tsx
+      - compass/src/components/answer-markdown.test.tsx
+      - compass/src/components/answer-markdown.tsx
+      - compass/src/components/answer-openui.test.tsx
+      - compass/src/components/answer-openui.tsx
+      - compass/src/components/answer-relationship-layout.test.ts
+      - compass/src/components/answer-relationship-layout.ts
+      - compass/src/components/answer-visual.test.tsx
+      - compass/src/components/answer-visual.tsx
+      - compass/src/components/ask-compass-workspace.dom.test.tsx
+      - compass/src/components/ask-compass-workspace.test.tsx
+      - compass/src/components/ask-compass-workspace.tsx
+      - compass/src/components/ask/ask-composer.test.ts
+      - compass/src/components/ask/ask-composer.tsx
+      - compass/src/components/ask/at-command-token.tsx
+      - compass/src/components/command-cards.tsx
+      - compass/src/components/command-palette.tsx
+      - compass/src/components/compass-dashboard-lifecycle.fixture.ts
+      - compass/src/components/compass-dashboard.tsx
+      - compass/src/components/compass-provider.tsx
+      - compass/src/components/compass-routes.tsx
+      - compass/src/components/compass-shell.tsx
+      - compass/src/components/compass-stability.dom.test.ts
+      - compass/src/components/compass-stability.fixture.tsx
+      - compass/src/components/microsoft-todo-panel.tsx
+      - compass/src/components/settings-workspace.dom.test.tsx
+      - compass/src/components/settings-workspace.tsx
+      - compass/src/components/streaming-markdown.tsx
+      - compass/src/components/summarize-peek.dom.test.tsx
+      - compass/src/components/summarize-peek.tsx
+      - compass/src/components/today/calendar-layout.test.ts
+      - compass/src/components/today/calendar.tsx
+      - compass/src/components/today/dates.ts
+      - compass/src/components/today/mail-list.tsx
+      - compass/src/components/today/previews.tsx
+      - compass/src/components/today/widget-grid.dom.test.tsx
+      - compass/src/components/today/widget-grid.tsx
+      - compass/src/components/todo-command-card.dom.test.tsx
+      - compass/src/components/ui/layout.tsx
+      - compass/src/components/widget-card.test.tsx
+      - compass/src/components/widget-card.tsx
+      - compass/src/lib/answer-chart.test.ts
+      - compass/src/lib/answer-chart.ts
+      - compass/src/lib/answer-openui-advisor.fixture.ts
+      - compass/src/lib/answer-openui-advisor.test.ts
+      - compass/src/lib/answer-openui-advisor.ts
+      - compass/src/lib/answer-openui-chart.test.ts
+      - compass/src/lib/answer-openui-chart.ts
+      - compass/src/lib/answer-openui-composition.test.ts
+      - compass/src/lib/answer-openui-composition.ts
+      - compass/src/lib/answer-openui-visual.fixture.ts
+      - compass/src/lib/answer-openui-visual.test.ts
+      - compass/src/lib/answer-openui-visual.ts
+      - compass/src/lib/answer-openui.fixture.ts
+      - compass/src/lib/answer-openui.test.ts
+      - compass/src/lib/answer-openui.ts
+      - compass/src/lib/ask-turns.test.ts
+      - compass/src/lib/ask-turns.ts
+      - compass/src/lib/at-commands.test.ts
+      - compass/src/lib/at-commands.ts
+      - compass/src/lib/background-briefs.ts
+      - compass/src/lib/chat-history.test.ts
+      - compass/src/lib/chat-history.ts
+      - compass/src/lib/chat-pdf-text.ts
+      - compass/src/lib/chat-pdf-visual.ts
+      - compass/src/lib/chat-pdf.test.ts
+      - compass/src/lib/chat-pdf.tsx
+      - compass/src/lib/compass-api.test.ts
+      - compass/src/lib/compass-api.ts
+      - compass/src/lib/compass-context.test.ts
+      - compass/src/lib/compass-context.ts
+      - compass/src/lib/draft-fences.test.ts
+      - compass/src/lib/draft-fences.ts
+      - compass/src/lib/mail-priority.test.ts
+      - compass/src/lib/mail-priority.ts
+      - compass/src/lib/microsoft-data-cache.test.ts
+      - compass/src/lib/microsoft-data-cache.ts
+      - compass/src/lib/microsoft-data.test.ts
+      - compass/src/lib/microsoft-data.ts
+      - compass/src/lib/microsoft-reauth.ts
+      - compass/src/lib/openui-disable-devtools.ts
+      - compass/src/lib/progress-phase.ts
+      - compass/src/lib/resolved-mail.ts
+      - compass/src/lib/serial-queue.ts
+      - compass/src/lib/settings-preferences.ts
+      - compass/src/lib/swa-session.ts
+      - compass/src/lib/today-layout.test.ts
+      - compass/src/lib/today-layout.ts
+      - compass/src/lib/todo-create.test.ts
+      - compass/src/lib/todo-create.ts
+      - compass/src/lib/todo-lists.test.ts
+      - compass/src/lib/todo-lists.ts
+      - compass/src/lib/todo-tasks.test.ts
+      - compass/src/lib/todo-tasks.ts
+      - compass/src/lib/typing-reveal.test.ts
+      - compass/src/lib/typing-reveal.ts
+      - compass/src/lib/widgets.test.ts
+      - compass/src/lib/widgets.ts
+      - compass/staticwebapp.config.json
+      - compass/tsconfig.json
+      - compliance/AGENTS.md
+      - compliance/functions/package.json
+      - compliance/functions/src/index.ts
+      - compliance/functions/tsconfig.json
+      - compliance/package.json
+      - compliance/src/app/layout.tsx
+      - compliance/src/components/compliance-shell.tsx
+      - compliance/tsconfig.json
+      - docker/Dockerfile
+      - docker/README.md
+      - docker/compose.yaml
+      - docker/cosmos-init.ts
+      - docker/patch-swa-cli.mjs
+      - docs/authorization-roles.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/platform-cosmos-operations.md
+      - docs/repository-operations.md
+      - docs/staging-and-testing.md
+      - docs/transition/PLAN.md
+      - docs/transition/contracts.md
+      - e2e/README.md
+      - e2e/package.json
+      - e2e/playwright.config.ts
+      - e2e/scripts/env.test.ts
+      - e2e/scripts/routes.test.ts
+      - e2e/scripts/summarize.test.ts
+      - e2e/scripts/summarize.ts
+      - e2e/src/auth.ts
+      - e2e/src/console.ts
+      - e2e/src/env.ts
+      - e2e/src/global-setup.ts
+      - e2e/src/routes.ts
+      - e2e/tests/api.spec.ts
+      - e2e/tests/browser.spec.ts
+      - e2e/tests/regression.spec.ts
+      - e2e/tsconfig.json
+      - e2e/vitest.config.ts
+      - excelerate/AGENTS.md
+      - excelerate/functions/package.json
+      - excelerate/functions/src/index.ts
+      - excelerate/functions/tsconfig.json
+      - excelerate/next.config.ts
+      - excelerate/package.json
+      - excelerate/src/app/layout.tsx
+      - excelerate/src/app/settings/page.tsx
+      - excelerate/src/components/excelerate-client.tsx
+      - excelerate/src/lib/api/azure-functions-adapter.test.ts
+      - excelerate/src/lib/api/azure-functions-adapter.ts
+      - excelerate/src/lib/api/company-isolation.test.ts
+      - excelerate/tsconfig.json
+      - hub/AGENTS.md
+      - hub/app/hub/admin/page.tsx
+      - hub/app/layout.tsx
+      - hub/app/preview/page.tsx
+      - hub/components/HubSettingsPage.tsx
+      - hub/components/admin/AdminPage.tsx
+      - hub/components/admin/CompaniesPanel.tsx
+      - hub/components/admin/CompanyDrawer.tsx
+      - hub/components/admin/DomainChipsInput.tsx
+      - hub/components/admin/TransferComposer.tsx
+      - hub/components/admin/TransferDryRunReport.tsx
+      - hub/components/admin/TransferRunView.test.tsx
+      - hub/components/admin/TransferRunView.tsx
+      - hub/components/admin/TransferRunsList.test.tsx
+      - hub/components/admin/TransferRunsList.tsx
+      - hub/components/admin/TransfersPanel.test.tsx
+      - hub/components/admin/TransfersPanel.tsx
+      - hub/functions/package.json
+      - hub/functions/src/company-admin.ts
+      - hub/functions/src/company-isolation.test.ts
+      - hub/functions/src/company-me.test.ts
+      - hub/functions/src/company-transfer.test.ts
+      - hub/functions/src/index.ts
+      - hub/functions/src/preview-redirects.test.ts
+      - hub/functions/src/preview-redirects.ts
+      - hub/functions/src/roles.test.ts
+      - hub/functions/src/roles.ts
+      - hub/functions/src/test-idp-page.ts
+      - hub/functions/src/test-idp.test.ts
+      - hub/functions/src/test-idp.ts
+      - hub/lib/admin-api.test.ts
+      - hub/lib/admin-api.ts
+      - hub/lib/preview-redirects.test.ts
+      - hub/lib/preview-redirects.ts
+      - hub/lib/return-target.test.ts
+      - hub/lib/return-target.ts
+      - hub/next.config.ts
+      - hub/package.json
+      - hub/staticwebapp.config.json
+      - hub/tsconfig.json
+      - infra/AGENTS.md
+      - infra/azure/README.md
+      - infra/azure/platform/serverless.bicep
+      - infra/azure/staging/README.md
+      - infra/azure/staging/bootstrap.bicep
+      - infra/azure/staging/main.bicep
+      - infra/azure/staging/main.parameters.example.json
+      - infra/azure/staging/main.parameters.json
+      - infra/azure/static-web-apps.bicep
+      - onboarding/AGENTS.md
+      - onboarding/README.md
+      - onboarding/apps/dashboard/.env.example
+      - onboarding/apps/dashboard/app/approvals/page.tsx
+      - onboarding/apps/dashboard/app/blockers/page.tsx
+      - onboarding/apps/dashboard/app/documents/page.tsx
+      - onboarding/apps/dashboard/app/globals.css
+      - onboarding/apps/dashboard/app/layout.tsx
+      - onboarding/apps/dashboard/app/owners/page.tsx
+      - onboarding/apps/dashboard/app/page.tsx
+      - onboarding/apps/dashboard/app/settings/page.test.tsx
+      - onboarding/apps/dashboard/app/settings/page.tsx
+      - onboarding/apps/dashboard/app/tasks/detail/task-detail-client.tsx
+      - onboarding/apps/dashboard/app/tasks/page.tsx
+      - onboarding/apps/dashboard/app/vendors/assessment/page.tsx
+      - onboarding/apps/dashboard/app/vendors/contract/page.tsx
+      - onboarding/apps/dashboard/app/vendors/intake/page.tsx
+      - onboarding/apps/dashboard/app/vendors/page.tsx
+      - onboarding/apps/dashboard/components/client-selector.tsx
+      - onboarding/apps/dashboard/components/client-workspace-empty-state.tsx
+      - onboarding/apps/dashboard/components/create-employee-form.tsx
+      - onboarding/apps/dashboard/components/create-task-button.tsx
+      - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - onboarding/apps/dashboard/components/document-picker.tsx
+      - onboarding/apps/dashboard/components/due-dates-tabs.tsx
+      - onboarding/apps/dashboard/components/employee-selector.tsx
+      - onboarding/apps/dashboard/components/filter-bar.tsx
+      - onboarding/apps/dashboard/components/global-command-search.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/record-activity.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/saved-view-workbench.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/task-record-panel.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/universal-record-panel.tsx
+      - onboarding/apps/dashboard/components/task-board.tsx
+      - onboarding/apps/dashboard/components/task-detail-header.tsx
+      - onboarding/apps/dashboard/components/task-table.tsx
+      - onboarding/apps/dashboard/components/task-view-toggle.tsx
+      - onboarding/apps/dashboard/components/vendor-operations.tsx
+      - onboarding/apps/dashboard/components/vendor-workspace.tsx
+      - onboarding/apps/dashboard/components/vendor-workstreams-empty-state.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-360.navigation.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-360.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.tsx
+      - onboarding/apps/dashboard/components/workflow-overview.tsx
+      - onboarding/apps/dashboard/components/workstream-archive-settings.tsx
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/functions/src/start-date-reconciliation.test.ts
+      - onboarding/apps/dashboard/functions/src/start-date-reconciliation.ts
+      - packages/contracts/src/access.ts
+      - packages/contracts/src/company.test.ts
+      - packages/contracts/src/company.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - scripts/build-hub-release.sh
+      - scripts/smoke-hub.sh
+      - scripts/stage-hub-functions.sh
+      - scripts/swa-environment-config.test.ts
+      - scripts/swa-environment-config.ts
+      - scripts/tooling.test.ts
+  - title: "feat(address-book): add company-scoped CRM"
+    body: >-
+      Adds a company-scoped Address Book CRM for managing households, contacts, accounts, addresses and assigned
+      follow-ups. Record edits and relationship changes enforce server-side access, tenant isolation and record
+      versions.
+
+
+      ## Changes
+
+
+      - Household cards, a contact directory with complete-set alphabe...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - documentation
+      - github-automation
+      - "app: hub"
+      - platform
+    additions: 86485
+    deletions: 20
+    changedFiles: 278
+    author: myriadas-clees
+    createdAt: 2026-11-03T21:04:05Z
+    updatedAt: 2026-11-09T20:24:38Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a13
+        sha: 4832714b87babbe8b6796957ba66381b49a505f5
+        message: "feat(address-book): refine record views and interactions"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4832714b87babbe8b6796957ba66381b49a505f5
+        authoredAt: 2026-11-09T16:04:24Z
+      - &a14
+        sha: fab15a40c270bf42af8f2e807d9a88c4e79fcef3
+        message: merge main into Address Book CRM
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/fab15a40c270bf42af8f2e807d9a88c4e79fcef3
+        authoredAt: 2026-11-09T16:05:18Z
+      - &a15
+        sha: 2491c16b99b9e9cb522891f7c8af6ca2ef0214e7
+        message: "fix(address-book): address remaining CRM review findings"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2491c16b99b9e9cb522891f7c8af6ca2ef0214e7
+        authoredAt: 2026-11-09T16:20:38Z
+      - &a16
+        sha: a9d597139621f9582ef63973f22c2e5145647a0d
+        message: "fix(address-book): persist outreach and guard team drafts"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a9d597139621f9582ef63973f22c2e5145647a0d
+        authoredAt: 2026-11-09T16:26:35Z
+      - &a17
+        sha: 807b4d349d2efad769f5e96ff7178e30cb1b5b1d
+        message: "fix(address-book): align release packaging and team snapshots"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/807b4d349d2efad769f5e96ff7178e30cb1b5b1d
+        authoredAt: 2026-11-09T16:44:29Z
+      - &a18
+        sha: 25cbc4a48be96530efb5615f57cf3cb2bb746bcb
+        message: "fix(address-book): read selected move source directly"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/25cbc4a48be96530efb5615f57cf3cb2bb746bcb
+        authoredAt: 2026-11-09T16:53:05Z
+      - &a19
+        sha: 1a15d1d6fc97e9c5d108eb1357fa40e16171e2fd
+        message: Merge remote-tracking branch 'origin/main' into feat/address-book-crm
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/1a15d1d6fc97e9c5d108eb1357fa40e16171e2fd
+        authoredAt: 2026-11-09T17:15:26Z
+      - &a20
+        sha: 7dd011c107fae7ba278bcffb16a048c1af02d012
+        message: "fix(address-book): keep merged activity newest first"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7dd011c107fae7ba278bcffb16a048c1af02d012
+        authoredAt: 2026-11-09T17:18:39Z
+      - &a21
+        sha: 3d8d660b2cac6e586579f2be313876b8fd36561a
+        message: "fix(address-book): preserve merged history chronology"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3d8d660b2cac6e586579f2be313876b8fd36561a
+        authoredAt: 2026-11-09T17:46:05Z
+      - &a22
+        sha: 327fc57e1485cb9e2a4056a801d761c872483e1c
+        message: "fix(e2e): match health probes to deployed products"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/327fc57e1485cb9e2a4056a801d761c872483e1c
+        authoredAt: 2026-11-09T17:58:17Z
+      - &a23
+        sha: 997df3b54ac57501b70b6af4f87893a10f20f90a
+        message: "fix(e2e): retain health probes for preview builds"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/997df3b54ac57501b70b6af4f87893a10f20f90a
+        authoredAt: 2026-11-09T18:01:49Z
+      - &a24
+        sha: 3e8f47fe955e6c01b36dc071cb7be97c4b25768c
+        message: "test(address-book): tolerate compact currency ICU differences"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3e8f47fe955e6c01b36dc071cb7be97c4b25768c
+        authoredAt: 2026-11-09T18:09:12Z
+      - &a30
+        sha: 4bc85b5f8420bd3ea5d7e791b7e2ff28ca0f3c4c
+        message: "fix(address-book): finish review guards and action icons"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4bc85b5f8420bd3ea5d7e791b7e2ff28ca0f3c4c
+        authoredAt: 2026-11-09T19:16:32Z
+      - &a32
+        sha: 4c0ccd9001ec25fad90a0126a636b6cde29efc64
+        message: "fix(address-book): protect nested task editor drafts"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4c0ccd9001ec25fad90a0126a636b6cde29efc64
+        authoredAt: 2026-11-09T19:26:23Z
+      - &a35
+        sha: c0beb7d0fa3c95b2e9c53631e15f4d5b3e2c94af
+        message: "fix(review): ship design catalogs and clarify approved motion"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c0beb7d0fa3c95b2e9c53631e15f4d5b3e2c94af
+        authoredAt: 2026-11-09T19:37:00Z
+      - &a37
+        sha: cfbfdf72365aaf7252256fca0440fe8e829aa5a0
+        message: "fix(address-book): match dependency loading and result widths"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/cfbfdf72365aaf7252256fca0440fe8e829aa5a0
+        authoredAt: 2026-11-09T19:50:57Z
+      - &a39
+        sha: df317134e0c28f2de47fc54696bfb210e325bf3e
+        message: Merge main into feat/address-book-crm
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/df317134e0c28f2de47fc54696bfb210e325bf3e
+        authoredAt: 2026-11-09T20:06:40Z
+    workTimestamps:
+      - 2026-11-09T16:04:24Z
+      - 2026-11-09T16:05:18Z
+      - 2026-11-09T16:20:38Z
+      - 2026-11-09T16:26:35Z
+      - 2026-11-09T16:44:29Z
+      - 2026-11-09T16:53:05Z
+      - 2026-11-09T17:15:26Z
+      - 2026-11-09T17:18:39Z
+      - 2026-11-09T17:46:05Z
+      - 2026-11-09T17:58:17Z
+      - 2026-11-09T18:01:49Z
+      - 2026-11-09T18:09:12Z
+      - 2026-11-09T19:16:32Z
+      - 2026-11-09T19:26:23Z
+      - 2026-11-09T19:37:00Z
+      - 2026-11-09T19:50:57Z
+      - 2026-11-09T20:06:40Z
+    workAdditions: 67186
+    workDeletions: 2383
+    workFiles:
+      - .agents/skills/ui-ux-pro-max/SKILL.md
+      - .agents/skills/ui-ux-pro-max/data/app-interface.csv
+      - .agents/skills/ui-ux-pro-max/data/catalog-summary.json
+      - .agents/skills/ui-ux-pro-max/data/charts.csv
+      - .agents/skills/ui-ux-pro-max/data/colors.csv
+      - .agents/skills/ui-ux-pro-max/data/data-provenance.json
+      - .agents/skills/ui-ux-pro-max/data/google-font-licenses.json
+      - .agents/skills/ui-ux-pro-max/data/google-fonts.csv
+      - .agents/skills/ui-ux-pro-max/data/icons.csv
+      - .agents/skills/ui-ux-pro-max/data/landing.csv
+      - .agents/skills/ui-ux-pro-max/data/motion.csv
+      - .agents/skills/ui-ux-pro-max/data/phosphor-icons-upstream.json
+      - .agents/skills/ui-ux-pro-max/data/products.csv
+      - .agents/skills/ui-ux-pro-max/data/react-performance.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/angular.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/astro.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/avalonia.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/flutter.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/html-tailwind.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/javafx.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/jetpack-compose.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/laravel.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/nextjs.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/nuxt-ui.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/nuxtjs.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/react-native.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/react.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/shadcn.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/svelte.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/swiftui.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/threejs.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/uno.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/uwp.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/vue.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/winui.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/wpf.csv
+      - .agents/skills/ui-ux-pro-max/data/styles.csv
+      - .agents/skills/ui-ux-pro-max/data/typography.csv
+      - .agents/skills/ui-ux-pro-max/data/ui-reasoning.csv
+      - .agents/skills/ui-ux-pro-max/data/ux-guidelines.csv
+      - .agents/skills/ui-ux-pro-max/scripts/__pycache__/core.cpython-314.pyc
+      - .agents/skills/ui-ux-pro-max/scripts/__pycache__/design_system.cpython-314.pyc
+      - .agents/skills/ui-ux-pro-max/scripts/__pycache__/reasoning_contract.cpython-314.pyc
+      - .agents/skills/ui-ux-pro-max/scripts/design_system.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_catalog_refresh.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_catalog_summary_line_endings.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_relevance_evaluator.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_skill_script_paths.py
+      - .dockerignore
+      - .github/CODEOWNERS
+      - .github/ISSUE_TEMPLATE/feature.yml
+      - .github/deployment-policy.json
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/pr-e2e.yml
+      - .github/workflows/promote-release.yml
+      - .github/workflows/staging-infrastructure.yml
+      - .github/workflows/staging.yml
+      - .github/workflows/verify.yml
+      - .gitignore
+      - PLAN.md
+      - README.md
+      - SECURITY.md
+      - address-book/DESIGN.md
+      - address-book/package.json
+      - address-book/src/app/settings/import/page.tsx
+      - address-book/src/components/account-views.css
+      - address-book/src/components/account-views.tsx
+      - address-book/src/components/accounts.tsx
+      - address-book/src/components/address-book-shell.tsx
+      - address-book/src/components/checklist-action.tsx
+      - address-book/src/components/contact-addresses.tsx
+      - address-book/src/components/contact-views.css
+      - address-book/src/components/contact-views.tsx
+      - address-book/src/components/contact-workflows.tsx
+      - address-book/src/components/contacts.tsx
+      - address-book/src/components/crm-settings.tsx
+      - address-book/src/components/csv-import-review.tsx
+      - address-book/src/components/csv-import.tsx
+      - address-book/src/components/editors.tsx
+      - address-book/src/components/feedback.tsx
+      - address-book/src/components/home.tsx
+      - address-book/src/components/household-views.css
+      - address-book/src/components/household-views.tsx
+      - address-book/src/components/households.tsx
+      - address-book/src/components/inbox.tsx
+      - address-book/src/components/list-page.tsx
+      - address-book/src/components/motion.css
+      - address-book/src/components/outreach-context.tsx
+      - address-book/src/components/record-parts.tsx
+      - address-book/src/components/record-tasks.tsx
+      - address-book/src/components/record-views.css
+      - address-book/src/components/task-board.tsx
+      - address-book/src/components/task-calendar.tsx
+      - address-book/src/components/task-checklist.tsx
+      - address-book/src/components/task-drawer.tsx
+      - address-book/src/components/task-extras.tsx
+      - address-book/src/components/task-parts.tsx
+      - address-book/src/components/tasks.tsx
+      - address-book/src/components/timeline.tsx
+      - address-book/src/components/ui/action-button.tsx
+      - address-book/src/components/ui/discard-dialog.tsx
+      - address-book/src/components/ui/disclosure.tsx
+      - address-book/src/components/ui/fields.tsx
+      - address-book/src/components/ui/index-rail.tsx
+      - address-book/src/components/ui/layout.tsx
+      - address-book/src/components/ui/list-pager.tsx
+      - address-book/src/components/ui/motion.tsx
+      - address-book/src/components/ui/result-stage.tsx
+      - address-book/src/components/ui/skeleton.tsx
+      - address-book/src/components/ui/undo-toast.tsx
+      - address-book/src/lib/account-views.ts
+      - address-book/src/lib/api-client.ts
+      - address-book/src/lib/contact-views.ts
+      - address-book/src/lib/contracts.ts
+      - address-book/src/lib/household-views.ts
+      - address-book/src/lib/links.ts
+      - address-book/src/lib/motion.ts
+      - address-book/src/lib/name-index.ts
+      - address-book/src/lib/paged-state.ts
+      - address-book/src/lib/record-views.ts
+      - address-book/src/lib/remembered.ts
+      - address-book/src/lib/server/handlers.ts
+      - address-book/src/lib/server/repository.ts
+      - address-book/src/lib/use-paged-list.ts
+      - address-book/tests/server/crm-workflows.test.ts
+      - address-book/tests/server/list-query.test.ts
+      - address-book/tests/ui/account-views.test.ts
+      - address-book/tests/ui/api-client.test.ts
+      - address-book/tests/ui/contact-views.test.ts
+      - address-book/tests/ui/household-views.test.ts
+      - address-book/tests/ui/motion.test.ts
+      - address-book/tests/ui/name-index.test.ts
+      - address-book/tests/ui/paged-state.test.ts
+      - address-book/tests/ui/record-views.test.ts
+      - address-book/tests/ui/review-fixes.test.ts
+      - address-book/tests/ui/ux-logic.test.ts
+      - address-book/tests/ui/workflows.test.ts
+      - bun.lock
+      - docker/Dockerfile
+      - docker/README.md
+      - docker/compose.yaml
+      - docker/cosmos-init.ts
+      - docs/authorization-roles.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - docs/staging-and-testing.md
+      - docs/transition/contracts.md
+      - e2e/README.md
+      - e2e/package.json
+      - e2e/playwright.config.ts
+      - e2e/scripts/env.test.ts
+      - e2e/scripts/routes.test.ts
+      - e2e/scripts/summarize.test.ts
+      - e2e/scripts/summarize.ts
+      - e2e/src/auth.ts
+      - e2e/src/console.ts
+      - e2e/src/env.ts
+      - e2e/src/global-setup.ts
+      - e2e/src/routes.ts
+      - e2e/tests/api.spec.ts
+      - e2e/tests/browser.spec.ts
+      - e2e/tests/regression.spec.ts
+      - e2e/tsconfig.json
+      - e2e/vitest.config.ts
+      - hub/app/preview/page.tsx
+      - hub/functions/src/index.ts
+      - hub/functions/src/preview-redirects.test.ts
+      - hub/functions/src/preview-redirects.ts
+      - hub/functions/src/roles.test.ts
+      - hub/functions/src/roles.ts
+      - hub/functions/src/test-idp-page.ts
+      - hub/functions/src/test-idp.test.ts
+      - hub/functions/src/test-idp.ts
+      - hub/lib/preview-redirects.test.ts
+      - hub/lib/preview-redirects.ts
+      - hub/package.json
+      - hub/staticwebapp.config.json
+      - hub/tsconfig.json
+      - infra/AGENTS.md
+      - infra/azure/README.md
+      - infra/azure/staging/README.md
+      - infra/azure/staging/bootstrap.bicep
+      - infra/azure/staging/main.bicep
+      - infra/azure/staging/main.parameters.example.json
+      - infra/azure/staging/main.parameters.json
+      - package.json
+      - packages/auth/src/index.ts
+      - packages/auth/src/test-identities.ts
+      - proforma/src/lib/__tests__/scoped-e2e-parity.test.ts
+      - scripts/affected-apps.ts
+      - scripts/app-registry.ts
+      - scripts/app-selection.ts
+      - scripts/artifact-cache.ts
+      - scripts/artifact-fingerprints.ts
+      - scripts/authorize-deployment.ts
+      - scripts/build-hub-release.sh
+      - scripts/build-unified-swa.ts
+      - scripts/company-matrix.test.ts
+      - scripts/deployment-safety.test.ts
+      - scripts/github/configure-repository.test.ts
+      - scripts/github/configure-repository.ts
+      - scripts/github/main-policy.test.ts
+      - scripts/main-policy.ts
+      - scripts/package-hub-release.sh
+      - scripts/pdf-font-artifacts.test.ts
+      - scripts/rebuild-production-baseline.sh
+      - scripts/recover-hub-release.sh
+      - scripts/smoke-hub.sh
+      - scripts/stage-hub-functions.sh
+      - scripts/staging-azure.test.ts
+      - scripts/staging-azure.ts
+      - scripts/staging-runtime.sh
+      - scripts/staging-runtime.test.ts
+      - scripts/swa-environment-config.test.ts
+      - scripts/swa-environment-config.ts
+      - scripts/synthetic-data.test.ts
+      - scripts/synthetic-data.ts
+      - scripts/synthetic-data/pto.ts
+      - scripts/synthetic-data/safety.ts
+      - scripts/synthetic-data/valuation.ts
+      - scripts/tooling.test.ts
+      - scripts/typecheck-ci.ts
+      - scripts/validate-artifacts.ts
+      - scripts/validate-bicep.sh
+      - transition/README.md
+      - transition/src/app/globals.css
+      - transition/src/components/transition-shell.tsx
+      - transition/src/lib/data.ts
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "feat(address-book): refine record views and interactions"
+      - merge main into Address Book CRM
+      - "fix(address-book): address remaining CRM review findings"
+      - "fix(address-book): persist outreach and guard team drafts"
+      - "fix(address-book): align release packaging and team snapshots"
+      - "fix(repo): stop automatic human review requests (#248)"
+      - "fix(address-book): read selected move source directly"
+      - Merge remote-tracking branch 'origin/main' into feat/address-book-crm
+      - "fix(address-book): keep merged activity newest first"
+      - "fix(address-book): preserve merged history chronology"
+      - "fix(e2e): match health probes to deployed products"
+      - "fix(e2e): retain health probes for preview builds"
+      - "test(address-book): tolerate compact currency ICU differences"
+      - "feat(compass): add Claude workflows and durable archives"
+      - "fix(repo): remove staging auth discovery dependency and bound smoke retries"
+      - Merge origin/main into feat/4c-compliance-scaffold
+      - "fix(compliance): align company contracts and release packaging"
+      - "fix(repo): retry transient refused smoke connections within bounds"
+      - "fix(address-book): finish review guards and action icons"
+      - "test(repo): cover fail-fast invalid smoke health responses"
+      - "fix(address-book): protect nested task editor drafts"
+      - "fix(e2e): preserve sign-in rewrites and production health probes"
+      - "fix(hub): normalize return targets before route checks"
+      - "fix(review): ship design catalogs and clarify approved motion"
+      - "fix(repo): remove staging auth discovery dependency and bound smoke retries (#250)"
+      - Merge origin/main into feat/4c-compliance-scaffold
+      - "fix(address-book): match dependency loading and result widths"
+      - "fix(proforma): handle HTML sign-in responses"
+      - Merge main into feat/address-book-crm
+      - "fix(repo): permit staging role assignment before app authorization"
+      - "ci(repo): run Docker E2E only for relevant changes"
+    commits:
+      - *a13
+      - *a14
+      - *a15
+      - *a16
+      - *a17
+      - sha: d829b6df246cfbfcf1641b7b0da9bb72df63226e
+        message: "fix(repo): stop automatic human review requests (#248)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d829b6df246cfbfcf1641b7b0da9bb72df63226e
+        authoredAt: 2026-11-09T16:49:05Z
+        additions: 34
+        deletions: 27
+        filesChanged: 5
+      - *a18
+      - *a19
+      - *a20
+      - *a21
+      - *a22
+      - *a23
+      - *a24
+      - *a25
+      - *a26
+      - *a27
+      - *a28
+      - *a29
+      - *a30
+      - *a31
+      - *a32
+      - *a33
+      - *a34
+      - *a35
+      - sha: 8cb0eee56afa456f2c2b08cf2065fdb94a9062a8
+        message: "fix(repo): remove staging auth discovery dependency and bound smoke retries (#250)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8cb0eee56afa456f2c2b08cf2065fdb94a9062a8
+        authoredAt: 2026-11-09T19:42:08Z
+        additions: 144
+        deletions: 41
+        filesChanged: 4
+      - *a36
+      - *a37
+      - *a38
+      - *a39
+      - *a40
+      - *a41
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "fix(northstar): preserve thread deltas across current Copilot flows"
+      - "fix(northstar): integrate message threads with bounded Claude turns"
+      - "fix(northstar): integrate startup activity with thread safety"
+      - "fix(northstar): keep transient Copilot updates out of recovery state"
+      - "fix(northstar): tolerate transient Copilot delivery failures"
+    commits:
+      - *a42
+      - *a43
+      - *a44
+      - *a45
+      - *a46
+releases: []
+externalContributions: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 214
+    prTitle: "feat(northstar): add Anthropic message threads"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/214
+    state: commented
+    submittedAt: 2026-11-09T19:17:50Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T16:19:12Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T16:19:15Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T16:19:17Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T16:27:20Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T16:27:23Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T16:29:07Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T16:29:09Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T16:29:12Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T16:29:14Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T16:29:17Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T16:29:19Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T16:29:21Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T16:29:23Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T16:29:25Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T16:29:27Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T16:29:30Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T16:29:32Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T16:29:34Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T16:29:37Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T16:29:39Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T16:29:41Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T16:29:44Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T16:45:15Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T17:20:53Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T17:20:56Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T17:50:10Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T18:09:45Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T19:17:46Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T19:17:54Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T19:18:02Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T19:18:16Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T19:18:24Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T19:18:33Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T19:27:00Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T19:38:09Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T19:38:17Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-09T19:51:26Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 214
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/214
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/214#discussion_r4516906592
+    body: "[from Codex]: Fixed in cda4e860. Continuation deltas omit the assistant response already stored by the thread;
+      full-history replay and empty pause continuations are preserved. The regression covers both Claude loops. Focused
+      Ask/brief tests and Functions typecheck passed; the full Functions suite's ..."
+    path: hub/functions/src/northstar-claude-brief.ts
+    createdAt: 2026-11-09T19:17:50Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4515055896
+    body: "[from Codex]: Registered the deferred task-type draft with the unsaved-change guard and suppressed
+      Escape-triggered blur saving in 4832714b. The synthetic browser check confirmed that Escape opens the discard
+      prompt and both Escape and Discard send zero PUT requests."
+    path: address-book/src/components/task-extras.tsx
+    createdAt: 2026-11-09T16:19:12Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4515056415
+    body: "[from Codex]: Replaced the address-source, merge-field, notes-policy and household-movement native selectors with
+      the existing themed SelectField in 4832714b. Desktop dropdown screenshots and the phone record views were reviewed
+      and approved."
+    path: address-book/src/components/contact-addresses.tsx
+    createdAt: 2026-11-09T16:19:14Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4515056866
+    body: "[from Codex]: Replaced text-only related-record and task-panel loading states with RowsSkeleton in 4832714b.
+      Captured the real delayed-request loading state and obtained screenshot approval."
+    path: address-book/src/components/record-parts.tsx
+    createdAt: 2026-11-09T16:19:17Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4515147766
+    body: "[from Codex]: Saved outreach notes unconditionally before calling the optional onLogged callback in a9d59713. The
+      synthetic task-drawer browser test verified that both call and email notes persist without that callback; no
+      external communication was initiated."
+    path: address-book/src/components/outreach-context.tsx
+    createdAt: 2026-11-09T16:27:20Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4515148264
+    body: "[from Codex]: Registered team-directory drafts against the last loaded/saved baseline in a9d59713. Browser tests
+      with a synthetic administrator verified add, edit and removal warnings, Keep editing, Discard, and clearing the
+      warning after Save team."
+    path: address-book/src/components/crm-settings.tsx
+    createdAt: 2026-11-09T16:27:23Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4515168225
+    body: "[from Codex]: Fixed in 2491c16b. Updated the status to implemented for local SQLite while preserving the
+      production-storage and infrastructure restrictions. Address Book checks, repository verification and the isolated
+      serverless build pass."
+    path: address-book/DESIGN.md
+    createdAt: 2026-11-09T16:29:07Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4515168695
+    body: "[from Codex]: Fixed in 2491c16b. Address-mode conflicts now reload the contact, preserve the dialog draft and
+      surface the existing conflict message before retry. Address Book checks, repository verification and the isolated
+      serverless build pass."
+    path: address-book/src/components/contacts.tsx
+    createdAt: 2026-11-09T16:29:09Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4515169172
+    body: "[from Codex]: Fixed in 2491c16b. Data-request 401s notify auth listeners before parsing; empty and HTML 401
+      bodies keep the unauthenticated classification. Two regression cases pass. Address Book checks, repository
+      verification and the isolated serverless build pass."
+    path: address-book/src/lib/api-client.ts
+    createdAt: 2026-11-09T16:29:11Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4515169754
+    body: "[from Codex]: Fixed in 2491c16b. Marked Address Book preview-only while production storage remains pending. The
+      registry test verifies it is included in previews and excluded from production selection. Address Book checks,
+      repository verification and the isolated serverless build pass."
+    path: scripts/app-registry.ts
+    createdAt: 2026-11-09T16:29:14Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4515170129
+    body: "[from Codex]: Fixed in 2491c16b. Generated Master/page override guidance now uses paths relative to the generated
+      file. Regression coverage verifies both references. Address Book checks, repository verification and the isolated
+      serverless build pass."
+    path: .agents/skills/ui-ux-pro-max/scripts/design_system.py
+    createdAt: 2026-11-09T16:29:16Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4515170549
+    body: "[from Codex]: Fixed in 2491c16b. Generated input focus styling now retains a visible outline using the validated
+      ring color. The regression test verifies that the near-transparent primary ring and outline removal are absent.
+      Address Book checks, repository verification and the isolated serverless bu..."
+    path: .agents/skills/ui-ux-pro-max/scripts/design_system.py
+    createdAt: 2026-11-09T16:29:19Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4515170979
+    body: "[from Codex]: Fixed in 2491c16b. The four upstream-only modules explicitly skip when their unshipped tools or
+      fixtures are absent. Skill discovery passes 156 tests with four documented skips. Address Book checks, repository
+      verification and the isolated serverless build pass."
+    path: .agents/skills/ui-ux-pro-max/scripts/tests/test_catalog_refresh.py
+    createdAt: 2026-11-09T16:29:21Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4515171429
+    body: "[from Codex]: Fixed in 2491c16b. All search commands now use the vendored repository path and explicitly require
+      the repository root. The documented search command was executed successfully. Address Book checks, repository
+      verification and the isolated serverless build pass."
+    path: .agents/skills/ui-ux-pro-max/SKILL.md
+    createdAt: 2026-11-09T16:29:23Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4515171883
+    body: "[from Codex]: Fixed in 2491c16b. The post-link contact read now falls back to the already-created contact on
+      failure, so the dialog completes instead of retrying creation. Address Book checks, repository verification and
+      the isolated serverless build pass."
+    path: address-book/src/components/contacts.tsx
+    createdAt: 2026-11-09T16:29:25Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4515172296
+    body: "[from Codex]: Fixed in 2491c16b. Wrapped the import page in Suspense using the existing row skeleton. Full
+      serverless static export and artifact validation pass. Address Book checks, repository verification and the
+      isolated serverless build pass."
+    path: address-book/src/components/csv-import.tsx
+    createdAt: 2026-11-09T16:29:27Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4515172620
+    body: "[from Codex]: Fixed in 2491c16b. Enter in the dependency input prevents implicit form submission and calls the
+      same search handler as Find tasks. The browser check confirms no task PUT is sent. Address Book checks, repository
+      verification and the isolated serverless build pass."
+    path: address-book/src/components/editors.tsx
+    createdAt: 2026-11-09T16:29:30Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4515173110
+    body: "[from Codex]: Fixed in 2491c16b. Separated filter/retry identity from refresh identity, retaining the calendar
+      grid during save refreshes while hiding stale filter results. The delayed-refresh browser check passes. Address
+      Book checks, repository verification and the isolated serverless build pass."
+    path: address-book/src/components/task-calendar.tsx
+    createdAt: 2026-11-09T16:29:32Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4515173533
+    body: "[from Codex]: Fixed in 2491c16b. Alt+Arrow applies edited checklist text and the move in one change. The browser
+      verified text/action retention and committing text at a move boundary. Address Book checks, repository
+      verification and the isolated serverless build pass."
+    path: address-book/src/components/task-checklist.tsx
+    createdAt: 2026-11-09T16:29:34Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4515174058
+    body: "[from Codex]: Fixed in 2491c16b. Selecting Other resets the deferred text to the selected value. The browser
+      verified an old known type is not restored by blur. Address Book checks, repository verification and the isolated
+      serverless build pass."
+    path: address-book/src/components/task-extras.tsx
+    createdAt: 2026-11-09T16:29:37Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4515174488
+    body: "[from Codex]: Fixed in 2491c16b. Due and start dates share a local draft input that commits on blur or Enter and
+      reverts on Escape. Browser checks verify no write while typing and no write on Escape. Address Book checks,
+      repository verification and the isolated serverless build pass."
+    path: address-book/src/components/task-parts.tsx
+    createdAt: 2026-11-09T16:29:39Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4515174978
+    body: "[from Codex]: Fixed in 2491c16b. Board moves and their Undo adopt the returned task before later edits use the
+      save queue, preserving the existing refresh/Undo behavior. Address Book checks, repository verification and the
+      isolated serverless build pass."
+    path: address-book/src/components/tasks.tsx
+    createdAt: 2026-11-09T16:29:41Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4515175399
+    body: "[from Codex]: Fixed in 2491c16b. Remembered task filters now retain Unassigned with the matching return type. The
+      round-trip restoration regression passes. Address Book checks, repository verification and the isolated serverless
+      build pass."
+    path: address-book/src/lib/remembered.ts
+    createdAt: 2026-11-09T16:29:44Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4515343087
+    body: "[from Codex]: Fixed in 807b4d34. Team members and version now come from one SQLite read transaction. Saves return
+      their committed snapshot from the write transaction instead of performing a later read. Regression tests
+      interleave a second connection before the GET response and confirm that a stale s..."
+    path: address-book/src/lib/server/handlers.ts
+    createdAt: 2026-11-09T16:45:15Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4515716308
+    body: "[from Codex]: Not reproduced on the latest branch. The existing OutreachProvider key={task.id} already remounts
+      the entire task-specific subtree. I exercised the exact path with synthetic tasks: type an activity on A, follow
+      its Blocked by link, confirm Discard, then inspect B. B has an empty draft,..."
+    path: address-book/src/components/task-drawer.tsx
+    createdAt: 2026-11-09T17:20:53Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4515716760
+    body: "[from Codex]: Fixed in 7dd011c1: combined activity notes are stored newest-first by createdAt. A regression
+      merges a source with two newer outreach entries into a retained contact with eight older notes and verifies order,
+      IDs and authors. All 372 app tests, repository verification and the isolated ..."
+    path: address-book/src/lib/server/repository.ts
+    createdAt: 2026-11-09T17:20:56Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4516023427
+    body: "[from Codex]: Fixed in 3d8d660b. History retrieval orders the combined entries by their recorded timestamp before
+      handler pagination; equal timestamps retain the previous sequence ordering. The regression covers source creation
+      at 00, retained creation at 01, retained edit at 02 and merge at 03, and..."
+    path: address-book/src/lib/server/repository.ts
+    createdAt: 2026-11-09T17:50:10Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4516216492
+    body: "[from Codex]: Fixed in 3e8f47fe. The test now accepts the optional trailing zero emitted by different ICU
+      versions while anchoring the exact dollar value and M suffix. The formatter and UI behavior are unchanged. All 32
+      workflow tests pass on the host and on Node 22.23.4 in a separate network-isolat..."
+    path: address-book/tests/ui/workflows.test.ts
+    createdAt: 2026-11-09T18:09:45Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4516905734
+    body: "[from Codex]: Fixed in 4bc85b5f. Notification loading now uses the shared skeleton kit with the notification row
+      layout. App typecheck, lint, 374 tests, Functions typecheck and the isolated full serverless build passed."
+    path: address-book/src/components/inbox.tsx
+    createdAt: 2026-11-09T19:17:46Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4516907303
+    body: "[from Codex]: Fixed in 4bc85b5f. Unfinished label text now registers with the unsaved-changes guard. Browser
+      checks confirmed navigation offers Keep editing/Discard. App typecheck, lint, 374 tests, Functions typecheck and
+      the isolated full serverless build passed."
+    path: address-book/src/components/task-extras.tsx
+    createdAt: 2026-11-09T19:17:54Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4516908879
+    body: "[from Codex]: Fixed in 4bc85b5f. The deferred task-type editor follows authoritative value changes when clean,
+      preserves genuine drafts, and handles own-save acknowledgements. Browser checks cover the external update and
+      draft paths. App typecheck, lint, 374 tests, Functions typecheck and the isolat..."
+    path: address-book/src/components/task-extras.tsx
+    createdAt: 2026-11-09T19:18:02Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4516911397
+    body: "[from Codex]: Fixed in 4bc85b5f. Record and task history loading now uses shared skeleton lines matching the
+      history layout. App typecheck, lint, 374 tests, Functions typecheck and the isolated full serverless build
+      passed."
+    path: address-book/src/components/timeline.tsx
+    createdAt: 2026-11-09T19:18:16Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4516912866
+    body: "[from Codex]: Fixed in 4bc85b5f. CSV row correction drafts and unapplied mapping, skip, correction, household and
+      duplicate decisions now register with the navigation guard. Browser checks cover unfinished/saved corrections,
+      Keep editing and removing the file. App typecheck, lint, 374 tests, Functio..."
+    path: address-book/src/components/csv-import.tsx
+    createdAt: 2026-11-09T19:18:24Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4516914289
+    body: "[from Codex]: Fixed in 4bc85b5f. Membership patches now withhold inverse-only Undo because it cannot restore
+      address-source side effects. Both unlink dialogs explain the address effect and unavailable Undo; success uses
+      plain feedback. Account/ownership Undo is preserved. A regression test and both ..."
+    path: address-book/src/components/households.tsx
+    createdAt: 2026-11-09T19:18:33Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4517000292
+    body: "[from Codex]: Fixed in 4c0ccd90. The dialog close check now includes unfinished text within its own form,
+      including labels, new checklist items and inline checklist text, while preserving the checklist-action check. This
+      reuses the existing discard dialog without changing its appearance. Reproduced ..."
+    path: address-book/src/components/ui/fields.tsx
+    createdAt: 2026-11-09T19:27:00Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4517114081
+    body: "[from Codex]: Fixed in c0beb7d0. The 39 existing public catalog files (including stack CSVs and
+      provenance/license manifests) are now tracked through a narrowly scoped ignore exception. A clean snapshot built
+      only from tracked files passes validate_data.py, all 50 core/catalog tests, and the documen..."
+    path: .agents/skills/ui-ux-pro-max/scripts/core.py
+    createdAt: 2026-11-09T19:38:09Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4517115543
+    body: "[from Codex]: Retaining this behavior intentionally. The explicit product instruction requested motion to avoid
+      abrupt interactions, and the resulting list-motion pass was visually approved. That instruction supersedes
+      Transition's general first-load-only rule for Address Book. c0beb7d0 documents th..."
+    path: address-book/src/components/ui/result-stage.tsx
+    createdAt: 2026-11-09T19:38:17Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4517247927
+    body: "[from Codex]: Fixed in cfbfdf72 after explicit screenshot approval. Dependency searches now show three shared
+      skeleton controls at the full form width, matching full-width selectable result rows with wrapping, left-aligned
+      titles. Desktop/phone light/dark browser checks confirm matching widths/left ..."
+    path: address-book/src/components/editors.tsx
+    createdAt: 2026-11-09T19:51:26Z
+aiReviews:
+  codex:
+    prsReviewed: 2
+    comments: 19
+    reviews: 10
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 2
+  comments: 19
+  reviews: 10
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-11-09T16:04:24Z
+    - 2026-11-09T16:05:18Z
+    - 2026-11-09T16:20:38Z
+    - 2026-11-09T16:26:35Z
+    - 2026-11-09T16:44:29Z
+    - 2026-11-09T16:49:05Z
+    - 2026-11-09T16:53:05Z
+    - 2026-11-09T17:15:26Z
+    - 2026-11-09T17:18:39Z
+    - 2026-11-09T17:46:05Z
+    - 2026-11-09T17:58:17Z
+    - 2026-11-09T18:01:49Z
+    - 2026-11-09T18:09:12Z
+    - 2026-11-09T18:53:07Z
+    - 2026-11-09T18:59:43Z
+    - 2026-11-09T19:02:19Z
+    - 2026-11-09T19:07:23Z
+    - 2026-11-09T19:08:58Z
+    - 2026-11-09T19:16:32Z
+    - 2026-11-09T19:21:45Z
+    - 2026-11-09T19:26:23Z
+    - 2026-11-09T19:27:21Z
+    - 2026-11-09T19:32:08Z
+    - 2026-11-09T19:37:00Z
+    - 2026-11-09T19:42:08Z
+    - 2026-11-09T19:47:09Z
+    - 2026-11-09T19:50:57Z
+    - 2026-11-09T19:53:32Z
+    - 2026-11-09T20:06:40Z
+    - 2026-11-09T20:19:35Z
+    - 2026-11-09T20:40:37Z
+    - 2026-11-09T19:17:05Z
+    - 2026-11-09T19:20:22Z
+    - 2026-11-09T19:33:57Z
+    - 2026-11-09T19:47:43Z
+    - 2026-11-09T19:55:28Z
+    - 2026-11-09T20:40:40Z
+    - 2026-11-09T20:40:37Z
+    - 2026-11-09T20:19:38Z
+    - 2026-11-09T20:19:35Z
+    - 2026-11-09T14:49:45Z
+    - 2026-11-09T16:49:06Z
+    - 2026-11-09T18:53:19Z
+    - 2026-11-09T18:53:07Z
+    - 2026-11-09T18:59:46Z
+    - 2026-11-09T19:42:08Z
+    - 2026-11-09T18:59:43Z
+    - 2026-11-09T19:08:58Z
+    - 2026-11-09T19:21:45Z
+    - 2026-11-09T19:17:50Z
+    - 2026-11-09T16:19:12Z
+    - 2026-11-09T16:19:15Z
+    - 2026-11-09T16:19:17Z
+    - 2026-11-09T16:27:20Z
+    - 2026-11-09T16:27:23Z
+    - 2026-11-09T16:29:07Z
+    - 2026-11-09T16:29:09Z
+    - 2026-11-09T16:29:12Z
+    - 2026-11-09T16:29:14Z
+    - 2026-11-09T16:29:17Z
+    - 2026-11-09T16:29:19Z
+    - 2026-11-09T16:29:21Z
+    - 2026-11-09T16:29:23Z
+    - 2026-11-09T16:29:25Z
+    - 2026-11-09T16:29:27Z
+    - 2026-11-09T16:29:30Z
+    - 2026-11-09T16:29:32Z
+    - 2026-11-09T16:29:34Z
+    - 2026-11-09T16:29:37Z
+    - 2026-11-09T16:29:39Z
+    - 2026-11-09T16:29:41Z
+    - 2026-11-09T16:29:44Z
+    - 2026-11-09T16:45:15Z
+    - 2026-11-09T17:20:53Z
+    - 2026-11-09T17:20:56Z
+    - 2026-11-09T17:50:10Z
+    - 2026-11-09T18:09:45Z
+    - 2026-11-09T19:17:46Z
+    - 2026-11-09T19:17:54Z
+    - 2026-11-09T19:18:02Z
+    - 2026-11-09T19:18:16Z
+    - 2026-11-09T19:18:24Z
+    - 2026-11-09T19:18:33Z
+    - 2026-11-09T19:27:00Z
+    - 2026-11-09T19:38:09Z
+    - 2026-11-09T19:38:17Z
+    - 2026-11-09T19:51:26Z
+    - 2026-11-09T19:17:50Z
+    - 2026-11-09T16:19:12Z
+    - 2026-11-09T16:19:14Z
+    - 2026-11-09T16:19:17Z
+    - 2026-11-09T16:27:20Z
+    - 2026-11-09T16:27:23Z
+    - 2026-11-09T16:29:07Z
+    - 2026-11-09T16:29:09Z
+    - 2026-11-09T16:29:11Z
+    - 2026-11-09T16:29:14Z
+    - 2026-11-09T16:29:16Z
+    - 2026-11-09T16:29:19Z
+    - 2026-11-09T16:29:21Z
+    - 2026-11-09T16:29:23Z
+    - 2026-11-09T16:29:25Z
+    - 2026-11-09T16:29:27Z
+    - 2026-11-09T16:29:30Z
+    - 2026-11-09T16:29:32Z
+    - 2026-11-09T16:29:34Z
+    - 2026-11-09T16:29:37Z
+    - 2026-11-09T16:29:39Z
+    - 2026-11-09T16:29:41Z
+    - 2026-11-09T16:29:44Z
+    - 2026-11-09T16:45:15Z
+    - 2026-11-09T17:20:53Z
+    - 2026-11-09T17:20:56Z
+    - 2026-11-09T17:50:10Z
+    - 2026-11-09T18:09:45Z
+    - 2026-11-09T19:17:46Z
+    - 2026-11-09T19:17:54Z
+    - 2026-11-09T19:18:02Z
+    - 2026-11-09T19:18:16Z
+    - 2026-11-09T19:18:24Z
+    - 2026-11-09T19:18:33Z
+    - 2026-11-09T19:27:00Z
+    - 2026-11-09T19:38:09Z
+    - 2026-11-09T19:38:17Z
+    - 2026-11-09T19:51:26Z
+  volume:
+    pullRequests:
+      - additions: 143
+        deletions: 18
+        state: merged
+        dailyWork: true
+        filesChanged: 4
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 145
+        deletions: 16
+        state: open
+        dailyWork: true
+        filesChanged: 4
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 6986
+        deletions: 1111
+        state: open
+        dailyWork: true
+        filesChanged: 84
+        testFilesChanged: 31
+        commitCount: 1
+      - additions: 22
+        deletions: 3
+        state: merged
+        dailyWork: true
+        filesChanged: 2
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 5756
+        deletions: 1645
+        state: open
+        dailyWork: true
+        filesChanged: 117
+        testFilesChanged: 37
+        commitCount: 3
+      - additions: 2398
+        deletions: 83
+        state: open
+        dailyWork: true
+        filesChanged: 46
+        testFilesChanged: 16
+        commitCount: 1
+      - additions: 145
+        deletions: 42
+        state: merged
+        dailyWork: true
+        filesChanged: 4
+        testFilesChanged: 2
+        commitCount: 3
+      - additions: 54526
+        deletions: 6625
+        state: open
+        dailyWork: true
+        filesChanged: 316
+        testFilesChanged: 79
+        commitCount: 6
+      - additions: 67186
+        deletions: 2383
+        state: open
+        dailyWork: true
+        filesChanged: 231
+        testFilesChanged: 39
+        commitCount: 17
+      - additions: 0
+        deletions: 0
+        state: merged
+    reviewCount: 38
+    reviewCommentCount: 38
+    commitCount: 2
+    commitAdditions: 178
+    commitDeletions: 68
+    commitStatsCount: 2
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 159.7
+  sessions: 1
+  sessionHours: 5.8
+  volumeHours: 159.7
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
