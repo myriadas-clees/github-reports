@@ -1,0 +1,397 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-11-12
+  to: 2026-11-12
+stats:
+  totalCommits: 4
+  totalAdditions: 13614
+  totalDeletions: 730
+  prsOpened: 1
+  prsMerged: 3
+  prsInProgress: 1
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 31.3
+dailyCommits:
+  - date: 2026-11-12
+    count: 4
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 3
+    prsOpened: 0
+    prsMerged: 3
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 1
+    prsOpened: 1
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests:
+  - title: "feat(graphical): install theme system and editor"
+    body: >-
+      ## Why
+
+
+      Bring the Hub and shared UI onto Graphical’s design system so the app can use a named theme and the development
+      editor to refine it.
+
+
+      ## What changed
+
+
+      - Added Graphical project configuration, generated theme assets, the Myriad theme, and installation guidance and
+      skills.
+
+      - Converted Hub page...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/267
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a1
+      - documentation
+      - "app: hub"
+      - platform
+    additions: 13614
+    deletions: 730
+    changedFiles: 103
+    author: myriadas-clees
+    createdAt: 2026-11-12T16:55:03Z
+    updatedAt: 2026-11-12T17:40:48Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a2
+      - &a5
+        sha: e5a41c8f2babf7dc4e2313863dd39760561618f0
+        message: "feat(graphical): install theme system and editor"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e5a41c8f2babf7dc4e2313863dd39760561618f0
+        authoredAt: 2026-11-12T16:54:51Z
+    workTimestamps: &a3
+      - 2026-11-12T16:54:51Z
+    workAdditions: 13614
+    workDeletions: 730
+    workFiles: &a4
+      - .agents/skills/graphical-adopt/SKILL.md
+      - .agents/skills/graphical-adopt/references/elements.md
+      - .agents/skills/graphical-adopt/references/fonts.md
+      - .agents/skills/graphical-adopt/references/handoff.md
+      - .agents/skills/graphical-adopt/references/icons.md
+      - .agents/skills/graphical-adopt/references/installed-editor.md
+      - .agents/skills/graphical-adopt/references/shared-styles.md
+      - .agents/skills/graphical-adopt/references/writing-tokens.md
+      - .agents/skills/graphical-audit/SKILL.md
+      - .agents/skills/graphical-audit/package-1.0.4/SKILL.md
+      - .agents/skills/graphical-audit/package-1.0.4/references/drift-rules.md
+      - .agents/skills/graphical-audit/package-1.0.4/references/report-format.md
+      - .agents/skills/graphical-cleanup/SKILL.md
+      - .agents/skills/graphical-cleanup/references/analysis-method.md
+      - .agents/skills/graphical-cleanup/references/report-page.md
+      - .agents/skills/graphical-convert/SKILL.md
+      - .agents/skills/graphical-convert/package-1.0.4/SKILL.md
+      - .agents/skills/graphical-convert/package-1.0.4/references/mapping-examples.md
+      - .agents/skills/graphical-import/SKILL.md
+      - .agents/skills/graphical-import/references/aliases.md
+      - .agents/skills/graphical-import/references/appearance.md
+      - .agents/skills/graphical-import/references/compiled-scales.md
+      - .agents/skills/graphical-import/references/conversion.md
+      - .agents/skills/graphical-import/references/install-script.md
+      - .agents/skills/graphical-import/references/profiles.md
+      - .agents/skills/graphical-import/references/readable-styles.md
+      - .agents/skills/graphical-import/references/role-map.md
+      - .agents/skills/graphical-import/references/starting-palette.md
+      - .agents/skills/graphical-import/references/theme-objects.md
+      - .agents/skills/graphical-import/references/token-coverage.md
+      - .agents/skills/graphical-import/references/troubleshooting.md
+      - .agents/skills/graphical-import/references/verify.md
+      - .agents/skills/graphical-ui/SKILL.md
+      - .agents/skills/graphical-ui/package-1.0.4/SKILL.md
+      - AGENTS.md
+      - GUI.md
+      - bun.lock
+      - graphical/README.md
+      - graphical/generated/tailwind-merge.cjs
+      - graphical/generated/tailwind-merge.d.cts
+      - graphical/generated/tailwind-theme.css
+      - graphical/generated/theme.css
+      - graphical/install/analyze-styles.mjs
+      - graphical/install/checkpoint.json
+      - graphical/install/import.json
+      - graphical/install/import.mjs
+      - graphical/install/install-report.json
+      - graphical/install/install-report.md
+      - graphical/install/source-values.json
+      - graphical/install/style-inventory.json
+      - graphical/install/verification.md
+      - graphical/project.json
+      - graphical/role-map.json
+      - graphical/themes/graphical.json
+      - gui/themes.md
+      - gui/themes/installed-myriad.md
+      - hub/AGENTS.md
+      - hub/app/403/page.tsx
+      - hub/app/error.tsx
+      - hub/app/globals.css
+      - hub/app/layout.tsx
+      - hub/app/login/page.tsx
+      - hub/app/not-found.tsx
+      - hub/components/ApproachSteps.tsx
+      - hub/components/HubAuthNotice.tsx
+      - hub/components/HubLoadingScreen.tsx
+      - hub/components/LandingPage.tsx
+      - hub/components/SiteFooter.tsx
+      - hub/components/SiteHeader.tsx
+      - hub/components/TestimonialCarousel.tsx
+      - hub/components/admin/AdminPage.tsx
+      - hub/components/admin/CompaniesPanel.tsx
+      - hub/components/admin/CompanyDrawer.tsx
+      - hub/components/admin/DomainChipsInput.tsx
+      - hub/components/admin/TransferComposer.tsx
+      - hub/components/admin/TransferDryRunReport.tsx
+      - hub/components/admin/TransferRunView.tsx
+      - hub/components/admin/TransferRunsList.tsx
+      - hub/graphical/development-editor.tsx
+      - hub/graphical/editor-root.tsx
+      - hub/graphical/editor.css
+      - hub/graphical/installed-editor.tsx
+      - hub/next-env.d.ts
+      - package.json
+      - packages/brand/src/graphical-theme.css
+      - packages/brand/src/styles.css
+      - packages/ui/src/appearance-quick-settings.tsx
+      - packages/ui/src/brand/myriad-logo.tsx
+      - packages/ui/src/company/components/company-access-denied.tsx
+      - packages/ui/src/company/components/company-badge.tsx
+      - packages/ui/src/company/components/company-switcher.tsx
+      - packages/ui/src/dialog.tsx
+      - packages/ui/src/modal.tsx
+      - packages/ui/src/navigation/app-nav.tsx
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/navigation/navigation-mode-picker.tsx
+      - packages/ui/src/select.tsx
+      - packages/ui/src/settings/company-settings.tsx
+      - packages/ui/src/settings/install-app-settings.tsx
+      - packages/ui/src/signed-out.tsx
+      - packages/ui/src/summary-metric.tsx
+      - packages/ui/src/user-menu.tsx
+      - packages/ui/src/utils.ts
+  - title: "fix(northstar): stream Copilot startup and lookup activity"
+    body: >-
+      - Stream Copilot startup and lookup progress into the Northstar workspace, including partial results while a
+      lookup is running.
+
+      - Update Copilot chat handling and consultation tests for streamed responses.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/220
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 0
+    deletions: 0
+    changedFiles: 15
+    author: myriadas-clees
+    createdAt: 2026-11-05T14:46:59Z
+    updatedAt: 2026-11-12T05:07:04Z
+    closedAt: 2026-11-12T05:07:04Z
+    mergedAt: 2026-11-12T05:07:04Z
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "feat(northstar): add Anthropic message threads"
+    body: >-
+      - Use Anthropic message threads across tool rounds in Northstar Claude briefs and Ask, enabled by default with a
+      configuration switch to disable them.
+
+      - Recover from expired or unsupported threads by replaying the conversation or continuing without threads.
+
+      - Document the setting and add coverage fo...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/214
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 0
+    deletions: 0
+    changedFiles: 4
+    author: myriadas-clees
+    createdAt: 2026-11-04T15:49:02Z
+    updatedAt: 2026-11-12T05:07:01Z
+    closedAt: 2026-11-12T05:07:01Z
+    mergedAt: 2026-11-12T05:07:01Z
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "fix(northstar): prevent prompt leaks and bound Claude turns"
+    body: |-
+      - Prevent Northstar from revealing or referring to internal prompts and mechanics, and improve direct answers.
+      - Bound Claude turns, keep fallback work within the remaining deadline, and limit streamed snapshot size.
+      - Improve Cosmos-backed reads and saves, add content-free timing metrics, and strea...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/215
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 0
+    deletions: 0
+    changedFiles: 114
+    author: myriadas-clees
+    createdAt: 2026-11-04T19:13:19Z
+    updatedAt: 2026-11-12T05:07:02Z
+    closedAt: 2026-11-12T05:07:02Z
+    mergedAt: 2026-11-12T05:07:02Z
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+prsInProgress:
+  - title: "feat(graphical): install theme system and editor"
+    body: >-
+      ## Why
+
+
+      Bring the Hub and shared UI onto Graphical’s design system so the app can use a named theme and the development
+      editor to refine it.
+
+
+      ## What changed
+
+
+      - Added Graphical project configuration, generated theme assets, the Myriad theme, and installation guidance and
+      skills.
+
+      - Converted Hub page...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/267
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a1
+    additions: 13614
+    deletions: 730
+    changedFiles: 103
+    author: myriadas-clees
+    createdAt: 2026-11-12T16:55:03Z
+    updatedAt: 2026-11-12T17:40:48Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 13614
+    workDeletions: 730
+    workFiles: *a4
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "feat(northstar): add Anthropic message threads (#214)"
+      - "fix(northstar): stream Copilot startup and lookup activity (#220)"
+      - "fix(northstar): prevent prompt leaks and bound Claude turns (#215)"
+    commits:
+      - sha: 9063f724f4a0d6de9dc1ff4b5ad33d18cc1c409e
+        message: "feat(northstar): add Anthropic message threads (#214)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/9063f724f4a0d6de9dc1ff4b5ad33d18cc1c409e
+        authoredAt: 2026-11-12T05:06:59Z
+        additions: 145
+        deletions: 16
+        filesChanged: 4
+      - sha: 730dfe43785580d41e94a491cdd75228f988ab06
+        message: "fix(northstar): stream Copilot startup and lookup activity (#220)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/730dfe43785580d41e94a491cdd75228f988ab06
+        authoredAt: 2026-11-12T05:07:00Z
+        additions: 423
+        deletions: 97
+        filesChanged: 15
+      - sha: ff76e08bee5a648365032d18cf3f293ae5b5a52b
+        message: "fix(northstar): prevent prompt leaks and bound Claude turns (#215)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ff76e08bee5a648365032d18cf3f293ae5b5a52b
+        authoredAt: 2026-11-12T05:07:00Z
+        additions: 5548
+        deletions: 1622
+        filesChanged: 114
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "feat(graphical): install theme system and editor"
+    commits:
+      - *a5
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 1
+    comments: 2
+    reviews: 1
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 1
+  comments: 2
+  reviews: 1
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-11-12T05:06:59Z
+    - 2026-11-12T05:07:00Z
+    - 2026-11-12T05:07:00Z
+    - 2026-11-12T16:54:51Z
+    - 2026-11-12T16:55:03Z
+    - 2026-11-12T16:54:51Z
+    - 2026-11-12T05:07:04Z
+    - 2026-11-12T05:07:01Z
+    - 2026-11-12T05:07:02Z
+  volume:
+    pullRequests:
+      - additions: 13614
+        deletions: 730
+        state: open
+        dailyWork: true
+        filesChanged: 103
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 0
+        deletions: 0
+        state: merged
+      - additions: 0
+        deletions: 0
+        state: merged
+      - additions: 0
+        deletions: 0
+        state: merged
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 3
+    commitAdditions: 6116
+    commitDeletions: 1735
+    commitStatsCount: 3
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 31.3
+  sessions: 2
+  sessionHours: 1
+  volumeHours: 31.3
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
