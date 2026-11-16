@@ -1,0 +1,2219 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-11-13
+  to: 2026-11-13
+stats:
+  totalCommits: 24
+  totalAdditions: 326125
+  totalDeletions: 11232
+  prsOpened: 5
+  prsMerged: 3
+  prsInProgress: 5
+  prsReviewed: 2
+  reviewComments: 2
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 157.6
+dailyCommits:
+  - date: 2026-11-13
+    count: 24
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 22
+    prsOpened: 3
+    prsMerged: 3
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 2
+    prsOpened: 2
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests:
+  - title: "feat(release): add validated staging and production promotion"
+    body: >-
+      - Add a release pipeline that builds and validates staging artifacts, then promotes the same verified bytes to
+      production through an explicit workflow.
+
+      - Add release provenance, integrity, authorization, environment-binding, rollback, and staging acceptance checks.
+
+      - Update deployment guidance and s...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/223
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a1 []
+    additions: 1179
+    deletions: 560
+    changedFiles: 47
+    author: myriadas-clees
+    createdAt: 2026-11-13T15:11:59Z
+    updatedAt: 2026-11-13T15:25:25Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a2
+      - &a40
+        sha: 12fc0c439022b291aca621e5531389c49d40c8b8
+        message: "feat(release): add validated staging and production promotion"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/12fc0c439022b291aca621e5531389c49d40c8b8
+        authoredAt: 2026-11-13T15:11:50Z
+    workTimestamps: &a3
+      - 2026-11-13T15:11:50Z
+    workAdditions: 1179
+    workDeletions: 560
+    workFiles: &a4
+      - .github/pull_request_template.md
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/promote-release.yml
+      - .github/workflows/staging.yml
+      - .github/workflows/verify.yml
+      - .gitignore
+      - AGENTS.md
+      - README.md
+      - docs/AGENTS.md
+      - docs/deploy-asap.md
+      - docs/pricing-architecture.md
+      - docs/staging-and-releases.md
+      - docs/suite-architecture.md
+      - hub/AGENTS.md
+      - hub/README.md
+      - hub/functions/src/index.ts
+      - hub/functions/src/northstar-conversations.test.ts
+      - hub/functions/src/swa-auth-activation.test.ts
+      - hub/staticwebapp.config.json
+      - northstar/test/dom-document-preload.ts
+      - ofac/AGENTS.md
+      - ofac/functions/src/index.ts
+      - packages/AGENTS.md
+      - packages/contracts/package.json
+      - packages/contracts/src/release.ts
+      - pricing/AGENTS.md
+      - pricing/functions/src/index.ts
+      - scripts/AGENTS.md
+      - scripts/build-release.sh
+      - scripts/check-release.ts
+      - scripts/production-transition.ts
+      - scripts/release-auth.test.ts
+      - scripts/release-auth.ts
+      - scripts/release-authorize.ts
+      - scripts/release-env.ts
+      - scripts/release-integrity.test.ts
+      - scripts/release-integrity.ts
+      - scripts/release-pipeline.test.ts
+      - scripts/release-provenance.ts
+      - scripts/release-target.ts
+      - scripts/release-token.test.ts
+      - scripts/release-transition.ts
+      - scripts/smoke-readiness.test.ts
+      - scripts/smoke-release.sh
+      - scripts/staging-acceptance.test.ts
+      - scripts/staging-acceptance.ts
+      - scripts/stamp-release.ts
+  - title: "feat(compass): add native mobile app preview"
+    body: >-
+      ## Why
+
+
+      Compass is a strong fit for on-the-go advisor workflows, but it did not have a native mobile experience to
+      evaluate. This change adds a preview app for exploring those workflows on iOS and Android.
+
+
+      ## What changed
+
+
+      Added a Compass mobile preview with Today, Clients, client briefs, and Ask s...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/269
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a5
+      - documentation
+      - platform
+      - "app: compass"
+    additions: 3233
+    deletions: 24
+    changedFiles: 44
+    author: myriadas-clees
+    createdAt: 2026-11-13T20:40:40Z
+    updatedAt: 2026-11-13T20:55:15Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a6
+      - &a22
+        sha: 7022923dc2b0c457e6fed55f1425bd3c1e6f9531
+        message: "feat(compass): add native mobile app preview"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7022923dc2b0c457e6fed55f1425bd3c1e6f9531
+        authoredAt: 2026-11-13T20:40:30Z
+    workTimestamps: &a7
+      - 2026-11-13T20:40:30Z
+    workAdditions: 3233
+    workDeletions: 24
+    workFiles: &a8
+      - README.md
+      - bun.lock
+      - compass-mobile/.gitignore
+      - compass-mobile/README.md
+      - compass-mobile/app.json
+      - compass-mobile/app/(tabs)/_layout.tsx
+      - compass-mobile/app/(tabs)/ask.tsx
+      - compass-mobile/app/(tabs)/clients.tsx
+      - compass-mobile/app/(tabs)/index.tsx
+      - compass-mobile/app/_layout.tsx
+      - compass-mobile/app/client/[id].tsx
+      - compass-mobile/package.json
+      - compass-mobile/src/ask-session.ts
+      - compass-mobile/src/brand.ts
+      - compass-mobile/src/domain/ask.ts
+      - compass-mobile/src/domain/clients.ts
+      - compass-mobile/src/domain/today.ts
+      - compass-mobile/src/domain/types.ts
+      - compass-mobile/src/native/identity.ios.tsx
+      - compass-mobile/src/native/mark.tsx
+      - compass-mobile/src/native/rows.ios.tsx
+      - compass-mobile/src/native/rows.tsx
+      - compass-mobile/src/navigation.ts
+      - compass-mobile/src/preview.tsx
+      - compass-mobile/src/sample/sample.ts
+      - compass-mobile/src/screens/AskScreen.ios.tsx
+      - compass-mobile/src/screens/AskScreen.tsx
+      - compass-mobile/src/screens/ClientBriefList.ios.tsx
+      - compass-mobile/src/screens/ClientBriefList.tsx
+      - compass-mobile/src/screens/ClientBriefScreen.ios.tsx
+      - compass-mobile/src/screens/ClientBriefScreen.tsx
+      - compass-mobile/src/screens/ClientsScreen.ios.tsx
+      - compass-mobile/src/screens/ClientsScreen.tsx
+      - compass-mobile/src/screens/TodayScreen.ios.tsx
+      - compass-mobile/src/screens/TodayScreen.tsx
+      - compass-mobile/test/domain.test.ts
+      - compass-mobile/test/theme-parity.test.ts
+      - compass-mobile/tsconfig.ios.json
+      - compass-mobile/tsconfig.json
+      - compass/README.md
+      - package.json
+      - packages/brand/assets/myriad-m-mark-reverse.png
+      - packages/brand/package.json
+      - packages/brand/src/native.ts
+  - title: "feat(graphical): install editor and import existing apps"
+    body: >-
+      - Install Graphical’s development editor and import Hub, Advisor Pricing, OFAC, and Northstar onto the shared
+      design system.
+
+      - Add the ohcpwm Paper theme, shared brand tokens and fonts, and theme synchronization for all apps.
+
+      - Keep editor code development-only and preserve existing app behavior and...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/224
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a9 []
+    additions: 18578
+    deletions: 361
+    changedFiles: 113
+    author: myriadas-clees
+    createdAt: 2026-11-13T20:56:47Z
+    updatedAt: 2026-11-13T21:08:06Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a10
+      - &a41
+        sha: 03211b7852d532d722074ee1f8955a7e3cfa6374
+        message: "feat(graphical): install editor and import existing apps"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/03211b7852d532d722074ee1f8955a7e3cfa6374
+        authoredAt: 2026-11-13T20:56:35Z
+    workTimestamps: &a11
+      - 2026-11-13T20:56:35Z
+    workAdditions: 18578
+    workDeletions: 361
+    workFiles: &a12
+      - .agents/skills/graphical-adopt/SKILL.md
+      - .agents/skills/graphical-adopt/references/elements.md
+      - .agents/skills/graphical-adopt/references/fonts.md
+      - .agents/skills/graphical-adopt/references/handoff.md
+      - .agents/skills/graphical-adopt/references/icons.md
+      - .agents/skills/graphical-adopt/references/installed-editor.md
+      - .agents/skills/graphical-adopt/references/shared-styles.md
+      - .agents/skills/graphical-adopt/references/writing-tokens.md
+      - .agents/skills/graphical-cleanup/SKILL.md
+      - .agents/skills/graphical-cleanup/references/analysis-method.md
+      - .agents/skills/graphical-cleanup/references/report-page.md
+      - .agents/skills/graphical-import/SKILL.md
+      - .agents/skills/graphical-import/references/aliases.md
+      - .agents/skills/graphical-import/references/appearance.md
+      - .agents/skills/graphical-import/references/compiled-scales.md
+      - .agents/skills/graphical-import/references/conversion.md
+      - .agents/skills/graphical-import/references/install-script.md
+      - .agents/skills/graphical-import/references/profiles.md
+      - .agents/skills/graphical-import/references/readable-styles.md
+      - .agents/skills/graphical-import/references/role-map.md
+      - .agents/skills/graphical-import/references/starting-palette.md
+      - .agents/skills/graphical-import/references/theme-objects.md
+      - .agents/skills/graphical-import/references/token-coverage.md
+      - .agents/skills/graphical-import/references/troubleshooting.md
+      - .agents/skills/graphical-import/references/verify.md
+      - AGENTS.md
+      - GUI.md
+      - bun.lock
+      - gui/themes.md
+      - hub/AGENTS.md
+      - hub/app/403/page.tsx
+      - hub/app/error.tsx
+      - hub/app/globals.css
+      - hub/app/layout.tsx
+      - hub/app/login/page.tsx
+      - hub/app/not-found.tsx
+      - hub/components/hub-launcher.tsx
+      - hub/graphical/README.md
+      - hub/graphical/development-editor.tsx
+      - hub/graphical/editor-host.tsx
+      - hub/graphical/editor-root.tsx
+      - hub/graphical/editor-styles.css
+      - hub/graphical/generated/aliases.css
+      - hub/graphical/generated/tailwind-theme.css
+      - hub/graphical/generated/theme.css
+      - hub/graphical/install/analyze-styles.mjs
+      - hub/graphical/install/import.json
+      - hub/graphical/install/import.mjs
+      - hub/graphical/install/install-report.json
+      - hub/graphical/install/install-report.md
+      - hub/graphical/install/style-inventory.json
+      - hub/graphical/installed-editor.tsx
+      - hub/graphical/packages/editor-1.0.4.tgz
+      - hub/graphical/project.json
+      - hub/graphical/role-map.json
+      - hub/graphical/themes/graphical.json
+      - hub/graphical/themes/ohcpwm-paper.json
+      - hub/graphical/themes/paper.json
+      - hub/next-env.d.ts
+      - hub/package.json
+      - hub/public/fonts/paper/InterVariable.woff2
+      - hub/public/fonts/paper/LICENSE.txt
+      - hub/public/fonts/paper/LTSuperiorSerif-Bold.otf
+      - hub/public/fonts/paper/LTSuperiorSerif-Medium.otf
+      - hub/public/fonts/paper/LTSuperiorSerif-Regular.otf
+      - hub/public/fonts/paper/OFL.txt
+      - northstar/AGENTS.md
+      - northstar/app/globals.css
+      - northstar/components/command-cards.tsx
+      - northstar/components/date-picker.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - ofac/AGENTS.md
+      - ofac/next-env.d.ts
+      - package.json
+      - packages/brand/assets/fonts/inter-OFL.txt
+      - packages/brand/assets/fonts/inter-variable.woff2
+      - packages/brand/assets/fonts/lt-superior-serif-OFL.txt
+      - packages/brand/assets/fonts/lt-superior-serif-bold.otf
+      - packages/brand/assets/fonts/lt-superior-serif-medium.otf
+      - packages/brand/assets/fonts/lt-superior-serif-regular.otf
+      - packages/brand/src/fonts.css
+      - packages/brand/src/graphical-theme.css
+      - packages/brand/src/styles.css
+      - pricing/AGENTS.md
+      - pricing/graphical/README.md
+      - pricing/graphical/development-editor.tsx
+      - pricing/graphical/editor-host.tsx
+      - pricing/graphical/editor-root.tsx
+      - pricing/graphical/editor-styles.css
+      - pricing/graphical/generated/aliases.css
+      - pricing/graphical/generated/tailwind-theme.css
+      - pricing/graphical/generated/theme.css
+      - pricing/graphical/install/analyze-styles.mjs
+      - pricing/graphical/install/finish.mjs
+      - pricing/graphical/install/import.json
+      - pricing/graphical/install/import.mjs
+      - pricing/graphical/install/install-report.json
+      - pricing/graphical/install/install-report.md
+      - pricing/graphical/install/style-inventory.json
+      - pricing/graphical/installed-editor.tsx
+      - pricing/graphical/packages/editor-1.0.4.tgz
+      - pricing/graphical/project.json
+      - pricing/graphical/role-map.json
+      - pricing/graphical/themes/graphical.json
+      - pricing/graphical/themes/ohcpwm-paper.json
+      - pricing/next-env.d.ts
+      - pricing/package.json
+      - pricing/src/app/globals.css
+      - pricing/src/app/layout.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-settings-page-client.tsx
+      - pricing/src/components/stepper-number-input.tsx
+      - scripts/sync-graphical-theme.ts
+  - title: "fix(compass): handle interrupted Copilot responses"
+    body: >-
+      ## Why
+
+
+      Compass users frequently experienced Copilot responses that stalled or never arrived. Interrupted provider
+      connections, delayed token refreshes, and incomplete turn recovery could leave questions unanswered or stuck as
+      pending.
+
+
+      ## What changed
+
+
+      - Classify interrupted Copilot requests and re...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/270
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a13
+      - github-automation
+      - "app: compass"
+    additions: 950
+    deletions: 151
+    changedFiles: 18
+    author: myriadas-clees
+    createdAt: 2026-11-13T21:28:45Z
+    updatedAt: 2026-11-16T15:24:35Z
+    closedAt: 2026-11-16T15:24:35Z
+    mergedAt: 2026-11-16T15:24:35Z
+    workCommits: &a14
+      - &a23
+        sha: 401ebdd0040ec39dcf4d6a283a78cad4895cf65f
+        message: "fix(compass): handle interrupted Copilot responses"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/401ebdd0040ec39dcf4d6a283a78cad4895cf65f
+        authoredAt: 2026-11-13T21:28:33Z
+    workTimestamps: &a15
+      - 2026-11-13T21:28:33Z
+    workAdditions: 950
+    workDeletions: 151
+    workFiles: &a16
+      - compass/functions/src/compass-copilot.test.ts
+      - compass/functions/src/compass-copilot.ts
+      - compass/functions/src/compass-hub-graph.test.ts
+      - compass/functions/src/compass-microsoft.ts
+      - compass/functions/src/compass-stack-port.test.ts
+      - compass/src/components/ask-compass-workspace.dom.test.tsx
+      - compass/src/components/ask-compass-workspace.tsx
+      - compass/src/components/compass-provider.tsx
+      - compass/src/components/compass-stability.dom.test.ts
+      - compass/src/components/compass-stability.fixture.tsx
+      - compass/src/components/streaming-markdown-speed.test.tsx
+      - compass/src/components/streaming-markdown.tsx
+      - compass/src/components/summarize-peek.dom.test.tsx
+      - compass/src/components/summarize-peek.tsx
+      - compass/src/lib/ask-stream.test.ts
+      - compass/src/lib/ask-stream.ts
+      - compass/src/lib/ask-turns.test.ts
+      - compass/src/lib/ask-turns.ts
+  - title: "feat(crm): rename Address Book and add CRM workflows"
+    body: >-
+      ## Why
+
+
+      Address Book needed to support broader company and client relationship workflows, including reusable tasks and
+      dependency maps.
+
+
+      ## What changed
+
+
+      Renamed the app and workspace to CRM while preserving existing product IDs, URLs, API routes, role names, and
+      storage identifiers for compatibilit...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/268
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a17
+      - documentation
+      - "app: hub"
+      - platform
+      - infrastructure
+    additions: 6623
+    deletions: 836
+    changedFiles: 257
+    author: myriadas-clees
+    createdAt: 2026-11-13T20:40:38Z
+    updatedAt: 2026-11-16T14:08:29Z
+    closedAt: 2026-11-16T14:08:29Z
+    mergedAt: 2026-11-16T14:08:29Z
+    workCommits: &a18
+      - &a21
+        sha: dad005f0bf28d0b88f494931ba24c098bb4588a6
+        message: "feat(crm): rename Address Book and add CRM workflows"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/dad005f0bf28d0b88f494931ba24c098bb4588a6
+        authoredAt: 2026-11-13T20:40:24Z
+      - &a35
+        sha: 02e0c1bc4ce2c4ebc9e9da6bd69730c2bc579995
+        message: "fix(crm): stop stale task reads and ambiguous keys from corrupting workflow and activity state"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/02e0c1bc4ce2c4ebc9e9da6bd69730c2bc579995
+        authoredAt: 2026-11-13T22:21:11Z
+      - &a36
+        sha: bf23c2068007f3b6b46faa88c2a974f4bae5c0a2
+        message: Merge CI release into CRM preparation
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/bf23c2068007f3b6b46faa88c2a974f4bae5c0a2
+        authoredAt: 2026-11-14T01:50:40Z
+      - &a37
+        sha: 1c3194bb54e0ed9347cf39cdc2ad10857adbffd6
+        message: "fix(crm): improve loading feedback and inline undo"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/1c3194bb54e0ed9347cf39cdc2ad10857adbffd6
+        authoredAt: 2026-11-14T02:19:40Z
+      - &a38
+        sha: cb3725f318ea18b7d0abc9903c090e5f4c6b61fc
+        message: "fix(crm): keep legacy address, website, drop and retry behavior"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/cb3725f318ea18b7d0abc9903c090e5f4c6b61fc
+        authoredAt: 2026-11-14T02:23:02Z
+      - &a39
+        sha: 1c9a69136c836a3586ff1d4df86a5c86de45ca67
+        message: "docs(ui): prohibit left-edge accent treatments"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/1c9a69136c836a3586ff1d4df86a5c86de45ca67
+        authoredAt: 2026-11-14T02:30:49Z
+    workTimestamps: &a19
+      - 2026-11-13T20:40:24Z
+      - 2026-11-13T22:21:11Z
+      - 2026-11-14T01:50:40Z
+      - 2026-11-14T02:19:40Z
+      - 2026-11-14T02:23:02Z
+      - 2026-11-14T02:30:49Z
+    workAdditions: 6623
+    workDeletions: 836
+    workFiles: &a20
+      - .github/actions/setup-bun/action.yml
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/pr-e2e.yml
+      - .github/workflows/verify.yml
+      - .gitignore
+      - GUI.md
+      - address-book/src/app/manifest.ts
+      - address-book/src/lib/addresses.ts
+      - address-book/src/lib/records.ts
+      - bun.lock
+      - compass/functions/src/compass-brief-journeys.test.ts
+      - crm/AGENTS.md
+      - crm/DESIGN.md
+      - crm/functions/host.json
+      - crm/functions/local.settings.json.example
+      - crm/functions/package.json
+      - crm/functions/scripts/build.ts
+      - crm/functions/src/index.ts
+      - crm/functions/tsconfig.json
+      - crm/next-env.d.ts
+      - crm/next.config.ts
+      - crm/package.json
+      - crm/postcss.config.mjs
+      - crm/scripts/build-static.ts
+      - crm/scripts/seed-dev-data.ts
+      - crm/scripts/seed-dev.ts
+      - crm/src/app/accounts/page.tsx
+      - crm/src/app/accounts/record/page.tsx
+      - crm/src/app/api/address-book/[...path]/route.ts
+      - crm/src/app/companies/page.tsx
+      - crm/src/app/companies/record/page.tsx
+      - crm/src/app/contacts/page.tsx
+      - crm/src/app/contacts/record/page.tsx
+      - crm/src/app/globals.css
+      - crm/src/app/households/page.tsx
+      - crm/src/app/households/record/page.tsx
+      - crm/src/app/icon.svg
+      - crm/src/app/layout.tsx
+      - crm/src/app/manifest.ts
+      - crm/src/app/page.tsx
+      - crm/src/app/products-services/page.tsx
+      - crm/src/app/products-services/record/page.tsx
+      - crm/src/app/settings/import/page.tsx
+      - crm/src/app/settings/page.tsx
+      - crm/src/app/tasks/page.tsx
+      - crm/src/app/tasks/templates/page.tsx
+      - crm/src/app/workflows/diagram/page.tsx
+      - crm/src/app/workflows/page.tsx
+      - crm/src/app/workflows/record/page.tsx
+      - crm/src/components/account-views.css
+      - crm/src/components/account-views.tsx
+      - crm/src/components/accounts.tsx
+      - crm/src/components/activity.css
+      - crm/src/components/activity.tsx
+      - crm/src/components/address-groups.css
+      - crm/src/components/address-groups.tsx
+      - crm/src/components/checklist-action.tsx
+      - crm/src/components/companies.tsx
+      - crm/src/components/contact-actions.tsx
+      - crm/src/components/contact-addresses.tsx
+      - crm/src/components/contact-methods.tsx
+      - crm/src/components/contact-relationship.css
+      - crm/src/components/contact-relationship.tsx
+      - crm/src/components/contact-views.css
+      - crm/src/components/contact-views.tsx
+      - crm/src/components/contact-workflows.tsx
+      - crm/src/components/contacts.tsx
+      - crm/src/components/crm-settings.tsx
+      - crm/src/components/crm-shell.tsx
+      - crm/src/components/csv-import-map.tsx
+      - crm/src/components/csv-import-review.tsx
+      - crm/src/components/csv-import.css
+      - crm/src/components/csv-import.tsx
+      - crm/src/components/editors.tsx
+      - crm/src/components/feedback.tsx
+      - crm/src/components/global-search.tsx
+      - crm/src/components/home.css
+      - crm/src/components/home.tsx
+      - crm/src/components/household-views.css
+      - crm/src/components/household-views.tsx
+      - crm/src/components/households.tsx
+      - crm/src/components/inbox.css
+      - crm/src/components/inbox.tsx
+      - crm/src/components/link-dialogs.tsx
+      - crm/src/components/list-page.tsx
+      - crm/src/components/motion.css
+      - crm/src/components/outreach-context.tsx
+      - crm/src/components/phone-nav.tsx
+      - crm/src/components/pickers.tsx
+      - crm/src/components/products-services.tsx
+      - crm/src/components/record-actions.css
+      - crm/src/components/record-parts.tsx
+      - crm/src/components/record-tasks.tsx
+      - crm/src/components/record-views.css
+      - crm/src/components/representative-fields.css
+      - crm/src/components/representative-fields.tsx
+      - crm/src/components/session.tsx
+      - crm/src/components/settings-page.tsx
+      - crm/src/components/task-assignee.tsx
+      - crm/src/components/task-board.tsx
+      - crm/src/components/task-calendar.css
+      - crm/src/components/task-calendar.tsx
+      - crm/src/components/task-checklist.css
+      - crm/src/components/task-checklist.tsx
+      - crm/src/components/task-drawer.css
+      - crm/src/components/task-drawer.tsx
+      - crm/src/components/task-extras.tsx
+      - crm/src/components/task-form.css
+      - crm/src/components/task-parts.tsx
+      - crm/src/components/task-priorities.tsx
+      - crm/src/components/task-templates.tsx
+      - crm/src/components/task-toolbar.css
+      - crm/src/components/task-toolbar.tsx
+      - crm/src/components/tasks.tsx
+      - crm/src/components/timeline.tsx
+      - crm/src/components/ui/action-button.css
+      - crm/src/components/ui/action-button.tsx
+      - crm/src/components/ui/copy-button.tsx
+      - crm/src/components/ui/discard-dialog.tsx
+      - crm/src/components/ui/disclosure.tsx
+      - crm/src/components/ui/fields.tsx
+      - crm/src/components/ui/index-rail.tsx
+      - crm/src/components/ui/inline-edit.tsx
+      - crm/src/components/ui/layout.tsx
+      - crm/src/components/ui/list-pager.tsx
+      - crm/src/components/ui/motion.tsx
+      - crm/src/components/ui/overflow-menu.tsx
+      - crm/src/components/ui/result-stage.tsx
+      - crm/src/components/ui/search-field.tsx
+      - crm/src/components/ui/select-field.tsx
+      - crm/src/components/ui/skeleton.tsx
+      - crm/src/components/ui/table-sort.tsx
+      - crm/src/components/ui/undo-toast.tsx
+      - crm/src/components/ui/unsaved-changes-guard.tsx
+      - crm/src/components/workflow-diagram.css
+      - crm/src/components/workflow-diagram.tsx
+      - crm/src/components/workflow-editing.tsx
+      - crm/src/components/workflow-workspace.tsx
+      - crm/src/components/workflows.tsx
+      - crm/src/lib/account-views.ts
+      - crm/src/lib/activity.ts
+      - crm/src/lib/address-groups.ts
+      - crm/src/lib/addresses.ts
+      - crm/src/lib/api-client.ts
+      - crm/src/lib/calendar.ts
+      - crm/src/lib/checklist-action.ts
+      - crm/src/lib/checklist.ts
+      - crm/src/lib/contact-views.ts
+      - crm/src/lib/contracts.ts
+      - crm/src/lib/download.ts
+      - crm/src/lib/draft-error.ts
+      - crm/src/lib/features.ts
+      - crm/src/lib/household-views.ts
+      - crm/src/lib/import-fields.ts
+      - crm/src/lib/import-flow.ts
+      - crm/src/lib/inbox-order.ts
+      - crm/src/lib/inbox.ts
+      - crm/src/lib/insights.ts
+      - crm/src/lib/links.ts
+      - crm/src/lib/lookup.ts
+      - crm/src/lib/money.ts
+      - crm/src/lib/motion.ts
+      - crm/src/lib/name-index.ts
+      - crm/src/lib/notes.ts
+      - crm/src/lib/opener.ts
+      - crm/src/lib/paged-state.ts
+      - crm/src/lib/palette.ts
+      - crm/src/lib/pending-saves.ts
+      - crm/src/lib/phone.ts
+      - crm/src/lib/rebase-draft.ts
+      - crm/src/lib/record-views.ts
+      - crm/src/lib/records.ts
+      - crm/src/lib/relationship-type.ts
+      - crm/src/lib/relationships.ts
+      - crm/src/lib/remembered.ts
+      - crm/src/lib/representative.ts
+      - crm/src/lib/server/crm-data.ts
+      - crm/src/lib/server/handlers.ts
+      - crm/src/lib/server/repository.ts
+      - crm/src/lib/server/validation.ts
+      - crm/src/lib/task-save-queue.ts
+      - crm/src/lib/task-subtypes.ts
+      - crm/src/lib/task-toolbar.ts
+      - crm/src/lib/task-views.ts
+      - crm/src/lib/undo.ts
+      - crm/src/lib/use-activity-tasks.ts
+      - crm/src/lib/use-lookup.ts
+      - crm/src/lib/use-paged-list.ts
+      - crm/src/lib/use-record.ts
+      - crm/src/lib/use-reload-on.ts
+      - crm/src/lib/use-today.ts
+      - crm/src/lib/use-workflow-tasks.ts
+      - crm/src/lib/workflow-graph.ts
+      - crm/staticwebapp.config.json
+      - crm/tests/server/address-mode-search-money.test.ts
+      - crm/tests/server/checklist-actions.test.ts
+      - crm/tests/server/composition.test.ts
+      - crm/tests/server/cosmos.test.ts
+      - crm/tests/server/crm-workflows.test.ts
+      - crm/tests/server/crm.test.ts
+      - crm/tests/server/csv-import-preview.test.ts
+      - crm/tests/server/list-query.test.ts
+      - crm/tests/server/migration.test.ts
+      - crm/tests/server/review-fixes.test.ts
+      - crm/tests/server/seed-dev.test.ts
+      - crm/tests/server/workflow-diagram.test.ts
+      - crm/tests/server/workspace-features.test.ts
+      - crm/tests/ui/account-views.test.ts
+      - crm/tests/ui/activity.test.ts
+      - crm/tests/ui/address-groups.test.ts
+      - crm/tests/ui/api-client.test.ts
+      - crm/tests/ui/calendar.test.ts
+      - crm/tests/ui/checklist-action.test.ts
+      - crm/tests/ui/checklist.test.ts
+      - crm/tests/ui/contact-relationship.test.ts
+      - crm/tests/ui/contact-views.test.ts
+      - crm/tests/ui/crm-entities.test.ts
+      - crm/tests/ui/csv-import.test.ts
+      - crm/tests/ui/features.test.ts
+      - crm/tests/ui/household-views.test.ts
+      - crm/tests/ui/inbox.test.ts
+      - crm/tests/ui/insights.test.ts
+      - crm/tests/ui/kpi-presets.test.ts
+      - crm/tests/ui/motion.test.ts
+      - crm/tests/ui/name-index.test.ts
+      - crm/tests/ui/notes.test.ts
+      - crm/tests/ui/paged-state.test.ts
+      - crm/tests/ui/pending-saves.test.ts
+      - crm/tests/ui/phone.test.ts
+      - crm/tests/ui/rebase-draft.test.ts
+      - crm/tests/ui/record-metadata-integration.test.ts
+      - crm/tests/ui/record-views.test.ts
+      - crm/tests/ui/records.test.ts
+      - crm/tests/ui/relationships.test.ts
+      - crm/tests/ui/representative.test.ts
+      - crm/tests/ui/review-fixes.test.ts
+      - crm/tests/ui/task-subtypes.test.ts
+      - crm/tests/ui/task-toolbar.test.ts
+      - crm/tests/ui/task-views.test.ts
+      - crm/tests/ui/ux-logic.test.ts
+      - crm/tests/ui/workflow-graph.test.ts
+      - crm/tests/ui/workflows.test.ts
+      - crm/tsconfig.json
+      - crm/vitest.config.ts
+      - docker/Dockerfile
+      - docker/README.md
+      - docker/compose.yaml
+      - docs/authorization-roles.md
+      - docs/staging-and-testing.md
+      - e2e/tests/api.spec.ts
+      - e2e/tests/browser.spec.ts
+      - hub/lib/apps.test.ts
+      - hub/lib/apps.ts
+      - infra/azure/staging/main.bicep
+      - package.json
+      - packages/auth/src/access.test.ts
+      - proforma/src/lib/__tests__/scoped-e2e-harness.ts
+      - proforma/src/lib/__tests__/scoped-e2e-parity.test.ts
+      - scripts/app-command.ts
+      - scripts/app-registry.ts
+      - scripts/build-hub-release.sh
+      - scripts/build-unified-swa.ts
+      - scripts/company-matrix.test.ts
+      - scripts/company-selection.test.ts
+      - scripts/smoke-swa.sh
+      - scripts/stage-hub-functions.sh
+      - scripts/tooling.test.ts
+      - scripts/typecheck-ci.ts
+  - title: "ci: fail fast on pull request checks"
+    body: >-
+      ## Why
+
+      Stop unnecessary PR verification work after a failure.
+
+
+      ## What changed
+
+      Apply PR-only matrix cancellation, test bail flags, and typecheck fail-fast behavior to #241's existing suite
+      layout. Keep the aggregate `verify` gate strict for failed, cancelled, or unexpectedly skipped jobs; preserve E...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/244
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - github-automation
+      - "app: proforma"
+      - platform
+      - "app: compass"
+    additions: 98625
+    deletions: 3170
+    changedFiles: 7
+    author: myriadas-clees
+    createdAt: 2026-11-04T16:55:01Z
+    updatedAt: 2026-11-14T01:48:52Z
+    closedAt: 2026-11-14T01:48:52Z
+    mergedAt: 2026-11-14T01:48:52Z
+    workCommits:
+      - &a25
+        sha: 2bc06b8b625f3e6549f8ff9a8b07a4d258d9b0d4
+        message: Integrate fail-fast checks with parallel CI suites
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2bc06b8b625f3e6549f8ff9a8b07a4d258d9b0d4
+        authoredAt: 2026-11-13T21:45:37Z
+      - &a27
+        sha: aab21c7faadacb7b2de6736dd5cbaef137b877d2
+        message: Merge branch 'clees/ci-stack-parallel' into clees/ci-stack-fail-fast
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/aab21c7faadacb7b2de6736dd5cbaef137b877d2
+        authoredAt: 2026-11-13T22:07:54Z
+      - &a30
+        sha: f0ef4f4501c141fb14552b0af3f8b7eec1b51aa2
+        message: Merge branch 'clees/ci-stack-parallel' into clees/ci-stack-fail-fast
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f0ef4f4501c141fb14552b0af3f8b7eec1b51aa2
+        authoredAt: 2026-11-13T22:10:36Z
+      - &a33
+        sha: 460e4a714555af70fb475613e95cbafa08b658e3
+        message: "fix(ci): forward bail to tooling Vitest"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/460e4a714555af70fb475613e95cbafa08b658e3
+        authoredAt: 2026-11-13T22:12:26Z
+    workTimestamps:
+      - 2026-11-13T21:45:37Z
+      - 2026-11-13T22:07:54Z
+      - 2026-11-13T22:10:36Z
+      - 2026-11-13T22:12:26Z
+    workAdditions: 98625
+    workDeletions: 3170
+    workFiles:
+      - .agents/skills/ui-ux-pro-max/SKILL.md
+      - .agents/skills/ui-ux-pro-max/data/app-interface.csv
+      - .agents/skills/ui-ux-pro-max/data/catalog-summary.json
+      - .agents/skills/ui-ux-pro-max/data/charts.csv
+      - .agents/skills/ui-ux-pro-max/data/colors.csv
+      - .agents/skills/ui-ux-pro-max/data/data-provenance.json
+      - .agents/skills/ui-ux-pro-max/data/google-font-licenses.json
+      - .agents/skills/ui-ux-pro-max/data/google-fonts.csv
+      - .agents/skills/ui-ux-pro-max/data/icons.csv
+      - .agents/skills/ui-ux-pro-max/data/landing.csv
+      - .agents/skills/ui-ux-pro-max/data/motion.csv
+      - .agents/skills/ui-ux-pro-max/data/phosphor-icons-upstream.json
+      - .agents/skills/ui-ux-pro-max/data/products.csv
+      - .agents/skills/ui-ux-pro-max/data/react-performance.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/angular.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/astro.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/avalonia.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/flutter.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/html-tailwind.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/javafx.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/jetpack-compose.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/laravel.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/nextjs.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/nuxt-ui.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/nuxtjs.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/react-native.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/react.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/shadcn.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/svelte.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/swiftui.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/threejs.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/uno.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/uwp.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/vue.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/winui.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/wpf.csv
+      - .agents/skills/ui-ux-pro-max/data/styles.csv
+      - .agents/skills/ui-ux-pro-max/data/typography.csv
+      - .agents/skills/ui-ux-pro-max/data/ui-reasoning.csv
+      - .agents/skills/ui-ux-pro-max/data/ux-guidelines.csv
+      - .agents/skills/ui-ux-pro-max/references/pro-rules.md
+      - .agents/skills/ui-ux-pro-max/references/quick-reference.md
+      - .agents/skills/ui-ux-pro-max/scripts/core.py
+      - .agents/skills/ui-ux-pro-max/scripts/design_system.py
+      - .agents/skills/ui-ux-pro-max/scripts/reasoning_contract.py
+      - .agents/skills/ui-ux-pro-max/scripts/search.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_catalog_refresh.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_catalog_summary_line_endings.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_core.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_core_data_quality.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_design_system_stack.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_native_desktop_stack_freshness.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_relevance_evaluator.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_rtl_support.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_skill_script_paths.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_style_taxonomy.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_text_layout_resilience.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_web_stack_freshness.py
+      - .agents/skills/ui-ux-pro-max/scripts/validate_data.py
+      - .agents/skills/untangle-codebase/LICENSE.txt
+      - .agents/skills/untangle-codebase/SKILL.md
+      - .agents/skills/untangle-codebase/agents/openai.yaml
+      - .claude/skills/ui-ux-pro-max
+      - .codex/agents/default.toml
+      - .codex/agents/explorer.toml
+      - .codex/agents/worker.toml
+      - .codex/config.toml
+      - .codex/environments/environment.toml
+      - .dockerignore
+      - .github/CODEOWNERS
+      - .github/ISSUE_TEMPLATE/feature.yml
+      - .github/actions/setup-bun/action.yml
+      - .github/deployment-policy.json
+      - .github/pull_request_template.md
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/pr-e2e.yml
+      - .github/workflows/promote-release.yml
+      - .github/workflows/staging-infrastructure.yml
+      - .github/workflows/staging.yml
+      - .github/workflows/verify.yml
+      - .gitignore
+      - AGENTS.md
+      - PLAN.md
+      - README.md
+      - SECURITY.md
+      - address-book/AGENTS.md
+      - address-book/DESIGN.md
+      - address-book/functions/host.json
+      - address-book/functions/local.settings.json.example
+      - address-book/functions/package.json
+      - address-book/functions/scripts/build.ts
+      - address-book/functions/src/index.ts
+      - address-book/functions/tsconfig.json
+      - address-book/next-env.d.ts
+      - address-book/next.config.ts
+      - address-book/package.json
+      - address-book/postcss.config.mjs
+      - address-book/scripts/build-static.ts
+      - address-book/scripts/seed-dev-data.ts
+      - address-book/scripts/seed-dev.ts
+      - address-book/src/app/accounts/page.tsx
+      - address-book/src/app/accounts/record/page.tsx
+      - address-book/src/app/api/address-book/[...path]/route.ts
+      - address-book/src/app/contacts/page.tsx
+      - address-book/src/app/contacts/record/page.tsx
+      - address-book/src/app/globals.css
+      - address-book/src/app/households/page.tsx
+      - address-book/src/app/households/record/page.tsx
+      - address-book/src/app/icon.svg
+      - address-book/src/app/layout.tsx
+      - address-book/src/app/manifest.ts
+      - address-book/src/app/page.tsx
+      - address-book/src/app/settings/import/page.tsx
+      - address-book/src/app/settings/page.tsx
+      - address-book/src/app/tasks/page.tsx
+      - address-book/src/components/account-views.css
+      - address-book/src/components/account-views.tsx
+      - address-book/src/components/accounts.tsx
+      - address-book/src/components/address-book-shell.tsx
+      - address-book/src/components/checklist-action.tsx
+      - address-book/src/components/contact-actions.tsx
+      - address-book/src/components/contact-addresses.tsx
+      - address-book/src/components/contact-methods.tsx
+      - address-book/src/components/contact-views.css
+      - address-book/src/components/contact-views.tsx
+      - address-book/src/components/contact-workflows.tsx
+      - address-book/src/components/contacts.tsx
+      - address-book/src/components/crm-settings.tsx
+      - address-book/src/components/csv-import-map.tsx
+      - address-book/src/components/csv-import-review.tsx
+      - address-book/src/components/csv-import.css
+      - address-book/src/components/csv-import.tsx
+      - address-book/src/components/editors.tsx
+      - address-book/src/components/feedback.tsx
+      - address-book/src/components/global-search.tsx
+      - address-book/src/components/home.css
+      - address-book/src/components/home.tsx
+      - address-book/src/components/household-views.css
+      - address-book/src/components/household-views.tsx
+      - address-book/src/components/households.tsx
+      - address-book/src/components/inbox.css
+      - address-book/src/components/inbox.tsx
+      - address-book/src/components/link-dialogs.tsx
+      - address-book/src/components/list-page.tsx
+      - address-book/src/components/motion.css
+      - address-book/src/components/outreach-context.tsx
+      - address-book/src/components/phone-nav.tsx
+      - address-book/src/components/pickers.tsx
+      - address-book/src/components/record-actions.css
+      - address-book/src/components/record-parts.tsx
+      - address-book/src/components/record-tasks.tsx
+      - address-book/src/components/record-views.css
+      - address-book/src/components/session.tsx
+      - address-book/src/components/settings-page.tsx
+      - address-book/src/components/task-assignee.tsx
+      - address-book/src/components/task-board.tsx
+      - address-book/src/components/task-calendar.css
+      - address-book/src/components/task-calendar.tsx
+      - address-book/src/components/task-checklist.css
+      - address-book/src/components/task-checklist.tsx
+      - address-book/src/components/task-drawer.css
+      - address-book/src/components/task-drawer.tsx
+      - address-book/src/components/task-extras.tsx
+      - address-book/src/components/task-form.css
+      - address-book/src/components/task-parts.tsx
+      - address-book/src/components/task-priorities.tsx
+      - address-book/src/components/tasks.tsx
+      - address-book/src/components/timeline.tsx
+      - address-book/src/components/ui/action-button.css
+      - address-book/src/components/ui/action-button.tsx
+      - address-book/src/components/ui/copy-button.tsx
+      - address-book/src/components/ui/discard-dialog.tsx
+      - address-book/src/components/ui/disclosure.tsx
+      - address-book/src/components/ui/fields.tsx
+      - address-book/src/components/ui/index-rail.tsx
+      - address-book/src/components/ui/inline-edit.tsx
+      - address-book/src/components/ui/layout.tsx
+      - address-book/src/components/ui/list-pager.tsx
+      - address-book/src/components/ui/motion.tsx
+      - address-book/src/components/ui/overflow-menu.tsx
+      - address-book/src/components/ui/result-stage.tsx
+      - address-book/src/components/ui/search-field.tsx
+      - address-book/src/components/ui/select-field.tsx
+      - address-book/src/components/ui/skeleton.tsx
+      - address-book/src/components/ui/table-sort.tsx
+      - address-book/src/components/ui/undo-toast.tsx
+      - address-book/src/components/ui/unsaved-changes-guard.tsx
+      - address-book/src/lib/account-views.ts
+      - address-book/src/lib/addresses.ts
+      - address-book/src/lib/api-client.ts
+      - address-book/src/lib/calendar.ts
+      - address-book/src/lib/checklist-action.ts
+      - address-book/src/lib/checklist.ts
+      - address-book/src/lib/contact-views.ts
+      - address-book/src/lib/contracts.ts
+      - address-book/src/lib/download.ts
+      - address-book/src/lib/draft-error.ts
+      - address-book/src/lib/features.ts
+      - address-book/src/lib/household-views.ts
+      - address-book/src/lib/import-fields.ts
+      - address-book/src/lib/import-flow.ts
+      - address-book/src/lib/inbox-order.ts
+      - address-book/src/lib/inbox.ts
+      - address-book/src/lib/insights.ts
+      - address-book/src/lib/links.ts
+      - address-book/src/lib/lookup.ts
+      - address-book/src/lib/money.ts
+      - address-book/src/lib/motion.ts
+      - address-book/src/lib/name-index.ts
+      - address-book/src/lib/notes.ts
+      - address-book/src/lib/opener.ts
+      - address-book/src/lib/paged-state.ts
+      - address-book/src/lib/palette.ts
+      - address-book/src/lib/pending-saves.ts
+      - address-book/src/lib/phone.ts
+      - address-book/src/lib/rebase-draft.ts
+      - address-book/src/lib/record-views.ts
+      - address-book/src/lib/records.ts
+      - address-book/src/lib/relationships.ts
+      - address-book/src/lib/remembered.ts
+      - address-book/src/lib/server/crm-data.ts
+      - address-book/src/lib/server/handlers.ts
+      - address-book/src/lib/server/repository.ts
+      - address-book/src/lib/server/validation.ts
+      - address-book/src/lib/task-save-queue.ts
+      - address-book/src/lib/task-views.ts
+      - address-book/src/lib/undo.ts
+      - address-book/src/lib/use-lookup.ts
+      - address-book/src/lib/use-paged-list.ts
+      - address-book/src/lib/use-record.ts
+      - address-book/src/lib/use-reload-on.ts
+      - address-book/src/lib/use-today.ts
+      - address-book/staticwebapp.config.json
+      - address-book/tests/server/address-book.test.ts
+      - address-book/tests/server/address-mode-search-money.test.ts
+      - address-book/tests/server/checklist-actions.test.ts
+      - address-book/tests/server/composition.test.ts
+      - address-book/tests/server/cosmos.test.ts
+      - address-book/tests/server/crm-workflows.test.ts
+      - address-book/tests/server/csv-import-preview.test.ts
+      - address-book/tests/server/list-query.test.ts
+      - address-book/tests/server/migration.test.ts
+      - address-book/tests/server/review-fixes.test.ts
+      - address-book/tests/server/seed-dev.test.ts
+      - address-book/tests/server/workspace-features.test.ts
+      - address-book/tests/ui/account-views.test.ts
+      - address-book/tests/ui/api-client.test.ts
+      - address-book/tests/ui/calendar.test.ts
+      - address-book/tests/ui/checklist-action.test.ts
+      - address-book/tests/ui/checklist.test.ts
+      - address-book/tests/ui/contact-views.test.ts
+      - address-book/tests/ui/csv-import.test.ts
+      - address-book/tests/ui/features.test.ts
+      - address-book/tests/ui/household-views.test.ts
+      - address-book/tests/ui/inbox.test.ts
+      - address-book/tests/ui/insights.test.ts
+      - address-book/tests/ui/kpi-presets.test.ts
+      - address-book/tests/ui/motion.test.ts
+      - address-book/tests/ui/name-index.test.ts
+      - address-book/tests/ui/notes.test.ts
+      - address-book/tests/ui/paged-state.test.ts
+      - address-book/tests/ui/pending-saves.test.ts
+      - address-book/tests/ui/phone.test.ts
+      - address-book/tests/ui/rebase-draft.test.ts
+      - address-book/tests/ui/record-views.test.ts
+      - address-book/tests/ui/records.test.ts
+      - address-book/tests/ui/relationships.test.ts
+      - address-book/tests/ui/review-fixes.test.ts
+      - address-book/tests/ui/task-views.test.ts
+      - address-book/tests/ui/ux-logic.test.ts
+      - address-book/tests/ui/workflows.test.ts
+      - address-book/tsconfig.json
+      - bun.lock
+      - compass/AGENTS.md
+      - compass/functions/package.json
+      - compass/functions/src/compass-brief-journeys.test.ts
+      - compass/functions/src/compass-copilot.ts
+      - compass/functions/src/compass-hub-graph.test.ts
+      - compass/functions/src/compass-microsoft.ts
+      - compass/next.config.ts
+      - compass/package.json
+      - compass/src/lib/swa-session.ts
+      - docker/Dockerfile
+      - docker/README.md
+      - docker/compose.yaml
+      - docker/cosmos-init.ts
+      - docs/.codex
+      - docs/AGENTS.md
+      - docs/authorization-roles.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/hub-graph.md
+      - docs/repository-operations.md
+      - docs/staging-and-testing.md
+      - docs/staging-operator-login.md
+      - docs/suite-architecture.md
+      - docs/transition/contracts.md
+      - package.json
+      - scripts/smoke-swa.sh
+      - scripts/tooling.test.ts
+  - title: "fix(ci): remove scheduled verify workflow"
+    body: >-
+      ## Why
+
+      Remove unnecessary recurring Verify runs while preserving PR and manual verification.
+
+
+      ## What changed
+
+      Remove the weekly schedule and schedule-specific branches from the reconciled CI workflow. PRs still run
+      affected/dependent checks, and manual dispatch still runs full verification. This lay...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/242
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - github-automation
+      - "app: proforma"
+      - platform
+      - "app: compass"
+    additions: 98685
+    deletions: 3117
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-11-02T16:05:33Z
+    updatedAt: 2026-11-14T01:48:54Z
+    closedAt: 2026-11-14T01:48:54Z
+    mergedAt: 2026-11-14T01:48:53Z
+    workCommits:
+      - &a26
+        sha: 6938645495bb1eb1ee6663695686f3bb52365c3b
+        message: Remove scheduled verification from CI stack
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6938645495bb1eb1ee6663695686f3bb52365c3b
+        authoredAt: 2026-11-13T21:46:34Z
+      - &a28
+        sha: ab732188f3e15b0f3b58852d1ca06506ca3915d9
+        message: Merge branch 'clees/ci-stack-fail-fast' into clees/ci-stack-schedule
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ab732188f3e15b0f3b58852d1ca06506ca3915d9
+        authoredAt: 2026-11-13T22:07:54Z
+      - &a31
+        sha: e34f113f46201c3075abb66334038eec0d3d65ed
+        message: Merge branch 'clees/ci-stack-fail-fast' into clees/ci-stack-schedule
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e34f113f46201c3075abb66334038eec0d3d65ed
+        authoredAt: 2026-11-13T22:10:36Z
+      - &a34
+        sha: e81d643b7d30f9cc50a2680d16586b6b48d05e08
+        message: Merge tooling bail fix into schedule-removal layer
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e81d643b7d30f9cc50a2680d16586b6b48d05e08
+        authoredAt: 2026-11-13T22:12:46Z
+    workTimestamps:
+      - 2026-11-13T21:46:34Z
+      - 2026-11-13T22:07:54Z
+      - 2026-11-13T22:10:36Z
+      - 2026-11-13T22:12:46Z
+    workAdditions: 98685
+    workDeletions: 3117
+    workFiles:
+      - .agents/skills/ui-ux-pro-max/SKILL.md
+      - .agents/skills/ui-ux-pro-max/data/app-interface.csv
+      - .agents/skills/ui-ux-pro-max/data/catalog-summary.json
+      - .agents/skills/ui-ux-pro-max/data/charts.csv
+      - .agents/skills/ui-ux-pro-max/data/colors.csv
+      - .agents/skills/ui-ux-pro-max/data/data-provenance.json
+      - .agents/skills/ui-ux-pro-max/data/google-font-licenses.json
+      - .agents/skills/ui-ux-pro-max/data/google-fonts.csv
+      - .agents/skills/ui-ux-pro-max/data/icons.csv
+      - .agents/skills/ui-ux-pro-max/data/landing.csv
+      - .agents/skills/ui-ux-pro-max/data/motion.csv
+      - .agents/skills/ui-ux-pro-max/data/phosphor-icons-upstream.json
+      - .agents/skills/ui-ux-pro-max/data/products.csv
+      - .agents/skills/ui-ux-pro-max/data/react-performance.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/angular.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/astro.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/avalonia.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/flutter.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/html-tailwind.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/javafx.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/jetpack-compose.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/laravel.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/nextjs.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/nuxt-ui.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/nuxtjs.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/react-native.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/react.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/shadcn.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/svelte.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/swiftui.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/threejs.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/uno.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/uwp.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/vue.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/winui.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/wpf.csv
+      - .agents/skills/ui-ux-pro-max/data/styles.csv
+      - .agents/skills/ui-ux-pro-max/data/typography.csv
+      - .agents/skills/ui-ux-pro-max/data/ui-reasoning.csv
+      - .agents/skills/ui-ux-pro-max/data/ux-guidelines.csv
+      - .agents/skills/ui-ux-pro-max/references/pro-rules.md
+      - .agents/skills/ui-ux-pro-max/references/quick-reference.md
+      - .agents/skills/ui-ux-pro-max/scripts/core.py
+      - .agents/skills/ui-ux-pro-max/scripts/design_system.py
+      - .agents/skills/ui-ux-pro-max/scripts/reasoning_contract.py
+      - .agents/skills/ui-ux-pro-max/scripts/search.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_catalog_refresh.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_catalog_summary_line_endings.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_core.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_core_data_quality.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_design_system_stack.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_native_desktop_stack_freshness.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_relevance_evaluator.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_rtl_support.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_skill_script_paths.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_style_taxonomy.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_text_layout_resilience.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_web_stack_freshness.py
+      - .agents/skills/ui-ux-pro-max/scripts/validate_data.py
+      - .agents/skills/untangle-codebase/LICENSE.txt
+      - .agents/skills/untangle-codebase/SKILL.md
+      - .agents/skills/untangle-codebase/agents/openai.yaml
+      - .claude/skills/ui-ux-pro-max
+      - .codex/agents/default.toml
+      - .codex/agents/explorer.toml
+      - .codex/agents/worker.toml
+      - .codex/config.toml
+      - .codex/environments/environment.toml
+      - .dockerignore
+      - .github/CODEOWNERS
+      - .github/ISSUE_TEMPLATE/feature.yml
+      - .github/actions/setup-bun/action.yml
+      - .github/deployment-policy.json
+      - .github/pull_request_template.md
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/pr-e2e.yml
+      - .github/workflows/promote-release.yml
+      - .github/workflows/staging-infrastructure.yml
+      - .github/workflows/staging.yml
+      - .github/workflows/verify.yml
+      - .gitignore
+      - AGENTS.md
+      - PLAN.md
+      - README.md
+      - SECURITY.md
+      - address-book/AGENTS.md
+      - address-book/DESIGN.md
+      - address-book/functions/host.json
+      - address-book/functions/local.settings.json.example
+      - address-book/functions/package.json
+      - address-book/functions/scripts/build.ts
+      - address-book/functions/src/index.ts
+      - address-book/functions/tsconfig.json
+      - address-book/next-env.d.ts
+      - address-book/next.config.ts
+      - address-book/package.json
+      - address-book/postcss.config.mjs
+      - address-book/scripts/build-static.ts
+      - address-book/scripts/seed-dev-data.ts
+      - address-book/scripts/seed-dev.ts
+      - address-book/src/app/accounts/page.tsx
+      - address-book/src/app/accounts/record/page.tsx
+      - address-book/src/app/api/address-book/[...path]/route.ts
+      - address-book/src/app/contacts/page.tsx
+      - address-book/src/app/contacts/record/page.tsx
+      - address-book/src/app/globals.css
+      - address-book/src/app/households/page.tsx
+      - address-book/src/app/households/record/page.tsx
+      - address-book/src/app/icon.svg
+      - address-book/src/app/layout.tsx
+      - address-book/src/app/manifest.ts
+      - address-book/src/app/page.tsx
+      - address-book/src/app/settings/import/page.tsx
+      - address-book/src/app/settings/page.tsx
+      - address-book/src/app/tasks/page.tsx
+      - address-book/src/components/account-views.css
+      - address-book/src/components/account-views.tsx
+      - address-book/src/components/accounts.tsx
+      - address-book/src/components/address-book-shell.tsx
+      - address-book/src/components/checklist-action.tsx
+      - address-book/src/components/contact-actions.tsx
+      - address-book/src/components/contact-addresses.tsx
+      - address-book/src/components/contact-methods.tsx
+      - address-book/src/components/contact-views.css
+      - address-book/src/components/contact-views.tsx
+      - address-book/src/components/contact-workflows.tsx
+      - address-book/src/components/contacts.tsx
+      - address-book/src/components/crm-settings.tsx
+      - address-book/src/components/csv-import-map.tsx
+      - address-book/src/components/csv-import-review.tsx
+      - address-book/src/components/csv-import.css
+      - address-book/src/components/csv-import.tsx
+      - address-book/src/components/editors.tsx
+      - address-book/src/components/feedback.tsx
+      - address-book/src/components/global-search.tsx
+      - address-book/src/components/home.css
+      - address-book/src/components/home.tsx
+      - address-book/src/components/household-views.css
+      - address-book/src/components/household-views.tsx
+      - address-book/src/components/households.tsx
+      - address-book/src/components/inbox.css
+      - address-book/src/components/inbox.tsx
+      - address-book/src/components/link-dialogs.tsx
+      - address-book/src/components/list-page.tsx
+      - address-book/src/components/motion.css
+      - address-book/src/components/outreach-context.tsx
+      - address-book/src/components/phone-nav.tsx
+      - address-book/src/components/pickers.tsx
+      - address-book/src/components/record-actions.css
+      - address-book/src/components/record-parts.tsx
+      - address-book/src/components/record-tasks.tsx
+      - address-book/src/components/record-views.css
+      - address-book/src/components/session.tsx
+      - address-book/src/components/settings-page.tsx
+      - address-book/src/components/task-assignee.tsx
+      - address-book/src/components/task-board.tsx
+      - address-book/src/components/task-calendar.css
+      - address-book/src/components/task-calendar.tsx
+      - address-book/src/components/task-checklist.css
+      - address-book/src/components/task-checklist.tsx
+      - address-book/src/components/task-drawer.css
+      - address-book/src/components/task-drawer.tsx
+      - address-book/src/components/task-extras.tsx
+      - address-book/src/components/task-form.css
+      - address-book/src/components/task-parts.tsx
+      - address-book/src/components/task-priorities.tsx
+      - address-book/src/components/tasks.tsx
+      - address-book/src/components/timeline.tsx
+      - address-book/src/components/ui/action-button.css
+      - address-book/src/components/ui/action-button.tsx
+      - address-book/src/components/ui/copy-button.tsx
+      - address-book/src/components/ui/discard-dialog.tsx
+      - address-book/src/components/ui/disclosure.tsx
+      - address-book/src/components/ui/fields.tsx
+      - address-book/src/components/ui/index-rail.tsx
+      - address-book/src/components/ui/inline-edit.tsx
+      - address-book/src/components/ui/layout.tsx
+      - address-book/src/components/ui/list-pager.tsx
+      - address-book/src/components/ui/motion.tsx
+      - address-book/src/components/ui/overflow-menu.tsx
+      - address-book/src/components/ui/result-stage.tsx
+      - address-book/src/components/ui/search-field.tsx
+      - address-book/src/components/ui/select-field.tsx
+      - address-book/src/components/ui/skeleton.tsx
+      - address-book/src/components/ui/table-sort.tsx
+      - address-book/src/components/ui/undo-toast.tsx
+      - address-book/src/components/ui/unsaved-changes-guard.tsx
+      - address-book/src/lib/account-views.ts
+      - address-book/src/lib/addresses.ts
+      - address-book/src/lib/api-client.ts
+      - address-book/src/lib/calendar.ts
+      - address-book/src/lib/checklist-action.ts
+      - address-book/src/lib/checklist.ts
+      - address-book/src/lib/contact-views.ts
+      - address-book/src/lib/contracts.ts
+      - address-book/src/lib/download.ts
+      - address-book/src/lib/draft-error.ts
+      - address-book/src/lib/features.ts
+      - address-book/src/lib/household-views.ts
+      - address-book/src/lib/import-fields.ts
+      - address-book/src/lib/import-flow.ts
+      - address-book/src/lib/inbox-order.ts
+      - address-book/src/lib/inbox.ts
+      - address-book/src/lib/insights.ts
+      - address-book/src/lib/links.ts
+      - address-book/src/lib/lookup.ts
+      - address-book/src/lib/money.ts
+      - address-book/src/lib/motion.ts
+      - address-book/src/lib/name-index.ts
+      - address-book/src/lib/notes.ts
+      - address-book/src/lib/opener.ts
+      - address-book/src/lib/paged-state.ts
+      - address-book/src/lib/palette.ts
+      - address-book/src/lib/pending-saves.ts
+      - address-book/src/lib/phone.ts
+      - address-book/src/lib/rebase-draft.ts
+      - address-book/src/lib/record-views.ts
+      - address-book/src/lib/records.ts
+      - address-book/src/lib/relationships.ts
+      - address-book/src/lib/remembered.ts
+      - address-book/src/lib/server/crm-data.ts
+      - address-book/src/lib/server/handlers.ts
+      - address-book/src/lib/server/repository.ts
+      - address-book/src/lib/server/validation.ts
+      - address-book/src/lib/task-save-queue.ts
+      - address-book/src/lib/task-views.ts
+      - address-book/src/lib/undo.ts
+      - address-book/src/lib/use-lookup.ts
+      - address-book/src/lib/use-paged-list.ts
+      - address-book/src/lib/use-record.ts
+      - address-book/src/lib/use-reload-on.ts
+      - address-book/src/lib/use-today.ts
+      - address-book/staticwebapp.config.json
+      - address-book/tests/server/address-book.test.ts
+      - address-book/tests/server/address-mode-search-money.test.ts
+      - address-book/tests/server/checklist-actions.test.ts
+      - address-book/tests/server/composition.test.ts
+      - address-book/tests/server/cosmos.test.ts
+      - address-book/tests/server/crm-workflows.test.ts
+      - address-book/tests/server/csv-import-preview.test.ts
+      - address-book/tests/server/list-query.test.ts
+      - address-book/tests/server/migration.test.ts
+      - address-book/tests/server/review-fixes.test.ts
+      - address-book/tests/server/seed-dev.test.ts
+      - address-book/tests/server/workspace-features.test.ts
+      - address-book/tests/ui/account-views.test.ts
+      - address-book/tests/ui/api-client.test.ts
+      - address-book/tests/ui/calendar.test.ts
+      - address-book/tests/ui/checklist-action.test.ts
+      - address-book/tests/ui/checklist.test.ts
+      - address-book/tests/ui/contact-views.test.ts
+      - address-book/tests/ui/csv-import.test.ts
+      - address-book/tests/ui/features.test.ts
+      - address-book/tests/ui/household-views.test.ts
+      - address-book/tests/ui/inbox.test.ts
+      - address-book/tests/ui/insights.test.ts
+      - address-book/tests/ui/kpi-presets.test.ts
+      - address-book/tests/ui/motion.test.ts
+      - address-book/tests/ui/name-index.test.ts
+      - address-book/tests/ui/notes.test.ts
+      - address-book/tests/ui/paged-state.test.ts
+      - address-book/tests/ui/pending-saves.test.ts
+      - address-book/tests/ui/phone.test.ts
+      - address-book/tests/ui/rebase-draft.test.ts
+      - address-book/tests/ui/record-views.test.ts
+      - address-book/tests/ui/records.test.ts
+      - address-book/tests/ui/relationships.test.ts
+      - address-book/tests/ui/review-fixes.test.ts
+      - address-book/tests/ui/task-views.test.ts
+      - address-book/tests/ui/ux-logic.test.ts
+      - address-book/tests/ui/workflows.test.ts
+      - address-book/tsconfig.json
+      - bun.lock
+      - compass/AGENTS.md
+      - compass/functions/package.json
+      - compass/functions/src/compass-brief-journeys.test.ts
+      - compass/functions/src/compass-copilot.ts
+      - compass/functions/src/compass-hub-graph.test.ts
+      - compass/functions/src/compass-microsoft.ts
+      - compass/next.config.ts
+      - compass/package.json
+      - compass/src/lib/swa-session.ts
+      - docker/Dockerfile
+      - docker/README.md
+      - docker/compose.yaml
+      - docker/cosmos-init.ts
+      - docs/.codex
+      - docs/AGENTS.md
+      - docs/authorization-roles.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/hub-graph.md
+      - docs/repository-operations.md
+      - docs/staging-and-testing.md
+      - docs/staging-operator-login.md
+      - docs/suite-architecture.md
+      - docs/transition/contracts.md
+      - package.json
+      - scripts/smoke-swa.sh
+      - scripts/tooling.test.ts
+  - title: "perf(ci): parallelize builds and verification suites"
+    body: |-
+      ## Why
+      Reduce CI feedback time while retaining affected-app verification and the required `verify` result.
+
+      ## What changed
+      - Run independent static builds two at a time and isolate core, Transition, and Compass verification suites.
+      - Restore install caches across suites while saving from one owner,...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/241
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - github-automation
+      - "app: proforma"
+      - platform
+      - "app: compass"
+    additions: 98252
+    deletions: 3013
+    changedFiles: 9
+    author: myriadas-clees
+    createdAt: 2026-11-01T02:01:14Z
+    updatedAt: 2026-11-14T01:48:51Z
+    closedAt: 2026-11-14T01:48:51Z
+    mergedAt: 2026-11-14T01:48:51Z
+    workCommits:
+      - &a24
+        sha: 0496247687beb3be7edcf7c0820bcffdd124051f
+        message: Merge main and reconcile CI parallelization
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0496247687beb3be7edcf7c0820bcffdd124051f
+        authoredAt: 2026-11-13T21:44:51Z
+      - &a29
+        sha: ec20a05a8b532aec16885073e078e3099421bd50
+        message: "fix(ci): retain history for baseline ancestry checks"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ec20a05a8b532aec16885073e078e3099421bd50
+        authoredAt: 2026-11-13T22:07:54Z
+      - &a32
+        sha: 20a3d8098e92c0caf3d9dc8bdaf1335caa21b104
+        message: "fix(ci): reject incomplete smoke probe transfers"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/20a3d8098e92c0caf3d9dc8bdaf1335caa21b104
+        authoredAt: 2026-11-13T22:10:36Z
+    workTimestamps:
+      - 2026-11-13T21:44:51Z
+      - 2026-11-13T22:07:54Z
+      - 2026-11-13T22:10:36Z
+    workAdditions: 98252
+    workDeletions: 3013
+    workFiles:
+      - .agents/skills/ui-ux-pro-max/SKILL.md
+      - .agents/skills/ui-ux-pro-max/data/app-interface.csv
+      - .agents/skills/ui-ux-pro-max/data/catalog-summary.json
+      - .agents/skills/ui-ux-pro-max/data/charts.csv
+      - .agents/skills/ui-ux-pro-max/data/colors.csv
+      - .agents/skills/ui-ux-pro-max/data/data-provenance.json
+      - .agents/skills/ui-ux-pro-max/data/google-font-licenses.json
+      - .agents/skills/ui-ux-pro-max/data/google-fonts.csv
+      - .agents/skills/ui-ux-pro-max/data/icons.csv
+      - .agents/skills/ui-ux-pro-max/data/landing.csv
+      - .agents/skills/ui-ux-pro-max/data/motion.csv
+      - .agents/skills/ui-ux-pro-max/data/phosphor-icons-upstream.json
+      - .agents/skills/ui-ux-pro-max/data/products.csv
+      - .agents/skills/ui-ux-pro-max/data/react-performance.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/angular.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/astro.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/avalonia.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/flutter.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/html-tailwind.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/javafx.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/jetpack-compose.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/laravel.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/nextjs.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/nuxt-ui.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/nuxtjs.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/react-native.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/react.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/shadcn.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/svelte.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/swiftui.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/threejs.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/uno.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/uwp.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/vue.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/winui.csv
+      - .agents/skills/ui-ux-pro-max/data/stacks/wpf.csv
+      - .agents/skills/ui-ux-pro-max/data/styles.csv
+      - .agents/skills/ui-ux-pro-max/data/typography.csv
+      - .agents/skills/ui-ux-pro-max/data/ui-reasoning.csv
+      - .agents/skills/ui-ux-pro-max/data/ux-guidelines.csv
+      - .agents/skills/ui-ux-pro-max/references/pro-rules.md
+      - .agents/skills/ui-ux-pro-max/references/quick-reference.md
+      - .agents/skills/ui-ux-pro-max/scripts/core.py
+      - .agents/skills/ui-ux-pro-max/scripts/design_system.py
+      - .agents/skills/ui-ux-pro-max/scripts/reasoning_contract.py
+      - .agents/skills/ui-ux-pro-max/scripts/search.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_catalog_refresh.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_catalog_summary_line_endings.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_core.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_core_data_quality.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_design_system_stack.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_native_desktop_stack_freshness.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_relevance_evaluator.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_rtl_support.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_skill_script_paths.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_style_taxonomy.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_text_layout_resilience.py
+      - .agents/skills/ui-ux-pro-max/scripts/tests/test_web_stack_freshness.py
+      - .agents/skills/ui-ux-pro-max/scripts/validate_data.py
+      - .agents/skills/untangle-codebase/LICENSE.txt
+      - .agents/skills/untangle-codebase/SKILL.md
+      - .agents/skills/untangle-codebase/agents/openai.yaml
+      - .claude/skills/ui-ux-pro-max
+      - .codex/agents/default.toml
+      - .codex/agents/explorer.toml
+      - .codex/agents/worker.toml
+      - .codex/config.toml
+      - .codex/environments/environment.toml
+      - .dockerignore
+      - .github/CODEOWNERS
+      - .github/ISSUE_TEMPLATE/feature.yml
+      - .github/deployment-policy.json
+      - .github/pull_request_template.md
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/pr-e2e.yml
+      - .github/workflows/promote-release.yml
+      - .github/workflows/staging-infrastructure.yml
+      - .github/workflows/staging.yml
+      - .github/workflows/verify.yml
+      - .gitignore
+      - AGENTS.md
+      - PLAN.md
+      - README.md
+      - SECURITY.md
+      - address-book/AGENTS.md
+      - address-book/DESIGN.md
+      - address-book/functions/host.json
+      - address-book/functions/local.settings.json.example
+      - address-book/functions/package.json
+      - address-book/functions/scripts/build.ts
+      - address-book/functions/src/index.ts
+      - address-book/functions/tsconfig.json
+      - address-book/next-env.d.ts
+      - address-book/next.config.ts
+      - address-book/package.json
+      - address-book/postcss.config.mjs
+      - address-book/scripts/build-static.ts
+      - address-book/scripts/seed-dev-data.ts
+      - address-book/scripts/seed-dev.ts
+      - address-book/src/app/accounts/page.tsx
+      - address-book/src/app/accounts/record/page.tsx
+      - address-book/src/app/api/address-book/[...path]/route.ts
+      - address-book/src/app/contacts/page.tsx
+      - address-book/src/app/contacts/record/page.tsx
+      - address-book/src/app/globals.css
+      - address-book/src/app/households/page.tsx
+      - address-book/src/app/households/record/page.tsx
+      - address-book/src/app/icon.svg
+      - address-book/src/app/layout.tsx
+      - address-book/src/app/manifest.ts
+      - address-book/src/app/page.tsx
+      - address-book/src/app/settings/import/page.tsx
+      - address-book/src/app/settings/page.tsx
+      - address-book/src/app/tasks/page.tsx
+      - address-book/src/components/account-views.css
+      - address-book/src/components/account-views.tsx
+      - address-book/src/components/accounts.tsx
+      - address-book/src/components/address-book-shell.tsx
+      - address-book/src/components/checklist-action.tsx
+      - address-book/src/components/contact-actions.tsx
+      - address-book/src/components/contact-addresses.tsx
+      - address-book/src/components/contact-methods.tsx
+      - address-book/src/components/contact-views.css
+      - address-book/src/components/contact-views.tsx
+      - address-book/src/components/contact-workflows.tsx
+      - address-book/src/components/contacts.tsx
+      - address-book/src/components/crm-settings.tsx
+      - address-book/src/components/csv-import-map.tsx
+      - address-book/src/components/csv-import-review.tsx
+      - address-book/src/components/csv-import.css
+      - address-book/src/components/csv-import.tsx
+      - address-book/src/components/editors.tsx
+      - address-book/src/components/feedback.tsx
+      - address-book/src/components/global-search.tsx
+      - address-book/src/components/home.css
+      - address-book/src/components/home.tsx
+      - address-book/src/components/household-views.css
+      - address-book/src/components/household-views.tsx
+      - address-book/src/components/households.tsx
+      - address-book/src/components/inbox.css
+      - address-book/src/components/inbox.tsx
+      - address-book/src/components/link-dialogs.tsx
+      - address-book/src/components/list-page.tsx
+      - address-book/src/components/motion.css
+      - address-book/src/components/outreach-context.tsx
+      - address-book/src/components/phone-nav.tsx
+      - address-book/src/components/pickers.tsx
+      - address-book/src/components/record-actions.css
+      - address-book/src/components/record-parts.tsx
+      - address-book/src/components/record-tasks.tsx
+      - address-book/src/components/record-views.css
+      - address-book/src/components/session.tsx
+      - address-book/src/components/settings-page.tsx
+      - address-book/src/components/task-assignee.tsx
+      - address-book/src/components/task-board.tsx
+      - address-book/src/components/task-calendar.css
+      - address-book/src/components/task-calendar.tsx
+      - address-book/src/components/task-checklist.css
+      - address-book/src/components/task-checklist.tsx
+      - address-book/src/components/task-drawer.css
+      - address-book/src/components/task-drawer.tsx
+      - address-book/src/components/task-extras.tsx
+      - address-book/src/components/task-form.css
+      - address-book/src/components/task-parts.tsx
+      - address-book/src/components/task-priorities.tsx
+      - address-book/src/components/tasks.tsx
+      - address-book/src/components/timeline.tsx
+      - address-book/src/components/ui/action-button.css
+      - address-book/src/components/ui/action-button.tsx
+      - address-book/src/components/ui/copy-button.tsx
+      - address-book/src/components/ui/discard-dialog.tsx
+      - address-book/src/components/ui/disclosure.tsx
+      - address-book/src/components/ui/fields.tsx
+      - address-book/src/components/ui/index-rail.tsx
+      - address-book/src/components/ui/inline-edit.tsx
+      - address-book/src/components/ui/layout.tsx
+      - address-book/src/components/ui/list-pager.tsx
+      - address-book/src/components/ui/motion.tsx
+      - address-book/src/components/ui/overflow-menu.tsx
+      - address-book/src/components/ui/result-stage.tsx
+      - address-book/src/components/ui/search-field.tsx
+      - address-book/src/components/ui/select-field.tsx
+      - address-book/src/components/ui/skeleton.tsx
+      - address-book/src/components/ui/table-sort.tsx
+      - address-book/src/components/ui/undo-toast.tsx
+      - address-book/src/components/ui/unsaved-changes-guard.tsx
+      - address-book/src/lib/account-views.ts
+      - address-book/src/lib/addresses.ts
+      - address-book/src/lib/api-client.ts
+      - address-book/src/lib/calendar.ts
+      - address-book/src/lib/checklist-action.ts
+      - address-book/src/lib/checklist.ts
+      - address-book/src/lib/contact-views.ts
+      - address-book/src/lib/contracts.ts
+      - address-book/src/lib/download.ts
+      - address-book/src/lib/draft-error.ts
+      - address-book/src/lib/features.ts
+      - address-book/src/lib/household-views.ts
+      - address-book/src/lib/import-fields.ts
+      - address-book/src/lib/import-flow.ts
+      - address-book/src/lib/inbox-order.ts
+      - address-book/src/lib/inbox.ts
+      - address-book/src/lib/insights.ts
+      - address-book/src/lib/links.ts
+      - address-book/src/lib/lookup.ts
+      - address-book/src/lib/money.ts
+      - address-book/src/lib/motion.ts
+      - address-book/src/lib/name-index.ts
+      - address-book/src/lib/notes.ts
+      - address-book/src/lib/opener.ts
+      - address-book/src/lib/paged-state.ts
+      - address-book/src/lib/palette.ts
+      - address-book/src/lib/pending-saves.ts
+      - address-book/src/lib/phone.ts
+      - address-book/src/lib/rebase-draft.ts
+      - address-book/src/lib/record-views.ts
+      - address-book/src/lib/records.ts
+      - address-book/src/lib/relationships.ts
+      - address-book/src/lib/remembered.ts
+      - address-book/src/lib/server/crm-data.ts
+      - address-book/src/lib/server/handlers.ts
+      - address-book/src/lib/server/repository.ts
+      - address-book/src/lib/server/validation.ts
+      - address-book/src/lib/task-save-queue.ts
+      - address-book/src/lib/task-views.ts
+      - address-book/src/lib/undo.ts
+      - address-book/src/lib/use-lookup.ts
+      - address-book/src/lib/use-paged-list.ts
+      - address-book/src/lib/use-record.ts
+      - address-book/src/lib/use-reload-on.ts
+      - address-book/src/lib/use-today.ts
+      - address-book/staticwebapp.config.json
+      - address-book/tests/server/address-book.test.ts
+      - address-book/tests/server/address-mode-search-money.test.ts
+      - address-book/tests/server/checklist-actions.test.ts
+      - address-book/tests/server/composition.test.ts
+      - address-book/tests/server/cosmos.test.ts
+      - address-book/tests/server/crm-workflows.test.ts
+      - address-book/tests/server/csv-import-preview.test.ts
+      - address-book/tests/server/list-query.test.ts
+      - address-book/tests/server/migration.test.ts
+      - address-book/tests/server/review-fixes.test.ts
+      - address-book/tests/server/seed-dev.test.ts
+      - address-book/tests/server/workspace-features.test.ts
+      - address-book/tests/ui/account-views.test.ts
+      - address-book/tests/ui/api-client.test.ts
+      - address-book/tests/ui/calendar.test.ts
+      - address-book/tests/ui/checklist-action.test.ts
+      - address-book/tests/ui/checklist.test.ts
+      - address-book/tests/ui/contact-views.test.ts
+      - address-book/tests/ui/csv-import.test.ts
+      - address-book/tests/ui/features.test.ts
+      - address-book/tests/ui/household-views.test.ts
+      - address-book/tests/ui/inbox.test.ts
+      - address-book/tests/ui/insights.test.ts
+      - address-book/tests/ui/kpi-presets.test.ts
+      - address-book/tests/ui/motion.test.ts
+      - address-book/tests/ui/name-index.test.ts
+      - address-book/tests/ui/notes.test.ts
+      - address-book/tests/ui/paged-state.test.ts
+      - address-book/tests/ui/pending-saves.test.ts
+      - address-book/tests/ui/phone.test.ts
+      - address-book/tests/ui/rebase-draft.test.ts
+      - address-book/tests/ui/record-views.test.ts
+      - address-book/tests/ui/records.test.ts
+      - address-book/tests/ui/relationships.test.ts
+      - address-book/tests/ui/review-fixes.test.ts
+      - address-book/tests/ui/task-views.test.ts
+      - address-book/tests/ui/ux-logic.test.ts
+      - address-book/tests/ui/workflows.test.ts
+      - address-book/tsconfig.json
+      - bun.lock
+      - compass/AGENTS.md
+      - compass/functions/package.json
+      - compass/functions/src/compass-copilot.ts
+      - compass/functions/src/compass-hub-graph.test.ts
+      - compass/functions/src/compass-microsoft.ts
+      - compass/next.config.ts
+      - compass/package.json
+      - compass/src/lib/swa-session.ts
+      - docker/Dockerfile
+      - docker/README.md
+      - docker/compose.yaml
+      - docker/cosmos-init.ts
+      - docs/.codex
+      - docs/AGENTS.md
+      - docs/authorization-roles.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/hub-graph.md
+      - docs/repository-operations.md
+      - docs/staging-and-testing.md
+      - docs/staging-operator-login.md
+      - docs/suite-architecture.md
+      - docs/transition/contracts.md
+      - docs/transition/ui-patterns.md
+      - e2e/README.md
+      - scripts/smoke-swa.sh
+      - scripts/tooling.test.ts
+prsInProgress:
+  - title: "feat(release): add validated staging and production promotion"
+    body: >-
+      - Add a release pipeline that builds and validates staging artifacts, then promotes the same verified bytes to
+      production through an explicit workflow.
+
+      - Add release provenance, integrity, authorization, environment-binding, rollback, and staging acceptance checks.
+
+      - Update deployment guidance and s...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/223
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: *a1
+    additions: 1179
+    deletions: 560
+    changedFiles: 47
+    author: myriadas-clees
+    createdAt: 2026-11-13T15:11:59Z
+    updatedAt: 2026-11-13T15:25:25Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 1179
+    workDeletions: 560
+    workFiles: *a4
+  - title: "feat(compass): add native mobile app preview"
+    body: >-
+      ## Why
+
+
+      Compass is a strong fit for on-the-go advisor workflows, but it did not have a native mobile experience to
+      evaluate. This change adds a preview app for exploring those workflows on iOS and Android.
+
+
+      ## What changed
+
+
+      Added a Compass mobile preview with Today, Clients, client briefs, and Ask s...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/269
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a5
+    additions: 3233
+    deletions: 24
+    changedFiles: 44
+    author: myriadas-clees
+    createdAt: 2026-11-13T20:40:40Z
+    updatedAt: 2026-11-13T20:55:15Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a6
+    workTimestamps: *a7
+    workAdditions: 3233
+    workDeletions: 24
+    workFiles: *a8
+  - title: "feat(graphical): install editor and import existing apps"
+    body: >-
+      - Install Graphical’s development editor and import Hub, Advisor Pricing, OFAC, and Northstar onto the shared
+      design system.
+
+      - Add the ohcpwm Paper theme, shared brand tokens and fonts, and theme synchronization for all apps.
+
+      - Keep editor code development-only and preserve existing app behavior and...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/224
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: *a9
+    additions: 18578
+    deletions: 361
+    changedFiles: 113
+    author: myriadas-clees
+    createdAt: 2026-11-13T20:56:47Z
+    updatedAt: 2026-11-13T21:08:06Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a10
+    workTimestamps: *a11
+    workAdditions: 18578
+    workDeletions: 361
+    workFiles: *a12
+  - title: "fix(compass): handle interrupted Copilot responses"
+    body: >-
+      ## Why
+
+
+      Compass users frequently experienced Copilot responses that stalled or never arrived. Interrupted provider
+      connections, delayed token refreshes, and incomplete turn recovery could leave questions unanswered or stuck as
+      pending.
+
+
+      ## What changed
+
+
+      - Classify interrupted Copilot requests and re...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/270
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels: *a13
+    additions: 971
+    deletions: 151
+    changedFiles: 18
+    author: myriadas-clees
+    createdAt: 2026-11-13T21:28:45Z
+    updatedAt: 2026-11-16T15:24:35Z
+    closedAt: 2026-11-16T15:24:35Z
+    mergedAt: 2026-11-16T15:24:35Z
+    workCommits: *a14
+    workTimestamps: *a15
+    workAdditions: 950
+    workDeletions: 151
+    workFiles: *a16
+  - title: "feat(crm): rename Address Book and add CRM workflows"
+    body: >-
+      ## Why
+
+
+      Address Book needed to support broader company and client relationship workflows, including reusable tasks and
+      dependency maps.
+
+
+      ## What changed
+
+
+      Renamed the app and workspace to CRM while preserving existing product IDs, URLs, API routes, role names, and
+      storage identifiers for compatibilit...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/268
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels: *a17
+    additions: 6138
+    deletions: 707
+    changedFiles: 257
+    author: myriadas-clees
+    createdAt: 2026-11-13T20:40:38Z
+    updatedAt: 2026-11-16T14:08:29Z
+    closedAt: 2026-11-16T14:08:29Z
+    mergedAt: 2026-11-16T14:08:29Z
+    workCommits: *a18
+    workTimestamps: *a19
+    workAdditions: 6623
+    workDeletions: 836
+    workFiles: *a20
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "feat(crm): rename Address Book and add CRM workflows"
+      - "feat(compass): add native mobile app preview"
+      - "fix(compass): handle interrupted Copilot responses"
+      - Merge main and reconcile CI parallelization
+      - Integrate fail-fast checks with parallel CI suites
+      - Remove scheduled verification from CI stack
+      - Merge branch 'clees/ci-stack-parallel' into clees/ci-stack-fail-fast
+      - Merge branch 'clees/ci-stack-fail-fast' into clees/ci-stack-schedule
+      - "fix(ci): retain history for baseline ancestry checks"
+      - Merge branch 'clees/ci-stack-parallel' into clees/ci-stack-fail-fast
+      - Merge branch 'clees/ci-stack-fail-fast' into clees/ci-stack-schedule
+      - "fix(ci): reject incomplete smoke probe transfers"
+      - "fix(ci): forward bail to tooling Vitest"
+      - Merge tooling bail fix into schedule-removal layer
+      - "fix(crm): stop stale task reads and ambiguous keys from corrupting workflow and activity state"
+      - "perf(ci): parallelize builds and verification suites (#241)"
+      - "fix(ci): remove scheduled verify workflow (#242)"
+      - "ci: fail fast on pull request checks (#244)"
+      - Merge CI release into CRM preparation
+      - "fix(crm): improve loading feedback and inline undo"
+      - "fix(crm): keep legacy address, website, drop and retry behavior"
+      - "docs(ui): prohibit left-edge accent treatments"
+    commits:
+      - *a21
+      - *a22
+      - *a23
+      - *a24
+      - *a25
+      - *a26
+      - *a27
+      - *a28
+      - *a29
+      - *a30
+      - *a31
+      - *a32
+      - *a33
+      - *a34
+      - *a35
+      - sha: 491f9a77a8911b8597c46656952f5cda6059a0c1
+        message: "perf(ci): parallelize builds and verification suites (#241)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/491f9a77a8911b8597c46656952f5cda6059a0c1
+        authoredAt: 2026-11-14T01:48:48Z
+        additions: 385
+        deletions: 63
+        filesChanged: 9
+      - sha: 24b7ffd05a89e3133ae4cb40bc42704bd522ff13
+        message: "fix(ci): remove scheduled verify workflow (#242)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/24b7ffd05a89e3133ae4cb40bc42704bd522ff13
+        authoredAt: 2026-11-14T01:48:49Z
+        additions: 12
+        deletions: 15
+        filesChanged: 2
+      - sha: 8e73099b2cd2c1c3444314614bdb08fcbd71b84b
+        message: "ci: fail fast on pull request checks (#244)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8e73099b2cd2c1c3444314614bdb08fcbd71b84b
+        authoredAt: 2026-11-14T01:48:49Z
+        additions: 81
+        deletions: 30
+        filesChanged: 7
+      - *a36
+      - *a37
+      - *a38
+      - *a39
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "feat(release): add validated staging and production promotion"
+      - "feat(graphical): install editor and import existing apps"
+    commits:
+      - *a40
+      - *a41
+releases: []
+externalContributions: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 244
+    prTitle: "ci: fail fast on pull request checks"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/244
+    state: commented
+    submittedAt: 2026-11-13T22:13:04Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 268
+    prTitle: "feat(crm): rename Address Book and add CRM workflows"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/268
+    state: commented
+    submittedAt: 2026-11-14T02:25:56Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 244
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/244
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/244#discussion_r4569249951
+    body: "[from Codex]: Fixed in 460e4a71. The workflow now invokes the tooling Vitest script and font-artifact runner
+      separately, forwarding --bail=1 to both. Regression coverage verifies argument forwarding and that a Vitest
+      failure prevents the font runner from starting. All 197 tooling tests, the font-art..."
+    path: .github/workflows/verify.yml
+    createdAt: 2026-11-13T22:13:04Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 268
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/268
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/268#discussion_r4570922910
+    body: "[from Codex]: Fixed in cb3725f3. Legacy new addresses without a type now infer it using the existing migration
+      rule; saved address types are retained, and explicitly invalid types are still rejected. Added regressions for
+      legacy untyped creation, invalid explicit types and duplicate legacy labels. C..."
+    path: crm/src/lib/server/validation.ts
+    createdAt: 2026-11-14T02:25:56Z
+aiReviews:
+  codex:
+    prsReviewed: 4
+    comments: 6
+    reviews: 4
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 4
+  comments: 6
+  reviews: 4
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-11-13T20:40:24Z
+    - 2026-11-13T20:40:30Z
+    - 2026-11-13T21:28:33Z
+    - 2026-11-13T21:44:51Z
+    - 2026-11-13T21:45:37Z
+    - 2026-11-13T21:46:34Z
+    - 2026-11-13T22:07:54Z
+    - 2026-11-13T22:07:54Z
+    - 2026-11-13T22:07:54Z
+    - 2026-11-13T22:10:36Z
+    - 2026-11-13T22:10:36Z
+    - 2026-11-13T22:10:36Z
+    - 2026-11-13T22:12:26Z
+    - 2026-11-13T22:12:46Z
+    - 2026-11-13T22:21:11Z
+    - 2026-11-14T01:48:48Z
+    - 2026-11-14T01:48:49Z
+    - 2026-11-14T01:48:49Z
+    - 2026-11-14T01:50:40Z
+    - 2026-11-14T02:19:40Z
+    - 2026-11-14T02:23:02Z
+    - 2026-11-14T02:30:49Z
+    - 2026-11-13T15:11:50Z
+    - 2026-11-13T20:56:35Z
+    - 2026-11-13T15:11:59Z
+    - 2026-11-13T15:11:50Z
+    - 2026-11-13T20:40:40Z
+    - 2026-11-13T20:40:30Z
+    - 2026-11-13T20:56:47Z
+    - 2026-11-13T20:56:35Z
+    - 2026-11-13T21:28:45Z
+    - 2026-11-13T21:28:33Z
+    - 2026-11-13T20:40:38Z
+    - 2026-11-13T20:40:24Z
+    - 2026-11-13T22:21:11Z
+    - 2026-11-14T01:50:40Z
+    - 2026-11-14T02:19:40Z
+    - 2026-11-14T02:23:02Z
+    - 2026-11-14T02:30:49Z
+    - 2026-11-14T01:48:52Z
+    - 2026-11-13T21:45:37Z
+    - 2026-11-13T22:07:54Z
+    - 2026-11-13T22:10:36Z
+    - 2026-11-13T22:12:26Z
+    - 2026-11-14T01:48:53Z
+    - 2026-11-13T21:46:34Z
+    - 2026-11-13T22:07:54Z
+    - 2026-11-13T22:10:36Z
+    - 2026-11-13T22:12:46Z
+    - 2026-11-14T01:48:51Z
+    - 2026-11-13T21:44:51Z
+    - 2026-11-13T22:07:54Z
+    - 2026-11-13T22:10:36Z
+    - 2026-11-13T22:13:04Z
+    - 2026-11-14T02:25:56Z
+    - 2026-11-13T22:13:04Z
+    - 2026-11-14T02:25:56Z
+  volume:
+    pullRequests:
+      - additions: 1179
+        deletions: 560
+        state: open
+        dailyWork: true
+        filesChanged: 47
+        testFilesChanged: 9
+        commitCount: 1
+      - additions: 3233
+        deletions: 24
+        state: open
+        dailyWork: true
+        filesChanged: 44
+        testFilesChanged: 2
+        commitCount: 1
+      - additions: 18578
+        deletions: 361
+        state: open
+        dailyWork: true
+        filesChanged: 113
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 98625
+        deletions: 3170
+        state: merged
+        dailyWork: true
+        filesChanged: 303
+        testFilesChanged: 55
+        commitCount: 4
+      - additions: 98685
+        deletions: 3117
+        state: merged
+        dailyWork: true
+        filesChanged: 303
+        testFilesChanged: 55
+        commitCount: 4
+      - additions: 98252
+        deletions: 3013
+        state: merged
+        dailyWork: true
+        filesChanged: 302
+        testFilesChanged: 54
+        commitCount: 3
+      - additions: 950
+        deletions: 151
+        state: merged
+        dailyWork: true
+        filesChanged: 18
+        testFilesChanged: 9
+        commitCount: 1
+      - additions: 6623
+        deletions: 836
+        state: merged
+        dailyWork: true
+        filesChanged: 268
+        testFilesChanged: 58
+        commitCount: 6
+    reviewCount: 2
+    reviewCommentCount: 2
+    commitCount: 3
+    commitAdditions: 478
+    commitDeletions: 108
+    commitStatsCount: 3
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 157.6
+  sessions: 3
+  sessionHours: 2.9
+  volumeHours: 157.6
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
