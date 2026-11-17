@@ -1,0 +1,115 @@
+title: Nov 16
+subtitle: compass, compliance & crm
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 3 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 46 commits with +52,993 / −5,641 lines.
+    chips:
+      - label: Commits
+        value: "46"
+        color: green
+      - label: Additions
+        value: +52,993
+        color: green
+      - label: Deletions
+        value: −5,641
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 4 reviews with 4 comments.
+    chips:
+      - label: Reviews
+        value: "4"
+      - label: Comments
+        value: "4"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 11 reviews, 17 comments, 3 PRs."
+    chips:
+      - label: Codex
+        value: 11 reviews · 17 comments · 3 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~143.7h
+highlights:
+  - type: pr
+    title: "fix(crm): route the frontend through /crm"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +43 −13
+    body: CRM was renamed in the interface, but the Hub launcher and unified static deployment still sent users to
+      `/address-book`. This changes the canonical frontend base path to `/crm`, updates protected sta
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/275
+  - type: pr
+    title: "fix(compass): handle interrupted Copilot responses"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +6622 −800
+    body: >-
+      ## Why
+
+
+      Compass users frequently experienced Copilot responses that stalled or never arrived. Interrupted provider
+      connections, delayed token refreshes, and incomplete turn recovery could leave questi
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/270
+  - type: pr
+    title: "feat(crm): rename Address Book and add CRM workflows"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +23 −9
+    body: >-
+      ## Why
+
+
+      Address Book needed to support broader company and client relationship workflows, including reusable tasks and
+      dependency maps.
+
+
+      ## What changed
+
+
+      Renamed the app and workspace to CRM while pre
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/268
+  - type: pr
+    title: "feat(repo): add local Codex Security review workflow"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +11117 −2141
+    body: >-
+      ## Why
+
+
+      Add an optional, repeatable way to run Codex Security reviews on the repository without adding it as an app
+      dependency or enabling automated scans.
+
+
+      ## What changed
+
+
+      - Add `bun run security:re
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/264
+  - type: pr
+    title: "feat(compliance): add suite compliance audit trail with Hub review and export"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +3601 −114
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/278
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(crm): route the frontend through /crm" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(compass): handle interrupted Copilot responses" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(crm): rename Address Book and add CRM workflows" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(repo): add local Codex Security review workflow" in
+      Myriad-Advisor-Solutions/myriadas-apps'
