@@ -1,0 +1,82 @@
+title: Nov 17
+subtitle: collapsible suite, pricing & compass
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps and Myriad-Advisor-Solutions/ohcpwm-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 1 PRs
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 2 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 22 commits with +3,106 / −745 lines.
+    chips:
+      - label: Commits
+        value: "22"
+        color: green
+      - label: Additions
+        value: +3,106
+        color: green
+      - label: Deletions
+        value: −745
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 1 reviews with 1 comments.
+    chips:
+      - label: Reviews
+        value: "1"
+      - label: Comments
+        value: "1"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 1 review, 1 comment, 1 PR."
+    chips:
+      - label: Codex
+        value: 1 review · 1 comment · 1 PR
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~45.2h
+highlights:
+  - type: pr
+    title: "fix(pricing): correct FiNet local expense assumptions"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +462 −186
+    body: |-
+      - Remove FiNet E&O as a separate local expense and add editable text messaging fees to the FiNet assumptions.
+      - Add a Local expenses section for editable advisor, staff, and FiNet OHC fees, and clarif
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/226
+  - type: pr
+    title: "fix(pricing): correct FiNet local expense assumptions"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +2026 −387
+    body: |-
+      - Remove FiNet E&O from proposed local expenses and make text messaging an editable per-advisor fee.
+      - Organize Pricing assumptions around local expenses, with current FiNet comparator fees clearly se
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/228
+  - type: pr
+    title: Add collapsible suite navigation and unify Compass chat history
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +618 −172
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/279
+  - type: pr
+    title: "feat(compass): add skills and local AI with Copilot lookups"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +18119 −739
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/276
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(pricing): correct FiNet local expense assumptions" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(pricing): correct FiNet local expense assumptions" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'

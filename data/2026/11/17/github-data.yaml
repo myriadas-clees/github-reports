@@ -1,0 +1,635 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-11-17
+  to: 2026-11-17
+stats:
+  totalCommits: 22
+  totalAdditions: 3106
+  totalDeletions: 745
+  prsOpened: 3
+  prsMerged: 2
+  prsInProgress: 2
+  prsReviewed: 1
+  reviewComments: 1
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 45.2
+dailyCommits:
+  - date: 2026-11-17
+    count: 22
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 14
+    prsOpened: 1
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 8
+    prsOpened: 2
+    prsMerged: 2
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests:
+  - title: Add collapsible suite navigation and unify Compass chat history
+    body: >-
+      The suite sidebar previously reserved its full width throughout navigation, and Compass Ask added a second
+      navigation column for chat history.
+
+
+      This change adds a persistent 56px desktop rail with hover and keyboard preview, a stationary toolbar,
+      reduced-motion support, and a compact account footer....
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/279
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a1
+      - "app: hub"
+      - "app: proforma"
+      - platform
+      - "app: compass"
+    additions: 618
+    deletions: 172
+    changedFiles: 22
+    author: myriadas-clees
+    createdAt: 2026-11-17T22:13:01Z
+    updatedAt: 2026-11-17T22:26:16Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a2
+      - &a24
+        sha: df6ca9ade09d541861c9fce604ee74b10dcd87d9
+        message: "feat: add collapsible suite navigation and unify Compass chat history"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/df6ca9ade09d541861c9fce604ee74b10dcd87d9
+        authoredAt: 2026-11-17T22:12:34Z
+    workTimestamps: &a3
+      - 2026-11-17T22:12:34Z
+    workAdditions: 618
+    workDeletions: 172
+    workFiles: &a4
+      - bun.lock
+      - compass/next.config.ts
+      - compass/package.json
+      - compass/src/app/api/demo/company/me/route.ts
+      - compass/src/app/ask.css
+      - compass/src/components/ask-compass-workspace.tsx
+      - compass/src/components/ask/ask-chat-rail.tsx
+      - compass/src/lib/swa-session.ts
+      - crm/src/app/globals.css
+      - e2e/tests/browser.spec.ts
+      - hub/app/globals.css
+      - hub/components/HubLauncher.tsx
+      - packages/brand/src/styles.css
+      - packages/ui/src/navigation/app-nav.tsx
+      - packages/ui/src/navigation/app-shell.test.tsx
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/navigation/mode-storage.ts
+      - packages/ui/src/shell-bootstrap.test.ts
+      - packages/ui/src/shell-bootstrap.ts
+      - packages/ui/src/user-menu.test.tsx
+      - packages/ui/src/user-menu.tsx
+      - proforma/src/app/globals.css
+  - title: "fix(pricing): correct FiNet local expense assumptions"
+    body: >-
+      - Remove FiNet E&O as a separate local expense and add editable text messaging fees to the FiNet assumptions.
+
+      - Add a Local expenses section for editable advisor, staff, and FiNet OHC fees, and clarify which fees apply to
+      the current FiNet comparison.
+
+      - Update pricing calculations, reports, workbook...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/226
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 462
+    deletions: 186
+    changedFiles: 28
+    author: myriadas-clees
+    createdAt: 2026-11-17T16:33:40Z
+    updatedAt: 2026-11-17T17:03:09Z
+    closedAt: 2026-11-17T17:03:08Z
+    mergedAt: 2026-11-17T17:03:08Z
+    workCommits:
+      - &a5
+        sha: cabe1fa52fad8e8f2136df83db56d94c46ad9c04
+        message: "fix(pricing): correct FiNet local expense assumptions"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cabe1fa52fad8e8f2136df83db56d94c46ad9c04
+        authoredAt: 2026-11-17T16:33:30Z
+      - &a6
+        sha: 877c1a38954e4033409f13f8839e1c6d96f7cc31
+        message: "fix(pricing): preserve saved FiNet report calculations"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/877c1a38954e4033409f13f8839e1c6d96f7cc31
+        authoredAt: 2026-11-17T16:46:40Z
+      - &a7
+        sha: 4bbd116d059979cd95709f8ff21a5a5c5e8c76e8
+        message: "test(northstar): keep legacy adoption fixture within retention"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4bbd116d059979cd95709f8ff21a5a5c5e8c76e8
+        authoredAt: 2026-11-17T16:56:11Z
+    workTimestamps:
+      - 2026-11-17T16:33:30Z
+      - 2026-11-17T16:46:40Z
+      - 2026-11-17T16:56:11Z
+    workAdditions: 462
+    workDeletions: 186
+    workFiles:
+      - docs/pricing-scenario-rules.md
+      - hub/functions/src/northstar-conversations.test.ts
+      - package.json
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - pricing/functions/src/index.ts
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/scenario-model-tab.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-workstation-client.tsx
+      - pricing/src/lib/__tests__/calculation.test.ts
+      - pricing/src/lib/__tests__/fixtures/auditable-pricing-fixture.ts
+      - pricing/src/lib/__tests__/pricing-backend-routes.test.ts
+      - pricing/src/lib/__tests__/report-model.test.ts
+      - pricing/src/lib/__tests__/report-storage.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/workstation.test.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/report-storage.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/workbook-output.ts
+      - pricing/src/lib/workstation.ts
+      - scripts/dev-pricing-api.ts
+      - scripts/pricing-ui.md
+      - scripts/pricing-ui.ts
+  - title: "fix(pricing): correct FiNet local expense assumptions"
+    body: |-
+      - Remove FiNet E&O from proposed local expenses and make text messaging an editable per-advisor fee.
+      - Organize Pricing assumptions around local expenses, with current FiNet comparator fees clearly separated.
+      - Preserve saved-report calculations and PDF presentation for existing reports while applyi...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/228
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 2026
+    deletions: 387
+    changedFiles: 29
+    author: myriadas-clees
+    createdAt: 2026-11-17T18:08:58Z
+    updatedAt: 2026-11-17T19:47:53Z
+    closedAt: 2026-11-17T19:47:52Z
+    mergedAt: 2026-11-17T19:47:52Z
+    workCommits:
+      - sha: cabe1fa52fad8e8f2136df83db56d94c46ad9c04
+        message: "fix(pricing): correct FiNet local expense assumptions"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cabe1fa52fad8e8f2136df83db56d94c46ad9c04
+        authoredAt: 2026-11-17T16:33:30Z
+      - sha: 877c1a38954e4033409f13f8839e1c6d96f7cc31
+        message: "fix(pricing): preserve saved FiNet report calculations"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/877c1a38954e4033409f13f8839e1c6d96f7cc31
+        authoredAt: 2026-11-17T16:46:40Z
+      - sha: 4bbd116d059979cd95709f8ff21a5a5c5e8c76e8
+        message: "test(northstar): keep legacy adoption fixture within retention"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4bbd116d059979cd95709f8ff21a5a5c5e8c76e8
+        authoredAt: 2026-11-17T16:56:11Z
+      - &a8
+        sha: f74040172034661fb897e2e1e46b893c2d40cc6e
+        message: "fix(pricing): omit FiNet comparisons from new proposal PDFs"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f74040172034661fb897e2e1e46b893c2d40cc6e
+        authoredAt: 2026-11-17T18:08:49Z
+      - &a9
+        sha: fcd787d53c5a31aefc2cd846c46400bb5c97c85a
+        message: Merge main into FiNet proposal branch
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/fcd787d53c5a31aefc2cd846c46400bb5c97c85a
+        authoredAt: 2026-11-17T18:12:49Z
+      - &a10
+        sha: 20b396278d958aa4b485d6e9ee96414798ef1a70
+        message: "feat(pricing): preview configurable PDF and workbook reports"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/20b396278d958aa4b485d6e9ee96414798ef1a70
+        authoredAt: 2026-11-17T19:41:36Z
+    workTimestamps:
+      - 2026-11-17T16:33:30Z
+      - 2026-11-17T16:46:40Z
+      - 2026-11-17T16:56:11Z
+      - 2026-11-17T18:08:49Z
+      - 2026-11-17T18:12:49Z
+      - 2026-11-17T19:41:36Z
+    workAdditions: 2026
+    workDeletions: 387
+    workFiles:
+      - docs/advisor-pricing-architecture.md
+      - docs/pricing-architecture.md
+      - docs/pricing-scenario-rules.md
+      - hub/functions/src/northstar-conversations.test.ts
+      - package.json
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - pricing/functions/src/index.ts
+      - pricing/src/app/globals.css
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/pdf-report-viewer.test.tsx
+      - pricing/src/components/__tests__/recruit-detail-panels.test.tsx
+      - pricing/src/components/__tests__/recruit-report-readiness.test.tsx
+      - pricing/src/components/__tests__/report-preview.test.tsx
+      - pricing/src/components/__tests__/scenario-model-tab.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - pricing/src/components/generate-report-form.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pdf-report-viewer.tsx
+      - pricing/src/components/pricing-workstation-client.tsx
+      - pricing/src/components/recruit-detail-panels.tsx
+      - pricing/src/components/report-artifact-actions.tsx
+      - pricing/src/components/report-artifact-viewer.tsx
+      - pricing/src/components/report-preview.tsx
+      - pricing/src/components/report-viewer-shell.tsx
+      - pricing/src/components/scenario-model-tab.tsx
+      - pricing/src/components/workbook-report-viewer.tsx
+      - pricing/src/lib/__tests__/calculation.test.ts
+      - pricing/src/lib/__tests__/fixtures/auditable-pricing-fixture.ts
+      - pricing/src/lib/__tests__/pricing-backend-routes.test.ts
+      - pricing/src/lib/__tests__/report-filenames.test.ts
+      - pricing/src/lib/__tests__/report-model.test.ts
+      - pricing/src/lib/__tests__/report-storage.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/workstation.test.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/report-filenames.ts
+      - pricing/src/lib/report-storage.ts
+      - pricing/src/lib/report.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/workbook-output.ts
+      - pricing/src/lib/workstation.ts
+      - scripts/dev-pricing-api.ts
+      - scripts/pricing-ui.md
+      - scripts/pricing-ui.ts
+prsInProgress:
+  - title: Add collapsible suite navigation and unify Compass chat history
+    body: >-
+      The suite sidebar previously reserved its full width throughout navigation, and Compass Ask added a second
+      navigation column for chat history.
+
+
+      This change adds a persistent 56px desktop rail with hover and keyboard preview, a stationary toolbar,
+      reduced-motion support, and a compact account footer....
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/279
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a1
+    additions: 618
+    deletions: 172
+    changedFiles: 22
+    author: myriadas-clees
+    createdAt: 2026-11-17T22:13:01Z
+    updatedAt: 2026-11-17T22:26:16Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 618
+    workDeletions: 172
+    workFiles: *a4
+  - title: "feat(compass): add skills and local AI with Copilot lookups"
+    body: "Adds private, company-scoped Skills and an Ollama Ask provider above #257’s advisor workflows, now stacked on the
+      Claude/OpenAI port in #249. Skills live in the composer’s `@` menu, and a Skill Creator command drafts new skills
+      for review. Local Ask can request an advisor-approved batch of Copilot l..."
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/276
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - documentation
+      - platform
+      - "app: compass"
+    additions: 18119
+    deletions: 739
+    changedFiles: 190
+    author: myriadas-clees
+    createdAt: 2026-11-16T15:33:35Z
+    updatedAt: 2026-11-17T16:27:42Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a11
+        sha: 41ec07e0a5be7f6125e7dbdcc43ea68eedcf0bb0
+        message: "feat(compass): define agent focus, Agent Creator and Enhance contracts"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/41ec07e0a5be7f6125e7dbdcc43ea68eedcf0bb0
+        authoredAt: 2026-11-17T15:51:08Z
+      - &a12
+        sha: 5e047e7e9c45abec2d209ac5feadb20806b10ea7
+        message: "fix(compass): fail closed on unsupported agent focus"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5e047e7e9c45abec2d209ac5feadb20806b10ea7
+        authoredAt: 2026-11-17T15:54:30Z
+      - &a13
+        sha: 78a264bab1590579fc27343f48b909f6771e8518
+        message: "feat(compass): name the provider and model in Agent Creator and Enhance requests"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/78a264bab1590579fc27343f48b909f6771e8518
+        authoredAt: 2026-11-17T15:54:51Z
+      - &a14
+        sha: ed6ce9c9c6c7b24e0de06327a08e0d79afa294e0
+        message: "fix(compass): put dropdown checkmarks on the right and name providers by company"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ed6ce9c9c6c7b24e0de06327a08e0d79afa294e0
+        authoredAt: 2026-11-17T15:59:22Z
+      - &a15
+        sha: ed3e71a5ec64394605ad8ba381dfe525f512b915
+        message: "feat(compass): scope agents to recurring meetings"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ed3e71a5ec64394605ad8ba381dfe525f512b915
+        authoredAt: 2026-11-17T16:04:48Z
+      - &a16
+        sha: a629d717d8e17139b3535cc7da483dda6fd6c44c
+        message: "feat(compass): add agent authoring endpoints"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a629d717d8e17139b3535cc7da483dda6fd6c44c
+        authoredAt: 2026-11-17T16:04:57Z
+      - &a17
+        sha: 40b2f1c823526ec59c7588a0cf07a8604c9f912a
+        message: "feat(compass): add meeting and client starters to Ask"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/40b2f1c823526ec59c7588a0cf07a8604c9f912a
+        authoredAt: 2026-11-17T16:07:07Z
+      - &a18
+        sha: ddedf4a7895ffff5a86f701a41cba41e449a5d7b
+        message: "feat(compass): add client helpers for Agent Creator, proofreading and recurring meetings"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ddedf4a7895ffff5a86f701a41cba41e449a5d7b
+        authoredAt: 2026-11-17T16:07:07Z
+      - &a19
+        sha: 4673fa6cb8e146372559d2bd503e63769e939233
+        message: "feat(compass): Basic and Advanced agent builder, Create with Compass, proofreading and focus"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4673fa6cb8e146372559d2bd503e63769e939233
+        authoredAt: 2026-11-17T16:07:07Z
+      - &a20
+        sha: cf43fac64a710c7fb1cdf5bd8271a8011cf07625
+        message: "fix(compass): keep focused prompts within meeting scope"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/cf43fac64a710c7fb1cdf5bd8271a8011cf07625
+        authoredAt: 2026-11-17T16:07:12Z
+      - &a21
+        sha: f419736b8b2f9d40febf885f77bc12385b85339b
+        message: "fix(compass): return proofreading suggestions for review instead of rejecting capability words"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f419736b8b2f9d40febf885f77bc12385b85339b
+        authoredAt: 2026-11-17T16:09:21Z
+      - &a22
+        sha: 1f852378424c7a46313c08b4857e3ed15282ad10
+        message: "fix(compass): tidy the builder mode switch and start new agents without prospects"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/1f852378424c7a46313c08b4857e3ed15282ad10
+        authoredAt: 2026-11-17T16:18:01Z
+      - &a23
+        sha: 2db1350420f7ffef86020bd1ff83bd48b4a54845
+        message: "fix(compass): bullet the proofreading changes list"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2db1350420f7ffef86020bd1ff83bd48b4a54845
+        authoredAt: 2026-11-17T16:19:48Z
+    workTimestamps:
+      - 2026-11-17T15:51:08Z
+      - 2026-11-17T15:54:30Z
+      - 2026-11-17T15:54:51Z
+      - 2026-11-17T15:59:22Z
+      - 2026-11-17T16:04:48Z
+      - 2026-11-17T16:04:57Z
+      - 2026-11-17T16:07:07Z
+      - 2026-11-17T16:07:07Z
+      - 2026-11-17T16:07:07Z
+      - 2026-11-17T16:07:12Z
+      - 2026-11-17T16:09:21Z
+      - 2026-11-17T16:18:01Z
+      - 2026-11-17T16:19:48Z
+    workAdditions: 1312
+    workDeletions: 135
+    workFiles:
+      - compass/functions/src/advisor-agents-http.ts
+      - compass/functions/src/advisor-agents-store.ts
+      - compass/functions/src/advisor-agents.test.ts
+      - compass/functions/src/agent-author.ts
+      - compass/functions/src/agent-meetings.ts
+      - compass/functions/src/agent-run.ts
+      - compass/functions/src/company-http.test.ts
+      - compass/functions/src/company-routes.test.ts
+      - compass/functions/src/compass-agent-tools.ts
+      - compass/functions/src/compass-claude-integration.test.ts
+      - compass/functions/src/compass-microsoft.ts
+      - compass/functions/src/compass-openai-integration.test.ts
+      - compass/functions/src/index.ts
+      - compass/src/app/agents.css
+      - compass/src/app/ai-services.css
+      - compass/src/app/ask.css
+      - compass/src/components/advisor-agents-workspace.tsx
+      - compass/src/components/agents/agent-builder.tsx
+      - compass/src/components/agents/agent-creator.tsx
+      - compass/src/components/agents/agent-enhance.tsx
+      - compass/src/components/agents/agent-focus.tsx
+      - compass/src/components/agents/agent-parts.tsx
+      - compass/src/components/agents/agent-run-view.tsx
+      - compass/src/components/agents/agents-home.tsx
+      - compass/src/components/agents/agents.dom.test.tsx
+      - compass/src/components/ask-compass-workspace.dom.test.tsx
+      - compass/src/components/ask-compass-workspace.tsx
+      - compass/src/components/ask-skills.dom.test.tsx
+      - compass/src/components/claude-manage-dialog.tsx
+      - compass/src/components/compass-stability.fixture.tsx
+      - compass/src/components/settings-workspace.dom.test.tsx
+      - compass/src/components/settings-workspace.tsx
+      - compass/src/lib/advisor-agents-api.ts
+      - compass/src/lib/advisor-agents.ts
+      - compass/src/lib/agent-builder-state.test.ts
+      - compass/src/lib/agent-builder-state.ts
+      - compass/src/lib/claude-settings.ts
+      - packages/brand/src/styles.css
+      - packages/ui/src/select.tsx
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "fix(pricing): correct FiNet local expense assumptions"
+      - "fix(pricing): preserve saved FiNet report calculations"
+      - "test(northstar): keep legacy adoption fixture within retention"
+      - "fix(pricing): correct FiNet local expense assumptions (#226)"
+      - "fix(pricing): omit FiNet comparisons from new proposal PDFs"
+      - Merge main into FiNet proposal branch
+      - "feat(pricing): preview configurable PDF and workbook reports"
+      - "feat(pricing): preview configurable PDF and workbook reports (#228)"
+    commits:
+      - *a5
+      - *a6
+      - *a7
+      - sha: 5dc0c9ad117c0c03f52d4b8c0a1a7fb2ffdf42ce
+        message: "fix(pricing): correct FiNet local expense assumptions (#226)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/5dc0c9ad117c0c03f52d4b8c0a1a7fb2ffdf42ce
+        authoredAt: 2026-11-17T17:03:07Z
+        additions: 460
+        deletions: 184
+        filesChanged: 28
+      - *a8
+      - *a9
+      - *a10
+      - sha: 6c3d84d3789ca3ce1d8d4c33eee692d36394dbba
+        message: "feat(pricing): preview configurable PDF and workbook reports (#228)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6c3d84d3789ca3ce1d8d4c33eee692d36394dbba
+        authoredAt: 2026-11-17T19:47:51Z
+        additions: 1555
+        deletions: 192
+        filesChanged: 29
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "feat(compass): define agent focus, Agent Creator and Enhance contracts"
+      - "fix(compass): fail closed on unsupported agent focus"
+      - "feat(compass): name the provider and model in Agent Creator and Enhance requests"
+      - "fix(compass): put dropdown checkmarks on the right and name providers by company"
+      - "feat(compass): scope agents to recurring meetings"
+      - "feat(compass): add agent authoring endpoints"
+      - "feat(compass): add meeting and client starters to Ask"
+      - "feat(compass): add client helpers for Agent Creator, proofreading and recurring meetings"
+      - "feat(compass): Basic and Advanced agent builder, Create with Compass, proofreading and focus"
+      - "fix(compass): keep focused prompts within meeting scope"
+      - "fix(compass): return proofreading suggestions for review instead of rejecting capability words"
+      - "fix(compass): tidy the builder mode switch and start new agents without prospects"
+      - "fix(compass): bullet the proofreading changes list"
+      - "feat: add collapsible suite navigation and unify Compass chat history"
+    commits:
+      - *a11
+      - *a12
+      - *a13
+      - *a14
+      - *a15
+      - *a16
+      - *a17
+      - *a18
+      - *a19
+      - *a20
+      - *a21
+      - *a22
+      - *a23
+      - *a24
+releases: []
+externalContributions: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 226
+    prTitle: "fix(pricing): correct FiNet local expense assumptions"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/226
+    state: commented
+    submittedAt: 2026-11-17T16:47:12Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 226
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/226
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/226#discussion_r4602791702
+    body: "[from Codex]: Fixed in 877c1a38. New report snapshots carry calculationVersion 2; unversioned saved snapshots
+      retain the original FiNet E&O amounts across PDF, XLSX and preview regeneration. All 399 Pricing tests pass,
+      including historical report and adapter regressions."
+    path: pricing/src/lib/calculation.ts
+    createdAt: 2026-11-17T16:47:12Z
+aiReviews:
+  codex:
+    prsReviewed: 1
+    comments: 1
+    reviews: 1
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 1
+  comments: 1
+  reviews: 1
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-11-17T16:33:30Z
+    - 2026-11-17T16:46:40Z
+    - 2026-11-17T16:56:11Z
+    - 2026-11-17T17:03:07Z
+    - 2026-11-17T18:08:49Z
+    - 2026-11-17T18:12:49Z
+    - 2026-11-17T19:41:36Z
+    - 2026-11-17T19:47:51Z
+    - 2026-11-17T15:51:08Z
+    - 2026-11-17T15:54:30Z
+    - 2026-11-17T15:54:51Z
+    - 2026-11-17T15:59:22Z
+    - 2026-11-17T16:04:48Z
+    - 2026-11-17T16:04:57Z
+    - 2026-11-17T16:07:07Z
+    - 2026-11-17T16:07:07Z
+    - 2026-11-17T16:07:07Z
+    - 2026-11-17T16:07:12Z
+    - 2026-11-17T16:09:21Z
+    - 2026-11-17T16:18:01Z
+    - 2026-11-17T16:19:48Z
+    - 2026-11-17T22:12:34Z
+    - 2026-11-17T22:13:01Z
+    - 2026-11-17T22:12:34Z
+    - 2026-11-17T16:33:40Z
+    - 2026-11-17T17:03:08Z
+    - 2026-11-17T16:33:30Z
+    - 2026-11-17T16:46:40Z
+    - 2026-11-17T16:56:11Z
+    - 2026-11-17T18:08:58Z
+    - 2026-11-17T19:47:52Z
+    - 2026-11-17T16:33:30Z
+    - 2026-11-17T16:46:40Z
+    - 2026-11-17T16:56:11Z
+    - 2026-11-17T18:08:49Z
+    - 2026-11-17T18:12:49Z
+    - 2026-11-17T19:41:36Z
+    - 2026-11-17T16:47:12Z
+    - 2026-11-17T16:47:12Z
+  volume:
+    pullRequests:
+      - additions: 618
+        deletions: 172
+        state: open
+        dailyWork: true
+        filesChanged: 22
+        testFilesChanged: 4
+        commitCount: 1
+      - additions: 462
+        deletions: 186
+        state: merged
+        dailyWork: true
+        filesChanged: 28
+        testFilesChanged: 12
+        commitCount: 3
+      - additions: 2026
+        deletions: 387
+        state: merged
+        dailyWork: true
+        filesChanged: 49
+        testFilesChanged: 17
+        commitCount: 6
+      - additions: 1312
+        deletions: 135
+        state: open
+        dailyWork: true
+        filesChanged: 39
+        testFilesChanged: 10
+        commitCount: 13
+    reviewCount: 1
+    reviewCommentCount: 1
+    commitCount: 2
+    commitAdditions: 2015
+    commitDeletions: 376
+    commitStatsCount: 2
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 45.2
+  sessions: 2
+  sessionHours: 4.4
+  volumeHours: 45.2
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
