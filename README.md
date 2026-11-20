@@ -4,7 +4,7 @@ Daily GitHub status-page generator with private source and a public progress pag
 
 > Reports published to GitHub Pages are public and may include commit messages, pull-request titles, review activity, and line-change totals. Repository file contents and tokens are never included.
 
-Every weekday morning, Worklog reports activity from the **previous completed workday** (Monday reports Friday): commits, pull requests (opened / merged / in progress), reviews, review comments, repositories, line changes, and **estimated engineering hours** (clearly labeled as conventional engineering effort, not tracked time). It publishes a clean static HTML report with daily archives.
+Every weekday morning, Worklog reports activity from the **previous completed workday** (Monday reports Friday): commits, pull requests (opened / merged / in progress), reviews, review comments, repositories, line changes, and **estimated manual engineering effort**. This models the time one engineer might need to deliver the same changes without AI assistance. It is an intended comparison baseline, not actual hours worked or measured time saved, and has not been validated against recorded unassisted work. It publishes a clean static HTML report with daily archives.
 
 ## Quick setup
 
@@ -73,6 +73,7 @@ Required repository secret: `GH_PAT`. Optional: LLM provider secrets. Repository
 worklog daily-fetch
 worklog generate          # LLM if configured, else stakeholder fallback
 worklog render
+worklog render --archive  # complete daily archive; shared pages generated once
 worklog deploy
 worklog report            # daily-fetch + generate + render
 worklog preview           # local server for output/ (watch + re-render)
@@ -98,6 +99,16 @@ Tokens and API keys are read only from the environment / Actions secrets. Render
 ```bash
 bun run build && bun run lint && bun run test
 ```
+
+`build` uses the same pinned Rust-based `tsrs` compiler as Myriad Apps, including type checking, JavaScript, declarations and source maps. `bun run typecheck` checks without emitting. TypeScript remains installed for ESLint/editor integration and `dev` watch mode. The pinned native compiler supports Apple Silicon macOS and Linux x64/arm64; use `bun run build:tsc` for the previous compiler path on unsupported hosts.
+
+CI workflows share `.github/actions/setup-bun`, which pins Bun and caches package downloads by OS, architecture and lockfile. The existing `lint`/`test` check names and coverage stay intact; superseded CI runs are cancelled, while Pages deployments remain serialized.
+
+Daily, backfill and archive deployment use `render --archive`: report inputs and evidence are loaded once, every dated HTML/OG page is emitted, and shared week pages, assets, index, cards, planning pages, RSS and sitemap are generated once. A missing report input fails the build; old reports are never omitted to save time. Local comparisons on 90 reports took 131.4s before and 6.7–13.0s after, with all 226 output files byte-identical; the 13.0s run overlapped the full test suite. These are local timings, not a measured post-change Actions run; API/LLM collection and Pages deployment time are unaffected.
+
+The default theme (config key `brutalist`, kept for compatibility) is the Myriad Apps Graphical theme. Its tokens live in `src/renderer/themes/brutalist/tokens.ts`, copied from `gui/source/graphical-theme.css`; component rules in `styles.ts` consume those names only. It has warm neutral surfaces in light and dark (light by default, then the OS setting, then the reader's Light/Dark choice), a neutral top bar, and monotone actions, focus and progress. Brand red appears only in the logo mark and one short rule on the homepage. Positive statuses stay green, and the initiative chart colours are unchanged.
+
+Roboto and Lora are self-hosted (SIL OFL 1.1, licences in `assets/fonts/`). `render` copies them to `<output>/assets/fonts/`, so the theme makes no Google Fonts requests. Non-Latin locales keep their script font after Roboto but only use it when it is installed locally. Design QA evidence is in `design-qa.md`.
 
 Local preview of the generated site (serves `output/`, re-renders when themes or data change):
 

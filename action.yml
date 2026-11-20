@@ -130,6 +130,18 @@ runs:
         INPUT_DATE: ${{ inputs.date }}
       run: bun "$GITHUB_ACTION_PATH/dist/cli/index.js" generate --mode "${{ inputs.mode }}" ${INPUT_DATE:+--date "$INPUT_DATE"}
 
+    - name: Refresh evidence
+      if: inputs.mode == 'daily' || inputs.mode == 'weekly'
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+        DATA_DIR: ./data
+        INPUT_DATE: ${{ inputs.date }}
+      run: |
+        if ! bun "$GITHUB_ACTION_PATH/dist/cli/index.js" evidence ${INPUT_DATE:+--since "$INPUT_DATE"}; then
+          echo "Warning: evidence refresh failed; continuing with existing evidence"
+        fi
+
     - name: Commit and push report data
       if: inputs.mode == 'daily' || inputs.mode == 'weekly'
       shell: bash

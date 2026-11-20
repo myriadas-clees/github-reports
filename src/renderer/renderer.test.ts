@@ -46,7 +46,7 @@ const MOCK_DATA: WeeklyReportData = {
         type: "pr",
         title: "feat: add OAuth flow",
         repo: "org/backend",
-        meta: "merged Apr 2",
+        meta: "integrated Apr 2",
         body: "Big PR for auth.",
       },
     ],
@@ -133,10 +133,10 @@ describe("renderReport", () => {
       /class="data-chips activity-stats">([\s\S]*?)<\/div>/,
     )?.[1];
     expect(statsBlock).toBeTruthy();
-    expect(statsBlock).toContain("PRs merged");
+    expect(statsBlock).toContain("PRs integrated");
     expect(statsBlock).toContain("Lines");
-    expect(statsBlock).toContain("Estimated engineering hours");
-    expect(statsBlock).toContain("~12.5h");
+    expect(statsBlock).toContain("Manual effort estimate");
+    expect(statsBlock).toContain("~1.5 engineer-days");
     expect(statsBlock).not.toContain("Commits");
     expect(statsBlock).not.toContain("PRs opened");
     expect(statsBlock).not.toContain("In progress");
@@ -144,7 +144,7 @@ describe("renderReport", () => {
     expect(statsBlock).not.toContain("Review comments");
     expect(statsBlock).not.toContain("From timestamps");
     expect(statsBlock).not.toContain("From PR volume");
-    expect(html).toContain("Conventional engineering effort estimate — not tracked, elapsed, or billed time.");
+    expect(html).toContain("Estimated manual engineering effort for one engineer delivering these changes without AI assistance. A modeled baseline, not actual hours worked.");
     expect(html).not.toContain("Combines timestamps and volume.");
   });
 
@@ -250,7 +250,7 @@ describe("renderReport", () => {
             type: "pr",
             title: "feat: markdown body",
             repo: "org/backend",
-            meta: "merged",
+            meta: "integrated",
             body: "## Why\n\nUse `code` and a [link](https://example.com).",
           },
         ],
@@ -353,8 +353,8 @@ describe("renderReport", () => {
     expect(html).toMatch(/<details class="activity-block">/);
     expect(html).not.toMatch(/<details[^>]*\sopen[\s>]/);
     expect(html).toMatch(/<summary class="activity-repo">/);
-    expect(html).toContain("10 commits, 2 PRs opened, 1 merged");
-    expect(html).toContain("0 commits, 1 PRs opened, 0 merged");
+    expect(html).toContain("10 commits, 2 PRs opened, 1 integrated");
+    expect(html).toContain("0 commits, 1 PRs opened, 0 integrated");
     expect(html).toContain("activity-repo--static");
     expect(html).toContain('class="activity-repo-ext"');
     expect(html).toContain('aria-label="Open org/backend on GitHub"');
@@ -421,6 +421,8 @@ describe("renderReport", () => {
     expect(html).not.toContain(">Pull requests<");
     expect(html).toContain("activity-children");
     expect(html).toContain('class="activity-block activity-pr-block"');
+    expect(html).toContain('class="pr-state pr-merged">Code integrated</span>');
+    expect(html).not.toContain('class="pr-state pr-merged">merged</span>');
     expect(html).toMatch(/<summary class="activity-pr">/);
     expect(html).toContain('href="https://github.com/org/backend/pull/10"');
     expect(html).toContain("feat: add OAuth");
@@ -469,7 +471,7 @@ describe("renderReport", () => {
     expect(html).toMatch(/<details class="activity-block">/);
     expect(html).not.toMatch(/<details[^>]*\sopen[\s>]/);
     expect(html).toMatch(/<summary class="activity-repo">/);
-    expect(html).toContain("2 commits, 0 PRs opened, 0 merged");
+    expect(html).toContain("2 commits, 0 PRs opened, 0 integrated");
     expect(html).toContain('class="activity-repo-ext"');
     expect(html).toContain('aria-label="Open org/backend on GitHub"');
     expect(html).toContain("Direct commits");
@@ -514,27 +516,30 @@ describe("renderReport", () => {
     expect(html).toContain("All days");
   });
 
-  it("uses Zen Kaku Gothic New for Japanese", () => {
+  it("keeps Zen Kaku Gothic New after Roboto for Japanese without a font request", () => {
     const html = renderReport(MOCK_DATA, { language: "ja" });
-    expect(html).toContain("Zen+Kaku+Gothic+New");
-    expect(html).toContain("Zen Kaku Gothic New");
+    expect(html).toContain("--font-ui: Roboto, 'Zen Kaku Gothic New'");
+    expect(html).not.toContain("fonts.googleapis.com");
   });
 
-  it("uses Schibsted Grotesk and Space Mono for English", () => {
+  it("self-hosts Myriad Roboto and Lora for English", () => {
     const html = renderReport(MOCK_DATA, { language: "en" });
-    expect(html).toContain("Schibsted Grotesk");
-    expect(html).toContain("Space Mono");
+    expect(html).toMatch(/<link rel="stylesheet" href="(\.\.\/)*assets\/fonts\/fonts\.css" \/>/);
+    expect(html).toContain("--font-ui: Roboto, Arial, sans-serif");
+    expect(html).toContain("--font-editorial: Lora, Georgia, serif");
+    expect(html).not.toContain("fonts.googleapis.com");
+    expect(html).not.toContain("fonts.gstatic.com");
   });
 
-  it("uses Space Mono for UI labels in English", () => {
+  it("uses the Myriad UI font role for labels in English", () => {
     const html = renderReport(MOCK_DATA, { language: "en" });
-    expect(html).toContain("'Space Mono'");
+    expect(html).toContain("font-family: var(--font-ui)");
   });
 
-  it("uses IBM Plex Sans KR for Korean", () => {
+  it("keeps IBM Plex Sans KR after Roboto for Korean", () => {
     const html = renderReport(MOCK_DATA, { language: "ko" });
-    expect(html).toContain("IBM+Plex+Sans+KR");
     expect(html).toContain("IBM Plex Sans KR");
+    expect(html).not.toContain("fonts.googleapis.com");
   });
 
   it("uses Urbanist for Russian", () => {

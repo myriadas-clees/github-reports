@@ -12,6 +12,7 @@ import type {
   PullRequest,
   AiReviewerStats,
 } from "../types.js";
+import { buildAllocationView, type AllocationInput } from "./allocation-view.js";
 import { getLocale } from "../i18n/index.js";
 import { loadTheme, readThemeTemplate } from "./themes/index.js";
 import { registerHelpers } from "./helpers.js";
@@ -23,6 +24,10 @@ import {
 
 const PARTIAL_NAMES = [
   "header",
+  "report-summary",
+  "allocation",
+  "allocation-panel",
+  "allocation-item",
   "overview",
   "activity",
   "summaries",
@@ -279,6 +284,10 @@ export type RenderOptions = {
   prevWeek?: string;
   nextWeek?: string;
   theme?: Theme;
+  /** Optional effort-allocation inputs for the "Where the effort went" section. */
+  allocation?: AllocationInput;
+  /** Daily reports: link to the whole Thu–Wed work week page (href relative to this page). */
+  weekLink?: { href: string; label: string };
 };
 
 const createInstance = (language: Language, timezone: string, theme: ReturnType<typeof loadTheme>): typeof Handlebars => {
@@ -326,6 +335,10 @@ export const renderReport = (
     // Nested under repos; only orphans remain as a flat list.
     pullRequests: enriched.orphanPullRequests,
     aiReviews: buildAiReviewActivityView(data),
+    allocation: buildAllocationView(options.allocation),
+    weekLink: options.weekLink
+      ? { href: options.weekLink.href, text: `See the whole week (${options.weekLink.label}) \u2192` }
+      : undefined,
     dailyCommits: computeHeatmapLevels(data.dailyCommits),
     css: theme.buildCSS(language),
     lang: language,

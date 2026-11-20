@@ -172,6 +172,8 @@ export type ReviewComment = {
   repository: string;
   prNumber: number;
   prUrl: string;
+  prTitle?: string;
+  prLabels?: string[];
   url: string;
   body: string;
   path: string | null;
@@ -247,6 +249,8 @@ export type WeeklyReportData = {
   pullRequests: PullRequest[];
   /** PRs still open / in progress at end of the week. */
   prsInProgress?: PullRequest[];
+  /** Closed without merging after work during this report window. */
+  prsWorkedOnClosed?: PullRequest[];
   issues: Issue[];
   events: GitHubEvent[];
   commitMessages: RepoCommitMessages[];
@@ -337,4 +341,223 @@ export type ReportConfig = {
   language: Language;
   timezone: string; // IANA timezone (e.g. "Asia/Tokyo", "UTC")
   repositories?: string[];
+};
+
+// Effort allocation (stakeholder "where is the time going")
+// Computed at render time from stored github-data.yaml — no GitHub refetch needed.
+
+export type WorkType =
+  | "new-capability"
+  | "quality"
+  | "maintenance"
+  | "documentation"
+  | "team-support"
+  | "unlogged"
+  | "no-activity";
+
+export type AllocationItem = {
+  kind: "pr" | "review" | "commits" | "manual";
+  title: string;
+  url?: string;
+  repository?: string;
+  state?: "open" | "merged" | "closed";
+  /** Scaled engineer-hour estimate for this PR (PR items only). Never shown as hours. */
+  effortHours?: number;
+  /** Stakeholder-facing size badge derived from effort size or labels ("Large" / "Substantial change"). */
+  impact?: "major" | "notable";
+  /** PR items: labels at fetch time (for readiness overrides / keyword hints). */
+  labels?: string[];
+  /** PR items: files touched by the reporting user's work (union across days). */
+  files?: string[];
+  /** PR items: annotated at render time from the evidence ledger. */
+  readiness?: Readiness;
+  complexity?: Complexity;
+  checks?: PrChecks;
+};
+
+// Readiness / complexity / verification (render-time, from data/evidence.yaml).
+
+export type ReadinessStage =
+  | "draft" // GitHub draft PR
+  | "prototype" // title says prototype/WIP/POC/spike, or a stage:/readiness: label
+  | "in-review" // open, not draft
+  | "done" // merged; release not tracked for this repo
+  | "awaiting-release" // merged; repo deploys, but no production deploy since merge (or merged into a parent change)
+  | "preview" // merged; deployed to a preview/test environment only
+  | "live"; // merged and a successful production deploy of the base branch happened after merge
+
+export type Readiness = {
+  stage: ReadinessStage;
+  /** Stakeholder label, e.g. "Live", "Done · not live yet". */
+  label: string;
+  /** One clause, e.g. "Live since Oct 8". */
+  detail?: string;
+  /** Date the stage was reached (YYYY-MM-DD), when known. */
+  since?: string;
+};
+
+export type Complexity = {
+  level: "contained" | "connected" | "cross-system";
+  label: string; // "Contained" | "Connected" | "Cross-system"
+  /** e.g. "Touches 3 areas: hub, shared-ui, api". */
+  reason: string;
+  /** Risk tags independent of size, e.g. "Payments", "Data changes". */
+  risks: string[];
+  partial?: boolean;
+};
+
+export type PrChecks = {
+  /** Non-skipped automated checks on the final version; null when not collected. */
+  automated: { passed: number; failed: number; pending: number; total: number; partial?: boolean } | null;
+  humanReviews: number;
+  automatedReviews: number;
+  /** Lower bound when file evidence is incomplete: true only if a test file was seen. */
+  testsUpdated: boolean;
+};
+
+/** One successful deployment (from GitHub Deployments API). */
+export type DeploymentRecord = {
+  environment: string;
+  production: boolean;
+  ref: string;
+  sha: string;
+  createdAt: string;
+  /** Time the deployment reached state "success". */
+  succeededAt: string;
+};
+
+export type PrReviewRecord = {
+  reviewer: string;
+  bot: boolean;
+  state: string; // APPROVED | CHANGES_REQUESTED | COMMENTED | DISMISSED
+  submittedAt: string;
+};
+
+/** Per-PR verification evidence, keyed by PR url in the ledger. */
+export type PrEvidence = {
+  url: string;
+  repository: string;
+  number: number;
+  author: string;
+  state: "open" | "merged" | "closed";
+  isDraft: boolean;
+  baseRef: string;
+  headRef: string;
+  headSha: string;
+  mergeCommitSha: string | null;
+  /** Deployments verified to contain mergeCommitSha. */
+  containingDeployments?: { environment: string; sha: string }[];
+  release?: { stage: "live" | "preview"; environment: string; sha: string; since: string };
+  nonContainingDeploymentShas?: string[];
+  unknownDeploymentShas?: string[];
+  ancestryUnknown?: boolean | { production?: boolean; nonProduction?: boolean };
+  createdAt: string;
+  mergedAt: string | null;
+  /** Reviews received on this PR (excluding the author's own). */
+  reviews: PrReviewRecord[];
+  incomplete?: { reviews?: boolean; files?: boolean };
+  /** GitHub's 3000-file response ceiling was reached and more files may exist. */
+  filesTruncated?: boolean;
+  /** Check runs on headSha. skipped/neutral are not counted as passed. */
+  checks: { passed: number; failed: number; skipped: number; pending: number; names: string[]; statusesUnavailable?: boolean; checkRunsUnavailable?: boolean } | null;
+  /** Changed file paths (capped). */
+  files: string[];
+  fetchedAt: string;
+  refreshFailedAt?: string;
+};
+
+/** data/evidence.yaml — refreshed by `worklog evidence`, read at render time. */
+export type EvidenceLedger = {
+  version: string;
+  updatedAt: string;
+  /** Default branch per repo, e.g. { "org/app": "main" }. */
+  defaultBranches: Record<string, string>;
+  /** Successful deployments per repo, newest first. */
+  deployments: Record<string, DeploymentRecord[]>;
+  /** Deployment keys whose status outcome is terminal, including unsuccessful outcomes. */
+  scannedDeployments?: Record<string, Record<string, "success" | "failure" | "unknown">>;
+  /** Repositories whose deployment history could not be collected, keyed to last failure time. */
+  deploymentsUnavailable?: Record<string, string>;
+  prs: Record<string, PrEvidence>;
+};
+
+export type AllocationBucket = {
+  /** Stakeholder-facing initiative / product name. */
+  initiative: string;
+  hours: number;
+  /** 0–1 share of the period's total hours. */
+  share: number;
+  byWorkType: Partial<Record<WorkType, number>>;
+  shipped: AllocationItem[];
+  inProgress: AllocationItem[];
+  /** Other items (reviews, direct commits, manual entries). */
+  other: AllocationItem[];
+};
+
+export type WorkTypeShare = {
+  workType: WorkType;
+  label: string;
+  hours: number;
+  share: number;
+};
+
+export type Allocation = {
+  version: string;
+  totalHours: number;
+  /** Sorted by hours desc. */
+  initiatives: AllocationBucket[];
+  /** Sorted by hours desc; zero-hour types omitted. */
+  workTypes: WorkTypeShare[];
+  /** Self-reported hours included in totalHours. */
+  manualHours: number;
+  /** Codex/Cursor review findings reported addressed in the period (from aiReviews.fixed). */
+  aiFindingsAddressed?: number;
+  note: string;
+};
+
+export type AllocationPeriod = {
+  /** e.g. "2026-10-01" (Thursday that starts the Thu–Wed work week). */
+  id: string;
+  label: string;
+  from: string;
+  to: string;
+  /** Number of daily reports merged into this period. */
+  days: number;
+  allocation: Allocation;
+};
+
+export type AllocationTrend = {
+  /** Union of initiative names across periods, ordered by total hours desc. */
+  initiatives: string[];
+  /** Chronological, oldest first. */
+  periods: AllocationPeriod[];
+};
+
+export type ManualTimeEntry = {
+  date: string; // YYYY-MM-DD
+  initiative: string;
+  hours: number;
+  workType?: WorkType;
+  note?: string;
+};
+
+export type AllocationConfig = {
+  /**
+   * Map from a classifier key to a stakeholder-facing initiative name. Keys:
+   *   - exact PR label, e.g. "app: hub"
+   *   - "scope:<conventional-commit scope>", e.g. "scope:pricing"
+   *   - "repo:<owner/name>", e.g. "repo:org/app"
+   */
+  initiatives: Record<string, string>;
+  /** Labels starting with this prefix name an initiative (default "app:"). */
+  labelPrefix: string;
+  /** Fallback initiative when nothing matches (default: humanized repo name). */
+  defaultInitiative: string | null;
+  /** Number of Thu–Wed weeks in the trend (default 8). */
+  trendWeeks: number;
+  /**
+   * Optional path-prefix → system name map for the complexity indicator,
+   * e.g. { "apps/hub": "Hub app", "packages/ui": "Shared UI" }. Unmapped paths use folder names.
+   */
+  systems?: Record<string, string>;
 };
