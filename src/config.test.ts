@@ -116,6 +116,11 @@ describe("resolveConfig allocation and manual time", () => {
     expect(cfg.allocation.initiatives).toEqual({ "scope:ofac": "OFAC" });
     expect(cfg.manualTime).toEqual([{ date: "2026-10-07", initiative: "OFAC", hours: 1 }]);
   });
+  it("parses app directory rules without keeping blank mappings", () => {
+    const cfg = resolveConfig(parseConfigObject({ allocation: { paths: { "/hub/": "Hub", "": "ignored", packages: "Shared platform" }, shared_initiative: "Shared platform" } }));
+    expect(cfg.allocation.paths).toEqual({ hub: "Hub", packages: "Shared platform" });
+    expect(cfg.allocation.sharedInitiative).toBe("Shared platform");
+  });
 });
 
 describe("resolveConfig", () => {

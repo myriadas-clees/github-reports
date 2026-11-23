@@ -113,7 +113,7 @@ export const deriveReadiness = (item: ReadinessItem, evidence: EvidenceLedger | 
   }
 
   // merged
-  if (!evidence) return { stage: "done", label: "Code integrated", detail: "Integrated" };
+  if (!evidence) return { stage: "done", label: "Code integrated", detail: "Integrated; release status not collected", releaseUnknown: true };
   const repo = item.repository ?? pe?.repository ?? "";
   const deps = evidence.deployments?.[repo] ?? [];
   const defaultBranch = evidence.defaultBranches?.[repo] ?? "main";
@@ -134,17 +134,9 @@ export const deriveReadiness = (item: ReadinessItem, evidence: EvidenceLedger | 
     : Boolean(pe?.ancestryUnknown?.production || pe?.ancestryUnknown?.nonProduction);
   const productionUnknown = typeof pe?.ancestryUnknown === "boolean" ? pe.ancestryUnknown : Boolean(pe?.ancestryUnknown?.production);
   const unavailable = Boolean(evidence.deploymentsUnavailable?.[repo]) || ancestryUnknown || Boolean(pe?.refreshFailedAt);
-  const notCollected = { stage: "done" as const, label: "Code integrated", detail: `${mergedText}; release status not collected`, ...(mergedSince ? { since: mergedSince } : {}) };
+  const notCollected = { stage: "done" as const, label: "Code integrated", detail: `${mergedText}; release status not collected`, ...(mergedSince ? { since: mergedSince } : {}), releaseUnknown: true };
 
-  if (!unavailable && pe?.baseRef && pe.baseRef !== defaultBranch && !deps.some((d) => d.ref === pe.baseRef || isMergeCommitDeployment(d) || isContainingDeployment(d))) {
-    return {
-      stage: "awaiting-release",
-      label: "Code integrated · not live yet",
-      detail: `Part of a larger change (${pe.baseRef}) that isn't live yet`,
-      ...(mergedSince ? { since: mergedSince } : {}),
-    };
-  }
-  if (!pe) return { stage: "done", label: "Code integrated", detail: "Integrated; release status not collected" };
+  if (!pe) return { stage: "done", label: "Code integrated", detail: "Integrated; release status not collected", releaseUnknown: true };
 
   const matched = matchedReleaseDeployment(item, evidence);
   if (matched?.stage === "live") {
@@ -159,6 +151,14 @@ export const deriveReadiness = (item: ReadinessItem, evidence: EvidenceLedger | 
       label: "In testing",
       detail: `On the preview site since ${formatDay(since, timeZone)}${(productionUnknown || evidence.deploymentsUnavailable?.[repo]) ? "; production release status not collected" : ""}`,
       since: calendarDate(since, timeZone),
+    };
+  }
+  if (!unavailable && pe?.baseRef && pe.baseRef !== defaultBranch && !deps.some((d) => d.ref === pe.baseRef || isMergeCommitDeployment(d) || isContainingDeployment(d))) {
+    return {
+      stage: "awaiting-release",
+      label: "Code integrated · not live yet",
+      detail: `Part of a larger change (${pe.baseRef}) that isn't live yet`,
+      ...(mergedSince ? { since: mergedSince } : {}),
     };
   }
   if (unavailable) return notCollected;
@@ -323,6 +323,8 @@ export type VerificationSummary = {
   live: number;
   awaitingRelease: number;
   preview: number;
+  /** Completed changes whose release status could not be determined. */
+  releaseUnknown: number;
   inReview: number;
   drafts: number;
   withoutChecks: number;
@@ -338,52 +340,66 @@ export type VerificationSummary = {
   aiFindingsAddressed: number;
 };
 
+const changeKey = (item: AllocationItem): string =>
+  (item.url ? item.url.trim().replace(/\/+$/, "") : `${item.repository ?? ""}|${item.title.trim()}`).toLowerCase();
+
+/**
+ * The period's unique PR changes (shipped + in progress), in first-seen order.
+ * Closed, unmerged PRs sit in `other` and are neither completed nor in review, so they are left out.
+ * A PR listed more than once (several initiatives, or both open and merged) counts once, as its merged copy when there is one.
+ */
+export const uniqueChanges = (allocation: Allocation): AllocationItem[] => {
+  const byKey = new Map<string, AllocationItem>();
+  for (const bucket of allocation.initiatives) {
+    for (const item of [...(bucket.shipped ?? []), ...(bucket.inProgress ?? [])]) {
+      if (item.kind !== "pr") continue;
+      const key = changeKey(item);
+      const seen = byKey.get(key);
+      if (!seen || (seen.state !== "merged" && item.state === "merged")) byKey.set(key, item);
+    }
+  }
+  return [...byKey.values()];
+};
+
 /** Period-level counts over unique PR items (shipped + in progress). */
 export const summarizeVerification = (allocation: Allocation): VerificationSummary => {
   const s: VerificationSummary = {
-    completed: 0, live: 0, awaitingRelease: 0, preview: 0, inReview: 0, drafts: 0,
+    completed: 0, live: 0, awaitingRelease: 0, preview: 0, releaseUnknown: 0, inReview: 0, drafts: 0,
     withoutChecks: 0, checksUnknown: 0, withPassingChecks: 0, withFailedChecks: 0, withPartialChecks: 0, withPendingChecks: 0, checksCollected: 0, withAutomatedReview: 0, withHumanReview: 0, withTests: 0,
     aiFindingsAddressed: allocation.aiFindingsAddressed ?? 0,
   };
-  const seen = new Set<string>();
-  for (const bucket of allocation.initiatives) {
-    // Closed, unmerged PRs sit in `other` and are neither completed nor in review, so they are
-    // left out of every count (readiness and checks alike) to keep the lines consistent.
-    for (const item of [...(bucket.shipped ?? []), ...(bucket.inProgress ?? [])]) {
-      if (item.kind !== "pr") continue;
-      const key = item.url ?? `${item.repository}|${item.title}`;
-      if (seen.has(key)) continue;
-      seen.add(key);
-      const stage = item.readiness?.stage;
-      if (stage === "draft" || stage === "prototype") {
-        s.drafts += 1;
-      } else if (item.state === "merged") {
-        s.completed += 1;
-        if (stage === "live") s.live += 1;
-        else if (stage === "awaiting-release") s.awaitingRelease += 1;
-        else if (stage === "preview") s.preview += 1;
-      } else {
-        s.inReview += 1;
-      }
-      const c = item.checks;
-      if (!c?.automated) {
-        s.checksUnknown += 1;
-      } else if (c.automated.total === 0 && c.automated.partial) {
-        s.checksUnknown += 1;
-      } else if (c.automated.total > 0) {
-        s.checksCollected += 1;
-        if (c.automated.failed > 0) s.withFailedChecks += 1;
-        if (c.automated.pending > 0) s.withPendingChecks += 1;
-        if (c.automated.partial) s.withPartialChecks += 1;
-        else if (c.automated.failed === 0 && c.automated.pending === 0) s.withPassingChecks += 1;
-      } else {
-        s.withoutChecks += 1;
-      }
-      // Review and test evidence is independent of whether check runs were collected.
-      if (c && c.automatedReviews > 0) s.withAutomatedReview += 1;
-      if (c && c.humanReviews > 0) s.withHumanReview += 1;
-      if (c?.testsUpdated) s.withTests += 1;
+  for (const item of uniqueChanges(allocation)) {
+    const stage = item.readiness?.stage;
+    if (stage === "draft" || stage === "prototype") {
+      s.drafts += 1;
+    } else if (item.state === "merged") {
+      s.completed += 1;
+      if (stage === "live") s.live += 1;
+      else if (stage === "awaiting-release") s.awaitingRelease += 1;
+      else if (stage === "preview") s.preview += 1;
+      // No readiness at all means the evidence was never applied: unknown, not "not live".
+      else if (!item.readiness || item.readiness.releaseUnknown) s.releaseUnknown += 1;
+    } else {
+      s.inReview += 1;
     }
+    const c = item.checks;
+    if (!c?.automated) {
+      s.checksUnknown += 1;
+    } else if (c.automated.total === 0 && c.automated.partial) {
+      s.checksUnknown += 1;
+    } else if (c.automated.total > 0) {
+      s.checksCollected += 1;
+      if (c.automated.failed > 0) s.withFailedChecks += 1;
+      if (c.automated.pending > 0) s.withPendingChecks += 1;
+      if (c.automated.partial) s.withPartialChecks += 1;
+      else if (c.automated.failed === 0 && c.automated.pending === 0) s.withPassingChecks += 1;
+    } else {
+      s.withoutChecks += 1;
+    }
+    // Review and test evidence is independent of whether check runs were collected.
+    if (c && c.automatedReviews > 0) s.withAutomatedReview += 1;
+    if (c && c.humanReviews > 0) s.withHumanReview += 1;
+    if (c?.testsUpdated) s.withTests += 1;
   }
   return s;
 };

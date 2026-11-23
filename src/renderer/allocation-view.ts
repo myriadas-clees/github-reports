@@ -8,7 +8,7 @@ import type {
   AllocationTrend,
   WorkType,
 } from "../types.js";
-import { summarizeVerification } from "../collector/readiness.js";
+import { summarizeVerification, uniqueChanges, type VerificationSummary } from "../collector/readiness.js";
 import { NO_ACTIVITY_INITIATIVE } from "../collector/allocation.js";
 import { INITIATIVE_PALETTE } from "./themes/allocation-css.js";
 import { engineerDayUnit, formatEngineerDaysValue } from "../collector/work-delivered.js";
@@ -189,9 +189,12 @@ export type AllocationEffortView = {
   hours: string;
   /** "104 estimated manual-effort hours". */
   hoursLabel: string;
+  /** Modeled effort expressed in units of one eight-hour shift, never a productivity speedup. */
+  shiftEquivalent: string;
 };
 
-export type HeadlineFact = { value: string; label: string; tone?: "positive" | "attention" };
+/** `tentative` marks a count whose release status is unknown, so it never reads as settled. */
+export type HeadlineFact = { value: string; label: string; tone?: "positive" | "attention" | "tentative" };
 
 /** Lead figures for the report summary: the default period's estimate and where its changes stand. */
 export type AllocationHeadlineView = {
@@ -201,6 +204,12 @@ export type AllocationHeadlineView = {
   bar: AllocationBarView;
   legend: AllocationSegmentView[];
   facts: HeadlineFact[];
+  /**
+   * Plain-language overview of the same period as every other headline figure: change counts by
+   * release status, the titles of integrated changes as authored, checks and the initiative mix.
+   * Built without an LLM; never claims an outcome the evidence does not show.
+   */
+  summary: string;
 };
 
 export type AllocationPanelView = {
@@ -232,6 +241,8 @@ export type AllocationView = {
   hasSwitch: boolean;
   hasTrend: boolean;
   trendRows: AllocationTrendRowView[];
+  /** "Last 8 weeks", or "Last 8 weeks and 1 weekend" when explicit weekend entries are listed. */
+  trendHeading: string;
   trendLegend: AllocationLegendItem[];
   trendTable?: AllocationTableView;
   /** Collector note; carried for data consumers, not rendered. */
@@ -271,11 +282,18 @@ export const formatEstimatedHours = (hours: number): string => {
   return String(value).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 
+export const formatShiftEquivalent = (hours: number): string => {
+  const shifts = Number.isFinite(hours) && hours > 0 ? hours / HOURS_PER_ENGINEER_DAY : 0;
+  if (shifts > 0 && shifts < 0.1) return "<0.1×";
+  return `${new Intl.NumberFormat("en-US", { maximumFractionDigits: 1 }).format(shifts)}×`;
+};
+
 const buildEffort = (hours: number): AllocationEffortView => {
   const text = formatEstimatedHours(hours);
   return {
     days: formatWorkDelivered(hours).short,
     hours: text,
+    shiftEquivalent: formatShiftEquivalent(hours),
     hoursLabel: `${text} estimated manual-effort ${text === "1" ? "hour" : "hours"}`,
   };
 };
@@ -307,16 +325,20 @@ type ColorMap = {
 };
 
 const buildColorMap = (order: string[]): ColorMap => {
+  const isMyriad = (name: string): boolean => /^(myriad|myriadas) apps(?: ·|$)/i.test(name);
+  const appClass = (name: string): string | undefined => /^north\s*star$/i.test(name) ? "alloc-northstar" : /^compass$/i.test(name) ? "alloc-compass" : undefined;
+  const neutralClass = (name: string): string | undefined => name === "Shared platform" ? "alloc-shared" : /app not identified$/i.test(name) ? "alloc-unassigned" : undefined;
   const slots = new Map<string, number>();
   for (const name of order) {
     // The no-activity minimum day is neutral gray and never takes a palette slot.
     if (name === NO_ACTIVITY_INITIATIVE) continue;
+    if (isMyriad(name) || neutralClass(name)) continue;
     if (!slots.has(name) && slots.size < MAX_INITIATIVE_COLORS) slots.set(name, slots.size + 1);
   }
   return {
-    classFor: (name) => (slots.has(name) ? `alloc-c${slots.get(name)}` : "alloc-other"),
+    classFor: (name) => isMyriad(name) ? "alloc-myriad" : appClass(name) ?? neutralClass(name) ?? (slots.has(name) ? `alloc-c${slots.get(name)}` : "alloc-other"),
     // Not folded into "Other": it keeps its own name and only shares the gray color.
-    isOther: (name) => name !== NO_ACTIVITY_INITIATIVE && !slots.has(name),
+    isOther: (name) => name !== NO_ACTIVITY_INITIATIVE && !isMyriad(name) && !appClass(name) && !neutralClass(name) && !slots.has(name),
   };
 };
 
@@ -412,7 +434,7 @@ const KIND_LABELS: Record<AllocationItem["kind"], string> = {
 
 const STATE_LABELS: Record<NonNullable<AllocationItem["state"]>, string> = {
   open: "Open",
-  merged: "Code integrated",
+  merged: "Development complete",
   closed: "Closed",
 };
 
@@ -463,10 +485,10 @@ const toItemView = (item: AllocationItem): AllocationItemView => ({
   ...(item.readiness
     ? {
       readiness: {
-        label: item.readiness.label,
+        label: stakeholderReadinessLabel(item.readiness),
         stage: item.readiness.stage,
         detail: item.readiness.detail,
-        ariaLabel: item.readiness.detail ? `${item.readiness.label}: ${item.readiness.detail}` : item.readiness.label,
+        ariaLabel: item.readiness.detail ? `${stakeholderReadinessLabel(item.readiness)}: ${item.readiness.detail}` : stakeholderReadinessLabel(item.readiness),
       },
     }
     : {}),
@@ -493,6 +515,53 @@ export const VERIFICATION_NOTE =
 
 const factText = (f: VerificationFact): string => (f.value ? `${f.value} ${f.label}` : f.label);
 
+/** One release-status count with the wording every surface (headline, summary, checks panel) shares. */
+type StatusCount = { count: number; label: string; tone?: "positive" | "tentative" };
+
+/** Plain-language release labels, shared so a change is described the same way everywhere. */
+export const RELEASE_LABELS = {
+  integrated: "development complete",
+  live: "available to users",
+  preview: "available for testing",
+  awaitingRelease: "awaiting release",
+  releaseUnknown: "release status unknown",
+  releaseNotTracked: "release not tracked",
+  inReview: "being reviewed",
+} as const;
+
+const stakeholderReadinessLabel = (readiness: NonNullable<AllocationItem["readiness"]>): string => {
+  const labels: Record<string, string> = {
+    live: RELEASE_LABELS.live,
+    preview: RELEASE_LABELS.preview,
+    "awaiting-release": RELEASE_LABELS.awaitingRelease,
+    done: readiness.releaseUnknown ? RELEASE_LABELS.releaseUnknown : RELEASE_LABELS.releaseNotTracked,
+    "in-review": RELEASE_LABELS.inReview,
+    draft: "early work",
+    prototype: "early work",
+  };
+  const label = labels[readiness.stage] ?? readiness.label;
+  return label.charAt(0).toUpperCase() + label.slice(1);
+};
+
+
+/** Mutually exclusive release-status counts over the period's unique changes, zero counts dropped. */
+const statusCounts = (s: VerificationSummary): StatusCount[] => {
+  const releaseNotTracked = s.completed - s.live - s.preview - s.awaitingRelease - s.releaseUnknown;
+  const counts: StatusCount[] = [
+    { count: s.live, label: RELEASE_LABELS.live, tone: "positive" },
+    { count: s.preview, label: RELEASE_LABELS.preview },
+    { count: s.awaitingRelease, label: RELEASE_LABELS.awaitingRelease },
+    { count: s.releaseUnknown, label: RELEASE_LABELS.releaseUnknown, tone: "tentative" },
+    { count: releaseNotTracked, label: RELEASE_LABELS.releaseNotTracked },
+    { count: s.inReview, label: RELEASE_LABELS.inReview },
+    { count: s.drafts, label: "in early development", tone: "tentative" },
+  ];
+  return counts.filter((c) => c.count > 0);
+};
+
+/** "4 of 6 changes with automated checks passed every check": counts changes, not individual checks. */
+export const CHECKS_PASSED_LABEL = "changes with automated checks passed every check";
+
 const buildVerification = (a: Allocation): AllocationVerificationView | undefined => {
   const s = summarizeVerification(a);
   const total = s.completed + s.inReview + s.drafts;
@@ -500,19 +569,11 @@ const buildVerification = (a: Allocation): AllocationVerificationView | undefine
   const fact = (n: number, label: string, tone?: VerificationFact["tone"]): VerificationFact | false =>
     n > 0 && { value: String(n), label, ...(tone ? { tone } : {}) };
   const keep = (facts: (VerificationFact | false)[]): VerificationFact[] => facts.filter((f): f is VerificationFact => f !== false);
-  const integratedOnly = s.completed - s.live - s.preview - s.awaitingRelease;
-  const readiness = keep([
-    fact(s.live, "live", "positive"),
-    fact(s.preview, "in testing"),
-    fact(s.awaitingRelease, "code integrated, not live yet"),
-    fact(integratedOnly, "code integrated"),
-    fact(s.inReview, "in review"),
-    fact(s.drafts, plural(s.drafts, "draft or prototype", "drafts or prototypes"), "tentative"),
-  ]);
+  const readiness: VerificationFact[] = statusCounts(s).map((c) => ({ value: String(c.count), label: c.label, ...(c.tone ? { tone: c.tone } : {}) }));
   // The blanket "no checks ran" claim needs every PR to be known zero-check; unknown PRs are named separately.
   // Review, test and finding counts are kept even when no PR has automated checks, since they can be the only evidence.
   const checksLead = (): (VerificationFact | false)[] => {
-    if (s.checksCollected > 0) return [{ value: `${s.withPassingChecks} of ${s.checksCollected}`, label: "passed automated checks" }];
+    if (s.checksCollected > 0) return [{ value: `${s.withPassingChecks} of ${s.checksCollected}`, label: CHECKS_PASSED_LABEL }];
     if (s.withoutChecks > 0) {
       return s.checksUnknown > 0
         ? [fact(s.withoutChecks, "had no automated checks"), fact(s.checksUnknown, "not collected", "tentative")]
@@ -647,9 +708,61 @@ const panelScope = (p: AllocationPanelInput): string => {
   return p.open ? `in ${month} so far` : `in ${p.label}`;
 };
 
-const buildHeadline = (panel: AllocationPanelView, a: Allocation): AllocationHeadlineView => {
+/** "“A”; “B”; “C” and 2 more" from item titles (already deduplicated). */
+const titleList = (titles: string[], limit: number): string => {
+  const shown = titles.slice(0, limit).map((t) => `\u201c${t}\u201d`).join("; ");
+  const more = titles.length - limit;
+  return more > 0 ? `${shown} and ${more} more` : shown;
+};
+
+/** Max integrated-change titles named in the headline summary. */
+export const MAX_SUMMARY_TITLES = 3;
+
+const IMPACT_RANK: Record<string, number> = { major: 0, notable: 1 };
+
+/**
+ * The headline overview sentence(s). Every figure comes from the same allocation (and its legend)
+ * as the headline facts, bar and effort, so the summary never mixes periods.
+ */
+export const buildHeadlineSummary = (
+  p: AllocationPanelInput,
+  s: VerificationSummary,
+  changes: AllocationItem[],
+  legend: AllocationSegmentView[],
+): string => {
+  const scope = panelScope(p);
+  const total = s.completed + s.inReview + s.drafts;
+  const sentences: string[] = [];
+  if (total === 0) {
+    sentences.push(`No change status was recorded ${scope}.`);
+  } else {
+    sentences.push(`${total} ${plural(total, "change", "changes")} ${scope}.`);
+  }
+  // Authored titles only (minus a conventional-commit prefix, as in the item lists); larger changes first.
+  const integrated = changes
+    .map((item, i) => ({ item, i }))
+    .filter(({ item }) => item.state === "merged" && item.readiness?.stage !== "draft" && item.readiness?.stage !== "prototype")
+    .sort((a, b) => (IMPACT_RANK[a.item.impact ?? ""] ?? 2) - (IMPACT_RANK[b.item.impact ?? ""] ?? 2) || a.i - b.i)
+    .map(({ item }) => stripConventionalPrefix(item.title.trim()))
+    .filter((t, i, all) => t && all.indexOf(t) === i);
+  if (integrated.length > 0) {
+    sentences.push(`Development complete: ${titleList(integrated, MAX_SUMMARY_TITLES)}.`);
+  } else if (changes.length > 0) {
+    const titles = changes.map((item) => stripConventionalPrefix(item.title.trim())).filter((title, i, all) => title && all.indexOf(title) === i);
+    if (titles.length > 0) sentences.push(`Work in progress: ${titleList(titles, MAX_SUMMARY_TITLES)}.`);
+  }
+  if (s.withFailedChecks > 0) {
+    sentences.push(`${s.withFailedChecks} ${plural(s.withFailedChecks, "change needs", "changes need")} attention because automated checks failed.`);
+  }
+  if (total === 0 && legend.length > 0) {
+    sentences.push(`Work covered ${legend.map((l) => l.name).join(", ")}.`);
+  }
+  return sentences.join(" ");
+};
+
+const buildHeadline = (panel: AllocationPanelView, p: AllocationPanelInput): AllocationHeadlineView => {
+  const a = p.allocation;
   const s = summarizeVerification(a);
-  const inProgress = s.inReview + s.drafts;
   const fact = (n: number, label: string, tone?: HeadlineFact["tone"]): HeadlineFact[] =>
     n > 0 ? [{ value: String(n), label, ...(tone ? { tone } : {}) }] : [];
   return {
@@ -658,11 +771,10 @@ const buildHeadline = (panel: AllocationPanelView, a: Allocation): AllocationHea
     bar: panel.bar,
     legend: panel.legend,
     facts: [
-      ...fact(s.completed, "completed"),
-      ...fact(s.live, "live", "positive"),
-      ...fact(inProgress, "in progress"),
+      ...statusCounts(s).flatMap((c) => fact(c.count, c.label, c.tone)),
       ...fact(s.withFailedChecks, plural(s.withFailedChecks, "change with failed checks", "changes with failed checks"), "attention"),
     ],
+    summary: buildHeadlineSummary(p, s, uniqueChanges(a), panel.legend),
   };
 };
 
@@ -740,6 +852,14 @@ export const formatDayLabel = (date: string): string => {
     .format(new Date(Date.UTC(y, m - 1, d)));
 };
 
+/** Explicit weekend entries are not weeks, so they are counted separately in the heading. */
+const trendHeadingFor = (periods: AllocationTrend["periods"]): string => {
+  const weekends = periods.filter((p) => p.kind === "weekend").length;
+  const weeks = periods.length - weekends;
+  const base = `Last ${weeks} ${weeks === 1 ? "week" : "weeks"}`;
+  return weekends > 0 ? `${base} and ${weekends} ${weekends === 1 ? "weekend" : "weekends"}` : base;
+};
+
 /** Build the section view; undefined when there is nothing worth showing. */
 export const buildAllocationView = (input: AllocationInput | undefined): AllocationView | undefined => {
   if (!input) return undefined;
@@ -769,7 +889,7 @@ export const buildAllocationView = (input: AllocationInput | undefined): Allocat
     inputs.push({ kind: "week", id: `alloc-week-${lastPeriod?.id ?? "current"}`, label: week.label, allocation: week.allocation, open: weekOpen });
   }
   const panels = inputs.map((p, i) => buildPanel(p, colors, i === 0));
-  const headline = panels.length > 0 ? buildHeadline(panels[0]!, inputs[0]!.allocation) : undefined;
+  const headline = panels.length > 0 ? buildHeadline(panels[0]!, inputs[0]!) : undefined;
 
   const builtTrend = trend ? buildTrend(trend, colors, input.asOf) : undefined;
   const trendLegend: AllocationLegendItem[] = [];
@@ -789,6 +909,7 @@ export const buildAllocationView = (input: AllocationInput | undefined): Allocat
     hasSwitch: panels.length > 1,
     hasTrend: !!builtTrend,
     trendRows: builtTrend?.rows ?? [],
+    trendHeading: trendHeadingFor(builtTrend ? trend?.periods ?? [] : []),
     trendLegend,
     trendTable: builtTrend?.table,
     note,

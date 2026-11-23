@@ -40,8 +40,7 @@ pullRequests:
       ## Why
 
 
-      Recruit intake still followed an advisor-first flow that did not match how teams are modeled in practice. Platform
-      assumptions also carried legacy OHC and FiNet Wells/WFAFN fee inputs that are no longer part of the pricing model.
+      Recruit intake still followed an advisor-first flow that did not match how teams are modeled in practice. Platform assumptions also carried legacy OHC and FiNet Wells/WFAFN fee inputs that are no longer part of the pricing model.
 
 
       ## What changed
@@ -70,13 +69,73 @@ pullRequests:
     workAdditions: 0
     workDeletions: 0
     workFiles: []
+    allocationFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
   - title: "feat(onboarding): establish Twenty-inspired operations workspace"
     body: >-
-      - add the upstream Twenty repository as a pinned `twenty/` submodule for architecture and product-pattern
-      reference
+      - add the upstream Twenty repository as a pinned `twenty/` submodule for architecture and product-pattern reference
 
-      - preserve the current Myriad static Next export, Azure Functions boundary, server-owned authorization, and visual
-      system
+      - preserve the current Myriad static Next export, Azure Functions boundary, server-owned authorization, and visual system
 
       - turn onboarding into a broader operations workspace for clie...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
@@ -99,6 +158,65 @@ pullRequests:
     workAdditions: 0
     workDeletions: 0
     workFiles: []
+    allocationFiles:
+      - .gitmodules
+      - onboarding/README.md
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/api/vm/[...path]/route.ts
+      - onboarding/apps/dashboard/app/page.test.tsx
+      - onboarding/apps/dashboard/app/page.tsx
+      - onboarding/apps/dashboard/app/tasks/page.tsx
+      - onboarding/apps/dashboard/app/vendors/page.test.ts
+      - onboarding/apps/dashboard/app/vendors/page.tsx
+      - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - onboarding/apps/dashboard/components/global-command-search.test.ts
+      - onboarding/apps/dashboard/components/global-command-search.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/record-activity.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/saved-view-workbench.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/task-record-panel.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/universal-record-panel.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-360.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-360.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-activity-timeline.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel-state.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.test.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.tsx
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - onboarding/apps/dashboard/lib/api/operations-client.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.ts
+      - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/vm-client.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/actions.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/adapters.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/defaults.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/evaluation.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/index.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/operations-workspace.test.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/records.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/types.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/url.ts
+      - onboarding/package.json
+      - package.json
+      - packages/contracts/package.json
+      - packages/contracts/src/index.ts
+      - packages/contracts/src/operations-workspace.ts
+      - packages/contracts/src/vendor-management.ts
+      - packages/db/package.json
+      - packages/db/src/operations-views.test.ts
+      - packages/db/src/seed-vm-demo.test.ts
+      - packages/db/src/seed-vm-demo.ts
+      - packages/db/src/vm-runtime.ts
+      - packages/db/src/vm-store.ts
+      - twenty
 prsInProgress: []
 issues: []
 events: []
@@ -115,6 +233,65 @@ commitMessages:
         additions: 5281
         deletions: 173
         filesChanged: 58
+        files:
+          - .gitmodules
+          - onboarding/README.md
+          - onboarding/apps/dashboard/app/api/[...path]/route.ts
+          - onboarding/apps/dashboard/app/api/vm/[...path]/route.ts
+          - onboarding/apps/dashboard/app/page.test.tsx
+          - onboarding/apps/dashboard/app/page.tsx
+          - onboarding/apps/dashboard/app/tasks/page.tsx
+          - onboarding/apps/dashboard/app/vendors/page.test.ts
+          - onboarding/apps/dashboard/app/vendors/page.tsx
+          - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+          - onboarding/apps/dashboard/components/dashboard-shell.tsx
+          - onboarding/apps/dashboard/components/global-command-search.test.ts
+          - onboarding/apps/dashboard/components/global-command-search.tsx
+          - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+          - onboarding/apps/dashboard/components/operations-workspace/record-activity.tsx
+          - onboarding/apps/dashboard/components/operations-workspace/saved-view-workbench.tsx
+          - onboarding/apps/dashboard/components/operations-workspace/task-record-panel.tsx
+          - onboarding/apps/dashboard/components/operations-workspace/universal-record-panel.tsx
+          - onboarding/apps/dashboard/components/vm/vendor-360.test.ts
+          - onboarding/apps/dashboard/components/vm/vendor-360.tsx
+          - onboarding/apps/dashboard/components/vm/vendor-activity-timeline.tsx
+          - onboarding/apps/dashboard/components/vm/vendor-record-list.test.ts
+          - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
+          - onboarding/apps/dashboard/components/vm/vendor-record-panel-state.ts
+          - onboarding/apps/dashboard/components/vm/vendor-record-panel.test.tsx
+          - onboarding/apps/dashboard/components/vm/vendor-record-panel.tsx
+          - onboarding/apps/dashboard/functions/src/index.ts
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+          - onboarding/apps/dashboard/lib/api/handlers.test.ts
+          - onboarding/apps/dashboard/lib/api/handlers.ts
+          - onboarding/apps/dashboard/lib/api/operations-client.ts
+          - onboarding/apps/dashboard/lib/api/operations-handlers.test.ts
+          - onboarding/apps/dashboard/lib/api/operations-handlers.ts
+          - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
+          - onboarding/apps/dashboard/lib/api/vm-client.ts
+          - onboarding/apps/dashboard/lib/operations-workspace/actions.ts
+          - onboarding/apps/dashboard/lib/operations-workspace/adapters.ts
+          - onboarding/apps/dashboard/lib/operations-workspace/defaults.ts
+          - onboarding/apps/dashboard/lib/operations-workspace/evaluation.ts
+          - onboarding/apps/dashboard/lib/operations-workspace/index.ts
+          - onboarding/apps/dashboard/lib/operations-workspace/operations-workspace.test.ts
+          - onboarding/apps/dashboard/lib/operations-workspace/records.ts
+          - onboarding/apps/dashboard/lib/operations-workspace/types.ts
+          - onboarding/apps/dashboard/lib/operations-workspace/url.ts
+          - onboarding/package.json
+          - package.json
+          - packages/contracts/package.json
+          - packages/contracts/src/index.ts
+          - packages/contracts/src/operations-workspace.ts
+          - packages/contracts/src/vendor-management.ts
+          - packages/db/package.json
+          - packages/db/src/operations-views.test.ts
+          - packages/db/src/seed-vm-demo.test.ts
+          - packages/db/src/seed-vm-demo.ts
+          - packages/db/src/vm-runtime.ts
+          - packages/db/src/vm-store.ts
+          - twenty
       - sha: 41bde3d2dd04f11108b9d6f685699e8a922fad66
         message: "feat(proforma): Redesign recruit intake with team-first step order (#84)"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/41bde3d2dd04f11108b9d6f685699e8a922fad66
@@ -122,6 +299,68 @@ commitMessages:
         additions: 3602
         deletions: 1565
         filesChanged: 61
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - packages/contracts/src/proforma.test.ts
+          - packages/contracts/src/proforma.ts
+          - packages/db/src/proforma.test.ts
+          - proforma/README.md
+          - proforma/docs/client-reference-alignment.md
+          - proforma/next.config.ts
+          - proforma/src/app/globals.css
+          - proforma/src/app/layout.tsx
+          - proforma/src/app/login/page.tsx
+          - proforma/src/components/__tests__/assumptions-tab.test.tsx
+          - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+          - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+          - proforma/src/components/__tests__/proforma-graphs.test.tsx
+          - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+          - proforma/src/components/__tests__/recruits-table.test.tsx
+          - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+          - proforma/src/components/assumptions-tab.tsx
+          - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+          - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+          - proforma/src/components/new-recruit-wizard.tsx
+          - proforma/src/components/proforma-app-shell.tsx
+          - proforma/src/components/proforma-graphs.tsx
+          - proforma/src/components/proforma-static-pages.tsx
+          - proforma/src/components/proforma-user-menu.tsx
+          - proforma/src/components/proforma-workstation-client.tsx
+          - proforma/src/components/recruit-detail-panels.tsx
+          - proforma/src/components/recruit-model-shell.tsx
+          - proforma/src/components/recruits-table.tsx
+          - proforma/src/components/scenario-model-tab.tsx
+          - proforma/src/lib/__tests__/api-handler.test.ts
+          - proforma/src/lib/__tests__/calculation.test.ts
+          - proforma/src/lib/__tests__/excel-formulas.test.ts
+          - proforma/src/lib/__tests__/expense-groups.test.ts
+          - proforma/src/lib/__tests__/new-recruit.test.ts
+          - proforma/src/lib/__tests__/proforma-api-client.test.ts
+          - proforma/src/lib/__tests__/proforma-visibility.test.ts
+          - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+          - proforma/src/lib/__tests__/report-model.test.ts
+          - proforma/src/lib/__tests__/report.test.ts
+          - proforma/src/lib/__tests__/setup-projection.test.ts
+          - proforma/src/lib/__tests__/workbook-output.test.ts
+          - proforma/src/lib/__tests__/workbook-preview.test.ts
+          - proforma/src/lib/__tests__/workstation.test.ts
+          - proforma/src/lib/api/handlers.ts
+          - proforma/src/lib/calculation.ts
+          - proforma/src/lib/dashboard-summary.ts
+          - proforma/src/lib/excel-formulas.ts
+          - proforma/src/lib/expense-groups.ts
+          - proforma/src/lib/id.ts
+          - proforma/src/lib/new-recruit.ts
+          - proforma/src/lib/proforma-api-client.ts
+          - proforma/src/lib/recruit-model-tabs.ts
+          - proforma/src/lib/report/excel.ts
+          - proforma/src/lib/report/model.ts
+          - proforma/src/lib/report/pdf.tsx
+          - proforma/src/lib/seed.ts
+          - proforma/src/lib/setup-projection.ts
+          - proforma/src/lib/workbook-output.ts
+          - proforma/src/lib/workstation.ts
+          - scripts/tooling.test.ts
 releases: []
 externalContributions: []
 codeReviews: []
@@ -173,6 +412,5 @@ hoursEstimate:
   volumeHours: 14.5
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

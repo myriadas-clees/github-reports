@@ -1,4 +1,4 @@
-// Generate weeks/YYYY-MM-DD/index.html: one Thu–Wed work week with its allocation panel and day jump.
+// Generate weeks/YYYY-MM-DD/index.html: one Mon–Fri work week (or explicit weekend entry) with its allocation panel and day jump.
 
 import Handlebars from "handlebars";
 import type { Language, Theme } from "../types.js";
@@ -10,20 +10,28 @@ export type WeekPageDay = {
   date: string;
   /** Relative to the week page, e.g. "../../2026/10/01/". */
   href: string;
-  /** "Thu Oct 1". */
+  /** "Mon Oct 5"; weekend days keep their own date. */
   label: string;
   title?: string;
+  /** "weekend" for an attributed Saturday/Sunday report. */
+  note?: string;
 };
 
 export type WeekPageLink = { href: string; label: string };
 
 export type WeekPageData = {
-  /** The Thursday, YYYY-MM-DD. */
+  /** The Monday (or the Saturday of an explicit weekend entry), YYYY-MM-DD. */
   id: string;
-  /** "Oct 1-7". */
+  /** First–last available weekday report, e.g. "Oct 5-8". */
   label: string;
+  /** Nominal Monday (or Saturday). */
   from: string;
+  /** Nominal Friday (or Sunday). */
   to: string;
+  /** "weekend" for an explicit weekend entry; defaults to a Mon–Fri week. */
+  kind?: "week" | "weekend";
+  /** Where attributed weekend days are counted and why. */
+  weekendNotes?: string[];
   open: boolean;
   monthLabel: string;
   /** Anchor of the month on the homepage, e.g. "month-2026-10". */
@@ -55,8 +63,13 @@ export const renderWeekPage = (data: WeekPageData, options: WeekPageOptions = {}
   const siteTitle = (options.siteTitle ?? "Dev\nPulse").replace(/\\n/g, "\n");
   const baseUrl = options.baseUrl?.replace(/\/+$/, "") ?? "";
   const suffix = data.open ? " (so far)" : "";
+  const pageTitle = data.kind === "weekend" ? `Weekend activity: ${data.label.replace(/ weekend$/, "")}` : `Work week of ${data.label}`;
+  const span = data.kind === "weekend" ? "Weekend" : "Monday to Friday";
   return template({
     ...data,
+    pageTitle,
+    rangeNote: `${data.from} to ${data.to} \u00b7 ${span}`,
+    weekendNotes: data.weekendNotes ?? [],
     allocation: buildAllocationView(data.allocation),
     css: theme.buildCSS(language),
     lang: language,
@@ -64,7 +77,7 @@ export const renderWeekPage = (data: WeekPageData, options: WeekPageOptions = {}
     rootPrefix: "../../",
     baseUrl,
     canonicalUrl: baseUrl ? `${baseUrl}/weeks/${data.id}/` : undefined,
-    description: `Work delivered in the work week of ${data.label}${suffix}`,
+    description: `${pageTitle}${suffix}: work delivered`,
     siteTitle,
     siteTitleInline: siteTitle.replace(/\n/g, " "),
     themeColor: theme.colors.bg,

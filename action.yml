@@ -135,10 +135,20 @@ runs:
       shell: bash
       env:
         GITHUB_TOKEN: ${{ inputs.github-token }}
+        TIMEZONE: ${{ inputs.timezone }}
+        INPUT_MODE: ${{ inputs.mode }}
         DATA_DIR: ./data
         INPUT_DATE: ${{ inputs.date }}
       run: |
-        if ! bun "$GITHUB_ACTION_PATH/dist/cli/index.js" evidence ${INPUT_DATE:+--since "$INPUT_DATE"}; then
+        EVIDENCE_SINCE="$INPUT_DATE"
+        if [ "$INPUT_MODE" = weekly ] && [ -n "$INPUT_DATE" ]; then
+          EVIDENCE_SINCE=$(bun --eval '
+            const { buildWeeklyRange, parseLocalDate, toISODate } = await import(process.env.GITHUB_ACTION_PATH + "/dist/collector/date-range.js");
+            const tz = process.env.TIMEZONE || "UTC";
+            console.log(toISODate(buildWeeklyRange(parseLocalDate(process.env.INPUT_DATE, tz), tz).from, tz));
+          ')
+        fi
+        if ! bun "$GITHUB_ACTION_PATH/dist/cli/index.js" evidence ${EVIDENCE_SINCE:+--since "$EVIDENCE_SINCE"}; then
           echo "Warning: evidence refresh failed; continuing with existing evidence"
         fi
 

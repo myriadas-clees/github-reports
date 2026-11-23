@@ -1,6 +1,7 @@
 // Weekly report data types
 
 import type { HoursInputs } from "./collector/estimate-hours.js";
+import type { WeekendAttribution } from "./collector/work-calendar.js";
 
 export type { HoursInputs };
 
@@ -20,6 +21,8 @@ export type RepositoryActivity = {
 };
 
 export type PullRequest = {
+  /** Classification-only fallback; never used to weight daily effort. */
+  allocationFiles?: string[];
   title: string;
   body: string | null;
   url: string;
@@ -143,6 +146,8 @@ export type UserProfile = {
 };
 
 export type CommitDetail = {
+  /** Changed paths, retained for app attribution. */
+  files?: string[];
   sha: string;
   message: string;
   url: string;
@@ -159,6 +164,7 @@ export type RepoCommitMessages = {
 };
 
 export type CodeReview = {
+  prFiles?: string[];
   repository: string;
   prNumber: number;
   prTitle: string;
@@ -169,6 +175,7 @@ export type CodeReview = {
 };
 
 export type ReviewComment = {
+  prFiles?: string[];
   repository: string;
   prNumber: number;
   prUrl: string;
@@ -394,6 +401,8 @@ export type Readiness = {
   detail?: string;
   /** Date the stage was reached (YYYY-MM-DD), when known. */
   since?: string;
+  /** Merged, but whether it is live could not be determined (evidence missing or a refresh failed). */
+  releaseUnknown?: boolean;
 };
 
 export type Complexity = {
@@ -516,14 +525,21 @@ export type Allocation = {
 };
 
 export type AllocationPeriod = {
-  /** e.g. "2026-10-01" (Thursday that starts the Thu–Wed work week). */
+  /** Monday of the Mon–Fri work week (stable page id), or the Saturday of an explicit weekend entry. */
   id: string;
+  /** First–last available weekday report, e.g. "Oct 6-9"; nominal Mon–Fri when there are none. */
   label: string;
+  /** Nominal start (Monday, or Saturday for a weekend entry). */
   from: string;
+  /** Nominal end (Friday, or Sunday for a weekend entry). */
   to: string;
-  /** Number of daily reports merged into this period. */
+  /** Number of daily reports merged into this period (attributed weekend reports included). */
   days: number;
   allocation: Allocation;
+  /** Present for an explicit weekend entry (no adjacent Friday or Monday report). */
+  kind?: "weekend";
+  /** Weekends whose effort is counted in this period, with their original dates and reason. */
+  weekends?: WeekendAttribution[];
 };
 
 export type AllocationTrend = {
@@ -549,11 +565,15 @@ export type AllocationConfig = {
    *   - "repo:<owner/name>", e.g. "repo:org/app"
    */
   initiatives: Record<string, string>;
+  /** Changed-file directory prefixes mapped to apps; longest matching prefix wins. */
+  paths?: Record<string, string>;
+  /** Bucket for changes that touch multiple mapped apps (or only shared paths). */
+  sharedInitiative?: string;
   /** Labels starting with this prefix name an initiative (default "app:"). */
   labelPrefix: string;
   /** Fallback initiative when nothing matches (default: humanized repo name). */
   defaultInitiative: string | null;
-  /** Number of Thu–Wed weeks in the trend (default 8). */
+  /** Number of Mon–Fri work weeks in the trend (default 8); explicit weekend entries are added between them. */
   trendWeeks: number;
   /**
    * Optional path-prefix → system name map for the complexity indicator,

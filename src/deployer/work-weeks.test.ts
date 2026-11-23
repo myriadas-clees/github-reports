@@ -1,37 +1,47 @@
 import { describe, it, expect } from "vitest";
-import { dailyPathToDate, isWeekOpen, weekMonthKey, weekPagePath, workWeekOf } from "./work-weeks.js";
+import {
+  calendarFromReports,
+  dailyPathToDate,
+  groupEndDate,
+  isWeekOpen,
+  weekendNotes,
+  weekMonthKey,
+  weekPagePath,
+} from "./work-weeks.js";
 
-describe("work weeks (Thu-Wed)", () => {
-  it("maps any date to its Thursday-Wednesday week", () => {
-    for (const date of ["2026-10-01", "2026-10-03", "2026-10-07"]) {
-      expect(workWeekOf(date)).toEqual({ id: "2026-10-01", from: "2026-10-01", to: "2026-10-07", label: "Oct 1-7" });
-    }
-    expect(workWeekOf("2026-10-08").id).toBe("2026-10-08");
+const cal = (dates: [string, number][]) => calendarFromReports(dates.map(([date, hours]) => ({ date, hours })));
+
+describe("website work weeks (Mon-Fri)", () => {
+  it("lists a week under the month of its last available weekday report", () => {
+    // Mon Sep 28 .. Fri Oct 2.
+    expect(weekMonthKey(cal([["2026-09-29", 1], ["2026-09-30", 1]]).group("2026-09-28"), "2026-10-20")).toBe("2026-09");
+    expect(weekMonthKey(cal([["2026-09-29", 1], ["2026-10-01", 1]]).group("2026-09-28"), "2026-10-20")).toBe("2026-10");
+    // No reports: the nominal Friday decides.
+    expect(weekMonthKey(cal([]).group("2026-09-28"), "2026-10-20")).toBe("2026-10");
+    expect(weekMonthKey(cal([["2026-12-31", 1]]).group("2026-12-28"), "2027-10-20")).toBe("2026-12");
   });
 
-  it("spans months and years", () => {
-    expect(workWeekOf("2026-09-30")).toMatchObject({ id: "2026-09-24", to: "2026-09-30" });
-    expect(workWeekOf("2026-12-31")).toMatchObject({ id: "2026-12-31", to: "2027-01-06" });
+  it("keeps an in-progress week open until its Friday and lists it no later than the latest report", () => {
+    const week = cal([["2026-10-29", 1], ["2026-10-30", 1]]).group("2026-10-26"); // Oct 26-30
+    expect(isWeekOpen(week, "2026-10-29")).toBe(true);
+    expect(isWeekOpen(week, "2026-10-30")).toBe(false);
+    const open = calendarFromReports([{ date: "2026-10-29", hours: 1 }], "2026-10-29").group("2026-10-26");
+    expect(weekMonthKey({ to: "2026-11-02" }, "2026-10-30")).toBe("2026-10");
+    expect(weekMonthKey(open, "2026-10-29")).toBe("2026-10");
   });
 
-  it("assigns a week to the month of its Wednesday", () => {
-    // Thu Sep 24 .. Wed Sep 30 -> September; Thu Sep 30 .. Wed Oct 6 -> October.
-    expect(weekMonthKey(workWeekOf("2026-09-26"), "2026-10-20")).toBe("2026-09");
-    expect(weekMonthKey(workWeekOf("2026-09-30"), "2026-10-20")).toBe("2026-09");
-    expect(weekMonthKey(workWeekOf("2026-10-01"), "2026-10-20")).toBe("2026-10");
-    expect(weekMonthKey(workWeekOf("2026-12-31"), "2027-10-20")).toBe("2027-01");
+  it("extends a week's end to attributed weekend days and explains the attribution", () => {
+    const c = cal([["2026-10-09", 2], ["2026-10-11", 4], ["2026-10-12", 5]]);
+    const week = c.group("2026-10-05");
+    expect(groupEndDate(week)).toBe("2026-10-11");
+    expect(groupEndDate(c.group("2026-10-12"))).toBe("2026-10-16");
+    expect(weekendNotes(week)).toEqual([
+      "Sun, Oct 11 counted with Friday Oct 9: lower modeled effort than the following Monday (2h vs 5h).",
+    ]);
   });
 
-  it("assigns an in-progress week to the month of the latest report", () => {
-    const spanning = workWeekOf("2026-10-29"); // Oct 29 - Nov 4
-    expect(weekMonthKey(spanning, "2026-10-30")).toBe("2026-10");
-    expect(isWeekOpen(spanning, "2026-10-30")).toBe(true);
-    expect(weekMonthKey(spanning, "2026-11-04")).toBe("2026-11");
-    expect(isWeekOpen(spanning, "2026-11-04")).toBe(false);
-  });
-
-  it("builds page paths and parses daily paths", () => {
-    expect(weekPagePath("2026-10-01")).toBe("weeks/2026-10-01/");
+  it("builds Monday page paths and parses daily paths", () => {
+    expect(weekPagePath("2026-10-05")).toBe("weeks/2026-10-05/");
     expect(dailyPathToDate("2026/10/01")).toBe("2026-10-01");
     expect(dailyPathToDate("2026/W14")).toBeUndefined();
   });

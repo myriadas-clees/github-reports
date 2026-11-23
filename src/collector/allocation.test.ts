@@ -13,6 +13,7 @@ import {
   classifyInitiative,
   classifyWorkType,
   computeAllocation,
+  withAllocationMetadata,
   mergeAllocations,
   prWeight,
 } from "./allocation.js";
@@ -92,6 +93,45 @@ describe("classifyWorkType", () => {
   it("does not match keywords inside other words", () => {
     expect(classifyWorkType("Specification screen")).toBe("new-capability");
     expect(classifyWorkType("Prefix handling")).toBe("new-capability");
+  });
+});
+
+describe("app allocation from monorepo paths", () => {
+  const config = cfg({ sharedInitiative: "Shared platform", paths: { hub: "Hub", compass: "Compass", packages: "Shared platform" }, initiatives: { "scope:hub": "Hub", "scope:compass": "Compass", "repo:o/monorepo": "Unassigned app work" } });
+  it("identifies apps by directory with segment boundaries", () => {
+    expect(classifyInitiative({ title: "Update settings", repository: "o/monorepo", files: ["hub/src/settings.ts", "bun.lock"] }, config)).toBe("Hub");
+    expect(classifyInitiative({ title: "Update settings", repository: "o/monorepo", files: ["hub-old/src/settings.ts"] }, config)).toBe("Unassigned app work");
+  });
+  it("uses shared work for multiple apps or shared-only changes", () => {
+    for (const files of [["hub/src/a.ts", "compass/src/b.ts"], ["packages/ui/src/a.ts"]]) {
+      expect(classifyInitiative({ title: "feat(hub): update", repository: "o/monorepo", files }, config)).toBe(files.length > 1 ? "Shared platform" : "Hub");
+    }
+    expect(classifyInitiative({ title: "Update shared UI", repository: "o/monorepo", files: ["packages/ui/src/a.ts"] }, config)).toBe("Shared platform");
+    expect(classifyInitiative({ title: "feat(hub,compass): update", repository: "o/monorepo" }, config)).toBe("Shared platform");
+    expect(classifyInitiative({ title: "Update", labels: ["app: hub", "app: compass"], repository: "o/monorepo" }, config)).toBe("Shared platform");
+  });
+  it("preserves total estimated effort while reclassifying by app", () => {
+    const input = data({ pullRequests: [pr({ title: "Update settings", repository: "o/monorepo", workFiles: ["compass/src/settings.ts"] })] }, 12);
+    const result = computeAllocation(input, config);
+    expect(result.totalHours).toBe(12);
+    expect(result.initiatives[0]).toMatchObject({ initiative: "Compass", hours: 12 });
+  });
+  it("uses complete cached PR metadata without changing daily effort weights or source data", () => {
+    const input = data({ pullRequests: [pr({ title: "Update", repository: "o/monorepo", url: "p", workFiles: [] })], codeReviews: [{ repository: "o/monorepo", prNumber: 1, prUrl: "p", prTitle: "Update", state: "APPROVED", submittedAt: "", body: null }] }, 12);
+    const evidence = { prs: { p: { files: ["hub/src/a.ts", "hub/src/b.ts"] } } } as unknown as import("../types.js").EvidenceLedger;
+    const enriched = withAllocationMetadata(input as Data & import("../types.js").WeeklyReportData, evidence);
+    expect(enriched.pullRequests[0].workFiles).toEqual([]);
+    expect(input.pullRequests[0].allocationFiles).toBeUndefined();
+    expect(prWeight(enriched.pullRequests[0])).toBe(prWeight(input.pullRequests[0]));
+    expect(computeAllocation(enriched, config).initiatives.map((bucket) => bucket.initiative)).toEqual(["Hub"]);
+    evidence.prs.p.incomplete = { files: true };
+    expect(withAllocationMetadata(input as Data & import("../types.js").WeeklyReportData, evidence).pullRequests[0].allocationFiles).toBeUndefined();
+  });
+  it("attributes confirmed empty repository coordination to shared work", () => {
+    const input = data({ commitMessages: [{ repo: "o/monorepo", messages: ["Merge release"], commits: [{ sha: "empty", message: "Merge release", url: "commit", authoredAt: "", files: [] }] }] }, 8);
+    expect(computeAllocation(input, config).initiatives[0]).toMatchObject({ initiative: "Shared platform", hours: 8 });
+    const missing = data({ commitMessages: [{ repo: "o/monorepo", messages: ["Unknown activity"] }] }, 8);
+    expect(computeAllocation(missing, config).initiatives[0].initiative).toBe("Unassigned app work");
   });
 });
 
@@ -187,21 +227,11 @@ describe("computeAllocation", () => {
     expect(z.initiatives.every((i) => i.share === 0)).toBe(true);
   });
 
-  it("labels an empty daily minimum without inventing General engineering work", () => {
+  it("excludes an idle daily minimum from attributed work", () => {
     const a = computeAllocation(data({ hoursEstimate: { hours: 8, sessionHours: 0 } as Data["hoursEstimate"] }, 8));
-    expect(a.initiatives).toHaveLength(1);
-    expect(a.initiatives[0]).toMatchObject({
-      initiative: NO_ACTIVITY_INITIATIVE,
-      hours: 8,
-      byWorkType: { "no-activity": 8 },
-      shipped: [],
-      inProgress: [],
-      other: [],
-    });
-    expect(a.workTypes).toEqual([{ workType: "no-activity", label: "No GitHub activity", hours: 8, share: 1 }]);
-    expect(a.initiatives.some(({ initiative }) => initiative === "General engineering")).toBe(false);
-    expect(a.totalHours).toBe(8);
-    expect(computeAllocation(data({}, 0)).initiatives).toEqual([]);
+    expect(a.initiatives).toEqual([]);
+    expect(a.workTypes).toEqual([]);
+    expect(a.totalHours).toBe(0);
   });
 
   it("keeps session-only time in the general maintenance fallback", () => {
@@ -246,9 +276,9 @@ describe("computeAllocation", () => {
   it("does not give weight to an in-progress-only PR with zero daily additions", () => {
     const inProgress = pr({ url: "progress", state: "open", workAdditions: 0, workDeletions: 0, workCommits: [] });
     const a = computeAllocation(data({ prsInProgress: [inProgress] }, 10));
-    expect(a.totalHours).toBe(10);
+    expect(a.totalHours).toBe(0);
     expect(a.initiatives.find((i) => i.initiative === "App")?.hours ?? 0).toBe(0);
-    expect(a.initiatives.find((i) => i.initiative === NO_ACTIVITY_INITIATIVE)?.hours).toBe(10);
+    expect(a.initiatives.find((i) => i.initiative === NO_ACTIVITY_INITIATIVE)?.hours).toBeUndefined();
   });
 
   it("attributes reviews and comments as team-support, one item per PR", () => {
@@ -459,56 +489,49 @@ describe("buildAllocationTrend", () => {
     }, hours),
   });
 
-  it("puts Wednesday in the prior Thursday's week and Thursday in a new one", () => {
-    // 2026-10-07 is a Wednesday; 2026-10-08 is a Thursday.
+  it("starts Mon–Fri weeks on Monday and labels them by the first and last available weekday report", () => {
+    // 2026-10-02 is a Friday; 2026-10-05 a Monday; 2026-10-09 a Friday.
     const t = buildAllocationTrend(
-      [report("2026-10-07"), report("2026-10-08"), report("2026-10-01")],
-      "2026-10-08",
+      [report("2026-10-07"), report("2026-10-05"), report("2026-10-02")],
+      "2026-10-07",
       cfg({ trendWeeks: 2 }),
     );
-    expect(t.periods.map((p) => [p.id, p.from, p.to, p.days])).toEqual([
-      ["2026-10-01", "2026-10-01", "2026-10-07", 2],
-      ["2026-10-08", "2026-10-08", "2026-10-14", 1],
+    expect(t.periods.map((p) => [p.id, p.from, p.to, p.days, p.label])).toEqual([
+      ["2026-09-28", "2026-09-28", "2026-10-02", 1, "Oct 2"],
+      ["2026-10-05", "2026-10-05", "2026-10-09", 2, "Oct 5-7"],
     ]);
-    expect(t.periods[0].allocation.totalHours).toBe(8);
-    expect(t.periods[0].label).toBe("Oct 1-7");
+    expect(t.periods[1].allocation.totalHours).toBe(8);
   });
 
-  it("produces exactly trendWeeks periods, oldest first, with empty gaps", () => {
+  it("produces exactly trendWeeks periods, oldest first, with nominal Mon–Fri gaps", () => {
     const t = buildAllocationTrend([report("2026-10-07")], "2026-10-07", cfg({ trendWeeks: 4 }));
     expect(t.periods).toHaveLength(4);
-    expect(t.periods.map((p) => p.id)).toEqual(["2026-09-10", "2026-09-17", "2026-09-24", "2026-10-01"]);
-    expect(t.periods[0]).toMatchObject({ days: 0 });
+    expect(t.periods.map((p) => p.id)).toEqual(["2026-09-14", "2026-09-21", "2026-09-28", "2026-10-05"]);
+    expect(t.periods[0]).toMatchObject({ days: 0, label: "Sep 14-18", from: "2026-09-14", to: "2026-09-18" });
     expect(t.periods[0].allocation.totalHours).toBe(0);
     expect(t.periods[3].days).toBe(1);
   });
 
-  it("excludes reports after endDate", () => {
-    const t = buildAllocationTrend([report("2026-10-07"), report("2026-10-09")], "2026-10-07", cfg({ trendWeeks: 1 }));
-    expect(t.periods[0].days).toBe(1);
-    expect(t.periods[0].allocation.totalHours).toBe(4);
-  });
-
   it("handles year boundaries", () => {
-    // 2026-01-01 is a Thursday; 2025-12-31 is a Wednesday.
+    // 2025-12-29 is a Monday; 2026-01-02 is the Friday of the same week.
     const t = buildAllocationTrend(
-      [report("2025-12-31"), report("2026-01-02")],
+      [report("2025-12-26"), report("2025-12-31"), report("2026-01-02")],
       "2026-01-02",
       cfg({ trendWeeks: 2 }),
     );
-    expect(t.periods.map((p) => [p.from, p.to, p.days])).toEqual([
-      ["2025-12-25", "2025-12-31", 1],
-      ["2026-01-01", "2026-01-07", 1],
+    expect(t.periods.map((p) => [p.id, p.from, p.to, p.days])).toEqual([
+      ["2025-12-22", "2025-12-22", "2025-12-26", 1],
+      ["2025-12-29", "2025-12-29", "2026-01-02", 2],
     ]);
-    expect(t.periods[0].label).toBe("Dec 25-31");
+    expect(t.periods[1].label).toBe("Dec 31, 2025-Jan 2, 2026");
   });
 
   it("includes manual entries on days without reports, without double counting", () => {
     const manual: ManualTimeEntry[] = [
       { date: "2026-10-07", initiative: "Ops", hours: 2 }, // has a report
-      { date: "2026-10-04", initiative: "Ops", hours: 3 }, // Sunday, no report
+      { date: "2026-10-06", initiative: "Ops", hours: 3 }, // Tuesday, no report
       { date: "2026-10-12", initiative: "Ops", hours: 9 }, // after endDate
-      { date: "2026-09-26", initiative: "Ops", hours: 1 }, // previous week, no report
+      { date: "2026-09-29", initiative: "Ops", hours: 1 }, // previous week, no report
     ];
     const t = buildAllocationTrend([report("2026-10-07")], "2026-10-07", cfg({ trendWeeks: 2 }), manual);
     const [prev, cur] = t.periods;
@@ -540,6 +563,96 @@ describe("buildAllocationTrend", () => {
     }
     expect(batch.allocationForDate("2026-10-03")).toEqual(computeAllocation(reports[1].data, config, manual));
     expect(batch.allocationForDate("2026-10-04")).toBeUndefined();
+  });
+
+  it("counts a weekend once, in the adjacent week with lower modeled effort, keeping its own dates", () => {
+    // Fri Oct 9 (2h) < Mon Oct 12 (6h): Sat Oct 10 + Sun Oct 11 join the week of Oct 5.
+    const reports = [report("2026-10-09", 2), report("2026-10-10", 3), report("2026-10-11", 1), report("2026-10-12", 6)];
+    const t = buildAllocationTrend(reports, "2026-10-12", cfg({ trendWeeks: 2 }));
+    expect(t.periods.map((p) => [p.id, p.label, p.days, p.allocation.totalHours])).toEqual([
+      ["2026-10-05", "Oct 9", 3, 6],
+      ["2026-10-12", "Oct 12", 1, 6],
+    ]);
+    expect(t.periods[0].weekends).toMatchObject([
+      { saturday: "2026-10-10", activeDates: ["2026-10-10", "2026-10-11"], target: "friday", reason: "lower-effort", fridayHours: 2, mondayHours: 6 },
+    ]);
+    expect(t.periods[1].weekends).toBeUndefined();
+  });
+
+  it("compares Friday and Monday with their own self-reported time, before weekend additions", () => {
+    // Monday's report is 1h but 4h of self-reported Monday time makes it 5h > Friday's 3h.
+    const manual: ManualTimeEntry[] = [
+      { date: "2026-10-12", initiative: "Ops", hours: 4 },
+      { date: "2026-10-10", initiative: "Ops", hours: 50 }, // weekend time, no report: follows the weekend
+    ];
+    const t = buildAllocationTrend([report("2026-10-09", 3), report("2026-10-12", 1)], "2026-10-12", cfg({ trendWeeks: 2 }), manual);
+    expect(t.periods.map((p) => [p.id, p.allocation.totalHours, p.allocation.manualHours])).toEqual([
+      ["2026-10-05", 53, 50],
+      ["2026-10-12", 5, 4],
+    ]);
+  });
+
+  it("adds an explicit weekend period when neither Friday nor Monday has a report", () => {
+    const manual: ManualTimeEntry[] = [{ date: "2026-10-11", initiative: "Ops", hours: 2 }];
+    const t = buildAllocationTrend([report("2026-10-08"), report("2026-10-10", 3), report("2026-10-13")], "2026-10-13", cfg({ trendWeeks: 2 }), manual);
+    expect(t.periods.map((p) => [p.id, p.kind ?? "week", p.label, p.from, p.to, p.days, p.allocation.totalHours])).toEqual([
+      ["2026-10-05", "week", "Oct 8", "2026-10-05", "2026-10-09", 1, 4],
+      ["2026-10-10", "weekend", "Oct 10 weekend", "2026-10-10", "2026-10-11", 1, 5],
+      ["2026-10-12", "week", "Oct 13", "2026-10-12", "2026-10-16", 1, 4],
+    ]);
+  });
+
+  it("conserves effort: every report and uncovered self-reported entry lands in exactly one period", () => {
+    const hours = [5, 2, 3, 1, 4, 6, 2, 7, 1, 3, 2, 8, 2];
+    const dates = [
+      "2026-09-28", "2026-10-02", "2026-10-03", "2026-10-04", "2026-10-05", // Sat/Sun between Fri 2h and Mon 4h
+      "2026-10-09", "2026-10-10", "2026-10-12", // Fri 6h vs Mon 7h
+      "2026-10-17", "2026-10-18", // no Fri 16 / Mon 19 -> weekend entry
+      "2026-10-21", "2026-10-23", "2026-10-26", // Fri 8h vs Mon 2h; no weekend reports
+    ];
+    const reports = dates.map((d, i) => report(d, hours[i]));
+    const manual: ManualTimeEntry[] = [
+      { date: "2026-10-11", initiative: "Ops", hours: 1.5 }, // weekend, no report
+      { date: "2026-10-24", initiative: "Ops", hours: 2.5 }, // weekend before the lighter Monday
+      { date: "2026-10-07", initiative: "Ops", hours: 0.5 }, // weekday, no report
+      { date: "2026-10-12", initiative: "Ops", hours: 1 }, // covered by the Monday report
+      { date: "2026-11-02", initiative: "Ops", hours: 9 }, // after the end
+    ];
+    const config = cfg({ trendWeeks: 6 });
+    const t = buildAllocationTrend(reports, "2026-10-26", config, manual);
+    const daily = reports.reduce((sum, r) => sum + computeAllocation(r.data, config, manual).totalHours, 0);
+    const uncovered = 1.5 + 2.5 + 0.5;
+    const total = t.periods.reduce((sum, p) => sum + p.allocation.totalHours, 0);
+    expect(total).toBeCloseTo(daily + uncovered, 6);
+    expect(t.periods.reduce((sum, p) => sum + p.days, 0)).toBe(reports.length);
+    const byId = new Map(t.periods.map((p) => [p.id, p]));
+    expect(byId.get("2026-10-17")).toMatchObject({ kind: "weekend", days: 2 });
+    expect(byId.get("2026-10-19")).toMatchObject({ days: 2, label: "Oct 21-23" });
+    expect(byId.get("2026-10-26")?.allocation.manualHours).toBe(2.5);
+    // Sun Oct 11 (1.5h, Fri 6h < Mon 7h + 1h) and Wed Oct 7 (0.5h) both count in the week of Oct 5.
+    expect(byId.get("2026-10-05")?.allocation.manualHours).toBe(2);
+    expect(byId.get("2026-09-28")).toMatchObject({ days: 4, label: "Sep 28-Oct 2" });
+  });
+
+  it("rebuilds a period when a later cutoff moves its weekend, and reuses it otherwise", () => {
+    // Sat Oct 10 joins Friday while Monday is unknown, then Monday (lower) claims it.
+    const reports = [report("2026-10-09", 6), report("2026-10-10", 3), report("2026-10-12", 2)];
+    const config = cfg({ trendWeeks: 2 });
+    const batch = createAllocationTrendBatch(reports, config);
+    const sat = batch.trend("2026-10-10");
+    expect(sat.periods.at(-1)).toMatchObject({ id: "2026-10-05", days: 2 });
+    expect(sat.periods.at(-1)!.allocation.totalHours).toBe(9);
+    const mon = batch.trend("2026-10-12");
+    expect(mon.periods.map((p) => [p.id, p.days, p.allocation.totalHours])).toEqual([
+      ["2026-10-05", 1, 6],
+      ["2026-10-12", 2, 5],
+    ]);
+    for (const end of ["2026-10-10", "2026-10-11", "2026-10-12", "2026-10-09", "2026-10-10"]) {
+      expect(batch.trend(end)).toEqual(buildAllocationTrend(reports, end, config));
+    }
+    expect(batch.trend("2026-10-10")).toEqual(sat);
+    expect(batch.calendar("2026-10-10").groupIdOf("2026-10-10")).toBe("2026-10-05");
+    expect(batch.calendar().groupIdOf("2026-10-10")).toBe("2026-10-12");
   });
 });
 

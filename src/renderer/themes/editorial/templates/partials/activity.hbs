@@ -5,7 +5,7 @@
   </div>
 
   <div class="data-chips activity-stats">
-    <span class="chip"><span class="chip-label">PRs integrated</span> <span class="chip-value chip-green">{{stats.prsMerged}}</span></span>
+    <span class="chip"><span class="chip-label">Development complete</span> <span class="chip-value chip-green">{{stats.prsMerged}}</span></span>
     <span class="chip"><span class="chip-label">Lines</span> <span class="chip-value chip-green">+{{formatNumber stats.totalAdditions}}</span> <span class="chip-value chip-red">−{{formatNumber stats.totalDeletions}}</span></span>
     {{#if hoursEstimate}}
     {{#if hoursEstimate.hours}}
@@ -43,13 +43,13 @@
         <a class="activity-repo-ext" href="{{this.url}}" target="_blank" rel="noopener nofollow" aria-label="Open {{this.name}} on GitHub">{{> github-mark}}</a>
         <span class="activity-repo-name">{{this.name}}</span>
       </span>
-      <span class="activity-count">{{this.commits}} commits, {{this.prsOpened}} PRs opened, {{this.prsMerged}} integrated</span>
+      <span class="activity-count">{{this.commits}} commits, {{this.prsOpened}} PRs opened, {{this.prsMerged}} development complete</span>
     </summary>
     <div class="activity-children">
       {{#each this.pullRequests}}
       <details class="activity-block activity-pr-block">
         <summary class="activity-pr">
-          <span class="pr-state pr-{{this.state}}">{{#eq this.state "merged"}}Code integrated{{else}}{{this.state}}{{/eq}}</span>
+          <span class="pr-state pr-{{this.state}}">{{#eq this.state "merged"}}Development complete{{else}}{{this.state}}{{/eq}}</span>
           <a class="activity-pr-title" href="{{this.url}}" target="_blank" rel="noopener nofollow">{{this.title}}</a>
           <span class="activity-count"><span class="activity-pr-add">+{{this.additions}}</span> <span class="activity-pr-del">−{{this.deletions}}</span></span>
         </summary>
@@ -97,7 +97,7 @@
         <a class="activity-repo-ext" href="{{this.url}}" target="_blank" rel="noopener nofollow" aria-label="Open {{this.name}} on GitHub">{{> github-mark}}</a>
         <span class="activity-repo-name">{{this.name}}</span>
       </span>
-      <span class="activity-count">{{this.commits}} commits, {{this.prsOpened}} PRs opened, {{this.prsMerged}} integrated</span>
+      <span class="activity-count">{{this.commits}} commits, {{this.prsOpened}} PRs opened, {{this.prsMerged}} development complete</span>
     </div>
   </div>
   {{/if}}
@@ -109,7 +109,7 @@
   <ul class="activity-list">
     {{#each pullRequests}}
     <li>
-      <span class="pr-state pr-{{this.state}}">{{#eq this.state "merged"}}Code integrated{{else}}{{this.state}}{{/eq}}</span>
+      <span class="pr-state pr-{{this.state}}">{{#eq this.state "merged"}}Development complete{{else}}{{this.state}}{{/eq}}</span>
       <a href="{{this.url}}" target="_blank" rel="noopener nofollow">{{this.title}}</a>
       <span class="activity-meta">{{this.repository}} · +{{this.additions}} −{{this.deletions}}</span>
     </li>

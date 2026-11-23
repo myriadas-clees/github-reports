@@ -82,10 +82,13 @@ export const findContainingDeployments = async ({
   const unknownKinds = { production: false, nonProduction: false };
   for (const production of [true, false]) {
     const kind = production ? "production" : "nonProduction";
-    const alreadyFound = found.some((entry) => deployments.some((d) => d.production === production && d.environment === entry.environment && d.sha === entry.sha));
-    if (alreadyFound) { checkedUnknown.delete(found.find((entry) => deployments.some((d) => d.production === production && d.environment === entry.environment && d.sha === entry.sha))!.sha); continue; }
+    // A wider backfill may reveal an earlier release than the one already verified.
+    const knownDates = deployments.filter((d) => d.production === production && found.some((entry) => entry.environment === d.environment && entry.sha === d.sha))
+      .map((d) => Date.parse(d.createdAt));
+    const earliestKnown = knownDates.length ? Math.min(...knownDates) : Infinity;
     const seen = new Set<string>();
     const candidates = selectDeploymentCandidates(deployments, production, pe, defaultBranch)
+      .filter((deployment) => Date.parse(deployment.createdAt) < earliestKnown && !found.some((entry) => entry.environment === deployment.environment && entry.sha === deployment.sha))
       .filter((deployment) => !seen.has(deployment.sha) && !!seen.add(deployment.sha));
     const ordered = [...candidates.filter((d) => !checkedFalse.has(d.sha) && !checkedUnknown.has(d.sha)), ...unknownQueue.flatMap((sha) => candidates.filter((d) => d.sha === sha))];
     for (const deployment of ordered) {
@@ -252,8 +255,6 @@ export const registerEvidence = (program: Command): void => {
         const deployments = ledger.deployments[ref.repo] ?? [];
         if (!pe?.mergeCommitSha || !pe.mergedAt || !deployments.length) continue;
         const known = pe.containingDeployments ?? [];
-        // Already live via a verified production deployment: no further compare calls needed.
-        if (known.some((entry) => deployments.some((d) => d.production && d.environment === entry.environment && d.sha === entry.sha))) continue;
         const result = await findContainingDeployments({
           deployments, pe, defaultBranch: ledger.defaultBranches[ref.repo] ?? "main", known,
           nonContainingShas: pe.nonContainingDeploymentShas,

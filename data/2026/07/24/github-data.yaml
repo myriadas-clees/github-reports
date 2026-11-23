@@ -40,8 +40,7 @@ pullRequests:
       Why
 
 
-      Browser-level fetch failures exposed only “Failed to fetch,” leaving operators without the endpoint or
-      configuration context needed to recover.
+      Browser-level fetch failures exposed only “Failed to fetch,” leaving operators without the endpoint or configuration context needed to recover.
 
 
       What changed
@@ -69,6 +68,9 @@ pullRequests:
         message: "fix(excelerate): clarify request errors"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/1a89b55f483c621c581fddf129e0e2c104450357
         authoredAt: 2026-07-24T18:17:10Z
+        files:
+          - excelerate/src/components/excelerate-client.test.ts
+          - excelerate/src/components/excelerate-client.tsx
     workTimestamps:
       - 2026-07-24T18:17:10Z
     workAdditions: 47
@@ -81,8 +83,7 @@ pullRequests:
       Why
 
 
-      HR needs a starter file for bulk PTO setup and a faster path for adding one employee without preparing a
-      spreadsheet.
+      HR needs a starter file for bulk PTO setup and a faster path for adding one employee without preparing a spreadsheet.
 
 
       What changed
@@ -112,11 +113,22 @@ pullRequests:
         message: "feat(pto): add staff setup tools"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/dec7ee5631a337a0b1e340d15b56c0bc5d9dfe98
         authoredAt: 2026-07-24T18:17:28Z
+        files:
+          - .gitignore
+          - pto-tracker/public/pto-staff-template.csv
+          - pto-tracker/src/app/admin/AdminClient.tsx
+          - pto-tracker/src/lib/api/handlers.test.ts
+          - pto-tracker/src/lib/api/handlers.ts
+          - pto-tracker/src/lib/import/staff-import.test.ts
+          - pto-tracker/src/lib/import/staff-import.ts
+          - pto-tracker/src/lib/workflow/service.ts
       - &a17
         sha: 39ffd5d4a37abac456b7f846812c53344f45f2f0
         message: "fix(pto): honor staff template base path"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/39ffd5d4a37abac456b7f846812c53344f45f2f0
         authoredAt: 2026-07-24T18:37:00Z
+        files:
+          - pto-tracker/src/app/admin/AdminClient.tsx
     workTimestamps:
       - 2026-07-24T18:17:28Z
       - 2026-07-24T18:37:00Z
@@ -136,8 +148,7 @@ pullRequests:
       Why
 
 
-      The Pro Forma entity form stored only a registration-state count, so users could not identify or restore multiple
-      selected states.
+      The Pro Forma entity form stored only a registration-state count, so users could not identify or restore multiple selected states.
 
 
       What changed
@@ -166,16 +177,31 @@ pullRequests:
         message: "fix(proforma): support multiple states"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/bb74284af50fe2ecb72a38213e7bd70f646ebdce
         authoredAt: 2026-07-24T18:17:08Z
+        files:
+          - packages/contracts/src/proforma.ts
+          - proforma/src/app/globals.css
+          - proforma/src/components/scenario-form.test.ts
+          - proforma/src/components/scenario-form.tsx
+          - proforma/src/lib/fixtures/sample-scenarios.ts
+          - proforma/src/lib/validation/scenario-form-values.ts
       - &a9
         sha: 7d7f4df13826b091e785a5d8a0519bedb2afa224
         message: "fix(proforma): allow clearing states"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7d7f4df13826b091e785a5d8a0519bedb2afa224
         authoredAt: 2026-07-24T18:24:53Z
+        files:
+          - proforma/src/components/scenario-form.test.ts
+          - proforma/src/components/scenario-form.tsx
+          - proforma/src/lib/validation/scenario-form-values.ts
       - &a14
         sha: 24d6935e3aa82ee4ad967e09381bb913247799da
         message: "fix(proforma): preserve legacy state counts"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/24d6935e3aa82ee4ad967e09381bb913247799da
         authoredAt: 2026-07-24T18:30:05Z
+        files:
+          - proforma/src/components/scenario-form.test.ts
+          - proforma/src/components/scenario-form.tsx
+          - proforma/src/lib/validation/scenario-form-values.ts
     workTimestamps:
       - 2026-07-24T18:17:08Z
       - 2026-07-24T18:24:53Z
@@ -194,8 +220,7 @@ pullRequests:
       ## Why
 
 
-      Client onboarding generated a browser-side client ID that conflicts with the production Cosmos tenant scope. The
-      create request failed before the workspace could open.
+      Client onboarding generated a browser-side client ID that conflicts with the production Cosmos tenant scope. The create request failed before the workspace could open.
 
 
       ## What changed
@@ -224,36 +249,50 @@ pullRequests:
         message: "fix(onboarding): complete workspace creation"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/44b15e7b50c3ee5bcf83fce883cf097745a9a1a8
         authoredAt: 2026-07-24T18:18:15Z
+        files:
+          - onboarding/apps/dashboard/components/create-employee-form.tsx
       - &a10
         sha: a32aae1ec6b9af5c1dbdd38fa4d8c1eea9865fa5
         message: "fix(onboarding): preserve client context"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a32aae1ec6b9af5c1dbdd38fa4d8c1eea9865fa5
         authoredAt: 2026-07-24T18:27:27Z
+        files:
+          - onboarding/apps/dashboard/components/create-employee-form.tsx
       - &a11
         sha: 3ce91810aa8fc59a77b59e5efe4e62e3b46386eb
         message: "fix(onboarding): preserve client context"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3ce91810aa8fc59a77b59e5efe4e62e3b46386eb
         authoredAt: 2026-07-24T18:27:30Z
+        files:
+          - onboarding/apps/dashboard/lib/api/client.ts
       - &a12
         sha: b80820729b3d3d0892a3d61677a325009968e794
         message: "fix(onboarding): preserve client context"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b80820729b3d3d0892a3d61677a325009968e794
         authoredAt: 2026-07-24T18:27:36Z
+        files:
+          - onboarding/apps/dashboard/lib/api/handlers.ts
       - &a13
         sha: e46eb1f60e3a755a2736ca01c193f5e8dc8a7f55
         message: "fix(onboarding): preserve client context"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e46eb1f60e3a755a2736ca01c193f5e8dc8a7f55
         authoredAt: 2026-07-24T18:27:41Z
+        files:
+          - onboarding/apps/dashboard/lib/api/handlers.test.ts
       - &a15
         sha: 64ac1a5fc64d3fcecfd3e36f59e1e50736b10fbd
         message: "fix(onboarding): retain workspace IDs"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/64ac1a5fc64d3fcecfd3e36f59e1e50736b10fbd
         authoredAt: 2026-07-24T18:35:12Z
+        files:
+          - onboarding/apps/dashboard/components/create-employee-form.tsx
       - &a16
         sha: 74d1a00bd6257e16b1b23ee6023bfe006654c7b2
         message: "fix(onboarding): retain workspace IDs"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/74d1a00bd6257e16b1b23ee6023bfe006654c7b2
         authoredAt: 2026-07-24T18:35:16Z
+        files:
+          - packages/db/src/cosmos-queries.ts
     workTimestamps:
       - 2026-07-24T18:18:15Z
       - 2026-07-24T18:27:27Z
@@ -275,8 +314,7 @@ pullRequests:
       Why
 
 
-      Alpha workspaces generate a workstream and task set, but the supported UI had no safe cleanup lifecycle.
-      Disposable test data therefore remained in active selectors after verification.
+      Alpha workspaces generate a workstream and task set, but the supported UI had no safe cleanup lifecycle. Disposable test data therefore remained in active selectors after verification.
 
 
       What changed
@@ -304,14 +342,35 @@ pullRequests:
     workAdditions: 0
     workDeletions: 0
     workFiles: &a4 []
+    allocationFiles:
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/settings/page.tsx
+      - onboarding/apps/dashboard/components/workstream-archive-settings.test.ts
+      - onboarding/apps/dashboard/components/workstream-archive-settings.tsx
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/client.test.ts
+      - onboarding/apps/dashboard/lib/api/client.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - packages/contracts/src/onboarding.ts
+      - packages/db/src/client-isolation.test.ts
+      - packages/db/src/cosmos-queries.test.ts
+      - packages/db/src/cosmos-queries.ts
+      - packages/db/src/migrate-database.test.ts
+      - packages/db/src/migrate-database.ts
+      - packages/db/src/queries.ts
+      - packages/db/src/runtime.ts
+      - packages/db/src/schema.ts
+      - packages/db/src/sqlite-migration-source.ts
 prsInProgress:
   - title: "feat(onboarding): archive workstreams"
     body: >-
       Why
 
 
-      Alpha workspaces generate a workstream and task set, but the supported UI had no safe cleanup lifecycle.
-      Disposable test data therefore remained in active selectors after verification.
+      Alpha workspaces generate a workstream and task set, but the supported UI had no safe cleanup lifecycle. Disposable test data therefore remained in active selectors after verification.
 
 
       What changed
@@ -337,6 +396,28 @@ prsInProgress:
     workAdditions: 0
     workDeletions: 0
     workFiles: *a4
+    allocationFiles:
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/settings/page.tsx
+      - onboarding/apps/dashboard/components/workstream-archive-settings.test.ts
+      - onboarding/apps/dashboard/components/workstream-archive-settings.tsx
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/client.test.ts
+      - onboarding/apps/dashboard/lib/api/client.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - packages/contracts/src/onboarding.ts
+      - packages/db/src/client-isolation.test.ts
+      - packages/db/src/cosmos-queries.test.ts
+      - packages/db/src/cosmos-queries.ts
+      - packages/db/src/migrate-database.test.ts
+      - packages/db/src/migrate-database.ts
+      - packages/db/src/queries.ts
+      - packages/db/src/runtime.ts
+      - packages/db/src/schema.ts
+      - packages/db/src/sqlite-migration-source.ts
 issues: []
 events: []
 commitMessages:
@@ -380,6 +461,12 @@ commitMessages:
         additions: 15
         deletions: 17
         filesChanged: 5
+        files:
+          - onboarding/apps/dashboard/components/create-employee-form.tsx
+          - onboarding/apps/dashboard/lib/api/client.ts
+          - onboarding/apps/dashboard/lib/api/handlers.test.ts
+          - onboarding/apps/dashboard/lib/api/handlers.ts
+          - packages/db/src/cosmos-queries.ts
       - sha: 3ee543c80f48ada3db2a1e4a1d2bca40b0eba5ae
         message: "feat(pto): add staff setup tools (#45)"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3ee543c80f48ada3db2a1e4a1d2bca40b0eba5ae
@@ -387,6 +474,15 @@ commitMessages:
         additions: 256
         deletions: 13
         filesChanged: 8
+        files:
+          - .gitignore
+          - pto-tracker/public/pto-staff-template.csv
+          - pto-tracker/src/app/admin/AdminClient.tsx
+          - pto-tracker/src/lib/api/handlers.test.ts
+          - pto-tracker/src/lib/api/handlers.ts
+          - pto-tracker/src/lib/import/staff-import.test.ts
+          - pto-tracker/src/lib/import/staff-import.ts
+          - pto-tracker/src/lib/workflow/service.ts
       - sha: e18e20569687252d05880b9606e4e4856d0672e7
         message: "fix(excelerate): clarify request errors [skip ci]"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e18e20569687252d05880b9606e4e4856d0672e7
@@ -394,6 +490,9 @@ commitMessages:
         additions: 47
         deletions: 5
         filesChanged: 2
+        files:
+          - excelerate/src/components/excelerate-client.test.ts
+          - excelerate/src/components/excelerate-client.tsx
       - sha: e0cd56a89e27f29a81d57b5246430f6e6069247c
         message: "fix(proforma): support multiple states [skip ci]"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e0cd56a89e27f29a81d57b5246430f6e6069247c
@@ -401,6 +500,13 @@ commitMessages:
         additions: 141
         deletions: 4
         filesChanged: 6
+        files:
+          - packages/contracts/src/proforma.ts
+          - proforma/src/app/globals.css
+          - proforma/src/components/scenario-form.test.ts
+          - proforma/src/components/scenario-form.tsx
+          - proforma/src/lib/fixtures/sample-scenarios.ts
+          - proforma/src/lib/validation/scenario-form-values.ts
 releases: []
 externalContributions: []
 codeReviews:
@@ -411,6 +517,12 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-24T18:27:56Z
     body: null
+    prFiles:
+      - onboarding/apps/dashboard/components/create-employee-form.tsx
+      - onboarding/apps/dashboard/lib/api/client.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - packages/db/src/cosmos-queries.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 46
     prTitle: "fix(onboarding): complete workspace creation"
@@ -418,6 +530,12 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-24T18:35:34Z
     body: null
+    prFiles:
+      - onboarding/apps/dashboard/components/create-employee-form.tsx
+      - onboarding/apps/dashboard/lib/api/client.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - packages/db/src/cosmos-queries.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 43
     prTitle: "fix(proforma): support multiple states"
@@ -425,6 +543,13 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-24T18:25:17Z
     body: null
+    prFiles:
+      - packages/contracts/src/proforma.ts
+      - proforma/src/app/globals.css
+      - proforma/src/components/scenario-form.test.ts
+      - proforma/src/components/scenario-form.tsx
+      - proforma/src/lib/fixtures/sample-scenarios.ts
+      - proforma/src/lib/validation/scenario-form-values.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 43
     prTitle: "fix(proforma): support multiple states"
@@ -432,43 +557,68 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-24T18:30:31Z
     body: null
+    prFiles:
+      - packages/contracts/src/proforma.ts
+      - proforma/src/app/globals.css
+      - proforma/src/components/scenario-form.test.ts
+      - proforma/src/components/scenario-form.tsx
+      - proforma/src/lib/fixtures/sample-scenarios.ts
+      - proforma/src/lib/validation/scenario-form-values.ts
 reviewComments:
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 46
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/46
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/46#discussion_r3647389745
-    body: Addressed. The create API now returns the server-resolved `clientId`, and the form includes both `client` and
-      `employee` in the redirect. Added API coverage for the returned client context; typecheck, lint, and all 20
-      dashboard tests pass.
+    body: Addressed. The create API now returns the server-resolved `clientId`, and the form includes both `client` and `employee` in the redirect. Added API coverage for the returned client context; typecheck, lint, and all 20 dashboard tests pass.
     path: onboarding/apps/dashboard/components/create-employee-form.tsx
     createdAt: 2026-07-24T18:27:56Z
+    prFiles:
+      - onboarding/apps/dashboard/components/create-employee-form.tsx
+      - onboarding/apps/dashboard/lib/api/client.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - packages/db/src/cosmos-queries.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 46
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/46
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/46#discussion_r3647427838
-    body: Addressed at the provider boundary. The form again proposes a unique client ID, SQLite retains it for distinct
-      workspaces, Cosmos uses its configured tenant ID instead of rejecting the proposal, and the API redirect uses the
-      server-resolved ID. Dashboard checks pass (20 tests); database typecheck an...
+    body: Addressed at the provider boundary. The form again proposes a unique client ID, SQLite retains it for distinct workspaces, Cosmos uses its configured tenant ID instead of rejecting the proposal, and the API redirect uses the server-resolved ID. Dashboard checks pass (20 tests); database typecheck an...
     path: onboarding/apps/dashboard/components/create-employee-form.tsx
     createdAt: 2026-07-24T18:35:34Z
+    prFiles:
+      - onboarding/apps/dashboard/components/create-employee-form.tsx
+      - onboarding/apps/dashboard/lib/api/client.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - packages/db/src/cosmos-queries.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 43
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/43
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/43#discussion_r3647376116
-    body: "Fixed in 7d7f4df. Modern form submissions now carry an explicit picker marker, so an empty selection saves
-      `registeredStates: 0`; legacy submissions without the marker retain the prior numeric fallback. Added a focused
-      regression test for clearing all states."
+    body: "Fixed in 7d7f4df. Modern form submissions now carry an explicit picker marker, so an empty selection saves `registeredStates: 0`; legacy submissions without the marker retain the prior numeric fallback. Added a focused regression test for clearing all states."
     path: proforma/src/lib/validation/scenario-form-values.ts
     createdAt: 2026-07-24T18:25:17Z
+    prFiles:
+      - packages/contracts/src/proforma.ts
+      - proforma/src/app/globals.css
+      - proforma/src/components/scenario-form.test.ts
+      - proforma/src/components/scenario-form.tsx
+      - proforma/src/lib/fixtures/sample-scenarios.ts
+      - proforma/src/lib/validation/scenario-form-values.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 43
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/43
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/43#discussion_r3647402705
-    body: "Fixed in 24d6935. The form now submits an explicit changed flag only after checkbox interaction: untouched legacy
-      scenarios retain their numeric count, selected states derive the count, and an intentional clear saves zero.
-      Focused tests cover both intentional clear and untouched legacy behavior."
+    body: "Fixed in 24d6935. The form now submits an explicit changed flag only after checkbox interaction: untouched legacy scenarios retain their numeric count, selected states derive the count, and an intentional clear saves zero. Focused tests cover both intentional clear and untouched legacy behavior."
     path: proforma/src/lib/validation/scenario-form-values.ts
     createdAt: 2026-07-24T18:30:31Z
+    prFiles:
+      - packages/contracts/src/proforma.ts
+      - proforma/src/app/globals.css
+      - proforma/src/components/scenario-form.test.ts
+      - proforma/src/components/scenario-form.tsx
+      - proforma/src/lib/fixtures/sample-scenarios.ts
+      - proforma/src/lib/validation/scenario-form-values.ts
 aiReviews:
   codex:
     prsReviewed: 3
@@ -584,6 +734,5 @@ hoursEstimate:
   volumeHours: 31.1
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

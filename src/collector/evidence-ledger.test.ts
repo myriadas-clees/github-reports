@@ -120,6 +120,13 @@ describe("mergeDeployments", () => {
   });
 });
 
+it("collects parent PRs for review-only activity so app metadata can be refreshed", async () => {
+  dir = await mkdtemp(join(tmpdir(), "ev-"));
+  await mkdir(join(dir, "2026/06/10"), { recursive: true });
+  await writeFile(join(dir, "2026/06/10/github-data.yaml"), "codeReviews:\n  - prUrl: https://github.com/o/r/pull/7\nreviewComments:\n  - prUrl: https://github.com/o/r/pull/7\n  - prUrl: https://github.com/o/r/pull/8\n");
+  expect((await collectPrRefsFromData(dir)).map((ref) => ref.number)).toEqual([7, 8]);
+});
+
 describe("collectPrRefsFromData", () => {
   it("gathers unique PR urls and honours since", async () => {
     dir = await mkdtemp(join(tmpdir(), "ev-"));

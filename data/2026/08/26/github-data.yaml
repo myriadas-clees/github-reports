@@ -65,16 +65,36 @@ pullRequests:
         message: "ci: build only affected unified app artifacts"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/845bc164f6856a5b203384d6a0fbced9656f3fcc
         authoredAt: 2026-08-26T15:54:16Z
+        files:
+          - .github/actions/setup-bun/action.yml
+          - .github/workflows/azure-static-web-apps-products.yml
+          - .github/workflows/azure-static-web-apps.yml
+          - .github/workflows/verify.yml
+          - scripts/affected-apps.ts
+          - scripts/app-command.ts
+          - scripts/app-selection.ts
+          - scripts/artifact-cache.ts
+          - scripts/artifact-fingerprints.ts
+          - scripts/build-unified-swa.ts
+          - scripts/tooling.test.ts
+          - scripts/workflow-matrix.ts
       - &a14
         sha: 65000f6dd55fd2481d7e31dca7811d1d309c1137
         message: "fix(ci): preserve affected builds and shared checks"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/65000f6dd55fd2481d7e31dca7811d1d309c1137
         authoredAt: 2026-08-26T19:08:04Z
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - .github/workflows/verify.yml
       - &a15
         sha: be93f9aedc68c90b983f89709bc598c1e02337ce
         message: "fix(ci): rebuild functions for parent app changes"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/be93f9aedc68c90b983f89709bc598c1e02337ce
         authoredAt: 2026-08-26T19:44:05Z
+        files:
+          - scripts/affected-apps.ts
+          - scripts/artifact-fingerprints.ts
+          - scripts/tooling.test.ts
     workTimestamps: &a3
       - 2026-08-26T15:54:16Z
       - 2026-08-26T19:08:04Z
@@ -96,8 +116,7 @@ pullRequests:
       - scripts/workflow-matrix.ts
   - title: "refactor: centralize suite architecture"
     body: >-
-      Centralizes repeated suite behavior so navigation preferences, static exports, and product route declarations are
-      maintained once instead of drifting across apps.
+      Centralizes repeated suite behavior so navigation preferences, static exports, and product route declarations are maintained once instead of drifting across apps.
 
 
       - Share Top bar/Sidebar preference across suite products.
@@ -130,6 +149,44 @@ pullRequests:
         message: "refactor: centralize suite architecture"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/82b36f284caf1449b582b734edbc3f959a44e962
         authoredAt: 2026-08-26T20:16:47Z
+        files:
+          - excelerate/scripts/build-static.ts
+          - onboarding/apps/dashboard/app/api/[...path]/route.ts
+          - onboarding/apps/dashboard/app/api/vm/[...path]/route.ts
+          - onboarding/apps/dashboard/app/layout.tsx
+          - onboarding/apps/dashboard/app/page.test.tsx
+          - onboarding/apps/dashboard/components/metric-card.tsx
+          - onboarding/apps/dashboard/functions/src/index.ts
+          - onboarding/apps/dashboard/lib/api/handlers.ts
+          - onboarding/apps/dashboard/lib/api/operations-handlers.ts
+          - onboarding/apps/dashboard/lib/api/request-input.test.ts
+          - onboarding/apps/dashboard/lib/api/request-input.ts
+          - onboarding/apps/dashboard/lib/api/routes.test.ts
+          - onboarding/apps/dashboard/lib/api/routes.ts
+          - onboarding/apps/dashboard/lib/api/vm-handlers.ts
+          - onboarding/apps/dashboard/scripts/build-static.ts
+          - packages/ui/src/index.ts
+          - packages/ui/src/navigation/navigation-mode-picker.tsx
+          - packages/ui/src/navigation/preferences.tsx
+          - packages/ui/src/summary-metric.tsx
+          - proforma/scripts/build-static.ts
+          - proforma/src/app/layout.tsx
+          - proforma/src/lib/report/format.ts
+          - proforma/src/lib/report/model.ts
+          - pto-tracker/functions/src/index.ts
+          - pto-tracker/scripts/build-static.ts
+          - pto-tracker/scripts/serverless-smoke.ts
+          - pto-tracker/src/app/api/[...path]/route.ts
+          - pto-tracker/src/app/layout.tsx
+          - pto-tracker/src/lib/api/routes.test.ts
+          - pto-tracker/src/lib/api/routes.ts
+          - pto-tracker/src/lib/auth/entra-provider.test.ts
+          - pto-tracker/src/lib/auth/entra-provider.ts
+          - pto-tracker/src/lib/auth/entra-token-provider.ts
+          - scripts/build-static-export.ts
+          - valuation/scripts/build-static.ts
+          - valuation/src/app/page.tsx
+          - valuation/src/components/metric-card.tsx
     workTimestamps: &a7
       - 2026-08-26T20:16:47Z
     workAdditions: 399
@@ -200,10 +257,22 @@ prsInProgress:
     workAdditions: 545
     workDeletions: 110
     workFiles: *a4
+    allocationFiles:
+      - .github/actions/setup-bun/action.yml
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/verify.yml
+      - scripts/affected-apps.ts
+      - scripts/app-command.ts
+      - scripts/app-selection.ts
+      - scripts/artifact-cache.ts
+      - scripts/artifact-fingerprints.ts
+      - scripts/build-unified-swa.ts
+      - scripts/tooling.test.ts
+      - scripts/workflow-matrix.ts
   - title: "refactor: centralize suite architecture"
     body: >-
-      Centralizes repeated suite behavior so navigation preferences, static exports, and product route declarations are
-      maintained once instead of drifting across apps.
+      Centralizes repeated suite behavior so navigation preferences, static exports, and product route declarations are maintained once instead of drifting across apps.
 
 
       - Share Top bar/Sidebar preference across suite products.
@@ -228,13 +297,82 @@ prsInProgress:
     workAdditions: 399
     workDeletions: 825
     workFiles: *a8
+    allocationFiles:
+      - excelerate/scripts/build-static.ts
+      - excelerate/src/app/layout.tsx
+      - excelerate/src/components/excelerate-shell.tsx
+      - hub/app/globals.css
+      - hub/app/hub/page.tsx
+      - hub/app/layout.tsx
+      - hub/components/HubLauncher.tsx
+      - hub/components/HubThemeProvider.tsx
+      - hub/lib/apps.test.ts
+      - hub/lib/apps.ts
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/api/vm/[...path]/route.ts
+      - onboarding/apps/dashboard/app/layout.tsx
+      - onboarding/apps/dashboard/app/page.test.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - onboarding/apps/dashboard/components/metric-card.tsx
+      - onboarding/apps/dashboard/components/onboarding-theme-toggle.tsx
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.ts
+      - onboarding/apps/dashboard/lib/api/request-input.test.ts
+      - onboarding/apps/dashboard/lib/api/request-input.ts
+      - onboarding/apps/dashboard/lib/api/routes.test.ts
+      - onboarding/apps/dashboard/lib/api/routes.ts
+      - onboarding/apps/dashboard/lib/api/vm-handlers.ts
+      - onboarding/apps/dashboard/lib/theme.ts
+      - onboarding/apps/dashboard/scripts/build-static.ts
+      - packages/brand/src/styles.css
+      - packages/ui/src/app-user-menu.tsx
+      - packages/ui/src/appearance-quick-settings.tsx
+      - packages/ui/src/index.ts
+      - packages/ui/src/navigation/app-nav.tsx
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/navigation/navigation-mode-picker.tsx
+      - packages/ui/src/navigation/preferences.tsx
+      - packages/ui/src/summary-metric.tsx
+      - packages/ui/src/theme-bootstrap.test.ts
+      - packages/ui/src/theme-bootstrap.ts
+      - packages/ui/src/theme-preferences.tsx
+      - proforma/scripts/build-static.ts
+      - proforma/src/app/layout.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-quick-settings.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-theme-controller.tsx
+      - proforma/src/components/proforma-theme-toggle.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/lib/__tests__/proforma-user-settings.test.ts
+      - proforma/src/lib/proforma-theme.ts
+      - proforma/src/lib/proforma-user-settings.ts
+      - proforma/src/lib/report/format.ts
+      - proforma/src/lib/report/model.ts
+      - pto-tracker/functions/src/index.ts
+      - pto-tracker/scripts/build-static.ts
+      - pto-tracker/scripts/serverless-smoke.ts
+      - pto-tracker/src/app/api/[...path]/route.ts
+      - pto-tracker/src/app/layout.tsx
+      - pto-tracker/src/components/PtoAppShell.tsx
+      - pto-tracker/src/lib/api/routes.test.ts
+      - pto-tracker/src/lib/api/routes.ts
+      - pto-tracker/src/lib/auth/entra-provider.test.ts
+      - pto-tracker/src/lib/auth/entra-provider.ts
+      - pto-tracker/src/lib/auth/entra-token-provider.ts
+      - scripts/build-static-export.ts
+      - valuation/scripts/build-static.ts
+      - valuation/src/app/layout.tsx
+      - valuation/src/app/page.tsx
+      - valuation/src/components/metric-card.tsx
+      - valuation/src/components/valuation-shell.tsx
   - title: "feat(onboarding): add client and vendor contacts"
     body: >-
       ## Why
 
 
-      Client and vendor onboarding did not have a dedicated contact directory or a way to add contacts without first
-      creating a client workspace.
+      Client and vendor onboarding did not have a dedicated contact directory or a way to add contacts without first creating a client workspace.
 
 
       ## What changed
@@ -267,21 +405,61 @@ prsInProgress:
         message: "feat(onboarding): add contact lifecycle and form controls"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d2c41a7fa655da85796b4e982fdc26b90cc94d34
         authoredAt: 2026-08-26T14:51:54Z
+        files:
+          - onboarding/apps/dashboard/app/api/[...path]/route.ts
+          - onboarding/apps/dashboard/app/globals.css
+          - onboarding/apps/dashboard/components/contacts-workspace.test.ts
+          - onboarding/apps/dashboard/components/contacts-workspace.tsx
+          - onboarding/apps/dashboard/functions/src/index.ts
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+          - onboarding/apps/dashboard/lib/api/client.ts
+          - onboarding/apps/dashboard/lib/api/handlers.test.ts
+          - onboarding/apps/dashboard/lib/api/handlers.ts
+          - packages/contracts/src/onboarding.ts
+          - packages/db/src/contact.test.ts
+          - packages/db/src/cosmos-queries.ts
+          - packages/db/src/migrate-database.test.ts
+          - packages/db/src/migrate-database.ts
+          - packages/db/src/queries.ts
+          - packages/db/src/runtime.ts
+          - packages/db/src/schema.ts
+          - packages/ui/src/branded-select.tsx
       - &a10
         sha: 47ba1747f86bddea93968b18d760b701d454d4a1
         message: "test(onboarding): mock contacts in function adapter"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/47ba1747f86bddea93968b18d760b701d454d4a1
         authoredAt: 2026-08-26T14:52:53Z
+        files:
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
       - &a11
         sha: 1eb5e5a2fe6f64bea15e527129834275024fa9f4
         message: "fix(onboarding): polish contact directory controls"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/1eb5e5a2fe6f64bea15e527129834275024fa9f4
         authoredAt: 2026-08-26T15:18:57Z
+        files:
+          - onboarding/apps/dashboard/app/globals.css
+          - onboarding/apps/dashboard/components/contacts-workspace.tsx
+          - packages/ui/src/navigation/app-nav.tsx
       - &a12
         sha: db40bf8849cd9a8178839965030ab8eb4415e8bf
         message: "feat(onboarding): open and edit contact details"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/db40bf8849cd9a8178839965030ab8eb4415e8bf
         authoredAt: 2026-08-26T15:35:58Z
+        files:
+          - onboarding/apps/dashboard/app/api/[...path]/route.ts
+          - onboarding/apps/dashboard/components/contacts-workspace.tsx
+          - onboarding/apps/dashboard/components/operations-workspace/universal-record-panel.tsx
+          - onboarding/apps/dashboard/functions/src/index.ts
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+          - onboarding/apps/dashboard/lib/api/client.ts
+          - onboarding/apps/dashboard/lib/api/handlers.test.ts
+          - onboarding/apps/dashboard/lib/api/handlers.ts
+          - onboarding/apps/dashboard/lib/operations-workspace/types.ts
+          - packages/contracts/src/onboarding.ts
+          - packages/db/src/contact.test.ts
+          - packages/db/src/cosmos-queries.ts
+          - packages/db/src/queries.ts
+          - packages/db/src/runtime.ts
     workTimestamps:
       - 2026-08-26T14:51:54Z
       - 2026-08-26T14:52:53Z
@@ -410,6 +588,5 @@ hoursEstimate:
   volumeHours: 27.4
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

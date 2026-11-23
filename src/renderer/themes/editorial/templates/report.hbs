@@ -88,11 +88,18 @@
   {{/neq}}
   {{/if}}
 
+  <article class="panel panel-alloc panel-tech">
+  <details class="tech-details" id="technical-details">
+    <summary class="tech-details-summary">
+      <span class="tech-details-title">Technical details</span>
+      <span class="tech-details-hint">From GitHub: repositories, pull requests and commits{{#if aiContent.highlights.length}}, plus highlights{{/if}}</span>
+    </summary>
+    <div class="tech-details-body">
   {{> activity}}
 
   {{!-- HIGHLIGHTS (summaries dropped — duplicated Activity) --}}
   {{#if aiContent.highlights.length}}
-  <div class="column-stack" id="highlights">
+  <div class="tech-highlights" id="highlights">
     {{#each aiContent.highlights}}
     <article class="stack-card">
       <div class="highlight-heading">
@@ -110,6 +117,14 @@
     </article>
     {{/each}}
 
+  </div>
+  {{/if}}
+    </div>
+  </details>
+  </article>
+
+  {{#if aiContent.highlights.length}}
+  <div class="column-stack">
     {{#if canonicalUrl}}
     <article class="stack-card stack-share">
       <div class="card-label">{{i18n.share}}</div>
@@ -156,6 +171,20 @@
       strip.scrollLeft += e.deltaY;
     }
   }, { passive: false });
+})();
+</script>
+<script>
+(function(){
+  // Open the disclosures around a linked section (e.g. #activity) so jump links and shared URLs land on visible content.
+  function reveal(){
+    var id = decodeURIComponent(location.hash.slice(1));
+    var el = id ? document.getElementById(id) : null;
+    if (!el) return;
+    for (var d = el.closest('details'); d; d = d.parentElement && d.parentElement.closest('details')) d.open = true;
+    el.scrollIntoView();
+  }
+  reveal();
+  window.addEventListener('hashchange', reveal);
 })();
 </script>
 {{{themeToggleScript}}}

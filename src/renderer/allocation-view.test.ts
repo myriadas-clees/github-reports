@@ -4,6 +4,7 @@ import {
   type AllocationView,
   formatWorkDelivered,
   formatEstimatedHours,
+  formatShiftEquivalent,
   MAX_VISIBLE_SHIPPED,
   formatPercent,
   MAX_INITIATIVE_COLORS,
@@ -413,8 +414,8 @@ describe("readiness, complexity and verification views", () => {
     const a = makeAllocation([["A", 10, { shipped: [annotated], inProgress: [open] }]]);
     const v = buildAllocationView({ week: { label: "w", allocation: a } })!;
     const [item] = v.panels[0]!.initiatives[0]!.shipped;
-    expect(item!.readiness).toMatchObject({ label: "Live", stage: "live", ariaLabel: "Live: Live since Oct 8" });
-    expect(item!.stateLabel).toBe("Code integrated");
+    expect(item!.readiness).toMatchObject({ label: "Available to users", stage: "live", ariaLabel: "Available to users: Live since Oct 8" });
+    expect(item!.stateLabel).toBe("Development complete");
     expect(item!.complexity).toMatchObject({ level: "connected", hasRisks: true, risks: ["Payments"] });
     expect(item!.checksText).toBe("All 3 automated checks passed · 1 automated review · tests updated");
     expect(v.panels[0]!.initiatives[0]!.inProgress[0]!.checksText).toBe("Checks not collected");
@@ -444,7 +445,7 @@ describe("readiness, complexity and verification views", () => {
       checks: { automated: { passed: 0, failed: 0, pending: 1, total: 1 }, humanReviews: 0, automatedReviews: 0, testsUpdated: false } };
     const a = makeAllocation([["A", 10, { shipped: [annotated], inProgress: [pending] }]]);
     const v = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification!;
-    expect(v.checksLine).toBe("1 of 2 passed automated checks · 1 still running · 1 had automated code review · 1 included test updates");
+    expect(v.checksLine).toBe("1 of 2 changes with automated checks passed every check · 1 still running · 1 had automated code review · 1 included test updates");
   });
 
   it("identifies failed checks even when results are partial or still running", () => {
@@ -453,7 +454,7 @@ describe("readiness, complexity and verification views", () => {
     const a = makeAllocation([["A", 10, { inProgress: [failed] }]]);
     const panel = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!;
     expect(panel.initiatives[0]!.inProgress[0]!.checksText).toBe("1 of 3 automated checks passed · 1 still running · 1 check failed · some check results not collected");
-    expect(panel.verification!.checksLine).toBe("0 of 1 passed automated checks · 1 with failed checks · 1 still running · 1 with incomplete check results");
+    expect(panel.verification!.checksLine).toBe("0 of 1 changes with automated checks passed every check · 1 with failed checks · 1 still running · 1 with incomplete check results");
   });
 
   it("summarizes verification lines", () => {
@@ -461,9 +462,9 @@ describe("readiness, complexity and verification views", () => {
     a.aiFindingsAddressed = 5;
     const v = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification!;
     expect(v.title).toBe("Checks behind this work");
-    expect(v.readinessLine).toBe("Of 2 changes: 1 live · 1 in review");
+    expect(v.readinessLine).toBe("Of 2 changes: 1 available to users · 1 being reviewed");
     // The open PR in this fixture has no check evidence, so it is named as not collected.
-    expect(v.checksLine).toBe("1 of 1 passed automated checks · 1 not collected · 1 had automated code review · 1 included test updates · 5 review findings addressed");
+    expect(v.checksLine).toBe("1 of 1 changes with automated checks passed every check · 1 not collected · 1 had automated code review · 1 included test updates · 5 review findings addressed");
     expect(v.note).toContain("No process catches every bug");
   });
 
@@ -474,11 +475,11 @@ describe("readiness, complexity and verification views", () => {
     expect(v.scope).toBe("2 changes");
     expect(v.groups).toEqual([
       { key: "readiness", heading: "Where the changes are", facts: [
-        { value: "1", label: "live", tone: "positive" },
-        { value: "1", label: "in review" },
+        { value: "1", label: "available to users", tone: "positive" },
+        { value: "1", label: "being reviewed" },
       ] },
       { key: "checks", heading: "Automated checks", facts: [
-        { value: "1 of 1", label: "passed automated checks" },
+        { value: "1 of 1", label: "changes with automated checks passed every check" },
         { value: "1", label: "not collected", tone: "tentative" },
       ] },
       { key: "reviews", heading: "Reviews and tests", facts: [
@@ -493,7 +494,7 @@ describe("readiness, complexity and verification views", () => {
     const a = makeAllocation([["A", 10, { shipped: [{ ...annotated, checks: undefined, readiness: undefined }] }]]);
     const v = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification!;
     expect(v.groups.map((g) => g.key)).toEqual(["readiness", "checks"]);
-    expect(v.groups[0]!.facts).toEqual([{ value: "1", label: "code integrated" }]);
+    expect(v.groups[0]!.facts).toEqual([{ value: "1", label: "release status unknown", tone: "tentative" }]);
     expect(v.groups[1]!.facts).toEqual([{ label: "Automated check results not collected yet", tone: "tentative" }]);
   });
 
@@ -501,7 +502,7 @@ describe("readiness, complexity and verification views", () => {
     const integrated = { ...annotated, readiness: { stage: "awaiting-release" as const, label: "Code integrated · not live yet" } };
     const a = makeAllocation([["A", 10, { shipped: [integrated] }]]);
     const v = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification!;
-    expect(v.readinessLine).toBe("Of 1 change: 1 code integrated, not live yet");
+    expect(v.readinessLine).toBe("Of 1 change: 1 awaiting release");
   });
 
   it("says checks were not collected when no automated data exists", () => {
@@ -542,7 +543,7 @@ describe("readiness, complexity and verification views", () => {
     });
     const a = makeAllocation([["A", 10, { inProgress: [draft(1, "draft"), draft(2, "prototype")] }]]);
     const v = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification!;
-    expect(v.readinessLine).toBe("Of 2 changes: 2 drafts or prototypes");
+    expect(v.readinessLine).toBe("Of 2 changes: 2 in early development");
   });
 
   it("reports PRs that ran no automated checks apart from the collected ones", () => {
@@ -554,7 +555,7 @@ describe("readiness, complexity and verification views", () => {
     const a = makeAllocation([["A", 10, { shipped: [annotated], inProgress: [noChecks] }]]);
     const v = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification!;
     expect(v.checksLine).toBe(
-      "1 of 1 passed automated checks · 1 had no automated checks · 1 had automated code review · 1 included test updates",
+      "1 of 1 changes with automated checks passed every check · 1 had no automated checks · 1 had automated code review · 1 included test updates",
     );
   });
 
@@ -582,7 +583,7 @@ describe("readiness, complexity and verification views", () => {
     };
     const a = makeAllocation([["A", 10, { inProgress: [pilot] }]]);
     const v = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification!;
-    expect(v.readinessLine).toBe("Of 1 change: 1 in review");
+    expect(v.readinessLine).toBe("Of 1 change: 1 being reviewed");
   });
 
   it("does not claim no checks ran when some PRs have no check evidence", () => {
@@ -610,7 +611,7 @@ describe("readiness, complexity and verification views", () => {
     const a = makeAllocation([["A", 10, { shipped: [annotated], inProgress: [unknown] }]]);
     const v = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification!;
     expect(v.checksLine).toBe(
-      "1 of 1 passed automated checks · 1 not collected · 1 had automated code review · 1 included test updates",
+      "1 of 1 changes with automated checks passed every check · 1 not collected · 1 had automated code review · 1 included test updates",
     );
   });
 
@@ -635,7 +636,7 @@ describe("readiness, complexity and verification views", () => {
     };
     const a = makeAllocation([["A", 10, { inProgress: [partial] }]]);
     const v = buildAllocationView({ week: { label: "w", allocation: a } })!.panels[0]!.verification!;
-    expect(v.checksLine).toBe("0 of 1 passed automated checks · 1 with incomplete check results");
+    expect(v.checksLine).toBe("0 of 1 changes with automated checks passed every check · 1 with incomplete check results");
   });
 
   it("uses source-neutral wording for incomplete checks and drops the commit-status-only phrases", () => {
@@ -657,7 +658,7 @@ describe("readiness, complexity and verification views", () => {
       "1 of 2 automated checks passed · 1 still running · some check results not collected",
     ]);
     // Partial items never count as passing, so the lead is 0 of 3 even though one check passed.
-    expect(view.verification!.checksLine).toBe("0 of 3 passed automated checks · 1 with failed checks · 1 still running · 3 with incomplete check results");
+    expect(view.verification!.checksLine).toBe("0 of 3 changes with automated checks passed every check · 1 with failed checks · 1 still running · 3 with incomplete check results");
     for (const text of [...texts, view.verification!.checksLine]) {
       expect(text).not.toContain("commit status");
       expect(text).not.toContain("without commit-status");
@@ -697,6 +698,36 @@ describe("readiness, complexity and verification views", () => {
 });
 
 describe("lead summary figures", () => {
+  it("pins requested app identities while preserving other palette slots", () => {
+    const allocation = makeAllocation([["Hub", 4], ["Northstar", 3], ["Compass", 2], ["Pricing", 1], ["Shared platform", 5]]);
+    const mix = buildInitiativeMix(allocation, ["Hub", "Northstar", "Compass", "Pricing", "Shared platform"], "size");
+    const color = (name: string) => mix.find((segment) => segment.name === name)?.colorClass;
+    expect(color("Shared platform")).toBe("alloc-shared");
+    expect(color("Northstar")).toBe("alloc-northstar");
+    expect(color("Compass")).toBe("alloc-compass");
+    expect(color("Hub")).toBe("alloc-c1");
+    expect(color("Pricing")).toBe("alloc-c4");
+    expect(buildInitiativeMix(makeAllocation([["North Star", 1]]), [], "size")[0].colorClass).toBe("alloc-northstar");
+  });
+  it("pins Myriad to red and keeps shared and unassigned work named", () => {
+    const allocation = makeAllocation([["Myriad Apps · app not identified", 2], ["Shared platform", 3], ["OHCPWM · app not identified", 1], ["Hub", 4]]);
+    for (const order of [[], ["Hub", "Shared platform", "Myriad Apps · app not identified"]]) {
+      const mix = buildInitiativeMix(allocation, order, "size");
+      expect(mix.find((segment) => segment.name.startsWith("Myriad Apps"))?.colorClass).toBe("alloc-myriad");
+      expect(mix.find((segment) => segment.name === "Shared platform")?.colorClass).toBe("alloc-shared");
+      expect(mix.find((segment) => segment.name.startsWith("OHCPWM"))?.isOther).toBe(false);
+      expect(mix.some((segment) => segment.name === "Other")).toBe(false);
+    }
+  });
+  it("compares modeled hours with one eight-hour shift, including partial shifts", () => {
+    expect(formatShiftEquivalent(24)).toBe("3×");
+    expect(formatShiftEquivalent(8)).toBe("1×");
+    expect(formatShiftEquivalent(4)).toBe("0.5×");
+    expect(formatShiftEquivalent(3.4)).toBe("0.4×");
+    expect(formatShiftEquivalent(0.2)).toBe("<0.1×");
+    expect(formatShiftEquivalent(0)).toBe("0×");
+    expect(formatShiftEquivalent(Number.NaN)).toBe("0×");
+  });
   it("preserves the model's tenth-hour precision", () => {
     expect(formatEstimatedHours(0.2)).toBe("0.2");
     expect(formatEstimatedHours(7.76)).toBe("7.8");
@@ -709,7 +740,7 @@ describe("lead summary figures", () => {
   it("exposes the estimate as modeled manual effort on the panel and headline, never as time worked", () => {
     const a = makeAllocation([["A", 12]]);
     const view = buildAllocationView({ week: { label: "Oct 1–7", allocation: a } })!;
-    expect(view.panels[0]!.effort).toEqual({ days: "~1.5 days", hours: "12", hoursLabel: "12 estimated manual-effort hours" });
+    expect(view.panels[0]!.effort).toEqual({ days: "~1.5 days", hours: "12", hoursLabel: "12 estimated manual-effort hours", shiftEquivalent: "1.5×" });
     expect(view.headline!.effort).toEqual(view.panels[0]!.effort);
     expect(view.headline!.scope).toBe("Work week of Oct 1–7");
     expect(view.measureNote).toContain("eight-hour day and are rounded for display");
@@ -717,22 +748,137 @@ describe("lead summary figures", () => {
     expect(JSON.stringify(view.headline)).not.toMatch(/hours (worked|spent|saved)/);
   });
 
-  it("counts completed, live, in-progress and failed-check changes for the headline", () => {
+  it("counts integrated, live, in-review and failed-check changes for the headline", () => {
     const checks = (failed: number) => ({ automated: { passed: 1, failed, pending: 0, total: 1 + failed }, humanReviews: 0, automatedReviews: 0, testsUpdated: false });
     const merged = { kind: "pr" as const, title: "Shipped", url: "https://github.com/o/r/pull/1", state: "merged" as const, readiness: { stage: "live" as const, label: "Live" }, checks: checks(0) };
     const open = { kind: "pr" as const, title: "WIP", url: "https://github.com/o/r/pull/2", state: "open" as const, readiness: { stage: "in-review" as const, label: "In review" }, checks: checks(1) };
     const a = makeAllocation([["A", 10, { shipped: [merged], inProgress: [open] }]]);
     const { facts } = buildAllocationView({ week: { label: "w", allocation: a } })!.headline!;
     expect(facts).toEqual([
-      { value: "1", label: "completed" },
-      { value: "1", label: "live", tone: "positive" },
-      { value: "1", label: "in progress" },
+      { value: "1", label: "available to users", tone: "positive" },
+      { value: "1", label: "being reviewed" },
       { value: "1", label: "change with failed checks", tone: "attention" },
     ]);
+  });
+
+  describe("headline summary", () => {
+    type Item = import("../types.js").AllocationItem;
+    const passed = { automated: { passed: 2, failed: 0, pending: 0, total: 2 }, humanReviews: 0, automatedReviews: 0, testsUpdated: false };
+    const pr = (n: number, over: Partial<Item> = {}): Item => ({
+      kind: "pr", title: `feat(x): change ${n}`, url: `https://github.com/o/r/pull/${n}`, repository: "o/r", state: "merged",
+      readiness: { stage: "live", label: "Live" }, checks: passed, ...over,
+    });
+
+    it("describes the default weekly period with shared release labels, authored titles, checks and the mix", () => {
+      const a = makeAllocation([
+        ["Pricing", 6, {
+          shipped: [
+            pr(1),
+            pr(2, { readiness: { stage: "awaiting-release", label: "Code integrated · not live yet" }, impact: "major" }),
+            pr(3, { readiness: { stage: "done", label: "Code integrated", releaseUnknown: true }, checks: { ...passed, automated: { passed: 1, failed: 1, pending: 0, total: 2 } } }),
+          ],
+          inProgress: [pr(4, { state: "open", readiness: { stage: "in-review", label: "In review" } })],
+        }],
+        ["Hub", 2, { shipped: [pr(5, { title: "Hub search", readiness: { stage: "preview", label: "In testing" } })] }],
+      ]);
+      const view = buildAllocationView({ week: { label: "Oct 1–7", allocation: a } })!;
+      const h = view.headline!;
+      expect(h.summary).toBe(
+        "5 changes in the week of Oct 1–7. " +
+        "Development complete: \u201cChange 2\u201d; \u201cChange 1\u201d; \u201cChange 3\u201d and 1 more. " +
+        "1 change needs attention because automated checks failed.",
+      );
+      expect(h.facts).toEqual([
+        { value: "1", label: "available to users", tone: "positive" },
+        { value: "1", label: "available for testing" },
+        { value: "1", label: "awaiting release" },
+        { value: "1", label: "release status unknown", tone: "tentative" },
+        { value: "1", label: "being reviewed" },
+        { value: "1", label: "change with failed checks", tone: "attention" },
+      ]);
+      // The same labels and counts as the checks panel for the same period.
+      const verification = view.panels[0]!.verification!;
+      for (const f of verification.groups[0]!.facts) expect(h.facts).toContainEqual(expect.objectContaining({ value: f.value, label: f.label }));
+      expect(verification.checksLine).toContain("4 of 5 changes with automated checks passed every check");
+      // The mix and effort come from the same panel as the bar.
+      expect(h.legend).toBe(view.panels[0]!.legend);
+      expect(h.effort).toEqual({ days: "~1 day", hours: "8", hoursLabel: "8 estimated manual-effort hours", shiftEquivalent: "1×" });
+    });
+
+    it("uses the day as the default period on daily reports, not the surrounding week", () => {
+      const day = makeAllocation([["Pricing", 3.4, { shipped: [pr(1, { title: "Day change" })] }]]);
+      const weekAlloc = makeAllocation([["Pricing", 9.2, { shipped: [pr(1, { title: "Day change" }), pr(2, { title: "Earlier change" })] }], ["Hub", 4]]);
+      const view = buildAllocationView({ day, week: { label: "Oct 1–7", allocation: weekAlloc }, asOf: "2026-10-07" })!;
+      const h = view.headline!;
+      expect(h.scope).toBe("Oct 7");
+      expect(h.summary).toBe(
+        "1 change on Oct 7. Development complete: \u201cDay change\u201d.",
+      );
+      expect(h.summary).not.toContain("Earlier change");
+      expect(h.effort.hoursLabel).toBe("3.4 estimated manual-effort hours");
+      expect(h.facts).toEqual([{ value: "1", label: "available to users", tone: "positive" }]);
+    });
+
+    it("describes a still-open week as so far", () => {
+      const a = makeAllocation([["Pricing", 8, { inProgress: [pr(1, { state: "open", readiness: { stage: "draft", label: "Draft" } })] }]]);
+      const trend = makeTrend(["Pricing"], [{ label: "Aug 1–7", days: 2, allocation: a }]);
+      const h = buildAllocationView({ week: { label: "Aug 1–7", allocation: a }, trend, asOf: "2026-08-03" })!.headline!;
+      expect(h.summary).toBe(
+        "1 change this week so far (Aug 1–7). Work in progress: \u201cChange 1\u201d.",
+      );
+    });
+
+    it("counts a duplicated change once and names it once", () => {
+      const open = pr(1, { state: "open", readiness: { stage: "in-review", label: "In review" } });
+      const a = makeAllocation([
+        ["Pricing", 4, { shipped: [pr(1)], inProgress: [open] }],
+        ["Hub", 4, { inProgress: [open], shipped: [pr(1, { url: "https://github.com/o/r/pull/1/" })] }],
+      ]);
+      const h = buildAllocationView({ week: { label: "w", allocation: a } })!.headline!;
+      expect(h.summary).toBe("1 change in the week of w. Development complete: \u201cChange 1\u201d.");
+      expect(h.facts.find((f) => f.label === "in review")).toBeUndefined();
+    });
+
+    it("keeps release and check uncertainty when evidence is missing", () => {
+      const bare: Item = { kind: "pr", title: "Export CSV", url: "https://github.com/o/r/pull/7", state: "merged" };
+      const h = buildAllocationView({ week: { label: "w", allocation: makeAllocation([["A", 4, { shipped: [bare] }]]) } })!.headline!;
+      expect(h.summary).toBe(
+        "1 change in the week of w. Development complete: \u201cExport CSV\u201d.",
+      );
+      expect(h.summary).not.toMatch(/\blive\b|passed/);
+      expect(h.facts).toContainEqual({ value: "1", label: "release status unknown", tone: "tentative" });
+    });
+
+    it("still summarizes a period with effort but no pull requests", () => {
+      const a = makeAllocation([["Ops", 2, { other: [{ kind: "manual", title: "Planning" }] }], ["Hub", 6]]);
+      const h = buildAllocationView({ week: { label: "w", allocation: a } })!.headline!;
+      expect(h.summary).toBe("No change status was recorded in the week of w. Work covered Hub, Ops.");
+      expect(h.facts).toEqual([]);
+    });
+
+    it("preserves authored titles and never adds outcomes", () => {
+      const titles = ["Ship the <b>thing</b>", "fix(api)!: Handle 429 \"retry\"", "Refactor"];
+      const a = makeAllocation([["A", 4, { shipped: titles.map((title, i) => pr(i + 1, { title })) }]]);
+      const { summary } = buildAllocationView({ week: { label: "w", allocation: a } })!.headline!;
+      expect(summary).toContain("\u201cShip the <b>thing</b>\u201d; \u201cHandle 429 \"retry\"\u201d; \u201cRefactor\u201d.");
+      expect(summary).not.toMatch(/improv|increas|reduc|customer|revenue|impact/i);
+    });
   });
 
   it("omits the headline when only a trend is available", () => {
     const trend = makeTrend(["A"], [{ label: "Oct 1–7", days: 3, allocation: makeAllocation([["A", 8]]) }]);
     expect(buildAllocationView({ trend })!.headline).toBeUndefined();
+  });
+});
+
+describe("trend heading", () => {
+  it("counts Mon-Fri weeks and explicit weekend entries separately", () => {
+    const a = makeAllocation([["Hub", 4]]);
+    const weeks = makeTrend(["Hub"], [{ label: "Oct 5-9", days: 5, allocation: a }, { label: "Oct 12-16", days: 5, allocation: a }]);
+    expect(buildAllocationView({ trend: weeks })!.trendHeading).toBe("Last 2 weeks");
+    const withWeekend = { ...weeks, periods: [...weeks.periods, { ...weeks.periods[1]!, id: "2026-10-17", label: "Oct 17 weekend", kind: "weekend" as const }] };
+    expect(buildAllocationView({ trend: withWeekend })!.trendHeading).toBe("Last 2 weeks and 1 weekend");
+    const one = makeTrend(["Hub"], [{ label: "Oct 5-9", days: 1, allocation: a }]);
+    expect(buildAllocationView({ trend: one })!.trendHeading).toBe("Last 1 week");
   });
 });

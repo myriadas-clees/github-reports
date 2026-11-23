@@ -1,10 +1,21 @@
 // Homepage markup shared by every theme: hero (estimated effort + initiative mix), the
-// month -> work-week -> day ledger, and the "Thinking about new work?" links.
+// month -> work-week -> day ledger, and the "Thinking about new work?" links. Plain outcomes,
+// day titles and effort lead; GitHub counts sit in closed "Technical details" disclosures.
 // Registered as Handlebars partials by renderIndexPage; themes keep their own header and chrome.
 
 const MIX_SEGMENTS = `{{#each segments}}<span class="alloc-seg {{colorClass}}" style="--grow:{{grow}}" title="{{title}}"></span>{{/each}}`;
 
+/** Closed-by-default disclosure for GitHub specifics (commit, pull request and review counts). */
+const techSummary = (hint: string): string => `<summary class="tech-details-summary">
+        <span class="tech-details-title">Technical details</span>
+        <span class="tech-details-hint">${hint}</span>
+      </summary>`;
+
+const COUNT_CELLS = `<td>{{this.stats.commits}}</td><td>{{this.stats.prs}}</td><td>{{this.stats.reviews}}</td>`;
+const DAY_CELLS = `{{#if this.stats}}${COUNT_CELLS}{{else}}<td>—</td><td>—</td><td>—</td>{{/if}}`;
+
 export const INDEX_HERO_PARTIAL = `<section class="home-hero alloc alloc--inline" aria-label="Estimated effort, reporting window">
+    {{#if overview.reportCount}}<p class="home-hero-scope"><span class="home-hero-scope-label">Reporting window</span> <span class="home-hero-range">{{overview.rangeLabel}}</span></p>{{/if}}
     <div class="home-hero-top">
       <div class="home-hero-main">
         {{#if overview.estimate}}
@@ -16,11 +27,6 @@ export const INDEX_HERO_PARTIAL = `<section class="home-hero alloc alloc--inline
         <p class="est-note">{{estimateNote}}</p>
         {{/if}}
       </div>
-      <dl class="home-hero-counts" aria-label="Archive totals">
-        <div><dt>commits</dt><dd>{{overview.commits}}</dd></div>
-        <div><dt>pull requests</dt><dd>{{overview.prs}}</dd></div>
-        <div><dt>reviews</dt><dd>{{overview.reviews}}</dd></div>
-      </dl>
     </div>
     {{#if overview.hasMix}}
     <div class="home-hero-mix">
@@ -33,6 +39,18 @@ export const INDEX_HERO_PARTIAL = `<section class="home-hero alloc alloc--inline
         {{/each}}
       </ul>
     </div>
+    {{/if}}
+    {{#if overview.reportCount}}
+    <details class="tech-details tech-details--compact home-hero-tech">
+      ${techSummary("GitHub totals for the reporting window")}
+      <div class="tech-details-body">
+        <dl class="home-hero-counts" aria-label="GitHub totals, reporting window">
+          <div><dt>commits</dt><dd>{{overview.commits}}</dd></div>
+          <div><dt>pull requests</dt><dd>{{overview.prs}}</dd></div>
+          <div><dt>reviews</dt><dd>{{overview.reviews}}</dd></div>
+        </dl>
+      </div>
+    </details>
     {{/if}}
   </section>`;
 
@@ -55,7 +73,7 @@ export const INDEX_PLANNING_PARTIAL = `{{#if hasEstimatePage}}
 
 export const INDEX_LEDGER_PARTIAL = `<section class="ledger" aria-label="Work week archive">
     <div class="ledger-heading">
-      <span>Activity ledger</span>
+      <span>Work history</span>
       <span>{{overview.reportCount}} reports</span>
     </div>
 
@@ -66,13 +84,6 @@ export const INDEX_LEDGER_PARTIAL = `<section class="ledger" aria-label="Work we
             <div class="day-title" title="{{#if this.title}}{{this.title}}{{else}}{{this.dateLabel}}{{/if}}">{{#if this.title}}{{this.title}}{{else}}{{this.dateLabel}}{{/if}}</div>
             {{#if this.subtitle}}<div class="day-subtitle" title="{{this.subtitle}}">{{this.subtitle}}</div>{{/if}}
           </div>
-          {{#if this.stats}}
-          <div class="day-stats" aria-label="{{this.stats.commits}} commits, {{this.stats.prs}} pull requests, {{this.stats.reviews}} reviews" role="group">
-            <span title="commits"><b>{{this.stats.commits}}</b> C</span>
-            <span title="pull requests"><b>{{this.stats.prs}}</b> PR</span>
-            <span title="reviews"><b>{{this.stats.reviews}}</b> R</span>
-          </div>
-          {{/if}}
           <span class="day-open" aria-hidden="true">↗</span>
         </a>
     {{/inline}}
@@ -84,11 +95,6 @@ export const INDEX_LEDGER_PARTIAL = `<section class="ledger" aria-label="Work we
         <div class="month-days">{{#if this.estimate}}<span title="{{@root.estimateNote}}">≈ {{this.estimate.value}} {{this.estimate.unit}}</span> <span class="est-tag">estimated</span>{{/if}}</div>
         <div class="month-tape" role="img" aria-label="Estimated effort per day" title="Estimated effort per day">
           {{#each this.reports}}<i style="--activity: {{this.activityPercent}}%"></i>{{/each}}
-        </div>
-        <div class="month-totals">
-          <span><b>{{this.stats.commits}}</b> commits</span>
-          <span><b>{{this.stats.prs}}</b> PRs</span>
-          <span><b>{{this.stats.reviews}}</b> reviews</span>
         </div>
         <span class="month-count" aria-label="Expand or collapse month"></span>
       </summary>
@@ -117,11 +123,7 @@ export const INDEX_LEDGER_PARTIAL = `<section class="ledger" aria-label="Work we
               {{/if}}
               {{#if this.outcome}}<div class="week-outcome" title="{{this.outcome}}">{{this.outcome}}</div>{{/if}}
               {{#if this.moreLabel}}<div class="week-flag week-more">{{this.moreLabel}}</div>{{/if}}
-            </div>
-            <div class="week-counts">
-              <span><b>{{this.stats.commits}}</b> commits</span>
-              <span><b>{{this.stats.prs}}</b> PRs</span>
-              <span><b>{{this.stats.reviews}}</b> reviews</span>
+              {{#if this.weekendNote}}<div class="week-flag week-weekend">{{this.weekendNote}}</div>{{/if}}
             </div>
             <span class="day-open" aria-hidden="true">↗</span>
           </a>
@@ -149,6 +151,23 @@ export const INDEX_LEDGER_PARTIAL = `<section class="ledger" aria-label="Work we
         {{/each}}
       </div>
       {{/if}}
+
+      <details class="tech-details tech-details--compact ledger-tech">
+        ${techSummary("GitHub commits, pull requests and reviews for {{this.label}} {{this.year}}")}
+        <div class="tech-details-body tech-table-scroll">
+          <table class="tech-table" aria-label="GitHub activity, {{this.label}} {{this.year}}">
+            <thead><tr><th scope="col">{{#if this.weeks.length}}Week and day{{else}}Report{{/if}}</th><th scope="col">Commits</th><th scope="col">Pull requests</th><th scope="col">Reviews</th></tr></thead>
+            <tbody>
+              {{#each this.weeks}}
+              <tr class="tech-row-group"><th scope="row">{{this.label}}</th>${COUNT_CELLS}</tr>
+              {{#each this.reports}}<tr class="tech-row-day"><th scope="row">{{this.weekdayLabel}} {{this.dateLabel}}</th>${DAY_CELLS}</tr>{{/each}}
+              {{/each}}
+              {{#each this.looseReports}}<tr class="tech-row-day"><th scope="row">{{this.dateLabel}}</th>${DAY_CELLS}</tr>{{/each}}
+            </tbody>
+            <tfoot><tr><th scope="row">{{this.label}} {{this.year}} total</th>${COUNT_CELLS}</tr></tfoot>
+          </table>
+        </div>
+      </details>
     </details>
     {{/each}}
   </section>`;

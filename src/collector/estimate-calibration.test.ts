@@ -224,4 +224,13 @@ describe("buildEstimateCalibration", () => {
     expect(cal.apps.activeDays.p50).toBe(9);
     expect(JSON.stringify(cal)).not.toContain("github.com");
   });
+  it("uses changed app paths for calibration instead of a repository fallback", () => {
+    const days = new Map<string, WeeklyReportData>();
+    for (let d = 1; d <= 8; d++) {
+      const day = `2026-09-${String(d).padStart(2, "0")}`;
+      days.set(day, report([pr(1, "Update settings", { workCommits: [commit(day)], workFiles: ["hub/src/settings.ts"] })]));
+    }
+    const config = { ...DEFAULT_ALLOCATION_CONFIG, paths: { hub: "Hub" }, initiatives: { "repo:o/r": "App not identified" } };
+    expect(buildEstimateCalibration(days, config).apps.initiatives[0].name).toBe("Hub");
+  });
 });

@@ -75,14 +75,14 @@ describe("loadTheme", () => {
     const theme = loadTheme();
     expect(theme.buildCSS).toBeTypeOf("function");
     expect(theme.buildIndexCSS).toBeTypeOf("function");
-    expect(theme.colors.bg).toBe("#f8f7f4");
+    expect(theme.colors.bg).toBe("#050505");
     expect(theme.colors.accent).toBe("#cc2647");
     expect(theme.templatesDir).toContain("themes/brutalist/templates");
   });
 
   it("loads brutalist theme explicitly", () => {
     const theme = loadTheme("brutalist");
-    expect(theme.colors.bg).toBe("#f8f7f4");
+    expect(theme.colors.bg).toBe("#050505");
   });
 
   it("brutalist has theme toggle scripts", () => {
@@ -91,32 +91,29 @@ describe("loadTheme", () => {
     expect(theme.themeToggleScript).toContain("theme-toggle");
   });
 
-  it("brutalist buildCSS consumes Myriad theme tokens", () => {
-    const theme = loadTheme("brutalist");
-    const css = theme.buildCSS("en");
-    expect(css).toContain("var(--page-bg)");
-    expect(css).toContain("var(--neutral-10)");
-    expect(css).toContain("var(--size-m)");
-    expect(css).toContain("var(--radius-m)");
-    expect(css).not.toContain("--b-");
+  it("brutalist restores bold type, grain and square allocation bars", () => {
+    const css = loadTheme("brutalist").buildCSS("en");
+    expect(css).toContain("var(--b-bg)");
+    expect(css).toContain("feTurbulence");
+    expect(css).toContain("font-weight: 900");
+    expect(css).toMatch(/\.alloc-bar \{[^}]*border-radius: 0/);
   });
 
-  it("brutalist buildCSS is light-first with warm dark via prefers-color-scheme", () => {
+  it("brutalist is dark-first and supports the system light preference", () => {
     const theme = loadTheme("brutalist");
     const css = theme.buildCSS("en");
-    expect(css).toContain("--neutral-1: #f2f1ee");
-    expect(css).toContain("prefers-color-scheme: dark");
-    expect(css).toMatch(/html\[data-theme="dark"\] \{ color-scheme: dark;[^}]*--neutral-1: #1a1817/);
+    expect(css).toContain("--b-bg: #050505");
+    expect(css).toContain("prefers-color-scheme: light");
+    expect(css).toContain("--b-bg: #fafafa");
     expect(theme.themeInitScript).toContain("data-theme");
   });
 
-  it("brutalist keeps actions, focus and progress monotone and reds as accents only", () => {
+  it("brutalist keeps controls and progress neutral and positives green", () => {
     const css = loadTheme("brutalist").buildCSS("en");
-    expect(css).toContain("--action: var(--neutral-10)");
-    expect(css).toContain("outline: var(--focus-ring-outline)");
-    expect(css).toMatch(/\.repo-bar-fill \{[^}]*background: var\(--neutral-9\)/);
-    // Brand red is referenced only by the nav-accent token (kicker rule), never directly by a component.
-    expect(css.match(/var\(--color-1\)/g)).toHaveLength(1);
+    expect(css).toMatch(/\.theme-toggle-opt\[data-active="true"\] \{\s*background: var\(--b-heading\);\s*color: var\(--b-bg\)/);
+    expect(css).toContain("outline: 2px solid var(--b-heading)");
+    expect(css).toMatch(/\.repo-bar-fill \{[^}]*background: var\(--b-text-secondary\)/);
+    expect(css).toMatch(/\.report-key-item--positive \.report-key-value \{ color: var\(--b-green\)/);
   });
 
   it("brutalist makes no third-party font requests", () => {
@@ -162,7 +159,7 @@ describe("loadTheme", () => {
     const theme = loadTheme("brutalist");
     const css = theme.buildCSS("en");
     expect(css).toContain("body");
-    expect(css).toContain("#f2f1ee");
+    expect(css).toContain("#050505");
     expect(css).toContain("#cc2647");
     expect(css).toContain("Roboto");
   });
@@ -171,7 +168,7 @@ describe("loadTheme", () => {
     const theme = loadTheme("brutalist");
     const css = theme.buildIndexCSS("en");
     expect(css).toContain(".home-hero");
-    expect(css).toContain("var(--surface)");
+    expect(css).toContain("var(--b-bg)");
   });
 });
 

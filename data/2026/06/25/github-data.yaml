@@ -51,6 +51,22 @@ commitMessages:
         additions: 815
         deletions: 46
         filesChanged: 15
+        files:
+          - bun.lock
+          - package.json
+          - packages/db/src/bun-client.ts
+          - packages/db/src/bun-native.ts
+          - packages/db/src/db-path.ts
+          - packages/db/src/node-client.ts
+          - pto-tracker/README.md
+          - pto-tracker/docs/verification-plan.md
+          - pto-tracker/src/app/api/[...path]/route.ts
+          - pto-tracker/src/components/AuthProvider.tsx
+          - pto-tracker/src/lib/auth/index.ts
+          - pto-tracker/src/lib/auth/types.ts
+          - pto-tracker/src/lib/csv/writer.ts
+          - pto-tracker/src/lib/store/csv-store.ts
+          - scripts/dev.ts
       - sha: 79ebb662c602e1ec5f332fdc5f55b695b19ec537
         message: "feat(dashboard): implement task actions editor and integrate checklist items in task creation"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/79ebb662c602e1ec5f332fdc5f55b695b19ec537
@@ -58,6 +74,18 @@ commitMessages:
         additions: 523
         deletions: 252
         filesChanged: 11
+        files:
+          - onboarding/apps/dashboard/components/create-task-button.tsx
+          - onboarding/apps/dashboard/components/task-actions-editor.tsx
+          - onboarding/apps/dashboard/components/task-detail-form.tsx
+          - onboarding/apps/dashboard/components/task-type-icon.tsx
+          - onboarding/apps/dashboard/lib/api/client.ts
+          - onboarding/apps/dashboard/lib/api/handlers.ts
+          - packages/contracts/src/onboarding-task-elements.test.ts
+          - packages/contracts/src/onboarding.ts
+          - packages/db/src/custom-task.test.ts
+          - packages/db/src/custom-task.ts
+          - packages/db/src/queries.ts
 releases: []
 externalContributions: []
 codeReviews: []
@@ -101,6 +129,5 @@ hoursEstimate:
   volumeHours: 6
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

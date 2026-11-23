@@ -98,7 +98,20 @@ const reviewAndComment = {
     reviewComments: [{ repository: "example/app", prNumber: 40, prTitle: "Tweak pricing", prLabels: ["app:Northstar"] }],
   })], config: config(), manual: [], requests,
 };
+const appPaths = {
+  reports: [report("2026-10-01", {
+    pullRequests: [
+      { ...pr(51, "Update settings", []), workFiles: ["hub/src/settings.ts"] },
+      { ...pr(52, "Update two apps", ["app:hub"]), workFiles: ["hub/src/a.ts", "compass/src/b.ts"] },
+      { ...pr(53, "Shared UI", []), workFiles: ["packages/ui/src/a.ts"] },
+    ],
+    commitMessages: [{ repo: "example/app", commits: [{ sha: "direct-app", message: "Update display", files: ["compass/src/a.ts"] }] }],
+  })],
+  config: { ...config({ "repo:example/app": "Unassigned", "scope:hub": "Hub", "scope:compass": "Compass" }), paths: { hub: "Hub", compass: "Compass", packages: "Shared platform" }, sharedInitiative: "Shared platform" },
+  manual: [], requests,
+};
 process.stdout.write(JSON.stringify([
+  { name: "app-paths-and-shared-work", input: appPaths },
   { name: "dedup-movement-and-manual", input: moved },
   { name: "locale-ties", input: ties },
   { name: "locale-stress", input: localeStress },

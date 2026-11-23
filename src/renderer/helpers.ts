@@ -7,7 +7,7 @@ import type { RepositoryActivity, Language } from "../types.js";
 import { getLocale, formatNumber as fmtNumber } from "../i18n/index.js";
 import { parseLocalDate } from "../collector/date-range.js";
 import { formatWorkDeliveredLabel } from "../collector/work-delivered.js";
-import { formatEstimatedHours } from "./allocation-view.js";
+import { formatEstimatedHours, formatShiftEquivalent } from "./allocation-view.js";
 
 export { formatWorkDeliveredLabel };
 
@@ -106,6 +106,7 @@ export const registerHelpers = (
   hbs.registerHelper("workDelivered", (hours: number): string =>
     formatWorkDeliveredLabel(Number(hours)),
   );
+  hbs.registerHelper("shiftEquivalent", (hours: number): string => formatShiftEquivalent(Number(hours)));
 
   hbs.registerHelper("manualHours", (hours: number): string => {
     const text = formatEstimatedHours(Number(hours));
@@ -167,6 +168,13 @@ export const registerHelpers = (
 
   hbs.registerHelper("neq", function (this: unknown, a: unknown, b: unknown, opts: Handlebars.HelperOptions) {
     return a !== b ? opts.fn(this) : opts.inverse(this);
+  });
+
+  // First non-blank string argument, else "" (e.g. a computed summary with a stored fallback).
+  hbs.registerHelper("coalesce", (...args: unknown[]): string => {
+    const values = args.slice(0, -1);
+    const hit = values.find((v) => typeof v === "string" && v.trim() !== "");
+    return typeof hit === "string" ? hit : "";
   });
 
   hbs.registerHelper("urlEncode", (text: string): string =>

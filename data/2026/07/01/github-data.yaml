@@ -104,6 +104,23 @@ commitMessages:
         additions: 1059
         deletions: 108
         filesChanged: 16
+        files:
+          - packages/db/src/pricing.test.ts
+          - packages/db/src/pricing.ts
+          - pricing/src/app/actions.ts
+          - pricing/src/app/api/pricing/recruits/[id]/pdf-preview/route.ts
+          - pricing/src/app/globals.css
+          - pricing/src/app/recruits/[id]/model/page.tsx
+          - pricing/src/app/recruits/[id]/page.tsx
+          - pricing/src/app/settings/page.tsx
+          - pricing/src/components/new-recruit-wizard.tsx
+          - pricing/src/components/settings-previews.tsx
+          - pricing/src/lib/__tests__/calculation.test.ts
+          - pricing/src/lib/__tests__/workbook-output.test.ts
+          - pricing/src/lib/calculation.ts
+          - pricing/src/lib/edit-view.ts
+          - pricing/src/lib/report/model.ts
+          - pricing/src/lib/reports.ts
       - sha: 3c09a93f0a1b5afb95936951927da8222c0bb3d6
         message: "chore: update app workspace structure"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3c09a93f0a1b5afb95936951927da8222c0bb3d6
@@ -111,6 +128,47 @@ commitMessages:
         additions: 1852
         deletions: 392
         filesChanged: 40
+        files:
+          - pricing/src/app/actions.ts
+          - pricing/src/app/globals.css
+          - pricing/src/app/recruits/[id]/model/page.tsx
+          - pricing/src/app/recruits/[id]/page.tsx
+          - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+          - pricing/src/components/__tests__/payout-breakdown-donut.test.tsx
+          - pricing/src/components/__tests__/pricing-workstation-client.test.tsx
+          - pricing/src/components/excel-sheet/__tests__/format.test.ts
+          - pricing/src/components/excel-sheet/excel-cell.tsx
+          - pricing/src/components/excel-sheet/excel-formula-bar.tsx
+          - pricing/src/components/excel-sheet/excel-input-sheet.tsx
+          - pricing/src/components/excel-sheet/format.ts
+          - pricing/src/components/excel-sheet/workstation-sheet-defs.tsx
+          - pricing/src/components/model-switcher.tsx
+          - pricing/src/components/new-recruit-wizard.tsx
+          - pricing/src/components/payout-breakdown-donut.tsx
+          - pricing/src/components/pdf-report-viewer.tsx
+          - pricing/src/components/pricing-graphs.tsx
+          - pricing/src/components/pricing-workstation-client.tsx
+          - pricing/src/components/recruit-detail-panels.tsx
+          - pricing/src/components/recruit-detail-scenario-view.tsx
+          - pricing/src/components/report-artifact-viewer.tsx
+          - pricing/src/lib/__tests__/calculation.test.ts
+          - pricing/src/lib/__tests__/excel-formulas.test.ts
+          - pricing/src/lib/__tests__/pricing-visibility.test.ts
+          - pricing/src/lib/__tests__/workbook-output.test.ts
+          - pricing/src/lib/__tests__/workstation-sections.test.ts
+          - pricing/src/lib/__tests__/workstation.test.ts
+          - pricing/src/lib/calculation.ts
+          - pricing/src/lib/excel-formulas.ts
+          - pricing/src/lib/format.ts
+          - pricing/src/lib/new-recruit.ts
+          - pricing/src/lib/pricing-visibility.ts
+          - pricing/src/lib/report/excel.ts
+          - pricing/src/lib/report/model.ts
+          - pricing/src/lib/seed.ts
+          - pricing/src/lib/workbook-output.ts
+          - pricing/src/lib/workstation-sections.ts
+          - pricing/src/lib/workstation.ts
+          - pricing/vitest.config.ts
       - sha: 040e7dc2936f654f7c6280714cf20d1cda744235
         message: "docs(pricing): document scenario parity rules"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/040e7dc2936f654f7c6280714cf20d1cda744235
@@ -118,6 +176,10 @@ commitMessages:
         additions: 84
         deletions: 0
         filesChanged: 3
+        files:
+          - README.md
+          - docs/pricing-scenario-rules.md
+          - pricing/src/lib/workbook-output.ts
       - sha: e6b9046170102c8fa0056f0008fd8b49bac0dca5
         message: "fix(build): add pricing SWA deploy"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e6b9046170102c8fa0056f0008fd8b49bac0dca5
@@ -125,6 +187,11 @@ commitMessages:
         additions: 56
         deletions: 1
         filesChanged: 4
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - pricing/functions/package.json
+          - pricing/functions/tsconfig.build.json
+          - pricing/functions/tsconfig.json
       - sha: 4b2801b05c10dda1bba95f5e767db0e2aa0e4fa5
         message: "fix(build): route pricing SWA dispatch"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4b2801b05c10dda1bba95f5e767db0e2aa0e4fa5
@@ -132,6 +199,8 @@ commitMessages:
         additions: 46
         deletions: 12
         filesChanged: 1
+        files:
+          - .github/workflows/azure-static-web-apps.yml
       - sha: 7ca21d60e3e870ce320713234910ec25cd0ea169
         message: "fix(build): skip Next routes for pricing SWA"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7ca21d60e3e870ce320713234910ec25cd0ea169
@@ -139,6 +208,9 @@ commitMessages:
         additions: 8
         deletions: 2
         filesChanged: 2
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - .github/workflows/azure-static-web-apps.yml
       - sha: 5702ec2a2fd35d2bd2a154d90f9aacd432dfdf9c
         message: "fix(build): use pricing Next hybrid deploy"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/5702ec2a2fd35d2bd2a154d90f9aacd432dfdf9c
@@ -146,6 +218,9 @@ commitMessages:
         additions: 6
         deletions: 18
         filesChanged: 2
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - .github/workflows/azure-static-web-apps.yml
       - sha: 886a45f306a37ac45996a31e22413f924545f11b
         message: "fix(build): rewrite SWA workspace deps"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/886a45f306a37ac45996a31e22413f924545f11b
@@ -153,6 +228,10 @@ commitMessages:
         additions: 49
         deletions: 0
         filesChanged: 3
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - .github/workflows/azure-static-web-apps.yml
+          - scripts/prepare-swa-workspace-deps.mjs
       - sha: 7fb2876758dd2d78b325927a2756c02056c521a7
         message: "fix(build): trace SWA workspace deps"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7fb2876758dd2d78b325927a2756c02056c521a7
@@ -160,6 +239,8 @@ commitMessages:
         additions: 17
         deletions: 0
         filesChanged: 1
+        files:
+          - scripts/prepare-swa-workspace-deps.mjs
       - sha: 7f30274303e217cc1307777d797591baa85b24fb
         message: "fix(build): prebuild pricing for SWA"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7f30274303e217cc1307777d797591baa85b24fb
@@ -167,6 +248,9 @@ commitMessages:
         additions: 5
         deletions: 2
         filesChanged: 2
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - .github/workflows/azure-static-web-apps.yml
       - sha: 80596d747626634082c17d2915e8a1451e053914
         message: "fix(build): rewrite generated SWA deps"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/80596d747626634082c17d2915e8a1451e053914
@@ -174,6 +258,10 @@ commitMessages:
         additions: 28
         deletions: 6
         filesChanged: 3
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - .github/workflows/azure-static-web-apps.yml
+          - scripts/prepare-swa-workspace-deps.mjs
       - sha: 472af6d5a43444d806e45cee7f23cfbe513ad3d8
         message: "fix(build): rewrite nested SWA deps"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/472af6d5a43444d806e45cee7f23cfbe513ad3d8
@@ -181,6 +269,8 @@ commitMessages:
         additions: 1
         deletions: 1
         filesChanged: 1
+        files:
+          - scripts/prepare-swa-workspace-deps.mjs
       - sha: b0db1ecf037fd1ad64859c1907d3feb1e3242f5e
         message: "fix(build): disable npm workspaces for SWA"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b0db1ecf037fd1ad64859c1907d3feb1e3242f5e
@@ -188,6 +278,9 @@ commitMessages:
         additions: 4
         deletions: 0
         filesChanged: 2
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - .github/workflows/azure-static-web-apps.yml
       - sha: 420135f98364f01b8593184d062204865ce16250
         message: "fix(build): rewrite all SWA workspace deps"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/420135f98364f01b8593184d062204865ce16250
@@ -195,6 +288,10 @@ commitMessages:
         additions: 16
         deletions: 14
         filesChanged: 3
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - .github/workflows/azure-static-web-apps.yml
+          - scripts/prepare-swa-workspace-deps.mjs
       - sha: 9e89e8a4539b04429af5fcb3af76ea12888f96cb
         message: "fix(build): remove Bun artifacts before SWA"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/9e89e8a4539b04429af5fcb3af76ea12888f96cb
@@ -202,6 +299,9 @@ commitMessages:
         additions: 5
         deletions: 0
         filesChanged: 2
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - .github/workflows/azure-static-web-apps.yml
       - sha: 73982b44f6b9c16b2b4a2334cf3f06d36c659995
         message: "fix(build): initialize pricing runtime storage"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/73982b44f6b9c16b2b4a2334cf3f06d36c659995
@@ -209,6 +309,12 @@ commitMessages:
         additions: 26
         deletions: 3
         filesChanged: 5
+        files:
+          - packages/audit/src/index.ts
+          - packages/audit/src/paths.ts
+          - packages/db/src/paths.ts
+          - packages/db/src/pricing.ts
+          - pricing/src/lib/blob-storage.ts
       - sha: 10a41aadd3257835e57bc5114a0a219c3e17903b
         message: "fix(build): remove SWA config for pricing hybrid"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/10a41aadd3257835e57bc5114a0a219c3e17903b
@@ -216,6 +322,9 @@ commitMessages:
         additions: 5
         deletions: 0
         filesChanged: 2
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - .github/workflows/azure-static-web-apps.yml
       - sha: d927fe04c11c1deea1cf3bee6e3f4fcfc048bd53
         message: "fix(build): use pricing standalone output"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d927fe04c11c1deea1cf3bee6e3f4fcfc048bd53
@@ -223,6 +332,10 @@ commitMessages:
         additions: 19
         deletions: 2
         filesChanged: 3
+        files:
+          - pricing/next.config.ts
+          - pricing/package.json
+          - pricing/scripts/copy-standalone-assets.mjs
       - sha: 3b81a64f126384b8a6a5af67871928133cfef6c4
         message: "fix(build): add pricing SWA health probe"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3b81a64f126384b8a6a5af67871928133cfef6c4
@@ -230,6 +343,8 @@ commitMessages:
         additions: 1
         deletions: 0
         filesChanged: 1
+        files:
+          - pricing/public/.swa/health.html
       - sha: bee36b0e4773a2b5b9e2891ce35074a776d2a601
         message: "fix(build): keep pricing hybrid SWA config"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/bee36b0e4773a2b5b9e2891ce35074a776d2a601
@@ -237,6 +352,9 @@ commitMessages:
         additions: 4
         deletions: 4
         filesChanged: 2
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - .github/workflows/azure-static-web-apps.yml
       - sha: ff0cf5da8f0188088e86e676e4cdab34802020c8
         message: "fix(build): quote pricing hybrid config"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ff0cf5da8f0188088e86e676e4cdab34802020c8
@@ -244,6 +362,9 @@ commitMessages:
         additions: 4
         deletions: 2
         filesChanged: 2
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - .github/workflows/azure-static-web-apps.yml
       - sha: 5d1e12cc8c7e88bc46dda6f71435003fc2a95cd4
         message: "fix(build): avoid pricing startup env gaps"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/5d1e12cc8c7e88bc46dda6f71435003fc2a95cd4
@@ -251,6 +372,10 @@ commitMessages:
         additions: 7
         deletions: 3
         filesChanged: 3
+        files:
+          - packages/auth/src/index.ts
+          - packages/auth/src/next.ts
+          - pricing/src/app/layout.tsx
       - sha: a7c92f9f294f1ebfbe2c6d679639973ba3cfbbb8
         message: "fix(build): shim pricing standalone server"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a7c92f9f294f1ebfbe2c6d679639973ba3cfbbb8
@@ -258,6 +383,8 @@ commitMessages:
         additions: 17
         deletions: 5
         filesChanged: 1
+        files:
+          - pricing/scripts/copy-standalone-assets.mjs
       - sha: 8829b5347868152e0085ac38576740e595793951
         message: "fix(build): inspect pricing standalone output"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8829b5347868152e0085ac38576740e595793951
@@ -265,6 +392,8 @@ commitMessages:
         additions: 9
         deletions: 0
         filesChanged: 1
+        files:
+          - .github/workflows/azure-static-web-apps.yml
       - sha: 495096d2c777e8ad55d1c3a6a604ee9afe13b84c
         message: "fix(build): load pricing standalone server sync"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/495096d2c777e8ad55d1c3a6a604ee9afe13b84c
@@ -272,6 +401,9 @@ commitMessages:
         additions: 1
         deletions: 10
         filesChanged: 2
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - pricing/scripts/copy-standalone-assets.mjs
       - sha: f6b9fe8ac12ea9208d89bddf5ac6e6ae3a058e11
         message: "fix(build): inspect pricing standalone size"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f6b9fe8ac12ea9208d89bddf5ac6e6ae3a058e11
@@ -279,6 +411,8 @@ commitMessages:
         additions: 9
         deletions: 0
         filesChanged: 1
+        files:
+          - .github/workflows/azure-static-web-apps.yml
       - sha: 8a4e97cbb552662117e2d7c86d0c256c3725a99e
         message: "fix(build): make pricing standalone self-start"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8a4e97cbb552662117e2d7c86d0c256c3725a99e
@@ -286,6 +420,9 @@ commitMessages:
         additions: 21
         deletions: 10
         filesChanged: 2
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - pricing/scripts/copy-standalone-assets.mjs
       - sha: 4e721001c5d6d117f92e194f6e5a22c6afa3f6d2
         message: "fix(build): smoke pricing standalone server"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4e721001c5d6d117f92e194f6e5a22c6afa3f6d2
@@ -293,6 +430,8 @@ commitMessages:
         additions: 16
         deletions: 0
         filesChanged: 1
+        files:
+          - .github/workflows/azure-static-web-apps.yml
       - sha: 2949205330b63749d10d5ce60fa9f1b169e22973
         message: "fix(build): copy pricing standalone assets at root"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2949205330b63749d10d5ce60fa9f1b169e22973
@@ -300,6 +439,8 @@ commitMessages:
         additions: 2
         deletions: 1
         filesChanged: 1
+        files:
+          - pricing/scripts/copy-standalone-assets.mjs
       - sha: 658402d80c9eef13781703d9f862dbfe624035b1
         message: "fix(build): deploy pricing static output"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/658402d80c9eef13781703d9f862dbfe624035b1
@@ -307,6 +448,9 @@ commitMessages:
         additions: 4
         deletions: 38
         filesChanged: 2
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - .github/workflows/azure-static-web-apps.yml
       - sha: bec3e2fe1f2a1a94cb12a6655d3d015ec613c8ab
         message: "fix(build): remove pricing dynamic export flags"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/bec3e2fe1f2a1a94cb12a6655d3d015ec613c8ab
@@ -314,6 +458,25 @@ commitMessages:
         additions: 0
         deletions: 30
         filesChanged: 18
+        files:
+          - pricing/src/app/api/auth/login/route.ts
+          - pricing/src/app/api/health/route.ts
+          - pricing/src/app/api/pricing/recruits/[id]/archive/route.ts
+          - pricing/src/app/api/pricing/recruits/[id]/duplicate/route.ts
+          - pricing/src/app/api/pricing/recruits/[id]/model/route.ts
+          - pricing/src/app/api/pricing/recruits/[id]/pdf-preview/route.ts
+          - pricing/src/app/api/pricing/recruits/[id]/reports/route.ts
+          - pricing/src/app/api/pricing/recruits/[id]/route.ts
+          - pricing/src/app/api/pricing/recruits/route.ts
+          - pricing/src/app/api/pricing/reports/[reportId]/pdf/route.ts
+          - pricing/src/app/api/pricing/reports/[reportId]/workbook-preview/route.ts
+          - pricing/src/app/api/pricing/reports/[reportId]/xlsx/route.ts
+          - pricing/src/app/layout.tsx
+          - pricing/src/app/page.tsx
+          - pricing/src/app/recruits/[id]/model/page.tsx
+          - pricing/src/app/recruits/[id]/page.tsx
+          - pricing/src/app/recruits/page.tsx
+          - pricing/src/app/settings/page.tsx
       - sha: 6280aac42f730218b9ecd64537ced310764dc6b2
         message: "fix(pricing): deploy serverless static app"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6280aac42f730218b9ecd64537ced310764dc6b2
@@ -321,6 +484,67 @@ commitMessages:
         additions: 2160
         deletions: 1641
         filesChanged: 60
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - .github/workflows/azure-static-web-apps.yml
+          - pricing/.env.example
+          - pricing/functions/local.settings.json.example
+          - pricing/functions/package.json
+          - pricing/functions/src/index.ts
+          - pricing/src/app/actions.ts
+          - pricing/src/app/api/auth/[...nextauth]/route.ts
+          - pricing/src/app/api/auth/login/route.ts
+          - pricing/src/app/api/health/route.ts
+          - pricing/src/app/api/pricing/recruits/[id]/archive/route.ts
+          - pricing/src/app/api/pricing/recruits/[id]/duplicate/route.ts
+          - pricing/src/app/api/pricing/recruits/[id]/model/route.ts
+          - pricing/src/app/api/pricing/recruits/[id]/pdf-preview/__tests__/route.test.ts
+          - pricing/src/app/api/pricing/recruits/[id]/pdf-preview/route.ts
+          - pricing/src/app/api/pricing/recruits/[id]/reports/route.ts
+          - pricing/src/app/api/pricing/recruits/[id]/route.ts
+          - pricing/src/app/api/pricing/recruits/route.ts
+          - pricing/src/app/api/pricing/reports/[reportId]/pdf/__tests__/route.test.ts
+          - pricing/src/app/api/pricing/reports/[reportId]/pdf/route.ts
+          - pricing/src/app/api/pricing/reports/[reportId]/workbook-preview/route.ts
+          - pricing/src/app/api/pricing/reports/[reportId]/xlsx/__tests__/route.test.ts
+          - pricing/src/app/api/pricing/reports/[reportId]/xlsx/route.ts
+          - pricing/src/app/layout.tsx
+          - pricing/src/app/login/page.tsx
+          - pricing/src/app/logout/route.ts
+          - pricing/src/app/page.tsx
+          - pricing/src/app/recruits/[id]/model/page.tsx
+          - pricing/src/app/recruits/[id]/page.tsx
+          - pricing/src/app/recruits/detail/page.tsx
+          - pricing/src/app/recruits/model/page.tsx
+          - pricing/src/app/recruits/new/page.tsx
+          - pricing/src/app/recruits/page.tsx
+          - pricing/src/app/settings/page.tsx
+          - pricing/src/components/__tests__/archive-recruit-form.test.tsx
+          - pricing/src/components/__tests__/pricing-workstation-client.test.tsx
+          - pricing/src/components/__tests__/recruit-archive-section.test.tsx
+          - pricing/src/components/__tests__/recruit-detail-panels.test.tsx
+          - pricing/src/components/__tests__/recruit-row-actions.test.tsx
+          - pricing/src/components/archive-recruit-form.tsx
+          - pricing/src/components/dashboard-recruits-panel.tsx
+          - pricing/src/components/generate-report-form.tsx
+          - pricing/src/components/new-recruit-wizard.tsx
+          - pricing/src/components/pricing-static-pages.tsx
+          - pricing/src/components/pricing-workstation-client.tsx
+          - pricing/src/components/recruit-archive-section.tsx
+          - pricing/src/components/recruit-data-cell.tsx
+          - pricing/src/components/recruit-detail-hero.tsx
+          - pricing/src/components/recruit-detail-panels.tsx
+          - pricing/src/components/recruit-detail-scenario-view.tsx
+          - pricing/src/components/recruit-form.tsx
+          - pricing/src/components/recruit-row-actions.tsx
+          - pricing/src/components/report-artifact-viewer.tsx
+          - pricing/src/components/workbook-report-viewer.tsx
+          - pricing/src/lib/blob-storage.ts
+          - pricing/src/lib/data.ts
+          - pricing/src/lib/graph-data.ts
+          - pricing/src/lib/graph.ts
+          - pricing/src/lib/pricing-api-client.ts
+          - pricing/staticwebapp.config.json
       - sha: 64c2682da05f6b40ecfa44b5ed369dc8a8aae917
         message: "fix(build): send graph blob body as blob"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/64c2682da05f6b40ecfa44b5ed369dc8a8aae917
@@ -328,6 +552,8 @@ commitMessages:
         additions: 1
         deletions: 1
         filesChanged: 1
+        files:
+          - pricing/src/lib/blob-storage.ts
       - sha: 230efc64bd31053b765ea7793422b0a2318d135c
         message: "fix(build): send graph blob body as array buffer"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/230efc64bd31053b765ea7793422b0a2318d135c
@@ -335,6 +561,8 @@ commitMessages:
         additions: 7
         deletions: 1
         filesChanged: 1
+        files:
+          - pricing/src/lib/blob-storage.ts
       - sha: c8e36e09af8303202067f46eb11e3248abbdd28d
         message: "fix(build): remove legacy dynamic recruit routes"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c8e36e09af8303202067f46eb11e3248abbdd28d
@@ -342,6 +570,9 @@ commitMessages:
         additions: 0
         deletions: 18
         filesChanged: 2
+        files:
+          - pricing/src/app/recruits/[id]/model/page.tsx
+          - pricing/src/app/recruits/[id]/page.tsx
       - sha: d95b3babcf06de0b434e707e4ff832c6164025a8
         message: "fix(ci): verify pricing static web app live"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d95b3babcf06de0b434e707e4ff832c6164025a8
@@ -349,6 +580,9 @@ commitMessages:
         additions: 22
         deletions: 0
         filesChanged: 2
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - .github/workflows/azure-static-web-apps.yml
       - sha: fe90b34c8e39cafcbfa3a9b43307772eec40f410
         message: "fix(build): emit directory static pricing pages"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/fe90b34c8e39cafcbfa3a9b43307772eec40f410
@@ -356,6 +590,11 @@ commitMessages:
         additions: 7
         deletions: 2
         filesChanged: 4
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - .github/workflows/azure-static-web-apps.yml
+          - pricing/next.config.ts
+          - pricing/staticwebapp.config.json
       - sha: 592c604c76f130e161bd4ea2fc40e52329fdf09c
         message: "fix(ci): retry pricing live probe"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/592c604c76f130e161bd4ea2fc40e52329fdf09c
@@ -363,6 +602,9 @@ commitMessages:
         additions: 4
         deletions: 4
         filesChanged: 2
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - .github/workflows/azure-static-web-apps.yml
       - sha: a30bd5978765099bcd925113fed630d950aa07ed
         message: "fix(routing): rewrite pricing static pages"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a30bd5978765099bcd925113fed630d950aa07ed
@@ -370,6 +612,8 @@ commitMessages:
         additions: 52
         deletions: 0
         filesChanged: 1
+        files:
+          - pricing/staticwebapp.config.json
       - sha: fc4d8552f4db2cd39241b8c7a2597b0e20e7ca48
         message: "fix(routing): remove duplicate pricing routes"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/fc4d8552f4db2cd39241b8c7a2597b0e20e7ca48
@@ -377,6 +621,8 @@ commitMessages:
         additions: 0
         deletions: 25
         filesChanged: 1
+        files:
+          - pricing/staticwebapp.config.json
       - sha: 93cbb6bdbd6397e24a2b9001b8f7a76a597b8527
         message: "fix(ci): report pricing live probe status"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/93cbb6bdbd6397e24a2b9001b8f7a76a597b8527
@@ -384,6 +630,9 @@ commitMessages:
         additions: 34
         deletions: 4
         filesChanged: 2
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - .github/workflows/azure-static-web-apps.yml
       - sha: f13c060fe7f9f37209c5a8b3a45c546e7b2dd82c
         message: "fix(ci): print pricing probe status"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f13c060fe7f9f37209c5a8b3a45c546e7b2dd82c
@@ -391,6 +640,9 @@ commitMessages:
         additions: 20
         deletions: 18
         filesChanged: 2
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - .github/workflows/azure-static-web-apps.yml
       - sha: cff4ab598a93be780f334625504fc9483eb5460f
         message: "fix(function): use supported swa node runtime"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cff4ab598a93be780f334625504fc9483eb5460f
@@ -398,6 +650,10 @@ commitMessages:
         additions: 3
         deletions: 1
         filesChanged: 3
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - .github/workflows/azure-static-web-apps.yml
+          - pricing/staticwebapp.config.json
       - sha: d177734ef838612600994348a954bdc8b93a6ad3
         message: "fix(function): bundle pricing functions runtime"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d177734ef838612600994348a954bdc8b93a6ad3
@@ -405,6 +661,9 @@ commitMessages:
         additions: 2
         deletions: 2
         filesChanged: 2
+        files:
+          - pricing/functions/package.json
+          - pricing/staticwebapp.config.json
       - sha: ad8525792cf8fb8f3ca9a57d1034b1d75c3f5721
         message: "fix(function): stage pricing api dependencies"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ad8525792cf8fb8f3ca9a57d1034b1d75c3f5721
@@ -412,6 +671,11 @@ commitMessages:
         additions: 15
         deletions: 3
         filesChanged: 4
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - .github/workflows/azure-static-web-apps.yml
+          - .gitignore
+          - pricing/functions/package.json
       - sha: 48b42af03dd4071f0616e3a46ff20cc529a301e4
         message: "fix(function): use swa api route prefix"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/48b42af03dd4071f0616e3a46ff20cc529a301e4
@@ -419,6 +683,8 @@ commitMessages:
         additions: 1
         deletions: 1
         filesChanged: 1
+        files:
+          - pricing/functions/host.json
       - sha: ef901b9e0989193f4226a109038ad31ebe17568f
         message: "fix(ci): use managed pricing api path"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ef901b9e0989193f4226a109038ad31ebe17568f
@@ -426,6 +692,11 @@ commitMessages:
         additions: 6
         deletions: 6
         filesChanged: 4
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - .github/workflows/azure-static-web-apps.yml
+          - pricing/functions/host.json
+          - pricing/staticwebapp.config.json
       - sha: fc456ecb6b2bb3da15264641609434e5c76310f1
         message: "fix(routing): stop intercepting pricing api"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/fc456ecb6b2bb3da15264641609434e5c76310f1
@@ -433,6 +704,8 @@ commitMessages:
         additions: 0
         deletions: 4
         filesChanged: 1
+        files:
+          - pricing/staticwebapp.config.json
       - sha: 8c1e5af2e35d8b71e977241abc01e4171d521923
         message: "fix(ci): verify pricing health json"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8c1e5af2e35d8b71e977241abc01e4171d521923
@@ -440,6 +713,10 @@ commitMessages:
         additions: 5
         deletions: 1
         filesChanged: 3
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - .github/workflows/azure-static-web-apps.yml
+          - pricing/staticwebapp.config.json
       - sha: 8d24099055adc6eeb8c1e0ea0682ef55c749bd19
         message: "fix(routing): narrow pricing auth routes"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8d24099055adc6eeb8c1e0ea0682ef55c749bd19
@@ -447,6 +724,8 @@ commitMessages:
         additions: 14
         deletions: 1
         filesChanged: 1
+        files:
+          - pricing/staticwebapp.config.json
       - sha: 71b487eae5deb3645b7440d0cfb8777b7a682a43
         message: "fix(routing): use managed api paths"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/71b487eae5deb3645b7440d0cfb8777b7a682a43
@@ -454,6 +733,10 @@ commitMessages:
         additions: 3
         deletions: 5
         filesChanged: 3
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - .github/workflows/azure-static-web-apps.yml
+          - pricing/staticwebapp.config.json
       - sha: 57b1f14ba7ad0b9d8cc2aa93676070a8bca51fa7
         message: "fix(function): emit pricing api commonjs"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/57b1f14ba7ad0b9d8cc2aa93676070a8bca51fa7
@@ -461,6 +744,8 @@ commitMessages:
         additions: 2
         deletions: 2
         filesChanged: 1
+        files:
+          - pricing/functions/package.json
       - sha: 034faafc0cc6f0bb41949ad805fc4a7b91b6ca7d
         message: "fix(function): avoid sqlite in pricing api"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/034faafc0cc6f0bb41949ad805fc4a7b91b6ca7d
@@ -468,6 +753,10 @@ commitMessages:
         additions: 80
         deletions: 45
         filesChanged: 3
+        files:
+          - pricing/functions/src/index.ts
+          - pricing/src/lib/report-storage.ts
+          - pricing/src/lib/reports.ts
       - sha: dba38c8b3b17e3d7b1c31eb263844ef7d2492287
         message: "fix(ci): validate pricing function artifact"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/dba38c8b3b17e3d7b1c31eb263844ef7d2492287
@@ -475,6 +764,9 @@ commitMessages:
         additions: 13
         deletions: 0
         filesChanged: 2
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - .github/workflows/azure-static-web-apps.yml
       - sha: 60bb03a858823582c19561bcd09b51be7ae039ec
         message: "fix(ci): stage azure function deps"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/60bb03a858823582c19561bcd09b51be7ae039ec
@@ -482,6 +774,9 @@ commitMessages:
         additions: 12
         deletions: 2
         filesChanged: 2
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - .github/workflows/azure-static-web-apps.yml
 releases: []
 externalContributions: []
 codeReviews: []
@@ -578,6 +873,5 @@ hoursEstimate:
   volumeHours: 13
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

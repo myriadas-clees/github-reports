@@ -44,11 +44,9 @@ repositories:
 pullRequests:
   - title: "fix(hub): keep bun:sqlite out of managed SWA Functions bundle"
     body: >-
-      - Hub deploy after #75 reported success but every `/api/*/health` probe returned 404 because the managed Functions
-      worker crashed on load.
+      - Hub deploy after #75 reported success but every `/api/*/health` probe returned 404 because the managed Functions worker crashed on load.
 
-      - Cause: onboarding `managed-swa.js` embedded `import … from "bun:sqlite"` via the VM SQLite/`cli-client` graph;
-      Azure Functions runs Node and cannot resolve `bu...
+      - Cause: onboarding `managed-swa.js` embedded `import … from "bun:sqlite"` via the VM SQLite/`cli-client` graph; Azure Functions runs Node and cannot resolve `bu...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/77
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: merged
@@ -69,6 +67,12 @@ pullRequests:
         message: "fix(hub): keep bun:sqlite out of managed SWA Functions bundle"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/57921d07d1047e466f1d8d227a09dc40e3aa5651
         authoredAt: 2026-08-07T17:49:05Z
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - packages/db/src/cli-client.ts
+          - packages/db/src/vm-runtime.ts
+          - packages/db/src/vm-sqlite.ts
+          - scripts/tooling.test.ts
     workTimestamps:
       - 2026-08-07T17:49:05Z
     workAdditions: 33
@@ -111,11 +115,37 @@ pullRequests:
         message: Configure scoped Codex agents
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/17627f033cf4a7472fe669cc9d445b947814cab5
         authoredAt: 2026-08-07T17:54:17Z
+        files:
+          - .codex/agents/docs.toml
+          - .codex/agents/excelerate.toml
+          - .codex/agents/hub.toml
+          - .codex/agents/infra.toml
+          - .codex/agents/onboarding.toml
+          - .codex/agents/packages.toml
+          - .codex/agents/pricing.toml
+          - .codex/agents/pto-tracker.toml
+          - .codex/agents/valuation.toml
+          - .codex/config.toml
+          - AGENTS.md
+          - docs/AGENTS.md
+          - excelerate/AGENTS.md
+          - hub/AGENTS.md
+          - infra/AGENTS.md
+          - onboarding/AGENTS.md
+          - packages/AGENTS.md
+          - pricing/AGENTS.md
+          - pto-tracker/AGENTS.md
+          - scripts/AGENTS.md
+          - valuation/AGENTS.md
       - &a21
         sha: 22bea2562cbd4c20309899d072842ddd170e889c
         message: "chore(agents): add scripts subtree agent configuration"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/22bea2562cbd4c20309899d072842ddd170e889c
         authoredAt: 2026-08-07T18:11:49Z
+        files:
+          - .codex/agents/scripts.toml
+          - .codex/config.toml
+          - AGENTS.md
     workTimestamps:
       - 2026-08-07T17:54:17Z
       - 2026-08-07T18:11:49Z
@@ -146,8 +176,7 @@ pullRequests:
       - valuation/AGENTS.md
   - title: "chore: trim stale documentation and dead artifact"
     body: >-
-      - trim superseded implementation planning from the vendor-management discovery record while retaining source
-      provenance and architectural decisions
+      - trim superseded implementation planning from the vendor-management discovery record while retaining source provenance and architectural decisions
 
       - correct the PTO documentation index now that the application is implemented
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/80
@@ -171,11 +200,17 @@ pullRequests:
         message: "chore: trim stale documentation and dead artifact"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/55e7da4f0a2d85115cc9501811dde0a6d4804ad8
         authoredAt: 2026-08-07T19:30:26Z
+        files:
+          - docs/vendor-management-discovery.md
+          - hub/functions/dist-entry.js
+          - pto-tracker/docs/README.md
       - &a24
         sha: e0b9ca7ec61324d8b0834b8dc9097e16a160dddb
         message: "fix: restore unified Functions entrypoint"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e0b9ca7ec61324d8b0834b8dc9097e16a160dddb
         authoredAt: 2026-08-07T19:34:22Z
+        files:
+          - hub/functions/dist-entry.js
     workTimestamps: &a3
       - 2026-08-07T19:30:26Z
       - 2026-08-07T19:34:22Z
@@ -209,11 +244,18 @@ pullRequests:
         message: "docs(agents): require explorer and worker delegation"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/fe2ea3ea23c091c6a85ff7bdbbf5e8534b3fcea4
         authoredAt: 2026-08-07T19:28:50Z
+        files:
+          - AGENTS.md
       - &a25
         sha: e9cf242b93933ad88cc9bb6627262825bb8b61c4
         message: "fix(agents): register explorer and worker profiles"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e9cf242b93933ad88cc9bb6627262825bb8b61c4
         authoredAt: 2026-08-07T19:45:58Z
+        files:
+          - .codex/agents/explorer.toml
+          - .codex/agents/worker.toml
+          - .codex/config.toml
+          - AGENTS.md
     workTimestamps: &a7
       - 2026-08-07T19:28:50Z
       - 2026-08-07T19:45:58Z
@@ -229,8 +271,7 @@ pullRequests:
       ## Why
 
 
-      Onboarding needs a complete vendor-management workflow for intake, due diligence, contract review, approvals,
-      documents, lifecycle tracking, and follow-ups while preserving the existing client workstream experience.
+      Onboarding needs a complete vendor-management workflow for intake, due diligence, contract review, approvals, documents, lifecycle tracking, and follow-ups while preserving the existing client workstream experience.
 
 
       ## What changed
@@ -265,6 +306,15 @@ pullRequests:
         message: Refine vendor intake UX and consolidate repository guidance
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9a0f69befcf71f90d392bfab9239b54658c02ed3
         authoredAt: 2026-08-07T15:50:00Z
+        files:
+          - AGENTS.md
+          - onboarding/AGENTS.md
+          - onboarding/apps/dashboard/app/vendors/intake/page.tsx
+          - onboarding/apps/dashboard/components/task-detail-form.tsx
+          - onboarding/apps/dashboard/components/task-detail-header.tsx
+          - onboarding/apps/dashboard/components/vm/vm-shared.tsx
+          - onboarding/apps/dashboard/lib/api/vm-client.ts
+          - pto-tracker/AGENTS.md
       - &a15
         sha: 4ddc59efac660abf6440f66f2dd712172c794fd7
         message: "feat(onboarding): strengthen vendor management workflows"
@@ -275,6 +325,14 @@ pullRequests:
         message: "fix(vendor-management): enforce derived vendor statuses"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ccc9c7c015ea85513efd179cbc1322d77ac80780
         authoredAt: 2026-08-07T16:28:36Z
+        files:
+          - onboarding/apps/dashboard/app/vendors/assessment/page.tsx
+          - onboarding/apps/dashboard/app/vendors/intake/page.tsx
+          - onboarding/apps/dashboard/components/vm/vendor-360.tsx
+          - onboarding/apps/dashboard/lib/api/vm-handlers.ts
+          - packages/contracts/src/vendor-management.ts
+          - packages/db/src/vm-runtime.ts
+          - packages/db/src/vm-sqlite.test.ts
       - &a17
         sha: bb04d0060e99d23ce07b52538e527fb65b902098
         message: "feat(onboarding): harden vendor monitoring workflows"
@@ -356,11 +414,9 @@ pullRequests:
       - pto-tracker/AGENTS.md
   - title: Add scoped Codex subtree agents and AGENTS.md guidance
     body: >-
-      - Add `.codex/config.toml` with multi-agent support and subtree-scoped write permissions (`docs-write`,
-      `hub-write`, `ofac-write`, `packages-write`, `pricing-write`, `scripts-write`)
+      - Add `.codex/config.toml` with multi-agent support and subtree-scoped write permissions (`docs-write`, `hub-write`, `ofac-write`, `packages-write`, `pricing-write`, `scripts-write`)
 
-      - Define six scoped Codex agents in `.codex/agents/` for `docs/`, `hub/`, `ofac/`, `packages/`, `pricing/`, and
-      `scri...
+      - Define six scoped Codex agents in `.codex/agents/` for `docs/`, `hub/`, `ofac/`, `packages/`, `pricing/`, and `scri...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/108
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
@@ -401,8 +457,7 @@ pullRequests:
 prsInProgress:
   - title: "chore: trim stale documentation and dead artifact"
     body: >-
-      - trim superseded implementation planning from the vendor-management discovery record while retaining source
-      provenance and architectural decisions
+      - trim superseded implementation planning from the vendor-management discovery record while retaining source provenance and architectural decisions
 
       - correct the PTO documentation index now that the application is implemented
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/80
@@ -422,6 +477,9 @@ prsInProgress:
     workAdditions: 13
     workDeletions: 59
     workFiles: *a4
+    allocationFiles:
+      - docs/vendor-management-discovery.md
+      - pto-tracker/docs/README.md
   - title: "docs(agents): require explorer and worker delegation"
     body: |-
       - require a concurrent Luna-high explorer and Terra-high worker for repository tasks
@@ -444,13 +502,16 @@ prsInProgress:
     workAdditions: 53
     workDeletions: 1
     workFiles: *a8
+    allocationFiles:
+      - .codex/agents/explorer.toml
+      - .codex/agents/worker.toml
+      - .codex/config.toml
+      - AGENTS.md
   - title: Add scoped Codex subtree agents and AGENTS.md guidance
     body: >-
-      - Add `.codex/config.toml` with multi-agent support and subtree-scoped write permissions (`docs-write`,
-      `hub-write`, `ofac-write`, `packages-write`, `pricing-write`, `scripts-write`)
+      - Add `.codex/config.toml` with multi-agent support and subtree-scoped write permissions (`docs-write`, `hub-write`, `ofac-write`, `packages-write`, `pricing-write`, `scripts-write`)
 
-      - Define six scoped Codex agents in `.codex/agents/` for `docs/`, `hub/`, `ofac/`, `packages/`, `pricing/`, and
-      `scri...
+      - Define six scoped Codex agents in `.codex/agents/` for `docs/`, `hub/`, `ofac/`, `packages/`, `pricing/`, and `scri...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/108
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: merged
@@ -468,6 +529,23 @@ prsInProgress:
     workAdditions: 177
     workDeletions: 0
     workFiles: *a12
+    allocationFiles:
+      - .codex/agents/docs.toml
+      - .codex/agents/explorer.toml
+      - .codex/agents/hub.toml
+      - .codex/agents/ofac.toml
+      - .codex/agents/packages.toml
+      - .codex/agents/pricing.toml
+      - .codex/agents/scripts.toml
+      - .codex/agents/worker.toml
+      - .codex/config.toml
+      - AGENTS.md
+      - docs/AGENTS.md
+      - hub/AGENTS.md
+      - ofac/AGENTS.md
+      - packages/AGENTS.md
+      - pricing/AGENTS.md
+      - scripts/AGENTS.md
 issues: []
 events: []
 commitMessages:
@@ -503,6 +581,91 @@ commitMessages:
         additions: 12510
         deletions: 387
         filesChanged: 84
+        files:
+          - AGENTS.md
+          - docs/deploy-asap.md
+          - docs/production-readiness-progress.md
+          - hub/staticwebapp.config.json
+          - onboarding/AGENTS.md
+          - onboarding/apps/dashboard/.env.example
+          - onboarding/apps/dashboard/app/api/vm/[...path]/route.ts
+          - onboarding/apps/dashboard/app/approvals/page.tsx
+          - onboarding/apps/dashboard/app/blockers/page.tsx
+          - onboarding/apps/dashboard/app/documents/page.tsx
+          - onboarding/apps/dashboard/app/due-dates/page.tsx
+          - onboarding/apps/dashboard/app/globals.css
+          - onboarding/apps/dashboard/app/layout.tsx
+          - onboarding/apps/dashboard/app/owners/page.tsx
+          - onboarding/apps/dashboard/app/page.tsx
+          - onboarding/apps/dashboard/app/settings/page.tsx
+          - onboarding/apps/dashboard/app/tasks/page.tsx
+          - onboarding/apps/dashboard/app/vendors/approvals/page.tsx
+          - onboarding/apps/dashboard/app/vendors/assessment/page.tsx
+          - onboarding/apps/dashboard/app/vendors/blockers/page.tsx
+          - onboarding/apps/dashboard/app/vendors/contract/page.tsx
+          - onboarding/apps/dashboard/app/vendors/documents/page.tsx
+          - onboarding/apps/dashboard/app/vendors/due-dates/page.tsx
+          - onboarding/apps/dashboard/app/vendors/intake/page.tsx
+          - onboarding/apps/dashboard/app/vendors/owners/page.tsx
+          - onboarding/apps/dashboard/app/vendors/page.tsx
+          - onboarding/apps/dashboard/app/vendors/profile/page.tsx
+          - onboarding/apps/dashboard/app/vendors/workstreams/page.tsx
+          - onboarding/apps/dashboard/app/workflows/page.tsx
+          - onboarding/apps/dashboard/components/client-workspace-empty-state.tsx
+          - onboarding/apps/dashboard/components/dashboard-shell.tsx
+          - onboarding/apps/dashboard/components/onboarding-theme-toggle.tsx
+          - onboarding/apps/dashboard/components/task-detail-form.tsx
+          - onboarding/apps/dashboard/components/task-detail-header.tsx
+          - onboarding/apps/dashboard/components/vendor-operations.tsx
+          - onboarding/apps/dashboard/components/vendor-workspace.tsx
+          - onboarding/apps/dashboard/components/vendor-workstreams-empty-state.tsx
+          - onboarding/apps/dashboard/components/vm/intake-decisions.tsx
+          - onboarding/apps/dashboard/components/vm/vendor-360.tsx
+          - onboarding/apps/dashboard/components/vm/vm-shared.tsx
+          - onboarding/apps/dashboard/components/workflow-overview.tsx
+          - onboarding/apps/dashboard/functions/local.settings.json.example
+          - onboarding/apps/dashboard/functions/src/index.ts
+          - onboarding/apps/dashboard/lib/api/client.ts
+          - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.test.ts
+          - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
+          - onboarding/apps/dashboard/lib/api/vm-client.ts
+          - onboarding/apps/dashboard/lib/api/vm-handlers.ts
+          - onboarding/apps/dashboard/lib/api/vm-upload-document.test.ts
+          - onboarding/apps/dashboard/lib/auth.ts
+          - onboarding/apps/dashboard/lib/navigation.ts
+          - onboarding/apps/dashboard/lib/theme.ts
+          - onboarding/apps/dashboard/next.config.ts
+          - onboarding/apps/dashboard/staticwebapp.config.json
+          - onboarding/docs/architecture.md
+          - onboarding/docs/data-model.md
+          - onboarding/docs/sharepoint-vendor-documents-runbook.md
+          - onboarding/docs/vendor-management-spec.md
+          - onboarding/examples/vendor-management/Myriad_Contract_Management_Web_Form.html
+          - onboarding/examples/vendor-management/Myriad_Vendor_Due_Diligence_Web_Form.html
+          - onboarding/examples/vendor-management/Myriad_Vendor_Onboarding_Web_Form.html
+          - onboarding/fixtures/vendor-import.json
+          - onboarding/scripts/import-vendor-list.ts
+          - package.json
+          - packages/contracts/package.json
+          - packages/contracts/src/index.ts
+          - packages/contracts/src/vendor-management.test.ts
+          - packages/contracts/src/vendor-management.ts
+          - packages/db/package.json
+          - packages/db/src/migrate-database.ts
+          - packages/db/src/schema.ts
+          - packages/db/src/vm-cosmos.ts
+          - packages/db/src/vm-runtime.ts
+          - packages/db/src/vm-sqlite.test.ts
+          - packages/db/src/vm-sqlite.ts
+          - packages/db/src/vm-store.ts
+          - packages/sharepoint-mock/src/index.test.ts
+          - packages/sharepoint-mock/src/index.ts
+          - packages/ui/src/navigation/app-nav.tsx
+          - packages/ui/src/navigation/app-shell.tsx
+          - packages/ui/src/navigation/index.ts
+          - packages/ui/src/navigation/types.ts
+          - packages/ui/src/user-menu.tsx
+          - pto-tracker/AGENTS.md
       - *a19
       - *a20
       - sha: 8b77374b14559563742095172c439571aa102fa9
@@ -512,6 +675,12 @@ commitMessages:
         additions: 33
         deletions: 15
         filesChanged: 5
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - packages/db/src/cli-client.ts
+          - packages/db/src/vm-runtime.ts
+          - packages/db/src/vm-sqlite.ts
+          - scripts/tooling.test.ts
       - *a21
       - sha: 774ea85018ccfeaae2b88a902f535fefb33ed40d
         message: "feat(agents): configure scoped Codex agents (#78)"
@@ -520,6 +689,29 @@ commitMessages:
         additions: 353
         deletions: 13
         filesChanged: 22
+        files:
+          - .codex/agents/docs.toml
+          - .codex/agents/excelerate.toml
+          - .codex/agents/hub.toml
+          - .codex/agents/infra.toml
+          - .codex/agents/onboarding.toml
+          - .codex/agents/packages.toml
+          - .codex/agents/pricing.toml
+          - .codex/agents/pto-tracker.toml
+          - .codex/agents/scripts.toml
+          - .codex/agents/valuation.toml
+          - .codex/config.toml
+          - AGENTS.md
+          - docs/AGENTS.md
+          - excelerate/AGENTS.md
+          - hub/AGENTS.md
+          - infra/AGENTS.md
+          - onboarding/AGENTS.md
+          - packages/AGENTS.md
+          - pricing/AGENTS.md
+          - pto-tracker/AGENTS.md
+          - scripts/AGENTS.md
+          - valuation/AGENTS.md
       - *a22
       - *a23
       - *a24
@@ -652,6 +844,5 @@ hoursEstimate:
   volumeHours: 50.1
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

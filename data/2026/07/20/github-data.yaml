@@ -47,15 +47,13 @@ pullRequests:
       ## Why
 
 
-      The monorepo needs one operating model for authentication, audit data, app metadata, verification,
-      distributed-write recovery, and GitHub governance.
+      The monorepo needs one operating model for authentication, audit data, app metadata, verification, distributed-write recovery, and GitHub governance.
 
 
       ## What changed
 
 
-      - Add shared authentication and audit contracts and implementations, preserving app-local role policy and
-      persisted audit fo...
+      - Add shared authentication and audit contracts and implementations, preserving app-local role policy and persisted audit fo...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/31
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: merged
@@ -193,8 +191,7 @@ pullRequests:
     body: >-
       - publish the completed FINET Pricing model work alongside shared product-platform consolidation
 
-      - move OFAC production authentication to Azure Static Web Apps with the intentional SWA Principal bridge into
-      Azure Functions
+      - move OFAC production authentication to Azure Static Web Apps with the intentional SWA Principal bridge into Azure Functions
 
       - add the first authenticated Functions identity endpoint and static-safe OFA...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/58
@@ -258,6 +255,30 @@ commitMessages:
         additions: 814
         deletions: 182
         filesChanged: 23
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - hub/lib/apps.ts
+          - ofac/functions/src/index.ts
+          - ofac/functions/src/ofac-repository.test.ts
+          - ofac/functions/src/ofac-repository.ts
+          - ofac/src/app/api/ofac/me/route.ts
+          - ofac/src/app/api/ofac/overview/route.ts
+          - ofac/src/app/globals.css
+          - ofac/src/app/page.tsx
+          - ofac/src/components/client-intake-form.tsx
+          - ofac/src/lib/__tests__/auth.test.ts
+          - ofac/src/lib/__tests__/client-csv.test.ts
+          - ofac/src/lib/__tests__/ofac-api-client.test.ts
+          - ofac/src/lib/auth.ts
+          - ofac/src/lib/client-csv.ts
+          - ofac/src/lib/ofac-api-client.ts
+          - ofac/src/lib/screening-provider.ts
+          - packages/contracts/src/pricing.ts
+          - pricing/functions/package.json
+          - pricing/functions/src/index.ts
+          - pricing/src/components/__tests__/dashboard-metrics-charts.test.tsx
+          - pricing/src/lib/__tests__/dashboard-summary.test.ts
+          - pricing/src/lib/dashboard-summary.ts
       - sha: 4e589173dd7d3ddfdf562550fe350348ec0efebc
         message: "feat(hub): Unify OHCPWM platform and OFAC"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4e589173dd7d3ddfdf562550fe350348ec0efebc
@@ -265,6 +286,155 @@ commitMessages:
         additions: 7616
         deletions: 2416
         filesChanged: 148
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - .github/workflows/azure-static-web-apps.yml
+          - README.md
+          - bun.lock
+          - docs/azure-serverless-plan.md
+          - docs/deploy-asap.md
+          - docs/ofac-api-demo.md
+          - docs/ofac-api-integration.md
+          - docs/ofac-operations.md
+          - docs/pricing-scenario-rules.md
+          - docs/shared-product-platform.md
+          - docs/superpowers/plans/2026-07-13-ofac-api-demo.md
+          - docs/superpowers/specs/2026-07-13-ofac-api-demo-design.md
+          - docs/superpowers/specs/2026-07-14-ofac-microsoft-login-design.md
+          - hub/app/api/health/route.ts
+          - hub/app/globals.css
+          - hub/app/layout.tsx
+          - hub/app/page.tsx
+          - hub/components/hub-launcher.tsx
+          - hub/functions/dist-entry.js
+          - hub/functions/package.json
+          - hub/functions/src/index.ts
+          - hub/lib/apps.ts
+          - hub/next.config.ts
+          - hub/staticwebapp.config.json
+          - ofac/.env.example
+          - ofac/functions/local.settings.json.example
+          - ofac/functions/src/index.ts
+          - ofac/functions/src/ofac-repository.test.ts
+          - ofac/functions/src/ofac-repository.ts
+          - ofac/next.config.ts
+          - ofac/package.json
+          - ofac/src/app/actions.ts
+          - ofac/src/app/api/auth/[...nextauth]/route.ts
+          - ofac/src/app/api/auth/login/route.ts
+          - ofac/src/app/api/health/route.ts
+          - ofac/src/app/api/ofac/clients/route.ts
+          - ofac/src/app/api/ofac/export/__tests__/route.test.ts
+          - ofac/src/app/api/ofac/export/route.ts
+          - ofac/src/app/api/ofac/me/route.ts
+          - ofac/src/app/api/ofac/overview/route.ts
+          - ofac/src/app/api/ofac/screenings/[id]/decision/route.ts
+          - ofac/src/app/api/ofac/sync/route.ts
+          - ofac/src/app/clients/new/page.tsx
+          - ofac/src/app/globals.css
+          - ofac/src/app/layout.tsx
+          - ofac/src/app/login/page.test.tsx
+          - ofac/src/app/login/page.tsx
+          - ofac/src/app/logout/route.ts
+          - ofac/src/app/page.tsx
+          - ofac/src/app/screenings/[id]/page.tsx
+          - ofac/src/app/screenings/page.tsx
+          - ofac/src/app/search/page.tsx
+          - ofac/src/app/settings/page.tsx
+          - ofac/src/app/sync/page.tsx
+          - ofac/src/components/client-intake-form.tsx
+          - ofac/src/components/ofac-app-shell.tsx
+          - ofac/src/components/ofac-settings-page.tsx
+          - ofac/src/components/ofac-user-menu.tsx
+          - ofac/src/components/screening-detail.tsx
+          - ofac/src/components/screening-filter-form.tsx
+          - ofac/src/lib/__tests__/auth.test.ts
+          - ofac/src/lib/__tests__/client-csv.test.ts
+          - ofac/src/lib/__tests__/ofac-api-client.test.ts
+          - ofac/src/lib/__tests__/screening-provider.test.ts
+          - ofac/src/lib/auth.ts
+          - ofac/src/lib/client-csv.ts
+          - ofac/src/lib/data.ts
+          - ofac/src/lib/ofac-api-client.ts
+          - ofac/src/lib/ofac-auth-routes.ts
+          - ofac/src/lib/ofac-session-client.ts
+          - ofac/src/lib/ofac-theme.ts
+          - ofac/src/lib/screening-presentation.ts
+          - ofac/src/lib/screening-provider.ts
+          - ofac/src/lib/screening-readiness.ts
+          - ofac/src/lib/sync-cli.ts
+          - ofac/staticwebapp.config.json
+          - package.json
+          - packages/audit/src/index.ts
+          - packages/auth/package.json
+          - packages/auth/src/auth.test.ts
+          - packages/auth/src/client.ts
+          - packages/contracts/src/ofac.ts
+          - packages/contracts/src/pricing.test.ts
+          - packages/contracts/src/pricing.ts
+          - packages/db/src/ofac.test.ts
+          - packages/db/src/ofac.ts
+          - packages/db/src/pricing.test.ts
+          - packages/ui/src/brand-logo.tsx
+          - packages/ui/src/form.tsx
+          - packages/ui/src/index.ts
+          - packages/ui/src/navigation/app-shell.tsx
+          - packages/ui/src/settings.tsx
+          - packages/ui/src/styles.css
+          - packages/ui/src/theme-toggle.tsx
+          - packages/ui/src/theme.ts
+          - packages/ui/src/user-menu.tsx
+          - pricing/functions/package.json
+          - pricing/functions/src/index.ts
+          - pricing/next.config.ts
+          - pricing/package.json
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/assumptions-tab.test.tsx
+          - pricing/src/components/__tests__/dashboard-metrics-charts.test.tsx
+          - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+          - pricing/src/components/__tests__/scenario-model-tab.test.tsx
+          - pricing/src/components/assumptions-tab.tsx
+          - pricing/src/components/dashboard-metrics-charts.tsx
+          - pricing/src/components/dashboard-payout-pie.tsx
+          - pricing/src/components/dashboard-trend-chart.tsx
+          - pricing/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+          - pricing/src/components/excel-sheet/workstation-sheet-defs.tsx
+          - pricing/src/components/new-recruit-wizard.tsx
+          - pricing/src/components/pipeline-stage-bar.tsx
+          - pricing/src/components/pricing-app-shell.tsx
+          - pricing/src/components/pricing-static-pages.tsx
+          - pricing/src/components/pricing-theme-toggle.tsx
+          - pricing/src/components/pricing-workstation-client.tsx
+          - pricing/src/components/scenario-model-tab.tsx
+          - pricing/src/components/settings-previews.tsx
+          - pricing/src/lib/__tests__/calculation.test.ts
+          - pricing/src/lib/__tests__/dashboard-charts.test.ts
+          - pricing/src/lib/__tests__/dashboard-summary.test.ts
+          - pricing/src/lib/__tests__/pricing-user-settings.test.ts
+          - pricing/src/lib/__tests__/report-model.test.ts
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/__tests__/workbook-output.test.ts
+          - pricing/src/lib/__tests__/workstation.test.ts
+          - pricing/src/lib/calculation.ts
+          - pricing/src/lib/dashboard-charts.ts
+          - pricing/src/lib/dashboard-summary.ts
+          - pricing/src/lib/edit-view.ts
+          - pricing/src/lib/pricing-api-client.ts
+          - pricing/src/lib/pricing-auth-routes.ts
+          - pricing/src/lib/pricing-session-client.ts
+          - pricing/src/lib/pricing-theme.ts
+          - pricing/src/lib/pricing-user-settings.ts
+          - pricing/src/lib/recruit-routes.ts
+          - pricing/src/lib/report/assets.ts
+          - pricing/src/lib/report/excel.ts
+          - pricing/src/lib/report/model.ts
+          - pricing/src/lib/report/pdf.tsx
+          - pricing/src/lib/workbook-output.ts
+          - pricing/src/lib/workstation.ts
+          - scripts/build-static-next.ts
+          - scripts/compose-static-suite.ts
+          - scripts/dev-pricing-api.ts
+          - scripts/dev.ts
   - repo: Myriad-Advisor-Solutions/myriadas-apps
     messages:
       - "feat: add source-backed planning controls"
@@ -283,6 +453,21 @@ commitMessages:
         additions: 483
         deletions: 9
         filesChanged: 14
+        files:
+          - docs/vendor-management-discovery.md
+          - infra/azure/onboarding/README.md
+          - onboarding/README.md
+          - packages/contracts/src/proforma.ts
+          - packages/db/src/cosmos-migration.test.ts
+          - packages/db/src/cosmos-migration.ts
+          - proforma/README.md
+          - proforma/src/components/scenario-form.test.ts
+          - proforma/src/components/scenario-form.tsx
+          - proforma/src/lib/calculation/proforma-calculation.test.ts
+          - proforma/src/lib/calculation/proforma-calculation.ts
+          - proforma/src/lib/fixtures/sample-scenarios.ts
+          - proforma/src/lib/validation/proforma-validation.test.ts
+          - proforma/src/lib/validation/scenario-form-values.ts
       - sha: b01a65efea1061378bd46b752e027cf71a469a10
         message: "feat(platform): centralize auth and audit"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b01a65efea1061378bd46b752e027cf71a469a10
@@ -290,6 +475,55 @@ commitMessages:
         additions: 891
         deletions: 351
         filesChanged: 48
+        files:
+          - bun.lock
+          - excelerate/functions/package.json
+          - excelerate/package.json
+          - excelerate/src/lib/api/azure-functions-adapter.ts
+          - excelerate/src/lib/auth.ts
+          - hub/lib/auth.ts
+          - hub/package.json
+          - onboarding/apps/dashboard/functions/package.json
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+          - onboarding/apps/dashboard/lib/auth.ts
+          - onboarding/apps/dashboard/package.json
+          - packages/audit/package.json
+          - packages/audit/src/index.test.ts
+          - packages/audit/src/index.ts
+          - packages/audit/tsconfig.json
+          - packages/auth/package.json
+          - packages/auth/src/index.test.ts
+          - packages/auth/src/index.ts
+          - packages/auth/tsconfig.json
+          - packages/contracts/package.json
+          - packages/contracts/src/audit.ts
+          - packages/contracts/src/auth.ts
+          - packages/contracts/src/index.ts
+          - packages/contracts/src/proforma.ts
+          - proforma/functions/package.json
+          - proforma/package.json
+          - proforma/src/lib/api/azure-functions-adapter.ts
+          - proforma/src/lib/api/handlers.test.ts
+          - proforma/src/lib/auth.ts
+          - proforma/src/lib/persistence/cosmos-repository.ts
+          - proforma/src/lib/persistence/repository.test.ts
+          - proforma/src/lib/persistence/repository.ts
+          - pto-tracker/functions/package.json
+          - pto-tracker/package.json
+          - pto-tracker/src/lib/api/azure-functions-adapter.test.ts
+          - pto-tracker/src/lib/api/azure-functions-adapter.ts
+          - pto-tracker/src/lib/audit/index.ts
+          - pto-tracker/src/lib/auth/entra-provider.ts
+          - pto-tracker/src/lib/auth/entra-token-provider.ts
+          - pto-tracker/src/lib/auth/index.ts
+          - pto-tracker/src/lib/store/audit-adapter.test.ts
+          - pto-tracker/src/lib/store/types.ts
+          - valuation/functions/package.json
+          - valuation/package.json
+          - valuation/src/lib/api/azure-functions-adapter.ts
+          - valuation/src/lib/auth.ts
+          - valuation/src/lib/persistence/cosmos-repository.ts
+          - valuation/src/lib/persistence/repository.ts
       - sha: 9b6b273de1b2a173b22f1e3472e2b82afb490dea
         message: "feat(platform): unify app operations"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9b6b273de1b2a173b22f1e3472e2b82afb490dea
@@ -297,6 +531,29 @@ commitMessages:
         additions: 908
         deletions: 455
         filesChanged: 22
+        files:
+          - .github/workflows/azure-static-web-apps-products.yml
+          - .github/workflows/azure-static-web-apps.yml
+          - .github/workflows/verify.yml
+          - .gitignore
+          - README.md
+          - docs/production-readiness-progress.md
+          - onboarding/apps/dashboard/functions/src/index.ts
+          - package.json
+          - packages/db/package.json
+          - packages/db/src/cosmos-queries.ts
+          - packages/db/src/queries.ts
+          - packages/db/src/runtime.ts
+          - packages/db/src/start-date-reconciliation.test.ts
+          - packages/db/src/start-date-reconciliation.ts
+          - scripts/app-command.ts
+          - scripts/app-registry.ts
+          - scripts/build-unified-swa.ts
+          - scripts/dev-apps.ts
+          - scripts/dev.ts
+          - scripts/tooling.test.ts
+          - scripts/validate-artifacts.ts
+          - scripts/workflow-matrix.ts
       - sha: 56c5754aad849095c6977e9627596154da629b3a
         message: "ci(github): add repository operations"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/56c5754aad849095c6977e9627596154da629b3a
@@ -304,6 +561,23 @@ commitMessages:
         additions: 965
         deletions: 0
         filesChanged: 16
+        files:
+          - .github/CODEOWNERS
+          - .github/ISSUE_TEMPLATE/bug.yml
+          - .github/ISSUE_TEMPLATE/config.yml
+          - .github/ISSUE_TEMPLATE/feature.yml
+          - .github/dependabot.yml
+          - .github/labeler.yml
+          - .github/pull_request_template.md
+          - .github/workflows/codeql.yml
+          - .github/workflows/issue-triage.yml
+          - .github/workflows/labeler.yml
+          - SECURITY.md
+          - docs/repository-operations.md
+          - scripts/github/configure-repository.test.ts
+          - scripts/github/configure-repository.ts
+          - scripts/github/triage-issue.test.ts
+          - scripts/github/triage-issue.ts
       - sha: f786a600313593490be973cd1629fa6de0d30045
         message: "ci(codeql): allow workflow reads"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f786a600313593490be973cd1629fa6de0d30045
@@ -311,6 +585,8 @@ commitMessages:
         additions: 1
         deletions: 0
         filesChanged: 1
+        files:
+          - .github/workflows/codeql.yml
       - sha: f9f4cabdacc32762f8e05add6854ab129b9fe99d
         message: "ci(codeql): gate unsupported scanning"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f9f4cabdacc32762f8e05add6854ab129b9fe99d
@@ -318,6 +594,9 @@ commitMessages:
         additions: 5
         deletions: 0
         filesChanged: 2
+        files:
+          - .github/workflows/codeql.yml
+          - docs/repository-operations.md
       - sha: a7e52431b0209f51c3423ced41d7911d221f99c1
         message: "fix(platform): correct health and security reads"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a7e52431b0209f51c3423ced41d7911d221f99c1
@@ -325,6 +604,11 @@ commitMessages:
         additions: 16
         deletions: 3
         filesChanged: 4
+        files:
+          - scripts/app-registry.ts
+          - scripts/github/configure-repository.test.ts
+          - scripts/github/configure-repository.ts
+          - scripts/tooling.test.ts
       - sha: 70f3e9fba74a15885d05ded8137f5f2b9ebfe2c0
         message: "feat(platform): add repository operations"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/70f3e9fba74a15885d05ded8137f5f2b9ebfe2c0
@@ -332,6 +616,93 @@ commitMessages:
         additions: 2783
         deletions: 806
         filesChanged: 86
+        files:
+          - .github/CODEOWNERS
+          - .github/ISSUE_TEMPLATE/bug.yml
+          - .github/ISSUE_TEMPLATE/config.yml
+          - .github/ISSUE_TEMPLATE/feature.yml
+          - .github/dependabot.yml
+          - .github/labeler.yml
+          - .github/pull_request_template.md
+          - .github/workflows/azure-static-web-apps-products.yml
+          - .github/workflows/azure-static-web-apps.yml
+          - .github/workflows/codeql.yml
+          - .github/workflows/issue-triage.yml
+          - .github/workflows/labeler.yml
+          - .github/workflows/verify.yml
+          - .gitignore
+          - README.md
+          - SECURITY.md
+          - bun.lock
+          - docs/production-readiness-progress.md
+          - docs/repository-operations.md
+          - excelerate/functions/package.json
+          - excelerate/package.json
+          - excelerate/src/lib/api/azure-functions-adapter.ts
+          - excelerate/src/lib/auth.ts
+          - hub/lib/auth.ts
+          - hub/package.json
+          - onboarding/apps/dashboard/functions/package.json
+          - onboarding/apps/dashboard/functions/src/index.ts
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+          - onboarding/apps/dashboard/lib/auth.ts
+          - onboarding/apps/dashboard/package.json
+          - package.json
+          - packages/audit/package.json
+          - packages/audit/src/index.test.ts
+          - packages/audit/src/index.ts
+          - packages/audit/tsconfig.json
+          - packages/auth/package.json
+          - packages/auth/src/index.test.ts
+          - packages/auth/src/index.ts
+          - packages/auth/tsconfig.json
+          - packages/contracts/package.json
+          - packages/contracts/src/audit.ts
+          - packages/contracts/src/auth.ts
+          - packages/contracts/src/index.ts
+          - packages/contracts/src/proforma.ts
+          - packages/db/package.json
+          - packages/db/src/cosmos-queries.ts
+          - packages/db/src/queries.ts
+          - packages/db/src/runtime.ts
+          - packages/db/src/start-date-reconciliation.test.ts
+          - packages/db/src/start-date-reconciliation.ts
+          - proforma/functions/package.json
+          - proforma/package.json
+          - proforma/src/lib/api/azure-functions-adapter.ts
+          - proforma/src/lib/api/handlers.test.ts
+          - proforma/src/lib/auth.ts
+          - proforma/src/lib/persistence/cosmos-repository.ts
+          - proforma/src/lib/persistence/repository.test.ts
+          - proforma/src/lib/persistence/repository.ts
+          - pto-tracker/functions/package.json
+          - pto-tracker/package.json
+          - pto-tracker/src/lib/api/azure-functions-adapter.test.ts
+          - pto-tracker/src/lib/api/azure-functions-adapter.ts
+          - pto-tracker/src/lib/audit/index.ts
+          - pto-tracker/src/lib/auth/entra-provider.ts
+          - pto-tracker/src/lib/auth/entra-token-provider.ts
+          - pto-tracker/src/lib/auth/index.ts
+          - pto-tracker/src/lib/store/audit-adapter.test.ts
+          - pto-tracker/src/lib/store/types.ts
+          - scripts/app-command.ts
+          - scripts/app-registry.ts
+          - scripts/build-unified-swa.ts
+          - scripts/dev-apps.ts
+          - scripts/dev.ts
+          - scripts/github/configure-repository.test.ts
+          - scripts/github/configure-repository.ts
+          - scripts/github/triage-issue.test.ts
+          - scripts/github/triage-issue.ts
+          - scripts/tooling.test.ts
+          - scripts/validate-artifacts.ts
+          - scripts/workflow-matrix.ts
+          - valuation/functions/package.json
+          - valuation/package.json
+          - valuation/src/lib/api/azure-functions-adapter.ts
+          - valuation/src/lib/auth.ts
+          - valuation/src/lib/persistence/cosmos-repository.ts
+          - valuation/src/lib/persistence/repository.ts
 releases: []
 externalContributions: []
 codeReviews: []
@@ -407,6 +778,5 @@ hoursEstimate:
   volumeHours: 34.6
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

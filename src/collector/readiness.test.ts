@@ -5,6 +5,7 @@ import {
   derivePrChecks,
   deriveReadiness,
   summarizeVerification,
+  uniqueChanges,
 } from "./readiness.js";
 import type { Allocation, AllocationItem, EvidenceLedger, PrEvidence } from "../types.js";
 
@@ -50,7 +51,7 @@ describe("deriveReadiness", () => {
   });
 
   it("merged without evidence: done, no claim about live", () => {
-    expect(deriveReadiness(item(), null)).toEqual({ stage: "done", label: "Code integrated", detail: "Integrated" });
+    expect(deriveReadiness(item(), null)).toEqual({ stage: "done", label: "Code integrated", detail: "Integrated; release status not collected", releaseUnknown: true });
   });
 
   it("formats merge and deployment dates in the requested timezone", () => {
@@ -81,6 +82,13 @@ describe("deriveReadiness", () => {
   it("keeps a stored preview when no live deployment remains", () => {
     const l = ledger({ release: { stage: "preview", environment: "preview", sha: "old", since: "2026-09-01T10:00:00Z" } });
     expect(deriveReadiness(item(), l)).toMatchObject({ stage: "preview", detail: "On the preview site since Sep 1", since: "2026-09-01" });
+  });
+
+  it("keeps stored and head-branch previews for stacked PRs", () => {
+    const stored = ledger({ baseRef: "feature/parent", release: { stage: "preview", environment: "preview", sha: "old", since: "2026-10-08T10:00:00Z" } });
+    expect(deriveReadiness(item(), stored)).toMatchObject({ stage: "preview", since: "2026-10-08" });
+    const current = ledger({ baseRef: "feature/parent" }, { "org/app": [dep({ production: false, environment: "preview", ref: "feat/x" })] });
+    expect(deriveReadiness(item(), current)).toMatchObject({ stage: "preview", since: "2026-10-08" });
   });
 
   it("does not treat an overlapping deployment as live, but uses success time for live since", () => {
@@ -430,7 +438,7 @@ describe("annotateAllocation + summarizeVerification", () => {
     const merged: AllocationItem = { kind: "pr", title: "x", url: URL, repository: "org/app", state: "merged", files: ["a.test.ts"] };
     const out = annotateAllocation(alloc([merged, { ...merged }], [open]), l);
     expect(summarizeVerification(out)).toEqual({
-      completed: 1, live: 1, awaitingRelease: 0, preview: 0, inReview: 0, drafts: 1,
+      completed: 1, live: 1, awaitingRelease: 0, preview: 0, releaseUnknown: 0, inReview: 0, drafts: 1,
       withoutChecks: 0, withPassingChecks: 1, withFailedChecks: 0, withPendingChecks: 0, checksCollected: 1, checksUnknown: 1, withAutomatedReview: 1, withHumanReview: 0, withTests: 1,
       withPartialChecks: 0,
       aiFindingsAddressed: 4,
@@ -523,6 +531,38 @@ describe("summarizeVerification with uncollected checks", () => {
     };
     const s = summarizeVerification(a);
     expect(s).toMatchObject({ checksUnknown: 1, withHumanReview: 1, withAutomatedReview: 1, withTests: 1 });
+  });
+});
+
+describe("release uncertainty and duplicate changes", () => {
+  const merged: AllocationItem = { kind: "pr", title: "x", url: URL, repository: "org/app", state: "merged" };
+
+  it("counts merged changes as release unknown when evidence is missing, refresh failed or never applied", () => {
+    expect(summarizeVerification(annotateAllocation(alloc([merged]), null))).toMatchObject({ completed: 1, live: 0, releaseUnknown: 1 });
+    const failed = ledger({ refreshFailedAt: "2026-10-08T00:00:00Z" }, { "org/app": [] });
+    expect(deriveReadiness(item(), failed)).toMatchObject({ stage: "done", releaseUnknown: true });
+    expect(summarizeVerification(annotateAllocation(alloc([merged]), failed))).toMatchObject({ completed: 1, releaseUnknown: 1 });
+    // Not annotated at all: still unknown, never "not live yet".
+    expect(summarizeVerification(alloc([merged]))).toMatchObject({ completed: 1, releaseUnknown: 1, awaitingRelease: 0 });
+  });
+
+  it("keeps a repo without release tracking apart from unknown release status", () => {
+    const untracked = ledger({}, { "org/app": [] });
+    expect(deriveReadiness(item(), untracked)).not.toHaveProperty("releaseUnknown");
+    expect(summarizeVerification(annotateAllocation(alloc([merged]), untracked))).toMatchObject({ completed: 1, releaseUnknown: 0 });
+  });
+
+  it("counts a change listed in several initiatives, or both open and merged, once as merged", () => {
+    const open: AllocationItem = { ...merged, state: "open" };
+    const a: Allocation = {
+      ...alloc([], [open]),
+      initiatives: [
+        { initiative: "A", hours: 5, share: 0.5, byWorkType: {}, shipped: [], inProgress: [open], other: [] },
+        { initiative: "B", hours: 5, share: 0.5, byWorkType: {}, shipped: [{ ...merged, url: `${URL}/` }, merged], inProgress: [], other: [] },
+      ],
+    };
+    expect(uniqueChanges(a)).toEqual([{ ...merged, url: `${URL}/` }]);
+    expect(summarizeVerification(a)).toMatchObject({ completed: 1, inReview: 0, releaseUnknown: 1 });
   });
 });
 

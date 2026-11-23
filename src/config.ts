@@ -63,6 +63,8 @@ const WORK_TYPES: readonly WorkType[] = [
 ];
 
 type RawAllocation = {
+  paths?: unknown;
+  shared_initiative?: unknown;
   systems?: unknown;
   label_prefix?: unknown;
   labelPrefix?: unknown;
@@ -118,6 +120,15 @@ const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 /** Parse allocation YAML into a full AllocationConfig; unset keys keep defaults. */
 const parseAllocation = (raw: RawAllocation): AllocationConfig => {
   const out: AllocationConfig = { ...DEFAULT_ALLOCATION_CONFIG, initiatives: {} };
+  if (typeof raw.shared_initiative === "string" && raw.shared_initiative.trim()) out.sharedInitiative = raw.shared_initiative.trim();
+  if (raw.paths && typeof raw.paths === "object" && !Array.isArray(raw.paths)) {
+    const paths: Record<string, string> = {};
+    for (const [prefix, name] of Object.entries(raw.paths)) {
+      const key = prefix.trim().replace(/^\/+|\/+$/g, "");
+      if (key && typeof name === "string" && name.trim()) paths[key] = name.trim();
+    }
+    if (Object.keys(paths).length) out.paths = paths;
+  }
   const labelPrefix = raw.label_prefix ?? raw.labelPrefix;
   if (typeof labelPrefix === "string" && labelPrefix.length > 0) out.labelPrefix = labelPrefix;
   const defaultInitiative = raw.default_initiative ?? raw.defaultInitiative;

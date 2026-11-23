@@ -47,9 +47,7 @@ pullRequests:
       Why
 
 
-      Four app workflows had integrity gaps at their serverless boundaries: PTO cancellation and request policy were
-      incomplete, Excelerate review receipts were replayable, Pricing report snapshots lacked input identity, and
-      Valuation approvals lacked immutable provenance.
+      Four app workflows had integrity gaps at their serverless boundaries: PTO cancellation and request policy were incomplete, Excelerate review receipts were replayable, Pricing report snapshots lacked input identity, and Valuation approvals lacked immutable provenance.
 
 
       What changed
@@ -79,12 +77,55 @@ pullRequests:
     workAdditions: 0
     workDeletions: 0
     workFiles: &a4 []
+    allocationFiles:
+      - excelerate/.env.example
+      - excelerate/README.md
+      - excelerate/functions/local.settings.json.example
+      - excelerate/src/app/api/excelerate/api.test.ts
+      - excelerate/src/components/excelerate-client.tsx
+      - excelerate/src/lib/api/azure-functions-adapter.ts
+      - excelerate/src/lib/api/handlers.ts
+      - excelerate/src/lib/excelerate/processor.ts
+      - excelerate/src/lib/excelerate/types.ts
+      - packages/contracts/src/pricing.ts
+      - packages/contracts/src/pto.ts
+      - packages/contracts/src/valuation.ts
+      - pricing/src/lib/report-storage.ts
+      - pto-tracker/docs/data-model.md
+      - pto-tracker/functions/src/index.ts
+      - pto-tracker/src/app/api/[...path]/route.ts
+      - pto-tracker/src/app/my/requests/MyRequestsClient.tsx
+      - pto-tracker/src/components/RequestForm.test.ts
+      - pto-tracker/src/components/RequestForm.tsx
+      - pto-tracker/src/lib/api/azure-functions-adapter.ts
+      - pto-tracker/src/lib/api/handlers.test.ts
+      - pto-tracker/src/lib/api/handlers.ts
+      - pto-tracker/src/lib/csv/paths.ts
+      - pto-tracker/src/lib/csv/reader.ts
+      - pto-tracker/src/lib/csv/writer.ts
+      - pto-tracker/src/lib/pto/request-policy.test.ts
+      - pto-tracker/src/lib/pto/request-policy.ts
+      - pto-tracker/src/lib/store/graph-lists-store.test.ts
+      - pto-tracker/src/lib/store/graph-lists-store.ts
+      - pto-tracker/src/lib/workflow/service.ts
+      - pto-tracker/templates/pto-requests-list-columns.csv
+      - valuation/functions/src/index.ts
+      - valuation/src/app/api/[...path]/route.ts
+      - valuation/src/app/cases/detail/case-detail-client.tsx
+      - valuation/src/lib/api/azure-functions-adapter.ts
+      - valuation/src/lib/api/client.ts
+      - valuation/src/lib/api/handlers.test.ts
+      - valuation/src/lib/api/handlers.ts
+      - valuation/src/lib/persistence/cosmos-repository.ts
+      - valuation/src/lib/persistence/repository.test.ts
+      - valuation/src/lib/persistence/repository.ts
+      - valuation/src/lib/review-integrity.test.ts
+      - valuation/src/lib/review-integrity.ts
   - title: Unify OHCPWM platform and OFAC
     body: >-
       - publish the completed FINET Pricing model work alongside shared product-platform consolidation
 
-      - move OFAC production authentication to Azure Static Web Apps with the intentional SWA Principal bridge into
-      Azure Functions
+      - move OFAC production authentication to Azure Static Web Apps with the intentional SWA Principal bridge into Azure Functions
 
       - add the first authenticated Functions identity endpoint and static-safe OFA...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/58
@@ -253,9 +294,7 @@ prsInProgress:
       Why
 
 
-      Four app workflows had integrity gaps at their serverless boundaries: PTO cancellation and request policy were
-      incomplete, Excelerate review receipts were replayable, Pricing report snapshots lacked input identity, and
-      Valuation approvals lacked immutable provenance.
+      Four app workflows had integrity gaps at their serverless boundaries: PTO cancellation and request policy were incomplete, Excelerate review receipts were replayable, Pricing report snapshots lacked input identity, and Valuation approvals lacked immutable provenance.
 
 
       What changed
@@ -279,12 +318,55 @@ prsInProgress:
     workAdditions: 0
     workDeletions: 0
     workFiles: *a4
+    allocationFiles:
+      - excelerate/.env.example
+      - excelerate/README.md
+      - excelerate/functions/local.settings.json.example
+      - excelerate/src/app/api/excelerate/api.test.ts
+      - excelerate/src/components/excelerate-client.tsx
+      - excelerate/src/lib/api/azure-functions-adapter.ts
+      - excelerate/src/lib/api/handlers.ts
+      - excelerate/src/lib/excelerate/processor.ts
+      - excelerate/src/lib/excelerate/types.ts
+      - packages/contracts/src/pricing.ts
+      - packages/contracts/src/pto.ts
+      - packages/contracts/src/valuation.ts
+      - pricing/src/lib/report-storage.ts
+      - pto-tracker/docs/data-model.md
+      - pto-tracker/functions/src/index.ts
+      - pto-tracker/src/app/api/[...path]/route.ts
+      - pto-tracker/src/app/my/requests/MyRequestsClient.tsx
+      - pto-tracker/src/components/RequestForm.test.ts
+      - pto-tracker/src/components/RequestForm.tsx
+      - pto-tracker/src/lib/api/azure-functions-adapter.ts
+      - pto-tracker/src/lib/api/handlers.test.ts
+      - pto-tracker/src/lib/api/handlers.ts
+      - pto-tracker/src/lib/csv/paths.ts
+      - pto-tracker/src/lib/csv/reader.ts
+      - pto-tracker/src/lib/csv/writer.ts
+      - pto-tracker/src/lib/pto/request-policy.test.ts
+      - pto-tracker/src/lib/pto/request-policy.ts
+      - pto-tracker/src/lib/store/graph-lists-store.test.ts
+      - pto-tracker/src/lib/store/graph-lists-store.ts
+      - pto-tracker/src/lib/workflow/service.ts
+      - pto-tracker/templates/pto-requests-list-columns.csv
+      - valuation/functions/src/index.ts
+      - valuation/src/app/api/[...path]/route.ts
+      - valuation/src/app/cases/detail/case-detail-client.tsx
+      - valuation/src/lib/api/azure-functions-adapter.ts
+      - valuation/src/lib/api/client.ts
+      - valuation/src/lib/api/handlers.test.ts
+      - valuation/src/lib/api/handlers.ts
+      - valuation/src/lib/persistence/cosmos-repository.ts
+      - valuation/src/lib/persistence/repository.test.ts
+      - valuation/src/lib/persistence/repository.ts
+      - valuation/src/lib/review-integrity.test.ts
+      - valuation/src/lib/review-integrity.ts
   - title: Unify OHCPWM platform and OFAC
     body: >-
       - publish the completed FINET Pricing model work alongside shared product-platform consolidation
 
-      - move OFAC production authentication to Azure Static Web Apps with the intentional SWA Principal bridge into
-      Azure Functions
+      - move OFAC production authentication to Azure Static Web Apps with the intentional SWA Principal bridge into Azure Functions
 
       - add the first authenticated Functions identity endpoint and static-safe OFA...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/58
@@ -304,6 +386,155 @@ prsInProgress:
     workAdditions: 2681
     workDeletions: 706
     workFiles: *a8
+    allocationFiles:
+      - .github/workflows/azure-static-web-apps-pricing.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - bun.lock
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/ofac-api-demo.md
+      - docs/ofac-api-integration.md
+      - docs/ofac-operations.md
+      - docs/pricing-scenario-rules.md
+      - docs/shared-product-platform.md
+      - docs/superpowers/plans/2026-07-13-ofac-api-demo.md
+      - docs/superpowers/specs/2026-07-13-ofac-api-demo-design.md
+      - docs/superpowers/specs/2026-07-14-ofac-microsoft-login-design.md
+      - hub/app/api/health/route.ts
+      - hub/app/globals.css
+      - hub/app/layout.tsx
+      - hub/app/page.tsx
+      - hub/components/hub-launcher.tsx
+      - hub/functions/dist-entry.js
+      - hub/functions/package.json
+      - hub/functions/src/index.ts
+      - hub/lib/apps.ts
+      - hub/next.config.ts
+      - hub/staticwebapp.config.json
+      - ofac/.env.example
+      - ofac/functions/local.settings.json.example
+      - ofac/functions/src/index.ts
+      - ofac/functions/src/ofac-repository.test.ts
+      - ofac/functions/src/ofac-repository.ts
+      - ofac/next.config.ts
+      - ofac/package.json
+      - ofac/src/app/actions.ts
+      - ofac/src/app/api/auth/[...nextauth]/route.ts
+      - ofac/src/app/api/auth/login/route.ts
+      - ofac/src/app/api/health/route.ts
+      - ofac/src/app/api/ofac/clients/route.ts
+      - ofac/src/app/api/ofac/export/__tests__/route.test.ts
+      - ofac/src/app/api/ofac/export/route.ts
+      - ofac/src/app/api/ofac/me/route.ts
+      - ofac/src/app/api/ofac/overview/route.ts
+      - ofac/src/app/api/ofac/screenings/[id]/decision/route.ts
+      - ofac/src/app/api/ofac/sync/route.ts
+      - ofac/src/app/clients/new/page.tsx
+      - ofac/src/app/globals.css
+      - ofac/src/app/layout.tsx
+      - ofac/src/app/login/page.test.tsx
+      - ofac/src/app/login/page.tsx
+      - ofac/src/app/logout/route.ts
+      - ofac/src/app/page.tsx
+      - ofac/src/app/screenings/[id]/page.tsx
+      - ofac/src/app/screenings/page.tsx
+      - ofac/src/app/search/page.tsx
+      - ofac/src/app/settings/page.tsx
+      - ofac/src/app/sync/page.tsx
+      - ofac/src/components/client-intake-form.tsx
+      - ofac/src/components/ofac-app-shell.tsx
+      - ofac/src/components/ofac-settings-page.tsx
+      - ofac/src/components/ofac-user-menu.tsx
+      - ofac/src/components/screening-detail.tsx
+      - ofac/src/components/screening-filter-form.tsx
+      - ofac/src/lib/__tests__/auth.test.ts
+      - ofac/src/lib/__tests__/client-csv.test.ts
+      - ofac/src/lib/__tests__/ofac-api-client.test.ts
+      - ofac/src/lib/__tests__/screening-provider.test.ts
+      - ofac/src/lib/auth.ts
+      - ofac/src/lib/client-csv.ts
+      - ofac/src/lib/data.ts
+      - ofac/src/lib/ofac-api-client.ts
+      - ofac/src/lib/ofac-auth-routes.ts
+      - ofac/src/lib/ofac-session-client.ts
+      - ofac/src/lib/ofac-theme.ts
+      - ofac/src/lib/screening-presentation.ts
+      - ofac/src/lib/screening-provider.ts
+      - ofac/src/lib/screening-readiness.ts
+      - ofac/src/lib/sync-cli.ts
+      - ofac/staticwebapp.config.json
+      - package.json
+      - packages/audit/src/index.ts
+      - packages/auth/package.json
+      - packages/auth/src/auth.test.ts
+      - packages/auth/src/client.ts
+      - packages/contracts/src/ofac.ts
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/ofac.test.ts
+      - packages/db/src/ofac.ts
+      - packages/db/src/pricing.test.ts
+      - packages/ui/src/brand-logo.tsx
+      - packages/ui/src/form.tsx
+      - packages/ui/src/index.ts
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/settings.tsx
+      - packages/ui/src/styles.css
+      - packages/ui/src/theme-toggle.tsx
+      - packages/ui/src/theme.ts
+      - packages/ui/src/user-menu.tsx
+      - pricing/functions/package.json
+      - pricing/functions/src/index.ts
+      - pricing/next.config.ts
+      - pricing/package.json
+      - pricing/src/app/globals.css
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/dashboard-metrics-charts.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/__tests__/scenario-model-tab.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/dashboard-metrics-charts.tsx
+      - pricing/src/components/dashboard-payout-pie.tsx
+      - pricing/src/components/dashboard-trend-chart.tsx
+      - pricing/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - pricing/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pipeline-stage-bar.tsx
+      - pricing/src/components/pricing-app-shell.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/components/pricing-theme-toggle.tsx
+      - pricing/src/components/pricing-workstation-client.tsx
+      - pricing/src/components/scenario-model-tab.tsx
+      - pricing/src/components/settings-previews.tsx
+      - pricing/src/lib/__tests__/calculation.test.ts
+      - pricing/src/lib/__tests__/dashboard-charts.test.ts
+      - pricing/src/lib/__tests__/dashboard-summary.test.ts
+      - pricing/src/lib/__tests__/pricing-user-settings.test.ts
+      - pricing/src/lib/__tests__/report-model.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/workbook-output.test.ts
+      - pricing/src/lib/__tests__/workstation.test.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/dashboard-charts.ts
+      - pricing/src/lib/dashboard-summary.ts
+      - pricing/src/lib/edit-view.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/pricing-auth-routes.ts
+      - pricing/src/lib/pricing-session-client.ts
+      - pricing/src/lib/pricing-theme.ts
+      - pricing/src/lib/pricing-user-settings.ts
+      - pricing/src/lib/recruit-routes.ts
+      - pricing/src/lib/report/assets.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/workbook-output.ts
+      - pricing/src/lib/workstation.ts
+      - scripts/build-static-next.ts
+      - scripts/compose-static-suite.ts
+      - scripts/dev-pricing-api.ts
+      - scripts/dev.ts
 issues: []
 events: []
 commitMessages:
@@ -318,6 +549,33 @@ commitMessages:
         additions: 73
         deletions: 417
         filesChanged: 26
+        files:
+          - .gitignore
+          - README.md
+          - excelerate/src/components/excelerate-client.tsx
+          - excelerate/src/lib/excelerate/types.ts
+          - hub/components/LandingPage.tsx
+          - hub/components/SiteFooter.tsx
+          - hub/lib/contact.ts
+          - infra/azure/README.md
+          - onboarding/apps/dashboard/components/settings-form.tsx
+          - onboarding/apps/dashboard/lib/data.ts
+          - onboarding/apps/dashboard/lib/search-params.ts
+          - onboarding/apps/dashboard/lib/utils.ts
+          - packages/ui/src/button.tsx
+          - packages/ui/src/dialog.tsx
+          - packages/ui/src/navigation/index.ts
+          - proforma/src/components/scenario-form-steps.test.ts
+          - proforma/src/components/scenario-form.tsx
+          - pto-tracker/README.md
+          - pto-tracker/docs/adr/0001-documentation-only-scaffold.md
+          - pto-tracker/src/app/admin/AdminClient.tsx
+          - pto-tracker/src/app/approvals/ApprovalsClient.tsx
+          - pto-tracker/src/app/calendar/CalendarClient.tsx
+          - pto-tracker/src/app/my/MyClient.tsx
+          - pto-tracker/src/app/my/requests/MyRequestsClient.tsx
+          - pto-tracker/src/app/team/TeamClient.tsx
+          - pto-tracker/src/components/AuthProvider.tsx
   - repo: Myriad-Advisor-Solutions/ohcpwm-apps
     messages:
       - "feat: unify OHCPWM platform and OFAC"
@@ -340,6 +598,83 @@ commitMessages:
         additions: 2574
         deletions: 631
         filesChanged: 76
+        files:
+          - README.md
+          - docs/azure-serverless-plan.md
+          - docs/ofac-api-demo.md
+          - docs/ofac-api-integration.md
+          - docs/ofac-operations.md
+          - docs/shared-product-platform.md
+          - docs/superpowers/plans/2026-07-13-ofac-api-demo.md
+          - docs/superpowers/specs/2026-07-13-ofac-api-demo-design.md
+          - docs/superpowers/specs/2026-07-14-ofac-microsoft-login-design.md
+          - ofac/.env.example
+          - ofac/functions/local.settings.json.example
+          - ofac/functions/src/index.ts
+          - ofac/package.json
+          - ofac/src/app/actions.ts
+          - ofac/src/app/api/auth/[...nextauth]/route.ts
+          - ofac/src/app/api/auth/login/route.ts
+          - ofac/src/app/api/health/route.ts
+          - ofac/src/app/api/ofac/clients/route.ts
+          - ofac/src/app/api/ofac/export/__tests__/route.test.ts
+          - ofac/src/app/api/ofac/export/route.ts
+          - ofac/src/app/api/ofac/me/route.ts
+          - ofac/src/app/api/ofac/screenings/[id]/decision/route.ts
+          - ofac/src/app/api/ofac/sync/route.ts
+          - ofac/src/app/clients/new/page.tsx
+          - ofac/src/app/globals.css
+          - ofac/src/app/layout.tsx
+          - ofac/src/app/login/page.test.tsx
+          - ofac/src/app/login/page.tsx
+          - ofac/src/app/logout/route.ts
+          - ofac/src/app/page.tsx
+          - ofac/src/app/screenings/[id]/page.tsx
+          - ofac/src/app/screenings/page.tsx
+          - ofac/src/app/search/page.tsx
+          - ofac/src/app/settings/page.tsx
+          - ofac/src/app/sync/page.tsx
+          - ofac/src/components/client-intake-form.tsx
+          - ofac/src/components/ofac-app-shell.tsx
+          - ofac/src/components/ofac-settings-page.tsx
+          - ofac/src/components/ofac-user-menu.tsx
+          - ofac/src/components/screening-filter-form.tsx
+          - ofac/src/lib/__tests__/auth.test.ts
+          - ofac/src/lib/__tests__/screening-provider.test.ts
+          - ofac/src/lib/auth.ts
+          - ofac/src/lib/data.ts
+          - ofac/src/lib/ofac-auth-routes.ts
+          - ofac/src/lib/ofac-session-client.ts
+          - ofac/src/lib/ofac-theme.ts
+          - ofac/src/lib/screening-presentation.ts
+          - ofac/src/lib/screening-provider.ts
+          - ofac/src/lib/screening-readiness.ts
+          - ofac/src/lib/sync-cli.ts
+          - ofac/staticwebapp.config.json
+          - package.json
+          - packages/audit/src/index.ts
+          - packages/auth/package.json
+          - packages/auth/src/auth.test.ts
+          - packages/auth/src/client.ts
+          - packages/contracts/src/ofac.ts
+          - packages/db/src/ofac.test.ts
+          - packages/db/src/ofac.ts
+          - packages/ui/src/form.tsx
+          - packages/ui/src/index.ts
+          - packages/ui/src/navigation/app-shell.tsx
+          - packages/ui/src/settings.tsx
+          - packages/ui/src/styles.css
+          - packages/ui/src/theme-toggle.tsx
+          - packages/ui/src/theme.ts
+          - pricing/src/components/pricing-app-shell.tsx
+          - pricing/src/components/pricing-theme-toggle.tsx
+          - pricing/src/components/settings-previews.tsx
+          - pricing/src/lib/__tests__/pricing-user-settings.test.ts
+          - pricing/src/lib/edit-view.ts
+          - pricing/src/lib/pricing-auth-routes.ts
+          - pricing/src/lib/pricing-session-client.ts
+          - pricing/src/lib/pricing-theme.ts
+          - pricing/src/lib/pricing-user-settings.ts
       - sha: 16bd3ab07d6b9200a72db1743d271efeadb18ddf
         message: "fix(pricing): require parsed FINET defaults"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/16bd3ab07d6b9200a72db1743d271efeadb18ddf
@@ -347,6 +682,8 @@ commitMessages:
         additions: 1
         deletions: 1
         filesChanged: 1
+        files:
+          - packages/contracts/src/pricing.ts
       - sha: 757414932bb35df27a261b31dc305a81b5491c1c
         message: "test(pricing): parse repository platform fixture"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/757414932bb35df27a261b31dc305a81b5491c1c
@@ -354,6 +691,8 @@ commitMessages:
         additions: 3
         deletions: 3
         filesChanged: 1
+        files:
+          - packages/db/src/pricing.test.ts
       - sha: bb2f7a2c9c8c2410032eecb0d4b717f1e21b5214
         message: "fix(ofac): narrow screening fetch contract"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/bb2f7a2c9c8c2410032eecb0d4b717f1e21b5214
@@ -361,6 +700,9 @@ commitMessages:
         additions: 2
         deletions: 2
         filesChanged: 2
+        files:
+          - ofac/src/lib/__tests__/screening-provider.test.ts
+          - ofac/src/lib/screening-provider.ts
       - sha: 88c18257df9df6d22f354cc9c232dd5c5ba70c5f
         message: "fix(pricing): preserve optional FINET inputs"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/88c18257df9df6d22f354cc9c232dd5c5ba70c5f
@@ -368,6 +710,10 @@ commitMessages:
         additions: 8
         deletions: 4
         filesChanged: 3
+        files:
+          - packages/contracts/src/pricing.ts
+          - pricing/src/components/pricing-theme-toggle.tsx
+          - pricing/src/components/pricing-workstation-client.tsx
       - sha: 07ce57858733f5124ae6a5e07ef5db48ceda5865
         message: "fix(pricing): separate model input from state"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/07ce57858733f5124ae6a5e07ef5db48ceda5865
@@ -375,6 +721,10 @@ commitMessages:
         additions: 19
         deletions: 17
         filesChanged: 3
+        files:
+          - packages/contracts/src/pricing.ts
+          - pricing/src/lib/calculation.ts
+          - pricing/src/lib/workstation.ts
       - sha: a100e3117ffae6e0b420cc40717267b31e6fbaf2
         message: "fix(pricing): type scenario and FINET state"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a100e3117ffae6e0b420cc40717267b31e6fbaf2
@@ -382,6 +732,10 @@ commitMessages:
         additions: 12
         deletions: 6
         filesChanged: 3
+        files:
+          - pricing/src/components/pricing-workstation-client.tsx
+          - pricing/src/lib/__tests__/workbook-output.test.ts
+          - pricing/src/lib/workstation.ts
       - sha: 202997edb4c5b912e3ce81efabb44120d999e262
         message: "fix(pricing): make model summaries explicit"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/202997edb4c5b912e3ce81efabb44120d999e262
@@ -389,6 +743,11 @@ commitMessages:
         additions: 27
         deletions: 18
         filesChanged: 4
+        files:
+          - pricing/src/components/pricing-workstation-client.tsx
+          - pricing/src/lib/calculation.ts
+          - pricing/src/lib/workbook-output.ts
+          - pricing/src/lib/workstation.ts
       - sha: 80cf47cc19dbcf5c658db1b85b60933ba51f279a
         message: "fix(pricing): parse workbook model boundary"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/80cf47cc19dbcf5c658db1b85b60933ba51f279a
@@ -396,6 +755,10 @@ commitMessages:
         additions: 26
         deletions: 18
         filesChanged: 3
+        files:
+          - pricing/src/lib/__tests__/workbook-output.test.ts
+          - pricing/src/lib/workbook-output.ts
+          - pricing/src/lib/workstation.ts
       - sha: 678a56c56e45e61cb1c73bec660421a4a277495e
         message: "fix(pricing): handle final FINET scenario"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/678a56c56e45e61cb1c73bec660421a4a277495e
@@ -403,6 +766,8 @@ commitMessages:
         additions: 6
         deletions: 4
         filesChanged: 1
+        files:
+          - pricing/src/lib/workstation.ts
       - sha: c4012592948d7151e6c93caf521d86f3a9ed2965
         message: "fix(pricing): respect selected review scenario"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c4012592948d7151e6c93caf521d86f3a9ed2965
@@ -410,6 +775,8 @@ commitMessages:
         additions: 1
         deletions: 1
         filesChanged: 1
+        files:
+          - pricing/src/components/pricing-workstation-client.tsx
       - sha: 2de609818934ede54c0ab6f87f7439d30f08d02d
         message: "test(ofac): handle timeout rejection promptly"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2de609818934ede54c0ab6f87f7439d30f08d02d
@@ -417,6 +784,8 @@ commitMessages:
         additions: 2
         deletions: 1
         filesChanged: 1
+        files:
+          - ofac/src/lib/__tests__/screening-provider.test.ts
 releases: []
 externalContributions: []
 codeReviews: []
@@ -495,6 +864,5 @@ hoursEstimate:
   volumeHours: 18.6
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

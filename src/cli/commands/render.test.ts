@@ -900,6 +900,7 @@ describe("registerRender", () => {
         .map((c: unknown[]) => c[0] as string)
         .filter((p): p is string => typeof p === "string");
       expect(readPaths.some((p) => p.startsWith("data/") || p.includes("/data/"))).toBe(true);
+      expect(readPaths).toContain("./config.yaml");
       // Output should land under ./output
       const writePaths = mockWriteFile.mock.calls.map((c: unknown[]) => c[0] as string);
       expect(writePaths.some((p) => typeof p === "string" && p.includes("output/"))).toBe(true);
@@ -1062,7 +1063,7 @@ describe("buildAllocationInput", () => {
     dateRange: { from: date, to: date },
     stats: { estimatedHours: hours, totalCommits: 1 },
     pullRequests: [],
-    commitMessages: [],
+    commitMessages: [{ repo: "o/app", messages: ["feat: sample work"] }],
   }) as unknown as import("../../types.js").WeeklyReportData;
 
   it("builds day and trend (no week panel) up to the current day only", async () => {
@@ -1113,7 +1114,34 @@ describe("buildAllocationInput", () => {
     const withEv = buildAllocationInput({ current: { date: "2026-10-02", data: withPr }, dailyReports: new Map(), evidence })!;
     expect(stage(withEv.day)).toBe("live");
     const weeks = buildWeekAllocationInputs({ dailyReports: new Map([["2026-10-02", withPr]]), evidence });
-    expect(stage(weeks.get("2026-10-01")!.week!.allocation)).toBe("live");
+    // Fri Oct 2 belongs to the Mon–Fri week of Sep 28.
+    expect(stage(weeks.get("2026-09-28")!.week!.allocation)).toBe("live");
+  });
+
+  it("never lets a later Monday decide a Saturday page's week, with or without the archive batch", async () => {
+    const { buildAllocationInput } = await import("./render.js");
+    const { createAllocationTrendBatch } = await import("../../collector/allocation.js");
+    // Fri 6h, Sat 3h, Mon 2h: in the site calendar Monday (lower) claims the weekend,
+    // but on the Saturday page Monday's report does not exist yet.
+    const daily = new Map([
+      ["2026-10-09", report("2026-10-09", 6)],
+      ["2026-10-10", report("2026-10-10", 3)],
+      ["2026-10-12", report("2026-10-12", 2)],
+    ]);
+    const batch = createAllocationTrendBatch([...daily].map(([date, data]) => ({ date, data })));
+    for (const allocationBatch of [undefined, batch]) {
+      const sat = buildAllocationInput({ current: { date: "2026-10-10", data: daily.get("2026-10-10")! }, dailyReports: daily, allocationBatch })!;
+      const last = sat.trend!.periods.at(-1)!;
+      expect(last).toMatchObject({ id: "2026-10-05", days: 2, label: "Oct 9" });
+      expect(last.weekends).toMatchObject([{ reason: "only-friday" }]);
+      expect(last.allocation.totalHours).toBe(9);
+      const mon = buildAllocationInput({ current: { date: "2026-10-12", data: daily.get("2026-10-12")! }, dailyReports: daily, allocationBatch })!;
+      expect(mon.trend!.periods.slice(-2).map((p) => [p.id, p.days, p.allocation.totalHours])).toEqual([
+        ["2026-10-05", 1, 6],
+        ["2026-10-12", 2, 5],
+      ]);
+    }
+    expect(batch.calendar().groupIdOf("2026-10-10")).toBe("2026-10-12");
   });
 
   it("passes the report timezone into readiness annotation", async () => {
@@ -1152,7 +1180,7 @@ describe("buildWeekAllocationInputs", () => {
     dateRange: { from: date, to: date },
     stats: { estimatedHours: hours, totalCommits: 1 },
     pullRequests: [],
-    commitMessages: [],
+    commitMessages: [{ repo: "o/app", messages: ["feat: sample work"] }],
   }) as unknown as import("../../types.js").WeeklyReportData;
 
   it("is empty without reports", async () => {
@@ -1160,47 +1188,70 @@ describe("buildWeekAllocationInputs", () => {
     expect(buildWeekAllocationInputs({ dailyReports: new Map() }).size).toBe(0);
   });
 
-  it("builds one Thu-Wed week input per week with reports, ending at the latest report while open", async () => {
+  it("builds one Mon-Fri week input per week, keyed by Monday, ending at the latest report while open", async () => {
     const { buildWeekAllocationInputs } = await import("./render.js");
     const daily = new Map([
-      ["2026-09-30", report("2026-09-30", 4)], // Wed: week of Sep 24
-      ["2026-10-01", report("2026-10-01", 4)], // Thu: week of Oct 1
-      ["2026-10-07", report("2026-10-07", 4)], // Wed
-      ["2026-10-08", report("2026-10-08", 4)], // Thu: week of Oct 8 (open)
+      ["2026-10-02", report("2026-10-02", 4)], // Fri: week of Sep 28
+      ["2026-10-06", report("2026-10-06", 4)], // Tue (Monday missing): week of Oct 5
+      ["2026-10-09", report("2026-10-09", 4)], // Fri
+      ["2026-10-10", report("2026-10-10", 3)], // Sat: Fri 4h < Mon 6h, counted with Friday
+      ["2026-10-12", report("2026-10-12", 6)], // Mon: week of Oct 12 (open)
     ]);
     const weeks = buildWeekAllocationInputs({ dailyReports: daily });
-    expect([...weeks.keys()].sort()).toEqual(["2026-09-24", "2026-10-01", "2026-10-08"]);
-    const closed = weeks.get("2026-10-01")!;
-    expect(closed.week!.label).toBe("Oct 1-7");
-    expect(closed.asOf).toBe("2026-10-07");
-    expect(closed.trend!.periods.at(-1)!.id).toBe("2026-10-01");
+    expect([...weeks.keys()].sort()).toEqual(["2026-09-28", "2026-10-05", "2026-10-12"]);
+    const closed = weeks.get("2026-10-05")!;
+    expect(closed.week!.label).toBe("Oct 6-9");
+    expect(closed.asOf).toBe("2026-10-10");
+    expect(closed.week!.allocation.totalHours).toBe(11);
+    expect(closed.trend!.periods.at(-1)).toMatchObject({ id: "2026-10-05", days: 3 });
     expect(closed.day).toBeUndefined();
-    const open = weeks.get("2026-10-08")!;
-    expect(open.asOf).toBe("2026-10-08");
-    expect(open.week!.allocation.totalHours).toBeGreaterThan(0);
-    // The Oct 1 week never includes later days.
-    expect(closed.week!.allocation.totalHours).toBeLessThan(open.trend!.periods.reduce((t, x) => t + x.allocation.totalHours, 0));
+    const open = weeks.get("2026-10-12")!;
+    expect(open.asOf).toBe("2026-10-12");
+    expect(open.week!.allocation.totalHours).toBe(6);
+    // Conservation: the weekend is counted once across the site's weeks.
+    const total = [...weeks.values()].reduce((t, w) => t + w.week!.allocation.totalHours, 0);
+    expect(total).toBe(4 + 4 + 4 + 3 + 6);
+  });
+
+  it("moves a weekend to the following Monday's week when Monday's modeled effort is lower", async () => {
+    const { buildWeekAllocationInputs } = await import("./render.js");
+    const daily = new Map([
+      ["2026-10-09", report("2026-10-09", 6)],
+      ["2026-10-11", report("2026-10-11", 3)], // Sun
+      ["2026-10-12", report("2026-10-12", 2)],
+      ["2026-10-13", report("2026-10-13", 5)],
+    ]);
+    const weeks = buildWeekAllocationInputs({ dailyReports: daily });
+    expect(weeks.get("2026-10-05")).toMatchObject({ asOf: "2026-10-09", week: { label: "Oct 9" } });
+    expect(weeks.get("2026-10-05")!.week!.allocation.totalHours).toBe(6);
+    const monday = weeks.get("2026-10-12")!;
+    expect(monday.week!.label).toBe("Oct 12-13");
+    expect(monday.week!.allocation.totalHours).toBe(10);
+    expect(monday.trend!.periods.at(-1)!.weekends).toMatchObject([{ saturday: "2026-10-10", target: "monday", reason: "lower-effort" }]);
   });
 
   it("includes a manual-only week between reported weeks and ignores manual time after the latest report", async () => {
     const { buildWeekAllocationInputs } = await import("./render.js");
     const daily = new Map([
-      ["2026-09-30", report("2026-09-30", 4)], // week of Sep 24
-      ["2026-10-15", report("2026-10-15", 4)], // week of Oct 15 (latest report)
+      ["2026-09-30", report("2026-09-30", 4)], // week of Sep 28
+      ["2026-10-15", report("2026-10-15", 4)], // week of Oct 12 (latest report)
     ]);
     const manualTime = [
-      { date: "2026-10-03", initiative: "Hub", hours: 6 }, // week of Oct 1: no daily report
+      { date: "2026-10-06", initiative: "Hub", hours: 6 }, // week of Oct 5: no daily report
       { date: "2026-10-22", initiative: "Hub", hours: 5 }, // after the latest report: excluded
-      { date: "2026-10-05", initiative: "Hub", hours: 0 }, // zero hours: ignored
+      { date: "2026-10-07", initiative: "Hub", hours: 0 }, // zero hours: ignored
+      { date: "2026-10-03", initiative: "Hub", hours: 2 }, // Sat with no Fri/Mon report: explicit weekend entry
     ];
     const weeks = buildWeekAllocationInputs({ dailyReports: daily, manualTime });
-    expect([...weeks.keys()].sort()).toEqual(["2026-09-24", "2026-10-01", "2026-10-15"]);
-    const manualWeek = weeks.get("2026-10-01")!;
-    expect(manualWeek.week!.label).toBe("Oct 1-7");
+    expect([...weeks.keys()].sort()).toEqual(["2026-09-28", "2026-10-03", "2026-10-05", "2026-10-12"]);
+    const manualWeek = weeks.get("2026-10-05")!;
+    expect(manualWeek.week!.label).toBe("Oct 5-9");
     expect(manualWeek.week!.allocation.totalHours).toBe(6);
-    expect(manualWeek.asOf).toBe("2026-10-07");
+    expect(manualWeek.asOf).toBe("2026-10-09");
+    expect(weeks.get("2026-10-03")!.week).toMatchObject({ label: "Oct 3-4 weekend" });
+    expect(weeks.get("2026-10-03")!.week!.allocation.totalHours).toBe(2);
     // The after-latest entry (Oct 22) must not create a week of its own.
-    expect(weeks.has("2026-10-22")).toBe(false);
+    expect(weeks.has("2026-10-19")).toBe(false);
   });
 
   it("warns and returns nothing instead of throwing", async () => {
@@ -1241,8 +1292,8 @@ describe("buildInitiativeColorOrder", () => {
       // The 8-hour daily minimum is carried as the estimate on a day with no activity.
       stats: { estimatedHours: 8, totalCommits: 0 }, pullRequests: [], commitMessages: [],
     } as unknown as import("../../types.js").WeeklyReportData;
-    // Precondition: an idle day is put in the no-activity bucket.
-    expect(computeAllocation(idle).initiatives.map((b) => b.initiative)).toContain(NO_ACTIVITY_INITIATIVE);
+    // An idle estimate is not attributed to work.
+    expect(computeAllocation(idle).totalHours).toBe(0);
     const order = buildInitiativeColorOrder(new Map([
       ["2026-10-06", report("2026-10-06", 4, "org/fresh")],
       ["2026-10-07", idle],

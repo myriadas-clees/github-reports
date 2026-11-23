@@ -247,7 +247,7 @@ export const buildEstimateCalibration = (
   type InitAcc = { days: Set<string>; hours: number; merged: number };
   const inits = new Map<string, InitAcc>();
   for (const acc of prs.values()) {
-    const name = classifyInitiative({ title: acc.title, labels: acc.labels, repository: acc.repository }, config);
+    const name = classifyInitiative({ title: acc.title, labels: acc.labels, repository: acc.repository, files: [...acc.files] }, config);
     const i = inits.get(name) ?? { days: new Set<string>(), hours: 0, merged: 0 };
     acc.days.forEach((d) => i.days.add(d));
     i.hours += acc.hours;

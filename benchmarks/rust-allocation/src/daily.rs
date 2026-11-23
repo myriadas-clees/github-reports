@@ -59,13 +59,72 @@ pub fn classify_initiative(
     repository: &str,
     config: &Value,
 ) -> String {
+    classify_initiative_with_files(title, labels, repository, config, &[])
+}
+
+fn classify_initiative_with_files(
+    title: &str,
+    labels: &[String],
+    repository: &str,
+    config: &Value,
+    files: &[String],
+) -> String {
     let map = &config["initiatives"];
+    let shared = config["sharedInitiative"]
+        .as_str()
+        .unwrap_or("Shared platform");
+    let paths = config["paths"].as_object();
+    let mut rules: Vec<_> = paths.into_iter().flat_map(|paths| paths.iter()).collect();
+    rules.sort_by_key(|(prefix, _)| std::cmp::Reverse(prefix.len()));
+    let mut names = HashSet::new();
+    for file in files {
+        let file = file.strip_prefix("./").unwrap_or(file);
+        if let Some((_, name)) = rules
+            .iter()
+            .find(|(prefix, _)| file == prefix.as_str() || file.starts_with(&format!("{prefix}/")))
+        {
+            if let Some(name) = name.as_str() {
+                names.insert(name);
+            }
+        }
+    }
+    let apps: Vec<_> = names
+        .iter()
+        .filter(|name| **name != shared)
+        .copied()
+        .collect();
+    if apps.len() > 1 {
+        return shared.into();
+    }
     let prefix = config
         .get("labelPrefix")
         .and_then(Value::as_str)
         .unwrap_or("app:")
         .to_lowercase();
     if !prefix.is_empty() {
+        if paths.is_some() {
+            let assigned: HashSet<String> = labels
+                .iter()
+                .filter(|label| label.to_lowercase().starts_with(&prefix))
+                .map(|label| {
+                    lookup(map, label).map(str::to_owned).unwrap_or_else(|| {
+                        humanize(
+                            &String::from_utf16_lossy(
+                                &label
+                                    .encode_utf16()
+                                    .skip(prefix.encode_utf16().count())
+                                    .collect::<Vec<_>>(),
+                            )
+                            .trim(),
+                        )
+                    })
+                })
+                .filter(|name| !name.is_empty())
+                .collect();
+            if assigned.len() > 1 {
+                return shared.into();
+            }
+        }
         for label in labels {
             if label.to_lowercase().starts_with(&prefix) {
                 if let Some(name) = lookup(map, label) {
@@ -93,6 +152,18 @@ pub fn classify_initiative(
         .captures(title)
         .and_then(|c| c.get(2).map(|m| m.as_str()))
     {
+        if paths.is_some() {
+            let assigned: HashSet<_> = scope
+                .split(',')
+                .filter_map(|part| {
+                    map.get(format!("scope:{}", part.trim().to_lowercase()))
+                        .and_then(Value::as_str)
+                })
+                .collect();
+            if assigned.len() > 1 {
+                return shared.into();
+            }
+        }
         for part in scope.split(',') {
             let key = format!("scope:{}", part.trim().to_lowercase());
             if let Some(name) = map
@@ -104,7 +175,14 @@ pub fn classify_initiative(
             }
         }
     }
-    if let Some(name) = lookup(map, &format!("repo:{repository}")) {
+    if let Some(name) = apps.first() {
+        return (*name).into();
+    }
+    if names.contains(shared) {
+        return shared.into();
+    }
+    let by_repo = lookup(map, &format!("repo:{repository}"));
+    if let Some(name) = by_repo.filter(|_| paths.is_none()) {
         return name.into();
     }
     if let Some(obj) = map.as_object() {
@@ -116,14 +194,26 @@ pub fn classify_initiative(
             .unwrap();
         let mut names: Vec<&str> = obj.values().filter_map(Value::as_str).collect();
         names.sort_by_key(|b| std::cmp::Reverse(b.encode_utf16().count()));
+        let mut matched = Vec::new();
         for name in names {
             let re = patterns.entry(name.to_owned()).or_insert_with(|| {
                 Regex::new(&format!(r"(?i-u)\b{}\b", regex::escape(name))).unwrap()
             });
             if re.is_match(title) {
-                return name.into();
+                if !matched.contains(&name) {
+                    matched.push(name);
+                }
             }
         }
+        if paths.is_some() && matched.len() > 1 {
+            return shared.into();
+        }
+        if let Some(name) = matched.first() {
+            return (*name).into();
+        }
+    }
+    if let Some(name) = by_repo {
+        return name.into();
     }
     if let Some(name) = config
         .get("defaultInitiative")
@@ -295,7 +385,13 @@ pub fn compute_allocation_precise(data: &Value, config: &Value, manual: &[Value]
         let repo = s(&pr["repository"]);
         let url = s(&pr["url"]);
         let labels = strings(&pr["labels"]);
-        let initiative = classify_initiative(title, &labels, repo, config);
+        let initiative = classify_initiative_with_files(
+            title,
+            &labels,
+            repo,
+            config,
+            &strings(&pr["workFiles"]),
+        );
         let counts = report_urls.contains(url)
             || !arr(&pr["workCommits"]).is_empty()
             || n(&pr["workAdditions"]) + n(&pr["workDeletions"]) > 0.;
@@ -346,7 +442,12 @@ pub fn compute_allocation_precise(data: &Value, config: &Value, manual: &[Value]
             .and_then(|pr| pr["labels"].as_array().map(|_| strings(&pr["labels"])))
             .or_else(|| fallback.filter(|value| !value.is_null()).map(strings))
             .unwrap_or_default();
-        classify_initiative(title, &labels, repo, config)
+        let files = prs
+            .iter()
+            .find(|pr| s(&pr["url"]) == url)
+            .map(|pr| strings(&pr["workFiles"]))
+            .unwrap_or_default();
+        classify_initiative_with_files(title, &labels, repo, config, &files)
     };
     for review in arr(&data["codeReviews"]) {
         let repo = s(&review["repository"]);
@@ -388,7 +489,8 @@ pub fn compute_allocation_precise(data: &Value, config: &Value, manual: &[Value]
             } else {
                 pr.map(|pr| strings(&pr["labels"])).unwrap_or_default()
             };
-            classify_initiative(title, &labels, repo, config)
+            let files = pr.map(|pr| strings(&pr["workFiles"])).unwrap_or_default();
+            classify_initiative_with_files(title, &labels, repo, config, &files)
         } else if let Some(pr) = pr {
             review_initiative(repo, s(&pr["title"]), s(&pr["url"]), None)
         } else {
@@ -425,7 +527,8 @@ pub fn compute_allocation_precise(data: &Value, config: &Value, manual: &[Value]
             .split('\n')
             .next()
             .unwrap_or("");
-            let initiative = classify_initiative(message, &[], name, config);
+            let initiative =
+                classify_initiative_with_files(message, &[], name, config, &strings(&c["files"]));
             let typ = classify_work_type(message, &[]).to_owned();
             let key = format!("{initiative}|{typ}");
             if let Some(group) = groups.iter_mut().find(|g| g.0 == key) {

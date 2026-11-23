@@ -261,7 +261,7 @@ export const registerPreview = (program: Command): void => {
           throw new Error(`Invalid port: ${opts.port}`);
         }
 
-        const fileCfg = await loadConfigFile(opts.config ?? env("CONFIG_PATH"));
+        const fileCfg = await loadConfigFile(opts.config ?? env("CONFIG_PATH") ?? "./config.yaml");
         const cfg = resolveConfig(fileCfg, {
           username: env("GITHUB_USERNAME"),
           timezone: opts.timezone ?? env("TIMEZONE"),

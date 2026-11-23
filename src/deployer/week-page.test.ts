@@ -81,6 +81,31 @@ describe("renderWeekPage", () => {
     }
   });
 
+  it("states the Mon-Fri span and shows attributed weekend days with their own dates and reason", () => {
+    const notes = ["Sat, Oct 10 counted with Friday Oct 9: lower modeled effort than the following Monday (2h vs 5h)."];
+    for (const theme of AVAILABLE_THEMES as Theme[]) {
+      const html = renderWeekPage(base({
+        id: "2026-10-05", label: "Oct 6-9", from: "2026-10-05", to: "2026-10-09",
+        weekendNotes: notes,
+        days: [
+          { date: "2026-10-06", href: "../../2026/10/06/", label: "Tue, Oct 6" },
+          { date: "2026-10-10", href: "../../2026/10/10/", label: "Sat, Oct 10", note: "weekend" },
+        ],
+      }), { themeName: theme });
+      expect(html, theme).toContain("Work week of Oct 6-9");
+      expect(html, theme).toContain("2026-10-05 to 2026-10-09 \u00b7 Monday to Friday");
+      expect(html, theme).not.toContain("Thursday to Wednesday");
+      expect(html, theme).toContain(notes[0]);
+      expect(html, theme).toContain('<a href="../../2026/10/10/">Sat, Oct 10</a> <span class="week-day-note">(weekend)</span>');
+    }
+  });
+
+  it("labels an explicit weekend entry as a weekend", () => {
+    const html = renderWeekPage(base({ id: "2026-10-17", kind: "weekend", label: "Oct 17-18 weekend", from: "2026-10-17", to: "2026-10-18" }));
+    expect(html).toContain("Weekend activity: Oct 17-18");
+    expect(html).toContain("2026-10-17 to 2026-10-18 \u00b7 Weekend");
+  });
+
   it("still renders without allocation data", () => {
     const html = renderWeekPage(base({ allocation: undefined }));
     expect(html).toContain('<a href="../../2026/10/02/">Fri, Oct 2</a>');

@@ -1,5 +1,7 @@
 import { describe, it, expect } from "vitest";
+import Handlebars from "handlebars";
 import { renderReport } from "./index.js";
+import { buildAllocationView } from "./allocation-view.js";
 import { AVAILABLE_THEMES } from "./themes/index.js";
 import { makeAllocation, makeTrend, emptyAllocation } from "./allocation-fixtures.js";
 import { assertNoSecretsInHtml } from "../config.js";
@@ -49,7 +51,8 @@ describe("allocation section", () => {
       expect(html).toContain("Where the effort went");
       expect(html).toContain("Work delivered in the week of Oct 1–7 would typically take one engineer about 3.5 days (26 estimated manual-effort hours) without AI assistance. Here&#x27;s where it went across 2 initiatives.");
       expect(html).toContain('title="Pricing: 54% of work delivered"');
-      expect(html).toContain("Completed");
+      expect(html).toContain('<span class="alloc-work-label">Development complete</span>');
+      expect(html).not.toContain(">Completed<");
       expect(html).toContain("Self-reported");
       expect(html).toContain("No reports");
       expect(html).toContain("View as data table");
@@ -93,7 +96,7 @@ describe("allocation section", () => {
       const html = renderReport(DATA, { theme, allocation: { week: { label: "Oct 1–7", allocation: a } } });
       expect(html, theme).toContain('alloc-impact alloc-impact--major">Large change</span>');
       expect(html, theme).toContain('alloc-impact alloc-impact--notable">Substantial change');
-      expect(html, theme).toContain("2 more completed");
+      expect(html, theme).toContain("2 more with development complete");
       expect(html, theme).toContain(".alloc-impact--major");
     }
   });
@@ -125,7 +128,7 @@ describe("allocation section", () => {
     }]]);
     const html = renderReport(DATA, { theme: "brutalist", allocation: { week: { label: "Oct 1–7", allocation: a } } });
     const block = html.slice(html.indexOf('class="alloc-block alloc-verify"'), html.indexOf("</section>", html.indexOf('class="alloc-block alloc-verify"')));
-    expect(block).toContain('<li class="alloc-verify-fact"><span class="alloc-verify-value">1</span> <span class="alloc-verify-label">code integrated, not live yet</span></li>');
+    expect(block).toContain('<li class="alloc-verify-fact"><span class="alloc-verify-value">1</span> <span class="alloc-verify-label">awaiting release</span></li>');
     expect(block).toContain('alloc-verify-fact--pending"><span class="alloc-verify-value">1</span> <span class="alloc-verify-label">still running</span>');
     expect(block).toContain('alloc-verify-fact--tentative"><span class="alloc-verify-value">1</span> <span class="alloc-verify-label">not collected</span>');
     expect(block).not.toContain("alloc-verify-fact--positive");
@@ -142,7 +145,7 @@ describe("allocation section", () => {
     const a = makeAllocation([["Pricing", 30, { shipped }]]);
     for (const theme of AVAILABLE_THEMES as Theme[]) {
       const html = renderReport(DATA, { theme, allocation: { week: { label: "Oct 1–7", allocation: a } } });
-      expect(html, theme).toContain('class="alloc-stage alloc-stage--live" title="Live since Oct 8">Live');
+      expect(html, theme).toContain('class="alloc-stage alloc-stage--live" title="Live since Oct 8">Available to users');
       expect(html, theme).toContain("Live since Oct 8)");
       expect(html, theme).toContain('class="alloc-cx alloc-cx--cross-system"');
       expect(html, theme).toContain('<span class="alloc-risk">Payments</span>');
@@ -151,12 +154,12 @@ describe("allocation section", () => {
       if (theme === "brutalist") {
         // The default theme lays the same facts out as grouped counts instead of sentences.
         expect(html, theme).toContain('<span class="alloc-sub-meta">across 1 change</span>');
-        expect(html, theme).toContain('<li class="alloc-verify-fact alloc-verify-fact--positive"><span class="alloc-verify-value">1</span> <span class="alloc-verify-label">live</span></li>');
-        expect(html, theme).toContain('<span class="alloc-verify-value">1 of 1</span> <span class="alloc-verify-label">passed automated checks</span>');
+        expect(html, theme).toContain('<li class="alloc-verify-fact alloc-verify-fact--positive"><span class="alloc-verify-value">1</span> <span class="alloc-verify-label">available to users</span></li>');
+        expect(html, theme).toContain('<span class="alloc-verify-value">1 of 1</span> <span class="alloc-verify-label">changes with automated checks passed every check</span>');
         expect(html, theme).toContain('<span class="alloc-verify-label">had human review</span>');
         expect(html, theme).toContain("How we say something is finished");
       } else {
-        expect(html, theme).toContain("Of 1 change: 1 live");
+        expect(html, theme).toContain("Of 1 change: 1 available to users");
       }
       expect(html, theme).toContain(".alloc-stage--live");
       expect(html, theme).not.toContain("[object Object]");
@@ -322,46 +325,86 @@ describe("complexity from a partial file list", () => {
 });
 
 describe("report summary leads the page", () => {
+  const STORED = "The team shipped export and has one change in review.";
   const withSummary = {
     ...DATA,
-    stakeholderSummary: "The team shipped export and has one change in review.",
+    stakeholderSummary: STORED,
     hoursEstimate: { hours: 26, sessions: 1 },
     aiContent: { ...DATA.aiContent, overview: "A distinct narrative." },
   } as unknown as WeeklyReportData;
+  const allocation = { week: { label: "Oct 1–7", allocation: week } };
+  const computed = Handlebars.escapeExpression(buildAllocationView(allocation)!.headline!.summary);
+  const summaryOf = (html: string) => html.slice(html.indexOf('id="summary"'), html.indexOf("</section>", html.indexOf('id="summary"')));
+
   for (const theme of AVAILABLE_THEMES as Theme[]) {
-    it(`puts the summary, estimated hours and section links before the allocation in the ${theme} theme`, () => {
-      const html = renderReport(withSummary, { theme, allocation: { week: { label: "Oct 1–7", allocation: week } } });
+    it(`puts the computed summary, scoped figures and section links before the allocation in the ${theme} theme`, () => {
+      const html = renderReport(withSummary, { theme, allocation });
       const summaryAt = html.indexOf('id="summary"');
       expect(summaryAt, theme).toBeGreaterThan(-1);
       expect(summaryAt, theme).toBeLessThan(html.indexOf('id="alloc-title"'));
-      const summary = html.slice(summaryAt, html.indexOf("</section>", summaryAt));
-      expect(summary, theme).toContain("The team shipped export and has one change in review.");
+      const summary = summaryOf(html);
+      // The period's computed summary leads; the stored summary is only a fallback.
+      expect(computed, theme).not.toBe("");
+      expect(summary, theme).toContain(`<p class="stakeholder-body">${computed}</p>`);
+      expect(html, theme).not.toContain(STORED);
+      expect(summary, theme).not.toMatch(/code integrated/i);
       expect(summary, theme).toContain("26 estimated manual-effort hours");
+      expect(summary, theme).toContain("8-hour shift equivalent");
+      expect(summary, theme).toContain("3.3×");
+      expect(summary, theme).toContain("Modeled effort ÷ 8 hours");
       expect(summary, theme).toContain("Figures for Work week of Oct 1–7");
       expect(summary, theme).toContain('class="alloc alloc--inline report-mix"');
       expect(summary, theme).toContain('aria-label="Initiatives, Work week of Oct 1–7: Pricing 54%, Hub 46%"');
       expect(summary, theme).toContain("It is not time worked");
-      // Deeper detail stays reachable from the summary.
-      for (const id of ["alloc-title", "narrative", "activity"]) {
+      // Deeper detail stays reachable from the summary; GitHub specifics sit behind one closed disclosure.
+      for (const id of ["alloc-title", "narrative", "technical-details"]) {
         expect(summary, theme).toContain(`href="#${id}"`);
         expect(html, theme).toMatch(new RegExp(`id="${id}"`));
       }
-      // The summary appears once, at the top, not again inside Activity.
-      expect(html.split("The team shipped export and has one change in review.").length - 1, theme).toBe(1);
+      expect(html, theme).toContain('<details class="tech-details" id="technical-details">');
+      expect(html.indexOf('id="technical-details"'), theme).toBeGreaterThan(html.indexOf('id="alloc-title"'));
+      expect(html.split(computed).length - 1, theme).toBe(1);
       expect(html, theme).toContain("Manual effort estimate");
       expect(html, theme).toContain("~3.5 engineer-days · 26 estimated manual-effort hours");
     });
+
+    it(`keeps Activity and Highlights inside the closed technical details with working links in the ${theme} theme`, () => {
+      const data = {
+        ...withSummary,
+        aiContent: { ...withSummary.aiContent, highlights: [{ type: "feature", title: "Export CSV", url: "https://github.com/o/r/pull/9", repo: "o/r", meta: "+1 −0" }] },
+      } as unknown as WeeklyReportData;
+      const html = renderReport(data, { theme, allocation });
+      const at = html.indexOf('<details class="tech-details" id="technical-details">');
+      expect(at, theme).toBeGreaterThan(-1);
+      const before = html.slice(0, at);
+      expect(before, theme).not.toContain('id="activity"');
+      expect(before, theme).not.toContain('id="highlights"');
+      const after = html.slice(at);
+      expect(after.indexOf('id="activity"'), theme).toBeGreaterThan(-1);
+      expect(after.indexOf('id="highlights"'), theme).toBeGreaterThan(after.indexOf('id="activity"'));
+      expect(after, theme).toContain('<a href="https://github.com/o/r/pull/9" target="_blank" rel="noopener nofollow">Export CSV</a>');
+      expect(after, theme).toContain("plus highlights");
+      // A deep link such as #activity opens the disclosure that holds it.
+      expect(html, theme).toContain("el.closest('details')");
+    });
   }
 
-  it("falls back to the stored estimate without allocation input and links only what exists", () => {
+  it("falls back to the stored summary and estimate without allocation input, scoped to the report date", () => {
     const html = renderReport(withSummary, { theme: "brutalist" });
-    const summary = html.slice(html.indexOf('id="summary"'), html.indexOf("</section>", html.indexOf('id="summary"')));
+    const summary = summaryOf(html);
+    expect(summary).toContain(`<p class="stakeholder-body">${STORED}</p>`);
     expect(summary).toContain("26 estimated manual-effort hours");
+    expect(summary).toContain('<p class="report-key-note">Figures for 2026-10-07</p>');
     expect(summary).not.toContain('href="#alloc-title"');
-    expect(summary).toContain('href="#activity"');
+    expect(summary).toContain('href="#technical-details"');
   });
 
-  it("renders no summary block without a stakeholder summary", () => {
+  it("shows the computed summary when no stored summary exists", () => {
+    const html = renderReport({ ...DATA, hoursEstimate: { hours: 26, sessions: 1 } } as unknown as WeeklyReportData, { theme: "brutalist", allocation });
+    expect(summaryOf(html)).toContain(`<p class="stakeholder-body">${computed}</p>`);
+  });
+
+  it("renders no summary block without a stored or computed summary", () => {
     expect(renderReport(DATA, { theme: "brutalist" })).not.toContain('id="summary"');
   });
 });

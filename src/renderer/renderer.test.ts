@@ -1,6 +1,10 @@
 import { describe, it, expect } from "vitest";
 import { renderReport } from "./index.js";
-import type { WeeklyReportData } from "../types.js";
+import { buildAllocationView } from "./allocation-view.js";
+import { makeAllocation } from "./allocation-fixtures.js";
+import { AVAILABLE_THEMES } from "./themes/index.js";
+import { buildFallbackAIContent } from "../collector/stakeholder-summary.js";
+import type { Theme, WeeklyReportData } from "../types.js";
 
 const MOCK_DATA: WeeklyReportData = {
   username: "testuser",
@@ -133,7 +137,7 @@ describe("renderReport", () => {
       /class="data-chips activity-stats">([\s\S]*?)<\/div>/,
     )?.[1];
     expect(statsBlock).toBeTruthy();
-    expect(statsBlock).toContain("PRs integrated");
+    expect(statsBlock).toContain("Development complete");
     expect(statsBlock).toContain("Lines");
     expect(statsBlock).toContain("Manual effort estimate");
     expect(statsBlock).toContain("~1.5 engineer-days");
@@ -353,8 +357,8 @@ describe("renderReport", () => {
     expect(html).toMatch(/<details class="activity-block">/);
     expect(html).not.toMatch(/<details[^>]*\sopen[\s>]/);
     expect(html).toMatch(/<summary class="activity-repo">/);
-    expect(html).toContain("10 commits, 2 PRs opened, 1 integrated");
-    expect(html).toContain("0 commits, 1 PRs opened, 0 integrated");
+    expect(html).toContain("10 commits, 2 PRs opened, 1 development complete");
+    expect(html).toContain("0 commits, 1 PRs opened, 0 development complete");
     expect(html).toContain("activity-repo--static");
     expect(html).toContain('class="activity-repo-ext"');
     expect(html).toContain('aria-label="Open org/backend on GitHub"');
@@ -421,7 +425,7 @@ describe("renderReport", () => {
     expect(html).not.toContain(">Pull requests<");
     expect(html).toContain("activity-children");
     expect(html).toContain('class="activity-block activity-pr-block"');
-    expect(html).toContain('class="pr-state pr-merged">Code integrated</span>');
+    expect(html).toContain('class="pr-state pr-merged">Development complete</span>');
     expect(html).not.toContain('class="pr-state pr-merged">merged</span>');
     expect(html).toMatch(/<summary class="activity-pr">/);
     expect(html).toContain('href="https://github.com/org/backend/pull/10"');
@@ -471,7 +475,7 @@ describe("renderReport", () => {
     expect(html).toMatch(/<details class="activity-block">/);
     expect(html).not.toMatch(/<details[^>]*\sopen[\s>]/);
     expect(html).toMatch(/<summary class="activity-repo">/);
-    expect(html).toContain("2 commits, 0 PRs opened, 0 integrated");
+    expect(html).toContain("2 commits, 0 PRs opened, 0 development complete");
     expect(html).toContain('class="activity-repo-ext"');
     expect(html).toContain('aria-label="Open org/backend on GitHub"');
     expect(html).toContain("Direct commits");
@@ -516,27 +520,26 @@ describe("renderReport", () => {
     expect(html).toContain("All days");
   });
 
-  it("keeps Zen Kaku Gothic New after Roboto for Japanese without a font request", () => {
+  it("keeps Japanese typography with a bundled Roboto fallback and no font request", () => {
     const html = renderReport(MOCK_DATA, { language: "ja" });
-    expect(html).toContain("--font-ui: Roboto, 'Zen Kaku Gothic New'");
+    expect(html).toContain("font-family: 'Zen Kaku Gothic New', Roboto, Arial, sans-serif");
     expect(html).not.toContain("fonts.googleapis.com");
   });
 
-  it("self-hosts Myriad Roboto and Lora for English", () => {
+  it("loads bundled fonts as fallbacks for the restored English typography", () => {
     const html = renderReport(MOCK_DATA, { language: "en" });
     expect(html).toMatch(/<link rel="stylesheet" href="(\.\.\/)*assets\/fonts\/fonts\.css" \/>/);
-    expect(html).toContain("--font-ui: Roboto, Arial, sans-serif");
-    expect(html).toContain("--font-editorial: Lora, Georgia, serif");
+    expect(html).toContain("font-family: 'Schibsted Grotesk', Roboto, Arial, sans-serif");
     expect(html).not.toContain("fonts.googleapis.com");
     expect(html).not.toContain("fonts.gstatic.com");
   });
 
-  it("uses the Myriad UI font role for labels in English", () => {
+  it("uses monospace labels in the restored brutalist theme", () => {
     const html = renderReport(MOCK_DATA, { language: "en" });
-    expect(html).toContain("font-family: var(--font-ui)");
+    expect(html).toContain("font-family: 'Space Mono', ui-monospace, monospace");
   });
 
-  it("keeps IBM Plex Sans KR after Roboto for Korean", () => {
+  it("keeps IBM Plex Sans KR available for Korean", () => {
     const html = renderReport(MOCK_DATA, { language: "ko" });
     expect(html).toContain("IBM Plex Sans KR");
     expect(html).not.toContain("fonts.googleapis.com");
@@ -621,4 +624,33 @@ describe("renderReport", () => {
     expect(html).toBeDefined();
     expect(html).toContain("<!DOCTYPE html>");
   });
+});
+
+describe("stakeholder summary without an LLM", () => {
+  // Fallback content (no LLM) and no authored blurb: the evidence-based headline summary leads the page.
+  const data: WeeklyReportData = { ...MOCK_DATA, stakeholderSummary: "" };
+  data.aiContent = buildFallbackAIContent(data);
+  const allocation = {
+    week: {
+      label: "Oct 1–7",
+      allocation: makeAllocation([["Pricing", 6, {
+        shipped: [{ kind: "pr" as const, title: "Export CSV", url: "https://github.com/o/r/pull/7", state: "merged" as const }],
+      }], ["Hub", 2]]),
+    },
+  };
+  const summary = buildAllocationView(allocation)!.headline!.summary;
+
+  it("derives the summary from the allocation alone", () => {
+    expect(summary).toBe(
+      "1 change in the week of Oct 1–7. Development complete: \u201cExport CSV\u201d.",
+    );
+  });
+
+  for (const theme of AVAILABLE_THEMES as Theme[]) {
+    it(`renders it once in the ${theme} theme`, () => {
+      const html = renderReport(data, { theme, allocation });
+      expect(html.split(summary).length - 1, theme).toBe(1);
+      expect(html, theme).toContain("8 estimated manual-effort hours");
+    });
+  }
 });

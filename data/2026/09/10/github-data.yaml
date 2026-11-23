@@ -60,91 +60,153 @@ prsInProgress:
         message: "fix(northstar): keep logout anonymous"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/1be79ed4579f8a529dd458aa036128b21868c511
         authoredAt: 2026-09-10T12:22:02Z
+        files:
+          - hub/staticwebapp.config.json
+          - northstar/components/northstar-dashboard.tsx
       - &a2
         sha: 9dcfffd94c05408ea442ed7c6ba4c414cb1abb26
         message: "fix(northstar): surface Microsoft data failures"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/9dcfffd94c05408ea442ed7c6ba4c414cb1abb26
         authoredAt: 2026-09-10T13:34:42Z
+        files:
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/lib/resolved-mail.test.ts
+          - northstar/lib/resolved-mail.ts
       - &a3
         sha: cd9abfd8413d3b5fe9da9482f0e41d1c4f0a5b10
         message: "test(northstar): run tests in CI"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cd9abfd8413d3b5fe9da9482f0e41d1c4f0a5b10
         authoredAt: 2026-09-10T13:36:28Z
+        files:
+          - northstar/package.json
+          - package.json
       - &a4
         sha: 740c96c681dfd1d8247d844fe10082e46ecbf2c9
         message: "fix(ui): restore user role badge"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/740c96c681dfd1d8247d844fe10082e46ecbf2c9
         authoredAt: 2026-09-10T13:38:56Z
+        files:
+          - packages/ui/src/styles.css
+          - packages/ui/src/user-menu.tsx
       - &a5
         sha: d20847269b95f89ffcb005fc7b345aaaeefc4605
         message: "fix(northstar): create local database directory"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d20847269b95f89ffcb005fc7b345aaaeefc4605
         authoredAt: 2026-09-10T13:40:08Z
+        files:
+          - scripts/dev-northstar.ts
       - &a6
         sha: 1367d07baadb2d97bc21e5ae12f9d78fa4e5cc74
         message: "fix(northstar): report Microsoft data errors"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/1367d07baadb2d97bc21e5ae12f9d78fa4e5cc74
         authoredAt: 2026-09-10T13:42:37Z
+        files:
+          - northstar/components/northstar-dashboard.tsx
       - &a7
         sha: fa90783fdbb2addf290ad72c36b6ff82c134fe40
         message: "fix(northstar): load complete calendar ranges"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/fa90783fdbb2addf290ad72c36b6ff82c134fe40
         authoredAt: 2026-09-10T13:48:03Z
+        files:
+          - hub/functions/src/northstar-microsoft.ts
+          - northstar/components/northstar-dashboard.tsx
       - &a8
         sha: 8ea007789dec0738250afcbd9a9a3334a0a416b8
         message: "fix(northstar): preserve Copilot response fidelity"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8ea007789dec0738250afcbd9a9a3334a0a416b8
         authoredAt: 2026-09-10T13:52:54Z
+        files:
+          - hub/functions/src/northstar-copilot.test.ts
+          - hub/functions/src/northstar-copilot.ts
+          - northstar/components/ask-northstar-workspace.tsx
       - &a9
         sha: 5a591931cc233c82bda48c2b8247d9793c18a802
         message: "fix(northstar): keep chat state consistent"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/5a591931cc233c82bda48c2b8247d9793c18a802
         authoredAt: 2026-09-10T13:56:53Z
+        files:
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/components/northstar-dashboard.tsx
       - &a10
         sha: d0b532b5eda9f2a2179c84652fef917601c3189f
         message: "fix(northstar): authenticate OAuth callbacks"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d0b532b5eda9f2a2179c84652fef917601c3189f
         authoredAt: 2026-09-10T14:01:38Z
+        files:
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
       - &a11
         sha: 6a35a9c8707f143dd774388301135b64d0597e36
         message: "fix(northstar): allow Azure preview origins"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6a35a9c8707f143dd774388301135b64d0597e36
         authoredAt: 2026-09-10T14:03:05Z
+        files:
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
       - &a12
         sha: 87f98e9eff609d836ebe08aa9d27acda42e36273
         message: "fix(northstar): require explicit local storage"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/87f98e9eff609d836ebe08aa9d27acda42e36273
         authoredAt: 2026-09-10T14:04:04Z
+        files:
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
       - &a13
         sha: 9566235d2343b25a2fbea2fd715cb01f07becb91
         message: "fix(northstar): avoid misleading chat recovery"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/9566235d2343b25a2fbea2fd715cb01f07becb91
         authoredAt: 2026-09-10T14:06:05Z
+        files:
+          - hub/functions/src/northstar-microsoft.ts
+          - northstar/components/ask-northstar-workspace.tsx
       - &a14
         sha: 59634d4790558cdbf545c977eca80a5f7027111d
         message: "fix(northstar): route Ask through Copilot"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/59634d4790558cdbf545c977eca80a5f7027111d
         authoredAt: 2026-09-10T14:08:51Z
+        files:
+          - hub/functions/src/northstar-microsoft.ts
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/components/settings-workspace.tsx
       - &a15
         sha: 14834ea878af1bf95c3c73468eb0bdae16ff4455
         message: "fix(northstar): close local and refresh races"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/14834ea878af1bf95c3c73468eb0bdae16ff4455
         authoredAt: 2026-09-10T14:11:23Z
+        files:
+          - hub/functions/src/northstar-microsoft.ts
+          - scripts/dev.ts
       - &a16
         sha: 594765b27d9183082447bc5dddadc494737f6f7d
         message: "fix(northstar): bound local data loading"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/594765b27d9183082447bc5dddadc494737f6f7d
         authoredAt: 2026-09-10T14:45:40Z
+        files:
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
+          - scripts/dev-northstar.ts
       - &a17
         sha: 8d7519fcc53a0c3e2052ad2cafb2164d0825386f
         message: "fix(northstar): preserve preview and session state"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8d7519fcc53a0c3e2052ad2cafb2164d0825386f
         authoredAt: 2026-09-10T15:04:11Z
+        files:
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
+          - northstar/lib/resolved-mail.test.ts
+          - northstar/lib/resolved-mail.ts
       - &a18
         sha: 5f90f48a5e879f0b54b21bac70240ef1aae598d0
         message: "fix(northstar): close preview and calendar gaps"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/5f90f48a5e879f0b54b21bac70240ef1aae598d0
         authoredAt: 2026-09-10T15:19:31Z
+        files:
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
+          - northstar/components/northstar-dashboard.tsx
     workTimestamps:
       - 2026-09-10T12:22:02Z
       - 2026-09-10T13:34:42Z
@@ -291,6 +353,5 @@ hoursEstimate:
   volumeHours: 8.8
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

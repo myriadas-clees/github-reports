@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="{{lang}}">
 <head>
-  <title>Work week of {{label}} - {{siteTitleInline}}</title>
+  <title>{{pageTitle}} - {{siteTitleInline}}</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="{{description}}" />
-  <meta property="og:title" content="Work week of {{label}}" />
+  <meta property="og:title" content="{{pageTitle}}" />
   <meta property="og:description" content="{{description}}" />
   <meta property="og:type" content="article" />
   {{#if canonicalUrl}}<meta property="og:url" content="{{{canonicalUrl}}}" />
@@ -29,15 +29,16 @@
   <span aria-hidden="true">/</span>
   <a href="{{rootPrefix}}#{{monthAnchor}}">{{monthLabel}}</a>
 </nav>
-<h1 class="header-title week-title">Work week of {{label}}{{#if open}} (so far){{/if}}</h1>
-<p class="week-dates">{{from}} to {{to}} &middot; Thursday to Wednesday</p>
+<h1 class="header-title week-title">{{pageTitle}}{{#if open}} (so far){{/if}}</h1>
+<p class="week-dates">{{rangeNote}}</p>{{#each weekendNotes}}
+<p class="week-dates week-weekend-note">{{this}}</p>{{/each}}
 </div>
 
 <main>
   <nav class="week-days-section" aria-label="Daily reports this week">
     <span class="week-days-label">Daily reports</span>
     {{#if days.length}}<ul class="week-day-links">
-      {{#each days}}<li><a href="{{this.href}}">{{this.label}}</a></li>{{/each}}
+      {{#each days}}<li><a href="{{this.href}}">{{this.label}}</a>{{#if this.note}} <span class="week-day-note">({{this.note}})</span>{{/if}}</li>{{/each}}
     </ul>{{else}}<p class="week-dates">No daily reports this week; effort is self-reported.</p>{{/if}}
   </nav>
   {{> allocation}}

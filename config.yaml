@@ -13,7 +13,69 @@ output_dir: ./output
 allocation:
   label_prefix: "app:"
   trend_weeks: 8
+  shared_initiative: Shared platform
+  paths:
+    address-book: CRM
+    crm: CRM
+    hub: Hub
+    compass: Compass
+    northstar: Northstar
+    ofac: OFAC
+    onboarding: Onboarding
+    proforma: Proforma
+    transition: Transition
+    excelerate: Excelerate
+    valuation: Valuation
+    pricing: Pricing
+    pto-tracker: PTO Tracker
+    twenty: Twenty CRM
+    compliance: Compliance
+    e2e: Shared platform
+    docs: Shared platform
+    tmp: Shared platform
+    packages: Shared platform
+    platform: Shared platform
+    infra: Shared platform
+    scripts: Shared platform
+    .github: Shared platform
+    .codex: Shared platform
+    .agents: Shared platform
+    .claude: Shared platform
+    AGENTS.md: Shared platform
+    README.md: Shared platform
+    .gitignore: Shared platform
+    GUI.md: Shared platform
+    SECURITY.md: Shared platform
+    package.json: Shared platform
+    bun.lock: Shared platform
+    tsconfig.base.json: Shared platform
+    eslint.config.mjs: Shared platform
   initiatives:
+    "app: crm": CRM
+    "app: address-book": CRM
+    "scope:crm": CRM
+    "scope:address-book": CRM
+    "repo:Myriad-Advisor-Solutions/myriadas-apps": Myriad Apps · app not identified
+    "repo:Myriad-Advisor-Solutions/ohcpwm-apps": OHCPWM · app not identified
+    "app: compass": Compass
+    "app: northstar": Northstar
+    "app: ofac": OFAC
+    "scope:compass": Compass
+    "scope:platform": Shared platform
+    "scope:ui": Shared platform
+    "scope:db": Shared platform
+    "scope:brand": Shared platform
+    "scope:agents": Shared platform
+    "scope:codex": Shared platform
+    "scope:tooling": Shared platform
+    "scope:repo": Shared platform
+    "scope:infra": Shared platform
+    "scope:actions": Shared platform
+    "scope:github": Shared platform
+    "scope:codeql": Shared platform
+    "scope:pto-tracker": PTO Tracker
+    "scope:twenty": Twenty CRM
+    "scope:compliance": Compliance
     "app: hub": Hub
     "app: pto-tracker": PTO Tracker
     "app: onboarding": Onboarding
@@ -22,9 +84,9 @@ allocation:
     "app: excelerate": Excelerate
     "app: valuation": Valuation
     "app: pricing": Pricing
-    platform: Platform & infrastructure
-    infrastructure: Platform & infrastructure
-    github-automation: Platform & infrastructure
+    platform: Shared platform
+    infrastructure: Shared platform
+    github-automation: Shared platform
     "scope:hub": Hub
     "scope:pto": PTO Tracker
     "scope:onboarding": Onboarding
@@ -35,11 +97,11 @@ allocation:
     "scope:pricing": Pricing
     "scope:ofac": OFAC
     "scope:northstar": Northstar
-    "scope:auth": Platform & infrastructure
-    "scope:ci": Platform & infrastructure
-    "scope:deploy": Platform & infrastructure
-    "scope:workflows": Platform & infrastructure
-    "scope:dependabot": Platform & infrastructure
+    "scope:auth": Shared platform
+    "scope:ci": Shared platform
+    "scope:deploy": Shared platform
+    "scope:workflows": Shared platform
+    "scope:dependabot": Shared platform
 
 # Optional self-reported time GitHub can't see (meetings, design, support).
 # manual_time:

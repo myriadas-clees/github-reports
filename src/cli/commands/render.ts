@@ -32,12 +32,20 @@ import {
   NO_ACTIVITY_INITIATIVE,
   createAllocationTrendBatch,
   computeAllocation,
-  weekEnd,
-  weekStart,
+  withAllocationMetadata,
 } from "../../collector/allocation.js";
-import { formatShortWeekTitle } from "../../collector/stakeholder-summary.js";
 import { renderWeekPage, type WeekPageData } from "../../deployer/week-page.js";
-import { dailyPathToDate, isWeekOpen, weekMonthKey, weekPagePath, workWeekOf } from "../../deployer/work-weeks.js";
+import {
+  calendarFromReports,
+  dailyPathToDate,
+  groupEndDate,
+  isWeekOpen,
+  isWeekendReport,
+  weekendNotes,
+  weekMonthKey,
+  weekPagePath,
+  type WorkCalendar,
+} from "../../deployer/work-weeks.js";
 import { type AllocationInput } from "../../renderer/allocation-view.js";
 import { annotateAllocation } from "../../collector/readiness.js";
 import { readEvidenceLedger } from "../../collector/evidence-ledger.js";
@@ -169,7 +177,7 @@ export const buildAllocationInput = (params: {
     const manual = params.manualTime ?? [];
     const annotate = (a: Allocation): Allocation => annotateAllocation(a, params.evidence ?? null, config.systems, params.timezone);
     const prepare = (d: WeeklyReportData): WeeklyReportData =>
-      withRecomputedHours(normalizeReportData(d));
+      withRecomputedHours(withAllocationMetadata(normalizeReportData(d), params.evidence));
     const currentData = prepare(params.current.data);
 
     if (params.mode === "weekly") {
@@ -223,6 +231,7 @@ export const buildInitiativeColorOrder = (
   dailyReports: ReadonlyMap<string, WeeklyReportData>,
   config: AllocationConfig = DEFAULT_ALLOCATION_CONFIG,
   manualTime: ManualTimeEntry[] = [],
+  evidence?: EvidenceLedger | null,
 ): string[] => {
   try {
     // Palette slots go to initiatives that are large either recently or overall, so
@@ -235,7 +244,7 @@ export const buildInitiativeColorOrder = (
     const totals = new Map<string, number>();
     const recent = new Map<string, number>();
     for (const [date, data] of dailyReports) {
-      const allocation = computeAllocation(withRecomputedHours(normalizeReportData(data)), config, manualTime);
+      const allocation = computeAllocation(withRecomputedHours(withAllocationMetadata(normalizeReportData(data), evidence)), config, manualTime);
       for (const b of allocation.initiatives) {
         totals.set(b.initiative, (totals.get(b.initiative) ?? 0) + b.hours);
         if (date.slice(0, 10) > recentFrom) recent.set(b.initiative, (recent.get(b.initiative) ?? 0) + b.hours);
@@ -256,9 +265,11 @@ export const buildInitiativeColorOrder = (
 };
 
 /**
- * Allocation (week panel + 8-week trend ending at that week) for every Thu–Wed work week
- * that has at least one daily report, keyed by the Thursday (YYYY-MM-DD). A week still
- * running is "so far": it ends at the latest report. Never throws.
+ * Allocation (week panel + 8-week trend ending at that week) for every Mon–Fri work week
+ * (or explicit weekend entry) with a daily report or self-reported time, keyed by its
+ * Monday (Saturday for a weekend entry). Each week is computed as of its own last day,
+ * capped at the latest report, so a later report never changes an earlier week's trend
+ * beyond the weekend attribution the site calendar already shows. Never throws.
  */
 export const buildWeekAllocationInputs = (params: {
   /** Daily reports keyed by YYYY-MM-DD. */
@@ -278,17 +289,17 @@ export const buildWeekAllocationInputs = (params: {
     const annotate = (a: Allocation): Allocation => annotateAllocation(a, params.evidence ?? null, config.systems, params.timezone);
     const list = [...params.dailyReports.entries()]
       .sort(([a], [b]) => a.localeCompare(b))
-      .map(([date, data]) => ({ date, data: withRecomputedHours(normalizeReportData(data)) }));
+      .map(([date, data]) => ({ date, data: withRecomputedHours(withAllocationMetadata(normalizeReportData(data), params.evidence)) }));
     const latest = list.at(-1)?.date;
     if (!latest) return result;
     const batch = params.allocationBatch ?? createAllocationTrendBatch(list, config, manual);
-    // Weeks with only self-reported time (no daily report) still need an allocation, so seed them from manual entries.
-    const manualWeeks = manual
-      .filter((entry) => entry.hours > 0 && entry.date <= latest)
-      .map((entry) => weekStart(entry.date));
-    for (const id of new Set([...list.map(({ date }) => weekStart(date)), ...manualWeeks])) {
+    // Groups with only self-reported time (no daily report) still need an allocation; the calendar includes them.
+    const calendar = batch.calendar(latest);
+    for (const group of calendar.groups) {
+      const id = group.id;
       try {
-        const endDate = weekEnd(id) < latest ? weekEnd(id) : latest;
+        const last = groupEndDate(group);
+        const endDate = last < latest ? last : latest;
         const trend = batch.trend(endDate);
         const annotated = { ...trend, periods: trend.periods.map((p) => ({ ...p, allocation: annotate(p.allocation) })) };
         const period = annotated.periods.find((p) => p.id === id);
@@ -307,6 +318,37 @@ export const buildWeekAllocationInputs = (params: {
     console.warn(`Skipping week allocations: ${error instanceof Error ? error.message : String(error)}`);
   }
   return result;
+};
+
+/**
+ * Site-wide Mon–Fri calendar from every daily report's modeled effort (latest view).
+ * Falls back to stored report hours if allocations cannot be computed.
+ */
+export const buildSiteCalendar = (params: {
+  dailyReports: ReadonlyMap<string, WeeklyReportData>;
+  config?: AllocationConfig;
+  manualTime?: ManualTimeEntry[];
+  allocationBatch?: ReturnType<typeof createAllocationTrendBatch>;
+}): WorkCalendar => {
+  const dates = [...params.dailyReports.keys()].sort();
+  const latest = dates.at(-1);
+  try {
+    const batch = params.allocationBatch ?? createAllocationTrendBatch(
+      dates.map((date) => ({ date, data: withRecomputedHours(normalizeReportData(params.dailyReports.get(date)!)) })),
+      params.config,
+      params.manualTime,
+    );
+    return batch.calendar(latest);
+  } catch (error) {
+    console.warn(`Week calendar falling back to stored hours: ${error instanceof Error ? error.message : String(error)}`);
+    return calendarFromReports(
+      dates.map((date) => {
+        const data = params.dailyReports.get(date)!;
+        return { date, hours: data.stats?.estimatedHours ?? data.hoursEstimate?.hours ?? 0 };
+      }),
+      latest,
+    );
+  }
 };
 
 export const sortReportPathsChronologically = (
@@ -331,6 +373,7 @@ const WEEK_DAY = new Intl.DateTimeFormat("en", { weekday: "short", month: "short
  */
 const writeWeekPages = async (params: {
   entries: ReportEntry[];
+  calendar: WorkCalendar;
   weekAllocations: ReadonlyMap<string, AllocationInput>;
   outputDir: string;
   baseUrl: string;
@@ -345,24 +388,27 @@ const writeWeekPages = async (params: {
     .sort((a, b) => a.date.localeCompare(b.date));
   if (daily.length === 0) return [];
   const latest = daily.at(-1)!.date;
+  const calendar = params.calendar;
   const byWeek = new Map<string, typeof daily>();
   for (const item of daily) {
-    const id = workWeekOf(item.date).id;
+    const id = calendar.groupIdOf(item.date);
     byWeek.set(id, [...(byWeek.get(id) ?? []), item]);
   }
   const ids = [...new Set([...byWeek.keys(), ...params.weekAllocations.keys()])].sort();
   for (const [index, id] of ids.entries()) {
-    const span = workWeekOf(id);
+    const span = calendar.group(id);
     const monthKey = weekMonthKey(span, latest);
     const [year, month] = monthKey.split("-").map(Number);
     const link = (otherId: string | undefined): WeekPageData["prev"] => otherId
-      ? { href: `../${otherId}/`, label: `Work week of ${formatShortWeekTitle(otherId, workWeekOf(otherId).to)}` }
+      ? { href: `../${otherId}/`, label: `Work week of ${calendar.group(otherId).label}` }
       : undefined;
     const data: WeekPageData = {
       id,
       label: span.label,
-      from: span.from,
-      to: span.to,
+      from: span.firstReport ?? span.from,
+      to: span.lastReport ?? span.to,
+      kind: span.kind,
+      weekendNotes: weekendNotes(span),
       open: isWeekOpen(span, latest),
       monthLabel: WEEK_MONTH.format(new Date(Date.UTC(year, month - 1, 1))),
       monthAnchor: `month-${monthKey}`,
@@ -373,6 +419,7 @@ const writeWeekPages = async (params: {
           href: `../../${entry.path}/`,
           label: WEEK_DAY.format(new Date(Date.UTC(y, m - 1, d))),
           title: entry.title,
+          ...(span.kind === "week" && isWeekendReport(date) ? { note: "weekend" } : {}),
         };
       }),
       prev: link(ids[index - 1]),
@@ -454,11 +501,11 @@ const runRenderWithContext = async (options: RenderCommandOptions, archive?: Ren
   // Every daily report, including the one being rendered.
   const allDailyReports = new Map(dailyReports);
   if (DAILY_PATH.test(dayId.path)) allDailyReports.set(dayId.path.replaceAll("/", "-"), githubData);
-  const colorOrder = archive?.colorOrder ?? buildInitiativeColorOrder(allDailyReports, options.allocation, options.manualTime);
   const evidence = archive ? archive.evidence : await readEvidenceLedger(options.dataDir).catch((err: unknown) => {
     console.warn(`Warning: evidence ledger unavailable; rendering without evidence: ${err instanceof Error ? err.message : err}`);
     return null;
   });
+  const colorOrder = archive?.colorOrder ?? buildInitiativeColorOrder(allDailyReports, options.allocation, options.manualTime, evidence);
   const allocationFor = (path: string, report: WeeklyReportData): AllocationInput | undefined =>
     buildAllocationInput({
       colorOrder,
@@ -471,11 +518,34 @@ const runRenderWithContext = async (options: RenderCommandOptions, archive?: Ren
       timezone: options.timezone,
       allocationBatch: archive?.allocationBatch,
     });
-  /** Link from a daily page to its Thu–Wed work-week page. */
+  // Site navigation follows the current calendar; daily allocation/trend data stays cut off at each page's date.
+  // One lazily built batch serves the calendar and week pages, so each day's allocation is computed once.
+  let siteBatch = archive?.allocationBatch;
+  const siteAllocationBatch = (): ReturnType<typeof createAllocationTrendBatch> | undefined => {
+    if (siteBatch) return siteBatch;
+    try {
+      siteBatch = createAllocationTrendBatch(
+        [...allDailyReports.keys()].sort().map((date) => ({ date, data: withRecomputedHours(withAllocationMetadata(normalizeReportData(allDailyReports.get(date)!), evidence)) })),
+        options.allocation,
+        options.manualTime,
+      );
+    } catch (error) {
+      console.warn(`Skipping shared allocation batch: ${error instanceof Error ? error.message : String(error)}`);
+    }
+    return siteBatch;
+  };
+  let siteCalendar: WorkCalendar | undefined;
+  const calendar = (): WorkCalendar => siteCalendar ??= buildSiteCalendar({
+    dailyReports: allDailyReports,
+    config: options.allocation,
+    manualTime: options.manualTime,
+    allocationBatch: siteAllocationBatch(),
+  });
+  /** Link from a daily page to the Mon–Fri work-week page its effort is counted in. */
   const weekLinkFor = (path: string, prefix: string): { href: string; label: string } | undefined => {
     const date = dailyPathToDate(path);
     if (!date) return undefined;
-    const week = workWeekOf(date);
+    const week = calendar().group(calendar().groupIdOf(date));
     return { href: `${prefix}${weekPagePath(week.id)}`, label: week.label };
   };
   allPaths = sortReportPathsChronologically(allPaths, reportDates);
@@ -643,7 +713,7 @@ const runRenderWithContext = async (options: RenderCommandOptions, archive?: Ren
   await writeFile(join(finishedDir, "index.html"), finishedHtml, "utf-8");
   console.log(`Finished-state page written to ${join(finishedDir, "index.html")}`);
 
-  // One page per Thu–Wed work week that has at least one daily report.
+  // One page per Mon–Fri work week (or explicit weekend entry) with a daily report or self-reported time.
   const weekAllocations = options.mode === "weekly"
     ? new Map<string, AllocationInput>()
     : buildWeekAllocationInputs({
@@ -653,10 +723,11 @@ const runRenderWithContext = async (options: RenderCommandOptions, archive?: Ren
       colorOrder,
       evidence,
       timezone: options.timezone,
-      allocationBatch: archive?.allocationBatch,
+      allocationBatch: siteAllocationBatch(),
     });
   const weekIds = await writeWeekPages({
     entries,
+    calendar: calendar(),
     weekAllocations,
     outputDir: options.outputDir,
     baseUrl: base,
@@ -679,6 +750,7 @@ const runRenderWithContext = async (options: RenderCommandOptions, archive?: Ren
       hasEstimatePage: estimateHtml !== undefined && estimateHtml !== null,
       hasAppEstimates: calculatorView?.hasApps === true,
       colorOrder,
+      calendar: calendar(),
       weekAllocations: new Map(
         [...weekAllocations].flatMap(([id, input]) => (input.week ? [[id, input.week.allocation] as const] : [])),
       ),
@@ -774,10 +846,14 @@ export const runRenderArchive = async (options: RenderCommandOptions): Promise<v
     contents.set(path, content);
   }));
   const dailyReports = new Map(paths.map((path) => [path.replaceAll("/", "-"), reports.get(path)!]));
+  const evidence = await readEvidenceLedger(options.dataDir).catch((err: unknown) => {
+    console.warn(`Warning: evidence ledger unavailable; rendering without evidence: ${err instanceof Error ? err.message : err}`);
+    return null;
+  });
   let allocationBatch: ReturnType<typeof createAllocationTrendBatch> | undefined;
   try {
     allocationBatch = createAllocationTrendBatch(
-      [...dailyReports].map(([date, report]) => ({ date, data: withRecomputedHours(normalizeReportData(report)) })),
+      [...dailyReports].map(([date, report]) => ({ date, data: withRecomputedHours(withAllocationMetadata(normalizeReportData(report), evidence)) })),
       options.allocation,
       options.manualTime,
     );
@@ -786,11 +862,8 @@ export const runRenderArchive = async (options: RenderCommandOptions): Promise<v
   }
   const archive: RenderArchiveContext = {
     paths, reports, contents, allocationBatch,
-    colorOrder: buildInitiativeColorOrder(dailyReports, options.allocation, options.manualTime),
-    evidence: await readEvidenceLedger(options.dataDir).catch((err: unknown) => {
-      console.warn(`Warning: evidence ledger unavailable; rendering without evidence: ${err instanceof Error ? err.message : err}`);
-      return null;
-    }),
+    colorOrder: buildInitiativeColorOrder(dailyReports, options.allocation, options.manualTime, evidence),
+    evidence,
   };
   for (const path of paths) {
     const date = path.replaceAll("/", "-");
@@ -813,7 +886,7 @@ export const registerRender = (program: Command): void => {
     .option("--date <date>", "Report date (YYYY-MM-DD, default: previous workday)")
     .option("--archive", "Render every dated report and shared archive output in one process")
     .option("--mode <mode>", "Archive mode: daily or weekly (env: REPORT_MODE, default: daily)")
-    .option("--config <path>", "Path to config.yaml (env: CONFIG_PATH)")
+    .option("--config <path>", "Path to config.yaml (env: CONFIG_PATH, default: ./config.yaml)")
     .action(async (opts) => {
       try {
         const baseUrl = opts.baseUrl ?? env("BASE_URL");
@@ -822,7 +895,7 @@ export const registerRender = (program: Command): void => {
         if (opts.archive && opts.date) throw new Error("Use either --archive or --date, not both");
         if (mode !== "daily" && mode !== "weekly") throw new Error(`Unknown report mode "${mode}". Use daily or weekly.`);
 
-        const fileCfg = await loadConfigFile(opts.config ?? env("CONFIG_PATH"));
+        const fileCfg = await loadConfigFile(opts.config ?? env("CONFIG_PATH") ?? "./config.yaml");
         const cfg = resolveConfig(fileCfg, {
           username: env("GITHUB_USERNAME"),
           timezone: opts.timezone ?? env("TIMEZONE"),

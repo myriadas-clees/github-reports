@@ -1,6 +1,6 @@
 # Worklog (fork of deariary/github-weekly-reporter)
 
-Private weekly GitHub status-page generator. Work week is **Thu–Wed** (Actions cron Thursday morning).
+Private weekly GitHub status-page generator. Website work weeks are **Mon–Fri** (page id = Monday; weekends attributed to the adjacent Friday/Monday by `src/collector/work-calendar.ts`). Legacy weekly-fetch archives (`YYYY/Wxx`) keep the Thu–Wed window (Actions cron Thursday morning).
 
 ## Layout
 
@@ -21,7 +21,7 @@ bun run report   # weekly-fetch → generate → render
 
 ## Rules
 
-- Not ISO Mon–Sun. `GITHUB_TOKEN` / `GH_PAT` for private repos. Never embed secrets in committed config or generated HTML (`assertNoSecretsInHtml`).
+- Not ISO Mon–Sun: website weeks are Mon–Fri with attributed weekends; historical daily views use a cutoff calendar (no later report may move their weekend). `GITHUB_TOKEN` / `GH_PAT` for private repos. Never embed secrets in committed config or generated HTML (`assertNoSecretsInHtml`).
 - LLM optional; stakeholder fallback always works. Prefer extending upstream collectors/renderer over rewriting.
 
 ## UI Guidance

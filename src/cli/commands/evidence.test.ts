@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process";
 import { describe, expect, it } from "vitest";
 import { mkdtemp, readFile, writeFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
@@ -135,7 +136,7 @@ it("refreshes evidence in the composite action before committing and rendering",
   expect(index).toBeLessThan(steps.findIndex((s) => s.name === "Render HTML report"));
   expect(step.if).toBe("inputs.mode == 'daily' || inputs.mode == 'weekly'");
   expect(step.env?.GITHUB_TOKEN).toBe("${{ inputs.github-token }}");
-  expect(step.run).toContain('evidence ${INPUT_DATE:+--since "$INPUT_DATE"}');
+  expect(step.run).toContain('evidence ${EVIDENCE_SINCE:+--since "$EVIDENCE_SINCE"}');
 });
 
 it("leaves unknown ancestry unchecked and reports it", async () => {
@@ -478,4 +479,35 @@ describe("carryOverDerivedEvidence with partial review/file fetches", () => {
     expect(out.files).toEqual(["c.ts"]);
     expect(out.incomplete).toBeUndefined();
   });
+});
+
+
+it("uses the generated weekly window for the composite evidence cutoff", async () => {
+  const action = parse(await readFile("action.yml", "utf8"));
+  const step = action.runs.steps.find((s: { name: string }) => s.name === "Refresh evidence");
+  const dir = await mkdtemp(join(tmpdir(), "evidence-action-"));
+  try {
+    const capture = join(dir, "args");
+    const bun = execFileSync("which", ["bun"], { encoding: "utf8" }).trim();
+    await writeFile(join(dir, "bun"), '#!/bin/bash\nif [ "$1" = --eval ]; then exec "$REAL_BUN" "$@"; fi\nprintf "%s\\n" "$@" > "$CAPTURE"\n', { mode: 0o755 });
+    for (const [mode, date, expected] of [["weekly", "2026-10-15", "2026-10-08"], ["weekly", "2026-10-14", "2026-10-01"], ["daily", "2026-10-15", "2026-10-15"], ["weekly", "", ""]]) {
+      execFileSync("bash", ["-e", "-c", step.run], { env: { ...process.env, PATH: `${dir}:${process.env.PATH}`, REAL_BUN: bun, CAPTURE: capture, GITHUB_ACTION_PATH: process.cwd(), INPUT_MODE: mode, INPUT_DATE: date, TIMEZONE: "America/New_York" } });
+      const args = (await readFile(capture, "utf8")).trim().split("\n");
+      expect(args.slice(1)).toEqual(expected ? ["evidence", "--since", expected] : ["evidence"]);
+    }
+  } finally { await rm(dir, { recursive: true, force: true }); }
+});
+
+it.each([true, false])("checks earlier ancestry despite a known release (production=%s)", async (production) => {
+  const oldSha = "a".repeat(40), knownSha = "b".repeat(40), laterSha = "c".repeat(40);
+  const environment = production ? "production" : "preview";
+  const deployments = [oldSha, knownSha, laterSha].map((sha, i) => ({ environment, production, ref: `v${i}`, sha, createdAt: `2026-10-${20 + i}T00:00:00Z`, succeededAt: `2026-10-${20 + i}T01:00:00Z` }));
+  const checked: string[] = [];
+  const input = { deployments, pe: { baseRef: "main", mergeCommitSha: "d".repeat(40), mergedAt: "2026-10-19T00:00:00Z" }, defaultBranch: "main", isContained: async (sha: string) => { checked.push(sha); return true; } };
+  const result = await findContainingDeployments({ ...input, known: [{ environment, sha: knownSha }] });
+  expect(checked).toEqual([oldSha]);
+  expect(result.known).toContainEqual({ environment, sha: oldSha });
+  checked.length = 0;
+  await findContainingDeployments({ ...input, known: result.known });
+  expect(checked).toEqual([]);
 });

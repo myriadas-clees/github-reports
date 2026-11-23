@@ -305,6 +305,10 @@ export const buildCSS = (language: Language = "en"): string => {
     .panel-alloc .section-group-title { font-size: 1.5rem; font-weight: 700; color: var(--e-heading); }
     .panel-alloc .section-group-line { flex: 1; height: 1px; background: var(--e-border); }
     .panel-alloc .alloc { margin-bottom: 0; }
+    /* Technical details: GitHub activity and highlights in one scrollable panel, closed by default. */
+    .panel-tech .tech-details-title { font-family: ${heading}; font-size: 1.5rem; font-weight: 700; color: var(--e-heading); }
+    .panel-tech .tech-highlights { margin-top: 1.5rem; }
+    .panel-tech .stack-card { width: auto; }
 
     .panel-text {
       width: 38vw;

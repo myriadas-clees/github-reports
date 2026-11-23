@@ -47,8 +47,7 @@ pullRequests:
       ## Problem
 
 
-      The project registered six obsolete subtree specialists in addition to explorer and worker, increasing routing
-      complexity and leaving reasoning and handoff behavior inconsistent with the intended explorer-first workflow.
+      The project registered six obsolete subtree specialists in addition to explorer and worker, increasing routing complexity and leaving reasoning and handoff behavior inconsistent with the intended explorer-first workflow.
 
 
       ## Solution
@@ -73,6 +72,18 @@ pullRequests:
         message: "chore(codex): simplify sub-agent roles"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ff6ad3ac2a71fed806069b48b23353780ac14f84
         authoredAt: 2026-08-31T15:11:37Z
+        files:
+          - .codex/agents/default.toml
+          - .codex/agents/docs.toml
+          - .codex/agents/explorer.toml
+          - .codex/agents/hub.toml
+          - .codex/agents/ofac.toml
+          - .codex/agents/packages.toml
+          - .codex/agents/pricing.toml
+          - .codex/agents/scripts.toml
+          - .codex/agents/worker.toml
+          - .codex/config.toml
+          - AGENTS.md
     workTimestamps:
       - 2026-08-31T15:11:37Z
     workAdditions: 25
@@ -94,8 +105,7 @@ pullRequests:
       ## Why
 
 
-      The Hub deployment workflow failed during workflow planning because job-level env referenced the unavailable
-      runner context. No jobs were created, so the main-branch deployment did not run.
+      The Hub deployment workflow failed during workflow planning because job-level env referenced the unavailable runner context. No jobs were created, so the main-branch deployment did not run.
 
 
       ## What changed
@@ -123,6 +133,8 @@ pullRequests:
         message: "fix(ci): use valid artifact root context"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/bea34b6dbe787b27f64c396cc72fee1a704a9fe8
         authoredAt: 2026-08-31T16:11:54Z
+        files:
+          - .github/workflows/azure-static-web-apps.yml
     workTimestamps:
       - 2026-08-31T16:11:54Z
     workAdditions: 1
@@ -134,8 +146,7 @@ pullRequests:
       ## Problem
 
 
-      The spawned custom explorer role uses the read-only explorer permission profile but did not prohibit approval
-      requests, leaving a gap in its enforced behavior.
+      The spawned custom explorer role uses the read-only explorer permission profile but did not prohibit approval requests, leaving a gap in its enforced behavior.
 
 
       ## Solution
@@ -162,6 +173,8 @@ pullRequests:
         message: "fix(codex): prevent explorer approval requests"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f181f646a45e106b8833b853fbe7944f5c9e1a8d
         authoredAt: 2026-08-31T16:36:00Z
+        files:
+          - .codex/agents/explorer.toml
     workTimestamps:
       - 2026-08-31T16:36:00Z
     workAdditions: 1
@@ -173,8 +186,7 @@ pullRequests:
       ## Why
 
 
-      The project-scoped Codex setup registered ten overlapping specialists, which made delegation more complex than
-      necessary and duplicated permission profiles.
+      The project-scoped Codex setup registered ten overlapping specialists, which made delegation more complex than necessary and duplicated permission profiles.
 
 
       ## What changed
@@ -202,11 +214,29 @@ pullRequests:
         message: "chore(codex): simplify project agent roles"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/388bfc017077ae923710ec3458d8a14696e95505
         authoredAt: 2026-08-31T15:09:31Z
+        files:
+          - .codex/agents/default.toml
+          - .codex/agents/docs.toml
+          - .codex/agents/excelerate.toml
+          - .codex/agents/explorer.toml
+          - .codex/agents/hub.toml
+          - .codex/agents/infra.toml
+          - .codex/agents/onboarding.toml
+          - .codex/agents/packages.toml
+          - .codex/agents/proforma.toml
+          - .codex/agents/pto-tracker.toml
+          - .codex/agents/scripts.toml
+          - .codex/agents/valuation.toml
+          - .codex/agents/worker.toml
+          - .codex/config.toml
+          - AGENTS.md
       - &a13
         sha: c0734880042ce1026e0c4d0ce7851b38c3a0676b
         message: "docs(agents): clarify worker routing"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c0734880042ce1026e0c4d0ce7851b38c3a0676b
         authoredAt: 2026-08-31T15:16:06Z
+        files:
+          - AGENTS.md
     workTimestamps:
       - 2026-08-31T15:09:31Z
       - 2026-08-31T15:16:06Z
@@ -257,6 +287,8 @@ pullRequests:
         message: "fix(codex): prevent explorer approval escalation"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a72c2a2dfb0ffc7e7b939e089fcdbfd8149176e2
         authoredAt: 2026-08-31T16:35:53Z
+        files:
+          - .codex/agents/explorer.toml
     workTimestamps:
       - 2026-08-31T16:35:53Z
     workAdditions: 1
@@ -268,8 +300,7 @@ pullRequests:
       ## Why
 
 
-      Authorization role values had no single naming contract, allowing values such as PTO's `HRAdmin` to drift from the
-      repository's lowercase snake-case convention.
+      Authorization role values had no single naming contract, allowing values such as PTO's `HRAdmin` to drift from the repository's lowercase snake-case convention.
 
 
       Stacked on #107 so the documentation describes the consolidated authorization model introduced there.
@@ -299,14 +330,17 @@ pullRequests:
     workAdditions: 0
     workDeletions: 0
     workFiles: []
+    allocationFiles:
+      - docs/authorization-roles.md
+      - docs/production-readiness-progress.md
+      - infra/azure/README.md
+      - pto-tracker/docs/README.md
   - title: "fix(auth): standardize platform administrator roles"
     body: >-
       ## Why
 
 
-      The suite-wide `myriadas_user` role was promoted to application administrator or HR access in several products.
-      This conflated platform access with privileged authorization and allowed platform-only users to perform protected
-      mutations.
+      The suite-wide `myriadas_user` role was promoted to application administrator or HR access in several products. This conflated platform access with privileged authorization and allowed platform-only users to perform protected mutations.
 
 
       ## What changed
@@ -338,10 +372,27 @@ pullRequests:
     workAdditions: 0
     workDeletions: 0
     workFiles: []
+    allocationFiles:
+      - excelerate/src/lib/auth.test.ts
+      - excelerate/src/lib/auth.ts
+      - excelerate/staticwebapp.config.json
+      - hub/lib/auth.test.ts
+      - hub/lib/auth.ts
+      - hub/staticwebapp.config.json
+      - infra/azure/pto-tracker/main.bicep
+      - onboarding/apps/dashboard/lib/auth.test.ts
+      - onboarding/apps/dashboard/lib/auth.ts
+      - onboarding/apps/dashboard/staticwebapp.config.json
+      - pto-tracker/src/lib/auth/entra-provider.test.ts
+      - pto-tracker/src/lib/auth/entra-provider.ts
+      - pto-tracker/src/lib/auth/entra-token-provider.test.ts
+      - pto-tracker/src/lib/auth/entra-token-provider.ts
+      - valuation/src/lib/auth.test.ts
+      - valuation/src/lib/auth.ts
+      - valuation/staticwebapp.config.json
   - title: "refactor: centralize suite architecture"
     body: >-
-      Centralizes repeated suite behavior so navigation preferences, static exports, and product route declarations are
-      maintained once instead of drifting across apps.
+      Centralizes repeated suite behavior so navigation preferences, static exports, and product route declarations are maintained once instead of drifting across apps.
 
 
       - Share Top bar/Sidebar preference across suite products.
@@ -374,6 +425,10 @@ pullRequests:
         message: "fix: address suite architecture review findings"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3a1fb6f9941919d3d5d4abc4e34e63aeae540891
         authoredAt: 2026-08-31T12:46:29Z
+        files:
+          - hub/components/HubLauncher.tsx
+          - packages/ui/src/navigation/app-nav.tsx
+          - packages/ui/src/theme-preferences.tsx
       - &a5
         sha: a8b78af87a6d5d127a9d3ea02910aa0246b6569a
         message: "fix(ui): resolve shared theme and hub search regressions"
@@ -394,6 +449,9 @@ pullRequests:
         message: "fix: preserve theme and launcher state without storage"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/539d345b93245f1eb992013ef3391bd1ca3faa9b
         authoredAt: 2026-08-31T14:54:47Z
+        files:
+          - hub/components/HubLauncher.tsx
+          - proforma/src/components/proforma-app-shell.tsx
     workTimestamps:
       - 2026-08-31T12:46:29Z
       - 2026-08-31T13:56:49Z
@@ -453,21 +511,50 @@ pullRequests:
         message: "fix(ci): address incremental build review findings"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c74fbfac389f0e275adaa94cef48d7a128de1b29
         authoredAt: 2026-08-31T12:44:48Z
+        files:
+          - .github/workflows/verify.yml
+          - scripts/artifact-fingerprints.ts
       - &a6
         sha: a21c142808567d3443195850258ea68e47cf0799
         message: "chore(stack): integrate PR #111 into #105"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a21c142808567d3443195850258ea68e47cf0799
         authoredAt: 2026-08-31T14:04:33Z
+        files:
+          - docs/authorization-roles.md
+          - docs/production-readiness-progress.md
+          - excelerate/src/lib/auth.test.ts
+          - excelerate/src/lib/auth.ts
+          - excelerate/staticwebapp.config.json
+          - hub/lib/auth.test.ts
+          - hub/lib/auth.ts
+          - hub/staticwebapp.config.json
+          - infra/azure/README.md
+          - infra/azure/pto-tracker/main.bicep
+          - onboarding/apps/dashboard/lib/auth.test.ts
+          - onboarding/apps/dashboard/lib/auth.ts
+          - onboarding/apps/dashboard/staticwebapp.config.json
+          - pto-tracker/docs/README.md
+          - pto-tracker/src/lib/auth/entra-provider.test.ts
+          - pto-tracker/src/lib/auth/entra-provider.ts
+          - pto-tracker/src/lib/auth/entra-token-provider.test.ts
+          - pto-tracker/src/lib/auth/entra-token-provider.ts
+          - valuation/src/lib/auth.test.ts
+          - valuation/src/lib/auth.ts
+          - valuation/staticwebapp.config.json
       - &a7
         sha: e7c0edf47f69eb395600eab3cfb01f25ef8be62f
         message: "fix(ci): quote product workflow input safely"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e7c0edf47f69eb395600eab3cfb01f25ef8be62f
         authoredAt: 2026-08-31T14:21:40Z
+        files:
+          - .github/workflows/azure-static-web-apps-products.yml
       - &a9
         sha: d8af293097aeaf94be6eb87e6a2e551320485d05
         message: "fix(ci): deploy manual runs despite stale-main guard"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d8af293097aeaf94be6eb87e6a2e551320485d05
         authoredAt: 2026-08-31T14:40:45Z
+        files:
+          - .github/workflows/azure-static-web-apps.yml
     workTimestamps:
       - 2026-08-31T12:44:48Z
       - 2026-08-31T14:04:33Z
@@ -520,6 +607,18 @@ commitMessages:
         additions: 25
         deletions: 145
         filesChanged: 11
+        files:
+          - .codex/agents/default.toml
+          - .codex/agents/docs.toml
+          - .codex/agents/explorer.toml
+          - .codex/agents/hub.toml
+          - .codex/agents/ofac.toml
+          - .codex/agents/packages.toml
+          - .codex/agents/pricing.toml
+          - .codex/agents/scripts.toml
+          - .codex/agents/worker.toml
+          - .codex/config.toml
+          - AGENTS.md
       - *a2
       - sha: c2798b8be8f9e8ee5578585ff71d884606f1158d
         message: "fix(codex): prevent explorer approval requests (#120)"
@@ -528,6 +627,8 @@ commitMessages:
         additions: 1
         deletions: 0
         filesChanged: 1
+        files:
+          - .codex/agents/explorer.toml
   - repo: Myriad-Advisor-Solutions/myriadas-apps
     messages:
       - "fix(ci): address incremental build review findings"
@@ -569,6 +670,22 @@ commitMessages:
         additions: 25
         deletions: 253
         filesChanged: 15
+        files:
+          - .codex/agents/default.toml
+          - .codex/agents/docs.toml
+          - .codex/agents/excelerate.toml
+          - .codex/agents/explorer.toml
+          - .codex/agents/hub.toml
+          - .codex/agents/infra.toml
+          - .codex/agents/onboarding.toml
+          - .codex/agents/packages.toml
+          - .codex/agents/proforma.toml
+          - .codex/agents/pto-tracker.toml
+          - .codex/agents/scripts.toml
+          - .codex/agents/valuation.toml
+          - .codex/agents/worker.toml
+          - .codex/config.toml
+          - AGENTS.md
       - sha: aea5d53dad6a09057c948ba141958594ad2b97af
         message: "docs(auth): define authorization role naming (#111)"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/aea5d53dad6a09057c948ba141958594ad2b97af
@@ -576,6 +693,11 @@ commitMessages:
         additions: 58
         deletions: 3
         filesChanged: 4
+        files:
+          - docs/authorization-roles.md
+          - docs/production-readiness-progress.md
+          - infra/azure/README.md
+          - pto-tracker/docs/README.md
       - sha: 73e9fb84a82f819bfb7eb710a17ebfc8c0ffb91b
         message: "fix(auth): standardize platform administrator roles (#107)"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/73e9fb84a82f819bfb7eb710a17ebfc8c0ffb91b
@@ -583,6 +705,24 @@ commitMessages:
         additions: 87
         deletions: 48
         filesChanged: 17
+        files:
+          - excelerate/src/lib/auth.test.ts
+          - excelerate/src/lib/auth.ts
+          - excelerate/staticwebapp.config.json
+          - hub/lib/auth.test.ts
+          - hub/lib/auth.ts
+          - hub/staticwebapp.config.json
+          - infra/azure/pto-tracker/main.bicep
+          - onboarding/apps/dashboard/lib/auth.test.ts
+          - onboarding/apps/dashboard/lib/auth.ts
+          - onboarding/apps/dashboard/staticwebapp.config.json
+          - pto-tracker/src/lib/auth/entra-provider.test.ts
+          - pto-tracker/src/lib/auth/entra-provider.ts
+          - pto-tracker/src/lib/auth/entra-token-provider.test.ts
+          - pto-tracker/src/lib/auth/entra-token-provider.ts
+          - valuation/src/lib/auth.test.ts
+          - valuation/src/lib/auth.ts
+          - valuation/staticwebapp.config.json
       - sha: 84cacafdd268ff407e429e912718e9ce52c823fb
         message: "refactor: centralize suite architecture (#106)"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/84cacafdd268ff407e429e912718e9ce52c823fb
@@ -590,6 +730,76 @@ commitMessages:
         additions: 1321
         deletions: 1656
         filesChanged: 69
+        files:
+          - excelerate/scripts/build-static.ts
+          - excelerate/src/app/layout.tsx
+          - excelerate/src/components/excelerate-shell.tsx
+          - hub/app/globals.css
+          - hub/app/hub/page.tsx
+          - hub/app/layout.tsx
+          - hub/components/HubLauncher.tsx
+          - hub/components/HubThemeProvider.tsx
+          - hub/lib/apps.test.ts
+          - hub/lib/apps.ts
+          - onboarding/apps/dashboard/app/api/[...path]/route.ts
+          - onboarding/apps/dashboard/app/api/vm/[...path]/route.ts
+          - onboarding/apps/dashboard/app/layout.tsx
+          - onboarding/apps/dashboard/app/page.test.tsx
+          - onboarding/apps/dashboard/components/dashboard-shell.tsx
+          - onboarding/apps/dashboard/components/metric-card.tsx
+          - onboarding/apps/dashboard/components/onboarding-theme-toggle.tsx
+          - onboarding/apps/dashboard/functions/src/index.ts
+          - onboarding/apps/dashboard/lib/api/handlers.ts
+          - onboarding/apps/dashboard/lib/api/operations-handlers.ts
+          - onboarding/apps/dashboard/lib/api/request-input.test.ts
+          - onboarding/apps/dashboard/lib/api/request-input.ts
+          - onboarding/apps/dashboard/lib/api/routes.test.ts
+          - onboarding/apps/dashboard/lib/api/routes.ts
+          - onboarding/apps/dashboard/lib/api/vm-handlers.ts
+          - onboarding/apps/dashboard/lib/theme.ts
+          - onboarding/apps/dashboard/scripts/build-static.ts
+          - packages/brand/src/styles.css
+          - packages/ui/src/app-user-menu.tsx
+          - packages/ui/src/appearance-quick-settings.tsx
+          - packages/ui/src/index.ts
+          - packages/ui/src/navigation/app-nav.tsx
+          - packages/ui/src/navigation/app-shell.tsx
+          - packages/ui/src/navigation/navigation-mode-picker.tsx
+          - packages/ui/src/navigation/preferences.tsx
+          - packages/ui/src/summary-metric.tsx
+          - packages/ui/src/theme-bootstrap.test.ts
+          - packages/ui/src/theme-bootstrap.ts
+          - packages/ui/src/theme-preferences.tsx
+          - proforma/scripts/build-static.ts
+          - proforma/src/app/layout.tsx
+          - proforma/src/components/proforma-app-shell.tsx
+          - proforma/src/components/proforma-quick-settings.tsx
+          - proforma/src/components/proforma-static-pages.tsx
+          - proforma/src/components/proforma-theme-controller.tsx
+          - proforma/src/components/proforma-theme-toggle.tsx
+          - proforma/src/components/proforma-user-menu.tsx
+          - proforma/src/lib/__tests__/proforma-user-settings.test.ts
+          - proforma/src/lib/proforma-theme.ts
+          - proforma/src/lib/proforma-user-settings.ts
+          - proforma/src/lib/report/format.ts
+          - proforma/src/lib/report/model.ts
+          - pto-tracker/functions/src/index.ts
+          - pto-tracker/scripts/build-static.ts
+          - pto-tracker/scripts/serverless-smoke.ts
+          - pto-tracker/src/app/api/[...path]/route.ts
+          - pto-tracker/src/app/layout.tsx
+          - pto-tracker/src/components/PtoAppShell.tsx
+          - pto-tracker/src/lib/api/routes.test.ts
+          - pto-tracker/src/lib/api/routes.ts
+          - pto-tracker/src/lib/auth/entra-provider.test.ts
+          - pto-tracker/src/lib/auth/entra-provider.ts
+          - pto-tracker/src/lib/auth/entra-token-provider.ts
+          - scripts/build-static-export.ts
+          - valuation/scripts/build-static.ts
+          - valuation/src/app/layout.tsx
+          - valuation/src/app/page.tsx
+          - valuation/src/components/metric-card.tsx
+          - valuation/src/components/valuation-shell.tsx
       - sha: 2018a6abdc1495f4dead30834e14244f6167919a
         message: "ci: build only affected unified app artifacts (#105)"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2018a6abdc1495f4dead30834e14244f6167919a
@@ -597,6 +807,19 @@ commitMessages:
         additions: 545
         deletions: 105
         filesChanged: 12
+        files:
+          - .github/actions/setup-bun/action.yml
+          - .github/workflows/azure-static-web-apps-products.yml
+          - .github/workflows/azure-static-web-apps.yml
+          - .github/workflows/verify.yml
+          - scripts/affected-apps.ts
+          - scripts/app-command.ts
+          - scripts/app-selection.ts
+          - scripts/artifact-cache.ts
+          - scripts/artifact-fingerprints.ts
+          - scripts/build-unified-swa.ts
+          - scripts/tooling.test.ts
+          - scripts/workflow-matrix.ts
       - *a14
       - sha: 87dbaef1265d7a42bfc42cee64aa454d6c097b19
         message: "fix(ci): use valid artifact root context (#114)"
@@ -605,6 +828,8 @@ commitMessages:
         additions: 1
         deletions: 1
         filesChanged: 1
+        files:
+          - .github/workflows/azure-static-web-apps.yml
       - *a15
       - sha: e78f7266e4327814161fbe66869b7dbbb89a4f24
         message: "fix(codex): prevent explorer approval escalation (#115)"
@@ -613,6 +838,8 @@ commitMessages:
         additions: 1
         deletions: 0
         filesChanged: 1
+        files:
+          - .codex/agents/explorer.toml
 releases: []
 externalContributions: []
 codeReviews:
@@ -623,6 +850,22 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-31T15:16:21Z
     body: null
+    prFiles:
+      - .codex/agents/default.toml
+      - .codex/agents/docs.toml
+      - .codex/agents/excelerate.toml
+      - .codex/agents/explorer.toml
+      - .codex/agents/hub.toml
+      - .codex/agents/infra.toml
+      - .codex/agents/onboarding.toml
+      - .codex/agents/packages.toml
+      - .codex/agents/proforma.toml
+      - .codex/agents/pto-tracker.toml
+      - .codex/agents/scripts.toml
+      - .codex/agents/valuation.toml
+      - .codex/agents/worker.toml
+      - .codex/config.toml
+      - AGENTS.md
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 105
     prTitle: "ci: build only affected unified app artifacts"
@@ -630,6 +873,19 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-31T14:22:05Z
     body: null
+    prFiles:
+      - .github/actions/setup-bun/action.yml
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/verify.yml
+      - scripts/affected-apps.ts
+      - scripts/app-command.ts
+      - scripts/app-selection.ts
+      - scripts/artifact-cache.ts
+      - scripts/artifact-fingerprints.ts
+      - scripts/build-unified-swa.ts
+      - scripts/tooling.test.ts
+      - scripts/workflow-matrix.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 105
     prTitle: "ci: build only affected unified app artifacts"
@@ -637,31 +893,83 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-31T14:41:11Z
     body: null
+    prFiles:
+      - .github/actions/setup-bun/action.yml
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/verify.yml
+      - scripts/affected-apps.ts
+      - scripts/app-command.ts
+      - scripts/app-selection.ts
+      - scripts/artifact-cache.ts
+      - scripts/artifact-fingerprints.ts
+      - scripts/build-unified-swa.ts
+      - scripts/tooling.test.ts
+      - scripts/workflow-matrix.ts
 reviewComments:
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 113
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/113
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/113#discussion_r3895757642
-    body: Fixed in c073488. The Sub-agents section now explicitly identifies `worker` as the matching implementation role
-      for scoped issues, while preserving the requirement to change only that section.
+    body: Fixed in c073488. The Sub-agents section now explicitly identifies `worker` as the matching implementation role for scoped issues, while preserving the requirement to change only that section.
     path: AGENTS.md
     createdAt: 2026-08-31T15:16:21Z
+    prFiles:
+      - .codex/agents/default.toml
+      - .codex/agents/docs.toml
+      - .codex/agents/excelerate.toml
+      - .codex/agents/explorer.toml
+      - .codex/agents/hub.toml
+      - .codex/agents/infra.toml
+      - .codex/agents/onboarding.toml
+      - .codex/agents/packages.toml
+      - .codex/agents/proforma.toml
+      - .codex/agents/pto-tracker.toml
+      - .codex/agents/scripts.toml
+      - .codex/agents/valuation.toml
+      - .codex/agents/worker.toml
+      - .codex/config.toml
+      - AGENTS.md
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 105
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/105
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/105#discussion_r3895313598
-    body: Addressed in e7c0edf. The workflow now passes the dispatch input through PRODUCT_APPS and quotes the environment
-      variable inside the shell command, so embedded shell syntax is treated as data and parseApps performs validation.
+    body: Addressed in e7c0edf. The workflow now passes the dispatch input through PRODUCT_APPS and quotes the environment variable inside the shell command, so embedded shell syntax is treated as data and parseApps performs validation.
     path: .github/workflows/azure-static-web-apps-products.yml
     createdAt: 2026-08-31T14:22:05Z
+    prFiles:
+      - .github/actions/setup-bun/action.yml
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/verify.yml
+      - scripts/affected-apps.ts
+      - scripts/app-command.ts
+      - scripts/app-selection.ts
+      - scripts/artifact-cache.ts
+      - scripts/artifact-fingerprints.ts
+      - scripts/build-unified-swa.ts
+      - scripts/tooling.test.ts
+      - scripts/workflow-matrix.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 105
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/105
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/105#discussion_r3895481515
-    body: Addressed in d8af293. The stale-main check now runs only for push events; manual workflow_dispatch runs bypass
-      that guard and proceed with their explicitly selected stage/production deployment.
+    body: Addressed in d8af293. The stale-main check now runs only for push events; manual workflow_dispatch runs bypass that guard and proceed with their explicitly selected stage/production deployment.
     path: .github/workflows/azure-static-web-apps.yml
     createdAt: 2026-08-31T14:41:11Z
+    prFiles:
+      - .github/actions/setup-bun/action.yml
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/verify.yml
+      - scripts/affected-apps.ts
+      - scripts/app-command.ts
+      - scripts/app-selection.ts
+      - scripts/artifact-cache.ts
+      - scripts/artifact-fingerprints.ts
+      - scripts/build-unified-swa.ts
+      - scripts/tooling.test.ts
+      - scripts/workflow-matrix.ts
 aiReviews:
   codex:
     prsReviewed: 3
@@ -813,6 +1121,5 @@ hoursEstimate:
   volumeHours: 48
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

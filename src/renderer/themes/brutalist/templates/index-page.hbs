@@ -45,17 +45,13 @@
 <main class="overhead-shell">
   <header class="overhead-header">
     <div class="overhead-identity">
-      <div class="overhead-kicker">Daily worklog / overhead</div>
+      <div class="overhead-kicker">Work progress</div>
       <h1 class="overhead-title">{{siteTitle}}</h1>
       <div class="overhead-owner">
         {{#if avatarUrl}}<img src="{{avatarUrl}}" alt="" class="overhead-avatar" width="32" height="32" />{{/if}}
         <span>{{displayName}}</span>
         {{#if username}}<a href="https://github.com/{{username}}" target="_blank" rel="noopener nofollow">@{{username}}</a>{{/if}}
       </div>
-    </div>
-    <div class="overhead-window">
-      <span class="overhead-window-label">Reporting window</span>
-      <strong>{{overview.rangeLabel}}</strong>
     </div>
   </header>
 

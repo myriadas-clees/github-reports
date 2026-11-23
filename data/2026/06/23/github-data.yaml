@@ -58,6 +58,8 @@ commitMessages:
         additions: 11
         deletions: 3
         filesChanged: 1
+        files:
+          - .github/workflows/pto-tracker.yml
       - sha: 19532889f18894ab021424a03f6ee4d8e2850a42
         message: "ci(pto-tracker): disable main auto-deploy"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/19532889f18894ab021424a03f6ee4d8e2850a42
@@ -65,6 +67,8 @@ commitMessages:
         additions: 1
         deletions: 1
         filesChanged: 1
+        files:
+          - .github/workflows/pto-tracker.yml
   - repo: Myriad-Advisor-Solutions/ohcpwm-apps
     messages:
       - "feat(pricing): enhance report preview functionality and UI components"
@@ -78,6 +82,29 @@ commitMessages:
         additions: 1486
         deletions: 107
         filesChanged: 22
+        files:
+          - bun.lock
+          - packages/audit/src/index.ts
+          - pricing/next.config.ts
+          - pricing/package.json
+          - pricing/src/app/api/pricing/recruits/[id]/pdf-preview/__tests__/route.test.ts
+          - pricing/src/app/api/pricing/recruits/[id]/pdf-preview/route.ts
+          - pricing/src/app/api/pricing/reports/[reportId]/workbook-preview/route.ts
+          - pricing/src/app/globals.css
+          - pricing/src/app/recruits/[id]/model/page.tsx
+          - pricing/src/components/dashboard-trend-chart.tsx
+          - pricing/src/components/pdf-report-viewer.tsx
+          - pricing/src/components/recruit-detail-panels.tsx
+          - pricing/src/components/report-artifact-actions.tsx
+          - pricing/src/components/report-artifact-viewer.tsx
+          - pricing/src/components/report-viewer-shell.tsx
+          - pricing/src/components/workbook-report-viewer.tsx
+          - pricing/src/components/workstation-report-table.tsx
+          - pricing/src/lib/__tests__/report-filenames.test.ts
+          - pricing/src/lib/__tests__/workbook-preview.test.ts
+          - pricing/src/lib/report-filenames.ts
+          - pricing/src/lib/report.ts
+          - pricing/src/lib/report/workbook-preview.ts
       - sha: d7ff098fd22fc94c7f970236ea148d8da69db5b4
         message: "chore: route dev through scripts/dev.ts"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d7ff098fd22fc94c7f970236ea148d8da69db5b4
@@ -85,6 +112,9 @@ commitMessages:
         additions: 170
         deletions: 1
         filesChanged: 2
+        files:
+          - package.json
+          - scripts/dev.ts
       - sha: d21fc4764b057beda00fc87e7e9be828216e597a
         message: "feat(dev): bootstrap local SQLite on startup"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d21fc4764b057beda00fc87e7e9be828216e597a
@@ -92,6 +122,24 @@ commitMessages:
         additions: 168
         deletions: 29
         filesChanged: 17
+        files:
+          - README.md
+          - package.json
+          - packages/audit/package.json
+          - packages/audit/src/index.ts
+          - packages/audit/src/paths.test.ts
+          - packages/audit/src/paths.ts
+          - packages/audit/src/sqlite.ts
+          - packages/db/package.json
+          - packages/db/src/index.ts
+          - packages/db/src/ofac.ts
+          - packages/db/src/paths.test.ts
+          - packages/db/src/paths.ts
+          - packages/db/src/pricing.ts
+          - packages/db/src/sqlite.ts
+          - pricing/src/app/settings/page.tsx
+          - pricing/src/lib/seed.ts
+          - scripts/dev.ts
 releases: []
 externalContributions: []
 codeReviews: []
@@ -138,6 +186,5 @@ hoursEstimate:
   volumeHours: 6
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

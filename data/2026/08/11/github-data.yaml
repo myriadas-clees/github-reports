@@ -44,8 +44,7 @@ repositories:
 pullRequests:
   - title: Reduce redundant Codex agent token usage
     body: >-
-      - replace mandatory two-agent fan-out with one compact, read-only explorer and at most one scoped implementation
-      specialist for normal work
+      - replace mandatory two-agent fan-out with one compact, read-only explorer and at most one scoped implementation specialist for normal work
 
       - make root guidance concise and align scoped issue, commit/push/PR, CI, and review-comment workflows
 
@@ -68,6 +67,17 @@ pullRequests:
         message: "chore(codex): reduce redundant agent token usage"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a5c068bdc3b7a5e0768f396fca085caa415b8676
         authoredAt: 2026-08-12T03:08:03Z
+        files:
+          - .codex/agents/docs.toml
+          - .codex/agents/explorer.toml
+          - .codex/agents/hub.toml
+          - .codex/agents/ofac.toml
+          - .codex/agents/packages.toml
+          - .codex/agents/pricing.toml
+          - .codex/agents/scripts.toml
+          - .codex/agents/worker.toml
+          - .codex/config.toml
+          - AGENTS.md
     workTimestamps: &a3
       - 2026-08-12T03:08:03Z
     workAdditions: 72
@@ -85,8 +95,7 @@ pullRequests:
       - AGENTS.md
   - title: Reduce redundant Codex agent token usage
     body: >-
-      - replace mandatory two-agent fan-out with one compact, read-only explorer and at most one scoped implementation
-      specialist for normal work
+      - replace mandatory two-agent fan-out with one compact, read-only explorer and at most one scoped implementation specialist for normal work
 
       - make root guidance concise and align scoped issue, commit/push/PR, CI, and review-comment workflows
 
@@ -110,11 +119,28 @@ pullRequests:
         message: "chore(codex): reduce redundant agent token usage"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e9b85a3c75e408cfaee446e640855033401ec377
         authoredAt: 2026-08-12T03:08:05Z
+        files:
+          - .codex/agents/docs.toml
+          - .codex/agents/excelerate.toml
+          - .codex/agents/explorer.toml
+          - .codex/agents/hub.toml
+          - .codex/agents/infra.toml
+          - .codex/agents/onboarding.toml
+          - .codex/agents/packages.toml
+          - .codex/agents/proforma.toml
+          - .codex/agents/pto-tracker.toml
+          - .codex/agents/scripts.toml
+          - .codex/agents/valuation.toml
+          - .codex/agents/worker.toml
+          - .codex/config.toml
+          - AGENTS.md
       - &a34
         sha: d527aa6513fd8ee33598a4f30e3d4c91ba84280a
         message: "docs(codex): retain serverless validation guidance"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d527aa6513fd8ee33598a4f30e3d4c91ba84280a
         authoredAt: 2026-08-12T03:14:42Z
+        files:
+          - AGENTS.md
     workTimestamps: &a7
       - 2026-08-12T03:08:05Z
       - 2026-08-12T03:14:42Z
@@ -158,26 +184,79 @@ pullRequests:
         message: "fix(pricing): enable business mix editing for FINET"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a0c1594bccf738e56f442a2032a64bef2f4a155a
         authoredAt: 2026-08-11T18:39:24Z
+        files:
+          - pricing/src/components/__tests__/assumptions-tab.test.tsx
+          - pricing/src/components/assumptions-tab.tsx
+          - pricing/src/components/recruit-model-shell.tsx
       - &a20
         sha: cbad0510dccf9cfadcef4a1cc274f32bf57f05bc
         message: "fix(pricing): apply FINET business mix edits"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cbad0510dccf9cfadcef4a1cc274f32bf57f05bc
         authoredAt: 2026-08-11T19:01:27Z
+        files:
+          - docs/pricing-scenario-rules.md
+          - pricing/functions/src/index.ts
+          - pricing/src/components/__tests__/assumptions-tab.test.tsx
+          - pricing/src/components/assumptions-tab.tsx
+          - pricing/src/lib/__tests__/calculation.test.ts
+          - pricing/src/lib/__tests__/fixtures/auditable-pricing-fixture.ts
+          - pricing/src/lib/__tests__/new-recruit.test.ts
+          - pricing/src/lib/__tests__/report-model.test.ts
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/calculation.ts
+          - pricing/src/lib/new-recruit.ts
+          - pricing/src/lib/report/excel.ts
+          - pricing/src/lib/report/model.ts
       - &a21
         sha: 79b1ae1967d7e1eb1b9e1acf4d23251e55e88599
         message: "fix(pricing): validate FINET revenue mixes"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/79b1ae1967d7e1eb1b9e1acf4d23251e55e88599
         authoredAt: 2026-08-11T19:24:59Z
+        files:
+          - packages/contracts/src/pricing.ts
+          - packages/db/src/pricing.test.ts
+          - packages/db/src/pricing.ts
+          - pricing/functions/src/index.ts
+          - pricing/src/components/__tests__/recruit-model-shell.test.tsx
+          - pricing/src/components/new-recruit-wizard.tsx
+          - pricing/src/components/pricing-static-pages.tsx
+          - pricing/src/components/pricing-workstation-client.tsx
+          - pricing/src/components/recruit-model-shell.tsx
+          - pricing/src/lib/__tests__/calculation.test.ts
+          - pricing/src/lib/__tests__/new-recruit.test.ts
+          - pricing/src/lib/__tests__/report-model.test.ts
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/calculation.ts
+          - pricing/src/lib/cosmos-data.ts
+          - pricing/src/lib/graph-data.ts
+          - pricing/src/lib/new-recruit.ts
+          - pricing/src/lib/report/excel.ts
+          - pricing/src/lib/report/model.ts
       - &a22
         sha: 862e6ddc302bdfe05ebacd9342ece8178c0d0098
         message: "fix(pricing): preserve and validate editable FiNet revenue mixes"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/862e6ddc302bdfe05ebacd9342ece8178c0d0098
         authoredAt: 2026-08-11T19:43:31Z
+        files:
+          - packages/contracts/src/pricing.test.ts
+          - packages/contracts/src/pricing.ts
+          - packages/db/src/pricing.test.ts
+          - pricing/src/components/__tests__/recruit-model-shell.test.tsx
+          - pricing/src/components/assumptions-tab.tsx
+          - pricing/src/components/pricing-workstation-client.tsx
+          - pricing/src/components/recruit-model-shell.tsx
+          - pricing/src/lib/__tests__/calculation.test.ts
+          - pricing/src/lib/__tests__/report-model.test.ts
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/calculation.ts
+          - pricing/src/lib/new-recruit.ts
       - &a23
         sha: 425d50a046ce37631bf114939476c8a6eb5164c0
         message: "fix(pricing): preserve Finet revenue mix on recruit creation"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/425d50a046ce37631bf114939476c8a6eb5164c0
         authoredAt: 2026-08-11T19:56:13Z
+        files:
+          - scripts/dev-pricing-api.ts
     workTimestamps: &a11
       - 2026-08-11T18:39:24Z
       - 2026-08-11T19:01:27Z
@@ -217,8 +296,7 @@ pullRequests:
       ## Why
 
 
-      The Proforma recruit intake needed a team-first workflow and clearer modeling for recruit types, owners, advisors,
-      support staff, affiliations, and economics. Preview deployments also needed to include the managed Hub API.
+      The Proforma recruit intake needed a team-first workflow and clearer modeling for recruit types, owners, advisors, support staff, affiliations, and economics. Preview deployments also needed to include the managed Hub API.
 
 
       ## What changed
@@ -246,6 +324,26 @@ pullRequests:
         message: "feat(proforma): extend recruit wizard team modeling and economics"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7699c7395e564b24fe02d6e48d13c3b5d21db86e
         authoredAt: 2026-08-11T17:34:06Z
+        files:
+          - packages/contracts/src/proforma.ts
+          - packages/db/src/proforma.test.ts
+          - packages/db/src/proforma.ts
+          - proforma/next-env.d.ts
+          - proforma/src/components/new-recruit-wizard.tsx
+          - proforma/src/components/proforma-static-pages.tsx
+          - proforma/src/lib/__tests__/api-handler.test.ts
+          - proforma/src/lib/__tests__/calculation.test.ts
+          - proforma/src/lib/__tests__/new-recruit.test.ts
+          - proforma/src/lib/__tests__/report-model.test.ts
+          - proforma/src/lib/__tests__/setup-projection.test.ts
+          - proforma/src/lib/api/handlers.ts
+          - proforma/src/lib/calculation.ts
+          - proforma/src/lib/new-recruit.ts
+          - proforma/src/lib/proforma-api-client.ts
+          - proforma/src/lib/report/model.ts
+          - proforma/src/lib/report/pdf.tsx
+          - proforma/src/lib/setup-projection.ts
+          - proforma/src/lib/workbook-output.ts
     workTimestamps: &a15
       - 2026-08-11T17:34:06Z
     workAdditions: 243
@@ -272,11 +370,9 @@ pullRequests:
       - proforma/src/lib/workbook-output.ts
   - title: Streamline recruit editing and business mix UX in pricing
     body: >-
-      - Default local development role is now `admin` (`OHPWM_LOCAL_ROLE=admin` in env examples); set
-      `OHPWM_LOCAL_ROLE=officer` to exercise officer visibility and holdco economics boundaries.
+      - Default local development role is now `admin` (`OHPWM_LOCAL_ROLE=admin` in env examples); set `OHPWM_LOCAL_ROLE=officer` to exercise officer visibility and holdco economics boundaries.
 
-      - Recruit model header uses a single **Edit recruit** popover with focus management, `aria-controls`, and a
-      **Mod...
+      - Recruit model header uses a single **Edit recruit** popover with focus management, `aria-controls`, and a **Mod...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/111
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: merged
@@ -295,11 +391,20 @@ pullRequests:
         message: "fix(pricing): clamp advisor percentage inputs to 0-100"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2065dea245ed60617a2d45a856a80fe0f9326586
         authoredAt: 2026-08-11T13:07:43Z
+        files:
+          - pricing/src/components/assumptions-tab.tsx
       - &a18
         sha: db5c6bbdf44465923c565937797faa4eb0282ed8
         message: "fix(pricing): hide AUM/revenue steppers and reconcile platform breakdown"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/db5c6bbdf44465923c565937797faa4eb0282ed8
         authoredAt: 2026-08-11T13:41:37Z
+        files:
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/assumptions-tab.test.tsx
+          - pricing/src/components/assumptions-tab.tsx
+          - pricing/src/components/stepper-number-input.tsx
+          - pricing/src/lib/__tests__/workstation.test.ts
+          - pricing/src/lib/workstation.ts
     workTimestamps:
       - 2026-08-11T13:07:43Z
       - 2026-08-11T13:41:37Z
@@ -315,8 +420,7 @@ pullRequests:
 prsInProgress:
   - title: Reduce redundant Codex agent token usage
     body: >-
-      - replace mandatory two-agent fan-out with one compact, read-only explorer and at most one scoped implementation
-      specialist for normal work
+      - replace mandatory two-agent fan-out with one compact, read-only explorer and at most one scoped implementation specialist for normal work
 
       - make root guidance concise and align scoped issue, commit/push/PR, CI, and review-comment workflows
 
@@ -338,10 +442,20 @@ prsInProgress:
     workAdditions: 72
     workDeletions: 160
     workFiles: *a4
+    allocationFiles:
+      - .codex/agents/docs.toml
+      - .codex/agents/explorer.toml
+      - .codex/agents/hub.toml
+      - .codex/agents/ofac.toml
+      - .codex/agents/packages.toml
+      - .codex/agents/pricing.toml
+      - .codex/agents/scripts.toml
+      - .codex/agents/worker.toml
+      - .codex/config.toml
+      - AGENTS.md
   - title: Reduce redundant Codex agent token usage
     body: >-
-      - replace mandatory two-agent fan-out with one compact, read-only explorer and at most one scoped implementation
-      specialist for normal work
+      - replace mandatory two-agent fan-out with one compact, read-only explorer and at most one scoped implementation specialist for normal work
 
       - make root guidance concise and align scoped issue, commit/push/PR, CI, and review-comment workflows
 
@@ -363,6 +477,21 @@ prsInProgress:
     workAdditions: 82
     workDeletions: 94
     workFiles: *a8
+    allocationFiles:
+      - .codex/agents/docs.toml
+      - .codex/agents/excelerate.toml
+      - .codex/agents/explorer.toml
+      - .codex/agents/hub.toml
+      - .codex/agents/infra.toml
+      - .codex/agents/onboarding.toml
+      - .codex/agents/packages.toml
+      - .codex/agents/proforma.toml
+      - .codex/agents/pto-tracker.toml
+      - .codex/agents/scripts.toml
+      - .codex/agents/valuation.toml
+      - .codex/agents/worker.toml
+      - .codex/config.toml
+      - AGENTS.md
   - title: Enable FINET business mix editing
     body: |-
       - Enable Revenue and Business Mix editing for FINET models.
@@ -385,13 +514,40 @@ prsInProgress:
     workAdditions: 710
     workDeletions: 104
     workFiles: *a12
+    allocationFiles:
+      - docs/pricing-scenario-rules.md
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/pricing.test.ts
+      - packages/db/src/pricing.ts
+      - pricing/functions/src/index.ts
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/recruit-model-shell.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/components/pricing-workstation-client.tsx
+      - pricing/src/components/recruit-model-shell.tsx
+      - pricing/src/lib/__tests__/calculation.test.ts
+      - pricing/src/lib/__tests__/fixtures/auditable-pricing-fixture.ts
+      - pricing/src/lib/__tests__/new-recruit.test.ts
+      - pricing/src/lib/__tests__/report-model.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/cosmos-data.ts
+      - pricing/src/lib/graph-data.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/workstation.ts
+      - scripts/dev-pricing-api.ts
   - title: Redesign Proforma recruit intake and team economics
     body: >-
       ## Why
 
 
-      The Proforma recruit intake needed a team-first workflow and clearer modeling for recruit types, owners, advisors,
-      support staff, affiliations, and economics. Preview deployments also needed to include the managed Hub API.
+      The Proforma recruit intake needed a team-first workflow and clearer modeling for recruit types, owners, advisors, support staff, affiliations, and economics. Preview deployments also needed to include the managed Hub API.
 
 
       ## What changed
@@ -415,16 +571,74 @@ prsInProgress:
     workAdditions: 243
     workDeletions: 82
     workFiles: *a16
+    allocationFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - packages/db/src/proforma.ts
+      - proforma/next-env.d.ts
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
   - title: "feat(ofac): add durable scheduled sync lease"
     body: >-
       Closes #38.
 
 
-      - Adds a Cosmos-backed atomic timer lease with conditional create, ETag-protected stale recovery, owner-safe
-      finalization, and explicit TTL/expiry.
+      - Adds a Cosmos-backed atomic timer lease with conditional create, ETag-protected stale recovery, owner-safe finalization, and explicit TTL/expiry.
 
-      - Routes both production timer and manual HTTP XML sync through the same durable Cosmos lease. A conflicting
-      manual run is audited and reje...
+      - Routes both production timer and manual HTTP XML sync through the same durable Cosmos lease. A conflicting manual run is audited and reje...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/89
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
@@ -442,12 +656,23 @@ prsInProgress:
     workAdditions: 0
     workDeletions: 0
     workFiles: []
+    allocationFiles:
+      - docs/ofac-operations.md
+      - ofac/functions/local.settings.json.example
+      - ofac/functions/src/index.ts
+      - ofac/functions/src/scheduled-sync.test.ts
+      - ofac/functions/src/scheduled-sync.ts
+      - ofac/functions/src/sync-lease-repository.test.ts
+      - ofac/functions/src/sync-lease-repository.ts
+      - ofac/src/app/globals.css
+      - ofac/src/lib/__tests__/ofac-api-handlers.test.ts
+      - ofac/src/lib/ofac-api-handlers.ts
+      - ofac/src/lib/sync-runner.ts
   - title: "refactor(ofac): migrate API routes to Azure Functions"
     body: >-
       - migrate the OFAC production API surface to Azure Functions through transport-neutral handlers
 
-      - preserve SQLite-backed local development via documented local Next adapters while defaulting deployed Functions
-      to Cosmos persistence
+      - preserve SQLite-backed local development via documented local Next adapters while defaulting deployed Functions to Cosmos persistence
 
       - add search, audit, manual-sync, Function transport, static API-bas...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/85
@@ -467,6 +692,54 @@ prsInProgress:
     workAdditions: 0
     workDeletions: 0
     workFiles: []
+    allocationFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/verify.yml
+      - README.md
+      - bun.lock
+      - docs/azure-serverless-plan.md
+      - docs/ofac-azure-functions.md
+      - docs/ofac-operations.md
+      - ofac/.env.example
+      - ofac/eslint.config.mjs
+      - ofac/functions/local.settings.json.example
+      - ofac/functions/package.json
+      - ofac/functions/src/function-adapter.test.ts
+      - ofac/functions/src/function-adapter.ts
+      - ofac/functions/src/index.ts
+      - ofac/functions/src/ofac-repository.test.ts
+      - ofac/functions/src/ofac-repository.ts
+      - ofac/next.config.ts
+      - ofac/package.json
+      - ofac/src/app/api/health/route.ts
+      - ofac/src/app/api/ofac/audit/route.ts
+      - ofac/src/app/api/ofac/clients/route.ts
+      - ofac/src/app/api/ofac/export/__tests__/route.test.ts
+      - ofac/src/app/api/ofac/export/route.ts
+      - ofac/src/app/api/ofac/health/__tests__/route.test.ts
+      - ofac/src/app/api/ofac/health/route.ts
+      - ofac/src/app/api/ofac/me/route.ts
+      - ofac/src/app/api/ofac/overview/route.ts
+      - ofac/src/app/api/ofac/screenings/[id]/decision/route.ts
+      - ofac/src/app/api/ofac/screenings/route.ts
+      - ofac/src/app/api/ofac/search/__tests__/route.test.ts
+      - ofac/src/app/api/ofac/search/route.ts
+      - ofac/src/app/api/ofac/sync/route.ts
+      - ofac/src/app/globals.css
+      - ofac/src/app/layout.tsx
+      - ofac/src/app/screenings/page.tsx
+      - ofac/src/app/search/page.tsx
+      - ofac/src/app/sync/page.tsx
+      - ofac/src/lib/__tests__/ofac-api-client.test.ts
+      - ofac/src/lib/__tests__/ofac-api-handlers.test.ts
+      - ofac/src/lib/__tests__/ofac-sync-ui.test.ts
+      - ofac/src/lib/ofac-api-client.ts
+      - ofac/src/lib/ofac-api-handlers.ts
+      - ofac/src/lib/ofac-api-local.ts
+      - ofac/src/lib/ofac-session-client.ts
+      - ofac/src/lib/ofac-sync-ui.ts
+      - ofac/src/lib/sync-runner.ts
+      - ofac/staticwebapp.config.json
   - title: "feat(auth): centralize Azure runtime auth"
     body: |-
       - Centralizes Azure Static Web Apps principal parsing and app-role enforcement in `@ohpwm/auth`.
@@ -489,13 +762,19 @@ prsInProgress:
     workAdditions: 0
     workDeletions: 0
     workFiles: []
+    allocationFiles:
+      - docs/shared-product-platform.md
+      - ofac/functions/src/index.ts
+      - packages/auth/src/auth.test.ts
+      - packages/auth/src/client.ts
+      - packages/auth/src/index.ts
+      - pricing/functions/src/index.ts
   - title: Redesign Proforma recruit intake with team-first step order
     body: >-
       ## Why
 
 
-      Recruit intake still followed an advisor-first flow that did not match how teams are modeled in practice. Platform
-      assumptions also carried legacy OHC and FiNet Wells/WFAFN fee inputs that are no longer part of the pricing model.
+      Recruit intake still followed an advisor-first flow that did not match how teams are modeled in practice. Platform assumptions also carried legacy OHC and FiNet Wells/WFAFN fee inputs that are no longer part of the pricing model.
 
 
       ## What changed
@@ -525,36 +804,109 @@ prsInProgress:
         message: "fix(proforma): preserve benefits coverage"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9de30e5573aa99bf3bec45de9805d1df0747e23d
         authoredAt: 2026-08-11T18:22:18Z
+        files:
+          - packages/contracts/src/proforma.test.ts
+          - packages/contracts/src/proforma.ts
+          - packages/db/src/proforma.test.ts
+          - proforma/src/components/__tests__/assumptions-tab.test.tsx
+          - proforma/src/components/assumptions-tab.tsx
+          - proforma/src/components/new-recruit-wizard.tsx
+          - proforma/src/lib/__tests__/new-recruit.test.ts
+          - proforma/src/lib/__tests__/report-model.test.ts
+          - proforma/src/lib/calculation.ts
+          - proforma/src/lib/new-recruit.ts
+          - proforma/src/lib/report/model.ts
+          - proforma/src/lib/report/pdf.tsx
       - &a27
         sha: 370ba46fffc751eb70d85809d66a5725cc17cfbc
         message: "fix(proforma): address recruit review feedback"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/370ba46fffc751eb70d85809d66a5725cc17cfbc
         authoredAt: 2026-08-11T18:33:16Z
+        files:
+          - packages/contracts/src/proforma.test.ts
+          - packages/contracts/src/proforma.ts
+          - packages/db/src/proforma.test.ts
+          - proforma/src/components/__tests__/assumptions-tab.test.tsx
+          - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+          - proforma/src/components/assumptions-tab.tsx
+          - proforma/src/components/new-recruit-wizard.tsx
+          - proforma/src/lib/__tests__/calculation.test.ts
+          - proforma/src/lib/__tests__/new-recruit.test.ts
+          - proforma/src/lib/__tests__/report-model.test.ts
+          - proforma/src/lib/calculation.ts
+          - proforma/src/lib/new-recruit.ts
+          - proforma/src/lib/report/model.ts
+          - proforma/src/lib/report/pdf.tsx
+          - proforma/src/lib/setup-projection.ts
+          - proforma/src/lib/workbook-output.ts
       - &a28
         sha: 7b22f9d47f63935a289d5b04c5d50aff9c5e556a
         message: "fix(proforma): align workbook waterfall formulas"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7b22f9d47f63935a289d5b04c5d50aff9c5e556a
         authoredAt: 2026-08-11T18:39:17Z
+        files:
+          - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+          - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
       - &a29
         sha: 35827a794bdac37c8f5b3d5532e56636af17451b
         message: "fix(proforma): address remaining intake issues"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/35827a794bdac37c8f5b3d5532e56636af17451b
         authoredAt: 2026-08-11T18:59:53Z
+        files:
+          - packages/contracts/src/proforma.test.ts
+          - packages/contracts/src/proforma.ts
+          - proforma/src/app/globals.css
+          - proforma/src/components/__tests__/assumptions-tab.test.tsx
+          - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+          - proforma/src/components/assumptions-tab.tsx
+          - proforma/src/components/new-recruit-wizard.tsx
+          - proforma/src/lib/__tests__/report.test.ts
+          - proforma/src/lib/__tests__/setup-projection.test.ts
+          - proforma/src/lib/report/excel.ts
+          - proforma/src/lib/report/pdf.tsx
+          - proforma/src/lib/setup-projection.ts
       - &a30
         sha: c9118afaf3bc92c2e02db0adfc97606438c01880
         message: "fix(proforma): use Firm Details states for assumptions"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c9118afaf3bc92c2e02db0adfc97606438c01880
         authoredAt: 2026-08-11T19:57:28Z
+        files:
+          - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+          - proforma/src/components/new-recruit-wizard.tsx
       - &a31
         sha: 70aed55df8ad66030766682af644e2599d264359
         message: "refactor(proforma): remove live intake summary"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/70aed55df8ad66030766682af644e2599d264359
         authoredAt: 2026-08-11T20:01:32Z
+        files:
+          - proforma/src/app/globals.css
+          - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+          - proforma/src/components/new-recruit-wizard.tsx
       - &a32
         sha: 57b763d87f8bb9322463281d15a408f5a2ec14b2
         message: "feat(proforma): model entities by formation state"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/57b763d87f8bb9322463281d15a408f5a2ec14b2
         authoredAt: 2026-08-11T20:42:17Z
+        files:
+          - packages/contracts/src/proforma.test.ts
+          - packages/contracts/src/proforma.ts
+          - proforma/src/app/globals.css
+          - proforma/src/components/__tests__/assumptions-tab.test.tsx
+          - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+          - proforma/src/components/assumptions-tab.tsx
+          - proforma/src/components/new-recruit-wizard.tsx
+          - proforma/src/components/proforma-workstation-client.tsx
+          - proforma/src/lib/__tests__/api-handler.test.ts
+          - proforma/src/lib/__tests__/new-recruit.test.ts
+          - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+          - proforma/src/lib/__tests__/report.test.ts
+          - proforma/src/lib/__tests__/setup-projection.test.ts
+          - proforma/src/lib/calculation.ts
+          - proforma/src/lib/new-recruit.ts
+          - proforma/src/lib/recruit-model-tabs.ts
+          - proforma/src/lib/report/excel.ts
+          - proforma/src/lib/report/pdf.tsx
+          - proforma/src/lib/setup-projection.ts
     workTimestamps:
       - 2026-08-11T18:22:18Z
       - 2026-08-11T18:33:16Z
@@ -616,6 +968,26 @@ commitMessages:
         additions: 748
         deletions: 202
         filesChanged: 19
+        files:
+          - .env.example
+          - docs/pricing-architecture.md
+          - docs/pricing-dashboard-contract.md
+          - pricing/.env.example
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/assumptions-tab.test.tsx
+          - pricing/src/components/__tests__/pricing-graphs.test.tsx
+          - pricing/src/components/__tests__/recruit-model-shell.test.tsx
+          - pricing/src/components/assumptions-tab.tsx
+          - pricing/src/components/pricing-graphs.tsx
+          - pricing/src/components/recruit-model-shell.tsx
+          - pricing/src/components/stepper-number-input.tsx
+          - pricing/src/lib/__tests__/local-pricing-auth.test.ts
+          - pricing/src/lib/__tests__/workstation.test.ts
+          - pricing/src/lib/auth.ts
+          - pricing/src/lib/calculation.ts
+          - pricing/src/lib/local-pricing-auth.ts
+          - pricing/src/lib/workstation.ts
+          - scripts/dev-pricing-api.ts
       - *a19
       - *a20
       - *a21
@@ -655,6 +1027,21 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-12T03:15:00Z
     body: null
+    prFiles:
+      - .codex/agents/docs.toml
+      - .codex/agents/excelerate.toml
+      - .codex/agents/explorer.toml
+      - .codex/agents/hub.toml
+      - .codex/agents/infra.toml
+      - .codex/agents/onboarding.toml
+      - .codex/agents/packages.toml
+      - .codex/agents/proforma.toml
+      - .codex/agents/pto-tracker.toml
+      - .codex/agents/scripts.toml
+      - .codex/agents/valuation.toml
+      - .codex/agents/worker.toml
+      - .codex/config.toml
+      - AGENTS.md
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prTitle: Redesign Proforma recruit intake with team-first step order
@@ -662,6 +1049,68 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-11T18:33:41Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prTitle: Redesign Proforma recruit intake with team-first step order
@@ -669,6 +1118,68 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-11T18:33:43Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prTitle: Redesign Proforma recruit intake with team-first step order
@@ -676,6 +1187,68 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-11T18:33:45Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prTitle: Redesign Proforma recruit intake with team-first step order
@@ -683,6 +1256,68 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-11T18:33:48Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prTitle: Redesign Proforma recruit intake with team-first step order
@@ -690,6 +1325,68 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-11T18:33:50Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prTitle: Redesign Proforma recruit intake with team-first step order
@@ -697,6 +1394,68 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-11T18:33:53Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prTitle: Redesign Proforma recruit intake with team-first step order
@@ -704,6 +1463,68 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-11T18:33:56Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prTitle: Redesign Proforma recruit intake with team-first step order
@@ -711,6 +1532,68 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-11T18:34:00Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prTitle: Redesign Proforma recruit intake with team-first step order
@@ -718,6 +1601,68 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-11T18:34:02Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prTitle: Redesign Proforma recruit intake with team-first step order
@@ -725,64 +1670,505 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-11T18:39:28Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
 reviewComments:
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 90
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/90
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/90#discussion_r3763336981
-    body: Legitimate catch—fixed in d527aa6. `verify` covers typecheck, lint, and tests, while `build:serverless` also
-      builds static output and Functions and validates composed artifacts. The repository-specific guidance now
-      explicitly requires `bun run build:serverless` for static output, Azure Functions, or...
+    body: Legitimate catch—fixed in d527aa6. `verify` covers typecheck, lint, and tests, while `build:serverless` also builds static output and Functions and validates composed artifacts. The repository-specific guidance now explicitly requires `bun run build:serverless` for static output, Azure Functions, or...
     path: AGENTS.md
     createdAt: 2026-08-12T03:15:00Z
+    prFiles:
+      - .codex/agents/docs.toml
+      - .codex/agents/excelerate.toml
+      - .codex/agents/explorer.toml
+      - .codex/agents/hub.toml
+      - .codex/agents/infra.toml
+      - .codex/agents/onboarding.toml
+      - .codex/agents/packages.toml
+      - .codex/agents/proforma.toml
+      - .codex/agents/pto-tracker.toml
+      - .codex/agents/scripts.toml
+      - .codex/agents/valuation.toml
+      - .codex/agents/worker.toml
+      - .codex/config.toml
+      - AGENTS.md
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3760692399
-    body: Fixed in 370ba46. Syndicate, insurance, and retirement revenue now affect total revenue, gross payout,
-      projections, report totals, and workbook totals, with focused calculation coverage.
+    body: Fixed in 370ba46. Syndicate, insurance, and retirement revenue now affect total revenue, gross payout, projections, report totals, and workbook totals, with focused calculation coverage.
     path: proforma/src/lib/new-recruit.ts
     createdAt: 2026-08-11T18:33:41Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3760692667
-    body: Fixed in 370ba46. Owner role and ownership percentage are structured Advisor fields, editable after creation,
-      included in reporting, and no longer encoded as a zero-dollar expense.
+    body: Fixed in 370ba46. Owner role and ownership percentage are structured Advisor fields, editable after creation, included in reporting, and no longer encoded as a zero-dollar expense.
     path: proforma/src/lib/new-recruit.ts
     createdAt: 2026-08-11T18:33:43Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3760692918
-    body: Fixed in 370ba46. The registration footprint picker now synchronizes setup.registeredStateCount, so setup costs
-      and review values update from the selected states.
+    body: Fixed in 370ba46. The registration footprint picker now synchronizes setup.registeredStateCount, so setup costs and review values update from the selected states.
     path: proforma/src/components/new-recruit-wizard.tsx
     createdAt: 2026-08-11T18:33:45Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3760693211
-    body: Fixed in 370ba46. Final submission now requires Company, displays a review warning, and keeps Create Recruit
-      disabled until the company is present.
+    body: Fixed in 370ba46. Final submission now requires Company, displays a review warning, and keeps Create Recruit disabled until the company is present.
     path: proforma/src/components/new-recruit-wizard.tsx
     createdAt: 2026-08-11T18:33:47Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3760693458
-    body: Fixed in 370ba46. Every rendered recruit wizard panel now includes intake-panel, activating the intended shell,
-      responsive, and dark-mode selectors throughout the flow.
+    body: Fixed in 370ba46. Every rendered recruit wizard panel now includes intake-panel, activating the intended shell, responsive, and dark-mode selectors throughout the flow.
     path: proforma/src/app/globals.css
     createdAt: 2026-08-11T18:33:50Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3760693837
-    body: Fixed in 370ba46. Changing a member to Staff clears advisor-only economics, and an all-staff team is now blocked
-      so review and created-model economics remain consistent.
+    body: Fixed in 370ba46. Changing a member to Staff clears advisor-only economics, and an all-staff team is now blocked so review and created-model economics remain consistent.
     path: proforma/src/components/new-recruit-wizard.tsx
     createdAt: 2026-08-11T18:33:53Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
@@ -790,32 +2176,275 @@ reviewComments:
     body: Fixed in 370ba46. Standalone staff preset and custom expenses now contribute to the wizard local-expense total.
     path: proforma/src/components/new-recruit-wizard.tsx
     createdAt: 2026-08-11T18:33:56Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3760694552
-    body: "Resolved as intentional product behavior. The required mapping is categorical: FiNet records Broker-dealer and
-      RIA records Custodian. Collecting an institution name is intentionally out of scope, and tests cover both
-      mappings."
+    body: "Resolved as intentional product behavior. The required mapping is categorical: FiNet records Broker-dealer and RIA records Custodian. Collecting an institution name is intentionally out of scope, and tests cover both mappings."
     path: proforma/src/components/new-recruit-wizard.tsx
     createdAt: 2026-08-11T18:33:59Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3760694829
-    body: Fixed in 9de30e5. Benefits coverage is now structured advisor/support-staff data, editable after creation, and
-      surfaced in reporting rather than stored as a zero-dollar expense.
+    body: Fixed in 9de30e5. Benefits coverage is now structured advisor/support-staff data, editable after creation, and surfaced in reporting rather than stored as a zero-dollar expense.
     path: proforma/src/lib/new-recruit.ts
     createdAt: 2026-08-11T18:34:02Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3760732221
-    body: Fixed in 7b22f9d. WFCS and Schwab waterfall formulas are now derived from the actual rendered row positions, so
-      optional platform/local rows cannot create stale references or self-references. Focused row-alignment tests cover
-      both sheets.
+    body: Fixed in 7b22f9d. WFCS and Schwab waterfall formulas are now derived from the actual rendered row positions, so optional platform/local rows cannot create stale references or self-references. Focused row-alignment tests cover both sheets.
     path: proforma/src/lib/workbook-output.ts
     createdAt: 2026-08-11T18:39:28Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
 aiReviews:
   codex:
     prsReviewed: 7
@@ -952,6 +2581,5 @@ hoursEstimate:
   volumeHours: 57.7
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

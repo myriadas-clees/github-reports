@@ -40,8 +40,7 @@ pullRequests:
       ## Why
 
 
-      Client and vendor onboarding did not have a dedicated contact directory or a way to add contacts without first
-      creating a client workspace.
+      Client and vendor onboarding did not have a dedicated contact directory or a way to add contacts without first creating a client workspace.
 
 
       ## What changed
@@ -74,36 +73,115 @@ pullRequests:
         message: "feat(onboarding): add client and vendor contacts"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/18176c186195835d29c1e852ce5371b272d3b41c
         authoredAt: 2026-08-25T16:12:24Z
+        files:
+          - onboarding/apps/dashboard/app/api/[...path]/route.ts
+          - onboarding/apps/dashboard/app/contacts/page.tsx
+          - onboarding/apps/dashboard/app/vendors/contacts/page.tsx
+          - onboarding/apps/dashboard/components/contacts-workspace.tsx
+          - onboarding/apps/dashboard/functions/src/index.ts
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+          - onboarding/apps/dashboard/lib/api/client.ts
+          - onboarding/apps/dashboard/lib/api/handlers.test.ts
+          - onboarding/apps/dashboard/lib/api/handlers.ts
+          - onboarding/apps/dashboard/lib/navigation.ts
+          - packages/contracts/src/onboarding.ts
+          - packages/db/src/contact.test.ts
+          - packages/db/src/cosmos-queries.ts
+          - packages/db/src/migrate-database.ts
+          - packages/db/src/queries.ts
+          - packages/db/src/runtime.ts
+          - packages/db/src/schema.ts
       - &a6
         sha: c8483de1f6d022b77ca7bf3f892679069af6169f
         message: "fix(onboarding): remove contacts workspace requirement"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c8483de1f6d022b77ca7bf3f892679069af6169f
         authoredAt: 2026-08-25T16:29:05Z
+        files:
+          - onboarding/apps/dashboard/app/contacts/page.tsx
+          - onboarding/apps/dashboard/app/vendors/contacts/page.tsx
+          - onboarding/apps/dashboard/components/contacts-workspace.tsx
+          - onboarding/apps/dashboard/lib/api/client.ts
+          - onboarding/apps/dashboard/lib/api/handlers.test.ts
+          - onboarding/apps/dashboard/lib/api/handlers.ts
+          - packages/contracts/src/onboarding.ts
+          - packages/db/src/contact.test.ts
+          - packages/db/src/cosmos-queries.ts
+          - packages/db/src/queries.ts
       - &a7
         sha: 4b0327f297c081dcb1194ae113e36c6d7d7fcd13
         message: "feat(onboarding): add contact address and phone formatting"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4b0327f297c081dcb1194ae113e36c6d7d7fcd13
         authoredAt: 2026-08-25T16:41:00Z
+        files:
+          - onboarding/apps/dashboard/components/contacts-workspace.test.ts
+          - onboarding/apps/dashboard/components/contacts-workspace.tsx
+          - onboarding/apps/dashboard/lib/api/client.ts
+          - onboarding/apps/dashboard/lib/api/handlers.test.ts
+          - onboarding/apps/dashboard/lib/api/handlers.ts
+          - packages/contracts/src/onboarding.ts
+          - packages/db/src/contact.test.ts
+          - packages/db/src/cosmos-queries.ts
+          - packages/db/src/migrate-database.test.ts
+          - packages/db/src/migrate-database.ts
+          - packages/db/src/queries.ts
+          - packages/db/src/schema.ts
       - &a8
         sha: 6d70774d64aefef1a7ea7fb67dfeaf3a59f8bf1d
         message: "feat(onboarding): structure contact addresses"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6d70774d64aefef1a7ea7fb67dfeaf3a59f8bf1d
         authoredAt: 2026-08-25T17:02:07Z
+        files:
+          - bun.lock
+          - onboarding/apps/dashboard/components/contacts-workspace.test.ts
+          - onboarding/apps/dashboard/components/contacts-workspace.tsx
+          - onboarding/apps/dashboard/lib/api/client.ts
+          - onboarding/apps/dashboard/lib/api/handlers.test.ts
+          - onboarding/apps/dashboard/lib/api/handlers.ts
+          - packages/contracts/src/onboarding.ts
+          - packages/db/src/contact.test.ts
+          - packages/db/src/cosmos-queries.ts
+          - packages/db/src/migrate-database.test.ts
+          - packages/db/src/migrate-database.ts
+          - packages/db/src/queries.ts
+          - packages/db/src/schema.ts
+          - packages/ui/package.json
+          - packages/ui/src/branded-select.tsx
+          - packages/ui/src/index.ts
+          - packages/ui/src/work-state-select.tsx
+          - proforma/src/components/branded-select.tsx
+          - proforma/src/components/work-state-select.tsx
       - &a9
         sha: e7b8be29c40aab7b72f5fd2e82aee11705da0ac0
         message: "fix(ui): keep top-bar menus exclusive"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e7b8be29c40aab7b72f5fd2e82aee11705da0ac0
         authoredAt: 2026-08-25T17:16:16Z
+        files:
+          - packages/ui/src/navigation/app-nav.tsx
       - &a10
         sha: 737425f6da8d70247ee15e2ab1fe56af9a84c788
         message: "feat(onboarding): link client contacts to companies"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/737425f6da8d70247ee15e2ab1fe56af9a84c788
         authoredAt: 2026-08-25T17:44:46Z
+        files:
+          - onboarding/apps/dashboard/components/contacts-workspace.tsx
+          - onboarding/apps/dashboard/lib/api/client.ts
+          - onboarding/apps/dashboard/lib/api/handlers.test.ts
+          - onboarding/apps/dashboard/lib/api/handlers.ts
+          - packages/contracts/src/onboarding.ts
+          - packages/db/src/contact.test.ts
+          - packages/db/src/cosmos-queries.ts
+          - packages/db/src/migrate-database.test.ts
+          - packages/db/src/migrate-database.ts
+          - packages/db/src/queries.ts
+          - packages/db/src/schema.ts
       - &a11
         sha: 23172a0e8ff90c96be1912607407d3d8036804b9
         message: "feat(onboarding): add contact directory views"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/23172a0e8ff90c96be1912607407d3d8036804b9
         authoredAt: 2026-08-25T17:58:43Z
+        files:
+          - onboarding/apps/dashboard/components/contacts-workspace.test.ts
+          - onboarding/apps/dashboard/components/contacts-workspace.tsx
     workTimestamps: &a3
       - 2026-08-25T16:12:24Z
       - 2026-08-25T16:29:05Z
@@ -148,8 +226,7 @@ prsInProgress:
       ## Why
 
 
-      Client and vendor onboarding did not have a dedicated contact directory or a way to add contacts without first
-      creating a client workspace.
+      Client and vendor onboarding did not have a dedicated contact directory or a way to add contacts without first creating a client workspace.
 
 
       ## What changed
@@ -177,6 +254,54 @@ prsInProgress:
     workAdditions: 1036
     workDeletions: 211
     workFiles: *a4
+    allocationFiles:
+      - bun.lock
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/contacts/page.tsx
+      - onboarding/apps/dashboard/app/globals.css
+      - onboarding/apps/dashboard/app/tasks/page.tsx
+      - onboarding/apps/dashboard/app/vendors/contacts/page.tsx
+      - onboarding/apps/dashboard/components/contacts-workspace.test.ts
+      - onboarding/apps/dashboard/components/contacts-workspace.tsx
+      - onboarding/apps/dashboard/components/create-task-button.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/task-record-panel.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/universal-record-panel.tsx
+      - onboarding/apps/dashboard/components/task-associations-editor.test.tsx
+      - onboarding/apps/dashboard/components/task-associations-editor.tsx
+      - onboarding/apps/dashboard/components/task-board.test.tsx
+      - onboarding/apps/dashboard/components/task-detail-form.tsx
+      - onboarding/apps/dashboard/components/task-detail-header.tsx
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/client.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - onboarding/apps/dashboard/lib/navigation.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/adapters.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/operations-workspace.test.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/types.ts
+      - packages/contracts/src/onboarding-task-elements.test.ts
+      - packages/contracts/src/onboarding.ts
+      - packages/db/src/contact.test.ts
+      - packages/db/src/cosmos-migration.test.ts
+      - packages/db/src/cosmos-queries.ts
+      - packages/db/src/custom-task.ts
+      - packages/db/src/employee-case.ts
+      - packages/db/src/metrics.ts
+      - packages/db/src/migrate-database.test.ts
+      - packages/db/src/migrate-database.ts
+      - packages/db/src/queries.ts
+      - packages/db/src/runtime.ts
+      - packages/db/src/schema.ts
+      - packages/db/src/sqlite-migration-source.ts
+      - packages/ui/package.json
+      - packages/ui/src/branded-select.tsx
+      - packages/ui/src/index.ts
+      - packages/ui/src/navigation/app-nav.tsx
+      - packages/ui/src/work-state-select.tsx
+      - proforma/src/components/branded-select.tsx
+      - proforma/src/components/work-state-select.tsx
 issues: []
 events: []
 commitMessages:
@@ -260,6 +385,5 @@ hoursEstimate:
   volumeHours: 10.8
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

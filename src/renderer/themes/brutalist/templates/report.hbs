@@ -90,8 +90,16 @@
   {{> report-summary}}
   {{> allocation}}
   {{> overview}}
+  <details class="tech-details" id="technical-details">
+    <summary class="tech-details-summary">
+      <span class="tech-details-title">Technical details</span>
+      <span class="tech-details-hint">From GitHub: repositories, pull requests and commits{{#if aiContent.highlights.length}}, plus highlights{{/if}}</span>
+    </summary>
+    <div class="tech-details-body">
   {{> activity}}
   {{> highlights}}
+    </div>
+  </details>
 </article>
 </main>
 
@@ -114,6 +122,20 @@
 
 {{> footer}}
 
+<script>
+(function(){
+  // Open the disclosures around a linked section (e.g. #activity) so jump links and shared URLs land on visible content.
+  function reveal(){
+    var id = decodeURIComponent(location.hash.slice(1));
+    var el = id ? document.getElementById(id) : null;
+    if (!el) return;
+    for (var d = el.closest('details'); d; d = d.parentElement && d.parentElement.closest('details')) d.open = true;
+    el.scrollIntoView();
+  }
+  reveal();
+  window.addEventListener('hashchange', reveal);
+})();
+</script>
 {{{themeToggleScript}}}
 </body>
 </html>

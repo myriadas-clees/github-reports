@@ -69,6 +69,12 @@ pullRequests:
         message: Identify pull request preview environments
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b61dce9d80dac4925b1a02f009f84dd16d643be6
         authoredAt: 2026-08-13T17:44:08Z
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - docs/repository-operations.md
+          - hub/app/globals.css
+          - hub/app/layout.tsx
+          - scripts/tooling.test.ts
     workTimestamps:
       - 2026-08-13T17:44:08Z
     workAdditions: 41
@@ -84,15 +90,13 @@ pullRequests:
       ## Why
 
 
-      Enable users assigned the `read_only` role to access operational applications while preventing them from modifying
-      business data.
+      Enable users assigned the `read_only` role to access operational applications while preventing them from modifying business data.
 
 
       ## What changed
 
 
-      - Added `read_only` role recognition across Excelerate, Hub, Onboarding, Proforma, PTO Tracker, and Valuation
-      authentication flows.
+      - Added `read_only` role recognition across Excelerate, Hub, Onboarding, Proforma, PTO Tracker, and Valuation authentication flows.
 
       - Updated St...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/91
@@ -119,26 +123,72 @@ pullRequests:
         message: "feat(auth): add read-only user access across apps"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/bc08ff3c1b59738052c5e4ff59ce9a5818dba84d
         authoredAt: 2026-08-13T17:07:27Z
+        files:
+          - excelerate/src/lib/api/azure-functions-adapter.ts
+          - excelerate/src/lib/auth.ts
+          - excelerate/staticwebapp.config.json
+          - hub/lib/auth.ts
+          - hub/staticwebapp.config.json
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+          - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
+          - onboarding/apps/dashboard/lib/auth.ts
+          - onboarding/apps/dashboard/staticwebapp.config.json
+          - proforma/src/lib/api/handlers.ts
+          - proforma/src/lib/auth.ts
+          - proforma/staticwebapp.config.json
+          - pto-tracker/src/lib/api/azure-functions-adapter.ts
+          - pto-tracker/src/lib/auth/entra-provider.ts
+          - pto-tracker/src/lib/auth/types.ts
+          - valuation/src/lib/api/azure-functions-adapter.ts
+          - valuation/src/lib/auth.ts
+          - valuation/staticwebapp.config.json
       - &a3
         sha: 01b7b75680e6a6b89f375aec5553b1dfe54d4cc4
         message: "fix(auth): enforce read-only access consistently"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/01b7b75680e6a6b89f375aec5553b1dfe54d4cc4
         authoredAt: 2026-08-13T17:14:30Z
+        files:
+          - excelerate/src/lib/api/azure-functions-adapter.test.ts
+          - excelerate/src/lib/api/azure-functions-adapter.ts
+          - excelerate/src/lib/auth.test.ts
+          - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
+          - onboarding/apps/dashboard/lib/auth.test.ts
+          - onboarding/apps/dashboard/lib/auth.ts
+          - pto-tracker/src/lib/navigation.test.ts
+          - pto-tracker/src/lib/navigation.ts
+          - valuation/src/lib/api/azure-functions-adapter.test.ts
+          - valuation/src/lib/api/azure-functions-adapter.ts
       - &a4
         sha: 561d907bf2876912870f14c3bb60f7d5eaa6359e
         message: "fix(auth): complete read-only browsing safeguards"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/561d907bf2876912870f14c3bb60f7d5eaa6359e
         authoredAt: 2026-08-13T17:23:31Z
+        files:
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+          - pto-tracker/src/app/page.tsx
+          - pto-tracker/src/components/PtoAppShell.tsx
+          - pto-tracker/src/lib/auth/entra-token-provider.test.ts
+          - pto-tracker/src/lib/auth/entra-token-provider.ts
+          - pto-tracker/src/lib/auth/permissions.test.ts
+          - pto-tracker/src/lib/auth/permissions.ts
+          - pto-tracker/src/lib/navigation.test.ts
+          - pto-tracker/src/lib/navigation.ts
       - &a5
         sha: 2d01596c4696d3a75238e437dcce595c4ba37e80
         message: "fix(pto): keep read-only reads mutation-free"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2d01596c4696d3a75238e437dcce595c4ba37e80
         authoredAt: 2026-08-13T17:31:53Z
+        files:
+          - pto-tracker/src/lib/pto/read-model.test.ts
+          - pto-tracker/src/lib/pto/read-model.ts
       - &a6
         sha: 9eb2d9b6a11440b18d12c7e31676c3267579b3c7
         message: "fix(proforma): allow read-only settings routes"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9eb2d9b6a11440b18d12c7e31676c3267579b3c7
         authoredAt: 2026-08-13T17:37:12Z
+        files:
+          - proforma/staticwebapp.config.json
     workTimestamps:
       - 2026-08-13T17:07:27Z
       - 2026-08-13T17:14:30Z
@@ -206,6 +256,14 @@ prsInProgress:
         message: "fix(ofac): harden previews and enrich PDF evidence"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/438afa56544e96d931ba789f3818f29e65174f97
         authoredAt: 2026-08-13T15:43:29Z
+        files:
+          - ofac/functions/src/index.ts
+          - ofac/src/app/api/ofac/export/workbook-preview/route.ts
+          - ofac/src/components/pdf-report-viewer.tsx
+          - ofac/src/lib/__tests__/report.test.ts
+          - ofac/src/lib/report/excel.ts
+          - ofac/src/lib/report/model.ts
+          - ofac/src/lib/report/pdf.tsx
     workTimestamps:
       - 2026-08-13T15:43:29Z
     workAdditions: 190
@@ -223,8 +281,7 @@ prsInProgress:
       ## Why
 
 
-      Recruit intake still followed an advisor-first flow that did not match how teams are modeled in practice. Platform
-      assumptions also carried legacy OHC and FiNet Wells/WFAFN fee inputs that are no longer part of the pricing model.
+      Recruit intake still followed an advisor-first flow that did not match how teams are modeled in practice. Platform assumptions also carried legacy OHC and FiNet Wells/WFAFN fee inputs that are no longer part of the pricing model.
 
 
       ## What changed
@@ -254,6 +311,19 @@ prsInProgress:
         message: "feat(proforma): add person-specific payroll and setup cost inputs"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/bac4006afe27c8417ce939582844cf07bd88e49d
         authoredAt: 2026-08-13T16:35:22Z
+        files:
+          - packages/contracts/src/proforma.test.ts
+          - packages/contracts/src/proforma.ts
+          - proforma/src/components/__tests__/assumptions-tab.test.tsx
+          - proforma/src/components/assumptions-tab.tsx
+          - proforma/src/components/new-recruit-wizard.tsx
+          - proforma/src/components/proforma-workstation-client.tsx
+          - proforma/src/lib/__tests__/setup-projection.test.ts
+          - proforma/src/lib/calculation.ts
+          - proforma/src/lib/new-recruit.ts
+          - proforma/src/lib/report/excel.ts
+          - proforma/src/lib/report/pdf.tsx
+          - proforma/src/lib/setup-projection.ts
     workTimestamps:
       - 2026-08-13T16:35:22Z
     workAdditions: 146
@@ -299,6 +369,40 @@ commitMessages:
         additions: 242
         deletions: 73
         filesChanged: 33
+        files:
+          - excelerate/src/lib/api/azure-functions-adapter.test.ts
+          - excelerate/src/lib/api/azure-functions-adapter.ts
+          - excelerate/src/lib/auth.test.ts
+          - excelerate/src/lib/auth.ts
+          - excelerate/staticwebapp.config.json
+          - hub/lib/auth.ts
+          - hub/staticwebapp.config.json
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+          - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
+          - onboarding/apps/dashboard/lib/auth.test.ts
+          - onboarding/apps/dashboard/lib/auth.ts
+          - onboarding/apps/dashboard/staticwebapp.config.json
+          - proforma/src/lib/api/handlers.ts
+          - proforma/src/lib/auth.ts
+          - proforma/staticwebapp.config.json
+          - pto-tracker/src/app/page.tsx
+          - pto-tracker/src/components/PtoAppShell.tsx
+          - pto-tracker/src/lib/api/azure-functions-adapter.ts
+          - pto-tracker/src/lib/auth/entra-provider.ts
+          - pto-tracker/src/lib/auth/entra-token-provider.test.ts
+          - pto-tracker/src/lib/auth/entra-token-provider.ts
+          - pto-tracker/src/lib/auth/permissions.test.ts
+          - pto-tracker/src/lib/auth/permissions.ts
+          - pto-tracker/src/lib/auth/types.ts
+          - pto-tracker/src/lib/navigation.test.ts
+          - pto-tracker/src/lib/navigation.ts
+          - pto-tracker/src/lib/pto/read-model.test.ts
+          - pto-tracker/src/lib/pto/read-model.ts
+          - valuation/src/lib/api/azure-functions-adapter.test.ts
+          - valuation/src/lib/api/azure-functions-adapter.ts
+          - valuation/src/lib/auth.ts
+          - valuation/staticwebapp.config.json
   - repo: Myriad-Advisor-Solutions/ohcpwm-apps
     messages:
       - "fix(ofac): harden previews and enrich PDF evidence"
@@ -314,6 +418,39 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-13T15:43:38Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - bun.lock
+      - ofac/functions/package.json
+      - ofac/functions/src/copy-report-assets.ts
+      - ofac/functions/src/index.ts
+      - ofac/functions/src/ofac-repository.test.ts
+      - ofac/functions/src/ofac-repository.ts
+      - ofac/package.json
+      - ofac/src/app/api/ofac/export/__tests__/route.test.ts
+      - ofac/src/app/api/ofac/export/route.ts
+      - ofac/src/app/api/ofac/export/workbook-preview/route.ts
+      - ofac/src/app/api/ofac/screenings/[id]/pdf/route.test.ts
+      - ofac/src/app/api/ofac/screenings/[id]/pdf/route.ts
+      - ofac/src/app/api/ofac/screenings/route.ts
+      - ofac/src/app/globals.css
+      - ofac/src/app/screenings/page.tsx
+      - ofac/src/components/export-artifact-viewer.test.tsx
+      - ofac/src/components/export-artifact-viewer.tsx
+      - ofac/src/components/pdf-report-viewer.tsx
+      - ofac/src/components/report-viewer-shell.tsx
+      - ofac/src/components/screening-detail.tsx
+      - ofac/src/components/workbook-report-viewer.tsx
+      - ofac/src/lib/__tests__/ofac-api-client.test.ts
+      - ofac/src/lib/__tests__/report.test.ts
+      - ofac/src/lib/ofac-api-client.ts
+      - ofac/src/lib/report/csv.ts
+      - ofac/src/lib/report/excel.ts
+      - ofac/src/lib/report/filenames.ts
+      - ofac/src/lib/report/index.ts
+      - ofac/src/lib/report/model.ts
+      - ofac/src/lib/report/pdf.tsx
+      - packages/db/src/ofac.ts
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 115
     prTitle: "feat(ofac): add PDF, CSV, and Excel report exports"
@@ -321,25 +458,120 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-13T15:43:39Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - bun.lock
+      - ofac/functions/package.json
+      - ofac/functions/src/copy-report-assets.ts
+      - ofac/functions/src/index.ts
+      - ofac/functions/src/ofac-repository.test.ts
+      - ofac/functions/src/ofac-repository.ts
+      - ofac/package.json
+      - ofac/src/app/api/ofac/export/__tests__/route.test.ts
+      - ofac/src/app/api/ofac/export/route.ts
+      - ofac/src/app/api/ofac/export/workbook-preview/route.ts
+      - ofac/src/app/api/ofac/screenings/[id]/pdf/route.test.ts
+      - ofac/src/app/api/ofac/screenings/[id]/pdf/route.ts
+      - ofac/src/app/api/ofac/screenings/route.ts
+      - ofac/src/app/globals.css
+      - ofac/src/app/screenings/page.tsx
+      - ofac/src/components/export-artifact-viewer.test.tsx
+      - ofac/src/components/export-artifact-viewer.tsx
+      - ofac/src/components/pdf-report-viewer.tsx
+      - ofac/src/components/report-viewer-shell.tsx
+      - ofac/src/components/screening-detail.tsx
+      - ofac/src/components/workbook-report-viewer.tsx
+      - ofac/src/lib/__tests__/ofac-api-client.test.ts
+      - ofac/src/lib/__tests__/report.test.ts
+      - ofac/src/lib/ofac-api-client.ts
+      - ofac/src/lib/report/csv.ts
+      - ofac/src/lib/report/excel.ts
+      - ofac/src/lib/report/filenames.ts
+      - ofac/src/lib/report/index.ts
+      - ofac/src/lib/report/model.ts
+      - ofac/src/lib/report/pdf.tsx
+      - packages/db/src/ofac.ts
 reviewComments:
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 115
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115#discussion_r3776827714
-    body: Fixed in 438afa5. Both adapters now build a dedicated preview model that retains the complete totalRows count but
-      caps flattened evidence rows at 200 before XLSX generation. The renderer uses the full count in the summary and
-      the bounded row set in the evidence sheet; regression coverage includes 20...
+    body: Fixed in 438afa5. Both adapters now build a dedicated preview model that retains the complete totalRows count but caps flattened evidence rows at 200 before XLSX generation. The renderer uses the full count in the summary and the bounded row set in the evidence sheet; regression coverage includes 20...
     path: ofac/functions/src/index.ts
     createdAt: 2026-08-13T15:43:38Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - bun.lock
+      - ofac/functions/package.json
+      - ofac/functions/src/copy-report-assets.ts
+      - ofac/functions/src/index.ts
+      - ofac/functions/src/ofac-repository.test.ts
+      - ofac/functions/src/ofac-repository.ts
+      - ofac/package.json
+      - ofac/src/app/api/ofac/export/__tests__/route.test.ts
+      - ofac/src/app/api/ofac/export/route.ts
+      - ofac/src/app/api/ofac/export/workbook-preview/route.ts
+      - ofac/src/app/api/ofac/screenings/[id]/pdf/route.test.ts
+      - ofac/src/app/api/ofac/screenings/[id]/pdf/route.ts
+      - ofac/src/app/api/ofac/screenings/route.ts
+      - ofac/src/app/globals.css
+      - ofac/src/app/screenings/page.tsx
+      - ofac/src/components/export-artifact-viewer.test.tsx
+      - ofac/src/components/export-artifact-viewer.tsx
+      - ofac/src/components/pdf-report-viewer.tsx
+      - ofac/src/components/report-viewer-shell.tsx
+      - ofac/src/components/screening-detail.tsx
+      - ofac/src/components/workbook-report-viewer.tsx
+      - ofac/src/lib/__tests__/ofac-api-client.test.ts
+      - ofac/src/lib/__tests__/report.test.ts
+      - ofac/src/lib/ofac-api-client.ts
+      - ofac/src/lib/report/csv.ts
+      - ofac/src/lib/report/excel.ts
+      - ofac/src/lib/report/filenames.ts
+      - ofac/src/lib/report/index.ts
+      - ofac/src/lib/report/model.ts
+      - ofac/src/lib/report/pdf.tsx
+      - packages/db/src/ofac.ts
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 115
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115#discussion_r3776827841
-    body: Fixed in 438afa5. The viewer now fetches with credentials, verifies response.ok and the PDF MIME type, and only
-      then creates an object URL for the iframe. Failed and authentication responses flow to the viewer error state;
-      object URLs are revoked and in-flight requests are aborted on cleanup.
+    body: Fixed in 438afa5. The viewer now fetches with credentials, verifies response.ok and the PDF MIME type, and only then creates an object URL for the iframe. Failed and authentication responses flow to the viewer error state; object URLs are revoked and in-flight requests are aborted on cleanup.
     path: ofac/src/components/pdf-report-viewer.tsx
     createdAt: 2026-08-13T15:43:39Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - bun.lock
+      - ofac/functions/package.json
+      - ofac/functions/src/copy-report-assets.ts
+      - ofac/functions/src/index.ts
+      - ofac/functions/src/ofac-repository.test.ts
+      - ofac/functions/src/ofac-repository.ts
+      - ofac/package.json
+      - ofac/src/app/api/ofac/export/__tests__/route.test.ts
+      - ofac/src/app/api/ofac/export/route.ts
+      - ofac/src/app/api/ofac/export/workbook-preview/route.ts
+      - ofac/src/app/api/ofac/screenings/[id]/pdf/route.test.ts
+      - ofac/src/app/api/ofac/screenings/[id]/pdf/route.ts
+      - ofac/src/app/api/ofac/screenings/route.ts
+      - ofac/src/app/globals.css
+      - ofac/src/app/screenings/page.tsx
+      - ofac/src/components/export-artifact-viewer.test.tsx
+      - ofac/src/components/export-artifact-viewer.tsx
+      - ofac/src/components/pdf-report-viewer.tsx
+      - ofac/src/components/report-viewer-shell.tsx
+      - ofac/src/components/screening-detail.tsx
+      - ofac/src/components/workbook-report-viewer.tsx
+      - ofac/src/lib/__tests__/ofac-api-client.test.ts
+      - ofac/src/lib/__tests__/report.test.ts
+      - ofac/src/lib/ofac-api-client.ts
+      - ofac/src/lib/report/csv.ts
+      - ofac/src/lib/report/excel.ts
+      - ofac/src/lib/report/filenames.ts
+      - ofac/src/lib/report/index.ts
+      - ofac/src/lib/report/model.ts
+      - ofac/src/lib/report/pdf.tsx
+      - packages/db/src/ofac.ts
 aiReviews:
   codex:
     prsReviewed: 3
@@ -427,6 +659,5 @@ hoursEstimate:
   volumeHours: 27.9
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

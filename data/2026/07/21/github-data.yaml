@@ -47,8 +47,7 @@ pullRequests:
       Why
 
 
-      Advisor-name links used root-relative `/recruits/...` URLs. In the static `/pricing` deployment, those URLs left
-      the pricing app and returned users to the hub.
+      Advisor-name links used root-relative `/recruits/...` URLs. In the static `/pricing` deployment, those URLs left the pricing app and returned users to the hub.
 
 
       What changed
@@ -203,9 +202,7 @@ pullRequests:
       Why
 
 
-      Stateful product deployments need a consistent Azure Static Web Apps and Cosmos DB path. PTO still targeted
-      Microsoft Lists, while the Hub deployment bundled product APIs into a shared runtime that could not use app-scoped
-      Cosmos identities.
+      Stateful product deployments need a consistent Azure Static Web Apps and Cosmos DB path. PTO still targeted Microsoft Lists, while the Hub deployment bundled product APIs into a shared runtime that could not use app-scoped Cosmos identities.
 
 
       What changed
@@ -287,8 +284,7 @@ prsInProgress:
       Why
 
 
-      Advisor-name links used root-relative `/recruits/...` URLs. In the static `/pricing` deployment, those URLs left
-      the pricing app and returned users to the hub.
+      Advisor-name links used root-relative `/recruits/...` URLs. In the static `/pricing` deployment, those URLs left the pricing app and returned users to the hub.
 
 
       What changed
@@ -314,14 +310,15 @@ prsInProgress:
     workAdditions: 34
     workDeletions: 1
     workFiles: *a4
+    allocationFiles:
+      - pricing/src/components/__tests__/recruit-data-cell.test.tsx
+      - pricing/src/components/recruit-data-cell.tsx
   - title: "feat(deploy): ready apps for Cosmos"
     body: >-
       Why
 
 
-      Stateful product deployments need a consistent Azure Static Web Apps and Cosmos DB path. PTO still targeted
-      Microsoft Lists, while the Hub deployment bundled product APIs into a shared runtime that could not use app-scoped
-      Cosmos identities.
+      Stateful product deployments need a consistent Azure Static Web Apps and Cosmos DB path. PTO still targeted Microsoft Lists, while the Hub deployment bundled product APIs into a shared runtime that could not use app-scoped Cosmos identities.
 
 
       What changed
@@ -345,6 +342,30 @@ prsInProgress:
     workAdditions: 487
     workDeletions: 441
     workFiles: *a8
+    allocationFiles:
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - hub/README.md
+      - hub/functions/package.json
+      - infra/azure/README.md
+      - infra/azure/pto-tracker/README.md
+      - infra/azure/pto-tracker/serverless.bicep
+      - infra/azure/static-web-apps.bicep
+      - pto-tracker/.env.example
+      - pto-tracker/README.md
+      - pto-tracker/docs/microsoft-tenant-deployment.md
+      - pto-tracker/functions/local.settings.json.example
+      - pto-tracker/scripts/build-static.ts
+      - pto-tracker/src/components/AuthProvider.tsx
+      - pto-tracker/src/components/PtoAppShell.tsx
+      - pto-tracker/src/lib/api/handlers.test.ts
+      - pto-tracker/src/lib/api/handlers.ts
+      - pto-tracker/src/lib/auth/entra-provider.test.ts
+      - pto-tracker/src/lib/auth/entra-provider.ts
+      - pto-tracker/src/lib/auth/entra-token-provider.test.ts
+      - pto-tracker/src/lib/auth/entra-token-provider.ts
+      - pto-tracker/staticwebapp.config.json
 issues: []
 events: []
 commitMessages:
@@ -365,6 +386,10 @@ commitMessages:
         additions: 12
         deletions: 12
         filesChanged: 3
+        files:
+          - .github/workflows/azure-static-web-apps-products.yml
+          - .github/workflows/azure-static-web-apps.yml
+          - .github/workflows/verify.yml
       - sha: 1ef646bc5bcd01dae31df3a3422b119bded9f51d
         message: "fix(dependabot): use bun ecosystem"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/1ef646bc5bcd01dae31df3a3422b119bded9f51d
@@ -372,6 +397,8 @@ commitMessages:
         additions: 1
         deletions: 1
         filesChanged: 1
+        files:
+          - .github/dependabot.yml
       - sha: 281d5087672e62a76df3721f1cd8df7e920cbfb9
         message: "fix(dependabot): use bun ecosystem"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/281d5087672e62a76df3721f1cd8df7e920cbfb9
@@ -379,6 +406,8 @@ commitMessages:
         additions: 1
         deletions: 1
         filesChanged: 1
+        files:
+          - .github/dependabot.yml
       - *a9
       - *a10
       - *a11
@@ -399,6 +428,12 @@ commitMessages:
         additions: 80
         deletions: 1
         filesChanged: 5
+        files:
+          - .env.example
+          - README.md
+          - docs/development-workflow.md
+          - pricing/.env.example
+          - pricing/src/components/pricing-workstation-client.tsx
       - sha: 2986dca7046ab4835f26e075feafb6e722f8df45
         message: "fix(auth): default local env mode"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2986dca7046ab4835f26e075feafb6e722f8df45
@@ -406,6 +441,8 @@ commitMessages:
         additions: 1
         deletions: 1
         filesChanged: 1
+        files:
+          - .env.example
       - sha: 2ba1a4dff1916d91cc270a63f9ae99f02b829165
         message: "ci: enable Dependabot"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2ba1a4dff1916d91cc270a63f9ae99f02b829165
@@ -413,6 +450,8 @@ commitMessages:
         additions: 20
         deletions: 0
         filesChanged: 1
+        files:
+          - .github/dependabot.yml
       - sha: c02b9892d29f06fba1ddcf0a052e45b27ac809ce
         message: "fix(pricing): unblock expense edits"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c02b9892d29f06fba1ddcf0a052e45b27ac809ce
@@ -420,6 +459,12 @@ commitMessages:
         additions: 80
         deletions: 1
         filesChanged: 5
+        files:
+          - .env.example
+          - README.md
+          - docs/development-workflow.md
+          - pricing/.env.example
+          - pricing/src/components/pricing-workstation-client.tsx
       - sha: d458e97418bb605e429c2d0b54e4c186ba9cf4aa
         message: "ci: enable Dependabot"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d458e97418bb605e429c2d0b54e4c186ba9cf4aa
@@ -427,6 +472,8 @@ commitMessages:
         additions: 20
         deletions: 0
         filesChanged: 1
+        files:
+          - .github/dependabot.yml
       - *a13
 releases: []
 externalContributions: []
@@ -534,6 +581,5 @@ hoursEstimate:
   volumeHours: 22.4
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

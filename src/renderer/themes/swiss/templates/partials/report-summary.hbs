@@ -1,10 +1,10 @@
-{{#if stakeholderSummary}}
+{{#if (coalesce allocation.headline.summary stakeholderSummary)}}
 <section class="stakeholder" id="summary" aria-labelledby="summary-title">
   <div class="section-group-header">
     <h2 class="section-group-title" id="summary-title">Summary</h2>
     <div class="section-group-line"></div>
   </div>
-  <p class="stakeholder-body">{{stakeholderSummary}}</p>
+  <p class="stakeholder-body">{{coalesce allocation.headline.summary stakeholderSummary}}</p>
   {{#if allocation.headline}}
   {{#with allocation.headline}}
   <p class="report-key-note">Figures for {{scope}}</p>
@@ -13,6 +13,11 @@
       <dt>Estimated manual effort</dt>
       <dd class="report-key-value">{{effort.days}}</dd>
       <dd class="report-key-sub">{{effort.hoursLabel}}</dd>
+    </div>
+    <div class="report-key-item">
+      <dt>8-hour shift equivalent</dt>
+      <dd class="report-key-value">{{effort.shiftEquivalent}}</dd>
+      <dd class="report-key-sub">Modeled effort ÷ 8 hours</dd>
     </div>
     {{#each facts}}
     <div class="report-key-item{{#if tone}} report-key-item--{{tone}}{{/if}}">
@@ -29,11 +34,17 @@
   {{/if}}
   {{/with}}
   {{else}}{{#if hoursEstimate.hours}}
-  <dl class="report-key" aria-label="Key figures">
+  <p class="report-key-note">Figures for {{#eq dateRange.from dateRange.to}}{{dateRange.to}}{{else}}{{weekLabel dateRange.from dateRange.to}}{{/eq}}</p>
+  <dl class="report-key" aria-label="Key figures for {{#eq dateRange.from dateRange.to}}{{dateRange.to}}{{else}}{{weekLabel dateRange.from dateRange.to}}{{/eq}}">
     <div class="report-key-item report-key-item--effort">
       <dt>Estimated manual effort</dt>
       <dd class="report-key-value">{{workDelivered hoursEstimate.hours}}</dd>
       <dd class="report-key-sub">{{manualHours hoursEstimate.hours}}</dd>
+    </div>
+    <div class="report-key-item">
+      <dt>8-hour shift equivalent</dt>
+      <dd class="report-key-value">{{shiftEquivalent hoursEstimate.hours}}</dd>
+      <dd class="report-key-sub">Modeled effort ÷ 8 hours</dd>
     </div>
   </dl>
   {{/if}}{{/if}}
@@ -42,8 +53,7 @@
     <span class="report-jump-label">Details</span>
     {{#if allocation}}<a href="#alloc-title">Where the effort went</a>{{/if}}
     {{#if aiContent.overview}}{{#neq aiContent.overview stakeholderSummary}}<a href="#narrative">Narrative</a>{{/neq}}{{/if}}
-    <a href="#activity">Activity</a>
-    {{#if aiContent.highlights.length}}<a href="#highlights">Highlights</a>{{/if}}
+    <a href="#technical-details">Technical details</a>
   </nav>
 </section>
 {{/if}}

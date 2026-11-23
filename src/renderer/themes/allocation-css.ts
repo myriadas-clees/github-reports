@@ -15,6 +15,11 @@ export const INITIATIVE_PALETTE: { light: string; dark: string }[] = [
   { light: "#0e7c86", dark: "#1696a3" }, // teal
 ];
 export const OTHER_COLOR = { light: "#8b8a86", dark: "#8a8984" };
+/** Explicit Myriad category identity, independent of size/order. */
+export const MYRIAD_COLOR = { light: "#cc2647", dark: "#cc2647" };
+export const SHARED_COLOR = INITIATIVE_PALETTE[6]!;
+export const NORTHSTAR_COLOR = INITIATIVE_PALETTE[3]!;
+export const COMPASS_COLOR = { light: "#8f3b2e", dark: "#c8755c" };
 
 /** Separate small palette for work types (violet, magenta, yellow, aqua, orange) + neutral. */
 export const WORK_TYPE_PALETTE: { light: string; dark: string }[] = [
@@ -48,6 +53,10 @@ const colorVars = (mode: "light" | "dark"): string => {
     lines.push(`--alloc-c${i + 1}: ${p[mode]}; --alloc-c${i + 1}-ink: ${inkFor(p[mode])};`);
   });
   lines.push(`--alloc-other: ${OTHER_COLOR[mode]}; --alloc-other-ink: ${inkFor(OTHER_COLOR[mode])};`);
+  lines.push(`--alloc-myriad: ${MYRIAD_COLOR[mode]}; --alloc-myriad-ink: ${inkFor(MYRIAD_COLOR[mode])};`);
+  for (const [name, color] of [["shared", SHARED_COLOR], ["northstar", NORTHSTAR_COLOR], ["compass", COMPASS_COLOR]] as const) {
+    lines.push(`--alloc-${name}: ${color[mode]}; --alloc-${name}-ink: ${inkFor(color[mode])};`);
+  }
   WORK_TYPE_PALETTE.forEach((p, i) => {
     lines.push(`--alloc-w${i + 1}: ${p[mode]}; --alloc-w${i + 1}-ink: ${inkFor(p[mode])};`);
   });
@@ -98,6 +107,11 @@ export const buildAllocationCSS = (t: AllocationCssTheme): string => {
 
 ${INITIATIVE_PALETTE.map((_, i) => `    .alloc-c${i + 1} { --c: var(--alloc-c${i + 1}); --ink: var(--alloc-c${i + 1}-ink); }`).join("\n")}
     .alloc-other { --c: var(--alloc-other); --ink: var(--alloc-other-ink); }
+    .alloc-myriad { --c: var(--alloc-myriad); --ink: var(--alloc-myriad-ink); }
+    .alloc-unassigned { --c: var(--alloc-other); --ink: var(--alloc-other-ink); }
+    .alloc-shared { --c: var(--alloc-shared); --ink: var(--alloc-shared-ink); }
+    .alloc-northstar { --c: var(--alloc-northstar); --ink: var(--alloc-northstar-ink); }
+    .alloc-compass { --c: var(--alloc-compass); --ink: var(--alloc-compass-ink); }
     .alloc-w1 { --c: var(--alloc-w1); --ink: var(--alloc-w1-ink); }
     .alloc-w2 { --c: var(--alloc-w2); --ink: var(--alloc-w2-ink); }
     .alloc-w3 { --c: var(--alloc-w3); --ink: var(--alloc-w3-ink); }
@@ -113,12 +127,40 @@ ${INITIATIVE_PALETTE.map((_, i) => `    .alloc-c${i + 1} { --c: var(--alloc-c${i
     .report-key-item dd { margin: 0; }
     .report-key-value { font-size: 1.5rem; line-height: 1.2; font-weight: 500; color: ${t.heading}; font-variant-numeric: tabular-nums; }
     .report-key-sub { font-size: 0.8125rem; color: ${t.textSecondary}; }
+    .report-key-item--tentative .report-key-value { color: ${t.textSecondary}; }
     .report-key-note { margin: 0.9rem 0 0; font-size: 0.8125rem; color: ${t.textSecondary}; max-width: 70ch; }
     .alloc.alloc--inline.report-mix { margin-top: 1rem; }
     .report-jump { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 1.25rem; margin: 1.25rem 0 0; font-size: 0.875rem; }
     .report-jump-label { font-size: 0.75rem; color: ${t.textSecondary}; }
     html { scroll-behavior: smooth; }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+    /* ==================== TECHNICAL DETAILS (GitHub specifics, closed by default) ==================== */
+    .tech-details { grid-column: 1 / -1; min-width: 0; }
+    .tech-details-summary {
+      display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.75rem;
+      width: fit-content; max-width: 100%; list-style: none; cursor: pointer;
+    }
+    .tech-details-summary::-webkit-details-marker { display: none; }
+    .tech-details-title { display: inline-flex; align-items: center; gap: 0.55em; font-weight: 600; color: ${t.heading}; }
+    .tech-details-title::before {
+      content: ""; flex: none; width: 0.4em; height: 0.4em;
+      border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(-45deg);
+    }
+    .tech-details[open] > .tech-details-summary .tech-details-title::before { transform: rotate(45deg); }
+    .tech-details-hint { font-size: 0.8125rem; color: ${t.textSecondary}; }
+    .tech-details-body { margin-top: 1rem; }
+    .tech-details--compact .tech-details-title { font-size: 0.8125rem; }
+    .tech-details--compact .tech-details-body { margin-top: 0.5rem; }
+    .home-hero-tech { margin-top: 1.25rem; }
+    .tech-table-scroll { overflow-x: auto; }
+    .tech-table { border-collapse: collapse; width: 100%; font-size: 0.8125rem; font-variant-numeric: tabular-nums; }
+    .tech-table th, .tech-table td { padding: 0.3rem 0.6rem; border-bottom: 1px solid ${t.borderSubtle}; text-align: right; white-space: nowrap; }
+    .tech-table th:first-child { text-align: left; }
+    .tech-table thead th { font-weight: 600; color: ${t.textSecondary}; }
+    .tech-table .tech-row-group th, .tech-table .tech-row-group td, .tech-table tfoot th, .tech-table tfoot td { font-weight: 600; color: ${t.heading}; }
+    .tech-table .tech-row-day th { padding-left: 1.4rem; font-weight: 400; color: ${t.textSecondary}; }
+    .tech-table tfoot th, .tech-table tfoot td { border-bottom: 0; border-top: 1px solid ${t.border}; }
     @media (max-width: 640px) {
       .report-key { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .report-key-item--effort { grid-column: 1 / -1; }

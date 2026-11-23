@@ -55,14 +55,14 @@
         {{#if hoursLabel}}<div class="alloc-item-hours">{{hoursLabel}}</div>{{/if}}
         {{#if hasShipped}}
         <div class="alloc-work">
-          <div class="alloc-work-row"><span class="alloc-work-label">Completed</span>
+          <div class="alloc-work-row"><span class="alloc-work-label">Development complete</span>
             <ul class="alloc-work-links">
               {{#each shipped}}{{> allocation-item}}{{/each}}
             </ul>
           </div>
           {{#if hasShippedMore}}
           <details class="alloc-more alloc-more--shipped">
-            <summary>{{shippedMoreCount}} more completed</summary>
+            <summary>{{shippedMoreCount}} more with development complete</summary>
             <ul class="alloc-work-links">
               {{#each shippedMore}}{{> allocation-item}}{{/each}}
             </ul>

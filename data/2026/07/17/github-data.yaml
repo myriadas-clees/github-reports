@@ -47,8 +47,7 @@ prsInProgress:
     body: >-
       - publish the completed FINET Pricing model work alongside shared product-platform consolidation
 
-      - move OFAC production authentication to Azure Static Web Apps with the intentional SWA Principal bridge into
-      Azure Functions
+      - move OFAC production authentication to Azure Static Web Apps with the intentional SWA Principal bridge into Azure Functions
 
       - add the first authenticated Functions identity endpoint and static-safe OFA...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/58
@@ -135,6 +134,30 @@ commitMessages:
         additions: 567
         deletions: 119
         filesChanged: 23
+        files:
+          - docs/pricing-scenario-rules.md
+          - packages/contracts/src/pricing.test.ts
+          - packages/contracts/src/pricing.ts
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/assumptions-tab.test.tsx
+          - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+          - pricing/src/components/__tests__/scenario-model-tab.test.tsx
+          - pricing/src/components/assumptions-tab.tsx
+          - pricing/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+          - pricing/src/components/excel-sheet/workstation-sheet-defs.tsx
+          - pricing/src/components/new-recruit-wizard.tsx
+          - pricing/src/components/pricing-workstation-client.tsx
+          - pricing/src/components/scenario-model-tab.tsx
+          - pricing/src/lib/__tests__/calculation.test.ts
+          - pricing/src/lib/__tests__/report-model.test.ts
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/__tests__/workbook-output.test.ts
+          - pricing/src/lib/__tests__/workstation.test.ts
+          - pricing/src/lib/calculation.ts
+          - pricing/src/lib/report/excel.ts
+          - pricing/src/lib/report/model.ts
+          - pricing/src/lib/workbook-output.ts
+          - pricing/src/lib/workstation.ts
       - sha: 7adbf2ba47117289cc0abb63e1496000eab2ebab
         message: "feat(pricing): add truthful dashboard"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7adbf2ba47117289cc0abb63e1496000eab2ebab
@@ -142,6 +165,21 @@ commitMessages:
         additions: 684
         deletions: 584
         filesChanged: 14
+        files:
+          - packages/contracts/src/pricing.ts
+          - pricing/functions/src/index.ts
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/dashboard-metrics-charts.test.tsx
+          - pricing/src/components/dashboard-metrics-charts.tsx
+          - pricing/src/components/dashboard-payout-pie.tsx
+          - pricing/src/components/dashboard-trend-chart.tsx
+          - pricing/src/components/pricing-static-pages.tsx
+          - pricing/src/lib/__tests__/dashboard-charts.test.ts
+          - pricing/src/lib/__tests__/dashboard-summary.test.ts
+          - pricing/src/lib/dashboard-charts.ts
+          - pricing/src/lib/dashboard-summary.ts
+          - pricing/src/lib/pricing-api-client.ts
+          - scripts/dev-pricing-api.ts
       - sha: 29ef9f8398dd359f89a6f38409b29034994effcc
         message: "feat(pricing): add six-month cohort charts"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/29ef9f8398dd359f89a6f38409b29034994effcc
@@ -149,6 +187,15 @@ commitMessages:
         additions: 536
         deletions: 204
         filesChanged: 8
+        files:
+          - packages/contracts/src/pricing.ts
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/dashboard-metrics-charts.test.tsx
+          - pricing/src/components/dashboard-metrics-charts.tsx
+          - pricing/src/components/pipeline-stage-bar.tsx
+          - pricing/src/components/pricing-static-pages.tsx
+          - pricing/src/lib/__tests__/dashboard-summary.test.ts
+          - pricing/src/lib/dashboard-summary.ts
   - repo: Myriad-Advisor-Solutions/myriadas-apps
     messages:
       - "feat(onboarding): add client work management"
@@ -162,6 +209,40 @@ commitMessages:
         additions: 690
         deletions: 126
         filesChanged: 33
+        files:
+          - onboarding/apps/dashboard/README.md
+          - onboarding/apps/dashboard/app/approvals/page.tsx
+          - onboarding/apps/dashboard/app/blockers/page.tsx
+          - onboarding/apps/dashboard/app/documents/page.tsx
+          - onboarding/apps/dashboard/app/due-dates/page.tsx
+          - onboarding/apps/dashboard/app/layout.tsx
+          - onboarding/apps/dashboard/app/owners/page.tsx
+          - onboarding/apps/dashboard/app/page.tsx
+          - onboarding/apps/dashboard/app/settings/page.tsx
+          - onboarding/apps/dashboard/app/tasks/page.tsx
+          - onboarding/apps/dashboard/app/vendors/page.tsx
+          - onboarding/apps/dashboard/app/workflows/page.tsx
+          - onboarding/apps/dashboard/components/create-employee-form.tsx
+          - onboarding/apps/dashboard/components/create-task-button.tsx
+          - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+          - onboarding/apps/dashboard/components/dashboard-shell.tsx
+          - onboarding/apps/dashboard/components/employee-selector.tsx
+          - onboarding/apps/dashboard/components/employee-start-date-form.tsx
+          - onboarding/apps/dashboard/components/status-badge.tsx
+          - onboarding/apps/dashboard/components/task-detail-form.tsx
+          - onboarding/apps/dashboard/components/task-detail-header.tsx
+          - onboarding/apps/dashboard/components/task-table.tsx
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+          - onboarding/apps/dashboard/lib/api/client.test.ts
+          - onboarding/apps/dashboard/lib/api/client.ts
+          - onboarding/apps/dashboard/lib/api/handlers.test.ts
+          - onboarding/apps/dashboard/lib/api/handlers.ts
+          - onboarding/apps/dashboard/lib/navigation.ts
+          - onboarding/apps/dashboard/package.json
+          - packages/contracts/src/onboarding-task-elements.test.ts
+          - packages/contracts/src/onboarding.ts
+          - packages/db/src/runtime.ts
       - sha: 734ad60e206a63276eeb5811da43624a993e0893
         message: "feat(onboarding): complete operations workspace"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/734ad60e206a63276eeb5811da43624a993e0893
@@ -169,6 +250,42 @@ commitMessages:
         additions: 2501
         deletions: 308
         filesChanged: 35
+        files:
+          - onboarding/apps/dashboard/app/api/[...path]/route.ts
+          - onboarding/apps/dashboard/app/vendors/page.tsx
+          - onboarding/apps/dashboard/app/workflows/page.tsx
+          - onboarding/apps/dashboard/components/client-selector.tsx
+          - onboarding/apps/dashboard/components/create-employee-form.tsx
+          - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+          - onboarding/apps/dashboard/components/dashboard-shell.tsx
+          - onboarding/apps/dashboard/components/employee-selector.tsx
+          - onboarding/apps/dashboard/components/vendor-create-dialog.tsx
+          - onboarding/apps/dashboard/components/vendor-edit-dialog.tsx
+          - onboarding/apps/dashboard/components/vendor-workspace.tsx
+          - onboarding/apps/dashboard/components/workflow-overview.tsx
+          - onboarding/apps/dashboard/functions/src/index.ts
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+          - onboarding/apps/dashboard/lib/api/client.ts
+          - onboarding/apps/dashboard/lib/api/handlers.test.ts
+          - onboarding/apps/dashboard/lib/api/handlers.ts
+          - onboarding/apps/dashboard/lib/navigation.ts
+          - onboarding/fixtures/documents.json
+          - packages/contracts/src/onboarding.ts
+          - packages/db/src/client-isolation.test.ts
+          - packages/db/src/client.ts
+          - packages/db/src/cosmos-queries.ts
+          - packages/db/src/employee-case.ts
+          - packages/db/src/metrics.ts
+          - packages/db/src/migrate-database.test.ts
+          - packages/db/src/migrate-database.ts
+          - packages/db/src/queries.ts
+          - packages/db/src/runtime.ts
+          - packages/db/src/schema.ts
+          - packages/db/src/seed.ts
+          - packages/db/src/vendor.test.ts
+          - packages/workflow-templates/data/client-onboarding.json
+          - packages/workflow-templates/src/index.ts
       - sha: d97b513d8e96d185aa0205ca6c3a5d6e83d8b047
         message: "fix(onboarding): isolate Bun SQLite runtime"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d97b513d8e96d185aa0205ca6c3a5d6e83d8b047
@@ -176,6 +293,14 @@ commitMessages:
         additions: 12
         deletions: 14
         filesChanged: 7
+        files:
+          - packages/db/src/bun-client.ts
+          - packages/db/src/cli-client.ts
+          - packages/db/src/migrate-database.ts
+          - packages/db/src/migrate.ts
+          - packages/db/src/native-sqlite.ts
+          - packages/db/src/reset.ts
+          - packages/db/src/seed.ts
 releases: []
 externalContributions: []
 codeReviews: []
@@ -230,6 +355,5 @@ hoursEstimate:
   volumeHours: 22.8
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

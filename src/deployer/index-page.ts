@@ -8,17 +8,20 @@ import {
   buildInitiativeMix,
   formatPercent,
   OTHER_LABEL,
+  RELEASE_LABELS,
   stripConventionalPrefix,
   type AllocationSegmentView,
 } from "../renderer/allocation-view.js";
 import { INDEX_HERO_PARTIAL, INDEX_LEDGER_PARTIAL, INDEX_PLANNING_PARTIAL } from "../renderer/themes/index-home.js";
 import { engineerDayUnit, formatEngineerDaysValue } from "../collector/work-delivered.js";
 import {
+  calendarFromReports,
   dailyPathToDate,
   isWeekOpen,
+  weekendNotes,
   weekMonthKey,
   weekPagePath,
-  workWeekOf,
+  type WorkCalendar,
 } from "./work-weeks.js";
 
 export type IndexPageData = {
@@ -116,7 +119,7 @@ const uniqueTitles = (items: { kind: string; title: string }[], limit: number, s
 };
 
 export type OutcomeSummary = {
-  /** At most 3 items: release-known work first, else "In progress: ...", else "". */
+  /** At most 3 titles grouped by release status (most advanced first), else open work by stage, else "". */
   line: string;
   /** Items beyond the line's cap. */
   more: number;
@@ -129,42 +132,72 @@ export type OutcomeSummary = {
 const countUniqueTitles = (items: { kind: string; title: string }[]): number =>
   new Set(items.map((item) => cleanTitle(item).toLowerCase())).size;
 
+const sentenceCase = (label: string): string => label.charAt(0).toUpperCase() + label.slice(1);
+
+type OutcomeItem = ReturnType<typeof completedItems>[number];
+type OutcomeGroup = { label: string; matches: (item: OutcomeItem) => boolean };
+
+/** Completed changes, most advanced release status first; the same wording as the report pages. */
+const COMPLETED_GROUPS: OutcomeGroup[] = [
+  { label: RELEASE_LABELS.live, matches: (i) => i.readiness?.stage === "live" },
+  { label: RELEASE_LABELS.preview, matches: (i) => i.readiness?.stage === "preview" },
+  { label: RELEASE_LABELS.awaitingRelease, matches: (i) => i.readiness?.stage === "awaiting-release" },
+  // Merged without a known release: development is complete, and nothing more is claimed.
+  { label: RELEASE_LABELS.integrated, matches: () => true },
+];
+
+const isEarlyWork = (i: OutcomeItem): boolean => i.readiness?.stage === "draft" || i.readiness?.stage === "prototype";
+
+const OPEN_GROUPS: OutcomeGroup[] = [
+  { label: RELEASE_LABELS.inReview, matches: (i) => !isEarlyWork(i) },
+  { label: "early work", matches: isEarlyWork },
+];
+
+/** "Label: A, B · Label: C", taking at most MAX_OUTCOMES unique titles across the groups in order. */
+const groupedLine = (items: OutcomeItem[], groups: OutcomeGroup[]): { line: string; shown: number } => {
+  const seen = new Set<string>();
+  const claimed = new Set<OutcomeItem>();
+  const parts: string[] = [];
+  let shown = 0;
+  for (const group of groups) {
+    const members = items.filter((i) => !claimed.has(i) && group.matches(i));
+    members.forEach((i) => claimed.add(i));
+    const titles = uniqueTitles(members, MAX_OUTCOMES - shown, seen);
+    if (titles.length === 0) continue;
+    parts.push(`${sentenceCase(group.label)}: ${titles.join(", ")}`);
+    shown += titles.length;
+  }
+  return { line: parts.join(" \u00b7 "), shown };
+};
+
 export const buildOutcomeSummary = (allocation: Allocation | undefined): OutcomeSummary => {
   const done = completedItems(allocation).sort(byEffortDesc);
-  const seen = new Set<string>();
-  const live = uniqueTitles(done.filter((i) => i.readiness?.stage === "live"), MAX_OUTCOMES, seen);
-  const pending = uniqueTitles(done.filter((i) => i.readiness?.stage === "awaiting-release" || i.readiness?.stage === "preview"), MAX_OUTCOMES - live.length, seen);
-  const integrated = uniqueTitles(done.filter((i) => i.readiness?.stage !== "live" && i.readiness?.stage !== "awaiting-release" && i.readiness?.stage !== "preview"), MAX_OUTCOMES - live.length - pending.length, seen);
-  const parts: string[] = [];
-  if (live.length > 0) parts.push(`Live: ${live.join(", ")}`);
-  if (pending.length > 0) parts.push(`Not live yet: ${pending.join(", ")}`);
-  if (integrated.length > 0) parts.push(`Code integrated: ${integrated.join(", ")}`);
-  if (parts.length > 0) {
-    const open = (allocation?.initiatives ?? []).flatMap((b) => b.inProgress).filter((item) => item.title.trim() !== "");
+  const open = (allocation?.initiatives ?? []).flatMap((b) => b.inProgress).filter((item) => item.title.trim() !== "").sort(byEffortDesc);
+  const completed = groupedLine(done, COMPLETED_GROUPS);
+  if (completed.line) {
     const otherInProgress = countUniqueTitles(open);
     return {
-      line: parts.join(" \u00b7 "),
-      more: Math.max(0, countUniqueTitles(done) - live.length - pending.length - integrated.length),
-      moreNoun: "completed",
+      line: completed.line,
+      more: Math.max(0, countUniqueTitles(done) - completed.shown),
+      moreNoun: "changes",
       ...(otherInProgress > 0 ? { otherInProgress } : {}),
     };
   }
-  const open = (allocation?.initiatives ?? []).flatMap((b) => b.inProgress).filter((item) => item.title.trim() !== "").sort(byEffortDesc);
-  const progress = uniqueTitles(open, MAX_OUTCOMES);
-  return progress.length > 0
-    ? { line: `In progress: ${progress.join(", ")}`, more: Math.max(0, countUniqueTitles(open) - progress.length), moreNoun: "in progress" }
-    : { line: "", more: 0, moreNoun: "completed" };
+  const progress = groupedLine(open, OPEN_GROUPS);
+  return progress.line
+    ? { line: progress.line, more: Math.max(0, countUniqueTitles(open) - progress.shown), moreNoun: "in progress" }
+    : { line: "", more: 0, moreNoun: "changes" };
 };
 
 /** One plain line about what a week produced (at most 3 items); "" when there is nothing to say. */
 export const buildOutcomeLine = (allocation: Allocation | undefined): string => buildOutcomeSummary(allocation).line;
 
-/** One Thu–Wed work week row under a month. */
+/** One Mon–Fri work week row (or explicit weekend entry) under a month. */
 export type WeekRow = {
-  /** The Thursday, YYYY-MM-DD. */
+  /** The Monday (or the Saturday of an explicit weekend entry), YYYY-MM-DD. */
   id: string;
   href: string;
-  /** "Oct 1-7". */
+  /** First–last available weekday report, e.g. "Oct 5-8". */
   label: string;
   from: string;
   to: string;
@@ -180,13 +213,15 @@ export type WeekRow = {
   hasInitiatives: boolean;
   /** Release-aware outcome or "In progress: ..."; empty when nothing to say. */
   outcome: string;
-  /** "+2 more completed, +3 more initiatives: see the full week"; empty when the row shows everything. */
+  /** "+2 more changes, +3 more initiatives: see the full week"; empty when the row shows everything. */
   moreLabel: string;
   /** Show the day list expanded (the newest week), so day titles, subtitles and counts are in view. */
   daysOpen: boolean;
   stats: ReportEntryStats;
   dayCount: number;
   dayCountLabel: string;
+  /** Where attributed weekend days are counted and why; empty when none. */
+  weekendNote: string;
   /** Newest first. */
   reports: ReportEntry[];
 };
@@ -291,19 +326,20 @@ const buildMoreLabel = (outcome: OutcomeSummary, hiddenInitiatives: number): str
   return parts.length > 0 ? `${parts.join(", ")}: see the full week` : "";
 };
 
-/** A week's effort: its allocation's total (which includes manual time) when it has hours, else the reports' hours. */
+/** Use a computed allocation even when zero; never reintroduce an idle-day minimum through a fallback. */
 const effortHoursFor = (allocation: Allocation | undefined, reportHours: number): number =>
-  allocation && allocation.totalHours > 0 ? allocation.totalHours : reportHours;
+  allocation ? allocation.totalHours : reportHours;
 
 const buildWeekRows = (
   daily: ReportEntry[],
   latest: string,
   weekAllocations: ReadonlyMap<string, Allocation> | undefined,
   colorOrder: string[],
+  calendar: WorkCalendar,
 ): { monthKey: string; row: WeekRow }[] => {
   const byWeek = new Map<string, ReportEntry[]>();
   for (const report of daily) {
-    const id = workWeekOf(dailyPathToDate(report.path)!).id;
+    const id = calendar.groupIdOf(dailyPathToDate(report.path)!);
     byWeek.set(id, [...(byWeek.get(id) ?? []), report]);
   }
   // Weeks with self-reported time only (no daily report) still get a row, so their effort is counted.
@@ -317,7 +353,7 @@ const buildWeekRows = (
   // Shared scale: the busiest week on the page is a full-width bar.
   const maxHours = Math.max(0, ...weekHours.values());
   return [...byWeek.entries()].map(([id, reports]) => {
-    const span = workWeekOf(id);
+    const span = calendar.group(id);
     const stats = sumStats(reports);
     const allocation = weekAllocations?.get(id);
     const hours = weekHours.get(id) ?? 0;
@@ -351,6 +387,7 @@ const buildWeekRows = (
         dayCountLabel: reports.length === 0
           ? "No daily reports · self-reported time only"
           : `${reports.length} daily ${reports.length === 1 ? "report" : "reports"}`,
+        weekendNote: weekendNotes(span).join(" "),
         reports: [...reports].sort((a, b) => b.path.localeCompare(a.path)),
       },
     };
@@ -362,6 +399,7 @@ const groupByMonth = (
   language: Language,
   weekAllocations?: ReadonlyMap<string, Allocation>,
   colorOrder: string[] = [],
+  calendar?: WorkCalendar,
 ): MonthGroup[] => {
   const enriched = enrichActivity(
     [...reports]
@@ -373,7 +411,11 @@ const groupByMonth = (
   const latest = daily.length > 0 ? dailyPathToDate(daily[0].path)! : "";
 
   const weeksByMonth = new Map<string, WeekRow[]>();
-  const weekRows = buildWeekRows(daily, latest, weekAllocations, colorOrder);
+  // Without a modeled-effort calendar from the renderer, fall back to each report's stored hours.
+  const weekCalendar = calendar ?? calendarFromReports(
+    daily.map((report) => ({ date: dailyPathToDate(report.path)!, hours: report.stats?.hours ?? 0 })),
+  );
+  const weekRows = buildWeekRows(daily, latest, weekAllocations, colorOrder, weekCalendar);
   // The newest week with daily reports starts expanded; the rest stay one click away.
   const newestWithDays = weekRows.filter(({ row }) => row.reports.length > 0).map(({ row }) => row.id).sort().pop();
   for (const { monthKey, row } of weekRows) {
@@ -488,8 +530,10 @@ export type IndexPageOptions = {
   hasEstimatePage?: boolean;
   /** Show the "Have a new app idea?" link; false until past apps/products exist (matches the calculator's app option). */
   hasAppEstimates?: boolean;
-  /** Allocation per work week (key: Thursday YYYY-MM-DD) for the top-initiatives line. */
+  /** Allocation per work week (key: Monday YYYY-MM-DD, or Saturday for a weekend entry) for the top-initiatives line. */
   weekAllocations?: ReadonlyMap<string, Allocation>;
+  /** Mon–Fri website calendar (weekend attribution by modeled effort); derived from report hours when absent. */
+  calendar?: WorkCalendar;
   /** Archive-wide initiative order so colors match the report pages. */
   colorOrder?: string[];
 };
@@ -518,7 +562,7 @@ export const renderIndexPage = (
   hbs.registerPartial("index-ledger", INDEX_LEDGER_PARTIAL);
   hbs.registerPartial("index-planning", INDEX_PLANNING_PARTIAL);
   const colorOrder = options.colorOrder ?? [];
-  const monthGroups = groupByMonth(reports, language, options.weekAllocations, colorOrder);
+  const monthGroups = groupByMonth(reports, language, options.weekAllocations, colorOrder, options.calendar);
   const template = hbs.compile(indexTemplate);
   return template({
     yearGroups: groupByYear(reports),

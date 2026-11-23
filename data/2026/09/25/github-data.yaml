@@ -40,8 +40,7 @@ pullRequests:
       ## Problem
 
 
-      Transition is absent from the production Hub because the app registry and unified deployment mark it preview-only.
-      `myriadas_user` already has suite-wide access, but the production bundle contains no Transition app or API.
+      Transition is absent from the production Hub because the app registry and unified deployment mark it preview-only. `myriadas_user` already has suite-wide access, but the production bundle contains no Transition app or API.
 
 
       ## Change
@@ -72,11 +71,29 @@ pullRequests:
         message: "feat: prepare Transition production rollout"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e4d882d023390db462f24ab0e0a2c95427cfb324
         authoredAt: 2026-09-25T15:23:15Z
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - docs/transition/contracts.md
+          - hub/lib/apps.test.ts
+          - scripts/app-registry.ts
+          - scripts/build-unified-swa.ts
+          - scripts/tooling.test.ts
+          - transition/README.md
+          - transition/functions/scripts/build.ts
+          - transition/src/lib/auth.test.ts
+          - transition/src/lib/cosmos-repository.test.ts
+          - transition/src/lib/cosmos-repository.ts
+          - transition/src/lib/data.test.ts
+          - transition/src/lib/data.ts
+          - transition/src/lib/handlers.ts
       - &a2
         sha: 5d9ad70f03e326aa8e177a2f6b270f63381131e6
         message: "fix: validate Hub Functions packaging script"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5d9ad70f03e326aa8e177a2f6b270f63381131e6
         authoredAt: 2026-09-25T15:38:42Z
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - scripts/tooling.test.ts
     workTimestamps:
       - 2026-09-25T15:23:15Z
       - 2026-09-25T15:38:42Z
@@ -116,6 +133,21 @@ commitMessages:
         additions: 150
         deletions: 89
         filesChanged: 14
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - docs/transition/contracts.md
+          - hub/lib/apps.test.ts
+          - scripts/app-registry.ts
+          - scripts/build-unified-swa.ts
+          - scripts/tooling.test.ts
+          - transition/README.md
+          - transition/functions/scripts/build.ts
+          - transition/src/lib/auth.test.ts
+          - transition/src/lib/cosmos-repository.test.ts
+          - transition/src/lib/cosmos-repository.ts
+          - transition/src/lib/data.test.ts
+          - transition/src/lib/data.ts
+          - transition/src/lib/handlers.ts
 releases: []
 externalContributions: []
 codeReviews: []
@@ -171,6 +203,5 @@ hoursEstimate:
   volumeHours: 9.3
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

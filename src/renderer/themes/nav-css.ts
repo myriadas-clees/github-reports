@@ -16,7 +16,7 @@ export const buildLedgerCSS = (t: AllocationCssTheme): string => `
     }
     .month-group { border-bottom: 1px solid ${t.border}; }
     .month-summary {
-      list-style: none; cursor: pointer; display: grid; grid-template-columns: 7rem 12rem minmax(4rem, 1fr) auto 2rem;
+      list-style: none; cursor: pointer; display: grid; grid-template-columns: 7rem 12rem minmax(4rem, 1fr) 2rem;
       gap: 1rem; align-items: center; padding: 1.1rem 0;
     }
     .month-summary::-webkit-details-marker { display: none; }
@@ -30,14 +30,12 @@ export const buildLedgerCSS = (t: AllocationCssTheme): string => `
     .month-tape i { background: ${t.accent}; }
     .month-name { grid-column: 1; }
     .month-days { grid-column: 2; }
-    .month-totals { grid-column: 4; display: flex; gap: 0.9rem; font-size: 0.75rem; color: ${t.textTertiary}; white-space: nowrap; }
-    .month-totals b { color: ${t.textSecondary}; font-weight: 500; }
-    .month-count { grid-column: 5; text-align: right; color: ${t.accent}; }
+    .month-count { grid-column: 4; text-align: right; color: ${t.accent}; }
     .month-count::after { content: '+'; font-size: 1rem; }
     .month-group[open] .month-count::after { content: '\\2212'; }
     .day-list { border-top: 1px solid ${t.borderSubtle}; }
     .day-row {
-      display: grid; grid-template-columns: 4rem minmax(0, 1fr) auto 1.5rem; gap: 1rem; align-items: center;
+      display: grid; grid-template-columns: 4rem minmax(0, 1fr) 1.5rem; gap: 1rem; align-items: center;
       padding: 0.65rem 0.5rem 0.65rem 0; color: inherit; text-decoration: none; border-bottom: 1px solid ${t.borderSubtle};
     }
     .day-row:hover { background: color-mix(in srgb, ${t.accent} 6%, transparent); }
@@ -47,8 +45,6 @@ export const buildLedgerCSS = (t: AllocationCssTheme): string => `
     .day-date span { color: ${t.textTertiary}; font-size: 0.62rem; text-transform: uppercase; }
     .day-title { font-size: 0.9rem; font-weight: 600; color: ${t.text}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .day-subtitle { margin-top: 0.15rem; color: ${t.textTertiary}; font-size: 0.78rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .day-stats { display: flex; gap: 0.7rem; font-family: ${t.mono}; font-size: 0.6875rem; color: ${t.textTertiary}; white-space: nowrap; }
-    .day-stats b { color: ${t.text}; }
     .day-open { color: ${t.accent}; opacity: 0; }
     .day-row:hover .day-open { opacity: 1; }
     @media (max-width: 640px) {
@@ -57,12 +53,10 @@ export const buildLedgerCSS = (t: AllocationCssTheme): string => `
       .month-count { grid-column: 2; grid-row: 1; }
       .month-days { grid-column: 1 / -1; grid-row: 2; }
       .month-tape { grid-column: 1 / -1; grid-row: 3; }
-      .month-totals { grid-column: 1 / -1; grid-row: 4; flex-wrap: wrap; gap: 0.2rem 0.9rem; white-space: normal; }
       .day-row { grid-template-columns: 3.25rem minmax(0, 1fr) 1rem; gap: 0.2rem 0.7rem; align-items: start; }
       .day-title, .day-subtitle { white-space: normal; overflow: visible; text-overflow: clip; overflow-wrap: anywhere; }
       .day-date { grid-column: 1; grid-row: 1; }
       .day-story { grid-column: 2; grid-row: 1; }
-      .day-stats { grid-column: 2; grid-row: 2; flex-wrap: wrap; gap: 0.1rem 0.7rem; }
       .day-row .day-open { grid-column: 3; grid-row: 1; }
       .day-open { opacity: 1; }
     }
@@ -87,7 +81,7 @@ export const buildWeekCSS = (t: AllocationCssTheme): string => `
     .week-ledger { border-top: 1px solid ${t.borderSubtle}; padding-bottom: 0.75rem; }
     .week-block { border-bottom: 1px solid ${t.borderSubtle}; }
     .week-row {
-      display: grid; grid-template-columns: 8.5rem minmax(0, 1fr) auto 1.5rem; gap: 1rem; align-items: start;
+      display: grid; grid-template-columns: 8.5rem minmax(0, 1fr) 1.5rem; gap: 1rem; align-items: start;
       padding: 0.9rem 0.5rem 0.9rem 0; color: inherit; text-decoration: none;
     }
     .week-row:hover { background: color-mix(in srgb, ${t.accent} 6%, transparent); }
@@ -105,10 +99,8 @@ export const buildWeekCSS = (t: AllocationCssTheme): string => `
     .week-initiatives li { display: inline-flex; align-items: center; gap: 0.3rem; }
     .week-initiatives b { font-family: ${t.mono}; font-weight: 500; color: ${t.textSecondary}; }
     .week-outcome { margin-top: 0.35rem; font-size: 0.8125rem; color: ${t.textSecondary}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .week-counts { display: flex; gap: 0.9rem; padding-top: 0.2rem; font-size: 0.75rem; color: ${t.textTertiary}; white-space: nowrap; font-variant-numeric: tabular-nums; }
-    .week-counts b { color: ${t.textSecondary}; font-weight: 500; }
     .week-row .day-open { padding-top: 0.15rem; }
-    .week-days { margin: 0 0 0.6rem 9.5rem; font-size: 0.78rem; }
+    .week-days, .ledger-tech { margin: 0 0 0.6rem 9.5rem; font-size: 0.78rem; }
     .week-days > summary {
       cursor: pointer; display: inline-block; padding: 0.15rem 0; font-family: ${t.mono}; font-size: 0.6875rem;
       letter-spacing: 0.06em; text-transform: uppercase; color: ${t.textTertiary};
@@ -121,10 +113,12 @@ export const buildWeekCSS = (t: AllocationCssTheme): string => `
       .week-label { grid-column: 1; grid-row: 1; display: flex; align-items: baseline; gap: 0.6rem; }
       .week-row .day-open { grid-column: 2; grid-row: 1; }
       .week-story { grid-column: 1 / -1; grid-row: 2; }
-      .week-counts { grid-column: 1 / -1; grid-row: 3; flex-wrap: wrap; gap: 0.1rem 0.9rem; padding-top: 0; }
       .week-flag { margin-top: 0; }
       .week-outcome { white-space: normal; overflow: visible; text-overflow: clip; overflow-wrap: anywhere; }
-      .week-days { margin-left: 0; }
+      .week-days, .ledger-tech { margin-left: 0; }
+      .tech-table th, .tech-table td { padding-inline: 0.35rem; }
+      .tech-table thead th { white-space: normal; }
+      .tech-table .tech-row-day th { padding-left: 0.8rem; }
       .home-hero-top { flex-direction: column; align-items: flex-start; }
     }
 
@@ -136,6 +130,8 @@ export const buildWeekCSS = (t: AllocationCssTheme): string => `
       color: ${t.textTertiary}; white-space: nowrap;
     }
     .home-hero { margin: 2rem 0 0; }
+    .home-hero-scope { margin: 0 0 0.75rem; font-size: 0.8125rem; color: ${t.textSecondary}; }
+    .home-hero-scope-label { font-family: ${t.mono}; font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase; color: ${t.textTertiary}; }
     .home-hero-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 1.25rem 2.5rem; }
     .home-hero-days { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.7rem; }
     .home-hero-value { font-size: clamp(2.5rem, 6vw, 4.25rem); font-weight: 800; line-height: 1; letter-spacing: -0.04em; color: ${t.accent}; font-variant-numeric: tabular-nums; }

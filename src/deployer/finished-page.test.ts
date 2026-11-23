@@ -138,7 +138,7 @@ describe("renderFinishedPage", () => {
 
   it("uses theme tokens, not hard-coded page colors, and stacks the layout on narrow columns", () => {
     const brutalist = renderFinishedPage({ themeName: "brutalist" });
-    expect(finishedCssOf(brutalist)).toContain("var(--neutral-10)");
+    expect(finishedCssOf(brutalist)).toContain("var(--b-text)");
     expect(finishedCssOf(renderFinishedPage({ themeName: "swiss" }))).toContain("var(--s-text)");
     expect(finishedCssOf(renderFinishedPage({ themeName: "editorial" }))).toContain("var(--e-text)");
     expect(finishedCssOf(renderFinishedPage({ themeName: "minimal" }))).toContain("var(--text)");
@@ -156,7 +156,7 @@ describe("renderFinishedPage", () => {
   });
 
   it("defines the success tokens for light and dark in every theme, switched like the theme switches", () => {
-    const darkFirst: Record<Theme, boolean> = { brutalist: false, minimal: false, editorial: false, swiss: false };
+    const darkFirst: Record<Theme, boolean> = { brutalist: true, minimal: false, editorial: false, swiss: false };
     for (const theme of themes) {
       const css = finishedCssOf(renderFinishedPage({ themeName: theme }));
       const tone = theme === "editorial" ? STATUS_PALETTES.calm : STATUS_PALETTES.forest;

@@ -1,5 +1,11 @@
 # Rust allocation benchmark
 
+The website now uses Monday–Friday weeks and effort-based weekend attribution.
+The Rust prototype and its caller-supplied windows have not yet been ported to this
+calendar. The end-to-end benchmark and renderer parity checks currently report
+mismatches; the timings below describe the earlier calendar implementation and
+must not be treated as measurements of the current website pipeline.
+
 This is an **experimental benchmark**, not a production implementation. Worklog still uses its TypeScript collector and renderer.
 
 The benchmark compares the uncached TypeScript calculation, a benchmark TypeScript version that caches daily allocations and weekly periods, a Rust batch using the same caching strategy, and that same Rust batch called through Bun with JSON serialization and deserialization. Production archive rendering now also caches allocations and periods within each snapshot; it does not use Rust. All four benchmark variants consume the same report snapshot and produce complete daily allocations and weekly trend objects. Cached periods are scoped to one batch and keyed by the date window and effective end date; changing reports, configuration, or manual time requires a fresh cache. The Rust prototype includes initiative/work-type classification, PR deduplication, effort and manual-time allocation, and weekly merging. The existing TypeScript date helpers supply the Thursday–Wednesday windows.

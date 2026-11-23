@@ -42,10 +42,22 @@ output_dir: ./output
 #   6. default_initiative (if set)
 #   7. the repository name
 allocation:
+  # App directories can identify work in monorepos when labels/scopes are missing.
+  # Multiple app directories use shared_initiative; shared-only paths do too.
+  shared_initiative: Shared platform
+  paths:
+    address-book: CRM # legacy directory before the app was renamed
+    crm: CRM
+    hub: Hub
+    packages: Shared platform
   label_prefix: "app:"        # labels starting with this name an initiative
   default_initiative: null    # fallback initiative name, or null for repo name
-  trend_weeks: 8              # number of Thu–Wed weeks in the trend (1–52)
+  trend_weeks: 8              # number of Mon–Fri website weeks in the trend (1–52)
   initiatives:
+    "app: crm": CRM
+    "app: address-book": CRM
+    "scope:crm": CRM
+    "scope:address-book": CRM
     "app: hub": Hub
     "scope:ofac": OFAC
     "repo:org/name": Something

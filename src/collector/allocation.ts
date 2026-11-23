@@ -2,9 +2,10 @@
 // Hours are an estimate distributed by delivered scope; self-reported time is added unscaled.
 
 import { buildCommitUnits, estimateCommitUnitHours, estimateDailyPrWorkHours, estimatePrHours, groupCommitUnitIndexes } from "./estimate-hours.js";
-import { formatShortWeekTitle } from "./stakeholder-summary.js";
+import { addDays, buildWorkCalendar, mondayOf, type WorkCalendar } from "./work-calendar.js";
 import type {
   Allocation,
+  EvidenceLedger,
   AllocationBucket,
   AllocationItem,
   AllocationPeriod,
@@ -18,6 +19,24 @@ import type {
 } from "../types.js";
 
 export const ALLOCATION_VERSION = "1.0";
+
+/** Fill classification metadata only. Cached lifetime files must never change daily effort weights. */
+export const withAllocationMetadata = (data: WeeklyReportData, evidence?: EvidenceLedger | null): WeeklyReportData => {
+  if (!evidence) return data;
+  const filesFor = (url: string): string[] | undefined => {
+    const pr = evidence.prs?.[url];
+    return pr && !pr.incomplete?.files && !pr.filesTruncated && !pr.refreshFailedAt && pr.files?.length > 0 ? pr.files : undefined;
+  };
+  const enrichPr = (pr: PullRequest): PullRequest => ({ ...pr, allocationFiles: pr.allocationFiles ?? filesFor(pr.url) });
+  return {
+    ...data,
+    pullRequests: (data.pullRequests ?? []).map(enrichPr),
+    prsInProgress: data.prsInProgress?.map(enrichPr),
+    prsWorkedOnClosed: data.prsWorkedOnClosed?.map(enrichPr),
+    codeReviews: data.codeReviews?.map((review) => ({ ...review, prFiles: review.prFiles ?? filesFor(review.prUrl) })),
+    reviewComments: data.reviewComments?.map((comment) => ({ ...comment, prFiles: comment.prFiles ?? filesFor(comment.prUrl) })),
+  };
+};
 
 export const DEFAULT_ALLOCATION_CONFIG: AllocationConfig = {
   initiatives: {},
@@ -130,13 +149,29 @@ const lookup = (map: Record<string, string>, key: string): string | undefined =>
   return found ? map[found] : undefined;
 };
 
-/** Resolve initiative by label prefix, exact label, scope, repo, title name, default, then repo name. */
+/** Cross-app paths go to shared work; labels/scopes then app paths identify individual apps.
+ * With app path rules enabled, a named app in the title also precedes the repo fallback. */
 export const classifyInitiative = (
-  input: { title: string; labels?: string[]; repository: string },
+  input: { title: string; labels?: string[]; repository: string; files?: string[] },
   config: AllocationConfig,
 ): string => {
   const labels = input.labels ?? [];
+  const pathRules = Object.entries(config.paths ?? {}).sort(([a], [b]) => b.length - a.length);
+  const pathNames = new Set<string>();
+  for (const file of input.files ?? []) {
+    const path = file.replace(/^\.\//, "");
+    const match = pathRules.find(([prefix]) => path === prefix || path.startsWith(`${prefix}/`));
+    if (match) pathNames.add(match[1]);
+  }
+  const shared = config.sharedInitiative ?? "Shared platform";
+  const apps = [...pathNames].filter((name) => name !== shared);
+  if (apps.length > 1) return shared;
   const prefix = config.labelPrefix.toLowerCase();
+  if (config.paths && prefix) {
+    const labelled = new Set(labels.filter((label) => label.toLowerCase().startsWith(prefix))
+      .map((label) => lookup(config.initiatives, label) ?? humanize(label.slice(prefix.length).trim())).filter(Boolean));
+    if (labelled.size > 1) return shared;
+  }
   if (prefix) {
     for (const label of labels) {
       if (!label.toLowerCase().startsWith(prefix)) continue;
@@ -152,18 +187,26 @@ export const classifyInitiative = (
   }
   const scopeText = CONVENTIONAL_RE.exec(input.title)?.[2];
   if (scopeText) {
+    if (config.paths) {
+      const scoped = new Set(scopeText.split(",").map((scope) => config.initiatives[`scope:${scope.trim().toLowerCase()}`]).filter(Boolean));
+      if (scoped.size > 1) return shared;
+    }
     for (const scope of scopeText.split(",")) {
       const mapped = config.initiatives[`scope:${scope.trim().toLowerCase()}`];
       if (mapped) return mapped;
     }
   }
+  if (apps.length === 1) return apps[0];
+  if (pathNames.has(shared)) return shared;
   const byRepo = lookup(config.initiatives, `repo:${input.repository}`);
-  if (byRepo) return byRepo;
+  if (byRepo && !config.paths) return byRepo;
   // Unmapped repositories may still name the product ("Fix Northstar brief retries").
   const named = [...new Set(Object.values(config.initiatives))]
     .sort((a, b) => b.length - a.length)
-    .find((name) => new RegExp(`\\b${name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "i").test(input.title));
-  if (named) return named;
+    .filter((name) => new RegExp(`\\b${name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "i").test(input.title));
+  if (config.paths && named.length > 1) return shared;
+  if (named.length) return named[0];
+  if (byRepo) return byRepo;
   if (config.defaultInitiative) return config.defaultInitiative;
   return humanize(input.repository.split("/").pop() ?? input.repository) || FALLBACK_INITIATIVE;
 };
@@ -282,7 +325,7 @@ export const computeAllocation = (
     const state = pr.state !== "open" && !reportUrls.has(pr.url) ? "open" : pr.state;
     const labels = pr.labels ?? [];
     entries.push({
-      initiative: classifyInitiative({ title: pr.title, labels, repository: pr.repository }, config),
+      initiative: classifyInitiative({ title: pr.title, labels, repository: pr.repository, files: pr.workFiles?.length ? pr.workFiles : pr.allocationFiles }, config),
       workType: classifyWorkType(pr.title, labels),
       weight: countsTowardEstimate(pr) ? prWeight(pr) : 0,
     });
@@ -304,8 +347,10 @@ export const computeAllocation = (
 
   const prByRepoNumber = (repository: string, prNumber: number): PullRequest | undefined =>
     [...prs.values()].find((pr) => pr.repository === repository && pr.url.endsWith(`/pull/${prNumber}`));
-  const reviewInitiative = (repository: string, title: string, url: string, labels?: string[]): string =>
-    classifyInitiative({ title, labels: prs.get(url)?.labels ?? labels ?? [], repository }, config);
+  const reviewInitiative = (repository: string, title: string, url: string, labels?: string[], files?: string[]): string => {
+    const pr = prs.get(url);
+    return classifyInitiative({ title, labels: pr?.labels ?? labels ?? [], repository, files: pr?.workFiles?.length ? pr.workFiles : pr?.allocationFiles ?? files }, config);
+  };
 
   const commentMetadata = new Map<string, NonNullable<WeeklyReportData["reviewComments"]>[number]>();
   for (const comment of data.reviewComments ?? []) {
@@ -316,7 +361,7 @@ export const computeAllocation = (
   const reviewedItems = new Set<string>();
   for (const review of data.codeReviews ?? []) {
     const key = `${review.repository}#${review.prNumber}`;
-    const initiative = reviewInitiatives.get(key) ?? reviewInitiative(review.repository, review.prTitle, review.prUrl, commentMetadata.get(key)?.prLabels);
+    const initiative = reviewInitiatives.get(key) ?? reviewInitiative(review.repository, review.prTitle, review.prUrl, commentMetadata.get(key)?.prLabels, review.prFiles);
     entries.push({ initiative, workType: "team-support", weight: REVIEW_HOURS });
     reviewInitiatives.set(key, initiative);
     const itemKey = `${initiative}|${review.prUrl}`;
@@ -335,10 +380,10 @@ export const computeAllocation = (
     const initiative = known !== undefined
       ? known
       : comment.prTitle != null || comment.prLabels != null
-      ? classifyInitiative({ title: comment.prTitle ?? pr?.title ?? "", labels: comment.prLabels ?? pr?.labels, repository: comment.repository }, config)
+      ? classifyInitiative({ title: comment.prTitle ?? pr?.title ?? "", labels: comment.prLabels ?? pr?.labels, repository: comment.repository, files: pr?.workFiles?.length ? pr.workFiles : pr?.allocationFiles ?? comment.prFiles ?? (comment.path ? [comment.path] : undefined) }, config)
       : pr
       ? reviewInitiative(comment.repository, pr.title, pr.url)
-      : classifyInitiative({ title: "", labels: [], repository: comment.repository }, config);
+      : classifyInitiative({ title: "", labels: [], repository: comment.repository, files: comment.prFiles ?? (comment.path ? [comment.path] : undefined) }, config);
     entries.push({ initiative, workType: "team-support", weight: REVIEW_COMMENT_HOURS });
   }
 
@@ -353,7 +398,11 @@ export const computeAllocation = (
     for (const commit of commits) {
       if (commit.sha && workShas.has(commit.sha)) continue;
       const message = (commit.message ?? "").split("\n")[0];
-      const initiative = classifyInitiative({ title: message, labels: [], repository: repo.repo }, config);
+      let initiative = classifyInitiative({ title: message, labels: [], repository: repo.repo, files: "files" in commit ? commit.files : undefined }, config);
+      // A complete empty diff is repository coordination, not missing app metadata.
+      if (config.paths && config.sharedInitiative && "files" in commit && Array.isArray(commit.files) && commit.files.length === 0 && initiative === lookup(config.initiatives, `repo:${repo.repo}`)) {
+        initiative = config.sharedInitiative;
+      }
       const workType = classifyWorkType(message);
       const key = `${initiative}|${workType}`;
       const group = groups.get(key) ?? { initiative, workType, count: 0, repos: new Set() };
@@ -415,8 +464,6 @@ export const computeAllocation = (
     // target can be only the daily minimum (including zero-weight PR snapshots).
     if ((data.hoursEstimate?.sessionHours ?? 0) > 0) {
       addHours(accs, config.defaultInitiative ?? FALLBACK_INITIATIVE, "maintenance", target);
-    } else {
-      addHours(accs, NO_ACTIVITY_INITIATIVE, "no-activity", target);
     }
   }
   if (weightSum > 0) {
@@ -607,14 +654,14 @@ const parseUtc = (date: string): number => {
 };
 const formatUtc = (ms: number): string => new Date(ms).toISOString().slice(0, 10);
 
-/** Thursday on or before a YYYY-MM-DD date (work week starts Thursday). */
+/** Thursday on or before a YYYY-MM-DD date (legacy Thu–Wed weekly archives only). */
 export const weekStart = (date: string): string => {
   const ms = parseUtc(date);
   const back = (new Date(ms).getUTCDay() - 4 + 7) % 7;
   return formatUtc(ms - back * DAY_MS);
 };
 
-/** Wednesday that closes the Thu–Wed work week starting on `from` (YYYY-MM-DD). */
+/** Wednesday that closes the legacy Thu–Wed week starting on `from` (YYYY-MM-DD). */
 export const weekEnd = (from: string): string => formatUtc(parseUtc(from) + 6 * DAY_MS);
 
 type TrendReport = { date: string; data: Parameters<typeof computeAllocation>[0] };
@@ -642,17 +689,51 @@ export const createAllocationTrendBatch = (
       return report ? allocation(report) : undefined;
     },
     trend: (endDate: string): AllocationTrend => calculateAllocationTrend(reports, endDate, config, manualTime, allocation, periods),
+    /** Mon–Fri website calendar as of `endDate` (no later report can influence it). */
+    calendar: (endDate?: string): WorkCalendar => calendarFor(reports, endDate, manualTime, allocation),
   };
 };
 
-/** Group daily reports into Thu–Wed work weeks ending at `endDate`, last `config.trendWeeks` weeks. */
+/**
+ * Group daily reports into Mon–Fri work weeks (weekends attributed per work-calendar.ts),
+ * ending at the group holding `endDate`; the last `config.trendWeeks` weeks plus any
+ * explicit weekend entries between them. Nothing after `endDate` is read.
+ */
 export const buildAllocationTrend = (
   reports: TrendReport[],
   endDate: string,
   config: AllocationConfig = DEFAULT_ALLOCATION_CONFIG,
   manualTime: ManualTimeEntry[] = [],
 ): AllocationTrend => {
-  return calculateAllocationTrend(reports, endDate, config, manualTime, (report) => computeAllocation(report.data, config, manualTime), new Map());
+  const memo = new Map<TrendReport, Allocation>();
+  const allocationFor = (report: TrendReport): Allocation => {
+    let value = memo.get(report);
+    if (!value) {
+      value = computeAllocation(report.data, config, manualTime);
+      memo.set(report, value);
+    }
+    return value;
+  };
+  return calculateAllocationTrend(reports, endDate, config, manualTime, allocationFor, new Map());
+};
+
+const calendarFor = (
+  reports: TrendReport[],
+  endDate: string | undefined,
+  manualTime: ManualTimeEntry[],
+  allocationFor: (report: TrendReport) => Allocation,
+): WorkCalendar => {
+  const end = endDate ? day(endDate) : undefined;
+  return buildWorkCalendar(
+    reports
+      .filter((report) => !end || day(report.date) <= end)
+      // Each day's own modeled effort (its manual time included), before weekend additions.
+      .map((report) => ({ date: day(report.date), hours: allocationFor(report).totalHours })),
+    {
+      ...(end ? { cutoff: end } : {}),
+      activityDates: manualTime.filter((entry) => entry.hours > 0).map((entry) => day(entry.date)),
+    },
+  );
 };
 
 const calculateAllocationTrend = (
@@ -664,37 +745,69 @@ const calculateAllocationTrend = (
   cache: Map<string, AllocationPeriod>,
 ): AllocationTrend => {
   const end = day(endDate);
-  const lastStart = parseUtc(weekStart(end));
+  const inScope = reports.filter((report) => day(report.date) <= end);
+  const calendar = calendarFor(inScope, end, manualTime, allocationFor);
+  const lastId = calendar.groupIdOf(end);
+  // An explicit weekend entry sits after the Monday that precedes it.
+  const lastMonday = calendar.group(lastId).kind === "week" ? lastId : mondayOf(lastId);
   const weeks = Math.max(1, Math.floor(config.trendWeeks));
+  const firstMonday = addDays(lastMonday, -(weeks - 1) * 7);
+  const ids = new Set<string>();
+  for (let i = 0; i < weeks; i++) ids.add(addDays(firstMonday, i * 7));
+  for (const group of calendar.groups) {
+    if (group.kind === "weekend" && group.id > firstMonday && group.id <= end) ids.add(group.id);
+  }
+  ids.add(lastId);
+
+  const reportsByGroup = new Map<string, TrendReport[]>();
+  for (const report of inScope) {
+    const id = calendar.groupIdOf(day(report.date));
+    reportsByGroup.set(id, [...(reportsByGroup.get(id) ?? []), report]);
+  }
+  const covered = (date: string): boolean =>
+    inScope.some((report) =>
+      day(report.date) === date ||
+      (day(report.data.dateRange?.from ?? "") <= date && date <= day(report.data.dateRange?.to ?? ""))
+    );
+  // Self-reported time with no report that day follows the same calendar (weekends included).
+  const extrasByGroup = new Map<string, number[]>();
+  manualTime.forEach((entry, index) => {
+    const date = day(entry.date);
+    if (date > end || covered(date)) return;
+    const id = calendar.groupIdOf(date);
+    extrasByGroup.set(id, [...(extrasByGroup.get(id) ?? []), index]);
+  });
+
   const periods: AllocationPeriod[] = [];
-  for (let i = weeks - 1; i >= 0; i--) {
-    const startMs = lastStart - i * 7 * DAY_MS;
-    const from = formatUtc(startMs);
-    const to = formatUtc(startMs + 6 * DAY_MS);
-    const key = `${from}/${end < to ? end : to}`;
+  for (const id of [...ids].sort()) {
+    const group = calendar.group(id);
+    const members = (reportsByGroup.get(id) ?? []).sort((a, b) => day(a.date).localeCompare(day(b.date)));
+    const extraIdx = extrasByGroup.get(id) ?? [];
+    const weekends = group.weekends;
+    // Key on what the period is made of, so a later cutoff that moves a weekend never reuses a stale period.
+    const key = JSON.stringify([
+      id,
+      group.label,
+      members.map((report) => day(report.date)),
+      extraIdx,
+      weekends.map((w) => [w.saturday, w.reason, w.activeDates]),
+    ]);
     const cached = cache.get(key);
     if (cached) {
       periods.push(cached);
       continue;
     }
-    const inWeek = reports.filter((report) => {
-      const date = day(report.date);
-      return date >= from && date <= to && date <= end;
-    });
-    const allocations = inWeek.map(allocationFor);
-    const covered = (date: string): boolean =>
-      inWeek.some((report) =>
-        day(report.date) === date ||
-        (day(report.data.dateRange?.from ?? "") <= date && date <= day(report.data.dateRange?.to ?? ""))
-      );
-    const extra = manualTime.filter((entry) => {
-      const date = day(entry.date);
-      return date >= from && date <= to && date <= end && !covered(date);
-    });
-    if (extra.length > 0) {
+    const allocations = members.map(allocationFor);
+    if (extraIdx.length > 0) {
+      const extra = extraIdx.map((index) => manualTime[index]);
+      const dates = extra.map((entry) => day(entry.date)).sort();
       allocations.push(computeAllocation(
         {
-          dateRange: { from, to },
+          // Cover attributed weekend dates too, so no self-reported entry is dropped.
+          dateRange: {
+            from: dates[0] < group.from ? dates[0] : group.from,
+            to: dates.at(-1)! > group.to ? dates.at(-1)! : group.to,
+          },
           stats: { estimatedHours: 0 } as WeeklyReportData["stats"],
           pullRequests: [],
           commitMessages: [],
@@ -703,13 +816,15 @@ const calculateAllocationTrend = (
         extra,
       ));
     }
-    const period = {
-      id: from,
-      label: formatShortWeekTitle(from, to),
-      from,
-      to,
-      days: inWeek.length,
+    const period: AllocationPeriod = {
+      id,
+      label: group.label,
+      from: group.from,
+      to: group.to,
+      days: members.length,
       allocation: mergeAllocations(allocations),
+      ...(group.kind === "weekend" ? { kind: "weekend" as const } : {}),
+      ...(weekends.length > 0 ? { weekends } : {}),
     };
     cache.set(key, period);
     periods.push(period);

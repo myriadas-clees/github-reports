@@ -40,8 +40,7 @@ pullRequests:
       ## Problem
 
 
-      Product deployments required separate URL variables, and preview deployments exposed only Azure-generated
-      hostnames.
+      Product deployments required separate URL variables, and preview deployments exposed only Azure-generated hostnames.
 
 
       ## Solution
@@ -73,11 +72,42 @@ pullRequests:
         message: Add friendly preview links and derive deployment URLs
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7c1d3dac399607da5a6581e8d7aca5128eb96882
         authoredAt: 2026-08-20T14:27:31Z
+        files:
+          - .github/workflows/azure-static-web-apps-products.yml
+          - .github/workflows/azure-static-web-apps.yml
+          - bun.lock
+          - docs/azure-serverless-plan.md
+          - docs/deploy-asap.md
+          - docs/production-readiness-progress.md
+          - docs/repository-operations.md
+          - hub/app/preview/page.tsx
+          - hub/functions/package.json
+          - hub/functions/src/index.ts
+          - hub/functions/src/preview-redirects.test.ts
+          - hub/functions/src/preview-redirects.ts
+          - hub/lib/apps.test.ts
+          - hub/lib/apps.ts
+          - hub/lib/dev-apps.test.ts
+          - hub/lib/local-dev.test.ts
+          - hub/lib/local-dev.ts
+          - hub/lib/preview-redirects.test.ts
+          - hub/lib/preview-redirects.ts
+          - hub/scripts/dev.ts
+          - hub/staticwebapp.config.json
+          - infra/azure/README.md
+          - scripts/app-registry.ts
+          - scripts/build-unified-swa.ts
+          - scripts/tooling.test.ts
+          - scripts/validate-artifacts.ts
+          - scripts/workflow-matrix.ts
       - &a10
         sha: 727074d77abf4b814c40ee7180c4957f5d8b5425
         message: Authorize preview redirects only for matching PR workflows
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/727074d77abf4b814c40ee7180c4957f5d8b5425
         authoredAt: 2026-08-20T15:29:22Z
+        files:
+          - hub/functions/src/preview-redirects.test.ts
+          - hub/functions/src/preview-redirects.ts
     workTimestamps:
       - 2026-08-20T14:27:31Z
       - 2026-08-20T15:29:22Z
@@ -137,11 +167,29 @@ pullRequests:
         message: "feat(proforma): add FiNet advisory pricing and package options"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b60e5e7c67996570adc205f1da7ed867b6edd2bb
         authoredAt: 2026-08-20T16:21:17Z
+        files:
+          - packages/contracts/src/proforma.ts
+          - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+          - proforma/src/components/assumptions-tab.tsx
+          - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+          - proforma/src/components/new-recruit-wizard.tsx
+          - proforma/src/components/proforma-workstation-client.tsx
+          - proforma/src/lib/__tests__/calculation.test.ts
+          - proforma/src/lib/__tests__/report.test.ts
+          - proforma/src/lib/calculation.ts
+          - proforma/src/lib/new-recruit.ts
+          - proforma/src/lib/report/excel.ts
+          - proforma/src/lib/report/model.ts
       - &a12
         sha: c2e1be677cb1c766b2b6dc8f82f02c58599541cb
         message: "fix(proforma): reconcile FiNet workbook formulas"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c2e1be677cb1c766b2b6dc8f82f02c58599541cb
         authoredAt: 2026-08-20T17:05:17Z
+        files:
+          - packages/contracts/src/proforma.test.ts
+          - packages/db/src/proforma.test.ts
+          - proforma/src/lib/__tests__/report.test.ts
+          - proforma/src/lib/report/excel.ts
     workTimestamps: &a3
       - 2026-08-20T16:21:17Z
       - 2026-08-20T17:05:17Z
@@ -167,9 +215,7 @@ pullRequests:
       ## Why
 
 
-      The public Hub landing page treated every app as equally available and did not give Advisor Proforma a clear
-      product story. The page needed a modern Myriad marketing experience that makes Proforma the flagship while setting
-      accurate expectations for the rest of the suite.
+      The public Hub landing page treated every app as equally available and did not give Advisor Proforma a clear product story. The page needed a modern Myriad marketing experience that makes Proforma the flagship while setting accurate expectations for the rest of the suite.
 
 
       ## What changed
@@ -197,31 +243,53 @@ pullRequests:
         message: "feat(hub): spotlight Proforma on landing page"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/db7faa9332c35423c7ebd3210bd90731b6baad7f
         authoredAt: 2026-08-20T19:31:15Z
+        files:
+          - bun.lock
+          - hub/app/globals.css
+          - hub/app/layout.tsx
+          - hub/components/LandingMotion.tsx
+          - hub/components/LandingPage.tsx
+          - hub/package.json
+          - hub/public/logo-black-red.png
+          - hub/public/proforma-advisor.jpg
       - &a20
         sha: 119993aa8efd28ec88c45be7e69c295d4274c246
         message: "docs(hub): add landing redesign screenshots"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/119993aa8efd28ec88c45be7e69c295d4274c246
         authoredAt: 2026-08-20T19:36:18Z
+        files:
+          - .github/pr-assets/proforma-landing-after.png
+          - .github/pr-assets/proforma-landing-before.png
       - &a21
         sha: eae7f2882d753f10ebae6889d2a8f83ba6515d53
         message: "fix(hub): preserve Proforma sign-in destination"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/eae7f2882d753f10ebae6889d2a8f83ba6515d53
         authoredAt: 2026-08-20T19:47:44Z
+        files:
+          - hub/components/LandingPage.tsx
+          - hub/lib/auth.test.ts
+          - hub/lib/auth.ts
       - &a22
         sha: 8c9e2b0d0811d39dc5df830561f493ed56f3bb7f
         message: "fix(hub): close menu at desktop breakpoint"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8c9e2b0d0811d39dc5df830561f493ed56f3bb7f
         authoredAt: 2026-08-20T19:58:25Z
+        files:
+          - hub/components/LandingPage.tsx
       - &a23
         sha: 07d08eeebe361ebb0b0718572c0c54dc72245cce
         message: "fix(hub): allow short menus to scroll"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/07d08eeebe361ebb0b0718572c0c54dc72245cce
         authoredAt: 2026-08-20T20:14:13Z
+        files:
+          - hub/app/globals.css
       - &a24
         sha: f6f66b110add536c1447a77f8a73b1fc94145aea
         message: "fix(hub): scope preview metadata"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f6f66b110add536c1447a77f8a73b1fc94145aea
         authoredAt: 2026-08-20T20:22:25Z
+        files:
+          - hub/app/preview/layout.tsx
     workTimestamps:
       - 2026-08-20T19:31:15Z
       - 2026-08-20T19:36:18Z
@@ -247,11 +315,9 @@ pullRequests:
       - hub/public/proforma-advisor.jpg
   - title: "feat(proforma): restyle intake and trim unused Platform fee lines"
     body: >-
-      - Stacks on #97 so FiNet 2026 pricing (Gateway packages, Cloud PC, Schedule A/B, advisory adjustment) stays the
-      base layer.
+      - Stacks on #97 so FiNet 2026 pricing (Gateway packages, Cloud PC, Schedule A/B, advisory adjustment) stays the base layer.
 
-      - Restyles New Recruit intake and groups Platform fees by cadence (Local Monthly, Local Annual, Annual, Monthly,
-      One-Time).
+      - Restyles New Recruit intake and groups Platform fees by cadence (Local Monthly, Local Annual, Annual, Monthly, One-Time).
 
       - Moves locations/domains to Firm and projection yea...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
@@ -277,36 +343,138 @@ pullRequests:
         message: Restyle Proforma recruits and new-recruit intake to match the ledger UI.
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ff8fb6fb36e3e35bdc1ec7eeabf5aea5d9ac55a8
         authoredAt: 2026-08-20T17:59:36Z
+        files:
+          - bun.lock
+          - packages/brand/src/styles.css
+          - packages/ui/src/navigation/app-nav.tsx
+          - packages/ui/src/navigation/app-shell.tsx
+          - packages/ui/src/user-menu.tsx
+          - proforma/package.json
+          - proforma/src/app/globals.css
+          - proforma/src/app/layout.tsx
+          - proforma/src/components/__tests__/assumptions-tab.test.tsx
+          - proforma/src/components/__tests__/branded-select.test.ts
+          - proforma/src/components/__tests__/dashboard-metrics-charts.test.tsx
+          - proforma/src/components/__tests__/dataframe-table.test.tsx
+          - proforma/src/components/__tests__/foreign-state-picker.test.ts
+          - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+          - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+          - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+          - proforma/src/components/__tests__/recruit-archive-section.test.tsx
+          - proforma/src/components/__tests__/recruits-table.test.tsx
+          - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+          - proforma/src/components/__tests__/work-state-select.test.tsx
+          - proforma/src/components/branded-date-field.tsx
+          - proforma/src/components/branded-select.tsx
+          - proforma/src/components/dashboard-get-started.tsx
+          - proforma/src/components/dashboard-metrics-charts.tsx
+          - proforma/src/components/dashboard-recruits-panel.tsx
+          - proforma/src/components/excel-sheet/__tests__/excel-input-sheet.test.ts
+          - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+          - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+          - proforma/src/components/foreign-state-picker.tsx
+          - proforma/src/components/new-recruit-wizard.tsx
+          - proforma/src/components/payout-breakdown-donut.tsx
+          - proforma/src/components/proforma-app-shell.tsx
+          - proforma/src/components/proforma-graphs.tsx
+          - proforma/src/components/proforma-static-pages.tsx
+          - proforma/src/components/proforma-workstation-client.tsx
+          - proforma/src/components/recruit-archive-section.tsx
+          - proforma/src/components/recruit-filters.tsx
+          - proforma/src/components/recruit-pipeline-summary.tsx
+          - proforma/src/components/recruits-table.tsx
+          - proforma/src/components/scenario-model-tab.tsx
+          - proforma/src/components/work-state-select.tsx
+          - proforma/src/lib/__tests__/proforma-visibility.test.ts
+          - proforma/src/lib/__tests__/report-filenames.test.ts
+          - proforma/src/lib/__tests__/report-model.test.ts
+          - proforma/src/lib/__tests__/report-storage.test.ts
+          - proforma/src/lib/__tests__/report.test.ts
+          - proforma/src/lib/__tests__/workbook-output.test.ts
+          - proforma/src/lib/__tests__/workbook-preview.test.ts
+          - proforma/src/lib/__tests__/workstation.test.ts
+          - proforma/src/lib/calculation.ts
+          - proforma/src/lib/proforma-nav.ts
+          - proforma/src/lib/recruit-model-tabs.ts
+          - proforma/src/lib/report/excel.ts
+          - proforma/src/lib/report/pdf.tsx
+          - proforma/src/lib/workstation-sections.ts
+          - proforma/src/lib/workstation.ts
       - &a14
         sha: 23138e370a341fcc806d58906eba5fdc23254ba6
         message: Stop re-asking Firm entity and state fields on the Platform step.
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/23138e370a341fcc806d58906eba5fdc23254ba6
         authoredAt: 2026-08-20T18:07:00Z
+        files:
+          - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+          - proforma/src/components/new-recruit-wizard.tsx
       - &a15
         sha: 50473ab497a71a4b4ac45cd4a2ada7c3c3a647d7
         message: Group Platform fees by cadence and treat no new entity as zero entities.
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/50473ab497a71a4b4ac45cd4a2ada7c3c3a647d7
         authoredAt: 2026-08-20T18:44:19Z
+        files:
+          - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+          - proforma/src/components/assumptions-tab.tsx
+          - proforma/src/components/new-recruit-wizard.tsx
       - &a16
         sha: 346bbcc033cd3951cf7ec1e2da2feadd39b75d2d
         message: Move firm footprint and projection years off the Platform step.
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/346bbcc033cd3951cf7ec1e2da2feadd39b75d2d
         authoredAt: 2026-08-20T18:51:57Z
+        files:
+          - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+          - proforma/src/components/new-recruit-wizard.tsx
       - &a17
         sha: 83aaf0e9a5a313b6f362570b59adf3c2997ae4c6
         message: Trim unused Platform fees and add 2026 Gateway, Cloud PC, and Schedule A/B pricing.
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/83aaf0e9a5a313b6f362570b59adf3c2997ae4c6
         authoredAt: 2026-08-20T19:17:21Z
+        files:
+          - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+          - proforma/src/components/new-recruit-wizard.tsx
+          - proforma/src/components/scenario-model-tab.tsx
+          - proforma/src/lib/__tests__/workbook-output.test.ts
+          - proforma/src/lib/calculation.ts
       - &a18
         sha: bc616b100e0814d1a57bedf6466e8f72dfa19326
         message: Keep Version 6 office-fee fixtures and hide zero-location office lines in tests.
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/bc616b100e0814d1a57bedf6466e8f72dfa19326
         authoredAt: 2026-08-20T19:22:15Z
+        files:
+          - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+          - proforma/src/lib/__tests__/calculation.test.ts
+          - proforma/src/lib/__tests__/report.test.ts
+          - proforma/src/lib/calculation.ts
       - &a25
         sha: 6b9e8021d24df406e89c800d21c7eb427d3d322e
         message: Add custom expenses to every Platform fee cadence with one table layout.
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6b9e8021d24df406e89c800d21c7eb427d3d322e
         authoredAt: 2026-08-20T20:47:54Z
+        files:
+          - packages/contracts/src/proforma.test.ts
+          - packages/contracts/src/proforma.ts
+          - proforma/src/app/globals.css
+          - proforma/src/components/__tests__/assumptions-tab.test.tsx
+          - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+          - proforma/src/components/assumptions-tab.tsx
+          - proforma/src/components/custom-expense-fields.tsx
+          - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+          - proforma/src/components/new-recruit-wizard.tsx
+          - proforma/src/components/proforma-workstation-client.tsx
+          - proforma/src/components/scenario-model-tab.tsx
+          - proforma/src/lib/__tests__/calculation.test.ts
+          - proforma/src/lib/__tests__/expense-groups.test.ts
+          - proforma/src/lib/__tests__/report.test.ts
+          - proforma/src/lib/__tests__/setup-projection.test.ts
+          - proforma/src/lib/__tests__/workbook-output.test.ts
+          - proforma/src/lib/__tests__/workstation.test.ts
+          - proforma/src/lib/calculation.ts
+          - proforma/src/lib/expense-groups.ts
+          - proforma/src/lib/report/excel.ts
+          - proforma/src/lib/report/model.ts
+          - proforma/src/lib/setup-projection.ts
+          - proforma/src/lib/workstation.ts
     workTimestamps: &a7
       - 2026-08-20T17:59:36Z
       - 2026-08-20T18:07:00Z
@@ -408,13 +576,26 @@ prsInProgress:
     workAdditions: 271
     workDeletions: 71
     workFiles: *a4
+    allocationFiles:
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
   - title: "feat(proforma): restyle intake and trim unused Platform fee lines"
     body: >-
-      - Stacks on #97 so FiNet 2026 pricing (Gateway packages, Cloud PC, Schedule A/B, advisory adjustment) stays the
-      base layer.
+      - Stacks on #97 so FiNet 2026 pricing (Gateway packages, Cloud PC, Schedule A/B, advisory adjustment) stays the base layer.
 
-      - Restyles New Recruit intake and groups Platform fees by cadence (Local Monthly, Local Annual, Annual, Monthly,
-      One-Time).
+      - Restyles New Recruit intake and groups Platform fees by cadence (Local Monthly, Local Annual, Annual, Monthly, One-Time).
 
       - Moves locations/domains to Firm and projection yea...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
@@ -434,6 +615,123 @@ prsInProgress:
     workAdditions: 4334
     workDeletions: 1609
     workFiles: *a8
+    allocationFiles:
+      - bun.lock
+      - packages/brand/src/styles.css
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - packages/db/src/proforma.ts
+      - packages/ui/src/navigation/app-nav.tsx
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/navigation/preferences.tsx
+      - packages/ui/src/user-menu.tsx
+      - proforma/docs/client-reference-alignment.md
+      - proforma/package.json
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/branded-select.test.ts
+      - proforma/src/components/__tests__/custom-expense-fields.test.tsx
+      - proforma/src/components/__tests__/dashboard-metrics-charts.test.tsx
+      - proforma/src/components/__tests__/dataframe-table.test.tsx
+      - proforma/src/components/__tests__/foreign-state-picker.test.ts
+      - proforma/src/components/__tests__/hybrid-fee-editor.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/payout-reconciliation.test.tsx
+      - proforma/src/components/__tests__/pdf-report-viewer.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruit-archive-section.test.tsx
+      - proforma/src/components/__tests__/recruit-detail-panels.test.tsx
+      - proforma/src/components/__tests__/recruit-form.test.tsx
+      - proforma/src/components/__tests__/recruit-model-shell.test.tsx
+      - proforma/src/components/__tests__/recruit-row-actions.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/report-artifact-viewer.test.ts
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/__tests__/work-state-select.test.tsx
+      - proforma/src/components/__tests__/workbook-fee-table.test.ts
+      - proforma/src/components/advisor-finet-services.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/branded-date-field.tsx
+      - proforma/src/components/branded-select.tsx
+      - proforma/src/components/category-fee-table.tsx
+      - proforma/src/components/custom-expense-fields.tsx
+      - proforma/src/components/dashboard-get-started.tsx
+      - proforma/src/components/dashboard-metrics-charts.tsx
+      - proforma/src/components/dashboard-recruits-panel.tsx
+      - proforma/src/components/delete-report-form.tsx
+      - proforma/src/components/excel-sheet/__tests__/excel-input-sheet.test.ts
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/foreign-state-picker.tsx
+      - proforma/src/components/hybrid-fee-editor.tsx
+      - proforma/src/components/intake-live-summary.tsx
+      - proforma/src/components/location-cost-table.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/payout-breakdown-donut.tsx
+      - proforma/src/components/payout-reconciliation.tsx
+      - proforma/src/components/pdf-report-viewer.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-intake-layout.tsx
+      - proforma/src/components/proforma-intake-options.ts
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-archive-section.tsx
+      - proforma/src/components/recruit-filters.tsx
+      - proforma/src/components/recruit-form.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruit-model-tab-icon.tsx
+      - proforma/src/components/recruit-pipeline-summary.tsx
+      - proforma/src/components/recruit-row-actions.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/report-artifact-actions.tsx
+      - proforma/src/components/report-artifact-viewer.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/components/work-state-select.tsx
+      - proforma/src/components/workbook-fee-table.tsx
+      - proforma/src/components/workbook-report-viewer.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/dashboard-summary.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/pipeline-metrics.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/recruit-routes.test.ts
+      - proforma/src/lib/__tests__/report-filenames.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report-storage.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/cosmos-data.ts
+      - proforma/src/lib/entity-state-costs.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/payroll-state-rates.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/proforma-nav.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/recruit-notes.ts
+      - proforma/src/lib/recruit-routes.ts
+      - proforma/src/lib/report-storage.ts
+      - proforma/src/lib/report.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/report/workbook-preview.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation-sections.ts
+      - proforma/src/lib/workstation.ts
 issues: []
 events:
   - id: "18326312329"
@@ -623,6 +921,34 @@ commitMessages:
         additions: 1165
         deletions: 165
         filesChanged: 27
+        files:
+          - .github/workflows/azure-static-web-apps-products.yml
+          - .github/workflows/azure-static-web-apps.yml
+          - bun.lock
+          - docs/azure-serverless-plan.md
+          - docs/deploy-asap.md
+          - docs/production-readiness-progress.md
+          - docs/repository-operations.md
+          - hub/app/preview/page.tsx
+          - hub/functions/package.json
+          - hub/functions/src/index.ts
+          - hub/functions/src/preview-redirects.test.ts
+          - hub/functions/src/preview-redirects.ts
+          - hub/lib/apps.test.ts
+          - hub/lib/apps.ts
+          - hub/lib/dev-apps.test.ts
+          - hub/lib/local-dev.test.ts
+          - hub/lib/local-dev.ts
+          - hub/lib/preview-redirects.test.ts
+          - hub/lib/preview-redirects.ts
+          - hub/scripts/dev.ts
+          - hub/staticwebapp.config.json
+          - infra/azure/README.md
+          - scripts/app-registry.ts
+          - scripts/build-unified-swa.ts
+          - scripts/tooling.test.ts
+          - scripts/validate-artifacts.ts
+          - scripts/workflow-matrix.ts
       - *a11
       - *a12
       - *a13
@@ -648,6 +974,20 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-20T19:48:30Z
     body: null
+    prFiles:
+      - .github/pr-assets/proforma-landing-after.png
+      - .github/pr-assets/proforma-landing-before.png
+      - bun.lock
+      - hub/app/globals.css
+      - hub/app/layout.tsx
+      - hub/app/preview/layout.tsx
+      - hub/components/LandingMotion.tsx
+      - hub/components/LandingPage.tsx
+      - hub/lib/auth.test.ts
+      - hub/lib/auth.ts
+      - hub/package.json
+      - hub/public/logo-black-red.png
+      - hub/public/proforma-advisor.jpg
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 100
     prTitle: "feat(hub): spotlight Proforma on landing page"
@@ -655,6 +995,20 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-20T19:58:48Z
     body: null
+    prFiles:
+      - .github/pr-assets/proforma-landing-after.png
+      - .github/pr-assets/proforma-landing-before.png
+      - bun.lock
+      - hub/app/globals.css
+      - hub/app/layout.tsx
+      - hub/app/preview/layout.tsx
+      - hub/components/LandingMotion.tsx
+      - hub/components/LandingPage.tsx
+      - hub/lib/auth.test.ts
+      - hub/lib/auth.ts
+      - hub/package.json
+      - hub/public/logo-black-red.png
+      - hub/public/proforma-advisor.jpg
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 100
     prTitle: "feat(hub): spotlight Proforma on landing page"
@@ -662,6 +1016,20 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-20T20:14:31Z
     body: null
+    prFiles:
+      - .github/pr-assets/proforma-landing-after.png
+      - .github/pr-assets/proforma-landing-before.png
+      - bun.lock
+      - hub/app/globals.css
+      - hub/app/layout.tsx
+      - hub/app/preview/layout.tsx
+      - hub/components/LandingMotion.tsx
+      - hub/components/LandingPage.tsx
+      - hub/lib/auth.test.ts
+      - hub/lib/auth.ts
+      - hub/package.json
+      - hub/public/logo-black-red.png
+      - hub/public/proforma-advisor.jpg
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 100
     prTitle: "feat(hub): spotlight Proforma on landing page"
@@ -669,6 +1037,20 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-20T20:22:42Z
     body: null
+    prFiles:
+      - .github/pr-assets/proforma-landing-after.png
+      - .github/pr-assets/proforma-landing-before.png
+      - bun.lock
+      - hub/app/globals.css
+      - hub/app/layout.tsx
+      - hub/app/preview/layout.tsx
+      - hub/components/LandingMotion.tsx
+      - hub/components/LandingPage.tsx
+      - hub/lib/auth.test.ts
+      - hub/lib/auth.ts
+      - hub/package.json
+      - hub/public/logo-black-red.png
+      - hub/public/proforma-advisor.jpg
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 100
     prTitle: "feat(hub): spotlight Proforma on landing page"
@@ -676,51 +1058,126 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-20T20:28:55Z
     body: null
+    prFiles:
+      - .github/pr-assets/proforma-landing-after.png
+      - .github/pr-assets/proforma-landing-before.png
+      - bun.lock
+      - hub/app/globals.css
+      - hub/app/layout.tsx
+      - hub/app/preview/layout.tsx
+      - hub/components/LandingMotion.tsx
+      - hub/components/LandingPage.tsx
+      - hub/lib/auth.test.ts
+      - hub/lib/auth.ts
+      - hub/package.json
+      - hub/public/logo-black-red.png
+      - hub/public/proforma-advisor.jpg
 reviewComments:
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 100
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/100
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/100#discussion_r3824836563
-    body: Fixed in eae7f28. Every public Proforma CTA now uses the SWA sign-in route with
-      `post_login_redirect_uri=/proforma`, while local development still links directly to `/proforma`. Added auth
-      helper coverage for both modes, and Hub typecheck, lint, tests, and the full serverless artifact build pass.
+    body: Fixed in eae7f28. Every public Proforma CTA now uses the SWA sign-in route with `post_login_redirect_uri=/proforma`, while local development still links directly to `/proforma`. Added auth helper coverage for both modes, and Hub typecheck, lint, tests, and the full serverless artifact build pass.
     path: hub/components/LandingPage.tsx
     createdAt: 2026-08-20T19:48:30Z
+    prFiles:
+      - .github/pr-assets/proforma-landing-after.png
+      - .github/pr-assets/proforma-landing-before.png
+      - bun.lock
+      - hub/app/globals.css
+      - hub/app/layout.tsx
+      - hub/app/preview/layout.tsx
+      - hub/components/LandingMotion.tsx
+      - hub/components/LandingPage.tsx
+      - hub/lib/auth.test.ts
+      - hub/lib/auth.ts
+      - hub/package.json
+      - hub/public/logo-black-red.png
+      - hub/public/proforma-advisor.jpg
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 100
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/100
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/100#discussion_r3824910812
-    body: Fixed in 8c9e2b0. The landing page now listens for the existing 1024px desktop breakpoint and closes the mobile
-      menu when that query begins matching. Browser regression verification confirmed the 1023px-to-1024px transition
-      changes the dialog count from 1 to 0, clears the body overflow lock, and res...
+    body: Fixed in 8c9e2b0. The landing page now listens for the existing 1024px desktop breakpoint and closes the mobile menu when that query begins matching. Browser regression verification confirmed the 1023px-to-1024px transition changes the dialog count from 1 to 0, clears the body overflow lock, and res...
     path: hub/app/globals.css
     createdAt: 2026-08-20T19:58:48Z
+    prFiles:
+      - .github/pr-assets/proforma-landing-after.png
+      - .github/pr-assets/proforma-landing-before.png
+      - bun.lock
+      - hub/app/globals.css
+      - hub/app/layout.tsx
+      - hub/app/preview/layout.tsx
+      - hub/components/LandingMotion.tsx
+      - hub/components/LandingPage.tsx
+      - hub/lib/auth.test.ts
+      - hub/lib/auth.ts
+      - hub/package.json
+      - hub/public/logo-black-red.png
+      - hub/public/proforma-advisor.jpg
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 100
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/100
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/100#discussion_r3825014328
-    body: Fixed in 07d08ee. The dialog is now its own vertical scroll container and uses safe centering, so it remains
-      centered when content fits and starts safely when content overflows. At 667×320, browser verification measured a
-      606px scroll height inside the 320px menu, scrolled to 286px, brought the fina...
+    body: Fixed in 07d08ee. The dialog is now its own vertical scroll container and uses safe centering, so it remains centered when content fits and starts safely when content overflows. At 667×320, browser verification measured a 606px scroll height inside the 320px menu, scrolled to 286px, brought the fina...
     path: hub/app/globals.css
     createdAt: 2026-08-20T20:14:31Z
+    prFiles:
+      - .github/pr-assets/proforma-landing-after.png
+      - .github/pr-assets/proforma-landing-before.png
+      - bun.lock
+      - hub/app/globals.css
+      - hub/app/layout.tsx
+      - hub/app/preview/layout.tsx
+      - hub/components/LandingMotion.tsx
+      - hub/components/LandingPage.tsx
+      - hub/lib/auth.test.ts
+      - hub/lib/auth.ts
+      - hub/package.json
+      - hub/public/logo-black-red.png
+      - hub/public/proforma-advisor.jpg
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 100
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/100
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/100#discussion_r3825066353
-    body: Fixed in f6f66b1 by adding a preview-only server layout with route-specific metadata. Static artifact readback
-      confirms `/index.html` retains `Advisor Proforma
+    body: Fixed in f6f66b1 by adding a preview-only server layout with route-specific metadata. Static artifact readback confirms `/index.html` retains `Advisor Proforma
     path: hub/app/layout.tsx
     createdAt: 2026-08-20T20:22:41Z
+    prFiles:
+      - .github/pr-assets/proforma-landing-after.png
+      - .github/pr-assets/proforma-landing-before.png
+      - bun.lock
+      - hub/app/globals.css
+      - hub/app/layout.tsx
+      - hub/app/preview/layout.tsx
+      - hub/components/LandingMotion.tsx
+      - hub/components/LandingPage.tsx
+      - hub/lib/auth.test.ts
+      - hub/lib/auth.ts
+      - hub/package.json
+      - hub/public/logo-black-red.png
+      - hub/public/proforma-advisor.jpg
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 100
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/100
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/100#discussion_r3825106354
-    body: "No change needed: the supported `bun run dev:hub` path sets `MYRIAD_LOCAL_DEV=true` in `hub/scripts/dev.ts`,
-      which enables the registry-driven redirects in `hub/next.config.ts`. `hub/lib/local-dev.ts` maps `/proforma` to
-      the registered Proforma port, and the existing local-dev test covers every prod..."
+    body: "No change needed: the supported `bun run dev:hub` path sets `MYRIAD_LOCAL_DEV=true` in `hub/scripts/dev.ts`, which enables the registry-driven redirects in `hub/next.config.ts`. `hub/lib/local-dev.ts` maps `/proforma` to the registered Proforma port, and the existing local-dev test covers every prod..."
     path: hub/lib/auth.ts
     createdAt: 2026-08-20T20:28:55Z
+    prFiles:
+      - .github/pr-assets/proforma-landing-after.png
+      - .github/pr-assets/proforma-landing-before.png
+      - bun.lock
+      - hub/app/globals.css
+      - hub/app/layout.tsx
+      - hub/app/preview/layout.tsx
+      - hub/components/LandingMotion.tsx
+      - hub/components/LandingPage.tsx
+      - hub/lib/auth.test.ts
+      - hub/lib/auth.ts
+      - hub/package.json
+      - hub/public/logo-black-red.png
+      - hub/public/proforma-advisor.jpg
 aiReviews:
   codex:
     prsReviewed: 4
@@ -866,6 +1323,5 @@ hoursEstimate:
   volumeHours: 52.7
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

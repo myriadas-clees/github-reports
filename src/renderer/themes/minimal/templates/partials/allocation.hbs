@@ -20,7 +20,7 @@
 
   {{#if hasTrend}}
   <div class="alloc-block alloc-trend-block">
-    <h3 class="alloc-sub"><span>Last {{trendRows.length}} weeks</span><span class="alloc-sub-meta">share of each week's delivered work</span></h3>
+    <h3 class="alloc-sub"><span>{{trendHeading}}</span><span class="alloc-sub-meta">share of each week's delivered work</span></h3>
     <ol class="alloc-trend">
       {{#each trendRows}}
       <li class="alloc-trend-row{{#if isCurrent}} is-current{{/if}}">

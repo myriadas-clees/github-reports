@@ -61,6 +61,14 @@ commitMessages:
         additions: 807
         deletions: 337
         filesChanged: 7
+        files:
+          - .gitignore
+          - pricing/functions/package.json
+          - pricing/public/report-assets/sample-template.xlsx
+          - pricing/src/lib/__tests__/report-model.test.ts
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/report/excel.ts
+          - scripts/dev-pricing-api.ts
       - sha: efc8d6e5fd4a0d78f3f41f79cad5086ffbb1ef9b
         message: "feat: enhance branding and theme management in pricing app"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/efc8d6e5fd4a0d78f3f41f79cad5086ffbb1ef9b
@@ -68,6 +76,26 @@ commitMessages:
         additions: 719
         deletions: 116
         filesChanged: 19
+        files:
+          - hub/app/page.tsx
+          - packages/brand/assets/logo_white.png
+          - packages/brand/package.json
+          - packages/brand/src/index.ts
+          - packages/ui/src/brand-logo.tsx
+          - packages/ui/src/images.d.ts
+          - packages/ui/src/index.ts
+          - packages/ui/src/navigation/app-shell.tsx
+          - packages/ui/src/styles.css
+          - packages/ui/src/user-menu.tsx
+          - pricing/src/app/globals.css
+          - pricing/src/app/login/page.tsx
+          - pricing/src/components/pricing-app-shell.tsx
+          - pricing/src/components/pricing-quick-settings.tsx
+          - pricing/src/components/pricing-static-pages.tsx
+          - pricing/src/components/pricing-theme-controller.tsx
+          - pricing/src/components/pricing-theme-toggle.tsx
+          - pricing/src/components/pricing-user-menu.tsx
+          - pricing/src/lib/pricing-theme.ts
       - sha: aed8f9ee251ca89836ed86bd8e0f92aa592c88e0
         message: "docs(ofac): add API integration notes"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/aed8f9ee251ca89836ed86bd8e0f92aa592c88e0
@@ -75,6 +103,9 @@ commitMessages:
         additions: 407
         deletions: 0
         filesChanged: 2
+        files:
+          - README.md
+          - docs/ofac-api-integration.md
       - sha: db4f2b2aac1a4af53a5c75556f1dc35c59a1a949
         message: "feat: implement recruit deletion functionality"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/db4f2b2aac1a4af53a5c75556f1dc35c59a1a949
@@ -82,6 +113,36 @@ commitMessages:
         additions: 1162
         deletions: 364
         filesChanged: 29
+        files:
+          - packages/audit/src/index.ts
+          - packages/db/src/pricing.test.ts
+          - packages/db/src/pricing.ts
+          - pricing/functions/src/index.ts
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/delete-recruit-form.test.tsx
+          - pricing/src/components/__tests__/recruit-archive-section.test.tsx
+          - pricing/src/components/__tests__/recruit-row-actions.test.tsx
+          - pricing/src/components/dashboard-metrics-charts.tsx
+          - pricing/src/components/dashboard-payout-pie.tsx
+          - pricing/src/components/dashboard-recruit-row.tsx
+          - pricing/src/components/dashboard-recruits-panel.tsx
+          - pricing/src/components/dashboard-trend-chart.tsx
+          - pricing/src/components/delete-recruit-form.tsx
+          - pricing/src/components/pipeline-stage-bar.tsx
+          - pricing/src/components/pricing-static-pages.tsx
+          - pricing/src/components/recruit-archive-section.tsx
+          - pricing/src/components/recruit-filters.tsx
+          - pricing/src/components/recruit-row-actions.tsx
+          - pricing/src/components/recruits-table.tsx
+          - pricing/src/lib/__tests__/dashboard-charts.test.ts
+          - pricing/src/lib/__tests__/pipeline-metrics.test.ts
+          - pricing/src/lib/cosmos-data.ts
+          - pricing/src/lib/dashboard-charts.ts
+          - pricing/src/lib/format.ts
+          - pricing/src/lib/graph-data.ts
+          - pricing/src/lib/pipeline-metrics.ts
+          - pricing/src/lib/pricing-api-client.ts
+          - scripts/dev-pricing-api.ts
       - sha: f52e54df468ccad7bcc2e3a30ffa31f4a4997927
         message: "feat: enhance recruit management with admin actions"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f52e54df468ccad7bcc2e3a30ffa31f4a4997927
@@ -89,6 +150,18 @@ commitMessages:
         additions: 583
         deletions: 67
         filesChanged: 11
+        files:
+          - packages/ui/src/styles.css
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/archive-recruit-form.test.tsx
+          - pricing/src/components/__tests__/delete-recruit-form.test.tsx
+          - pricing/src/components/__tests__/recruit-admin-actions.test.tsx
+          - pricing/src/components/__tests__/recruit-detail-panels.test.tsx
+          - pricing/src/components/archive-recruit-form.tsx
+          - pricing/src/components/delete-recruit-form.tsx
+          - pricing/src/components/pricing-static-pages.tsx
+          - pricing/src/components/recruit-admin-actions.tsx
+          - pricing/src/components/recruit-detail-panels.tsx
   - repo: Myriad-Advisor-Solutions/myriadas-apps
     messages:
       - "fix(hub): simplify login page"
@@ -101,6 +174,8 @@ commitMessages:
         additions: 65
         deletions: 0
         filesChanged: 1
+        files:
+          - hub/app/login/page.tsx
       - sha: 107ca64357210663dd3034e7515f807a950df74a
         message: "chore: update local URLs for all apps to new port configuration"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/107ca64357210663dd3034e7515f807a950df74a
@@ -108,6 +183,24 @@ commitMessages:
         additions: 47
         deletions: 47
         filesChanged: 17
+        files:
+          - README.md
+          - docs/azure-serverless-plan.md
+          - excelerate/README.md
+          - excelerate/package.json
+          - hub/lib/apps.ts
+          - hub/package.json
+          - infra/azure/pto-tracker/serverless.bicep
+          - onboarding/README.md
+          - onboarding/apps/dashboard/README.md
+          - onboarding/apps/dashboard/package.json
+          - proforma/README.md
+          - proforma/package.json
+          - pto-tracker/README.md
+          - pto-tracker/docs/microsoft-tenant-deployment.md
+          - pto-tracker/package.json
+          - scripts/dev.ts
+          - valuation/package.json
 releases: []
 externalContributions: []
 codeReviews: []
@@ -156,6 +249,5 @@ hoursEstimate:
   volumeHours: 9
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

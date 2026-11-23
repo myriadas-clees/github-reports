@@ -286,7 +286,7 @@ export type RenderOptions = {
   theme?: Theme;
   /** Optional effort-allocation inputs for the "Where the effort went" section. */
   allocation?: AllocationInput;
-  /** Daily reports: link to the whole Thu–Wed work week page (href relative to this page). */
+  /** Daily reports: link to the Mon–Fri work week page the day is counted in (href relative to this page). */
   weekLink?: { href: string; label: string };
 };
 
