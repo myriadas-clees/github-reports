@@ -44,11 +44,9 @@ repositories:
 pullRequests:
   - title: "feat(onboarding): establish Twenty-inspired operations workspace"
     body: >-
-      - add the upstream Twenty repository as a pinned `twenty/` submodule for architecture and product-pattern
-      reference
+      - add the upstream Twenty repository as a pinned `twenty/` submodule for architecture and product-pattern reference
 
-      - preserve the current Myriad static Next export, Azure Functions boundary, server-owned authorization, and visual
-      system
+      - preserve the current Myriad static Next export, Azure Functions boundary, server-owned authorization, and visual system
 
       - turn onboarding into a broader operations workspace for clie...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
@@ -72,66 +70,171 @@ pullRequests:
         message: "chore: add Twenty upstream submodule"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/400667f7f871f2e4e657b68618035a5557992379
         authoredAt: 2026-08-14T14:41:53Z
+        files:
+          - .gitmodules
+          - twenty
       - &a9
         sha: 8734e486aa1244938f75b510575e146a7585aec8
         message: "feat(onboarding): add vendor record workspace"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8734e486aa1244938f75b510575e146a7585aec8
         authoredAt: 2026-08-14T15:09:13Z
+        files:
+          - onboarding/apps/dashboard/app/vendors/page.tsx
+          - onboarding/apps/dashboard/components/vm/vendor-360.test.ts
+          - onboarding/apps/dashboard/components/vm/vendor-360.tsx
+          - onboarding/apps/dashboard/components/vm/vendor-record-list.test.ts
+          - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
       - &a10
         sha: a685d504f8fcbc3fc9c85ed33182f17d2905493c
         message: "feat(onboarding): expand vendor workspace"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a685d504f8fcbc3fc9c85ed33182f17d2905493c
         authoredAt: 2026-08-14T15:46:25Z
+        files:
+          - onboarding/apps/dashboard/app/vendors/page.tsx
+          - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+          - onboarding/apps/dashboard/components/dashboard-shell.tsx
+          - onboarding/apps/dashboard/components/global-command-search.test.ts
+          - onboarding/apps/dashboard/components/global-command-search.tsx
+          - onboarding/apps/dashboard/components/vm/vendor-360.test.ts
+          - onboarding/apps/dashboard/components/vm/vendor-360.tsx
+          - onboarding/apps/dashboard/components/vm/vendor-record-list.test.ts
+          - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
+          - onboarding/apps/dashboard/lib/api/vm-client.ts
       - &a11
         sha: 22a7563f16341063ab3d4cb4bc2798639f088117
         message: "fix(onboarding): use contract renewal deadlines"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/22a7563f16341063ab3d4cb4bc2798639f088117
         authoredAt: 2026-08-14T15:53:56Z
+        files:
+          - onboarding/apps/dashboard/app/vendors/page.tsx
+          - onboarding/apps/dashboard/components/vm/vendor-record-list.test.ts
+          - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
       - &a12
         sha: e612842c3340cef09737e84b7a6e0a8a441ffe65
         message: "feat(onboarding): add vendor review seed"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e612842c3340cef09737e84b7a6e0a8a441ffe65
         authoredAt: 2026-08-14T16:23:19Z
+        files:
+          - onboarding/README.md
+          - onboarding/package.json
+          - package.json
+          - packages/db/package.json
+          - packages/db/src/seed-vm-demo.test.ts
+          - packages/db/src/seed-vm-demo.ts
       - &a13
         sha: affdb08c0aae65d791ec2e070277e20a0621295d
         message: "fix(onboarding): address workspace review findings"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/affdb08c0aae65d791ec2e070277e20a0621295d
         authoredAt: 2026-08-14T16:29:19Z
+        files:
+          - onboarding/apps/dashboard/components/dashboard-shell.tsx
+          - onboarding/apps/dashboard/components/global-command-search.test.ts
+          - onboarding/apps/dashboard/components/global-command-search.tsx
+          - onboarding/apps/dashboard/components/vm/vendor-360.test.ts
+          - onboarding/apps/dashboard/components/vm/vendor-360.tsx
       - &a14
         sha: e32a755f4c234f0059bf7638275eacc3deca2252
         message: "fix(onboarding): refresh vendor workspace state"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e32a755f4c234f0059bf7638275eacc3deca2252
         authoredAt: 2026-08-14T16:38:36Z
+        files:
+          - onboarding/apps/dashboard/app/vendors/page.test.ts
+          - onboarding/apps/dashboard/app/vendors/page.tsx
+          - onboarding/apps/dashboard/components/global-command-search.test.ts
+          - onboarding/apps/dashboard/components/global-command-search.tsx
+          - onboarding/apps/dashboard/components/vm/vendor-360.tsx
       - &a15
         sha: 4f17fbe9174538c1a9d1d6469cead34b6f4da008
         message: "fix(onboarding): quote carriage returns in CSV"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4f17fbe9174538c1a9d1d6469cead34b6f4da008
         authoredAt: 2026-08-14T16:47:11Z
+        files:
+          - onboarding/apps/dashboard/components/vm/vendor-record-list.test.ts
+          - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
       - &a16
         sha: 6eb26bbd9f0d0c5aa04841f17c8c01bd84dea611
         message: "fix(onboarding): reseed renewal review contracts"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6eb26bbd9f0d0c5aa04841f17c8c01bd84dea611
         authoredAt: 2026-08-14T16:54:53Z
+        files:
+          - packages/db/src/seed-vm-demo.test.ts
+          - packages/db/src/seed-vm-demo.ts
       - &a17
         sha: 2341947f75f57a85b0999f047f0cb13bba2773b5
         message: "fix(onboarding): surface vendor workspace on home"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2341947f75f57a85b0999f047f0cb13bba2773b5
         authoredAt: 2026-08-14T17:21:46Z
+        files:
+          - onboarding/apps/dashboard/app/page.test.tsx
+          - onboarding/apps/dashboard/app/page.tsx
       - &a18
         sha: 14977a90cf4926a86e33f6545372bf239ac4bdd9
         message: "feat(onboarding): add vendor operations workbench"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/14977a90cf4926a86e33f6545372bf239ac4bdd9
         authoredAt: 2026-08-14T18:22:08Z
+        files:
+          - onboarding/apps/dashboard/components/vm/vendor-360.test.ts
+          - onboarding/apps/dashboard/components/vm/vendor-360.tsx
+          - onboarding/apps/dashboard/components/vm/vendor-activity-timeline.tsx
+          - onboarding/apps/dashboard/components/vm/vendor-record-list.test.ts
+          - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
+          - onboarding/apps/dashboard/components/vm/vendor-record-panel-state.ts
+          - onboarding/apps/dashboard/components/vm/vendor-record-panel.test.tsx
+          - onboarding/apps/dashboard/components/vm/vendor-record-panel.tsx
       - &a19
         sha: 3d331b9825ba7f6bb3eb6a7f9d86dee48900cf81
         message: "fix(onboarding): keep vendor profile action visible"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3d331b9825ba7f6bb3eb6a7f9d86dee48900cf81
         authoredAt: 2026-08-14T18:32:17Z
+        files:
+          - onboarding/apps/dashboard/components/vm/vendor-record-panel.test.tsx
+          - onboarding/apps/dashboard/components/vm/vendor-record-panel.tsx
       - &a20
         sha: dee309001d18545f20146d79de76c75c162ba8c1
         message: "feat(onboarding): add operations workspace platform"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/dee309001d18545f20146d79de76c75c162ba8c1
         authoredAt: 2026-08-14T19:55:21Z
+        files:
+          - onboarding/apps/dashboard/app/api/[...path]/route.ts
+          - onboarding/apps/dashboard/app/api/vm/[...path]/route.ts
+          - onboarding/apps/dashboard/app/page.test.tsx
+          - onboarding/apps/dashboard/app/page.tsx
+          - onboarding/apps/dashboard/app/tasks/page.tsx
+          - onboarding/apps/dashboard/app/vendors/page.tsx
+          - onboarding/apps/dashboard/components/dashboard-shell.tsx
+          - onboarding/apps/dashboard/components/global-command-search.tsx
+          - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+          - onboarding/apps/dashboard/components/operations-workspace/record-activity.tsx
+          - onboarding/apps/dashboard/components/operations-workspace/saved-view-workbench.tsx
+          - onboarding/apps/dashboard/components/operations-workspace/task-record-panel.tsx
+          - onboarding/apps/dashboard/components/operations-workspace/universal-record-panel.tsx
+          - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
+          - onboarding/apps/dashboard/components/vm/vendor-record-panel.tsx
+          - onboarding/apps/dashboard/functions/src/index.ts
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+          - onboarding/apps/dashboard/lib/api/handlers.test.ts
+          - onboarding/apps/dashboard/lib/api/handlers.ts
+          - onboarding/apps/dashboard/lib/api/operations-client.ts
+          - onboarding/apps/dashboard/lib/api/operations-handlers.test.ts
+          - onboarding/apps/dashboard/lib/api/operations-handlers.ts
+          - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
+          - onboarding/apps/dashboard/lib/operations-workspace/actions.ts
+          - onboarding/apps/dashboard/lib/operations-workspace/adapters.ts
+          - onboarding/apps/dashboard/lib/operations-workspace/defaults.ts
+          - onboarding/apps/dashboard/lib/operations-workspace/evaluation.ts
+          - onboarding/apps/dashboard/lib/operations-workspace/index.ts
+          - onboarding/apps/dashboard/lib/operations-workspace/operations-workspace.test.ts
+          - onboarding/apps/dashboard/lib/operations-workspace/records.ts
+          - onboarding/apps/dashboard/lib/operations-workspace/types.ts
+          - onboarding/apps/dashboard/lib/operations-workspace/url.ts
+          - packages/contracts/package.json
+          - packages/contracts/src/index.ts
+          - packages/contracts/src/operations-workspace.ts
+          - packages/contracts/src/vendor-management.ts
+          - packages/db/src/operations-views.test.ts
+          - packages/db/src/vm-runtime.ts
+          - packages/db/src/vm-store.ts
     workTimestamps: &a3
       - 2026-08-14T14:41:53Z
       - 2026-08-14T15:09:13Z
@@ -210,11 +313,9 @@ pullRequests:
 prsInProgress:
   - title: "feat(onboarding): establish Twenty-inspired operations workspace"
     body: >-
-      - add the upstream Twenty repository as a pinned `twenty/` submodule for architecture and product-pattern
-      reference
+      - add the upstream Twenty repository as a pinned `twenty/` submodule for architecture and product-pattern reference
 
-      - preserve the current Myriad static Next export, Azure Functions boundary, server-owned authorization, and visual
-      system
+      - preserve the current Myriad static Next export, Azure Functions boundary, server-owned authorization, and visual system
 
       - turn onboarding into a broader operations workspace for clie...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
@@ -234,6 +335,65 @@ prsInProgress:
     workAdditions: 5537
     workDeletions: 429
     workFiles: *a4
+    allocationFiles:
+      - .gitmodules
+      - onboarding/README.md
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/api/vm/[...path]/route.ts
+      - onboarding/apps/dashboard/app/page.test.tsx
+      - onboarding/apps/dashboard/app/page.tsx
+      - onboarding/apps/dashboard/app/tasks/page.tsx
+      - onboarding/apps/dashboard/app/vendors/page.test.ts
+      - onboarding/apps/dashboard/app/vendors/page.tsx
+      - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - onboarding/apps/dashboard/components/global-command-search.test.ts
+      - onboarding/apps/dashboard/components/global-command-search.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/record-activity.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/saved-view-workbench.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/task-record-panel.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/universal-record-panel.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-360.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-360.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-activity-timeline.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel-state.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.test.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.tsx
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - onboarding/apps/dashboard/lib/api/operations-client.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.ts
+      - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/vm-client.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/actions.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/adapters.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/defaults.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/evaluation.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/index.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/operations-workspace.test.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/records.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/types.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/url.ts
+      - onboarding/package.json
+      - package.json
+      - packages/contracts/package.json
+      - packages/contracts/src/index.ts
+      - packages/contracts/src/operations-workspace.ts
+      - packages/contracts/src/vendor-management.ts
+      - packages/db/package.json
+      - packages/db/src/operations-views.test.ts
+      - packages/db/src/seed-vm-demo.test.ts
+      - packages/db/src/seed-vm-demo.ts
+      - packages/db/src/vm-runtime.ts
+      - packages/db/src/vm-store.ts
+      - twenty
   - title: "feat(ofac): add PDF, CSV, and Excel report exports"
     body: |-
       - adds branded, on-demand PDF evidence reports for individual OFAC screenings
@@ -258,11 +418,23 @@ prsInProgress:
         message: "fix(ofac): embed Unicode PDF fonts"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/20bef18ce0b09fea3b3ff06801c58034cc33221b
         authoredAt: 2026-08-14T13:23:02Z
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - bun.lock
+          - ofac/functions/package.json
+          - ofac/functions/src/copy-report-assets.ts
+          - ofac/package.json
+          - ofac/src/lib/__tests__/report.test.ts
+          - ofac/src/lib/report/pdf.tsx
       - &a6
         sha: 0846902cf7a07f8a9ffda01a04c0f943cc3f2287
         message: "fix(ofac): avoid repeated Cosmos export scans"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0846902cf7a07f8a9ffda01a04c0f943cc3f2287
         authoredAt: 2026-08-14T13:39:30Z
+        files:
+          - ofac/functions/src/index.ts
+          - ofac/functions/src/ofac-repository.test.ts
+          - ofac/functions/src/ofac-repository.ts
     workTimestamps:
       - 2026-08-14T13:23:02Z
       - 2026-08-14T13:39:30Z
@@ -284,8 +456,7 @@ prsInProgress:
       ## Why
 
 
-      Recruit intake still followed an advisor-first flow that did not match how teams are modeled in practice. Platform
-      assumptions also carried legacy OHC and FiNet Wells/WFAFN fee inputs that are no longer part of the pricing model.
+      Recruit intake still followed an advisor-first flow that did not match how teams are modeled in practice. Platform assumptions also carried legacy OHC and FiNet Wells/WFAFN fee inputs that are no longer part of the pricing model.
 
 
       ## What changed
@@ -315,6 +486,11 @@ prsInProgress:
         message: "fix(proforma): enforce team inputs and reconcile projection costs"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8c79700b4242876f7d9c0b7eda88a91f7227fb00
         authoredAt: 2026-08-14T14:12:36Z
+        files:
+          - proforma/src/components/assumptions-tab.tsx
+          - proforma/src/lib/api/handlers.ts
+          - proforma/src/lib/calculation.ts
+          - proforma/src/lib/report/excel.ts
     workTimestamps:
       - 2026-08-14T14:12:36Z
     workAdditions: 5
@@ -375,6 +551,65 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-14T15:47:34Z
     body: null
+    prFiles:
+      - .gitmodules
+      - onboarding/README.md
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/api/vm/[...path]/route.ts
+      - onboarding/apps/dashboard/app/page.test.tsx
+      - onboarding/apps/dashboard/app/page.tsx
+      - onboarding/apps/dashboard/app/tasks/page.tsx
+      - onboarding/apps/dashboard/app/vendors/page.test.ts
+      - onboarding/apps/dashboard/app/vendors/page.tsx
+      - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - onboarding/apps/dashboard/components/global-command-search.test.ts
+      - onboarding/apps/dashboard/components/global-command-search.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/record-activity.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/saved-view-workbench.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/task-record-panel.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/universal-record-panel.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-360.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-360.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-activity-timeline.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel-state.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.test.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.tsx
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - onboarding/apps/dashboard/lib/api/operations-client.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.ts
+      - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/vm-client.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/actions.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/adapters.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/defaults.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/evaluation.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/index.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/operations-workspace.test.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/records.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/types.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/url.ts
+      - onboarding/package.json
+      - package.json
+      - packages/contracts/package.json
+      - packages/contracts/src/index.ts
+      - packages/contracts/src/operations-workspace.ts
+      - packages/contracts/src/vendor-management.ts
+      - packages/db/package.json
+      - packages/db/src/operations-views.test.ts
+      - packages/db/src/seed-vm-demo.test.ts
+      - packages/db/src/seed-vm-demo.ts
+      - packages/db/src/vm-runtime.ts
+      - packages/db/src/vm-store.ts
+      - twenty
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 93
     prTitle: "feat(onboarding): establish Twenty-inspired operations workspace"
@@ -382,6 +617,65 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-14T15:54:11Z
     body: null
+    prFiles:
+      - .gitmodules
+      - onboarding/README.md
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/api/vm/[...path]/route.ts
+      - onboarding/apps/dashboard/app/page.test.tsx
+      - onboarding/apps/dashboard/app/page.tsx
+      - onboarding/apps/dashboard/app/tasks/page.tsx
+      - onboarding/apps/dashboard/app/vendors/page.test.ts
+      - onboarding/apps/dashboard/app/vendors/page.tsx
+      - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - onboarding/apps/dashboard/components/global-command-search.test.ts
+      - onboarding/apps/dashboard/components/global-command-search.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/record-activity.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/saved-view-workbench.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/task-record-panel.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/universal-record-panel.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-360.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-360.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-activity-timeline.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel-state.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.test.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.tsx
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - onboarding/apps/dashboard/lib/api/operations-client.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.ts
+      - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/vm-client.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/actions.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/adapters.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/defaults.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/evaluation.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/index.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/operations-workspace.test.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/records.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/types.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/url.ts
+      - onboarding/package.json
+      - package.json
+      - packages/contracts/package.json
+      - packages/contracts/src/index.ts
+      - packages/contracts/src/operations-workspace.ts
+      - packages/contracts/src/vendor-management.ts
+      - packages/db/package.json
+      - packages/db/src/operations-views.test.ts
+      - packages/db/src/seed-vm-demo.test.ts
+      - packages/db/src/seed-vm-demo.ts
+      - packages/db/src/vm-runtime.ts
+      - packages/db/src/vm-store.ts
+      - twenty
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 93
     prTitle: "feat(onboarding): establish Twenty-inspired operations workspace"
@@ -389,6 +683,65 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-14T16:29:44Z
     body: null
+    prFiles:
+      - .gitmodules
+      - onboarding/README.md
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/api/vm/[...path]/route.ts
+      - onboarding/apps/dashboard/app/page.test.tsx
+      - onboarding/apps/dashboard/app/page.tsx
+      - onboarding/apps/dashboard/app/tasks/page.tsx
+      - onboarding/apps/dashboard/app/vendors/page.test.ts
+      - onboarding/apps/dashboard/app/vendors/page.tsx
+      - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - onboarding/apps/dashboard/components/global-command-search.test.ts
+      - onboarding/apps/dashboard/components/global-command-search.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/record-activity.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/saved-view-workbench.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/task-record-panel.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/universal-record-panel.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-360.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-360.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-activity-timeline.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel-state.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.test.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.tsx
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - onboarding/apps/dashboard/lib/api/operations-client.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.ts
+      - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/vm-client.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/actions.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/adapters.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/defaults.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/evaluation.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/index.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/operations-workspace.test.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/records.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/types.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/url.ts
+      - onboarding/package.json
+      - package.json
+      - packages/contracts/package.json
+      - packages/contracts/src/index.ts
+      - packages/contracts/src/operations-workspace.ts
+      - packages/contracts/src/vendor-management.ts
+      - packages/db/package.json
+      - packages/db/src/operations-views.test.ts
+      - packages/db/src/seed-vm-demo.test.ts
+      - packages/db/src/seed-vm-demo.ts
+      - packages/db/src/vm-runtime.ts
+      - packages/db/src/vm-store.ts
+      - twenty
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 93
     prTitle: "feat(onboarding): establish Twenty-inspired operations workspace"
@@ -396,6 +749,65 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-14T16:29:46Z
     body: null
+    prFiles:
+      - .gitmodules
+      - onboarding/README.md
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/api/vm/[...path]/route.ts
+      - onboarding/apps/dashboard/app/page.test.tsx
+      - onboarding/apps/dashboard/app/page.tsx
+      - onboarding/apps/dashboard/app/tasks/page.tsx
+      - onboarding/apps/dashboard/app/vendors/page.test.ts
+      - onboarding/apps/dashboard/app/vendors/page.tsx
+      - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - onboarding/apps/dashboard/components/global-command-search.test.ts
+      - onboarding/apps/dashboard/components/global-command-search.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/record-activity.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/saved-view-workbench.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/task-record-panel.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/universal-record-panel.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-360.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-360.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-activity-timeline.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel-state.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.test.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.tsx
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - onboarding/apps/dashboard/lib/api/operations-client.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.ts
+      - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/vm-client.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/actions.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/adapters.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/defaults.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/evaluation.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/index.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/operations-workspace.test.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/records.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/types.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/url.ts
+      - onboarding/package.json
+      - package.json
+      - packages/contracts/package.json
+      - packages/contracts/src/index.ts
+      - packages/contracts/src/operations-workspace.ts
+      - packages/contracts/src/vendor-management.ts
+      - packages/db/package.json
+      - packages/db/src/operations-views.test.ts
+      - packages/db/src/seed-vm-demo.test.ts
+      - packages/db/src/seed-vm-demo.ts
+      - packages/db/src/vm-runtime.ts
+      - packages/db/src/vm-store.ts
+      - twenty
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 93
     prTitle: "feat(onboarding): establish Twenty-inspired operations workspace"
@@ -403,6 +815,65 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-14T16:29:47Z
     body: null
+    prFiles:
+      - .gitmodules
+      - onboarding/README.md
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/api/vm/[...path]/route.ts
+      - onboarding/apps/dashboard/app/page.test.tsx
+      - onboarding/apps/dashboard/app/page.tsx
+      - onboarding/apps/dashboard/app/tasks/page.tsx
+      - onboarding/apps/dashboard/app/vendors/page.test.ts
+      - onboarding/apps/dashboard/app/vendors/page.tsx
+      - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - onboarding/apps/dashboard/components/global-command-search.test.ts
+      - onboarding/apps/dashboard/components/global-command-search.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/record-activity.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/saved-view-workbench.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/task-record-panel.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/universal-record-panel.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-360.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-360.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-activity-timeline.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel-state.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.test.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.tsx
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - onboarding/apps/dashboard/lib/api/operations-client.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.ts
+      - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/vm-client.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/actions.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/adapters.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/defaults.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/evaluation.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/index.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/operations-workspace.test.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/records.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/types.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/url.ts
+      - onboarding/package.json
+      - package.json
+      - packages/contracts/package.json
+      - packages/contracts/src/index.ts
+      - packages/contracts/src/operations-workspace.ts
+      - packages/contracts/src/vendor-management.ts
+      - packages/db/package.json
+      - packages/db/src/operations-views.test.ts
+      - packages/db/src/seed-vm-demo.test.ts
+      - packages/db/src/seed-vm-demo.ts
+      - packages/db/src/vm-runtime.ts
+      - packages/db/src/vm-store.ts
+      - twenty
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 93
     prTitle: "feat(onboarding): establish Twenty-inspired operations workspace"
@@ -410,6 +881,65 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-14T16:38:54Z
     body: null
+    prFiles:
+      - .gitmodules
+      - onboarding/README.md
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/api/vm/[...path]/route.ts
+      - onboarding/apps/dashboard/app/page.test.tsx
+      - onboarding/apps/dashboard/app/page.tsx
+      - onboarding/apps/dashboard/app/tasks/page.tsx
+      - onboarding/apps/dashboard/app/vendors/page.test.ts
+      - onboarding/apps/dashboard/app/vendors/page.tsx
+      - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - onboarding/apps/dashboard/components/global-command-search.test.ts
+      - onboarding/apps/dashboard/components/global-command-search.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/record-activity.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/saved-view-workbench.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/task-record-panel.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/universal-record-panel.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-360.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-360.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-activity-timeline.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel-state.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.test.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.tsx
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - onboarding/apps/dashboard/lib/api/operations-client.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.ts
+      - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/vm-client.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/actions.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/adapters.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/defaults.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/evaluation.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/index.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/operations-workspace.test.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/records.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/types.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/url.ts
+      - onboarding/package.json
+      - package.json
+      - packages/contracts/package.json
+      - packages/contracts/src/index.ts
+      - packages/contracts/src/operations-workspace.ts
+      - packages/contracts/src/vendor-management.ts
+      - packages/db/package.json
+      - packages/db/src/operations-views.test.ts
+      - packages/db/src/seed-vm-demo.test.ts
+      - packages/db/src/seed-vm-demo.ts
+      - packages/db/src/vm-runtime.ts
+      - packages/db/src/vm-store.ts
+      - twenty
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 93
     prTitle: "feat(onboarding): establish Twenty-inspired operations workspace"
@@ -417,6 +947,65 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-14T16:38:56Z
     body: null
+    prFiles:
+      - .gitmodules
+      - onboarding/README.md
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/api/vm/[...path]/route.ts
+      - onboarding/apps/dashboard/app/page.test.tsx
+      - onboarding/apps/dashboard/app/page.tsx
+      - onboarding/apps/dashboard/app/tasks/page.tsx
+      - onboarding/apps/dashboard/app/vendors/page.test.ts
+      - onboarding/apps/dashboard/app/vendors/page.tsx
+      - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - onboarding/apps/dashboard/components/global-command-search.test.ts
+      - onboarding/apps/dashboard/components/global-command-search.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/record-activity.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/saved-view-workbench.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/task-record-panel.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/universal-record-panel.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-360.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-360.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-activity-timeline.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel-state.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.test.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.tsx
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - onboarding/apps/dashboard/lib/api/operations-client.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.ts
+      - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/vm-client.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/actions.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/adapters.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/defaults.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/evaluation.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/index.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/operations-workspace.test.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/records.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/types.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/url.ts
+      - onboarding/package.json
+      - package.json
+      - packages/contracts/package.json
+      - packages/contracts/src/index.ts
+      - packages/contracts/src/operations-workspace.ts
+      - packages/contracts/src/vendor-management.ts
+      - packages/db/package.json
+      - packages/db/src/operations-views.test.ts
+      - packages/db/src/seed-vm-demo.test.ts
+      - packages/db/src/seed-vm-demo.ts
+      - packages/db/src/vm-runtime.ts
+      - packages/db/src/vm-store.ts
+      - twenty
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 93
     prTitle: "feat(onboarding): establish Twenty-inspired operations workspace"
@@ -424,6 +1013,65 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-14T16:38:57Z
     body: null
+    prFiles:
+      - .gitmodules
+      - onboarding/README.md
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/api/vm/[...path]/route.ts
+      - onboarding/apps/dashboard/app/page.test.tsx
+      - onboarding/apps/dashboard/app/page.tsx
+      - onboarding/apps/dashboard/app/tasks/page.tsx
+      - onboarding/apps/dashboard/app/vendors/page.test.ts
+      - onboarding/apps/dashboard/app/vendors/page.tsx
+      - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - onboarding/apps/dashboard/components/global-command-search.test.ts
+      - onboarding/apps/dashboard/components/global-command-search.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/record-activity.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/saved-view-workbench.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/task-record-panel.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/universal-record-panel.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-360.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-360.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-activity-timeline.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel-state.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.test.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.tsx
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - onboarding/apps/dashboard/lib/api/operations-client.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.ts
+      - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/vm-client.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/actions.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/adapters.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/defaults.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/evaluation.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/index.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/operations-workspace.test.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/records.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/types.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/url.ts
+      - onboarding/package.json
+      - package.json
+      - packages/contracts/package.json
+      - packages/contracts/src/index.ts
+      - packages/contracts/src/operations-workspace.ts
+      - packages/contracts/src/vendor-management.ts
+      - packages/db/package.json
+      - packages/db/src/operations-views.test.ts
+      - packages/db/src/seed-vm-demo.test.ts
+      - packages/db/src/seed-vm-demo.ts
+      - packages/db/src/vm-runtime.ts
+      - packages/db/src/vm-store.ts
+      - twenty
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 93
     prTitle: "feat(onboarding): establish Twenty-inspired operations workspace"
@@ -431,6 +1079,65 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-14T16:47:24Z
     body: null
+    prFiles:
+      - .gitmodules
+      - onboarding/README.md
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/api/vm/[...path]/route.ts
+      - onboarding/apps/dashboard/app/page.test.tsx
+      - onboarding/apps/dashboard/app/page.tsx
+      - onboarding/apps/dashboard/app/tasks/page.tsx
+      - onboarding/apps/dashboard/app/vendors/page.test.ts
+      - onboarding/apps/dashboard/app/vendors/page.tsx
+      - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - onboarding/apps/dashboard/components/global-command-search.test.ts
+      - onboarding/apps/dashboard/components/global-command-search.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/record-activity.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/saved-view-workbench.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/task-record-panel.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/universal-record-panel.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-360.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-360.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-activity-timeline.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel-state.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.test.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.tsx
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - onboarding/apps/dashboard/lib/api/operations-client.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.ts
+      - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/vm-client.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/actions.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/adapters.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/defaults.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/evaluation.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/index.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/operations-workspace.test.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/records.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/types.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/url.ts
+      - onboarding/package.json
+      - package.json
+      - packages/contracts/package.json
+      - packages/contracts/src/index.ts
+      - packages/contracts/src/operations-workspace.ts
+      - packages/contracts/src/vendor-management.ts
+      - packages/db/package.json
+      - packages/db/src/operations-views.test.ts
+      - packages/db/src/seed-vm-demo.test.ts
+      - packages/db/src/seed-vm-demo.ts
+      - packages/db/src/vm-runtime.ts
+      - packages/db/src/vm-store.ts
+      - twenty
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 93
     prTitle: "feat(onboarding): establish Twenty-inspired operations workspace"
@@ -438,6 +1145,65 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-14T16:55:09Z
     body: null
+    prFiles:
+      - .gitmodules
+      - onboarding/README.md
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/api/vm/[...path]/route.ts
+      - onboarding/apps/dashboard/app/page.test.tsx
+      - onboarding/apps/dashboard/app/page.tsx
+      - onboarding/apps/dashboard/app/tasks/page.tsx
+      - onboarding/apps/dashboard/app/vendors/page.test.ts
+      - onboarding/apps/dashboard/app/vendors/page.tsx
+      - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - onboarding/apps/dashboard/components/global-command-search.test.ts
+      - onboarding/apps/dashboard/components/global-command-search.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/record-activity.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/saved-view-workbench.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/task-record-panel.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/universal-record-panel.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-360.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-360.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-activity-timeline.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel-state.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.test.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.tsx
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - onboarding/apps/dashboard/lib/api/operations-client.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.ts
+      - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/vm-client.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/actions.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/adapters.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/defaults.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/evaluation.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/index.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/operations-workspace.test.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/records.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/types.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/url.ts
+      - onboarding/package.json
+      - package.json
+      - packages/contracts/package.json
+      - packages/contracts/src/index.ts
+      - packages/contracts/src/operations-workspace.ts
+      - packages/contracts/src/vendor-management.ts
+      - packages/db/package.json
+      - packages/db/src/operations-views.test.ts
+      - packages/db/src/seed-vm-demo.test.ts
+      - packages/db/src/seed-vm-demo.ts
+      - packages/db/src/vm-runtime.ts
+      - packages/db/src/vm-store.ts
+      - twenty
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prTitle: Redesign Proforma recruit intake with team-first step order
@@ -445,6 +1211,68 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-14T14:01:31Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prTitle: Redesign Proforma recruit intake with team-first step order
@@ -452,6 +1280,68 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-14T14:01:33Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prTitle: Redesign Proforma recruit intake with team-first step order
@@ -459,6 +1349,68 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-14T14:01:34Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prTitle: Redesign Proforma recruit intake with team-first step order
@@ -466,6 +1418,68 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-14T14:01:36Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prTitle: Redesign Proforma recruit intake with team-first step order
@@ -473,6 +1487,68 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-14T14:01:37Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prTitle: Redesign Proforma recruit intake with team-first step order
@@ -480,145 +1556,1143 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-14T14:01:39Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
 reviewComments:
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 93
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93#discussion_r3785266903
-    body: This concern was valid against the earlier submodule-only wording, but it no longer applies to the approved scope.
-      The user explicitly requested adapting the relevant Twenty patterns into onboarding while preserving the existing
-      serverless architecture and Myriad styling. The history also keeps the ...
+    body: This concern was valid against the earlier submodule-only wording, but it no longer applies to the approved scope. The user explicitly requested adapting the relevant Twenty patterns into onboarding while preserving the existing serverless architecture and Myriad styling. The history also keeps the ...
     path: onboarding/apps/dashboard/app/vendors/page.tsx
     createdAt: 2026-08-14T15:47:34Z
+    prFiles:
+      - .gitmodules
+      - onboarding/README.md
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/api/vm/[...path]/route.ts
+      - onboarding/apps/dashboard/app/page.test.tsx
+      - onboarding/apps/dashboard/app/page.tsx
+      - onboarding/apps/dashboard/app/tasks/page.tsx
+      - onboarding/apps/dashboard/app/vendors/page.test.ts
+      - onboarding/apps/dashboard/app/vendors/page.tsx
+      - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - onboarding/apps/dashboard/components/global-command-search.test.ts
+      - onboarding/apps/dashboard/components/global-command-search.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/record-activity.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/saved-view-workbench.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/task-record-panel.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/universal-record-panel.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-360.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-360.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-activity-timeline.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel-state.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.test.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.tsx
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - onboarding/apps/dashboard/lib/api/operations-client.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.ts
+      - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/vm-client.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/actions.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/adapters.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/defaults.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/evaluation.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/index.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/operations-workspace.test.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/records.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/types.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/url.ts
+      - onboarding/package.json
+      - package.json
+      - packages/contracts/package.json
+      - packages/contracts/src/index.ts
+      - packages/contracts/src/operations-workspace.ts
+      - packages/contracts/src/vendor-management.ts
+      - packages/db/package.json
+      - packages/db/src/operations-views.test.ts
+      - packages/db/src/seed-vm-demo.test.ts
+      - packages/db/src/seed-vm-demo.ts
+      - packages/db/src/vm-runtime.ts
+      - packages/db/src/vm-store.ts
+      - twenty
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 93
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93#discussion_r3785309047
-    body: Fixed in `22a7563`. The portfolio now consumes the existing `/api/vm/summary` renewal reminders, which are already
-      derived from `Active` / `Renewal Review` contracts using `noticeDeadline ?? expirationDate`. The preset receives
-      vendor IDs for renewal reminders at 90 days or less, matching the establ...
+    body: Fixed in `22a7563`. The portfolio now consumes the existing `/api/vm/summary` renewal reminders, which are already derived from `Active` / `Renewal Review` contracts using `noticeDeadline ?? expirationDate`. The preset receives vendor IDs for renewal reminders at 90 days or less, matching the establ...
     path: onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
     createdAt: 2026-08-14T15:54:11Z
+    prFiles:
+      - .gitmodules
+      - onboarding/README.md
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/api/vm/[...path]/route.ts
+      - onboarding/apps/dashboard/app/page.test.tsx
+      - onboarding/apps/dashboard/app/page.tsx
+      - onboarding/apps/dashboard/app/tasks/page.tsx
+      - onboarding/apps/dashboard/app/vendors/page.test.ts
+      - onboarding/apps/dashboard/app/vendors/page.tsx
+      - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - onboarding/apps/dashboard/components/global-command-search.test.ts
+      - onboarding/apps/dashboard/components/global-command-search.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/record-activity.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/saved-view-workbench.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/task-record-panel.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/universal-record-panel.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-360.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-360.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-activity-timeline.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel-state.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.test.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.tsx
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - onboarding/apps/dashboard/lib/api/operations-client.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.ts
+      - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/vm-client.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/actions.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/adapters.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/defaults.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/evaluation.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/index.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/operations-workspace.test.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/records.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/types.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/url.ts
+      - onboarding/package.json
+      - package.json
+      - packages/contracts/package.json
+      - packages/contracts/src/index.ts
+      - packages/contracts/src/operations-workspace.ts
+      - packages/contracts/src/vendor-management.ts
+      - packages/db/package.json
+      - packages/db/src/operations-views.test.ts
+      - packages/db/src/seed-vm-demo.test.ts
+      - packages/db/src/seed-vm-demo.ts
+      - packages/db/src/vm-runtime.ts
+      - packages/db/src/vm-store.ts
+      - twenty
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 93
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93#discussion_r3785529803
-    body: Fixed in `affdb08`. The command palette now uses the exact same context resolver as `AppShell`, so internal page
-      links retain the active client/employee while any explicit result query values continue to win. Focused regression
-      coverage verifies both page links and task/workstream result context.
+    body: Fixed in `affdb08`. The command palette now uses the exact same context resolver as `AppShell`, so internal page links retain the active client/employee while any explicit result query values continue to win. Focused regression coverage verifies both page links and task/workstream result context.
     path: onboarding/apps/dashboard/components/global-command-search.tsx
     createdAt: 2026-08-14T16:29:44Z
+    prFiles:
+      - .gitmodules
+      - onboarding/README.md
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/api/vm/[...path]/route.ts
+      - onboarding/apps/dashboard/app/page.test.tsx
+      - onboarding/apps/dashboard/app/page.tsx
+      - onboarding/apps/dashboard/app/tasks/page.tsx
+      - onboarding/apps/dashboard/app/vendors/page.test.ts
+      - onboarding/apps/dashboard/app/vendors/page.tsx
+      - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - onboarding/apps/dashboard/components/global-command-search.test.ts
+      - onboarding/apps/dashboard/components/global-command-search.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/record-activity.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/saved-view-workbench.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/task-record-panel.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/universal-record-panel.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-360.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-360.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-activity-timeline.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel-state.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.test.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.tsx
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - onboarding/apps/dashboard/lib/api/operations-client.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.ts
+      - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/vm-client.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/actions.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/adapters.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/defaults.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/evaluation.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/index.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/operations-workspace.test.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/records.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/types.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/url.ts
+      - onboarding/package.json
+      - package.json
+      - packages/contracts/package.json
+      - packages/contracts/src/index.ts
+      - packages/contracts/src/operations-workspace.ts
+      - packages/contracts/src/vendor-management.ts
+      - packages/db/package.json
+      - packages/db/src/operations-views.test.ts
+      - packages/db/src/seed-vm-demo.test.ts
+      - packages/db/src/seed-vm-demo.ts
+      - packages/db/src/vm-runtime.ts
+      - packages/db/src/vm-store.ts
+      - twenty
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 93
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93#discussion_r3785529971
-    body: Fixed in `affdb08`. Custom workflow results now add `view=all`, while template workflow links keep their existing
-      view behavior. A regression test covers the custom result URL.
+    body: Fixed in `affdb08`. Custom workflow results now add `view=all`, while template workflow links keep their existing view behavior. A regression test covers the custom result URL.
     path: onboarding/apps/dashboard/components/global-command-search.tsx
     createdAt: 2026-08-14T16:29:46Z
+    prFiles:
+      - .gitmodules
+      - onboarding/README.md
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/api/vm/[...path]/route.ts
+      - onboarding/apps/dashboard/app/page.test.tsx
+      - onboarding/apps/dashboard/app/page.tsx
+      - onboarding/apps/dashboard/app/tasks/page.tsx
+      - onboarding/apps/dashboard/app/vendors/page.test.ts
+      - onboarding/apps/dashboard/app/vendors/page.tsx
+      - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - onboarding/apps/dashboard/components/global-command-search.test.ts
+      - onboarding/apps/dashboard/components/global-command-search.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/record-activity.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/saved-view-workbench.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/task-record-panel.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/universal-record-panel.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-360.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-360.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-activity-timeline.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel-state.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.test.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.tsx
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - onboarding/apps/dashboard/lib/api/operations-client.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.ts
+      - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/vm-client.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/actions.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/adapters.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/defaults.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/evaluation.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/index.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/operations-workspace.test.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/records.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/types.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/url.ts
+      - onboarding/package.json
+      - package.json
+      - packages/contracts/package.json
+      - packages/contracts/src/index.ts
+      - packages/contracts/src/operations-workspace.ts
+      - packages/contracts/src/vendor-management.ts
+      - packages/db/package.json
+      - packages/db/src/operations-views.test.ts
+      - packages/db/src/seed-vm-demo.test.ts
+      - packages/db/src/seed-vm-demo.ts
+      - packages/db/src/vm-runtime.ts
+      - packages/db/src/vm-store.ts
+      - twenty
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 93
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93#discussion_r3785530128
-    body: Fixed in `affdb08`. Vendor 360 now treats `Verified` findings as terminal alongside `Closed` and `Risk Accepted`,
-      matching the runtime rollup. The derivation test confirms the verified finding remains in history but is absent
-      from active work.
+    body: Fixed in `affdb08`. Vendor 360 now treats `Verified` findings as terminal alongside `Closed` and `Risk Accepted`, matching the runtime rollup. The derivation test confirms the verified finding remains in history but is absent from active work.
     path: onboarding/apps/dashboard/components/vm/vendor-360.tsx
     createdAt: 2026-08-14T16:29:47Z
+    prFiles:
+      - .gitmodules
+      - onboarding/README.md
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/api/vm/[...path]/route.ts
+      - onboarding/apps/dashboard/app/page.test.tsx
+      - onboarding/apps/dashboard/app/page.tsx
+      - onboarding/apps/dashboard/app/tasks/page.tsx
+      - onboarding/apps/dashboard/app/vendors/page.test.ts
+      - onboarding/apps/dashboard/app/vendors/page.tsx
+      - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - onboarding/apps/dashboard/components/global-command-search.test.ts
+      - onboarding/apps/dashboard/components/global-command-search.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/record-activity.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/saved-view-workbench.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/task-record-panel.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/universal-record-panel.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-360.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-360.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-activity-timeline.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel-state.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.test.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.tsx
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - onboarding/apps/dashboard/lib/api/operations-client.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.ts
+      - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/vm-client.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/actions.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/adapters.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/defaults.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/evaluation.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/index.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/operations-workspace.test.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/records.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/types.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/url.ts
+      - onboarding/package.json
+      - package.json
+      - packages/contracts/package.json
+      - packages/contracts/src/index.ts
+      - packages/contracts/src/operations-workspace.ts
+      - packages/contracts/src/vendor-management.ts
+      - packages/db/package.json
+      - packages/db/src/operations-views.test.ts
+      - packages/db/src/seed-vm-demo.test.ts
+      - packages/db/src/seed-vm-demo.ts
+      - packages/db/src/vm-runtime.ts
+      - packages/db/src/vm-store.ts
+      - twenty
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 93
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93#discussion_r3785583978
-    body: Fixed in `e32a755`. Opening the command dialog now starts one fresh vendor/document batch every time, so
-      successful snapshots do not outlive later mutations and a failed batch retries on the next open. The effect
-      cancels stale completions when the dialog closes, and focused coverage verifies aggrega...
+    body: Fixed in `e32a755`. Opening the command dialog now starts one fresh vendor/document batch every time, so successful snapshots do not outlive later mutations and a failed batch retries on the next open. The effect cancels stale completions when the dialog closes, and focused coverage verifies aggrega...
     path: onboarding/apps/dashboard/components/global-command-search.tsx
     createdAt: 2026-08-14T16:38:54Z
+    prFiles:
+      - .gitmodules
+      - onboarding/README.md
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/api/vm/[...path]/route.ts
+      - onboarding/apps/dashboard/app/page.test.tsx
+      - onboarding/apps/dashboard/app/page.tsx
+      - onboarding/apps/dashboard/app/tasks/page.tsx
+      - onboarding/apps/dashboard/app/vendors/page.test.ts
+      - onboarding/apps/dashboard/app/vendors/page.tsx
+      - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - onboarding/apps/dashboard/components/global-command-search.test.ts
+      - onboarding/apps/dashboard/components/global-command-search.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/record-activity.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/saved-view-workbench.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/task-record-panel.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/universal-record-panel.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-360.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-360.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-activity-timeline.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel-state.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.test.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.tsx
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - onboarding/apps/dashboard/lib/api/operations-client.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.ts
+      - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/vm-client.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/actions.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/adapters.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/defaults.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/evaluation.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/index.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/operations-workspace.test.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/records.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/types.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/url.ts
+      - onboarding/package.json
+      - package.json
+      - packages/contracts/package.json
+      - packages/contracts/src/index.ts
+      - packages/contracts/src/operations-workspace.ts
+      - packages/contracts/src/vendor-management.ts
+      - packages/db/package.json
+      - packages/db/src/operations-views.test.ts
+      - packages/db/src/seed-vm-demo.test.ts
+      - packages/db/src/seed-vm-demo.ts
+      - packages/db/src/vm-runtime.ts
+      - packages/db/src/vm-store.ts
+      - twenty
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 93
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93#discussion_r3785584172
-    body: Fixed in `e32a755`. Activity audit loading now depends on the refreshed vendor version and update timestamp as
-      well as the vendor ID/capability. Header status and archive mutations refresh detail, which now triggers an
-      immediate audit refetch.
+    body: Fixed in `e32a755`. Activity audit loading now depends on the refreshed vendor version and update timestamp as well as the vendor ID/capability. Header status and archive mutations refresh detail, which now triggers an immediate audit refetch.
     path: onboarding/apps/dashboard/components/vm/vendor-360.tsx
     createdAt: 2026-08-14T16:38:56Z
+    prFiles:
+      - .gitmodules
+      - onboarding/README.md
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/api/vm/[...path]/route.ts
+      - onboarding/apps/dashboard/app/page.test.tsx
+      - onboarding/apps/dashboard/app/page.tsx
+      - onboarding/apps/dashboard/app/tasks/page.tsx
+      - onboarding/apps/dashboard/app/vendors/page.test.ts
+      - onboarding/apps/dashboard/app/vendors/page.tsx
+      - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - onboarding/apps/dashboard/components/global-command-search.test.ts
+      - onboarding/apps/dashboard/components/global-command-search.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/record-activity.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/saved-view-workbench.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/task-record-panel.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/universal-record-panel.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-360.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-360.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-activity-timeline.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel-state.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.test.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.tsx
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - onboarding/apps/dashboard/lib/api/operations-client.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.ts
+      - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/vm-client.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/actions.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/adapters.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/defaults.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/evaluation.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/index.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/operations-workspace.test.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/records.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/types.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/url.ts
+      - onboarding/package.json
+      - package.json
+      - packages/contracts/package.json
+      - packages/contracts/src/index.ts
+      - packages/contracts/src/operations-workspace.ts
+      - packages/contracts/src/vendor-management.ts
+      - packages/db/package.json
+      - packages/db/src/operations-views.test.ts
+      - packages/db/src/seed-vm-demo.test.ts
+      - packages/db/src/seed-vm-demo.ts
+      - packages/db/src/vm-runtime.ts
+      - packages/db/src/vm-store.ts
+      - twenty
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 93
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93#discussion_r3785584322
-    body: Fixed in `e32a755`. Bulk completion now refreshes the vendor list and summary together, keeping metric cards,
-      reminders, and portfolio rows consistent. The new portfolio refresh test verifies both refreshers run.
+    body: Fixed in `e32a755`. Bulk completion now refreshes the vendor list and summary together, keeping metric cards, reminders, and portfolio rows consistent. The new portfolio refresh test verifies both refreshers run.
     path: onboarding/apps/dashboard/app/vendors/page.tsx
     createdAt: 2026-08-14T16:38:57Z
+    prFiles:
+      - .gitmodules
+      - onboarding/README.md
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/api/vm/[...path]/route.ts
+      - onboarding/apps/dashboard/app/page.test.tsx
+      - onboarding/apps/dashboard/app/page.tsx
+      - onboarding/apps/dashboard/app/tasks/page.tsx
+      - onboarding/apps/dashboard/app/vendors/page.test.ts
+      - onboarding/apps/dashboard/app/vendors/page.tsx
+      - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - onboarding/apps/dashboard/components/global-command-search.test.ts
+      - onboarding/apps/dashboard/components/global-command-search.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/record-activity.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/saved-view-workbench.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/task-record-panel.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/universal-record-panel.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-360.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-360.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-activity-timeline.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel-state.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.test.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.tsx
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - onboarding/apps/dashboard/lib/api/operations-client.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.ts
+      - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/vm-client.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/actions.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/adapters.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/defaults.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/evaluation.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/index.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/operations-workspace.test.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/records.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/types.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/url.ts
+      - onboarding/package.json
+      - package.json
+      - packages/contracts/package.json
+      - packages/contracts/src/index.ts
+      - packages/contracts/src/operations-workspace.ts
+      - packages/contracts/src/vendor-management.ts
+      - packages/db/package.json
+      - packages/db/src/operations-views.test.ts
+      - packages/db/src/seed-vm-demo.test.ts
+      - packages/db/src/seed-vm-demo.ts
+      - packages/db/src/vm-runtime.ts
+      - packages/db/src/vm-store.ts
+      - twenty
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 93
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93#discussion_r3785636898
-    body: Fixed in `4f17fbe`. CSV cells now quote bare carriage returns as well as LF, commas, and quotes, while the
-      existing leading-formula apostrophe neutralization is retained. Regression coverage includes both an ordinary CR
-      value and a formula-prefixed CR value.
+    body: Fixed in `4f17fbe`. CSV cells now quote bare carriage returns as well as LF, commas, and quotes, while the existing leading-formula apostrophe neutralization is retained. Regression coverage includes both an ordinary CR value and a formula-prefixed CR value.
     path: onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
     createdAt: 2026-08-14T16:47:24Z
+    prFiles:
+      - .gitmodules
+      - onboarding/README.md
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/api/vm/[...path]/route.ts
+      - onboarding/apps/dashboard/app/page.test.tsx
+      - onboarding/apps/dashboard/app/page.tsx
+      - onboarding/apps/dashboard/app/tasks/page.tsx
+      - onboarding/apps/dashboard/app/vendors/page.test.ts
+      - onboarding/apps/dashboard/app/vendors/page.tsx
+      - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - onboarding/apps/dashboard/components/global-command-search.test.ts
+      - onboarding/apps/dashboard/components/global-command-search.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/record-activity.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/saved-view-workbench.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/task-record-panel.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/universal-record-panel.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-360.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-360.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-activity-timeline.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel-state.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.test.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.tsx
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - onboarding/apps/dashboard/lib/api/operations-client.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.ts
+      - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/vm-client.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/actions.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/adapters.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/defaults.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/evaluation.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/index.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/operations-workspace.test.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/records.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/types.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/url.ts
+      - onboarding/package.json
+      - package.json
+      - packages/contracts/package.json
+      - packages/contracts/src/index.ts
+      - packages/contracts/src/operations-workspace.ts
+      - packages/contracts/src/vendor-management.ts
+      - packages/db/package.json
+      - packages/db/src/operations-views.test.ts
+      - packages/db/src/seed-vm-demo.test.ts
+      - packages/db/src/seed-vm-demo.ts
+      - packages/db/src/vm-runtime.ts
+      - packages/db/src/vm-store.ts
+      - twenty
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 93
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93#discussion_r3785681575
-    body: Fixed in `6eb26bb`. The seed now treats `Renewal Review` as the explicit allowed side path back to `Active` and
-      applies the forward-path index guard only to ordinary activation states. The regression moves Beacon's seeded
-      contract into Renewal Review, reruns the seed twice, and confirms it returns t...
+    body: Fixed in `6eb26bb`. The seed now treats `Renewal Review` as the explicit allowed side path back to `Active` and applies the forward-path index guard only to ordinary activation states. The regression moves Beacon's seeded contract into Renewal Review, reruns the seed twice, and confirms it returns t...
     path: packages/db/src/seed-vm-demo.ts
     createdAt: 2026-08-14T16:55:09Z
+    prFiles:
+      - .gitmodules
+      - onboarding/README.md
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/api/vm/[...path]/route.ts
+      - onboarding/apps/dashboard/app/page.test.tsx
+      - onboarding/apps/dashboard/app/page.tsx
+      - onboarding/apps/dashboard/app/tasks/page.tsx
+      - onboarding/apps/dashboard/app/vendors/page.test.ts
+      - onboarding/apps/dashboard/app/vendors/page.tsx
+      - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - onboarding/apps/dashboard/components/global-command-search.test.ts
+      - onboarding/apps/dashboard/components/global-command-search.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/record-activity.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/saved-view-workbench.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/task-record-panel.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/universal-record-panel.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-360.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-360.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-activity-timeline.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel-state.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.test.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.tsx
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - onboarding/apps/dashboard/lib/api/operations-client.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.ts
+      - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/vm-client.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/actions.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/adapters.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/defaults.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/evaluation.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/index.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/operations-workspace.test.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/records.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/types.ts
+      - onboarding/apps/dashboard/lib/operations-workspace/url.ts
+      - onboarding/package.json
+      - package.json
+      - packages/contracts/package.json
+      - packages/contracts/src/index.ts
+      - packages/contracts/src/operations-workspace.ts
+      - packages/contracts/src/vendor-management.ts
+      - packages/db/package.json
+      - packages/db/src/operations-views.test.ts
+      - packages/db/src/seed-vm-demo.test.ts
+      - packages/db/src/seed-vm-demo.ts
+      - packages/db/src/vm-runtime.ts
+      - packages/db/src/vm-store.ts
+      - twenty
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3784336356
-    body: "Verified current behavior: the /api/proforma/recruits/wizard handler calls validateWizardTeam(advisors) before
-      buildNewRecruitInitialModel, so direct or replayed staff-only requests are rejected. Added a boundary comment
-      documenting why transport repeats the UI invariant; no runtime behavior change."
+    body: "Verified current behavior: the /api/proforma/recruits/wizard handler calls validateWizardTeam(advisors) before buildNewRecruitInitialModel, so direct or replayed staff-only requests are rejected. Added a boundary comment documenting why transport repeats the UI invariant; no runtime behavior change."
     path: proforma/src/lib/new-recruit.ts
     createdAt: 2026-08-14T14:01:31Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3784336520
-    body: Verified the assumptions editor keeps projection controls independent of the registration picker; registered-state
-      costs are edited separately and validated on save. Added a comment clarifying that separation; no runtime behavior
-      change.
+    body: Verified the assumptions editor keeps projection controls independent of the registration picker; registered-state costs are edited separately and validated on save. Added a comment clarifying that separation; no runtime behavior change.
     path: proforma/src/components/assumptions-tab.tsx
     createdAt: 2026-08-14T14:01:33Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3784336710
-    body: Verified validateProformaModelEconomics checks every registered state for explicit one-time and annual overrides,
-      and model saves use that validator. Added a shared fail-closed validation comment; no runtime behavior change.
+    body: Verified validateProformaModelEconomics checks every registered state for explicit one-time and annual overrides, and model saves use that validator. Added a shared fail-closed validation comment; no runtime behavior change.
     path: proforma/src/components/assumptions-tab.tsx
     createdAt: 2026-08-14T14:01:34Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3784336862
-    body: Verified the wizard POST builds the model and calls validateProformaModelEconomics before persistence, including
-      foreign-registration override checks. Added a shared-validator comment; no runtime behavior change.
+    body: Verified the wizard POST builds the model and calls validateProformaModelEconomics before persistence, including foreign-registration override checks. Added a shared-validator comment; no runtime behavior change.
     path: proforma/src/components/new-recruit-wizard.tsx
     createdAt: 2026-08-14T14:01:36Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3784336997
-    body: Verified FiNet uses the manual finet.payoutPct when set or the production grid otherwise, while syndicate uses its
-      entered syndicatePayoutPct. Added a comment documenting this intentional split; no runtime behavior change.
+    body: Verified FiNet uses the manual finet.payoutPct when set or the production grid otherwise, while syndicate uses its entered syndicatePayoutPct. Added a comment documenting this intentional split; no runtime behavior change.
     path: proforma/src/lib/calculation.ts
     createdAt: 2026-08-14T14:01:37Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 84
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3784337182
-    body: Verified Setup Budget derives its total from model.setup.costs.oneTimeSetup, covering domestic formation, foreign
-      registration, workbook, ACAT, and other setup costs. Added a reconciliation comment; no runtime behavior change.
+    body: Verified Setup Budget derives its total from model.setup.costs.oneTimeSetup, covering domestic formation, foreign registration, workbook, ACAT, and other setup costs. Added a reconciliation comment; no runtime behavior change.
     path: proforma/src/lib/report/excel.ts
     createdAt: 2026-08-14T14:01:39Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/README.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/next.config.ts
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+      - proforma/src/components/__tests__/proforma-graphs.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/excel-formulas.test.ts
+      - proforma/src/lib/__tests__/expense-groups.test.ts
+      - proforma/src/lib/__tests__/new-recruit.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/setup-projection.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workbook-preview.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/dashboard-summary.ts
+      - proforma/src/lib/excel-formulas.ts
+      - proforma/src/lib/expense-groups.ts
+      - proforma/src/lib/id.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/report/pdf.tsx
+      - proforma/src/lib/seed.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation.ts
+      - scripts/tooling.test.ts
 aiReviews:
   codex:
     prsReviewed: 3
@@ -739,6 +2813,5 @@ hoursEstimate:
   volumeHours: 38.5
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

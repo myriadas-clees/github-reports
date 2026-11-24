@@ -43,14 +43,7 @@ repositories:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
 pullRequests:
   - title: "fix(auth): preserve app-specific privilege boundaries"
-    body: >-
-      ### Motivation
-
-
-      - A recent change promoted the suite-wide `myriadas_user` role to application `admin`/`hr` in several apps,
-      creating a privilege-escalation risk by conflating platform access with app-specific admin/HR elevation. 
-
-      - The change restores the intended least-privilege model where `myriad...
+    body: "### Motivation\n\n- A recent change promoted the suite-wide `myriadas_user` role to application `admin`/`hr` in several apps, creating a privilege-escalation risk by conflating platform access with app-specific admin/HR elevation. \n- The change restores the intended least-privilege model where `myriad..."
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/110
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: closed
@@ -74,6 +67,13 @@ pullRequests:
         message: "fix(auth): preserve app-specific privilege boundaries"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/72b653e66fb889fbb7068331b738488e0c334eb1
         authoredAt: 2026-08-28T17:45:56Z
+        files:
+          - onboarding/apps/dashboard/lib/auth.test.ts
+          - onboarding/apps/dashboard/lib/auth.ts
+          - pto-tracker/src/lib/auth/entra-provider.test.ts
+          - pto-tracker/src/lib/auth/entra-provider.ts
+          - valuation/src/lib/auth.test.ts
+          - valuation/src/lib/auth.ts
     workTimestamps:
       - 2026-08-28T17:45:56Z
     workAdditions: 9
@@ -90,8 +90,7 @@ pullRequests:
       ### Motivation
 
 
-      - Close an authorization gap that allowed any `pricing_user` officer to permanently delete a recruit (and
-      cascade-delete its model and reports) because the same officer role can also archive recruits.
+      - Close an authorization gap that allowed any `pricing_user` officer to permanently delete a recruit (and cascade-delete its model and reports) because the same officer role can also archive recruits.
 
 
       ### Description
@@ -118,6 +117,8 @@ pullRequests:
         message: "fix(pricing): require admin for recruit deletion"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7d3854e4b41e62a0b1480cb42669a6312b6fbb31
         authoredAt: 2026-08-28T17:46:07Z
+        files:
+          - pricing/functions/src/index.ts
     workTimestamps: &a3
       - 2026-08-28T17:46:07Z
     workAdditions: 1
@@ -129,8 +130,7 @@ pullRequests:
       ### Motivation
 
 
-      - Prevent platform-wide `myriadas_user` from granting privileged onboarding mutations by ensuring only
-      `onboarding_admin` maps to the internal `admin` role.
+      - Prevent platform-wide `myriadas_user` from granting privileged onboarding mutations by ensuring only `onboarding_admin` maps to the internal `admin` role.
 
 
       ### Description
@@ -158,6 +158,9 @@ pullRequests:
         message: "fix(onboarding): require app admin for mutations"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a1858576c0282fb95926af6bbfae133e82b7c1c2
         authoredAt: 2026-08-28T17:45:45Z
+        files:
+          - onboarding/apps/dashboard/lib/auth.test.ts
+          - onboarding/apps/dashboard/lib/auth.ts
     workTimestamps:
       - 2026-08-28T17:45:45Z
     workAdditions: 3
@@ -166,13 +169,7 @@ pullRequests:
       - onboarding/apps/dashboard/lib/auth.test.ts
       - onboarding/apps/dashboard/lib/auth.ts
   - title: Prevent shared platform role from granting PTO HR access
-    body: >-
-      ### Motivation
-
-      - A recent change treated the suite-wide `myriadas_user` platform role as equivalent to the PTO HR application
-      role, allowing platform-only principals to receive `role: "hr"` and perform privileged HR operations. 
-
-      - This PR restores the intended invariant that only the configured HR a...
+    body: "### Motivation\n- A recent change treated the suite-wide `myriadas_user` platform role as equivalent to the PTO HR application role, allowing platform-only principals to receive `role: \"hr\"` and perform privileged HR operations. \n- This PR restores the intended invariant that only the configured HR a..."
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/108
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: closed
@@ -194,6 +191,9 @@ pullRequests:
         message: "fix(pto): prevent platform role HR escalation"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/490e6bb10e9bc1cf4fa8181dde2cfb39c3e533f6
         authoredAt: 2026-08-28T17:45:35Z
+        files:
+          - pto-tracker/src/lib/auth/entra-provider.test.ts
+          - pto-tracker/src/lib/auth/entra-provider.ts
     workTimestamps:
       - 2026-08-28T17:45:35Z
     workAdditions: 17
@@ -206,8 +206,7 @@ pullRequests:
       ## Why
 
 
-      Authorization role values had no single naming contract, allowing values such as PTO's `HRAdmin` to drift from the
-      repository's lowercase snake-case convention.
+      Authorization role values had no single naming contract, allowing values such as PTO's `HRAdmin` to drift from the repository's lowercase snake-case convention.
 
 
       Stacked on #107 so the documentation describes the consolidated authorization model introduced there.
@@ -238,6 +237,11 @@ pullRequests:
         message: "docs(auth): define authorization role naming"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5aa56bd9fac30a44cce273a6721b2f0643d450d1
         authoredAt: 2026-08-28T18:36:09Z
+        files:
+          - docs/authorization-roles.md
+          - docs/production-readiness-progress.md
+          - infra/azure/README.md
+          - pto-tracker/docs/README.md
     workTimestamps: &a7
       - 2026-08-28T18:36:09Z
     workAdditions: 58
@@ -252,9 +256,7 @@ pullRequests:
       ## Why
 
 
-      The suite-wide `myriadas_user` role was promoted to application administrator or HR access in several products.
-      This conflated platform access with privileged authorization and allowed platform-only users to perform protected
-      mutations.
+      The suite-wide `myriadas_user` role was promoted to application administrator or HR access in several products. This conflated platform access with privileged authorization and allowed platform-only users to perform protected mutations.
 
 
       ## What changed
@@ -287,16 +289,40 @@ pullRequests:
         message: "fix(onboarding): restrict admin role mapping"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/67fc4edaeb6b7f4f9f4986431910153cf0395ce5
         authoredAt: 2026-08-28T17:44:48Z
+        files:
+          - onboarding/apps/dashboard/lib/auth.test.ts
+          - onboarding/apps/dashboard/lib/auth.ts
       - &a18
         sha: 51afb452e208844d6b64fc374847a6fcb030e330
         message: "fix(auth): standardize platform administrator roles"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/51afb452e208844d6b64fc374847a6fcb030e330
         authoredAt: 2026-08-28T18:32:14Z
+        files:
+          - excelerate/src/lib/auth.test.ts
+          - excelerate/src/lib/auth.ts
+          - excelerate/staticwebapp.config.json
+          - hub/lib/auth.test.ts
+          - hub/lib/auth.ts
+          - hub/staticwebapp.config.json
+          - infra/azure/pto-tracker/main.bicep
+          - onboarding/apps/dashboard/lib/auth.test.ts
+          - onboarding/apps/dashboard/lib/auth.ts
+          - onboarding/apps/dashboard/staticwebapp.config.json
+          - pto-tracker/src/lib/auth/entra-provider.test.ts
+          - pto-tracker/src/lib/auth/entra-provider.ts
+          - valuation/src/lib/auth.test.ts
+          - valuation/src/lib/auth.ts
+          - valuation/staticwebapp.config.json
       - &a20
         sha: dda26a129a608333890264558be49cd8f672fe7b
         message: "fix(pto): support standardized admin roles in token auth"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/dda26a129a608333890264558be49cd8f672fe7b
         authoredAt: 2026-08-28T18:44:59Z
+        files:
+          - pto-tracker/src/lib/auth/entra-provider.test.ts
+          - pto-tracker/src/lib/auth/entra-provider.ts
+          - pto-tracker/src/lib/auth/entra-token-provider.test.ts
+          - pto-tracker/src/lib/auth/entra-token-provider.ts
     workTimestamps: &a11
       - 2026-08-28T17:44:48Z
       - 2026-08-28T18:32:14Z
@@ -344,13 +370,44 @@ pullRequests:
     workAdditions: 0
     workDeletions: 0
     workFiles: []
+    allocationFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - bun.lock
+      - ofac/functions/package.json
+      - ofac/functions/src/copy-report-assets.ts
+      - ofac/functions/src/index.ts
+      - ofac/functions/src/ofac-repository.test.ts
+      - ofac/functions/src/ofac-repository.ts
+      - ofac/package.json
+      - ofac/src/app/api/ofac/export/__tests__/route.test.ts
+      - ofac/src/app/api/ofac/export/route.ts
+      - ofac/src/app/api/ofac/export/workbook-preview/route.ts
+      - ofac/src/app/api/ofac/screenings/[id]/pdf/route.test.ts
+      - ofac/src/app/api/ofac/screenings/[id]/pdf/route.ts
+      - ofac/src/app/api/ofac/screenings/route.ts
+      - ofac/src/app/globals.css
+      - ofac/src/app/screenings/page.tsx
+      - ofac/src/components/export-artifact-viewer.test.tsx
+      - ofac/src/components/export-artifact-viewer.tsx
+      - ofac/src/components/pdf-report-viewer.tsx
+      - ofac/src/components/report-viewer-shell.tsx
+      - ofac/src/components/screening-detail.tsx
+      - ofac/src/components/workbook-report-viewer.tsx
+      - ofac/src/lib/__tests__/ofac-api-client.test.ts
+      - ofac/src/lib/__tests__/report.test.ts
+      - ofac/src/lib/ofac-api-client.ts
+      - ofac/src/lib/report/csv.ts
+      - ofac/src/lib/report/excel.ts
+      - ofac/src/lib/report/filenames.ts
+      - ofac/src/lib/report/index.ts
+      - ofac/src/lib/report/model.ts
+      - ofac/src/lib/report/pdf.tsx
+      - packages/db/src/ofac.ts
   - title: "docs: publish #2/#37/#39 readiness runbooks"
     body: >-
-      - Add separate, evidence-backed readiness runbooks for #2 Cosmos production readiness, #37 Pricing monitoring, and
-      #39 monday.com sync discovery.
+      - Add separate, evidence-backed readiness runbooks for #2 Cosmos production readiness, #37 Pricing monitoring, and #39 monday.com sync discovery.
 
-      - Add the blank `APPLICATIONINSIGHTS_CONNECTION_STRING` setting name to the Pricing Functions example without
-      committing a secret.
+      - Add the blank `APPLICATIONINSIGHTS_CONNECTION_STRING` setting name to the Pricing Functions example without committing a secret.
 
       - Preserve the current ...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/86
@@ -370,13 +427,17 @@ pullRequests:
     workAdditions: 0
     workDeletions: 0
     workFiles: []
+    allocationFiles:
+      - docs/issue-2-cosmos-production-readiness.md
+      - docs/issue-37-pricing-monitoring-readiness.md
+      - docs/issue-39-monday-sync-discovery.md
+      - pricing/functions/local.settings.json.example
   - title: "docs: document Advisor Pricing architecture"
     body: >-
       ## What changed
 
 
-      - Added an end-to-end Advisor Pricing architecture document covering static pages, browser API/base URL behavior,
-      Azure Functions, transport seams, auth, auditing, calculations, persistence, and PDF/XLSX report snapshots.
+      - Added an end-to-end Advisor Pricing architecture document covering static pages, browser API/base URL behavior, Azure Functions, transport seams, auth, auditing, calculations, persistence, and PDF/XLSX report snapshots.
 
       - Added request/data-flow diagrams and documented local versu...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/84
@@ -396,14 +457,16 @@ pullRequests:
     workAdditions: 0
     workDeletions: 0
     workFiles: []
+    allocationFiles:
+      - README.md
+      - docs/advisor-pricing-architecture.md
 prsInProgress:
   - title: Require admin authorization for permanent recruit deletion
     body: >-
       ### Motivation
 
 
-      - Close an authorization gap that allowed any `pricing_user` officer to permanently delete a recruit (and
-      cascade-delete its model and reports) because the same officer role can also archive recruits.
+      - Close an authorization gap that allowed any `pricing_user` officer to permanently delete a recruit (and cascade-delete its model and reports) because the same officer role can also archive recruits.
 
 
       ### Description
@@ -427,13 +490,19 @@ prsInProgress:
     workAdditions: 1
     workDeletions: 1
     workFiles: *a4
+    allocationFiles:
+      - pricing/functions/src/index.ts
+      - pricing/src/components/__tests__/recruit-archive-section.test.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/components/recruit-archive-section.tsx
+      - pricing/src/lib/__tests__/pricing-recruit-delete-route.test.ts
+      - scripts/dev-pricing-api.ts
   - title: "docs(auth): define authorization role naming"
     body: >-
       ## Why
 
 
-      Authorization role values had no single naming contract, allowing values such as PTO's `HRAdmin` to drift from the
-      repository's lowercase snake-case convention.
+      Authorization role values had no single naming contract, allowing values such as PTO's `HRAdmin` to drift from the repository's lowercase snake-case convention.
 
 
       Stacked on #107 so the documentation describes the consolidated authorization model introduced there.
@@ -460,14 +529,17 @@ prsInProgress:
     workAdditions: 58
     workDeletions: 3
     workFiles: *a8
+    allocationFiles:
+      - docs/authorization-roles.md
+      - docs/production-readiness-progress.md
+      - infra/azure/README.md
+      - pto-tracker/docs/README.md
   - title: "fix(auth): standardize platform administrator roles"
     body: >-
       ## Why
 
 
-      The suite-wide `myriadas_user` role was promoted to application administrator or HR access in several products.
-      This conflated platform access with privileged authorization and allowed platform-only users to perform protected
-      mutations.
+      The suite-wide `myriadas_user` role was promoted to application administrator or HR access in several products. This conflated platform access with privileged authorization and allowed platform-only users to perform protected mutations.
 
 
       ## What changed
@@ -491,6 +563,24 @@ prsInProgress:
     workAdditions: 90
     workDeletions: 51
     workFiles: *a12
+    allocationFiles:
+      - excelerate/src/lib/auth.test.ts
+      - excelerate/src/lib/auth.ts
+      - excelerate/staticwebapp.config.json
+      - hub/lib/auth.test.ts
+      - hub/lib/auth.ts
+      - hub/staticwebapp.config.json
+      - infra/azure/pto-tracker/main.bicep
+      - onboarding/apps/dashboard/lib/auth.test.ts
+      - onboarding/apps/dashboard/lib/auth.ts
+      - onboarding/apps/dashboard/staticwebapp.config.json
+      - pto-tracker/src/lib/auth/entra-provider.test.ts
+      - pto-tracker/src/lib/auth/entra-provider.ts
+      - pto-tracker/src/lib/auth/entra-token-provider.test.ts
+      - pto-tracker/src/lib/auth/entra-token-provider.ts
+      - valuation/src/lib/auth.test.ts
+      - valuation/src/lib/auth.ts
+      - valuation/staticwebapp.config.json
 issues: []
 events: []
 commitMessages:
@@ -508,6 +598,39 @@ commitMessages:
         additions: 1110
         deletions: 80
         filesChanged: 32
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - bun.lock
+          - ofac/functions/package.json
+          - ofac/functions/src/copy-report-assets.ts
+          - ofac/functions/src/index.ts
+          - ofac/functions/src/ofac-repository.test.ts
+          - ofac/functions/src/ofac-repository.ts
+          - ofac/package.json
+          - ofac/src/app/api/ofac/export/__tests__/route.test.ts
+          - ofac/src/app/api/ofac/export/route.ts
+          - ofac/src/app/api/ofac/export/workbook-preview/route.ts
+          - ofac/src/app/api/ofac/screenings/[id]/pdf/route.test.ts
+          - ofac/src/app/api/ofac/screenings/[id]/pdf/route.ts
+          - ofac/src/app/api/ofac/screenings/route.ts
+          - ofac/src/app/globals.css
+          - ofac/src/app/screenings/page.tsx
+          - ofac/src/components/export-artifact-viewer.test.tsx
+          - ofac/src/components/export-artifact-viewer.tsx
+          - ofac/src/components/pdf-report-viewer.tsx
+          - ofac/src/components/report-viewer-shell.tsx
+          - ofac/src/components/screening-detail.tsx
+          - ofac/src/components/workbook-report-viewer.tsx
+          - ofac/src/lib/__tests__/ofac-api-client.test.ts
+          - ofac/src/lib/__tests__/report.test.ts
+          - ofac/src/lib/ofac-api-client.ts
+          - ofac/src/lib/report/csv.ts
+          - ofac/src/lib/report/excel.ts
+          - ofac/src/lib/report/filenames.ts
+          - ofac/src/lib/report/index.ts
+          - ofac/src/lib/report/model.ts
+          - ofac/src/lib/report/pdf.tsx
+          - packages/db/src/ofac.ts
       - sha: 8df6f93e64ff6007f697b27e919c05d14c28144d
         message: "docs: document Advisor Pricing architecture (#84)"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8df6f93e64ff6007f697b27e919c05d14c28144d
@@ -515,6 +638,9 @@ commitMessages:
         additions: 296
         deletions: 0
         filesChanged: 2
+        files:
+          - README.md
+          - docs/advisor-pricing-architecture.md
       - sha: 1fd3947202fd45fa31babd06d6393bd6fe36e825
         message: "docs: publish #2/#37/#39 readiness runbooks (#86)"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/1fd3947202fd45fa31babd06d6393bd6fe36e825
@@ -522,6 +648,11 @@ commitMessages:
         additions: 639
         deletions: 0
         filesChanged: 4
+        files:
+          - docs/issue-2-cosmos-production-readiness.md
+          - docs/issue-37-pricing-monitoring-readiness.md
+          - docs/issue-39-monday-sync-discovery.md
+          - pricing/functions/local.settings.json.example
       - *a13
   - repo: Myriad-Advisor-Solutions/myriadas-apps
     messages:
@@ -550,6 +681,11 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-28T18:47:29Z
     body: null
+    prFiles:
+      - docs/authorization-roles.md
+      - docs/production-readiness-progress.md
+      - infra/azure/README.md
+      - pto-tracker/docs/README.md
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 111
     prTitle: "docs(auth): define authorization role naming"
@@ -557,6 +693,11 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-28T18:47:30Z
     body: null
+    prFiles:
+      - docs/authorization-roles.md
+      - docs/production-readiness-progress.md
+      - infra/azure/README.md
+      - pto-tracker/docs/README.md
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 111
     prTitle: "docs(auth): define authorization role naming"
@@ -564,6 +705,11 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-28T18:52:27Z
     body: null
+    prFiles:
+      - docs/authorization-roles.md
+      - docs/production-readiness-progress.md
+      - infra/azure/README.md
+      - pto-tracker/docs/README.md
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 111
     prTitle: "docs(auth): define authorization role naming"
@@ -571,6 +717,11 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-28T18:57:45Z
     body: null
+    prFiles:
+      - docs/authorization-roles.md
+      - docs/production-readiness-progress.md
+      - infra/azure/README.md
+      - pto-tracker/docs/README.md
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 111
     prTitle: "docs(auth): define authorization role naming"
@@ -578,6 +729,11 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-28T18:57:46Z
     body: null
+    prFiles:
+      - docs/authorization-roles.md
+      - docs/production-readiness-progress.md
+      - infra/azure/README.md
+      - pto-tracker/docs/README.md
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 111
     prTitle: "docs(auth): define authorization role naming"
@@ -585,6 +741,11 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-28T19:04:09Z
     body: null
+    prFiles:
+      - docs/authorization-roles.md
+      - docs/production-readiness-progress.md
+      - infra/azure/README.md
+      - pto-tracker/docs/README.md
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 111
     prTitle: "docs(auth): define authorization role naming"
@@ -592,6 +753,11 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-28T19:04:09Z
     body: null
+    prFiles:
+      - docs/authorization-roles.md
+      - docs/production-readiness-progress.md
+      - infra/azure/README.md
+      - pto-tracker/docs/README.md
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 107
     prTitle: "fix(auth): standardize platform administrator roles"
@@ -599,56 +765,97 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-28T18:47:32Z
     body: null
+    prFiles:
+      - excelerate/src/lib/auth.test.ts
+      - excelerate/src/lib/auth.ts
+      - excelerate/staticwebapp.config.json
+      - hub/lib/auth.test.ts
+      - hub/lib/auth.ts
+      - hub/staticwebapp.config.json
+      - infra/azure/pto-tracker/main.bicep
+      - onboarding/apps/dashboard/lib/auth.test.ts
+      - onboarding/apps/dashboard/lib/auth.ts
+      - onboarding/apps/dashboard/staticwebapp.config.json
+      - pto-tracker/src/lib/auth/entra-provider.test.ts
+      - pto-tracker/src/lib/auth/entra-provider.ts
+      - pto-tracker/src/lib/auth/entra-token-provider.test.ts
+      - pto-tracker/src/lib/auth/entra-token-provider.ts
+      - valuation/src/lib/auth.test.ts
+      - valuation/src/lib/auth.ts
+      - valuation/staticwebapp.config.json
 reviewComments:
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 111
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111#discussion_r3883177861
-    body: Addressed in 98c78a3. The schema now describes `myriadas_user` as ordinary non-administrator access and explicitly
-      notes that product user or analyst permissions may include ordinary writes.
+    body: Addressed in 98c78a3. The schema now describes `myriadas_user` as ordinary non-administrator access and explicitly notes that product user or analyst permissions may include ordinary writes.
     path: docs/authorization-roles.md
     createdAt: 2026-08-28T18:47:29Z
+    prFiles:
+      - docs/authorization-roles.md
+      - docs/production-readiness-progress.md
+      - infra/azure/README.md
+      - pto-tracker/docs/README.md
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 111
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111#discussion_r3883177953
-    body: Addressed in dda26a1 on the stacked base PR. PTO token authentication now honors `admin` and `hr_admin`, retains
-      temporary `HRAdmin` compatibility, and preserves `read_only` precedence with focused tests.
+    body: Addressed in dda26a1 on the stacked base PR. PTO token authentication now honors `admin` and `hr_admin`, retains temporary `HRAdmin` compatibility, and preserves `read_only` precedence with focused tests.
     path: infra/azure/README.md
     createdAt: 2026-08-28T18:47:30Z
+    prFiles:
+      - docs/authorization-roles.md
+      - docs/production-readiness-progress.md
+      - infra/azure/README.md
+      - pto-tracker/docs/README.md
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 111
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111#discussion_r3883210875
-    body: Addressed in 9da5f02. The schema and Azure guidance now distinguish suite route access from PTO API authorization
-      and state the matching Staff-record requirement for non-administrators.
+    body: Addressed in 9da5f02. The schema and Azure guidance now distinguish suite route access from PTO API authorization and state the matching Staff-record requirement for non-administrators.
     path: infra/azure/README.md
     createdAt: 2026-08-28T18:52:27Z
+    prFiles:
+      - docs/authorization-roles.md
+      - docs/production-readiness-progress.md
+      - infra/azure/README.md
+      - pto-tracker/docs/README.md
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 111
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111#discussion_r3883243836
-    body: Addressed in 8d5e03d. The established Hub topology intentionally uses `myriadas_user` as the base platform grant,
-      so the schema and Azure guidance now explicitly require pairing it with scoped Onboarding, PTO, and Valuation
-      roles; the Proforma direct-role exception is also documented.
+    body: Addressed in 8d5e03d. The established Hub topology intentionally uses `myriadas_user` as the base platform grant, so the schema and Azure guidance now explicitly require pairing it with scoped Onboarding, PTO, and Valuation roles; the Proforma direct-role exception is also documented.
     path: infra/azure/README.md
     createdAt: 2026-08-28T18:57:45Z
+    prFiles:
+      - docs/authorization-roles.md
+      - docs/production-readiness-progress.md
+      - infra/azure/README.md
+      - pto-tracker/docs/README.md
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 111
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111#discussion_r3883243926
-    body: Addressed in 8d5e03d. `read_only` is now defined as protecting business data while allowing app-scoped personal
-      settings such as Onboarding saved views.
+    body: Addressed in 8d5e03d. `read_only` is now defined as protecting business data while allowing app-scoped personal settings such as Onboarding saved views.
     path: docs/authorization-roles.md
     createdAt: 2026-08-28T18:57:46Z
+    prFiles:
+      - docs/authorization-roles.md
+      - docs/production-readiness-progress.md
+      - infra/azure/README.md
+      - pto-tracker/docs/README.md
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 111
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111#discussion_r3883289575
-    body: Addressed in 5aa56bd. The Staff prerequisite now applies specifically to ordinary PTO access through
-      `myriadas_user`; `admin`, `hr_admin`, and `read_only` exceptions are explicit.
+    body: Addressed in 5aa56bd. The Staff prerequisite now applies specifically to ordinary PTO access through `myriadas_user`; `admin`, `hr_admin`, and `read_only` exceptions are explicit.
     path: docs/authorization-roles.md
     createdAt: 2026-08-28T19:04:09Z
+    prFiles:
+      - docs/authorization-roles.md
+      - docs/production-readiness-progress.md
+      - infra/azure/README.md
+      - pto-tracker/docs/README.md
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 111
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
@@ -656,14 +863,36 @@ reviewComments:
     body: Addressed in 5aa56bd. Excelerate and `excelerate_user` are now included in the combined-Hub pairing guidance.
     path: docs/authorization-roles.md
     createdAt: 2026-08-28T19:04:09Z
+    prFiles:
+      - docs/authorization-roles.md
+      - docs/production-readiness-progress.md
+      - infra/azure/README.md
+      - pto-tracker/docs/README.md
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 107
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/107
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/107#discussion_r3883178189
-    body: Addressed in dda26a1. Both PTO Entra providers now accept legacy `HRAdmin` during migration while `hr_admin`
-      remains canonical, with regression coverage for both values.
+    body: Addressed in dda26a1. Both PTO Entra providers now accept legacy `HRAdmin` during migration while `hr_admin` remains canonical, with regression coverage for both values.
     path: infra/azure/pto-tracker/main.bicep
     createdAt: 2026-08-28T18:47:32Z
+    prFiles:
+      - excelerate/src/lib/auth.test.ts
+      - excelerate/src/lib/auth.ts
+      - excelerate/staticwebapp.config.json
+      - hub/lib/auth.test.ts
+      - hub/lib/auth.ts
+      - hub/staticwebapp.config.json
+      - infra/azure/pto-tracker/main.bicep
+      - onboarding/apps/dashboard/lib/auth.test.ts
+      - onboarding/apps/dashboard/lib/auth.ts
+      - onboarding/apps/dashboard/staticwebapp.config.json
+      - pto-tracker/src/lib/auth/entra-provider.test.ts
+      - pto-tracker/src/lib/auth/entra-provider.ts
+      - pto-tracker/src/lib/auth/entra-token-provider.test.ts
+      - pto-tracker/src/lib/auth/entra-token-provider.ts
+      - valuation/src/lib/auth.test.ts
+      - valuation/src/lib/auth.ts
+      - valuation/staticwebapp.config.json
 aiReviews:
   codex:
     prsReviewed: 5
@@ -796,6 +1025,5 @@ hoursEstimate:
   volumeHours: 38.9
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

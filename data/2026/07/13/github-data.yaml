@@ -51,6 +51,23 @@ commitMessages:
         additions: 387
         deletions: 121
         filesChanged: 16
+        files:
+          - docs/pricing-scenario-rules.md
+          - packages/contracts/src/pricing.test.ts
+          - packages/contracts/src/pricing.ts
+          - pricing/src/components/assumptions-tab.tsx
+          - pricing/src/components/pricing-workstation-client.tsx
+          - pricing/src/components/scenario-model-tab.tsx
+          - pricing/src/lib/__tests__/calculation.test.ts
+          - pricing/src/lib/__tests__/report-model.test.ts
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/__tests__/workstation.test.ts
+          - pricing/src/lib/calculation.ts
+          - pricing/src/lib/report/excel.ts
+          - pricing/src/lib/report/model.ts
+          - pricing/src/lib/report/pdf.tsx
+          - pricing/src/lib/workbook-output.ts
+          - pricing/src/lib/workstation.ts
       - sha: 8b3aef4f3536c185dc8ce689d8ae0324077860a4
         message: "feat(pricing): complete FINET controls"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8b3aef4f3536c185dc8ce689d8ae0324077860a4
@@ -58,6 +75,22 @@ commitMessages:
         additions: 323
         deletions: 111
         filesChanged: 15
+        files:
+          - docs/pricing-scenario-rules.md
+          - packages/contracts/src/pricing.test.ts
+          - packages/contracts/src/pricing.ts
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/assumptions-tab.test.tsx
+          - pricing/src/components/assumptions-tab.tsx
+          - pricing/src/lib/__tests__/calculation.test.ts
+          - pricing/src/lib/__tests__/dashboard-charts.test.ts
+          - pricing/src/lib/__tests__/report-model.test.ts
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/calculation.ts
+          - pricing/src/lib/dashboard-charts.ts
+          - pricing/src/lib/report/assets.ts
+          - pricing/src/lib/report/excel.ts
+          - pricing/src/lib/report/model.ts
 releases: []
 externalContributions: []
 codeReviews: []
@@ -101,6 +134,5 @@ hoursEstimate:
   volumeHours: 4
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

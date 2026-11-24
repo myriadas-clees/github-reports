@@ -54,6 +54,24 @@ commitMessages:
         additions: 2038
         deletions: 228
         filesChanged: 17
+        files:
+          - bun.lock
+          - package.json
+          - packages/contracts/src/pricing.test.ts
+          - packages/contracts/src/pricing.ts
+          - pricing/src/app/actions.ts
+          - pricing/src/app/globals.css
+          - pricing/src/app/recruits/[id]/model/page.tsx
+          - pricing/src/components/excel-sheet/__tests__/excel-input-sheet.test.ts
+          - pricing/src/components/excel-sheet/excel-grid.tsx
+          - pricing/src/components/excel-sheet/excel-input-sheet.tsx
+          - pricing/src/components/excel-sheet/workstation-sheet-defs.tsx
+          - pricing/src/components/pricing-workstation-client.tsx
+          - pricing/src/components/recruit-detail-hero.tsx
+          - pricing/src/lib/__tests__/workstation-sections.test.ts
+          - pricing/src/lib/seed.ts
+          - pricing/src/lib/workstation-sections.ts
+          - scripts/dev-pricing.ts
       - sha: 81422f362135a09e124678cf3f3c09d2dae5a70e
         message: "feat(pricing): collapse basis point calculator"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/81422f362135a09e124678cf3f3c09d2dae5a70e
@@ -61,6 +79,9 @@ commitMessages:
         additions: 121
         deletions: 40
         filesChanged: 2
+        files:
+          - pricing/src/app/globals.css
+          - pricing/src/components/bps-calculator.tsx
       - sha: 27230927bde8624f37e74ec3bc5afde2f4d71c66
         message: Merge branch 'clees/test-noop-prompt' into clees/demo-0702
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/27230927bde8624f37e74ec3bc5afde2f4d71c66
@@ -68,6 +89,36 @@ commitMessages:
         additions: 3038
         deletions: 506
         filesChanged: 29
+        files:
+          - bun.lock
+          - package.json
+          - packages/contracts/src/pricing.test.ts
+          - packages/contracts/src/pricing.ts
+          - pricing/.env.example
+          - pricing/src/app/actions.ts
+          - pricing/src/app/globals.css
+          - pricing/src/app/recruits/[id]/model/page.tsx
+          - pricing/src/components/__tests__/pricing-workstation-client.test.tsx
+          - pricing/src/components/excel-sheet/__tests__/excel-cell.test.tsx
+          - pricing/src/components/excel-sheet/__tests__/excel-input-sheet.test.ts
+          - pricing/src/components/excel-sheet/__tests__/format.test.ts
+          - pricing/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+          - pricing/src/components/excel-sheet/excel-cell.tsx
+          - pricing/src/components/excel-sheet/excel-grid.tsx
+          - pricing/src/components/excel-sheet/excel-input-sheet.tsx
+          - pricing/src/components/excel-sheet/format.ts
+          - pricing/src/components/excel-sheet/index.ts
+          - pricing/src/components/excel-sheet/workstation-sheet-defs.tsx
+          - pricing/src/components/pricing-workstation-client.tsx
+          - pricing/src/components/recruit-detail-hero.tsx
+          - pricing/src/lib/__tests__/workbook-output.test.ts
+          - pricing/src/lib/__tests__/workstation-sections.test.ts
+          - pricing/src/lib/calculation.ts
+          - pricing/src/lib/dev-tools.ts
+          - pricing/src/lib/seed.ts
+          - pricing/src/lib/workbook-output.ts
+          - pricing/src/lib/workstation-sections.ts
+          - scripts/dev-pricing.ts
       - sha: 6b79d5ada7e083b40e23ac33c393d3bbea3f9b74
         message: Add simple pricing workstation view
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6b79d5ada7e083b40e23ac33c393d3bbea3f9b74
@@ -75,6 +126,13 @@ commitMessages:
         additions: 544
         deletions: 60
         filesChanged: 6
+        files:
+          - pricing/src/app/actions.ts
+          - pricing/src/app/globals.css
+          - pricing/src/app/recruits/[id]/model/page.tsx
+          - pricing/src/components/__tests__/pricing-workstation-client.test.tsx
+          - pricing/src/components/pricing-workstation-client.tsx
+          - pricing/src/lib/seed.ts
       - sha: 34d379f9f1ebeaed5405f5e9116e10ea5370a5bf
         message: Add pricing settings and theme defaults
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/34d379f9f1ebeaed5405f5e9116e10ea5370a5bf
@@ -82,6 +140,20 @@ commitMessages:
         additions: 368
         deletions: 31
         filesChanged: 13
+        files:
+          - packages/audit/src/index.ts
+          - packages/brand/src/styles.css
+          - packages/db/src/pricing.test.ts
+          - packages/db/src/pricing.ts
+          - packages/ui/src/styles.css
+          - pricing/src/app/actions.ts
+          - pricing/src/app/globals.css
+          - pricing/src/app/layout.tsx
+          - pricing/src/app/recruits/[id]/model/page.tsx
+          - pricing/src/app/settings/page.tsx
+          - pricing/src/components/__tests__/pricing-workstation-client.test.tsx
+          - pricing/src/components/pricing-workstation-client.tsx
+          - pricing/src/lib/edit-view.ts
 releases: []
 externalContributions: []
 codeReviews: []
@@ -128,6 +200,5 @@ hoursEstimate:
   volumeHours: 13
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

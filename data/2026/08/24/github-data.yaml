@@ -60,13 +60,26 @@ pullRequests:
     workAdditions: 0
     workDeletions: 0
     workFiles: []
+    allocationFiles:
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/db/src/proforma.test.ts
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/lib/__tests__/calculation.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/calculation.ts
+      - proforma/src/lib/new-recruit.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
   - title: "feat(proforma): restyle intake and trim unused Platform fee lines"
     body: >-
-      - Stacks on #97 so FiNet 2026 pricing (Gateway packages, Cloud PC, Schedule A/B, advisory adjustment) stays the
-      base layer.
+      - Stacks on #97 so FiNet 2026 pricing (Gateway packages, Cloud PC, Schedule A/B, advisory adjustment) stays the base layer.
 
-      - Restyles New Recruit intake and groups Platform fees by cadence (Local Monthly, Local Annual, Annual, Monthly,
-      One-Time).
+      - Restyles New Recruit intake and groups Platform fees by cadence (Local Monthly, Local Annual, Annual, Monthly, One-Time).
 
       - Moves locations/domains to Firm and projection yea...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
@@ -92,71 +105,197 @@ pullRequests:
         message: Align new recruit fee tables
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4950e0c12ff7123e548973ec57d9a7d49666b3fb
         authoredAt: 2026-08-24T12:38:57Z
+        files:
+          - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+          - proforma/src/components/assumptions-tab.tsx
+          - proforma/src/components/new-recruit-wizard.tsx
+          - proforma/src/lib/setup-projection.ts
       - &a2
         sha: 8651b44674343c0481bd5346698a7dae5aa1e4af
         message: Unify recruit fee editing
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8651b44674343c0481bd5346698a7dae5aa1e4af
         authoredAt: 2026-08-24T14:43:41Z
+        files:
+          - packages/contracts/src/proforma.ts
+          - proforma/src/app/globals.css
+          - proforma/src/components/__tests__/assumptions-tab.test.tsx
+          - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+          - proforma/src/components/__tests__/workbook-fee-table.test.ts
+          - proforma/src/components/advisor-finet-services.tsx
+          - proforma/src/components/assumptions-tab.tsx
+          - proforma/src/components/category-fee-table.tsx
+          - proforma/src/components/hybrid-fee-editor.tsx
+          - proforma/src/components/new-recruit-wizard.tsx
+          - proforma/src/components/workbook-fee-table.tsx
+          - proforma/src/lib/__tests__/calculation.test.ts
+          - proforma/src/lib/__tests__/new-recruit.test.ts
+          - proforma/src/lib/__tests__/report.test.ts
+          - proforma/src/lib/calculation.ts
+          - proforma/src/lib/new-recruit.ts
+          - proforma/src/lib/report/excel.ts
+          - proforma/src/lib/report/model.ts
       - &a3
         sha: c4b919fc67ce57dad6ec7f3880495eb37d79dab1
         message: Unify FiNet service assumptions
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c4b919fc67ce57dad6ec7f3880495eb37d79dab1
         authoredAt: 2026-08-24T15:07:11Z
+        files:
+          - packages/contracts/src/proforma.test.ts
+          - packages/contracts/src/proforma.ts
+          - proforma/src/components/__tests__/assumptions-tab.test.tsx
+          - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+          - proforma/src/components/advisor-finet-services.tsx
+          - proforma/src/components/assumptions-tab.tsx
+          - proforma/src/components/hybrid-fee-editor.tsx
+          - proforma/src/components/new-recruit-wizard.tsx
+          - proforma/src/lib/__tests__/calculation.test.ts
+          - proforma/src/lib/__tests__/report.test.ts
+          - proforma/src/lib/calculation.ts
+          - proforma/src/lib/report/excel.ts
       - &a4
         sha: 0b89cf12ff4772ed2e86cd5a6620baf9244aa9b0
         message: Fix FiNet payout cash flow projection
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0b89cf12ff4772ed2e86cd5a6620baf9244aa9b0
         authoredAt: 2026-08-24T15:25:29Z
+        files:
+          - proforma/src/lib/__tests__/setup-projection.test.ts
+          - proforma/src/lib/setup-projection.ts
       - &a5
         sha: 2f35ee6399f2fb90b814493b0af8bf08d0620799
         message: Hide legacy advanced workbook link
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2f35ee6399f2fb90b814493b0af8bf08d0620799
         authoredAt: 2026-08-24T15:31:29Z
+        files:
+          - proforma/src/components/recruit-model-shell.tsx
       - &a6
         sha: 0f69f24ea065edc67c8696f283d019389a3910e7
         message: Fix remaining Proforma review issues
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0f69f24ea065edc67c8696f283d019389a3910e7
         authoredAt: 2026-08-24T15:55:49Z
+        files:
+          - packages/contracts/src/proforma.ts
+          - packages/db/src/proforma.test.ts
+          - proforma/src/components/assumptions-tab.tsx
+          - proforma/src/components/new-recruit-wizard.tsx
+          - proforma/src/components/payout-reconciliation.tsx
+          - proforma/src/lib/__tests__/calculation.test.ts
+          - proforma/src/lib/calculation.ts
       - &a7
         sha: 19bee0c1c76eed6e8e2b021b79f4d9df7ae48770
         message: Refine proforma fee inputs
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/19bee0c1c76eed6e8e2b021b79f4d9df7ae48770
         authoredAt: 2026-08-24T16:35:17Z
+        files:
+          - proforma/docs/client-reference-alignment.md
+          - proforma/src/components/__tests__/assumptions-tab.test.tsx
+          - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+          - proforma/src/components/assumptions-tab.tsx
+          - proforma/src/components/hybrid-fee-editor.tsx
+          - proforma/src/components/new-recruit-wizard.tsx
+          - proforma/src/components/workbook-fee-table.tsx
+          - proforma/src/lib/__tests__/calculation.test.ts
+          - proforma/src/lib/__tests__/report.test.ts
+          - proforma/src/lib/__tests__/setup-projection.test.ts
+          - proforma/src/lib/calculation.ts
+          - proforma/src/lib/report/excel.ts
+          - proforma/src/lib/setup-projection.ts
       - &a8
         sha: 9c6bae284a956a5c9147270b478298f35fd795be
         message: Align technology expense rates
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9c6bae284a956a5c9147270b478298f35fd795be
         authoredAt: 2026-08-24T16:45:56Z
+        files:
+          - proforma/src/components/workbook-fee-table.tsx
+          - proforma/src/lib/__tests__/calculation.test.ts
+          - proforma/src/lib/__tests__/report.test.ts
+          - proforma/src/lib/__tests__/setup-projection.test.ts
+          - proforma/src/lib/calculation.ts
+          - proforma/src/lib/setup-projection.ts
       - &a9
         sha: aae11ec5114db15c245ce1fd141e66b1177335df
         message: Fix Proforma review regressions
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/aae11ec5114db15c245ce1fd141e66b1177335df
         authoredAt: 2026-08-24T17:02:01Z
+        files:
+          - packages/contracts/src/proforma.ts
+          - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+          - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+          - proforma/src/components/new-recruit-wizard.tsx
+          - proforma/src/lib/__tests__/calculation.test.ts
+          - proforma/src/lib/__tests__/report-model.test.ts
+          - proforma/src/lib/__tests__/workbook-output.test.ts
+          - proforma/src/lib/__tests__/workstation.test.ts
+          - proforma/src/lib/calculation.ts
+          - proforma/src/lib/new-recruit.ts
       - &a10
         sha: beb70e468e8274790e21d609acb41cdea1f2bd5a
         message: Refine proforma fee inputs
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/beb70e468e8274790e21d609acb41cdea1f2bd5a
         authoredAt: 2026-08-24T17:56:37Z
+        files:
+          - packages/contracts/src/proforma.ts
+          - proforma/src/components/__tests__/assumptions-tab.test.tsx
+          - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+          - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+          - proforma/src/components/advisor-finet-services.tsx
+          - proforma/src/components/assumptions-tab.tsx
+          - proforma/src/components/hybrid-fee-editor.tsx
+          - proforma/src/components/new-recruit-wizard.tsx
+          - proforma/src/components/proforma-workstation-client.tsx
+          - proforma/src/lib/__tests__/calculation.test.ts
+          - proforma/src/lib/__tests__/setup-projection.test.ts
+          - proforma/src/lib/calculation.ts
+          - proforma/src/lib/new-recruit.ts
+          - proforma/src/lib/report/excel.ts
+          - proforma/src/lib/setup-projection.ts
       - &a11
         sha: 2564bb8b5e7f4a66b287fa1889cc0a86d14ce589
         message: Refine proforma report exports
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2564bb8b5e7f4a66b287fa1889cc0a86d14ce589
         authoredAt: 2026-08-24T18:23:26Z
+        files:
+          - proforma/src/lib/__tests__/report-model.test.ts
+          - proforma/src/lib/__tests__/report.test.ts
+          - proforma/src/lib/calculation.ts
+          - proforma/src/lib/report/excel.ts
+          - proforma/src/lib/report/pdf.tsx
       - &a12
         sha: ca897bb5308e3777ab200ba7bfe421a39df33112
         message: Route annual platform custom fees correctly
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ca897bb5308e3777ab200ba7bfe421a39df33112
         authoredAt: 2026-08-24T18:29:30Z
+        files:
+          - proforma/src/components/__tests__/hybrid-fee-editor.test.tsx
+          - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+          - proforma/src/components/hybrid-fee-editor.tsx
       - &a13
         sha: 998a928175b16f0c25f8901aa508ee460f34d90a
         message: Refine proforma fee and revenue details
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/998a928175b16f0c25f8901aa508ee460f34d90a
         authoredAt: 2026-08-24T19:18:57Z
+        files:
+          - packages/contracts/src/proforma.ts
+          - proforma/src/app/globals.css
+          - proforma/src/components/__tests__/hybrid-fee-editor.test.tsx
+          - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+          - proforma/src/components/hybrid-fee-editor.tsx
+          - proforma/src/components/scenario-model-tab.tsx
+          - proforma/src/lib/__tests__/calculation.test.ts
+          - proforma/src/lib/__tests__/report.test.ts
+          - proforma/src/lib/__tests__/setup-projection.test.ts
+          - proforma/src/lib/calculation.ts
+          - proforma/src/lib/entity-state-costs.ts
+          - proforma/src/lib/report/excel.ts
+          - proforma/src/lib/report/model.ts
+          - proforma/src/lib/workbook-output.ts
       - &a14
         sha: 775750e2c177703ee6f76a842a38f8b71ca11b40
         message: Calculate platform fee amounts
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/775750e2c177703ee6f76a842a38f8b71ca11b40
         authoredAt: 2026-08-24T19:27:07Z
+        files:
+          - proforma/src/components/__tests__/hybrid-fee-editor.test.tsx
+          - proforma/src/components/hybrid-fee-editor.tsx
     workTimestamps:
       - 2026-08-24T12:38:57Z
       - 2026-08-24T14:43:41Z
@@ -384,6 +523,21 @@ commitMessages:
         additions: 271
         deletions: 71
         filesChanged: 14
+        files:
+          - packages/contracts/src/proforma.test.ts
+          - packages/contracts/src/proforma.ts
+          - packages/db/src/proforma.test.ts
+          - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+          - proforma/src/components/assumptions-tab.tsx
+          - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+          - proforma/src/components/new-recruit-wizard.tsx
+          - proforma/src/components/proforma-workstation-client.tsx
+          - proforma/src/lib/__tests__/calculation.test.ts
+          - proforma/src/lib/__tests__/report.test.ts
+          - proforma/src/lib/calculation.ts
+          - proforma/src/lib/new-recruit.ts
+          - proforma/src/lib/report/excel.ts
+          - proforma/src/lib/report/model.ts
       - sha: 9dacf7b57db43a15c3eafb34293986ea8dffd120
         message: "feat(proforma): restyle intake and trim unused Platform fee lines (#98)"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9dacf7b57db43a15c3eafb34293986ea8dffd120
@@ -391,6 +545,123 @@ commitMessages:
         additions: 11544
         deletions: 3459
         filesChanged: 116
+        files:
+          - bun.lock
+          - packages/brand/src/styles.css
+          - packages/contracts/src/proforma.test.ts
+          - packages/contracts/src/proforma.ts
+          - packages/db/src/proforma.test.ts
+          - packages/db/src/proforma.ts
+          - packages/ui/src/navigation/app-nav.tsx
+          - packages/ui/src/navigation/app-shell.tsx
+          - packages/ui/src/navigation/preferences.tsx
+          - packages/ui/src/user-menu.tsx
+          - proforma/docs/client-reference-alignment.md
+          - proforma/package.json
+          - proforma/src/app/globals.css
+          - proforma/src/app/layout.tsx
+          - proforma/src/components/__tests__/assumptions-tab.test.tsx
+          - proforma/src/components/__tests__/branded-select.test.ts
+          - proforma/src/components/__tests__/custom-expense-fields.test.tsx
+          - proforma/src/components/__tests__/dashboard-metrics-charts.test.tsx
+          - proforma/src/components/__tests__/dataframe-table.test.tsx
+          - proforma/src/components/__tests__/foreign-state-picker.test.ts
+          - proforma/src/components/__tests__/hybrid-fee-editor.test.tsx
+          - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+          - proforma/src/components/__tests__/payout-breakdown-donut.test.tsx
+          - proforma/src/components/__tests__/payout-reconciliation.test.tsx
+          - proforma/src/components/__tests__/pdf-report-viewer.test.tsx
+          - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+          - proforma/src/components/__tests__/recruit-archive-section.test.tsx
+          - proforma/src/components/__tests__/recruit-detail-panels.test.tsx
+          - proforma/src/components/__tests__/recruit-form.test.tsx
+          - proforma/src/components/__tests__/recruit-model-shell.test.tsx
+          - proforma/src/components/__tests__/recruit-row-actions.test.tsx
+          - proforma/src/components/__tests__/recruits-table.test.tsx
+          - proforma/src/components/__tests__/report-artifact-viewer.test.ts
+          - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+          - proforma/src/components/__tests__/work-state-select.test.tsx
+          - proforma/src/components/__tests__/workbook-fee-table.test.ts
+          - proforma/src/components/advisor-finet-services.tsx
+          - proforma/src/components/assumptions-tab.tsx
+          - proforma/src/components/branded-date-field.tsx
+          - proforma/src/components/branded-select.tsx
+          - proforma/src/components/category-fee-table.tsx
+          - proforma/src/components/custom-expense-fields.tsx
+          - proforma/src/components/dashboard-get-started.tsx
+          - proforma/src/components/dashboard-metrics-charts.tsx
+          - proforma/src/components/dashboard-recruits-panel.tsx
+          - proforma/src/components/delete-report-form.tsx
+          - proforma/src/components/excel-sheet/__tests__/excel-input-sheet.test.ts
+          - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+          - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+          - proforma/src/components/foreign-state-picker.tsx
+          - proforma/src/components/hybrid-fee-editor.tsx
+          - proforma/src/components/intake-live-summary.tsx
+          - proforma/src/components/location-cost-table.tsx
+          - proforma/src/components/new-recruit-wizard.tsx
+          - proforma/src/components/payout-breakdown-donut.tsx
+          - proforma/src/components/payout-reconciliation.tsx
+          - proforma/src/components/pdf-report-viewer.tsx
+          - proforma/src/components/proforma-app-shell.tsx
+          - proforma/src/components/proforma-graphs.tsx
+          - proforma/src/components/proforma-intake-layout.tsx
+          - proforma/src/components/proforma-intake-options.ts
+          - proforma/src/components/proforma-static-pages.tsx
+          - proforma/src/components/proforma-workstation-client.tsx
+          - proforma/src/components/recruit-archive-section.tsx
+          - proforma/src/components/recruit-filters.tsx
+          - proforma/src/components/recruit-form.tsx
+          - proforma/src/components/recruit-model-shell.tsx
+          - proforma/src/components/recruit-model-tab-icon.tsx
+          - proforma/src/components/recruit-pipeline-summary.tsx
+          - proforma/src/components/recruit-row-actions.tsx
+          - proforma/src/components/recruits-table.tsx
+          - proforma/src/components/report-artifact-actions.tsx
+          - proforma/src/components/report-artifact-viewer.tsx
+          - proforma/src/components/scenario-model-tab.tsx
+          - proforma/src/components/work-state-select.tsx
+          - proforma/src/components/workbook-fee-table.tsx
+          - proforma/src/components/workbook-report-viewer.tsx
+          - proforma/src/lib/__tests__/api-handler.test.ts
+          - proforma/src/lib/__tests__/calculation.test.ts
+          - proforma/src/lib/__tests__/dashboard-summary.test.ts
+          - proforma/src/lib/__tests__/expense-groups.test.ts
+          - proforma/src/lib/__tests__/new-recruit.test.ts
+          - proforma/src/lib/__tests__/pipeline-metrics.test.ts
+          - proforma/src/lib/__tests__/proforma-visibility.test.ts
+          - proforma/src/lib/__tests__/recruit-model-tabs.test.ts
+          - proforma/src/lib/__tests__/recruit-routes.test.ts
+          - proforma/src/lib/__tests__/report-filenames.test.ts
+          - proforma/src/lib/__tests__/report-model.test.ts
+          - proforma/src/lib/__tests__/report-storage.test.ts
+          - proforma/src/lib/__tests__/report.test.ts
+          - proforma/src/lib/__tests__/setup-projection.test.ts
+          - proforma/src/lib/__tests__/workbook-output.test.ts
+          - proforma/src/lib/__tests__/workbook-preview.test.ts
+          - proforma/src/lib/__tests__/workstation.test.ts
+          - proforma/src/lib/api/handlers.ts
+          - proforma/src/lib/calculation.ts
+          - proforma/src/lib/cosmos-data.ts
+          - proforma/src/lib/entity-state-costs.ts
+          - proforma/src/lib/expense-groups.ts
+          - proforma/src/lib/new-recruit.ts
+          - proforma/src/lib/payroll-state-rates.ts
+          - proforma/src/lib/proforma-api-client.ts
+          - proforma/src/lib/proforma-nav.ts
+          - proforma/src/lib/recruit-model-tabs.ts
+          - proforma/src/lib/recruit-notes.ts
+          - proforma/src/lib/recruit-routes.ts
+          - proforma/src/lib/report-storage.ts
+          - proforma/src/lib/report.ts
+          - proforma/src/lib/report/excel.ts
+          - proforma/src/lib/report/model.ts
+          - proforma/src/lib/report/pdf.tsx
+          - proforma/src/lib/report/workbook-preview.ts
+          - proforma/src/lib/setup-projection.ts
+          - proforma/src/lib/workbook-output.ts
+          - proforma/src/lib/workstation-sections.ts
+          - proforma/src/lib/workstation.ts
 releases: []
 externalContributions: []
 codeReviews: []
@@ -493,6 +764,5 @@ hoursEstimate:
   volumeHours: 29.6
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

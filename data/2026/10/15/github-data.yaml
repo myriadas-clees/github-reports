@@ -64,6 +64,18 @@ pullRequests:
         message: "feat(northstar): create open To Do tasks in Microsoft 365"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/40dfd024e3c43de758226e293ac39e0ea679c5f3
         authoredAt: 2026-10-15T15:34:01Z
+        files:
+          - hub/functions/src/index.ts
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
+          - northstar/components/answer-markdown.tsx
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/components/command-cards.dom.test.tsx
+          - northstar/components/command-cards.tsx
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/components/streaming-markdown.tsx
+          - northstar/lib/command-cards.test.ts
+          - northstar/lib/command-cards.ts
     workTimestamps: &a3
       - 2026-10-15T15:34:01Z
     workAdditions: 293
@@ -102,6 +114,9 @@ pullRequests:
         message: "fix(northstar): retry transient stream failures once"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ef614b93898c82179e4515e6d54a1a2a18cec894
         authoredAt: 2026-10-15T15:08:24Z
+        files:
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
     workTimestamps: &a7
       - 2026-10-15T15:08:24Z
     workAdditions: 130
@@ -109,6 +124,12 @@ pullRequests:
     workFiles: &a8
       - hub/functions/src/northstar-microsoft.test.ts
       - hub/functions/src/northstar-microsoft.ts
+    allocationFiles:
+      - hub/functions/src/northstar-conversations.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/functions/src/northstar-retry-budget.test.ts
   - title: "perf(northstar): speed up Copilot chat turns"
     body: |-
       - Reuse valid Microsoft access tokens and warm Copilot conversations to reduce chat startup time.
@@ -133,11 +154,53 @@ pullRequests:
         message: "perf(northstar): speed up Copilot chat turns"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3e202dd909bd485c2bd0098b87ba23f2e9e85a80
         authoredAt: 2026-10-15T19:48:18Z
+        files:
+          - hub/functions/src/index.ts
+          - hub/functions/src/northstar-chat-history.test.ts
+          - hub/functions/src/northstar-conversations.test.ts
+          - hub/functions/src/northstar-conversations.ts
+          - hub/functions/src/northstar-copilot.test.ts
+          - hub/functions/src/northstar-copilot.ts
+          - hub/functions/src/northstar-cosmos-point-read.fixture.ts
+          - hub/functions/src/northstar-cosmos-recovery.test.ts
+          - hub/functions/src/northstar-mapping-upgrade.test.ts
+          - hub/functions/src/northstar-microsoft-deadline.fixture.ts
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
+          - hub/staticwebapp.config.json
+          - northstar/components/ask-northstar-workspace.dom.test.tsx
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/components/northstar-recovery.dom.test.ts
+          - northstar/components/northstar-recovery.fixture.tsx
+          - northstar/components/streaming-markdown.tsx
+          - northstar/lib/ask-turns.test.ts
+          - northstar/lib/ask-turns.ts
+          - northstar/lib/at-commands.test.ts
+          - northstar/lib/at-commands.ts
+          - northstar/lib/background-briefs.test.ts
+          - northstar/lib/background-briefs.ts
+          - northstar/lib/microsoft-data-cache.test.ts
+          - northstar/lib/microsoft-data-cache.ts
+          - northstar/lib/northstar-context.test.ts
+          - northstar/lib/northstar-context.ts
+          - northstar/lib/typing-reveal.test.ts
+          - northstar/lib/typing-reveal.ts
       - &a16
         sha: cb2b2ab9e70db8986654de7bf0b9880a87b770aa
         message: "fix(northstar): stabilize Copilot turn recovery and commands"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cb2b2ab9e70db8986654de7bf0b9880a87b770aa
         authoredAt: 2026-10-15T20:20:03Z
+        files:
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
+          - northstar/components/ask-northstar-workspace.dom.test.tsx
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/components/northstar-recovery.fixture.tsx
+          - northstar/components/northstar-stability.fixture.tsx
+          - northstar/lib/ask-turns.test.ts
+          - northstar/lib/ask-turns.ts
     workTimestamps: &a11
       - 2026-10-15T19:48:18Z
       - 2026-10-15T20:20:03Z
@@ -198,6 +261,36 @@ prsInProgress:
     workAdditions: 293
     workDeletions: 19
     workFiles: *a4
+    allocationFiles:
+      - hub/functions/src/index.ts
+      - hub/functions/src/northstar-chat-history.test.ts
+      - hub/functions/src/northstar-chat-history.ts
+      - hub/functions/src/northstar-conversations.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - northstar/app/globals.css
+      - northstar/components/answer-markdown.tsx
+      - northstar/components/ask-northstar-workspace.dom.test.tsx
+      - northstar/components/ask-northstar-workspace.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/command-cards.dom.test.tsx
+      - northstar/components/command-cards.tsx
+      - northstar/components/northstar-dashboard-lifecycle.fixture.ts
+      - northstar/components/northstar-dashboard-lifecycle.test.ts
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/streaming-markdown.tsx
+      - northstar/components/todo-destination.tsx
+      - northstar/lib/chat-history.test.ts
+      - northstar/lib/chat-history.ts
+      - northstar/lib/command-cards.test.ts
+      - northstar/lib/command-cards.ts
+      - northstar/lib/serial-queue.test.ts
+      - northstar/lib/serial-queue.ts
+      - northstar/lib/todo-create.test.ts
+      - northstar/lib/todo-create.ts
+      - northstar/lib/todo-lists.test.ts
+      - northstar/lib/todo-lists.ts
   - title: "fix(northstar): retry transient stream failures once"
     body: |-
       - Retry transient Microsoft stream failures once in a fresh conversation before any answer arrives.
@@ -219,6 +312,12 @@ prsInProgress:
     workAdditions: 130
     workDeletions: 53
     workFiles: *a8
+    allocationFiles:
+      - hub/functions/src/northstar-conversations.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/functions/src/northstar-retry-budget.test.ts
   - title: "perf(northstar): speed up Copilot chat turns"
     body: |-
       - Reuse valid Microsoft access tokens and warm Copilot conversations to reduce chat startup time.
@@ -242,13 +341,50 @@ prsInProgress:
     workAdditions: 1988
     workDeletions: 165
     workFiles: *a12
+    allocationFiles:
+      - docs/northstar-roadmap.md
+      - hub/functions/src/index.ts
+      - hub/functions/src/northstar-chat-history.test.ts
+      - hub/functions/src/northstar-conversations.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-copilot.test.ts
+      - hub/functions/src/northstar-copilot.ts
+      - hub/functions/src/northstar-cosmos-point-read.fixture.ts
+      - hub/functions/src/northstar-cosmos-recovery.test.ts
+      - hub/functions/src/northstar-mapping-upgrade.test.ts
+      - hub/functions/src/northstar-microsoft-deadline.fixture.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/staticwebapp.config.json
+      - northstar/components/ask-northstar-workspace.dom.test.tsx
+      - northstar/components/ask-northstar-workspace.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/northstar-dashboard-lifecycle.fixture.ts
+      - northstar/components/northstar-dashboard-lifecycle.test.ts
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/northstar-recovery.dom.test.ts
+      - northstar/components/northstar-recovery.fixture.tsx
+      - northstar/components/northstar-stability.dom.test.ts
+      - northstar/components/northstar-stability.fixture.tsx
+      - northstar/components/streaming-markdown.tsx
+      - northstar/lib/ask-turns.test.ts
+      - northstar/lib/ask-turns.ts
+      - northstar/lib/at-commands.test.ts
+      - northstar/lib/at-commands.ts
+      - northstar/lib/background-briefs.test.ts
+      - northstar/lib/background-briefs.ts
+      - northstar/lib/microsoft-data-cache.test.ts
+      - northstar/lib/microsoft-data-cache.ts
+      - northstar/lib/northstar-context.test.ts
+      - northstar/lib/northstar-context.ts
+      - northstar/lib/typing-reveal.test.ts
+      - northstar/lib/typing-reveal.ts
   - title: "fix(transition): map registration codes to names"
     body: >-
       ## Why
 
 
-      Accounts imported from AIRE can store numeric registration codes, which are unclear in the UI and make
-      registration sorting and filtering inconsistent with registration names.
+      Accounts imported from AIRE can store numeric registration codes, which are unclear in the UI and make registration sorting and filtering inconsistent with registration names.
 
 
       ## What changed
@@ -274,6 +410,9 @@ prsInProgress:
         message: "fix(transition): accept registration codes in the accounts filter"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e3189bc1aafa42489280c31ec992ca4a75877241
         authoredAt: 2026-10-15T19:01:12Z
+        files:
+          - transition/src/lib/registration-name.test.ts
+          - transition/src/lib/repository.ts
     workTimestamps:
       - 2026-10-15T19:01:12Z
     workAdditions: 9
@@ -286,8 +425,7 @@ prsInProgress:
       ## Why
 
 
-      Custom Entra sign-in fails with `AADSTS50011` on new Azure SWA preview hosts because their callback URLs are not
-      registered. Each unified Hub preview needs one callback for the entire suite.
+      Custom Entra sign-in fails with `AADSTS50011` on new Azure SWA preview hosts because their callback URLs are not registered. Each unified Hub preview needs one callback for the entire suite.
 
 
       ## What changed
@@ -315,11 +453,18 @@ prsInProgress:
         message: "fix(ci): run preview callback cleanup on unlabeled close"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/789c6ed8e8e142e01cbef9a1acf63aa0899f92e7
         authoredAt: 2026-10-15T19:06:20Z
+        files:
+          - .github/workflows/azure-static-web-apps.yml
       - &a19
         sha: 9890143369ecd7af767b03bf87c615ef5eb358a7
         message: "fix(ci): bind preview callback token to trusted workflow"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9890143369ecd7af767b03bf87c615ef5eb358a7
         authoredAt: 2026-10-15T19:08:33Z
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - .github/workflows/preview-auth-callback.yml
+          - docs/preview-auth.md
+          - scripts/tooling.test.ts
     workTimestamps:
       - 2026-10-15T19:06:20Z
       - 2026-10-15T19:08:33Z
@@ -443,6 +588,5 @@ hoursEstimate:
   volumeHours: 30.7
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

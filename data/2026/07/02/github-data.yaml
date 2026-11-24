@@ -55,6 +55,8 @@ commitMessages:
         additions: 43
         deletions: 2
         filesChanged: 1
+        files:
+          - pricing/functions/src/index.ts
       - sha: 202932c94ba6a9b5fb529a9ecf270af2e0805f40
         message: "fix(pricing): improve local API dev flow"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/202932c94ba6a9b5fb529a9ecf270af2e0805f40
@@ -62,6 +64,16 @@ commitMessages:
         additions: 582
         deletions: 20
         filesChanged: 9
+        files:
+          - pricing/.env.example
+          - pricing/next.config.ts
+          - pricing/src/app/layout.tsx
+          - pricing/src/components/pricing-static-pages.tsx
+          - pricing/src/components/pricing-theme-controller.tsx
+          - pricing/src/lib/pricing-api-client.ts
+          - pricing/src/lib/pricing-theme.ts
+          - scripts/dev-pricing-api.ts
+          - scripts/dev-pricing.ts
       - sha: ee34bea1a2bfd413e99af58d563f7b844d487695
         message: "refactor(ui): use Next links for internal navigation"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ee34bea1a2bfd413e99af58d563f7b844d487695
@@ -69,6 +81,9 @@ commitMessages:
         additions: 34
         deletions: 3
         filesChanged: 2
+        files:
+          - packages/ui/src/button.tsx
+          - pricing/src/components/model-switcher.tsx
       - sha: 6a75190a4ce338b0f8d273c35d7d2639fdedcc13
         message: "refactor(pricing): use recruit dashboard redirects"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6a75190a4ce338b0f8d273c35d7d2639fdedcc13
@@ -76,6 +91,10 @@ commitMessages:
         additions: 14
         deletions: 2
         filesChanged: 3
+        files:
+          - pricing/src/components/pricing-static-pages.tsx
+          - pricing/src/lib/__tests__/recruit-routes.test.ts
+          - pricing/src/lib/recruit-routes.ts
       - sha: 2cee83f2f8471fdbf8f03e1c89543ff563c2f7d3
         message: "fix(pricing): use payout pct for scenario bars"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2cee83f2f8471fdbf8f03e1c89543ff563c2f7d3
@@ -83,6 +102,9 @@ commitMessages:
         additions: 42
         deletions: 3
         filesChanged: 2
+        files:
+          - pricing/src/components/__tests__/pricing-graphs.test.tsx
+          - pricing/src/components/pricing-graphs.tsx
       - sha: 7f85ff3e894aa23c2dc3fd2bbe1b8624901b6a74
         message: Add custom expense controls to pricing workbook
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7f85ff3e894aa23c2dc3fd2bbe1b8624901b6a74
@@ -90,6 +112,17 @@ commitMessages:
         additions: 499
         deletions: 160
         filesChanged: 10
+        files:
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/pdf-report-viewer.test.tsx
+          - pricing/src/components/__tests__/pricing-workstation-client.test.tsx
+          - pricing/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+          - pricing/src/components/excel-sheet/excel-input-sheet.tsx
+          - pricing/src/components/excel-sheet/workstation-sheet-defs.tsx
+          - pricing/src/components/pdf-report-viewer.tsx
+          - pricing/src/components/pricing-workstation-client.tsx
+          - pricing/src/lib/__tests__/workbook-output.test.ts
+          - pricing/src/lib/workbook-output.ts
 releases: []
 externalContributions: []
 codeReviews: []
@@ -137,6 +170,5 @@ hoursEstimate:
   volumeHours: 6
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

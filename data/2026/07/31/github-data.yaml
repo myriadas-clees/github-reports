@@ -68,6 +68,29 @@ pullRequests:
         message: "feat(pricing): add entity and state costs"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f15a5aa8a8ef7658fe734fa541b3ae183dbe7442
         authoredAt: 2026-07-31T16:11:25Z
+        files:
+          - packages/contracts/src/pricing.test.ts
+          - packages/contracts/src/pricing.ts
+          - packages/db/src/pricing.test.ts
+          - pricing/package.json
+          - pricing/src/components/__tests__/assumptions-tab.test.tsx
+          - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+          - pricing/src/components/assumptions-tab.tsx
+          - pricing/src/components/new-recruit-wizard.tsx
+          - pricing/src/components/pricing-static-pages.tsx
+          - pricing/src/lib/__tests__/api-handler.test.ts
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/__tests__/setup-projection.test.ts
+          - pricing/src/lib/__tests__/workbook-preview.test.ts
+          - pricing/src/lib/api/handlers.ts
+          - pricing/src/lib/calculation.ts
+          - pricing/src/lib/entity-state-costs.ts
+          - pricing/src/lib/new-recruit.ts
+          - pricing/src/lib/pricing-api-client.ts
+          - pricing/src/lib/report/excel.ts
+          - pricing/src/lib/report/model.ts
+          - pricing/src/lib/report/pdf.tsx
+          - pricing/src/lib/setup-projection.ts
     workTimestamps:
       - 2026-07-31T16:11:25Z
     workAdditions: 888
@@ -100,8 +123,7 @@ pullRequests:
       Why
 
 
-      Issue #28 requires a visible three-to-five-year proposed budget. The Pricing model calculated these years, but the
-      recruit review only displayed the selected duration.
+      Issue #28 requires a visible three-to-five-year proposed budget. The Pricing model calculated these years, but the recruit review only displayed the selected duration.
 
 
       What changed
@@ -129,31 +151,43 @@ pullRequests:
         message: "feat(pricing): show yearly projection"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/57979e01b7f3c997a1f445c1b4159a6ca184fb16
         authoredAt: 2026-07-31T19:24:46Z
+        files:
+          - pricing/src/components/new-recruit-wizard.tsx
       - &a9
         sha: f1cf9e2e20245d371201d002770c337accd922bc
         message: "test(pricing): cover projection output"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f1cf9e2e20245d371201d002770c337accd922bc
         authoredAt: 2026-07-31T19:25:25Z
+        files:
+          - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
       - &a10
         sha: 53861e4fc953adee446686a5ee10cc8ce0dff8b9
         message: "chore(pricing): normalize line endings"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/53861e4fc953adee446686a5ee10cc8ce0dff8b9
         authoredAt: 2026-07-31T19:26:02Z
+        files:
+          - pricing/src/components/new-recruit-wizard.tsx
       - &a11
         sha: 4c724179999a4e4c7a9e6523b7cd32098689bc53
         message: "chore(pricing): normalize line endings"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4c724179999a4e4c7a9e6523b7cd32098689bc53
         authoredAt: 2026-07-31T19:26:08Z
+        files:
+          - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
       - &a29
         sha: 073448d76cf68ee7650014f7a662c657b1adc3c2
         message: "fix(ui): preserve UTF-8 punctuation"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/073448d76cf68ee7650014f7a662c657b1adc3c2
         authoredAt: 2026-07-31T19:37:25Z
+        files:
+          - pricing/src/components/new-recruit-wizard.tsx
       - &a30
         sha: 58266bf2787e8895196c001558c8609c5e61d129
         message: "fix(ui): preserve UTF-8 punctuation"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/58266bf2787e8895196c001558c8609c5e61d129
         authoredAt: 2026-07-31T19:37:30Z
+        files:
+          - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
     workTimestamps:
       - 2026-07-31T19:24:46Z
       - 2026-07-31T19:25:25Z
@@ -171,8 +205,7 @@ pullRequests:
       Why
 
 
-      The product deployment workflow compiled PTO Tracker in demo authentication mode, exposing local test personas in
-      the production sign-in screen.
+      The product deployment workflow compiled PTO Tracker in demo authentication mode, exposing local test personas in the production sign-in screen.
 
 
       What changed
@@ -202,21 +235,29 @@ pullRequests:
         message: "fix(pto): keep logout anonymous"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b346aa046db8af3cd6b619277f2a519e0e5dc734
         authoredAt: 2026-07-31T19:20:46Z
+        files:
+          - pto-tracker/src/lib/auth/navigation.ts
       - &a3
         sha: 8db705cc4e948ee9210768594d6590584129634f
         message: "test(pto): cover anonymous logout"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8db705cc4e948ee9210768594d6590584129634f
         authoredAt: 2026-07-31T19:20:52Z
+        files:
+          - pto-tracker/src/lib/auth/navigation.test.ts
       - &a12
         sha: a597b560967b66434e889eb3ee73d401f1361386
         message: "chore(pto): normalize line endings"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a597b560967b66434e889eb3ee73d401f1361386
         authoredAt: 2026-07-31T19:27:18Z
+        files:
+          - pto-tracker/src/lib/auth/navigation.ts
       - &a13
         sha: af6673060f7b2d48cc0389bd814960cd7bbf9583
         message: "chore(pto): normalize line endings"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/af6673060f7b2d48cc0389bd814960cd7bbf9583
         authoredAt: 2026-07-31T19:27:23Z
+        files:
+          - pto-tracker/src/lib/auth/navigation.test.ts
     workTimestamps:
       - 2026-07-31T19:20:46Z
       - 2026-07-31T19:20:52Z
@@ -232,8 +273,7 @@ pullRequests:
       Why
 
 
-      Alpha workspaces generate a workstream and task set, but the supported UI had no safe cleanup lifecycle.
-      Disposable test data therefore remained in active selectors after verification.
+      Alpha workspaces generate a workstream and task set, but the supported UI had no safe cleanup lifecycle. Disposable test data therefore remained in active selectors after verification.
 
 
       What changed
@@ -262,46 +302,64 @@ pullRequests:
         message: "fix(onboarding): refresh archived workstreams"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/51f2ff1dd319ff7177166c055b2b66ad2239f887
         authoredAt: 2026-07-31T19:22:27Z
+        files:
+          - onboarding/apps/dashboard/components/workstream-archive-settings.tsx
       - &a5
         sha: 622137606cb827f5179e0fc44660328479d722a6
         message: "test(onboarding): cover archive refresh"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/622137606cb827f5179e0fc44660328479d722a6
         authoredAt: 2026-07-31T19:22:32Z
+        files:
+          - onboarding/apps/dashboard/components/workstream-archive-settings.test.ts
       - &a6
         sha: e702244fab3a4befe24fd7325a5b6511eeddaf3b
         message: "fix(onboarding): guard archived task writes"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e702244fab3a4befe24fd7325a5b6511eeddaf3b
         authoredAt: 2026-07-31T19:22:37Z
+        files:
+          - packages/db/src/cosmos-queries.ts
       - &a7
         sha: 741a4286a1f1b4169e7f835da031ee58e9cdd7e2
         message: "test(onboarding): cover archive races"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/741a4286a1f1b4169e7f835da031ee58e9cdd7e2
         authoredAt: 2026-07-31T19:22:41Z
+        files:
+          - packages/db/src/cosmos-queries.test.ts
       - &a14
         sha: 521a3866fb528373df58d56e489bfc1d35df0240
         message: "chore(onboarding): normalize line endings"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/521a3866fb528373df58d56e489bfc1d35df0240
         authoredAt: 2026-07-31T19:27:28Z
+        files:
+          - onboarding/apps/dashboard/components/workstream-archive-settings.tsx
       - &a15
         sha: 579a0400a630aac4dcf182b8d6bff8b8c1bde4d7
         message: "chore(onboarding): normalize line endings"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/579a0400a630aac4dcf182b8d6bff8b8c1bde4d7
         authoredAt: 2026-07-31T19:27:33Z
+        files:
+          - onboarding/apps/dashboard/components/workstream-archive-settings.test.ts
       - &a16
         sha: cf61c57507221dcb83d5fc32d0fd381634729dfb
         message: "chore(onboarding): normalize line endings"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/cf61c57507221dcb83d5fc32d0fd381634729dfb
         authoredAt: 2026-07-31T19:27:37Z
+        files:
+          - packages/db/src/cosmos-queries.ts
       - &a17
         sha: e0e98647ae816d9bf2af590c7bc3868a056076b3
         message: "chore(onboarding): normalize line endings"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e0e98647ae816d9bf2af590c7bc3868a056076b3
         authoredAt: 2026-07-31T19:27:41Z
+        files:
+          - packages/db/src/cosmos-queries.test.ts
       - &a31
         sha: eb8755ee651568b2e23f5400e2265cda08e9d158
         message: "fix(ui): preserve UTF-8 punctuation"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/eb8755ee651568b2e23f5400e2265cda08e9d158
         authoredAt: 2026-07-31T19:37:38Z
+        files:
+          - onboarding/apps/dashboard/components/workstream-archive-settings.tsx
     workTimestamps:
       - 2026-07-31T19:22:27Z
       - 2026-07-31T19:22:32Z
@@ -325,9 +383,7 @@ prsInProgress:
       Why
 
 
-      Four app workflows had integrity gaps at their serverless boundaries: PTO cancellation and request policy were
-      incomplete, Excelerate review receipts were replayable, Pricing report snapshots lacked input identity, and
-      Valuation approvals lacked immutable provenance.
+      Four app workflows had integrity gaps at their serverless boundaries: PTO cancellation and request policy were incomplete, Excelerate review receipts were replayable, Pricing report snapshots lacked input identity, and Valuation approvals lacked immutable provenance.
 
 
       What changed
@@ -358,66 +414,92 @@ prsInProgress:
         message: "fix(pto): confirm custom request hours"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9eb4771105c15cb6a42e5bc700af76e517093c3f
         authoredAt: 2026-07-31T19:28:46Z
+        files:
+          - pto-tracker/src/components/RequestForm.tsx
       - &a19
         sha: 65c70c16a62c62cae5a05f4122cca69f855e5816
         message: "test(pto): cover custom hour policy"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/65c70c16a62c62cae5a05f4122cca69f855e5816
         authoredAt: 2026-07-31T19:28:52Z
+        files:
+          - pto-tracker/src/components/RequestForm.test.ts
       - &a20
         sha: 4c7298d232a04d337e436b6fb220b3f5a2187ebd
         message: "test(pto): cover cancellation metadata"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4c7298d232a04d337e436b6fb220b3f5a2187ebd
         authoredAt: 2026-07-31T19:28:56Z
+        files:
+          - pto-tracker/src/lib/store/graph-lists-store.test.ts
       - &a21
         sha: 28956858c626dd1ce4a049d7e45ab209f228b1ff
         message: "fix(pto): add cancellation fields"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/28956858c626dd1ce4a049d7e45ab209f228b1ff
         authoredAt: 2026-07-31T19:29:01Z
+        files:
+          - pto-tracker/templates/pto-requests-list-columns.csv
       - &a22
         sha: e31ddeb13c89ced1bec5f97a9bd15077379e2391
         message: "docs(pto): document cancellation fields"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e31ddeb13c89ced1bec5f97a9bd15077379e2391
         authoredAt: 2026-07-31T19:29:07Z
+        files:
+          - pto-tracker/docs/data-model.md
       - &a23
         sha: 4d81ecc990e9759702169b454560cc35ad220f8b
         message: "fix(valuation): require review provenance"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4d81ecc990e9759702169b454560cc35ad220f8b
         authoredAt: 2026-07-31T19:29:13Z
+        files:
+          - valuation/src/lib/api/handlers.ts
       - &a24
         sha: b5117143cea7a5a12dbdf54ba4bc891c6f55a22f
         message: "fix(valuation): backfill legacy provenance"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b5117143cea7a5a12dbdf54ba4bc891c6f55a22f
         authoredAt: 2026-07-31T19:29:19Z
+        files:
+          - valuation/src/lib/persistence/repository.ts
       - &a25
         sha: ecb92a7c66aa96d1fc5e21f11714fe506f5717f3
         message: "feat(valuation): expose case provenance"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ecb92a7c66aa96d1fc5e21f11714fe506f5717f3
         authoredAt: 2026-07-31T19:29:23Z
+        files:
+          - valuation/src/lib/api/client.ts
       - &a26
         sha: 9df8d0e3963d9562fd975a68426c878bc17dd3b8
         message: "feat(valuation): display case provenance"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9df8d0e3963d9562fd975a68426c878bc17dd3b8
         authoredAt: 2026-07-31T19:29:29Z
+        files:
+          - valuation/src/app/cases/detail/case-detail-client.tsx
       - &a27
         sha: 72d78a83d07a01f3971a3456ba1cc0b8cf3f12f6
         message: "test(valuation): cover source hashes"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/72d78a83d07a01f3971a3456ba1cc0b8cf3f12f6
         authoredAt: 2026-07-31T19:29:34Z
+        files:
+          - valuation/src/lib/api/handlers.test.ts
       - &a28
         sha: de291b3235857212f5f24fd3ff41bf64a2f8a58f
         message: "test(valuation): cover provenance migration"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/de291b3235857212f5f24fd3ff41bf64a2f8a58f
         authoredAt: 2026-07-31T19:29:39Z
+        files:
+          - valuation/src/lib/persistence/repository.test.ts
       - &a32
         sha: 64aad27c4f3996e6d4c55e2759cd1db72095fc00
         message: "fix(ui): preserve UTF-8 punctuation"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/64aad27c4f3996e6d4c55e2759cd1db72095fc00
         authoredAt: 2026-07-31T19:37:46Z
+        files:
+          - pto-tracker/src/components/RequestForm.tsx
       - &a33
         sha: 6c6bd09a7864e409e3a8496406253352573ce08f
         message: "fix(ui): preserve UTF-8 punctuation"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6c6bd09a7864e409e3a8496406253352573ce08f
         authoredAt: 2026-07-31T19:37:54Z
+        files:
+          - valuation/src/app/cases/detail/case-detail-client.tsx
     workTimestamps:
       - 2026-07-31T19:28:46Z
       - 2026-07-31T19:28:52Z
@@ -497,6 +579,29 @@ commitMessages:
         additions: 888
         deletions: 18
         filesChanged: 22
+        files:
+          - packages/contracts/src/pricing.test.ts
+          - packages/contracts/src/pricing.ts
+          - packages/db/src/pricing.test.ts
+          - pricing/package.json
+          - pricing/src/components/__tests__/assumptions-tab.test.tsx
+          - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+          - pricing/src/components/assumptions-tab.tsx
+          - pricing/src/components/new-recruit-wizard.tsx
+          - pricing/src/components/pricing-static-pages.tsx
+          - pricing/src/lib/__tests__/api-handler.test.ts
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/__tests__/setup-projection.test.ts
+          - pricing/src/lib/__tests__/workbook-preview.test.ts
+          - pricing/src/lib/api/handlers.ts
+          - pricing/src/lib/calculation.ts
+          - pricing/src/lib/entity-state-costs.ts
+          - pricing/src/lib/new-recruit.ts
+          - pricing/src/lib/pricing-api-client.ts
+          - pricing/src/lib/report/excel.ts
+          - pricing/src/lib/report/model.ts
+          - pricing/src/lib/report/pdf.tsx
+          - pricing/src/lib/setup-projection.ts
       - *a2
       - *a3
       - *a4
@@ -536,6 +641,13 @@ commitMessages:
         additions: 65
         deletions: 2
         filesChanged: 6
+        files:
+          - .github/workflows/azure-static-web-apps-products.yml
+          - .github/workflows/azure-static-web-apps.yml
+          - pto-tracker/src/lib/api/client.test.ts
+          - pto-tracker/src/lib/auth/navigation.test.ts
+          - pto-tracker/src/lib/auth/navigation.ts
+          - scripts/tooling.test.ts
       - sha: be848e4816d6dacd90ae3d1b8f37afd331d8ebd5
         message: "feat(onboarding): archive workstreams"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/be848e4816d6dacd90ae3d1b8f37afd331d8ebd5
@@ -543,6 +655,28 @@ commitMessages:
         additions: 676
         deletions: 45
         filesChanged: 21
+        files:
+          - onboarding/apps/dashboard/app/api/[...path]/route.ts
+          - onboarding/apps/dashboard/app/settings/page.tsx
+          - onboarding/apps/dashboard/components/workstream-archive-settings.test.ts
+          - onboarding/apps/dashboard/components/workstream-archive-settings.tsx
+          - onboarding/apps/dashboard/functions/src/index.ts
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+          - onboarding/apps/dashboard/lib/api/client.test.ts
+          - onboarding/apps/dashboard/lib/api/client.ts
+          - onboarding/apps/dashboard/lib/api/handlers.test.ts
+          - onboarding/apps/dashboard/lib/api/handlers.ts
+          - packages/contracts/src/onboarding.ts
+          - packages/db/src/client-isolation.test.ts
+          - packages/db/src/cosmos-queries.test.ts
+          - packages/db/src/cosmos-queries.ts
+          - packages/db/src/migrate-database.test.ts
+          - packages/db/src/migrate-database.ts
+          - packages/db/src/queries.ts
+          - packages/db/src/runtime.ts
+          - packages/db/src/schema.ts
+          - packages/db/src/sqlite-migration-source.ts
       - sha: 8b771993f1b1a6f38a567df18daee02855e1e7b7
         message: "fix(pricing): show yearly projections"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8b771993f1b1a6f38a567df18daee02855e1e7b7
@@ -550,6 +684,9 @@ commitMessages:
         additions: 23
         deletions: 3
         filesChanged: 2
+        files:
+          - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+          - pricing/src/components/new-recruit-wizard.tsx
 releases: []
 externalContributions: []
 codeReviews:
@@ -560,6 +697,29 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-31T15:41:26Z
     body: null
+    prFiles:
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/pricing.test.ts
+      - pricing/package.json
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/lib/__tests__/api-handler.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/setup-projection.test.ts
+      - pricing/src/lib/__tests__/workbook-preview.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/entity-state-costs.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/setup-projection.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 70
     prTitle: "feat(pricing): add entity and state costs"
@@ -567,6 +727,29 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-31T15:41:29Z
     body: null
+    prFiles:
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/pricing.test.ts
+      - pricing/package.json
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/lib/__tests__/api-handler.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/setup-projection.test.ts
+      - pricing/src/lib/__tests__/workbook-preview.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/entity-state-costs.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/setup-projection.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 70
     prTitle: "feat(pricing): add entity and state costs"
@@ -574,6 +757,29 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-31T15:41:33Z
     body: null
+    prFiles:
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/pricing.test.ts
+      - pricing/package.json
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/lib/__tests__/api-handler.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/setup-projection.test.ts
+      - pricing/src/lib/__tests__/workbook-preview.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/entity-state-costs.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/setup-projection.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 70
     prTitle: "feat(pricing): add entity and state costs"
@@ -581,6 +787,29 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-31T15:41:36Z
     body: null
+    prFiles:
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/pricing.test.ts
+      - pricing/package.json
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/lib/__tests__/api-handler.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/setup-projection.test.ts
+      - pricing/src/lib/__tests__/workbook-preview.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/entity-state-costs.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/setup-projection.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 70
     prTitle: "feat(pricing): add entity and state costs"
@@ -588,6 +817,29 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-31T15:41:41Z
     body: null
+    prFiles:
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/pricing.test.ts
+      - pricing/package.json
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/lib/__tests__/api-handler.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/setup-projection.test.ts
+      - pricing/src/lib/__tests__/workbook-preview.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/entity-state-costs.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/setup-projection.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 70
     prTitle: "feat(pricing): add entity and state costs"
@@ -595,6 +847,29 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-31T15:59:51Z
     body: null
+    prFiles:
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/pricing.test.ts
+      - pricing/package.json
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/lib/__tests__/api-handler.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/setup-projection.test.ts
+      - pricing/src/lib/__tests__/workbook-preview.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/entity-state-costs.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/setup-projection.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 70
     prTitle: "feat(pricing): add entity and state costs"
@@ -602,6 +877,29 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-31T16:00:29Z
     body: null
+    prFiles:
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/pricing.test.ts
+      - pricing/package.json
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/lib/__tests__/api-handler.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/setup-projection.test.ts
+      - pricing/src/lib/__tests__/workbook-preview.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/entity-state-costs.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/setup-projection.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 70
     prTitle: "feat(pricing): add entity and state costs"
@@ -609,6 +907,29 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-31T16:00:32Z
     body: null
+    prFiles:
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/pricing.test.ts
+      - pricing/package.json
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/lib/__tests__/api-handler.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/setup-projection.test.ts
+      - pricing/src/lib/__tests__/workbook-preview.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/entity-state-costs.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/setup-projection.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 70
     prTitle: "feat(pricing): add entity and state costs"
@@ -616,6 +937,29 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-31T16:00:36Z
     body: null
+    prFiles:
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/pricing.test.ts
+      - pricing/package.json
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/lib/__tests__/api-handler.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/setup-projection.test.ts
+      - pricing/src/lib/__tests__/workbook-preview.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/entity-state-costs.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/setup-projection.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 70
     prTitle: "feat(pricing): add entity and state costs"
@@ -623,6 +967,29 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-31T16:02:13Z
     body: null
+    prFiles:
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/pricing.test.ts
+      - pricing/package.json
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/lib/__tests__/api-handler.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/setup-projection.test.ts
+      - pricing/src/lib/__tests__/workbook-preview.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/entity-state-costs.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/setup-projection.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 70
     prTitle: "feat(pricing): add entity and state costs"
@@ -630,6 +997,29 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-31T16:11:54Z
     body: null
+    prFiles:
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/pricing.test.ts
+      - pricing/package.json
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/lib/__tests__/api-handler.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/setup-projection.test.ts
+      - pricing/src/lib/__tests__/workbook-preview.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/entity-state-costs.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/setup-projection.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 70
     prTitle: "feat(pricing): add entity and state costs"
@@ -637,6 +1027,29 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-31T16:11:59Z
     body: null
+    prFiles:
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/pricing.test.ts
+      - pricing/package.json
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/lib/__tests__/api-handler.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/setup-projection.test.ts
+      - pricing/src/lib/__tests__/workbook-preview.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/entity-state-costs.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/setup-projection.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 70
     prTitle: "feat(pricing): add entity and state costs"
@@ -644,115 +1057,420 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-31T16:12:02Z
     body: null
+    prFiles:
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/pricing.test.ts
+      - pricing/package.json
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/lib/__tests__/api-handler.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/setup-projection.test.ts
+      - pricing/src/lib/__tests__/workbook-preview.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/entity-state-costs.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/setup-projection.ts
 reviewComments:
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 70
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70#discussion_r3691581282
-    body: Fixed in 5e84ead. Projections now accept PricingOptions; the assumptions UI passes WFCS-full or FiNet, and reports
-      pass the selected scenario options. Regression coverage verifies WFCS and FiNet produce different scenario
-      baselines.
+    body: Fixed in 5e84ead. Projections now accept PricingOptions; the assumptions UI passes WFCS-full or FiNet, and reports pass the selected scenario options. Regression coverage verifies WFCS and FiNet produce different scenario baselines.
     path: pricing/src/lib/setup-projection.ts
     createdAt: 2026-07-31T15:41:26Z
+    prFiles:
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/pricing.test.ts
+      - pricing/package.json
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/lib/__tests__/api-handler.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/setup-projection.test.ts
+      - pricing/src/lib/__tests__/workbook-preview.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/entity-state-costs.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/setup-projection.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 70
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70#discussion_r3691581639
-    body: Fixed in 5e84ead. Live assumptions and every PDF/XLSX report projection now use the active scenario options
-      instead of the empty/default calculation path.
+    body: Fixed in 5e84ead. Live assumptions and every PDF/XLSX report projection now use the active scenario options instead of the empty/default calculation path.
     path: pricing/src/lib/setup-projection.ts
     createdAt: 2026-07-31T15:41:29Z
+    prFiles:
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/pricing.test.ts
+      - pricing/package.json
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/lib/__tests__/api-handler.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/setup-projection.test.ts
+      - pricing/src/lib/__tests__/workbook-preview.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/entity-state-costs.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/setup-projection.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 70
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70#discussion_r3691581999
-    body: Fixed in 5e84ead. Manual formation cost overrides remain fully one-time, with recurring state costs added
-      separately. The Nevada regression asserts $1,000 one-time plus $350 recurring.
+    body: Fixed in 5e84ead. Manual formation cost overrides remain fully one-time, with recurring state costs added separately. The Nevada regression asserts $1,000 one-time plus $350 recurring.
     path: pricing/src/lib/setup-projection.ts
     createdAt: 2026-07-31T15:41:33Z
+    prFiles:
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/pricing.test.ts
+      - pricing/package.json
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/lib/__tests__/api-handler.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/setup-projection.test.ts
+      - pricing/src/lib/__tests__/workbook-preview.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/entity-state-costs.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/setup-projection.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 70
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70#discussion_r3691582359
-    body: Fixed in 5e84ead. Domestic LLC card filing and recurring costs apply only to `llc`; unsupported entity types use
-      the required manual one-time override and receive $0 LLC recurring cost.
+    body: Fixed in 5e84ead. Domestic LLC card filing and recurring costs apply only to `llc`; unsupported entity types use the required manual one-time override and receive $0 LLC recurring cost.
     path: pricing/src/lib/setup-projection.ts
     createdAt: 2026-07-31T15:41:36Z
+    prFiles:
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/pricing.test.ts
+      - pricing/package.json
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/lib/__tests__/api-handler.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/setup-projection.test.ts
+      - pricing/src/lib/__tests__/workbook-preview.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/entity-state-costs.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/setup-projection.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 70
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70#discussion_r3691582806
-    body: Fixed in 5e84ead without changing the source rate-card row. California adds the explicitly documented $800 tax to
-      the $20 recurring filing fee; regression proves $890 year one = $70 one-time + $820 recurring, with $820 in later
-      years.
+    body: Fixed in 5e84ead without changing the source rate-card row. California adds the explicitly documented $800 tax to the $20 recurring filing fee; regression proves $890 year one = $70 one-time + $820 recurring, with $820 in later years.
     path: pricing/src/lib/entity-state-costs.ts
     createdAt: 2026-07-31T15:41:41Z
+    prFiles:
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/pricing.test.ts
+      - pricing/package.json
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/lib/__tests__/api-handler.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/setup-projection.test.ts
+      - pricing/src/lib/__tests__/workbook-preview.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/entity-state-costs.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/setup-projection.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 70
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70#discussion_r3691693491
-    body: Fixed in e4a7486. The wizard builds the current model and displays `calculateSetupCosts` values, with regressions
-      for California, a Nevada manual override, and a non-LLC entity.
+    body: Fixed in e4a7486. The wizard builds the current model and displays `calculateSetupCosts` values, with regressions for California, a Nevada manual override, and a non-LLC entity.
     path: pricing/src/components/new-recruit-wizard.tsx
     createdAt: 2026-07-31T15:59:51Z
+    prFiles:
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/pricing.test.ts
+      - pricing/package.json
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/lib/__tests__/api-handler.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/setup-projection.test.ts
+      - pricing/src/lib/__tests__/workbook-preview.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/entity-state-costs.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/setup-projection.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 70
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70#discussion_r3691698057
-    body: Fixed in e4a7486. Only strictly positive formation overrides are active. Zero falls back to the LLC card and no
-      longer satisfies the unsupported-entity validation requirement.
+    body: Fixed in e4a7486. Only strictly positive formation overrides are active. Zero falls back to the LLC card and no longer satisfies the unsupported-entity validation requirement.
     path: pricing/src/lib/setup-projection.ts
     createdAt: 2026-07-31T16:00:28Z
+    prFiles:
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/pricing.test.ts
+      - pricing/package.json
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/lib/__tests__/api-handler.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/setup-projection.test.ts
+      - pricing/src/lib/__tests__/workbook-preview.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/entity-state-costs.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/setup-projection.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 70
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70#discussion_r3691698454
-    body: Fixed in e4a7486. Rent, square-foot, and utility costs multiply the actual location count; zero locations costs
-      $0, and the assumptions UI now exposes an editable Locations control.
+    body: Fixed in e4a7486. Rent, square-foot, and utility costs multiply the actual location count; zero locations costs $0, and the assumptions UI now exposes an editable Locations control.
     path: pricing/src/lib/setup-projection.ts
     createdAt: 2026-07-31T16:00:32Z
+    prFiles:
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/pricing.test.ts
+      - pricing/package.json
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/lib/__tests__/api-handler.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/setup-projection.test.ts
+      - pricing/src/lib/__tests__/workbook-preview.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/entity-state-costs.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/setup-projection.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 70
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70#discussion_r3691698849
-    body: Fixed in e4a7486. Entity counts and projection years use integer formatting; only monetary cells use the currency
-      format. Workbook tests assert both formats.
+    body: Fixed in e4a7486. Entity counts and projection years use integer formatting; only monetary cells use the currency format. Workbook tests assert both formats.
     path: pricing/src/lib/report/excel.ts
     createdAt: 2026-07-31T16:00:36Z
+    prFiles:
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/pricing.test.ts
+      - pricing/package.json
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/lib/__tests__/api-handler.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/setup-projection.test.ts
+      - pricing/src/lib/__tests__/workbook-preview.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/entity-state-costs.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/setup-projection.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 70
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70#discussion_r3691709166
-    body: Already fixed in e4a7486. The Step 5 review now builds the current model and displays `calculateSetupCosts`
-      year-one and recurring values; tests cover California, a manual Nevada override, and non-LLC behavior.
+    body: Already fixed in e4a7486. The Step 5 review now builds the current model and displays `calculateSetupCosts` year-one and recurring values; tests cover California, a manual Nevada override, and non-LLC behavior.
     path: pricing/src/components/new-recruit-wizard.tsx
     createdAt: 2026-07-31T16:02:13Z
+    prFiles:
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/pricing.test.ts
+      - pricing/package.json
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/lib/__tests__/api-handler.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/setup-projection.test.ts
+      - pricing/src/lib/__tests__/workbook-preview.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/entity-state-costs.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/setup-projection.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 70
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70#discussion_r3691771066
-    body: Fixed in f15a5aa. Projections now separate revenue-sensitive gross/BD/OHC economics from fixed baseline expenses,
-      applying revenue growth and expense growth independently. Regression covers 10% revenue growth, 20% expense
-      growth, and fixed local software cost.
+    body: Fixed in f15a5aa. Projections now separate revenue-sensitive gross/BD/OHC economics from fixed baseline expenses, applying revenue growth and expense growth independently. Regression covers 10% revenue growth, 20% expense growth, and fixed local software cost.
     path: pricing/src/lib/setup-projection.ts
     createdAt: 2026-07-31T16:11:54Z
+    prFiles:
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/pricing.test.ts
+      - pricing/package.json
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/lib/__tests__/api-handler.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/setup-projection.test.ts
+      - pricing/src/lib/__tests__/workbook-preview.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/entity-state-costs.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/setup-projection.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 70
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70#discussion_r3691771678
-    body: Fixed in f15a5aa. Source metadata now marks IN, IA, NE, and NY as raw biennial fees and schedules them in years
-      1/3/5; Alaska remains interval 1 because its source amount is explicitly annualized. Tests assert NY [9, 0, 9] and
-      AK [100, 100, 100].
+    body: Fixed in f15a5aa. Source metadata now marks IN, IA, NE, and NY as raw biennial fees and schedules them in years 1/3/5; Alaska remains interval 1 because its source amount is explicitly annualized. Tests assert NY [9, 0, 9] and AK [100, 100, 100].
     path: pricing/src/lib/setup-projection.ts
     createdAt: 2026-07-31T16:11:59Z
+    prFiles:
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/pricing.test.ts
+      - pricing/package.json
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/lib/__tests__/api-handler.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/setup-projection.test.ts
+      - pricing/src/lib/__tests__/workbook-preview.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/entity-state-costs.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/setup-projection.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 70
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/70#discussion_r3691772160
-    body: Fixed in f15a5aa. The wizard builds its current model and reuses `validatePricingModelEconomics`; the untouched
-      LLC setup now shows the exact missing-state message and keeps Create disabled.
+    body: Fixed in f15a5aa. The wizard builds its current model and reuses `validatePricingModelEconomics`; the untouched LLC setup now shows the exact missing-state message and keeps Create disabled.
     path: pricing/src/components/new-recruit-wizard.tsx
     createdAt: 2026-07-31T16:12:02Z
+    prFiles:
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/pricing.test.ts
+      - pricing/package.json
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/pricing-static-pages.tsx
+      - pricing/src/lib/__tests__/api-handler.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/setup-projection.test.ts
+      - pricing/src/lib/__tests__/workbook-preview.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/entity-state-costs.ts
+      - pricing/src/lib/new-recruit.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/setup-projection.ts
 aiReviews:
   codex:
     prsReviewed: 2
@@ -914,6 +1632,5 @@ hoursEstimate:
   volumeHours: 60.5
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

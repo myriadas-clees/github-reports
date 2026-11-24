@@ -26,3 +26,51 @@ output_dir: ./output
 # llm:
 #   provider: openrouter
 #   model: YOUR_MODEL_NAME
+
+# Effort allocation: which stakeholder-facing initiative each piece of work
+# belongs to. Computed at render time from stored data (no extra API calls).
+# Each initiative key is one of:
+#   - an exact PR label, e.g. "app: hub"
+#   - "scope:<x>"          conventional-commit scope, e.g. "scope:pricing"
+#   - "repo:<owner/name>"  whole repository, e.g. "repo:org/app"
+# Precedence for each item (first match wins):
+#   1. a label starting with label_prefix (its name is the initiative)
+#   2. a mapped exact label
+#   3. a mapped scope
+#   4. a mapped repo
+#   5. a configured initiative named in the title
+#   6. default_initiative (if set)
+#   7. the repository name
+allocation:
+  # App directories can identify work in monorepos when labels/scopes are missing.
+  # Multiple app directories use shared_initiative; shared-only paths do too.
+  shared_initiative: Shared platform
+  paths:
+    address-book: CRM # legacy directory before the app was renamed
+    crm: CRM
+    hub: Hub
+    packages: Shared platform
+  label_prefix: "app:"        # labels starting with this name an initiative
+  default_initiative: null    # fallback initiative name, or null for repo name
+  trend_weeks: 8              # number of Mon–Fri website weeks in the trend (1–52)
+  initiatives:
+    "app: crm": CRM
+    "app: address-book": CRM
+    "scope:crm": CRM
+    "scope:address-book": CRM
+    "app: hub": Hub
+    "scope:ofac": OFAC
+    "repo:org/name": Something
+
+# Optional self-reported time GitHub can't see (meetings, design, support).
+# It is shown in the allocation as "self-reported", separate from estimates.
+# work_type is one of: new-capability, quality, maintenance, documentation,
+# team-support, unlogged. Invalid entries are ignored.
+# For effort with an uncertain date, set date_uncertain: true and use date as
+# an approximate anchor. It moves to the lower-effort neighboring reported
+# weekday within that Mon–Fri week. Ties go to the earlier day. Without an
+# eligible weekday (or for a weekend anchor), it keeps the anchor date.
+# Run render --archive after adding or changing an uncertain entry.
+# manual_time:
+#   - { date: 2026-10-07, initiative: Hub, hours: 1.5, work_type: team-support, note: "Stakeholder sync" }
+#   - { date: 2026-10-19, date_uncertain: true, initiative: Hub, hours: 2, note: "Approximate timing" }

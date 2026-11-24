@@ -60,56 +60,132 @@ prsInProgress:
         message: "feat(northstar): refine frontend design and responsive states"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4b75ca84da89e7c88fac94fb233095862d7b7244
         authoredAt: 2026-09-02T14:40:38Z
+        files:
+          - northstar/app/globals.css
+          - northstar/ask-empty-final.png
+          - northstar/ask-implementation-final.png
+          - northstar/ask-implementation-mobile-bottom-final.png
+          - northstar/ask-implementation-mobile-final.png
+          - northstar/chat-active-final.png
+          - northstar/chat-context-open-final.png
+          - northstar/chat-context-open-qa-final.png
+          - northstar/chat-default-final.png
+          - northstar/chat-default-qa-final.png
+          - northstar/chat-history-open-final.png
+          - northstar/chat-history-open-qa-final.png
+          - northstar/chat-mobile-context-final.png
+          - northstar/chat-mobile-context-qa-final.png
+          - northstar/chat-mobile-history-final.png
+          - northstar/components/ui/toggle-group.tsx
+          - northstar/design-comparison-ask-final.png
+          - northstar/design-comparison-ask-header-final.png
+          - northstar/design-comparison-chat-context-final.png
+          - northstar/design-comparison-chat-history-final.png
+          - northstar/design-comparison-final.png
+          - northstar/design-comparison-header-annotations.png
+          - northstar/design-comparison-primary-final.png
+          - northstar/design-qa.md
+          - northstar/design-source-before-ask.png
+          - northstar/design-source-chat-context-normalized.png
+          - northstar/design-source-chat-history-normalized.png
+          - northstar/implementation-final.png
+          - northstar/implementation-mobile-final.png
       - &a2
         sha: b029170982c3646cffe90d78e20fc88cc64ec0f2
         message: "feat(northstar): add calendar event previews"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b029170982c3646cffe90d78e20fc88cc64ec0f2
         authoredAt: 2026-09-02T15:03:35Z
+        files:
+          - hub/functions/src/northstar-microsoft.ts
+          - northstar/app/globals.css
+          - northstar/components/northstar-dashboard.tsx
       - &a3
         sha: d779d3fd978c321845b78d654b93824a372382d3
         message: "feat(northstar): add month and week calendar views"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d779d3fd978c321845b78d654b93824a372382d3
         authoredAt: 2026-09-02T15:23:13Z
+        files:
+          - hub/functions/src/northstar-microsoft.ts
+          - northstar/app/globals.css
+          - northstar/components/northstar-dashboard.tsx
       - &a4
         sha: 8011c2fd4d4968c3fe229e0f1cba4f64f774519f
         message: "feat(northstar): add priority email resolution workflow"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8011c2fd4d4968c3fe229e0f1cba4f64f774519f
         authoredAt: 2026-09-02T16:19:57Z
+        files:
+          - northstar/app/globals.css
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/lib/mail-priority.ts
+          - northstar/lib/resolved-mail.ts
       - &a5
         sha: e76bc5580e22264839c40c653d214ab5ee51c43a
         message: "feat(northstar): add editable messages and streamed responses"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e76bc5580e22264839c40c653d214ab5ee51c43a
         authoredAt: 2026-09-02T16:41:09Z
+        files:
+          - northstar/app/globals.css
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/components/northstar-dashboard.tsx
       - &a6
         sha: 33f129408c40e10512714f0e45d4f0673ae3823c
         message: "feat(northstar): add Microsoft 365 Copilot integration"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/33f129408c40e10512714f0e45d4f0673ae3823c
         authoredAt: 2026-09-02T16:57:19Z
+        files:
+          - hub/functions/local.settings.json.example
+          - hub/functions/src/northstar-conversations.test.ts
+          - hub/functions/src/northstar-conversations.ts
+          - hub/functions/src/northstar-copilot.test.ts
+          - hub/functions/src/northstar-copilot.ts
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
+          - northstar/app/globals.css
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/components/settings-workspace.tsx
       - &a7
         sha: 3634d8ec0639fad8abfcdfd0f897264fd37c1d8f
         message: "feat(northstar): persist tenant IDs for Microsoft connections"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3634d8ec0639fad8abfcdfd0f897264fd37c1d8f
         authoredAt: 2026-09-02T17:36:49Z
+        files:
+          - hub/functions/src/northstar-local-store.test.ts
+          - hub/functions/src/northstar-local-store.ts
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
       - &a8
         sha: df9c394c4a7ccc60dee9dcc3948ed8b9acf018ad
         message: "fix(northstar): preserve Graph scopes during Copilot refresh"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/df9c394c4a7ccc60dee9dcc3948ed8b9acf018ad
         authoredAt: 2026-09-02T17:51:04Z
+        files:
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
       - &a9
         sha: 672dba9d7fece4666fb1dcbe1540e3f6bbe2ec8c
         message: "fix(ui): simplify user menu identity display"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/672dba9d7fece4666fb1dcbe1540e3f6bbe2ec8c
         authoredAt: 2026-09-02T18:57:00Z
+        files:
+          - packages/ui/src/styles.css
+          - packages/ui/src/user-menu.test.ts
+          - packages/ui/src/user-menu.tsx
       - &a10
         sha: 2461b54a0973ab5786b84f948ab0fe558865a564
         message: "fix(northstar): stabilize dashboard scrolling and sender display"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2461b54a0973ab5786b84f948ab0fe558865a564
         authoredAt: 2026-09-02T19:11:13Z
+        files:
+          - northstar/app/globals.css
+          - northstar/components/northstar-dashboard.tsx
       - &a11
         sha: 1957ecb6b6e8945a2d2f89b148a895a4fdd0b1f2
         message: "fix(northstar): lock shell scrolling to viewport"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/1957ecb6b6e8945a2d2f89b148a895a4fdd0b1f2
         authoredAt: 2026-09-02T19:28:01Z
+        files:
+          - northstar/app/globals.css
     workTimestamps:
       - 2026-09-02T14:40:38Z
       - 2026-09-02T15:03:35Z
@@ -258,6 +334,5 @@ hoursEstimate:
   volumeHours: 13.8
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

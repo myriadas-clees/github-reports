@@ -61,6 +61,22 @@ commitMessages:
         additions: 1463
         deletions: 7
         filesChanged: 15
+        files:
+          - packages/contracts/src/pto.ts
+          - pto-tracker/docs/data-model.md
+          - pto-tracker/docs/verification-plan.md
+          - pto-tracker/research/v1-assumptions.md
+          - pto-tracker/src/app/admin/AccrualPolicyPanel.tsx
+          - pto-tracker/src/app/admin/AdminClient.tsx
+          - pto-tracker/src/app/admin/page.tsx
+          - pto-tracker/src/app/api/accrual/policy/route.test.ts
+          - pto-tracker/src/app/api/accrual/policy/route.ts
+          - pto-tracker/src/app/api/accrual/renewal/preview/route.ts
+          - pto-tracker/src/app/api/accrual/renewal/run/route.ts
+          - pto-tracker/src/lib/accrual/service.test.ts
+          - pto-tracker/src/lib/accrual/service.ts
+          - pto-tracker/src/lib/csv/paths.ts
+          - pto-tracker/src/lib/pto/read-model.ts
       - sha: a30d5390660600e167a8e28a93415778c99646ef
         message: "feat: initial tenent work before serverless functions"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a30d5390660600e167a8e28a93415778c99646ef
@@ -68,6 +84,46 @@ commitMessages:
         additions: 1341
         deletions: 92
         filesChanged: 39
+        files:
+          - .dockerignore
+          - .github/workflows/pto-tracker.yml
+          - .gitignore
+          - infra/azure/pto-tracker/README.md
+          - infra/azure/pto-tracker/main.bicep
+          - pto-tracker/.env.example
+          - pto-tracker/Dockerfile
+          - pto-tracker/docs/README.md
+          - pto-tracker/docs/microsoft-tenant-deployment.md
+          - pto-tracker/src/app/admin/page.tsx
+          - pto-tracker/src/app/api/audit/route.ts
+          - pto-tracker/src/app/api/auth/me/route.ts
+          - pto-tracker/src/app/api/import/staff/route.ts
+          - pto-tracker/src/app/api/requests/[id]/approve/route.ts
+          - pto-tracker/src/app/api/requests/[id]/cancel/route.ts
+          - pto-tracker/src/app/api/requests/[id]/deny/route.ts
+          - pto-tracker/src/app/layout.tsx
+          - pto-tracker/src/lib/auth/demo-provider.ts
+          - pto-tracker/src/lib/auth/entra-provider.test.ts
+          - pto-tracker/src/lib/auth/entra-provider.ts
+          - pto-tracker/src/lib/auth/session.ts
+          - pto-tracker/src/lib/auth/types.ts
+          - pto-tracker/src/lib/pto/read-model.ts
+          - pto-tracker/src/lib/store/csv-store.ts
+          - pto-tracker/src/lib/store/graph-lists-store.test.ts
+          - pto-tracker/src/lib/store/graph-lists-store.ts
+          - pto-tracker/src/lib/store/index.test.ts
+          - pto-tracker/src/lib/store/index.ts
+          - pto-tracker/src/lib/store/types.ts
+          - pto-tracker/src/lib/workflow/service.ts
+          - pto-tracker/src/middleware.ts
+          - pto-tracker/teams/README.md
+          - pto-tracker/teams/color.png
+          - pto-tracker/teams/manifest.template.json
+          - pto-tracker/teams/outline.png
+          - pto-tracker/templates/README.md
+          - pto-tracker/templates/pto-audit-list-columns.csv
+          - pto-tracker/templates/pto-requests-list-columns.csv
+          - pto-tracker/templates/staff-pto-balances-list-columns.csv
       - sha: 173cf60b662b2d671a7e03ee62d9bdc9dbffecc3
         message: "feat(pto): convert tracker to serverless"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/173cf60b662b2d671a7e03ee62d9bdc9dbffecc3
@@ -75,6 +131,64 @@ commitMessages:
         additions: 2226
         deletions: 673
         filesChanged: 57
+        files:
+          - .github/workflows/pto-tracker.yml
+          - .gitignore
+          - infra/azure/pto-tracker/README.md
+          - infra/azure/pto-tracker/serverless.bicep
+          - pto-tracker/.env.example
+          - pto-tracker/docs/microsoft-tenant-deployment.md
+          - pto-tracker/eslint.config.mjs
+          - pto-tracker/functions/.funcignore
+          - pto-tracker/functions/host.json
+          - pto-tracker/functions/local.settings.json.example
+          - pto-tracker/functions/package.json
+          - pto-tracker/functions/src/azure-functions.d.ts
+          - pto-tracker/functions/src/index.ts
+          - pto-tracker/functions/tsconfig.json
+          - pto-tracker/next.config.ts
+          - pto-tracker/package.json
+          - pto-tracker/scripts/serverless-smoke.ts
+          - pto-tracker/src/app/admin/AdminClient.tsx
+          - pto-tracker/src/app/admin/page.tsx
+          - pto-tracker/src/app/api/audit/route.ts
+          - pto-tracker/src/app/api/auth/login/route.ts
+          - pto-tracker/src/app/api/auth/logout/route.ts
+          - pto-tracker/src/app/api/auth/me/route.ts
+          - pto-tracker/src/app/api/calendar/route.ts
+          - pto-tracker/src/app/api/health/route.ts
+          - pto-tracker/src/app/api/import/staff/preview/route.ts
+          - pto-tracker/src/app/api/import/staff/route.ts
+          - pto-tracker/src/app/api/requests/[id]/approve/route.ts
+          - pto-tracker/src/app/api/requests/[id]/cancel/route.ts
+          - pto-tracker/src/app/api/requests/[id]/deny/route.ts
+          - pto-tracker/src/app/api/requests/route.ts
+          - pto-tracker/src/app/api/staff/route.ts
+          - pto-tracker/src/app/approvals/ApprovalsClient.tsx
+          - pto-tracker/src/app/approvals/page.tsx
+          - pto-tracker/src/app/calendar/CalendarClient.tsx
+          - pto-tracker/src/app/calendar/page.tsx
+          - pto-tracker/src/app/layout.tsx
+          - pto-tracker/src/app/my/MyClient.tsx
+          - pto-tracker/src/app/my/page.tsx
+          - pto-tracker/src/app/my/requests/MyRequestsClient.tsx
+          - pto-tracker/src/app/my/requests/page.tsx
+          - pto-tracker/src/app/page.tsx
+          - pto-tracker/src/app/requests/new/page.tsx
+          - pto-tracker/src/app/team/TeamClient.tsx
+          - pto-tracker/src/app/team/page.tsx
+          - pto-tracker/src/components/AuthProvider.tsx
+          - pto-tracker/src/components/PtoAppShell.tsx
+          - pto-tracker/src/lib/api/azure-functions-adapter.test.ts
+          - pto-tracker/src/lib/api/azure-functions-adapter.ts
+          - pto-tracker/src/lib/api/handlers.test.ts
+          - pto-tracker/src/lib/api/handlers.ts
+          - pto-tracker/src/lib/auth/entra-provider.test.ts
+          - pto-tracker/src/lib/auth/entra-provider.ts
+          - pto-tracker/src/lib/auth/session.ts
+          - pto-tracker/src/middleware.ts
+          - pto-tracker/staticwebapp.config.json
+          - pto-tracker/tsconfig.json
       - sha: 690a0464356793f796d343b5599b2bfbe31f0356
         message: "test(pto): add runtime benchmark"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/690a0464356793f796d343b5599b2bfbe31f0356
@@ -82,6 +196,9 @@ commitMessages:
         additions: 251
         deletions: 0
         filesChanged: 2
+        files:
+          - pto-tracker/scripts/runtime-benchmark.ts
+          - pto-tracker/scripts/serverless-smoke.ts
       - sha: 2c1b9da56497cbd8caf8baa836e477b5c1c7d4c0
         message: "feat(pto): add free-tier Entra token auth"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2c1b9da56497cbd8caf8baa836e477b5c1c7d4c0
@@ -89,6 +206,36 @@ commitMessages:
         additions: 817
         deletions: 163
         filesChanged: 29
+        files:
+          - .github/workflows/pto-tracker.yml
+          - bun.lock
+          - infra/azure/pto-tracker/README.md
+          - infra/azure/pto-tracker/serverless.bicep
+          - pto-tracker/.env.example
+          - pto-tracker/docs/microsoft-tenant-deployment.md
+          - pto-tracker/docs/security-review.md
+          - pto-tracker/functions/local.settings.json.example
+          - pto-tracker/package.json
+          - pto-tracker/src/app/admin/AdminClient.tsx
+          - pto-tracker/src/app/approvals/ApprovalsClient.tsx
+          - pto-tracker/src/app/calendar/CalendarClient.tsx
+          - pto-tracker/src/app/my/MyClient.tsx
+          - pto-tracker/src/app/my/requests/MyRequestsClient.tsx
+          - pto-tracker/src/app/team/TeamClient.tsx
+          - pto-tracker/src/components/ApprovalPanel.tsx
+          - pto-tracker/src/components/AuthProvider.tsx
+          - pto-tracker/src/components/PtoAppShell.tsx
+          - pto-tracker/src/components/RequestForm.tsx
+          - pto-tracker/src/lib/api/client.test.ts
+          - pto-tracker/src/lib/api/client.ts
+          - pto-tracker/src/lib/api/handlers.test.ts
+          - pto-tracker/src/lib/api/handlers.ts
+          - pto-tracker/src/lib/auth/entra-token-provider.test.ts
+          - pto-tracker/src/lib/auth/entra-token-provider.ts
+          - pto-tracker/src/lib/auth/index.ts
+          - pto-tracker/src/lib/auth/permissions.ts
+          - pto-tracker/staticwebapp.config.json
+          - pto-tracker/teams/README.md
   - repo: Myriad-Advisor-Solutions/ohcpwm-apps
     messages:
       - "feat: create ohpwm apps monorepo"
@@ -102,6 +249,113 @@ commitMessages:
         additions: 5414
         deletions: 0
         filesChanged: 106
+        files:
+          - .gitignore
+          - README.md
+          - bun.lock
+          - hub/app/api/health/route.ts
+          - hub/app/globals.css
+          - hub/app/layout.tsx
+          - hub/app/page.tsx
+          - hub/eslint.config.mjs
+          - hub/lib/apps.ts
+          - hub/next-env.d.ts
+          - hub/next.config.ts
+          - hub/package.json
+          - hub/postcss.config.mjs
+          - hub/tsconfig.json
+          - ofac/eslint.config.mjs
+          - ofac/next-env.d.ts
+          - ofac/next.config.ts
+          - ofac/package.json
+          - ofac/postcss.config.mjs
+          - ofac/src/app/actions.ts
+          - ofac/src/app/api/health/route.ts
+          - ofac/src/app/api/ofac/clients/route.ts
+          - ofac/src/app/api/ofac/export/route.ts
+          - ofac/src/app/api/ofac/screenings/[id]/decision/route.ts
+          - ofac/src/app/api/ofac/screenings/route.ts
+          - ofac/src/app/api/ofac/search/route.ts
+          - ofac/src/app/api/ofac/sync/route.ts
+          - ofac/src/app/clients/new/page.tsx
+          - ofac/src/app/globals.css
+          - ofac/src/app/layout.tsx
+          - ofac/src/app/page.tsx
+          - ofac/src/app/screenings/[id]/page.tsx
+          - ofac/src/app/screenings/page.tsx
+          - ofac/src/app/search/page.tsx
+          - ofac/src/app/settings/page.tsx
+          - ofac/src/app/sync/page.tsx
+          - ofac/src/components/metric-card.tsx
+          - ofac/src/lib/__tests__/matching.test.ts
+          - ofac/src/lib/__tests__/sync.test.ts
+          - ofac/src/lib/data.ts
+          - ofac/src/lib/format.ts
+          - ofac/src/lib/matching.ts
+          - ofac/src/lib/sync-cli.ts
+          - ofac/src/lib/sync.ts
+          - ofac/tsconfig.json
+          - package.json
+          - packages/brand/assets/logo.png
+          - packages/brand/package.json
+          - packages/brand/src/index.ts
+          - packages/brand/src/styles.css
+          - packages/brand/tsconfig.json
+          - packages/contracts/package.json
+          - packages/contracts/src/auth.ts
+          - packages/contracts/src/index.ts
+          - packages/contracts/src/ofac.test.ts
+          - packages/contracts/src/ofac.ts
+          - packages/contracts/src/pricing.test.ts
+          - packages/contracts/src/pricing.ts
+          - packages/contracts/tsconfig.json
+          - packages/db/package.json
+          - packages/db/src/index.ts
+          - packages/db/src/migrate.ts
+          - packages/db/src/ofac.test.ts
+          - packages/db/src/ofac.ts
+          - packages/db/src/pricing.test.ts
+          - packages/db/src/pricing.ts
+          - packages/db/src/sqlite.ts
+          - packages/db/tsconfig.json
+          - packages/ui/package.json
+          - packages/ui/src/badge.tsx
+          - packages/ui/src/button.tsx
+          - packages/ui/src/card.tsx
+          - packages/ui/src/form.tsx
+          - packages/ui/src/images.d.ts
+          - packages/ui/src/index.ts
+          - packages/ui/src/navigation/app-shell.tsx
+          - packages/ui/src/styles.css
+          - packages/ui/src/utils.ts
+          - packages/ui/tsconfig.json
+          - pricing/eslint.config.mjs
+          - pricing/next-env.d.ts
+          - pricing/next.config.ts
+          - pricing/package.json
+          - pricing/postcss.config.mjs
+          - pricing/src/app/actions.ts
+          - pricing/src/app/api/health/route.ts
+          - pricing/src/app/globals.css
+          - pricing/src/app/layout.tsx
+          - pricing/src/app/page.tsx
+          - pricing/src/app/recruits/[id]/model/page.tsx
+          - pricing/src/app/recruits/[id]/page.tsx
+          - pricing/src/app/recruits/new/page.tsx
+          - pricing/src/app/recruits/page.tsx
+          - pricing/src/app/settings/page.tsx
+          - pricing/src/components/metric-card.tsx
+          - pricing/src/components/recruit-form.tsx
+          - pricing/src/lib/__tests__/calculation.test.ts
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/calculation.ts
+          - pricing/src/lib/data.ts
+          - pricing/src/lib/format.ts
+          - pricing/src/lib/report.ts
+          - pricing/src/lib/seed.ts
+          - pricing/tsconfig.json
+          - scripts/migrate.ts
+          - tsconfig.base.json
       - sha: 94de1ee6fa5393c3b0cecdcbc05804fe988216b8
         message: "chore: initial commit"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/94de1ee6fa5393c3b0cecdcbc05804fe988216b8
@@ -109,6 +363,13 @@ commitMessages:
         additions: 7
         deletions: 7
         filesChanged: 6
+        files:
+          - hub/app/page.tsx
+          - hub/eslint.config.mjs
+          - hub/lib/apps.ts
+          - ofac/eslint.config.mjs
+          - packages/ui/src/navigation/app-shell.tsx
+          - pricing/eslint.config.mjs
       - sha: a989fc0c2133af3b4931973d58e3d25df602f623
         message: "feat: add authentication and auditing features to OFAC app"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a989fc0c2133af3b4931973d58e3d25df602f623
@@ -116,6 +377,71 @@ commitMessages:
         additions: 1790
         deletions: 172
         filesChanged: 64
+        files:
+          - README.md
+          - bun.lock
+          - ofac/next.config.ts
+          - ofac/package.json
+          - ofac/src/app/actions.ts
+          - ofac/src/app/api/auth/login/route.ts
+          - ofac/src/app/api/ofac/audit/route.ts
+          - ofac/src/app/api/ofac/clients/route.ts
+          - ofac/src/app/api/ofac/export/route.ts
+          - ofac/src/app/api/ofac/screenings/[id]/decision/route.ts
+          - ofac/src/app/api/ofac/search/route.ts
+          - ofac/src/app/api/ofac/sync/route.ts
+          - ofac/src/app/settings/page.tsx
+          - ofac/src/app/sync/page.tsx
+          - ofac/src/lib/__tests__/sync.test.ts
+          - ofac/src/lib/auth.ts
+          - ofac/src/lib/data.ts
+          - ofac/src/lib/http.ts
+          - ofac/src/lib/sync-cli.ts
+          - ofac/src/lib/sync-runner.ts
+          - package.json
+          - packages/audit/package.json
+          - packages/audit/src/audit.test.ts
+          - packages/audit/src/index.ts
+          - packages/audit/src/migrate.ts
+          - packages/audit/tsconfig.json
+          - packages/auth/package.json
+          - packages/auth/src/auth.test.ts
+          - packages/auth/src/index.ts
+          - packages/auth/tsconfig.json
+          - packages/contracts/src/ofac.ts
+          - packages/contracts/src/pricing.ts
+          - packages/db/package.json
+          - packages/db/src/ofac.test.ts
+          - packages/db/src/ofac.ts
+          - packages/db/src/pricing.test.ts
+          - packages/db/src/pricing.ts
+          - packages/jobs/package.json
+          - packages/jobs/src/index.ts
+          - packages/jobs/src/jobs.test.ts
+          - packages/jobs/tsconfig.json
+          - packages/storage/package.json
+          - packages/storage/src/index.ts
+          - packages/storage/src/storage.test.ts
+          - packages/storage/tsconfig.json
+          - pricing/next.config.ts
+          - pricing/package.json
+          - pricing/src/app/actions.ts
+          - pricing/src/app/api/auth/login/route.ts
+          - pricing/src/app/api/pricing/recruits/[id]/archive/route.ts
+          - pricing/src/app/api/pricing/recruits/[id]/duplicate/route.ts
+          - pricing/src/app/api/pricing/recruits/[id]/model/route.ts
+          - pricing/src/app/api/pricing/recruits/[id]/reports/route.ts
+          - pricing/src/app/api/pricing/recruits/[id]/route.ts
+          - pricing/src/app/api/pricing/recruits/route.ts
+          - pricing/src/app/api/pricing/reports/[reportId]/pdf/route.ts
+          - pricing/src/app/recruits/[id]/model/page.tsx
+          - pricing/src/app/recruits/[id]/page.tsx
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/auth.ts
+          - pricing/src/lib/data.ts
+          - pricing/src/lib/http.ts
+          - pricing/src/lib/report.ts
+          - pricing/src/lib/reports.ts
 releases: []
 externalContributions: []
 codeReviews: []
@@ -165,6 +491,5 @@ hoursEstimate:
   volumeHours: 13
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

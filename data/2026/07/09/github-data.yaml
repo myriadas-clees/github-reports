@@ -61,6 +61,33 @@ commitMessages:
         additions: 1817
         deletions: 135
         filesChanged: 26
+        files:
+          - docs/azure-serverless-plan.md
+          - docs/deploy-asap.md
+          - hub/README.md
+          - hub/app/globals.css
+          - hub/app/hub/layout.tsx
+          - hub/app/hub/page.tsx
+          - hub/app/layout.tsx
+          - hub/app/login/layout.tsx
+          - hub/app/login/page.tsx
+          - hub/app/page.tsx
+          - hub/components/HubAuthProvider.tsx
+          - hub/components/HubLauncher.tsx
+          - hub/components/HubThemeProvider.tsx
+          - hub/components/LandingPage.tsx
+          - hub/components/SiteFooter.tsx
+          - hub/lib/apps.ts
+          - hub/lib/auth.ts
+          - hub/package.json
+          - hub/public/hero-skyline.jpg
+          - hub/public/logo-m-color.png
+          - hub/public/logo-m-white.png
+          - hub/public/logo-white-red.png
+          - hub/public/section-approach.jpg
+          - hub/public/section-workspace.jpg
+          - hub/public/wallpaper-myriad-v05.jpg
+          - hub/staticwebapp.config.json
       - sha: 4d8b785bbe37d9a2ddb7634ead21a26c4fe771c9
         message: "fix(hub): remove duplicate SWA routes"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4d8b785bbe37d9a2ddb7634ead21a26c4fe771c9
@@ -68,6 +95,8 @@ commitMessages:
         additions: 0
         deletions: 10
         filesChanged: 1
+        files:
+          - hub/staticwebapp.config.json
       - sha: 36af5875cb4e89c8989f0b54c2bc1b41c44ebbdd
         message: "fix(ci): align hub smoke root status"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/36af5875cb4e89c8989f0b54c2bc1b41c44ebbdd
@@ -75,6 +104,8 @@ commitMessages:
         additions: 1
         deletions: 1
         filesChanged: 1
+        files:
+          - .github/workflows/azure-static-web-apps.yml
       - sha: fd79bc881c5b3dc75fb90b51a18c17c51563de86
         message: "docs(brand): use Myriad name only"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/fd79bc881c5b3dc75fb90b51a18c17c51563de86
@@ -82,6 +113,15 @@ commitMessages:
         additions: 20
         deletions: 8
         filesChanged: 8
+        files:
+          - .agents/skills/myriad-branding/SKILL.md
+          - .agents/skills/myriad-branding/references/brand-guidelines.md
+          - .agents/skills/myriad-branding/references/digital-product-brand.md
+          - hub/app/hub/layout.tsx
+          - hub/app/layout.tsx
+          - hub/app/login/layout.tsx
+          - hub/components/HubLauncher.tsx
+          - hub/components/LandingPage.tsx
       - sha: a679028609e5eaafecc70b1cb6b131dad2c873ed
         message: "fix(hub): update app URLs to relative paths for apps and services"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a679028609e5eaafecc70b1cb6b131dad2c873ed
@@ -89,6 +129,8 @@ commitMessages:
         additions: 5
         deletions: 5
         filesChanged: 1
+        files:
+          - hub/lib/apps.ts
   - repo: Myriad-Advisor-Solutions/ohcpwm-apps
     messages:
       - "feat(pricing): add Streamlit-parity recruit model UX"
@@ -107,6 +149,47 @@ commitMessages:
         additions: 3970
         deletions: 265
         filesChanged: 40
+        files:
+          - bun.lock
+          - docs/pricing-scenario-rules.md
+          - pricing/package.json
+          - pricing/public/model-logos/README.md
+          - pricing/public/model-logos/ohc-finet.png
+          - pricing/public/model-logos/ohc.png
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/assumptions-tab.test.tsx
+          - pricing/src/components/__tests__/dataframe-table.test.tsx
+          - pricing/src/components/__tests__/payout-breakdown-donut.test.tsx
+          - pricing/src/components/__tests__/pricing-graphs.test.tsx
+          - pricing/src/components/__tests__/pricing-workstation-client.test.tsx
+          - pricing/src/components/__tests__/scenario-model-tab.test.tsx
+          - pricing/src/components/assumptions-tab.tsx
+          - pricing/src/components/dataframe-table.tsx
+          - pricing/src/components/payout-breakdown-donut.tsx
+          - pricing/src/components/percent-slider.tsx
+          - pricing/src/components/pricing-graphs.tsx
+          - pricing/src/components/pricing-static-pages.tsx
+          - pricing/src/components/recruit-archive-section.tsx
+          - pricing/src/components/recruit-detail-hero.tsx
+          - pricing/src/components/recruit-detail-panels.tsx
+          - pricing/src/components/recruit-form.tsx
+          - pricing/src/components/recruit-model-shell.tsx
+          - pricing/src/components/recruit-model-tab-icon.tsx
+          - pricing/src/components/scenario-model-tab.tsx
+          - pricing/src/components/stepper-number-input.tsx
+          - pricing/src/lib/__tests__/calculation.test.ts
+          - pricing/src/lib/__tests__/pricing-visibility.test.ts
+          - pricing/src/lib/__tests__/recruit-model-tabs.test.ts
+          - pricing/src/lib/__tests__/workbook-output.test.ts
+          - pricing/src/lib/__tests__/workstation-sections.test.ts
+          - pricing/src/lib/__tests__/workstation.test.ts
+          - pricing/src/lib/calculation.ts
+          - pricing/src/lib/edit-view.ts
+          - pricing/src/lib/pricing-visibility.ts
+          - pricing/src/lib/recruit-model-tabs.ts
+          - pricing/src/lib/report/excel.ts
+          - pricing/src/lib/report/model.ts
+          - pricing/src/lib/workstation.ts
       - sha: 49c568ad75413b9cb49503410f68d2c59798b283
         message: "fix(pricing): align workbook tests with sample template"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/49c568ad75413b9cb49503410f68d2c59798b283
@@ -114,6 +197,9 @@ commitMessages:
         additions: 10
         deletions: 13
         filesChanged: 2
+        files:
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/__tests__/workbook-preview.test.ts
       - sha: 0517440acc05f8acf59b7dabcf3c361c6cd5c735
         message: "fix(pricing): allow ColumnDef any for dataframe table"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0517440acc05f8acf59b7dabcf3c361c6cd5c735
@@ -121,6 +207,8 @@ commitMessages:
         additions: 2
         deletions: 0
         filesChanged: 1
+        files:
+          - pricing/src/components/dataframe-table.tsx
       - sha: 419a6987343e59fa2ea9654485bf72bb2ffb354c
         message: "ci: add issue forms and project triage"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/419a6987343e59fa2ea9654485bf72bb2ffb354c
@@ -128,6 +216,11 @@ commitMessages:
         additions: 435
         deletions: 0
         filesChanged: 4
+        files:
+          - .github/ISSUE_TEMPLATE/bug_report.yml
+          - .github/ISSUE_TEMPLATE/config.yml
+          - .github/ISSUE_TEMPLATE/feature_request.yml
+          - .github/workflows/issue-project-triage.yml
       - sha: 186a805363ae235665273d678149dc2a30b2f5eb
         message: "ci: narrow issue apps and default P3"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/186a805363ae235665273d678149dc2a30b2f5eb
@@ -135,6 +228,9 @@ commitMessages:
         additions: 4
         deletions: 10
         filesChanged: 2
+        files:
+          - .github/ISSUE_TEMPLATE/bug_report.yml
+          - .github/ISSUE_TEMPLATE/feature_request.yml
       - sha: c5493346be258f82cbaa5db03a9e678b83712291
         message: "ci: default bug env to staging"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c5493346be258f82cbaa5db03a9e678b83712291
@@ -142,6 +238,8 @@ commitMessages:
         additions: 1
         deletions: 0
         filesChanged: 1
+        files:
+          - .github/ISSUE_TEMPLATE/bug_report.yml
       - sha: f16c96d75d7d6f67519b13a2c4c72a9b5c56c04c
         message: "fix(pricing): correct defaults, costs, and settings"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f16c96d75d7d6f67519b13a2c4c72a9b5c56c04c
@@ -149,6 +247,31 @@ commitMessages:
         additions: 442
         deletions: 136
         filesChanged: 24
+        files:
+          - AGENTS.md
+          - docs/pricing-scenario-rules.md
+          - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+          - pricing/src/components/__tests__/pricing-workstation-client.test.tsx
+          - pricing/src/components/__tests__/scenario-model-tab.test.tsx
+          - pricing/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+          - pricing/src/components/excel-sheet/workstation-sheet-defs.tsx
+          - pricing/src/components/new-recruit-wizard.tsx
+          - pricing/src/components/pricing-quick-settings.tsx
+          - pricing/src/components/pricing-static-pages.tsx
+          - pricing/src/components/pricing-theme-controller.tsx
+          - pricing/src/components/pricing-theme-toggle.tsx
+          - pricing/src/components/pricing-user-menu.tsx
+          - pricing/src/components/pricing-workstation-client.tsx
+          - pricing/src/components/scenario-model-tab.tsx
+          - pricing/src/lib/__tests__/pricing-user-settings.test.ts
+          - pricing/src/lib/__tests__/recruit-model-tabs.test.ts
+          - pricing/src/lib/__tests__/recruit-routes.test.ts
+          - pricing/src/lib/__tests__/workbook-output.test.ts
+          - pricing/src/lib/pricing-theme.ts
+          - pricing/src/lib/pricing-user-settings.ts
+          - pricing/src/lib/recruit-model-tabs.ts
+          - pricing/src/lib/recruit-routes.ts
+          - pricing/src/lib/workbook-output.ts
       - sha: 0b068a4d53a7c326957258354ccc3011cb74a7b0
         message: "fix(pricing): narrow workbook test cell"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0b068a4d53a7c326957258354ccc3011cb74a7b0
@@ -156,6 +279,8 @@ commitMessages:
         additions: 1
         deletions: 1
         filesChanged: 1
+        files:
+          - pricing/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
 releases: []
 externalContributions: []
 codeReviews: []
@@ -210,6 +335,5 @@ hoursEstimate:
   volumeHours: 13
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

@@ -40,15 +40,13 @@ pullRequests:
       Why
 
 
-      Issue #11 lacked an explicit production-target matrix and a safe redeploy/rollback procedure for the unified Hub
-      Static Web App.
+      Issue #11 lacked an explicit production-target matrix and a safe redeploy/rollback procedure for the unified Hub Static Web App.
 
 
       What changed
 
 
-      - Map Hub, Onboarding, PTO, Pricing/legacy Proforma, Excelerate, and Valuation routes to their static and
-      Functions artifacts
+      - Map Hub, Onboarding, PTO, Pricing/legacy Proforma, Excelerate, and Valuation routes to their static and Functions artifacts
 
       - List required repositor...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/69
@@ -70,6 +68,8 @@ pullRequests:
         message: "docs(deploy): document app target matrix"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f9da31b388bc4cb6e35177fa365bf9396b41c308
         authoredAt: 2026-07-30T20:37:43Z
+        files:
+          - docs/azure-serverless-plan.md
     workTimestamps:
       - 2026-07-30T20:37:43Z
     workAdditions: 50
@@ -81,9 +81,7 @@ pullRequests:
       ## Why
 
 
-      The managed-SWA deployment reaches Pricing Cosmos configuration but returns 503 because Pricing explicitly
-      suppressed the shared client's existing `AZURE_COSMOS_KEY` fallback. Azure Static Web Apps managed Functions do
-      not expose managed identity to application code, while the former Proform...
+      The managed-SWA deployment reaches Pricing Cosmos configuration but returns 503 because Pricing explicitly suppressed the shared client's existing `AZURE_COSMOS_KEY` fallback. Azure Static Web Apps managed Functions do not expose managed identity to application code, while the former Proform...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/68
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: merged
@@ -106,11 +104,21 @@ pullRequests:
         message: "fix(pricing): preserve Cosmos key fallback"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e12f4b01bc576ac4b00084e563335baed2e72421
         authoredAt: 2026-07-30T18:14:45Z
+        files:
+          - docs/deploy-asap.md
+          - infra/azure/README.md
+          - pricing/.env.example
+          - pricing/README.md
+          - pricing/src/lib/__tests__/runtime-config.test.ts
+          - pricing/src/lib/cosmos-data.ts
+          - scripts/tooling.test.ts
       - &a17
         sha: 3689a6bfbb542c880a542ab273eb2954efb23a53
         message: "fix(pricing): mirror Cosmos key setting"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3689a6bfbb542c880a542ab273eb2954efb23a53
         authoredAt: 2026-07-30T18:20:04Z
+        files:
+          - pricing/functions/local.settings.json.example
     workTimestamps:
       - 2026-07-30T18:14:45Z
       - 2026-07-30T18:20:04Z
@@ -130,9 +138,7 @@ pullRequests:
       Why
 
 
-      The managed SWA deployment still has the established Proforma and Azure Cosmos app settings. After the Pricing
-      migration, the managed API read only `PRICING_*` names, causing `/api/pricing/health` and signed-in Pricing
-      requests to fail without unnecessary duplicate Azure configuration.
+      The managed SWA deployment still has the established Proforma and Azure Cosmos app settings. After the Pricing migration, the managed API read only `PRICING_*` names, causing `/api/pricing/health` and signed-in Pricing requests to fail without unnecessary duplicate Azure configuration.
 
 
       What ch...
@@ -157,16 +163,39 @@ pullRequests:
         message: "fix(pricing): accept legacy runtime settings"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e2c4d20e045f387eadf146d75fb6d4073ef7203c
         authoredAt: 2026-07-30T17:18:42Z
+        files:
+          - docs/deploy-asap.md
+          - infra/azure/README.md
+          - pricing/README.md
+          - pricing/src/lib/__tests__/runtime-config.test.ts
+          - pricing/src/lib/api/handlers.ts
+          - pricing/src/lib/api/request-session.ts
+          - pricing/src/lib/cosmos-data.ts
+          - pricing/src/lib/data.ts
+          - pricing/src/lib/runtime-config.ts
       - &a14
         sha: 3324034fe7c3b54f6e1ce2359e0b8ca83d5b9e88
         message: "fix(pricing): support shared Cosmos partition"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3324034fe7c3b54f6e1ce2359e0b8ca83d5b9e88
         authoredAt: 2026-07-30T17:32:54Z
+        files:
+          - docs/deploy-asap.md
+          - infra/azure/README.md
+          - pricing/.env.example
+          - pricing/functions/local.settings.json.example
+          - pricing/src/lib/__tests__/runtime-config.test.ts
+          - pricing/src/lib/cosmos-data.ts
+          - pricing/src/lib/runtime-config.ts
       - &a15
         sha: 2d3261be3fa559c2a3440ffbd1918a3af3aca9cd
         message: "fix(pricing): couple Cosmos fallbacks"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2d3261be3fa559c2a3440ffbd1918a3af3aca9cd
         authoredAt: 2026-07-30T17:44:02Z
+        files:
+          - docs/deploy-asap.md
+          - infra/azure/README.md
+          - pricing/src/lib/__tests__/runtime-config.test.ts
+          - pricing/src/lib/runtime-config.ts
     workTimestamps:
       - 2026-07-30T17:18:42Z
       - 2026-07-30T17:32:54Z
@@ -190,9 +219,7 @@ pullRequests:
       Why
 
 
-      PR #64 replaced the established single-SWA upload with a separate linked Function App, OIDC login, and new
-      infrastructure variables. Production still uses the existing Azure Static Web App, so that pipeline could not
-      publish the Pricing migration.
+      PR #64 replaced the established single-SWA upload with a separate linked Function App, OIDC login, and new infrastructure variables. Production still uses the existing Azure Static Web App, so that pipeline could not publish the Pricing migration.
 
 
       What changed
@@ -223,61 +250,117 @@ pullRequests:
         message: "fix(deploy): restore managed SWA API"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/24698048bbf47feb4c2ff0ec271105609cb35477
         authoredAt: 2026-07-30T13:00:19Z
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - README.md
+          - docs/azure-serverless-plan.md
+          - docs/deploy-asap.md
+          - infra/azure/README.md
+          - scripts/tooling.test.ts
       - &a2
         sha: cf2a0eaecdd87cd4ebb7fcc2c5c489bd3281e4d7
         message: "fix(deploy): bind preview cleanup environment"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/cf2a0eaecdd87cd4ebb7fcc2c5c489bd3281e4d7
         authoredAt: 2026-07-30T13:04:40Z
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - scripts/tooling.test.ts
       - &a3
         sha: 54645f34bd66232864d63e1bc268c96be224ccfd
         message: "docs(deploy): record managed SWA invariants"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/54645f34bd66232864d63e1bc268c96be224ccfd
         authoredAt: 2026-07-30T13:12:28Z
+        files:
+          - docs/azure-serverless-plan.md
+          - docs/deploy-asap.md
+          - infra/azure/README.md
+          - scripts/tooling.test.ts
       - &a4
         sha: 567ff4a7dbc1997b53452c276b0c8e0d665922bf
         message: "fix(deploy): restrict manual deploy refs"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/567ff4a7dbc1997b53452c276b0c8e0d665922bf
         authoredAt: 2026-07-30T13:30:25Z
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - scripts/tooling.test.ts
       - &a5
         sha: b9b25cc069a8df920ffec4090f4e98cbac7f8047
         message: "docs(azure): require manual auth probe"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b9b25cc069a8df920ffec4090f4e98cbac7f8047
         authoredAt: 2026-07-30T13:45:12Z
+        files:
+          - infra/azure/README.md
       - &a6
         sha: 9efcb2db2a1a9d8069417ce6e7b18f16cabfa662
         message: "docs(deploy): record PTO Cosmos settings"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9efcb2db2a1a9d8069417ce6e7b18f16cabfa662
         authoredAt: 2026-07-30T13:54:56Z
+        files:
+          - docs/deploy-asap.md
+          - infra/azure/README.md
+          - scripts/tooling.test.ts
       - &a7
         sha: 57cc1cff9663e1c655de2cb3e41132fcd7433669
         message: "fix(deploy): isolate managed API artifacts"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/57cc1cff9663e1c655de2cb3e41132fcd7433669
         authoredAt: 2026-07-30T14:18:42Z
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - docs/azure-serverless-plan.md
+          - docs/deploy-asap.md
+          - onboarding/apps/dashboard/functions/package.json
+          - onboarding/apps/dashboard/functions/src/index.ts
+          - pto-tracker/functions/package.json
+          - pto-tracker/functions/src/index.ts
+          - scripts/tooling.test.ts
       - &a8
         sha: 5fa309e85f9b08db5676160c7851682c6b9b1481
         message: "fix(deploy): preserve start-date recovery"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5fa309e85f9b08db5676160c7851682c6b9b1481
         authoredAt: 2026-07-30T14:33:23Z
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - docs/azure-serverless-plan.md
+          - docs/repository-operations.md
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+          - scripts/tooling.test.ts
       - &a9
         sha: 8b5696273196d7fc926a785d9dc5563e9df676a6
         message: "fix(deploy): isolate preview uploads"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8b5696273196d7fc926a785d9dc5563e9df676a6
         authoredAt: 2026-07-30T14:50:48Z
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - docs/deploy-asap.md
+          - infra/azure/README.md
+          - scripts/tooling.test.ts
       - &a10
         sha: 409c135643b8cd314fcb648e01b504ca903018ac
         message: "docs(deploy): record PTO auth mode"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/409c135643b8cd314fcb648e01b504ca903018ac
         authoredAt: 2026-07-30T15:53:57Z
+        files:
+          - docs/deploy-asap.md
+          - infra/azure/README.md
+          - scripts/tooling.test.ts
       - &a11
         sha: f06322d8aa41a816051bc63071fa62e881099500
         message: "fix(onboarding): isolate recovery errors"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f06322d8aa41a816051bc63071fa62e881099500
         authoredAt: 2026-07-30T16:08:38Z
+        files:
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
       - &a12
         sha: 6335b2b8d9911746ffa939b535e53d784cd1acb0
         message: "fix(deploy): refresh labeled previews"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6335b2b8d9911746ffa939b535e53d784cd1acb0
         authoredAt: 2026-07-30T16:22:11Z
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - docs/repository-operations.md
+          - scripts/tooling.test.ts
     workTimestamps:
       - 2026-07-30T13:00:19Z
       - 2026-07-30T13:04:40Z
@@ -346,6 +429,11 @@ pullRequests:
         message: "fix(github): align triage project fields"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/730c87e18bffb8f156c0e2fb19b2a1a873db445f
         authoredAt: 2026-07-30T20:15:25Z
+        files:
+          - docs/repository-operations.md
+          - scripts/github/configure-repository.ts
+          - scripts/github/triage-issue.test.ts
+          - scripts/github/triage-issue.ts
     workTimestamps:
       - 2026-07-30T20:15:25Z
     workAdditions: 10
@@ -361,8 +449,7 @@ prsInProgress:
       Why
 
 
-      The product deployment workflow compiled PTO Tracker in demo authentication mode, exposing local test personas in
-      the production sign-in screen.
+      The product deployment workflow compiled PTO Tracker in demo authentication mode, exposing local test personas in the production sign-in screen.
 
 
       What changed
@@ -392,6 +479,13 @@ prsInProgress:
         message: "fix(pto): remove production personas"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2bf5fe8e4d5a7119d2a0f75d2dfa6da5ff02697d
         authoredAt: 2026-07-30T20:56:00Z
+        files:
+          - .github/workflows/azure-static-web-apps-products.yml
+          - .github/workflows/azure-static-web-apps.yml
+          - pto-tracker/src/lib/api/client.test.ts
+          - pto-tracker/src/lib/auth/navigation.test.ts
+          - pto-tracker/src/lib/auth/navigation.ts
+          - scripts/tooling.test.ts
     workTimestamps:
       - 2026-07-30T20:56:00Z
     workAdditions: 60
@@ -408,8 +502,7 @@ prsInProgress:
       Why
 
 
-      Alpha workspaces generate a workstream and task set, but the supported UI had no safe cleanup lifecycle.
-      Disposable test data therefore remained in active selectors after verification.
+      Alpha workspaces generate a workstream and task set, but the supported UI had no safe cleanup lifecycle. Disposable test data therefore remained in active selectors after verification.
 
 
       What changed
@@ -438,6 +531,26 @@ prsInProgress:
         message: "feat(onboarding): archive workstreams"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4deb3bba0333420920fa50da2396dd7834527702
         authoredAt: 2026-07-30T20:54:11Z
+        files:
+          - onboarding/apps/dashboard/app/api/[...path]/route.ts
+          - onboarding/apps/dashboard/app/settings/page.tsx
+          - onboarding/apps/dashboard/components/workstream-archive-settings.tsx
+          - onboarding/apps/dashboard/functions/src/index.ts
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+          - onboarding/apps/dashboard/lib/api/client.test.ts
+          - onboarding/apps/dashboard/lib/api/client.ts
+          - onboarding/apps/dashboard/lib/api/handlers.test.ts
+          - onboarding/apps/dashboard/lib/api/handlers.ts
+          - packages/contracts/src/onboarding.ts
+          - packages/db/src/client-isolation.test.ts
+          - packages/db/src/cosmos-queries.ts
+          - packages/db/src/migrate-database.test.ts
+          - packages/db/src/migrate-database.ts
+          - packages/db/src/queries.ts
+          - packages/db/src/runtime.ts
+          - packages/db/src/schema.ts
+          - packages/db/src/sqlite-migration-source.ts
     workTimestamps:
       - 2026-07-30T20:54:11Z
     workAdditions: 431
@@ -467,9 +580,7 @@ prsInProgress:
       Why
 
 
-      Four app workflows had integrity gaps at their serverless boundaries: PTO cancellation and request policy were
-      incomplete, Excelerate review receipts were replayable, Pricing report snapshots lacked input identity, and
-      Valuation approvals lacked immutable provenance.
+      Four app workflows had integrity gaps at their serverless boundaries: PTO cancellation and request policy were incomplete, Excelerate review receipts were replayable, Pricing report snapshots lacked input identity, and Valuation approvals lacked immutable provenance.
 
 
       What changed
@@ -500,6 +611,41 @@ prsInProgress:
         message: "feat(workflows): restore review integrity"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/95c6ebd054b69f319626c4f979d734a2e8561a92
         authoredAt: 2026-07-30T21:01:56Z
+        files:
+          - excelerate/.env.example
+          - excelerate/README.md
+          - excelerate/functions/local.settings.json.example
+          - excelerate/src/app/api/excelerate/api.test.ts
+          - excelerate/src/components/excelerate-client.tsx
+          - excelerate/src/lib/api/azure-functions-adapter.ts
+          - excelerate/src/lib/api/handlers.ts
+          - excelerate/src/lib/excelerate/processor.ts
+          - excelerate/src/lib/excelerate/types.ts
+          - packages/contracts/src/pricing.ts
+          - packages/contracts/src/pto.ts
+          - packages/contracts/src/valuation.ts
+          - pricing/src/lib/report-storage.ts
+          - pto-tracker/functions/src/index.ts
+          - pto-tracker/src/app/api/[...path]/route.ts
+          - pto-tracker/src/app/my/requests/MyRequestsClient.tsx
+          - pto-tracker/src/lib/api/azure-functions-adapter.ts
+          - pto-tracker/src/lib/api/handlers.test.ts
+          - pto-tracker/src/lib/api/handlers.ts
+          - pto-tracker/src/lib/csv/paths.ts
+          - pto-tracker/src/lib/csv/reader.ts
+          - pto-tracker/src/lib/csv/writer.ts
+          - pto-tracker/src/lib/pto/request-policy.test.ts
+          - pto-tracker/src/lib/pto/request-policy.ts
+          - pto-tracker/src/lib/store/graph-lists-store.ts
+          - pto-tracker/src/lib/workflow/service.ts
+          - valuation/functions/src/index.ts
+          - valuation/src/app/api/[...path]/route.ts
+          - valuation/src/lib/api/azure-functions-adapter.ts
+          - valuation/src/lib/api/handlers.ts
+          - valuation/src/lib/persistence/cosmos-repository.ts
+          - valuation/src/lib/persistence/repository.ts
+          - valuation/src/lib/review-integrity.test.ts
+          - valuation/src/lib/review-integrity.ts
     workTimestamps:
       - 2026-07-30T21:01:56Z
     workAdditions: 523
@@ -591,6 +737,20 @@ commitMessages:
         additions: 286
         deletions: 274
         filesChanged: 13
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - README.md
+          - docs/azure-serverless-plan.md
+          - docs/deploy-asap.md
+          - docs/repository-operations.md
+          - infra/azure/README.md
+          - onboarding/apps/dashboard/functions/package.json
+          - onboarding/apps/dashboard/functions/src/index.ts
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+          - pto-tracker/functions/package.json
+          - pto-tracker/functions/src/index.ts
+          - scripts/tooling.test.ts
       - *a13
       - *a14
       - *a15
@@ -601,6 +761,18 @@ commitMessages:
         additions: 312
         deletions: 35
         filesChanged: 11
+        files:
+          - docs/deploy-asap.md
+          - infra/azure/README.md
+          - pricing/.env.example
+          - pricing/README.md
+          - pricing/functions/local.settings.json.example
+          - pricing/src/lib/__tests__/runtime-config.test.ts
+          - pricing/src/lib/api/handlers.ts
+          - pricing/src/lib/api/request-session.ts
+          - pricing/src/lib/cosmos-data.ts
+          - pricing/src/lib/data.ts
+          - pricing/src/lib/runtime-config.ts
       - *a16
       - *a17
       - sha: c260ef199a80f6af41945c72e08ac439033a2d14
@@ -610,6 +782,15 @@ commitMessages:
         additions: 66
         deletions: 32
         filesChanged: 8
+        files:
+          - docs/deploy-asap.md
+          - infra/azure/README.md
+          - pricing/.env.example
+          - pricing/README.md
+          - pricing/functions/local.settings.json.example
+          - pricing/src/lib/__tests__/runtime-config.test.ts
+          - pricing/src/lib/cosmos-data.ts
+          - scripts/tooling.test.ts
       - *a18
       - sha: 4c1c59b16675e165106f948b9e106bb701a90d00
         message: "fix(github): align triage project fields"
@@ -618,6 +799,11 @@ commitMessages:
         additions: 10
         deletions: 10
         filesChanged: 4
+        files:
+          - docs/repository-operations.md
+          - scripts/github/configure-repository.ts
+          - scripts/github/triage-issue.test.ts
+          - scripts/github/triage-issue.ts
       - *a19
       - sha: 3976484058567d27b102df4846c28abac9d76455
         message: "docs(deploy): document app target matrix"
@@ -626,6 +812,8 @@ commitMessages:
         additions: 50
         deletions: 0
         filesChanged: 1
+        files:
+          - docs/azure-serverless-plan.md
       - *a20
       - *a21
       - *a22
@@ -639,6 +827,15 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-30T18:20:21Z
     body: null
+    prFiles:
+      - docs/deploy-asap.md
+      - infra/azure/README.md
+      - pricing/.env.example
+      - pricing/README.md
+      - pricing/functions/local.settings.json.example
+      - pricing/src/lib/__tests__/runtime-config.test.ts
+      - pricing/src/lib/cosmos-data.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 67
     prTitle: "fix(pricing): accept legacy runtime settings"
@@ -646,6 +843,18 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-30T17:33:14Z
     body: null
+    prFiles:
+      - docs/deploy-asap.md
+      - infra/azure/README.md
+      - pricing/.env.example
+      - pricing/README.md
+      - pricing/functions/local.settings.json.example
+      - pricing/src/lib/__tests__/runtime-config.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/api/request-session.ts
+      - pricing/src/lib/cosmos-data.ts
+      - pricing/src/lib/data.ts
+      - pricing/src/lib/runtime-config.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 67
     prTitle: "fix(pricing): accept legacy runtime settings"
@@ -653,6 +862,18 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-30T17:44:40Z
     body: null
+    prFiles:
+      - docs/deploy-asap.md
+      - infra/azure/README.md
+      - pricing/.env.example
+      - pricing/README.md
+      - pricing/functions/local.settings.json.example
+      - pricing/src/lib/__tests__/runtime-config.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/api/request-session.ts
+      - pricing/src/lib/cosmos-data.ts
+      - pricing/src/lib/data.ts
+      - pricing/src/lib/runtime-config.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prTitle: "fix(deploy): restore managed SWA API"
@@ -660,6 +881,20 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-30T13:05:10Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prTitle: "fix(deploy): restore managed SWA API"
@@ -667,6 +902,20 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-30T13:12:58Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prTitle: "fix(deploy): restore managed SWA API"
@@ -674,6 +923,20 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-30T13:31:10Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prTitle: "fix(deploy): restore managed SWA API"
@@ -681,6 +944,20 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-30T13:45:40Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prTitle: "fix(deploy): restore managed SWA API"
@@ -688,6 +965,20 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-30T13:55:23Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prTitle: "fix(deploy): restore managed SWA API"
@@ -695,6 +986,20 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-30T14:19:24Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prTitle: "fix(deploy): restore managed SWA API"
@@ -702,6 +1007,20 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-30T14:19:28Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prTitle: "fix(deploy): restore managed SWA API"
@@ -709,6 +1028,20 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-30T14:19:33Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prTitle: "fix(deploy): restore managed SWA API"
@@ -716,6 +1049,20 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-30T14:33:55Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prTitle: "fix(deploy): restore managed SWA API"
@@ -723,6 +1070,20 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-30T14:33:59Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prTitle: "fix(deploy): restore managed SWA API"
@@ -730,6 +1091,20 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-30T14:51:37Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prTitle: "fix(deploy): restore managed SWA API"
@@ -737,6 +1112,20 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-30T14:51:43Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prTitle: "fix(deploy): restore managed SWA API"
@@ -744,6 +1133,20 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-30T14:51:48Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prTitle: "fix(deploy): restore managed SWA API"
@@ -751,6 +1154,20 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-30T15:54:24Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prTitle: "fix(deploy): restore managed SWA API"
@@ -758,6 +1175,20 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-30T16:09:07Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prTitle: "fix(deploy): restore managed SWA API"
@@ -765,177 +1196,411 @@ codeReviews:
     state: commented
     submittedAt: 2026-07-30T16:22:37Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
 reviewComments:
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 68
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/68
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/68#discussion_r3685210718
-    body: "Fixed in `3689a6b`: added the empty `AZURE_COSMOS_KEY` placeholder to
-      `pricing/functions/local.settings.json.example`, matching `.env.example` without committing a value. Revalidated
-      JSON parsing, focused Pricing config tests (6/6), tooling assertions (8/8), Functions typecheck, and Functions
-      build."
+    body: "Fixed in `3689a6b`: added the empty `AZURE_COSMOS_KEY` placeholder to `pricing/functions/local.settings.json.example`, matching `.env.example` without committing a value. Revalidated JSON parsing, focused Pricing config tests (6/6), tooling assertions (8/8), Functions typecheck, and Functions build."
     path: pricing/.env.example
     createdAt: 2026-07-30T18:20:21Z
+    prFiles:
+      - docs/deploy-asap.md
+      - infra/azure/README.md
+      - pricing/.env.example
+      - pricing/README.md
+      - pricing/functions/local.settings.json.example
+      - pricing/src/lib/__tests__/runtime-config.test.ts
+      - pricing/src/lib/cosmos-data.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 67
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/67
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/67#discussion_r3684901955
-    body: Fixed in `3324034`. Pricing now resolves `PRICING_COSMOS_SHARED_CONTAINER` from the existing
-      `AZURE_COSMOS_SHARED_CONTAINER`; shared containers use the physical key `pricing:<tenantId>` for queries, reads,
-      writes, and deletes, and persisted documents include `partitionKey`. Dedicated `/tenantId` con...
+    body: Fixed in `3324034`. Pricing now resolves `PRICING_COSMOS_SHARED_CONTAINER` from the existing `AZURE_COSMOS_SHARED_CONTAINER`; shared containers use the physical key `pricing:<tenantId>` for queries, reads, writes, and deletes, and persisted documents include `partitionKey`. Dedicated `/tenantId` con...
     path: pricing/src/lib/runtime-config.ts
     createdAt: 2026-07-30T17:33:14Z
+    prFiles:
+      - docs/deploy-asap.md
+      - infra/azure/README.md
+      - pricing/.env.example
+      - pricing/README.md
+      - pricing/functions/local.settings.json.example
+      - pricing/src/lib/__tests__/runtime-config.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/api/request-session.ts
+      - pricing/src/lib/cosmos-data.ts
+      - pricing/src/lib/data.ts
+      - pricing/src/lib/runtime-config.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 67
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/67
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/67#discussion_r3684976106
-    body: "Fixed in `2d3261b`. Legacy `AZURE_COSMOS_SHARED_CONTAINER` is now inherited only when `PRICING_COSMOS_CONTAINER`
-      is also absent and the legacy container is selected. Explicit `PRICING_COSMOS_SHARED_CONTAINER` remains
-      authoritative. Added focused regressions for both shapes: inherited shared containe..."
+    body: "Fixed in `2d3261b`. Legacy `AZURE_COSMOS_SHARED_CONTAINER` is now inherited only when `PRICING_COSMOS_CONTAINER` is also absent and the legacy container is selected. Explicit `PRICING_COSMOS_SHARED_CONTAINER` remains authoritative. Added focused regressions for both shapes: inherited shared containe..."
     path: pricing/src/lib/runtime-config.ts
     createdAt: 2026-07-30T17:44:40Z
+    prFiles:
+      - docs/deploy-asap.md
+      - infra/azure/README.md
+      - pricing/.env.example
+      - pricing/README.md
+      - pricing/functions/local.settings.json.example
+      - pricing/src/lib/__tests__/runtime-config.test.ts
+      - pricing/src/lib/api/handlers.ts
+      - pricing/src/lib/api/request-session.ts
+      - pricing/src/lib/cosmos-data.ts
+      - pricing/src/lib/data.ts
+      - pricing/src/lib/runtime-config.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3682892873
-    body: "Fixed in `cf2a0eaecdd87cd4ebb7fcc2c5c489bd3281e4d7`: `close_preview` now binds to the `preview` environment, with
-      a tooling regression assertion and YAML verification."
+    body: "Fixed in `cf2a0eaecdd87cd4ebb7fcc2c5c489bd3281e4d7`: `close_preview` now binds to the `preview` environment, with a tooling regression assertion and YAML verification."
     path: .github/workflows/azure-static-web-apps.yml
     createdAt: 2026-07-30T13:05:10Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3682947642
-    body: Addressed in `54645f34bd66232864d63e1bc268c96be224ccfd` without broadening into new infrastructure. The
-      plan/runbook now explicitly reconcile the existing managed-SWA app settings, system identity and Cosmos roles,
-      built-in auth/routes, network reachability, operator-blocker recovery, and the curren...
+    body: Addressed in `54645f34bd66232864d63e1bc268c96be224ccfd` without broadening into new infrastructure. The plan/runbook now explicitly reconcile the existing managed-SWA app settings, system identity and Cosmos roles, built-in auth/routes, network reachability, operator-blocker recovery, and the curren...
     path: docs/azure-serverless-plan.md
     createdAt: 2026-07-30T13:12:58Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3683080907
-    body: "Addressed in `567ff4a7dbc1997b53452c276b0c8e0d665922bf`. Non-PR deploys now require `github.ref ==
-      'refs/heads/main'`, while labeled pull requests still permit preview deploys. Added a focused tooling assertion
-      for the exact condition. Verification: tooling tests 8/8, workflow YAML parse, and `bun r..."
+    body: "Addressed in `567ff4a7dbc1997b53452c276b0c8e0d665922bf`. Non-PR deploys now require `github.ref == 'refs/heads/main'`, while labeled pull requests still permit preview deploys. Added a focused tooling assertion for the exact condition. Verification: tooling tests 8/8, workflow YAML parse, and `bun r..."
     path: .github/workflows/azure-static-web-apps.yml
     createdAt: 2026-07-30T13:31:10Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3683187147
-    body: Addressed in `b9b25cc069a8df920ffec4090f4e98cbac7f8047`. The optional linked-Function documentation now requires
-      an authorized operator to run the forged-principal direct-host probe manually after deployment and explicitly
-      states that the managed-SWA artifact workflow does not run it. Repository sea...
+    body: Addressed in `b9b25cc069a8df920ffec4090f4e98cbac7f8047`. The optional linked-Function documentation now requires an authorized operator to run the forged-principal direct-host probe manually after deployment and explicitly states that the managed-SWA artifact workflow does not run it. Repository sea...
     path: infra/azure/README.md
     createdAt: 2026-07-30T13:45:40Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3683261045
-    body: Addressed in `9efcb2db2a1a9d8069417ce6e7b18f16cabfa662`. Both managed-SWA invariant lists now require
-      `PTO_DATA_PROVIDER=cosmos`, `PTO_TENANT_ID`, and the shared `AZURE_COSMOS_ENDPOINT`, `AZURE_COSMOS_DATABASE`,
-      `AZURE_COSMOS_CONTAINER`, and `AZURE_COSMOS_SHARED_CONTAINER=true` settings. The tooling...
+    body: Addressed in `9efcb2db2a1a9d8069417ce6e7b18f16cabfa662`. Both managed-SWA invariant lists now require `PTO_DATA_PROVIDER=cosmos`, `PTO_TENANT_ID`, and the shared `AZURE_COSMOS_ENDPOINT`, `AZURE_COSMOS_DATABASE`, `AZURE_COSMOS_CONTAINER`, and `AZURE_COSMOS_SHARED_CONTAINER=true` settings. The tooling...
     path: docs/deploy-asap.md
     createdAt: 2026-07-30T13:55:23Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3683460877
-    body: "Addressed in `57cc1cff9663e1c655de2cb3e41132fcd7433669`. Labeled PR previews are now frontend-only: the deploy
-      action receives an empty `api_location` and does not download the Functions artifact on pull-request events. The
-      architecture plan and tooling test guard that production API code and its da..."
+    body: "Addressed in `57cc1cff9663e1c655de2cb3e41132fcd7433669`. Labeled PR previews are now frontend-only: the deploy action receives an empty `api_location` and does not download the Functions artifact on pull-request events. The architecture plan and tooling test guard that production API code and its da..."
     path: .github/workflows/azure-static-web-apps.yml
     createdAt: 2026-07-30T14:19:24Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3683461531
-    body: Addressed in `57cc1cff9663e1c655de2cb3e41132fcd7433669`. Onboarding and PTO now build explicit HTTP-only variants
-      for the managed SWA artifact. CI verifies those variants contain neither timer registration, while the standard
-      app-local Function bundles still contain both timers for any separately au...
+    body: Addressed in `57cc1cff9663e1c655de2cb3e41132fcd7433669`. Onboarding and PTO now build explicit HTTP-only variants for the managed SWA artifact. CI verifies those variants contain neither timer registration, while the standard app-local Function bundles still contain both timers for any separately au...
     path: .github/workflows/azure-static-web-apps.yml
     createdAt: 2026-07-30T14:19:28Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3683462094
-    body: Addressed in `57cc1cff9663e1c655de2cb3e41132fcd7433669`. The runbook no longer claims the health/auth smoke
-      validates every runtime invariant. It now states exactly what is checked and explicitly says PTO persistence,
-      Cosmos roles, and network reachability require separate Azure validation.
+    body: Addressed in `57cc1cff9663e1c655de2cb3e41132fcd7433669`. The runbook no longer claims the health/auth smoke validates every runtime invariant. It now states exactly what is checked and explicitly says PTO persistence, Cosmos roles, and network reachability require separate Azure validation.
     path: docs/deploy-asap.md
     createdAt: 2026-07-30T14:19:33Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3683574484
-    body: Addressed in `5fa309e85f9b08db5676160c7851682c6b9b1481` without adding a scheduler or resource. After SWA
-      authentication succeeds, every dashboard-data request now awaits the idempotent
-      `reconcilePendingEmployeeStartDates()` recovery before serving the dashboard. Unauthenticated requests cannot
-      trig...
+    body: Addressed in `5fa309e85f9b08db5676160c7851682c6b9b1481` without adding a scheduler or resource. After SWA authentication succeeds, every dashboard-data request now awaits the idempotent `reconcilePendingEmployeeStartDates()` recovery before serving the dashboard. Unauthenticated requests cannot trig...
     path: .github/workflows/azure-static-web-apps.yml
     createdAt: 2026-07-30T14:33:55Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3683575057
-    body: Addressed in `5fa309e85f9b08db5676160c7851682c6b9b1481`. `docs/repository-operations.md` now documents that
-      `deploy-preview` creates a frontend-only preview through the preview environment, never attaches the managed
-      API/data identity, and is closed when the label is removed or the PR closes. Toolin...
+    body: Addressed in `5fa309e85f9b08db5676160c7851682c6b9b1481`. `docs/repository-operations.md` now documents that `deploy-preview` creates a frontend-only preview through the preview environment, never attaches the managed API/data identity, and is closed when the label is removed or the PR closes. Toolin...
     path: .github/workflows/azure-static-web-apps.yml
     createdAt: 2026-07-30T14:33:59Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3683717075
-    body: "Fixed in 8b5696273196d7fc926a785d9dc5563e9df676a6. PR previews now use a separate explicit static-only upload
-      step with no `api_location` and `skip_api_build: true`; full deploys retain the literal unified Functions
-      package."
+    body: "Fixed in 8b5696273196d7fc926a785d9dc5563e9df676a6. PR previews now use a separate explicit static-only upload step with no `api_location` and `skip_api_build: true`; full deploys retain the literal unified Functions package."
     path: .github/workflows/azure-static-web-apps.yml
     createdAt: 2026-07-30T14:51:37Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3683718007
-    body: Fixed in 8b5696273196d7fc926a785d9dc5563e9df676a6. `workflow_dispatch` now offers only `stage` and `production`,
-      so a manual `preview` cannot publish the full backend to a preview environment.
+    body: Fixed in 8b5696273196d7fc926a785d9dc5563e9df676a6. `workflow_dispatch` now offers only `stage` and `production`, so a manual `preview` cannot publish the full backend to a preview environment.
     path: .github/workflows/azure-static-web-apps.yml
     createdAt: 2026-07-30T14:51:43Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3683718670
-    body: Fixed in 8b5696273196d7fc926a785d9dc5563e9df676a6. Both deployment runbooks now list the required Onboarding and
-      Valuation Cosmos/provider settings alongside Pricing and PTO, with focused regression coverage.
+    body: Fixed in 8b5696273196d7fc926a785d9dc5563e9df676a6. Both deployment runbooks now list the required Onboarding and Valuation Cosmos/provider settings alongside Pricing and PTO, with focused regression coverage.
     path: docs/deploy-asap.md
     createdAt: 2026-07-30T14:51:48Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3684218476
-    body: Fixed in 409c135643b8cd314fcb648e01b504ca903018ac. Both managed-SWA recovery runbooks now require
-      `AUTH_MODE=entra` with PTO's Cosmos settings, and the focused tooling assertion covers it. `bun run test:tooling`
-      (8/8) and full `bun run verify` passed.
+    body: Fixed in 409c135643b8cd314fcb648e01b504ca903018ac. Both managed-SWA recovery runbooks now require `AUTH_MODE=entra` with PTO's Cosmos settings, and the focused tooling assertion covers it. `bun run test:tooling` (8/8) and full `bun run verify` passed.
     path: docs/deploy-asap.md
     createdAt: 2026-07-30T15:54:24Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3684332153
-    body: Fixed in f06322d8aa41a816051bc63071fa62e881099500. Authenticated dashboard reads now catch and log reconciliation
-      failure before serving normal dashboard data. The focused adapter test proves a rejected recovery still returns
-      200; managed-SWA bundle inspection, Onboarding static build, and full `bun...
+    body: Fixed in f06322d8aa41a816051bc63071fa62e881099500. Authenticated dashboard reads now catch and log reconciliation failure before serving normal dashboard data. The focused adapter test proves a rejected recovery still returns 200; managed-SWA bundle inspection, Onboarding static build, and full `bun...
     path: onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
     createdAt: 2026-07-30T16:09:07Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3684426077
-    body: Fixed in 6335b2b8d9911746ffa939b535e53d784cd1acb0. The workflow now subscribes to `synchronize` and `reopened`,
-      and both build/deploy require the existing `deploy-preview` label for those actions. The lifecycle doc and focused
-      assertion cover head refresh; YAML parsing, tooling 8/8, and full `bun ru...
+    body: Fixed in 6335b2b8d9911746ffa939b535e53d784cd1acb0. The workflow now subscribes to `synchronize` and `reopened`, and both build/deploy require the existing `deploy-preview` label for those actions. The lifecycle doc and focused assertion cover head refresh; YAML parsing, tooling 8/8, and full `bun ru...
     path: .github/workflows/azure-static-web-apps.yml
     createdAt: 2026-07-30T16:22:37Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - infra/azure/README.md
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/functions/src/index.ts
+      - scripts/tooling.test.ts
 aiReviews:
   codex:
     prsReviewed: 9
@@ -1122,6 +1787,5 @@ hoursEstimate:
   volumeHours: 73.8
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

@@ -67,6 +67,9 @@ pullRequests:
         message: "fix(pricing): remove FiNet comparisons from PDFs"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/1cd16116b726120b382852d4ce0fd58744332bed
         authoredAt: 2026-08-06T11:56:42Z
+        files:
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/report/pdf.tsx
     workTimestamps:
       - 2026-08-06T11:56:42Z
     workAdditions: 19
@@ -99,6 +102,19 @@ pullRequests:
         message: Add canonical work state selectors and validation
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/aa4d756751a4f80e4a8e42568d6be1700d174716
         authoredAt: 2026-08-06T14:30:21Z
+        files:
+          - packages/contracts/src/pricing.test.ts
+          - packages/contracts/src/pricing.ts
+          - pricing/src/components/__tests__/assumptions-tab.test.tsx
+          - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+          - pricing/src/components/__tests__/work-state-select.test.tsx
+          - pricing/src/components/assumptions-tab.tsx
+          - pricing/src/components/new-recruit-wizard.tsx
+          - pricing/src/components/work-state-select.tsx
+          - pricing/src/lib/__tests__/api-handler.test.ts
+          - pricing/src/lib/__tests__/new-recruit.test.ts
+          - pricing/src/lib/api/handlers.ts
+          - pricing/src/lib/new-recruit.ts
     workTimestamps:
       - 2026-08-06T14:30:21Z
     workAdditions: 343
@@ -118,8 +134,7 @@ pullRequests:
       - pricing/src/lib/new-recruit.ts
   - title: "feat: hub home, OFAC intake UX, and pricing architecture docs"
     body: >-
-      - Return-to-Hub Home button in shared `AppShell` (myriadas-style), with `NEXT_PUBLIC_HUB_URL` injected by local
-      launchers and suite static builds
+      - Return-to-Hub Home button in shared `AppShell` (myriadas-style), with `NEXT_PUBLIC_HUB_URL` injected by local launchers and suite static builds
 
       - OFAC intake defaults country to United States and auto-opens the new screening after create
 
@@ -157,6 +172,7 @@ pullRequests:
         message: "chore: re-trigger required verify check"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7d9193c6a4f0533c8c271580791da9078622f777
         authoredAt: 2026-08-07T01:37:58Z
+        files: []
     workTimestamps:
       - 2026-08-06T16:39:35Z
       - 2026-08-06T18:54:43Z
@@ -217,6 +233,19 @@ commitMessages:
         additions: 343
         deletions: 11
         filesChanged: 12
+        files:
+          - packages/contracts/src/pricing.test.ts
+          - packages/contracts/src/pricing.ts
+          - pricing/src/components/__tests__/assumptions-tab.test.tsx
+          - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+          - pricing/src/components/__tests__/work-state-select.test.tsx
+          - pricing/src/components/assumptions-tab.tsx
+          - pricing/src/components/new-recruit-wizard.tsx
+          - pricing/src/components/work-state-select.tsx
+          - pricing/src/lib/__tests__/api-handler.test.ts
+          - pricing/src/lib/__tests__/new-recruit.test.ts
+          - pricing/src/lib/api/handlers.ts
+          - pricing/src/lib/new-recruit.ts
   - repo: Myriad-Advisor-Solutions/ohcpwm-apps
     messages:
       - "fix(pricing): remove FiNet comparisons from PDFs"
@@ -235,6 +264,9 @@ commitMessages:
         additions: 19
         deletions: 115
         filesChanged: 2
+        files:
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/report/pdf.tsx
       - *a3
       - *a4
       - *a5
@@ -246,6 +278,40 @@ commitMessages:
         additions: 677
         deletions: 75
         filesChanged: 33
+        files:
+          - .env.example
+          - README.md
+          - docs/azure-serverless-plan.md
+          - docs/pricing-architecture.md
+          - docs/shared-product-platform.md
+          - hub/app/globals.css
+          - ofac/.env.example
+          - ofac/src/components/client-intake-form.test.tsx
+          - ofac/src/components/client-intake-form.tsx
+          - ofac/src/lib/__tests__/ofac-routes.test.ts
+          - ofac/src/lib/ofac-routes.ts
+          - ofac/vitest.config.ts
+          - package.json
+          - packages/brand/assets/logo-mono.svg
+          - packages/brand/assets/logo.png
+          - packages/brand/assets/logo.svg
+          - packages/brand/assets/logo_white.png
+          - packages/brand/package.json
+          - packages/brand/src/index.ts
+          - packages/brand/src/logo-paths.ts
+          - packages/ui/package.json
+          - packages/ui/src/brand-logo.tsx
+          - packages/ui/src/images.d.ts
+          - packages/ui/src/index.ts
+          - packages/ui/src/navigation/app-shell.tsx
+          - packages/ui/src/navigation/frame.test.ts
+          - packages/ui/src/navigation/frame.ts
+          - packages/ui/src/styles.css
+          - pricing/.env.example
+          - scripts/build-static-next.ts
+          - scripts/dev-ofac.ts
+          - scripts/dev-pricing.ts
+          - scripts/dev.ts
 releases: []
 externalContributions: []
 codeReviews:
@@ -256,6 +322,40 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-06T20:39:08Z
     body: null
+    prFiles:
+      - .env.example
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/pricing-architecture.md
+      - docs/shared-product-platform.md
+      - hub/app/globals.css
+      - ofac/.env.example
+      - ofac/src/components/client-intake-form.test.tsx
+      - ofac/src/components/client-intake-form.tsx
+      - ofac/src/lib/__tests__/ofac-routes.test.ts
+      - ofac/src/lib/ofac-routes.ts
+      - ofac/vitest.config.ts
+      - package.json
+      - packages/brand/assets/logo-mono.svg
+      - packages/brand/assets/logo.png
+      - packages/brand/assets/logo.svg
+      - packages/brand/assets/logo_white.png
+      - packages/brand/package.json
+      - packages/brand/src/index.ts
+      - packages/brand/src/logo-paths.ts
+      - packages/ui/package.json
+      - packages/ui/src/brand-logo.tsx
+      - packages/ui/src/images.d.ts
+      - packages/ui/src/index.ts
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/navigation/frame.test.ts
+      - packages/ui/src/navigation/frame.ts
+      - packages/ui/src/styles.css
+      - pricing/.env.example
+      - scripts/build-static-next.ts
+      - scripts/dev-ofac.ts
+      - scripts/dev-pricing.ts
+      - scripts/dev.ts
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 107
     prTitle: "feat: hub home, OFAC intake UX, and pricing architecture docs"
@@ -263,23 +363,123 @@ codeReviews:
     state: commented
     submittedAt: 2026-08-06T20:39:09Z
     body: null
+    prFiles:
+      - .env.example
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/pricing-architecture.md
+      - docs/shared-product-platform.md
+      - hub/app/globals.css
+      - ofac/.env.example
+      - ofac/src/components/client-intake-form.test.tsx
+      - ofac/src/components/client-intake-form.tsx
+      - ofac/src/lib/__tests__/ofac-routes.test.ts
+      - ofac/src/lib/ofac-routes.ts
+      - ofac/vitest.config.ts
+      - package.json
+      - packages/brand/assets/logo-mono.svg
+      - packages/brand/assets/logo.png
+      - packages/brand/assets/logo.svg
+      - packages/brand/assets/logo_white.png
+      - packages/brand/package.json
+      - packages/brand/src/index.ts
+      - packages/brand/src/logo-paths.ts
+      - packages/ui/package.json
+      - packages/ui/src/brand-logo.tsx
+      - packages/ui/src/images.d.ts
+      - packages/ui/src/index.ts
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/navigation/frame.test.ts
+      - packages/ui/src/navigation/frame.ts
+      - packages/ui/src/styles.css
+      - pricing/.env.example
+      - scripts/build-static-next.ts
+      - scripts/dev-ofac.ts
+      - scripts/dev-pricing.ts
+      - scripts/dev.ts
 reviewComments:
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 107
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/107
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/107#discussion_r3731761288
-    body: Not actionable. The SVG viewBox matches the new wordmark’s ink bounds (wide mark). Comparing to the old 2111×490
-      PNG canvas is misleading; padding the viewBox would only add empty space, not enlarge the glyphs.
+    body: Not actionable. The SVG viewBox matches the new wordmark’s ink bounds (wide mark). Comparing to the old 2111×490 PNG canvas is misleading; padding the viewBox would only add empty space, not enlarge the glyphs.
     path: packages/brand/src/logo-paths.ts
     createdAt: 2026-08-06T20:39:08Z
+    prFiles:
+      - .env.example
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/pricing-architecture.md
+      - docs/shared-product-platform.md
+      - hub/app/globals.css
+      - ofac/.env.example
+      - ofac/src/components/client-intake-form.test.tsx
+      - ofac/src/components/client-intake-form.tsx
+      - ofac/src/lib/__tests__/ofac-routes.test.ts
+      - ofac/src/lib/ofac-routes.ts
+      - ofac/vitest.config.ts
+      - package.json
+      - packages/brand/assets/logo-mono.svg
+      - packages/brand/assets/logo.png
+      - packages/brand/assets/logo.svg
+      - packages/brand/assets/logo_white.png
+      - packages/brand/package.json
+      - packages/brand/src/index.ts
+      - packages/brand/src/logo-paths.ts
+      - packages/ui/package.json
+      - packages/ui/src/brand-logo.tsx
+      - packages/ui/src/images.d.ts
+      - packages/ui/src/index.ts
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/navigation/frame.test.ts
+      - packages/ui/src/navigation/frame.ts
+      - packages/ui/src/styles.css
+      - pricing/.env.example
+      - scripts/build-static-next.ts
+      - scripts/dev-ofac.ts
+      - scripts/dev-pricing.ts
+      - scripts/dev.ts
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 107
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/107
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/107#discussion_r3731761394
-    body: Not actionable. Source mark is navy Oxford/Harriman with a gold X accent; primary/accent path split matches that
-      artwork.
+    body: Not actionable. Source mark is navy Oxford/Harriman with a gold X accent; primary/accent path split matches that artwork.
     path: packages/ui/src/brand-logo.tsx
     createdAt: 2026-08-06T20:39:09Z
+    prFiles:
+      - .env.example
+      - README.md
+      - docs/azure-serverless-plan.md
+      - docs/pricing-architecture.md
+      - docs/shared-product-platform.md
+      - hub/app/globals.css
+      - ofac/.env.example
+      - ofac/src/components/client-intake-form.test.tsx
+      - ofac/src/components/client-intake-form.tsx
+      - ofac/src/lib/__tests__/ofac-routes.test.ts
+      - ofac/src/lib/ofac-routes.ts
+      - ofac/vitest.config.ts
+      - package.json
+      - packages/brand/assets/logo-mono.svg
+      - packages/brand/assets/logo.png
+      - packages/brand/assets/logo.svg
+      - packages/brand/assets/logo_white.png
+      - packages/brand/package.json
+      - packages/brand/src/index.ts
+      - packages/brand/src/logo-paths.ts
+      - packages/ui/package.json
+      - packages/ui/src/brand-logo.tsx
+      - packages/ui/src/images.d.ts
+      - packages/ui/src/index.ts
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/navigation/frame.test.ts
+      - packages/ui/src/navigation/frame.ts
+      - packages/ui/src/styles.css
+      - pricing/.env.example
+      - scripts/build-static-next.ts
+      - scripts/dev-ofac.ts
+      - scripts/dev-pricing.ts
+      - scripts/dev.ts
 aiReviews:
   codex:
     prsReviewed: 1
@@ -363,6 +563,5 @@ hoursEstimate:
   volumeHours: 27.1
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

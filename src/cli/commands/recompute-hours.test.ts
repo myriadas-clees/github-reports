@@ -89,7 +89,7 @@ describe("recomputeHoursFile", () => {
     const next = parseYaml(await readFile(file, "utf-8")) as WeeklyReportData;
     expect(next.stats.estimatedHours).toBe(9);
     expect(next.hoursEstimate?.hours).toBe(9);
-    expect(next.hoursEstimate?.version).toBe("2.1");
+    expect(next.hoursEstimate?.version).toBe("2.3");
   });
 });
 

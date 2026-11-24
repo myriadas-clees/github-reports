@@ -61,6 +61,33 @@ commitMessages:
         additions: 530
         deletions: 204
         filesChanged: 26
+        files:
+          - docs/pricing-scenario-rules.md
+          - packages/ui/src/form.tsx
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+          - pricing/src/components/__tests__/payout-breakdown-donut.test.tsx
+          - pricing/src/components/__tests__/pricing-workstation-client.test.tsx
+          - pricing/src/components/excel-sheet/excel-cell.tsx
+          - pricing/src/components/excel-sheet/workstation-sheet-defs.tsx
+          - pricing/src/components/formatted-number-input.tsx
+          - pricing/src/components/new-recruit-wizard.tsx
+          - pricing/src/components/pricing-workstation-client.tsx
+          - pricing/src/components/recruit-detail-panels.tsx
+          - pricing/src/lib/__tests__/calculation.test.ts
+          - pricing/src/lib/__tests__/new-recruit.test.ts
+          - pricing/src/lib/__tests__/pricing-visibility.test.ts
+          - pricing/src/lib/__tests__/report-model.test.ts
+          - pricing/src/lib/__tests__/workbook-output.test.ts
+          - pricing/src/lib/__tests__/workstation-sections.test.ts
+          - pricing/src/lib/__tests__/workstation.test.ts
+          - pricing/src/lib/calculation.ts
+          - pricing/src/lib/new-recruit.ts
+          - pricing/src/lib/pricing-visibility.ts
+          - pricing/src/lib/report/model.ts
+          - pricing/src/lib/workbook-output.ts
+          - pricing/src/lib/workstation-sections.ts
+          - pricing/src/lib/workstation.ts
       - sha: 91a9ed62f4b6b9a067a6f72a7d11b3b47deec8b9
         message: "fix(pricing): refine scenario copy and alignment"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/91a9ed62f4b6b9a067a6f72a7d11b3b47deec8b9
@@ -68,6 +95,9 @@ commitMessages:
         additions: 3
         deletions: 3
         filesChanged: 2
+        files:
+          - pricing/src/components/__tests__/pricing-graphs.test.tsx
+          - pricing/src/components/excel-sheet/excel-input-sheet.tsx
       - sha: 068943277628309eccbce2c769113ddde5feff11
         message: "fix(pricing): align verify fixtures"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/068943277628309eccbce2c769113ddde5feff11
@@ -75,6 +105,16 @@ commitMessages:
         additions: 47
         deletions: 37
         filesChanged: 9
+        files:
+          - docs/pricing-scenario-rules.md
+          - pricing/src/components/__tests__/recruit-archive-section.test.tsx
+          - pricing/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+          - pricing/src/components/pricing-workstation-client.tsx
+          - pricing/src/lib/__tests__/calculation.test.ts
+          - pricing/src/lib/__tests__/dashboard-charts.test.ts
+          - pricing/src/lib/__tests__/pricing-visibility.test.ts
+          - pricing/src/lib/__tests__/workbook-output.test.ts
+          - pricing/src/lib/__tests__/workstation.test.ts
       - sha: 7697610a5f272d6bad3c3d4d6e7ee55a799d1e68
         message: "fix(pricing): restore SSR test imports"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7697610a5f272d6bad3c3d4d6e7ee55a799d1e68
@@ -82,6 +122,15 @@ commitMessages:
         additions: 10
         deletions: 9
         filesChanged: 8
+        files:
+          - pricing/src/components/bps-calculator.tsx
+          - pricing/src/components/formatted-number-input.tsx
+          - pricing/src/components/new-recruit-wizard.tsx
+          - pricing/src/components/pdf-report-viewer.tsx
+          - pricing/src/components/pricing-graphs.tsx
+          - pricing/src/lib/__tests__/calculation.test.ts
+          - pricing/src/lib/__tests__/workbook-output.test.ts
+          - pricing/src/lib/__tests__/workstation.test.ts
       - sha: c16cfda8cd210176cc988458eec47f688a9b73b2
         message: "fix(pricing): use exact workbook outputs"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c16cfda8cd210176cc988458eec47f688a9b73b2
@@ -89,6 +138,8 @@ commitMessages:
         additions: 2
         deletions: 2
         filesChanged: 1
+        files:
+          - pricing/src/lib/__tests__/workbook-output.test.ts
       - sha: 587572d6ddbeb77056f1ac873c7ce93ab0e864f6
         message: "docs: update Azure Cosmos DB guidance"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/587572d6ddbeb77056f1ac873c7ce93ab0e864f6
@@ -96,6 +147,11 @@ commitMessages:
         additions: 68
         deletions: 62
         filesChanged: 4
+        files:
+          - AGENTS.md
+          - README.md
+          - docs/azure-serverless-plan.md
+          - docs/deploy-asap.md
       - sha: 5585835fb7e4e6d2a90b5e55f05600d2639f8848
         message: Prioritize pricing as the deployment target
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/5585835fb7e4e6d2a90b5e55f05600d2639f8848
@@ -103,6 +159,13 @@ commitMessages:
         additions: 141
         deletions: 236
         filesChanged: 6
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - .github/workflows/azure-static-web-apps.yml
+          - AGENTS.md
+          - README.md
+          - docs/azure-serverless-plan.md
+          - docs/deploy-asap.md
       - sha: cd9781fb4a46069716090101b6b44c668a466b3a
         message: "ci(pricing): relax health smoke check"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cd9781fb4a46069716090101b6b44c668a466b3a
@@ -110,6 +173,8 @@ commitMessages:
         additions: 5
         deletions: 1
         filesChanged: 1
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
       - sha: f72c342637afea444716fa1a4a8bb162198d8e3a
         message: "ci(pricing): remove ignored deploy input"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f72c342637afea444716fa1a4a8bb162198d8e3a
@@ -117,6 +182,8 @@ commitMessages:
         additions: 0
         deletions: 1
         filesChanged: 1
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
       - sha: c51b570a47105e74e48d6d6e6d8fe4a82e290f27
         message: "ci(pricing): keep API build skip"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c51b570a47105e74e48d6d6e6d8fe4a82e290f27
@@ -124,6 +191,8 @@ commitMessages:
         additions: 1
         deletions: 0
         filesChanged: 1
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
       - sha: c9dfe60934d18e8ce1b7a1c8d4d7752c450ad6ed
         message: "feat(pricing): add Cosmos DB adapter"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c9dfe60934d18e8ce1b7a1c8d4d7752c450ad6ed
@@ -131,6 +200,15 @@ commitMessages:
         additions: 515
         deletions: 161
         filesChanged: 8
+        files:
+          - README.md
+          - docs/azure-serverless-plan.md
+          - docs/deploy-asap.md
+          - pricing/functions/local.settings.json.example
+          - pricing/functions/src/index.ts
+          - pricing/src/lib/blob-storage.ts
+          - pricing/src/lib/cosmos-data.ts
+          - pricing/src/lib/data.ts
       - sha: 57a98cf3dcb244a3ff7a7b94a4bc82d9321e5418
         message: "ci(pricing): deploy on main push"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/57a98cf3dcb244a3ff7a7b94a4bc82d9321e5418
@@ -138,6 +216,8 @@ commitMessages:
         additions: 10
         deletions: 0
         filesChanged: 1
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
 releases: []
 externalContributions: []
 codeReviews: []
@@ -191,6 +271,5 @@ hoursEstimate:
   volumeHours: 6
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

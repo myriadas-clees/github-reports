@@ -38,12 +38,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: 1.3.12
-
-      - name: Install
-        run: bun install --frozen-lockfile
+      - uses: ./.github/actions/setup-bun
 
       - name: Build
         run: bun run build
@@ -86,6 +81,8 @@ jobs:
             bun dist/cli/index.js daily-fetch --date "$INPUT_DATE"
             echo "Generating $INPUT_DATE"
             bun dist/cli/index.js generate --date "$INPUT_DATE"
+            # Cover the requested day even when it is older than the default 90-day window.
+            bun dist/cli/index.js evidence --since "$INPUT_DATE" || echo "Evidence refresh failed (non-fatal)"
             exit 0
           fi
 
@@ -103,6 +100,7 @@ jobs:
             fi
             cursor=$(TZ="$TIMEZONE" date -d "$cursor - 1 day" +%F)
           done
+          bun dist/cli/index.js evidence || echo "Evidence refresh failed (non-fatal)"
           if [ "$failed" -ne 0 ]; then
             echo "One or more catch-up days failed"
             exit 1

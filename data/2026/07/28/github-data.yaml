@@ -47,8 +47,7 @@ pullRequests:
       ## Why
 
 
-      Excelerate silently generated workbooks from hard-coded schemas when output templates were unavailable and copied
-      unidentified uploads into raw tabs. That could produce output without confirming the source or output template.
+      Excelerate silently generated workbooks from hard-coded schemas when output templates were unavailable and copied unidentified uploads into raw tabs. That could produce output without confirming the source or output template.
 
 
       ## What changed
@@ -76,6 +75,13 @@ pullRequests:
         message: "fix(excelerate): reject missing templates"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/47e7705f0c9d9448c1a61e1d6c008b666c2abdaf
         authoredAt: 2026-07-28T15:48:30Z
+        files:
+          - excelerate/src/app/api/excelerate/api.test.ts
+          - excelerate/src/components/excelerate-client.tsx
+          - excelerate/src/lib/excelerate/classification.test.ts
+          - excelerate/src/lib/excelerate/processor.ts
+          - excelerate/src/lib/excelerate/types.ts
+          - excelerate/src/lib/excelerate/workbooks.test.ts
     workTimestamps: &a3
       - 2026-07-28T15:48:30Z
     workAdditions: 91
@@ -125,6 +131,10 @@ pullRequests:
         message: "fix(platform): repair API and navigation"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/97b2b431ef3a8df758d78555b86535e27ec36875
         authoredAt: 2026-07-28T18:50:30Z
+        files:
+          - excelerate/.env.example
+          - excelerate/src/components/excelerate-client.test.ts
+          - excelerate/src/components/excelerate-client.tsx
     workTimestamps: &a7
       - 2026-07-28T18:50:30Z
     workAdditions: 36
@@ -138,9 +148,7 @@ pullRequests:
       Why
 
 
-      Navigation mode was stored under an app-specific key, so the user's sidebar or topbar choice reset when moving
-      between apps. The shared shell also centered the complete sidebar/content row, leaving the sidebar floating away
-      from the left edge on wide screens.
+      Navigation mode was stored under an app-specific key, so the user's sidebar or topbar choice reset when moving between apps. The shared shell also centered the complete sidebar/content row, leaving the sidebar floating away from the left edge on wide screens.
 
 
       What changed
@@ -171,11 +179,29 @@ pullRequests:
         message: "fix(ui): persist navigation preference"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6ac74804d55df774b5135e83be7a97e56088a5e0
         authoredAt: 2026-07-28T17:38:22Z
+        files:
+          - excelerate/src/app/layout.tsx
+          - onboarding/apps/dashboard/app/layout.tsx
+          - packages/ui/src/navigation/app-shell.tsx
+          - packages/ui/src/navigation/preferences.tsx
+          - proforma/src/app/layout.tsx
+          - pto-tracker/src/app/layout.tsx
+          - valuation/src/app/layout.tsx
       - &a29
         sha: 1a70482484238ea36be4a9e592ac6bcfcb7daab4
         message: "fix(ui): preserve navigation migration"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/1a70482484238ea36be4a9e592ac6bcfcb7daab4
         authoredAt: 2026-07-28T17:52:00Z
+        files:
+          - excelerate/src/app/layout.tsx
+          - onboarding/apps/dashboard/app/layout.tsx
+          - package.json
+          - packages/ui/src/navigation/app-shell.tsx
+          - packages/ui/src/navigation/preferences.test.ts
+          - packages/ui/src/navigation/preferences.tsx
+          - proforma/src/app/layout.tsx
+          - pto-tracker/src/app/layout.tsx
+          - valuation/src/app/layout.tsx
     workTimestamps: &a11
       - 2026-07-28T17:38:22Z
       - 2026-07-28T17:52:00Z
@@ -196,8 +222,7 @@ pullRequests:
       ## Why
 
 
-      Browser-created screenings did not preserve the direct API request semantics. The UI flattened addresses and
-      forced an individual type, causing valid OFAC matches to disappear or differ from direct API results.
+      Browser-created screenings did not preserve the direct API request semantics. The UI flattened addresses and forced an individual type, causing valid OFAC matches to disappear or differ from direct API results.
 
 
       ## What changed
@@ -222,11 +247,27 @@ pullRequests:
         message: "fix(ofac): align browser and API behavior"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8d73164055c4ff4a507066e3da104b6665504f45
         authoredAt: 2026-07-28T14:10:24Z
+        files:
+          - ofac/src/app/api/ofac/health/__tests__/route.test.ts
+          - ofac/src/app/api/ofac/health/route.ts
+          - ofac/src/components/client-intake-form.tsx
+          - ofac/src/lib/__tests__/client-csv.test.ts
+          - ofac/src/lib/__tests__/ofac-api-client.test.ts
+          - ofac/src/lib/__tests__/screening-provider.test.ts
+          - ofac/src/lib/client-csv.ts
+          - ofac/src/lib/screening-provider.ts
+          - packages/contracts/src/ofac.test.ts
+          - packages/contracts/src/ofac.ts
+          - packages/db/src/ofac.test.ts
+          - packages/db/src/ofac.ts
       - &a26
         sha: 10346872a55a1129cb9175cc2d9fa62c74364d4c
         message: "fix(ofac): preserve legacy addresses"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/10346872a55a1129cb9175cc2d9fa62c74364d4c
         authoredAt: 2026-07-28T14:24:14Z
+        files:
+          - ofac/src/lib/__tests__/screening-provider.test.ts
+          - ofac/src/lib/screening-provider.ts
     workTimestamps: &a15
       - 2026-07-28T14:10:24Z
       - 2026-07-28T14:24:14Z
@@ -283,13 +324,17 @@ pullRequests:
     workAdditions: 0
     workDeletions: 0
     workFiles: &a20 []
+    allocationFiles:
+      - docs/repository-operations.md
+      - scripts/github/configure-repository.ts
+      - scripts/github/triage-issue.test.ts
+      - scripts/github/triage-issue.ts
   - title: "fix(pto): remove production personas"
     body: >-
       Why
 
 
-      The product deployment workflow compiled PTO Tracker in demo authentication mode, exposing local test personas in
-      the production sign-in screen.
+      The product deployment workflow compiled PTO Tracker in demo authentication mode, exposing local test personas in the production sign-in screen.
 
 
       What changed
@@ -318,14 +363,20 @@ pullRequests:
     workAdditions: 0
     workDeletions: 0
     workFiles: &a24 []
+    allocationFiles:
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - pto-tracker/src/lib/api/client.test.ts
+      - pto-tracker/src/lib/auth/navigation.test.ts
+      - pto-tracker/src/lib/auth/navigation.ts
+      - scripts/tooling.test.ts
 prsInProgress:
   - title: "fix(excelerate): reject missing templates"
     body: >-
       ## Why
 
 
-      Excelerate silently generated workbooks from hard-coded schemas when output templates were unavailable and copied
-      unidentified uploads into raw tabs. That could produce output without confirming the source or output template.
+      Excelerate silently generated workbooks from hard-coded schemas when output templates were unavailable and copied unidentified uploads into raw tabs. That could produce output without confirming the source or output template.
 
 
       ## What changed
@@ -349,6 +400,20 @@ prsInProgress:
     workAdditions: 91
     workDeletions: 163
     workFiles: *a4
+    allocationFiles:
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .gitignore
+      - excelerate/src/app/api/excelerate/api.test.ts
+      - excelerate/src/components/excelerate-client.tsx
+      - excelerate/src/lib/excelerate/classification.test.ts
+      - excelerate/src/lib/excelerate/processor.ts
+      - excelerate/src/lib/excelerate/types.ts
+      - excelerate/src/lib/excelerate/workbooks.test.ts
+      - excelerate/templates/SS_NN_BP_Database.xlsx
+      - excelerate/templates/SS_NN_BP_Database_Simple.xlsx
+      - scripts/tooling.test.ts
+      - scripts/validate-artifacts.ts
   - title: "fix(platform): repair API and navigation"
     body: |-
       Why
@@ -380,14 +445,16 @@ prsInProgress:
     workAdditions: 36
     workDeletions: 3
     workFiles: *a8
+    allocationFiles:
+      - excelerate/.env.example
+      - excelerate/src/components/excelerate-client.test.ts
+      - excelerate/src/components/excelerate-client.tsx
   - title: "fix(ui): persist navigation preference"
     body: >-
       Why
 
 
-      Navigation mode was stored under an app-specific key, so the user's sidebar or topbar choice reset when moving
-      between apps. The shared shell also centered the complete sidebar/content row, leaving the sidebar floating away
-      from the left edge on wide screens.
+      Navigation mode was stored under an app-specific key, so the user's sidebar or topbar choice reset when moving between apps. The shared shell also centered the complete sidebar/content row, leaving the sidebar floating away from the left edge on wide screens.
 
 
       What changed
@@ -411,13 +478,22 @@ prsInProgress:
     workAdditions: 108
     workDeletions: 20
     workFiles: *a12
+    allocationFiles:
+      - excelerate/src/app/layout.tsx
+      - onboarding/apps/dashboard/app/layout.tsx
+      - package.json
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/navigation/preferences.test.ts
+      - packages/ui/src/navigation/preferences.tsx
+      - proforma/src/app/layout.tsx
+      - pto-tracker/src/app/layout.tsx
+      - valuation/src/app/layout.tsx
   - title: "fix(ofac): align browser and API behavior"
     body: >-
       ## Why
 
 
-      Browser-created screenings did not preserve the direct API request semantics. The UI flattened addresses and
-      forced an individual type, causing valid OFAC matches to disappear or differ from direct API results.
+      Browser-created screenings did not preserve the direct API request semantics. The UI flattened addresses and forced an individual type, causing valid OFAC matches to disappear or differ from direct API results.
 
 
       ## What changed
@@ -441,6 +517,20 @@ prsInProgress:
     workAdditions: 166
     workDeletions: 19
     workFiles: *a16
+    allocationFiles:
+      - docs/superpowers/specs/2026-07-13-ofac-api-demo-design.md
+      - ofac/src/app/api/ofac/health/__tests__/route.test.ts
+      - ofac/src/app/api/ofac/health/route.ts
+      - ofac/src/components/client-intake-form.tsx
+      - ofac/src/lib/__tests__/client-csv.test.ts
+      - ofac/src/lib/__tests__/ofac-api-client.test.ts
+      - ofac/src/lib/__tests__/screening-provider.test.ts
+      - ofac/src/lib/client-csv.ts
+      - ofac/src/lib/screening-provider.ts
+      - packages/contracts/src/ofac.test.ts
+      - packages/contracts/src/ofac.ts
+      - packages/db/src/ofac.test.ts
+      - packages/db/src/ofac.ts
   - title: "fix(github): align triage project fields"
     body: |-
       ## What changed
@@ -469,13 +559,17 @@ prsInProgress:
     workAdditions: 0
     workDeletions: 0
     workFiles: *a20
+    allocationFiles:
+      - docs/repository-operations.md
+      - scripts/github/configure-repository.ts
+      - scripts/github/triage-issue.test.ts
+      - scripts/github/triage-issue.ts
   - title: "fix(pto): remove production personas"
     body: >-
       Why
 
 
-      The product deployment workflow compiled PTO Tracker in demo authentication mode, exposing local test personas in
-      the production sign-in screen.
+      The product deployment workflow compiled PTO Tracker in demo authentication mode, exposing local test personas in the production sign-in screen.
 
 
       What changed
@@ -501,6 +595,13 @@ prsInProgress:
     workAdditions: 0
     workDeletions: 0
     workFiles: *a24
+    allocationFiles:
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - pto-tracker/src/lib/api/client.test.ts
+      - pto-tracker/src/lib/auth/navigation.test.ts
+      - pto-tracker/src/lib/auth/navigation.ts
+      - scripts/tooling.test.ts
 issues: []
 events: []
 commitMessages:
@@ -615,6 +716,5 @@ hoursEstimate:
   volumeHours: 23.3
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

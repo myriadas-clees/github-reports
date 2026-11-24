@@ -45,7 +45,7 @@ const MOCK_DATA: WeeklyReportData = {
         type: "pr",
         title: "feat: add OAuth flow",
         repo: "org/backend",
-        meta: "merged Apr 2",
+        meta: "integrated Apr 2",
         body: "## Why\n\nBig PR with `tokens` and a [link](https://example.com).",
       },
     ],
@@ -91,21 +91,37 @@ describe("loadTheme", () => {
     expect(theme.themeToggleScript).toContain("theme-toggle");
   });
 
-  it("brutalist buildCSS uses CSS custom properties", () => {
-    const theme = loadTheme("brutalist");
-    const css = theme.buildCSS("en");
+  it("brutalist restores bold type, grain and square allocation bars", () => {
+    const css = loadTheme("brutalist").buildCSS("en");
     expect(css).toContain("var(--b-bg)");
-    expect(css).toContain("var(--b-text)");
-    expect(css).toContain("var(--b-accent)");
+    expect(css).toContain("feTurbulence");
+    expect(css).toContain("font-weight: 900");
+    expect(css).toMatch(/\.alloc-bar \{[^}]*border-radius: 0/);
   });
 
-  it("brutalist buildCSS is dark-first with light via prefers-color-scheme", () => {
+  it("brutalist is dark-first and supports the system light preference", () => {
     const theme = loadTheme("brutalist");
     const css = theme.buildCSS("en");
     expect(css).toContain("--b-bg: #050505");
     expect(css).toContain("prefers-color-scheme: light");
-    expect(css).toContain('html[data-theme="dark"]');
+    expect(css).toContain("--b-bg: #fafafa");
     expect(theme.themeInitScript).toContain("data-theme");
+  });
+
+  it("brutalist keeps controls and progress neutral and positives green", () => {
+    const css = loadTheme("brutalist").buildCSS("en");
+    expect(css).toMatch(/\.theme-toggle-opt\[data-active="true"\] \{\s*background: var\(--b-heading\);\s*color: var\(--b-bg\)/);
+    expect(css).toContain("outline: 2px solid var(--b-heading)");
+    expect(css).toMatch(/\.repo-bar-fill \{[^}]*background: var\(--b-text-secondary\)/);
+    expect(css).toMatch(/\.report-key-item--positive \.report-key-value \{ color: var\(--b-green\)/);
+  });
+
+  it("brutalist makes no third-party font requests", () => {
+    const theme = loadTheme("brutalist");
+    for (const lang of ["en", "ja", "ko"] as const) {
+      expect(theme.buildCSS(lang)).not.toContain("fonts.googleapis.com");
+      expect(theme.buildCSS(lang)).not.toContain("@import");
+    }
   });
 
   it("brutalist buildCSS supports data-theme attribute override", () => {
@@ -145,13 +161,13 @@ describe("loadTheme", () => {
     expect(css).toContain("body");
     expect(css).toContain("#050505");
     expect(css).toContain("#cc2647");
-    expect(css).toContain("Schibsted Grotesk");
+    expect(css).toContain("Roboto");
   });
 
   it("buildIndexCSS returns valid CSS string", () => {
     const theme = loadTheme("brutalist");
     const css = theme.buildIndexCSS("en");
-    expect(css).toContain(".hero");
+    expect(css).toContain(".home-hero");
     expect(css).toContain("var(--b-bg)");
   });
 });

@@ -46,7 +46,7 @@ const defaultStatsResponse = () =>
     files: [{ filename: "a.ts" }],
   }), { status: 200 });
 
-const defaultStatsFields = { additions: 10, deletions: 2, filesChanged: 1 };
+const defaultStatsFields = { additions: 10, deletions: 2, filesChanged: 1, files: ["a.ts"] };
 
 /** Route /search/commits separately so REST mocks stay sequential. */
 const mockRestThenEmptySearch = (...restResponses: Response[]) => {
@@ -400,7 +400,19 @@ describe("fetchCommitMessages", () => {
       additions: 4000,
       deletions: 200,
       filesChanged: 2,
+      files: ["a.ts", "b.ts"],
     }]);
+  });
+  it("does not expose an incomplete file list as complete app evidence", async () => {
+    vi.spyOn(globalThis, "fetch").mockImplementation(async (input) => {
+      const url = String(input);
+      if (url.includes("/search/commits")) return emptySearchResponse();
+      if (isCommitDetailUrl(url)) return new Response(JSON.stringify({ stats: { additions: 10, deletions: 2 }, files: [{ filename: "hub/a.ts" }] }), { headers: { link: '<https://api.github.com/next>; rel="next"' } });
+      return pagedResponse([makeRawCommit("Update display", "partial")]);
+    });
+    const result = await fetchCommitMessages("token", "user", ["org/repo"], range, "UTC");
+    expect(result[0].commits?.[0].files).toBeUndefined();
+    expect(result[0].commits?.[0].additions).toBe(10);
   });
 
   it("leaves stats undefined when commit detail returns 404", async () => {

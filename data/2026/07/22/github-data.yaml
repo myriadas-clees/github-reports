@@ -47,8 +47,7 @@ pullRequests:
       Why
 
 
-      Measure runner-minute impact of the CI runtime optimizations from an identical `main` base without larger runners
-      or custom images.
+      Measure runner-minute impact of the CI runtime optimizations from an identical `main` base without larger runners or custom images.
 
 
       What changed
@@ -77,6 +76,9 @@ pullRequests:
         message: "ci: benchmark uncached runtime"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7269db84b77da94b6942cf9a6a6dbf6080050028
         authoredAt: 2026-07-22T17:29:38Z
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - .github/workflows/verify.yml
     workTimestamps:
       - 2026-07-22T17:29:38Z
     workAdditions: 36
@@ -89,8 +91,7 @@ pullRequests:
       Why
 
 
-      Pull requests were spending runner minutes on duplicated validation, serialized builds, and automatic Azure
-      preview deployments that are not needed for every change.
+      Pull requests were spending runner minutes on duplicated validation, serialized builds, and automatic Azure preview deployments that are not needed for every change.
 
 
       What changed
@@ -119,6 +120,9 @@ pullRequests:
         message: "ci: benchmark cached runtime"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6a274de04365c5368cf7770cad02118bf338ce57
         authoredAt: 2026-07-22T17:29:35Z
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - .github/workflows/verify.yml
       - &a3
         sha: 95dc875d58e392cd2686e88670ff765adb04d3d7
         message: "ci(actions): make previews manual"
@@ -162,15 +166,13 @@ pullRequests:
       Why
 
 
-      Unlabeled pull requests were consuming Azure preview runners on every update, while verification repeated
-      production build work.
+      Unlabeled pull requests were consuming Azure preview runners on every update, while verification repeated production build work.
 
 
       What changed
 
 
-      * Keep the existing `Verify` workflow/job as the PR gate, cancel superseded runs, and run typecheck, lint, and
-      tests concurrently with reported exit st...
+      * Keep the existing `Verify` workflow/job as the PR gate, cancel superseded runs, and run typecheck, lint, and tests concurrently with reported exit st...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/38
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: merged
@@ -192,11 +194,19 @@ pullRequests:
         message: "ci: gate previews behind PR label"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/99e758247398cd63bc1fdbbf777ce2f8345d0949
         authoredAt: 2026-07-22T19:19:37Z
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - .github/workflows/verify.yml
+          - docs/azure-serverless-plan.md
+          - package.json
+          - scripts/build-unified-swa.ts
       - &a9
         sha: fc9f61861a88b207f13490ca7fd8b602c0116c7f
         message: "docs: clarify preview trigger"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/fc9f61861a88b207f13490ca7fd8b602c0116c7f
         authoredAt: 2026-07-22T19:20:58Z
+        files:
+          - docs/azure-serverless-plan.md
       - &a10
         sha: ab19366ee00b17d00b8a6c72eff25d676a3d0b2a
         message: "fix(ci): await unified static builds"
@@ -219,8 +229,7 @@ pullRequests:
       Why
 
 
-      Advisor-name links used root-relative `/recruits/...` URLs. In the static `/pricing` deployment, those URLs left
-      the pricing app and returned users to the hub.
+      Advisor-name links used root-relative `/recruits/...` URLs. In the static `/pricing` deployment, those URLs left the pricing app and returned users to the hub.
 
 
       What changed
@@ -246,14 +255,15 @@ pullRequests:
     workAdditions: 0
     workDeletions: 0
     workFiles: []
+    allocationFiles:
+      - pricing/src/components/__tests__/recruit-data-cell.test.tsx
+      - pricing/src/components/recruit-data-cell.tsx
   - title: "feat(deploy): ready apps for Cosmos"
     body: >-
       Why
 
 
-      Stateful product deployments need a consistent Azure Static Web Apps and Cosmos DB path. PTO still targeted
-      Microsoft Lists, while the Hub deployment bundled product APIs into a shared runtime that could not use app-scoped
-      Cosmos identities.
+      Stateful product deployments need a consistent Azure Static Web Apps and Cosmos DB path. PTO still targeted Microsoft Lists, while the Hub deployment bundled product APIs into a shared runtime that could not use app-scoped Cosmos identities.
 
 
       What changed
@@ -313,6 +323,9 @@ commitMessages:
         additions: 34
         deletions: 1
         filesChanged: 2
+        files:
+          - pricing/src/components/__tests__/recruit-data-cell.test.tsx
+          - pricing/src/components/recruit-data-cell.tsx
       - *a1
       - *a2
       - *a3
@@ -327,6 +340,10 @@ commitMessages:
         additions: 54
         deletions: 29
         filesChanged: 3
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - .github/workflows/verify.yml
+          - pricing/src/lib/__tests__/report.test.ts
   - repo: Myriad-Advisor-Solutions/myriadas-apps
     messages:
       - "ci: gate previews behind PR label"
@@ -346,6 +363,12 @@ commitMessages:
         additions: 62
         deletions: 37
         filesChanged: 5
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - .github/workflows/verify.yml
+          - docs/azure-serverless-plan.md
+          - package.json
+          - scripts/build-unified-swa.ts
       - *a11
       - sha: 085bd47e42508cb8d60742f74d77a046e7349bfe
         message: "feat(deploy): ready apps for Cosmos (#37)"
@@ -354,6 +377,30 @@ commitMessages:
         additions: 389
         deletions: 362
         filesChanged: 23
+        files:
+          - .github/workflows/azure-static-web-apps-products.yml
+          - .github/workflows/azure-static-web-apps.yml
+          - README.md
+          - hub/README.md
+          - hub/functions/package.json
+          - infra/azure/README.md
+          - infra/azure/pto-tracker/README.md
+          - infra/azure/pto-tracker/serverless.bicep
+          - infra/azure/static-web-apps.bicep
+          - pto-tracker/.env.example
+          - pto-tracker/README.md
+          - pto-tracker/docs/microsoft-tenant-deployment.md
+          - pto-tracker/functions/local.settings.json.example
+          - pto-tracker/scripts/build-static.ts
+          - pto-tracker/src/components/AuthProvider.tsx
+          - pto-tracker/src/components/PtoAppShell.tsx
+          - pto-tracker/src/lib/api/handlers.test.ts
+          - pto-tracker/src/lib/api/handlers.ts
+          - pto-tracker/src/lib/auth/entra-provider.test.ts
+          - pto-tracker/src/lib/auth/entra-provider.ts
+          - pto-tracker/src/lib/auth/entra-token-provider.test.ts
+          - pto-tracker/src/lib/auth/entra-token-provider.ts
+          - pto-tracker/staticwebapp.config.json
 releases: []
 externalContributions: []
 codeReviews: []
@@ -459,6 +506,5 @@ hoursEstimate:
   volumeHours: 21.5
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

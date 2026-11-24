@@ -47,8 +47,7 @@ pullRequests:
       ## Why
 
 
-      Production Onboarding workspaces can be empty, but the current UI only tells users to run a local seed command.
-      Signed-in users need a supported way to initialize the workspace.
+      Production Onboarding workspaces can be empty, but the current UI only tells users to run a local seed command. Signed-in users need a supported way to initialize the workspace.
 
 
       ## What changed
@@ -100,8 +99,7 @@ pullRequests:
       ## Why
 
 
-      New issues need a repeatable path into isolated Codex implementation work without bypassing human review and merge
-      control.
+      New issues need a repeatable path into isolated Codex implementation work without bypassing human review and merge control.
 
 
       ## What changed
@@ -128,6 +126,11 @@ pullRequests:
         message: "ci: add Codex issue PR workflow"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/81e6f6ac27e48dc456b7f5e93f2bae70d9229c84
         authoredAt: 2026-07-16T21:04:36Z
+        files:
+          - .github/ISSUE_TEMPLATE/bug_report.yml
+          - .github/ISSUE_TEMPLATE/feature_request.yml
+          - .github/workflows/codex-issue-pr.yml
+          - .github/workflows/issue-project-triage.yml
     workTimestamps: &a3
       - 2026-07-16T21:04:36Z
     workAdditions: 379
@@ -143,8 +146,7 @@ prsInProgress:
       ## Why
 
 
-      New issues need a repeatable path into isolated Codex implementation work without bypassing human review and merge
-      control.
+      New issues need a repeatable path into isolated Codex implementation work without bypassing human review and merge control.
 
 
       ## What changed
@@ -170,12 +172,16 @@ prsInProgress:
     workAdditions: 379
     workDeletions: 71
     workFiles: *a4
+    allocationFiles:
+      - .github/ISSUE_TEMPLATE/bug_report.yml
+      - .github/ISSUE_TEMPLATE/feature_request.yml
+      - .github/workflows/codex-issue-pr.yml
+      - .github/workflows/issue-project-triage.yml
   - title: Unify OHCPWM platform and OFAC
     body: >-
       - publish the completed FINET Pricing model work alongside shared product-platform consolidation
 
-      - move OFAC production authentication to Azure Static Web Apps with the intentional SWA Principal bridge into
-      Azure Functions
+      - move OFAC production authentication to Azure Static Web Apps with the intentional SWA Principal bridge into Azure Functions
 
       - add the first authenticated Functions identity endpoint and static-safe OFA...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/58
@@ -319,6 +325,23 @@ commitMessages:
         additions: 537
         deletions: 1
         filesChanged: 16
+        files:
+          - onboarding/apps/dashboard/app/api/[...path]/route.ts
+          - onboarding/apps/dashboard/app/page.tsx
+          - onboarding/apps/dashboard/app/settings/page.tsx
+          - onboarding/apps/dashboard/components/create-employee-form.tsx
+          - onboarding/apps/dashboard/functions/src/index.ts
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+          - onboarding/apps/dashboard/lib/api/client.ts
+          - onboarding/apps/dashboard/lib/api/handlers.test.ts
+          - onboarding/apps/dashboard/lib/api/handlers.ts
+          - packages/db/src/cosmos-queries.ts
+          - packages/db/src/employee-case.test.ts
+          - packages/db/src/employee-case.ts
+          - packages/db/src/index.ts
+          - packages/db/src/queries.ts
+          - packages/db/src/runtime.ts
       - sha: a57024e2c73b3e13c6ef5a1590fd3f54ceaae441
         message: "fix(onboarding): add first-run setup"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a57024e2c73b3e13c6ef5a1590fd3f54ceaae441
@@ -326,6 +349,23 @@ commitMessages:
         additions: 537
         deletions: 1
         filesChanged: 16
+        files:
+          - onboarding/apps/dashboard/app/api/[...path]/route.ts
+          - onboarding/apps/dashboard/app/page.tsx
+          - onboarding/apps/dashboard/app/settings/page.tsx
+          - onboarding/apps/dashboard/components/create-employee-form.tsx
+          - onboarding/apps/dashboard/functions/src/index.ts
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+          - onboarding/apps/dashboard/lib/api/client.ts
+          - onboarding/apps/dashboard/lib/api/handlers.test.ts
+          - onboarding/apps/dashboard/lib/api/handlers.ts
+          - packages/db/src/cosmos-queries.ts
+          - packages/db/src/employee-case.test.ts
+          - packages/db/src/employee-case.ts
+          - packages/db/src/index.ts
+          - packages/db/src/queries.ts
+          - packages/db/src/runtime.ts
   - repo: Myriad-Advisor-Solutions/ohcpwm-apps
     messages:
       - "feat: refine operational app workspace"
@@ -349,6 +389,21 @@ commitMessages:
         additions: 877
         deletions: 110
         filesChanged: 14
+        files:
+          - bun.lock
+          - hub/app/globals.css
+          - hub/app/layout.tsx
+          - hub/app/page.tsx
+          - hub/components/hub-launcher.tsx
+          - hub/lib/apps.ts
+          - ofac/src/app/actions.ts
+          - ofac/src/app/clients/new/page.tsx
+          - ofac/src/app/globals.css
+          - ofac/src/components/client-intake-form.tsx
+          - packages/ui/src/styles.css
+          - packages/ui/src/user-menu.tsx
+          - pricing/src/app/globals.css
+          - scripts/dev.ts
       - sha: 271d535816fcb4efa8910c0e6be3ebf9e839509a
         message: "ci(hub): promote entry deployment"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/271d535816fcb4efa8910c0e6be3ebf9e839509a
@@ -356,6 +411,14 @@ commitMessages:
         additions: 312
         deletions: 156
         filesChanged: 7
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - .github/workflows/azure-static-web-apps.yml
+          - README.md
+          - docs/azure-serverless-plan.md
+          - docs/deploy-asap.md
+          - hub/functions/src/index.ts
+          - hub/staticwebapp.config.json
       - sha: d9366a6f033231434718e6ae482a825247e72eb7
         message: "ci(hub): add stage deployment"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d9366a6f033231434718e6ae482a825247e72eb7
@@ -363,6 +426,9 @@ commitMessages:
         additions: 14
         deletions: 2
         filesChanged: 2
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - docs/deploy-asap.md
       - sha: f10a097ae911c460b360286f2c03d6ac28d49fe8
         message: "feat(suite): mount apps under hub paths"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f10a097ae911c460b360286f2c03d6ac28d49fe8
@@ -370,6 +436,31 @@ commitMessages:
         additions: 156
         deletions: 441
         filesChanged: 24
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - .github/workflows/azure-static-web-apps.yml
+          - README.md
+          - docs/azure-serverless-plan.md
+          - docs/deploy-asap.md
+          - hub/app/api/health/route.ts
+          - hub/functions/dist-entry.js
+          - hub/functions/package.json
+          - hub/lib/apps.ts
+          - hub/staticwebapp.config.json
+          - ofac/functions/src/index.ts
+          - ofac/next.config.ts
+          - ofac/package.json
+          - ofac/src/components/ofac-app-shell.tsx
+          - ofac/src/lib/ofac-auth-routes.ts
+          - pricing/functions/src/index.ts
+          - pricing/next.config.ts
+          - pricing/package.json
+          - pricing/src/components/pricing-app-shell.tsx
+          - pricing/src/components/pricing-static-pages.tsx
+          - pricing/src/components/pricing-workstation-client.tsx
+          - pricing/src/lib/pricing-auth-routes.ts
+          - pricing/src/lib/recruit-routes.ts
+          - scripts/compose-static-suite.ts
       - sha: c952c6e62927eab5710c24b8a976186eb7d740be
         message: "fix(ofac): remove static logout route"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c952c6e62927eab5710c24b8a976186eb7d740be
@@ -377,6 +468,8 @@ commitMessages:
         additions: 0
         deletions: 5
         filesChanged: 1
+        files:
+          - ofac/src/app/logout/route.ts
       - sha: b982cd6b8c3df3f1fafb72b5ee98a9b27b6f7d65
         message: "fix(ci): exclude Next APIs from static build"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b982cd6b8c3df3f1fafb72b5ee98a9b27b6f7d65
@@ -384,6 +477,10 @@ commitMessages:
         additions: 51
         deletions: 2
         filesChanged: 3
+        files:
+          - ofac/package.json
+          - pricing/package.json
+          - scripts/build-static-next.ts
       - sha: 3261e9d5db33fe20aee9ce56272ab09f838375c3
         message: "feat(ofac): add static suite client"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3261e9d5db33fe20aee9ce56272ab09f838375c3
@@ -391,6 +488,14 @@ commitMessages:
         additions: 333
         deletions: 5
         filesChanged: 7
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - hub/app/globals.css
+          - hub/app/ofac/page.tsx
+          - hub/components/ofac-portal.tsx
+          - hub/staticwebapp.config.json
+          - ofac/functions/src/index.ts
+          - scripts/compose-static-suite.ts
       - sha: d8f47823be66a95e70facb2927888ffe572bc18a
         message: "fix(hub): use Link for OFAC navigation"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d8f47823be66a95e70facb2927888ffe572bc18a
@@ -398,6 +503,8 @@ commitMessages:
         additions: 3
         deletions: 2
         filesChanged: 1
+        files:
+          - hub/components/ofac-portal.tsx
       - sha: edd412a05be93862366248532e8c26b9cbd2b934
         message: "fix(hub): export directory routes"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/edd412a05be93862366248532e8c26b9cbd2b934
@@ -405,6 +512,8 @@ commitMessages:
         additions: 1
         deletions: 0
         filesChanged: 1
+        files:
+          - hub/next.config.ts
       - sha: b4eb7932d4d6ab7bbd541496b4dcbe701e68c695
         message: "fix(functions): use unique registrations"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b4eb7932d4d6ab7bbd541496b4dcbe701e68c695
@@ -412,6 +521,9 @@ commitMessages:
         additions: 2
         deletions: 2
         filesChanged: 2
+        files:
+          - ofac/functions/src/index.ts
+          - pricing/functions/src/index.ts
       - sha: 4b0f87db857734302feed06e061d6e5de8c7ee6e
         message: "feat(suite): restore OFAC and refine hub"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4b0f87db857734302feed06e061d6e5de8c7ee6e
@@ -419,6 +531,25 @@ commitMessages:
         additions: 902
         deletions: 655
         filesChanged: 17
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - hub/app/globals.css
+          - hub/app/ofac/page.tsx
+          - hub/components/hub-launcher.tsx
+          - hub/components/ofac-portal.tsx
+          - ofac/functions/src/index.ts
+          - ofac/src/app/actions.ts
+          - ofac/src/app/clients/new/page.tsx
+          - ofac/src/app/page.tsx
+          - ofac/src/app/screenings/[id]/page.tsx
+          - ofac/src/app/screenings/page.tsx
+          - ofac/src/app/search/page.tsx
+          - ofac/src/app/sync/page.tsx
+          - ofac/src/components/client-intake-form.tsx
+          - ofac/src/components/screening-detail.tsx
+          - ofac/src/lib/ofac-api-client.ts
+          - scripts/build-static-next.ts
+          - scripts/compose-static-suite.ts
       - sha: 408a606b2fc84f4adf4fbdfd60e4c3e05f7b4b8a
         message: "ci: keep unified deployment workflow"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/408a606b2fc84f4adf4fbdfd60e4c3e05f7b4b8a
@@ -426,6 +557,7 @@ commitMessages:
         additions: 0
         deletions: 0
         filesChanged: 0
+        files: []
       - *a5
 releases: []
 externalContributions: []
@@ -509,6 +641,5 @@ hoursEstimate:
   volumeHours: 30.9
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

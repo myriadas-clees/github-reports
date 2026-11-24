@@ -66,6 +66,29 @@ commitMessages:
         additions: 714
         deletions: 138
         filesChanged: 22
+        files:
+          - .agents/skills/myriad-branding/SKILL.md
+          - .agents/skills/myriad-branding/agents/openai.yaml
+          - .agents/skills/myriad-branding/references/digital-product-brand.md
+          - excelerate/src/components/excelerate-client.tsx
+          - hub/app/page.tsx
+          - onboarding/apps/dashboard/app/api/[...path]/route.ts
+          - onboarding/apps/dashboard/app/page.tsx
+          - onboarding/apps/dashboard/app/settings/page.tsx
+          - onboarding/apps/dashboard/components/dashboard-shell.tsx
+          - onboarding/apps/dashboard/components/employee-selector.tsx
+          - onboarding/apps/dashboard/package.json
+          - onboarding/apps/dashboard/scripts/build-static.ts
+          - packages/brand/src/styles.css
+          - packages/ui/src/navigation/app-nav.tsx
+          - packages/ui/src/navigation/app-shell.tsx
+          - packages/ui/src/navigation/navigation-mode-picker.tsx
+          - proforma/src/app/globals.css
+          - proforma/src/app/settings/page.tsx
+          - pto-tracker/src/app/my/MyClient.tsx
+          - pto-tracker/src/components/PtoAppShell.tsx
+          - scripts/dev.ts
+          - valuation/src/app/page.tsx
       - sha: ef0f8407af226564680ce46d5f6d645648a81d66
         message: "feat(deploy): add hub SWA infrastructure"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ef0f8407af226564680ce46d5f6d645648a81d66
@@ -73,6 +96,25 @@ commitMessages:
         additions: 1061
         deletions: 60
         filesChanged: 18
+        files:
+          - .github/workflows/azure-static-web-apps-products.yml
+          - .github/workflows/azure-static-web-apps.yml
+          - .github/workflows/verify.yml
+          - README.md
+          - docs/azure-serverless-plan.md
+          - docs/deploy-asap.md
+          - excelerate/staticwebapp.config.json
+          - hub/lib/apps.ts
+          - hub/staticwebapp.config.json
+          - infra/azure/README.md
+          - infra/azure/ptb-development.outputs.json
+          - infra/azure/ptb-development.parameters.json
+          - infra/azure/static-web-apps.bicep
+          - onboarding/apps/dashboard/staticwebapp.config.json
+          - package.json
+          - proforma/staticwebapp.config.json
+          - pto-tracker/staticwebapp.config.json
+          - valuation/staticwebapp.config.json
       - sha: db758cde24082f9aa1d3e3bc72644ba6b294274e
         message: "ci(pto): remove standalone workflow"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/db758cde24082f9aa1d3e3bc72644ba6b294274e
@@ -80,6 +122,10 @@ commitMessages:
         additions: 19
         deletions: 132
         filesChanged: 3
+        files:
+          - .github/workflows/pto-tracker.yml
+          - docs/azure-serverless-plan.md
+          - pto-tracker/docs/microsoft-tenant-deployment.md
       - sha: a57e01607009dd4b4c01eef4df9432d2d73d1206
         message: "fix(hub): protect SWA routes"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a57e01607009dd4b4c01eef4df9432d2d73d1206
@@ -87,6 +133,11 @@ commitMessages:
         additions: 96
         deletions: 7
         filesChanged: 4
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - docs/azure-serverless-plan.md
+          - docs/deploy-asap.md
+          - hub/staticwebapp.config.json
       - sha: 8f3baf259588322aba4db7d9c61f686ca9e086f9
         message: "fix(deploy): compose product static routes"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8f3baf259588322aba4db7d9c61f686ca9e086f9
@@ -94,6 +145,16 @@ commitMessages:
         additions: 74
         deletions: 47
         filesChanged: 9
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - docs/azure-serverless-plan.md
+          - docs/deploy-asap.md
+          - excelerate/next.config.ts
+          - hub/staticwebapp.config.json
+          - onboarding/apps/dashboard/next.config.ts
+          - proforma/next.config.ts
+          - pto-tracker/next.config.ts
+          - valuation/next.config.ts
       - sha: 96ef05aa467360ea57f15a06a05c91a316a8f431
         message: "fix(hub): route product entry points"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/96ef05aa467360ea57f15a06a05c91a316a8f431
@@ -101,6 +162,10 @@ commitMessages:
         additions: 31
         deletions: 12
         filesChanged: 3
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - docs/deploy-asap.md
+          - hub/staticwebapp.config.json
       - sha: d00a15ac2d7ad7e43a7eaa4a5f0f9f444ba50f8b
         message: "fix(hub): remove duplicate SWA routes"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d00a15ac2d7ad7e43a7eaa4a5f0f9f444ba50f8b
@@ -108,6 +173,8 @@ commitMessages:
         additions: 0
         deletions: 20
         filesChanged: 1
+        files:
+          - hub/staticwebapp.config.json
       - sha: e6dc8f6f456a378fb4af6acce4ab56b1792cf093
         message: "fix(deploy): skip SWA API rebuild"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e6dc8f6f456a378fb4af6acce4ab56b1792cf093
@@ -115,6 +182,8 @@ commitMessages:
         additions: 1
         deletions: 0
         filesChanged: 1
+        files:
+          - .github/workflows/azure-static-web-apps.yml
       - sha: 6df0b87c70ee97b693a99caf91bfaeba688d20c8
         message: "fix(hub): route mounted app pages"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6df0b87c70ee97b693a99caf91bfaeba688d20c8
@@ -122,6 +191,14 @@ commitMessages:
         additions: 197
         deletions: 15
         filesChanged: 7
+        files:
+          - excelerate/next.config.ts
+          - hub/next.config.ts
+          - hub/staticwebapp.config.json
+          - onboarding/apps/dashboard/next.config.ts
+          - proforma/next.config.ts
+          - pto-tracker/next.config.ts
+          - valuation/next.config.ts
       - sha: 27204d67de238d0e5d01b8fbb896085a373a02a8
         message: "fix(hub): use mounted index routes"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/27204d67de238d0e5d01b8fbb896085a373a02a8
@@ -129,6 +206,8 @@ commitMessages:
         additions: 30
         deletions: 60
         filesChanged: 1
+        files:
+          - hub/staticwebapp.config.json
   - repo: Myriad-Advisor-Solutions/ohcpwm-apps
     messages:
       - "fix(pricing): use temp storage in Functions"
@@ -149,6 +228,10 @@ commitMessages:
         additions: 20
         deletions: 4
         filesChanged: 3
+        files:
+          - pricing/functions/src/index.ts
+          - pricing/src/lib/__tests__/blob-storage.test.ts
+          - pricing/src/lib/blob-storage.ts
       - sha: a8d7e74ca60b157f2e3c1059650c190dfaad8db9
         message: "feat(pricing): regenerate saved reports"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a8d7e74ca60b157f2e3c1059650c190dfaad8db9
@@ -156,6 +239,28 @@ commitMessages:
         additions: 281
         deletions: 264
         filesChanged: 21
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - README.md
+          - docs/azure-serverless-plan.md
+          - docs/deploy-asap.md
+          - packages/contracts/src/pricing.ts
+          - packages/db/src/pricing.test.ts
+          - packages/db/src/pricing.ts
+          - pricing/functions/local.settings.json.example
+          - pricing/functions/src/index.ts
+          - pricing/src/components/__tests__/pdf-report-viewer.test.tsx
+          - pricing/src/components/pdf-report-viewer.tsx
+          - pricing/src/components/recruit-detail-panels.tsx
+          - pricing/src/components/report-artifact-actions.tsx
+          - pricing/src/components/report-artifact-viewer.tsx
+          - pricing/src/components/workstation-report-table.tsx
+          - pricing/src/lib/__tests__/report-storage.test.ts
+          - pricing/src/lib/blob-storage.ts
+          - pricing/src/lib/cosmos-data.ts
+          - pricing/src/lib/graph-data.ts
+          - pricing/src/lib/pricing-api-client.ts
+          - pricing/src/lib/report-storage.ts
       - sha: 03edc02785055f11b8bf8c3b652c50787c05cc0b
         message: "ci(pricing): remove invalid SWA input"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/03edc02785055f11b8bf8c3b652c50787c05cc0b
@@ -163,6 +268,8 @@ commitMessages:
         additions: 0
         deletions: 1
         filesChanged: 1
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
       - sha: 6168e77c8b52d9b423e34f6c69dcbde88b2baffc
         message: "ci(pricing): restore SWA API build skip"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6168e77c8b52d9b423e34f6c69dcbde88b2baffc
@@ -170,6 +277,8 @@ commitMessages:
         additions: 1
         deletions: 0
         filesChanged: 1
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
       - sha: c71f4ec0792a6ef1a698d8235426bf66853d9c62
         message: "ci(pricing): split deployment workflow"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c71f4ec0792a6ef1a698d8235426bf66853d9c62
@@ -177,6 +286,8 @@ commitMessages:
         additions: 216
         deletions: 14
         filesChanged: 1
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
       - sha: 6f7d4e9e7b6123e376d78b71b549b5b906aebda7
         message: "ci(pricing): fix production deploy checks"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6f7d4e9e7b6123e376d78b71b549b5b906aebda7
@@ -184,6 +295,9 @@ commitMessages:
         additions: 6
         deletions: 5
         filesChanged: 2
+        files:
+          - .github/workflows/verify.yml
+          - pricing/src/lib/__tests__/report-storage.test.ts
       - sha: 14667e89d5898df7a4e59de1ffc286feffa4b31e
         message: "ci(pricing): restore function runtime types"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/14667e89d5898df7a4e59de1ffc286feffa4b31e
@@ -191,6 +305,8 @@ commitMessages:
         additions: 0
         deletions: 1
         filesChanged: 1
+        files:
+          - pricing/functions/tsconfig.json
       - sha: 7d1264cef8949be08a148ddd87f090f80777a6bf
         message: "ci(actions): update Node 24 actions [skip ci]"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7d1264cef8949be08a148ddd87f090f80777a6bf
@@ -198,6 +314,10 @@ commitMessages:
         additions: 19
         deletions: 19
         filesChanged: 3
+        files:
+          - .github/workflows/azure-static-web-apps-pricing.yml
+          - .github/workflows/azure-static-web-apps.yml
+          - .github/workflows/verify.yml
       - sha: 86060ee315f7a31fb35e0d8ee6150f16b7c88d11
         message: Add SWA auth login and pricing user menu
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/86060ee315f7a31fb35e0d8ee6150f16b7c88d11
@@ -205,6 +325,34 @@ commitMessages:
         additions: 750
         deletions: 75
         filesChanged: 27
+        files:
+          - packages/brand/src/styles.css
+          - packages/ui/src/index.ts
+          - packages/ui/src/navigation/app-shell.tsx
+          - packages/ui/src/styles.css
+          - packages/ui/src/user-menu.tsx
+          - pricing/.env.example
+          - pricing/functions/src/index.ts
+          - pricing/next.config.ts
+          - pricing/package.json
+          - pricing/src/app/globals.css
+          - pricing/src/app/layout.tsx
+          - pricing/src/app/login/page.tsx
+          - pricing/src/components/__tests__/pricing-workstation-client.test.tsx
+          - pricing/src/components/pricing-app-shell.tsx
+          - pricing/src/components/pricing-static-pages.tsx
+          - pricing/src/components/pricing-user-menu.tsx
+          - pricing/src/components/recruit-detail-panels.tsx
+          - pricing/src/components/settings-previews.tsx
+          - pricing/src/lib/__tests__/pricing-visibility.test.ts
+          - pricing/src/lib/__tests__/workstation-sections.test.ts
+          - pricing/src/lib/__tests__/workstation.test.ts
+          - pricing/src/lib/pricing-api-client.ts
+          - pricing/src/lib/pricing-auth-routes.ts
+          - pricing/src/lib/pricing-session-client.ts
+          - pricing/src/lib/pricing-visibility.ts
+          - pricing/src/lib/workstation-sections.ts
+          - scripts/dev-pricing-api.ts
       - sha: da2f9f3bbc7b9ca8628bfe46a1382869e3045520
         message: "fix: use supported pricing scenario fallback"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/da2f9f3bbc7b9ca8628bfe46a1382869e3045520
@@ -212,6 +360,10 @@ commitMessages:
         additions: 15
         deletions: 5
         filesChanged: 3
+        files:
+          - pricing/src/lib/report-storage.ts
+          - pricing/src/lib/report/model.ts
+          - pricing/src/lib/workstation.ts
 releases: []
 externalContributions: []
 codeReviews: []
@@ -273,6 +425,5 @@ hoursEstimate:
   volumeHours: 9
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

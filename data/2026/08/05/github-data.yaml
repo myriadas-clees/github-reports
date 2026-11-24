@@ -37,8 +37,7 @@ repositories:
 pullRequests:
   - title: "fix(pricing): give payout details room to breathe"
     body: >-
-      - Reorganize the expanded recruit payout detail into a vertical proposed-payout calculation and a separate Current
-      FiNet benchmark.
+      - Reorganize the expanded recruit payout detail into a vertical proposed-payout calculation and a separate Current FiNet benchmark.
 
       - Preserve every financial figure while giving the primary Net Payout result and comparison room to scan.
 
@@ -60,6 +59,15 @@ pullRequests:
     workAdditions: 0
     workDeletions: 0
     workFiles: []
+    allocationFiles:
+      - pricing/src/app/globals.css
+      - pricing/src/components/__tests__/dashboard-metrics-charts.test.tsx
+      - pricing/src/components/__tests__/recruits-table-responsive-css.test.ts
+      - pricing/src/components/__tests__/recruits-table.test.tsx
+      - pricing/src/components/dashboard-metrics-charts.tsx
+      - pricing/src/components/recruits-table.tsx
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/report/pdf.tsx
   - title: "test(pricing): add auditable workbook fixtures (#20)"
     body: |-
       - add a checksum-pinned, auditable fixture for the checked-in pricing workbook template
@@ -84,11 +92,36 @@ pullRequests:
         message: "chore(pricing): integrate #88 stack with main"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/21a2bb5a096f3c3fecb474cdc16f6b7392ae9ed6
         authoredAt: 2026-08-05T12:02:12Z
+        files:
+          - docs/pricing-scenario-rules.md
+          - packages/contracts/src/pricing.test.ts
+          - packages/contracts/src/pricing.ts
+          - packages/db/src/pricing.test.ts
+          - packages/db/src/pricing.ts
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/scenario-model-tab.test.tsx
+          - pricing/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+          - pricing/src/components/excel-sheet/workstation-sheet-defs.tsx
+          - pricing/src/components/new-recruit-wizard.tsx
+          - pricing/src/components/scenario-model-tab.tsx
+          - pricing/src/lib/__tests__/calculation.test.ts
+          - pricing/src/lib/__tests__/report-model.test.ts
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/__tests__/workstation.test.ts
+          - pricing/src/lib/calculation.ts
+          - pricing/src/lib/cosmos-data.ts
+          - pricing/src/lib/graph-data.ts
+          - pricing/src/lib/report/excel.ts
+          - pricing/src/lib/report/model.ts
+          - pricing/src/lib/workbook-output.ts
       - &a5
         sha: f04f632bb1d6860dd479b43d1cfea4d2099f37e5
         message: "fix(pricing): reconcile FINET fixture with 92% policy"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f04f632bb1d6860dd479b43d1cfea4d2099f37e5
         authoredAt: 2026-08-05T12:09:32Z
+        files:
+          - pricing/src/lib/__tests__/fixtures/auditable-pricing-fixture.ts
+          - pricing/src/lib/report/excel.ts
     workTimestamps:
       - 2026-08-05T12:02:12Z
       - 2026-08-05T12:09:32Z
@@ -123,8 +156,7 @@ pullRequests:
 
       - Enforce the confirmed 92% FINET payout for every product, including fixed insurance.
 
-      - Remove unclear “OHC Advantage” wording; rename the advisory-platform basis to “Wells Advisory Platform Fee”;
-      present FIN...
+      - Remove unclear “OHC Advantage” wording; rename the advisory-platform basis to “Wells Advisory Platform Fee”; present FIN...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/83
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: merged
@@ -142,6 +174,22 @@ pullRequests:
     workAdditions: 0
     workDeletions: 0
     workFiles: []
+    allocationFiles:
+      - docs/pricing-scenario-rules.md
+      - pricing/src/components/__tests__/scenario-model-tab.test.tsx
+      - pricing/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - pricing/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - pricing/src/components/new-recruit-wizard.tsx
+      - pricing/src/components/scenario-model-tab.tsx
+      - pricing/src/lib/__tests__/calculation.test.ts
+      - pricing/src/lib/__tests__/report-model.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/workstation.test.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/workbook-output.ts
   - title: "fix(pricing): normalize duplicated recruit models"
     body: |-
       - Deep-copy and normalize duplicated pricing models so the copied recruit's advisor name is updated independently.
@@ -164,6 +212,15 @@ pullRequests:
     workAdditions: 0
     workDeletions: 0
     workFiles: []
+    allocationFiles:
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - packages/db/src/pricing.test.ts
+      - packages/db/src/pricing.ts
+      - pricing/src/app/globals.css
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/cosmos-data.ts
+      - pricing/src/lib/graph-data.ts
   - title: "feat(pricing): add permissioned holdco revenue"
     body: |-
       Adds the requested AUM, Top Line Revenue, and Revenue to Holdco views to the Advisor Pricing pipeline.
@@ -190,6 +247,29 @@ pullRequests:
         message: "chore(pricing): resolve #81 stack against main"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8ae782b89568994147fdd553906b3e6bd86f3012
         authoredAt: 2026-08-05T11:58:50Z
+        files:
+          - docs/pricing-scenario-rules.md
+          - packages/contracts/src/pricing.test.ts
+          - packages/contracts/src/pricing.ts
+          - packages/db/src/pricing.test.ts
+          - packages/db/src/pricing.ts
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/scenario-model-tab.test.tsx
+          - pricing/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+          - pricing/src/components/excel-sheet/workstation-sheet-defs.tsx
+          - pricing/src/components/new-recruit-wizard.tsx
+          - pricing/src/components/scenario-model-tab.tsx
+          - pricing/src/lib/__tests__/calculation.test.ts
+          - pricing/src/lib/__tests__/report-model.test.ts
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/__tests__/workstation.test.ts
+          - pricing/src/lib/calculation.ts
+          - pricing/src/lib/cosmos-data.ts
+          - pricing/src/lib/graph-data.ts
+          - pricing/src/lib/report/excel.ts
+          - pricing/src/lib/report/model.ts
+          - pricing/src/lib/report/pdf.tsx
+          - pricing/src/lib/workbook-output.ts
     workTimestamps:
       - 2026-08-05T11:58:50Z
     workAdditions: 356
@@ -243,11 +323,35 @@ pullRequests:
         message: "chore(pricing): integrate #87 stack with main"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/50faf525bab3dc0091eb01ab99d8c348bd5e24ce
         authoredAt: 2026-08-05T12:01:25Z
+        files:
+          - docs/pricing-scenario-rules.md
+          - packages/contracts/src/pricing.test.ts
+          - packages/contracts/src/pricing.ts
+          - packages/db/src/pricing.test.ts
+          - packages/db/src/pricing.ts
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/scenario-model-tab.test.tsx
+          - pricing/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+          - pricing/src/components/excel-sheet/workstation-sheet-defs.tsx
+          - pricing/src/components/new-recruit-wizard.tsx
+          - pricing/src/components/scenario-model-tab.tsx
+          - pricing/src/lib/__tests__/calculation.test.ts
+          - pricing/src/lib/__tests__/report-model.test.ts
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/__tests__/workstation.test.ts
+          - pricing/src/lib/calculation.ts
+          - pricing/src/lib/cosmos-data.ts
+          - pricing/src/lib/graph-data.ts
+          - pricing/src/lib/report/excel.ts
+          - pricing/src/lib/report/model.ts
+          - pricing/src/lib/workbook-output.ts
       - &a4
         sha: 25ec7cdb45834a1dec604dd837ec0933b561a704
         message: "fix(pricing): keep current FINET advisory fee monthly"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/25ec7cdb45834a1dec604dd837ec0933b561a704
         authoredAt: 2026-08-05T12:07:56Z
+        files:
+          - pricing/src/lib/report/excel.ts
     workTimestamps:
       - 2026-08-05T12:01:25Z
       - 2026-08-05T12:07:56Z
@@ -300,6 +404,15 @@ commitMessages:
         additions: 199
         deletions: 10
         filesChanged: 8
+        files:
+          - packages/contracts/src/pricing.test.ts
+          - packages/contracts/src/pricing.ts
+          - packages/db/src/pricing.test.ts
+          - packages/db/src/pricing.ts
+          - pricing/src/app/globals.css
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/cosmos-data.ts
+          - pricing/src/lib/graph-data.ts
       - sha: 0ea04cd003dfba57d6edcc1cd013f12b77aae4de
         message: "fix(pricing): align FINET reports (#83) [skip ci]"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0ea04cd003dfba57d6edcc1cd013f12b77aae4de
@@ -307,6 +420,22 @@ commitMessages:
         additions: 163
         deletions: 74
         filesChanged: 15
+        files:
+          - docs/pricing-scenario-rules.md
+          - pricing/src/components/__tests__/scenario-model-tab.test.tsx
+          - pricing/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+          - pricing/src/components/excel-sheet/workstation-sheet-defs.tsx
+          - pricing/src/components/new-recruit-wizard.tsx
+          - pricing/src/components/scenario-model-tab.tsx
+          - pricing/src/lib/__tests__/calculation.test.ts
+          - pricing/src/lib/__tests__/report-model.test.ts
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/__tests__/workstation.test.ts
+          - pricing/src/lib/calculation.ts
+          - pricing/src/lib/report/excel.ts
+          - pricing/src/lib/report/model.ts
+          - pricing/src/lib/report/pdf.tsx
+          - pricing/src/lib/workbook-output.ts
       - *a1
       - *a2
       - *a3
@@ -319,6 +448,33 @@ commitMessages:
         additions: 785
         deletions: 126
         filesChanged: 26
+        files:
+          - docs/pricing-scenario-rules.md
+          - packages/contracts/src/pricing.test.ts
+          - packages/contracts/src/pricing.ts
+          - pricing/src/components/__tests__/dashboard-metrics-charts.test.tsx
+          - pricing/src/components/__tests__/pricing-graphs.test.tsx
+          - pricing/src/components/__tests__/pricing-workstation-client.test.tsx
+          - pricing/src/components/__tests__/recruits-table.test.tsx
+          - pricing/src/components/__tests__/scenario-model-tab.test.tsx
+          - pricing/src/components/dashboard-metrics-charts.tsx
+          - pricing/src/components/pricing-workstation-client.tsx
+          - pricing/src/components/recruits-table.tsx
+          - pricing/src/components/scenario-model-tab.tsx
+          - pricing/src/lib/__tests__/calculation.test.ts
+          - pricing/src/lib/__tests__/dashboard-summary.test.ts
+          - pricing/src/lib/__tests__/dashboard-visibility.test.ts
+          - pricing/src/lib/__tests__/report-model.test.ts
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/__tests__/workbook-preview.test.ts
+          - pricing/src/lib/__tests__/workstation.test.ts
+          - pricing/src/lib/calculation.ts
+          - pricing/src/lib/dashboard-summary.ts
+          - pricing/src/lib/report/excel.ts
+          - pricing/src/lib/report/model.ts
+          - pricing/src/lib/report/pdf.tsx
+          - pricing/src/lib/report/workbook-preview.ts
+          - pricing/src/lib/workstation.ts
       - sha: aa4609203282605983b9d97a45568e89b911031b
         message: "feat(pricing): add permissioned holdco revenue (#81)"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/aa4609203282605983b9d97a45568e89b911031b
@@ -326,6 +482,39 @@ commitMessages:
         additions: 542
         deletions: 95
         filesChanged: 32
+        files:
+          - artifacts/visual-qa/admin-dashboard-desktop.png
+          - artifacts/visual-qa/dashboard-error-state.png
+          - artifacts/visual-qa/dashboard-loading-state.png
+          - artifacts/visual-qa/nonadmin-dashboard-desktop.png
+          - artifacts/visual-qa/nonadmin-dashboard-mobile-viewport.png
+          - artifacts/visual-qa/nonadmin-permission-new-recruit.png
+          - artifacts/visual-qa/recruits-empty-filter.png
+          - docs/pricing-dashboard-contract.md
+          - packages/contracts/src/pricing.test.ts
+          - packages/contracts/src/pricing.ts
+          - pricing/functions/src/index.ts
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/dashboard-metrics-charts.test.tsx
+          - pricing/src/components/__tests__/recruit-archive-section.test.tsx
+          - pricing/src/components/__tests__/recruit-data-cell.test.tsx
+          - pricing/src/components/__tests__/recruit-row-actions.test.tsx
+          - pricing/src/components/__tests__/recruits-table.test.tsx
+          - pricing/src/components/dashboard-metrics-charts.tsx
+          - pricing/src/components/dashboard-recruits-panel.tsx
+          - pricing/src/components/pricing-app-shell.tsx
+          - pricing/src/components/pricing-static-pages.tsx
+          - pricing/src/components/recruit-archive-section.tsx
+          - pricing/src/components/recruit-data-cell.tsx
+          - pricing/src/components/recruit-row-actions.tsx
+          - pricing/src/components/recruits-table.tsx
+          - pricing/src/lib/__tests__/dashboard-summary.test.ts
+          - pricing/src/lib/__tests__/dashboard-visibility.test.ts
+          - pricing/src/lib/__tests__/pricing-functions-access.test.ts
+          - pricing/src/lib/dashboard-summary.ts
+          - pricing/src/lib/dashboard-visibility.ts
+          - pricing/src/lib/pricing-api-client.ts
+          - scripts/dev-pricing-api.ts
       - sha: aa9738508297342c39c3a8199ec1598f2c039369
         message: "test(pricing): add auditable workbook fixtures (#88) [skip ci]"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/aa9738508297342c39c3a8199ec1598f2c039369
@@ -333,6 +522,17 @@ commitMessages:
         additions: 364
         deletions: 301
         filesChanged: 10
+        files:
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/recruits-table-responsive-css.test.ts
+          - pricing/src/lib/__tests__/calculation.test.ts
+          - pricing/src/lib/__tests__/fixtures/auditable-pricing-fixture.ts
+          - pricing/src/lib/__tests__/pricing-fixture.test.ts
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/__tests__/workbook-output.test.ts
+          - pricing/src/lib/__tests__/workbook-preview.test.ts
+          - pricing/src/lib/__tests__/workstation.test.ts
+          - pricing/src/lib/report/excel.ts
       - sha: 0a42c98be7a1fccc360c8f610b92370b657c1608
         message: "fix(pricing): give payout details room to breathe (#100)"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0a42c98be7a1fccc360c8f610b92370b657c1608
@@ -340,6 +540,15 @@ commitMessages:
         additions: 122
         deletions: 232
         filesChanged: 8
+        files:
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/dashboard-metrics-charts.test.tsx
+          - pricing/src/components/__tests__/recruits-table-responsive-css.test.ts
+          - pricing/src/components/__tests__/recruits-table.test.tsx
+          - pricing/src/components/dashboard-metrics-charts.tsx
+          - pricing/src/components/recruits-table.tsx
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/report/pdf.tsx
 releases: []
 externalContributions: []
 codeReviews: []
@@ -433,6 +642,5 @@ hoursEstimate:
   volumeHours: 35.7
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

@@ -117,8 +117,7 @@ pullRequests:
       ## Why
 
 
-      Recent recruits overflowed narrower viewports, hiding financial columns and row actions. The assumptions editor
-      also carried excess guidance and layout density that made pricing inputs harder to scan.
+      Recent recruits overflowed narrower viewports, hiding financial columns and row actions. The assumptions editor also carried excess guidance and layout density that made pricing inputs harder to scan.
 
 
       ## What changed
@@ -143,16 +142,35 @@ pullRequests:
         message: "fix(pricing): fit recruits table without clipping"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/51c07ee73b672b4ad7b364256e2dce513b16dc8e
         authoredAt: 2026-07-27T21:58:55Z
+        files:
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/recruit-archive-section.test.tsx
+          - pricing/src/components/__tests__/recruit-row-actions.test.tsx
+          - pricing/src/components/__tests__/recruits-table.test.tsx
+          - pricing/src/components/dashboard-recruits-panel.tsx
+          - pricing/src/components/pricing-static-pages.tsx
+          - pricing/src/components/recruit-archive-section.tsx
+          - pricing/src/components/recruit-row-actions.tsx
+          - pricing/src/components/recruits-table.tsx
+          - pricing/src/lib/__tests__/format.test.ts
+          - pricing/src/lib/format.ts
       - &a13
         sha: 9f4f4538438609bd7b7840697f4c30484ef9dc30
         message: "fix(pricing): simplify assumptions layout"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/9f4f4538438609bd7b7840697f4c30484ef9dc30
         authoredAt: 2026-07-27T21:59:20Z
+        files:
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/assumptions-tab.test.tsx
+          - pricing/src/components/assumptions-tab.tsx
       - &a14
         sha: 257dd32c056e2d930fc940973b0fad5938153ef8
         message: "fix(pricing): prevent recruit table clipping"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/257dd32c056e2d930fc940973b0fad5938153ef8
         authoredAt: 2026-07-27T22:16:29Z
+        files:
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/recruits-table-responsive-css.test.ts
     workTimestamps:
       - 2026-07-27T21:58:55Z
       - 2026-07-27T21:59:20Z
@@ -179,8 +197,7 @@ pullRequests:
       ## Why
 
 
-      Calendar color administration belongs with other appearance controls, not in the staff calendar workflow. The
-      saturated marker fills also competed with the restrained Myriad product palette.
+      Calendar color administration belongs with other appearance controls, not in the staff calendar workflow. The saturated marker fills also competed with the restrained Myriad product palette.
 
 
       ## What changed
@@ -208,26 +225,42 @@ pullRequests:
         message: "fix(pto): move calendar colors to settings"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0747de03d1e9a0bbe7feb043c4927571a07d0173
         authoredAt: 2026-07-27T21:32:23Z
+        files:
+          - pto-tracker/src/app/calendar/CalendarClient.tsx
+          - pto-tracker/src/app/settings/CalendarColorSettings.tsx
+          - pto-tracker/src/app/settings/page.tsx
+          - pto-tracker/src/components/LeaveCalendar.tsx
+          - pto-tracker/src/lib/calendar/colors.ts
       - &a26
         sha: 81258f37163e95dce9cb6f3aeb959fc4307d4c6d
         message: "fix(pto): use calendar color dropdowns"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/81258f37163e95dce9cb6f3aeb959fc4307d4c6d
         authoredAt: 2026-07-27T21:57:10Z
+        files:
+          - pto-tracker/src/app/settings/CalendarColorSettings.tsx
       - &a27
         sha: 5d5339163055064d0ea432cd4898b55f5dc5ac9b
         message: "fix(pto): strengthen calendar settings UI"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5d5339163055064d0ea432cd4898b55f5dc5ac9b
         authoredAt: 2026-07-27T22:02:03Z
+        files:
+          - pto-tracker/src/app/settings/CalendarColorSettings.tsx
+          - pto-tracker/src/app/settings/page.tsx
+          - pto-tracker/src/lib/calendar/colors.ts
       - &a28
         sha: 7526925e21b71688d97f38811262723538791df2
         message: "fix(pto): simplify calendar color copy"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7526925e21b71688d97f38811262723538791df2
         authoredAt: 2026-07-27T22:06:02Z
+        files:
+          - pto-tracker/src/app/settings/CalendarColorSettings.tsx
       - &a29
         sha: c7f3e823f4d856e51977e2d5ad3a6ee3f58f9232
         message: "fix(pto): guard calendar color loading"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c7f3e823f4d856e51977e2d5ad3a6ee3f58f9232
         authoredAt: 2026-07-27T22:11:55Z
+        files:
+          - pto-tracker/src/app/settings/CalendarColorSettings.tsx
     workTimestamps:
       - 2026-07-27T21:32:23Z
       - 2026-07-27T21:57:10Z
@@ -247,8 +280,7 @@ pullRequests:
       Why
 
 
-      Employee email is the canonical link between Microsoft sign-in and PTO records, but HR could not correct
-      team-member identity details from the team view.
+      Employee email is the canonical link between Microsoft sign-in and PTO records, but HR could not correct team-member identity details from the team view.
 
 
       What changed
@@ -316,9 +348,7 @@ pullRequests:
       ## Why
 
 
-      Product apps need distinct paths back to their own home and to the suite Hub. The shared shell did not link the
-      Myriad mark to the product home or provide suite-level navigation, and the local supervisor's 60-second readiness
-      deadline could expire during cold multi-app compilation.
+      Product apps need distinct paths back to their own home and to the suite Hub. The shared shell did not link the Myriad mark to the product home or provide suite-level navigation, and the local supervisor's 60-second readiness deadline could expire during cold multi-app compilation.
 
 
       ## What ...
@@ -377,8 +407,7 @@ pullRequests:
       ## Why
 
 
-      CSV-backed staff imports replaced the full staff list, which removed manually entered employees. Staff setup also
-      required values the app can derive, and legacy Entra mode rendered no usable sign-in action.
+      CSV-backed staff imports replaced the full staff list, which removed manually entered employees. Staff setup also required values the app can derive, and legacy Entra mode rendered no usable sign-in action.
 
 
       ## What changed
@@ -438,8 +467,7 @@ pullRequests:
       Why
 
 
-      Weekly dependency update runs create more review churn than this repository needs. Grouping already limits PR
-      count per run, so reducing the schedule is the narrowest fix.
+      Weekly dependency update runs create more review churn than this repository needs. Grouping already limits PR count per run, so reducing the schedule is the narrowest fix.
 
 
       What changed
@@ -467,6 +495,8 @@ pullRequests:
         message: "fix(dependabot): reduce update frequency"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/1c74db9c7c89076f79a07983ef89a19a339d3929
         authoredAt: 2026-07-27T19:45:21Z
+        files:
+          - .github/dependabot.yml
     workTimestamps: &a3
       - 2026-07-27T19:45:21Z
     workAdditions: 2
@@ -478,8 +508,7 @@ pullRequests:
       Why
 
 
-      The active-workstream description omitted the role portion of the selected workstream, so it could continue to
-      look like the previous workflow after switching.
+      The active-workstream description omitted the role portion of the selected workstream, so it could continue to look like the previous workflow after switching.
 
 
       What changed
@@ -511,6 +540,8 @@ pullRequests:
         message: "fix(onboarding): show current workstream name"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c5268d24b367c83687ee1cf5420df2815a169e85
         authoredAt: 2026-07-27T21:14:31Z
+        files:
+          - onboarding/apps/dashboard/components/dashboard-shell.tsx
     workTimestamps: &a7
       - 2026-07-27T21:14:31Z
     workAdditions: 1
@@ -522,9 +553,7 @@ pullRequests:
       ## Why
 
 
-      FiNet recruits follow a distinct pricing path and should not expose or apply non-FiNet business-mix and platform
-      assumptions. The recruit workflow also needs consistent fee precision and review layouts so entered values match
-      the pricing calculations.
+      FiNet recruits follow a distinct pricing path and should not expose or apply non-FiNet business-mix and platform assumptions. The recruit workflow also needs consistent fee precision and review layouts so entered values match the pricing calculations.
 
 
       ## What changed
@@ -597,8 +626,7 @@ prsInProgress:
       Why
 
 
-      Weekly dependency update runs create more review churn than this repository needs. Grouping already limits PR
-      count per run, so reducing the schedule is the narrowest fix.
+      Weekly dependency update runs create more review churn than this repository needs. Grouping already limits PR count per run, so reducing the schedule is the narrowest fix.
 
 
       What changed
@@ -624,13 +652,14 @@ prsInProgress:
     workAdditions: 2
     workDeletions: 4
     workFiles: *a4
+    allocationFiles:
+      - .github/dependabot.yml
   - title: "fix(onboarding): show current workstream name"
     body: >-
       Why
 
 
-      The active-workstream description omitted the role portion of the selected workstream, so it could continue to
-      look like the previous workflow after switching.
+      The active-workstream description omitted the role portion of the selected workstream, so it could continue to look like the previous workflow after switching.
 
 
       What changed
@@ -660,6 +689,8 @@ prsInProgress:
     workAdditions: 1
     workDeletions: 1
     workFiles: *a8
+    allocationFiles:
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
 issues: []
 events: []
 commitMessages:
@@ -684,6 +715,62 @@ commitMessages:
         additions: 1553
         deletions: 277
         filesChanged: 55
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - docs/pricing-scenario-rules.md
+          - packages/contracts/src/pricing.test.ts
+          - packages/contracts/src/pricing.ts
+          - packages/db/src/pricing.test.ts
+          - packages/db/src/pricing.ts
+          - packages/ui/src/styles.css
+          - pricing/functions/src/index.ts
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/assumptions-tab.test.tsx
+          - pricing/src/components/__tests__/dashboard-metrics-charts.test.tsx
+          - pricing/src/components/__tests__/new-recruit-wizard.test.tsx
+          - pricing/src/components/__tests__/pricing-workstation-client.test.tsx
+          - pricing/src/components/__tests__/recruit-archive-section.test.tsx
+          - pricing/src/components/__tests__/recruit-detail-panels.test.tsx
+          - pricing/src/components/__tests__/recruits-table.test.tsx
+          - pricing/src/components/__tests__/scenario-model-tab.test.tsx
+          - pricing/src/components/assumptions-tab.tsx
+          - pricing/src/components/dashboard-recruits-panel.tsx
+          - pricing/src/components/excel-sheet/__tests__/format.test.ts
+          - pricing/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+          - pricing/src/components/excel-sheet/format.ts
+          - pricing/src/components/excel-sheet/workstation-sheet-defs.tsx
+          - pricing/src/components/formatted-number-input.tsx
+          - pricing/src/components/new-recruit-wizard.tsx
+          - pricing/src/components/pricing-app-shell.tsx
+          - pricing/src/components/pricing-static-pages.tsx
+          - pricing/src/components/pricing-workstation-client.tsx
+          - pricing/src/components/recruit-model-shell.tsx
+          - pricing/src/components/recruits-table.tsx
+          - pricing/src/components/scenario-model-tab.tsx
+          - pricing/src/lib/__tests__/calculation.test.ts
+          - pricing/src/lib/__tests__/dashboard-summary.test.ts
+          - pricing/src/lib/__tests__/new-recruit.test.ts
+          - pricing/src/lib/__tests__/pipeline-metrics.test.ts
+          - pricing/src/lib/__tests__/recruit-model-tabs.test.ts
+          - pricing/src/lib/__tests__/report-model.test.ts
+          - pricing/src/lib/__tests__/report-storage.test.ts
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/__tests__/workbook-output.test.ts
+          - pricing/src/lib/__tests__/workstation.test.ts
+          - pricing/src/lib/calculation.ts
+          - pricing/src/lib/cosmos-data.ts
+          - pricing/src/lib/dashboard-summary.ts
+          - pricing/src/lib/format.ts
+          - pricing/src/lib/graph-data.ts
+          - pricing/src/lib/new-recruit.ts
+          - pricing/src/lib/pricing-api-client.ts
+          - pricing/src/lib/recruit-model-tabs.ts
+          - pricing/src/lib/report/excel.ts
+          - pricing/src/lib/report/model.ts
+          - pricing/src/lib/report/pdf.tsx
+          - pricing/src/lib/workbook-output.ts
+          - pricing/src/lib/workstation.ts
+          - scripts/dev-pricing-api.ts
       - *a12
       - *a13
       - *a14
@@ -694,6 +781,21 @@ commitMessages:
         additions: 692
         deletions: 481
         filesChanged: 14
+        files:
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/assumptions-tab.test.tsx
+          - pricing/src/components/__tests__/recruit-archive-section.test.tsx
+          - pricing/src/components/__tests__/recruit-row-actions.test.tsx
+          - pricing/src/components/__tests__/recruits-table-responsive-css.test.ts
+          - pricing/src/components/__tests__/recruits-table.test.tsx
+          - pricing/src/components/assumptions-tab.tsx
+          - pricing/src/components/dashboard-recruits-panel.tsx
+          - pricing/src/components/pricing-static-pages.tsx
+          - pricing/src/components/recruit-archive-section.tsx
+          - pricing/src/components/recruit-row-actions.tsx
+          - pricing/src/components/recruits-table.tsx
+          - pricing/src/lib/__tests__/format.test.ts
+          - pricing/src/lib/format.ts
   - repo: Myriad-Advisor-Solutions/myriadas-apps
     messages:
       - "feat(ui): add suite home navigation"
@@ -728,6 +830,21 @@ commitMessages:
         additions: 96
         deletions: 11
         filesChanged: 14
+        files:
+          - .github/workflows/azure-static-web-apps-products.yml
+          - excelerate/.env.example
+          - onboarding/apps/dashboard/.env.example
+          - onboarding/apps/dashboard/components/dashboard-shell.tsx
+          - package.json
+          - packages/ui/src/navigation/app-shell.tsx
+          - packages/ui/src/navigation/frame.test.ts
+          - packages/ui/src/navigation/frame.ts
+          - proforma/.env.example
+          - pto-tracker/.env.example
+          - scripts/app-registry.ts
+          - scripts/dev.ts
+          - scripts/tooling.test.ts
+          - valuation/.env.example
       - *a19
       - sha: 4ff3ed67020471aee9139b1f0f1163bbe776f709
         message: "fix(pto): repair staff setup flows (#48)"
@@ -736,6 +853,24 @@ commitMessages:
         additions: 479
         deletions: 59
         filesChanged: 17
+        files:
+          - .gitignore
+          - pto-tracker/docs/data-model.md
+          - pto-tracker/docs/qa.md
+          - pto-tracker/docs/verification-plan.md
+          - pto-tracker/public/pto-staff-template.xlsx
+          - pto-tracker/src/app/admin/AdminClient.tsx
+          - pto-tracker/src/components/AuthProvider.tsx
+          - pto-tracker/src/components/PtoAppShell.tsx
+          - pto-tracker/src/lib/api/handlers.test.ts
+          - pto-tracker/src/lib/api/handlers.ts
+          - pto-tracker/src/lib/auth/navigation.test.ts
+          - pto-tracker/src/lib/auth/navigation.ts
+          - pto-tracker/src/lib/import/staff-import.test.ts
+          - pto-tracker/src/lib/import/staff-import.ts
+          - pto-tracker/src/lib/staff/identity.test.ts
+          - pto-tracker/src/lib/staff/identity.ts
+          - pto-tracker/templates/import-validation-checklist.md
       - *a20
       - *a21
       - sha: bf23aa66b116bd8181a2da1b13b9f1776419951d
@@ -745,6 +880,30 @@ commitMessages:
         additions: 569
         deletions: 53
         filesChanged: 23
+        files:
+          - packages/contracts/src/pto.ts
+          - pto-tracker/functions/src/index.ts
+          - pto-tracker/src/app/api/[...path]/route.ts
+          - pto-tracker/src/app/my/MyClient.tsx
+          - pto-tracker/src/app/my/requests/MyRequestsClient.tsx
+          - pto-tracker/src/app/team/TeamClient.tsx
+          - pto-tracker/src/components/EmployeeCard.tsx
+          - pto-tracker/src/lib/api/azure-functions-adapter.test.ts
+          - pto-tracker/src/lib/api/handlers.test.ts
+          - pto-tracker/src/lib/api/handlers.ts
+          - pto-tracker/src/lib/auth/demo-provider.ts
+          - pto-tracker/src/lib/auth/permissions.test.ts
+          - pto-tracker/src/lib/auth/permissions.ts
+          - pto-tracker/src/lib/contracts/index.test.ts
+          - pto-tracker/src/lib/pto/read-model.test.ts
+          - pto-tracker/src/lib/pto/read-model.ts
+          - pto-tracker/src/lib/staff/identity.test.ts
+          - pto-tracker/src/lib/staff/identity.ts
+          - pto-tracker/src/lib/store/cosmos-store.ts
+          - pto-tracker/src/lib/store/graph-lists-store.test.ts
+          - pto-tracker/src/lib/store/graph-lists-store.ts
+          - pto-tracker/src/lib/store/types.ts
+          - pto-tracker/src/lib/workflow/service.ts
       - *a22
       - *a23
       - *a24
@@ -755,6 +914,17 @@ commitMessages:
         additions: 314
         deletions: 10
         filesChanged: 10
+        files:
+          - packages/contracts/src/pto.ts
+          - pto-tracker/functions/src/index.ts
+          - pto-tracker/src/app/api/[...path]/route.ts
+          - pto-tracker/src/app/calendar/CalendarClient.tsx
+          - pto-tracker/src/components/LeaveCalendar.tsx
+          - pto-tracker/src/lib/api/azure-functions-adapter.ts
+          - pto-tracker/src/lib/api/handlers.test.ts
+          - pto-tracker/src/lib/api/handlers.ts
+          - pto-tracker/src/lib/calendar/settings.ts
+          - pto-tracker/src/lib/csv/paths.ts
       - *a25
       - *a26
       - *a27
@@ -767,6 +937,12 @@ commitMessages:
         additions: 171
         deletions: 111
         filesChanged: 5
+        files:
+          - pto-tracker/src/app/calendar/CalendarClient.tsx
+          - pto-tracker/src/app/settings/CalendarColorSettings.tsx
+          - pto-tracker/src/app/settings/page.tsx
+          - pto-tracker/src/components/LeaveCalendar.tsx
+          - pto-tracker/src/lib/calendar/colors.ts
 releases: []
 externalContributions: []
 codeReviews: []
@@ -935,6 +1111,5 @@ hoursEstimate:
   volumeHours: 69.7
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

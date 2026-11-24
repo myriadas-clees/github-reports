@@ -1,5 +1,5 @@
 title: Nov 19
-subtitle: repo, streamline repository & compass
+subtitle: Northstar News and local Ask, plus suite documentation
 overview: ""
 summaries:
   - type: repo-summary
@@ -12,10 +12,10 @@ summaries:
         value: 1 PRs
   - type: commit-summary
     heading: Commits and line changes
-    body: 2 commits with +64 / −63 lines.
+    body: 33 commits with +64 / −63 lines.
     chips:
       - label: Commits
-        value: "2"
+        value: "33"
         color: green
       - label: Additions
         value: "+64"
@@ -30,12 +30,13 @@ summaries:
       - label: Codex
         value: 1 review · 1 comment · 1 PR
   - type: activity-pattern
-    heading: Estimated engineering hours
-    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-      tracked, elapsed, or billed time.
+    heading: Manual effort estimate
+    body: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+      deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+      worked or measured time saved. Very busy days count with diminishing returns."
     chips:
-      - label: Estimated engineering hours
-        value: ~8h
+      - label: Manual effort estimate
+        value: ~3.5 engineer-days
 highlights:
   - type: pr
     title: "docs(repo): consolidate agent guidance across suite"

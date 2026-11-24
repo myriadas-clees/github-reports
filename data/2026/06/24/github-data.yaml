@@ -59,6 +59,112 @@ commitMessages:
         additions: 2345
         deletions: 718
         filesChanged: 105
+        files:
+          - bun.lock
+          - excelerate/functions/host.json
+          - excelerate/functions/package.json
+          - excelerate/functions/src/index.ts
+          - excelerate/functions/tsconfig.json
+          - excelerate/next.config.ts
+          - excelerate/package.json
+          - excelerate/src/app/api/excelerate/api.test.ts
+          - excelerate/src/app/api/excelerate/preview/route.ts
+          - excelerate/src/app/api/excelerate/run/route.ts
+          - excelerate/src/app/api/health/route.ts
+          - excelerate/src/lib/api/azure-functions-adapter.ts
+          - excelerate/src/lib/api/handlers.ts
+          - excelerate/staticwebapp.config.json
+          - hub/app/api/health/route.ts
+          - hub/functions/host.json
+          - hub/functions/package.json
+          - hub/functions/src/index.ts
+          - hub/functions/tsconfig.json
+          - hub/lib/api/azure-functions-adapter.ts
+          - hub/lib/api/handlers.ts
+          - hub/next.config.ts
+          - hub/package.json
+          - hub/staticwebapp.config.json
+          - onboarding/apps/dashboard/app/actions.ts
+          - onboarding/apps/dashboard/app/api/documents/[id]/route.ts
+          - onboarding/apps/dashboard/app/api/documents/libraries/route.ts
+          - onboarding/apps/dashboard/app/api/documents/link/route.ts
+          - onboarding/apps/dashboard/app/api/documents/search/route.ts
+          - onboarding/apps/dashboard/app/api/health/route.ts
+          - onboarding/apps/dashboard/app/blockers/page.tsx
+          - onboarding/apps/dashboard/app/documents/page.tsx
+          - onboarding/apps/dashboard/app/due-dates/page.tsx
+          - onboarding/apps/dashboard/app/layout.tsx
+          - onboarding/apps/dashboard/app/owners/page.tsx
+          - onboarding/apps/dashboard/app/page.tsx
+          - onboarding/apps/dashboard/app/settings/page.tsx
+          - onboarding/apps/dashboard/app/tasks/[id]/page.tsx
+          - onboarding/apps/dashboard/app/tasks/page.tsx
+          - onboarding/apps/dashboard/app/vendors/page.tsx
+          - onboarding/apps/dashboard/app/workflows/page.tsx
+          - onboarding/apps/dashboard/components/create-task-button.tsx
+          - onboarding/apps/dashboard/components/document-picker.tsx
+          - onboarding/apps/dashboard/components/employee-start-date-form.tsx
+          - onboarding/apps/dashboard/components/settings-form.tsx
+          - onboarding/apps/dashboard/components/task-detail-form.tsx
+          - onboarding/apps/dashboard/components/task-table.tsx
+          - onboarding/apps/dashboard/components/vendor-settings-form.tsx
+          - onboarding/apps/dashboard/functions/host.json
+          - onboarding/apps/dashboard/functions/package.json
+          - onboarding/apps/dashboard/functions/src/index.ts
+          - onboarding/apps/dashboard/functions/tsconfig.json
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+          - onboarding/apps/dashboard/lib/api/client.ts
+          - onboarding/apps/dashboard/lib/api/handlers.ts
+          - onboarding/apps/dashboard/lib/data.ts
+          - onboarding/apps/dashboard/next.config.ts
+          - onboarding/apps/dashboard/package.json
+          - onboarding/apps/dashboard/staticwebapp.config.json
+          - package.json
+          - proforma/functions/host.json
+          - proforma/functions/package.json
+          - proforma/functions/src/index.ts
+          - proforma/functions/tsconfig.json
+          - proforma/next.config.ts
+          - proforma/package.json
+          - proforma/src/app/actions.ts
+          - proforma/src/app/api/health/route.ts
+          - proforma/src/app/api/scenarios/[id]/export/pdf/route.ts
+          - proforma/src/app/api/scenarios/[id]/export/xlsx/route.ts
+          - proforma/src/app/layout.tsx
+          - proforma/src/app/rates/page.tsx
+          - proforma/src/app/scenarios/[id]/edit/page.tsx
+          - proforma/src/app/scenarios/[id]/page.tsx
+          - proforma/src/app/settings/page.tsx
+          - proforma/src/components/scenario-form.tsx
+          - proforma/src/components/scenario-row-actions.tsx
+          - proforma/src/lib/api/azure-functions-adapter.ts
+          - proforma/src/lib/api/handlers.ts
+          - proforma/src/lib/auth.ts
+          - proforma/src/lib/data.ts
+          - proforma/src/lib/export/proforma-export.test.ts
+          - proforma/staticwebapp.config.json
+          - pto-tracker/functions/package.json
+          - pto-tracker/package.json
+          - valuation/functions/host.json
+          - valuation/functions/package.json
+          - valuation/functions/src/index.ts
+          - valuation/functions/tsconfig.json
+          - valuation/next.config.ts
+          - valuation/package.json
+          - valuation/src/app/api/health/route.ts
+          - valuation/src/app/api/valuation/export/docx/route.ts
+          - valuation/src/app/api/valuation/export/xlsx/route.ts
+          - valuation/src/app/api/valuation/import/route.ts
+          - valuation/src/app/cases/[id]/page.tsx
+          - valuation/src/app/cases/new/page.tsx
+          - valuation/src/app/cases/page.tsx
+          - valuation/src/app/imports/page.tsx
+          - valuation/src/app/layout.tsx
+          - valuation/src/app/settings/page.tsx
+          - valuation/src/lib/api/azure-functions-adapter.ts
+          - valuation/src/lib/api/handlers.ts
+          - valuation/src/lib/data.ts
+          - valuation/staticwebapp.config.json
       - sha: 6687869653432a487f8eebdf9728c0c554040038
         message: "docs: add GitHub Projects triage guidance"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6687869653432a487f8eebdf9728c0c554040038
@@ -66,6 +172,8 @@ commitMessages:
         additions: 4
         deletions: 0
         filesChanged: 1
+        files:
+          - AGENTS.md
       - sha: 16e971041798b15469426b8a2aa0f90af29ccd30
         message: "chore: strengthen serverless repo workflow"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/16e971041798b15469426b8a2aa0f90af29ccd30
@@ -73,6 +181,14 @@ commitMessages:
         additions: 425
         deletions: 14
         filesChanged: 7
+        files:
+          - .github/workflows/verify.yml
+          - AGENTS.md
+          - docs/azure-serverless-plan.md
+          - eslint.config.mjs
+          - package.json
+          - pto-tracker/AGENTS.md
+          - scripts/dev.ts
   - repo: Myriad-Advisor-Solutions/ohcpwm-apps
     messages:
       - "feat: add shared password field and pricing demo seeds"
@@ -89,6 +205,12 @@ commitMessages:
         additions: 353
         deletions: 27
         filesChanged: 5
+        files:
+          - ofac/src/app/login/page.tsx
+          - packages/ui/src/client-password-field.tsx
+          - packages/ui/src/index.ts
+          - pricing/src/app/login/page.tsx
+          - pricing/src/lib/seed.ts
       - sha: 0d416f52a82120c33567c501abd0a346294f302a
         message: "feat(pricing): enhance dashboard trend chart functionality and styling"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0d416f52a82120c33567c501abd0a346294f302a
@@ -96,6 +218,12 @@ commitMessages:
         additions: 178
         deletions: 29
         filesChanged: 5
+        files:
+          - pricing/src/app/globals.css
+          - pricing/src/components/dashboard-trend-chart.tsx
+          - pricing/src/lib/__tests__/dashboard-charts.test.ts
+          - pricing/src/lib/dashboard-charts.ts
+          - pricing/src/lib/format.ts
       - sha: 463160c0365392c547e65006b3da3f1e64213957
         message: "fix(pricing): update dashboard styles and improve layout responsiveness"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/463160c0365392c547e65006b3da3f1e64213957
@@ -103,6 +231,9 @@ commitMessages:
         additions: 43
         deletions: 10
         filesChanged: 2
+        files:
+          - pricing/src/app/globals.css
+          - pricing/src/components/dashboard-trend-chart.tsx
       - sha: 06fa8a318a0e08ea68ada7656b61b28b57e37595
         message: "docs: update serverless deployment guidance"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/06fa8a318a0e08ea68ada7656b61b28b57e37595
@@ -110,6 +241,11 @@ commitMessages:
         additions: 204
         deletions: 30
         filesChanged: 4
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - README.md
+          - docs/azure-serverless-plan.md
+          - pricing/src/lib/seed.ts
       - sha: 06890f6586e21c186d1e5cafb14cd4b01af87546
         message: "docs: update agent instructions"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/06890f6586e21c186d1e5cafb14cd4b01af87546
@@ -117,6 +253,8 @@ commitMessages:
         additions: 95
         deletions: 0
         filesChanged: 1
+        files:
+          - AGENTS.md
       - sha: 088f13282a00d045fea0d34e5fe5678a8f27a4d9
         message: "feat: add serverless parity scaffolding"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/088f13282a00d045fea0d34e5fe5678a8f27a4d9
@@ -124,6 +262,41 @@ commitMessages:
         additions: 454
         deletions: 12
         filesChanged: 34
+        files:
+          - .gitignore
+          - README.md
+          - bun.lock
+          - docs/azure-serverless-plan.md
+          - hub/.env.example
+          - hub/app/api/health/route.ts
+          - hub/functions/host.json
+          - hub/functions/local.settings.json.example
+          - hub/functions/package.json
+          - hub/functions/src/index.ts
+          - hub/functions/tsconfig.json
+          - hub/next.config.ts
+          - hub/package.json
+          - hub/staticwebapp.config.json
+          - ofac/.env.example
+          - ofac/functions/host.json
+          - ofac/functions/local.settings.json.example
+          - ofac/functions/package.json
+          - ofac/functions/src/index.ts
+          - ofac/functions/tsconfig.json
+          - ofac/next.config.ts
+          - ofac/package.json
+          - ofac/staticwebapp.config.json
+          - package.json
+          - pricing/.env.example
+          - pricing/functions/host.json
+          - pricing/functions/local.settings.json.example
+          - pricing/functions/package.json
+          - pricing/functions/src/index.ts
+          - pricing/functions/tsconfig.json
+          - pricing/next.config.ts
+          - pricing/package.json
+          - pricing/staticwebapp.config.json
+          - scripts/copy-staticwebapp-config.ts
 releases: []
 externalContributions: []
 codeReviews: []
@@ -174,6 +347,5 @@ hoursEstimate:
   volumeHours: 9
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

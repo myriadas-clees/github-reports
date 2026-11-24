@@ -44,11 +44,9 @@ repositories:
 pullRequests:
   - title: Show FiNet custom fees on pricing PDFs
     body: >-
-      - FiNet PDFs now include the current pricing table, so each custom fee shows up with its monthly and annual
-      amount.
+      - FiNet PDFs now include the current pricing table, so each custom fee shows up with its monthly and annual amount.
 
-      - PDF section titles no longer say Workbook. Local expenses are labeled as local expenses, and the payout step
-      says “after payout rates.”
+      - PDF section titles no longer say Workbook. Local expenses are labeled as local expenses, and the payout step says “after payout rates.”
 
       - A multi-advisor FiNet PDF includes each advi...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/133
@@ -80,11 +78,9 @@ pullRequests:
       - pricing/src/lib/report/pdf.tsx
   - title: Warn when pricing reports lag behind model changes
     body: >-
-      - Show a red hint in the scenario Reports section when the newest saved report no longer matches the pricing
-      model.
+      - Show a red hint in the scenario Reports section when the newest saved report no longer matches the pricing model.
 
-      - After a save, the hint asks whether to generate a new report. Unsaved edits tell the user to save first, because
-      report generation uses the saved model.
+      - After a save, the hint asks whether to generate a new report. Unsaved edits tell the user to save first, because report generation uses the saved model.
 
       - The hint goes away once a n...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/132
@@ -105,16 +101,28 @@ pullRequests:
         message: "feat(pricing): warn when reports lag behind model changes"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/536f6c21bca1848262aec0d03a093b50c9b7aba8
         authoredAt: 2026-09-21T20:19:52Z
+        files:
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/scenario-model-tab.test.tsx
+          - pricing/src/components/generate-report-form.tsx
+          - pricing/src/components/recruit-model-shell.tsx
+          - pricing/src/components/scenario-model-tab.tsx
       - &a10
         sha: c3e7ba4ca18d15c90e5245a5882a58e51d3b9b22
         message: "codex: address PR review feedback (#132)"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c3e7ba4ca18d15c90e5245a5882a58e51d3b9b22
         authoredAt: 2026-09-21T20:38:57Z
+        files:
+          - pricing/src/components/__tests__/scenario-model-tab.test.tsx
+          - pricing/src/components/scenario-model-tab.tsx
       - &a11
         sha: d49f4405c38889d75e96f4efd253ca23bfc42822
         message: "codex: address PR review feedback (#132)"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d49f4405c38889d75e96f4efd253ca23bfc42822
         authoredAt: 2026-09-21T20:46:32Z
+        files:
+          - pricing/src/components/generate-report-form.tsx
+          - pricing/src/components/scenario-model-tab.tsx
     workTimestamps:
       - 2026-09-21T20:19:52Z
       - 2026-09-21T20:38:57Z
@@ -133,8 +141,7 @@ prsInProgress:
       ## Why
 
 
-      Myriad has no native workspace for coordinating account transitions. Add a functional prototype and synthetic
-      Azure PR demo based on the Transition Tool references, with defaults created only by explicit seed commands.
+      Myriad has no native workspace for coordinating account transitions. Add a functional prototype and synthetic Azure PR demo based on the Transition Tool references, with defaults created only by explicit seed commands.
 
 
       ## What changed
@@ -164,41 +171,79 @@ prsInProgress:
         message: "feat(transition): add centralized transition dashboard"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/36283da4718aba7b181a263f2c5f194dcf3c3b67
         authoredAt: 2026-09-21T15:37:01Z
+        files:
+          - transition/src/components/transition-workspace.tsx
+          - transition/src/lib/api/azure-functions-adapter.ts
+          - transition/src/lib/api/client.ts
+          - transition/src/lib/handlers.ts
+          - transition/src/lib/model.ts
+          - transition/src/lib/repository.test.ts
+          - transition/src/lib/repository.ts
+          - transition/src/lib/seed.ts
       - &a13
         sha: 5743eb8dd25a98114d63493c129f5e107f805774
         message: "test(transition): batch repository fixture inserts"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5743eb8dd25a98114d63493c129f5e107f805774
         authoredAt: 2026-09-21T15:45:02Z
+        files:
+          - transition/src/lib/repository.test.ts
       - &a14
         sha: 40e628dbd0d6aeba42f53d444ca59971c5129f74
         message: "fix(transition): address dashboard review findings"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/40e628dbd0d6aeba42f53d444ca59971c5129f74
         authoredAt: 2026-09-21T15:56:18Z
+        files:
+          - transition/src/components/transition-workspace.tsx
+          - transition/src/lib/handlers.ts
+          - transition/src/lib/repository.test.ts
+          - transition/src/lib/repository.ts
       - &a15
         sha: bfdbbf3336a47ae6a39d538e544f2199a060a9cf
         message: "fix(transition): reset reopened task progress"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/bfdbbf3336a47ae6a39d538e544f2199a060a9cf
         authoredAt: 2026-09-21T16:05:47Z
+        files:
+          - transition/src/lib/repository.test.ts
+          - transition/src/lib/repository.ts
       - &a16
         sha: 28df6b555a5fcaadf53b5cc65b217fa51bbb38de
         message: "feat(transition): complete dashboard sorting"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/28df6b555a5fcaadf53b5cc65b217fa51bbb38de
         authoredAt: 2026-09-21T16:16:27Z
+        files:
+          - transition/src/components/transition-workspace.tsx
+          - transition/src/lib/handlers.ts
+          - transition/src/lib/repository.test.ts
+          - transition/src/lib/repository.ts
       - &a17
         sha: 0c549fcce82872ed67198f040d1724da5f5dabd0
         message: "fix(transition): allow unspecified direction filter"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0c549fcce82872ed67198f040d1724da5f5dabd0
         authoredAt: 2026-09-21T16:26:09Z
+        files:
+          - transition/src/lib/model.ts
+          - transition/src/lib/repository.test.ts
       - &a18
         sha: 0e18c830cf8c878d9ac2df4d06ebf112fd5dffdb
         message: "feat(transition): add preview workspace and household workflows"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0e18c830cf8c878d9ac2df4d06ebf112fd5dffdb
         authoredAt: 2026-09-21T17:30:26Z
+        files:
+          - .codex/environments/environment.toml
+          - transition/next-env.d.ts
+          - transition/src/app/globals.css
+          - transition/src/app/households/page.tsx
+          - transition/src/app/management/page.tsx
+          - transition/src/app/page.tsx
+          - transition/src/components/transition-shell.tsx
+          - transition/src/components/transition-workspace.tsx
       - &a19
         sha: af6f79e0573c323916fb4ba9e5f8461236c80993
         message: "fix(transition): calculate upcoming date by calendar days"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/af6f79e0573c323916fb4ba9e5f8461236c80993
         authoredAt: 2026-09-21T17:41:02Z
+        files:
+          - transition/src/components/transition-workspace.tsx
     workTimestamps:
       - 2026-09-21T15:37:01Z
       - 2026-09-21T15:45:02Z
@@ -250,36 +295,123 @@ prsInProgress:
         message: "codex: resolve merge conflicts with main (#121)"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0ce3e1476203f8cc4945fe717b1484942afee5e6
         authoredAt: 2026-09-21T12:27:09Z
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - README.md
+          - bun.lock
+          - docs/advisor-pricing-architecture.md
+          - docs/azure-serverless-plan.md
+          - docs/deploy-asap.md
+          - hub/app/login/page.tsx
+          - hub/package.json
+          - hub/staticwebapp.config.json
+          - ofac/functions/src/iframe-auth.test.ts
+          - ofac/functions/src/iframe-auth.ts
+          - ofac/functions/src/index.ts
+          - ofac/public/iframe-preview.html
+          - ofac/src/app/auth/iframe/page.tsx
+          - ofac/src/app/globals.css
+          - ofac/src/app/login/page.test.tsx
+          - ofac/src/app/login/page.tsx
+          - ofac/src/app/page.tsx
+          - ofac/src/app/screenings/page.tsx
+          - ofac/src/components/app-shell-brand.test.tsx
+          - ofac/src/components/ofac-app-shell.tsx
+          - ofac/src/components/ofac-iframe-auth-boundary.test.tsx
+          - ofac/src/components/ofac-iframe-auth-boundary.tsx
+          - ofac/src/components/ofac-iframe-auth-relay.tsx
+          - ofac/src/components/ofac-user-menu.tsx
+          - ofac/src/components/pdf-report-viewer.tsx
+          - ofac/src/components/report-preview-auth.test.tsx
+          - ofac/src/components/report-viewer-shell.tsx
+          - ofac/src/components/screening-detail.tsx
+          - ofac/src/components/workbook-report-viewer.tsx
+          - ofac/src/lib/__tests__/iframe-routing.test.ts
+          - ofac/src/lib/__tests__/ofac-api-client.test.ts
+          - ofac/src/lib/__tests__/ofac-authorized-fetch.test.ts
+          - ofac/src/lib/__tests__/ofac-shell-presentation.test.ts
+          - ofac/src/lib/ofac-api-client.ts
+          - ofac/src/lib/ofac-authorized-fetch.ts
+          - ofac/src/lib/ofac-iframe-credential.ts
+          - ofac/src/lib/ofac-session-client.ts
+          - ofac/src/lib/ofac-shell-presentation.ts
+          - ofac/staticwebapp.config.json
+          - packages/auth/package.json
+          - packages/auth/src/auth.test.ts
+          - packages/auth/src/client.ts
+          - packages/auth/src/iframe-login-lifecycle.test.tsx
+          - packages/auth/src/iframe-login.test.tsx
+          - packages/auth/src/iframe-login.tsx
+          - packages/auth/tsconfig.json
+          - packages/ui/src/metric-card.tsx
+          - packages/ui/src/navigation/app-shell.tsx
+          - packages/ui/src/navigation/frame.test.ts
+          - packages/ui/src/navigation/frame.ts
+          - packages/ui/src/styles.css
+          - packages/ui/src/user-menu.tsx
+          - pricing/src/app/globals.css
+          - pricing/src/app/login/page.tsx
+          - pricing/src/components/__tests__/pdf-report-viewer.test.tsx
+          - pricing/src/components/pdf-report-viewer.tsx
+          - pricing/src/components/report-viewer-shell.tsx
+          - pricing/src/components/workbook-report-viewer.tsx
+          - pricing/src/lib/__tests__/pricing-api-client.test.ts
+          - pricing/src/lib/pricing-api-client.ts
+          - pricing/staticwebapp.config.json
       - &a2
         sha: 594fa8503ab9542a4c09d6bebd277fdd0d10b278
         message: "codex: fix CI failure on PR #121"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/594fa8503ab9542a4c09d6bebd277fdd0d10b278
         authoredAt: 2026-09-21T12:31:05Z
+        files:
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/components/settings-workspace.tsx
       - &a3
         sha: ba7979e9ffbb3b79a4d70f34a98ac738e033b008
         message: "codex: address PR review feedback (#121)"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ba7979e9ffbb3b79a4d70f34a98ac738e033b008
         authoredAt: 2026-09-21T12:39:58Z
+        files:
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
+          - northstar/components/microsoft-todo-panel.tsx
+          - northstar/components/northstar-dashboard.tsx
       - &a4
         sha: b87bc4c2a4eeeae02f7359deb47c4ea751bb6614
         message: "fix(northstar): scope resolved mail by account"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b87bc4c2a4eeeae02f7359deb47c4ea751bb6614
         authoredAt: 2026-09-21T12:52:17Z
+        files:
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/lib/resolved-mail.test.ts
+          - northstar/lib/resolved-mail.ts
       - &a5
         sha: f77265d2d7bc92799283a04d59cddafdd4119bac
         message: "fix(northstar): refresh granted Microsoft scopes"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f77265d2d7bc92799283a04d59cddafdd4119bac
         authoredAt: 2026-09-21T13:55:43Z
+        files:
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
       - &a6
         sha: a5fbb9c546194dff47b93fd5df6bafc605953d6d
         message: "fix(northstar): retry scheduled briefs"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a5fbb9c546194dff47b93fd5df6bafc605953d6d
         authoredAt: 2026-09-21T14:19:26Z
+        files:
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
       - &a7
         sha: 4d8f6fe1a39c403f3a21992b85dbb42cb28a69a8
         message: "fix(northstar): resume failed briefs after reload"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4d8f6fe1a39c403f3a21992b85dbb42cb28a69a8
         authoredAt: 2026-09-21T14:37:48Z
+        files:
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/lib/background-briefs.test.ts
+          - northstar/lib/background-briefs.ts
     workTimestamps:
       - 2026-09-21T12:27:09Z
       - 2026-09-21T12:31:05Z
@@ -399,6 +531,12 @@ commitMessages:
         additions: 206
         deletions: 4
         filesChanged: 5
+        files:
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/scenario-model-tab.test.tsx
+          - pricing/src/components/generate-report-form.tsx
+          - pricing/src/components/recruit-model-shell.tsx
+          - pricing/src/components/scenario-model-tab.tsx
       - sha: e5478354e4c58724d1f324c9e5971edb0f18144b
         message: "fix(pricing): show FiNet custom fees on the PDF (#133)"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e5478354e4c58724d1f324c9e5971edb0f18144b
@@ -406,6 +544,11 @@ commitMessages:
         additions: 93
         deletions: 20
         filesChanged: 4
+        files:
+          - pricing/src/lib/__tests__/report-model.test.ts
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/report/model.ts
+          - pricing/src/lib/report/pdf.tsx
   - repo: Myriad-Advisor-Solutions/myriadas-apps
     messages:
       - "feat(transition): add centralized transition dashboard"
@@ -435,6 +578,12 @@ codeReviews:
     state: commented
     submittedAt: 2026-09-21T20:39:14Z
     body: null
+    prFiles:
+      - pricing/src/app/globals.css
+      - pricing/src/components/__tests__/scenario-model-tab.test.tsx
+      - pricing/src/components/generate-report-form.tsx
+      - pricing/src/components/recruit-model-shell.tsx
+      - pricing/src/components/scenario-model-tab.tsx
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 132
     prTitle: Warn when pricing reports lag behind model changes
@@ -442,6 +591,12 @@ codeReviews:
     state: commented
     submittedAt: 2026-09-21T20:46:42Z
     body: null
+    prFiles:
+      - pricing/src/app/globals.css
+      - pricing/src/components/__tests__/scenario-model-tab.test.tsx
+      - pricing/src/components/generate-report-form.tsx
+      - pricing/src/components/recruit-model-shell.tsx
+      - pricing/src/components/scenario-model-tab.tsx
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 122
     prTitle: "feat(transition): add account transition prototype"
@@ -449,6 +604,96 @@ codeReviews:
     state: commented
     submittedAt: 2026-09-21T15:56:55Z
     body: null
+    prFiles:
+      - .codex/environments/environment.toml
+      - .github/ISSUE_TEMPLATE/bug.yml
+      - .github/ISSUE_TEMPLATE/feature.yml
+      - .github/labeler.yml
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/verify.yml
+      - PLAN.md
+      - README.md
+      - bun.lock
+      - design-qa.md
+      - docs/transition/PLAN.md
+      - docs/transition/account-desktop.png
+      - docs/transition/account-mobile.png
+      - docs/transition/contracts.md
+      - docs/transition/empty-before-seed.png
+      - docs/transition/queue-after-seed.png
+      - docs/transition/tasks-priority.png
+      - hub/components/HubLauncher.tsx
+      - hub/functions/dist-entry.js
+      - hub/lib/apps.test.ts
+      - hub/lib/apps.ts
+      - hub/staticwebapp.config.json
+      - package.json
+      - scripts/app-registry.ts
+      - scripts/build-unified-swa.ts
+      - scripts/github/configure-repository.ts
+      - scripts/github/triage-issue.test.ts
+      - scripts/github/triage-issue.ts
+      - scripts/tooling.test.ts
+      - scripts/validate-artifacts.ts
+      - scripts/workflow-matrix.ts
+      - transition/.env.example
+      - transition/README.md
+      - transition/functions/host.json
+      - transition/functions/package.json
+      - transition/functions/scripts/build.ts
+      - transition/functions/src/index.ts
+      - transition/functions/tsconfig.json
+      - transition/next-env.d.ts
+      - transition/next.config.ts
+      - transition/package.json
+      - transition/postcss.config.mjs
+      - transition/scripts/audit-reference.py
+      - transition/scripts/audit_reference_test.py
+      - transition/scripts/build-static.ts
+      - transition/scripts/import-workbooks.ts
+      - transition/scripts/seed.ts
+      - transition/src/app/accounts/page.tsx
+      - transition/src/app/api/[...path]/route.test.ts
+      - transition/src/app/api/[...path]/route.ts
+      - transition/src/app/exceptions/page.tsx
+      - transition/src/app/globals.css
+      - transition/src/app/households/page.tsx
+      - transition/src/app/layout.tsx
+      - transition/src/app/management/page.tsx
+      - transition/src/app/page.tsx
+      - transition/src/components/status-select.module.css
+      - transition/src/components/status-select.tsx
+      - transition/src/components/transition-shell.tsx
+      - transition/src/components/transition-workspace.tsx
+      - transition/src/lib/api/azure-functions-adapter.test.ts
+      - transition/src/lib/api/azure-functions-adapter.ts
+      - transition/src/lib/api/client.ts
+      - transition/src/lib/auth.test.ts
+      - transition/src/lib/auth.ts
+      - transition/src/lib/catalog.ts
+      - transition/src/lib/cosmos-repository.test.ts
+      - transition/src/lib/cosmos-repository.ts
+      - transition/src/lib/data.test.ts
+      - transition/src/lib/data.ts
+      - transition/src/lib/handlers.ts
+      - transition/src/lib/import-cli.ts
+      - transition/src/lib/model.ts
+      - transition/src/lib/navigation.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
+      - transition/src/lib/rules.test.ts
+      - transition/src/lib/rules.ts
+      - transition/src/lib/seed.ts
+      - transition/src/lib/snapshot.ts
+      - transition/src/lib/source-repository.ts
+      - transition/src/lib/workbook.test.ts
+      - transition/src/lib/workbook.ts
+      - transition/src/lib/workflow-view.test.ts
+      - transition/src/lib/workflow-view.ts
+      - transition/staticwebapp.config.json
+      - transition/tsconfig.json
+      - transition/vitest.config.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 122
     prTitle: "feat(transition): add account transition prototype"
@@ -456,6 +701,96 @@ codeReviews:
     state: commented
     submittedAt: 2026-09-21T15:57:03Z
     body: null
+    prFiles:
+      - .codex/environments/environment.toml
+      - .github/ISSUE_TEMPLATE/bug.yml
+      - .github/ISSUE_TEMPLATE/feature.yml
+      - .github/labeler.yml
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/verify.yml
+      - PLAN.md
+      - README.md
+      - bun.lock
+      - design-qa.md
+      - docs/transition/PLAN.md
+      - docs/transition/account-desktop.png
+      - docs/transition/account-mobile.png
+      - docs/transition/contracts.md
+      - docs/transition/empty-before-seed.png
+      - docs/transition/queue-after-seed.png
+      - docs/transition/tasks-priority.png
+      - hub/components/HubLauncher.tsx
+      - hub/functions/dist-entry.js
+      - hub/lib/apps.test.ts
+      - hub/lib/apps.ts
+      - hub/staticwebapp.config.json
+      - package.json
+      - scripts/app-registry.ts
+      - scripts/build-unified-swa.ts
+      - scripts/github/configure-repository.ts
+      - scripts/github/triage-issue.test.ts
+      - scripts/github/triage-issue.ts
+      - scripts/tooling.test.ts
+      - scripts/validate-artifacts.ts
+      - scripts/workflow-matrix.ts
+      - transition/.env.example
+      - transition/README.md
+      - transition/functions/host.json
+      - transition/functions/package.json
+      - transition/functions/scripts/build.ts
+      - transition/functions/src/index.ts
+      - transition/functions/tsconfig.json
+      - transition/next-env.d.ts
+      - transition/next.config.ts
+      - transition/package.json
+      - transition/postcss.config.mjs
+      - transition/scripts/audit-reference.py
+      - transition/scripts/audit_reference_test.py
+      - transition/scripts/build-static.ts
+      - transition/scripts/import-workbooks.ts
+      - transition/scripts/seed.ts
+      - transition/src/app/accounts/page.tsx
+      - transition/src/app/api/[...path]/route.test.ts
+      - transition/src/app/api/[...path]/route.ts
+      - transition/src/app/exceptions/page.tsx
+      - transition/src/app/globals.css
+      - transition/src/app/households/page.tsx
+      - transition/src/app/layout.tsx
+      - transition/src/app/management/page.tsx
+      - transition/src/app/page.tsx
+      - transition/src/components/status-select.module.css
+      - transition/src/components/status-select.tsx
+      - transition/src/components/transition-shell.tsx
+      - transition/src/components/transition-workspace.tsx
+      - transition/src/lib/api/azure-functions-adapter.test.ts
+      - transition/src/lib/api/azure-functions-adapter.ts
+      - transition/src/lib/api/client.ts
+      - transition/src/lib/auth.test.ts
+      - transition/src/lib/auth.ts
+      - transition/src/lib/catalog.ts
+      - transition/src/lib/cosmos-repository.test.ts
+      - transition/src/lib/cosmos-repository.ts
+      - transition/src/lib/data.test.ts
+      - transition/src/lib/data.ts
+      - transition/src/lib/handlers.ts
+      - transition/src/lib/import-cli.ts
+      - transition/src/lib/model.ts
+      - transition/src/lib/navigation.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
+      - transition/src/lib/rules.test.ts
+      - transition/src/lib/rules.ts
+      - transition/src/lib/seed.ts
+      - transition/src/lib/snapshot.ts
+      - transition/src/lib/source-repository.ts
+      - transition/src/lib/workbook.test.ts
+      - transition/src/lib/workbook.ts
+      - transition/src/lib/workflow-view.test.ts
+      - transition/src/lib/workflow-view.ts
+      - transition/staticwebapp.config.json
+      - transition/tsconfig.json
+      - transition/vitest.config.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 122
     prTitle: "feat(transition): add account transition prototype"
@@ -463,6 +798,96 @@ codeReviews:
     state: commented
     submittedAt: 2026-09-21T15:57:09Z
     body: null
+    prFiles:
+      - .codex/environments/environment.toml
+      - .github/ISSUE_TEMPLATE/bug.yml
+      - .github/ISSUE_TEMPLATE/feature.yml
+      - .github/labeler.yml
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/verify.yml
+      - PLAN.md
+      - README.md
+      - bun.lock
+      - design-qa.md
+      - docs/transition/PLAN.md
+      - docs/transition/account-desktop.png
+      - docs/transition/account-mobile.png
+      - docs/transition/contracts.md
+      - docs/transition/empty-before-seed.png
+      - docs/transition/queue-after-seed.png
+      - docs/transition/tasks-priority.png
+      - hub/components/HubLauncher.tsx
+      - hub/functions/dist-entry.js
+      - hub/lib/apps.test.ts
+      - hub/lib/apps.ts
+      - hub/staticwebapp.config.json
+      - package.json
+      - scripts/app-registry.ts
+      - scripts/build-unified-swa.ts
+      - scripts/github/configure-repository.ts
+      - scripts/github/triage-issue.test.ts
+      - scripts/github/triage-issue.ts
+      - scripts/tooling.test.ts
+      - scripts/validate-artifacts.ts
+      - scripts/workflow-matrix.ts
+      - transition/.env.example
+      - transition/README.md
+      - transition/functions/host.json
+      - transition/functions/package.json
+      - transition/functions/scripts/build.ts
+      - transition/functions/src/index.ts
+      - transition/functions/tsconfig.json
+      - transition/next-env.d.ts
+      - transition/next.config.ts
+      - transition/package.json
+      - transition/postcss.config.mjs
+      - transition/scripts/audit-reference.py
+      - transition/scripts/audit_reference_test.py
+      - transition/scripts/build-static.ts
+      - transition/scripts/import-workbooks.ts
+      - transition/scripts/seed.ts
+      - transition/src/app/accounts/page.tsx
+      - transition/src/app/api/[...path]/route.test.ts
+      - transition/src/app/api/[...path]/route.ts
+      - transition/src/app/exceptions/page.tsx
+      - transition/src/app/globals.css
+      - transition/src/app/households/page.tsx
+      - transition/src/app/layout.tsx
+      - transition/src/app/management/page.tsx
+      - transition/src/app/page.tsx
+      - transition/src/components/status-select.module.css
+      - transition/src/components/status-select.tsx
+      - transition/src/components/transition-shell.tsx
+      - transition/src/components/transition-workspace.tsx
+      - transition/src/lib/api/azure-functions-adapter.test.ts
+      - transition/src/lib/api/azure-functions-adapter.ts
+      - transition/src/lib/api/client.ts
+      - transition/src/lib/auth.test.ts
+      - transition/src/lib/auth.ts
+      - transition/src/lib/catalog.ts
+      - transition/src/lib/cosmos-repository.test.ts
+      - transition/src/lib/cosmos-repository.ts
+      - transition/src/lib/data.test.ts
+      - transition/src/lib/data.ts
+      - transition/src/lib/handlers.ts
+      - transition/src/lib/import-cli.ts
+      - transition/src/lib/model.ts
+      - transition/src/lib/navigation.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
+      - transition/src/lib/rules.test.ts
+      - transition/src/lib/rules.ts
+      - transition/src/lib/seed.ts
+      - transition/src/lib/snapshot.ts
+      - transition/src/lib/source-repository.ts
+      - transition/src/lib/workbook.test.ts
+      - transition/src/lib/workbook.ts
+      - transition/src/lib/workflow-view.test.ts
+      - transition/src/lib/workflow-view.ts
+      - transition/staticwebapp.config.json
+      - transition/tsconfig.json
+      - transition/vitest.config.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 122
     prTitle: "feat(transition): add account transition prototype"
@@ -470,6 +895,96 @@ codeReviews:
     state: commented
     submittedAt: 2026-09-21T16:06:06Z
     body: null
+    prFiles:
+      - .codex/environments/environment.toml
+      - .github/ISSUE_TEMPLATE/bug.yml
+      - .github/ISSUE_TEMPLATE/feature.yml
+      - .github/labeler.yml
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/verify.yml
+      - PLAN.md
+      - README.md
+      - bun.lock
+      - design-qa.md
+      - docs/transition/PLAN.md
+      - docs/transition/account-desktop.png
+      - docs/transition/account-mobile.png
+      - docs/transition/contracts.md
+      - docs/transition/empty-before-seed.png
+      - docs/transition/queue-after-seed.png
+      - docs/transition/tasks-priority.png
+      - hub/components/HubLauncher.tsx
+      - hub/functions/dist-entry.js
+      - hub/lib/apps.test.ts
+      - hub/lib/apps.ts
+      - hub/staticwebapp.config.json
+      - package.json
+      - scripts/app-registry.ts
+      - scripts/build-unified-swa.ts
+      - scripts/github/configure-repository.ts
+      - scripts/github/triage-issue.test.ts
+      - scripts/github/triage-issue.ts
+      - scripts/tooling.test.ts
+      - scripts/validate-artifacts.ts
+      - scripts/workflow-matrix.ts
+      - transition/.env.example
+      - transition/README.md
+      - transition/functions/host.json
+      - transition/functions/package.json
+      - transition/functions/scripts/build.ts
+      - transition/functions/src/index.ts
+      - transition/functions/tsconfig.json
+      - transition/next-env.d.ts
+      - transition/next.config.ts
+      - transition/package.json
+      - transition/postcss.config.mjs
+      - transition/scripts/audit-reference.py
+      - transition/scripts/audit_reference_test.py
+      - transition/scripts/build-static.ts
+      - transition/scripts/import-workbooks.ts
+      - transition/scripts/seed.ts
+      - transition/src/app/accounts/page.tsx
+      - transition/src/app/api/[...path]/route.test.ts
+      - transition/src/app/api/[...path]/route.ts
+      - transition/src/app/exceptions/page.tsx
+      - transition/src/app/globals.css
+      - transition/src/app/households/page.tsx
+      - transition/src/app/layout.tsx
+      - transition/src/app/management/page.tsx
+      - transition/src/app/page.tsx
+      - transition/src/components/status-select.module.css
+      - transition/src/components/status-select.tsx
+      - transition/src/components/transition-shell.tsx
+      - transition/src/components/transition-workspace.tsx
+      - transition/src/lib/api/azure-functions-adapter.test.ts
+      - transition/src/lib/api/azure-functions-adapter.ts
+      - transition/src/lib/api/client.ts
+      - transition/src/lib/auth.test.ts
+      - transition/src/lib/auth.ts
+      - transition/src/lib/catalog.ts
+      - transition/src/lib/cosmos-repository.test.ts
+      - transition/src/lib/cosmos-repository.ts
+      - transition/src/lib/data.test.ts
+      - transition/src/lib/data.ts
+      - transition/src/lib/handlers.ts
+      - transition/src/lib/import-cli.ts
+      - transition/src/lib/model.ts
+      - transition/src/lib/navigation.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
+      - transition/src/lib/rules.test.ts
+      - transition/src/lib/rules.ts
+      - transition/src/lib/seed.ts
+      - transition/src/lib/snapshot.ts
+      - transition/src/lib/source-repository.ts
+      - transition/src/lib/workbook.test.ts
+      - transition/src/lib/workbook.ts
+      - transition/src/lib/workflow-view.test.ts
+      - transition/src/lib/workflow-view.ts
+      - transition/staticwebapp.config.json
+      - transition/tsconfig.json
+      - transition/vitest.config.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 122
     prTitle: "feat(transition): add account transition prototype"
@@ -477,6 +992,96 @@ codeReviews:
     state: commented
     submittedAt: 2026-09-21T16:26:30Z
     body: null
+    prFiles:
+      - .codex/environments/environment.toml
+      - .github/ISSUE_TEMPLATE/bug.yml
+      - .github/ISSUE_TEMPLATE/feature.yml
+      - .github/labeler.yml
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/verify.yml
+      - PLAN.md
+      - README.md
+      - bun.lock
+      - design-qa.md
+      - docs/transition/PLAN.md
+      - docs/transition/account-desktop.png
+      - docs/transition/account-mobile.png
+      - docs/transition/contracts.md
+      - docs/transition/empty-before-seed.png
+      - docs/transition/queue-after-seed.png
+      - docs/transition/tasks-priority.png
+      - hub/components/HubLauncher.tsx
+      - hub/functions/dist-entry.js
+      - hub/lib/apps.test.ts
+      - hub/lib/apps.ts
+      - hub/staticwebapp.config.json
+      - package.json
+      - scripts/app-registry.ts
+      - scripts/build-unified-swa.ts
+      - scripts/github/configure-repository.ts
+      - scripts/github/triage-issue.test.ts
+      - scripts/github/triage-issue.ts
+      - scripts/tooling.test.ts
+      - scripts/validate-artifacts.ts
+      - scripts/workflow-matrix.ts
+      - transition/.env.example
+      - transition/README.md
+      - transition/functions/host.json
+      - transition/functions/package.json
+      - transition/functions/scripts/build.ts
+      - transition/functions/src/index.ts
+      - transition/functions/tsconfig.json
+      - transition/next-env.d.ts
+      - transition/next.config.ts
+      - transition/package.json
+      - transition/postcss.config.mjs
+      - transition/scripts/audit-reference.py
+      - transition/scripts/audit_reference_test.py
+      - transition/scripts/build-static.ts
+      - transition/scripts/import-workbooks.ts
+      - transition/scripts/seed.ts
+      - transition/src/app/accounts/page.tsx
+      - transition/src/app/api/[...path]/route.test.ts
+      - transition/src/app/api/[...path]/route.ts
+      - transition/src/app/exceptions/page.tsx
+      - transition/src/app/globals.css
+      - transition/src/app/households/page.tsx
+      - transition/src/app/layout.tsx
+      - transition/src/app/management/page.tsx
+      - transition/src/app/page.tsx
+      - transition/src/components/status-select.module.css
+      - transition/src/components/status-select.tsx
+      - transition/src/components/transition-shell.tsx
+      - transition/src/components/transition-workspace.tsx
+      - transition/src/lib/api/azure-functions-adapter.test.ts
+      - transition/src/lib/api/azure-functions-adapter.ts
+      - transition/src/lib/api/client.ts
+      - transition/src/lib/auth.test.ts
+      - transition/src/lib/auth.ts
+      - transition/src/lib/catalog.ts
+      - transition/src/lib/cosmos-repository.test.ts
+      - transition/src/lib/cosmos-repository.ts
+      - transition/src/lib/data.test.ts
+      - transition/src/lib/data.ts
+      - transition/src/lib/handlers.ts
+      - transition/src/lib/import-cli.ts
+      - transition/src/lib/model.ts
+      - transition/src/lib/navigation.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
+      - transition/src/lib/rules.test.ts
+      - transition/src/lib/rules.ts
+      - transition/src/lib/seed.ts
+      - transition/src/lib/snapshot.ts
+      - transition/src/lib/source-repository.ts
+      - transition/src/lib/workbook.test.ts
+      - transition/src/lib/workbook.ts
+      - transition/src/lib/workflow-view.test.ts
+      - transition/src/lib/workflow-view.ts
+      - transition/staticwebapp.config.json
+      - transition/tsconfig.json
+      - transition/vitest.config.ts
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 121
     prTitle: "feat: add Northstar frontend"
@@ -484,6 +1089,95 @@ codeReviews:
     state: commented
     submittedAt: 2026-09-21T12:40:26Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - .gitignore
+      - README.md
+      - bun.lock
+      - hub/app/globals.css
+      - hub/components/hub-launcher.tsx
+      - hub/functions/local.settings.json.example
+      - hub/functions/package.json
+      - hub/functions/src/index.ts
+      - hub/functions/src/northstar-chat-history.test.ts
+      - hub/functions/src/northstar-chat-history.ts
+      - hub/functions/src/northstar-conversations.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-copilot.test.ts
+      - hub/functions/src/northstar-copilot.ts
+      - hub/functions/src/northstar-local-store.test.ts
+      - hub/functions/src/northstar-local-store.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/lib/apps.ts
+      - hub/staticwebapp.config.json
+      - northstar/LOCAL-BENCHMARK.md
+      - northstar/app/globals.css
+      - northstar/app/layout.tsx
+      - northstar/app/page.tsx
+      - northstar/components/answer-markdown.test.tsx
+      - northstar/components/answer-markdown.tsx
+      - northstar/components/answer-star.test.ts
+      - northstar/components/answer-star.tsx
+      - northstar/components/ask-northstar-workspace.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/client-intelligence-workspace.tsx
+      - northstar/components/compliance-workspace.tsx
+      - northstar/components/marketing-workspace.tsx
+      - northstar/components/microsoft-app-icon.test.ts
+      - northstar/components/microsoft-app-icon.tsx
+      - northstar/components/microsoft-todo-panel.tsx
+      - northstar/components/news-workspace.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/portfolio-ai-workspace.tsx
+      - northstar/components/settings-workspace.tsx
+      - northstar/components/streaming-markdown.tsx
+      - northstar/components/ui/toggle-group.tsx
+      - northstar/eslint.config.mjs
+      - northstar/lib/ask-stream.test.ts
+      - northstar/lib/ask-stream.ts
+      - northstar/lib/background-briefs.test.ts
+      - northstar/lib/background-briefs.ts
+      - northstar/lib/chat-history.test.ts
+      - northstar/lib/chat-history.ts
+      - northstar/lib/external-links.test.ts
+      - northstar/lib/external-links.ts
+      - northstar/lib/graph-permissions.test.ts
+      - northstar/lib/graph-permissions.ts
+      - northstar/lib/https-url.test.ts
+      - northstar/lib/https-url.ts
+      - northstar/lib/mail-priority.ts
+      - northstar/lib/microsoft-reauth.test.ts
+      - northstar/lib/microsoft-reauth.ts
+      - northstar/lib/microsoft-search.test.ts
+      - northstar/lib/microsoft-search.ts
+      - northstar/lib/outlook-calendar.test.ts
+      - northstar/lib/outlook-calendar.ts
+      - northstar/lib/pending-markdown-links.ts
+      - northstar/lib/resolved-mail.test.ts
+      - northstar/lib/resolved-mail.ts
+      - northstar/lib/settings-preferences.test.ts
+      - northstar/lib/settings-preferences.ts
+      - northstar/lib/todo-tasks.test.ts
+      - northstar/lib/todo-tasks.ts
+      - northstar/lib/typing-reveal.test.ts
+      - northstar/lib/typing-reveal.ts
+      - northstar/next-env.d.ts
+      - northstar/next.config.ts
+      - northstar/package.json
+      - northstar/public/integrations/SOURCES.md
+      - northstar/public/integrations/claude.svg
+      - northstar/public/integrations/microsoft-365.svg
+      - northstar/public/integrations/microsoft-copilot.svg
+      - northstar/tsconfig.json
+      - package.json
+      - packages/auth/src/auth.test.ts
+      - packages/ui/src/styles.css
+      - packages/ui/src/user-menu.test.ts
+      - packages/ui/src/user-menu.tsx
+      - scripts/compose-static-suite.ts
+      - scripts/dev-northstar.ts
+      - scripts/dev.ts
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 121
     prTitle: "feat: add Northstar frontend"
@@ -491,80 +1185,799 @@ codeReviews:
     state: commented
     submittedAt: 2026-09-21T12:52:52Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - .gitignore
+      - README.md
+      - bun.lock
+      - hub/app/globals.css
+      - hub/components/hub-launcher.tsx
+      - hub/functions/local.settings.json.example
+      - hub/functions/package.json
+      - hub/functions/src/index.ts
+      - hub/functions/src/northstar-chat-history.test.ts
+      - hub/functions/src/northstar-chat-history.ts
+      - hub/functions/src/northstar-conversations.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-copilot.test.ts
+      - hub/functions/src/northstar-copilot.ts
+      - hub/functions/src/northstar-local-store.test.ts
+      - hub/functions/src/northstar-local-store.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/lib/apps.ts
+      - hub/staticwebapp.config.json
+      - northstar/LOCAL-BENCHMARK.md
+      - northstar/app/globals.css
+      - northstar/app/layout.tsx
+      - northstar/app/page.tsx
+      - northstar/components/answer-markdown.test.tsx
+      - northstar/components/answer-markdown.tsx
+      - northstar/components/answer-star.test.ts
+      - northstar/components/answer-star.tsx
+      - northstar/components/ask-northstar-workspace.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/client-intelligence-workspace.tsx
+      - northstar/components/compliance-workspace.tsx
+      - northstar/components/marketing-workspace.tsx
+      - northstar/components/microsoft-app-icon.test.ts
+      - northstar/components/microsoft-app-icon.tsx
+      - northstar/components/microsoft-todo-panel.tsx
+      - northstar/components/news-workspace.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/portfolio-ai-workspace.tsx
+      - northstar/components/settings-workspace.tsx
+      - northstar/components/streaming-markdown.tsx
+      - northstar/components/ui/toggle-group.tsx
+      - northstar/eslint.config.mjs
+      - northstar/lib/ask-stream.test.ts
+      - northstar/lib/ask-stream.ts
+      - northstar/lib/background-briefs.test.ts
+      - northstar/lib/background-briefs.ts
+      - northstar/lib/chat-history.test.ts
+      - northstar/lib/chat-history.ts
+      - northstar/lib/external-links.test.ts
+      - northstar/lib/external-links.ts
+      - northstar/lib/graph-permissions.test.ts
+      - northstar/lib/graph-permissions.ts
+      - northstar/lib/https-url.test.ts
+      - northstar/lib/https-url.ts
+      - northstar/lib/mail-priority.ts
+      - northstar/lib/microsoft-reauth.test.ts
+      - northstar/lib/microsoft-reauth.ts
+      - northstar/lib/microsoft-search.test.ts
+      - northstar/lib/microsoft-search.ts
+      - northstar/lib/outlook-calendar.test.ts
+      - northstar/lib/outlook-calendar.ts
+      - northstar/lib/pending-markdown-links.ts
+      - northstar/lib/resolved-mail.test.ts
+      - northstar/lib/resolved-mail.ts
+      - northstar/lib/settings-preferences.test.ts
+      - northstar/lib/settings-preferences.ts
+      - northstar/lib/todo-tasks.test.ts
+      - northstar/lib/todo-tasks.ts
+      - northstar/lib/typing-reveal.test.ts
+      - northstar/lib/typing-reveal.ts
+      - northstar/next-env.d.ts
+      - northstar/next.config.ts
+      - northstar/package.json
+      - northstar/public/integrations/SOURCES.md
+      - northstar/public/integrations/claude.svg
+      - northstar/public/integrations/microsoft-365.svg
+      - northstar/public/integrations/microsoft-copilot.svg
+      - northstar/tsconfig.json
+      - package.json
+      - packages/auth/src/auth.test.ts
+      - packages/ui/src/styles.css
+      - packages/ui/src/user-menu.test.ts
+      - packages/ui/src/user-menu.tsx
+      - scripts/compose-static-suite.ts
+      - scripts/dev-northstar.ts
+      - scripts/dev.ts
 reviewComments:
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 132
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/132
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/132#discussion_r4066223141
-    body: "[from Codex]: Unsaved edits now keep the save-first warning even when the draft matches the newest report.
-      Generating still uses the saved model, so the hint stays until that model is saved. Included in c3e7ba4."
+    body: "[from Codex]: Unsaved edits now keep the save-first warning even when the draft matches the newest report. Generating still uses the saved model, so the hint stays until that model is saved. Included in c3e7ba4."
     path: pricing/src/components/scenario-model-tab.tsx
     createdAt: 2026-09-21T20:39:13Z
+    prFiles:
+      - pricing/src/app/globals.css
+      - pricing/src/components/__tests__/scenario-model-tab.test.tsx
+      - pricing/src/components/generate-report-form.tsx
+      - pricing/src/components/recruit-model-shell.tsx
+      - pricing/src/components/scenario-model-tab.tsx
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 132
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/132
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/132#discussion_r4066278138
-    body: "[from Codex]: Report generation now ignores a second submit while the first request is still running, and the
-      hint buttons disable until it finishes. Included in d49f440."
+    body: "[from Codex]: Report generation now ignores a second submit while the first request is still running, and the hint buttons disable until it finishes. Included in d49f440."
     path: pricing/src/components/scenario-model-tab.tsx
     createdAt: 2026-09-21T20:46:42Z
+    prFiles:
+      - pricing/src/app/globals.css
+      - pricing/src/components/__tests__/scenario-model-tab.test.tsx
+      - pricing/src/components/generate-report-form.tsx
+      - pricing/src/components/recruit-model-shell.tsx
+      - pricing/src/components/scenario-model-tab.tsx
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4063892948
-    body: Fixed in 40e628d. Read-only dashboard responses no longer expose owner filter values, and read-only owner filter
-      requests are rejected server-side. Added coverage for both behaviors.
+    body: Fixed in 40e628d. Read-only dashboard responses no longer expose owner filter values, and read-only owner filter requests are rejected server-side. Added coverage for both behaviors.
     path: transition/src/lib/handlers.ts
     createdAt: 2026-09-21T15:56:55Z
+    prFiles:
+      - .codex/environments/environment.toml
+      - .github/ISSUE_TEMPLATE/bug.yml
+      - .github/ISSUE_TEMPLATE/feature.yml
+      - .github/labeler.yml
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/verify.yml
+      - PLAN.md
+      - README.md
+      - bun.lock
+      - design-qa.md
+      - docs/transition/PLAN.md
+      - docs/transition/account-desktop.png
+      - docs/transition/account-mobile.png
+      - docs/transition/contracts.md
+      - docs/transition/empty-before-seed.png
+      - docs/transition/queue-after-seed.png
+      - docs/transition/tasks-priority.png
+      - hub/components/HubLauncher.tsx
+      - hub/functions/dist-entry.js
+      - hub/lib/apps.test.ts
+      - hub/lib/apps.ts
+      - hub/staticwebapp.config.json
+      - package.json
+      - scripts/app-registry.ts
+      - scripts/build-unified-swa.ts
+      - scripts/github/configure-repository.ts
+      - scripts/github/triage-issue.test.ts
+      - scripts/github/triage-issue.ts
+      - scripts/tooling.test.ts
+      - scripts/validate-artifacts.ts
+      - scripts/workflow-matrix.ts
+      - transition/.env.example
+      - transition/README.md
+      - transition/functions/host.json
+      - transition/functions/package.json
+      - transition/functions/scripts/build.ts
+      - transition/functions/src/index.ts
+      - transition/functions/tsconfig.json
+      - transition/next-env.d.ts
+      - transition/next.config.ts
+      - transition/package.json
+      - transition/postcss.config.mjs
+      - transition/scripts/audit-reference.py
+      - transition/scripts/audit_reference_test.py
+      - transition/scripts/build-static.ts
+      - transition/scripts/import-workbooks.ts
+      - transition/scripts/seed.ts
+      - transition/src/app/accounts/page.tsx
+      - transition/src/app/api/[...path]/route.test.ts
+      - transition/src/app/api/[...path]/route.ts
+      - transition/src/app/exceptions/page.tsx
+      - transition/src/app/globals.css
+      - transition/src/app/households/page.tsx
+      - transition/src/app/layout.tsx
+      - transition/src/app/management/page.tsx
+      - transition/src/app/page.tsx
+      - transition/src/components/status-select.module.css
+      - transition/src/components/status-select.tsx
+      - transition/src/components/transition-shell.tsx
+      - transition/src/components/transition-workspace.tsx
+      - transition/src/lib/api/azure-functions-adapter.test.ts
+      - transition/src/lib/api/azure-functions-adapter.ts
+      - transition/src/lib/api/client.ts
+      - transition/src/lib/auth.test.ts
+      - transition/src/lib/auth.ts
+      - transition/src/lib/catalog.ts
+      - transition/src/lib/cosmos-repository.test.ts
+      - transition/src/lib/cosmos-repository.ts
+      - transition/src/lib/data.test.ts
+      - transition/src/lib/data.ts
+      - transition/src/lib/handlers.ts
+      - transition/src/lib/import-cli.ts
+      - transition/src/lib/model.ts
+      - transition/src/lib/navigation.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
+      - transition/src/lib/rules.test.ts
+      - transition/src/lib/rules.ts
+      - transition/src/lib/seed.ts
+      - transition/src/lib/snapshot.ts
+      - transition/src/lib/source-repository.ts
+      - transition/src/lib/workbook.test.ts
+      - transition/src/lib/workbook.ts
+      - transition/src/lib/workflow-view.test.ts
+      - transition/src/lib/workflow-view.ts
+      - transition/staticwebapp.config.json
+      - transition/tsconfig.json
+      - transition/vitest.config.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4063894465
-    body: Fixed in 40e628d. Completed and Not Applicable now force 100% progress for both task creation and updates, even
-      when a partial percentage is supplied. Added focused assertions.
+    body: Fixed in 40e628d. Completed and Not Applicable now force 100% progress for both task creation and updates, even when a partial percentage is supplied. Added focused assertions.
     path: transition/src/lib/repository.ts
     createdAt: 2026-09-21T15:57:03Z
+    prFiles:
+      - .codex/environments/environment.toml
+      - .github/ISSUE_TEMPLATE/bug.yml
+      - .github/ISSUE_TEMPLATE/feature.yml
+      - .github/labeler.yml
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/verify.yml
+      - PLAN.md
+      - README.md
+      - bun.lock
+      - design-qa.md
+      - docs/transition/PLAN.md
+      - docs/transition/account-desktop.png
+      - docs/transition/account-mobile.png
+      - docs/transition/contracts.md
+      - docs/transition/empty-before-seed.png
+      - docs/transition/queue-after-seed.png
+      - docs/transition/tasks-priority.png
+      - hub/components/HubLauncher.tsx
+      - hub/functions/dist-entry.js
+      - hub/lib/apps.test.ts
+      - hub/lib/apps.ts
+      - hub/staticwebapp.config.json
+      - package.json
+      - scripts/app-registry.ts
+      - scripts/build-unified-swa.ts
+      - scripts/github/configure-repository.ts
+      - scripts/github/triage-issue.test.ts
+      - scripts/github/triage-issue.ts
+      - scripts/tooling.test.ts
+      - scripts/validate-artifacts.ts
+      - scripts/workflow-matrix.ts
+      - transition/.env.example
+      - transition/README.md
+      - transition/functions/host.json
+      - transition/functions/package.json
+      - transition/functions/scripts/build.ts
+      - transition/functions/src/index.ts
+      - transition/functions/tsconfig.json
+      - transition/next-env.d.ts
+      - transition/next.config.ts
+      - transition/package.json
+      - transition/postcss.config.mjs
+      - transition/scripts/audit-reference.py
+      - transition/scripts/audit_reference_test.py
+      - transition/scripts/build-static.ts
+      - transition/scripts/import-workbooks.ts
+      - transition/scripts/seed.ts
+      - transition/src/app/accounts/page.tsx
+      - transition/src/app/api/[...path]/route.test.ts
+      - transition/src/app/api/[...path]/route.ts
+      - transition/src/app/exceptions/page.tsx
+      - transition/src/app/globals.css
+      - transition/src/app/households/page.tsx
+      - transition/src/app/layout.tsx
+      - transition/src/app/management/page.tsx
+      - transition/src/app/page.tsx
+      - transition/src/components/status-select.module.css
+      - transition/src/components/status-select.tsx
+      - transition/src/components/transition-shell.tsx
+      - transition/src/components/transition-workspace.tsx
+      - transition/src/lib/api/azure-functions-adapter.test.ts
+      - transition/src/lib/api/azure-functions-adapter.ts
+      - transition/src/lib/api/client.ts
+      - transition/src/lib/auth.test.ts
+      - transition/src/lib/auth.ts
+      - transition/src/lib/catalog.ts
+      - transition/src/lib/cosmos-repository.test.ts
+      - transition/src/lib/cosmos-repository.ts
+      - transition/src/lib/data.test.ts
+      - transition/src/lib/data.ts
+      - transition/src/lib/handlers.ts
+      - transition/src/lib/import-cli.ts
+      - transition/src/lib/model.ts
+      - transition/src/lib/navigation.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
+      - transition/src/lib/rules.test.ts
+      - transition/src/lib/rules.ts
+      - transition/src/lib/seed.ts
+      - transition/src/lib/snapshot.ts
+      - transition/src/lib/source-repository.ts
+      - transition/src/lib/workbook.test.ts
+      - transition/src/lib/workbook.ts
+      - transition/src/lib/workflow-view.test.ts
+      - transition/src/lib/workflow-view.ts
+      - transition/staticwebapp.config.json
+      - transition/tsconfig.json
+      - transition/vitest.config.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4063895604
-    body: Fixed in 40e628d. Dashboard requests now use a monotonically increasing request ID and ignore stale responses and
-      errors after filters change or the effect cleans up.
+    body: Fixed in 40e628d. Dashboard requests now use a monotonically increasing request ID and ignore stale responses and errors after filters change or the effect cleans up.
     path: transition/src/components/transition-workspace.tsx
     createdAt: 2026-09-21T15:57:08Z
+    prFiles:
+      - .codex/environments/environment.toml
+      - .github/ISSUE_TEMPLATE/bug.yml
+      - .github/ISSUE_TEMPLATE/feature.yml
+      - .github/labeler.yml
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/verify.yml
+      - PLAN.md
+      - README.md
+      - bun.lock
+      - design-qa.md
+      - docs/transition/PLAN.md
+      - docs/transition/account-desktop.png
+      - docs/transition/account-mobile.png
+      - docs/transition/contracts.md
+      - docs/transition/empty-before-seed.png
+      - docs/transition/queue-after-seed.png
+      - docs/transition/tasks-priority.png
+      - hub/components/HubLauncher.tsx
+      - hub/functions/dist-entry.js
+      - hub/lib/apps.test.ts
+      - hub/lib/apps.ts
+      - hub/staticwebapp.config.json
+      - package.json
+      - scripts/app-registry.ts
+      - scripts/build-unified-swa.ts
+      - scripts/github/configure-repository.ts
+      - scripts/github/triage-issue.test.ts
+      - scripts/github/triage-issue.ts
+      - scripts/tooling.test.ts
+      - scripts/validate-artifacts.ts
+      - scripts/workflow-matrix.ts
+      - transition/.env.example
+      - transition/README.md
+      - transition/functions/host.json
+      - transition/functions/package.json
+      - transition/functions/scripts/build.ts
+      - transition/functions/src/index.ts
+      - transition/functions/tsconfig.json
+      - transition/next-env.d.ts
+      - transition/next.config.ts
+      - transition/package.json
+      - transition/postcss.config.mjs
+      - transition/scripts/audit-reference.py
+      - transition/scripts/audit_reference_test.py
+      - transition/scripts/build-static.ts
+      - transition/scripts/import-workbooks.ts
+      - transition/scripts/seed.ts
+      - transition/src/app/accounts/page.tsx
+      - transition/src/app/api/[...path]/route.test.ts
+      - transition/src/app/api/[...path]/route.ts
+      - transition/src/app/exceptions/page.tsx
+      - transition/src/app/globals.css
+      - transition/src/app/households/page.tsx
+      - transition/src/app/layout.tsx
+      - transition/src/app/management/page.tsx
+      - transition/src/app/page.tsx
+      - transition/src/components/status-select.module.css
+      - transition/src/components/status-select.tsx
+      - transition/src/components/transition-shell.tsx
+      - transition/src/components/transition-workspace.tsx
+      - transition/src/lib/api/azure-functions-adapter.test.ts
+      - transition/src/lib/api/azure-functions-adapter.ts
+      - transition/src/lib/api/client.ts
+      - transition/src/lib/auth.test.ts
+      - transition/src/lib/auth.ts
+      - transition/src/lib/catalog.ts
+      - transition/src/lib/cosmos-repository.test.ts
+      - transition/src/lib/cosmos-repository.ts
+      - transition/src/lib/data.test.ts
+      - transition/src/lib/data.ts
+      - transition/src/lib/handlers.ts
+      - transition/src/lib/import-cli.ts
+      - transition/src/lib/model.ts
+      - transition/src/lib/navigation.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
+      - transition/src/lib/rules.test.ts
+      - transition/src/lib/rules.ts
+      - transition/src/lib/seed.ts
+      - transition/src/lib/snapshot.ts
+      - transition/src/lib/source-repository.ts
+      - transition/src/lib/workbook.test.ts
+      - transition/src/lib/workbook.ts
+      - transition/src/lib/workflow-view.test.ts
+      - transition/src/lib/workflow-view.ts
+      - transition/staticwebapp.config.json
+      - transition/tsconfig.json
+      - transition/vitest.config.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4063981573
-    body: Fixed in bfdbbf3. Reopening a terminal task now resets omitted or unchanged 100% progress to 0%, while preserving
-      a deliberately entered nonterminal percentage. Tests cover omitted, unchanged 100%, and explicit 40% reopen paths.
+    body: Fixed in bfdbbf3. Reopening a terminal task now resets omitted or unchanged 100% progress to 0%, while preserving a deliberately entered nonterminal percentage. Tests cover omitted, unchanged 100%, and explicit 40% reopen paths.
     path: transition/src/lib/repository.ts
     createdAt: 2026-09-21T16:06:06Z
+    prFiles:
+      - .codex/environments/environment.toml
+      - .github/ISSUE_TEMPLATE/bug.yml
+      - .github/ISSUE_TEMPLATE/feature.yml
+      - .github/labeler.yml
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/verify.yml
+      - PLAN.md
+      - README.md
+      - bun.lock
+      - design-qa.md
+      - docs/transition/PLAN.md
+      - docs/transition/account-desktop.png
+      - docs/transition/account-mobile.png
+      - docs/transition/contracts.md
+      - docs/transition/empty-before-seed.png
+      - docs/transition/queue-after-seed.png
+      - docs/transition/tasks-priority.png
+      - hub/components/HubLauncher.tsx
+      - hub/functions/dist-entry.js
+      - hub/lib/apps.test.ts
+      - hub/lib/apps.ts
+      - hub/staticwebapp.config.json
+      - package.json
+      - scripts/app-registry.ts
+      - scripts/build-unified-swa.ts
+      - scripts/github/configure-repository.ts
+      - scripts/github/triage-issue.test.ts
+      - scripts/github/triage-issue.ts
+      - scripts/tooling.test.ts
+      - scripts/validate-artifacts.ts
+      - scripts/workflow-matrix.ts
+      - transition/.env.example
+      - transition/README.md
+      - transition/functions/host.json
+      - transition/functions/package.json
+      - transition/functions/scripts/build.ts
+      - transition/functions/src/index.ts
+      - transition/functions/tsconfig.json
+      - transition/next-env.d.ts
+      - transition/next.config.ts
+      - transition/package.json
+      - transition/postcss.config.mjs
+      - transition/scripts/audit-reference.py
+      - transition/scripts/audit_reference_test.py
+      - transition/scripts/build-static.ts
+      - transition/scripts/import-workbooks.ts
+      - transition/scripts/seed.ts
+      - transition/src/app/accounts/page.tsx
+      - transition/src/app/api/[...path]/route.test.ts
+      - transition/src/app/api/[...path]/route.ts
+      - transition/src/app/exceptions/page.tsx
+      - transition/src/app/globals.css
+      - transition/src/app/households/page.tsx
+      - transition/src/app/layout.tsx
+      - transition/src/app/management/page.tsx
+      - transition/src/app/page.tsx
+      - transition/src/components/status-select.module.css
+      - transition/src/components/status-select.tsx
+      - transition/src/components/transition-shell.tsx
+      - transition/src/components/transition-workspace.tsx
+      - transition/src/lib/api/azure-functions-adapter.test.ts
+      - transition/src/lib/api/azure-functions-adapter.ts
+      - transition/src/lib/api/client.ts
+      - transition/src/lib/auth.test.ts
+      - transition/src/lib/auth.ts
+      - transition/src/lib/catalog.ts
+      - transition/src/lib/cosmos-repository.test.ts
+      - transition/src/lib/cosmos-repository.ts
+      - transition/src/lib/data.test.ts
+      - transition/src/lib/data.ts
+      - transition/src/lib/handlers.ts
+      - transition/src/lib/import-cli.ts
+      - transition/src/lib/model.ts
+      - transition/src/lib/navigation.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
+      - transition/src/lib/rules.test.ts
+      - transition/src/lib/rules.ts
+      - transition/src/lib/seed.ts
+      - transition/src/lib/snapshot.ts
+      - transition/src/lib/source-repository.ts
+      - transition/src/lib/workbook.test.ts
+      - transition/src/lib/workbook.ts
+      - transition/src/lib/workflow-view.test.ts
+      - transition/src/lib/workflow-view.ts
+      - transition/staticwebapp.config.json
+      - transition/tsconfig.json
+      - transition/vitest.config.ts
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4064188218
-    body: Fixed in 0c549fc. `Unspecified` is now part of the canonical transition direction set used by the handler, and the
-      repository test verifies that filtering an unconfigured household succeeds and returns the matching household.
+    body: Fixed in 0c549fc. `Unspecified` is now part of the canonical transition direction set used by the handler, and the repository test verifies that filtering an unconfigured household succeeds and returns the matching household.
     path: transition/src/lib/handlers.ts
     createdAt: 2026-09-21T16:26:30Z
+    prFiles:
+      - .codex/environments/environment.toml
+      - .github/ISSUE_TEMPLATE/bug.yml
+      - .github/ISSUE_TEMPLATE/feature.yml
+      - .github/labeler.yml
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/verify.yml
+      - PLAN.md
+      - README.md
+      - bun.lock
+      - design-qa.md
+      - docs/transition/PLAN.md
+      - docs/transition/account-desktop.png
+      - docs/transition/account-mobile.png
+      - docs/transition/contracts.md
+      - docs/transition/empty-before-seed.png
+      - docs/transition/queue-after-seed.png
+      - docs/transition/tasks-priority.png
+      - hub/components/HubLauncher.tsx
+      - hub/functions/dist-entry.js
+      - hub/lib/apps.test.ts
+      - hub/lib/apps.ts
+      - hub/staticwebapp.config.json
+      - package.json
+      - scripts/app-registry.ts
+      - scripts/build-unified-swa.ts
+      - scripts/github/configure-repository.ts
+      - scripts/github/triage-issue.test.ts
+      - scripts/github/triage-issue.ts
+      - scripts/tooling.test.ts
+      - scripts/validate-artifacts.ts
+      - scripts/workflow-matrix.ts
+      - transition/.env.example
+      - transition/README.md
+      - transition/functions/host.json
+      - transition/functions/package.json
+      - transition/functions/scripts/build.ts
+      - transition/functions/src/index.ts
+      - transition/functions/tsconfig.json
+      - transition/next-env.d.ts
+      - transition/next.config.ts
+      - transition/package.json
+      - transition/postcss.config.mjs
+      - transition/scripts/audit-reference.py
+      - transition/scripts/audit_reference_test.py
+      - transition/scripts/build-static.ts
+      - transition/scripts/import-workbooks.ts
+      - transition/scripts/seed.ts
+      - transition/src/app/accounts/page.tsx
+      - transition/src/app/api/[...path]/route.test.ts
+      - transition/src/app/api/[...path]/route.ts
+      - transition/src/app/exceptions/page.tsx
+      - transition/src/app/globals.css
+      - transition/src/app/households/page.tsx
+      - transition/src/app/layout.tsx
+      - transition/src/app/management/page.tsx
+      - transition/src/app/page.tsx
+      - transition/src/components/status-select.module.css
+      - transition/src/components/status-select.tsx
+      - transition/src/components/transition-shell.tsx
+      - transition/src/components/transition-workspace.tsx
+      - transition/src/lib/api/azure-functions-adapter.test.ts
+      - transition/src/lib/api/azure-functions-adapter.ts
+      - transition/src/lib/api/client.ts
+      - transition/src/lib/auth.test.ts
+      - transition/src/lib/auth.ts
+      - transition/src/lib/catalog.ts
+      - transition/src/lib/cosmos-repository.test.ts
+      - transition/src/lib/cosmos-repository.ts
+      - transition/src/lib/data.test.ts
+      - transition/src/lib/data.ts
+      - transition/src/lib/handlers.ts
+      - transition/src/lib/import-cli.ts
+      - transition/src/lib/model.ts
+      - transition/src/lib/navigation.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
+      - transition/src/lib/rules.test.ts
+      - transition/src/lib/rules.ts
+      - transition/src/lib/seed.ts
+      - transition/src/lib/snapshot.ts
+      - transition/src/lib/source-repository.ts
+      - transition/src/lib/workbook.test.ts
+      - transition/src/lib/workbook.ts
+      - transition/src/lib/workflow-view.test.ts
+      - transition/src/lib/workflow-view.ts
+      - transition/staticwebapp.config.json
+      - transition/tsconfig.json
+      - transition/vitest.config.ts
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 121
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121#discussion_r4062181504
-    body: "[from Codex]: Partial To Do list failures now keep the successful tasks and set `tasks.error`. The Microsoft To
-      Do panel still shows the loaded items and notes that some lists could not be loaded. Included in ba7979e."
+    body: "[from Codex]: Partial To Do list failures now keep the successful tasks and set `tasks.error`. The Microsoft To Do panel still shows the loaded items and notes that some lists could not be loaded. Included in ba7979e."
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-09-21T12:40:26Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - .gitignore
+      - README.md
+      - bun.lock
+      - hub/app/globals.css
+      - hub/components/hub-launcher.tsx
+      - hub/functions/local.settings.json.example
+      - hub/functions/package.json
+      - hub/functions/src/index.ts
+      - hub/functions/src/northstar-chat-history.test.ts
+      - hub/functions/src/northstar-chat-history.ts
+      - hub/functions/src/northstar-conversations.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-copilot.test.ts
+      - hub/functions/src/northstar-copilot.ts
+      - hub/functions/src/northstar-local-store.test.ts
+      - hub/functions/src/northstar-local-store.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/lib/apps.ts
+      - hub/staticwebapp.config.json
+      - northstar/LOCAL-BENCHMARK.md
+      - northstar/app/globals.css
+      - northstar/app/layout.tsx
+      - northstar/app/page.tsx
+      - northstar/components/answer-markdown.test.tsx
+      - northstar/components/answer-markdown.tsx
+      - northstar/components/answer-star.test.ts
+      - northstar/components/answer-star.tsx
+      - northstar/components/ask-northstar-workspace.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/client-intelligence-workspace.tsx
+      - northstar/components/compliance-workspace.tsx
+      - northstar/components/marketing-workspace.tsx
+      - northstar/components/microsoft-app-icon.test.ts
+      - northstar/components/microsoft-app-icon.tsx
+      - northstar/components/microsoft-todo-panel.tsx
+      - northstar/components/news-workspace.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/portfolio-ai-workspace.tsx
+      - northstar/components/settings-workspace.tsx
+      - northstar/components/streaming-markdown.tsx
+      - northstar/components/ui/toggle-group.tsx
+      - northstar/eslint.config.mjs
+      - northstar/lib/ask-stream.test.ts
+      - northstar/lib/ask-stream.ts
+      - northstar/lib/background-briefs.test.ts
+      - northstar/lib/background-briefs.ts
+      - northstar/lib/chat-history.test.ts
+      - northstar/lib/chat-history.ts
+      - northstar/lib/external-links.test.ts
+      - northstar/lib/external-links.ts
+      - northstar/lib/graph-permissions.test.ts
+      - northstar/lib/graph-permissions.ts
+      - northstar/lib/https-url.test.ts
+      - northstar/lib/https-url.ts
+      - northstar/lib/mail-priority.ts
+      - northstar/lib/microsoft-reauth.test.ts
+      - northstar/lib/microsoft-reauth.ts
+      - northstar/lib/microsoft-search.test.ts
+      - northstar/lib/microsoft-search.ts
+      - northstar/lib/outlook-calendar.test.ts
+      - northstar/lib/outlook-calendar.ts
+      - northstar/lib/pending-markdown-links.ts
+      - northstar/lib/resolved-mail.test.ts
+      - northstar/lib/resolved-mail.ts
+      - northstar/lib/settings-preferences.test.ts
+      - northstar/lib/settings-preferences.ts
+      - northstar/lib/todo-tasks.test.ts
+      - northstar/lib/todo-tasks.ts
+      - northstar/lib/typing-reveal.test.ts
+      - northstar/lib/typing-reveal.ts
+      - northstar/next-env.d.ts
+      - northstar/next.config.ts
+      - northstar/package.json
+      - northstar/public/integrations/SOURCES.md
+      - northstar/public/integrations/claude.svg
+      - northstar/public/integrations/microsoft-365.svg
+      - northstar/public/integrations/microsoft-copilot.svg
+      - northstar/tsconfig.json
+      - package.json
+      - packages/auth/src/auth.test.ts
+      - packages/ui/src/styles.css
+      - packages/ui/src/user-menu.test.ts
+      - packages/ui/src/user-menu.tsx
+      - scripts/compose-static-suite.ts
+      - scripts/dev-northstar.ts
+      - scripts/dev.ts
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 121
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121#discussion_r4062273368
-    body: Fixed in b87bc4c. Resolved-mail storage is now scoped by the SWA user and an opaque hash of the connected
-      Microsoft tenant/account. Legacy unscoped records are ignored, and focused tests cover account switching and
-      missing identity.
+    body: Fixed in b87bc4c. Resolved-mail storage is now scoped by the SWA user and an opaque hash of the connected Microsoft tenant/account. Legacy unscoped records are ignored, and focused tests cover account switching and missing identity.
     path: northstar/lib/resolved-mail.ts
     createdAt: 2026-09-21T12:52:51Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - .gitignore
+      - README.md
+      - bun.lock
+      - hub/app/globals.css
+      - hub/components/hub-launcher.tsx
+      - hub/functions/local.settings.json.example
+      - hub/functions/package.json
+      - hub/functions/src/index.ts
+      - hub/functions/src/northstar-chat-history.test.ts
+      - hub/functions/src/northstar-chat-history.ts
+      - hub/functions/src/northstar-conversations.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-copilot.test.ts
+      - hub/functions/src/northstar-copilot.ts
+      - hub/functions/src/northstar-local-store.test.ts
+      - hub/functions/src/northstar-local-store.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/lib/apps.ts
+      - hub/staticwebapp.config.json
+      - northstar/LOCAL-BENCHMARK.md
+      - northstar/app/globals.css
+      - northstar/app/layout.tsx
+      - northstar/app/page.tsx
+      - northstar/components/answer-markdown.test.tsx
+      - northstar/components/answer-markdown.tsx
+      - northstar/components/answer-star.test.ts
+      - northstar/components/answer-star.tsx
+      - northstar/components/ask-northstar-workspace.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/client-intelligence-workspace.tsx
+      - northstar/components/compliance-workspace.tsx
+      - northstar/components/marketing-workspace.tsx
+      - northstar/components/microsoft-app-icon.test.ts
+      - northstar/components/microsoft-app-icon.tsx
+      - northstar/components/microsoft-todo-panel.tsx
+      - northstar/components/news-workspace.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/portfolio-ai-workspace.tsx
+      - northstar/components/settings-workspace.tsx
+      - northstar/components/streaming-markdown.tsx
+      - northstar/components/ui/toggle-group.tsx
+      - northstar/eslint.config.mjs
+      - northstar/lib/ask-stream.test.ts
+      - northstar/lib/ask-stream.ts
+      - northstar/lib/background-briefs.test.ts
+      - northstar/lib/background-briefs.ts
+      - northstar/lib/chat-history.test.ts
+      - northstar/lib/chat-history.ts
+      - northstar/lib/external-links.test.ts
+      - northstar/lib/external-links.ts
+      - northstar/lib/graph-permissions.test.ts
+      - northstar/lib/graph-permissions.ts
+      - northstar/lib/https-url.test.ts
+      - northstar/lib/https-url.ts
+      - northstar/lib/mail-priority.ts
+      - northstar/lib/microsoft-reauth.test.ts
+      - northstar/lib/microsoft-reauth.ts
+      - northstar/lib/microsoft-search.test.ts
+      - northstar/lib/microsoft-search.ts
+      - northstar/lib/outlook-calendar.test.ts
+      - northstar/lib/outlook-calendar.ts
+      - northstar/lib/pending-markdown-links.ts
+      - northstar/lib/resolved-mail.test.ts
+      - northstar/lib/resolved-mail.ts
+      - northstar/lib/settings-preferences.test.ts
+      - northstar/lib/settings-preferences.ts
+      - northstar/lib/todo-tasks.test.ts
+      - northstar/lib/todo-tasks.ts
+      - northstar/lib/typing-reveal.test.ts
+      - northstar/lib/typing-reveal.ts
+      - northstar/next-env.d.ts
+      - northstar/next.config.ts
+      - northstar/package.json
+      - northstar/public/integrations/SOURCES.md
+      - northstar/public/integrations/claude.svg
+      - northstar/public/integrations/microsoft-365.svg
+      - northstar/public/integrations/microsoft-copilot.svg
+      - northstar/tsconfig.json
+      - package.json
+      - packages/auth/src/auth.test.ts
+      - packages/ui/src/styles.css
+      - packages/ui/src/user-menu.test.ts
+      - packages/ui/src/user-menu.tsx
+      - scripts/compose-static-suite.ts
+      - scripts/dev-northstar.ts
+      - scripts/dev.ts
 aiReviews:
   codex:
     prsReviewed: 3
@@ -677,6 +2090,5 @@ hoursEstimate:
   volumeHours: 45.1
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

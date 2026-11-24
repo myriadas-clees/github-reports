@@ -43,9 +43,7 @@ repositories:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
 pullRequests:
   - title: "fix(ci): package unified function artifacts"
-    body: The unified deployment fails on a cold artifact cache because the Functions artifact parent does not exist before
-      per-app copies begin. Once that path is created, PTO packaging also resolves the app ID `pto` to the nonexistent
-      `pto/functions/dist` instead of the registered `pto-tracker/functions/dis...
+    body: The unified deployment fails on a cold artifact cache because the Functions artifact parent does not exist before per-app copies begin. Once that path is created, PTO packaging also resolves the app ID `pto` to the nonexistent `pto/functions/dist` instead of the registered `pto-tracker/functions/dis...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/119
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: merged
@@ -65,6 +63,8 @@ pullRequests:
         message: "fix(ci): package unified function artifacts"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/dbce88871cb037f6919f2cb3ed3d1ccf1ace8291
         authoredAt: 2026-09-16T16:33:25Z
+        files:
+          - .github/workflows/azure-static-web-apps.yml
     workTimestamps:
       - 2026-09-16T16:33:25Z
     workAdditions: 2
@@ -73,8 +73,7 @@ pullRequests:
       - .github/workflows/azure-static-web-apps.yml
   - title: Keep Entra sign-in outside embedded app frames
     body: >-
-      Unauthenticated protected routes previously redirected an embedded app directly to Microsoft Entra ID. Entra
-      refuses to render interactive sign-in inside an iframe, leaving the frame blocked.
+      Unauthenticated protected routes previously redirected an embedded app directly to Microsoft Entra ID. Entra refuses to render interactive sign-in inside an iframe, leaving the frame blocked.
 
 
       This sends anonymous requests to a public local login page first. Its Microsoft sign-in action targets the ...
@@ -96,6 +95,16 @@ pullRequests:
         message: "fix(auth): keep Entra sign-in outside iframes"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/78ac993316383691e308903182dbd72ff522b9bb
         authoredAt: 2026-09-16T20:20:02Z
+        files:
+          - hub/app/login/page.tsx
+          - hub/staticwebapp.config.json
+          - ofac/src/app/login/page.test.tsx
+          - ofac/src/app/login/page.tsx
+          - ofac/staticwebapp.config.json
+          - pricing/src/app/login/page.tsx
+          - pricing/src/lib/__tests__/pricing-api-client.test.ts
+          - pricing/src/lib/pricing-api-client.ts
+          - pricing/staticwebapp.config.json
     workTimestamps: &a3
       - 2026-09-16T20:20:02Z
     workAdditions: 34
@@ -115,8 +124,7 @@ pullRequests:
       ## Why
 
 
-      Myriad has no native workspace for coordinating account transitions. Add a functional local prototype based on the
-      Transition Tool references, with defaults created only by explicit seed commands.
+      Myriad has no native workspace for coordinating account transitions. Add a functional local prototype based on the Transition Tool references, with defaults created only by explicit seed commands.
 
 
       ## What changed
@@ -145,6 +153,62 @@ pullRequests:
         message: "feat(transition): add account transition prototype"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d3774f7e4ba4d8b32f02b4afb067ea5ca3f18187
         authoredAt: 2026-09-16T18:40:17Z
+        files:
+          - .github/workflows/azure-static-web-apps-products.yml
+          - .github/workflows/azure-static-web-apps.yml
+          - .github/workflows/verify.yml
+          - PLAN.md
+          - README.md
+          - bun.lock
+          - docs/transition/account-desktop.png
+          - docs/transition/account-mobile.png
+          - docs/transition/empty-before-seed.png
+          - docs/transition/queue-after-seed.png
+          - hub/components/HubLauncher.tsx
+          - hub/functions/dist-entry.js
+          - hub/lib/apps.ts
+          - hub/staticwebapp.config.json
+          - package.json
+          - scripts/app-registry.ts
+          - scripts/tooling.test.ts
+          - scripts/workflow-matrix.ts
+          - transition/.env.example
+          - transition/functions/host.json
+          - transition/functions/package.json
+          - transition/functions/src/index.ts
+          - transition/functions/tsconfig.json
+          - transition/next-env.d.ts
+          - transition/next.config.ts
+          - transition/package.json
+          - transition/postcss.config.mjs
+          - transition/scripts/build-static.ts
+          - transition/scripts/seed.ts
+          - transition/src/app/accounts/page.tsx
+          - transition/src/app/api/[...path]/route.ts
+          - transition/src/app/exceptions/page.tsx
+          - transition/src/app/globals.css
+          - transition/src/app/households/page.tsx
+          - transition/src/app/layout.tsx
+          - transition/src/app/management/page.tsx
+          - transition/src/app/page.tsx
+          - transition/src/components/transition-shell.tsx
+          - transition/src/components/transition-workspace.tsx
+          - transition/src/lib/api/azure-functions-adapter.test.ts
+          - transition/src/lib/api/azure-functions-adapter.ts
+          - transition/src/lib/api/client.ts
+          - transition/src/lib/auth.ts
+          - transition/src/lib/data.ts
+          - transition/src/lib/handlers.ts
+          - transition/src/lib/model.ts
+          - transition/src/lib/navigation.ts
+          - transition/src/lib/repository.test.ts
+          - transition/src/lib/repository.ts
+          - transition/src/lib/rules.test.ts
+          - transition/src/lib/rules.ts
+          - transition/src/lib/seed.ts
+          - transition/staticwebapp.config.json
+          - transition/tsconfig.json
+          - transition/vitest.config.ts
     workTimestamps:
       - 2026-09-16T18:40:17Z
     workAdditions: 921
@@ -207,8 +271,7 @@ pullRequests:
       - transition/vitest.config.ts
   - title: "fix(ui): restore readable contrast in light and dark themes"
     body: >-
-      - Make theme and layout pickers use Myriad red selected states and readable unselected text instead of pale pink
-      on Cool Gray 4.
+      - Make theme and layout pickers use Myriad red selected states and readable unselected text instead of pale pink on Cool Gray 4.
 
       - Keep Hub app-card pins and badges on a light chip so they stay visible on the pastel previews in dark mode.
 
@@ -239,36 +302,80 @@ pullRequests:
         message: "fix(ui): restore readable contrast in light and dark themes"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/75af917dbd61829d348b425f83217086dff6e23b
         authoredAt: 2026-09-16T17:02:48Z
+        files:
+          - hub/app/globals.css
+          - hub/app/login/page.tsx
+          - packages/brand/src/styles.css
+          - packages/ui/src/appearance-quick-settings.tsx
+          - packages/ui/src/button.tsx
+          - packages/ui/src/navigation/app-nav.tsx
+          - packages/ui/src/theme-toggle.tsx
+          - packages/ui/src/user-menu.tsx
       - &a11
         sha: 90d0de505cbfa59e076afa9bd1c628d984660fbd
         message: "fix(brand): approve accessible muted gray for UI text"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/90d0de505cbfa59e076afa9bd1c628d984660fbd
         authoredAt: 2026-09-16T17:10:07Z
+        files:
+          - .agents/skills/myriad-branding/references/brand-guidelines.md
+          - .agents/skills/myriad-branding/references/digital-product-brand.md
+          - packages/brand/src/index.ts
       - &a12
         sha: 3775deb20da03dfe1b97f0be496f5d6cfeeb361f
         message: "fix(ui): keep account menu text readable on light surfaces"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3775deb20da03dfe1b97f0be496f5d6cfeeb361f
         authoredAt: 2026-09-16T17:17:10Z
+        files:
+          - packages/brand/src/styles.css
+          - packages/ui/src/appearance-quick-settings.tsx
+          - packages/ui/src/theme-toggle.tsx
+          - packages/ui/src/user-menu.tsx
       - &a13
         sha: 040cf91b8548bd341c20832cb4a5d70a05ed0463
         message: "codex: address PR review feedback (#120)"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/040cf91b8548bd341c20832cb4a5d70a05ed0463
         authoredAt: 2026-09-16T17:23:59Z
+        files:
+          - packages/brand/src/styles.css
       - &a14
         sha: 4b2796303a66cc47a04a2b717dfbddfd6b054943
         message: "feat(brand): add M-mark SVG for header logo and favicons"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4b2796303a66cc47a04a2b717dfbddfd6b054943
         authoredAt: 2026-09-16T18:08:18Z
+        files:
+          - excelerate/src/app/icon.svg
+          - hub/app/icon.svg
+          - onboarding/apps/dashboard/app/icon.svg
+          - packages/brand/assets/myriad-m-mark.svg
+          - packages/brand/src/index.ts
+          - packages/ui/src/brand/myriad-logo.tsx
+          - proforma/src/app/icon.svg
+          - pto-tracker/src/app/icon.svg
+          - valuation/src/app/icon.svg
       - &a15
         sha: 77b436beba09a536ef24c4676ad13ed00b48e9ea
         message: "fix(brand): drop the white fill from the M-mark SVG"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/77b436beba09a536ef24c4676ad13ed00b48e9ea
         authoredAt: 2026-09-16T18:11:40Z
+        files:
+          - excelerate/src/app/icon.svg
+          - hub/app/icon.svg
+          - onboarding/apps/dashboard/app/icon.svg
+          - packages/brand/assets/myriad-m-mark.svg
+          - proforma/src/app/icon.svg
+          - pto-tracker/src/app/icon.svg
+          - valuation/src/app/icon.svg
       - &a16
         sha: 7fa138f71d87d24a2a08267ff0575597534a05ad
         message: "feat(brand): add reverse M-mark for dark chrome"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7fa138f71d87d24a2a08267ff0575597534a05ad
         authoredAt: 2026-09-16T18:16:12Z
+        files:
+          - packages/brand/assets/myriad-m-mark-reverse.svg
+          - packages/brand/src/index.ts
+          - packages/ui/src/brand/myriad-logo.tsx
+          - packages/ui/src/navigation/app-shell.tsx
+          - pto-tracker/src/components/PtoAppShell.tsx
     workTimestamps:
       - 2026-09-16T17:02:48Z
       - 2026-09-16T17:10:07Z
@@ -307,8 +414,7 @@ pullRequests:
       ## Why
 
 
-      Myriad has no native workspace for coordinating account transitions. Add a functional prototype and synthetic
-      Azure PR demo based on the Transition Tool references, with defaults created only by explicit seed commands.
+      Myriad has no native workspace for coordinating account transitions. Add a functional prototype and synthetic Azure PR demo based on the Transition Tool references, with defaults created only by explicit seed commands.
 
 
       ## What changed
@@ -342,31 +448,71 @@ pullRequests:
         message: "feat(transition): complete prototype workflow controls"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/04d3d619542441d5417c4b4406c107287750fa3b
         authoredAt: 2026-09-16T18:54:02Z
+        files:
+          - PLAN.md
+          - docs/transition/contracts.md
+          - docs/transition/tasks-priority.png
+          - transition/scripts/audit-reference.py
+          - transition/scripts/audit_reference_test.py
+          - transition/src/components/transition-workspace.tsx
+          - transition/src/lib/handlers.ts
+          - transition/src/lib/model.ts
+          - transition/src/lib/repository.test.ts
+          - transition/src/lib/repository.ts
+          - transition/src/lib/seed.ts
       - &a19
         sha: 81d9939fd6f2d540012a9f3168b166f520e02dcd
         message: "fix(transition): make the Azure preview demo usable"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/81d9939fd6f2d540012a9f3168b166f520e02dcd
         authoredAt: 2026-09-16T19:09:35Z
+        files:
+          - .github/workflows/azure-static-web-apps-products.yml
+          - .github/workflows/azure-static-web-apps.yml
+          - PLAN.md
+          - docs/transition/contracts.md
+          - transition/functions/package.json
+          - transition/functions/scripts/build.ts
+          - transition/next.config.ts
+          - transition/src/components/transition-shell.tsx
+          - transition/src/lib/api/azure-functions-adapter.ts
+          - transition/src/lib/data.test.ts
+          - transition/src/lib/data.ts
+          - transition/src/lib/seed.ts
       - &a20
         sha: a1ebe2361c5965d182c3a80861256ef4be1bfb21
         message: "fix(transition): stage SQLite at the package root"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a1ebe2361c5965d182c3a80861256ef4be1bfb21
         authoredAt: 2026-09-16T19:16:38Z
+        files:
+          - .github/workflows/azure-static-web-apps-products.yml
+          - .github/workflows/azure-static-web-apps.yml
       - &a21
         sha: 23ebd0bfc1d4894369d5595e3b8c1fb4e4f675c9
         message: "fix(transition): include SQLite runtime dependencies"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/23ebd0bfc1d4894369d5595e3b8c1fb4e4f675c9
         authoredAt: 2026-09-16T19:24:48Z
+        files:
+          - .github/workflows/azure-static-web-apps-products.yml
+          - .github/workflows/azure-static-web-apps.yml
       - &a22
         sha: 05eb8382646beaa5a5076be649d2ce62dcc75d81
         message: "fix(transition): verify preview records in readiness check"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/05eb8382646beaa5a5076be649d2ce62dcc75d81
         authoredAt: 2026-09-16T19:25:56Z
+        files:
+          - transition/src/lib/data.test.ts
+          - transition/src/lib/handlers.ts
       - &a23
         sha: 6e4da6e871bfbc8937c561e9ff5406fcc4513d54
         message: "feat(transition): seed five households and 25 accounts"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6e4da6e871bfbc8937c561e9ff5406fcc4513d54
         authoredAt: 2026-09-16T19:47:01Z
+        files:
+          - .github/workflows/azure-static-web-apps-products.yml
+          - .github/workflows/azure-static-web-apps.yml
+          - PLAN.md
+          - docs/transition/contracts.md
+          - transition/src/lib/seed.ts
     workTimestamps: &a7
       - 2026-09-16T18:40:17Z
       - 2026-09-16T18:54:02Z
@@ -442,8 +588,7 @@ pullRequests:
 prsInProgress:
   - title: Keep Entra sign-in outside embedded app frames
     body: >-
-      Unauthenticated protected routes previously redirected an embedded app directly to Microsoft Entra ID. Entra
-      refuses to render interactive sign-in inside an iframe, leaving the frame blocked.
+      Unauthenticated protected routes previously redirected an embedded app directly to Microsoft Entra ID. Entra refuses to render interactive sign-in inside an iframe, leaving the frame blocked.
 
 
       This sends anonymous requests to a public local login page first. Its Microsoft sign-in action targets the ...
@@ -464,13 +609,45 @@ prsInProgress:
     workAdditions: 34
     workDeletions: 14
     workFiles: *a4
+    allocationFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - bun.lock
+      - docs/advisor-pricing-architecture.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - hub/app/login/page.tsx
+      - hub/package.json
+      - hub/staticwebapp.config.json
+      - ofac/src/app/login/page.test.tsx
+      - ofac/src/app/login/page.tsx
+      - ofac/src/components/pdf-report-viewer.tsx
+      - ofac/src/components/report-viewer-shell.tsx
+      - ofac/src/components/workbook-report-viewer.tsx
+      - ofac/src/lib/__tests__/ofac-api-client.test.ts
+      - ofac/src/lib/ofac-api-client.ts
+      - ofac/staticwebapp.config.json
+      - packages/auth/package.json
+      - packages/auth/src/auth.test.ts
+      - packages/auth/src/client.ts
+      - packages/auth/src/iframe-login.test.tsx
+      - packages/auth/src/iframe-login.tsx
+      - packages/auth/tsconfig.json
+      - packages/ui/src/styles.css
+      - pricing/src/app/globals.css
+      - pricing/src/app/login/page.tsx
+      - pricing/src/components/__tests__/pdf-report-viewer.test.tsx
+      - pricing/src/components/pdf-report-viewer.tsx
+      - pricing/src/components/report-viewer-shell.tsx
+      - pricing/src/components/workbook-report-viewer.tsx
+      - pricing/src/lib/__tests__/pricing-api-client.test.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/staticwebapp.config.json
   - title: "feat(transition): add account transition prototype"
     body: >-
       ## Why
 
 
-      Myriad has no native workspace for coordinating account transitions. Add a functional prototype and synthetic
-      Azure PR demo based on the Transition Tool references, with defaults created only by explicit seed commands.
+      Myriad has no native workspace for coordinating account transitions. Add a functional prototype and synthetic Azure PR demo based on the Transition Tool references, with defaults created only by explicit seed commands.
 
 
       ## What changed
@@ -494,6 +671,96 @@ prsInProgress:
     workAdditions: 1423
     workDeletions: 65
     workFiles: *a8
+    allocationFiles:
+      - .codex/environments/environment.toml
+      - .github/ISSUE_TEMPLATE/bug.yml
+      - .github/ISSUE_TEMPLATE/feature.yml
+      - .github/labeler.yml
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/verify.yml
+      - PLAN.md
+      - README.md
+      - bun.lock
+      - design-qa.md
+      - docs/transition/PLAN.md
+      - docs/transition/account-desktop.png
+      - docs/transition/account-mobile.png
+      - docs/transition/contracts.md
+      - docs/transition/empty-before-seed.png
+      - docs/transition/queue-after-seed.png
+      - docs/transition/tasks-priority.png
+      - hub/components/HubLauncher.tsx
+      - hub/functions/dist-entry.js
+      - hub/lib/apps.test.ts
+      - hub/lib/apps.ts
+      - hub/staticwebapp.config.json
+      - package.json
+      - scripts/app-registry.ts
+      - scripts/build-unified-swa.ts
+      - scripts/github/configure-repository.ts
+      - scripts/github/triage-issue.test.ts
+      - scripts/github/triage-issue.ts
+      - scripts/tooling.test.ts
+      - scripts/validate-artifacts.ts
+      - scripts/workflow-matrix.ts
+      - transition/.env.example
+      - transition/README.md
+      - transition/functions/host.json
+      - transition/functions/package.json
+      - transition/functions/scripts/build.ts
+      - transition/functions/src/index.ts
+      - transition/functions/tsconfig.json
+      - transition/next-env.d.ts
+      - transition/next.config.ts
+      - transition/package.json
+      - transition/postcss.config.mjs
+      - transition/scripts/audit-reference.py
+      - transition/scripts/audit_reference_test.py
+      - transition/scripts/build-static.ts
+      - transition/scripts/import-workbooks.ts
+      - transition/scripts/seed.ts
+      - transition/src/app/accounts/page.tsx
+      - transition/src/app/api/[...path]/route.test.ts
+      - transition/src/app/api/[...path]/route.ts
+      - transition/src/app/exceptions/page.tsx
+      - transition/src/app/globals.css
+      - transition/src/app/households/page.tsx
+      - transition/src/app/layout.tsx
+      - transition/src/app/management/page.tsx
+      - transition/src/app/page.tsx
+      - transition/src/components/status-select.module.css
+      - transition/src/components/status-select.tsx
+      - transition/src/components/transition-shell.tsx
+      - transition/src/components/transition-workspace.tsx
+      - transition/src/lib/api/azure-functions-adapter.test.ts
+      - transition/src/lib/api/azure-functions-adapter.ts
+      - transition/src/lib/api/client.ts
+      - transition/src/lib/auth.test.ts
+      - transition/src/lib/auth.ts
+      - transition/src/lib/catalog.ts
+      - transition/src/lib/cosmos-repository.test.ts
+      - transition/src/lib/cosmos-repository.ts
+      - transition/src/lib/data.test.ts
+      - transition/src/lib/data.ts
+      - transition/src/lib/handlers.ts
+      - transition/src/lib/import-cli.ts
+      - transition/src/lib/model.ts
+      - transition/src/lib/navigation.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
+      - transition/src/lib/rules.test.ts
+      - transition/src/lib/rules.ts
+      - transition/src/lib/seed.ts
+      - transition/src/lib/snapshot.ts
+      - transition/src/lib/source-repository.ts
+      - transition/src/lib/workbook.test.ts
+      - transition/src/lib/workbook.ts
+      - transition/src/lib/workflow-view.test.ts
+      - transition/src/lib/workflow-view.ts
+      - transition/staticwebapp.config.json
+      - transition/tsconfig.json
+      - transition/vitest.config.ts
 issues: []
 events: []
 commitMessages:
@@ -525,6 +792,8 @@ commitMessages:
         additions: 2
         deletions: 2
         filesChanged: 1
+        files:
+          - .github/workflows/azure-static-web-apps.yml
       - *a10
       - *a11
       - *a12
@@ -539,6 +808,29 @@ commitMessages:
         additions: 167
         deletions: 60
         filesChanged: 22
+        files:
+          - .agents/skills/myriad-branding/references/brand-guidelines.md
+          - .agents/skills/myriad-branding/references/digital-product-brand.md
+          - excelerate/src/app/icon.svg
+          - hub/app/globals.css
+          - hub/app/icon.svg
+          - hub/app/login/page.tsx
+          - onboarding/apps/dashboard/app/icon.svg
+          - packages/brand/assets/myriad-m-mark-reverse.svg
+          - packages/brand/assets/myriad-m-mark.svg
+          - packages/brand/src/index.ts
+          - packages/brand/src/styles.css
+          - packages/ui/src/appearance-quick-settings.tsx
+          - packages/ui/src/brand/myriad-logo.tsx
+          - packages/ui/src/button.tsx
+          - packages/ui/src/navigation/app-nav.tsx
+          - packages/ui/src/navigation/app-shell.tsx
+          - packages/ui/src/theme-toggle.tsx
+          - packages/ui/src/user-menu.tsx
+          - proforma/src/app/icon.svg
+          - pto-tracker/src/app/icon.svg
+          - pto-tracker/src/components/PtoAppShell.tsx
+          - valuation/src/app/icon.svg
       - *a17
       - *a18
       - *a19
@@ -561,6 +853,29 @@ codeReviews:
     state: commented
     submittedAt: 2026-09-16T17:10:23Z
     body: null
+    prFiles:
+      - .agents/skills/myriad-branding/references/brand-guidelines.md
+      - .agents/skills/myriad-branding/references/digital-product-brand.md
+      - excelerate/src/app/icon.svg
+      - hub/app/globals.css
+      - hub/app/icon.svg
+      - hub/app/login/page.tsx
+      - onboarding/apps/dashboard/app/icon.svg
+      - packages/brand/assets/myriad-m-mark-reverse.svg
+      - packages/brand/assets/myriad-m-mark.svg
+      - packages/brand/src/index.ts
+      - packages/brand/src/styles.css
+      - packages/ui/src/appearance-quick-settings.tsx
+      - packages/ui/src/brand/myriad-logo.tsx
+      - packages/ui/src/button.tsx
+      - packages/ui/src/navigation/app-nav.tsx
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/theme-toggle.tsx
+      - packages/ui/src/user-menu.tsx
+      - proforma/src/app/icon.svg
+      - pto-tracker/src/app/icon.svg
+      - pto-tracker/src/components/PtoAppShell.tsx
+      - valuation/src/app/icon.svg
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 120
     prTitle: "fix(ui): restore readable contrast in light and dark themes"
@@ -568,6 +883,29 @@ codeReviews:
     state: commented
     submittedAt: 2026-09-16T17:21:45Z
     body: null
+    prFiles:
+      - .agents/skills/myriad-branding/references/brand-guidelines.md
+      - .agents/skills/myriad-branding/references/digital-product-brand.md
+      - excelerate/src/app/icon.svg
+      - hub/app/globals.css
+      - hub/app/icon.svg
+      - hub/app/login/page.tsx
+      - onboarding/apps/dashboard/app/icon.svg
+      - packages/brand/assets/myriad-m-mark-reverse.svg
+      - packages/brand/assets/myriad-m-mark.svg
+      - packages/brand/src/index.ts
+      - packages/brand/src/styles.css
+      - packages/ui/src/appearance-quick-settings.tsx
+      - packages/ui/src/brand/myriad-logo.tsx
+      - packages/ui/src/button.tsx
+      - packages/ui/src/navigation/app-nav.tsx
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/theme-toggle.tsx
+      - packages/ui/src/user-menu.tsx
+      - proforma/src/app/icon.svg
+      - pto-tracker/src/app/icon.svg
+      - pto-tracker/src/components/PtoAppShell.tsx
+      - valuation/src/app/icon.svg
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 120
     prTitle: "fix(ui): restore readable contrast in light and dark themes"
@@ -575,34 +913,120 @@ codeReviews:
     state: commented
     submittedAt: 2026-09-16T17:24:16Z
     body: null
+    prFiles:
+      - .agents/skills/myriad-branding/references/brand-guidelines.md
+      - .agents/skills/myriad-branding/references/digital-product-brand.md
+      - excelerate/src/app/icon.svg
+      - hub/app/globals.css
+      - hub/app/icon.svg
+      - hub/app/login/page.tsx
+      - onboarding/apps/dashboard/app/icon.svg
+      - packages/brand/assets/myriad-m-mark-reverse.svg
+      - packages/brand/assets/myriad-m-mark.svg
+      - packages/brand/src/index.ts
+      - packages/brand/src/styles.css
+      - packages/ui/src/appearance-quick-settings.tsx
+      - packages/ui/src/brand/myriad-logo.tsx
+      - packages/ui/src/button.tsx
+      - packages/ui/src/navigation/app-nav.tsx
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/theme-toggle.tsx
+      - packages/ui/src/user-menu.tsx
+      - proforma/src/app/icon.svg
+      - pto-tracker/src/app/icon.svg
+      - pto-tracker/src/components/PtoAppShell.tsx
+      - valuation/src/app/icon.svg
 reviewComments:
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 120
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/120
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/120#discussion_r4028706161
-    body: "`#66706f` is now an approved product color: Accessible muted gray on the shared palette
-      (`MYRIAD_BRAND.tertiaryMuted`), used by `--tertiary-muted` for UI text. Cool Gray 4 (`#bbbdb7`) stays in the
-      palette as `coolGray4` for decorative structure."
+    body: "`#66706f` is now an approved product color: Accessible muted gray on the shared palette (`MYRIAD_BRAND.tertiaryMuted`), used by `--tertiary-muted` for UI text. Cool Gray 4 (`#bbbdb7`) stays in the palette as `coolGray4` for decorative structure."
     path: packages/brand/src/styles.css
     createdAt: 2026-09-16T17:10:23Z
+    prFiles:
+      - .agents/skills/myriad-branding/references/brand-guidelines.md
+      - .agents/skills/myriad-branding/references/digital-product-brand.md
+      - excelerate/src/app/icon.svg
+      - hub/app/globals.css
+      - hub/app/icon.svg
+      - hub/app/login/page.tsx
+      - onboarding/apps/dashboard/app/icon.svg
+      - packages/brand/assets/myriad-m-mark-reverse.svg
+      - packages/brand/assets/myriad-m-mark.svg
+      - packages/brand/src/index.ts
+      - packages/brand/src/styles.css
+      - packages/ui/src/appearance-quick-settings.tsx
+      - packages/ui/src/brand/myriad-logo.tsx
+      - packages/ui/src/button.tsx
+      - packages/ui/src/navigation/app-nav.tsx
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/theme-toggle.tsx
+      - packages/ui/src/user-menu.tsx
+      - proforma/src/app/icon.svg
+      - pto-tracker/src/app/icon.svg
+      - pto-tracker/src/components/PtoAppShell.tsx
+      - valuation/src/app/icon.svg
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 120
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/120
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/120#discussion_r4028805259
-    body: Addressed in fc7bd90. The header `.text-tertiary` override was painting this menu white-on-white; the panel now
-      uses `text-foreground` plus a header/sidebar reset so unselected layout/theme options and email stay readable in
-      light mode.
+    body: Addressed in fc7bd90. The header `.text-tertiary` override was painting this menu white-on-white; the panel now uses `text-foreground` plus a header/sidebar reset so unselected layout/theme options and email stay readable in light mode.
     path: packages/ui/src/appearance-quick-settings.tsx
     createdAt: 2026-09-16T17:21:45Z
+    prFiles:
+      - .agents/skills/myriad-branding/references/brand-guidelines.md
+      - .agents/skills/myriad-branding/references/digital-product-brand.md
+      - excelerate/src/app/icon.svg
+      - hub/app/globals.css
+      - hub/app/icon.svg
+      - hub/app/login/page.tsx
+      - onboarding/apps/dashboard/app/icon.svg
+      - packages/brand/assets/myriad-m-mark-reverse.svg
+      - packages/brand/assets/myriad-m-mark.svg
+      - packages/brand/src/index.ts
+      - packages/brand/src/styles.css
+      - packages/ui/src/appearance-quick-settings.tsx
+      - packages/ui/src/brand/myriad-logo.tsx
+      - packages/ui/src/button.tsx
+      - packages/ui/src/navigation/app-nav.tsx
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/theme-toggle.tsx
+      - packages/ui/src/user-menu.tsx
+      - proforma/src/app/icon.svg
+      - pto-tracker/src/app/icon.svg
+      - pto-tracker/src/components/PtoAppShell.tsx
+      - valuation/src/app/icon.svg
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 120
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/120
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/120#discussion_r4028826136
-    body: "[from Codex]: Extended the header chrome override to `bg-surface` and `ui-button-secondary` so the return-to-hub
-      control keeps a translucent dark-header treatment instead of a white chip with a white glyph. Included in
-      252b8b3."
+    body: "[from Codex]: Extended the header chrome override to `bg-surface` and `ui-button-secondary` so the return-to-hub control keeps a translucent dark-header treatment instead of a white chip with a white glyph. Included in 252b8b3."
     path: packages/ui/src/button.tsx
     createdAt: 2026-09-16T17:24:16Z
+    prFiles:
+      - .agents/skills/myriad-branding/references/brand-guidelines.md
+      - .agents/skills/myriad-branding/references/digital-product-brand.md
+      - excelerate/src/app/icon.svg
+      - hub/app/globals.css
+      - hub/app/icon.svg
+      - hub/app/login/page.tsx
+      - onboarding/apps/dashboard/app/icon.svg
+      - packages/brand/assets/myriad-m-mark-reverse.svg
+      - packages/brand/assets/myriad-m-mark.svg
+      - packages/brand/src/index.ts
+      - packages/brand/src/styles.css
+      - packages/ui/src/appearance-quick-settings.tsx
+      - packages/ui/src/brand/myriad-logo.tsx
+      - packages/ui/src/button.tsx
+      - packages/ui/src/navigation/app-nav.tsx
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/theme-toggle.tsx
+      - packages/ui/src/user-menu.tsx
+      - proforma/src/app/icon.svg
+      - pto-tracker/src/app/icon.svg
+      - pto-tracker/src/components/PtoAppShell.tsx
+      - valuation/src/app/icon.svg
 aiReviews:
   codex:
     prsReviewed: 4
@@ -723,6 +1147,5 @@ hoursEstimate:
   volumeHours: 37.4
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

@@ -1,8 +1,12 @@
 // CSS definitions for the brutalist theme: bold typography, grain texture, geometric decorations
-// Dark-first with Myriad accent; light mode via prefers-color-scheme and manual toggle
+// Restored from the pre-Graphical design. Current reporting, app colors and disclosures stay intact.
+// Dark-first with a decorative Myriad accent; controls and progress stay neutral.
 
 import type { Language } from "../../../types.js";
 import { getFontConfig } from "../../../i18n/index.js";
+import { buildAllocationCSS } from "../allocation-css.js";
+import { buildEstimateCSS } from "../estimate-css.js";
+import { buildWeekCSS } from "../nav-css.js";
 
 const c = {
   bg: "#050505",
@@ -22,11 +26,11 @@ const c = {
   badgeIssue: "#d29922",
   badgeDiscussion: "#58a6ff",
   heatmap0: "rgba(255,255,255,0.03)",
-  heatmap1: "#3d1018",
-  heatmap2: "#6a1828",
-  heatmap3: "#9a2038",
-  heatmap4: "#cc2647",
-  heatmap4Text: "#fff",
+  heatmap1: "#303030",
+  heatmap2: "#606060",
+  heatmap3: "#a0a0a0",
+  heatmap4: "#e0e0e0",
+  heatmap4Text: "#050505",
 };
 
 export const colors = c;
@@ -51,11 +55,11 @@ const DARK_VARS = `
     --b-badge-issue: #d29922;
     --b-badge-discussion: #58a6ff;
     --b-heatmap-0: rgba(255,255,255,0.03);
-    --b-heatmap-1: #3d1018;
-    --b-heatmap-2: #6a1828;
-    --b-heatmap-3: #9a2038;
-    --b-heatmap-4: #cc2647;
-    --b-heatmap-4-text: #fff;
+    --b-heatmap-1: #303030;
+    --b-heatmap-2: #606060;
+    --b-heatmap-3: #a0a0a0;
+    --b-heatmap-4: #e0e0e0;
+    --b-heatmap-4-text: #050505;
     --b-nav-bg: rgba(5,5,5,0.8);
     --b-nav-title: rgba(255,255,255,0.4);
     --b-sep: rgba(255,255,255,0.15);
@@ -85,10 +89,10 @@ const LIGHT_VARS = `
     --b-badge-issue: #9a6700;
     --b-badge-discussion: #0969da;
     --b-heatmap-0: rgba(0,0,0,0.04);
-    --b-heatmap-1: #f5d0d7;
-    --b-heatmap-2: #e8a0ae;
-    --b-heatmap-3: #d85a72;
-    --b-heatmap-4: #cc2647;
+    --b-heatmap-1: #dedede;
+    --b-heatmap-2: #b0b0b0;
+    --b-heatmap-3: #707070;
+    --b-heatmap-4: #303030;
     --b-heatmap-4-text: #fff;
     --b-nav-bg: rgba(250,250,250,0.85);
     --b-nav-title: rgba(0,0,0,0.45);
@@ -134,10 +138,10 @@ const THEME_TOGGLE_CSS = `
     transition: border-color 0.2s ease, background 0.2s ease;
   }
   .theme-toggle:hover {
-    border-color: color-mix(in srgb, var(--b-accent) 45%, var(--b-chip-border));
+    border-color: var(--b-heading);
   }
   .theme-toggle:focus-visible {
-    outline: 2px solid var(--b-accent);
+    outline: 2px solid var(--b-heading);
     outline-offset: 2px;
   }
   .theme-toggle:active {
@@ -161,8 +165,8 @@ const THEME_TOGGLE_CSS = `
     user-select: none;
   }
   .theme-toggle-opt[data-active="true"] {
-    background: var(--b-accent);
-    color: #fff;
+    background: var(--b-heading);
+    color: var(--b-bg);
   }
   .theme-toggle-glyph {
     font-size: 0.75rem;
@@ -226,14 +230,63 @@ export const THEME_TOGGLE_SCRIPT = `<script>
 })();
 </script>`;
 
+
+/** Current report components, expressed in the original theme's vocabulary. */
+const DETAIL_CSS = `
+    .report-hero-inner { max-width: 864px; }
+    .stakeholder { max-width: none; border-bottom: 1px solid var(--b-border); padding-bottom: 2.5rem; }
+    .report-key-value { font-weight: 700; letter-spacing: -0.03em; }
+    .report-key-item--positive .report-key-value { color: var(--b-green); }
+    .report-key-item--attention .report-key-value { color: var(--b-red); }
+    .report-key-item--effort .report-key-value { font-size: clamp(2rem, 5vw, 3.25rem); }
+    .report-jump a { color: var(--b-heading); text-underline-offset: 4px; }
+    .tech-details { border-top: 1px solid var(--b-border); margin: 2rem 0; }
+    .tech-details-summary { padding: 1rem 0; }
+    .tech-details-summary:focus-visible { outline-color: var(--b-heading); }
+    .tech-details-title { font-family: ui-monospace, monospace; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .tech-details-body { margin: 0; padding: 1rem 0; }
+    .home-hero-tech { margin: 1.25rem 0 0; }
+    .ledger-tech { margin: 0 0 1rem; }
+    .alloc-verify-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); gap: 1.5rem; }
+    .alloc-verify-group { border-top: 1px solid var(--b-border); padding-top: 0.75rem; }
+    .alloc-verify-heading { font-family: ui-monospace, monospace; font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--b-text-secondary); margin: 0 0 0.75rem; }
+    .alloc-verify-facts { list-style: none; padding: 0; display: grid; gap: 0.5rem; color: var(--b-text-secondary); font-size: 0.875rem; }
+    .alloc-verify-fact { display: flex; align-items: baseline; gap: 0.5rem; }
+    .alloc-verify-value { flex: none; min-width: 2ch; font-weight: 700; color: var(--b-heading); font-variant-numeric: tabular-nums; }
+    .alloc-verify-fact--positive .alloc-verify-value { color: var(--b-green); }
+    .alloc-verify-fact--tentative { color: var(--b-text-tertiary); }
+    .alloc-verify-foot { margin-top: 1rem; font-size: 0.8125rem; color: var(--b-text-secondary); }
+    .alloc-verify-foot a { color: var(--b-heading); }
+    .home-hero-scope { margin-bottom: 1.5rem; font-family: ui-monospace, monospace; font-size: 0.75rem; color: var(--b-text-secondary); }
+    .home-hero-scope-label { text-transform: uppercase; letter-spacing: 0.08em; margin-right: 0.75rem; }
+    .home-hero-range { display: inline-block; }
+    .section-group-title, .header-title, .week-outcome, .highlight-title { overflow-wrap: anywhere; }
+    .highlight-card, .highlight-heading { min-width: 0; }
+    .mini-heatmap { flex-wrap: wrap; }
+    [id] { scroll-margin-top: 5rem; }
+    .est-page { padding-top: 7rem; }
+    @media (max-width: 768px) {
+      .section-group-title { font-size: clamp(2.25rem, 10vw, 3.5rem); line-height: 1.05; }
+      .section-group-header { flex-wrap: wrap; }
+      .week-outcome, .day-title, .day-subtitle { white-space: normal; overflow: visible; text-overflow: clip; overflow-wrap: anywhere; }
+      .report-hero .header-meta { flex-wrap: wrap; }
+      .week-nav { padding-inline: 1.5rem; gap: 1rem; }
+      .overhead-title { overflow-wrap: anywhere; }
+      .tech-details-hint { white-space: normal; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+`;
+
 export const buildCSS = (language: Language = "en"): string => {
-  const f = getFontConfig(language);
+  const locale = getFontConfig(language);
+  const f = { ...locale, bodyFamily: `${locale.bodyFamily.replace(", sans-serif", "")}, Roboto, Arial, sans-serif`, monoFamily: "'Space Mono', ui-monospace, monospace" };
 
   return `
     ${COLOR_VARS}
     ${THEME_TOGGLE_CSS}
 
-    @import url('${f.importUrl}');
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -250,11 +303,11 @@ export const buildCSS = (language: Language = "en"): string => {
 
     .skip-link {
       position: absolute; top: -100%; left: 1rem;
-      padding: 0.5rem 1rem; background: var(--b-accent); color: var(--b-bg);
+      padding: 0.5rem 1rem; background: var(--b-heading); color: var(--b-bg);
       border-radius: 0 0 6px 6px; z-index: 200; font-size: 0.875rem; text-decoration: none;
     }
     .skip-link:focus { top: 0; }
-    :focus-visible { outline: 2px solid var(--b-accent); outline-offset: 2px; }
+    :focus-visible { outline: 2px solid var(--b-heading); outline-offset: 2px; }
 
     html { height: 100%; }
     body {
@@ -444,7 +497,7 @@ export const buildCSS = (language: Language = "en"): string => {
       font-weight: 400;
       line-height: 1.5;
       max-width: 560px;
-      text-transform: capitalize;
+      text-transform: none;
     }
 
     /* ===== CONTENT ===== */
@@ -756,7 +809,7 @@ export const buildCSS = (language: Language = "en"): string => {
     a.repo-bar-label { text-decoration: none; color: var(--b-text-secondary); }
     a.repo-bar-label:hover { color: var(--b-accent); }
     .repo-bar-track { width: 100%; height: 4px; border-radius: 2px; background: var(--b-chip-bg); overflow: hidden; }
-    .repo-bar-fill { height: 100%; border-radius: 2px; background: var(--b-accent); transition: width 0.5s ease; }
+    .repo-bar-fill { height: 100%; border-radius: 2px; background: var(--b-text-secondary); transition: width 0.5s ease; }
     .repo-bar-value { font-family: ${f.monoFamily}; color: var(--b-text-tertiary); font-size: 0.6875rem; }
 
     /* WEEK NAV */
@@ -766,7 +819,7 @@ export const buildCSS = (language: Language = "en"): string => {
       text-decoration: none; padding: 0.375rem 0.75rem; border-radius: 6px;
       border: 1px solid var(--b-chip-border); transition: all 0.2s;
     }
-    .week-nav-link:hover { color: var(--b-text); border-color: var(--b-accent); }
+    .week-nav-link:hover { color: var(--b-text); border-color: var(--b-heading); }
 
     /* FOOTER — pinned to viewport bottom when page is short */
     .footer {
@@ -787,13 +840,57 @@ export const buildCSS = (language: Language = "en"): string => {
       .page { padding: 0 1.5rem 3rem; }
       .section-summary { max-width: 100%; }
       .section-summary .section-heading { font-size: 1.25rem; }
-      .highlight-grid { grid-template-columns: 1fr; }
+      .highlight-grid { grid-template-columns: minmax(0, 1fr); }
     }
+
+    ${buildAllocationCSS({
+      defaultMode: "dark",
+      text: "var(--b-text)",
+      textSecondary: "var(--b-text-secondary)",
+      textTertiary: "var(--b-text-tertiary)",
+      heading: "var(--b-heading)",
+      border: "var(--b-border)",
+      borderSubtle: "var(--b-border-subtle)",
+      surface: "var(--b-bg)",
+      accent: "var(--b-heading)",
+      mono: `${f.monoFamily}`,
+      radius: "0",
+    })}
+
+    ${buildEstimateCSS({
+      defaultMode: "dark",
+      text: "var(--b-text)",
+      textSecondary: "var(--b-text-secondary)",
+      textTertiary: "var(--b-text-tertiary)",
+      heading: "var(--b-heading)",
+      border: "var(--b-border)",
+      borderSubtle: "var(--b-border-subtle)",
+      surface: "var(--b-bg)",
+      accent: "var(--b-heading)",
+      mono: `${f.monoFamily}`,
+      radius: "0",
+    })}
+
+    ${buildWeekCSS({
+      defaultMode: "dark",
+      text: "var(--b-text)",
+      textSecondary: "var(--b-text-secondary)",
+      textTertiary: "var(--b-text-tertiary)",
+      heading: "var(--b-heading)",
+      border: "var(--b-border)",
+      borderSubtle: "var(--b-border-subtle)",
+      surface: "var(--b-bg)",
+      accent: "var(--b-heading)",
+      mono: `${f.monoFamily}`,
+      radius: "0",
+    })}
+    ${DETAIL_CSS}
   `;
 };
 
 export const buildIndexCSS = (language: Language = "en"): string => {
-  const f = getFontConfig(language);
+  const locale = getFontConfig(language);
+  const f = { ...locale, bodyFamily: `${locale.bodyFamily.replace(", sans-serif", "")}, Roboto, Arial, sans-serif`, monoFamily: "'Space Mono', ui-monospace, monospace" };
 
   return `
     html { height: 100%; }
@@ -1086,10 +1183,8 @@ export const buildIndexCSS = (language: Language = "en"): string => {
     }
     .overhead-kicker,
     .overhead-window-label,
-    .overview-label,
     .ledger-heading,
-    .month-count,
-    .day-stats {
+    .month-count {
       font-family: ${f.monoFamily};
       font-size: 0.6875rem;
       letter-spacing: 0.1em;
@@ -1111,49 +1206,40 @@ export const buildIndexCSS = (language: Language = "en"): string => {
     .overhead-window-label { display: block; color: var(--b-text-tertiary); margin-bottom: 0.5rem; }
     .overhead-window strong { font-family: ${f.monoFamily}; font-size: 0.8rem; color: var(--b-text); }
 
-    .overview-strip {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border-bottom: 1px solid var(--b-border);
-    }
-    .overview-cell { padding: 1.5rem; border-right: 1px solid var(--b-border); }
-    .overview-cell:first-child { padding-left: 0; }
-    .overview-cell:last-child { border-right: 0; }
-    .overview-value { display: block; color: var(--b-heading); font-size: clamp(2rem, 4vw, 3.5rem); line-height: 0.9; font-weight: 800; letter-spacing: -0.05em; }
-    .overview-cell:first-child .overview-value { color: var(--b-accent); }
-    .overview-label { display: block; color: var(--b-text-tertiary); margin-top: 0.65rem; }
-
-    .ledger { margin-top: 4rem; border-top: 1px solid var(--b-border); }
+    .ledger { margin-top: 2.5rem; border-top: 1px solid var(--b-border); }
     .ledger-heading { display: flex; justify-content: space-between; padding: 0.8rem 0; color: var(--b-text-tertiary); border-bottom: 1px solid var(--b-border); }
     .month-group { border-bottom: 1px solid var(--b-border); }
     .month-summary {
       list-style: none;
       cursor: pointer;
       display: grid;
-      grid-template-columns: 160px minmax(140px, 1fr) auto 72px;
+      grid-template-columns: 130px 220px minmax(0, 1fr) 24px;
       gap: 1.5rem;
       align-items: center;
       padding: 1.5rem 0;
       transition: color 180ms ease, padding 180ms ease;
     }
     .month-summary::-webkit-details-marker { display: none; }
-    .month-summary:focus-visible { outline: 2px solid var(--b-accent); outline-offset: 4px; }
+    .month-summary:focus-visible { outline: 2px solid var(--b-heading); outline-offset: 4px; }
     .month-summary:hover { color: var(--b-accent); padding-left: 0.5rem; }
     .month-name span { display: block; font-size: 1.35rem; font-weight: 700; letter-spacing: -0.03em; }
     .month-name strong { font-family: ${f.monoFamily}; font-size: 0.65rem; color: var(--b-text-tertiary); }
-    .month-tape { height: 34px; display: flex; align-items: end; gap: 3px; padding: 0 0.25rem; }
+    .month-tape { grid-column: 3; height: 34px; display: flex; align-items: end; gap: 3px; padding: 0 0.25rem; }
     .month-tape i { display: block; flex: 1 1 0; min-width: 3px; max-width: 12px; height: max(3px, var(--activity)); background: var(--b-border); transition: background 180ms ease; }
-    .month-group[open] .month-tape i { background: var(--b-accent); }
-    .month-totals { display: flex; gap: 1.25rem; color: var(--b-text-tertiary); font-size: 0.75rem; white-space: nowrap; }
-    .month-totals b { color: var(--b-text); }
-    .month-count { color: var(--b-text-tertiary); text-align: right; }
+    .month-group[open] .month-tape { display: none; }
+    .month-tape i { background: var(--b-accent); }
+    .month-name { grid-column: 1; }
+    .month-days { grid-column: 2; font-weight: 700; color: var(--b-heading); }
+    .month-totals { grid-column: 4; display: flex; gap: 1.25rem; color: var(--b-text-tertiary); font-size: 0.75rem; white-space: nowrap; }
+    .month-totals b { color: var(--b-text-secondary); font-weight: 500; }
+    .month-count { grid-column: 4; color: var(--b-text-tertiary); text-align: right; }
     .month-count::after { content: '+'; display: inline-block; color: var(--b-accent); margin-left: 0.45rem; font-size: 1rem; transition: transform 180ms ease; }
     .month-group[open] .month-count::after { content: '−'; transform: rotate(180deg); }
 
     .day-list { border-top: 1px solid var(--b-border-subtle); padding: 0 0 1rem; }
     .day-row {
       display: grid;
-      grid-template-columns: 64px minmax(0, 1fr) auto 24px;
+      grid-template-columns: 64px minmax(0, 1fr) 24px;
       gap: 1.25rem;
       align-items: center;
       min-height: 72px;
@@ -1164,14 +1250,12 @@ export const buildIndexCSS = (language: Language = "en"): string => {
       transition: background 160ms ease, transform 160ms ease;
     }
     .day-row:hover { background: color-mix(in srgb, var(--b-accent) 5%, transparent); transform: translateX(4px); }
-    .day-row:focus-visible { outline: 2px solid var(--b-accent); outline-offset: -2px; }
+    .day-row:focus-visible { outline: 2px solid var(--b-heading); outline-offset: -2px; }
     .day-date { display: flex; align-items: baseline; gap: 0.45rem; font-family: ${f.monoFamily}; }
     .day-date strong { color: var(--b-accent); font-size: 1.35rem; }
     .day-date span { color: var(--b-text-tertiary); font-size: 0.62rem; text-transform: uppercase; }
     .day-title { font-size: 0.95rem; font-weight: 650; color: var(--b-text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .day-subtitle { margin-top: 0.25rem; color: var(--b-text-tertiary); font-size: 0.78rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .day-stats { display: flex; gap: 0.8rem; color: var(--b-text-tertiary); white-space: nowrap; }
-    .day-stats b { color: var(--b-text); }
     .day-open { color: var(--b-accent); opacity: 0; transition: opacity 160ms ease; }
     .day-row:hover .day-open { opacity: 1; }
 
@@ -1205,20 +1289,23 @@ export const buildIndexCSS = (language: Language = "en"): string => {
       .overhead-shell { width: min(100% - 2rem, 1180px); padding-top: 6.5rem; }
       .overhead-header { grid-template-columns: 1fr; gap: 1.5rem; }
       .overhead-window { text-align: left; }
-      .overview-strip { grid-template-columns: repeat(3, 1fr); }
-      .overview-cell { padding: 1.2rem 0; border-bottom: 1px solid var(--b-border); }
-      .overview-cell:nth-child(2) { padding-left: 1rem; }
-      .overview-cell:nth-child(3) { border-right: 0; padding-left: 1rem; }
-      .month-summary { grid-template-columns: 1fr 60px; gap: 0.75rem; }
-      .month-tape { grid-column: 1 / -1; grid-row: 2; }
-      .month-totals { display: none; }
+      .month-summary { grid-template-columns: 1fr 60px; gap: 0.5rem 0.75rem; }
+      .month-name { grid-column: 1; grid-row: 1; }
+      .month-count { grid-column: 2; grid-row: 1; }
+      .month-days { grid-column: 1 / -1; grid-row: 2; }
+      .month-tape { grid-column: 1 / -1; grid-row: 3; }
+      .month-totals { grid-column: 1 / -1; grid-row: 4; flex-wrap: wrap; gap: 0.2rem 0.9rem; white-space: normal; }
       .day-row { grid-template-columns: 48px minmax(0, 1fr) 20px; gap: 0.8rem; }
-      .day-stats { display: none; }
       .day-open { opacity: 1; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       .month-summary, .day-row, .day-open { transition: none; }
+    }
+    ${DETAIL_CSS}
+    @media (max-width: 768px) {
+      .month-count { grid-column: 2; }
+      .month-tape { grid-column: 1 / -1; }
     }
   `;
 };

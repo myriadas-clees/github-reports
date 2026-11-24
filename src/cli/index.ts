@@ -14,6 +14,7 @@ import { registerDeploy } from "./commands/deploy.js";
 import { registerSetup } from "./commands/setup.js";
 import { registerReport } from "./commands/report.js";
 import { registerPreview } from "./commands/preview.js";
+import { registerEvidence } from "./commands/evidence.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const pkgPath = resolve(__dirname, "..", "..", "package.json");
@@ -32,5 +33,6 @@ registerDeploy(program);
 registerSetup(program);
 registerReport(program);
 registerPreview(program);
+registerEvidence(program);
 
 program.parse();

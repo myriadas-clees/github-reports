@@ -67,11 +67,20 @@ prsInProgress:
         message: "fix(ofac): preserve report export fidelity"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8261a0ad1d1794616b0f09b0629f485d563d951a
         authoredAt: 2026-08-27T18:09:49Z
+        files:
+          - bun.lock
+          - ofac/functions/src/copy-report-assets.ts
+          - ofac/package.json
+          - ofac/src/lib/__tests__/report.test.ts
+          - ofac/src/lib/report/excel.ts
+          - ofac/src/lib/report/pdf.tsx
       - &a2
         sha: 4db538e365421be753f77426ce04c2578c16d3b3
         message: "fix(ofac): separate PDF introduction text"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4db538e365421be753f77426ce04c2578c16d3b3
         authoredAt: 2026-08-27T19:02:17Z
+        files:
+          - ofac/src/lib/report/pdf.tsx
     workTimestamps:
       - 2026-08-27T18:09:49Z
       - 2026-08-27T19:02:17Z
@@ -86,8 +95,7 @@ prsInProgress:
       - ofac/src/lib/report/pdf.tsx
   - title: "refactor: centralize suite architecture"
     body: >-
-      Centralizes repeated suite behavior so navigation preferences, static exports, and product route declarations are
-      maintained once instead of drifting across apps.
+      Centralizes repeated suite behavior so navigation preferences, static exports, and product route declarations are maintained once instead of drifting across apps.
 
 
       - Share Top bar/Sidebar preference across suite products.
@@ -120,11 +128,44 @@ prsInProgress:
         message: "feat: centralize shared workspace preferences"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ae5c469eaa9dffb80eeedd9f0aca5873a2d4977c
         authoredAt: 2026-08-27T17:04:52Z
+        files:
+          - excelerate/src/app/layout.tsx
+          - excelerate/src/components/excelerate-shell.tsx
+          - hub/app/globals.css
+          - hub/app/hub/page.tsx
+          - hub/app/layout.tsx
+          - hub/components/HubLauncher.tsx
+          - hub/components/HubThemeProvider.tsx
+          - onboarding/apps/dashboard/app/layout.tsx
+          - onboarding/apps/dashboard/components/dashboard-shell.tsx
+          - onboarding/apps/dashboard/components/onboarding-theme-toggle.tsx
+          - onboarding/apps/dashboard/lib/theme.ts
+          - packages/brand/src/styles.css
+          - packages/ui/src/app-user-menu.tsx
+          - packages/ui/src/appearance-quick-settings.tsx
+          - packages/ui/src/index.ts
+          - packages/ui/src/navigation/app-nav.tsx
+          - packages/ui/src/navigation/app-shell.tsx
+          - packages/ui/src/theme-preferences.tsx
+          - proforma/src/app/layout.tsx
+          - proforma/src/components/proforma-quick-settings.tsx
+          - proforma/src/components/proforma-theme-controller.tsx
+          - proforma/src/components/proforma-theme-toggle.tsx
+          - proforma/src/components/proforma-user-menu.tsx
+          - pto-tracker/src/app/layout.tsx
+          - pto-tracker/src/components/PtoAppShell.tsx
+          - valuation/src/app/layout.tsx
+          - valuation/src/components/valuation-shell.tsx
       - &a5
         sha: 8bf2d20747c60c7945565f36d8d2153af25dac22
         message: "feat(hub): add pinned app management and drag-and-drop ordering"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8bf2d20747c60c7945565f36d8d2153af25dac22
         authoredAt: 2026-08-27T17:59:40Z
+        files:
+          - hub/app/globals.css
+          - hub/components/HubLauncher.tsx
+          - hub/lib/apps.test.ts
+          - hub/lib/apps.ts
     workTimestamps:
       - 2026-08-27T17:04:52Z
       - 2026-08-27T17:59:40Z
@@ -165,8 +206,7 @@ prsInProgress:
       ## Why
 
 
-      Client and vendor onboarding did not have a dedicated contact directory or a way to add contacts without first
-      creating a client workspace.
+      Client and vendor onboarding did not have a dedicated contact directory or a way to add contacts without first creating a client workspace.
 
 
       ## What changed
@@ -199,6 +239,37 @@ prsInProgress:
         message: "feat(onboarding): add task associations"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/da30d48ae3a663acc666ad5bf6d934fbd0bed2fd
         authoredAt: 2026-08-27T13:27:19Z
+        files:
+          - onboarding/apps/dashboard/app/contacts/page.tsx
+          - onboarding/apps/dashboard/app/tasks/page.tsx
+          - onboarding/apps/dashboard/app/vendors/contacts/page.tsx
+          - onboarding/apps/dashboard/components/contacts-workspace.tsx
+          - onboarding/apps/dashboard/components/create-task-button.tsx
+          - onboarding/apps/dashboard/components/operations-workspace/task-record-panel.tsx
+          - onboarding/apps/dashboard/components/task-associations-editor.test.tsx
+          - onboarding/apps/dashboard/components/task-associations-editor.tsx
+          - onboarding/apps/dashboard/components/task-board.test.tsx
+          - onboarding/apps/dashboard/components/task-detail-form.tsx
+          - onboarding/apps/dashboard/components/task-detail-header.tsx
+          - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+          - onboarding/apps/dashboard/lib/api/client.ts
+          - onboarding/apps/dashboard/lib/api/handlers.test.ts
+          - onboarding/apps/dashboard/lib/api/handlers.ts
+          - onboarding/apps/dashboard/lib/operations-workspace/adapters.ts
+          - onboarding/apps/dashboard/lib/operations-workspace/operations-workspace.test.ts
+          - packages/contracts/src/onboarding-task-elements.test.ts
+          - packages/contracts/src/onboarding.ts
+          - packages/db/src/contact.test.ts
+          - packages/db/src/cosmos-migration.test.ts
+          - packages/db/src/cosmos-queries.ts
+          - packages/db/src/custom-task.ts
+          - packages/db/src/employee-case.ts
+          - packages/db/src/metrics.ts
+          - packages/db/src/migrate-database.test.ts
+          - packages/db/src/migrate-database.ts
+          - packages/db/src/queries.ts
+          - packages/db/src/schema.ts
+          - packages/db/src/sqlite-migration-source.ts
     workTimestamps:
       - 2026-08-27T13:27:19Z
     workAdditions: 555
@@ -320,6 +391,5 @@ hoursEstimate:
   volumeHours: 23.4
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

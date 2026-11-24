@@ -60,66 +60,161 @@ prsInProgress:
         message: "fix(northstar): distinguish Copilot permissions from access"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/224b5af91b6cba3de54ca7f91f81c7152ce25994
         authoredAt: 2026-09-09T14:28:58Z
+        files:
+          - hub/functions/src/northstar-copilot.test.ts
+          - hub/functions/src/northstar-copilot.ts
+          - hub/functions/src/northstar-microsoft.ts
+          - northstar/components/settings-workspace.tsx
       - &a2
         sha: 2ce8b0539ff92839e87d86b67999489bf2a4440c
         message: "fix(northstar): expose Microsoft rejection details"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2ce8b0539ff92839e87d86b67999489bf2a4440c
         authoredAt: 2026-09-09T14:37:37Z
+        files:
+          - hub/functions/src/northstar-copilot.test.ts
+          - hub/functions/src/northstar-copilot.ts
+          - hub/functions/src/northstar-microsoft.ts
+          - northstar/app/globals.css
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/components/northstar-dashboard.tsx
       - &a3
         sha: cd608500f15a9a96e755ad1271bab6347d7b788c
         message: "fix(northstar): unwrap Copilot rejection explanations"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cd608500f15a9a96e755ad1271bab6347d7b788c
         authoredAt: 2026-09-09T14:44:41Z
+        files:
+          - hub/functions/src/northstar-copilot.test.ts
+          - hub/functions/src/northstar-copilot.ts
       - &a4
         sha: 3347ff56c724da88b88e73b7c693dc963f076256
         message: "feat(northstar): render Markdown and refresh settings"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3347ff56c724da88b88e73b7c693dc963f076256
         authoredAt: 2026-09-09T15:54:32Z
+        files:
+          - bun.lock
+          - hub/functions/src/northstar-copilot.test.ts
+          - hub/functions/src/northstar-copilot.ts
+          - hub/functions/src/northstar-microsoft.ts
+          - northstar/app/globals.css
+          - northstar/components/answer-markdown.test.tsx
+          - northstar/components/answer-markdown.tsx
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/components/settings-workspace.tsx
+          - northstar/lib/settings-preferences.test.ts
+          - northstar/lib/settings-preferences.ts
+          - northstar/package.json
+          - northstar/public/integrations/SOURCES.md
+          - northstar/public/integrations/claude.svg
+          - northstar/public/integrations/microsoft-365.svg
+          - northstar/public/integrations/microsoft-copilot.svg
       - &a5
         sha: e2c6fcf294197d8a5e6a29e02036798c510bc0b4
         message: "fix(northstar): replace loading checklist with rotating wave"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e2c6fcf294197d8a5e6a29e02036798c510bc0b4
         authoredAt: 2026-09-09T16:07:19Z
+        files:
+          - northstar/app/globals.css
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/components/northstar-dashboard.tsx
       - &a6
         sha: 4ce0273f1bc17e490285677f40d7aab7d1f8c486
         message: "feat(northstar): add breathing thinking orb"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4ce0273f1bc17e490285677f40d7aab7d1f8c486
         authoredAt: 2026-09-09T16:43:17Z
+        files:
+          - northstar/app/globals.css
+          - northstar/components/ask-northstar-workspace.tsx
       - &a7
         sha: df5e3aa189a01c6e23ff86aa762bbee9590c77db
         message: "feat(northstar): show Microsoft source icons in chat"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/df5e3aa189a01c6e23ff86aa762bbee9590c77db
         authoredAt: 2026-09-09T17:38:14Z
+        files:
+          - northstar/app/globals.css
+          - northstar/components/answer-markdown.test.tsx
+          - northstar/components/answer-markdown.tsx
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/components/microsoft-app-icon.tsx
+          - northstar/components/northstar-dashboard.tsx
       - &a8
         sha: 737f648c044b40cf1a3e4b76734f0ff265e470b6
         message: "chore(northstar): remove generated review artifacts"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/737f648c044b40cf1a3e4b76734f0ff265e470b6
         authoredAt: 2026-09-09T17:57:25Z
+        files:
+          - .gitignore
+          - northstar/ask-empty-final.png
+          - northstar/ask-implementation-final.png
+          - northstar/ask-implementation-mobile-bottom-final.png
+          - northstar/ask-implementation-mobile-final.png
+          - northstar/chat-active-final.png
+          - northstar/chat-context-open-final.png
+          - northstar/chat-context-open-qa-final.png
+          - northstar/chat-default-final.png
+          - northstar/chat-default-qa-final.png
+          - northstar/chat-history-open-final.png
+          - northstar/chat-history-open-qa-final.png
+          - northstar/chat-mobile-context-final.png
+          - northstar/chat-mobile-context-qa-final.png
+          - northstar/chat-mobile-history-final.png
+          - northstar/design-comparison-ask-final.png
+          - northstar/design-comparison-ask-header-final.png
+          - northstar/design-comparison-chat-context-final.png
+          - northstar/design-comparison-chat-history-final.png
+          - northstar/design-comparison-final.png
+          - northstar/design-comparison-header-annotations.png
+          - northstar/design-comparison-primary-final.png
+          - northstar/design-qa.md
+          - northstar/design-source-before-ask.png
+          - northstar/design-source-chat-context-normalized.png
+          - northstar/design-source-chat-history-normalized.png
+          - northstar/implementation-final.png
+          - northstar/implementation-mobile-final.png
+          - northstar/public/ohpwm-wordmark.png
       - &a9
         sha: 6b333b9d41775973562630f2b08a8256982574c6
         message: "refactor(northstar): remove unused styling and state scaffolding"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6b333b9d41775973562630f2b08a8256982574c6
         authoredAt: 2026-09-09T18:04:18Z
+        files:
+          - bun.lock
+          - northstar/app/globals.css
+          - northstar/components.json
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/components/settings-workspace.tsx
+          - northstar/components/ui/toggle-group.tsx
+          - northstar/lib/utils.ts
+          - northstar/package.json
+          - northstar/postcss.config.mjs
       - &a10
         sha: 46ff2b280eb5fc3ea7ea42373a7190ad96b86fc7
         message: "fix(northstar): invalidate stale Ask requests"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/46ff2b280eb5fc3ea7ea42373a7190ad96b86fc7
         authoredAt: 2026-09-09T20:39:05Z
+        files:
+          - northstar/components/northstar-dashboard.tsx
       - &a11
         sha: ca6526fc0a6349af9c9a5a68cdc73946caa1a684
         message: "fix(northstar): preserve chat context"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ca6526fc0a6349af9c9a5a68cdc73946caa1a684
         authoredAt: 2026-09-09T20:45:22Z
+        files:
+          - northstar/components/ask-northstar-workspace.tsx
       - &a12
         sha: 6199e412dd71fbbe95968067268fac0bf6d81de2
         message: "fix(northstar): keep response sources accurate"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6199e412dd71fbbe95968067268fac0bf6d81de2
         authoredAt: 2026-09-09T20:52:13Z
+        files:
+          - northstar/components/ask-northstar-workspace.tsx
       - &a13
         sha: 6ed26f62f3c55ef89a388555a173565b63c2c6e0
         message: "fix(northstar): default to Graph brief"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6ed26f62f3c55ef89a388555a173565b63c2c6e0
         authoredAt: 2026-09-09T20:57:04Z
+        files:
+          - northstar/components/northstar-dashboard.tsx
     workTimestamps:
       - 2026-09-09T14:28:58Z
       - 2026-09-09T14:37:37Z
@@ -281,6 +376,5 @@ hoursEstimate:
   volumeHours: 10.8
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

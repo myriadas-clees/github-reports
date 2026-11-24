@@ -57,11 +57,16 @@ pullRequests:
         message: "fix(hub): hide apps without assigned roles"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/caf7f4ff68bff2078dc326e06c62035a12028ea4
         authoredAt: 2026-09-14T13:12:22Z
+        files:
+          - hub/components/hub-launcher.tsx
+          - hub/lib/apps.ts
       - &a2
         sha: b99eb64f12181900fb57b67734e693974de2b806
         message: "fix(hub): preserve local app visibility"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b99eb64f12181900fb57b67734e693974de2b806
         authoredAt: 2026-09-14T13:19:29Z
+        files:
+          - hub/components/hub-launcher.tsx
     workTimestamps:
       - 2026-09-14T13:12:22Z
       - 2026-09-14T13:19:29Z
@@ -95,36 +100,180 @@ prsInProgress:
         message: "feat(northstar): stream Copilot answers and improve chat controls"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f5f77f9a79acbe05d886e93269be8ad3527cb74a
         authoredAt: 2026-09-14T15:32:54Z
+        files:
+          - hub/functions/src/index.ts
+          - hub/functions/src/northstar-copilot.test.ts
+          - hub/functions/src/northstar-copilot.ts
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
+          - northstar/STREAMING.md
+          - northstar/app/globals.css
+          - northstar/components/ask-northstar-workspace.test.tsx
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/lib/ask-stream.test.ts
+          - northstar/lib/ask-stream.ts
+          - northstar/measure-copilot.ts
       - &a4
         sha: 7e004cabedfd5e8166f705fc317acfc3e94d588b
         message: Merge remote-tracking branch 'origin/main' into clees/northstar-frontend
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7e004cabedfd5e8166f705fc317acfc3e94d588b
         authoredAt: 2026-09-14T15:56:23Z
+        files:
+          - .codex/agents/default.toml
+          - .codex/agents/docs.toml
+          - .codex/agents/explorer.toml
+          - .codex/agents/hub.toml
+          - .codex/agents/ofac.toml
+          - .codex/agents/packages.toml
+          - .codex/agents/pricing.toml
+          - .codex/agents/scripts.toml
+          - .codex/agents/worker.toml
+          - .codex/config.toml
+          - .github/workflows/azure-static-web-apps.yml
+          - AGENTS.md
+          - README.md
+          - bun.lock
+          - docs/advisor-pricing-architecture.md
+          - docs/issue-2-cosmos-production-readiness.md
+          - docs/issue-37-pricing-monitoring-readiness.md
+          - docs/issue-39-monday-sync-discovery.md
+          - hub/components/hub-launcher.tsx
+          - hub/lib/apps.ts
+          - ofac/functions/package.json
+          - ofac/functions/src/copy-report-assets.ts
+          - ofac/functions/src/index.ts
+          - ofac/functions/src/ofac-repository.test.ts
+          - ofac/functions/src/ofac-repository.ts
+          - ofac/package.json
+          - ofac/src/app/api/ofac/export/__tests__/route.test.ts
+          - ofac/src/app/api/ofac/export/route.ts
+          - ofac/src/app/api/ofac/export/workbook-preview/route.ts
+          - ofac/src/app/api/ofac/screenings/[id]/pdf/route.test.ts
+          - ofac/src/app/api/ofac/screenings/[id]/pdf/route.ts
+          - ofac/src/app/api/ofac/screenings/route.ts
+          - ofac/src/app/globals.css
+          - ofac/src/app/screenings/page.tsx
+          - ofac/src/components/export-artifact-viewer.test.tsx
+          - ofac/src/components/export-artifact-viewer.tsx
+          - ofac/src/components/pdf-report-viewer.tsx
+          - ofac/src/components/report-viewer-shell.tsx
+          - ofac/src/components/screening-detail.tsx
+          - ofac/src/components/workbook-report-viewer.tsx
+          - ofac/src/lib/__tests__/ofac-api-client.test.ts
+          - ofac/src/lib/__tests__/report.test.ts
+          - ofac/src/lib/ofac-api-client.ts
+          - ofac/src/lib/report/csv.ts
+          - ofac/src/lib/report/excel.ts
+          - ofac/src/lib/report/filenames.ts
+          - ofac/src/lib/report/index.ts
+          - ofac/src/lib/report/model.ts
+          - ofac/src/lib/report/pdf.tsx
+          - packages/db/src/ofac.ts
+          - pricing/functions/local.settings.json.example
       - &a5
         sha: 57bd084aef5e77918eb2e43fcb7d6288afaccb9c
         message: "codex: address PR review feedback (#121)"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/57bd084aef5e77918eb2e43fcb7d6288afaccb9c
         authoredAt: 2026-09-14T16:02:48Z
+        files:
+          - hub/components/hub-launcher.tsx
+          - hub/functions/src/northstar-conversations.test.ts
+          - hub/functions/src/northstar-conversations.ts
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
+          - hub/lib/apps.ts
+          - northstar/app/globals.css
+          - northstar/components/ask-northstar-workspace.test.tsx
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/lib/background-briefs.test.ts
+          - northstar/lib/background-briefs.ts
       - &a6
         sha: 2c403d1fe62a46156ce58280ab3a540562d2864a
         message: "revert(northstar): restore pre-streaming chat experience"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2c403d1fe62a46156ce58280ab3a540562d2864a
         authoredAt: 2026-09-14T16:16:58Z
+        files:
+          - hub/functions/src/index.ts
+          - hub/functions/src/northstar-copilot.test.ts
+          - hub/functions/src/northstar-copilot.ts
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
+          - northstar/STREAMING.md
+          - northstar/app/globals.css
+          - northstar/components/ask-northstar-workspace.test.tsx
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/lib/ask-stream.test.ts
+          - northstar/lib/ask-stream.ts
+          - northstar/measure-copilot.ts
       - &a7
         sha: b1a765b036a2be7d3941030054873eb10e19557b
         message: "feat(northstar): stream copilot responses"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b1a765b036a2be7d3941030054873eb10e19557b
         authoredAt: 2026-09-14T18:03:07Z
+        files:
+          - hub/functions/src/index.ts
+          - hub/functions/src/northstar-copilot.test.ts
+          - hub/functions/src/northstar-copilot.ts
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
+          - northstar/LOCAL-BENCHMARK.md
+          - northstar/app/globals.css
+          - northstar/components/answer-markdown.test.tsx
+          - northstar/components/answer-markdown.tsx
+          - northstar/components/answer-star.test.ts
+          - northstar/components/answer-star.tsx
+          - northstar/components/ask-northstar-workspace.test.tsx
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/components/streaming-markdown.tsx
+          - northstar/lib/ask-stream.test.ts
+          - northstar/lib/ask-stream.ts
+          - northstar/lib/pending-markdown-links.ts
+          - northstar/lib/typing-reveal.test.ts
+          - northstar/lib/typing-reveal.ts
+          - scripts/dev-northstar.ts
       - &a8
         sha: 09f81df110710e39d00d1a72d190ff138780621e
         message: "feat(northstar): add chat history and answer transition"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/09f81df110710e39d00d1a72d190ff138780621e
         authoredAt: 2026-09-14T18:49:08Z
+        files:
+          - .codex/cursor-delegate/20260914-130117-single-star-transition-b2697b/events.ndjson
+          - .codex/cursor-delegate/20260914-130117-single-star-transition-b2697b/meta.json
+          - .codex/cursor-delegate/20260914-130117-single-star-transition-b2697b/prompt.txt
+          - .codex/cursor-delegate/20260914-130117-single-star-transition-b2697b/runner.log
+          - .codex/cursor-delegate/20260914-130117-single-star-transition-b2697b/stderr.log
+          - hub/functions/src/index.ts
+          - hub/functions/src/northstar-chat-history.test.ts
+          - hub/functions/src/northstar-chat-history.ts
+          - hub/functions/src/northstar-conversations.test.ts
+          - hub/functions/src/northstar-conversations.ts
+          - hub/functions/src/northstar-microsoft.ts
+          - northstar/app/globals.css
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/components/settings-workspace.tsx
+          - northstar/lib/chat-history.test.ts
+          - northstar/lib/chat-history.ts
+          - northstar/lib/settings-preferences.test.ts
+          - northstar/lib/settings-preferences.ts
       - &a9
         sha: 4598375fe487e1cd389c1261101c8944147378c4
         message: "fix(northstar): address chat persistence review"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4598375fe487e1cd389c1261101c8944147378c4
         authoredAt: 2026-09-14T19:30:49Z
+        files:
+          - .codex/cursor-delegate/20260914-130117-single-star-transition-b2697b/events.ndjson
+          - .codex/cursor-delegate/20260914-130117-single-star-transition-b2697b/meta.json
+          - .codex/cursor-delegate/20260914-130117-single-star-transition-b2697b/prompt.txt
+          - .codex/cursor-delegate/20260914-130117-single-star-transition-b2697b/runner.log
+          - .codex/cursor-delegate/20260914-130117-single-star-transition-b2697b/stderr.log
+          - .gitignore
+          - northstar/components/ask-northstar-workspace.test.tsx
+          - northstar/components/ask-northstar-workspace.tsx
     workTimestamps:
       - 2026-09-14T15:32:54Z
       - 2026-09-14T15:56:23Z
@@ -252,6 +401,9 @@ commitMessages:
         additions: 44
         deletions: 28
         filesChanged: 2
+        files:
+          - hub/components/hub-launcher.tsx
+          - hub/lib/apps.ts
       - *a3
       - *a4
       - *a5
@@ -269,6 +421,9 @@ codeReviews:
     state: commented
     submittedAt: 2026-09-14T13:19:41Z
     body: null
+    prFiles:
+      - hub/components/hub-launcher.tsx
+      - hub/lib/apps.ts
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 121
     prTitle: "feat: add Northstar frontend"
@@ -276,6 +431,95 @@ codeReviews:
     state: commented
     submittedAt: 2026-09-14T16:07:00Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - .gitignore
+      - README.md
+      - bun.lock
+      - hub/app/globals.css
+      - hub/components/hub-launcher.tsx
+      - hub/functions/local.settings.json.example
+      - hub/functions/package.json
+      - hub/functions/src/index.ts
+      - hub/functions/src/northstar-chat-history.test.ts
+      - hub/functions/src/northstar-chat-history.ts
+      - hub/functions/src/northstar-conversations.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-copilot.test.ts
+      - hub/functions/src/northstar-copilot.ts
+      - hub/functions/src/northstar-local-store.test.ts
+      - hub/functions/src/northstar-local-store.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/lib/apps.ts
+      - hub/staticwebapp.config.json
+      - northstar/LOCAL-BENCHMARK.md
+      - northstar/app/globals.css
+      - northstar/app/layout.tsx
+      - northstar/app/page.tsx
+      - northstar/components/answer-markdown.test.tsx
+      - northstar/components/answer-markdown.tsx
+      - northstar/components/answer-star.test.ts
+      - northstar/components/answer-star.tsx
+      - northstar/components/ask-northstar-workspace.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/client-intelligence-workspace.tsx
+      - northstar/components/compliance-workspace.tsx
+      - northstar/components/marketing-workspace.tsx
+      - northstar/components/microsoft-app-icon.test.ts
+      - northstar/components/microsoft-app-icon.tsx
+      - northstar/components/microsoft-todo-panel.tsx
+      - northstar/components/news-workspace.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/portfolio-ai-workspace.tsx
+      - northstar/components/settings-workspace.tsx
+      - northstar/components/streaming-markdown.tsx
+      - northstar/components/ui/toggle-group.tsx
+      - northstar/eslint.config.mjs
+      - northstar/lib/ask-stream.test.ts
+      - northstar/lib/ask-stream.ts
+      - northstar/lib/background-briefs.test.ts
+      - northstar/lib/background-briefs.ts
+      - northstar/lib/chat-history.test.ts
+      - northstar/lib/chat-history.ts
+      - northstar/lib/external-links.test.ts
+      - northstar/lib/external-links.ts
+      - northstar/lib/graph-permissions.test.ts
+      - northstar/lib/graph-permissions.ts
+      - northstar/lib/https-url.test.ts
+      - northstar/lib/https-url.ts
+      - northstar/lib/mail-priority.ts
+      - northstar/lib/microsoft-reauth.test.ts
+      - northstar/lib/microsoft-reauth.ts
+      - northstar/lib/microsoft-search.test.ts
+      - northstar/lib/microsoft-search.ts
+      - northstar/lib/outlook-calendar.test.ts
+      - northstar/lib/outlook-calendar.ts
+      - northstar/lib/pending-markdown-links.ts
+      - northstar/lib/resolved-mail.test.ts
+      - northstar/lib/resolved-mail.ts
+      - northstar/lib/settings-preferences.test.ts
+      - northstar/lib/settings-preferences.ts
+      - northstar/lib/todo-tasks.test.ts
+      - northstar/lib/todo-tasks.ts
+      - northstar/lib/typing-reveal.test.ts
+      - northstar/lib/typing-reveal.ts
+      - northstar/next-env.d.ts
+      - northstar/next.config.ts
+      - northstar/package.json
+      - northstar/public/integrations/SOURCES.md
+      - northstar/public/integrations/claude.svg
+      - northstar/public/integrations/microsoft-365.svg
+      - northstar/public/integrations/microsoft-copilot.svg
+      - northstar/tsconfig.json
+      - package.json
+      - packages/auth/src/auth.test.ts
+      - packages/ui/src/styles.css
+      - packages/ui/src/user-menu.test.ts
+      - packages/ui/src/user-menu.tsx
+      - scripts/compose-static-suite.ts
+      - scripts/dev-northstar.ts
+      - scripts/dev.ts
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 121
     prTitle: "feat: add Northstar frontend"
@@ -283,6 +527,95 @@ codeReviews:
     state: commented
     submittedAt: 2026-09-14T16:07:21Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - .gitignore
+      - README.md
+      - bun.lock
+      - hub/app/globals.css
+      - hub/components/hub-launcher.tsx
+      - hub/functions/local.settings.json.example
+      - hub/functions/package.json
+      - hub/functions/src/index.ts
+      - hub/functions/src/northstar-chat-history.test.ts
+      - hub/functions/src/northstar-chat-history.ts
+      - hub/functions/src/northstar-conversations.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-copilot.test.ts
+      - hub/functions/src/northstar-copilot.ts
+      - hub/functions/src/northstar-local-store.test.ts
+      - hub/functions/src/northstar-local-store.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/lib/apps.ts
+      - hub/staticwebapp.config.json
+      - northstar/LOCAL-BENCHMARK.md
+      - northstar/app/globals.css
+      - northstar/app/layout.tsx
+      - northstar/app/page.tsx
+      - northstar/components/answer-markdown.test.tsx
+      - northstar/components/answer-markdown.tsx
+      - northstar/components/answer-star.test.ts
+      - northstar/components/answer-star.tsx
+      - northstar/components/ask-northstar-workspace.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/client-intelligence-workspace.tsx
+      - northstar/components/compliance-workspace.tsx
+      - northstar/components/marketing-workspace.tsx
+      - northstar/components/microsoft-app-icon.test.ts
+      - northstar/components/microsoft-app-icon.tsx
+      - northstar/components/microsoft-todo-panel.tsx
+      - northstar/components/news-workspace.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/portfolio-ai-workspace.tsx
+      - northstar/components/settings-workspace.tsx
+      - northstar/components/streaming-markdown.tsx
+      - northstar/components/ui/toggle-group.tsx
+      - northstar/eslint.config.mjs
+      - northstar/lib/ask-stream.test.ts
+      - northstar/lib/ask-stream.ts
+      - northstar/lib/background-briefs.test.ts
+      - northstar/lib/background-briefs.ts
+      - northstar/lib/chat-history.test.ts
+      - northstar/lib/chat-history.ts
+      - northstar/lib/external-links.test.ts
+      - northstar/lib/external-links.ts
+      - northstar/lib/graph-permissions.test.ts
+      - northstar/lib/graph-permissions.ts
+      - northstar/lib/https-url.test.ts
+      - northstar/lib/https-url.ts
+      - northstar/lib/mail-priority.ts
+      - northstar/lib/microsoft-reauth.test.ts
+      - northstar/lib/microsoft-reauth.ts
+      - northstar/lib/microsoft-search.test.ts
+      - northstar/lib/microsoft-search.ts
+      - northstar/lib/outlook-calendar.test.ts
+      - northstar/lib/outlook-calendar.ts
+      - northstar/lib/pending-markdown-links.ts
+      - northstar/lib/resolved-mail.test.ts
+      - northstar/lib/resolved-mail.ts
+      - northstar/lib/settings-preferences.test.ts
+      - northstar/lib/settings-preferences.ts
+      - northstar/lib/todo-tasks.test.ts
+      - northstar/lib/todo-tasks.ts
+      - northstar/lib/typing-reveal.test.ts
+      - northstar/lib/typing-reveal.ts
+      - northstar/next-env.d.ts
+      - northstar/next.config.ts
+      - northstar/package.json
+      - northstar/public/integrations/SOURCES.md
+      - northstar/public/integrations/claude.svg
+      - northstar/public/integrations/microsoft-365.svg
+      - northstar/public/integrations/microsoft-copilot.svg
+      - northstar/tsconfig.json
+      - package.json
+      - packages/auth/src/auth.test.ts
+      - packages/ui/src/styles.css
+      - packages/ui/src/user-menu.test.ts
+      - packages/ui/src/user-menu.tsx
+      - scripts/compose-static-suite.ts
+      - scripts/dev-northstar.ts
+      - scripts/dev.ts
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 121
     prTitle: "feat: add Northstar frontend"
@@ -290,6 +623,95 @@ codeReviews:
     state: commented
     submittedAt: 2026-09-14T16:07:26Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - .gitignore
+      - README.md
+      - bun.lock
+      - hub/app/globals.css
+      - hub/components/hub-launcher.tsx
+      - hub/functions/local.settings.json.example
+      - hub/functions/package.json
+      - hub/functions/src/index.ts
+      - hub/functions/src/northstar-chat-history.test.ts
+      - hub/functions/src/northstar-chat-history.ts
+      - hub/functions/src/northstar-conversations.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-copilot.test.ts
+      - hub/functions/src/northstar-copilot.ts
+      - hub/functions/src/northstar-local-store.test.ts
+      - hub/functions/src/northstar-local-store.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/lib/apps.ts
+      - hub/staticwebapp.config.json
+      - northstar/LOCAL-BENCHMARK.md
+      - northstar/app/globals.css
+      - northstar/app/layout.tsx
+      - northstar/app/page.tsx
+      - northstar/components/answer-markdown.test.tsx
+      - northstar/components/answer-markdown.tsx
+      - northstar/components/answer-star.test.ts
+      - northstar/components/answer-star.tsx
+      - northstar/components/ask-northstar-workspace.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/client-intelligence-workspace.tsx
+      - northstar/components/compliance-workspace.tsx
+      - northstar/components/marketing-workspace.tsx
+      - northstar/components/microsoft-app-icon.test.ts
+      - northstar/components/microsoft-app-icon.tsx
+      - northstar/components/microsoft-todo-panel.tsx
+      - northstar/components/news-workspace.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/portfolio-ai-workspace.tsx
+      - northstar/components/settings-workspace.tsx
+      - northstar/components/streaming-markdown.tsx
+      - northstar/components/ui/toggle-group.tsx
+      - northstar/eslint.config.mjs
+      - northstar/lib/ask-stream.test.ts
+      - northstar/lib/ask-stream.ts
+      - northstar/lib/background-briefs.test.ts
+      - northstar/lib/background-briefs.ts
+      - northstar/lib/chat-history.test.ts
+      - northstar/lib/chat-history.ts
+      - northstar/lib/external-links.test.ts
+      - northstar/lib/external-links.ts
+      - northstar/lib/graph-permissions.test.ts
+      - northstar/lib/graph-permissions.ts
+      - northstar/lib/https-url.test.ts
+      - northstar/lib/https-url.ts
+      - northstar/lib/mail-priority.ts
+      - northstar/lib/microsoft-reauth.test.ts
+      - northstar/lib/microsoft-reauth.ts
+      - northstar/lib/microsoft-search.test.ts
+      - northstar/lib/microsoft-search.ts
+      - northstar/lib/outlook-calendar.test.ts
+      - northstar/lib/outlook-calendar.ts
+      - northstar/lib/pending-markdown-links.ts
+      - northstar/lib/resolved-mail.test.ts
+      - northstar/lib/resolved-mail.ts
+      - northstar/lib/settings-preferences.test.ts
+      - northstar/lib/settings-preferences.ts
+      - northstar/lib/todo-tasks.test.ts
+      - northstar/lib/todo-tasks.ts
+      - northstar/lib/typing-reveal.test.ts
+      - northstar/lib/typing-reveal.ts
+      - northstar/next-env.d.ts
+      - northstar/next.config.ts
+      - northstar/package.json
+      - northstar/public/integrations/SOURCES.md
+      - northstar/public/integrations/claude.svg
+      - northstar/public/integrations/microsoft-365.svg
+      - northstar/public/integrations/microsoft-copilot.svg
+      - northstar/tsconfig.json
+      - package.json
+      - packages/auth/src/auth.test.ts
+      - packages/ui/src/styles.css
+      - packages/ui/src/user-menu.test.ts
+      - packages/ui/src/user-menu.tsx
+      - scripts/compose-static-suite.ts
+      - scripts/dev-northstar.ts
+      - scripts/dev.ts
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 121
     prTitle: "feat: add Northstar frontend"
@@ -297,49 +719,490 @@ codeReviews:
     state: commented
     submittedAt: 2026-09-14T16:07:31Z
     body: null
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - .gitignore
+      - README.md
+      - bun.lock
+      - hub/app/globals.css
+      - hub/components/hub-launcher.tsx
+      - hub/functions/local.settings.json.example
+      - hub/functions/package.json
+      - hub/functions/src/index.ts
+      - hub/functions/src/northstar-chat-history.test.ts
+      - hub/functions/src/northstar-chat-history.ts
+      - hub/functions/src/northstar-conversations.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-copilot.test.ts
+      - hub/functions/src/northstar-copilot.ts
+      - hub/functions/src/northstar-local-store.test.ts
+      - hub/functions/src/northstar-local-store.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/lib/apps.ts
+      - hub/staticwebapp.config.json
+      - northstar/LOCAL-BENCHMARK.md
+      - northstar/app/globals.css
+      - northstar/app/layout.tsx
+      - northstar/app/page.tsx
+      - northstar/components/answer-markdown.test.tsx
+      - northstar/components/answer-markdown.tsx
+      - northstar/components/answer-star.test.ts
+      - northstar/components/answer-star.tsx
+      - northstar/components/ask-northstar-workspace.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/client-intelligence-workspace.tsx
+      - northstar/components/compliance-workspace.tsx
+      - northstar/components/marketing-workspace.tsx
+      - northstar/components/microsoft-app-icon.test.ts
+      - northstar/components/microsoft-app-icon.tsx
+      - northstar/components/microsoft-todo-panel.tsx
+      - northstar/components/news-workspace.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/portfolio-ai-workspace.tsx
+      - northstar/components/settings-workspace.tsx
+      - northstar/components/streaming-markdown.tsx
+      - northstar/components/ui/toggle-group.tsx
+      - northstar/eslint.config.mjs
+      - northstar/lib/ask-stream.test.ts
+      - northstar/lib/ask-stream.ts
+      - northstar/lib/background-briefs.test.ts
+      - northstar/lib/background-briefs.ts
+      - northstar/lib/chat-history.test.ts
+      - northstar/lib/chat-history.ts
+      - northstar/lib/external-links.test.ts
+      - northstar/lib/external-links.ts
+      - northstar/lib/graph-permissions.test.ts
+      - northstar/lib/graph-permissions.ts
+      - northstar/lib/https-url.test.ts
+      - northstar/lib/https-url.ts
+      - northstar/lib/mail-priority.ts
+      - northstar/lib/microsoft-reauth.test.ts
+      - northstar/lib/microsoft-reauth.ts
+      - northstar/lib/microsoft-search.test.ts
+      - northstar/lib/microsoft-search.ts
+      - northstar/lib/outlook-calendar.test.ts
+      - northstar/lib/outlook-calendar.ts
+      - northstar/lib/pending-markdown-links.ts
+      - northstar/lib/resolved-mail.test.ts
+      - northstar/lib/resolved-mail.ts
+      - northstar/lib/settings-preferences.test.ts
+      - northstar/lib/settings-preferences.ts
+      - northstar/lib/todo-tasks.test.ts
+      - northstar/lib/todo-tasks.ts
+      - northstar/lib/typing-reveal.test.ts
+      - northstar/lib/typing-reveal.ts
+      - northstar/next-env.d.ts
+      - northstar/next.config.ts
+      - northstar/package.json
+      - northstar/public/integrations/SOURCES.md
+      - northstar/public/integrations/claude.svg
+      - northstar/public/integrations/microsoft-365.svg
+      - northstar/public/integrations/microsoft-copilot.svg
+      - northstar/tsconfig.json
+      - package.json
+      - packages/auth/src/auth.test.ts
+      - packages/ui/src/styles.css
+      - packages/ui/src/user-menu.test.ts
+      - packages/ui/src/user-menu.tsx
+      - scripts/compose-static-suite.ts
+      - scripts/dev-northstar.ts
+      - scripts/dev.ts
 reviewComments:
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 123
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/123
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/123#discussion_r4005579243
-    body: Fixed in b99eb64. Development mode now permits both local apps and their stats when `/.auth/me` is unavailable;
-      production retains role-based filtering and request gating.
+    body: Fixed in b99eb64. Development mode now permits both local apps and their stats when `/.auth/me` is unavailable; production retains role-based filtering and request gating.
     path: hub/components/hub-launcher.tsx
     createdAt: 2026-09-14T13:19:41Z
+    prFiles:
+      - hub/components/hub-launcher.tsx
+      - hub/lib/apps.ts
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 121
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121#discussion_r4007116634
-    body: "[from Codex]: Fixed in 57bd084. Stopped and errored turns now fork subsequent submissions into a fresh chat. Both
-      composer and dashboard entry points enforce this. Tests and a local browser check confirm that the interrupted
-      provider conversation is not reused."
+    body: "[from Codex]: Fixed in 57bd084. Stopped and errored turns now fork subsequent submissions into a fresh chat. Both composer and dashboard entry points enforce this. Tests and a local browser check confirm that the interrupted provider conversation is not reused."
     path: northstar/components/ask-northstar-workspace.tsx
     createdAt: 2026-09-14T16:07:00Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - .gitignore
+      - README.md
+      - bun.lock
+      - hub/app/globals.css
+      - hub/components/hub-launcher.tsx
+      - hub/functions/local.settings.json.example
+      - hub/functions/package.json
+      - hub/functions/src/index.ts
+      - hub/functions/src/northstar-chat-history.test.ts
+      - hub/functions/src/northstar-chat-history.ts
+      - hub/functions/src/northstar-conversations.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-copilot.test.ts
+      - hub/functions/src/northstar-copilot.ts
+      - hub/functions/src/northstar-local-store.test.ts
+      - hub/functions/src/northstar-local-store.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/lib/apps.ts
+      - hub/staticwebapp.config.json
+      - northstar/LOCAL-BENCHMARK.md
+      - northstar/app/globals.css
+      - northstar/app/layout.tsx
+      - northstar/app/page.tsx
+      - northstar/components/answer-markdown.test.tsx
+      - northstar/components/answer-markdown.tsx
+      - northstar/components/answer-star.test.ts
+      - northstar/components/answer-star.tsx
+      - northstar/components/ask-northstar-workspace.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/client-intelligence-workspace.tsx
+      - northstar/components/compliance-workspace.tsx
+      - northstar/components/marketing-workspace.tsx
+      - northstar/components/microsoft-app-icon.test.ts
+      - northstar/components/microsoft-app-icon.tsx
+      - northstar/components/microsoft-todo-panel.tsx
+      - northstar/components/news-workspace.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/portfolio-ai-workspace.tsx
+      - northstar/components/settings-workspace.tsx
+      - northstar/components/streaming-markdown.tsx
+      - northstar/components/ui/toggle-group.tsx
+      - northstar/eslint.config.mjs
+      - northstar/lib/ask-stream.test.ts
+      - northstar/lib/ask-stream.ts
+      - northstar/lib/background-briefs.test.ts
+      - northstar/lib/background-briefs.ts
+      - northstar/lib/chat-history.test.ts
+      - northstar/lib/chat-history.ts
+      - northstar/lib/external-links.test.ts
+      - northstar/lib/external-links.ts
+      - northstar/lib/graph-permissions.test.ts
+      - northstar/lib/graph-permissions.ts
+      - northstar/lib/https-url.test.ts
+      - northstar/lib/https-url.ts
+      - northstar/lib/mail-priority.ts
+      - northstar/lib/microsoft-reauth.test.ts
+      - northstar/lib/microsoft-reauth.ts
+      - northstar/lib/microsoft-search.test.ts
+      - northstar/lib/microsoft-search.ts
+      - northstar/lib/outlook-calendar.test.ts
+      - northstar/lib/outlook-calendar.ts
+      - northstar/lib/pending-markdown-links.ts
+      - northstar/lib/resolved-mail.test.ts
+      - northstar/lib/resolved-mail.ts
+      - northstar/lib/settings-preferences.test.ts
+      - northstar/lib/settings-preferences.ts
+      - northstar/lib/todo-tasks.test.ts
+      - northstar/lib/todo-tasks.ts
+      - northstar/lib/typing-reveal.test.ts
+      - northstar/lib/typing-reveal.ts
+      - northstar/next-env.d.ts
+      - northstar/next.config.ts
+      - northstar/package.json
+      - northstar/public/integrations/SOURCES.md
+      - northstar/public/integrations/claude.svg
+      - northstar/public/integrations/microsoft-365.svg
+      - northstar/public/integrations/microsoft-copilot.svg
+      - northstar/tsconfig.json
+      - package.json
+      - packages/auth/src/auth.test.ts
+      - packages/ui/src/styles.css
+      - packages/ui/src/user-menu.test.ts
+      - packages/ui/src/user-menu.tsx
+      - scripts/compose-static-suite.ts
+      - scripts/dev-northstar.ts
+      - scripts/dev.ts
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 121
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121#discussion_r4007120080
-    body: "[from Codex]: Fixed in 57bd084. Invalidates the application user's stored Copilot mappings and cached briefs
-      before saving a different Microsoft account. User isolation and paginated Cosmos deletion are tested."
+    body: "[from Codex]: Fixed in 57bd084. Invalidates the application user's stored Copilot mappings and cached briefs before saving a different Microsoft account. User isolation and paginated Cosmos deletion are tested."
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-09-14T16:07:21Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - .gitignore
+      - README.md
+      - bun.lock
+      - hub/app/globals.css
+      - hub/components/hub-launcher.tsx
+      - hub/functions/local.settings.json.example
+      - hub/functions/package.json
+      - hub/functions/src/index.ts
+      - hub/functions/src/northstar-chat-history.test.ts
+      - hub/functions/src/northstar-chat-history.ts
+      - hub/functions/src/northstar-conversations.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-copilot.test.ts
+      - hub/functions/src/northstar-copilot.ts
+      - hub/functions/src/northstar-local-store.test.ts
+      - hub/functions/src/northstar-local-store.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/lib/apps.ts
+      - hub/staticwebapp.config.json
+      - northstar/LOCAL-BENCHMARK.md
+      - northstar/app/globals.css
+      - northstar/app/layout.tsx
+      - northstar/app/page.tsx
+      - northstar/components/answer-markdown.test.tsx
+      - northstar/components/answer-markdown.tsx
+      - northstar/components/answer-star.test.ts
+      - northstar/components/answer-star.tsx
+      - northstar/components/ask-northstar-workspace.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/client-intelligence-workspace.tsx
+      - northstar/components/compliance-workspace.tsx
+      - northstar/components/marketing-workspace.tsx
+      - northstar/components/microsoft-app-icon.test.ts
+      - northstar/components/microsoft-app-icon.tsx
+      - northstar/components/microsoft-todo-panel.tsx
+      - northstar/components/news-workspace.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/portfolio-ai-workspace.tsx
+      - northstar/components/settings-workspace.tsx
+      - northstar/components/streaming-markdown.tsx
+      - northstar/components/ui/toggle-group.tsx
+      - northstar/eslint.config.mjs
+      - northstar/lib/ask-stream.test.ts
+      - northstar/lib/ask-stream.ts
+      - northstar/lib/background-briefs.test.ts
+      - northstar/lib/background-briefs.ts
+      - northstar/lib/chat-history.test.ts
+      - northstar/lib/chat-history.ts
+      - northstar/lib/external-links.test.ts
+      - northstar/lib/external-links.ts
+      - northstar/lib/graph-permissions.test.ts
+      - northstar/lib/graph-permissions.ts
+      - northstar/lib/https-url.test.ts
+      - northstar/lib/https-url.ts
+      - northstar/lib/mail-priority.ts
+      - northstar/lib/microsoft-reauth.test.ts
+      - northstar/lib/microsoft-reauth.ts
+      - northstar/lib/microsoft-search.test.ts
+      - northstar/lib/microsoft-search.ts
+      - northstar/lib/outlook-calendar.test.ts
+      - northstar/lib/outlook-calendar.ts
+      - northstar/lib/pending-markdown-links.ts
+      - northstar/lib/resolved-mail.test.ts
+      - northstar/lib/resolved-mail.ts
+      - northstar/lib/settings-preferences.test.ts
+      - northstar/lib/settings-preferences.ts
+      - northstar/lib/todo-tasks.test.ts
+      - northstar/lib/todo-tasks.ts
+      - northstar/lib/typing-reveal.test.ts
+      - northstar/lib/typing-reveal.ts
+      - northstar/next-env.d.ts
+      - northstar/next.config.ts
+      - northstar/package.json
+      - northstar/public/integrations/SOURCES.md
+      - northstar/public/integrations/claude.svg
+      - northstar/public/integrations/microsoft-365.svg
+      - northstar/public/integrations/microsoft-copilot.svg
+      - northstar/tsconfig.json
+      - package.json
+      - packages/auth/src/auth.test.ts
+      - packages/ui/src/styles.css
+      - packages/ui/src/user-menu.test.ts
+      - packages/ui/src/user-menu.tsx
+      - scripts/compose-static-suite.ts
+      - scripts/dev-northstar.ts
+      - scripts/dev.ts
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 121
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121#discussion_r4007120801
-    body: "[from Codex]: Fixed in 57bd084. Brief follow-ups copy the visible snapshot into a fresh UUID chat and send the
-      snapshot as reference context for the new provider conversation. Browser validation confirms the shared cached
-      conversation is not reused."
+    body: "[from Codex]: Fixed in 57bd084. Brief follow-ups copy the visible snapshot into a fresh UUID chat and send the snapshot as reference context for the new provider conversation. Browser validation confirms the shared cached conversation is not reused."
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-09-14T16:07:26Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - .gitignore
+      - README.md
+      - bun.lock
+      - hub/app/globals.css
+      - hub/components/hub-launcher.tsx
+      - hub/functions/local.settings.json.example
+      - hub/functions/package.json
+      - hub/functions/src/index.ts
+      - hub/functions/src/northstar-chat-history.test.ts
+      - hub/functions/src/northstar-chat-history.ts
+      - hub/functions/src/northstar-conversations.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-copilot.test.ts
+      - hub/functions/src/northstar-copilot.ts
+      - hub/functions/src/northstar-local-store.test.ts
+      - hub/functions/src/northstar-local-store.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/lib/apps.ts
+      - hub/staticwebapp.config.json
+      - northstar/LOCAL-BENCHMARK.md
+      - northstar/app/globals.css
+      - northstar/app/layout.tsx
+      - northstar/app/page.tsx
+      - northstar/components/answer-markdown.test.tsx
+      - northstar/components/answer-markdown.tsx
+      - northstar/components/answer-star.test.ts
+      - northstar/components/answer-star.tsx
+      - northstar/components/ask-northstar-workspace.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/client-intelligence-workspace.tsx
+      - northstar/components/compliance-workspace.tsx
+      - northstar/components/marketing-workspace.tsx
+      - northstar/components/microsoft-app-icon.test.ts
+      - northstar/components/microsoft-app-icon.tsx
+      - northstar/components/microsoft-todo-panel.tsx
+      - northstar/components/news-workspace.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/portfolio-ai-workspace.tsx
+      - northstar/components/settings-workspace.tsx
+      - northstar/components/streaming-markdown.tsx
+      - northstar/components/ui/toggle-group.tsx
+      - northstar/eslint.config.mjs
+      - northstar/lib/ask-stream.test.ts
+      - northstar/lib/ask-stream.ts
+      - northstar/lib/background-briefs.test.ts
+      - northstar/lib/background-briefs.ts
+      - northstar/lib/chat-history.test.ts
+      - northstar/lib/chat-history.ts
+      - northstar/lib/external-links.test.ts
+      - northstar/lib/external-links.ts
+      - northstar/lib/graph-permissions.test.ts
+      - northstar/lib/graph-permissions.ts
+      - northstar/lib/https-url.test.ts
+      - northstar/lib/https-url.ts
+      - northstar/lib/mail-priority.ts
+      - northstar/lib/microsoft-reauth.test.ts
+      - northstar/lib/microsoft-reauth.ts
+      - northstar/lib/microsoft-search.test.ts
+      - northstar/lib/microsoft-search.ts
+      - northstar/lib/outlook-calendar.test.ts
+      - northstar/lib/outlook-calendar.ts
+      - northstar/lib/pending-markdown-links.ts
+      - northstar/lib/resolved-mail.test.ts
+      - northstar/lib/resolved-mail.ts
+      - northstar/lib/settings-preferences.test.ts
+      - northstar/lib/settings-preferences.ts
+      - northstar/lib/todo-tasks.test.ts
+      - northstar/lib/todo-tasks.ts
+      - northstar/lib/typing-reveal.test.ts
+      - northstar/lib/typing-reveal.ts
+      - northstar/next-env.d.ts
+      - northstar/next.config.ts
+      - northstar/package.json
+      - northstar/public/integrations/SOURCES.md
+      - northstar/public/integrations/claude.svg
+      - northstar/public/integrations/microsoft-365.svg
+      - northstar/public/integrations/microsoft-copilot.svg
+      - northstar/tsconfig.json
+      - package.json
+      - packages/auth/src/auth.test.ts
+      - packages/ui/src/styles.css
+      - packages/ui/src/user-menu.test.ts
+      - packages/ui/src/user-menu.tsx
+      - scripts/compose-static-suite.ts
+      - scripts/dev-northstar.ts
+      - scripts/dev.ts
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 121
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121#discussion_r4007121501
-    body: "[from Codex]: Fixed in 57bd084. End-of-day generation starts after 5 PM local time, with scheduling boundaries at
-      5 PM and midnight. Tests cover morning, evening, and rollover."
+    body: "[from Codex]: Fixed in 57bd084. End-of-day generation starts after 5 PM local time, with scheduling boundaries at 5 PM and midnight. Tests cover morning, evening, and rollover."
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-09-14T16:07:31Z
+    prFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - .gitignore
+      - README.md
+      - bun.lock
+      - hub/app/globals.css
+      - hub/components/hub-launcher.tsx
+      - hub/functions/local.settings.json.example
+      - hub/functions/package.json
+      - hub/functions/src/index.ts
+      - hub/functions/src/northstar-chat-history.test.ts
+      - hub/functions/src/northstar-chat-history.ts
+      - hub/functions/src/northstar-conversations.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-copilot.test.ts
+      - hub/functions/src/northstar-copilot.ts
+      - hub/functions/src/northstar-local-store.test.ts
+      - hub/functions/src/northstar-local-store.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/lib/apps.ts
+      - hub/staticwebapp.config.json
+      - northstar/LOCAL-BENCHMARK.md
+      - northstar/app/globals.css
+      - northstar/app/layout.tsx
+      - northstar/app/page.tsx
+      - northstar/components/answer-markdown.test.tsx
+      - northstar/components/answer-markdown.tsx
+      - northstar/components/answer-star.test.ts
+      - northstar/components/answer-star.tsx
+      - northstar/components/ask-northstar-workspace.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/client-intelligence-workspace.tsx
+      - northstar/components/compliance-workspace.tsx
+      - northstar/components/marketing-workspace.tsx
+      - northstar/components/microsoft-app-icon.test.ts
+      - northstar/components/microsoft-app-icon.tsx
+      - northstar/components/microsoft-todo-panel.tsx
+      - northstar/components/news-workspace.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/portfolio-ai-workspace.tsx
+      - northstar/components/settings-workspace.tsx
+      - northstar/components/streaming-markdown.tsx
+      - northstar/components/ui/toggle-group.tsx
+      - northstar/eslint.config.mjs
+      - northstar/lib/ask-stream.test.ts
+      - northstar/lib/ask-stream.ts
+      - northstar/lib/background-briefs.test.ts
+      - northstar/lib/background-briefs.ts
+      - northstar/lib/chat-history.test.ts
+      - northstar/lib/chat-history.ts
+      - northstar/lib/external-links.test.ts
+      - northstar/lib/external-links.ts
+      - northstar/lib/graph-permissions.test.ts
+      - northstar/lib/graph-permissions.ts
+      - northstar/lib/https-url.test.ts
+      - northstar/lib/https-url.ts
+      - northstar/lib/mail-priority.ts
+      - northstar/lib/microsoft-reauth.test.ts
+      - northstar/lib/microsoft-reauth.ts
+      - northstar/lib/microsoft-search.test.ts
+      - northstar/lib/microsoft-search.ts
+      - northstar/lib/outlook-calendar.test.ts
+      - northstar/lib/outlook-calendar.ts
+      - northstar/lib/pending-markdown-links.ts
+      - northstar/lib/resolved-mail.test.ts
+      - northstar/lib/resolved-mail.ts
+      - northstar/lib/settings-preferences.test.ts
+      - northstar/lib/settings-preferences.ts
+      - northstar/lib/todo-tasks.test.ts
+      - northstar/lib/todo-tasks.ts
+      - northstar/lib/typing-reveal.test.ts
+      - northstar/lib/typing-reveal.ts
+      - northstar/next-env.d.ts
+      - northstar/next.config.ts
+      - northstar/package.json
+      - northstar/public/integrations/SOURCES.md
+      - northstar/public/integrations/claude.svg
+      - northstar/public/integrations/microsoft-365.svg
+      - northstar/public/integrations/microsoft-copilot.svg
+      - northstar/tsconfig.json
+      - package.json
+      - packages/auth/src/auth.test.ts
+      - packages/ui/src/styles.css
+      - packages/ui/src/user-menu.test.ts
+      - packages/ui/src/user-menu.tsx
+      - scripts/compose-static-suite.ts
+      - scripts/dev-northstar.ts
+      - scripts/dev.ts
 aiReviews:
   codex:
     prsReviewed: 2
@@ -415,6 +1278,5 @@ hoursEstimate:
   volumeHours: 28
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

@@ -50,6 +50,51 @@ commitMessages:
         additions: 5506
         deletions: 295
         filesChanged: 44
+        files:
+          - .gitignore
+          - bun.lock
+          - packages/contracts/src/pricing.test.ts
+          - packages/contracts/src/pricing.ts
+          - packages/db/src/pricing.test.ts
+          - packages/db/src/pricing.ts
+          - pricing/next.config.ts
+          - pricing/package.json
+          - pricing/public/report-assets/logo.png
+          - pricing/public/report-assets/logo_finet.png
+          - pricing/public/report-assets/logo_finet_white.png
+          - pricing/public/report-assets/logo_white.png
+          - pricing/src/app/actions.ts
+          - pricing/src/app/api/pricing/recruits/[id]/reports/route.ts
+          - pricing/src/app/api/pricing/reports/[reportId]/pdf/__tests__/route.test.ts
+          - pricing/src/app/api/pricing/reports/[reportId]/pdf/route.ts
+          - pricing/src/app/api/pricing/reports/[reportId]/xlsx/__tests__/route.test.ts
+          - pricing/src/app/api/pricing/reports/[reportId]/xlsx/route.ts
+          - pricing/src/app/globals.css
+          - pricing/src/app/page.tsx
+          - pricing/src/app/recruits/[id]/model/page.tsx
+          - pricing/src/app/recruits/[id]/page.tsx
+          - pricing/src/app/recruits/page.tsx
+          - pricing/src/components/__tests__/archive-recruit-form.test.tsx
+          - pricing/src/components/__tests__/recruit-archive-section.test.tsx
+          - pricing/src/components/__tests__/recruit-row-actions.test.tsx
+          - pricing/src/components/archive-recruit-form.tsx
+          - pricing/src/components/model-switcher.tsx
+          - pricing/src/components/pricing-graphs.tsx
+          - pricing/src/components/recruit-archive-section.tsx
+          - pricing/src/components/recruit-data-cell.tsx
+          - pricing/src/components/recruit-row-actions.tsx
+          - pricing/src/lib/__tests__/report-model.test.ts
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/__tests__/workstation.test.ts
+          - pricing/src/lib/calculation.ts
+          - pricing/src/lib/report.ts
+          - pricing/src/lib/report/assets.ts
+          - pricing/src/lib/report/excel.ts
+          - pricing/src/lib/report/format.ts
+          - pricing/src/lib/report/model.ts
+          - pricing/src/lib/report/pdf.tsx
+          - pricing/src/lib/reports.ts
+          - pricing/src/lib/workstation.ts
 releases: []
 externalContributions: []
 codeReviews: []
@@ -92,6 +137,5 @@ hoursEstimate:
   volumeHours: 9
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

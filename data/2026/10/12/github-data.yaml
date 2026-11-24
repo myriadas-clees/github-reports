@@ -44,9 +44,7 @@ repositories:
 pullRequests:
   - title: "test(northstar): keep persisted brief fixture inside the current period"
     body: >-
-      - `returns a persisted scheduled brief without generating it again` hardcoded the stored brief's `updatedAt` as
-      `2026-09-12`. Once the weekly brief period moved past that date, the cached brief was correctly treated as stale.
-      The test then fell through to generation and returned 503.
+      - `returns a persisted scheduled brief without generating it again` hardcoded the stored brief's `updatedAt` as `2026-09-12`. Once the weekly brief period moved past that date, the cached brief was correctly treated as stale. The test then fell through to generation and returned 503.
 
       - The fixture n...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/154
@@ -67,6 +65,8 @@ pullRequests:
         message: "test(northstar): keep persisted brief fixture inside the current period"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/163d45fc9899d2f178db99ea9899bb165b2186f8
         authoredAt: 2026-10-12T17:51:21Z
+        files:
+          - hub/functions/src/northstar-microsoft.test.ts
     workTimestamps:
       - 2026-10-12T17:51:21Z
     workAdditions: 1
@@ -107,16 +107,38 @@ pullRequests:
         message: "chore(deps): patch/minor workspace bumps (2026-10-15 train)"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0558339d5c76f12a58a50d7df149622e628ee039
         authoredAt: 2026-10-12T17:49:58Z
+        files:
+          - bun.lock
+          - hub/functions/package.json
+          - hub/package.json
+          - northstar/package.json
+          - ofac/functions/package.json
+          - ofac/package.json
+          - package.json
+          - packages/audit/package.json
+          - packages/auth/package.json
+          - packages/brand/package.json
+          - packages/contracts/package.json
+          - packages/db/package.json
+          - packages/ui/package.json
+          - pricing/functions/package.json
+          - pricing/package.json
       - &a55
         sha: 4c9363e38f6341862a36b7b89e3754af565926fc
         message: "chore(deps): keep @react-pdf/renderer at 4.5.1 (Arabic text corruption)"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4c9363e38f6341862a36b7b89e3754af565926fc
         authoredAt: 2026-10-12T18:36:00Z
+        files:
+          - bun.lock
+          - ofac/package.json
+          - pricing/package.json
       - &a62
         sha: 6ce6f8be1b5fd5ef8f6572021c576860a0edced7
         message: Merge branch 'main' into chore/deps-2026-10-15
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6ce6f8be1b5fd5ef8f6572021c576860a0edced7
         authoredAt: 2026-10-12T18:44:41Z
+        files:
+          - hub/functions/src/northstar-microsoft.test.ts
     workTimestamps: &a3
       - 2026-10-12T17:49:58Z
       - 2026-10-12T18:36:00Z
@@ -141,9 +163,7 @@ pullRequests:
       - pricing/functions/package.json
       - pricing/package.json
   - title: "feat(northstar): [1/3] advisor context and brief preferences"
-    body: "Carries the advisor-context and Settings part of #138: Copilot receives a Northstar identity plus preferred name,
-      urgent mail, open to-dos and upcoming meetings; Settings stores Northstar and morning/end-of-day/weekly brief
-      instructions on this device; scheduled briefs use the custom prompts, reset ..."
+    body: "Carries the advisor-context and Settings part of #138: Copilot receives a Northstar identity plus preferred name, urgent mail, open to-dos and upcoming meetings; Settings stores Northstar and morning/end-of-day/weekly brief instructions on this device; scheduled briefs use the custom prompts, reset ..."
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/155
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
@@ -163,51 +183,99 @@ pullRequests:
         message: "feat(northstar): add advisor context and brief preferences"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c47cc9ec5f95212fecaafdf230be6024a01c4e02
         authoredAt: 2026-10-12T17:51:02Z
+        files:
+          - hub/functions/src/northstar-brief-journeys.test.ts
+          - hub/functions/src/northstar-copilot.test.ts
+          - hub/functions/src/northstar-copilot.ts
+          - hub/functions/src/northstar-cosmos-recovery.test.ts
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
+          - northstar/components/northstar-consent.fixture.tsx
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/components/northstar-retention.dom.test.ts
+          - northstar/components/northstar-retention.fixture.tsx
+          - northstar/components/settings-workspace.tsx
+          - northstar/lib/background-briefs.test.ts
+          - northstar/lib/background-briefs.ts
+          - northstar/lib/northstar-context.test.ts
+          - northstar/lib/northstar-context.ts
+          - northstar/lib/settings-preferences.test.ts
+          - northstar/lib/settings-preferences.ts
       - &a47
         sha: c1b384be31364aa1efd1d67ecc0c436db50ee821
         message: "fix(northstar): remove layer-2 references from context layer"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c1b384be31364aa1efd1d67ecc0c436db50ee821
         authoredAt: 2026-10-12T18:19:53Z
+        files:
+          - northstar/components/northstar-dashboard.tsx
       - &a52
         sha: a69fbfef2f2c2b3d0390fd3804b6d431d04a804c
         message: "fix(northstar): guard conversation retention renewal against replacement"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a69fbfef2f2c2b3d0390fd3804b6d431d04a804c
         authoredAt: 2026-10-12T18:34:53Z
+        files:
+          - hub/functions/src/northstar-conversations.ts
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
       - &a57
         sha: f2a5d7d5a8a63993089e83b576cdc9c98921588d
         message: "fix(northstar): migrate legacy unscoped mapping when renewing retention"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f2a5d7d5a8a63993089e83b576cdc9c98921588d
         authoredAt: 2026-10-12T18:42:30Z
+        files:
+          - hub/functions/src/northstar-conversations.ts
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
       - &a63
         sha: d3c1fb37ba810f90624b21ba51084c016ba2fa0d
         message: Merge remote-tracking branch 'origin/main' into northstar/stack-1-context-settings
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d3c1fb37ba810f90624b21ba51084c016ba2fa0d
         authoredAt: 2026-10-12T18:45:22Z
+        files:
+          - hub/functions/src/northstar-microsoft.test.ts
       - &a66
         sha: 3976ed79e70dca588cf863f3904ce2a51b1a8396
         message: 'Revert "fix(northstar): migrate legacy unscoped mapping when renewing retention"'
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3976ed79e70dca588cf863f3904ce2a51b1a8396
         authoredAt: 2026-10-12T18:50:06Z
+        files:
+          - hub/functions/src/northstar-conversations.ts
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
       - &a70
         sha: 610dde9cd18dae1e920f5d8aeab00a2a797e0338
         message: "fix(northstar): bound retention renewal, keep manual brief retries, decouple Ask meetings"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/610dde9cd18dae1e920f5d8aeab00a2a797e0338
         authoredAt: 2026-10-12T19:36:14Z
+        files:
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
+          - northstar/components/northstar-dashboard.tsx
       - &a75
         sha: 36de6442a6283449aed3026e089963cff7d1e384
         message: "docs(northstar): explain renewal and Ask meeting trade-offs"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/36de6442a6283449aed3026e089963cff7d1e384
         authoredAt: 2026-10-12T19:42:17Z
+        files:
+          - hub/functions/src/northstar-microsoft.ts
+          - northstar/components/northstar-dashboard.tsx
       - &a82
         sha: 141da7f2f0f514cd0b738a87280f8f3877834c25
         message: "fix(northstar): keep streaming renewal alive and isolate the Ask calendar fetch"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/141da7f2f0f514cd0b738a87280f8f3877834c25
         authoredAt: 2026-10-12T19:45:55Z
+        files:
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
+          - northstar/components/northstar-dashboard.tsx
       - &a85
         sha: de4ef861bcc5220f66f8a1f31e5e1f876ec3394c
         message: "fix(northstar): persist only the resolved conversation and discard unused first turns"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/de4ef861bcc5220f66f8a1f31e5e1f876ec3394c
         authoredAt: 2026-10-12T19:52:24Z
+        files:
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
     workTimestamps: &a7
       - 2026-10-12T17:51:02Z
       - 2026-10-12T18:19:53Z
@@ -245,8 +313,7 @@ pullRequests:
       ## Why
 
 
-      Accounts imported from AIRE can store numeric registration codes, which are unclear in the UI and make
-      registration sorting and filtering inconsistent with registration names.
+      Accounts imported from AIRE can store numeric registration codes, which are unclear in the UI and make registration sorting and filtering inconsistent with registration names.
 
 
       ## What changed
@@ -272,6 +339,14 @@ pullRequests:
         message: "fix(transition): map registration codes to names"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/1603b7b3ffca3fa2bd26f52b5af6ee732e2b8ff2
         authoredAt: 2026-10-12T18:17:08Z
+        files:
+          - transition/src/components/accounts/account-detail.tsx
+          - transition/src/components/accounts/accounts-page.tsx
+          - transition/src/components/households/household-overview.tsx
+          - transition/src/lib/choices.ts
+          - transition/src/lib/registration-name.test.ts
+          - transition/src/lib/repository.ts
+          - transition/src/lib/workbook.ts
     workTimestamps: &a11
       - 2026-10-12T18:17:08Z
     workAdditions: 103
@@ -322,6 +397,46 @@ pullRequests:
         message: "feat(pwa): add native install support across Myriad apps"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5f8eb5c60ae6770e4aa08f8df5105db14b57c7ea
         authoredAt: 2026-10-12T17:49:44Z
+        files:
+          - README.md
+          - compass/src/app/layout.tsx
+          - compass/src/app/manifest.ts
+          - compass/src/components/settings-workspace.tsx
+          - docs/install-apps.md
+          - excelerate/src/app/layout.tsx
+          - excelerate/src/app/manifest.ts
+          - excelerate/src/app/settings/page.tsx
+          - hub/app/layout.tsx
+          - hub/app/manifest.ts
+          - hub/components/HubSettingsPage.tsx
+          - hub/public/icons/apple-touch-icon.png
+          - hub/public/icons/icon-192.png
+          - hub/public/icons/icon-512.png
+          - hub/public/icons/icon-maskable-512.png
+          - hub/staticwebapp.config.json
+          - onboarding/apps/dashboard/app/layout.tsx
+          - onboarding/apps/dashboard/app/manifest.ts
+          - onboarding/apps/dashboard/app/settings/page.test.tsx
+          - onboarding/apps/dashboard/app/settings/page.tsx
+          - packages/ui/src/app-manifest.ts
+          - packages/ui/src/index.ts
+          - packages/ui/src/settings/index.ts
+          - packages/ui/src/settings/install-app-settings.test.ts
+          - packages/ui/src/settings/install-app-settings.tsx
+          - packages/ui/src/shell-bootstrap.test.ts
+          - packages/ui/src/shell-bootstrap.ts
+          - proforma/src/app/layout.tsx
+          - proforma/src/app/manifest.ts
+          - proforma/src/components/proforma-settings-page.tsx
+          - pto-tracker/src/app/layout.tsx
+          - pto-tracker/src/app/manifest.ts
+          - pto-tracker/src/app/settings/page.tsx
+          - transition/src/app/layout.tsx
+          - transition/src/app/manifest.ts
+          - transition/src/components/settings/settings-page.tsx
+          - valuation/src/app/layout.tsx
+          - valuation/src/app/manifest.ts
+          - valuation/src/app/settings/page.tsx
     workTimestamps: &a15
       - 2026-10-12T17:49:44Z
     workAdditions: 382
@@ -371,15 +486,13 @@ pullRequests:
       ## Why
 
 
-      Microsoft OAuth callbacks can arrive without the initiating Static Web Apps session, preventing Compass from
-      safely completing the connection.
+      Microsoft OAuth callbacks can arrive without the initiating Static Web Apps session, preventing Compass from safely completing the connection.
 
 
       ## What changed
 
 
-      The callback now serves a static handoff page that posts the authorization result to a same-origin endpoint. The
-      endpoint requires ...
+      The callback now serves a static handoff page that posts the authorization result to a same-origin endpoint. The endpoint requires ...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/174
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: open
@@ -400,6 +513,13 @@ pullRequests:
         message: "fix(compass): complete Microsoft OAuth in the SWA session"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3b36a17831bda57a01e411f427acdf88984ce5dc
         authoredAt: 2026-10-12T17:07:13Z
+        files:
+          - compass/README.md
+          - compass/functions/src/compass-consent.fixture.ts
+          - compass/functions/src/compass-mapping-upgrade.test.ts
+          - compass/functions/src/compass-microsoft.test.ts
+          - compass/functions/src/compass-microsoft.ts
+          - compass/functions/src/index.ts
     workTimestamps: &a19
       - 2026-10-12T17:07:13Z
     workAdditions: 207
@@ -412,9 +532,7 @@ pullRequests:
       - compass/functions/src/compass-microsoft.ts
       - compass/functions/src/index.ts
   - title: "feat(northstar): [2/3] @ commands and deliverable cards"
-    body: "Carries the @ command part of #138: `@email`, `@calendar`, `@todo`, `@meeting` and `@pdf` expand into task
-      prompts; composer picker and chips; fenced deliverables render as cards (email card with Outlook link and
-      recipient suggestions; PDF draft preview with edit/copy); edited drafts are saved per m..."
+    body: "Carries the @ command part of #138: `@email`, `@calendar`, `@todo`, `@meeting` and `@pdf` expand into task prompts; composer picker and chips; fenced deliverables render as cards (email card with Outlook link and recipient suggestions; PDF draft preview with edit/copy); edited drafts are saved per m..."
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/156
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
@@ -434,91 +552,171 @@ pullRequests:
         message: "feat(northstar): add @ commands and deliverable cards"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d4ee703c0d133efe8cc39c32ada5ccca93c936ca
         authoredAt: 2026-10-12T17:53:38Z
+        files:
+          - hub/functions/src/northstar-chat-history.ts
+          - northstar/app/globals.css
+          - northstar/components/answer-markdown.test.tsx
+          - northstar/components/answer-markdown.tsx
+          - northstar/components/ask-northstar-workspace.dom.test.tsx
+          - northstar/components/ask-northstar-workspace.test.tsx
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/components/streaming-markdown.tsx
+          - northstar/lib/ask-stream.test.ts
+          - northstar/lib/ask-stream.ts
+          - northstar/lib/at-commands.test.ts
+          - northstar/lib/at-commands.ts
+          - northstar/lib/chat-history.test.ts
+          - northstar/lib/chat-history.ts
+          - northstar/lib/email-draft.test.ts
+          - northstar/lib/email-draft.ts
       - &a48
         sha: 531598b312139b2477bc776f79437693a5899cfe
         message: Merge stack-1 into stack-2
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/531598b312139b2477bc776f79437693a5899cfe
         authoredAt: 2026-10-12T18:19:58Z
+        files: []
       - &a53
         sha: 23427196484f25369565e475b981b7f0906697d7
         message: Merge branch 'northstar/stack-1-context-settings' into northstar/stack-2-at-commands
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/23427196484f25369565e475b981b7f0906697d7
         authoredAt: 2026-10-12T18:34:58Z
+        files:
+          - hub/functions/src/northstar-conversations.ts
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
       - &a58
         sha: 51114707c0b9c2f0adcaddb38c6e20f7a7379692
         message: Merge branch 'northstar/stack-1-context-settings' into northstar/stack-2-at-commands
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/51114707c0b9c2f0adcaddb38c6e20f7a7379692
         authoredAt: 2026-10-12T18:42:31Z
+        files:
+          - hub/functions/src/northstar-conversations.ts
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
       - &a64
         sha: 6b67b8f9d1cf6814a1fbcb0091ce154e36fe109a
         message: Merge branch 'northstar/stack-1-context-settings' into northstar/stack-2-at-commands
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6b67b8f9d1cf6814a1fbcb0091ce154e36fe109a
         authoredAt: 2026-10-12T18:46:43Z
+        files:
+          - hub/functions/src/northstar-microsoft.test.ts
       - &a67
         sha: d9a2ce785c1fca5d91f2a4b90d6cbb209bef27e8
         message: Merge branch 'northstar/stack-1-context-settings' into northstar/stack-2-at-commands
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d9a2ce785c1fca5d91f2a4b90d6cbb209bef27e8
         authoredAt: 2026-10-12T18:51:26Z
+        files:
+          - hub/functions/src/northstar-conversations.ts
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
       - &a71
         sha: 5cbea5297a64523ef89aa6d61d4162d0153bbd6c
         message: Merge branch 'northstar/stack-1-context-settings' into northstar/stack-2-at-commands
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/5cbea5297a64523ef89aa6d61d4162d0153bbd6c
         authoredAt: 2026-10-12T19:36:15Z
+        files:
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
+          - northstar/components/northstar-dashboard.tsx
       - &a72
         sha: 9fee51e2f97992e753165d0b53f621608ae1aea9
         message: "fix(northstar): follow CommonMark draft fences and validate edited commands first"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/9fee51e2f97992e753165d0b53f621608ae1aea9
         authoredAt: 2026-10-12T19:38:54Z
+        files:
+          - northstar/components/answer-markdown.test.tsx
+          - northstar/components/answer-markdown.tsx
+          - northstar/components/ask-northstar-workspace.test.tsx
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/lib/draft-fences.test.ts
+          - northstar/lib/draft-fences.ts
       - &a76
         sha: 3543544f95529e8b01e1291514aae6381047ba37
         message: Merge branch 'northstar/stack-1-context-settings' into northstar/stack-2-at-commands
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3543544f95529e8b01e1291514aae6381047ba37
         authoredAt: 2026-10-12T19:42:18Z
+        files:
+          - hub/functions/src/northstar-microsoft.ts
+          - northstar/components/northstar-dashboard.tsx
       - &a77
         sha: d01312c031efce6323055b44b23b23b95afb23f5
         message: "docs(northstar): explain edit validation and draft fence indexing"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d01312c031efce6323055b44b23b23b95afb23f5
         authoredAt: 2026-10-12T19:42:21Z
+        files:
+          - northstar/components/answer-markdown.tsx
+          - northstar/components/ask-northstar-workspace.tsx
       - &a83
         sha: 97fe811374fc918698f042d10ba31f16b3b77263
         message: Merge branch 'northstar/stack-1-context-settings' into northstar/stack-2-at-commands
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/97fe811374fc918698f042d10ba31f16b3b77263
         authoredAt: 2026-10-12T19:45:56Z
+        files:
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
+          - northstar/components/northstar-dashboard.tsx
       - &a86
         sha: 61cefc00bb194b3ed1336937ffd24859a96987a1
         message: Merge branch 'northstar/stack-1-context-settings' into northstar/stack-2-at-commands
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/61cefc00bb194b3ed1336937ffd24859a96987a1
         authoredAt: 2026-10-12T19:52:26Z
+        files:
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
       - &a87
         sha: b08acddb22c25601026c30254415fd6da0f81617
         message: "fix(northstar): retry legacy multi-command questions as plain text"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b08acddb22c25601026c30254415fd6da0f81617
         authoredAt: 2026-10-12T19:54:01Z
+        files:
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/lib/at-commands.test.ts
+          - northstar/lib/at-commands.ts
       - &a89
         sha: 21e16731e1caa7088886b31eec7516363681731d
         message: "fix(northstar): validate search commands first and gate draft actions on completion"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/21e16731e1caa7088886b31eec7516363681731d
         authoredAt: 2026-10-12T20:11:28Z
+        files:
+          - northstar/components/answer-markdown.test.tsx
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/components/streaming-markdown.tsx
+          - northstar/lib/at-commands.test.ts
+          - northstar/lib/at-commands.ts
       - &a92
         sha: fc1196558a6d1cf048e3014fd775cfaeab51e80a
         message: "fix(northstar): keep replacement draft edit timestamps monotonic"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/fc1196558a6d1cf048e3014fd775cfaeab51e80a
         authoredAt: 2026-10-12T20:24:39Z
+        files:
+          - northstar/components/ask-northstar-workspace.test.tsx
+          - northstar/components/ask-northstar-workspace.tsx
       - &a94
         sha: 96447a836ba0c9b7b3f0dfdc3bddad99512ea916
         message: "fix(northstar): keep draft actions on status-less legacy answers"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/96447a836ba0c9b7b3f0dfdc3bddad99512ea916
         authoredAt: 2026-10-12T20:28:00Z
+        files:
+          - northstar/components/ask-northstar-workspace.test.tsx
+          - northstar/components/ask-northstar-workspace.tsx
       - &a96
         sha: a415f61de7f40246092ac78d86d0a0678420afc8
         message: "fix(northstar): treat a trailing semicolon as recipient separator"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a415f61de7f40246092ac78d86d0a0678420afc8
         authoredAt: 2026-10-12T20:40:24Z
+        files:
+          - northstar/lib/email-draft.test.ts
+          - northstar/lib/email-draft.ts
       - &a99
         sha: 6151d0600134e1a0fe00266dac85678c885fbd49
         message: "fix(northstar): keep a surname-first mailbox when comma splitting fails"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6151d0600134e1a0fe00266dac85678c885fbd49
         authoredAt: 2026-10-12T20:55:00Z
+        files:
+          - northstar/lib/email-draft.test.ts
+          - northstar/lib/email-draft.ts
     workTimestamps: &a23
       - 2026-10-12T17:53:38Z
       - 2026-10-12T18:19:58Z
@@ -568,8 +766,7 @@ pullRequests:
       ## Why
 
 
-      Compass needed a more flexible dashboard and a clearer Ask workspace for organizing widgets, chats, and sources. A
-      fresh Microsoft connection also needed to enable Copilot with one authorization when the granted scopes allow it.
+      Compass needed a more flexible dashboard and a clearer Ask workspace for organizing widgets, chats, and sources. A fresh Microsoft connection also needed to enable Copilot with one authorization when the granted scopes allow it.
 
 
       ## What changed
@@ -596,6 +793,32 @@ pullRequests:
         message: "feat(compass): redesign dashboard and Ask workspace"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/eab1ffa557e113a66e7c3001e0cbb0ef85d470b4
         authoredAt: 2026-10-12T15:52:53Z
+        files:
+          - compass/functions/src/compass-consent.fixture.ts
+          - compass/functions/src/compass-microsoft.test.ts
+          - compass/functions/src/compass-microsoft.ts
+          - compass/next-env.d.ts
+          - compass/src/app/ask.css
+          - compass/src/app/globals.css
+          - compass/src/components/ask-compass-workspace.test.tsx
+          - compass/src/components/ask-compass-workspace.tsx
+          - compass/src/components/ask/ask-chat-rail.tsx
+          - compass/src/components/ask/ask-composer.tsx
+          - compass/src/components/client-intelligence-workspace.tsx
+          - compass/src/components/compass-consent.fixture.tsx
+          - compass/src/components/compass-dashboard.tsx
+          - compass/src/components/compass-retention.fixture.tsx
+          - compass/src/components/compass-routes.tsx
+          - compass/src/components/settings-workspace.tsx
+          - compass/src/components/today/widget-grid.tsx
+          - compass/src/lib/today-layout.test.ts
+          - compass/src/lib/today-layout.ts
+          - packages/brand/src/styles.css
+          - packages/ui/src/settings/index.ts
+          - packages/ui/src/settings/settings-layout-state.ts
+          - packages/ui/src/settings/settings-layout.test.ts
+          - packages/ui/src/settings/settings-layout.tsx
+          - packages/ui/src/settings/settings-section.tsx
     workTimestamps: &a27
       - 2026-10-12T15:52:53Z
     workAdditions: 2684
@@ -631,9 +854,7 @@ pullRequests:
       ## Why
 
 
-      `returns a persisted scheduled brief without generating it again` stores its brief with a fixed `updatedAt` of
-      `2026-09-12T12:00:00.000Z`. Compass conversations expire after the default 30-day retention, so since 2026-10-12
-      12:00 UTC the brief is treated as expired, the handler tries to rege...
+      `returns a persisted scheduled brief without generating it again` stores its brief with a fixed `updatedAt` of `2026-09-12T12:00:00.000Z`. Compass conversations expire after the default 30-day retention, so since 2026-10-12 12:00 UTC the brief is treated as expired, the handler tries to rege...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/171
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: open
@@ -653,6 +874,8 @@ pullRequests:
         message: "test(compass): keep persisted brief fixture inside retention window"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/93602b3e71700f69de69206843f8160e053f8412
         authoredAt: 2026-10-12T15:24:11Z
+        files:
+          - compass/functions/src/compass-microsoft.test.ts
     workTimestamps: &a31
       - 2026-10-12T15:24:11Z
     workAdditions: 1
@@ -664,9 +887,7 @@ pullRequests:
       ## What changes
 
 
-      - `azure-static-web-apps.yml`: Compass is built, cached, staged (`compass.js` in the Hub Functions bundle) and
-      composed in every environment, like the other product apps. Removed the preview-only branches (the `without ...
-      compass` filter, the preview-only `deployment_apps`, the `co...
+      - `azure-static-web-apps.yml`: Compass is built, cached, staged (`compass.js` in the Hub Functions bundle) and composed in every environment, like the other product apps. Removed the preview-only branches (the `without ... compass` filter, the preview-only `deployment_apps`, the `co...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/169
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: merged
@@ -691,16 +912,27 @@ pullRequests:
         message: "feat(compass): deploy Compass in production builds"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f846c70707712b1a76aa1c73741e0dc27d3a32d8
         authoredAt: 2026-10-12T05:39:58Z
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - hub/lib/apps.test.ts
+          - scripts/app-registry.ts
+          - scripts/tooling.test.ts
       - &a104
         sha: 8ce15db4088143191043986302c01f99fb3f62b6
         message: "docs(compass): correct container setup and production settings"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8ce15db4088143191043986302c01f99fb3f62b6
         authoredAt: 2026-10-12T05:39:58Z
+        files:
+          - docs/azure-serverless-plan.md
+          - docs/deploy-asap.md
+          - infra/azure/README.md
       - &a105
         sha: ccfda4c656544e9867148b122b7b61491b5c06fd
         message: "fix(compass): return app name from health endpoint"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ccfda4c656544e9867148b122b7b61491b5c06fd
         authoredAt: 2026-10-12T05:42:36Z
+        files:
+          - compass/functions/src/index.ts
     workTimestamps:
       - 2026-10-12T05:39:58Z
       - 2026-10-12T05:39:58Z
@@ -720,9 +952,7 @@ pullRequests:
     body: >-
       ## What failed
 
-      Production deploy run 38207420318 (push to main for #164) failed in job "Deploy Hub Static Web App", step "Smoke
-      Hub deployment". The deploy itself succeeded. The probe for `/api/health` returned 404 immediately after deploy
-      while every other probe passed. `https://apps.pathtobiz.com/...
+      Production deploy run 38207420318 (push to main for #164) failed in job "Deploy Hub Static Web App", step "Smoke Hub deployment". The deploy itself succeeded. The probe for `/api/health` returned 404 immediately after deploy while every other probe passed. `https://apps.pathtobiz.com/...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/167
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: merged
@@ -742,6 +972,8 @@ pullRequests:
         message: "fix(ci): retry Hub smoke probes on HTTP errors after deploy"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/dc23fa90d9500bcc06b65239e2ff32f1499aad8a
         authoredAt: 2026-10-12T05:28:01Z
+        files:
+          - .github/workflows/azure-static-web-apps.yml
     workTimestamps:
       - 2026-10-12T05:28:01Z
     workAdditions: 1
@@ -749,9 +981,7 @@ pullRequests:
     workFiles:
       - .github/workflows/azure-static-web-apps.yml
   - title: "feat(northstar): [3/3] PDF export"
-    body: "Carries the PDF export part of #138: client-side PDF generation (`@react-pdf/renderer`,
-      `northstar/lib/chat-pdf.tsx`) with bundled Noto fonts (`northstar/public/pdf-fonts`, ~34 MB, OFL license
-      included), Export PDF for the open conversation, the latest response and `@pdf` draft cards, incomplete ans..."
+    body: "Carries the PDF export part of #138: client-side PDF generation (`@react-pdf/renderer`, `northstar/lib/chat-pdf.tsx`) with bundled Noto fonts (`northstar/public/pdf-fonts`, ~34 MB, OFL license included), Export PDF for the open conversation, the latest response and `@pdf` draft cards, incomplete ans..."
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/157
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
@@ -771,106 +1001,211 @@ pullRequests:
         message: "feat(northstar): export conversations and PDF drafts as PDF"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2a9c7281f86e73e7e374fb25a68371231912b34d
         authoredAt: 2026-10-12T17:54:30Z
+        files:
+          - bun.lock
+          - northstar/app/globals.css
+          - northstar/components/answer-markdown.test.tsx
+          - northstar/components/answer-markdown.tsx
+          - northstar/components/ask-northstar-workspace.test.tsx
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/lib/chat-pdf.test.ts
+          - northstar/lib/chat-pdf.tsx
+          - northstar/package.json
+          - northstar/public/pdf-fonts/NotoSansArabic.woff
+          - northstar/public/pdf-fonts/NotoSansCJKsc-Bold.otf
+          - northstar/public/pdf-fonts/NotoSansCJKsc-Regular.otf
+          - northstar/public/pdf-fonts/NotoSansDevanagari.woff
+          - northstar/public/pdf-fonts/NotoSansHebrew.woff
+          - northstar/public/pdf-fonts/OFL.txt
       - &a49
         sha: 51a72d741210c2efd1050005e67838b4c88753b6
         message: Merge branch 'northstar/stack-2-at-commands' into northstar/stack-3-pdf-export
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/51a72d741210c2efd1050005e67838b4c88753b6
         authoredAt: 2026-10-12T18:20:53Z
+        files: []
       - &a54
         sha: 2aa2e3612fa07a705985921fde48d04439ef3a9a
         message: Merge branch 'northstar/stack-2-at-commands' into northstar/stack-3-pdf-export
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2aa2e3612fa07a705985921fde48d04439ef3a9a
         authoredAt: 2026-10-12T18:34:59Z
+        files:
+          - hub/functions/src/northstar-conversations.ts
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
       - &a56
         sha: 1f20b023458e33c6f5612b5044b0443599b20aae
         message: "fix(northstar): harden PDF export for legacy answers, hard breaks and fonts"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/1f20b023458e33c6f5612b5044b0443599b20aae
         authoredAt: 2026-10-12T18:38:46Z
+        files:
+          - northstar/components/ask-northstar-workspace.test.tsx
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/lib/chat-pdf.test.ts
+          - northstar/lib/chat-pdf.tsx
       - &a59
         sha: b2ae8b758bdb55de526f911ede8d35d073e654a3
         message: Merge branch 'northstar/stack-2-at-commands' into northstar/stack-3-pdf-export
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b2ae8b758bdb55de526f911ede8d35d073e654a3
         authoredAt: 2026-10-12T18:43:52Z
+        files:
+          - hub/functions/src/northstar-conversations.ts
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
       - &a65
         sha: 69afa0b134e627d95ad135b50ac9f870d45e9613
         message: Merge branch 'northstar/stack-2-at-commands' into northstar/stack-3-pdf-export
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/69afa0b134e627d95ad135b50ac9f870d45e9613
         authoredAt: 2026-10-12T18:48:02Z
+        files:
+          - hub/functions/src/northstar-microsoft.test.ts
       - &a68
         sha: 5739d2da3353f2086e80d1b0405106cb5ed6b9b3
         message: Merge branch 'northstar/stack-2-at-commands' into northstar/stack-3-pdf-export
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/5739d2da3353f2086e80d1b0405106cb5ed6b9b3
         authoredAt: 2026-10-12T18:51:27Z
+        files:
+          - hub/functions/src/northstar-conversations.ts
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
       - &a73
         sha: 4a98ed677fec5d8c6cbcc4554edbe4ed7928ddc7
         message: Merge stack-2 into stack-3
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4a98ed677fec5d8c6cbcc4554edbe4ed7928ddc7
         authoredAt: 2026-10-12T19:39:07Z
+        files:
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
+          - northstar/components/answer-markdown.test.tsx
+          - northstar/components/answer-markdown.tsx
+          - northstar/components/ask-northstar-workspace.test.tsx
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/lib/draft-fences.test.ts
+          - northstar/lib/draft-fences.ts
       - &a74
         sha: 1bf65b09e18f07762db3658d48de7f0bc3ee7895
         message: "fix(northstar): export @pdf drafts as documents and avoid repeated titles"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/1bf65b09e18f07762db3658d48de7f0bc3ee7895
         authoredAt: 2026-10-12T19:40:01Z
+        files:
+          - northstar/components/answer-markdown.tsx
+          - northstar/components/ask-northstar-workspace.test.tsx
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/lib/chat-pdf.test.ts
+          - northstar/lib/chat-pdf.tsx
+          - northstar/lib/draft-fences.test.ts
+          - northstar/lib/draft-fences.ts
       - &a78
         sha: e73a1deba1a85f8102027c4adc372c2954f5f142
         message: Merge branch 'northstar/stack-2-at-commands' into northstar/stack-3-pdf-export
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e73a1deba1a85f8102027c4adc372c2954f5f142
         authoredAt: 2026-10-12T19:42:23Z
+        files:
+          - hub/functions/src/northstar-microsoft.ts
+          - northstar/components/answer-markdown.tsx
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/components/northstar-dashboard.tsx
       - &a80
         sha: 1e7a150abbd4252693bbb79fd84ae26d1ece0ae1
         message: "docs(northstar): note CJK-only font routing limitation"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/1e7a150abbd4252693bbb79fd84ae26d1ece0ae1
         authoredAt: 2026-10-12T19:43:55Z
+        files:
+          - northstar/lib/chat-pdf.tsx
       - &a84
         sha: 214e5b6eb588292081e04ea1b6880e56c16e65fd
         message: Merge branch 'northstar/stack-2-at-commands' into northstar/stack-3-pdf-export
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/214e5b6eb588292081e04ea1b6880e56c16e65fd
         authoredAt: 2026-10-12T19:47:18Z
+        files:
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
+          - northstar/components/northstar-dashboard.tsx
       - &a88
         sha: 753928280b63f96143ecdd0886da61bcdd3eba74
         message: Merge branch 'northstar/stack-2-at-commands' into northstar/stack-3-pdf-export
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/753928280b63f96143ecdd0886da61bcdd3eba74
         authoredAt: 2026-10-12T19:54:02Z
+        files:
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/lib/at-commands.test.ts
+          - northstar/lib/at-commands.ts
       - &a90
         sha: 2afbc5651245f05917a4d6ae52eec55b541dc152
         message: Merge branch 'northstar/stack-2-at-commands' into northstar/stack-3-pdf-export
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2afbc5651245f05917a4d6ae52eec55b541dc152
         authoredAt: 2026-10-12T20:11:29Z
+        files:
+          - northstar/components/answer-markdown.test.tsx
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/components/streaming-markdown.tsx
+          - northstar/lib/at-commands.test.ts
+          - northstar/lib/at-commands.ts
       - &a91
         sha: 590120448f5ddc0fbed1156ead886b773053cc13
         message: "fix(northstar): keep nested fences in edited PDF drafts and lazy-load the renderer"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/590120448f5ddc0fbed1156ead886b773053cc13
         authoredAt: 2026-10-12T20:13:52Z
+        files:
+          - northstar/components/answer-markdown.tsx
+          - northstar/components/ask-northstar-workspace.test.tsx
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/lib/chat-pdf-label.ts
+          - northstar/lib/chat-pdf.tsx
+          - northstar/lib/draft-fences.test.ts
+          - northstar/lib/draft-fences.ts
       - &a93
         sha: 719883f971d7763bfc8963434482a4e47f629a92
         message: "fix(northstar): preserve fence indentation when re-wrapping PDF draft edits"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/719883f971d7763bfc8963434482a4e47f629a92
         authoredAt: 2026-10-12T20:26:30Z
+        files:
+          - northstar/components/ask-northstar-workspace.test.tsx
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/lib/draft-fences.test.ts
+          - northstar/lib/draft-fences.ts
       - &a95
         sha: 9e23e1b2cc15307be6d2f20052b94a9f1f37f128
         message: Merge remote-tracking branch 'origin/northstar/stack-2-at-commands' into HEAD
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/9e23e1b2cc15307be6d2f20052b94a9f1f37f128
         authoredAt: 2026-10-12T20:29:12Z
+        files: []
       - &a97
         sha: b63a9ef9ac507bf9db70de9b8350e5b62a605a18
         message: Merge remote-tracking branch 'origin/northstar/stack-2-at-commands' into HEAD
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b63a9ef9ac507bf9db70de9b8350e5b62a605a18
         authoredAt: 2026-10-12T20:40:30Z
+        files:
+          - northstar/lib/email-draft.test.ts
+          - northstar/lib/email-draft.ts
       - &a98
         sha: 28063ed1905cd39c120a9e4e3d28fa061c518fe6
         message: "fix(northstar): keep block children of PDF list items out of Text"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/28063ed1905cd39c120a9e4e3d28fa061c518fe6
         authoredAt: 2026-10-12T20:43:55Z
+        files:
+          - northstar/lib/chat-pdf.test.ts
+          - northstar/lib/chat-pdf.tsx
       - &a100
         sha: 9b6739301a0b67e4e95a93b6c2e684de63da7cf7
         message: Merge remote-tracking branch 'origin/northstar/stack-2-at-commands' into HEAD
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/9b6739301a0b67e4e95a93b6c2e684de63da7cf7
         authoredAt: 2026-10-12T20:55:02Z
+        files:
+          - northstar/lib/email-draft.test.ts
+          - northstar/lib/email-draft.ts
       - &a101
         sha: e7794c4764e7854abf0afb9db733ffed1a226336
         message: "fix(northstar): join Markdown soft breaks in PDF text"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e7794c4764e7854abf0afb9db733ffed1a226336
         authoredAt: 2026-10-12T20:56:44Z
+        files:
+          - northstar/lib/chat-pdf.test.ts
+          - northstar/lib/chat-pdf.tsx
     workTimestamps: &a35
       - 2026-10-12T17:54:30Z
       - 2026-10-12T18:20:53Z
@@ -928,9 +1263,7 @@ pullRequests:
       ## Why
 
 
-      GitHub Actions minutes were going to pull request work that did not need it: three Verify jobs per push (each
-      billed at least one minute), Hub preview change detection on PRs without `deploy-preview`, full 8-app rebuilds for
-      documentation-only changes, and verification of draft PRs.
+      GitHub Actions minutes were going to pull request work that did not need it: three Verify jobs per push (each billed at least one minute), Hub preview change detection on PRs without `deploy-preview`, full 8-app rebuilds for documentation-only changes, and verification of draft PRs.
 
 
       ## What...
@@ -954,46 +1287,76 @@ pullRequests:
         message: "ci: reduce GitHub Actions minutes"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3bed3de2971cb53094cfa61428a3ff0285a6bc01
         authoredAt: 2026-10-12T13:06:06Z
+        files:
+          - .github/actions/setup-bun/action.yml
+          - .github/workflows/azure-static-web-apps.yml
+          - .github/workflows/issue-triage.yml
+          - .github/workflows/labeler.yml
+          - .github/workflows/verify.yml
+          - scripts/affected-apps.ts
+          - scripts/tooling.test.ts
       - &a107
         sha: 3dbee7df31ff898e290bb5a127180b6092308135
         message: "fix(ci): keep fork PR labels and infra checks on workflow changes"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3dbee7df31ff898e290bb5a127180b6092308135
         authoredAt: 2026-10-12T14:31:04Z
+        files:
+          - .github/workflows/labeler.yml
+          - .github/workflows/verify.yml
       - &a108
         sha: 6b81172f8eeb2f1a83619d295f498d46510bc6d1
         message: "fix(ci): label Dependabot PRs through the trusted labeler"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6b81172f8eeb2f1a83619d295f498d46510bc6d1
         authoredAt: 2026-10-12T14:35:24Z
+        files:
+          - .github/workflows/labeler.yml
+          - .github/workflows/verify.yml
       - &a109
         sha: 6148463366a26d4bcd441a8f37f4c1106873f1dd
         message: "fix(ci): avoid cancelling previews on unrelated labels and re-verify on draft conversion"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6148463366a26d4bcd441a8f37f4c1106873f1dd
         authoredAt: 2026-10-12T14:45:23Z
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - .github/workflows/verify.yml
       - &a110
         sha: 3f6bf3a366eeeebfd97ca7a9f673052cbb116e45
         message: "fix(ci): keep labeling for draft PRs and ignore unrelated label removals"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3f6bf3a366eeeebfd97ca7a9f673052cbb116e45
         authoredAt: 2026-10-12T14:49:13Z
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - .github/workflows/verify.yml
       - &a111
         sha: 22d00361e07a46a3b7fcc374a996451881fa3768
         message: "fix(ci): run labeling in a separate job so verify has no write token"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/22d00361e07a46a3b7fcc374a996451881fa3768
         authoredAt: 2026-10-12T14:53:41Z
+        files:
+          - .github/workflows/verify.yml
       - &a112
         sha: b7cbd868a316780fd2f748287bd6fa82f203efdf
         message: "fix(ci): cancel hub preview runs only when they will deploy or clean up"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b7cbd868a316780fd2f748287bd6fa82f203efdf
         authoredAt: 2026-10-12T14:56:46Z
+        files:
+          - .github/workflows/azure-static-web-apps.yml
       - &a113
         sha: 5be422ec2819da3fd9ecd8a0a56e7ccfc8130ce7
         message: "fix(ci): skip draft verification at the job level"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5be422ec2819da3fd9ecd8a0a56e7ccfc8130ce7
         authoredAt: 2026-10-12T15:00:42Z
+        files:
+          - .github/workflows/verify.yml
       - &a114
         sha: 0c48dca6ae0687cc3c029fa99a7c024802d1b7e7
         message: "fix(ci): isolate no-op preview runs and keep the standalone labeler"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0c48dca6ae0687cc3c029fa99a7c024802d1b7e7
         authoredAt: 2026-10-12T15:09:34Z
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - .github/workflows/labeler.yml
+          - .github/workflows/verify.yml
     workTimestamps: &a39
       - 2026-10-12T13:06:06Z
       - 2026-10-12T14:31:04Z
@@ -1049,6 +1412,158 @@ pullRequests:
     workAdditions: 0
     workDeletions: 0
     workFiles: []
+    allocationFiles:
+      - .github/ISSUE_TEMPLATE/bug.yml
+      - .github/ISSUE_TEMPLATE/feature.yml
+      - .github/labeler.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/verify.yml
+      - .gitignore
+      - README.md
+      - bun.lock
+      - compass/AGENTS.md
+      - compass/README.md
+      - compass/functions/.funcignore
+      - compass/functions/host.json
+      - compass/functions/local.settings.json.example
+      - compass/functions/package.json
+      - compass/functions/src/compass-brief-journeys.test.ts
+      - compass/functions/src/compass-chat-history.test.ts
+      - compass/functions/src/compass-chat-history.ts
+      - compass/functions/src/compass-consent.fixture.ts
+      - compass/functions/src/compass-consent.test.ts
+      - compass/functions/src/compass-conversations.test.ts
+      - compass/functions/src/compass-conversations.ts
+      - compass/functions/src/compass-copilot.test.ts
+      - compass/functions/src/compass-copilot.ts
+      - compass/functions/src/compass-cosmos-recovery.test.ts
+      - compass/functions/src/compass-daily-flow.test.ts
+      - compass/functions/src/compass-local-store.test.ts
+      - compass/functions/src/compass-local-store.ts
+      - compass/functions/src/compass-mapping-upgrade.test.ts
+      - compass/functions/src/compass-microsoft-deadline.fixture.ts
+      - compass/functions/src/compass-microsoft-deadline.test.ts
+      - compass/functions/src/compass-microsoft.test.ts
+      - compass/functions/src/compass-microsoft.ts
+      - compass/functions/src/compass-scheduled-brief.test.ts
+      - compass/functions/src/compass-scheduled-brief.ts
+      - compass/functions/src/index.ts
+      - compass/functions/tsconfig.json
+      - compass/next-env.d.ts
+      - compass/next.config.ts
+      - compass/package.json
+      - compass/postcss.config.mjs
+      - compass/scripts/build-static.ts
+      - compass/src/app/api/compass/health/route.ts
+      - compass/src/app/ask.css
+      - compass/src/app/ask/page.tsx
+      - compass/src/app/clients/page.tsx
+      - compass/src/app/globals.css
+      - compass/src/app/icon.svg
+      - compass/src/app/layout.tsx
+      - compass/src/app/page.tsx
+      - compass/src/app/settings/page.tsx
+      - compass/src/components/answer-markdown.test.tsx
+      - compass/src/components/answer-markdown.tsx
+      - compass/src/components/answer-star.test.ts
+      - compass/src/components/answer-star.tsx
+      - compass/src/components/ask-compass-workspace.dom.test.tsx
+      - compass/src/components/ask-compass-workspace.test.tsx
+      - compass/src/components/ask-compass-workspace.tsx
+      - compass/src/components/client-intelligence-workspace.tsx
+      - compass/src/components/command-palette.tsx
+      - compass/src/components/compass-consent.dom.test.ts
+      - compass/src/components/compass-consent.fixture.tsx
+      - compass/src/components/compass-dashboard-lifecycle.fixture.ts
+      - compass/src/components/compass-dashboard-lifecycle.test.ts
+      - compass/src/components/compass-dashboard.tsx
+      - compass/src/components/compass-fixture-app.tsx
+      - compass/src/components/compass-provider.tsx
+      - compass/src/components/compass-recovery.dom.test.ts
+      - compass/src/components/compass-recovery.fixture.tsx
+      - compass/src/components/compass-retention.dom.test.ts
+      - compass/src/components/compass-retention.fixture.tsx
+      - compass/src/components/compass-routes.tsx
+      - compass/src/components/compass-shell.tsx
+      - compass/src/components/compass-stability.dom.test.ts
+      - compass/src/components/compass-stability.fixture.tsx
+      - compass/src/components/microsoft-app-icon.test.ts
+      - compass/src/components/microsoft-app-icon.tsx
+      - compass/src/components/microsoft-todo-panel.tsx
+      - compass/src/components/settings-workspace.tsx
+      - compass/src/components/streaming-markdown.tsx
+      - compass/src/components/today/calendar-draft-dialog.tsx
+      - compass/src/components/today/calendar-layout.test.ts
+      - compass/src/components/today/calendar.tsx
+      - compass/src/components/today/dates.ts
+      - compass/src/components/today/mail-list.tsx
+      - compass/src/components/today/previews.tsx
+      - compass/src/components/today/row-menu.tsx
+      - compass/src/components/ui/feedback.tsx
+      - compass/src/components/ui/layout.tsx
+      - compass/src/components/ui/search-field.tsx
+      - compass/src/components/ui/skeleton.tsx
+      - compass/src/components/ui/toast.tsx
+      - compass/src/lib/ask-stream.test.ts
+      - compass/src/lib/ask-stream.ts
+      - compass/src/lib/background-briefs.test.ts
+      - compass/src/lib/background-briefs.ts
+      - compass/src/lib/chat-history.test.ts
+      - compass/src/lib/chat-history.ts
+      - compass/src/lib/compass-api.test.ts
+      - compass/src/lib/compass-api.ts
+      - compass/src/lib/external-links.test.ts
+      - compass/src/lib/external-links.ts
+      - compass/src/lib/graph-permissions.test.ts
+      - compass/src/lib/graph-permissions.ts
+      - compass/src/lib/https-url.test.ts
+      - compass/src/lib/https-url.ts
+      - compass/src/lib/mail-priority.ts
+      - compass/src/lib/microsoft-data.ts
+      - compass/src/lib/microsoft-reauth.test.ts
+      - compass/src/lib/microsoft-reauth.ts
+      - compass/src/lib/microsoft-search.test.ts
+      - compass/src/lib/microsoft-search.ts
+      - compass/src/lib/navigation.ts
+      - compass/src/lib/outlook-calendar.test.ts
+      - compass/src/lib/outlook-calendar.ts
+      - compass/src/lib/pending-markdown-links.ts
+      - compass/src/lib/request-deadline.test.ts
+      - compass/src/lib/request-deadline.ts
+      - compass/src/lib/resolved-mail.test.ts
+      - compass/src/lib/resolved-mail.ts
+      - compass/src/lib/settings-preferences.test.ts
+      - compass/src/lib/settings-preferences.ts
+      - compass/src/lib/swa-session.ts
+      - compass/src/lib/todo-tasks.test.ts
+      - compass/src/lib/todo-tasks.ts
+      - compass/src/lib/typing-reveal.test.ts
+      - compass/src/lib/typing-reveal.ts
+      - compass/src/public/integrations/SOURCES.md
+      - compass/src/public/integrations/claude.svg
+      - compass/src/public/integrations/microsoft-365.svg
+      - compass/src/public/integrations/microsoft-copilot.svg
+      - compass/staticwebapp.config.json
+      - compass/tsconfig.json
+      - docs/authorization-roles.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - hub/components/HubLauncher.tsx
+      - hub/functions/dist-entry.js
+      - hub/functions/src/roles.test.ts
+      - hub/lib/apps.test.ts
+      - hub/lib/apps.ts
+      - hub/staticwebapp.config.json
+      - infra/azure/README.md
+      - infra/azure/compass/README.md
+      - infra/azure/compass/serverless.bicep
+      - infra/azure/static-web-apps.bicep
+      - package.json
+      - scripts/app-registry.ts
+      - scripts/github/configure-repository.ts
+      - scripts/github/triage-issue.test.ts
+      - scripts/github/triage-issue.ts
+      - scripts/tooling.test.ts
   - title: "feat(brand): make app actions and progress monotone"
     body: >-
       Stacked on #156; merge after it.
@@ -1057,8 +1572,7 @@ pullRequests:
       ## Why
 
 
-      The app theme used Myriad reds for actions and focus treatments, which conflicts with the brand guidance that
-      reserves red for accents.
+      The app theme used Myriad reds for actions and focus treatments, which conflicts with the brand guidance that reserves red for accents.
 
 
       ## What changed
@@ -1093,10 +1607,41 @@ pullRequests:
     workAdditions: 0
     workDeletions: 0
     workFiles: []
+    allocationFiles:
+      - .agents/skills/graphical-audit/SKILL.md
+      - .agents/skills/graphical-ui/SKILL.md
+      - .agents/skills/myriad-branding/SKILL.md
+      - .agents/skills/myriad-branding/references/brand-guidelines.md
+      - .agents/skills/myriad-branding/references/digital-product-brand.md
+      - GUI.md
+      - excelerate/src/components/excelerate-client.tsx
+      - hub/app/403/page.tsx
+      - hub/app/error.tsx
+      - hub/app/globals.css
+      - hub/app/not-found.tsx
+      - hub/app/preview/page.tsx
+      - hub/components/LandingPage.tsx
+      - hub/staticwebapp.config.json
+      - onboarding/apps/dashboard/components/client-workspace-empty-state.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+      - onboarding/apps/dashboard/components/vendor-workstreams-empty-state.tsx
+      - onboarding/apps/dashboard/components/vm/vm-shared.tsx
+      - packages/brand/src/graphical-theme.css
+      - packages/brand/src/styles.css
+      - proforma/src/app/globals.css
+      - pto-tracker/src/app/team/TeamClient.tsx
+      - pto-tracker/src/components/ApprovalPanel.tsx
+      - pto-tracker/src/components/LeaveCalendar.tsx
+      - pto-tracker/src/components/RequestForm.tsx
+      - transition/next-env.d.ts
+      - transition/src/components/status-select.tsx
+      - transition/src/components/transition-shell.tsx
+      - valuation/src/app/cases/detail/case-detail-client.tsx
+      - valuation/src/app/cases/new/page.tsx
+      - valuation/src/app/imports/page.tsx
+      - valuation/src/app/page.tsx
   - title: "feat(ui): shared settings page across apps"
-    body: Adds a shared Settings module to `@myriad/ui` and gives every app a Settings page built from it. Settings now
-      carries everything from the account menu's quick settings (color theme, navigation layout), plus each app's own
-      real preferences. The quick settings stay in the account menu; both surfaces s...
+    body: Adds a shared Settings module to `@myriad/ui` and gives every app a Settings page built from it. Settings now carries everything from the account menu's quick settings (color theme, navigation layout), plus each app's own real preferences. The quick settings stay in the account menu; both surfaces s...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/162
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: merged
@@ -1123,6 +1668,43 @@ pullRequests:
     workAdditions: 0
     workDeletions: 0
     workFiles: []
+    allocationFiles:
+      - excelerate/src/app/settings/page.tsx
+      - hub/app/hub/settings/page.tsx
+      - hub/components/HubLauncher.tsx
+      - hub/components/HubSettingsPage.tsx
+      - hub/lib/navigation.test.ts
+      - hub/lib/navigation.ts
+      - onboarding/apps/dashboard/app/settings/page.test.tsx
+      - onboarding/apps/dashboard/app/settings/page.tsx
+      - onboarding/apps/dashboard/components/workstream-archive-settings.tsx
+      - packages/brand/src/styles.css
+      - packages/ui/src/appearance-quick-settings.tsx
+      - packages/ui/src/index.ts
+      - packages/ui/src/settings/appearance-settings.tsx
+      - packages/ui/src/settings/index.ts
+      - packages/ui/src/settings/preference-options.test.ts
+      - packages/ui/src/settings/preference-options.ts
+      - packages/ui/src/settings/settings-section.tsx
+      - packages/ui/src/theme-toggle.tsx
+      - proforma/src/app/settings/page.tsx
+      - proforma/src/components/__tests__/proforma-settings-page.test.tsx
+      - proforma/src/components/__tests__/settings-previews.test.tsx
+      - proforma/src/components/proforma-quick-settings.tsx
+      - proforma/src/components/proforma-settings-page.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-user-menu.tsx
+      - proforma/src/components/settings-previews.tsx
+      - proforma/src/components/use-proforma-edit-view.ts
+      - pto-tracker/src/app/settings/CalendarColorSettings.tsx
+      - pto-tracker/src/app/settings/page.tsx
+      - pto-tracker/src/lib/navigation.test.ts
+      - pto-tracker/src/lib/navigation.ts
+      - transition/AGENTS.md
+      - transition/src/components/page-skeletons.tsx
+      - transition/src/components/settings/settings-page.tsx
+      - valuation/src/app/settings/page.tsx
+      - valuation/src/lib/navigation.test.ts
   - title: "feat(transition): add registration filter and sorting"
     body: >-
       Stacked on #161; merge after it.
@@ -1137,8 +1719,7 @@ pullRequests:
       ## What changed
 
 
-      Added a Registration column and filter to the account queue, and made registration a sortable field. Registration
-      choices include values present in the...
+      Added a Registration column and filter to the account queue, and made registration a sortable field. Registration choices include values present in the...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: merged
@@ -1157,6 +1738,21 @@ pullRequests:
     workAdditions: 0
     workDeletions: 0
     workFiles: []
+    allocationFiles:
+      - transition/src/components/accounts/accounts-page.tsx
+      - transition/src/components/page-skeletons.tsx
+      - transition/src/lib/account-search.test.ts
+      - transition/src/lib/accounts-list.test.ts
+      - transition/src/lib/accounts-list.ts
+      - transition/src/lib/api/client.ts
+      - transition/src/lib/choices.ts
+      - transition/src/lib/handlers.ts
+      - transition/src/lib/model.ts
+      - transition/src/lib/registration-option.test.ts
+      - transition/src/lib/remembered-filters.test.ts
+      - transition/src/lib/remembered-filters.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
   - title: "feat(transition): add guided onboarding tour"
     body: >-
       Stacked on #160; merge after it.
@@ -1171,8 +1767,7 @@ pullRequests:
       ## What changed
 
 
-      Added a guided tour with role-specific steps, a welcome and completion flow, and a spotlight that follows page
-      targets. Users can launch it ...
+      Added a guided tour with role-specific steps, a welcome and completion flow, and a spotlight that follows page targets. Users can launch it ...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: merged
@@ -1191,10 +1786,38 @@ pullRequests:
     workAdditions: 0
     workDeletions: 0
     workFiles: []
+    allocationFiles:
+      - transition/src/app/globals.css
+      - transition/src/app/settings/page.tsx
+      - transition/src/components/accounts/account-detail.tsx
+      - transition/src/components/accounts/accounts-page.tsx
+      - transition/src/components/command-palette-model.ts
+      - transition/src/components/command-palette.test.ts
+      - transition/src/components/command-palette.tsx
+      - transition/src/components/dashboard/dashboard.tsx
+      - transition/src/components/data/data-page.tsx
+      - transition/src/components/feedback.tsx
+      - transition/src/components/households/household-overview.tsx
+      - transition/src/components/households/households-page.tsx
+      - transition/src/components/page-skeletons.tsx
+      - transition/src/components/settings/settings-page.tsx
+      - transition/src/components/tour/tour-layer.tsx
+      - transition/src/components/tour/tour-provider.tsx
+      - transition/src/components/transition-shell.tsx
+      - transition/src/components/ui/fields.tsx
+      - transition/src/components/ui/layout.tsx
+      - transition/src/lib/api/client.ts
+      - transition/src/lib/navigation.test.ts
+      - transition/src/lib/navigation.ts
+      - transition/src/lib/remembered-filters.test.ts
+      - transition/src/lib/remembered-filters.ts
+      - transition/src/lib/tour-demo.test.ts
+      - transition/src/lib/tour-demo.ts
+      - transition/src/lib/tour.test.ts
+      - transition/src/lib/tour.ts
   - title: "chore(repo): remove stale content and Twenty submodule"
     body: >-
-      The PTO documentation still described an unimplemented scaffold and referenced missing import templates. This PR
-      updates that guidance and removes the unused twenty checkout and submodule configuration.
+      The PTO documentation still described an unimplemented scaffold and referenced missing import templates. This PR updates that guidance and removes the unused twenty checkout and submodule configuration.
 
 
       Documentation and absent retired submodule paths do not require deployment. Changes to the impac...
@@ -1220,6 +1843,17 @@ pullRequests:
     workAdditions: 0
     workDeletions: 0
     workFiles: []
+    allocationFiles:
+      - .github/workflows/verify.yml
+      - .gitmodules
+      - pto-tracker/docs/README.md
+      - pto-tracker/docs/architecture.md
+      - pto-tracker/docs/implementation-playbook.md
+      - pto-tracker/research/assumptions.md
+      - pto-tracker/templates/README.md
+      - scripts/affected-apps.ts
+      - scripts/tooling.test.ts
+      - twenty
 prsInProgress:
   - title: "chore(deps): patch/minor workspace bumps (2026-10-15 train)"
     body: |-
@@ -1253,9 +1887,7 @@ prsInProgress:
     workDeletions: 137
     workFiles: *a4
   - title: "feat(northstar): [1/3] advisor context and brief preferences"
-    body: "Carries the advisor-context and Settings part of #138: Copilot receives a Northstar identity plus preferred name,
-      urgent mail, open to-dos and upcoming meetings; Settings stores Northstar and morning/end-of-day/weekly brief
-      instructions on this device; scheduled briefs use the custom prompts, reset ..."
+    body: "Carries the advisor-context and Settings part of #138: Copilot receives a Northstar identity plus preferred name, urgent mail, open to-dos and upcoming meetings; Settings stores Northstar and morning/end-of-day/weekly brief instructions on this device; scheduled briefs use the custom prompts, reset ..."
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/155
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
@@ -1278,8 +1910,7 @@ prsInProgress:
       ## Why
 
 
-      Accounts imported from AIRE can store numeric registration codes, which are unclear in the UI and make
-      registration sorting and filtering inconsistent with registration names.
+      Accounts imported from AIRE can store numeric registration codes, which are unclear in the UI and make registration sorting and filtering inconsistent with registration names.
 
 
       ## What changed
@@ -1330,20 +1961,100 @@ prsInProgress:
     workAdditions: 382
     workDeletions: 10
     workFiles: *a16
+    allocationFiles:
+      - README.md
+      - compass/src/app/layout.tsx
+      - compass/src/app/manifest.ts
+      - compass/src/components/settings-workspace.tsx
+      - docs/install-apps.md
+      - excelerate/src/app/layout.tsx
+      - excelerate/src/app/manifest.ts
+      - excelerate/src/app/settings/page.tsx
+      - hub/app/globals.css
+      - hub/app/layout.tsx
+      - hub/app/manifest.ts
+      - hub/components/HubInstallLibrary.tsx
+      - hub/components/HubLauncher.tsx
+      - hub/components/HubSettingsPage.tsx
+      - hub/lib/apps.test.ts
+      - hub/public/icons/apple-touch-icon.png
+      - hub/public/icons/apps/compass/apple-touch-icon.png
+      - hub/public/icons/apps/compass/icon-192.png
+      - hub/public/icons/apps/compass/icon-512.png
+      - hub/public/icons/apps/compass/icon-maskable-512.png
+      - hub/public/icons/apps/excelerate/apple-touch-icon.png
+      - hub/public/icons/apps/excelerate/icon-192.png
+      - hub/public/icons/apps/excelerate/icon-512.png
+      - hub/public/icons/apps/excelerate/icon-maskable-512.png
+      - hub/public/icons/apps/hub/apple-touch-icon.png
+      - hub/public/icons/apps/hub/icon-192.png
+      - hub/public/icons/apps/hub/icon-512.png
+      - hub/public/icons/apps/hub/icon-maskable-512.png
+      - hub/public/icons/apps/onboarding/apple-touch-icon.png
+      - hub/public/icons/apps/onboarding/icon-192.png
+      - hub/public/icons/apps/onboarding/icon-512.png
+      - hub/public/icons/apps/onboarding/icon-maskable-512.png
+      - hub/public/icons/apps/proforma/apple-touch-icon.png
+      - hub/public/icons/apps/proforma/icon-192.png
+      - hub/public/icons/apps/proforma/icon-512.png
+      - hub/public/icons/apps/proforma/icon-maskable-512.png
+      - hub/public/icons/apps/pto/apple-touch-icon.png
+      - hub/public/icons/apps/pto/icon-192.png
+      - hub/public/icons/apps/pto/icon-512.png
+      - hub/public/icons/apps/pto/icon-maskable-512.png
+      - hub/public/icons/apps/transition/apple-touch-icon.png
+      - hub/public/icons/apps/transition/icon-192.png
+      - hub/public/icons/apps/transition/icon-512.png
+      - hub/public/icons/apps/transition/icon-maskable-512.png
+      - hub/public/icons/apps/valuation/apple-touch-icon.png
+      - hub/public/icons/apps/valuation/icon-192.png
+      - hub/public/icons/apps/valuation/icon-512.png
+      - hub/public/icons/apps/valuation/icon-maskable-512.png
+      - hub/public/icons/icon-192.png
+      - hub/public/icons/icon-512.png
+      - hub/public/icons/icon-maskable-512.png
+      - hub/staticwebapp.config.json
+      - onboarding/apps/dashboard/app/layout.tsx
+      - onboarding/apps/dashboard/app/manifest.ts
+      - onboarding/apps/dashboard/app/settings/page.test.tsx
+      - onboarding/apps/dashboard/app/settings/page.tsx
+      - package.json
+      - packages/ui/src/app-manifest.test.ts
+      - packages/ui/src/app-manifest.ts
+      - packages/ui/src/index.ts
+      - packages/ui/src/settings/index.ts
+      - packages/ui/src/settings/install-app-settings.test.ts
+      - packages/ui/src/settings/install-app-settings.tsx
+      - packages/ui/src/shell-bootstrap.test.ts
+      - packages/ui/src/shell-bootstrap.ts
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/manifest.ts
+      - proforma/src/components/proforma-settings-page.tsx
+      - pto-tracker/src/app/layout.tsx
+      - pto-tracker/src/app/manifest.ts
+      - pto-tracker/src/app/settings/page.tsx
+      - scripts/build-static-export.ts
+      - scripts/build-unified-swa.ts
+      - scripts/generate-app-icons.ts
+      - scripts/tooling.test.ts
+      - transition/src/app/layout.tsx
+      - transition/src/app/manifest.ts
+      - transition/src/components/settings/settings-page.tsx
+      - valuation/src/app/layout.tsx
+      - valuation/src/app/manifest.ts
+      - valuation/src/app/settings/page.tsx
   - title: "fix(compass): complete Microsoft OAuth in the SWA session"
     body: >-
       ## Why
 
 
-      Microsoft OAuth callbacks can arrive without the initiating Static Web Apps session, preventing Compass from
-      safely completing the connection.
+      Microsoft OAuth callbacks can arrive without the initiating Static Web Apps session, preventing Compass from safely completing the connection.
 
 
       ## What changed
 
 
-      The callback now serves a static handoff page that posts the authorization result to a same-origin endpoint. The
-      endpoint requires ...
+      The callback now serves a static handoff page that posts the authorization result to a same-origin endpoint. The endpoint requires ...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/174
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: open
@@ -1362,9 +2073,7 @@ prsInProgress:
     workDeletions: 124
     workFiles: *a20
   - title: "feat(northstar): [2/3] @ commands and deliverable cards"
-    body: "Carries the @ command part of #138: `@email`, `@calendar`, `@todo`, `@meeting` and `@pdf` expand into task
-      prompts; composer picker and chips; fenced deliverables render as cards (email card with Outlook link and
-      recipient suggestions; PDF draft preview with edit/copy); edited drafts are saved per m..."
+    body: "Carries the @ command part of #138: `@email`, `@calendar`, `@todo`, `@meeting` and `@pdf` expand into task prompts; composer picker and chips; fenced deliverables render as cards (email card with Outlook link and recipient suggestions; PDF draft preview with edit/copy); edited drafts are saved per m..."
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/156
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
@@ -1387,8 +2096,7 @@ prsInProgress:
       ## Why
 
 
-      Compass needed a more flexible dashboard and a clearer Ask workspace for organizing widgets, chats, and sources. A
-      fresh Microsoft connection also needed to enable Copilot with one authorization when the granted scopes allow it.
+      Compass needed a more flexible dashboard and a clearer Ask workspace for organizing widgets, chats, and sources. A fresh Microsoft connection also needed to enable Copilot with one authorization when the granted scopes allow it.
 
 
       ## What changed
@@ -1417,9 +2125,7 @@ prsInProgress:
       ## Why
 
 
-      `returns a persisted scheduled brief without generating it again` stores its brief with a fixed `updatedAt` of
-      `2026-09-12T12:00:00.000Z`. Compass conversations expire after the default 30-day retention, so since 2026-10-12
-      12:00 UTC the brief is treated as expired, the handler tries to rege...
+      `returns a persisted scheduled brief without generating it again` stores its brief with a fixed `updatedAt` of `2026-09-12T12:00:00.000Z`. Compass conversations expire after the default 30-day retention, so since 2026-10-12 12:00 UTC the brief is treated as expired, the handler tries to rege...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/171
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: open
@@ -1438,9 +2144,7 @@ prsInProgress:
     workDeletions: 1
     workFiles: *a32
   - title: "feat(northstar): [3/3] PDF export"
-    body: "Carries the PDF export part of #138: client-side PDF generation (`@react-pdf/renderer`,
-      `northstar/lib/chat-pdf.tsx`) with bundled Noto fonts (`northstar/public/pdf-fonts`, ~34 MB, OFL license
-      included), Export PDF for the open conversation, the latest response and `@pdf` draft cards, incomplete ans..."
+    body: "Carries the PDF export part of #138: client-side PDF generation (`@react-pdf/renderer`, `northstar/lib/chat-pdf.tsx`) with bundled Noto fonts (`northstar/public/pdf-fonts`, ~34 MB, OFL license included), Export PDF for the open conversation, the latest response and `@pdf` draft cards, incomplete ans..."
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/157
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
@@ -1463,9 +2167,7 @@ prsInProgress:
       ## Why
 
 
-      GitHub Actions minutes were going to pull request work that did not need it: three Verify jobs per push (each
-      billed at least one minute), Hub preview change detection on PRs without `deploy-preview`, full 8-app rebuilds for
-      documentation-only changes, and verification of draft PRs.
+      GitHub Actions minutes were going to pull request work that did not need it: three Verify jobs per push (each billed at least one minute), Hub preview change detection on PRs without `deploy-preview`, full 8-app rebuilds for documentation-only changes, and verification of draft PRs.
 
 
       ## What...
@@ -1486,12 +2188,20 @@ prsInProgress:
     workAdditions: 108
     workDeletions: 92
     workFiles: *a40
+    allocationFiles:
+      - .github/actions/setup-bun/action.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/issue-triage.yml
+      - .github/workflows/verify.yml
+      - compass/functions/src/compass-microsoft.test.ts
+      - compass/src/lib/chat-history.test.ts
+      - scripts/affected-apps.ts
+      - scripts/tooling.test.ts
   - title: "feat(auth): add group-managed SWA role access"
     body: >-
       - Add an Azure AD role source that validates tenant claims and returns supported app roles.
 
-      - Configure the deployment workflow to inject group-managed authentication settings when `SWA_AUTH_TENANT_ID` is
-      set.
+      - Configure the deployment workflow to inject group-managed authentication settings when `SWA_AUTH_TENANT_ID` is set.
 
       - Document Entra group setup, activation, verification, and rollback.
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/152
@@ -1513,21 +2223,34 @@ prsInProgress:
         message: "fix(auth): resolve tenant var at step scope and document Entra licensing"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7de772315b7793c228c9252ee8322b87ddc53c1f
         authoredAt: 2026-10-12T17:49:11Z
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - docs/swa-group-managed-access.md
+          - hub/functions/src/swa-auth-activation.test.ts
       - &a61
         sha: be752796a7bdbf732ddab4a8519915e5bd0bbbf1
         message: Merge branch 'main' into feat/group-managed-swa-access
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/be752796a7bdbf732ddab4a8519915e5bd0bbbf1
         authoredAt: 2026-10-12T18:44:39Z
+        files:
+          - hub/functions/src/northstar-microsoft.test.ts
       - &a69
         sha: 71ffec0362e4ef8a582af56c76625f9e1ff6836d
         message: "fix(auth): return empty roles with 200 and remove tenant name from runbook"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/71ffec0362e4ef8a582af56c76625f9e1ff6836d
         authoredAt: 2026-10-12T19:34:15Z
+        files:
+          - docs/swa-group-managed-access.md
+          - hub/functions/src/roles.test.ts
+          - hub/functions/src/roles.ts
       - &a81
         sha: 8e153e2bafe0b3ae7434b5c5b3aa8c39a75c1da3
         message: "docs(hub): explain intentional SWA roles deny and workflow env scoping"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8e153e2bafe0b3ae7434b5c5b3aa8c39a75c1da3
         authoredAt: 2026-10-12T19:44:45Z
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - hub/functions/src/roles.ts
     workTimestamps:
       - 2026-10-12T17:49:11Z
       - 2026-10-12T18:44:39Z
@@ -1547,8 +2270,7 @@ prsInProgress:
       ### Motivation
 
 
-      - Close an authorization gap that allowed any `pricing_user` officer to permanently delete a recruit (and
-      cascade-delete its model and reports) because the same officer role can also archive recruits.
+      - Close an authorization gap that allowed any `pricing_user` officer to permanently delete a recruit (and cascade-delete its model and reports) because the same officer role can also archive recruits.
 
 
       ### Description
@@ -1575,21 +2297,270 @@ prsInProgress:
         message: "fix(pricing): hide recruit delete from non-admins and guard local dev API"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2f7619cd13b5641c0887af0267a327e6b1ce0607
         authoredAt: 2026-10-12T18:32:39Z
+        files:
+          - pricing/src/components/__tests__/recruit-archive-section.test.tsx
+          - pricing/src/components/pricing-static-pages.tsx
+          - pricing/src/components/recruit-archive-section.tsx
+          - pricing/src/lib/__tests__/pricing-recruit-delete-route.test.ts
+          - scripts/dev-pricing-api.ts
       - &a51
         sha: 603dcfcf2dff11f9173ed9caa62eff1f067f70f2
         message: "test(pricing): isolate recruit delete route test from Cosmos"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/603dcfcf2dff11f9173ed9caa62eff1f067f70f2
         authoredAt: 2026-10-12T18:33:58Z
+        files:
+          - pricing/src/lib/__tests__/pricing-recruit-delete-route.test.ts
       - &a60
         sha: cd3073bfb9c1a53577200281d5698f789a7138b4
         message: Merge branch 'main' into clees/propose-fix-for-recruit-deletion-vulnerability
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cd3073bfb9c1a53577200281d5698f789a7138b4
         authoredAt: 2026-10-12T18:44:36Z
+        files:
+          - .agents/skills/ohcpwm-branding/SKILL.md
+          - .agents/skills/pr-delivery/SKILL.md
+          - .agents/skills/review-ci-triage/SKILL.md
+          - .agents/skills/scoped-issue/SKILL.md
+          - .codex/agents/default.toml
+          - .codex/agents/docs.toml
+          - .codex/agents/explorer.toml
+          - .codex/agents/hub.toml
+          - .codex/agents/ofac.toml
+          - .codex/agents/packages.toml
+          - .codex/agents/pricing.toml
+          - .codex/agents/scripts.toml
+          - .codex/agents/worker.toml
+          - .codex/config.toml
+          - .codex/environments/environment.toml
+          - .github/workflows/azure-static-web-apps.yml
+          - .gitignore
+          - AGENTS.md
+          - README.md
+          - bun.lock
+          - docs/.codex
+          - docs/advisor-pricing-architecture.md
+          - docs/azure-serverless-plan.md
+          - docs/deploy-asap.md
+          - docs/issue-2-cosmos-production-readiness.md
+          - docs/issue-37-pricing-monitoring-readiness.md
+          - docs/issue-39-monday-sync-discovery.md
+          - hub/.codex
+          - hub/app/globals.css
+          - hub/app/layout.tsx
+          - hub/app/login/page.tsx
+          - hub/components/hub-launcher.fixture.tsx
+          - hub/components/hub-launcher.test.ts
+          - hub/components/hub-launcher.tsx
+          - hub/functions/local.settings.json.example
+          - hub/functions/package.json
+          - hub/functions/src/index.ts
+          - hub/functions/src/northstar-brief-journeys.test.ts
+          - hub/functions/src/northstar-chat-history.test.ts
+          - hub/functions/src/northstar-chat-history.ts
+          - hub/functions/src/northstar-consent.fixture.ts
+          - hub/functions/src/northstar-consent.test.ts
+          - hub/functions/src/northstar-conversations.test.ts
+          - hub/functions/src/northstar-conversations.ts
+          - hub/functions/src/northstar-copilot.test.ts
+          - hub/functions/src/northstar-copilot.ts
+          - hub/functions/src/northstar-cosmos-recovery.test.ts
+          - hub/functions/src/northstar-daily-flow.test.ts
+          - hub/functions/src/northstar-local-store.test.ts
+          - hub/functions/src/northstar-local-store.ts
+          - hub/functions/src/northstar-mapping-upgrade.test.ts
+          - hub/functions/src/northstar-microsoft-deadline.fixture.ts
+          - hub/functions/src/northstar-microsoft-deadline.test.ts
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
+          - hub/functions/src/northstar-scheduled-brief.test.ts
+          - hub/functions/src/northstar-scheduled-brief.ts
+          - hub/lib/apps.ts
+          - hub/package.json
+          - hub/staticwebapp.config.json
+          - northstar/CONSENT-FLOW.md
+          - northstar/LOCAL-BENCHMARK.md
+          - northstar/app/globals.css
+          - northstar/app/layout.tsx
+          - northstar/app/page.tsx
+          - northstar/components/answer-markdown.test.tsx
+          - northstar/components/answer-markdown.tsx
+          - northstar/components/answer-star.test.ts
+          - northstar/components/answer-star.tsx
+          - northstar/components/ask-northstar-workspace.dom.test.tsx
+          - northstar/components/ask-northstar-workspace.test.tsx
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/components/client-intelligence-workspace.tsx
+          - northstar/components/compliance-workspace.tsx
+          - northstar/components/marketing-workspace.tsx
+          - northstar/components/microsoft-app-icon.test.ts
+          - northstar/components/microsoft-app-icon.tsx
+          - northstar/components/microsoft-todo-panel.tsx
+          - northstar/components/news-workspace.tsx
+          - northstar/components/northstar-consent.dom.test.ts
+          - northstar/components/northstar-consent.fixture.tsx
+          - northstar/components/northstar-dashboard-lifecycle.fixture.ts
+          - northstar/components/northstar-dashboard-lifecycle.test.ts
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/components/northstar-recovery.dom.test.ts
+          - northstar/components/northstar-recovery.fixture.tsx
+          - northstar/components/northstar-retention.dom.test.ts
+          - northstar/components/northstar-retention.fixture.tsx
+          - northstar/components/northstar-stability.dom.test.ts
+          - northstar/components/northstar-stability.fixture.tsx
+          - northstar/components/portfolio-ai-workspace.tsx
+          - northstar/components/settings-workspace.tsx
+          - northstar/components/streaming-markdown.tsx
+          - northstar/components/ui/toggle-group.tsx
+          - northstar/eslint.config.mjs
+          - northstar/lib/ask-stream.test.ts
+          - northstar/lib/ask-stream.ts
+          - northstar/lib/background-briefs.test.ts
+          - northstar/lib/background-briefs.ts
+          - northstar/lib/chat-history.test.ts
+          - northstar/lib/chat-history.ts
+          - northstar/lib/external-links.test.ts
+          - northstar/lib/external-links.ts
+          - northstar/lib/graph-permissions.test.ts
+          - northstar/lib/graph-permissions.ts
+          - northstar/lib/https-url.test.ts
+          - northstar/lib/https-url.ts
+          - northstar/lib/mail-priority.ts
+          - northstar/lib/microsoft-reauth.test.ts
+          - northstar/lib/microsoft-reauth.ts
+          - northstar/lib/microsoft-search.test.ts
+          - northstar/lib/microsoft-search.ts
+          - northstar/lib/outlook-calendar.test.ts
+          - northstar/lib/outlook-calendar.ts
+          - northstar/lib/pending-markdown-links.ts
+          - northstar/lib/request-deadline.test.ts
+          - northstar/lib/request-deadline.ts
+          - northstar/lib/resolved-mail.test.ts
+          - northstar/lib/resolved-mail.ts
+          - northstar/lib/settings-preferences.test.ts
+          - northstar/lib/settings-preferences.ts
+          - northstar/lib/todo-tasks.test.ts
+          - northstar/lib/todo-tasks.ts
+          - northstar/lib/typing-reveal.test.ts
+          - northstar/lib/typing-reveal.ts
+          - northstar/next-env.d.ts
+          - northstar/next.config.ts
+          - northstar/package.json
+          - northstar/public/integrations/SOURCES.md
+          - northstar/public/integrations/claude.svg
+          - northstar/public/integrations/microsoft-365.svg
+          - northstar/public/integrations/microsoft-copilot.svg
+          - northstar/tsconfig.json
+          - ofac/.codex
+          - ofac/functions/package.json
+          - ofac/functions/src/copy-report-assets.ts
+          - ofac/functions/src/iframe-auth.test.ts
+          - ofac/functions/src/iframe-auth.ts
+          - ofac/functions/src/index.ts
+          - ofac/functions/src/ofac-repository.test.ts
+          - ofac/functions/src/ofac-repository.ts
+          - ofac/package.json
+          - ofac/public/iframe-preview.html
+          - ofac/src/app/api/ofac/export/__tests__/route.test.ts
+          - ofac/src/app/api/ofac/export/route.ts
+          - ofac/src/app/api/ofac/export/workbook-preview/route.ts
+          - ofac/src/app/api/ofac/screenings/[id]/pdf/route.test.ts
+          - ofac/src/app/api/ofac/screenings/[id]/pdf/route.ts
+          - ofac/src/app/api/ofac/screenings/route.ts
+          - ofac/src/app/auth/iframe/page.tsx
+          - ofac/src/app/globals.css
+          - ofac/src/app/layout.tsx
+          - ofac/src/app/login/page.test.tsx
+          - ofac/src/app/login/page.tsx
+          - ofac/src/app/page.tsx
+          - ofac/src/app/screenings/page.tsx
+          - ofac/src/components/app-shell-brand.test.tsx
+          - ofac/src/components/export-artifact-viewer.test.tsx
+          - ofac/src/components/export-artifact-viewer.tsx
+          - ofac/src/components/ofac-app-shell.tsx
+          - ofac/src/components/ofac-iframe-auth-boundary.test.tsx
+          - ofac/src/components/ofac-iframe-auth-boundary.tsx
+          - ofac/src/components/ofac-iframe-auth-relay.tsx
+          - ofac/src/components/ofac-user-menu.tsx
+          - ofac/src/components/pdf-report-viewer.tsx
+          - ofac/src/components/report-preview-auth.test.tsx
+          - ofac/src/components/report-viewer-shell.tsx
+          - ofac/src/components/screening-detail.tsx
+          - ofac/src/components/workbook-report-viewer.tsx
+          - ofac/src/lib/__tests__/iframe-routing.test.ts
+          - ofac/src/lib/__tests__/ofac-api-client.test.ts
+          - ofac/src/lib/__tests__/ofac-authorized-fetch.test.ts
+          - ofac/src/lib/__tests__/ofac-shell-presentation.test.ts
+          - ofac/src/lib/__tests__/report.test.ts
+          - ofac/src/lib/ofac-api-client.ts
+          - ofac/src/lib/ofac-authorized-fetch.ts
+          - ofac/src/lib/ofac-iframe-credential.ts
+          - ofac/src/lib/ofac-session-client.ts
+          - ofac/src/lib/ofac-shell-presentation.ts
+          - ofac/src/lib/report/csv.ts
+          - ofac/src/lib/report/excel.ts
+          - ofac/src/lib/report/filenames.ts
+          - ofac/src/lib/report/index.ts
+          - ofac/src/lib/report/model.ts
+          - ofac/src/lib/report/pdf.tsx
+          - ofac/staticwebapp.config.json
+          - package.json
+          - packages/.codex
+          - packages/auth/package.json
+          - packages/auth/src/auth.test.ts
+          - packages/auth/src/client.ts
+          - packages/auth/src/iframe-login-dom.test.ts
+          - packages/auth/src/iframe-login-lifecycle.test.tsx
+          - packages/auth/src/iframe-login.fixture.tsx
+          - packages/auth/src/iframe-login.test.tsx
+          - packages/auth/src/iframe-login.tsx
+          - packages/auth/tsconfig.json
+          - packages/contracts/src/pricing.ts
+          - packages/db/src/ofac.ts
+          - packages/ui/src/brand-logo.tsx
+          - packages/ui/src/metric-card.tsx
+          - packages/ui/src/navigation/app-shell.tsx
+          - packages/ui/src/navigation/frame.test.ts
+          - packages/ui/src/navigation/frame.ts
+          - packages/ui/src/styles.css
+          - packages/ui/src/user-menu.test.ts
+          - packages/ui/src/user-menu.tsx
+          - pricing/.codex
+          - pricing/functions/local.settings.json.example
+          - pricing/functions/src/index.ts
+          - pricing/src/app/globals.css
+          - pricing/src/app/layout.tsx
+          - pricing/src/app/login/page.tsx
+          - pricing/src/components/__tests__/pdf-report-viewer.test.tsx
+          - pricing/src/components/__tests__/scenario-model-tab.test.tsx
+          - pricing/src/components/generate-report-form.tsx
+          - pricing/src/components/pdf-report-viewer.tsx
+          - pricing/src/components/recruit-model-shell.tsx
+          - pricing/src/components/report-viewer-shell.tsx
+          - pricing/src/components/scenario-model-tab.tsx
+          - pricing/src/components/workbook-report-viewer.tsx
+          - pricing/src/lib/__tests__/pricing-api-client.test.ts
+          - pricing/src/lib/__tests__/report-model.test.ts
+          - pricing/src/lib/__tests__/report-storage.test.ts
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/pricing-api-client.ts
+          - pricing/src/lib/report-storage.ts
+          - pricing/src/lib/report/excel.ts
+          - pricing/src/lib/report/model.ts
+          - pricing/src/lib/report/pdf.tsx
+          - pricing/staticwebapp.config.json
+          - scripts/.codex
+          - scripts/compose-static-suite.ts
+          - scripts/dev-northstar.ts
+          - scripts/dev-pricing-api.ts
+          - scripts/dev.ts
       - &a79
         sha: 56c46560007fa66bf060b4776ecf658bed1d6515
         message: "docs(pricing): explain intentional recruit delete admin boundary"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/56c46560007fa66bf060b4776ecf658bed1d6515
         authoredAt: 2026-10-12T19:42:27Z
+        files:
+          - pricing/functions/src/index.ts
+          - pricing/src/components/pricing-static-pages.tsx
+          - scripts/dev-pricing-api.ts
     workTimestamps:
       - 2026-10-12T18:32:39Z
       - 2026-10-12T18:33:58Z
@@ -1932,6 +2903,8 @@ commitMessages:
         additions: 1
         deletions: 1
         filesChanged: 1
+        files:
+          - hub/functions/src/northstar-microsoft.test.ts
       - *a60
       - *a61
       - *a62
@@ -2010,6 +2983,17 @@ commitMessages:
         additions: 155
         deletions: 133
         filesChanged: 10
+        files:
+          - .github/workflows/verify.yml
+          - .gitmodules
+          - pto-tracker/docs/README.md
+          - pto-tracker/docs/architecture.md
+          - pto-tracker/docs/implementation-playbook.md
+          - pto-tracker/research/assumptions.md
+          - pto-tracker/templates/README.md
+          - scripts/affected-apps.ts
+          - scripts/tooling.test.ts
+          - twenty
       - sha: ed64119cad9e86e5f9b0e8173bc98e9579d73a5f
         message: "feat(transition): add guided onboarding tour (#158)"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ed64119cad9e86e5f9b0e8173bc98e9579d73a5f
@@ -2017,6 +3001,35 @@ commitMessages:
         additions: 1303
         deletions: 65
         filesChanged: 28
+        files:
+          - transition/src/app/globals.css
+          - transition/src/app/settings/page.tsx
+          - transition/src/components/accounts/account-detail.tsx
+          - transition/src/components/accounts/accounts-page.tsx
+          - transition/src/components/command-palette-model.ts
+          - transition/src/components/command-palette.test.ts
+          - transition/src/components/command-palette.tsx
+          - transition/src/components/dashboard/dashboard.tsx
+          - transition/src/components/data/data-page.tsx
+          - transition/src/components/feedback.tsx
+          - transition/src/components/households/household-overview.tsx
+          - transition/src/components/households/households-page.tsx
+          - transition/src/components/page-skeletons.tsx
+          - transition/src/components/settings/settings-page.tsx
+          - transition/src/components/tour/tour-layer.tsx
+          - transition/src/components/tour/tour-provider.tsx
+          - transition/src/components/transition-shell.tsx
+          - transition/src/components/ui/fields.tsx
+          - transition/src/components/ui/layout.tsx
+          - transition/src/lib/api/client.ts
+          - transition/src/lib/navigation.test.ts
+          - transition/src/lib/navigation.ts
+          - transition/src/lib/remembered-filters.test.ts
+          - transition/src/lib/remembered-filters.ts
+          - transition/src/lib/tour-demo.test.ts
+          - transition/src/lib/tour-demo.ts
+          - transition/src/lib/tour.test.ts
+          - transition/src/lib/tour.ts
       - sha: 1563794ffd0ff1ae6d674de9099a6a8b4710ba43
         message: "feat(transition): add registration filter and sorting (#160)"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/1563794ffd0ff1ae6d674de9099a6a8b4710ba43
@@ -2024,6 +3037,21 @@ commitMessages:
         additions: 81
         deletions: 21
         filesChanged: 14
+        files:
+          - transition/src/components/accounts/accounts-page.tsx
+          - transition/src/components/page-skeletons.tsx
+          - transition/src/lib/account-search.test.ts
+          - transition/src/lib/accounts-list.test.ts
+          - transition/src/lib/accounts-list.ts
+          - transition/src/lib/api/client.ts
+          - transition/src/lib/choices.ts
+          - transition/src/lib/handlers.ts
+          - transition/src/lib/model.ts
+          - transition/src/lib/registration-option.test.ts
+          - transition/src/lib/remembered-filters.test.ts
+          - transition/src/lib/remembered-filters.ts
+          - transition/src/lib/repository.test.ts
+          - transition/src/lib/repository.ts
       - sha: c70f2b05577fbeaaebea6df3fbbe7de368ea1b62
         message: "feat(brand): make app actions and progress monotone (#161)"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c70f2b05577fbeaaebea6df3fbbe7de368ea1b62
@@ -2031,6 +3059,39 @@ commitMessages:
         additions: 193
         deletions: 82
         filesChanged: 32
+        files:
+          - .agents/skills/graphical-audit/SKILL.md
+          - .agents/skills/graphical-ui/SKILL.md
+          - .agents/skills/myriad-branding/SKILL.md
+          - .agents/skills/myriad-branding/references/brand-guidelines.md
+          - .agents/skills/myriad-branding/references/digital-product-brand.md
+          - GUI.md
+          - excelerate/src/components/excelerate-client.tsx
+          - hub/app/403/page.tsx
+          - hub/app/error.tsx
+          - hub/app/globals.css
+          - hub/app/not-found.tsx
+          - hub/app/preview/page.tsx
+          - hub/components/LandingPage.tsx
+          - hub/staticwebapp.config.json
+          - onboarding/apps/dashboard/components/client-workspace-empty-state.tsx
+          - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+          - onboarding/apps/dashboard/components/vendor-workstreams-empty-state.tsx
+          - onboarding/apps/dashboard/components/vm/vm-shared.tsx
+          - packages/brand/src/graphical-theme.css
+          - packages/brand/src/styles.css
+          - proforma/src/app/globals.css
+          - pto-tracker/src/app/team/TeamClient.tsx
+          - pto-tracker/src/components/ApprovalPanel.tsx
+          - pto-tracker/src/components/LeaveCalendar.tsx
+          - pto-tracker/src/components/RequestForm.tsx
+          - transition/next-env.d.ts
+          - transition/src/components/status-select.tsx
+          - transition/src/components/transition-shell.tsx
+          - valuation/src/app/cases/detail/case-detail-client.tsx
+          - valuation/src/app/cases/new/page.tsx
+          - valuation/src/app/imports/page.tsx
+          - valuation/src/app/page.tsx
       - sha: 87f6a1a0b1dfbd987c23192b16f5a508aa6b898a
         message: "feat(compass): add Microsoft 365 client intelligence app (#164)"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/87f6a1a0b1dfbd987c23192b16f5a508aa6b898a
@@ -2038,6 +3099,158 @@ commitMessages:
         additions: 24279
         deletions: 23
         filesChanged: 151
+        files:
+          - .github/ISSUE_TEMPLATE/bug.yml
+          - .github/ISSUE_TEMPLATE/feature.yml
+          - .github/labeler.yml
+          - .github/workflows/azure-static-web-apps.yml
+          - .github/workflows/verify.yml
+          - .gitignore
+          - README.md
+          - bun.lock
+          - compass/AGENTS.md
+          - compass/README.md
+          - compass/functions/.funcignore
+          - compass/functions/host.json
+          - compass/functions/local.settings.json.example
+          - compass/functions/package.json
+          - compass/functions/src/compass-brief-journeys.test.ts
+          - compass/functions/src/compass-chat-history.test.ts
+          - compass/functions/src/compass-chat-history.ts
+          - compass/functions/src/compass-consent.fixture.ts
+          - compass/functions/src/compass-consent.test.ts
+          - compass/functions/src/compass-conversations.test.ts
+          - compass/functions/src/compass-conversations.ts
+          - compass/functions/src/compass-copilot.test.ts
+          - compass/functions/src/compass-copilot.ts
+          - compass/functions/src/compass-cosmos-recovery.test.ts
+          - compass/functions/src/compass-daily-flow.test.ts
+          - compass/functions/src/compass-local-store.test.ts
+          - compass/functions/src/compass-local-store.ts
+          - compass/functions/src/compass-mapping-upgrade.test.ts
+          - compass/functions/src/compass-microsoft-deadline.fixture.ts
+          - compass/functions/src/compass-microsoft-deadline.test.ts
+          - compass/functions/src/compass-microsoft.test.ts
+          - compass/functions/src/compass-microsoft.ts
+          - compass/functions/src/compass-scheduled-brief.test.ts
+          - compass/functions/src/compass-scheduled-brief.ts
+          - compass/functions/src/index.ts
+          - compass/functions/tsconfig.json
+          - compass/next-env.d.ts
+          - compass/next.config.ts
+          - compass/package.json
+          - compass/postcss.config.mjs
+          - compass/scripts/build-static.ts
+          - compass/src/app/api/compass/health/route.ts
+          - compass/src/app/ask.css
+          - compass/src/app/ask/page.tsx
+          - compass/src/app/clients/page.tsx
+          - compass/src/app/globals.css
+          - compass/src/app/icon.svg
+          - compass/src/app/layout.tsx
+          - compass/src/app/page.tsx
+          - compass/src/app/settings/page.tsx
+          - compass/src/components/answer-markdown.test.tsx
+          - compass/src/components/answer-markdown.tsx
+          - compass/src/components/answer-star.test.ts
+          - compass/src/components/answer-star.tsx
+          - compass/src/components/ask-compass-workspace.dom.test.tsx
+          - compass/src/components/ask-compass-workspace.test.tsx
+          - compass/src/components/ask-compass-workspace.tsx
+          - compass/src/components/client-intelligence-workspace.tsx
+          - compass/src/components/command-palette.tsx
+          - compass/src/components/compass-consent.dom.test.ts
+          - compass/src/components/compass-consent.fixture.tsx
+          - compass/src/components/compass-dashboard-lifecycle.fixture.ts
+          - compass/src/components/compass-dashboard-lifecycle.test.ts
+          - compass/src/components/compass-dashboard.tsx
+          - compass/src/components/compass-fixture-app.tsx
+          - compass/src/components/compass-provider.tsx
+          - compass/src/components/compass-recovery.dom.test.ts
+          - compass/src/components/compass-recovery.fixture.tsx
+          - compass/src/components/compass-retention.dom.test.ts
+          - compass/src/components/compass-retention.fixture.tsx
+          - compass/src/components/compass-routes.tsx
+          - compass/src/components/compass-shell.tsx
+          - compass/src/components/compass-stability.dom.test.ts
+          - compass/src/components/compass-stability.fixture.tsx
+          - compass/src/components/microsoft-app-icon.test.ts
+          - compass/src/components/microsoft-app-icon.tsx
+          - compass/src/components/microsoft-todo-panel.tsx
+          - compass/src/components/settings-workspace.tsx
+          - compass/src/components/streaming-markdown.tsx
+          - compass/src/components/today/calendar-draft-dialog.tsx
+          - compass/src/components/today/calendar-layout.test.ts
+          - compass/src/components/today/calendar.tsx
+          - compass/src/components/today/dates.ts
+          - compass/src/components/today/mail-list.tsx
+          - compass/src/components/today/previews.tsx
+          - compass/src/components/today/row-menu.tsx
+          - compass/src/components/ui/feedback.tsx
+          - compass/src/components/ui/layout.tsx
+          - compass/src/components/ui/search-field.tsx
+          - compass/src/components/ui/skeleton.tsx
+          - compass/src/components/ui/toast.tsx
+          - compass/src/lib/ask-stream.test.ts
+          - compass/src/lib/ask-stream.ts
+          - compass/src/lib/background-briefs.test.ts
+          - compass/src/lib/background-briefs.ts
+          - compass/src/lib/chat-history.test.ts
+          - compass/src/lib/chat-history.ts
+          - compass/src/lib/compass-api.test.ts
+          - compass/src/lib/compass-api.ts
+          - compass/src/lib/external-links.test.ts
+          - compass/src/lib/external-links.ts
+          - compass/src/lib/graph-permissions.test.ts
+          - compass/src/lib/graph-permissions.ts
+          - compass/src/lib/https-url.test.ts
+          - compass/src/lib/https-url.ts
+          - compass/src/lib/mail-priority.ts
+          - compass/src/lib/microsoft-data.ts
+          - compass/src/lib/microsoft-reauth.test.ts
+          - compass/src/lib/microsoft-reauth.ts
+          - compass/src/lib/microsoft-search.test.ts
+          - compass/src/lib/microsoft-search.ts
+          - compass/src/lib/navigation.ts
+          - compass/src/lib/outlook-calendar.test.ts
+          - compass/src/lib/outlook-calendar.ts
+          - compass/src/lib/pending-markdown-links.ts
+          - compass/src/lib/request-deadline.test.ts
+          - compass/src/lib/request-deadline.ts
+          - compass/src/lib/resolved-mail.test.ts
+          - compass/src/lib/resolved-mail.ts
+          - compass/src/lib/settings-preferences.test.ts
+          - compass/src/lib/settings-preferences.ts
+          - compass/src/lib/swa-session.ts
+          - compass/src/lib/todo-tasks.test.ts
+          - compass/src/lib/todo-tasks.ts
+          - compass/src/lib/typing-reveal.test.ts
+          - compass/src/lib/typing-reveal.ts
+          - compass/src/public/integrations/SOURCES.md
+          - compass/src/public/integrations/claude.svg
+          - compass/src/public/integrations/microsoft-365.svg
+          - compass/src/public/integrations/microsoft-copilot.svg
+          - compass/staticwebapp.config.json
+          - compass/tsconfig.json
+          - docs/authorization-roles.md
+          - docs/azure-serverless-plan.md
+          - docs/deploy-asap.md
+          - hub/components/HubLauncher.tsx
+          - hub/functions/dist-entry.js
+          - hub/functions/src/roles.test.ts
+          - hub/lib/apps.test.ts
+          - hub/lib/apps.ts
+          - hub/staticwebapp.config.json
+          - infra/azure/README.md
+          - infra/azure/compass/README.md
+          - infra/azure/compass/serverless.bicep
+          - infra/azure/static-web-apps.bicep
+          - package.json
+          - scripts/app-registry.ts
+          - scripts/github/configure-repository.ts
+          - scripts/github/triage-issue.test.ts
+          - scripts/github/triage-issue.ts
+          - scripts/tooling.test.ts
       - sha: 5502e53c39a48a57841a7785a7b0abec402b204b
         message: "feat(ui): shared settings page across apps (#162)"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5502e53c39a48a57841a7785a7b0abec402b204b
@@ -2045,6 +3258,43 @@ commitMessages:
         additions: 748
         deletions: 613
         filesChanged: 36
+        files:
+          - excelerate/src/app/settings/page.tsx
+          - hub/app/hub/settings/page.tsx
+          - hub/components/HubLauncher.tsx
+          - hub/components/HubSettingsPage.tsx
+          - hub/lib/navigation.test.ts
+          - hub/lib/navigation.ts
+          - onboarding/apps/dashboard/app/settings/page.test.tsx
+          - onboarding/apps/dashboard/app/settings/page.tsx
+          - onboarding/apps/dashboard/components/workstream-archive-settings.tsx
+          - packages/brand/src/styles.css
+          - packages/ui/src/appearance-quick-settings.tsx
+          - packages/ui/src/index.ts
+          - packages/ui/src/settings/appearance-settings.tsx
+          - packages/ui/src/settings/index.ts
+          - packages/ui/src/settings/preference-options.test.ts
+          - packages/ui/src/settings/preference-options.ts
+          - packages/ui/src/settings/settings-section.tsx
+          - packages/ui/src/theme-toggle.tsx
+          - proforma/src/app/settings/page.tsx
+          - proforma/src/components/__tests__/proforma-settings-page.test.tsx
+          - proforma/src/components/__tests__/settings-previews.test.tsx
+          - proforma/src/components/proforma-quick-settings.tsx
+          - proforma/src/components/proforma-settings-page.tsx
+          - proforma/src/components/proforma-static-pages.tsx
+          - proforma/src/components/proforma-user-menu.tsx
+          - proforma/src/components/settings-previews.tsx
+          - proforma/src/components/use-proforma-edit-view.ts
+          - pto-tracker/src/app/settings/CalendarColorSettings.tsx
+          - pto-tracker/src/app/settings/page.tsx
+          - pto-tracker/src/lib/navigation.test.ts
+          - pto-tracker/src/lib/navigation.ts
+          - transition/AGENTS.md
+          - transition/src/components/page-skeletons.tsx
+          - transition/src/components/settings/settings-page.tsx
+          - valuation/src/app/settings/page.tsx
+          - valuation/src/lib/navigation.test.ts
       - *a102
       - *a103
       - *a104
@@ -2057,6 +3307,8 @@ commitMessages:
         additions: 1
         deletions: 1
         filesChanged: 1
+        files:
+          - .github/workflows/azure-static-web-apps.yml
       - sha: 2860018d70f5e28826438ecdd9bae46d97ecaa20
         message: "feat(compass): deploy Compass in production (#169)"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2860018d70f5e28826438ecdd9bae46d97ecaa20
@@ -2064,6 +3316,15 @@ commitMessages:
         additions: 70
         deletions: 29
         filesChanged: 8
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - compass/functions/src/index.ts
+          - docs/azure-serverless-plan.md
+          - docs/deploy-asap.md
+          - hub/lib/apps.test.ts
+          - infra/azure/README.md
+          - scripts/app-registry.ts
+          - scripts/tooling.test.ts
       - *a107
       - *a108
       - *a109
@@ -2113,35 +3374,28 @@ reviewComments:
     prNumber: 157
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/157
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/157#discussion_r4251911883
-    body: Deferred (pending a product decision). Northstar is English/US-only, and whether the non-Latin PDF fonts ship at
-      all is awaiting the client's decision. If they're removed, this path goes away; if they're kept, emphasis for
-      those scripts will be handled with that change.
+    body: Deferred (pending a product decision). Northstar is English/US-only, and whether the non-Latin PDF fonts ship at all is awaiting the client's decision. If they're removed, this path goes away; if they're kept, emphasis for those scripts will be handled with that change.
     path: northstar/lib/chat-pdf.tsx
     createdAt: 2026-10-12T20:09:04Z
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 156
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/156
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/156#discussion_r4252245380
-    body: "Deferred (intended behavior). Commands are standalone tokens inserted from the @ picker, and the strict matcher
-      is deliberate: it avoids false positives on email addresses, @mentions, and prose. `(@pdf)` staying plain text is
-      acceptable; widening the punctuation set can be revisited if users report ..."
+    body: "Deferred (intended behavior). Commands are standalone tokens inserted from the @ picker, and the strict matcher is deliberate: it avoids false positives on email addresses, @mentions, and prose. `(@pdf)` staying plain text is acceptable; widening the punctuation set can be revisited if users report ..."
     path: northstar/lib/at-commands.ts
     createdAt: 2026-10-12T20:55:38Z
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 155
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/155
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/155#discussion_r4251911640
-    body: Deferred (low risk). This cleanup is best-effort and only runs after a first turn fails. The worst case of the
-      read-then-delete race is that an overlapping turn on the same conversation starts a fresh provider conversation
-      and loses transcript context; no data is lost. Making it atomic (etag `if-mat...
+    body: Deferred (low risk). This cleanup is best-effort and only runs after a first turn fails. The worst case of the read-then-delete race is that an overlapping turn on the same conversation starts a fresh provider conversation and loses transcript context; no data is lost. Making it atomic (etag `if-mat...
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-10-12T20:09:02Z
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 169
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/169
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/169#discussion_r4244993865
-    body: "Fixed in ccfda4c: the Compass health endpoint now returns { status: \"ok\", app: \"compass\" } with status 200
-      and no config or database dependency, so the products workflow's \"app\" check passes."
+    body: "Fixed in ccfda4c: the Compass health endpoint now returns { status: \"ok\", app: \"compass\" } with status 200 and no config or database dependency, so the products workflow's \"app\" check passes."
     path: scripts/app-registry.ts
     createdAt: 2026-10-12T05:45:38Z
 aiReviews:
@@ -2493,6 +3747,5 @@ hoursEstimate:
   volumeHours: 150.2
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

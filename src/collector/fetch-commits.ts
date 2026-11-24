@@ -200,19 +200,23 @@ const fetchCommitStats = async (
   token: string,
   repo: string,
   sha: string,
-): Promise<{ additions?: number; deletions?: number; filesChanged?: number } | null> => {
+): Promise<{ additions?: number; deletions?: number; filesChanged?: number; files?: string[] } | null> => {
   const url = `https://api.github.com/repos/${repo}/commits/${sha}`;
   for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
     const response = await fetch(url, { headers: GITHUB_HEADERS(token) });
     if (response.ok) {
       const detail = await response.json() as {
         stats?: { additions?: number; deletions?: number };
-        files?: unknown[];
+        files?: { filename?: string }[];
       };
       return {
         additions: detail.stats?.additions,
         deletions: detail.stats?.deletions,
         filesChanged: detail.files?.length,
+        // A paginated or capped file list cannot establish that a commit belongs to one app.
+        files: response.headers.get("link")?.includes('rel="next"') || (detail.files?.length ?? 0) >= 3000
+          ? undefined
+          : detail.files?.map((file) => file.filename).filter((file): file is string => typeof file === "string"),
       };
     }
     if (response.status === 404) return null;
@@ -241,6 +245,7 @@ const enrichCommitStats = async (
     commit.additions = stats.additions;
     commit.deletions = stats.deletions;
     commit.filesChanged = stats.filesChanged;
+    commit.files = stats.files;
   });
   return commits;
 };

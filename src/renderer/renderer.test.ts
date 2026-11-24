@@ -1,6 +1,10 @@
 import { describe, it, expect } from "vitest";
 import { renderReport } from "./index.js";
-import type { WeeklyReportData } from "../types.js";
+import { buildAllocationView } from "./allocation-view.js";
+import { makeAllocation } from "./allocation-fixtures.js";
+import { AVAILABLE_THEMES } from "./themes/index.js";
+import { buildFallbackAIContent } from "../collector/stakeholder-summary.js";
+import type { Theme, WeeklyReportData } from "../types.js";
 
 const MOCK_DATA: WeeklyReportData = {
   username: "testuser",
@@ -46,7 +50,7 @@ const MOCK_DATA: WeeklyReportData = {
         type: "pr",
         title: "feat: add OAuth flow",
         repo: "org/backend",
-        meta: "merged Apr 2",
+        meta: "integrated Apr 2",
         body: "Big PR for auth.",
       },
     ],
@@ -133,10 +137,10 @@ describe("renderReport", () => {
       /class="data-chips activity-stats">([\s\S]*?)<\/div>/,
     )?.[1];
     expect(statsBlock).toBeTruthy();
-    expect(statsBlock).toContain("PRs merged");
+    expect(statsBlock).toContain("Development complete");
     expect(statsBlock).toContain("Lines");
-    expect(statsBlock).toContain("Estimated engineering hours");
-    expect(statsBlock).toContain("~12.5h");
+    expect(statsBlock).toContain("Manual effort estimate");
+    expect(statsBlock).toContain("~1.5 engineer-days");
     expect(statsBlock).not.toContain("Commits");
     expect(statsBlock).not.toContain("PRs opened");
     expect(statsBlock).not.toContain("In progress");
@@ -144,7 +148,7 @@ describe("renderReport", () => {
     expect(statsBlock).not.toContain("Review comments");
     expect(statsBlock).not.toContain("From timestamps");
     expect(statsBlock).not.toContain("From PR volume");
-    expect(html).toContain("Conventional engineering effort estimate — not tracked, elapsed, or billed time.");
+    expect(html).toContain("Estimated manual engineering effort for one engineer delivering these changes without AI assistance. A modeled baseline, not actual hours worked.");
     expect(html).not.toContain("Combines timestamps and volume.");
   });
 
@@ -250,7 +254,7 @@ describe("renderReport", () => {
             type: "pr",
             title: "feat: markdown body",
             repo: "org/backend",
-            meta: "merged",
+            meta: "integrated",
             body: "## Why\n\nUse `code` and a [link](https://example.com).",
           },
         ],
@@ -353,8 +357,8 @@ describe("renderReport", () => {
     expect(html).toMatch(/<details class="activity-block">/);
     expect(html).not.toMatch(/<details[^>]*\sopen[\s>]/);
     expect(html).toMatch(/<summary class="activity-repo">/);
-    expect(html).toContain("10 commits, 2 PRs opened, 1 merged");
-    expect(html).toContain("0 commits, 1 PRs opened, 0 merged");
+    expect(html).toContain("10 commits, 2 PRs opened, 1 development complete");
+    expect(html).toContain("0 commits, 1 PRs opened, 0 development complete");
     expect(html).toContain("activity-repo--static");
     expect(html).toContain('class="activity-repo-ext"');
     expect(html).toContain('aria-label="Open org/backend on GitHub"');
@@ -421,6 +425,8 @@ describe("renderReport", () => {
     expect(html).not.toContain(">Pull requests<");
     expect(html).toContain("activity-children");
     expect(html).toContain('class="activity-block activity-pr-block"');
+    expect(html).toContain('class="pr-state pr-merged">Development complete</span>');
+    expect(html).not.toContain('class="pr-state pr-merged">merged</span>');
     expect(html).toMatch(/<summary class="activity-pr">/);
     expect(html).toContain('href="https://github.com/org/backend/pull/10"');
     expect(html).toContain("feat: add OAuth");
@@ -469,7 +475,7 @@ describe("renderReport", () => {
     expect(html).toMatch(/<details class="activity-block">/);
     expect(html).not.toMatch(/<details[^>]*\sopen[\s>]/);
     expect(html).toMatch(/<summary class="activity-repo">/);
-    expect(html).toContain("2 commits, 0 PRs opened, 0 merged");
+    expect(html).toContain("2 commits, 0 PRs opened, 0 development complete");
     expect(html).toContain('class="activity-repo-ext"');
     expect(html).toContain('aria-label="Open org/backend on GitHub"');
     expect(html).toContain("Direct commits");
@@ -514,27 +520,29 @@ describe("renderReport", () => {
     expect(html).toContain("All days");
   });
 
-  it("uses Zen Kaku Gothic New for Japanese", () => {
+  it("keeps Japanese typography with a bundled Roboto fallback and no font request", () => {
     const html = renderReport(MOCK_DATA, { language: "ja" });
-    expect(html).toContain("Zen+Kaku+Gothic+New");
-    expect(html).toContain("Zen Kaku Gothic New");
+    expect(html).toContain("font-family: 'Zen Kaku Gothic New', Roboto, Arial, sans-serif");
+    expect(html).not.toContain("fonts.googleapis.com");
   });
 
-  it("uses Schibsted Grotesk and Space Mono for English", () => {
+  it("loads bundled fonts as fallbacks for the restored English typography", () => {
     const html = renderReport(MOCK_DATA, { language: "en" });
-    expect(html).toContain("Schibsted Grotesk");
-    expect(html).toContain("Space Mono");
+    expect(html).toMatch(/<link rel="stylesheet" href="(\.\.\/)*assets\/fonts\/fonts\.css" \/>/);
+    expect(html).toContain("font-family: 'Schibsted Grotesk', Roboto, Arial, sans-serif");
+    expect(html).not.toContain("fonts.googleapis.com");
+    expect(html).not.toContain("fonts.gstatic.com");
   });
 
-  it("uses Space Mono for UI labels in English", () => {
+  it("uses monospace labels in the restored brutalist theme", () => {
     const html = renderReport(MOCK_DATA, { language: "en" });
-    expect(html).toContain("'Space Mono'");
+    expect(html).toContain("font-family: 'Space Mono', ui-monospace, monospace");
   });
 
-  it("uses IBM Plex Sans KR for Korean", () => {
+  it("keeps IBM Plex Sans KR available for Korean", () => {
     const html = renderReport(MOCK_DATA, { language: "ko" });
-    expect(html).toContain("IBM+Plex+Sans+KR");
     expect(html).toContain("IBM Plex Sans KR");
+    expect(html).not.toContain("fonts.googleapis.com");
   });
 
   it("uses Urbanist for Russian", () => {
@@ -616,4 +624,33 @@ describe("renderReport", () => {
     expect(html).toBeDefined();
     expect(html).toContain("<!DOCTYPE html>");
   });
+});
+
+describe("stakeholder summary without an LLM", () => {
+  // Fallback content (no LLM) and no authored blurb: the evidence-based headline summary leads the page.
+  const data: WeeklyReportData = { ...MOCK_DATA, stakeholderSummary: "" };
+  data.aiContent = buildFallbackAIContent(data);
+  const allocation = {
+    week: {
+      label: "Oct 1–7",
+      allocation: makeAllocation([["Pricing", 6, {
+        shipped: [{ kind: "pr" as const, title: "Export CSV", url: "https://github.com/o/r/pull/7", state: "merged" as const }],
+      }], ["Hub", 2]]),
+    },
+  };
+  const summary = buildAllocationView(allocation)!.headline!.summary;
+
+  it("derives the summary from the allocation alone", () => {
+    expect(summary).toBe(
+      "1 change in the week of Oct 1–7. Development complete: \u201cExport CSV\u201d.",
+    );
+  });
+
+  for (const theme of AVAILABLE_THEMES as Theme[]) {
+    it(`renders it once in the ${theme} theme`, () => {
+      const html = renderReport(data, { theme, allocation });
+      expect(html.split(summary).length - 1, theme).toBe(1);
+      expect(html, theme).toContain("8 estimated manual-effort hours");
+    });
+  }
 });

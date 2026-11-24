@@ -61,6 +61,11 @@ commitMessages:
         additions: 65
         deletions: 4
         filesChanged: 4
+        files:
+          - pricing/src/components/excel-sheet/__tests__/excel-input-sheet.test.ts
+          - pricing/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+          - pricing/src/components/excel-sheet/excel-input-sheet.tsx
+          - pricing/src/components/excel-sheet/workstation-sheet-defs.tsx
       - sha: 91aee5495f9505905a2dce3b62f13077d4f83226
         message: "fix(pricing): skip computed sheet tab stops"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/91aee5495f9505905a2dce3b62f13077d4f83226
@@ -68,6 +73,9 @@ commitMessages:
         additions: 35
         deletions: 1
         filesChanged: 2
+        files:
+          - pricing/src/components/excel-sheet/__tests__/excel-cell.test.tsx
+          - pricing/src/components/excel-sheet/excel-cell.tsx
       - sha: 8819ae4e1158e5dbb94a6c9a925f13ad5440c78c
         message: "ci(deploy): prepare Hub SWA deploy"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8819ae4e1158e5dbb94a6c9a925f13ad5440c78c
@@ -75,6 +83,18 @@ commitMessages:
         additions: 1647
         deletions: 16
         filesChanged: 11
+        files:
+          - .github/workflows/azure-static-web-apps.yml
+          - README.md
+          - bun.lock
+          - docs/azure-serverless-plan.md
+          - docs/deploy-asap.md
+          - hub/eslint.config.mjs
+          - hub/next.config.ts
+          - ofac/eslint.config.mjs
+          - ofac/next.config.ts
+          - pricing/eslint.config.mjs
+          - pricing/next.config.ts
       - sha: f123b65208451a0f49b9f94a534519cd12bbf740
         message: Add iframe embedding support for OFAC and pricing
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f123b65208451a0f49b9f94a534519cd12bbf740
@@ -82,6 +102,28 @@ commitMessages:
         additions: 391
         deletions: 37
         filesChanged: 21
+        files:
+          - README.md
+          - ofac/.env.example
+          - ofac/next.config.ts
+          - ofac/src/app/globals.css
+          - ofac/src/app/logout/route.ts
+          - ofac/src/lib/auth.ts
+          - packages/auth/src/auth.test.ts
+          - packages/auth/src/index.ts
+          - packages/auth/src/next.ts
+          - packages/brand/src/styles.css
+          - packages/contracts/package.json
+          - packages/contracts/src/embed.test.ts
+          - packages/contracts/src/embed.ts
+          - packages/contracts/src/index.ts
+          - packages/ui/src/styles.css
+          - pricing/.env.example
+          - pricing/next.config.ts
+          - pricing/src/app/globals.css
+          - pricing/src/app/logout/route.ts
+          - pricing/src/lib/auth.ts
+          - scripts/copy-staticwebapp-config.ts
       - sha: ad6844fd11a7529a4b0238131f6218d27efd0583
         message: "style: refine dark mode and active states"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ad6844fd11a7529a4b0238131f6218d27efd0583
@@ -89,6 +131,10 @@ commitMessages:
         additions: 20
         deletions: 2
         filesChanged: 3
+        files:
+          - packages/ui/src/styles.css
+          - pricing/src/app/globals.css
+          - scripts/copy-staticwebapp-config.ts
   - repo: Myriad-Advisor-Solutions/myriadas-apps
     messages:
       - "fix(dashboard): keep board task metadata visible"
@@ -101,6 +147,10 @@ commitMessages:
         additions: 113
         deletions: 2
         filesChanged: 3
+        files:
+          - onboarding/apps/dashboard/components/task-board.test.tsx
+          - onboarding/apps/dashboard/components/task-board.tsx
+          - onboarding/apps/dashboard/package.json
       - sha: 8a25b9523e2bfcb6c15b0d9428bb9239b26cf359
         message: "fix(deploy): support static export builds"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8a25b9523e2bfcb6c15b0d9428bb9239b26cf359
@@ -108,6 +158,25 @@ commitMessages:
         additions: 257
         deletions: 29
         filesChanged: 18
+        files:
+          - docs/azure-serverless-plan.md
+          - onboarding/apps/dashboard/app/blockers/page.tsx
+          - onboarding/apps/dashboard/app/documents/page.tsx
+          - onboarding/apps/dashboard/app/due-dates/page.tsx
+          - onboarding/apps/dashboard/app/owners/page.tsx
+          - onboarding/apps/dashboard/app/page.tsx
+          - onboarding/apps/dashboard/app/settings/page.tsx
+          - onboarding/apps/dashboard/app/tasks/page.tsx
+          - onboarding/apps/dashboard/app/vendors/page.tsx
+          - onboarding/apps/dashboard/app/workflows/page.tsx
+          - onboarding/apps/dashboard/lib/search-params.ts
+          - pto-tracker/README.md
+          - pto-tracker/docs/README.md
+          - pto-tracker/docs/microsoft-tenant-deployment.md
+          - pto-tracker/docs/security-review.md
+          - pto-tracker/package.json
+          - pto-tracker/scripts/build-static.ts
+          - pto-tracker/src/app/api/[...path]/route.ts
 releases: []
 externalContributions: []
 codeReviews: []
@@ -156,6 +225,5 @@ hoursEstimate:
   volumeHours: 9
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""

@@ -37,8 +37,7 @@ repositories:
 pullRequests:
   - title: "fix(pricing): focus executive dashboard metrics"
     body: >-
-      - Limits the executive dashboard to **Pipeline AUM**, **Top-line revenue**, and permissioned **Revenue to
-      Holdco**.
+      - Limits the executive dashboard to **Pipeline AUM**, **Top-line revenue**, and permissioned **Revenue to Holdco**.
 
       - Removes the unrequested **Average net payout** and **Proposed net vs Current FiNet** dashboard cards.
 
@@ -61,6 +60,9 @@ pullRequests:
         message: "fix(pricing): focus executive dashboard metrics [skip ci]"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/9096a4cc44afb9f48efff91e748521ad3692dc75
         authoredAt: 2026-08-04T18:29:12Z
+        files:
+          - pricing/src/components/__tests__/dashboard-metrics-charts.test.tsx
+          - pricing/src/components/dashboard-metrics-charts.tsx
     workTimestamps: &a3
       - 2026-08-04T18:29:12Z
     workAdditions: 9
@@ -74,8 +76,7 @@ pullRequests:
 
       - Adds a bottom **Save Model** action to the recruit pricing view.
 
-      - Adds bottom **Review inputs** / **Review assumptions** actions so users can return to source data without
-      scrolling back through the workflow.
+      - Adds bottom **Review inputs** / **Review assumptions** actions so users can return to source data without scrolling back through the workflow.
 
       - Includes ...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/98
@@ -96,11 +97,21 @@ pullRequests:
         message: "fix(pricing): add bottom save actions"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0da96dd00ae3d15644f31f1774b899e4e518b1ef
         authoredAt: 2026-08-04T18:32:13Z
+        files:
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/pricing-workstation-client.test.tsx
+          - pricing/src/components/__tests__/recruit-model-shell.test.tsx
+          - pricing/src/components/pricing-workstation-client.tsx
+          - pricing/src/components/recruit-model-shell.tsx
       - &a18
         sha: 91257b809a521c910b541a7b8856d6ca5bdb5894
         message: "fix(pricing): focus returned input workflows"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/91257b809a521c910b541a7b8856d6ca5bdb5894
         authoredAt: 2026-08-04T18:57:28Z
+        files:
+          - pricing/src/components/__tests__/pricing-workstation-client.test.tsx
+          - pricing/src/components/pricing-workstation-client.tsx
+          - pricing/src/components/recruit-model-shell.tsx
     workTimestamps:
       - 2026-08-04T18:32:13Z
       - 2026-08-04T18:57:28Z
@@ -139,16 +150,23 @@ pullRequests:
         message: "fix(pricing): remove FINET advantage summary"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/51a3139d70867dd689d8ae210df6b313485bebf3
         authoredAt: 2026-08-04T18:47:40Z
+        files:
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/report/pdf.tsx
       - &a19
         sha: f07bc5e312446621c97c12846fdf41604e1876bb
         message: "test(pricing): stabilize PDF content assertion"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f07bc5e312446621c97c12846fdf41604e1876bb
         authoredAt: 2026-08-04T19:05:15Z
+        files:
+          - pricing/src/lib/__tests__/report.test.ts
       - &a21
         sha: b1d0ab1fcda0bb34e57cbdf63c95075b9462195e
         message: "test(pricing): allow report content comparison time"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b1d0ab1fcda0bb34e57cbdf63c95075b9462195e
         authoredAt: 2026-08-04T19:07:55Z
+        files:
+          - pricing/src/lib/__tests__/report.test.ts
     workTimestamps: &a7
       - 2026-08-04T18:47:40Z
       - 2026-08-04T19:05:15Z
@@ -160,8 +178,7 @@ pullRequests:
       - pricing/src/lib/report/pdf.tsx
   - title: "fix(pricing): give payout details room to breathe"
     body: >-
-      - Reorganize the expanded recruit payout detail into a vertical proposed-payout calculation and a separate Current
-      FiNet benchmark.
+      - Reorganize the expanded recruit payout detail into a vertical proposed-payout calculation and a separate Current FiNet benchmark.
 
       - Preserve every financial figure while giving the primary Net Payout result and comparison room to scan.
 
@@ -184,41 +201,67 @@ pullRequests:
         message: "fix(pricing): focus executive dashboard metrics"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/1b3d4555eb642524e437569fe0efeea38446d9ce
         authoredAt: 2026-08-04T18:29:12Z
+        files:
+          - pricing/src/components/__tests__/dashboard-metrics-charts.test.tsx
+          - pricing/src/components/dashboard-metrics-charts.tsx
       - &a17
         sha: 76025f2932d4d633f788eda28523c29bc511393c
         message: "fix(pricing): remove FINET advantage summary"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/76025f2932d4d633f788eda28523c29bc511393c
         authoredAt: 2026-08-04T18:47:40Z
+        files:
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/report/pdf.tsx
       - &a20
         sha: 09683a284dc9b5d1fd901740b51066974388bcd1
         message: "test(pricing): stabilize PDF content assertion"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/09683a284dc9b5d1fd901740b51066974388bcd1
         authoredAt: 2026-08-04T19:05:15Z
+        files:
+          - pricing/src/lib/__tests__/report.test.ts
       - &a22
         sha: 2b1b8262d63574e5b6ed5bdcbbba027238b08eab
         message: "test(pricing): allow report content comparison time"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2b1b8262d63574e5b6ed5bdcbbba027238b08eab
         authoredAt: 2026-08-04T19:07:55Z
+        files:
+          - pricing/src/lib/__tests__/report.test.ts
       - &a23
         sha: 5d5ab4b57c3434391a4aa41dbdac4ee968173338
         message: "fix(pricing): give payout details room to breathe"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/5d5ab4b57c3434391a4aa41dbdac4ee968173338
         authoredAt: 2026-08-04T19:19:19Z
+        files:
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/recruits-table.test.tsx
+          - pricing/src/components/recruits-table.tsx
       - &a24
         sha: 346041d934896c649479d5c6c01ad5431b3d9fd1
         message: "fix(pricing): keep payout details recruiter-focused"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/346041d934896c649479d5c6c01ad5431b3d9fd1
         authoredAt: 2026-08-04T19:39:18Z
+        files:
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/recruits-table.test.tsx
+          - pricing/src/components/recruits-table.tsx
       - &a25
         sha: 308653242e269bcacf1a88d6a2f16a7f7c3f5698
         message: "fix(pricing): center pipeline totals label"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/308653242e269bcacf1a88d6a2f16a7f7c3f5698
         authoredAt: 2026-08-04T19:43:57Z
+        files:
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/recruits-table-responsive-css.test.ts
       - &a26
         sha: 20cff27b17dc0fad3f650b2bc58b4fde28bd3fa9
         message: "fix(pricing): align pipeline totals with name"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/20cff27b17dc0fad3f650b2bc58b4fde28bd3fa9
         authoredAt: 2026-08-04T19:47:23Z
+        files:
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/recruits-table-responsive-css.test.ts
+          - pricing/src/components/__tests__/recruits-table.test.tsx
+          - pricing/src/components/recruits-table.tsx
     workTimestamps: &a11
       - 2026-08-04T18:29:12Z
       - 2026-08-04T18:47:40Z
@@ -242,8 +285,7 @@ pullRequests:
 prsInProgress:
   - title: "fix(pricing): focus executive dashboard metrics"
     body: >-
-      - Limits the executive dashboard to **Pipeline AUM**, **Top-line revenue**, and permissioned **Revenue to
-      Holdco**.
+      - Limits the executive dashboard to **Pipeline AUM**, **Top-line revenue**, and permissioned **Revenue to Holdco**.
 
       - Removes the unrequested **Average net payout** and **Proposed net vs Current FiNet** dashboard cards.
 
@@ -265,6 +307,9 @@ prsInProgress:
     workAdditions: 9
     workDeletions: 167
     workFiles: *a4
+    allocationFiles:
+      - pricing/src/components/__tests__/dashboard-metrics-charts.test.tsx
+      - pricing/src/components/dashboard-metrics-charts.tsx
   - title: "fix(pricing): remove FINET advantage summary"
     body: |-
       ## What changed
@@ -291,10 +336,36 @@ prsInProgress:
     workAdditions: 25
     workDeletions: 5
     workFiles: *a8
+    allocationFiles:
+      - docs/pricing-scenario-rules.md
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - pricing/src/components/__tests__/dashboard-metrics-charts.test.tsx
+      - pricing/src/components/__tests__/pricing-graphs.test.tsx
+      - pricing/src/components/__tests__/pricing-workstation-client.test.tsx
+      - pricing/src/components/__tests__/recruits-table.test.tsx
+      - pricing/src/components/__tests__/scenario-model-tab.test.tsx
+      - pricing/src/components/dashboard-metrics-charts.tsx
+      - pricing/src/components/pricing-workstation-client.tsx
+      - pricing/src/components/recruits-table.tsx
+      - pricing/src/components/scenario-model-tab.tsx
+      - pricing/src/lib/__tests__/calculation.test.ts
+      - pricing/src/lib/__tests__/dashboard-summary.test.ts
+      - pricing/src/lib/__tests__/dashboard-visibility.test.ts
+      - pricing/src/lib/__tests__/report-model.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/__tests__/workbook-preview.test.ts
+      - pricing/src/lib/__tests__/workstation.test.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/dashboard-summary.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/report/workbook-preview.ts
+      - pricing/src/lib/workstation.ts
   - title: "fix(pricing): give payout details room to breathe"
     body: >-
-      - Reorganize the expanded recruit payout detail into a vertical proposed-payout calculation and a separate Current
-      FiNet benchmark.
+      - Reorganize the expanded recruit payout detail into a vertical proposed-payout calculation and a separate Current FiNet benchmark.
 
       - Preserve every financial figure while giving the primary Net Payout result and comparison room to scan.
 
@@ -316,6 +387,15 @@ prsInProgress:
     workAdditions: 214
     workDeletions: 324
     workFiles: *a12
+    allocationFiles:
+      - pricing/src/app/globals.css
+      - pricing/src/components/__tests__/dashboard-metrics-charts.test.tsx
+      - pricing/src/components/__tests__/recruits-table-responsive-css.test.ts
+      - pricing/src/components/__tests__/recruits-table.test.tsx
+      - pricing/src/components/dashboard-metrics-charts.tsx
+      - pricing/src/components/recruits-table.tsx
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/report/pdf.tsx
   - title: "fix(pricing): normalize duplicated recruit models"
     body: |-
       - Deep-copy and normalize duplicated pricing models so the copied recruit's advisor name is updated independently.
@@ -339,6 +419,12 @@ prsInProgress:
         message: "chore(pricing): resolve #82 against main"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3498f3e5fe8cd575e797fe25f565455baf348120
         authoredAt: 2026-08-04T20:48:24Z
+        files:
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/pricing-workstation-client.test.tsx
+          - pricing/src/components/__tests__/recruit-model-shell.test.tsx
+          - pricing/src/components/pricing-workstation-client.tsx
+          - pricing/src/components/recruit-model-shell.tsx
     workTimestamps:
       - 2026-08-04T20:48:24Z
     workAdditions: 185
@@ -375,6 +461,12 @@ prsInProgress:
         message: "chore(pricing): resolve #81 against main"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/152a6e31a42f0f612b6e4fbe4455d9b014cd5295
         authoredAt: 2026-08-04T20:49:23Z
+        files:
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/pricing-workstation-client.test.tsx
+          - pricing/src/components/__tests__/recruit-model-shell.test.tsx
+          - pricing/src/components/pricing-workstation-client.tsx
+          - pricing/src/components/recruit-model-shell.tsx
     workTimestamps:
       - 2026-08-04T20:49:23Z
     workAdditions: 185
@@ -429,6 +521,12 @@ commitMessages:
         additions: 185
         deletions: 3
         filesChanged: 5
+        files:
+          - pricing/src/app/globals.css
+          - pricing/src/components/__tests__/pricing-workstation-client.test.tsx
+          - pricing/src/components/__tests__/recruit-model-shell.test.tsx
+          - pricing/src/components/pricing-workstation-client.tsx
+          - pricing/src/components/recruit-model-shell.tsx
       - *a27
       - *a28
 releases: []
@@ -550,6 +648,5 @@ hoursEstimate:
   volumeHours: 37.7
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
 stakeholderSummary: ""
