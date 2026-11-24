@@ -12,7 +12,7 @@ dateRange:
   from: 2026-11-19
   to: 2026-11-19
 stats:
-  totalCommits: 2
+  totalCommits: 33
   totalAdditions: 64
   totalDeletions: 63
   prsOpened: 2
@@ -22,10 +22,10 @@ stats:
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 8
+  estimatedHours: 27.9
 dailyCommits:
   - date: 2026-11-19
-    count: 2
+    count: 33
 repositories:
   - name: Myriad-Advisor-Solutions/myriadas-apps
     commits: 1
@@ -35,7 +35,7 @@ repositories:
     issuesClosed: 0
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
   - name: Myriad-Advisor-Solutions/ohcpwm-apps
-    commits: 1
+    commits: 32
     prsOpened: 1
     prsMerged: 0
     issuesOpened: 0
@@ -220,8 +220,536 @@ commitMessages:
   - repo: Myriad-Advisor-Solutions/ohcpwm-apps
     messages:
       - "docs: streamline repository agent guidance"
+      - "docs(northstar): plan News page and API contract"
+      - Add Northstar news sources and topic catalog
+      - "chore: lock fast-xml-parser for hub functions"
+      - Add personalized Northstar news feeds and persistence
+      - Persist News story snapshots and integrate Ask context
+      - "feat(northstar): build the News experience"
+      - "fix(northstar): harden News review findings"
+      - Add full-text News readers and cached Northstar briefs
+      - "docs(northstar): add News edition contract for UX redesign"
+      - "fix(northstar): keep selected text still while an answer is revealing"
+      - Add source-backed News editions and visit tracking
+      - "feat(northstar): redesign News as a daily edition"
+      - Define visit-bound News editions and pending deadlines
+      - "feat(northstar): add local-only Ollama Ask provider"
+      - "fix(northstar): address News re-review findings"
+      - Serve cached visit-bound editions and clean News previews
+      - "feat(northstar): mirror navigation into the URL"
+      - Normalize live Fed fixture whitespace
+      - Define persisted News reader appearance preferences
+      - Persist advisor News reader appearance preferences
+      - Add News brief provider and grounding provenance
+      - "feat(northstar): surface the local Ollama Ask provider"
+      - "feat(northstar): reader appearance, progress, focus mode and Listen"
+      - "feat(northstar): label News briefs based on the headline only"
+      - "test(northstar): cover the local Ask provider in the workspace, quick chat, settings and dashboard"
+      - Generate gated local News briefs and decode source entities
+      - "fix(northstar): show the local-chat label below the quick-chat header so it fits at 390px"
+      - "chore: lock entities for hub functions"
+      - "fix(northstar): never persist an unsaved local chat from any history writer"
+      - "test(northstar): type the local-chat persistence regression test"
+      - "fix(northstar): address News third-review findings"
     commits:
       - *a9
+      - sha: 2f109c507652ad602576855103e02084516e63f7
+        message: "docs(northstar): plan News page and API contract"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2f109c507652ad602576855103e02084516e63f7
+        authoredAt: 2026-11-19T19:05:35Z
+        additions: 192
+        deletions: 1
+        files:
+          - docs/northstar-news.md
+          - packages/contracts/package.json
+          - packages/contracts/src/northstar-news.ts
+        filesChanged: 3
+      - sha: 9870ba2870bc2ae6996a6088008db410b593f68d
+        message: Add Northstar news sources and topic catalog
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/9870ba2870bc2ae6996a6088008db410b593f68d
+        authoredAt: 2026-11-19T19:14:20Z
+        additions: 431
+        deletions: 1
+        files:
+          - hub/functions/package.json
+          - hub/functions/src/index.ts
+          - hub/functions/src/northstar-news-catalog.test.ts
+          - hub/functions/src/northstar-news-catalog.ts
+          - hub/functions/src/northstar-news-fetch.ts
+          - hub/functions/src/northstar-news-pulse.test.ts
+          - hub/functions/src/northstar-news-pulse.ts
+          - hub/functions/src/northstar-news-sources.test.ts
+          - hub/functions/src/northstar-news-sources.ts
+        filesChanged: 9
+      - sha: e38abb28e7a0f9e207d181dc101736674a0bcba9
+        message: "chore: lock fast-xml-parser for hub functions"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e38abb28e7a0f9e207d181dc101736674a0bcba9
+        authoredAt: 2026-11-19T19:14:55Z
+        additions: 1
+        deletions: 0
+        files:
+          - bun.lock
+        filesChanged: 1
+      - sha: e86e0657d3634d7ffc35b71dfad923cbf84a421f
+        message: Add personalized Northstar news feeds and persistence
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e86e0657d3634d7ffc35b71dfad923cbf84a421f
+        authoredAt: 2026-11-19T19:22:57Z
+        additions: 562
+        deletions: 0
+        files:
+          - hub/functions/src/index.ts
+          - hub/functions/src/northstar-conversations.ts
+          - hub/functions/src/northstar-local-store.ts
+          - hub/functions/src/northstar-news-feed.test.ts
+          - hub/functions/src/northstar-news-feed.ts
+          - hub/functions/src/northstar-news-profile.test.ts
+          - hub/functions/src/northstar-news-profile.ts
+          - hub/functions/src/northstar-news-store.ts
+        filesChanged: 8
+      - sha: e48ae794d6b70beccca8cdf6e83b70881c9beeec
+        message: Persist News story snapshots and integrate Ask context
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e48ae794d6b70beccca8cdf6e83b70881c9beeec
+        authoredAt: 2026-11-19T19:34:40Z
+        additions: 409
+        deletions: 37
+        files:
+          - docs/northstar-news.md
+          - hub/functions/src/northstar-claude-ask.test.ts
+          - hub/functions/src/northstar-claude-brief.ts
+          - hub/functions/src/northstar-microsoft.test.ts
+          - hub/functions/src/northstar-microsoft.ts
+          - hub/functions/src/northstar-news-ask.ts
+          - hub/functions/src/northstar-news-feed.test.ts
+          - hub/functions/src/northstar-news-feed.ts
+          - hub/functions/src/northstar-news-profile.test.ts
+          - hub/functions/src/northstar-news-store.ts
+        filesChanged: 10
+      - sha: 389167d2f469671b4126f3906caba4edaae1a77c
+        message: "feat(northstar): build the News experience"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/389167d2f469671b4126f3906caba4edaae1a77c
+        authoredAt: 2026-11-19T19:42:09Z
+        additions: 3553
+        deletions: 62
+        files:
+          - northstar/app/layout.tsx
+          - northstar/app/news.css
+          - northstar/components/answer-markdown.tsx
+          - northstar/components/ask-northstar-workspace.dom.test.tsx
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/components/command-mark.tsx
+          - northstar/components/news-briefing.tsx
+          - northstar/components/news-dashboard.dom.test.ts
+          - northstar/components/news-dashboard.fixture.tsx
+          - northstar/components/news-inline-answer.tsx
+          - northstar/components/news-market-pulse.tsx
+          - northstar/components/news-onboarding.dom.test.tsx
+          - northstar/components/news-onboarding.tsx
+          - northstar/components/news-reader.tsx
+          - northstar/components/news-story-card.tsx
+          - northstar/components/news-today-widget.tsx
+          - northstar/components/news-workspace.tsx
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/components/quick-chat.dom.test.tsx
+          - northstar/components/quick-chat.tsx
+          - northstar/components/selection-popover.dom.test.tsx
+          - northstar/components/selection-popover.tsx
+          - northstar/components/today-widget-grid.dom.test.tsx
+          - northstar/components/today-widget-grid.tsx
+          - northstar/lib/at-commands.test.ts
+          - northstar/lib/at-commands.ts
+          - northstar/lib/news-api.ts
+          - northstar/lib/news-model.test.tsx
+          - northstar/lib/news-model.ts
+          - northstar/lib/quick-chat.ts
+          - northstar/lib/today-layout.test.ts
+          - northstar/lib/today-layout.ts
+        filesChanged: 32
+      - sha: 1939b2d1d233193bb74f14a399bf5c9c55dd3e9e
+        message: "fix(northstar): harden News review findings"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/1939b2d1d233193bb74f14a399bf5c9c55dd3e9e
+        authoredAt: 2026-11-19T20:10:08Z
+        additions: 482
+        deletions: 131
+        files:
+          - northstar/app/news.css
+          - northstar/components/answer-markdown.tsx
+          - northstar/components/news-briefing.tsx
+          - northstar/components/news-dashboard.dom.test.ts
+          - northstar/components/news-dashboard.fixture.tsx
+          - northstar/components/news-inline-answer.tsx
+          - northstar/components/news-reader.tsx
+          - northstar/components/news-workspace.tsx
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/components/quick-chat.dom.test.tsx
+          - northstar/components/quick-chat.tsx
+          - northstar/components/selection-popover.dom.test.tsx
+          - northstar/components/selection-popover.tsx
+          - northstar/components/streaming-markdown.tsx
+          - northstar/lib/news-model.test.tsx
+          - northstar/lib/news-model.ts
+        filesChanged: 16
+      - sha: 558ad388a6754633d8795e56c67e472cbdd9cdb6
+        message: Add full-text News readers and cached Northstar briefs
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/558ad388a6754633d8795e56c67e472cbdd9cdb6
+        authoredAt: 2026-11-19T20:27:10Z
+        additions: 582
+        deletions: 26
+        files:
+          - docs/northstar-news.md
+          - hub/functions/src/index.ts
+          - hub/functions/src/northstar-claude-brief.ts
+          - hub/functions/src/northstar-news-article.test.ts
+          - hub/functions/src/northstar-news-article.ts
+          - hub/functions/src/northstar-news-brief.test.ts
+          - hub/functions/src/northstar-news-brief.ts
+          - hub/functions/src/northstar-news-catalog.test.ts
+          - hub/functions/src/northstar-news-feed.test.ts
+          - hub/functions/src/northstar-news-feed.ts
+          - hub/functions/src/northstar-news-sources.test.ts
+          - hub/functions/src/northstar-news-sources.ts
+          - hub/functions/src/northstar-news-store.ts
+          - packages/contracts/src/northstar-news.ts
+        filesChanged: 14
+      - sha: a6a09b67f2e1a9dec4ac75279636f6cd694de3f1
+        message: "docs(northstar): add News edition contract for UX redesign"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a6a09b67f2e1a9dec4ac75279636f6cd694de3f1
+        authoredAt: 2026-11-19T20:30:18Z
+        additions: 47
+        deletions: 0
+        files:
+          - packages/contracts/src/northstar-news.ts
+        filesChanged: 1
+      - sha: e79492dcaab9c0a2ad0525cba36413b6342c5a32
+        message: "fix(northstar): keep selected text still while an answer is revealing"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e79492dcaab9c0a2ad0525cba36413b6342c5a32
+        authoredAt: 2026-11-19T20:34:06Z
+        additions: 90
+        deletions: 4
+        files:
+          - northstar/components/selection-popover.dom.test.tsx
+          - northstar/components/selection-popover.tsx
+          - northstar/components/streaming-markdown.dom.test.tsx
+          - northstar/components/streaming-markdown.tsx
+        filesChanged: 4
+      - sha: d9fa55fdbad74c4e42195f2490aef3dbe96d80a6
+        message: Add source-backed News editions and visit tracking
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d9fa55fdbad74c4e42195f2490aef3dbe96d80a6
+        authoredAt: 2026-11-19T21:03:21Z
+        additions: 487
+        deletions: 48
+        files:
+          - docs/northstar-news.md
+          - hub/functions/src/index.ts
+          - hub/functions/src/northstar-news-catalog.test.ts
+          - hub/functions/src/northstar-news-catalog.ts
+          - hub/functions/src/northstar-news-edition.test.ts
+          - hub/functions/src/northstar-news-edition.ts
+          - hub/functions/src/northstar-news-feed.test.ts
+          - hub/functions/src/northstar-news-feed.ts
+          - hub/functions/src/northstar-news-profile.test.ts
+          - hub/functions/src/northstar-news-relevance.ts
+          - hub/functions/src/northstar-news-sources.test.ts
+          - hub/functions/src/northstar-news-sources.ts
+          - hub/functions/src/northstar-news-store.ts
+        filesChanged: 13
+      - sha: 0e18883c3ea0a03ccca8d84b1889c74900b2bb11
+        message: "feat(northstar): redesign News as a daily edition"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0e18883c3ea0a03ccca8d84b1889c74900b2bb11
+        authoredAt: 2026-11-19T21:05:15Z
+        additions: 2022
+        deletions: 1499
+        files:
+          - northstar/app/news.css
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/components/news-brief.tsx
+          - northstar/components/news-briefing.tsx
+          - northstar/components/news-dashboard.dom.test.ts
+          - northstar/components/news-dashboard.fixture.tsx
+          - northstar/components/news-edition-view.tsx
+          - northstar/components/news-inline-answer.tsx
+          - northstar/components/news-onboarding.dom.test.tsx
+          - northstar/components/news-onboarding.tsx
+          - northstar/components/news-preferences.tsx
+          - northstar/components/news-reader.tsx
+          - northstar/components/news-story-card.tsx
+          - northstar/components/news-story-row.tsx
+          - northstar/components/news-today-widget.tsx
+          - northstar/components/news-workspace.tsx
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/components/quick-chat.tsx
+          - northstar/components/selection-popover.dom.test.tsx
+          - northstar/components/selection-popover.tsx
+          - northstar/lib/news-api.ts
+          - northstar/lib/news-edition.test.ts
+          - northstar/lib/news-edition.ts
+          - northstar/lib/news-model.test.tsx
+          - northstar/lib/news-model.ts
+        filesChanged: 25
+      - sha: dc6f4a6f89be32caaddd5079fa61d7e4890318de
+        message: Define visit-bound News editions and pending deadlines
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/dc6f4a6f89be32caaddd5079fa61d7e4890318de
+        authoredAt: 2026-11-19T21:13:51Z
+        additions: 27
+        deletions: 5
+        files:
+          - packages/contracts/src/northstar-news.ts
+        filesChanged: 1
+      - sha: a40da651c9f493ab976a3868b2095d17ab2d4ecc
+        message: "feat(northstar): add local-only Ollama Ask provider"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a40da651c9f493ab976a3868b2095d17ab2d4ecc
+        authoredAt: 2026-11-19T21:19:13Z
+        additions: 401
+        deletions: 0
+        files:
+          - README.md
+          - docs/northstar-local-model.md
+          - hub/functions/src/index.ts
+          - hub/functions/src/northstar-local-model.test.ts
+          - hub/functions/src/northstar-local-model.ts
+          - hub/functions/src/northstar-microsoft.ts
+        filesChanged: 6
+      - sha: b1addaf2beece5aba63c045159a3b6c30e15bfbc
+        message: "fix(northstar): address News re-review findings"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b1addaf2beece5aba63c045159a3b6c30e15bfbc
+        authoredAt: 2026-11-19T21:38:50Z
+        additions: 631
+        deletions: 314
+        files:
+          - northstar/app/news.css
+          - northstar/components/ask-northstar-workspace.dom.test.tsx
+          - northstar/components/ask-northstar-workspace.test.tsx
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/components/news-brief.tsx
+          - northstar/components/news-dashboard.dom.test.ts
+          - northstar/components/news-dashboard.fixture.tsx
+          - northstar/components/news-edition-view.tsx
+          - northstar/components/news-onboarding.dom.test.tsx
+          - northstar/components/news-onboarding.tsx
+          - northstar/components/news-reader.tsx
+          - northstar/components/news-story-row.tsx
+          - northstar/components/news-today-widget.tsx
+          - northstar/components/news-workspace.tsx
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/lib/chat-history.ts
+          - northstar/lib/news-api.ts
+          - northstar/lib/news-edition.test.ts
+          - northstar/lib/news-edition.ts
+        filesChanged: 19
+      - sha: a6f0a3f56f016f91c3a234893240ce33e4142f3a
+        message: Serve cached visit-bound editions and clean News previews
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a6f0a3f56f016f91c3a234893240ce33e4142f3a
+        authoredAt: 2026-11-19T21:51:20Z
+        additions: 556
+        deletions: 97
+        files:
+          - docs/northstar-news.md
+          - hub/functions/src/fixtures/northstar-news-fed-enforcement.html
+          - hub/functions/src/northstar-news-article.test.ts
+          - hub/functions/src/northstar-news-article.ts
+          - hub/functions/src/northstar-news-brief.test.ts
+          - hub/functions/src/northstar-news-brief.ts
+          - hub/functions/src/northstar-news-edition.test.ts
+          - hub/functions/src/northstar-news-edition.ts
+          - hub/functions/src/northstar-news-profile.test.ts
+          - hub/functions/src/northstar-news-relevance.ts
+          - hub/functions/src/northstar-news-sources.ts
+          - hub/functions/src/northstar-news-store.ts
+          - northstar/lib/news-edition.test.ts
+          - northstar/lib/news-edition.ts
+        filesChanged: 14
+      - sha: 75e2c75ae02a7dd9bda2827bf981fddbd4ad9e83
+        message: "feat(northstar): mirror navigation into the URL"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/75e2c75ae02a7dd9bda2827bf981fddbd4ad9e83
+        authoredAt: 2026-11-19T21:51:24Z
+        additions: 376
+        deletions: 69
+        files:
+          - northstar/components/news-dashboard.dom.test.ts
+          - northstar/components/news-dashboard.fixture.tsx
+          - northstar/components/news-workspace.tsx
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/lib/northstar-location.test.ts
+          - northstar/lib/northstar-location.ts
+        filesChanged: 6
+      - sha: 40e42e1dcf986c14f429af8f88ba44ff2ddb6bac
+        message: Normalize live Fed fixture whitespace
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/40e42e1dcf986c14f429af8f88ba44ff2ddb6bac
+        authoredAt: 2026-11-19T21:51:53Z
+        additions: 52
+        deletions: 52
+        files:
+          - hub/functions/src/fixtures/northstar-news-fed-enforcement.html
+        filesChanged: 1
+      - sha: 0857eb529950e7ce282cc616ca60b87f7f194c5c
+        message: Define persisted News reader appearance preferences
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0857eb529950e7ce282cc616ca60b87f7f194c5c
+        authoredAt: 2026-11-19T21:53:23Z
+        additions: 17
+        deletions: 0
+        files:
+          - packages/contracts/src/northstar-news.ts
+        filesChanged: 1
+      - sha: ffa0fa51de14c5348e6274232e401dfcb28489b8
+        message: Persist advisor News reader appearance preferences
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ffa0fa51de14c5348e6274232e401dfcb28489b8
+        authoredAt: 2026-11-19T22:01:21Z
+        additions: 178
+        deletions: 6
+        files:
+          - docs/northstar-news.md
+          - hub/functions/src/index.ts
+          - hub/functions/src/northstar-news-profile.ts
+          - hub/functions/src/northstar-news-reader-preferences.test.ts
+          - hub/functions/src/northstar-news-reader-preferences.ts
+          - hub/functions/src/northstar-news-store.ts
+        filesChanged: 6
+      - sha: 359fd5f91910866eebf52eda67fed90d3afc339a
+        message: Add News brief provider and grounding provenance
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/359fd5f91910866eebf52eda67fed90d3afc339a
+        authoredAt: 2026-11-19T22:05:10Z
+        additions: 3
+        deletions: 0
+        files:
+          - packages/contracts/src/northstar-news.ts
+        filesChanged: 1
+      - sha: 6bf46cc12c8dda9aacb11544dd1213d5849acfac
+        message: "feat(northstar): surface the local Ollama Ask provider"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6bf46cc12c8dda9aacb11544dd1213d5849acfac
+        authoredAt: 2026-11-19T22:08:20Z
+        additions: 322
+        deletions: 52
+        files:
+          - northstar/app/globals.css
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/components/quick-chat.tsx
+          - northstar/components/settings-workspace.tsx
+          - northstar/lib/ask-providers.ts
+        filesChanged: 6
+      - sha: 3f533f4c5bac2810b38e2b831cfe33dfeb038ef2
+        message: "feat(northstar): reader appearance, progress, focus mode and Listen"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3f533f4c5bac2810b38e2b831cfe33dfeb038ef2
+        authoredAt: 2026-11-19T22:11:37Z
+        additions: 1147
+        deletions: 12
+        files:
+          - northstar/app/news.css
+          - northstar/components/news-reader-appearance.tsx
+          - northstar/components/news-reader.dom.test.tsx
+          - northstar/components/news-reader.tsx
+          - northstar/components/news-workspace.tsx
+          - northstar/lib/news-api.ts
+          - northstar/lib/news-read-aloud.ts
+          - northstar/lib/news-reader-prefs.test.ts
+          - northstar/lib/news-reader-prefs.ts
+          - northstar/lib/use-reader-preferences.ts
+        filesChanged: 10
+      - sha: 2daffe54709bc084b68b0b677977d53b909cf65c
+        message: "feat(northstar): label News briefs based on the headline only"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2daffe54709bc084b68b0b677977d53b909cf65c
+        authoredAt: 2026-11-19T22:18:20Z
+        additions: 41
+        deletions: 3
+        files:
+          - northstar/app/news.css
+          - northstar/components/news-brief.tsx
+          - northstar/components/news-reader.dom.test.tsx
+        filesChanged: 3
+      - sha: 66f962546c5426d6aa3b337d8175ae69a391ff53
+        message: "test(northstar): cover the local Ask provider in the workspace, quick chat, settings and dashboard"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/66f962546c5426d6aa3b337d8175ae69a391ff53
+        authoredAt: 2026-11-19T22:30:49Z
+        additions: 334
+        deletions: 3
+        files:
+          - northstar/components/ask-northstar-workspace.dom.test.tsx
+          - northstar/components/northstar-local-model.dom.test.ts
+          - northstar/components/northstar-local-model.fixture.tsx
+          - northstar/components/quick-chat.dom.test.tsx
+          - northstar/components/settings-workspace.dom.test.tsx
+          - northstar/lib/ask-providers.test.ts
+        filesChanged: 6
+      - sha: a8a0a991bc719b7c1a74deff6a87a4612f77f052
+        message: Generate gated local News briefs and decode source entities
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a8a0a991bc719b7c1a74deff6a87a4612f77f052
+        authoredAt: 2026-11-19T22:38:49Z
+        additions: 352
+        deletions: 63
+        files:
+          - docs/northstar-local-model.md
+          - docs/northstar-news.md
+          - hub/functions/package.json
+          - hub/functions/src/fixtures/northstar-news-entities.json
+          - hub/functions/src/northstar-news-article.test.ts
+          - hub/functions/src/northstar-news-article.ts
+          - hub/functions/src/northstar-news-brief.ts
+          - hub/functions/src/northstar-news-edition.ts
+          - hub/functions/src/northstar-news-feed.ts
+          - hub/functions/src/northstar-news-local-brief.test.ts
+          - hub/functions/src/northstar-news-relevance.ts
+          - hub/functions/src/northstar-news-sources.test.ts
+          - hub/functions/src/northstar-news-sources.ts
+          - hub/functions/src/northstar-news-store.ts
+          - hub/functions/src/northstar-news-text.test.ts
+          - hub/functions/src/northstar-news-text.ts
+        filesChanged: 16
+      - sha: 1f438b38837c3983e57a26cbc03cd271ac8eb9cc
+        message: "fix(northstar): show the local-chat label below the quick-chat header so it fits at 390px"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/1f438b38837c3983e57a26cbc03cd271ac8eb9cc
+        authoredAt: 2026-11-19T22:39:01Z
+        additions: 2
+        deletions: 2
+        files:
+          - northstar/app/globals.css
+          - northstar/components/quick-chat.tsx
+        filesChanged: 2
+      - sha: 8e94980c720380217acd9b4539209ed005b6884e
+        message: "chore: lock entities for hub functions"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8e94980c720380217acd9b4539209ed005b6884e
+        authoredAt: 2026-11-19T22:39:10Z
+        additions: 1
+        deletions: 0
+        files:
+          - bun.lock
+        filesChanged: 1
+      - sha: 52efbf6d63d2d3fc5649678d2c82b619d90c7709
+        message: "fix(northstar): never persist an unsaved local chat from any history writer"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/52efbf6d63d2d3fc5649678d2c82b619d90c7709
+        authoredAt: 2026-11-19T22:49:29Z
+        additions: 84
+        deletions: 7
+        files:
+          - northstar/components/ask-northstar-workspace.dom.test.tsx
+          - northstar/components/ask-northstar-workspace.tsx
+          - northstar/lib/chat-history.ts
+        filesChanged: 3
+      - sha: 16c6f7b46592c652626c8eb4ec1f1fb2e6c9c4e7
+        message: "test(northstar): type the local-chat persistence regression test"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/16c6f7b46592c652626c8eb4ec1f1fb2e6c9c4e7
+        authoredAt: 2026-11-19T22:50:01Z
+        additions: 3
+        deletions: 2
+        files:
+          - northstar/components/ask-northstar-workspace.dom.test.tsx
+        filesChanged: 1
+      - sha: 1fe1bdc9d48a39f6219ea77b0ad99f935dc4ba51
+        message: "fix(northstar): address News third-review findings"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/1fe1bdc9d48a39f6219ea77b0ad99f935dc4ba51
+        authoredAt: 2026-11-19T22:59:09Z
+        additions: 232
+        deletions: 46
+        files:
+          - northstar/app/news.css
+          - northstar/components/news-dashboard.dom.test.ts
+          - northstar/components/news-dashboard.fixture.tsx
+          - northstar/components/news-reader.dom.test.tsx
+          - northstar/components/news-reader.tsx
+          - northstar/components/news-workspace.tsx
+          - northstar/components/northstar-dashboard.tsx
+          - northstar/lib/northstar-location.test.ts
+          - northstar/lib/northstar-location.ts
+          - northstar/lib/use-reader-preferences.ts
+        filesChanged: 10
   - repo: Myriad-Advisor-Solutions/myriadas-apps
     messages:
       - "docs(repo): define app-specific agent guidance"
@@ -249,11 +777,39 @@ aiReviews:
 hoursInputs:
   timestamps:
     - 2026-11-19T17:30:24Z
-    - 2026-11-19T17:30:24Z
-    - 2026-11-19T17:30:34Z
-    - 2026-11-19T17:30:24Z
     - 2026-11-19T17:30:32Z
-    - 2026-11-19T17:30:24Z
+    - 2026-11-19T17:30:34Z
+    - 2026-11-19T19:05:35Z
+    - 2026-11-19T19:14:20Z
+    - 2026-11-19T19:14:55Z
+    - 2026-11-19T19:22:57Z
+    - 2026-11-19T19:34:40Z
+    - 2026-11-19T19:42:09Z
+    - 2026-11-19T20:10:08Z
+    - 2026-11-19T20:27:10Z
+    - 2026-11-19T20:30:18Z
+    - 2026-11-19T20:34:06Z
+    - 2026-11-19T21:03:21Z
+    - 2026-11-19T21:05:15Z
+    - 2026-11-19T21:13:51Z
+    - 2026-11-19T21:19:13Z
+    - 2026-11-19T21:38:50Z
+    - 2026-11-19T21:51:20Z
+    - 2026-11-19T21:51:24Z
+    - 2026-11-19T21:51:53Z
+    - 2026-11-19T21:53:23Z
+    - 2026-11-19T22:01:21Z
+    - 2026-11-19T22:05:10Z
+    - 2026-11-19T22:08:20Z
+    - 2026-11-19T22:11:37Z
+    - 2026-11-19T22:18:20Z
+    - 2026-11-19T22:30:49Z
+    - 2026-11-19T22:38:49Z
+    - 2026-11-19T22:39:01Z
+    - 2026-11-19T22:39:10Z
+    - 2026-11-19T22:49:29Z
+    - 2026-11-19T22:50:01Z
+    - 2026-11-19T22:59:09Z
   volume:
     pullRequests:
       - additions: 48
@@ -272,22 +828,40 @@ hoursInputs:
         commitCount: 1
     reviewCount: 0
     reviewCommentCount: 0
-    commitCount: 0
-    commitAdditions: 0
-    commitDeletions: 0
-    commitStatsCount: 0
+    commitCount: 31
+    commitAdditions: 13617
+    commitDeletions: 2542
+    commitStatsCount: 31
+    commitUnits:
+      - additions: 9959
+        deletions: 2207
+        commitCount: 17
+        hasStats: true
+        filesChanged: 153
+      - additions: 3656
+        deletions: 335
+        commitCount: 12
+        hasStats: true
+        filesChanged: 94
+      - additions: 2
+        deletions: 0
+        commitCount: 2
+        hasStats: true
+        filesChanged: 2
   options:
     gapMinutes: 90
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 8
-  sessions: 1
-  sessionHours: 0.5
-  volumeHours: 6.8
+  version: "2.3"
+  hours: 27.9
+  sessions: 2
+  sessionHours: 4.4
+  volumeHours: 39.8
+  compressedVolumeHours: 27.9
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""
