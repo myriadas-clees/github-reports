@@ -2,7 +2,7 @@
 // Hours are an estimate distributed by delivered scope; self-reported time is added unscaled.
 
 import { buildCommitUnits, estimateCommitUnitHours, estimateDailyPrWorkHours, estimatePrHours, groupCommitUnitIndexes } from "./estimate-hours.js";
-import { addDays, buildWorkCalendar, mondayOf, type WorkCalendar } from "./work-calendar.js";
+import { addDays, buildWorkCalendar, isWeekendDate, mondayOf, type WorkCalendar } from "./work-calendar.js";
 import type {
   Allocation,
   EvidenceLedger,
@@ -665,6 +665,51 @@ export const weekStart = (date: string): string => {
 export const weekEnd = (from: string): string => formatUtc(parseUtc(from) + 6 * DAY_MS);
 
 type TrendReport = { date: string; data: Parameters<typeof computeAllocation>[0] };
+
+/** Resolve uncertain manual entries once per site snapshot so daily and weekly totals agree. */
+export const balanceManualTime = (
+  reports: ReadonlyMap<string, TrendReport["data"]>,
+  config: AllocationConfig | undefined,
+  manualTime: ManualTimeEntry[],
+): ManualTimeEntry[] => {
+  if (!manualTime.some((entry) => entry.dateUncertain)) return manualTime;
+
+  const dated = manualTime.filter((entry) => !entry.dateUncertain);
+  const effort = new Map<string, number>();
+  const hoursOn = (date: string): number => {
+    let hours = effort.get(date);
+    if (hours === undefined) {
+      const report = reports.get(date);
+      hours = report ? computeAllocation(report, config, dated).totalHours : 0;
+      effort.set(date, hours);
+    }
+    return hours;
+  };
+  // Earlier anchors first, then configuration order when several share an anchor.
+  const uncertain = manualTime.filter((entry) => entry.dateUncertain).sort((a, b) => a.date.localeCompare(b.date));
+  const redistributed = uncertain.map((entry): ManualTimeEntry => {
+    const anchor = entry.date;
+    const monday = mondayOf(anchor);
+    const friday = addDays(monday, 4);
+    const nearest = (direction: -1 | 1): string | undefined => {
+      for (let date = addDays(anchor, direction); date >= monday && date <= friday; date = addDays(date, direction)) {
+        if (reports.has(date)) return date;
+      }
+    };
+    const prior = isWeekendDate(anchor) ? undefined : nearest(-1);
+    const next = isWeekendDate(anchor) ? undefined : nearest(1);
+    const date = prior && next ? (hoursOn(prior) <= hoursOn(next) ? prior : next) : prior ?? next ?? anchor;
+    effort.set(date, hoursOn(date) + entry.hours);
+    const note = entry.note ?? "Self-reported time";
+    return {
+      ...entry,
+      date,
+      dateUncertain: false,
+      note: date === anchor ? `${note} (date uncertain: ${anchor})` : `${note} (redistributed effort: ${anchor} → ${date})`,
+    };
+  });
+  return [...dated, ...redistributed];
+};
 
 /** Reuse results only for this fixed snapshot, configuration and manual-time list. */
 export const createAllocationTrendBatch = (

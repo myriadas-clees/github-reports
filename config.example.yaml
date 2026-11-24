@@ -66,5 +66,11 @@ allocation:
 # It is shown in the allocation as "self-reported", separate from estimates.
 # work_type is one of: new-capability, quality, maintenance, documentation,
 # team-support, unlogged. Invalid entries are ignored.
+# For effort with an uncertain date, set date_uncertain: true and use date as
+# an approximate anchor. It moves to the lower-effort neighboring reported
+# weekday within that Mon–Fri week. Ties go to the earlier day. Without an
+# eligible weekday (or for a weekend anchor), it keeps the anchor date.
+# Run render --archive after adding or changing an uncertain entry.
 # manual_time:
 #   - { date: 2026-10-07, initiative: Hub, hours: 1.5, work_type: team-support, note: "Stakeholder sync" }
+#   - { date: 2026-10-19, date_uncertain: true, initiative: Hub, hours: 2, note: "Approximate timing" }

@@ -550,11 +550,14 @@ export type AllocationTrend = {
 };
 
 export type ManualTimeEntry = {
+  /** Exact date, or an approximate anchor when dateUncertain is true. */
   date: string; // YYYY-MM-DD
   initiative: string;
   hours: number;
   workType?: WorkType;
   note?: string;
+  /** Redistribute this estimate to a lower-effort neighboring reported weekday. */
+  dateUncertain?: boolean;
 };
 
 export type AllocationConfig = {

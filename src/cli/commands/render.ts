@@ -30,6 +30,7 @@ import type {
 import {
   DEFAULT_ALLOCATION_CONFIG,
   NO_ACTIVITY_INITIATIVE,
+  balanceManualTime,
   createAllocationTrendBatch,
   computeAllocation,
   withAllocationMetadata,
@@ -454,7 +455,8 @@ type RenderArchiveContext = {
 };
 
 /** Render HTML for a day from github-data + llm-data. Throws if data is missing. */
-const runRenderWithContext = async (options: RenderCommandOptions, archive?: RenderArchiveContext): Promise<void> => {
+const runRenderWithContext = async (input: RenderCommandOptions, archive?: RenderArchiveContext): Promise<void> => {
+  let options = input;
   const dayId = options.mode === "weekly"
     ? getWeekId(options.date ?? new Date(), options.timezone)
     : resolveDayId(options.date, options.timezone);
@@ -505,6 +507,9 @@ const runRenderWithContext = async (options: RenderCommandOptions, archive?: Ren
     console.warn(`Warning: evidence ledger unavailable; rendering without evidence: ${err instanceof Error ? err.message : err}`);
     return null;
   });
+  if (!archive && options.mode !== "weekly") {
+    options = resolveSiteManualTime(options, allDailyReports, evidence);
+  }
   const colorOrder = archive?.colorOrder ?? buildInitiativeColorOrder(allDailyReports, options.allocation, options.manualTime, evidence);
   const allocationFor = (path: string, report: WeeklyReportData): AllocationInput | undefined =>
     buildAllocationInput({
@@ -817,8 +822,21 @@ ${sitemapEntries}
 /** Render a single report and refresh its shared navigation pages. */
 export const runRender = (options: RenderCommandOptions): Promise<void> => runRenderWithContext(options);
 
+const resolveSiteManualTime = (
+  options: RenderCommandOptions,
+  reports: ReadonlyMap<string, WeeklyReportData>,
+  evidence: EvidenceLedger | null,
+): RenderCommandOptions => {
+  if (!options.manualTime?.some((entry) => entry.dateUncertain)) return options;
+  const prepared = new Map([...reports].map(([date, report]) => [
+    date, withRecomputedHours(withAllocationMetadata(normalizeReportData(report), evidence)),
+  ]));
+  return { ...options, manualTime: balanceManualTime(prepared, options.allocation, options.manualTime) };
+};
+
 /** Render every complete daily archive in one process. */
-export const runRenderArchive = async (options: RenderCommandOptions): Promise<void> => {
+export const runRenderArchive = async (input: RenderCommandOptions): Promise<void> => {
+  let options = input;
   if (options.mode === "weekly") throw new Error("--archive only supports daily reports");
   const paths: string[] = [];
   for (const year of (await readdir(options.dataDir)).filter((n) => /^\d{4}$/.test(n))) {
@@ -850,6 +868,7 @@ export const runRenderArchive = async (options: RenderCommandOptions): Promise<v
     console.warn(`Warning: evidence ledger unavailable; rendering without evidence: ${err instanceof Error ? err.message : err}`);
     return null;
   });
+  options = resolveSiteManualTime(options, dailyReports, evidence);
   let allocationBatch: ReturnType<typeof createAllocationTrendBatch> | undefined;
   try {
     allocationBatch = createAllocationTrendBatch(

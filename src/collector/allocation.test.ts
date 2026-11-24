@@ -8,6 +8,7 @@ import {
   NOTABLE_IMPACT_HOURS,
   NO_ACTIVITY_INITIATIVE,
   deriveImpact,
+  balanceManualTime,
   buildAllocationTrend,
   createAllocationTrendBatch,
   classifyInitiative,
@@ -54,6 +55,35 @@ const data = (over: Partial<Data> = {}, hours = 10): Data => ({
 });
 
 const sum = (xs: number[]): number => xs.reduce((a, b) => a + b, 0);
+
+describe("balanceManualTime", () => {
+  const report = (date: string, hours: number): Data =>
+    data({ dateRange: { from: date, to: date }, pullRequests: [pr()] }, hours);
+
+  it("uses the lighter nearest report and includes earlier assignments when comparing effort", () => {
+    const prior = "2026-10-06", anchor = "2026-10-07", next = "2026-10-09";
+    const reports = new Map([[prior, report(prior, 5)], [anchor, report(anchor, 20)], [next, report(next, 7)]]);
+    const dated = { date: prior, initiative: "Planning", hours: 1 };
+    const uncertain = [2, 1, 1].map((hours) => ({ date: anchor, initiative: "Support", hours, dateUncertain: true }));
+    const resolved = balanceManualTime(reports, undefined, [dated, ...uncertain]);
+    expect(resolved.map((entry) => entry.date)).toEqual([prior, prior, next, prior]);
+    expect(resolved[0]).toEqual(dated);
+    expect(resolved[1]?.note).toContain(`redistributed effort: ${anchor} → ${prior}`);
+    expect(uncertain.every((entry) => entry.date === anchor && entry.dateUncertain)).toBe(true);
+    const batch = createAllocationTrendBatch([...reports].map(([date, data]) => ({ date, data })), undefined, resolved);
+    expect(batch.allocationForDate(anchor)?.totalHours).toBe(20);
+    expect(batch.trend(next).periods.at(-1)?.allocation.totalHours).toBe(37);
+  });
+
+  it("uses the only available weekday and keeps the anchor when the week has no neighbor", () => {
+    const monday = "2026-10-05", friday = "2026-10-09", nextMonday = "2026-10-12";
+    const reports = new Map([[friday, report(friday, 1)], [nextMonday, report(nextMonday, 0)]]);
+    const entries = [monday, friday].map((date) => ({ date, initiative: "Planning", hours: 1, dateUncertain: true }));
+    const resolved = balanceManualTime(reports, undefined, entries);
+    expect(resolved.map((entry) => entry.date)).toEqual([friday, friday]);
+    expect(resolved[1]?.note).toContain("date uncertain");
+  });
+});
 
 describe("classifyWorkType", () => {
   it.each([

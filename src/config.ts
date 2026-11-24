@@ -82,6 +82,8 @@ type RawManualTime = {
   work_type?: unknown;
   workType?: unknown;
   note?: unknown;
+  date_uncertain?: unknown;
+  dateUncertain?: unknown;
 };
 
 type RawConfig = {
@@ -190,6 +192,7 @@ const parseManualTime = (raw: unknown): ManualTimeEntry[] => {
       entry.workType = workType as WorkType;
     }
     if (typeof e.note === "string" && e.note.trim()) entry.note = e.note.trim();
+    if (e.date_uncertain === true || e.dateUncertain === true) entry.dateUncertain = true;
     out.push(entry);
   }
   return out;

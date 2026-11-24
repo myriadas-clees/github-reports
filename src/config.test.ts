@@ -77,6 +77,21 @@ describe("parseConfigObject", () => {
     expect(partial.manualTime).toEqual([{ date: "2026-10-07", initiative: "Hub", hours: 2 }]);
   });
 
+  it("preserves an explicit uncertain date anchor from snake or camel case", () => {
+    const partial = parseConfigObject({
+      manual_time: [
+        { date: "2026-10-19", initiative: "Hub", hours: 2, date_uncertain: true },
+        { date: "2026-10-20", initiative: "Northstar", hours: 1, dateUncertain: true },
+        { date: "2026-10-21", initiative: "Compass", hours: 1, date_uncertain: "true" },
+      ],
+    });
+    expect(partial.manualTime).toEqual([
+      { date: "2026-10-19", initiative: "Hub", hours: 2, dateUncertain: true },
+      { date: "2026-10-20", initiative: "Northstar", hours: 1, dateUncertain: true },
+      { date: "2026-10-21", initiative: "Compass", hours: 1 },
+    ]);
+  });
+
   it("drops impossible manual-time dates and keeps valid leap/calendar dates", () => {
     const entries = ["2026-02-30", "2026-13-01", "2026-04-31", "2024-02-29", "2026-02-28"]
       .map((date) => ({ date, initiative: "Hub", hours: 1 }));
