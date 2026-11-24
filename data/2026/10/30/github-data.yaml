@@ -1,0 +1,1446 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-10-30
+  to: 2026-10-30
+stats:
+  totalCommits: 37
+  totalAdditions: 12261
+  totalDeletions: 4889
+  prsOpened: 5
+  prsMerged: 4
+  prsInProgress: 5
+  prsReviewed: 5
+  reviewComments: 5
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 120.7
+dailyCommits:
+  - date: 2026-10-30
+    count: 37
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 20
+    prsOpened: 3
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 17
+    prsOpened: 2
+    prsMerged: 4
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests:
+  - title: "fix(deploy): package PDF standard fonts for Node startup"
+    body: >-
+      ## Why
+
+
+      The production upload in [run
+      41149669860](https://github.com/Myriad-Advisor-Solutions/myriadas-apps/actions/runs/41149669860) succeeded, but
+      managed API health probes failed with 404/502. Loading the exact deployed package under Node 22 reproduces `Cannot
+      find module '#standard-fonts/Helvet...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/238
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - github-automation
+      - "app: hub"
+      - "app: proforma"
+    additions: 14
+    deletions: 1
+    changedFiles: 3
+    author: myriadas-clees
+    createdAt: 2026-10-31T00:59:28Z
+    updatedAt: 2026-10-31T02:02:31Z
+    closedAt: 2026-10-31T02:02:30Z
+    mergedAt: 2026-10-31T02:02:30Z
+    workCommits:
+      - &a29
+        sha: d88ccf00f4e78c1b55e28a56cba97463b5d05127
+        message: "fix(deploy): package PDF standard fonts for Node startup"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d88ccf00f4e78c1b55e28a56cba97463b5d05127
+        authoredAt: 2026-10-31T00:58:59Z
+    workTimestamps:
+      - 2026-10-31T00:58:59Z
+    workAdditions: 14
+    workDeletions: 1
+    workFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - hub/functions/package.json
+      - proforma/functions/package.json
+  - title: "feat(platform): staging, PR previews, agent testing, and release promotion"
+    body: >-
+      ## Why
+
+
+      Agents and reviewers need somewhere to exercise real builds before merge, without touching production. Testing has
+      gone straight from local to production. The PR previews ran inside the **production** Static Web App, where SWA
+      copies app settings into preview environments, so previews ran ag...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/237
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a1
+      - documentation
+      - github-automation
+      - "app: hub"
+      - platform
+      - infrastructure
+      - "app: transition"
+    additions: 4451
+    deletions: 2327
+    changedFiles: 83
+    author: myriadas-clees
+    createdAt: 2026-10-30T19:43:25Z
+    updatedAt: 2026-10-30T21:10:08Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a2
+      - &a23
+        sha: 0c535365eb9b301af01b3f7a82fb18fc61fc1746
+        message: "feat(platform): add staging, PR previews, agent testing, and release promotion"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0c535365eb9b301af01b3f7a82fb18fc61fc1746
+        authoredAt: 2026-10-30T19:42:33Z
+      - &a25
+        sha: 1cdc60a2fc2c75f30c6609cb7fb93f1ba7bbc279
+        message: "feat(platform): make production promotion-only via the prod branch"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/1cdc60a2fc2c75f30c6609cb7fb93f1ba7bbc279
+        authoredAt: 2026-10-30T20:20:03Z
+      - &a26
+        sha: 826d2c7d9f5b41974321128c89e0f8c551279038
+        message: "feat(platform): replace Azure PR previews with local-stack PR E2E"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/826d2c7d9f5b41974321128c89e0f8c551279038
+        authoredAt: 2026-10-30T20:44:09Z
+      - &a27
+        sha: 473779e3a34118ef3508be676d000eb2d262daca
+        message: "fix(e2e): fail the report summary on runner errors or empty runs"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/473779e3a34118ef3508be676d000eb2d262daca
+        authoredAt: 2026-10-30T20:47:40Z
+      - &a28
+        sha: dc8c1121bdf388718338c3e3b1650af19cdb66bc
+        message: "fix(ci): run PR E2E on the runner and skip comments for cancelled runs"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/dc8c1121bdf388718338c3e3b1650af19cdb66bc
+        authoredAt: 2026-10-30T20:57:56Z
+    workTimestamps: &a3
+      - 2026-10-30T19:42:33Z
+      - 2026-10-30T20:20:03Z
+      - 2026-10-30T20:44:09Z
+      - 2026-10-30T20:47:40Z
+      - 2026-10-30T20:57:56Z
+    workAdditions: 4451
+    workDeletions: 2327
+    workFiles: &a4
+      - .dockerignore
+      - .github/ISSUE_TEMPLATE/feature.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/pr-e2e.yml
+      - .github/workflows/promote-release.yml
+      - .github/workflows/staging.yml
+      - .github/workflows/verify.yml
+      - .gitignore
+      - PLAN.md
+      - README.md
+      - bun.lock
+      - docker/Dockerfile
+      - docker/README.md
+      - docker/compose.yaml
+      - docker/cosmos-init.ts
+      - docs/authorization-roles.md
+      - docs/azure-serverless-plan.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - docs/staging-and-previews.md
+      - docs/staging-and-testing.md
+      - docs/transition/contracts.md
+      - e2e/README.md
+      - e2e/package.json
+      - e2e/playwright.config.ts
+      - e2e/scripts/summarize.test.ts
+      - e2e/scripts/summarize.ts
+      - e2e/src/auth.ts
+      - e2e/src/console.ts
+      - e2e/src/env.ts
+      - e2e/src/global-setup.ts
+      - e2e/src/routes.ts
+      - e2e/tests/api.spec.ts
+      - e2e/tests/browser.spec.ts
+      - e2e/tests/regression.spec.ts
+      - e2e/tsconfig.json
+      - e2e/vitest.config.ts
+      - hub/app/preview/page.tsx
+      - hub/functions/src/index.ts
+      - hub/functions/src/preview-redirects.test.ts
+      - hub/functions/src/preview-redirects.ts
+      - hub/functions/src/roles.test.ts
+      - hub/functions/src/roles.ts
+      - hub/functions/src/test-idp.test.ts
+      - hub/functions/src/test-idp.ts
+      - hub/lib/preview-redirects.test.ts
+      - hub/lib/preview-redirects.ts
+      - hub/package.json
+      - hub/staticwebapp.config.json
+      - hub/tsconfig.json
+      - infra/AGENTS.md
+      - infra/azure/README.md
+      - infra/azure/staging/README.md
+      - infra/azure/staging/main.bicep
+      - infra/azure/staging/main.parameters.example.json
+      - package.json
+      - packages/auth/src/index.ts
+      - packages/auth/src/test-identities.ts
+      - scripts/affected-apps.ts
+      - scripts/app-selection.ts
+      - scripts/artifact-cache.ts
+      - scripts/artifact-fingerprints.ts
+      - scripts/build-hub-release.sh
+      - scripts/build-unified-swa.ts
+      - scripts/company-matrix.test.ts
+      - scripts/github/configure-repository.test.ts
+      - scripts/github/configure-repository.ts
+      - scripts/package-hub-release.sh
+      - scripts/smoke-hub.sh
+      - scripts/stage-hub-functions.sh
+      - scripts/swa-environment-config.test.ts
+      - scripts/swa-environment-config.ts
+      - scripts/synthetic-data.test.ts
+      - scripts/synthetic-data.ts
+      - scripts/synthetic-data/pto.ts
+      - scripts/synthetic-data/safety.ts
+      - scripts/synthetic-data/valuation.ts
+      - scripts/tooling.test.ts
+      - scripts/typecheck-ci.ts
+      - scripts/validate-artifacts.ts
+      - scripts/validate-bicep.sh
+      - transition/README.md
+      - transition/src/components/transition-shell.tsx
+      - transition/src/lib/data.ts
+  - title: "fix(northstar): diagnose Graph read errors and restore To Do reads"
+    body: |-
+      - Remove unsupported `$select` parameters from Microsoft To Do list and task reads.
+      - Log sanitized Graph failure diagnostics and give Claude clear guidance when task data is unavailable.
+      - Add regression coverage for To Do reads, Graph errors, and stale-data warnings.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/207
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a5 []
+    additions: 534
+    deletions: 35
+    changedFiles: 6
+    author: myriadas-clees
+    createdAt: 2026-10-30T14:48:25Z
+    updatedAt: 2026-11-02T00:54:30Z
+    closedAt: 2026-11-02T00:54:30Z
+    mergedAt: 2026-11-02T00:54:30Z
+    workCommits: &a6
+      - &a31
+        sha: 6780d33b77ee39b8b3254aaeb1643a230634728d
+        message: "fix(northstar): diagnose Graph read errors and restore To Do reads"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6780d33b77ee39b8b3254aaeb1643a230634728d
+        authoredAt: 2026-10-30T14:48:17Z
+      - &a34
+        sha: 028d8552b5d6921d922a7baf507bbcbe6126246f
+        message: "test(northstar): keep scheduled cache fixtures unexpired"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/028d8552b5d6921d922a7baf507bbcbe6126246f
+        authoredAt: 2026-10-30T19:10:09Z
+      - &a43
+        sha: 2e6a0f0226992d50d1cb5f595dfb3719516613b2
+        message: "Merge published #207 into archive stack"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2e6a0f0226992d50d1cb5f595dfb3719516613b2
+        authoredAt: 2026-10-30T20:14:35Z
+      - &a47
+        sha: dfac682574e155665b0432a6fae7a5fe331daa1c
+        message: Update Graph stack with retention correction
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/dfac682574e155665b0432a6fae7a5fe331daa1c
+        authoredAt: 2026-10-30T21:51:51Z
+    workTimestamps: &a7
+      - 2026-10-30T14:48:17Z
+      - 2026-10-30T19:10:09Z
+      - 2026-10-30T20:14:35Z
+      - 2026-10-30T21:51:51Z
+    workAdditions: 534
+    workDeletions: 35
+    workFiles: &a8
+      - hub/functions/src/northstar-claude-brief.test.ts
+      - hub/functions/src/northstar-claude-brief.ts
+      - hub/functions/src/northstar-conversations.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-graph-diagnostics.test.ts
+      - hub/functions/src/northstar-graph-diagnostics.ts
+      - hub/functions/src/northstar-scheduled-brief.test.ts
+      - hub/functions/src/northstar-scheduled-brief.ts
+  - title: "feat(northstar): add advisor controls for Claude"
+    body: >-
+      - Add per-advisor Claude settings for models, document creation, web search, and Microsoft 365 context, with
+      Copilot fallback when Claude is disabled.
+
+      - Apply OHCPWM styling guidance to newly created documents and simplify the Claude Manage description.
+
+      - Add coverage for settings persistence, capab...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/208
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a9 []
+    additions: 1876
+    deletions: 197
+    changedFiles: 25
+    author: myriadas-clees
+    createdAt: 2026-10-30T14:56:47Z
+    updatedAt: 2026-11-02T00:54:32Z
+    closedAt: 2026-11-02T00:54:32Z
+    mergedAt: 2026-11-02T00:54:32Z
+    workCommits: &a10
+      - &a32
+        sha: 80d991b4d966b32151973fc6887d06e2bd628767
+        message: "feat(northstar): add advisor controls for Claude"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/80d991b4d966b32151973fc6887d06e2bd628767
+        authoredAt: 2026-10-30T14:56:38Z
+      - &a35
+        sha: 864fb259cc1a867968661a52ec001ba4130a4a9f
+        message: "test(northstar): keep scheduled cache fixtures unexpired"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/864fb259cc1a867968661a52ec001ba4130a4a9f
+        authoredAt: 2026-10-30T19:10:14Z
+      - &a44
+        sha: 2740383311a1726f6d9dc2012be8b077a060c208
+        message: "Merge published #208 into archive stack"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2740383311a1726f6d9dc2012be8b077a060c208
+        authoredAt: 2026-10-30T20:21:59Z
+      - &a48
+        sha: acde455b28ec9f30ea10cc4ef19212537d9536e9
+        message: Update Claude stack with retention correction
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/acde455b28ec9f30ea10cc4ef19212537d9536e9
+        authoredAt: 2026-10-30T21:51:54Z
+      - &a49
+        sha: ab3e52330aa668e8cc0ae2d8e6435bac12183c1d
+        message: "fix(northstar): preserve drafts and allow connected Copilot fallback"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ab3e52330aa668e8cc0ae2d8e6435bac12183c1d
+        authoredAt: 2026-10-31T00:44:16Z
+    workTimestamps: &a11
+      - 2026-10-30T14:56:38Z
+      - 2026-10-30T19:10:14Z
+      - 2026-10-30T20:21:59Z
+      - 2026-10-30T21:51:54Z
+      - 2026-10-31T00:44:16Z
+    workAdditions: 1876
+    workDeletions: 197
+    workFiles: &a12
+      - hub/functions/src/index.ts
+      - hub/functions/src/northstar-chat-history.ts
+      - hub/functions/src/northstar-claude-ask.test.ts
+      - hub/functions/src/northstar-claude-brief.test.ts
+      - hub/functions/src/northstar-claude-brief.ts
+      - hub/functions/src/northstar-claude-documents.test.ts
+      - hub/functions/src/northstar-claude-preferences.ts
+      - hub/functions/src/northstar-conversations.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - northstar/app/globals.css
+      - northstar/components/ask-northstar-workspace.dom.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/claude-manage-dialog.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/northstar-recovery.dom.test.ts
+      - northstar/components/northstar-recovery.fixture.tsx
+      - northstar/components/northstar-retention.fixture.tsx
+      - northstar/components/settings-workspace.dom.test.tsx
+      - northstar/components/settings-workspace.tsx
+      - northstar/lib/chat-pdf.test.ts
+      - northstar/lib/chat-pdf.tsx
+      - northstar/lib/claude-settings.ts
+      - northstar/lib/settings-preferences.test.ts
+      - northstar/lib/settings-preferences.ts
+  - title: "feat(northstar): archive completed turns and generated files"
+    body: >-
+      - Add a separate server-side archive for completed turns, scheduled briefs, history revisions, and generated
+      files, with a seven-year retention date.
+
+      - Store archive records and generated file bytes in the existing Cosmos database/container using existing
+      credentials; use SQLite for local developmen...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/206
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a13 []
+    additions: 1319
+    deletions: 124
+    changedFiles: 19
+    author: myriadas-clees
+    createdAt: 2026-10-30T04:35:51Z
+    updatedAt: 2026-11-02T00:54:25Z
+    closedAt: 2026-11-02T00:54:25Z
+    mergedAt: 2026-11-02T00:54:24Z
+    workCommits: &a14
+      - &a30
+        sha: 8368d318a7deab88989003567be88e0573dec69a
+        message: "feat(northstar): archive completed turns and generated files"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/8368d318a7deab88989003567be88e0573dec69a
+        authoredAt: 2026-10-30T04:35:44Z
+      - &a37
+        sha: 0c9c91d300bc1691797420ef30533e55c5629c16
+        message: Merge CI stack base into Northstar archive
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0c9c91d300bc1691797420ef30533e55c5629c16
+        authoredAt: 2026-10-30T19:15:03Z
+      - &a39
+        sha: 1288839423e119ebab7708bd2295943058e2a7f9
+        message: Update archive stack with CI test fixes
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/1288839423e119ebab7708bd2295943058e2a7f9
+        authoredAt: 2026-10-30T19:18:45Z
+      - &a40
+        sha: 5dd933a299a4af2b25dc92b11c7c69fadea1f4ee
+        message: "fix(northstar): distinguish attempted archive revisions"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/5dd933a299a4af2b25dc92b11c7c69fadea1f4ee
+        authoredAt: 2026-10-30T19:29:16Z
+      - &a42
+        sha: a050eaa5a806812d8b0fc18c271a3465bca77e35
+        message: Update archive stack with summary CI fix
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a050eaa5a806812d8b0fc18c271a3465bca77e35
+        authoredAt: 2026-10-30T19:32:27Z
+      - &a45
+        sha: 86acddd4bb626aa1b50764bc57cae61bcfa44ac8
+        message: "fix(hub): avoid stale Cosmos retention writes"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/86acddd4bb626aa1b50764bc57cae61bcfa44ac8
+        authoredAt: 2026-10-30T21:42:47Z
+      - &a46
+        sha: e2629e753ee28646093ac317ae31bca469d8f1a5
+        message: "fix(northstar): retain fresh history during retention changes"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e2629e753ee28646093ac317ae31bca469d8f1a5
+        authoredAt: 2026-10-30T21:51:42Z
+    workTimestamps: &a15
+      - 2026-10-30T04:35:44Z
+      - 2026-10-30T19:15:03Z
+      - 2026-10-30T19:18:45Z
+      - 2026-10-30T19:29:16Z
+      - 2026-10-30T19:32:27Z
+      - 2026-10-30T21:42:47Z
+      - 2026-10-30T21:51:42Z
+    workAdditions: 1319
+    workDeletions: 124
+    workFiles: &a16
+      - .github/dependabot.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/issue-project-triage.yml
+      - .github/workflows/verify.yml
+      - README.md
+      - bun.lock
+      - hub/functions/local.settings.json.example
+      - hub/functions/src/index.ts
+      - hub/functions/src/northstar-archive-files.ts
+      - hub/functions/src/northstar-archive-pdf.ts
+      - hub/functions/src/northstar-archive.test.ts
+      - hub/functions/src/northstar-archive.ts
+      - hub/functions/src/northstar-bounded-bytes.ts
+      - hub/functions/src/northstar-brief-journeys.test.ts
+      - hub/functions/src/northstar-chat-history.test.ts
+      - hub/functions/src/northstar-claude-ask.test.ts
+      - hub/functions/src/northstar-claude-brief.ts
+      - hub/functions/src/northstar-claude-documents.test.ts
+      - hub/functions/src/northstar-claude-files.ts
+      - hub/functions/src/northstar-conversations.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-cosmos-recovery.test.ts
+      - hub/functions/src/northstar-mapping-upgrade.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/functions/tsconfig.json
+      - hub/next.config.ts
+      - hub/tsconfig.json
+      - northstar/components/summarize-peek.dom.test.tsx
+      - northstar/lib/chat-pdf.tsx
+      - northstar/next.config.ts
+      - northstar/tsconfig.json
+      - ofac/functions/tsconfig.json
+      - ofac/next.config.ts
+      - ofac/tsconfig.json
+      - package.json
+      - pricing/functions/tsconfig.json
+      - pricing/next.config.ts
+      - pricing/tsconfig.json
+      - scripts/smoke-readiness.test.ts
+      - scripts/typecheck-ci.test.ts
+      - scripts/typecheck-ci.ts
+  - title: "feat(transition): add live record links to review workbooks"
+    body: >-
+      ## Why
+
+
+      Reviewers need a way to open the current Transition record directly from an exported review workbook.
+
+
+      ## What changed
+
+
+      Added a **Live Transition** link for each household and account in the workbook, including inactive accounts.
+      Links use the record ID and the Transition app URL from which ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/233
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - "app: transition"
+    additions: 519
+    deletions: 653
+    changedFiles: 13
+    author: myriadas-clees
+    createdAt: 2026-10-28T20:11:40Z
+    updatedAt: 2026-10-31T00:20:47Z
+    closedAt: 2026-10-31T00:20:47Z
+    mergedAt: 2026-10-31T00:20:47Z
+    workCommits:
+      - &a18
+        sha: 91ebd446b867d59e144ee1dae1e63f9d3adb1f23
+        message: Merge branch 'clees/release236-deps' into clees/release236-transition
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/91ebd446b867d59e144ee1dae1e63f9d3adb1f23
+        authoredAt: 2026-10-30T19:27:19Z
+    workTimestamps:
+      - 2026-10-30T19:27:19Z
+    workAdditions: 519
+    workDeletions: 653
+    workFiles:
+      - bun.lock
+      - compass/functions/package.json
+      - compass/package.json
+      - compass/src/components/compass-dashboard-lifecycle.fixture.ts
+      - excelerate/functions/package.json
+      - excelerate/package.json
+      - hub/functions/package.json
+      - hub/package.json
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/package.json
+      - onboarding/apps/mcp-sharepoint/package.json
+      - package.json
+      - packages/audit/package.json
+      - packages/auth/package.json
+      - packages/contracts/package.json
+      - packages/db/package.json
+      - packages/ui/package.json
+      - platform/package.json
+      - platform/src/projection-worker.ts
+      - proforma/functions/package.json
+      - proforma/package.json
+      - pto-tracker/functions/package.json
+      - pto-tracker/package.json
+      - transition/functions/package.json
+      - transition/package.json
+      - valuation/functions/package.json
+      - valuation/package.json
+  - title: "feat(compass): expand visual displays and add widgets"
+    body: >-
+      ## Why
+
+
+      Compass needed more ways to present structured answers and reusable views of connected Microsoft 365 data.
+
+
+      ## What changed
+
+
+      - Expanded Ask visuals with multi-series bars, metrics, progress indicators, checklists, callouts, typed tables,
+      and hypothetical capacity controls for scenarios.
+
+      - Ad...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/234
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - "app: compass"
+    additions: 801
+    deletions: 693
+    changedFiles: 38
+    author: myriadas-clees
+    createdAt: 2026-10-29T03:00:07Z
+    updatedAt: 2026-10-31T00:20:48Z
+    closedAt: 2026-10-31T00:20:48Z
+    mergedAt: 2026-10-31T00:20:48Z
+    workCommits:
+      - &a19
+        sha: 30e355819fe92681542b80726724774ae88dc57a
+        message: Merge branch 'clees/release236-transition' into clees/release236-compass
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/30e355819fe92681542b80726724774ae88dc57a
+        authoredAt: 2026-10-30T19:27:59Z
+      - &a20
+        sha: 86062774beb7d665318a0c1921b0ff7489893c67
+        message: "test(compass): await rendered visual follow-ups"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/86062774beb7d665318a0c1921b0ff7489893c67
+        authoredAt: 2026-10-30T19:30:58Z
+    workTimestamps:
+      - 2026-10-30T19:27:59Z
+      - 2026-10-30T19:30:58Z
+    workAdditions: 801
+    workDeletions: 693
+    workFiles:
+      - bun.lock
+      - compass/functions/package.json
+      - compass/package.json
+      - compass/src/components/ask-compass-workspace.dom.test.tsx
+      - compass/src/components/ask-compass-workspace.tsx
+      - compass/src/components/compass-dashboard-lifecycle.fixture.ts
+      - compass/src/components/compass-provider.tsx
+      - compass/src/lib/answer-openui.test.ts
+      - compass/src/lib/answer-openui.ts
+      - compass/src/lib/chat-pdf.test.ts
+      - compass/src/lib/chat-pdf.tsx
+      - excelerate/functions/package.json
+      - excelerate/package.json
+      - hub/functions/package.json
+      - hub/package.json
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/package.json
+      - onboarding/apps/mcp-sharepoint/package.json
+      - package.json
+      - packages/audit/package.json
+      - packages/auth/package.json
+      - packages/contracts/package.json
+      - packages/db/package.json
+      - packages/ui/package.json
+      - platform/package.json
+      - platform/src/projection-worker.ts
+      - proforma/functions/package.json
+      - proforma/package.json
+      - pto-tracker/functions/package.json
+      - pto-tracker/package.json
+      - transition/functions/package.json
+      - transition/package.json
+      - transition/src/app/layout.tsx
+      - transition/src/components/company-link-guard.test.ts
+      - transition/src/components/company-link-guard.tsx
+      - transition/src/components/page-skeletons.tsx
+      - transition/src/components/workbook-transfers.tsx
+      - transition/src/lib/api/azure-functions-adapter.ts
+      - transition/src/lib/api/client.ts
+      - transition/src/lib/api/company-isolation.test.ts
+      - transition/src/lib/company-link.test.ts
+      - transition/src/lib/company-link.ts
+      - transition/src/lib/excel-transfer.ts
+      - transition/src/lib/transition-workbook.test.ts
+      - transition/src/lib/transition-workbook.ts
+      - valuation/functions/package.json
+      - valuation/package.json
+  - title: "feat(proforma): import recruits from Excel templates"
+    body: >-
+      ## Why
+
+
+      Users need a readable Excel template for recruit and proforma inputs directly in the new-recruit wizard.
+
+
+      ## What changed
+
+
+      Added template download and upload for recruit, team, expense, fee, location, and model inputs. Uploads are
+      validated and preview additions, changes, removals, and issue...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/235
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - "app: proforma"
+    additions: 2747
+    deletions: 859
+    changedFiles: 11
+    author: myriadas-clees
+    createdAt: 2026-10-29T12:59:10Z
+    updatedAt: 2026-10-31T00:20:50Z
+    closedAt: 2026-10-31T00:20:49Z
+    mergedAt: 2026-10-31T00:20:49Z
+    workCommits:
+      - &a17
+        sha: d961afc8b83881bfe18c631c79dba8c75f74cad4
+        message: "fix(proforma): preserve explicit payroll values on import"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d961afc8b83881bfe18c631c79dba8c75f74cad4
+        authoredAt: 2026-10-30T19:14:53Z
+      - &a21
+        sha: 2699831c732db5b479c1230f4e798ce78c0fd356
+        message: Merge branch 'clees/release236-compass' into clees/release236-proforma
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2699831c732db5b479c1230f4e798ce78c0fd356
+        authoredAt: 2026-10-30T19:31:15Z
+      - &a22
+        sha: 2f410adf1540c26377007f2ed798e7e05ac9eea3
+        message: "fix(proforma): preserve automatic location count fallback"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2f410adf1540c26377007f2ed798e7e05ac9eea3
+        authoredAt: 2026-10-30T19:36:33Z
+      - &a24
+        sha: ee54d484bf046da20d1194d5336f512479df2d35
+        message: "fix(proforma): apply theme tokens and red validation errors"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ee54d484bf046da20d1194d5336f512479df2d35
+        authoredAt: 2026-10-30T20:12:34Z
+    workTimestamps:
+      - 2026-10-30T19:14:53Z
+      - 2026-10-30T19:31:15Z
+      - 2026-10-30T19:36:33Z
+      - 2026-10-30T20:12:34Z
+    workAdditions: 2747
+    workDeletions: 859
+    workFiles:
+      - bun.lock
+      - compass/functions/package.json
+      - compass/functions/src/compass-microsoft.test.ts
+      - compass/functions/src/compass-microsoft.ts
+      - compass/package.json
+      - compass/src/app/globals.css
+      - compass/src/components/answer-advisor.test.tsx
+      - compass/src/components/answer-advisor.tsx
+      - compass/src/components/answer-markdown.tsx
+      - compass/src/components/answer-openui.tsx
+      - compass/src/components/answer-visual.test.tsx
+      - compass/src/components/answer-visual.tsx
+      - compass/src/components/ask-compass-workspace.dom.test.tsx
+      - compass/src/components/ask-compass-workspace.test.tsx
+      - compass/src/components/ask-compass-workspace.tsx
+      - compass/src/components/ask/at-command-token.tsx
+      - compass/src/components/compass-dashboard-lifecycle.fixture.ts
+      - compass/src/components/compass-dashboard.tsx
+      - compass/src/components/compass-shell.tsx
+      - compass/src/components/compass-stability.dom.test.ts
+      - compass/src/components/compass-stability.fixture.tsx
+      - compass/src/components/today/widget-grid.dom.test.tsx
+      - compass/src/components/today/widget-grid.tsx
+      - compass/src/components/widget-card.test.tsx
+      - compass/src/components/widget-card.tsx
+      - compass/src/lib/answer-openui-advisor.test.ts
+      - compass/src/lib/answer-openui-advisor.ts
+      - compass/src/lib/answer-openui-chart.ts
+      - compass/src/lib/answer-openui-visual.test.ts
+      - compass/src/lib/answer-openui-visual.ts
+      - compass/src/lib/at-commands.test.ts
+      - compass/src/lib/at-commands.ts
+      - compass/src/lib/chat-pdf-visual.ts
+      - compass/src/lib/chat-pdf.test.ts
+      - compass/src/lib/chat-pdf.tsx
+      - compass/src/lib/draft-fences.ts
+      - compass/src/lib/microsoft-data.ts
+      - compass/src/lib/progress-phase.ts
+      - compass/src/lib/today-layout.test.ts
+      - compass/src/lib/today-layout.ts
+      - compass/src/lib/widgets.test.ts
+      - compass/src/lib/widgets.ts
+      - excelerate/functions/package.json
+      - excelerate/package.json
+      - hub/functions/package.json
+      - hub/package.json
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/package.json
+      - onboarding/apps/mcp-sharepoint/package.json
+      - package.json
+      - packages/audit/package.json
+      - packages/auth/package.json
+      - packages/contracts/package.json
+      - packages/db/package.json
+      - packages/ui/package.json
+      - platform/package.json
+      - platform/src/projection-worker.ts
+      - proforma/functions/package.json
+      - proforma/package.json
+      - proforma/src/app/globals.css
+      - proforma/src/components/new-recruit-workbook-transfer.tsx
+      - proforma/src/lib/__tests__/new-recruit-workbook-roundtrip.test.ts
+      - proforma/src/lib/__tests__/new-recruit-workbook.test.ts
+      - proforma/src/lib/new-recruit-workbook-lists.ts
+      - proforma/src/lib/new-recruit-workbook.ts
+      - pto-tracker/functions/package.json
+      - pto-tracker/package.json
+      - transition/functions/package.json
+      - transition/package.json
+      - transition/src/app/layout.tsx
+      - transition/src/components/company-link-guard.test.ts
+      - transition/src/components/company-link-guard.tsx
+      - transition/src/components/page-skeletons.tsx
+      - transition/src/components/workbook-transfers.tsx
+      - transition/src/lib/api/azure-functions-adapter.ts
+      - transition/src/lib/api/client.ts
+      - transition/src/lib/api/company-isolation.test.ts
+      - transition/src/lib/company-link.test.ts
+      - transition/src/lib/company-link.ts
+      - transition/src/lib/excel-transfer.ts
+      - transition/src/lib/transition-workbook.test.ts
+      - transition/src/lib/transition-workbook.ts
+      - valuation/functions/package.json
+      - valuation/package.json
+prsInProgress:
+  - title: "feat(platform): staging, PR previews, agent testing, and release promotion"
+    body: >-
+      ## Why
+
+
+      Agents and reviewers need somewhere to exercise real builds before merge, without touching production. Testing has
+      gone straight from local to production. The PR previews ran inside the **production** Static Web App, where SWA
+      copies app settings into preview environments, so previews ran ag...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/237
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a1
+    additions: 3987
+    deletions: 1863
+    changedFiles: 83
+    author: myriadas-clees
+    createdAt: 2026-10-30T19:43:25Z
+    updatedAt: 2026-10-30T21:10:08Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 4451
+    workDeletions: 2327
+    workFiles: *a4
+  - title: "fix(northstar): diagnose Graph read errors and restore To Do reads"
+    body: |-
+      - Remove unsupported `$select` parameters from Microsoft To Do list and task reads.
+      - Log sanitized Graph failure diagnostics and give Claude clear guidance when task data is unavailable.
+      - Add regression coverage for To Do reads, Graph errors, and stale-data warnings.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/207
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: *a5
+    additions: 171
+    deletions: 6
+    changedFiles: 6
+    author: myriadas-clees
+    createdAt: 2026-10-30T14:48:25Z
+    updatedAt: 2026-11-02T00:54:30Z
+    closedAt: 2026-11-02T00:54:30Z
+    mergedAt: 2026-11-02T00:54:30Z
+    workCommits: *a6
+    workTimestamps: *a7
+    workAdditions: 534
+    workDeletions: 35
+    workFiles: *a8
+  - title: "feat(northstar): add advisor controls for Claude"
+    body: >-
+      - Add per-advisor Claude settings for models, document creation, web search, and Microsoft 365 context, with
+      Copilot fallback when Claude is disabled.
+
+      - Apply OHCPWM styling guidance to newly created documents and simplify the Claude Manage description.
+
+      - Add coverage for settings persistence, capab...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/208
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: *a9
+    additions: 878
+    deletions: 98
+    changedFiles: 25
+    author: myriadas-clees
+    createdAt: 2026-10-30T14:56:47Z
+    updatedAt: 2026-11-02T00:54:32Z
+    closedAt: 2026-11-02T00:54:32Z
+    mergedAt: 2026-11-02T00:54:32Z
+    workCommits: *a10
+    workTimestamps: *a11
+    workAdditions: 1876
+    workDeletions: 197
+    workFiles: *a12
+  - title: "feat(northstar): archive completed turns and generated files"
+    body: >-
+      - Add a separate server-side archive for completed turns, scheduled briefs, history revisions, and generated
+      files, with a seven-year retention date.
+
+      - Store archive records and generated file bytes in the existing Cosmos database/container using existing
+      credentials; use SQLite for local developmen...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/206
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: *a13
+    additions: 1166
+    deletions: 41
+    changedFiles: 19
+    author: myriadas-clees
+    createdAt: 2026-10-30T04:35:51Z
+    updatedAt: 2026-11-02T00:54:25Z
+    closedAt: 2026-11-02T00:54:25Z
+    mergedAt: 2026-11-02T00:54:24Z
+    workCommits: *a14
+    workTimestamps: *a15
+    workAdditions: 1319
+    workDeletions: 124
+    workFiles: *a16
+  - title: "ci: type-check with tsrs and cut CI time and cost"
+    body: >-
+      ## Why
+
+
+      Adopt the pinned `tsrs` type checker from
+      [myriadas-apps#198](https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/198) and cut CI time and billed
+      minutes. This repo is private, so GitHub bills each job in whole minutes. Before this change, Verify took about
+      5.5 minutes, and most o...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/179
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 197
+    deletions: 42
+    changedFiles: 23
+    author: myriadas-clees
+    createdAt: 2026-10-22T06:21:09Z
+    updatedAt: 2026-11-02T00:54:23Z
+    closedAt: 2026-11-02T00:54:23Z
+    mergedAt: 2026-11-02T00:54:23Z
+    workCommits:
+      - &a33
+        sha: b599f4b631129a8ad433859dfe854a49ad4aa1eb
+        message: "Merge current main into #179 stack base"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b599f4b631129a8ad433859dfe854a49ad4aa1eb
+        authoredAt: 2026-10-30T19:09:02Z
+      - &a36
+        sha: e6fbf8203c674abeab1c311c9c3bfb17b8235970
+        message: "test(northstar): pin scheduled cache fixture clocks"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e6fbf8203c674abeab1c311c9c3bfb17b8235970
+        authoredAt: 2026-10-30T19:14:59Z
+      - &a38
+        sha: 2aa12aab4a84f44e5f31edf66868b116c0469f1a
+        message: "test(ci): follow relocated deployment smoke step"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2aa12aab4a84f44e5f31edf66868b116c0469f1a
+        authoredAt: 2026-10-30T19:18:41Z
+      - &a41
+        sha: cdcb50b3e0fad60f8a7c9eca17e0db94805cf1b7
+        message: "test(northstar): await async summary chart rendering"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cdcb50b3e0fad60f8a7c9eca17e0db94805cf1b7
+        authoredAt: 2026-10-30T19:32:21Z
+    workTimestamps:
+      - 2026-10-30T19:09:02Z
+      - 2026-10-30T19:14:59Z
+      - 2026-10-30T19:18:41Z
+      - 2026-10-30T19:32:21Z
+    workAdditions: 20543
+    workDeletions: 858
+    workFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/verify.yml
+      - Dockerfile
+      - README.md
+      - bun.lock
+      - docs/northstar-roadmap.md
+      - docs/northstar-zapier-option.md
+      - hub/app/globals.css
+      - hub/app/icon.svg
+      - hub/components/hub-launcher.fixture.tsx
+      - hub/components/hub-launcher.test.ts
+      - hub/components/hub-launcher.tsx
+      - hub/functions/local.settings.json.example
+      - hub/functions/package.json
+      - hub/functions/src/index.ts
+      - hub/functions/src/northstar-brief-journeys.test.ts
+      - hub/functions/src/northstar-chat-history.test.ts
+      - hub/functions/src/northstar-chat-history.ts
+      - hub/functions/src/northstar-claude-ask.test.ts
+      - hub/functions/src/northstar-claude-brief.test.ts
+      - hub/functions/src/northstar-claude-brief.ts
+      - hub/functions/src/northstar-claude-documents.test.ts
+      - hub/functions/src/northstar-claude-files.ts
+      - hub/functions/src/northstar-conversations.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-copilot.test.ts
+      - hub/functions/src/northstar-copilot.ts
+      - hub/functions/src/northstar-cosmos-point-read.fixture.ts
+      - hub/functions/src/northstar-cosmos-recovery.test.ts
+      - hub/functions/src/northstar-daily-flow.test.ts
+      - hub/functions/src/northstar-files.ts
+      - hub/functions/src/northstar-mapping-upgrade.test.ts
+      - hub/functions/src/northstar-microsoft-deadline.fixture.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/functions/src/northstar-retry-budget.test.ts
+      - hub/functions/src/northstar-scheduled-brief.test.ts
+      - hub/functions/src/northstar-scheduled-brief.ts
+      - hub/functions/src/northstar-subagent.test.ts
+      - hub/functions/src/northstar-subagent.ts
+      - hub/lib/apps.ts
+      - hub/public/SOURCES.md
+      - hub/public/claude.svg
+      - hub/staticwebapp.config.json
+      - northstar/app/globals.css
+      - northstar/app/icon.svg
+      - northstar/components/answer-advisor.test.tsx
+      - northstar/components/answer-advisor.tsx
+      - northstar/components/answer-chart.dom.test.tsx
+      - northstar/components/answer-chart.test.tsx
+      - northstar/components/answer-chart.tsx
+      - northstar/components/answer-markdown.test.tsx
+      - northstar/components/answer-markdown.tsx
+      - northstar/components/answer-openui.test.tsx
+      - northstar/components/answer-openui.tsx
+      - northstar/components/answer-relationship-layout.test.ts
+      - northstar/components/answer-relationship-layout.ts
+      - northstar/components/answer-visual.test.tsx
+      - northstar/components/answer-visual.tsx
+      - northstar/components/ask-northstar-workspace.dom.test.tsx
+      - northstar/components/ask-northstar-workspace.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/brief-effort-confirm.tsx
+      - northstar/components/brief-model-logo.tsx
+      - northstar/components/command-cards.dom.test.tsx
+      - northstar/components/command-cards.tsx
+      - northstar/components/generated-files.dom.test.tsx
+      - northstar/components/generated-files.tsx
+      - northstar/components/northstar-consent.fixture.tsx
+      - northstar/components/northstar-dashboard-instructions.dom.test.ts
+      - northstar/components/northstar-dashboard-instructions.fixture.tsx
+      - northstar/components/northstar-dashboard-lifecycle.fixture.ts
+      - northstar/components/northstar-dashboard-lifecycle.test.ts
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/northstar-dom-globals.ts
+      - northstar/components/northstar-recovery.dom.test.ts
+      - northstar/components/northstar-recovery.fixture.tsx
+      - northstar/components/northstar-retention.dom.test.ts
+      - northstar/components/northstar-retention.fixture.tsx
+      - northstar/components/northstar-stability.dom.test.ts
+      - northstar/components/northstar-stability.fixture.tsx
+      - northstar/components/open-outlook-dialog.dom.test.tsx
+      - northstar/components/settings-workspace.dom.test.tsx
+      - northstar/components/settings-workspace.tsx
+      - northstar/components/streaming-markdown.tsx
+      - northstar/components/summarize-peek.dom.test.tsx
+      - northstar/components/summarize-peek.tsx
+      - northstar/components/todo-destination.tsx
+      - northstar/lib/answer-chart.test.ts
+      - northstar/lib/answer-chart.ts
+      - northstar/lib/answer-model.test.ts
+      - northstar/lib/answer-model.ts
+      - northstar/lib/answer-openui-advisor.fixture.ts
+      - northstar/lib/answer-openui-advisor.test.ts
+      - northstar/lib/answer-openui-advisor.ts
+      - northstar/lib/answer-openui-chart.test.ts
+      - northstar/lib/answer-openui-chart.ts
+      - northstar/lib/answer-openui-composition.test.ts
+      - northstar/lib/answer-openui-composition.ts
+      - northstar/lib/answer-openui-visual.fixture.ts
+      - northstar/lib/answer-openui-visual.test.ts
+      - northstar/lib/answer-openui-visual.ts
+      - northstar/lib/answer-openui.fixture.ts
+      - northstar/lib/answer-openui.test.ts
+      - northstar/lib/answer-openui.ts
+      - northstar/lib/ask-stream.test.ts
+      - northstar/lib/ask-stream.ts
+      - northstar/lib/ask-turns.test.ts
+      - northstar/lib/ask-turns.ts
+      - northstar/lib/at-commands.test.ts
+      - northstar/lib/at-commands.ts
+      - northstar/lib/background-briefs.test.ts
+      - northstar/lib/background-briefs.ts
+      - northstar/lib/chat-history.test.ts
+      - northstar/lib/chat-history.ts
+      - northstar/lib/chat-pdf-text.ts
+      - northstar/lib/chat-pdf-visual.ts
+      - northstar/lib/chat-pdf.test.ts
+      - northstar/lib/chat-pdf.tsx
+      - northstar/lib/command-cards.test.ts
+      - northstar/lib/command-cards.ts
+      - northstar/lib/draft-fences.test.ts
+      - northstar/lib/draft-fences.ts
+      - northstar/lib/microsoft-data-cache.test.ts
+      - northstar/lib/microsoft-data-cache.ts
+      - northstar/lib/microsoft-reauth.test.ts
+      - northstar/lib/microsoft-reauth.ts
+      - northstar/lib/northstar-context.test.ts
+      - northstar/lib/northstar-context.ts
+      - northstar/lib/openui-disable-devtools.ts
+      - northstar/lib/progress-phase.test.ts
+      - northstar/lib/progress-phase.ts
+      - northstar/lib/request-deadline.test.ts
+      - northstar/lib/request-deadline.ts
+      - northstar/lib/serial-queue.test.ts
+      - northstar/lib/serial-queue.ts
+      - northstar/lib/settings-preferences.test.ts
+      - northstar/lib/settings-preferences.ts
+      - northstar/lib/todo-create.test.ts
+      - northstar/lib/todo-create.ts
+      - northstar/lib/todo-lists.test.ts
+      - northstar/lib/todo-lists.ts
+      - northstar/lib/todo-tasks.test.ts
+      - northstar/lib/todo-tasks.ts
+      - northstar/lib/typing-reveal.test.ts
+      - northstar/lib/typing-reveal.ts
+      - northstar/package.json
+      - ofac/src/app/icon.svg
+      - packages/brand/assets/harriman-wordmark-navy.svg
+      - packages/brand/assets/harriman-wordmark-white.svg
+      - packages/brand/package.json
+      - packages/brand/src/harriman-wordmark.ts
+      - packages/brand/src/styles.css
+      - packages/ui/src/brand/harriman-wordmark.tsx
+      - packages/ui/src/index.ts
+      - packages/ui/src/navigation/app-shell.tsx
+      - pricing/src/app/icon.svg
+      - scripts/smoke-readiness.test.ts
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "fix(proforma): preserve explicit payroll values on import"
+      - Merge branch 'clees/release236-deps' into clees/release236-transition
+      - Merge branch 'clees/release236-transition' into clees/release236-compass
+      - "test(compass): await rendered visual follow-ups"
+      - Merge branch 'clees/release236-compass' into clees/release236-proforma
+      - "fix(proforma): preserve automatic location count fallback"
+      - "feat(platform): add staging, PR previews, agent testing, and release promotion"
+      - "fix(proforma): apply theme tokens and red validation errors"
+      - "feat(platform): make production promotion-only via the prod branch"
+      - "feat(platform): replace Azure PR previews with local-stack PR E2E"
+      - "fix(e2e): fail the report summary on runner errors or empty runs"
+      - "fix(ci): run PR E2E on the runner and skip comments for cancelled runs"
+      - "feat(transition): add live record links to review workbooks (#233)"
+      - "feat(proforma): import recruits from Excel templates (#235)"
+      - "feat(compass): expand visual displays and add widgets (#234)"
+      - "fix(deploy): package PDF standard fonts for Node startup"
+      - "fix(deploy): package PDF standard fonts for Node startup (#238)"
+    commits:
+      - *a17
+      - *a18
+      - *a19
+      - *a20
+      - *a21
+      - *a22
+      - *a23
+      - *a24
+      - *a25
+      - *a26
+      - *a27
+      - *a28
+      - sha: 281db4b175e5d8d1627eb7d7ef77233a5fc3274d
+        message: "feat(transition): add live record links to review workbooks (#233)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/281db4b175e5d8d1627eb7d7ef77233a5fc3274d
+        authoredAt: 2026-10-31T00:20:44Z
+        additions: 200
+        deletions: 20
+        filesChanged: 13
+      - sha: 3f773130e1f6ee502e4ca2661101f2506b8d20f5
+        message: "feat(proforma): import recruits from Excel templates (#235)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3f773130e1f6ee502e4ca2661101f2506b8d20f5
+        authoredAt: 2026-10-31T00:20:45Z
+        additions: 2698
+        deletions: 2
+        filesChanged: 11
+      - sha: fed8d1e14f199582b496b4eaa8d271df4cd4eacf
+        message: "feat(compass): expand visual displays and add widgets (#234)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/fed8d1e14f199582b496b4eaa8d271df4cd4eacf
+        authoredAt: 2026-10-31T00:20:45Z
+        additions: 1954
+        deletions: 157
+        filesChanged: 38
+      - *a29
+      - sha: 9e26955d90ab502b1cf574d904e2cc0eb150a8a0
+        message: "fix(deploy): package PDF standard fonts for Node startup (#238)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9e26955d90ab502b1cf574d904e2cc0eb150a8a0
+        authoredAt: 2026-10-31T02:02:30Z
+        additions: 14
+        deletions: 1
+        filesChanged: 3
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "feat(northstar): archive completed turns and generated files"
+      - "fix(northstar): diagnose Graph read errors and restore To Do reads"
+      - "feat(northstar): add advisor controls for Claude"
+      - "Merge current main into #179 stack base"
+      - "test(northstar): keep scheduled cache fixtures unexpired"
+      - "test(northstar): keep scheduled cache fixtures unexpired"
+      - "test(northstar): pin scheduled cache fixture clocks"
+      - Merge CI stack base into Northstar archive
+      - "test(ci): follow relocated deployment smoke step"
+      - Update archive stack with CI test fixes
+      - "fix(northstar): distinguish attempted archive revisions"
+      - "test(northstar): await async summary chart rendering"
+      - Update archive stack with summary CI fix
+      - "Merge published #207 into archive stack"
+      - "Merge published #208 into archive stack"
+      - "fix(hub): avoid stale Cosmos retention writes"
+      - "fix(northstar): retain fresh history during retention changes"
+      - Update Graph stack with retention correction
+      - Update Claude stack with retention correction
+      - "fix(northstar): preserve drafts and allow connected Copilot fallback"
+    commits:
+      - *a30
+      - *a31
+      - *a32
+      - *a33
+      - *a34
+      - *a35
+      - *a36
+      - *a37
+      - *a38
+      - *a39
+      - *a40
+      - *a41
+      - *a42
+      - *a43
+      - *a44
+      - *a45
+      - *a46
+      - *a47
+      - *a48
+      - *a49
+releases: []
+externalContributions: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 237
+    prTitle: "feat(platform): staging, PR previews, agent testing, and release promotion"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/237
+    state: commented
+    submittedAt: 2026-10-30T20:47:42Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 237
+    prTitle: "feat(platform): staging, PR previews, agent testing, and release promotion"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/237
+    state: commented
+    submittedAt: 2026-10-30T20:47:44Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 235
+    prTitle: "feat(proforma): import recruits from Excel templates"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/235
+    state: commented
+    submittedAt: 2026-10-30T19:32:32Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 235
+    prTitle: "feat(proforma): import recruits from Excel templates"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/235
+    state: commented
+    submittedAt: 2026-10-30T19:36:50Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 235
+    prTitle: "feat(proforma): import recruits from Excel templates"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/235
+    state: commented
+    submittedAt: 2026-10-30T20:13:08Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 237
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/237
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/237#discussion_r4428332368
+    body: 'Fixed in 473779e3: the summary now reports FAILED when Playwright records top-level runner errors (listed under
+      "Runner errors") or when no tests executed. Covered by a new summarizer test.'
+    path: e2e/scripts/summarize.ts
+    createdAt: 2026-10-30T20:47:42Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 237
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/237
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/237#discussion_r4428332687
+    body: "No change needed: as of 826d2c7 the Azure PR preview workflow (and its `e2e_preview` job under the `preview`
+      environment) is removed. `STAGING_TEST_IDP_LOGIN_SECRET` is read only by `.github/workflows/staging.yml`'s `e2e`
+      job, which runs in the `staging` environment, matching this table. PR E2E now ..."
+    path: docs/staging-and-testing.md
+    createdAt: 2026-10-30T20:47:44Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 235
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/235
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/235#discussion_r4427737087
+    body: "[from Codex]: Fixed in d961afc8b83881bfe18c631c79dba8c75f74cad4. Newly imported people now apply every supplied
+      value, preserving explicit zero SUTA rates and wage bases after work-state defaults. Both regression cases fail
+      before the fix and pass afterward; all 32 focused workbook and transfer test..."
+    path: proforma/src/lib/new-recruit-workbook.ts
+    createdAt: 2026-10-30T19:32:32Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 235
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/235
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/235#discussion_r4427771270
+    body: "[from Codex]: Fixed in 2f410adf. Applying Locations rows now preserves the Recruit sheet’s fallback count instead
+      of storing a derived total back into it. A regression covers both fresh and existing-draft imports with an
+      automatic IA count and TX override, then re-exports/re-imports to verify stable..."
+    path: proforma/src/lib/new-recruit-workbook-lists.ts
+    createdAt: 2026-10-30T19:36:50Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 235
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/235
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/235#discussion_r4428055216
+    body: "[from Codex]: Fixed in ee54d484. The workbook dialog now uses the active theme’s spacing, typography, and divider
+      tokens. Invalid preview status and validation errors use the mode-aware danger text token. Desktop/mobile light
+      and dark screenshots were explicitly approved; browser checks confirm erro..."
+    path: proforma/src/app/globals.css
+    createdAt: 2026-10-30T20:13:08Z
+aiReviews:
+  codex:
+    prsReviewed: 4
+    comments: 5
+    reviews: 4
+    fixed: 1
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 4
+  comments: 5
+  reviews: 4
+  fixed: 1
+hoursInputs:
+  timestamps:
+    - 2026-10-30T19:14:53Z
+    - 2026-10-30T19:27:19Z
+    - 2026-10-30T19:27:59Z
+    - 2026-10-30T19:30:58Z
+    - 2026-10-30T19:31:15Z
+    - 2026-10-30T19:36:33Z
+    - 2026-10-30T19:42:33Z
+    - 2026-10-30T20:12:34Z
+    - 2026-10-30T20:20:03Z
+    - 2026-10-30T20:44:09Z
+    - 2026-10-30T20:47:40Z
+    - 2026-10-30T20:57:56Z
+    - 2026-10-31T00:20:44Z
+    - 2026-10-31T00:20:45Z
+    - 2026-10-31T00:20:45Z
+    - 2026-10-31T00:58:59Z
+    - 2026-10-31T02:02:30Z
+    - 2026-10-30T04:35:44Z
+    - 2026-10-30T14:48:17Z
+    - 2026-10-30T14:56:38Z
+    - 2026-10-30T19:09:02Z
+    - 2026-10-30T19:10:09Z
+    - 2026-10-30T19:10:14Z
+    - 2026-10-30T19:14:59Z
+    - 2026-10-30T19:15:03Z
+    - 2026-10-30T19:18:41Z
+    - 2026-10-30T19:18:45Z
+    - 2026-10-30T19:29:16Z
+    - 2026-10-30T19:32:21Z
+    - 2026-10-30T19:32:27Z
+    - 2026-10-30T20:14:35Z
+    - 2026-10-30T20:21:59Z
+    - 2026-10-30T21:42:47Z
+    - 2026-10-30T21:51:42Z
+    - 2026-10-30T21:51:51Z
+    - 2026-10-30T21:51:54Z
+    - 2026-10-31T00:44:16Z
+    - 2026-10-31T00:59:28Z
+    - 2026-10-31T02:02:30Z
+    - 2026-10-31T00:58:59Z
+    - 2026-10-30T19:43:25Z
+    - 2026-10-30T19:42:33Z
+    - 2026-10-30T20:20:03Z
+    - 2026-10-30T20:44:09Z
+    - 2026-10-30T20:47:40Z
+    - 2026-10-30T20:57:56Z
+    - 2026-10-30T14:48:25Z
+    - 2026-10-30T14:48:17Z
+    - 2026-10-30T19:10:09Z
+    - 2026-10-30T20:14:35Z
+    - 2026-10-30T21:51:51Z
+    - 2026-10-30T14:56:47Z
+    - 2026-10-30T14:56:38Z
+    - 2026-10-30T19:10:14Z
+    - 2026-10-30T20:21:59Z
+    - 2026-10-30T21:51:54Z
+    - 2026-10-31T00:44:16Z
+    - 2026-10-30T04:35:51Z
+    - 2026-10-30T04:35:44Z
+    - 2026-10-30T19:15:03Z
+    - 2026-10-30T19:18:45Z
+    - 2026-10-30T19:29:16Z
+    - 2026-10-30T19:32:27Z
+    - 2026-10-30T21:42:47Z
+    - 2026-10-30T21:51:42Z
+    - 2026-10-31T00:20:47Z
+    - 2026-10-30T19:27:19Z
+    - 2026-10-31T00:20:48Z
+    - 2026-10-30T19:27:59Z
+    - 2026-10-30T19:30:58Z
+    - 2026-10-31T00:20:49Z
+    - 2026-10-30T19:14:53Z
+    - 2026-10-30T19:31:15Z
+    - 2026-10-30T19:36:33Z
+    - 2026-10-30T20:12:34Z
+    - 2026-10-30T20:47:42Z
+    - 2026-10-30T20:47:44Z
+    - 2026-10-30T19:32:32Z
+    - 2026-10-30T19:36:50Z
+    - 2026-10-30T20:13:08Z
+    - 2026-10-30T20:47:42Z
+    - 2026-10-30T20:47:44Z
+    - 2026-10-30T19:32:32Z
+    - 2026-10-30T19:36:50Z
+    - 2026-10-30T20:13:08Z
+  volume:
+    pullRequests:
+      - additions: 14
+        deletions: 1
+        state: merged
+        dailyWork: true
+        filesChanged: 3
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 519
+        deletions: 653
+        state: merged
+        dailyWork: true
+        filesChanged: 27
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 801
+        deletions: 693
+        state: merged
+        dailyWork: true
+        filesChanged: 47
+        testFilesChanged: 7
+        commitCount: 2
+      - additions: 2747
+        deletions: 859
+        state: merged
+        dailyWork: true
+        filesChanged: 84
+        testFilesChanged: 20
+        commitCount: 4
+      - additions: 4451
+        deletions: 2327
+        state: open
+        dailyWork: true
+        filesChanged: 84
+        testFilesChanged: 13
+        commitCount: 5
+      - additions: 534
+        deletions: 35
+        state: merged
+        dailyWork: true
+        filesChanged: 8
+        testFilesChanged: 4
+        commitCount: 4
+      - additions: 1876
+        deletions: 197
+        state: merged
+        dailyWork: true
+        filesChanged: 25
+        testFilesChanged: 9
+        commitCount: 5
+      - additions: 1319
+        deletions: 124
+        state: merged
+        dailyWork: true
+        filesChanged: 41
+        testFilesChanged: 11
+        commitCount: 7
+      - additions: 20543
+        deletions: 858
+        state: merged
+        dailyWork: true
+        filesChanged: 158
+        testFilesChanged: 61
+        commitCount: 4
+    reviewCount: 5
+    reviewCommentCount: 5
+    commitCount: 4
+    commitAdditions: 4866
+    commitDeletions: 180
+    commitStatsCount: 4
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 120.7
+  sessions: 4
+  sessionHours: 5.4
+  volumeHours: 120.7
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""

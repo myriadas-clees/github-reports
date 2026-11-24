@@ -1,0 +1,116 @@
+title: Nov 11
+subtitle: hub, repo & compass
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 8 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 69 commits with +24,908 / −9,802 lines.
+    chips:
+      - label: Commits
+        value: "69"
+        color: green
+      - label: Additions
+        value: +24,908
+        color: green
+      - label: Deletions
+        value: −9,802
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 29 reviews with 29 comments.
+    chips:
+      - label: Reviews
+        value: "29"
+      - label: Comments
+        value: "29"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 16 reviews, 20 comments, 5 PRs."
+    chips:
+      - label: Codex
+        value: 16 reviews · 20 comments · 5 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~177h
+highlights:
+  - type: pr
+    title: "fix(address-book): enable staging data workflows on shared Cosmos"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +493 −78
+    body: >-
+      ## Why
+
+
+      Address Book is visible in staging but data requests fail: its runtime settings are absent, and its incomplete
+      cloud adapter requires managed identity and Strong consistency that staging does 
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/266
+  - type: pr
+    title: "feat(staging): include experimental apps in stage builds"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +2535 −1128
+    body: >-
+      ## Why
+
+
+      Address Book was excluded from staging because staging releases were built with the production app selection.
+      Staging needs to include experimental apps so they can be exercised before product
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/262
+  - type: pr
+    title: "refactor(repo): centralize shared contracts and UI logic"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +1369 −882
+    body: >-
+      ## Why
+
+
+      Shared authorization rules, browser UI behavior, database helpers, and repository tooling were duplicated across
+      apps. That made common changes harder to maintain and allowed app behavior to d
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/259
+  - type: pr
+    title: "docs(repo): define suite architecture and agent ownership"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +2535 −1187
+    body: >-
+      ## Why
+
+
+      Give agents clear ownership guidance that encourages decisive, maintainable choices while keeping durable
+      principles separate from changing implementation details. Define how suite capabilitie
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/260
+  - type: pr
+    title: "feat(hub): centralize delegated Graph connections"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +2375 −959
+    body: >-
+      ## Why
+
+
+      Give Myriad Suite apps a shared, Hub-owned Microsoft Graph connection so users can grant delegated permissions
+      through **Myriad Apps** and reuse that connection across apps. After tenant admin
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/258
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(address-book): enable staging data workflows on shared Cosmos" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(staging): include experimental apps in stage builds" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "refactor(repo): centralize shared contracts and UI logic" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "docs(repo): define suite architecture and agent ownership" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(hub): centralize delegated Graph connections" in
+      Myriad-Advisor-Solutions/myriadas-apps'

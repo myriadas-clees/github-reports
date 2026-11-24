@@ -1,0 +1,82 @@
+title: Nov 12
+subtitle: northstar & graphical
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/ohcpwm-apps and Myriad-Advisor-Solutions/myriadas-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 0 PRs
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 1 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 4 commits with +13,614 / −730 lines.
+    chips:
+      - label: Commits
+        value: "4"
+        color: green
+      - label: Additions
+        value: +13,614
+        color: green
+      - label: Deletions
+        value: −730
+        color: red
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 1 review, 2 comments, 1 PR."
+    chips:
+      - label: Codex
+        value: 1 review · 2 comments · 1 PR
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~31.3h
+highlights:
+  - type: pr
+    title: "fix(northstar): stream Copilot startup and lookup activity"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +0 −0
+    body: >-
+      - Stream Copilot startup and lookup progress into the Northstar workspace, including partial results while a
+      lookup is running.
+
+      - Update Copilot chat handling and consultation tests for streamed respo
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/220
+  - type: pr
+    title: "feat(northstar): add Anthropic message threads"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +0 −0
+    body: >-
+      - Use Anthropic message threads across tool rounds in Northstar Claude briefs and Ask, enabled by default with a
+      configuration switch to disable them.
+
+      - Recover from expired or unsupported threads by 
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/214
+  - type: pr
+    title: "fix(northstar): prevent prompt leaks and bound Claude turns"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +0 −0
+    body: |-
+      - Prevent Northstar from revealing or referring to internal prompts and mechanics, and improve direct answers.
+      - Bound Claude turns, keep fallback work within the remaining deadline, and limit streame
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/215
+  - type: pr
+    title: "feat(graphical): install theme system and editor"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +13614 −730
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/267
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(northstar): stream Copilot startup and lookup activity" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(northstar): add Anthropic message threads" in Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(northstar): prevent prompt leaks and bound Claude turns" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'

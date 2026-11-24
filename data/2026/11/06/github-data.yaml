@@ -1,0 +1,416 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-11-06
+  to: 2026-11-06
+stats:
+  totalCommits: 16
+  totalAdditions: 1303
+  totalDeletions: 390
+  prsOpened: 1
+  prsMerged: 2
+  prsInProgress: 3
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 26.1
+dailyCommits:
+  - date: 2026-11-06
+    count: 16
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 16
+    prsOpened: 1
+    prsMerged: 2
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests:
+  - title: "chore: refresh CODEOWNERS for current approvers"
+    body: >-
+      Replace stale `@DPB22` and `@dbarba8699` owners with `@kmedendorp` and `@myriadas-dev`, alongside
+      `@myriadas-clees`. Every rule lists all three current approvers, leaving two independent code owners available for
+      each listed author.
+
+
+      Reviewed all nine patterns against the tracked layout and retained...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/245
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - github-automation
+    additions: 9
+    deletions: 9
+    changedFiles: 1
+    author: myriadas-clees
+    createdAt: 2026-11-06T16:32:38Z
+    updatedAt: 2026-11-06T16:39:01Z
+    closedAt: 2026-11-06T16:38:57Z
+    mergedAt: 2026-11-06T16:38:57Z
+    workCommits:
+      - &a3
+        sha: 1d51622f9d4e23a0ec32ea14b72cf21107e79317
+        message: "chore: refresh current code owners"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/1d51622f9d4e23a0ec32ea14b72cf21107e79317
+        authoredAt: 2026-11-06T16:32:11Z
+    workTimestamps:
+      - 2026-11-06T16:32:11Z
+    workAdditions: 9
+    workDeletions: 9
+    workFiles:
+      - .github/CODEOWNERS
+  - title: "feat(repo): add isolated testing and manual Azure release promotion"
+    body: >-
+      ## Why
+
+
+      Add isolated testing and a traceable staging-to-production release cycle while preserving the combined Hub Static
+      Web App and managed API topology. Infrastructure provisioning is manual while its identity permissions are
+      unavailable. Nightly application staging remains enabled and uses GitHu...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/237
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - github-automation
+      - "app: hub"
+      - "app: proforma"
+      - platform
+      - infrastructure
+      - "app: transition"
+    additions: 1294
+    deletions: 381
+    changedFiles: 104
+    author: myriadas-clees
+    createdAt: 2026-10-30T19:43:25Z
+    updatedAt: 2026-11-06T23:22:01Z
+    closedAt: 2026-11-06T23:22:01Z
+    mergedAt: 2026-11-06T23:22:01Z
+    workCommits:
+      - &a1
+        sha: f8b45337adc5b19ca79adcda1c91d38b96c9c6ac
+        message: "fix(repo): use GitHub App for production branch promotion"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f8b45337adc5b19ca79adcda1c91d38b96c9c6ac
+        authoredAt: 2026-11-06T15:56:02Z
+      - &a2
+        sha: 98f697c01c15e7d2855d1cfed00352d9ed1dad6c
+        message: "fix(repo): accept omitted ruleset defaults in setup audit"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/98f697c01c15e7d2855d1cfed00352d9ed1dad6c
+        authoredAt: 2026-11-06T16:21:28Z
+      - &a4
+        sha: f3cead4116e90b394845e84812082f7c6c28b7d8
+        message: "fix(repo): audit rulesets for maintainer-authorized merges"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f3cead4116e90b394845e84812082f7c6c28b7d8
+        authoredAt: 2026-11-06T17:09:26Z
+      - &a5
+        sha: 174f972229e683eb0333d68585e20cb93de26507
+        message: "feat(repo): support manual staging and tagged release promotion"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/174f972229e683eb0333d68585e20cb93de26507
+        authoredAt: 2026-11-06T18:24:18Z
+      - &a6
+        sha: cf1ffaeb7c1020d0efbbf4b5d7360d8fe8072244
+        message: "fix(repo): restore nightly staging releases"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/cf1ffaeb7c1020d0efbbf4b5d7360d8fe8072244
+        authoredAt: 2026-11-06T18:27:47Z
+      - &a7
+        sha: 7c238744d7644d63b8dce43f33c5c0cc4575ea79
+        message: "chore(repo): schedule staging for US overnight hours"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7c238744d7644d63b8dce43f33c5c0cc4575ea79
+        authoredAt: 2026-11-06T18:39:17Z
+      - &a8
+        sha: 08961007415793a9c57413d6282a78ce89339fb9
+        message: "chore(repo): run nightly staging at 08:00 UTC"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/08961007415793a9c57413d6282a78ce89339fb9
+        authoredAt: 2026-11-06T18:41:33Z
+      - &a9
+        sha: aca946e82c62eac5b44379475dec1ebaba221609
+        message: "chore(repo): run nightly staging at 06:23 UTC"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/aca946e82c62eac5b44379475dec1ebaba221609
+        authoredAt: 2026-11-06T18:44:13Z
+      - &a10
+        sha: f407a24bf5ba02555f41c8a122b5ba8b283a83b0
+        message: "fix(repo): accept portal staging deployment names"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f407a24bf5ba02555f41c8a122b5ba8b283a83b0
+        authoredAt: 2026-11-06T19:39:12Z
+      - &a11
+        sha: b649c30dec697baaa0c92fef23341b4610544fc1
+        message: "fix(repo): separate required deployment readiness from optional setup"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b649c30dec697baaa0c92fef23341b4610544fc1
+        authoredAt: 2026-11-06T20:22:05Z
+      - &a12
+        sha: 92b18b7195ca8e236e4c0ae51bf74a4352665998
+        message: Merge remote-tracking branch 'origin/main' into clees/staging-preview-environments
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/92b18b7195ca8e236e4c0ae51bf74a4352665998
+        authoredAt: 2026-11-06T20:37:20Z
+      - &a13
+        sha: 2065788d1cf884e87fe8cb56786e77dd94781f3e
+        message: "fix(repo): invalidate deployment readiness before inspection"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2065788d1cf884e87fe8cb56786e77dd94781f3e
+        authoredAt: 2026-11-06T20:40:52Z
+      - &a14
+        sha: 214413d27f5d45f1317a23d3e8fde0b99425ba0b
+        message: "feat(repo): redesign staging sign-in and synthetic workspace notice"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/214413d27f5d45f1317a23d3e8fde0b99425ba0b
+        authoredAt: 2026-11-06T21:00:17Z
+    workTimestamps:
+      - 2026-11-06T15:56:02Z
+      - 2026-11-06T16:21:28Z
+      - 2026-11-06T17:09:26Z
+      - 2026-11-06T18:24:18Z
+      - 2026-11-06T18:27:47Z
+      - 2026-11-06T18:39:17Z
+      - 2026-11-06T18:41:33Z
+      - 2026-11-06T18:44:13Z
+      - 2026-11-06T19:39:12Z
+      - 2026-11-06T20:22:05Z
+      - 2026-11-06T20:37:20Z
+      - 2026-11-06T20:40:52Z
+      - 2026-11-06T21:00:17Z
+    workAdditions: 1294
+    workDeletions: 381
+    workFiles:
+      - .github/workflows/promote-release.yml
+      - .github/workflows/staging-infrastructure.yml
+      - .github/workflows/staging.yml
+      - SECURITY.md
+      - docs/deploy-asap.md
+      - docs/repository-operations.md
+      - docs/staging-and-testing.md
+      - hub/functions/src/test-idp-page.ts
+      - hub/functions/src/test-idp.test.ts
+      - hub/functions/src/test-idp.ts
+      - infra/azure/staging/README.md
+      - scripts/authorize-deployment.ts
+      - scripts/deployment-safety.test.ts
+      - scripts/github/configure-repository.test.ts
+      - scripts/github/configure-repository.ts
+      - scripts/github/main-policy.test.ts
+      - scripts/main-policy.ts
+      - scripts/staging-azure.test.ts
+      - scripts/staging-azure.ts
+      - scripts/staging-runtime.sh
+      - scripts/staging-runtime.test.ts
+      - scripts/tooling.test.ts
+      - transition/src/app/globals.css
+      - transition/src/components/transition-shell.tsx
+prsInProgress:
+  - title: "feat(northstar): add Anthropic message threads"
+    body: >-
+      - Use Anthropic message threads across tool rounds in Northstar Claude briefs and Ask, enabled by default with a
+      configuration switch to disable them.
+
+      - Recover from expired or unsupported threads by replaying the conversation or continuing without threads.
+
+      - Document the setting and add coverage fo...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/214
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: []
+    additions: 147
+    deletions: 17
+    changedFiles: 4
+    author: myriadas-clees
+    createdAt: 2026-11-04T15:49:02Z
+    updatedAt: 2026-11-06T16:36:20Z
+    closedAt: null
+    mergedAt: null
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "fix(northstar): stream Copilot startup and lookup activity"
+    body: >-
+      - Stream Copilot startup and lookup progress into the Northstar workspace, including partial results while a
+      lookup is running.
+
+      - Update Copilot chat handling and consultation tests for streamed responses.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/220
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: []
+    additions: 366
+    deletions: 96
+    changedFiles: 15
+    author: myriadas-clees
+    createdAt: 2026-11-05T14:46:59Z
+    updatedAt: 2026-11-06T16:36:36Z
+    closedAt: null
+    mergedAt: null
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "fix(northstar): prevent prompt leaks and bound Claude turns"
+    body: |-
+      - Prevent Northstar from revealing or referring to internal prompts and mechanics, and improve direct answers.
+      - Bound Claude turns, keep fallback work within the remaining deadline, and limit streamed snapshot size.
+      - Improve Cosmos-backed reads and saves, add content-free timing metrics, and strea...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/215
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: []
+    additions: 12482
+    deletions: 2680
+    changedFiles: 173
+    author: myriadas-clees
+    createdAt: 2026-11-04T19:13:19Z
+    updatedAt: 2026-11-06T16:36:09Z
+    closedAt: null
+    mergedAt: null
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "fix(repo): use GitHub App for production branch promotion"
+      - "fix(repo): accept omitted ruleset defaults in setup audit"
+      - "chore: refresh current code owners"
+      - "chore: refresh current code owners (#245)"
+      - "fix(repo): audit rulesets for maintainer-authorized merges"
+      - "feat(repo): support manual staging and tagged release promotion"
+      - "fix(repo): restore nightly staging releases"
+      - "chore(repo): schedule staging for US overnight hours"
+      - "chore(repo): run nightly staging at 08:00 UTC"
+      - "chore(repo): run nightly staging at 06:23 UTC"
+      - "fix(repo): accept portal staging deployment names"
+      - "fix(repo): separate required deployment readiness from optional setup"
+      - Merge remote-tracking branch 'origin/main' into clees/staging-preview-environments
+      - "fix(repo): invalidate deployment readiness before inspection"
+      - "feat(repo): redesign staging sign-in and synthetic workspace notice"
+      - "feat(repo): add isolated testing and manual Azure release promotion (#237)"
+    commits:
+      - *a1
+      - *a2
+      - *a3
+      - sha: 074999aad10ab0355c7117c23a31d3522b5e9878
+        message: "chore: refresh current code owners (#245)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/074999aad10ab0355c7117c23a31d3522b5e9878
+        authoredAt: 2026-11-06T16:38:57Z
+        additions: 9
+        deletions: 9
+        filesChanged: 1
+      - *a4
+      - *a5
+      - *a6
+      - *a7
+      - *a8
+      - *a9
+      - *a10
+      - *a11
+      - *a12
+      - *a13
+      - *a14
+      - sha: 353a01c42d92b9235d7fb4cd9082a93880acec0c
+        message: "feat(repo): add isolated testing and manual Azure release promotion (#237)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/353a01c42d92b9235d7fb4cd9082a93880acec0c
+        authoredAt: 2026-11-06T23:22:00Z
+        additions: 6543
+        deletions: 2023
+        filesChanged: 104
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 0
+  comments: 0
+  reviews: 0
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-11-06T15:56:02Z
+    - 2026-11-06T16:21:28Z
+    - 2026-11-06T16:32:11Z
+    - 2026-11-06T16:38:57Z
+    - 2026-11-06T17:09:26Z
+    - 2026-11-06T18:24:18Z
+    - 2026-11-06T18:27:47Z
+    - 2026-11-06T18:39:17Z
+    - 2026-11-06T18:41:33Z
+    - 2026-11-06T18:44:13Z
+    - 2026-11-06T19:39:12Z
+    - 2026-11-06T20:22:05Z
+    - 2026-11-06T20:37:20Z
+    - 2026-11-06T20:40:52Z
+    - 2026-11-06T21:00:17Z
+    - 2026-11-06T23:22:00Z
+    - 2026-11-06T16:32:38Z
+    - 2026-11-06T16:38:57Z
+    - 2026-11-06T16:32:11Z
+    - 2026-11-06T23:22:01Z
+    - 2026-11-06T15:56:02Z
+    - 2026-11-06T16:21:28Z
+    - 2026-11-06T17:09:26Z
+    - 2026-11-06T18:24:18Z
+    - 2026-11-06T18:27:47Z
+    - 2026-11-06T18:39:17Z
+    - 2026-11-06T18:41:33Z
+    - 2026-11-06T18:44:13Z
+    - 2026-11-06T19:39:12Z
+    - 2026-11-06T20:22:05Z
+    - 2026-11-06T20:37:20Z
+    - 2026-11-06T20:40:52Z
+    - 2026-11-06T21:00:17Z
+  volume:
+    pullRequests:
+      - additions: 9
+        deletions: 9
+        state: merged
+        dailyWork: true
+        filesChanged: 1
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 1294
+        deletions: 381
+        state: merged
+        dailyWork: true
+        filesChanged: 24
+        testFilesChanged: 7
+        commitCount: 13
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 2
+    commitAdditions: 6552
+    commitDeletions: 2032
+    commitStatsCount: 2
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 26.1
+  sessions: 2
+  sessionHours: 5.6
+  volumeHours: 26.1
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""

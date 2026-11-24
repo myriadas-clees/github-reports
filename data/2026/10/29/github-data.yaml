@@ -1,0 +1,596 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-10-29
+  to: 2026-10-29
+stats:
+  totalCommits: 14
+  totalAdditions: 3749
+  totalDeletions: 265
+  prsOpened: 4
+  prsMerged: 6
+  prsInProgress: 2
+  prsReviewed: 1
+  reviewComments: 1
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 56
+dailyCommits:
+  - date: 2026-10-29
+    count: 14
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 12
+    prsOpened: 3
+    prsMerged: 6
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 2
+    prsOpened: 1
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests:
+  - title: "fix(ci): wait for managed APIs before production smoke checks"
+    body: The production smoke job failed seconds after a successful Azure deployment because `/api/ofac/me` briefly
+      returned 404. The existing curl retry flags treated that HTTP response as a successful transfer, so the job failed
+      immediately. The deployed API subsequently returned the expected 401, and reru...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/203
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 61
+    deletions: 5
+    changedFiles: 3
+    author: myriadas-clees
+    createdAt: 2026-10-29T13:52:13Z
+    updatedAt: 2026-10-29T14:49:57Z
+    closedAt: 2026-10-29T14:49:57Z
+    mergedAt: 2026-10-29T14:49:57Z
+    workCommits:
+      - &a9
+        sha: 476cbd82770150925beed4e83c261c1c4e69842f
+        message: "fix(ci): wait for managed APIs in production smoke checks"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/476cbd82770150925beed4e83c261c1c4e69842f
+        authoredAt: 2026-10-29T13:51:43Z
+    workTimestamps:
+      - 2026-10-29T13:51:43Z
+    workAdditions: 61
+    workDeletions: 5
+    workFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/verify.yml
+      - scripts/smoke-readiness.test.ts
+  - title: "fix(northstar): improve visual rendering and clarify brand identity"
+    body: |-
+      - Correct a single missing comma in otherwise valid OpenUI visuals without guessing or repairing truncated data.
+      - Add a smooth, reduced-motion-aware entrance for validated visuals.
+      - Clarify Northstar’s full company name and OHCPWM acronym in model guidance.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/204
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 69
+    deletions: 15
+    changedFiles: 8
+    author: myriadas-clees
+    createdAt: 2026-10-29T14:13:36Z
+    updatedAt: 2026-10-29T14:49:59Z
+    closedAt: 2026-10-29T14:49:58Z
+    mergedAt: 2026-10-29T14:49:58Z
+    workCommits:
+      - &a10
+        sha: 26298633deecf9ad6c54cdec253f635faf4e06c9
+        message: "fix(northstar): clarify brand identity and improve visual answers"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/26298633deecf9ad6c54cdec253f635faf4e06c9
+        authoredAt: 2026-10-29T14:13:28Z
+    workTimestamps:
+      - 2026-10-29T14:13:28Z
+    workAdditions: 69
+    workDeletions: 15
+    workFiles:
+      - hub/functions/src/northstar-claude-brief.test.ts
+      - hub/functions/src/northstar-claude-brief.ts
+      - northstar/components/answer-openui.test.tsx
+      - northstar/components/answer-openui.tsx
+      - northstar/lib/answer-openui.test.ts
+      - northstar/lib/answer-openui.ts
+      - northstar/lib/northstar-context.test.ts
+      - northstar/lib/northstar-context.ts
+  - title: "fix(northstar): preserve partial briefs and remove retry prompts"
+    body: >-
+      - Preserve available calendar, inbox, and task data when later Graph pages fail, and report incomplete sources
+      accurately.
+
+      - Retain legacy read permissions and correctly include zero-duration calendar events.
+
+      - Remove manual retry prompts for scheduled briefs and recover interrupted generation autom...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/202
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 572
+    deletions: 148
+    changedFiles: 15
+    author: myriadas-clees
+    createdAt: 2026-10-29T13:12:34Z
+    updatedAt: 2026-10-29T13:40:30Z
+    closedAt: 2026-10-29T13:40:29Z
+    mergedAt: 2026-10-29T13:40:29Z
+    workCommits:
+      - &a7
+        sha: 559c753cb950a607521d2c51313f8b3b3793ec1d
+        message: "fix(northstar): preserve partial briefs and remove retry prompts"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/559c753cb950a607521d2c51313f8b3b3793ec1d
+        authoredAt: 2026-10-29T13:12:27Z
+      - &a8
+        sha: 9b43a5d0c52f605f659d7c2a200ffca4a7b30c36
+        message: "fix(northstar): keep brief recovery quiet and preserve intent"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/9b43a5d0c52f605f659d7c2a200ffca4a7b30c36
+        authoredAt: 2026-10-29T13:33:48Z
+    workTimestamps:
+      - 2026-10-29T13:12:27Z
+      - 2026-10-29T13:33:48Z
+    workAdditions: 572
+    workDeletions: 148
+    workFiles:
+      - hub/functions/src/northstar-brief-journeys.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/functions/src/northstar-scheduled-brief.test.ts
+      - hub/functions/src/northstar-scheduled-brief.ts
+      - northstar/components/ask-northstar-workspace.dom.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/northstar-recovery.dom.test.ts
+      - northstar/components/northstar-recovery.fixture.tsx
+      - northstar/lib/ask-stream.test.ts
+      - northstar/lib/ask-stream.ts
+      - northstar/lib/background-briefs.test.ts
+      - northstar/lib/background-briefs.ts
+  - title: "feat(proforma): import recruits from Excel templates"
+    body: >-
+      ## Why
+
+
+      Users needed a way to enter recruit and proforma details in Excel from the new recruit wizard, without a separate
+      data tab.
+
+
+      ## What changed
+
+
+      Added Excel template download and upload to the new recruit wizard. The template is pre-filled from the current
+      draft and includes recruit, team, expe...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/235
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a1
+      - "app: proforma"
+    additions: 2653
+    deletions: 2
+    changedFiles: 11
+    author: myriadas-clees
+    createdAt: 2026-10-29T12:59:10Z
+    updatedAt: 2026-10-29T13:04:02Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a2
+      - &a12
+        sha: db02811604f168285aad5949663271ae0723855d
+        message: "feat(proforma): import recruits from Excel templates"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/db02811604f168285aad5949663271ae0723855d
+        authoredAt: 2026-10-29T12:59:02Z
+    workTimestamps: &a3
+      - 2026-10-29T12:59:02Z
+    workAdditions: 2653
+    workDeletions: 2
+    workFiles: &a4
+      - proforma/src/app/globals.css
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/new-recruit-workbook-transfer.test.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/new-recruit-workbook-transfer.tsx
+      - proforma/src/lib/__tests__/new-recruit-workbook-fixtures.ts
+      - proforma/src/lib/__tests__/new-recruit-workbook-roundtrip.test.ts
+      - proforma/src/lib/__tests__/new-recruit-workbook.test.ts
+      - proforma/src/lib/new-recruit-workbook-lists.ts
+      - proforma/src/lib/new-recruit-workbook-spec.ts
+      - proforma/src/lib/new-recruit-workbook.ts
+  - title: "feat(northstar): add Office file commands and editing"
+    body: |-
+      - Add `@powerpoint`, `@word`, and `@excel` commands with automatic suggestions for clear file requests.
+      - Let users request changes to the latest generated Office file, with ownership and availability checks.
+      - Document file generation and editing behavior.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/200
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 391
+    deletions: 94
+    changedFiles: 13
+    author: myriadas-clees
+    createdAt: 2026-10-29T03:46:45Z
+    updatedAt: 2026-10-29T12:26:50Z
+    closedAt: 2026-10-29T12:26:50Z
+    mergedAt: 2026-10-29T12:26:50Z
+    workCommits:
+      - &a6
+        sha: e56cfc2e15dbdf1e4571463849a388824933077b
+        message: Merge branch 'stack-199' into stack-200
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e56cfc2e15dbdf1e4571463849a388824933077b
+        authoredAt: 2026-10-29T12:16:44Z
+    workTimestamps:
+      - 2026-10-29T12:16:44Z
+    workAdditions: 391
+    workDeletions: 94
+    workFiles:
+      - hub/functions/src/northstar-brief-journeys.test.ts
+      - hub/functions/src/northstar-claude-ask.test.ts
+      - hub/functions/src/northstar-claude-brief.test.ts
+      - hub/functions/src/northstar-claude-brief.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/functions/src/northstar-scheduled-brief.test.ts
+      - hub/functions/src/northstar-scheduled-brief.ts
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/lib/background-briefs.test.ts
+      - northstar/lib/background-briefs.ts
+  - title: "fix(northstar): guide Claude briefs to include useful visuals"
+    body: >-
+      - Encourage Claude scheduled briefs to include a supported OpenUI visual when visual guidance is available and it
+      would help.
+
+      - Keep visuals optional and defer to advisor instructions.
+
+      - Correct the organization name to OHCPWM.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/198
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 0
+    deletions: 0
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-10-29T03:09:30Z
+    updatedAt: 2026-10-29T12:26:48Z
+    closedAt: 2026-10-29T12:26:48Z
+    mergedAt: 2026-10-29T12:26:48Z
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "fix(northstar): include fresh Today data in scheduled briefs"
+    body: |-
+      - Pass a recent, live Today snapshot to Claude briefs as untrusted supplemental context.
+      - Wait for the initial Microsoft data read before starting new Claude briefs.
+      - Keep server-read Microsoft data as the verified source.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/199
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 3
+    deletions: 1
+    changedFiles: 10
+    author: myriadas-clees
+    createdAt: 2026-10-29T03:19:45Z
+    updatedAt: 2026-10-29T12:26:49Z
+    closedAt: 2026-10-29T12:26:49Z
+    mergedAt: 2026-10-29T12:26:49Z
+    workCommits:
+      - &a5
+        sha: 7292bc2b31921e73b1e856dfef87891ff4c6a3c8
+        message: Merge commit 'f27650ae076346c68064ad8038b6dde425ab1872' into stack-199
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7292bc2b31921e73b1e856dfef87891ff4c6a3c8
+        authoredAt: 2026-10-29T12:16:33Z
+    workTimestamps:
+      - 2026-10-29T12:16:33Z
+    workAdditions: 3
+    workDeletions: 1
+    workFiles:
+      - hub/functions/src/northstar-claude-brief.test.ts
+      - hub/functions/src/northstar-claude-brief.ts
+prsInProgress:
+  - title: "feat(proforma): import recruits from Excel templates"
+    body: >-
+      ## Why
+
+
+      Users needed a way to enter recruit and proforma details in Excel from the new recruit wizard, without a separate
+      data tab.
+
+
+      ## What changed
+
+
+      Added Excel template download and upload to the new recruit wizard. The template is pre-filled from the current
+      draft and includes recruit, team, expe...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/235
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a1
+    additions: 2653
+    deletions: 2
+    changedFiles: 11
+    author: myriadas-clees
+    createdAt: 2026-10-29T12:59:10Z
+    updatedAt: 2026-10-29T13:04:02Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 2653
+    workDeletions: 2
+    workFiles: *a4
+  - title: "feat(compass): expand visual displays and add widgets"
+    body: >-
+      ## Why
+
+
+      Compass needed more ways to present structured answers and reusable views of connected Microsoft 365 data.
+
+
+      ## What changed
+
+
+      - Expanded Ask visuals with multi-series bars, metrics, progress indicators, checklists, callouts, typed tables,
+      and hypothetical capacity controls for scenarios.
+
+      - Ad...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/234
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - "app: compass"
+    additions: 1951
+    deletions: 156
+    changedFiles: 38
+    author: myriadas-clees
+    createdAt: 2026-10-29T03:00:07Z
+    updatedAt: 2026-10-29T12:26:01Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a11
+        sha: 5338939329929bb7b66f622da09870fb331592af
+        message: "feat(compass): refine interactive widgets"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5338939329929bb7b66f622da09870fb331592af
+        authoredAt: 2026-10-29T12:23:44Z
+    workTimestamps:
+      - 2026-10-29T12:23:44Z
+    workAdditions: 396
+    workDeletions: 94
+    workFiles:
+      - compass/src/app/globals.css
+      - compass/src/components/widget-card.test.tsx
+      - compass/src/components/widget-card.tsx
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - Merge commit 'f27650ae076346c68064ad8038b6dde425ab1872' into stack-199
+      - Merge branch 'stack-199' into stack-200
+      - "fix(northstar): guide Claude briefs to include useful visuals (#198)"
+      - "feat(northstar): add Office file commands and editing (#200)"
+      - "fix(northstar): include fresh Today data in scheduled briefs (#199)"
+      - "fix(northstar): preserve partial briefs and remove retry prompts"
+      - "fix(northstar): keep brief recovery quiet and preserve intent"
+      - "fix(northstar): preserve partial briefs and remove retry prompts (#202)"
+      - "fix(ci): wait for managed APIs in production smoke checks"
+      - "fix(northstar): clarify brand identity and improve visual answers"
+      - "fix(northstar): clarify brand identity and improve visual answers (#204)"
+      - "fix(ci): wait for managed APIs in production smoke checks (#203)"
+    commits:
+      - *a5
+      - *a6
+      - sha: 67f5f7acc1084edf3a4f5a5548d9aa694128b4f2
+        message: "fix(northstar): guide Claude briefs to include useful visuals (#198)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/67f5f7acc1084edf3a4f5a5548d9aa694128b4f2
+        authoredAt: 2026-10-29T12:26:46Z
+        additions: 3
+        deletions: 1
+        filesChanged: 2
+      - sha: be9a283bd06f35ecd1ffdefbc78f916fac36d16d
+        message: "feat(northstar): add Office file commands and editing (#200)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/be9a283bd06f35ecd1ffdefbc78f916fac36d16d
+        authoredAt: 2026-10-29T12:26:47Z
+        additions: 497
+        deletions: 106
+        filesChanged: 13
+      - sha: 7a759d43b449276856943f13d1d06a542e13982f
+        message: "fix(northstar): include fresh Today data in scheduled briefs (#199)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/7a759d43b449276856943f13d1d06a542e13982f
+        authoredAt: 2026-10-29T12:26:47Z
+        additions: 388
+        deletions: 93
+        filesChanged: 10
+      - *a7
+      - *a8
+      - sha: a6d41de6399ba897561455bbc4b156c3576e6b4c
+        message: "fix(northstar): preserve partial briefs and remove retry prompts (#202)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/a6d41de6399ba897561455bbc4b156c3576e6b4c
+        authoredAt: 2026-10-29T13:40:28Z
+        additions: 518
+        deletions: 94
+        filesChanged: 15
+      - *a9
+      - *a10
+      - sha: c6816ace7e3ec4546940af10a489aabbc96fbe05
+        message: "fix(northstar): clarify brand identity and improve visual answers (#204)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c6816ace7e3ec4546940af10a489aabbc96fbe05
+        authoredAt: 2026-10-29T14:49:56Z
+        additions: 69
+        deletions: 15
+        filesChanged: 8
+      - sha: ecbf873a654c82128ee26b8af98666feb9437bb3
+        message: "fix(ci): wait for managed APIs in production smoke checks (#203)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ecbf873a654c82128ee26b8af98666feb9437bb3
+        authoredAt: 2026-10-29T14:49:56Z
+        additions: 61
+        deletions: 5
+        filesChanged: 3
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "feat(compass): refine interactive widgets"
+      - "feat(proforma): import recruits from Excel templates"
+    commits:
+      - *a11
+      - *a12
+releases: []
+externalContributions: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 202
+    prTitle: "fix(northstar): preserve partial briefs and remove retry prompts"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/202
+    state: commented
+    submittedAt: 2026-10-29T13:35:04Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 202
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/202
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/202#discussion_r4412967154
+    body: "[from Codex]: Fixed in 9b43a5d0. Automatic recovery retains explicit regeneration intent when the connection
+      preflight fails before a server turn is assigned, and continues to reuse saved results for unknown-outcome turns.
+      Added the remote-regenerate-preflight dashboard regression; it passes."
+    path: northstar/components/northstar-dashboard.tsx
+    createdAt: 2026-10-29T13:35:04Z
+aiReviews:
+  codex:
+    prsReviewed: 2
+    comments: 3
+    reviews: 2
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 2
+  comments: 3
+  reviews: 2
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-10-29T12:16:33Z
+    - 2026-10-29T12:16:44Z
+    - 2026-10-29T12:26:46Z
+    - 2026-10-29T12:26:47Z
+    - 2026-10-29T12:26:47Z
+    - 2026-10-29T13:12:27Z
+    - 2026-10-29T13:33:48Z
+    - 2026-10-29T13:40:28Z
+    - 2026-10-29T13:51:43Z
+    - 2026-10-29T14:13:28Z
+    - 2026-10-29T14:49:56Z
+    - 2026-10-29T14:49:56Z
+    - 2026-10-29T12:23:44Z
+    - 2026-10-29T12:59:02Z
+    - 2026-10-29T13:52:13Z
+    - 2026-10-29T14:49:57Z
+    - 2026-10-29T13:51:43Z
+    - 2026-10-29T14:13:36Z
+    - 2026-10-29T14:49:58Z
+    - 2026-10-29T14:13:28Z
+    - 2026-10-29T13:12:34Z
+    - 2026-10-29T13:40:29Z
+    - 2026-10-29T13:12:27Z
+    - 2026-10-29T13:33:48Z
+    - 2026-10-29T12:59:10Z
+    - 2026-10-29T12:59:02Z
+    - 2026-10-29T12:26:50Z
+    - 2026-10-29T12:16:44Z
+    - 2026-10-29T12:26:48Z
+    - 2026-10-29T12:26:49Z
+    - 2026-10-29T12:16:33Z
+    - 2026-10-29T13:35:04Z
+    - 2026-10-29T13:35:04Z
+  volume:
+    pullRequests:
+      - additions: 61
+        deletions: 5
+        state: merged
+        dailyWork: true
+        filesChanged: 3
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 69
+        deletions: 15
+        state: merged
+        dailyWork: true
+        filesChanged: 8
+        testFilesChanged: 4
+        commitCount: 1
+      - additions: 391
+        deletions: 94
+        state: merged
+        dailyWork: true
+        filesChanged: 10
+        testFilesChanged: 5
+        commitCount: 1
+      - additions: 572
+        deletions: 148
+        state: merged
+        dailyWork: true
+        filesChanged: 15
+        testFilesChanged: 7
+        commitCount: 2
+      - additions: 3
+        deletions: 1
+        state: merged
+        dailyWork: true
+        filesChanged: 2
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 2653
+        deletions: 2
+        state: open
+        dailyWork: true
+        filesChanged: 11
+        testFilesChanged: 5
+        commitCount: 1
+      - additions: 396
+        deletions: 94
+        state: open
+        dailyWork: true
+        filesChanged: 3
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 0
+        deletions: 0
+        state: merged
+    reviewCount: 1
+    reviewCommentCount: 1
+    commitCount: 6
+    commitAdditions: 1536
+    commitDeletions: 314
+    commitStatsCount: 6
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 56
+  sessions: 1
+  sessionHours: 2.6
+  volumeHours: 56
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""

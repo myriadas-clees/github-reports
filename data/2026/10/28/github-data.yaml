@@ -1,0 +1,2241 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-10-28
+  to: 2026-10-28
+stats:
+  totalCommits: 62
+  totalAdditions: 24152
+  totalDeletions: 7119
+  prsOpened: 20
+  prsMerged: 19
+  prsInProgress: 6
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 171.6
+dailyCommits:
+  - date: 2026-10-28
+    count: 62
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 34
+    prsOpened: 12
+    prsMerged: 12
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 28
+    prsOpened: 8
+    prsMerged: 7
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests:
+  - title: "fix(northstar): guide Claude briefs to include useful visuals"
+    body: >-
+      - Encourage Claude scheduled briefs to include a supported OpenUI visual when visual guidance is available and it
+      would help.
+
+      - Keep visuals optional and defer to advisor instructions.
+
+      - Correct the organization name to OHCPWM.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/198
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a1 []
+    additions: 3
+    deletions: 1
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-10-29T03:09:30Z
+    updatedAt: 2026-10-29T12:26:48Z
+    closedAt: 2026-10-29T12:26:48Z
+    mergedAt: 2026-10-29T12:26:48Z
+    workCommits: &a2
+      - &a64
+        sha: f27650ae076346c68064ad8038b6dde425ab1872
+        message: "fix(northstar): guide Claude briefs to include useful visuals"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f27650ae076346c68064ad8038b6dde425ab1872
+        authoredAt: 2026-10-29T03:09:24Z
+    workTimestamps: &a3
+      - 2026-10-29T03:09:24Z
+    workAdditions: 3
+    workDeletions: 1
+    workFiles: &a4
+      - hub/functions/src/northstar-claude-brief.test.ts
+      - hub/functions/src/northstar-claude-brief.ts
+  - title: "feat(northstar): add Office file commands and editing"
+    body: |-
+      - Add `@powerpoint`, `@word`, and `@excel` commands with automatic suggestions for clear file requests.
+      - Let users request changes to the latest generated Office file, with ownership and availability checks.
+      - Document file generation and editing behavior.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/200
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a5 []
+    additions: 497
+    deletions: 106
+    changedFiles: 13
+    author: myriadas-clees
+    createdAt: 2026-10-29T03:46:45Z
+    updatedAt: 2026-10-29T12:26:50Z
+    closedAt: 2026-10-29T12:26:50Z
+    mergedAt: 2026-10-29T12:26:50Z
+    workCommits: &a6
+      - &a67
+        sha: 6497abed8ad0cbb6afe7b2670ace007f82494443
+        message: "feat(northstar): add Office file commands and editing"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6497abed8ad0cbb6afe7b2670ace007f82494443
+        authoredAt: 2026-10-29T03:46:32Z
+    workTimestamps: &a7
+      - 2026-10-29T03:46:32Z
+    workAdditions: 497
+    workDeletions: 106
+    workFiles: &a8
+      - README.md
+      - hub/functions/src/northstar-claude-brief.ts
+      - hub/functions/src/northstar-claude-documents.test.ts
+      - hub/functions/src/northstar-claude-files.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - northstar/components/ask-northstar-workspace.dom.test.tsx
+      - northstar/components/ask-northstar-workspace.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/lib/at-commands.test.ts
+      - northstar/lib/at-commands.ts
+      - northstar/lib/microsoft-reauth.ts
+      - northstar/lib/progress-phase.ts
+  - title: "fix(northstar): include fresh Today data in scheduled briefs"
+    body: |-
+      - Pass a recent, live Today snapshot to Claude briefs as untrusted supplemental context.
+      - Wait for the initial Microsoft data read before starting new Claude briefs.
+      - Keep server-read Microsoft data as the verified source.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/199
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a9 []
+    additions: 391
+    deletions: 96
+    changedFiles: 10
+    author: myriadas-clees
+    createdAt: 2026-10-29T03:19:45Z
+    updatedAt: 2026-10-29T12:26:49Z
+    closedAt: 2026-10-29T12:26:49Z
+    mergedAt: 2026-10-29T12:26:49Z
+    workCommits: &a10
+      - &a65
+        sha: 546fba802e5d76285df998e4693bffc59b1d9855
+        message: "fix(northstar): include fresh Today data in scheduled briefs"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/546fba802e5d76285df998e4693bffc59b1d9855
+        authoredAt: 2026-10-29T03:19:38Z
+      - &a66
+        sha: 4c9bb754d416d6cc3b6a5da84a0e84b0ba8a2795
+        message: "fix(northstar): improve brief data coverage and reuse"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/4c9bb754d416d6cc3b6a5da84a0e84b0ba8a2795
+        authoredAt: 2026-10-29T03:39:33Z
+    workTimestamps: &a11
+      - 2026-10-29T03:19:38Z
+      - 2026-10-29T03:39:33Z
+    workAdditions: 391
+    workDeletions: 96
+    workFiles: &a12
+      - hub/functions/src/northstar-brief-journeys.test.ts
+      - hub/functions/src/northstar-claude-ask.test.ts
+      - hub/functions/src/northstar-claude-brief.test.ts
+      - hub/functions/src/northstar-claude-brief.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/functions/src/northstar-scheduled-brief.test.ts
+      - hub/functions/src/northstar-scheduled-brief.ts
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/lib/background-briefs.test.ts
+      - northstar/lib/background-briefs.ts
+  - title: "fix(northstar): honor saved model defaults when Claude is unavailable"
+    body: >-
+      - Preserve the saved model and reasoning level in new chats and opened briefs while Claude availability is loading
+      or unavailable.
+
+      - Wait for the selected provider before generating scheduled briefs, while still restoring previously saved
+      briefs.
+
+      - Cover unavailable-provider defaults and saved-brief...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/197
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 36
+    deletions: 41
+    changedFiles: 5
+    author: myriadas-clees
+    createdAt: 2026-10-29T02:21:22Z
+    updatedAt: 2026-10-29T02:57:12Z
+    closedAt: 2026-10-29T02:57:12Z
+    mergedAt: 2026-10-29T02:57:12Z
+    workCommits:
+      - &a61
+        sha: 27f7bad79c18dc45131bf668571a93b769e9788a
+        message: "fix(northstar): honor saved model defaults when Claude is unavailable"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/27f7bad79c18dc45131bf668571a93b769e9788a
+        authoredAt: 2026-10-29T02:21:15Z
+      - &a62
+        sha: d5adb75c755fa527dfe7d389afe272a01ba00e70
+        message: "fix(northstar): restore briefs when provider unavailable"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d5adb75c755fa527dfe7d389afe272a01ba00e70
+        authoredAt: 2026-10-29T02:40:50Z
+      - &a63
+        sha: afb820d3cc7883cc1eb1ff2a8b9f69c5058fe44d
+        message: "fix(northstar): preserve cache when retention is unknown"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/afb820d3cc7883cc1eb1ff2a8b9f69c5058fe44d
+        authoredAt: 2026-10-29T02:47:40Z
+    workTimestamps:
+      - 2026-10-29T02:21:15Z
+      - 2026-10-29T02:40:50Z
+      - 2026-10-29T02:47:40Z
+    workAdditions: 36
+    workDeletions: 41
+    workFiles:
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/northstar-recovery.dom.test.ts
+      - northstar/components/northstar-recovery.fixture.tsx
+      - northstar/lib/settings-preferences.test.ts
+      - northstar/lib/settings-preferences.ts
+  - title: "fix(northstar): remove exact duplicate Copilot answers"
+    body: |-
+      - Remove exact whole-answer duplicates during Copilot response normalization.
+      - Preserve repeated content when the two halves differ.
+      - Add coverage for duplicate and non-identical answers.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/195
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: closed
+    labels: []
+    additions: 31
+    deletions: 2
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-10-28T17:53:57Z
+    updatedAt: 2026-10-28T17:59:58Z
+    closedAt: 2026-10-28T17:59:58Z
+    mergedAt: null
+    workCommits:
+      - &a57
+        sha: 2a376e7eb18306a1283a8f90d2680c7704300bfe
+        message: "fix(northstar): remove exact duplicate Copilot answers"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2a376e7eb18306a1283a8f90d2680c7704300bfe
+        authoredAt: 2026-10-28T17:53:51Z
+    workTimestamps:
+      - 2026-10-28T17:53:51Z
+    workAdditions: 31
+    workDeletions: 2
+    workFiles:
+      - hub/functions/src/northstar-copilot.test.ts
+      - hub/functions/src/northstar-copilot.ts
+  - title: "fix(northstar): preserve retry context"
+    body: Retrying an Ask turn with no earlier visible messages discarded the context supplied with the original request,
+      such as a quick-summary handoff. Preserve that context when retrying in the same chat; visible earlier turns still
+      take precedence. Northstar already keeps edited turns and retries in thei...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/194
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 11
+    deletions: 1
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-10-28T17:29:59Z
+    updatedAt: 2026-10-28T20:49:31Z
+    closedAt: 2026-10-28T20:49:31Z
+    mergedAt: 2026-10-28T20:49:31Z
+    workCommits:
+      - &a56
+        sha: d8a02db20e1cdbff1c6109b2956e3d58426ac1d1
+        message: "fix(northstar): preserve retry context"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d8a02db20e1cdbff1c6109b2956e3d58426ac1d1
+        authoredAt: 2026-10-28T17:29:49Z
+    workTimestamps:
+      - 2026-10-28T17:29:49Z
+    workAdditions: 11
+    workDeletions: 1
+    workFiles:
+      - northstar/components/ask-northstar-workspace.dom.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+  - title: "feat(northstar): keep and browse regenerated brief versions"
+    body: |-
+      - Preserve completed brief generations and let advisors browse earlier versions.
+      - Show a thinking state during regeneration and retain prior versions after a failure.
+      - Restore the latest complete brief when syncing history across devices.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/196
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 223
+    deletions: 67
+    changedFiles: 5
+    author: myriadas-clees
+    createdAt: 2026-10-28T22:38:58Z
+    updatedAt: 2026-10-29T01:51:01Z
+    closedAt: 2026-10-29T01:51:00Z
+    mergedAt: 2026-10-29T01:50:59Z
+    workCommits:
+      - &a59
+        sha: cd3b7f9ef49df68a14d21ce90b408628b49a7dbe
+        message: "feat(northstar): keep and browse regenerated brief versions"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cd3b7f9ef49df68a14d21ce90b408628b49a7dbe
+        authoredAt: 2026-10-28T22:38:51Z
+      - &a60
+        sha: 031a4e3fe3e8baf29ffb739c8cb582fe08a882bd
+        message: "fix(northstar): restore latest brief after regeneration"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/031a4e3fe3e8baf29ffb739c8cb582fe08a882bd
+        authoredAt: 2026-10-28T22:44:58Z
+    workTimestamps:
+      - 2026-10-28T22:38:51Z
+      - 2026-10-28T22:44:58Z
+    workAdditions: 223
+    workDeletions: 67
+    workFiles:
+      - northstar/app/globals.css
+      - northstar/components/ask-northstar-workspace.dom.test.tsx
+      - northstar/components/ask-northstar-workspace.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/lib/background-briefs.ts
+  - title: "fix(northstar): remove duplicate Copilot answers"
+    body: Copilot can return the same complete answer twice, causing Northstar to display and save duplicated content.
+      Normalize exact whole-answer repetitions before deriving the Markdown and summary, matching
+      Myriad-Advisor-Solutions/myriadas-apps#227. Short and non-identical repetitions remain unchanged; e...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/193
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 31
+    deletions: 2
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-10-28T17:27:59Z
+    updatedAt: 2026-10-28T20:49:33Z
+    closedAt: 2026-10-28T20:49:32Z
+    mergedAt: 2026-10-28T20:49:32Z
+    workCommits:
+      - &a55
+        sha: f1e4dd10d112b97a4c78f2c062bbe052acc6f392
+        message: "fix(northstar): remove duplicate Copilot answers"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f1e4dd10d112b97a4c78f2c062bbe052acc6f392
+        authoredAt: 2026-10-28T17:27:50Z
+    workTimestamps:
+      - 2026-10-28T17:27:50Z
+    workAdditions: 31
+    workDeletions: 2
+    workFiles:
+      - hub/functions/src/northstar-copilot.test.ts
+      - hub/functions/src/northstar-copilot.ts
+  - title: "fix(northstar): smooth streamed answer reveals"
+    body: |-
+      - Add eased pacing to streamed answer reveals, with a quick ramp up and a brief slowdown at the end.
+      - Keep restored answers visible immediately and pause animation frames while waiting for more streamed text.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/189
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 173
+    deletions: 69
+    changedFiles: 5
+    author: myriadas-clees
+    createdAt: 2026-10-28T15:15:52Z
+    updatedAt: 2026-10-28T20:49:25Z
+    closedAt: 2026-10-28T20:49:25Z
+    mergedAt: 2026-10-28T20:49:25Z
+    workCommits:
+      - &a47
+        sha: 39691716839a83e80b855f65ca191fe98a3cc777
+        message: "fix(northstar): smooth streamed answer reveals"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/39691716839a83e80b855f65ca191fe98a3cc777
+        authoredAt: 2026-10-28T15:15:44Z
+    workTimestamps:
+      - 2026-10-28T15:15:44Z
+    workAdditions: 173
+    workDeletions: 69
+    workFiles:
+      - northstar/components/answer-markdown.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/streaming-markdown.tsx
+      - northstar/lib/typing-reveal.test.ts
+      - northstar/lib/typing-reveal.ts
+  - title: "feat(northstar): add Claude agent tools and file generation"
+    body: >-
+      - Enable Claude to proactively use Northstar’s read-only Microsoft tools and delegate focused research to Copilot.
+
+      - Generate and deliver PowerPoint, Word, Excel, and PDF files through Anthropic’s sandbox, with signed per-user
+      download links.
+
+      - Add To Do task context to scheduled briefs and document...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/192
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 1234
+    deletions: 136
+    changedFiles: 33
+    author: myriadas-clees
+    createdAt: 2026-10-28T15:32:30Z
+    updatedAt: 2026-10-28T20:49:30Z
+    closedAt: 2026-10-28T20:49:29Z
+    mergedAt: 2026-10-28T20:49:29Z
+    workCommits:
+      - &a50
+        sha: 6030ef3f021255df4653d99f17094e23c50e294c
+        message: "feat(northstar): add Claude file generation and Microsoft tools"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6030ef3f021255df4653d99f17094e23c50e294c
+        authoredAt: 2026-10-28T15:32:22Z
+      - &a52
+        sha: 3e73091a87dd60e42dc308b2c56b9d6641fc75f8
+        message: "fix(northstar): route PDF requests to editable drafts"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3e73091a87dd60e42dc308b2c56b9d6641fc75f8
+        authoredAt: 2026-10-28T15:47:51Z
+      - &a58
+        sha: f09f9062a89e307c1fed82750cf0a3e2ecd01dfc
+        message: "fix(northstar): return generated files in JSON"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f09f9062a89e307c1fed82750cf0a3e2ecd01dfc
+        authoredAt: 2026-10-28T18:06:08Z
+    workTimestamps:
+      - 2026-10-28T15:32:22Z
+      - 2026-10-28T15:47:51Z
+      - 2026-10-28T18:06:08Z
+    workAdditions: 1234
+    workDeletions: 136
+    workFiles:
+      - README.md
+      - hub/functions/local.settings.json.example
+      - hub/functions/src/index.ts
+      - hub/functions/src/northstar-brief-journeys.test.ts
+      - hub/functions/src/northstar-claude-ask.test.ts
+      - hub/functions/src/northstar-claude-brief.test.ts
+      - hub/functions/src/northstar-claude-brief.ts
+      - hub/functions/src/northstar-claude-documents.test.ts
+      - hub/functions/src/northstar-claude-files.ts
+      - hub/functions/src/northstar-copilot.test.ts
+      - hub/functions/src/northstar-copilot.ts
+      - hub/functions/src/northstar-cosmos-recovery.test.ts
+      - hub/functions/src/northstar-daily-flow.test.ts
+      - hub/functions/src/northstar-files.ts
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/functions/src/northstar-scheduled-brief.test.ts
+      - hub/functions/src/northstar-scheduled-brief.ts
+      - hub/functions/src/northstar-subagent.test.ts
+      - hub/functions/src/northstar-subagent.ts
+      - northstar/app/globals.css
+      - northstar/components/answer-markdown.test.tsx
+      - northstar/components/answer-markdown.tsx
+      - northstar/components/ask-northstar-workspace.dom.test.tsx
+      - northstar/components/ask-northstar-workspace.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/generated-files.dom.test.tsx
+      - northstar/components/generated-files.tsx
+      - northstar/lib/answer-model.test.ts
+      - northstar/lib/answer-model.ts
+      - northstar/lib/at-commands.test.ts
+      - northstar/lib/at-commands.ts
+      - northstar/lib/background-briefs.ts
+  - title: "fix(northstar): gate To Do links until tasks are created"
+    body: |-
+      - Keep the Open in To Do link unavailable until at least one task is created.
+      - Dim the completed Add tasks button and update coverage for the link behavior and unconfirmed creation state.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/188
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 54
+    deletions: 46
+    changedFiles: 4
+    author: myriadas-clees
+    createdAt: 2026-10-28T15:11:41Z
+    updatedAt: 2026-10-28T20:49:28Z
+    closedAt: 2026-10-28T20:49:28Z
+    mergedAt: 2026-10-28T20:49:28Z
+    workCommits:
+      - &a46
+        sha: ed77c023bf100a61aa8ead0a1f13733ec86b9a37
+        message: "fix(northstar): gate To Do links until tasks are created"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ed77c023bf100a61aa8ead0a1f13733ec86b9a37
+        authoredAt: 2026-10-28T15:11:33Z
+      - &a49
+        sha: f0211218508525397822ea2ac16a71b685201ed1
+        message: "fix(northstar): gate To Do links until tasks are confirmed"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f0211218508525397822ea2ac16a71b685201ed1
+        authoredAt: 2026-10-28T15:29:24Z
+      - &a51
+        sha: bf484e493a2972936da82c0718251df1c0486a6f
+        message: Remove temporary screenshot artifacts
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/bf484e493a2972936da82c0718251df1c0486a6f
+        authoredAt: 2026-10-28T15:35:45Z
+    workTimestamps:
+      - 2026-10-28T15:11:33Z
+      - 2026-10-28T15:29:24Z
+      - 2026-10-28T15:35:45Z
+    workAdditions: 54
+    workDeletions: 46
+    workFiles:
+      - northstar/AGENTS.md
+      - northstar/app/globals.css
+      - northstar/app/zz-shots/page.tsx
+      - northstar/components/ask-northstar-workspace.dom.test.tsx
+      - northstar/components/command-cards.dom.test.tsx
+      - northstar/components/command-cards.tsx
+  - title: "feat(northstar): render validated visual replies"
+    body: Northstar Ask replies could describe visuals but could not render or export them. Port validated OpenUI charts,
+      visual summaries, scenarios, and relationships from Myriad-Advisor-Solutions/myriadas-apps#222, including
+      read-only quick summaries, follow-up prompts, and branded PDF exports. Charts supp...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/190
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 5072
+    deletions: 605
+    changedFiles: 50
+    author: myriadas-clees
+    createdAt: 2026-10-28T15:18:03Z
+    updatedAt: 2026-10-28T20:49:27Z
+    closedAt: 2026-10-28T20:49:26Z
+    mergedAt: 2026-10-28T20:49:26Z
+    workCommits:
+      - &a48
+        sha: b49e3c9ecc3b34a57ef413c58cf6d8e974b16194
+        message: "feat(northstar): render validated visual replies"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b49e3c9ecc3b34a57ef413c58cf6d8e974b16194
+        authoredAt: 2026-10-28T15:17:48Z
+      - &a53
+        sha: 0d6047d920c5e202bdb7da78b1a87c0bb2f9308b
+        message: "feat(northstar): expand OpenUI visual replies"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/0d6047d920c5e202bdb7da78b1a87c0bb2f9308b
+        authoredAt: 2026-10-28T16:23:23Z
+      - &a54
+        sha: f493091b7b0770d084f4b3b4e7aab10c6aa52685
+        message: "fix(northstar): paginate stacked fact fields"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/f493091b7b0770d084f4b3b4e7aab10c6aa52685
+        authoredAt: 2026-10-28T16:30:03Z
+    workTimestamps:
+      - 2026-10-28T15:17:48Z
+      - 2026-10-28T16:23:23Z
+      - 2026-10-28T16:30:03Z
+    workAdditions: 5072
+    workDeletions: 605
+    workFiles:
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/verify.yml
+      - Dockerfile
+      - README.md
+      - bun.lock
+      - hub/functions/src/northstar-microsoft.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - northstar/app/globals.css
+      - northstar/components/answer-advisor.test.tsx
+      - northstar/components/answer-advisor.tsx
+      - northstar/components/answer-chart.dom.test.tsx
+      - northstar/components/answer-chart.test.tsx
+      - northstar/components/answer-chart.tsx
+      - northstar/components/answer-markdown.tsx
+      - northstar/components/answer-openui.test.tsx
+      - northstar/components/answer-openui.tsx
+      - northstar/components/answer-relationship-layout.test.ts
+      - northstar/components/answer-relationship-layout.ts
+      - northstar/components/answer-visual.test.tsx
+      - northstar/components/answer-visual.tsx
+      - northstar/components/ask-northstar-workspace.dom.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/streaming-markdown.tsx
+      - northstar/components/summarize-peek.dom.test.tsx
+      - northstar/components/summarize-peek.tsx
+      - northstar/lib/answer-chart.test.ts
+      - northstar/lib/answer-chart.ts
+      - northstar/lib/answer-openui-advisor.fixture.ts
+      - northstar/lib/answer-openui-advisor.test.ts
+      - northstar/lib/answer-openui-advisor.ts
+      - northstar/lib/answer-openui-chart.test.ts
+      - northstar/lib/answer-openui-chart.ts
+      - northstar/lib/answer-openui-composition.test.ts
+      - northstar/lib/answer-openui-composition.ts
+      - northstar/lib/answer-openui-visual.fixture.ts
+      - northstar/lib/answer-openui-visual.test.ts
+      - northstar/lib/answer-openui-visual.ts
+      - northstar/lib/answer-openui.fixture.ts
+      - northstar/lib/answer-openui.test.ts
+      - northstar/lib/answer-openui.ts
+      - northstar/lib/answer-visual.fixture.ts
+      - northstar/lib/answer-visual.test.ts
+      - northstar/lib/answer-visual.ts
+      - northstar/lib/chat-pdf-text.ts
+      - northstar/lib/chat-pdf-visual.ts
+      - northstar/lib/chat-pdf.test.ts
+      - northstar/lib/chat-pdf.tsx
+      - northstar/lib/draft-fences.test.ts
+      - northstar/lib/draft-fences.ts
+      - northstar/lib/northstar-context.test.ts
+      - northstar/lib/northstar-context.ts
+      - northstar/lib/openui-disable-devtools.ts
+      - northstar/package.json
+  - title: "fix(compass): paginate tall PDF fact cards"
+    body: >-
+      Tall visual fact cards can extend beyond a PDF page and obscure the footer or lose content. Allow cards to wrap
+      when their combined fields exceed the available page space, while keeping shorter cards together.
+
+
+      Ported from Myriad-Advisor-Solutions/ohcpwm-apps#190.
+
+
+      Validation: `bun test src/lib/chat...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/232
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - "app: compass"
+    additions: 16
+    deletions: 1
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-10-28T18:18:50Z
+    updatedAt: 2026-10-28T18:28:21Z
+    closedAt: 2026-10-28T18:28:21Z
+    mergedAt: 2026-10-28T18:28:20Z
+    workCommits:
+      - &a37
+        sha: 664987abb88f77e12d61f520f92c648552c1ea4b
+        message: "fix(compass): paginate tall PDF fact cards"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/664987abb88f77e12d61f520f92c648552c1ea4b
+        authoredAt: 2026-10-28T18:18:22Z
+    workTimestamps:
+      - 2026-10-28T18:18:22Z
+    workAdditions: 16
+    workDeletions: 1
+    workFiles:
+      - compass/src/lib/chat-pdf.test.ts
+      - compass/src/lib/chat-pdf.tsx
+  - title: "feat(ui): standardize shared controls and unsaved change handling"
+    body: >-
+      ## Why
+
+
+      Apps had inconsistent controls and unsaved edit behavior, while Proforma still used an outdated table system.
+
+
+      ## What changed
+
+
+      Standardized shared UI controls and table styling across apps, including Proforma’s transition-style table. Added
+      consistent handling for unsaved edits and copy fee...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/231
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a13
+      - documentation
+      - "app: hub"
+      - "app: onboarding"
+      - "app: pto-tracker"
+      - "app: proforma"
+      - "app: excelerate"
+      - "app: valuation"
+      - platform
+      - "app: transition"
+      - "app: compass"
+    additions: 8215
+    deletions: 4406
+    changedFiles: 219
+    author: myriadas-clees
+    createdAt: 2026-10-28T17:58:01Z
+    updatedAt: 2026-10-28T18:02:15Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a14
+      - &a36
+        sha: 77458ba25d463e1fbf086bae44af3c3a9d9e7608
+        message: "feat(ui): standardize shared controls and unsaved change handling"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/77458ba25d463e1fbf086bae44af3c3a9d9e7608
+        authoredAt: 2026-10-28T17:57:51Z
+    workTimestamps: &a15
+      - 2026-10-28T17:57:51Z
+    workAdditions: 8215
+    workDeletions: 4406
+    workFiles: &a16
+      - bun.lock
+      - compass/src/app/ask.css
+      - compass/src/components/answer-markdown.test.tsx
+      - compass/src/components/answer-markdown.tsx
+      - compass/src/components/ask-compass-workspace.dom.test.tsx
+      - compass/src/components/ask-compass-workspace.tsx
+      - compass/src/components/ask/ask-chat-rail.dom.test.tsx
+      - compass/src/components/ask/ask-chat-rail.tsx
+      - compass/src/components/command-cards.dom.test.tsx
+      - compass/src/components/command-cards.tsx
+      - compass/src/components/command-palette.tsx
+      - compass/src/components/compass-dashboard-lifecycle.fixture.ts
+      - compass/src/components/compass-dashboard-lifecycle.test.ts
+      - compass/src/components/compass-provider.tsx
+      - compass/src/components/compass-shell.tsx
+      - compass/src/components/open-outlook-dialog.tsx
+      - compass/src/components/pdf-draft-editor.test.tsx
+      - compass/src/components/pdf-draft-editor.tsx
+      - compass/src/components/pdf-editor-parts.tsx
+      - compass/src/components/settings-workspace.dom.test.tsx
+      - compass/src/components/settings-workspace.tsx
+      - compass/src/components/today/calendar-draft-dialog.dom.test.tsx
+      - compass/src/components/today/calendar-draft-dialog.tsx
+      - compass/src/components/ui/search-field.tsx
+      - excelerate/src/app/globals.css
+      - excelerate/src/components/excelerate-client.queue.test.tsx
+      - excelerate/src/components/excelerate-client.tsx
+      - excelerate/vitest.config.ts
+      - hub/app/globals.css
+      - hub/components/HubLauncher.test.tsx
+      - hub/components/HubLauncher.tsx
+      - hub/components/admin/AdminPage.tsx
+      - hub/components/admin/CompaniesPanel.test.tsx
+      - hub/components/admin/CompaniesPanel.tsx
+      - hub/components/admin/CompanyDrawer.test.tsx
+      - hub/components/admin/CompanyDrawer.tsx
+      - hub/components/admin/DomainChipsInput.tsx
+      - hub/components/admin/TransferComposer.test.tsx
+      - hub/components/admin/TransferComposer.tsx
+      - hub/components/admin/TransferDryRunReport.tsx
+      - hub/components/admin/TransferRunActions.test.tsx
+      - hub/components/admin/TransferRunView.tsx
+      - hub/components/admin/TransferRunsList.sort.test.tsx
+      - hub/components/admin/TransferRunsList.tsx
+      - hub/lib/admin-api.test.ts
+      - hub/lib/admin-api.ts
+      - hub/vitest.config.ts
+      - onboarding/apps/dashboard/app/approvals/page.tsx
+      - onboarding/apps/dashboard/components/client-selector.tsx
+      - onboarding/apps/dashboard/components/create-task-button.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - onboarding/apps/dashboard/components/employee-selector.tsx
+      - onboarding/apps/dashboard/components/filter-bar.tsx
+      - onboarding/apps/dashboard/components/global-command-search.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/saved-view-selection.test.ts
+      - onboarding/apps/dashboard/components/operations-workspace/saved-view-selection.ts
+      - onboarding/apps/dashboard/components/operations-workspace/saved-view-workbench.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/task-record-panel.tsx
+      - onboarding/apps/dashboard/components/task-detail-form.tsx
+      - onboarding/apps/dashboard/components/task-detail-header.tsx
+      - onboarding/apps/dashboard/components/task-table.tsx
+      - onboarding/apps/dashboard/components/use-discard-on-close.tsx
+      - onboarding/apps/dashboard/components/vendor-create-dialog.tsx
+      - onboarding/apps/dashboard/components/vendor-edit-dialog.tsx
+      - onboarding/apps/dashboard/components/vendor-operations.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
+      - onboarding/apps/dashboard/components/vm/vm-shared.test.tsx
+      - onboarding/apps/dashboard/components/vm/vm-shared.tsx
+      - onboarding/apps/dashboard/components/workstream-archive-settings.test.ts
+      - onboarding/apps/dashboard/components/workstream-archive-settings.tsx
+      - onboarding/apps/dashboard/lib/unsaved-fields.test.ts
+      - onboarding/apps/dashboard/lib/unsaved-fields.ts
+      - packages/AGENTS.md
+      - packages/brand/src/controls.css
+      - packages/brand/src/status-select.css
+      - packages/brand/src/styles.css
+      - packages/brand/src/table.css
+      - packages/ui/src/confirm-dialog.tsx
+      - packages/ui/src/copy.test.ts
+      - packages/ui/src/copy.ts
+      - packages/ui/src/index.ts
+      - packages/ui/src/inline-edit.tsx
+      - packages/ui/src/search-field.tsx
+      - packages/ui/src/select-field.tsx
+      - packages/ui/src/select.tsx
+      - packages/ui/src/status-select.tsx
+      - packages/ui/src/table-sort.test.ts
+      - packages/ui/src/table-sort.tsx
+      - packages/ui/src/unsaved-changes.tsx
+      - packages/ui/src/unsaved-guard.test.ts
+      - packages/ui/src/unsaved-guard.ts
+      - packages/ui/src/use-copy-state.ts
+      - proforma/package.json
+      - proforma/src/app/globals.css
+      - proforma/src/components/__tests__/archive-recruit-form.test.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/branded-date-field.test.tsx
+      - proforma/src/components/__tests__/branded-select.dom.test.tsx
+      - proforma/src/components/__tests__/branded-select.test.ts
+      - proforma/src/components/__tests__/custom-expense-fields.test.tsx
+      - proforma/src/components/__tests__/dataframe-table.test.tsx
+      - proforma/src/components/__tests__/delete-recruit-form.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.dom.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/recruit-archive-section.test.tsx
+      - proforma/src/components/__tests__/recruit-detail-panels.test.tsx
+      - proforma/src/components/__tests__/recruit-filters.test.tsx
+      - proforma/src/components/__tests__/recruit-form.test.tsx
+      - proforma/src/components/__tests__/recruit-model-shell.test.tsx
+      - proforma/src/components/__tests__/recruit-stage-select.dom.test.tsx
+      - proforma/src/components/__tests__/recruits-table-responsive-css.test.ts
+      - proforma/src/components/__tests__/recruits-table.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/__tests__/shared-select-adoption.dom.test.tsx
+      - proforma/src/components/__tests__/shared-ui-foundation.dom.test.tsx
+      - proforma/src/components/__tests__/work-state-select.test.tsx
+      - proforma/src/components/archive-recruit-form.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/branded-date-field.tsx
+      - proforma/src/components/branded-select.tsx
+      - proforma/src/components/category-fee-table.tsx
+      - proforma/src/components/custom-expense-fields.tsx
+      - proforma/src/components/dataframe-table.tsx
+      - proforma/src/components/delete-recruit-form.tsx
+      - proforma/src/components/delete-report-form.tsx
+      - proforma/src/components/hybrid-fee-editor.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/recruit-detail-panels.tsx
+      - proforma/src/components/recruit-filters.tsx
+      - proforma/src/components/recruit-form.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/components/recruit-stage-select.tsx
+      - proforma/src/components/recruits-table.tsx
+      - proforma/src/components/report-sort-control.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/components/work-state-select.tsx
+      - proforma/src/components/workstation-report-table.tsx
+      - proforma/src/lib/__tests__/api-handler.test.ts
+      - proforma/src/lib/__tests__/pipeline-metrics.test.ts
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/recruit-form-dirty.test.ts
+      - proforma/src/lib/pipeline-metrics.ts
+      - proforma/src/lib/recruit-form-dirty.ts
+      - pto-tracker/package.json
+      - pto-tracker/src/app/admin/AccrualPolicyPanel.dom.test.tsx
+      - pto-tracker/src/app/admin/AccrualPolicyPanel.tsx
+      - pto-tracker/src/app/admin/AdminClient.dom.test.tsx
+      - pto-tracker/src/app/admin/AdminClient.tsx
+      - pto-tracker/src/app/my/requests/MyRequestsClient.dom.test.tsx
+      - pto-tracker/src/app/my/requests/MyRequestsClient.tsx
+      - pto-tracker/src/app/settings/CalendarColorSettings.dom.test.tsx
+      - pto-tracker/src/app/settings/CalendarColorSettings.tsx
+      - pto-tracker/src/app/team/TeamClient.dom.test.tsx
+      - pto-tracker/src/app/team/TeamClient.tsx
+      - pto-tracker/src/components/ApprovalPanel.dom.test.tsx
+      - pto-tracker/src/components/ApprovalPanel.tsx
+      - pto-tracker/src/components/ConfirmDialog.tsx
+      - pto-tracker/src/components/LeaveCalendar.dom.test.tsx
+      - pto-tracker/src/components/LeaveCalendar.tsx
+      - pto-tracker/src/components/PtoAppShell.dom.test.tsx
+      - pto-tracker/src/components/PtoAppShell.tsx
+      - pto-tracker/src/components/RequestForm.dom.test.tsx
+      - pto-tracker/src/components/RequestForm.tsx
+      - pto-tracker/src/components/useDiscardOnClose.tsx
+      - pto-tracker/src/test/dom.tsx
+      - pto-tracker/vitest.config.ts
+      - transition/AGENTS.md
+      - transition/src/app/globals.css
+      - transition/src/components/account-verification-review.test.ts
+      - transition/src/components/account-verification-review.tsx
+      - transition/src/components/accounts/account-detail.tsx
+      - transition/src/components/accounts/accounts-page.tsx
+      - transition/src/components/command-palette.tsx
+      - transition/src/components/contact-enrichment-value-review.test.ts
+      - transition/src/components/contact-enrichment-value-review.tsx
+      - transition/src/components/contact-enrichment.test.ts
+      - transition/src/components/contact-enrichment.tsx
+      - transition/src/components/contact-methods.tsx
+      - transition/src/components/copy-button.test.ts
+      - transition/src/components/dashboard/dashboard.tsx
+      - transition/src/components/data/data-page.tsx
+      - transition/src/components/feedback.tsx
+      - transition/src/components/households/household-overview.tsx
+      - transition/src/components/households/household-paperwork-ui.tsx
+      - transition/src/components/households/households-page.tsx
+      - transition/src/components/settings/settings-page.test.ts
+      - transition/src/components/settings/settings-page.tsx
+      - transition/src/components/status-select.module.css
+      - transition/src/components/status-select.test.ts
+      - transition/src/components/status-select.tsx
+      - transition/src/components/tour/tour-provider.tsx
+      - transition/src/components/transition-shell.tsx
+      - transition/src/components/ui/copy-button.tsx
+      - transition/src/components/ui/discard-dialog.tsx
+      - transition/src/components/ui/fields.tsx
+      - transition/src/components/ui/select-field.tsx
+      - transition/src/components/ui/unsaved-changes-guard.tsx
+      - transition/src/lib/clipboard.test.ts
+      - transition/src/lib/clipboard.ts
+      - transition/src/lib/hooks/use-unsaved-changes.ts
+      - transition/src/lib/remembered-filters.ts
+      - transition/src/lib/unsaved-guard.test.ts
+      - transition/src/lib/unsaved-guard.ts
+      - valuation/src/app/cases/detail/case-detail-client.test.tsx
+      - valuation/src/app/cases/detail/case-detail-client.tsx
+      - valuation/src/app/cases/new/page.test.tsx
+      - valuation/src/app/cases/new/page.tsx
+      - valuation/src/components/case-table.test.tsx
+      - valuation/src/components/case-table.tsx
+      - valuation/src/components/valuation-shell.tsx
+      - valuation/src/lib/form-edits.test.ts
+      - valuation/src/lib/form-edits.ts
+      - valuation/vitest.config.ts
+  - title: "feat(transition): add live record links to review workbooks"
+    body: >-
+      ## Why
+
+
+      Reviewers need a way to open the current Transition record directly from an exported review workbook.
+
+
+      ## What changed
+
+
+      Added a **Live Transition** link for each household and account in the workbook, including inactive accounts.
+      Links use the record ID and the Transition app URL from which ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/233
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a17
+      - "app: transition"
+    additions: 228
+    deletions: 48
+    changedFiles: 13
+    author: myriadas-clees
+    createdAt: 2026-10-28T20:11:40Z
+    updatedAt: 2026-10-29T03:02:26Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a18
+      - &a38
+        sha: 23ff7ab98958a3f83e3d411b0596e6ee96d6be5d
+        message: "feat(transition): add links to live records in review workbooks"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/23ff7ab98958a3f83e3d411b0596e6ee96d6be5d
+        authoredAt: 2026-10-28T20:11:29Z
+      - &a39
+        sha: 90db3504fda30759430ecc67bbfb8d11e22cd9c6
+        message: Clarify company selection for workbook links
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/90db3504fda30759430ecc67bbfb8d11e22cd9c6
+        authoredAt: 2026-10-29T02:36:28Z
+      - &a40
+        sha: ee4f5a3675c5150103a1436eb2d06564170825aa
+        message: "feat(transition): link review workbooks to company records"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ee4f5a3675c5150103a1436eb2d06564170825aa
+        authoredAt: 2026-10-29T02:54:16Z
+      - &a41
+        sha: 611bdfeb45cb2c61d69bbe346a8d13d58fffbfc0
+        message: Use route skeleton for company links
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/611bdfeb45cb2c61d69bbe346a8d13d58fffbfc0
+        authoredAt: 2026-10-29T02:59:12Z
+    workTimestamps: &a19
+      - 2026-10-28T20:11:29Z
+      - 2026-10-29T02:36:28Z
+      - 2026-10-29T02:54:16Z
+      - 2026-10-29T02:59:12Z
+    workAdditions: 228
+    workDeletions: 48
+    workFiles: &a20
+      - transition/src/app/layout.tsx
+      - transition/src/components/company-link-guard.test.ts
+      - transition/src/components/company-link-guard.tsx
+      - transition/src/components/page-skeletons.tsx
+      - transition/src/components/workbook-transfers.tsx
+      - transition/src/lib/api/azure-functions-adapter.ts
+      - transition/src/lib/api/client.ts
+      - transition/src/lib/api/company-isolation.test.ts
+      - transition/src/lib/company-link.test.ts
+      - transition/src/lib/company-link.ts
+      - transition/src/lib/excel-transfer.ts
+      - transition/src/lib/transition-workbook.test.ts
+      - transition/src/lib/transition-workbook.ts
+  - title: "feat(compass): expand visual displays and add widgets"
+    body: >-
+      ## Why
+
+
+      Compass needed more ways to present structured answers and reusable views of connected Microsoft 365 data.
+
+
+      ## What changed
+
+
+      - Expanded Ask visuals with multi-series bars, metrics, progress indicators, checklists, callouts, typed tables,
+      and hypothetical capacity controls for scenarios.
+
+      - Ad...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/234
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a21
+      - "app: compass"
+    additions: 1654
+    deletions: 161
+    changedFiles: 38
+    author: myriadas-clees
+    createdAt: 2026-10-29T03:00:07Z
+    updatedAt: 2026-10-29T12:26:01Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a22
+      - &a42
+        sha: d7b476ed59406faea4555a042a188f955b36013a
+        message: "feat(compass): expand visual displays and add widgets"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d7b476ed59406faea4555a042a188f955b36013a
+        authoredAt: 2026-10-29T02:59:59Z
+      - &a43
+        sha: 9dbddb3524ca7b6a8468b532fa9effd4dec788e3
+        message: "fix(compass): fit visual guidance in context budget"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9dbddb3524ca7b6a8468b532fa9effd4dec788e3
+        authoredAt: 2026-10-29T03:39:54Z
+      - &a44
+        sha: 3adfa16cc8f979fd246166a4c37f39ab2ab4991a
+        message: "fix(compass): handle widget storage and synchronization"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3adfa16cc8f979fd246166a4c37f39ab2ab4991a
+        authoredAt: 2026-10-29T03:50:45Z
+      - &a45
+        sha: 952040d7f4974251264cbc122bc4760d88edacb3
+        message: "fix(compass): preserve nested chart bar heights"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/952040d7f4974251264cbc122bc4760d88edacb3
+        authoredAt: 2026-10-29T03:57:19Z
+    workTimestamps: &a23
+      - 2026-10-29T02:59:59Z
+      - 2026-10-29T03:39:54Z
+      - 2026-10-29T03:50:45Z
+      - 2026-10-29T03:57:19Z
+    workAdditions: 1654
+    workDeletions: 161
+    workFiles: &a24
+      - compass/functions/src/compass-microsoft.test.ts
+      - compass/functions/src/compass-microsoft.ts
+      - compass/src/app/globals.css
+      - compass/src/components/answer-advisor.test.tsx
+      - compass/src/components/answer-advisor.tsx
+      - compass/src/components/answer-markdown.tsx
+      - compass/src/components/answer-openui.tsx
+      - compass/src/components/answer-visual.test.tsx
+      - compass/src/components/answer-visual.tsx
+      - compass/src/components/ask-compass-workspace.dom.test.tsx
+      - compass/src/components/ask-compass-workspace.test.tsx
+      - compass/src/components/ask-compass-workspace.tsx
+      - compass/src/components/ask/at-command-token.tsx
+      - compass/src/components/compass-dashboard.tsx
+      - compass/src/components/compass-shell.tsx
+      - compass/src/components/compass-stability.dom.test.ts
+      - compass/src/components/compass-stability.fixture.tsx
+      - compass/src/components/today/widget-grid.dom.test.tsx
+      - compass/src/components/today/widget-grid.tsx
+      - compass/src/components/widget-card.test.tsx
+      - compass/src/components/widget-card.tsx
+      - compass/src/lib/answer-openui-advisor.test.ts
+      - compass/src/lib/answer-openui-advisor.ts
+      - compass/src/lib/answer-openui-chart.ts
+      - compass/src/lib/answer-openui-visual.test.ts
+      - compass/src/lib/answer-openui-visual.ts
+      - compass/src/lib/at-commands.test.ts
+      - compass/src/lib/at-commands.ts
+      - compass/src/lib/chat-pdf-visual.ts
+      - compass/src/lib/chat-pdf.test.ts
+      - compass/src/lib/chat-pdf.tsx
+      - compass/src/lib/draft-fences.ts
+      - compass/src/lib/microsoft-data.ts
+      - compass/src/lib/progress-phase.ts
+      - compass/src/lib/today-layout.test.ts
+      - compass/src/lib/today-layout.ts
+      - compass/src/lib/widgets.test.ts
+      - compass/src/lib/widgets.ts
+  - title: "fix(compass): continue existing chat when editing messages"
+    body: >-
+      ## Why
+
+
+      Editing a message could start a new chat instead of continuing the existing conversation, especially after a
+      stopped or failed response.
+
+
+      ## What changed
+
+
+      Edited messages now retain their chat ID and include the existing conversation context. Stopped or failed chats
+      reset the provider sessio...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/228
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - "app: compass"
+    additions: 56
+    deletions: 14
+    changedFiles: 3
+    author: myriadas-clees
+    createdAt: 2026-10-28T17:03:40Z
+    updatedAt: 2026-10-28T18:28:18Z
+    closedAt: 2026-10-28T18:28:18Z
+    mergedAt: 2026-10-28T18:28:18Z
+    workCommits:
+      - &a32
+        sha: a72ba7c8ddfc5ddcecf8b13835bf902cb2afe81b
+        message: "fix(compass): continue existing chat when editing messages"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a72ba7c8ddfc5ddcecf8b13835bf902cb2afe81b
+        authoredAt: 2026-10-28T17:03:30Z
+      - &a33
+        sha: d777c33193a2c772a7e15e49479be7ad5c8d66a3
+        message: "fix(compass): keep retries in the same chat"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d777c33193a2c772a7e15e49479be7ad5c8d66a3
+        authoredAt: 2026-10-28T17:10:49Z
+    workTimestamps:
+      - 2026-10-28T17:03:30Z
+      - 2026-10-28T17:10:49Z
+    workAdditions: 56
+    workDeletions: 14
+    workFiles:
+      - compass/src/components/ask-compass-workspace.dom.test.tsx
+      - compass/src/components/ask-compass-workspace.tsx
+      - compass/src/components/compass-provider.tsx
+  - title: "fix(compass): preserve visuals before unfinished fences"
+    body: >-
+      ## Why
+
+
+      A later unfinished OpenUI fence could prevent completed visuals earlier in the same answer from rendering.
+
+
+      ## What changed
+
+
+      Updated Compass visual guidance to encourage concise, fact-based visuals in daily, end-of-day, and weekly briefs,
+      and require each visual to use its own closed fence. ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/229
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - "app: compass"
+    additions: 63
+    deletions: 18
+    changedFiles: 3
+    author: myriadas-clees
+    createdAt: 2026-10-28T17:46:36Z
+    updatedAt: 2026-10-28T18:28:20Z
+    closedAt: 2026-10-28T18:28:19Z
+    mergedAt: 2026-10-28T18:28:19Z
+    workCommits:
+      - &a34
+        sha: 5588d54dd4b2099c13e3fc94a897a9c111d1f813
+        message: "fix(compass): preserve visuals before unfinished fences"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5588d54dd4b2099c13e3fc94a897a9c111d1f813
+        authoredAt: 2026-10-28T17:46:25Z
+      - &a35
+        sha: b512716bdb18247ec43fc4f641aa86f18debf2be
+        message: Merge commit 'd777c33193a2c772a7e15e49479be7ad5c8d66a3' into stack-229
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b512716bdb18247ec43fc4f641aa86f18debf2be
+        authoredAt: 2026-10-28T17:50:27Z
+    workTimestamps:
+      - 2026-10-28T17:46:25Z
+      - 2026-10-28T17:50:27Z
+    workAdditions: 63
+    workDeletions: 18
+    workFiles:
+      - compass/src/components/ask-compass-workspace.dom.test.tsx
+      - compass/src/components/ask-compass-workspace.tsx
+      - compass/src/components/compass-provider.tsx
+      - compass/src/lib/answer-openui.test.ts
+      - compass/src/lib/answer-openui.ts
+  - title: "fix(compass): remove exact duplicate Copilot answers"
+    body: >-
+      ## Why
+
+
+      Compass could display and save a Copilot response duplicated end to end.
+
+
+      ## What changed
+
+
+      Normalize Copilot responses by removing an exact repeated whole answer when it is at least 80 characters long.
+      Preserve repeated but non-identical content. This affects new responses only; existing sav...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/227
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - "app: compass"
+    additions: 31
+    deletions: 2
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-10-28T16:32:03Z
+    updatedAt: 2026-10-28T16:37:10Z
+    closedAt: 2026-10-28T16:37:10Z
+    mergedAt: 2026-10-28T16:37:10Z
+    workCommits:
+      - &a31
+        sha: 5d62928a39245f4968b544bdf13e2e91e3079570
+        message: "fix(compass): remove exact duplicate Copilot answers"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5d62928a39245f4968b544bdf13e2e91e3079570
+        authoredAt: 2026-10-28T16:31:55Z
+    workTimestamps:
+      - 2026-10-28T16:31:55Z
+    workAdditions: 31
+    workDeletions: 2
+    workFiles:
+      - compass/functions/src/compass-copilot.test.ts
+      - compass/functions/src/compass-copilot.ts
+  - title: "fix(compass): smooth streamed answer reveals"
+    body: "Port [Northstar #189](https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/189) to Compass. Streamed
+      replies ease in and out, pause while waiting for more text, and display immediately when a previously animated
+      chat is reopened. This layer builds on #222 and preserves its visual rendering."
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/225
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - "app: compass"
+    additions: 2675
+    deletions: 631
+    changedFiles: 5
+    author: myriadas-clees
+    createdAt: 2026-10-28T15:31:15Z
+    updatedAt: 2026-10-28T16:16:26Z
+    closedAt: 2026-10-28T16:16:26Z
+    mergedAt: 2026-10-28T16:16:26Z
+    workCommits:
+      - &a28
+        sha: cefe22ee9f9d5c1955d8f0fb0610645dc255e912
+        message: "fix(compass): smooth streamed answer reveals"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/cefe22ee9f9d5c1955d8f0fb0610645dc255e912
+        authoredAt: 2026-10-28T15:30:53Z
+      - &a30
+        sha: bc5ee1d2184b8fda591ca459957aaa28d5524dc5
+        message: Merge commit 'a2b303037f7508f9bef1105c77639f1633a27545' of /tmp/myriad-222-reconcile into HEAD
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/bc5ee1d2184b8fda591ca459957aaa28d5524dc5
+        authoredAt: 2026-10-28T15:59:27Z
+    workTimestamps:
+      - 2026-10-28T15:30:53Z
+      - 2026-10-28T15:59:27Z
+    workAdditions: 2675
+    workDeletions: 631
+    workFiles:
+      - compass/README.md
+      - compass/src/app/globals.css
+      - compass/src/components/answer-advisor.test.tsx
+      - compass/src/components/answer-advisor.tsx
+      - compass/src/components/answer-chart.dom.test.tsx
+      - compass/src/components/answer-chart.test.tsx
+      - compass/src/components/answer-chart.tsx
+      - compass/src/components/answer-markdown.test.tsx
+      - compass/src/components/answer-markdown.tsx
+      - compass/src/components/answer-openui.test.tsx
+      - compass/src/components/answer-openui.tsx
+      - compass/src/components/answer-relationship-layout.test.ts
+      - compass/src/components/answer-relationship-layout.ts
+      - compass/src/components/answer-visual.test.tsx
+      - compass/src/components/answer-visual.tsx
+      - compass/src/components/ask-compass-workspace.dom.test.tsx
+      - compass/src/components/ask-compass-workspace.tsx
+      - compass/src/components/streaming-markdown.tsx
+      - compass/src/components/summarize-peek.dom.test.tsx
+      - compass/src/lib/answer-chart.test.ts
+      - compass/src/lib/answer-chart.ts
+      - compass/src/lib/answer-openui-advisor.fixture.ts
+      - compass/src/lib/answer-openui-advisor.test.ts
+      - compass/src/lib/answer-openui-advisor.ts
+      - compass/src/lib/answer-openui-chart.test.ts
+      - compass/src/lib/answer-openui-chart.ts
+      - compass/src/lib/answer-openui-composition.test.ts
+      - compass/src/lib/answer-openui-visual.fixture.ts
+      - compass/src/lib/answer-openui-visual.test.ts
+      - compass/src/lib/answer-openui-visual.ts
+      - compass/src/lib/answer-openui.test.ts
+      - compass/src/lib/answer-openui.ts
+      - compass/src/lib/answer-visual.ts
+      - compass/src/lib/chat-pdf-visual.ts
+      - compass/src/lib/chat-pdf.test.ts
+      - compass/src/lib/chat-pdf.tsx
+      - compass/src/lib/compass-context.test.ts
+      - compass/src/lib/compass-context.ts
+      - compass/src/lib/draft-fences.test.ts
+      - compass/src/lib/typing-reveal.test.ts
+      - compass/src/lib/typing-reveal.ts
+  - title: "feat(brand): add app icons and Harriman branding"
+    body: |-
+      - Add app specific SVG favicons for Hub, Northstar, OFAC, and Pricing.
+      - Add shared Harriman wordmarks and a “Powered by harriman.ai” label to the app shell.
+      - Place the label in Northstar’s Today header, with a smaller top right treatment on phones.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/184
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 0
+    deletions: 0
+    changedFiles: 14
+    author: myriadas-clees
+    createdAt: 2026-10-22T16:09:23Z
+    updatedAt: 2026-10-28T04:07:55Z
+    closedAt: 2026-10-28T04:07:55Z
+    mergedAt: 2026-10-28T04:07:55Z
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "fix(northstar): preserve @web search intent for Copilot"
+    body: |-
+      - Add a model-only instruction to search the public web when `@web` is used.
+      - Update tests to verify the instruction is included only for web searches.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/182
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 0
+    deletions: 0
+    changedFiles: 3
+    author: myriadas-clees
+    createdAt: 2026-10-22T15:03:50Z
+    updatedAt: 2026-10-28T04:07:52Z
+    closedAt: 2026-10-28T04:07:52Z
+    mergedAt: 2026-10-28T04:07:52Z
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "feat(northstar): add Claude for Ask and scheduled briefs"
+    body: >-
+      - Add Claude as an option for Northstar Ask and scheduled briefs, with per-chat model and thinking controls and
+      Copilot fallback.
+
+      - Keep long answers and briefs recoverable after a connection drops, and continue Claude turns paused for server
+      tools.
+
+      - Document Claude configuration and add coverage f...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/181
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 0
+    deletions: 0
+    changedFiles: 38
+    author: myriadas-clees
+    createdAt: 2026-10-22T14:39:44Z
+    updatedAt: 2026-10-28T04:07:54Z
+    closedAt: 2026-10-28T04:07:54Z
+    mergedAt: 2026-10-28T04:07:54Z
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "fix(northstar): repair reopened deliverable fences"
+    body: >-
+      - Repair reopened deliverable fences so repeated email content no longer appears inside the draft preview or
+      Outlook message.
+
+      - Add coverage for streaming replies, saved edits, and distinct calendar events.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/180
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 0
+    deletions: 0
+    changedFiles: 5
+    author: myriadas-clees
+    createdAt: 2026-10-22T14:05:51Z
+    updatedAt: 2026-10-28T04:07:53Z
+    closedAt: 2026-10-28T04:07:53Z
+    mergedAt: 2026-10-28T04:07:53Z
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "fix(compass): fall back when To Do expansion is rejected"
+    body: >-
+      ## Why
+
+
+      Some Microsoft Graph accounts reject To Do task requests that expand linked resources, causing the task fetch to
+      fail with HTTP 400.
+
+
+      ## What changed
+
+
+      Removed `$select` from To Do list discovery and added a fallback that retries task requests without
+      `$expand=linkedResources` when Graph retu...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/223
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - "app: compass"
+    additions: 0
+    deletions: 0
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-10-27T14:16:48Z
+    updatedAt: 2026-10-28T16:16:23Z
+    closedAt: 2026-10-28T16:16:23Z
+    mergedAt: 2026-10-28T16:16:23Z
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "feat(compass): render validated visual replies in Ask"
+    body: >-
+      ## Why
+
+
+      Ask replies could describe charts and visual summaries but could not render them as useful, accessible visuals.
+      This change adds bounded rendering for validated visual replies while keeping model-provided content inert.
+
+
+      ## What changed
+
+
+      - Added read-only chart rendering for `chart` blocks a...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/222
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - github-automation
+      - platform
+      - "app: compass"
+    additions: 3458
+    deletions: 666
+    changedFiles: 51
+    author: myriadas-clees
+    createdAt: 2026-10-27T04:07:22Z
+    updatedAt: 2026-10-28T16:16:25Z
+    closedAt: 2026-10-28T16:16:25Z
+    mergedAt: 2026-10-28T16:16:24Z
+    workCommits:
+      - &a25
+        sha: 5e9d28b50e8cd011143bafc0e6f2c7526d4c375e
+        message: "fix(compass): refine visual replies and PDF exports"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5e9d28b50e8cd011143bafc0e6f2c7526d4c375e
+        authoredAt: 2026-10-28T14:13:14Z
+      - &a26
+        sha: 7db323a3682e266e2c3974f99200a7f7a9279b7e
+        message: "fix(compass): preserve snapshot context budget"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7db323a3682e266e2c3974f99200a7f7a9279b7e
+        authoredAt: 2026-10-28T14:18:10Z
+      - &a27
+        sha: a0f874839f5fe716e71e2657fd62cd862141f3f1
+        message: "fix(compass): paginate oversized PDF rows"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a0f874839f5fe716e71e2657fd62cd862141f3f1
+        authoredAt: 2026-10-28T14:34:14Z
+      - &a29
+        sha: a2b303037f7508f9bef1105c77639f1633a27545
+        message: "feat(compass): complete OpenUI visual responses"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a2b303037f7508f9bef1105c77639f1633a27545
+        authoredAt: 2026-10-28T15:59:17Z
+    workTimestamps:
+      - 2026-10-28T14:13:14Z
+      - 2026-10-28T14:18:10Z
+      - 2026-10-28T14:34:14Z
+      - 2026-10-28T15:59:17Z
+    workAdditions: 3458
+    workDeletions: 666
+    workFiles:
+      - compass/README.md
+      - compass/functions/PORT-CONTRACT.md
+      - compass/functions/src/compass-microsoft.test.ts
+      - compass/functions/src/compass-microsoft.ts
+      - compass/src/app/globals.css
+      - compass/src/components/answer-advisor.test.tsx
+      - compass/src/components/answer-advisor.tsx
+      - compass/src/components/answer-chart.dom.test.tsx
+      - compass/src/components/answer-chart.test.tsx
+      - compass/src/components/answer-chart.tsx
+      - compass/src/components/answer-markdown.tsx
+      - compass/src/components/answer-openui.test.tsx
+      - compass/src/components/answer-openui.tsx
+      - compass/src/components/answer-relationship-layout.test.ts
+      - compass/src/components/answer-relationship-layout.ts
+      - compass/src/components/answer-visual.test.tsx
+      - compass/src/components/answer-visual.tsx
+      - compass/src/components/ask-compass-workspace.dom.test.tsx
+      - compass/src/components/microsoft-todo-panel.tsx
+      - compass/src/components/streaming-markdown.tsx
+      - compass/src/components/summarize-peek.dom.test.tsx
+      - compass/src/components/summarize-peek.tsx
+      - compass/src/components/today/previews.tsx
+      - compass/src/lib/answer-chart.test.ts
+      - compass/src/lib/answer-chart.ts
+      - compass/src/lib/answer-openui-advisor.fixture.ts
+      - compass/src/lib/answer-openui-advisor.test.ts
+      - compass/src/lib/answer-openui-advisor.ts
+      - compass/src/lib/answer-openui-chart.test.ts
+      - compass/src/lib/answer-openui-chart.ts
+      - compass/src/lib/answer-openui-composition.test.ts
+      - compass/src/lib/answer-openui-visual.fixture.ts
+      - compass/src/lib/answer-openui-visual.test.ts
+      - compass/src/lib/answer-openui-visual.ts
+      - compass/src/lib/answer-openui.test.ts
+      - compass/src/lib/answer-openui.ts
+      - compass/src/lib/answer-visual.ts
+      - compass/src/lib/chat-pdf-text.ts
+      - compass/src/lib/chat-pdf-visual.ts
+      - compass/src/lib/chat-pdf.test.ts
+      - compass/src/lib/chat-pdf.tsx
+      - compass/src/lib/compass-context.test.ts
+      - compass/src/lib/compass-context.ts
+      - compass/src/lib/draft-fences.test.ts
+prsInProgress:
+  - title: "fix(northstar): guide Claude briefs to include useful visuals"
+    body: >-
+      - Encourage Claude scheduled briefs to include a supported OpenUI visual when visual guidance is available and it
+      would help.
+
+      - Keep visuals optional and defer to advisor instructions.
+
+      - Correct the organization name to OHCPWM.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/198
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: *a1
+    additions: 3
+    deletions: 1
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-10-29T03:09:30Z
+    updatedAt: 2026-10-29T12:26:48Z
+    closedAt: 2026-10-29T12:26:48Z
+    mergedAt: 2026-10-29T12:26:48Z
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 3
+    workDeletions: 1
+    workFiles: *a4
+  - title: "feat(northstar): add Office file commands and editing"
+    body: |-
+      - Add `@powerpoint`, `@word`, and `@excel` commands with automatic suggestions for clear file requests.
+      - Let users request changes to the latest generated Office file, with ownership and availability checks.
+      - Document file generation and editing behavior.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/200
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: *a5
+    additions: 497
+    deletions: 106
+    changedFiles: 13
+    author: myriadas-clees
+    createdAt: 2026-10-29T03:46:45Z
+    updatedAt: 2026-10-29T12:26:50Z
+    closedAt: 2026-10-29T12:26:50Z
+    mergedAt: 2026-10-29T12:26:50Z
+    workCommits: *a6
+    workTimestamps: *a7
+    workAdditions: 497
+    workDeletions: 106
+    workFiles: *a8
+  - title: "fix(northstar): include fresh Today data in scheduled briefs"
+    body: |-
+      - Pass a recent, live Today snapshot to Claude briefs as untrusted supplemental context.
+      - Wait for the initial Microsoft data read before starting new Claude briefs.
+      - Keep server-read Microsoft data as the verified source.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/199
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: *a9
+    additions: 388
+    deletions: 93
+    changedFiles: 10
+    author: myriadas-clees
+    createdAt: 2026-10-29T03:19:45Z
+    updatedAt: 2026-10-29T12:26:49Z
+    closedAt: 2026-10-29T12:26:49Z
+    mergedAt: 2026-10-29T12:26:49Z
+    workCommits: *a10
+    workTimestamps: *a11
+    workAdditions: 391
+    workDeletions: 96
+    workFiles: *a12
+  - title: "feat(ui): standardize shared controls and unsaved change handling"
+    body: >-
+      ## Why
+
+
+      Apps had inconsistent controls and unsaved edit behavior, while Proforma still used an outdated table system.
+
+
+      ## What changed
+
+
+      Standardized shared UI controls and table styling across apps, including Proforma’s transition-style table. Added
+      consistent handling for unsaved edits and copy fee...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/231
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a13
+    additions: 8215
+    deletions: 4406
+    changedFiles: 219
+    author: myriadas-clees
+    createdAt: 2026-10-28T17:58:01Z
+    updatedAt: 2026-10-28T18:02:15Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a14
+    workTimestamps: *a15
+    workAdditions: 8215
+    workDeletions: 4406
+    workFiles: *a16
+  - title: "feat(transition): add live record links to review workbooks"
+    body: >-
+      ## Why
+
+
+      Reviewers need a way to open the current Transition record directly from an exported review workbook.
+
+
+      ## What changed
+
+
+      Added a **Live Transition** link for each household and account in the workbook, including inactive accounts.
+      Links use the record ID and the Transition app URL from which ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/233
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a17
+    additions: 200
+    deletions: 20
+    changedFiles: 13
+    author: myriadas-clees
+    createdAt: 2026-10-28T20:11:40Z
+    updatedAt: 2026-10-29T03:02:26Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a18
+    workTimestamps: *a19
+    workAdditions: 228
+    workDeletions: 48
+    workFiles: *a20
+  - title: "feat(compass): expand visual displays and add widgets"
+    body: >-
+      ## Why
+
+
+      Compass needed more ways to present structured answers and reusable views of connected Microsoft 365 data.
+
+
+      ## What changed
+
+
+      - Expanded Ask visuals with multi-series bars, metrics, progress indicators, checklists, callouts, typed tables,
+      and hypothetical capacity controls for scenarios.
+
+      - Ad...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/234
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a21
+    additions: 1951
+    deletions: 156
+    changedFiles: 38
+    author: myriadas-clees
+    createdAt: 2026-10-29T03:00:07Z
+    updatedAt: 2026-10-29T12:26:01Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a22
+    workTimestamps: *a23
+    workAdditions: 1654
+    workDeletions: 161
+    workFiles: *a24
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "fix(compass): refine visual replies and PDF exports"
+      - "fix(compass): preserve snapshot context budget"
+      - "fix(compass): paginate oversized PDF rows"
+      - "fix(compass): smooth streamed answer reveals"
+      - "feat(compass): complete OpenUI visual responses"
+      - Merge commit 'a2b303037f7508f9bef1105c77639f1633a27545' of /tmp/myriad-222-reconcile into HEAD
+      - "fix(compass): fall back when To Do expansion is rejected (#223)"
+      - "feat(compass): render validated visual replies in Ask (#222)"
+      - "fix(compass): smooth streamed answer reveals (#225)"
+      - "fix(compass): remove exact duplicate Copilot answers"
+      - "fix(compass): remove exact duplicate Copilot answers (#227)"
+      - "fix(compass): continue existing chat when editing messages"
+      - "fix(compass): keep retries in the same chat"
+      - "fix(compass): preserve visuals before unfinished fences"
+      - Merge commit 'd777c33193a2c772a7e15e49479be7ad5c8d66a3' into stack-229
+      - "feat(ui): standardize shared controls and unsaved change handling"
+      - "fix(compass): paginate tall PDF fact cards"
+      - "fix(compass): paginate tall PDF fact cards (#232)"
+      - "fix(compass): preserve visuals before unfinished fences (#229)"
+      - "fix(compass): continue existing chat when editing messages (#228)"
+      - "feat(transition): add links to live records in review workbooks"
+      - Clarify company selection for workbook links
+      - "feat(transition): link review workbooks to company records"
+      - Use route skeleton for company links
+      - "feat(compass): expand visual displays and add widgets"
+      - "fix(compass): fit visual guidance in context budget"
+      - "fix(compass): handle widget storage and synchronization"
+      - "fix(compass): preserve nested chart bar heights"
+    commits:
+      - *a25
+      - *a26
+      - *a27
+      - *a28
+      - *a29
+      - *a30
+      - sha: 6c4f92fba9094c7045cd8af9525c3d9c18fffe1c
+        message: "fix(compass): fall back when To Do expansion is rejected (#223)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6c4f92fba9094c7045cd8af9525c3d9c18fffe1c
+        authoredAt: 2026-10-28T16:16:20Z
+        additions: 44
+        deletions: 13
+        filesChanged: 2
+      - sha: a52ebecc877f862082c938b9799c9c6686cb7c00
+        message: "feat(compass): render validated visual replies in Ask (#222)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a52ebecc877f862082c938b9799c9c6686cb7c00
+        authoredAt: 2026-10-28T16:16:21Z
+        additions: 4542
+        deletions: 72
+        filesChanged: 51
+      - sha: 6baa9d89b28fc782a3f8bcfd281b7836e0fc2675
+        message: "fix(compass): smooth streamed answer reveals (#225)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6baa9d89b28fc782a3f8bcfd281b7836e0fc2675
+        authoredAt: 2026-10-28T16:16:22Z
+        additions: 172
+        deletions: 66
+        filesChanged: 5
+      - *a31
+      - sha: 7d44a2ba47c961e5f397c14e5116d58b0854fbb5
+        message: "fix(compass): remove exact duplicate Copilot answers (#227)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7d44a2ba47c961e5f397c14e5116d58b0854fbb5
+        authoredAt: 2026-10-28T16:37:09Z
+        additions: 31
+        deletions: 2
+        filesChanged: 2
+      - *a32
+      - *a33
+      - *a34
+      - *a35
+      - *a36
+      - *a37
+      - sha: 6466bd1faa55b03673af2df0d5fbb914865ea2d9
+        message: "fix(compass): paginate tall PDF fact cards (#232)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6466bd1faa55b03673af2df0d5fbb914865ea2d9
+        authoredAt: 2026-10-28T18:28:17Z
+        additions: 16
+        deletions: 1
+        filesChanged: 2
+      - sha: 2dc9b8c725628f214d01c6e7f56a58c16db77906
+        message: "fix(compass): preserve visuals before unfinished fences (#229)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2dc9b8c725628f214d01c6e7f56a58c16db77906
+        authoredAt: 2026-10-28T18:28:17Z
+        additions: 7
+        deletions: 4
+        filesChanged: 3
+      - sha: 219d08cde57cdf3a1786f53c2c74d220124bbd7d
+        message: "fix(compass): continue existing chat when editing messages (#228)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/219d08cde57cdf3a1786f53c2c74d220124bbd7d
+        authoredAt: 2026-10-28T18:28:17Z
+        additions: 56
+        deletions: 14
+        filesChanged: 3
+      - *a38
+      - *a39
+      - *a40
+      - *a41
+      - *a42
+      - *a43
+      - *a44
+      - *a45
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "fix(northstar): preserve @web search intent for Copilot (#182)"
+      - "feat(northstar): add Claude for Ask and scheduled briefs (#181)"
+      - "fix(northstar): repair reopened deliverable fences (#180)"
+      - "feat(brand): add app icons and Harriman branding (#184)"
+      - "fix(northstar): gate To Do links until tasks are created"
+      - "fix(northstar): smooth streamed answer reveals"
+      - "feat(northstar): render validated visual replies"
+      - "fix(northstar): gate To Do links until tasks are confirmed"
+      - "feat(northstar): add Claude file generation and Microsoft tools"
+      - Remove temporary screenshot artifacts
+      - "fix(northstar): route PDF requests to editable drafts"
+      - "feat(northstar): expand OpenUI visual replies"
+      - "fix(northstar): paginate stacked fact fields"
+      - "fix(northstar): remove duplicate Copilot answers"
+      - "fix(northstar): preserve retry context"
+      - "fix(northstar): remove exact duplicate Copilot answers"
+      - "fix(northstar): return generated files in JSON"
+      - "fix(northstar): smooth streamed answer reveals (#189)"
+      - "fix(northstar): gate To Do links until tasks are created (#188)"
+      - "feat(northstar): render validated visual replies (#190)"
+      - "fix(northstar): preserve retry context (#194)"
+      - "feat(northstar): add Claude agent tools and file generation (#192)"
+      - "fix(northstar): remove duplicate Copilot answers (#193)"
+      - "feat(northstar): keep and browse regenerated brief versions"
+      - "fix(northstar): restore latest brief after regeneration"
+      - "feat(northstar): keep and browse regenerated brief versions (#196)"
+      - "fix(northstar): honor saved model defaults when Claude is unavailable"
+      - "fix(northstar): restore briefs when provider unavailable"
+      - "fix(northstar): preserve cache when retention is unknown"
+      - "fix(northstar): honor saved model defaults when Claude is unavailable (#197)"
+      - "fix(northstar): guide Claude briefs to include useful visuals"
+      - "fix(northstar): include fresh Today data in scheduled briefs"
+      - "fix(northstar): improve brief data coverage and reuse"
+      - "feat(northstar): add Office file commands and editing"
+    commits:
+      - sha: 648682b3d1148facc76ba644d48b6682ff85d150
+        message: "fix(northstar): preserve @web search intent for Copilot (#182)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/648682b3d1148facc76ba644d48b6682ff85d150
+        authoredAt: 2026-10-28T04:07:49Z
+        additions: 17
+        deletions: 8
+        filesChanged: 3
+      - sha: 03f0f527cef59a8be0bf3671f10f9cb868f5232c
+        message: "feat(northstar): add Claude for Ask and scheduled briefs (#181)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/03f0f527cef59a8be0bf3671f10f9cb868f5232c
+        authoredAt: 2026-10-28T04:07:50Z
+        additions: 2699
+        deletions: 162
+        filesChanged: 38
+      - sha: 97e6a5328c1c9f4c47166d3f16f205d5957d4b4b
+        message: "fix(northstar): repair reopened deliverable fences (#180)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/97e6a5328c1c9f4c47166d3f16f205d5957d4b4b
+        authoredAt: 2026-10-28T04:07:50Z
+        additions: 133
+        deletions: 5
+        filesChanged: 5
+      - sha: 1819f21eebecb7d61009e7c16618d3512f2a2c8b
+        message: "feat(brand): add app icons and Harriman branding (#184)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/1819f21eebecb7d61009e7c16618d3512f2a2c8b
+        authoredAt: 2026-10-28T04:07:51Z
+        additions: 330
+        deletions: 4
+        filesChanged: 14
+      - *a46
+      - *a47
+      - *a48
+      - *a49
+      - *a50
+      - *a51
+      - *a52
+      - *a53
+      - *a54
+      - *a55
+      - *a56
+      - *a57
+      - *a58
+      - sha: d660d8494af28ecfb707a62625b86afea6806d28
+        message: "fix(northstar): smooth streamed answer reveals (#189)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d660d8494af28ecfb707a62625b86afea6806d28
+        authoredAt: 2026-10-28T20:49:21Z
+        additions: 173
+        deletions: 69
+        filesChanged: 5
+      - sha: b527efc6e6f4cf03298b4479309e42ef3de96b35
+        message: "fix(northstar): gate To Do links until tasks are created (#188)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/b527efc6e6f4cf03298b4479309e42ef3de96b35
+        authoredAt: 2026-10-28T20:49:22Z
+        additions: 26
+        deletions: 18
+        filesChanged: 4
+      - sha: d27b09cc025cd2de6cb1798245476e450b4fde0b
+        message: "feat(northstar): render validated visual replies (#190)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d27b09cc025cd2de6cb1798245476e450b4fde0b
+        authoredAt: 2026-10-28T20:49:22Z
+        additions: 4500
+        deletions: 33
+        filesChanged: 50
+      - sha: 304a9bcfa21e4efc6db140bc65081ace0209ef56
+        message: "fix(northstar): preserve retry context (#194)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/304a9bcfa21e4efc6db140bc65081ace0209ef56
+        authoredAt: 2026-10-28T20:49:23Z
+        additions: 11
+        deletions: 1
+        filesChanged: 2
+      - sha: bb59a6b585321dadcb9c3e1fc559e1db729c28d9
+        message: "feat(northstar): add Claude agent tools and file generation (#192)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/bb59a6b585321dadcb9c3e1fc559e1db729c28d9
+        authoredAt: 2026-10-28T20:49:23Z
+        additions: 1169
+        deletions: 71
+        filesChanged: 33
+      - sha: 254e139355a0a10aa8c5ee7eef767869555a3500
+        message: "fix(northstar): remove duplicate Copilot answers (#193)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/254e139355a0a10aa8c5ee7eef767869555a3500
+        authoredAt: 2026-10-28T20:49:24Z
+        additions: 31
+        deletions: 2
+        filesChanged: 2
+      - *a59
+      - *a60
+      - sha: 9d472db055fe38b376b405fe641977f697dc7f46
+        message: "feat(northstar): keep and browse regenerated brief versions (#196)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/9d472db055fe38b376b405fe641977f697dc7f46
+        authoredAt: 2026-10-29T01:50:57Z
+        additions: 222
+        deletions: 66
+        filesChanged: 5
+      - *a61
+      - *a62
+      - *a63
+      - sha: 58fa1bcfd8c3d8d9666e6f1915476375861533b2
+        message: "fix(northstar): honor saved model defaults when Claude is unavailable (#197)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/58fa1bcfd8c3d8d9666e6f1915476375861533b2
+        authoredAt: 2026-10-29T02:57:11Z
+        additions: 33
+        deletions: 38
+        filesChanged: 5
+      - *a64
+      - *a65
+      - *a66
+      - *a67
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 8
+    comments: 15
+    reviews: 13
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 8
+  comments: 15
+  reviews: 13
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-10-28T14:13:14Z
+    - 2026-10-28T14:18:10Z
+    - 2026-10-28T14:34:14Z
+    - 2026-10-28T15:30:53Z
+    - 2026-10-28T15:59:17Z
+    - 2026-10-28T15:59:27Z
+    - 2026-10-28T16:16:20Z
+    - 2026-10-28T16:16:21Z
+    - 2026-10-28T16:16:22Z
+    - 2026-10-28T16:31:55Z
+    - 2026-10-28T16:37:09Z
+    - 2026-10-28T17:03:30Z
+    - 2026-10-28T17:10:49Z
+    - 2026-10-28T17:46:25Z
+    - 2026-10-28T17:50:27Z
+    - 2026-10-28T17:57:51Z
+    - 2026-10-28T18:18:22Z
+    - 2026-10-28T18:28:17Z
+    - 2026-10-28T18:28:17Z
+    - 2026-10-28T18:28:17Z
+    - 2026-10-28T20:11:29Z
+    - 2026-10-29T02:36:28Z
+    - 2026-10-29T02:54:16Z
+    - 2026-10-29T02:59:12Z
+    - 2026-10-29T02:59:59Z
+    - 2026-10-29T03:39:54Z
+    - 2026-10-29T03:50:45Z
+    - 2026-10-29T03:57:19Z
+    - 2026-10-28T04:07:49Z
+    - 2026-10-28T04:07:50Z
+    - 2026-10-28T04:07:50Z
+    - 2026-10-28T04:07:51Z
+    - 2026-10-28T15:11:33Z
+    - 2026-10-28T15:15:44Z
+    - 2026-10-28T15:17:48Z
+    - 2026-10-28T15:29:24Z
+    - 2026-10-28T15:32:22Z
+    - 2026-10-28T15:35:45Z
+    - 2026-10-28T15:47:51Z
+    - 2026-10-28T16:23:23Z
+    - 2026-10-28T16:30:03Z
+    - 2026-10-28T17:27:50Z
+    - 2026-10-28T17:29:49Z
+    - 2026-10-28T17:53:51Z
+    - 2026-10-28T18:06:08Z
+    - 2026-10-28T20:49:21Z
+    - 2026-10-28T20:49:22Z
+    - 2026-10-28T20:49:22Z
+    - 2026-10-28T20:49:23Z
+    - 2026-10-28T20:49:23Z
+    - 2026-10-28T20:49:24Z
+    - 2026-10-28T22:38:51Z
+    - 2026-10-28T22:44:58Z
+    - 2026-10-29T01:50:57Z
+    - 2026-10-29T02:21:15Z
+    - 2026-10-29T02:40:50Z
+    - 2026-10-29T02:47:40Z
+    - 2026-10-29T02:57:11Z
+    - 2026-10-29T03:09:24Z
+    - 2026-10-29T03:19:38Z
+    - 2026-10-29T03:39:33Z
+    - 2026-10-29T03:46:32Z
+    - 2026-10-29T03:09:30Z
+    - 2026-10-29T03:09:24Z
+    - 2026-10-29T03:46:45Z
+    - 2026-10-29T03:46:32Z
+    - 2026-10-29T03:19:45Z
+    - 2026-10-29T03:19:38Z
+    - 2026-10-29T03:39:33Z
+    - 2026-10-29T02:21:22Z
+    - 2026-10-29T02:57:12Z
+    - 2026-10-29T02:21:15Z
+    - 2026-10-29T02:40:50Z
+    - 2026-10-29T02:47:40Z
+    - 2026-10-28T17:53:57Z
+    - 2026-10-28T17:53:51Z
+    - 2026-10-28T17:29:59Z
+    - 2026-10-28T20:49:31Z
+    - 2026-10-28T17:29:49Z
+    - 2026-10-28T22:38:58Z
+    - 2026-10-29T01:50:59Z
+    - 2026-10-28T22:38:51Z
+    - 2026-10-28T22:44:58Z
+    - 2026-10-28T17:27:59Z
+    - 2026-10-28T20:49:32Z
+    - 2026-10-28T17:27:50Z
+    - 2026-10-28T15:15:52Z
+    - 2026-10-28T20:49:25Z
+    - 2026-10-28T15:15:44Z
+    - 2026-10-28T15:32:30Z
+    - 2026-10-28T20:49:29Z
+    - 2026-10-28T15:32:22Z
+    - 2026-10-28T15:47:51Z
+    - 2026-10-28T18:06:08Z
+    - 2026-10-28T15:11:41Z
+    - 2026-10-28T20:49:28Z
+    - 2026-10-28T15:11:33Z
+    - 2026-10-28T15:29:24Z
+    - 2026-10-28T15:35:45Z
+    - 2026-10-28T15:18:03Z
+    - 2026-10-28T20:49:26Z
+    - 2026-10-28T15:17:48Z
+    - 2026-10-28T16:23:23Z
+    - 2026-10-28T16:30:03Z
+    - 2026-10-28T18:18:50Z
+    - 2026-10-28T18:28:20Z
+    - 2026-10-28T18:18:22Z
+    - 2026-10-28T17:58:01Z
+    - 2026-10-28T17:57:51Z
+    - 2026-10-28T20:11:40Z
+    - 2026-10-28T20:11:29Z
+    - 2026-10-29T02:36:28Z
+    - 2026-10-29T02:54:16Z
+    - 2026-10-29T02:59:12Z
+    - 2026-10-29T03:00:07Z
+    - 2026-10-29T02:59:59Z
+    - 2026-10-29T03:39:54Z
+    - 2026-10-29T03:50:45Z
+    - 2026-10-29T03:57:19Z
+    - 2026-10-28T17:03:40Z
+    - 2026-10-28T18:28:18Z
+    - 2026-10-28T17:03:30Z
+    - 2026-10-28T17:10:49Z
+    - 2026-10-28T17:46:36Z
+    - 2026-10-28T18:28:19Z
+    - 2026-10-28T17:46:25Z
+    - 2026-10-28T17:50:27Z
+    - 2026-10-28T16:32:03Z
+    - 2026-10-28T16:37:10Z
+    - 2026-10-28T16:31:55Z
+    - 2026-10-28T15:31:15Z
+    - 2026-10-28T16:16:26Z
+    - 2026-10-28T15:30:53Z
+    - 2026-10-28T15:59:27Z
+    - 2026-10-28T04:07:55Z
+    - 2026-10-28T04:07:52Z
+    - 2026-10-28T04:07:54Z
+    - 2026-10-28T04:07:53Z
+    - 2026-10-28T16:16:23Z
+    - 2026-10-28T16:16:24Z
+    - 2026-10-28T14:13:14Z
+    - 2026-10-28T14:18:10Z
+    - 2026-10-28T14:34:14Z
+    - 2026-10-28T15:59:17Z
+  volume:
+    pullRequests:
+      - additions: 3
+        deletions: 1
+        state: merged
+        dailyWork: true
+        filesChanged: 2
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 497
+        deletions: 106
+        state: merged
+        dailyWork: true
+        filesChanged: 13
+        testFilesChanged: 4
+        commitCount: 1
+      - additions: 391
+        deletions: 96
+        state: merged
+        dailyWork: true
+        filesChanged: 10
+        testFilesChanged: 5
+        commitCount: 2
+      - additions: 36
+        deletions: 41
+        state: merged
+        dailyWork: true
+        filesChanged: 5
+        testFilesChanged: 2
+        commitCount: 3
+      - additions: 31
+        deletions: 2
+        state: closed
+        dailyWork: true
+        filesChanged: 2
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 11
+        deletions: 1
+        state: merged
+        dailyWork: true
+        filesChanged: 2
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 223
+        deletions: 67
+        state: merged
+        dailyWork: true
+        filesChanged: 5
+        testFilesChanged: 2
+        commitCount: 2
+      - additions: 31
+        deletions: 2
+        state: merged
+        dailyWork: true
+        filesChanged: 2
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 173
+        deletions: 69
+        state: merged
+        dailyWork: true
+        filesChanged: 5
+        testFilesChanged: 2
+        commitCount: 1
+      - additions: 1234
+        deletions: 136
+        state: merged
+        dailyWork: true
+        filesChanged: 33
+        testFilesChanged: 16
+        commitCount: 3
+      - additions: 54
+        deletions: 46
+        state: merged
+        dailyWork: true
+        filesChanged: 6
+        testFilesChanged: 2
+        commitCount: 3
+      - additions: 5072
+        deletions: 605
+        state: merged
+        dailyWork: true
+        filesChanged: 53
+        testFilesChanged: 19
+        commitCount: 3
+      - additions: 16
+        deletions: 1
+        state: merged
+        dailyWork: true
+        filesChanged: 2
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 8215
+        deletions: 4406
+        state: open
+        dailyWork: true
+        filesChanged: 219
+        testFilesChanged: 73
+        commitCount: 1
+      - additions: 228
+        deletions: 48
+        state: open
+        dailyWork: true
+        filesChanged: 13
+        testFilesChanged: 4
+        commitCount: 4
+      - additions: 1654
+        deletions: 161
+        state: open
+        dailyWork: true
+        filesChanged: 38
+        testFilesChanged: 14
+        commitCount: 4
+      - additions: 56
+        deletions: 14
+        state: merged
+        dailyWork: true
+        filesChanged: 3
+        testFilesChanged: 1
+        commitCount: 2
+      - additions: 63
+        deletions: 18
+        state: merged
+        dailyWork: true
+        filesChanged: 5
+        testFilesChanged: 2
+        commitCount: 2
+      - additions: 31
+        deletions: 2
+        state: merged
+        dailyWork: true
+        filesChanged: 2
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 2675
+        deletions: 631
+        state: merged
+        dailyWork: true
+        filesChanged: 41
+        testFilesChanged: 19
+        commitCount: 2
+      - additions: 3458
+        deletions: 666
+        state: merged
+        dailyWork: true
+        filesChanged: 44
+        testFilesChanged: 18
+        commitCount: 4
+      - additions: 0
+        deletions: 0
+        state: merged
+      - additions: 0
+        deletions: 0
+        state: merged
+      - additions: 0
+        deletions: 0
+        state: merged
+      - additions: 0
+        deletions: 0
+        state: merged
+      - additions: 0
+        deletions: 0
+        state: merged
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 19
+    commitAdditions: 14212
+    commitDeletions: 649
+    commitStatsCount: 19
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 171.6
+  sessions: 5
+  sessionHours: 8
+  volumeHours: 171.6
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""

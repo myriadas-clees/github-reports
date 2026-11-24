@@ -1,0 +1,116 @@
+title: Oct 20
+subtitle: northstar, transition & speed type
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps and Myriad-Advisor-Solutions/ohcpwm-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 4 PRs
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 0 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 180 commits with +12,583 / −1,768 lines.
+    chips:
+      - label: Commits
+        value: "180"
+        color: green
+      - label: Additions
+        value: +12,583
+        color: green
+      - label: Deletions
+        value: −1,768
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 83 reviews with 83 comments.
+    chips:
+      - label: Reviews
+        value: "83"
+      - label: Comments
+        value: "83"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 50 reviews, 97 comments, 9 PRs."
+    chips:
+      - label: Codex
+        value: 50 reviews · 97 comments · 9 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~211.5h
+highlights:
+  - type: pr
+    title: "feat(transition): add household paperwork workflows"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +2123 −248
+    body: >-
+      ## Why
+
+
+      Household paperwork status was only visible as a count of accounts in paperwork stages. Teams needed a clear
+      household-level view and a way to update paperwork across a household while preserv
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/195
+  - type: pr
+    title: "feat(transition): add isolated demo mode"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +1324 −195
+    body: |-
+      ## Why
+
+      Give eligible Transition users a safe way to explore sample records without affecting live data.
+
+      ## What changed
+
+      - Added a per-user Demo mode toggle in Settings, with a sample data banner an
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/194
+  - type: pr
+    title: "feat(transition): add review workbook export"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +4366 −512
+    body: >-
+      ## Why
+
+
+      Administrators need a readable Excel workbook for reviewing Transition data without treating the export as a
+      restorable database backup.
+
+
+      ## What changed
+
+
+      - Export `transition-review.xlsx` wit
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/196
+  - type: pr
+    title: "fix(compass): filter mail tasks and refine priority data"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +0 −0
+    body: >-
+      ## Why
+
+
+      Compass was treating Outlook-linked To Do items as user-created tasks and could surface bulk or low-priority
+      messages as urgent. Overlapping calendar events were also difficult to distinguish,
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/193
+  - type: pr
+    title: "ci: speed up type checks with tsrs and consolidate deployment jobs"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +349 −228
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/198
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(transition): add household paperwork workflows" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(transition): add isolated demo mode" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(transition): add review workbook export" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(compass): filter mail tasks and refine priority data" in
+      Myriad-Advisor-Solutions/myriadas-apps'

@@ -1,0 +1,104 @@
+title: Nov 20
+subtitle: compass, compliance & support selective
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 1 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 21 commits with +34,798 / −1,316 lines.
+    chips:
+      - label: Commits
+        value: "21"
+        color: green
+      - label: Additions
+        value: +34,798
+        color: green
+      - label: Deletions
+        value: −1,316
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 19 reviews with 19 comments.
+    chips:
+      - label: Reviews
+        value: "19"
+      - label: Comments
+        value: "19"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 3 reviews, 3 comments, 2 PRs."
+    chips:
+      - label: Codex
+        value: 3 reviews · 3 comments · 2 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~96.7h
+highlights:
+  - type: pr
+    title: Support selective production promotion with immutable app pins
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +16182 −543
+    body: Promote a single app, a group, or the full suite from immutable validated staging archives. Record each deployed
+      app and route on a protected manifest branch, and restore the exact previous compositio
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/282
+  - type: pr
+    title: "feat(compass): port North Star workflows and archives"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +0 −0
+    body: >-
+      ## Why
+
+
+      Bring the North Star priorities into Compass to expand advisor workflows while preserving Compass’s existing
+      Microsoft 365 authorization and chat behavior.
+
+
+      ## What changed
+
+
+      - Add Claude model
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+  - type: pr
+    title: "feat(compass): add collapsible suite navigation and unify chat history"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +15023 −312
+    body: >-
+      The suite sidebar previously reserved its full width throughout navigation, and Compass Ask added a second
+      navigation column for chat history.
+
+
+      This change adds a persistent 56px desktop rail with hov
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/279
+  - type: pr
+    title: "feat(compliance): add suite compliance audit trail with Hub review and export"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +3593 −461
+    body: >-
+      ## Why
+
+
+      Compliance officers need an audit trail of Compass activity that they can review and export, similar to the OpenAI
+      and Anthropic enterprise compliance APIs. This PR is stacked on #249: its Com
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/278
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "Support selective production promotion with immutable app pins" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(compass): port North Star workflows and archives" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(compass): add collapsible suite navigation and unify chat history" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(compliance): add suite compliance audit trail with Hub review and export" in
+      Myriad-Advisor-Solutions/myriadas-apps'

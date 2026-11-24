@@ -1,0 +1,117 @@
+title: Oct 30
+subtitle: northstar, platform & compass
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/ohcpwm-apps and Myriad-Advisor-Solutions/myriadas-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 3 PRs
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 2 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 37 commits with +12,261 / −4,889 lines.
+    chips:
+      - label: Commits
+        value: "37"
+        color: green
+      - label: Additions
+        value: +12,261
+        color: green
+      - label: Deletions
+        value: −4,889
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 5 reviews with 5 comments.
+    chips:
+      - label: Reviews
+        value: "5"
+      - label: Comments
+        value: "5"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 4 reviews, 5 comments, 4 PRs."
+    chips:
+      - label: Codex
+        value: 4 reviews · 5 comments · 4 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~120.7h
+highlights:
+  - type: pr
+    title: "fix(deploy): package PDF standard fonts for Node startup"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +14 −1
+    body: >-
+      ## Why
+
+
+      The production upload in [run
+      41149669860](https://github.com/Myriad-Advisor-Solutions/myriadas-apps/actions/runs/41149669860) succeeded, but
+      managed API health probes failed with 404/502. Loa
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/238
+  - type: pr
+    title: "feat(transition): add live record links to review workbooks"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +519 −653
+    body: |-
+      ## Why
+
+      Reviewers need a way to open the current Transition record directly from an exported review workbook.
+
+      ## What changed
+
+      Added a **Live Transition** link for each household and account in the w
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/233
+  - type: pr
+    title: "feat(compass): expand visual displays and add widgets"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +801 −693
+    body: |-
+      ## Why
+
+      Compass needed more ways to present structured answers and reusable views of connected Microsoft 365 data.
+
+      ## What changed
+
+      - Expanded Ask visuals with multi-series bars, metrics, progress in
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/234
+  - type: pr
+    title: "feat(proforma): import recruits from Excel templates"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +2747 −859
+    body: |-
+      ## Why
+
+      Users need a readable Excel template for recruit and proforma inputs directly in the new-recruit wizard.
+
+      ## What changed
+
+      Added template download and upload for recruit, team, expense, fee, l
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/235
+  - type: pr
+    title: "feat(platform): staging, PR previews, agent testing, and release promotion"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +3987 −1863
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/237
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(deploy): package PDF standard fonts for Node startup" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(transition): add live record links to review workbooks" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(compass): expand visual displays and add widgets" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(proforma): import recruits from Excel templates" in
+      Myriad-Advisor-Solutions/myriadas-apps'

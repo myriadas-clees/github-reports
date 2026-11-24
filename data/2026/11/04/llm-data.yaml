@@ -1,0 +1,98 @@
+title: Nov 4
+subtitle: northstar, fail fast & address-book
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/ohcpwm-apps and Myriad-Advisor-Solutions/myriadas-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 3 PRs
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 1 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 43 commits with +23,599 / −5,790 lines.
+    chips:
+      - label: Commits
+        value: "43"
+        color: green
+      - label: Additions
+        value: +23,599
+        color: green
+      - label: Deletions
+        value: −5,790
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 9 reviews with 9 comments.
+    chips:
+      - label: Reviews
+        value: "9"
+      - label: Comments
+        value: "9"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 10 reviews, 12 comments, 6 PRs."
+    chips:
+      - label: Codex
+        value: 10 reviews · 12 comments · 6 PRs
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~139.5h
+highlights:
+  - type: pr
+    title: "feat(northstar): refine Ask workspace header and footer"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +9154 −2226
+    body: |-
+      - Add a labelled Chats action and compact New chat control to the Ask workspace header.
+      - Remove the redundant Context panel while preserving response sources and previews.
+      - Keep the Ask Northstar he
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/216
+  - type: pr
+    title: "fix(northstar): open To Do reliably after task creation"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +6337 −1034
+    body: >-
+      - Try the To Do desktop app after tasks are created, then open To Do on the web automatically if the app does not
+      take focus.
+
+      - Keep Northstar open and remove the user-managed web fallback control.
+
+      - 
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/213
+  - type: pr
+    title: "feat(northstar): add approved Copilot consultations and retries"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: merged · +2430 −793
+    body: |-
+      - Add Claude-proposed Copilot questions that require approval before dispatch, with status and retry support.
+      - Show consultation progress and results in Ask, and preserve decisions and completed work
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/210
+  - type: pr
+    title: "feat(northstar): add Anthropic message threads"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +147 −17
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/214
+  - type: pr
+    title: "ci: fail fast on pull request checks"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +157 −44
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/244
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(northstar): refine Ask workspace header and footer" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "fix(northstar): open To Do reliably after task creation" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(northstar): add approved Copilot consultations and retries" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'

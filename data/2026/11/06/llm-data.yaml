@@ -1,0 +1,74 @@
+title: Nov 6
+subtitle: northstar, refresh codeowners & repo
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 1 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 16 commits with +1,303 / −390 lines.
+    chips:
+      - label: Commits
+        value: "16"
+        color: green
+      - label: Additions
+        value: +1,303
+        color: green
+      - label: Deletions
+        value: −390
+        color: red
+  - type: activity-pattern
+    heading: Estimated engineering hours
+    body: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+      tracked, elapsed, or billed time.
+    chips:
+      - label: Estimated engineering hours
+        value: ~26.1h
+highlights:
+  - type: pr
+    title: "chore: refresh CODEOWNERS for current approvers"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +9 −9
+    body: Replace stale `@DPB22` and `@dbarba8699` owners with `@kmedendorp` and `@myriadas-dev`, alongside
+      `@myriadas-clees`. Every rule lists all three current approvers, leaving two independent code owners a
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/245
+  - type: pr
+    title: "feat(repo): add isolated testing and manual Azure release promotion"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: merged · +1294 −381
+    body: >-
+      ## Why
+
+
+      Add isolated testing and a traceable staging-to-production release cycle while preserving the combined Hub Static
+      Web App and managed API topology. Infrastructure provisioning is manual while 
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/237
+  - type: pr
+    title: "feat(northstar): add Anthropic message threads"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +147 −17
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/214
+  - type: pr
+    title: "fix(northstar): stream Copilot startup and lookup activity"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +366 −96
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/220
+  - type: pr
+    title: "fix(northstar): prevent prompt leaks and bound Claude turns"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +12482 −2680
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/215
+ticker:
+  - label: SHIPPED
+    text: '@myriadas-clees merged "chore: refresh CODEOWNERS for current approvers" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: SHIPPED
+    text: '@myriadas-clees merged "feat(repo): add isolated testing and manual Azure release promotion" in
+      Myriad-Advisor-Solutions/myriadas-apps'

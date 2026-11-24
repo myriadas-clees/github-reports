@@ -1,0 +1,612 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-11-10
+  to: 2026-11-10
+stats:
+  totalCommits: 16
+  totalAdditions: 9183
+  totalDeletions: 422
+  prsOpened: 2
+  prsMerged: 4
+  prsInProgress: 1
+  prsReviewed: 1
+  reviewComments: 1
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 61.9
+dailyCommits:
+  - date: 2026-11-10
+    count: 16
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 16
+    prsOpened: 2
+    prsMerged: 4
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests:
+  - title: "feat(compass): reorganize advisor workflows and add agents"
+    body: >-
+      ## Why
+
+
+      Compass needed clearer workflows for advisor work, along with a configurable foundation for running prospect
+      follow-up checks. Advisors also needed access to saved Transition household data for meeting preparation and
+      reviews.
+
+
+      ## What changed
+
+
+      - Split the advisor workspace into Clients, Pro...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/257
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a1
+      - documentation
+      - github-automation
+      - platform
+      - "app: compass"
+    additions: 3859
+    deletions: 41
+    changedFiles: 61
+    author: myriadas-clees
+    createdAt: 2026-11-11T04:41:50Z
+    updatedAt: 2026-11-11T04:57:12Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a2
+      - &a16
+        sha: 39669b6ef952c6df5b58ab9c91942b146c581dde
+        message: "feat(compass): reorganize advisor workflows and add agents"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/39669b6ef952c6df5b58ab9c91942b146c581dde
+        authoredAt: 2026-11-11T04:41:37Z
+    workTimestamps: &a3
+      - 2026-11-11T04:41:37Z
+    workAdditions: 3859
+    workDeletions: 41
+    workFiles: &a4
+      - .github/CODEOWNERS
+      - bun.lock
+      - compass/AGENT-ACTIVATION-BRIEF.md
+      - compass/AGENTS.md
+      - compass/IMPLEMENTATION-NOTE.md
+      - compass/functions/PORT-CONTRACT.md
+      - compass/functions/src/advisor-agents-cosmos.fixture.ts
+      - compass/functions/src/advisor-agents-cosmos.test.ts
+      - compass/functions/src/advisor-agents-http.ts
+      - compass/functions/src/advisor-agents-race.fixture.ts
+      - compass/functions/src/advisor-agents-race.test.ts
+      - compass/functions/src/advisor-agents-store.ts
+      - compass/functions/src/advisor-agents.test.ts
+      - compass/functions/src/advisor-work-cosmos.fixture.ts
+      - compass/functions/src/advisor-work-cosmos.test.ts
+      - compass/functions/src/advisor-work-http.ts
+      - compass/functions/src/advisor-work-store.ts
+      - compass/functions/src/advisor-work.test.ts
+      - compass/functions/src/company-http.test.ts
+      - compass/functions/src/company-routes.test.ts
+      - compass/functions/src/compass-microsoft.ts
+      - compass/functions/src/index.ts
+      - compass/next.config.ts
+      - compass/package.json
+      - compass/src/app/advisor.css
+      - compass/src/app/agents/page.tsx
+      - compass/src/app/globals.css
+      - compass/src/app/meetings/page.tsx
+      - compass/src/app/opportunities/page.tsx
+      - compass/src/app/prospects/page.tsx
+      - compass/src/components/advisor-agents-workspace.tsx
+      - compass/src/components/advisor-meetings.tsx
+      - compass/src/components/advisor-shared.tsx
+      - compass/src/components/advisor-today.tsx
+      - compass/src/components/advisor-workspace.tsx
+      - compass/src/components/client-intelligence-workspace.dom.test.ts
+      - compass/src/components/client-intelligence-workspace.fixture.tsx
+      - compass/src/components/client-intelligence-workspace.tsx
+      - compass/src/components/compass-dashboard.tsx
+      - compass/src/components/household-documents.tsx
+      - compass/src/components/household-review-deck.tsx
+      - compass/src/components/today-microsoft.dom.test.ts
+      - compass/src/components/today-microsoft.fixture.tsx
+      - compass/src/lib/advisor-agents-api.ts
+      - compass/src/lib/advisor-agents.ts
+      - compass/src/lib/advisor-opportunities.test.ts
+      - compass/src/lib/advisor-opportunities.ts
+      - compass/src/lib/advisor-work-api.ts
+      - compass/src/lib/advisor-work-model.ts
+      - compass/src/lib/chat-pdf.tsx
+      - compass/src/lib/household-deck-pdf.tsx
+      - compass/src/lib/household-deck-pptx.ts
+      - compass/src/lib/household-deck.test.ts
+      - compass/src/lib/household-deck.ts
+      - compass/src/lib/household-document.test.tsx
+      - compass/src/lib/household-form.test.ts
+      - compass/src/lib/household-form.ts
+      - compass/src/lib/household-prep.ts
+      - compass/src/lib/navigation.ts
+      - compass/src/lib/transition-households.test.ts
+      - compass/src/lib/transition-households.ts
+  - title: "fix(staging): restore sign-in and company access with unattended operator login"
+    body: >-
+      Staging sign-in failed when SWA supplied its proxy Bearer header, public Sign in links targeted an unavailable
+      Entra provider, and PTO/Proforma company lookups returned 404. This fixes those paths and adds a dedicated
+      unattended, read-only synthetic staging operator.
+
+
+      The operator flow binds a short...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/254
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - "app: hub"
+      - "app: pto-tracker"
+      - "app: proforma"
+      - platform
+    additions: 1719
+    deletions: 120
+    changedFiles: 18
+    author: myriadas-clees
+    createdAt: 2026-11-10T19:12:20Z
+    updatedAt: 2026-11-10T23:02:30Z
+    closedAt: 2026-11-10T23:02:30Z
+    mergedAt: 2026-11-10T23:02:30Z
+    workCommits:
+      - &a5
+        sha: 2143c8912b4cabc48008156ef9348fbf74565f8e
+        message: "fix(staging): repair test identity login paths"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2143c8912b4cabc48008156ef9348fbf74565f8e
+        authoredAt: 2026-11-10T16:28:32Z
+      - &a6
+        sha: 42f94333b4f63d96845502b1eb254842295220cf
+        message: "fix(apps): repair company endpoint dispatch and URLs"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/42f94333b4f63d96845502b1eb254842295220cf
+        authoredAt: 2026-11-10T16:56:34Z
+      - &a8
+        sha: 8d0e43ceab66872d23f23ccee96c21d2d2b5de2e
+        message: "feat(staging): add browser-bound local operator login"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8d0e43ceab66872d23f23ccee96c21d2d2b5de2e
+        authoredAt: 2026-11-10T19:12:18Z
+      - &a9
+        sha: 76f87dc9bbc617662f6c78eae07b10ad28815128
+        message: "fix(staging): type operator authentication test fixtures"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/76f87dc9bbc617662f6c78eae07b10ad28815128
+        authoredAt: 2026-11-10T19:15:53Z
+      - &a11
+        sha: 03129da18349cf5f41041c679f2316de01c8e187
+        message: "fix(staging): bind operator exchange to browser origin"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/03129da18349cf5f41041c679f2316de01c8e187
+        authoredAt: 2026-11-10T20:10:04Z
+      - &a13
+        sha: 9f989898086f3f83f7620345c6faba28eab72da3
+        message: "fix(hub): let SWA logout finish before clearing client state"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9f989898086f3f83f7620345c6faba28eab72da3
+        authoredAt: 2026-11-10T22:14:23Z
+    workTimestamps:
+      - 2026-11-10T16:28:32Z
+      - 2026-11-10T16:56:34Z
+      - 2026-11-10T19:12:18Z
+      - 2026-11-10T19:15:53Z
+      - 2026-11-10T20:10:04Z
+      - 2026-11-10T22:14:23Z
+    workAdditions: 1719
+    workDeletions: 120
+    workFiles:
+      - docs/staging-operator-login.md
+      - e2e/tests/regression.spec.ts
+      - hub/components/HubAuthProvider.test.tsx
+      - hub/components/HubAuthProvider.tsx
+      - hub/functions/src/index.ts
+      - hub/functions/src/test-idp-operator.test.ts
+      - hub/functions/src/test-idp-operator.ts
+      - hub/functions/src/test-idp-page.ts
+      - hub/functions/src/test-idp.test.ts
+      - hub/functions/src/test-idp.ts
+      - proforma/src/lib/__tests__/company-endpoint.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - pto-tracker/src/components/PtoCompanyProvider.test.ts
+      - pto-tracker/src/lib/api/client.test.ts
+      - pto-tracker/src/lib/api/client.ts
+      - scripts/staging-operator.ts
+      - scripts/swa-environment-config.test.ts
+      - scripts/swa-environment-config.ts
+  - title: "ci(repo): run Docker E2E only for relevant changes"
+    body: >-
+      PRs that only change deployment-time authentication configuration or repository administration currently build and
+      seed the full Docker stack and install Chromium, even though local SWA CLI cannot validate Azure OIDC behavior.
+
+
+      Add a lightweight impact job using the existing Git diff resolver before...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/252
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - github-automation
+      - platform
+    additions: 0
+    deletions: 0
+    changedFiles: 4
+    author: myriadas-clees
+    createdAt: 2026-11-09T20:40:40Z
+    updatedAt: 2026-11-10T14:33:07Z
+    closedAt: 2026-11-10T14:33:07Z
+    mergedAt: 2026-11-10T14:33:07Z
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "fix(repo): permit staging role assignment before app authorization"
+    body: Staging now passes deployment, smoke and synthetic seeding, but live sign-in loops from the Azure callback back to
+      the test provider without creating a session. The generated staging config leaves `/api/auth/roles` under the
+      `/api/*` rule requiring application roles, even though this function assign...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/251
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - platform
+    additions: 0
+    deletions: 0
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-11-09T20:19:38Z
+    updatedAt: 2026-11-10T14:33:09Z
+    closedAt: 2026-11-10T14:33:08Z
+    mergedAt: 2026-11-10T14:33:08Z
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "feat(address-book): add company-scoped CRM"
+    body: >-
+      Adds a company-scoped Address Book CRM for managing households, contacts, accounts, addresses and assigned
+      follow-ups. Record edits and relationship changes enforce server-side access, tenant isolation and record
+      versions.
+
+
+      ## Changes
+
+
+      - Household cards, a contact directory with complete-set alphabe...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - github-automation
+      - "app: hub"
+      - platform
+    additions: 3605
+    deletions: 261
+    changedFiles: 296
+    author: myriadas-clees
+    createdAt: 2026-11-03T21:04:05Z
+    updatedAt: 2026-11-10T23:03:52Z
+    closedAt: 2026-11-10T23:03:52Z
+    mergedAt: 2026-11-10T23:03:52Z
+    workCommits:
+      - sha: 2143c8912b4cabc48008156ef9348fbf74565f8e
+        message: "fix(staging): repair test identity login paths"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2143c8912b4cabc48008156ef9348fbf74565f8e
+        authoredAt: 2026-11-10T16:28:32Z
+      - sha: 42f94333b4f63d96845502b1eb254842295220cf
+        message: "fix(apps): repair company endpoint dispatch and URLs"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/42f94333b4f63d96845502b1eb254842295220cf
+        authoredAt: 2026-11-10T16:56:34Z
+      - &a7
+        sha: e9cda6d22f3d69cfa4999625dd3aa9335d8a3490
+        message: Merge current main preserving Address Book and E2E checks
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e9cda6d22f3d69cfa4999625dd3aa9335d8a3490
+        authoredAt: 2026-11-10T18:44:33Z
+      - sha: 8d0e43ceab66872d23f23ccee96c21d2d2b5de2e
+        message: "feat(staging): add browser-bound local operator login"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8d0e43ceab66872d23f23ccee96c21d2d2b5de2e
+        authoredAt: 2026-11-10T19:12:18Z
+      - sha: 76f87dc9bbc617662f6c78eae07b10ad28815128
+        message: "fix(staging): type operator authentication test fixtures"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/76f87dc9bbc617662f6c78eae07b10ad28815128
+        authoredAt: 2026-11-10T19:15:53Z
+      - &a10
+        sha: c1ed8c47f3cff4b4a1b844755eb55dc05efa22b7
+        message: Merge pinned staging layer 76f87dc9 into Address Book release
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c1ed8c47f3cff4b4a1b844755eb55dc05efa22b7
+        authoredAt: 2026-11-10T19:21:43Z
+      - sha: 03129da18349cf5f41041c679f2316de01c8e187
+        message: "fix(staging): bind operator exchange to browser origin"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/03129da18349cf5f41041c679f2316de01c8e187
+        authoredAt: 2026-11-10T20:10:04Z
+      - &a12
+        sha: ee29b75bf34b6bc8e1dac0e2302f8e90630ce3d0
+        message: Merge final staging pin 03129da1 into Address Book release
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ee29b75bf34b6bc8e1dac0e2302f8e90630ce3d0
+        authoredAt: 2026-11-10T20:49:39Z
+      - sha: 9f989898086f3f83f7620345c6faba28eab72da3
+        message: "fix(hub): let SWA logout finish before clearing client state"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9f989898086f3f83f7620345c6faba28eab72da3
+        authoredAt: 2026-11-10T22:14:23Z
+      - &a14
+        sha: 1026096521c1b364d4f69c47c4178ff714e40b5e
+        message: Merge reviewed Hub logout race fix 9f989898 into release
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/1026096521c1b364d4f69c47c4178ff714e40b5e
+        authoredAt: 2026-11-10T22:23:15Z
+      - &a15
+        sha: 5445c51ae75915d803587a4c1e50dba8580e51f5
+        message: "fix(address-book): use skeletons throughout CSV preview"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5445c51ae75915d803587a4c1e50dba8580e51f5
+        authoredAt: 2026-11-10T22:42:48Z
+    workTimestamps:
+      - 2026-11-10T16:28:32Z
+      - 2026-11-10T16:56:34Z
+      - 2026-11-10T18:44:33Z
+      - 2026-11-10T19:12:18Z
+      - 2026-11-10T19:15:53Z
+      - 2026-11-10T19:21:43Z
+      - 2026-11-10T20:10:04Z
+      - 2026-11-10T20:49:39Z
+      - 2026-11-10T22:14:23Z
+      - 2026-11-10T22:23:15Z
+      - 2026-11-10T22:42:48Z
+    workAdditions: 3605
+    workDeletions: 261
+    workFiles:
+      - .github/workflows/pr-e2e.yml
+      - address-book/src/components/csv-import-map.tsx
+      - address-book/src/components/csv-import-review.tsx
+      - address-book/src/components/csv-import.tsx
+      - docker/README.md
+      - docs/staging-operator-login.md
+      - e2e/tests/regression.spec.ts
+      - hub/components/HubAuthProvider.test.tsx
+      - hub/components/HubAuthProvider.tsx
+      - hub/functions/src/index.ts
+      - hub/functions/src/test-idp-operator.test.ts
+      - hub/functions/src/test-idp-operator.ts
+      - hub/functions/src/test-idp-page.ts
+      - hub/functions/src/test-idp.test.ts
+      - hub/functions/src/test-idp.ts
+      - proforma/src/lib/__tests__/company-endpoint.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - pto-tracker/src/components/PtoCompanyProvider.test.ts
+      - pto-tracker/src/lib/api/client.test.ts
+      - pto-tracker/src/lib/api/client.ts
+      - scripts/affected-apps.ts
+      - scripts/staging-operator.ts
+      - scripts/swa-environment-config.test.ts
+      - scripts/swa-environment-config.ts
+      - scripts/tooling.test.ts
+prsInProgress:
+  - title: "feat(compass): reorganize advisor workflows and add agents"
+    body: >-
+      ## Why
+
+
+      Compass needed clearer workflows for advisor work, along with a configurable foundation for running prospect
+      follow-up checks. Advisors also needed access to saved Transition household data for meeting preparation and
+      reviews.
+
+
+      ## What changed
+
+
+      - Split the advisor workspace into Clients, Pro...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/257
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a1
+    additions: 3859
+    deletions: 41
+    changedFiles: 61
+    author: myriadas-clees
+    createdAt: 2026-11-11T04:41:50Z
+    updatedAt: 2026-11-11T04:57:12Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 3859
+    workDeletions: 41
+    workFiles: *a4
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "fix(repo): permit staging role assignment before app authorization (#251)"
+      - "ci(repo): run Docker E2E only for relevant changes (#252)"
+      - "fix(staging): repair test identity login paths"
+      - "fix(apps): repair company endpoint dispatch and URLs"
+      - Merge current main preserving Address Book and E2E checks
+      - "feat(staging): add browser-bound local operator login"
+      - "fix(staging): type operator authentication test fixtures"
+      - Merge pinned staging layer 76f87dc9 into Address Book release
+      - "fix(staging): bind operator exchange to browser origin"
+      - Merge final staging pin 03129da1 into Address Book release
+      - "fix(hub): let SWA logout finish before clearing client state"
+      - Merge reviewed Hub logout race fix 9f989898 into release
+      - "fix(address-book): use skeletons throughout CSV preview"
+      - "fix(staging): restore operator login and Hub logout (#254)"
+      - "feat(address-book): add company-scoped CRM (#243)"
+      - "feat(compass): reorganize advisor workflows and add agents"
+    commits:
+      - sha: e83bf4a43a4a52b516ed338f7703957590ab7bc7
+        message: "fix(repo): permit staging role assignment before app authorization (#251)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e83bf4a43a4a52b516ed338f7703957590ab7bc7
+        authoredAt: 2026-11-10T14:33:06Z
+        additions: 22
+        deletions: 3
+        filesChanged: 2
+      - sha: 2822403495c5f05c3002e6afd1e5b51e27aa79be
+        message: "ci(repo): run Docker E2E only for relevant changes (#252)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2822403495c5f05c3002e6afd1e5b51e27aa79be
+        authoredAt: 2026-11-10T14:33:06Z
+        additions: 143
+        deletions: 18
+        filesChanged: 4
+      - *a5
+      - *a6
+      - *a7
+      - *a8
+      - *a9
+      - *a10
+      - *a11
+      - *a12
+      - *a13
+      - *a14
+      - *a15
+      - sha: 2f9d1504f05c1fdcd91ff904f0ad4de47ee79ff4
+        message: "fix(staging): restore operator login and Hub logout (#254)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2f9d1504f05c1fdcd91ff904f0ad4de47ee79ff4
+        authoredAt: 2026-11-10T23:02:29Z
+        additions: 1630
+        deletions: 31
+        filesChanged: 18
+      - sha: 12812b9d2ab7c90f65bbc2718062839a4d2d7bea
+        message: "feat(address-book): add company-scoped CRM (#243)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/12812b9d2ab7c90f65bbc2718062839a4d2d7bea
+        authoredAt: 2026-11-10T23:03:51Z
+        additions: 86487
+        deletions: 20
+        filesChanged: 278
+      - *a16
+releases: []
+externalContributions: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prTitle: "feat(address-book): add company-scoped CRM"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    state: commented
+    submittedAt: 2026-11-10T22:44:14Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 243
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243#discussion_r4531501113
+    body: "[from Codex]: Fixed in 5445c51a. CSV upload, mapping revalidation and review revalidation now use shared blank
+      skeleton lines with one accessible status per region. Existing mapping/review rows and skip choices remain
+      visible; Continue/Import remain disabled until the current preview settles. Missin..."
+    path: address-book/src/components/csv-import.tsx
+    createdAt: 2026-11-10T22:44:14Z
+aiReviews:
+  codex:
+    prsReviewed: 2
+    comments: 3
+    reviews: 2
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 2
+  comments: 3
+  reviews: 2
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-11-10T14:33:06Z
+    - 2026-11-10T14:33:06Z
+    - 2026-11-10T16:28:32Z
+    - 2026-11-10T16:56:34Z
+    - 2026-11-10T18:44:33Z
+    - 2026-11-10T19:12:18Z
+    - 2026-11-10T19:15:53Z
+    - 2026-11-10T19:21:43Z
+    - 2026-11-10T20:10:04Z
+    - 2026-11-10T20:49:39Z
+    - 2026-11-10T22:14:23Z
+    - 2026-11-10T22:23:15Z
+    - 2026-11-10T22:42:48Z
+    - 2026-11-10T23:02:29Z
+    - 2026-11-10T23:03:51Z
+    - 2026-11-11T04:41:37Z
+    - 2026-11-11T04:41:50Z
+    - 2026-11-11T04:41:37Z
+    - 2026-11-10T19:12:20Z
+    - 2026-11-10T23:02:30Z
+    - 2026-11-10T16:28:32Z
+    - 2026-11-10T16:56:34Z
+    - 2026-11-10T19:12:18Z
+    - 2026-11-10T19:15:53Z
+    - 2026-11-10T20:10:04Z
+    - 2026-11-10T22:14:23Z
+    - 2026-11-10T14:33:07Z
+    - 2026-11-10T14:33:08Z
+    - 2026-11-10T23:03:52Z
+    - 2026-11-10T16:28:32Z
+    - 2026-11-10T16:56:34Z
+    - 2026-11-10T18:44:33Z
+    - 2026-11-10T19:12:18Z
+    - 2026-11-10T19:15:53Z
+    - 2026-11-10T19:21:43Z
+    - 2026-11-10T20:10:04Z
+    - 2026-11-10T20:49:39Z
+    - 2026-11-10T22:14:23Z
+    - 2026-11-10T22:23:15Z
+    - 2026-11-10T22:42:48Z
+    - 2026-11-10T22:44:14Z
+    - 2026-11-10T22:44:14Z
+  volume:
+    pullRequests:
+      - additions: 3859
+        deletions: 41
+        state: open
+        dailyWork: true
+        filesChanged: 61
+        testFilesChanged: 14
+        commitCount: 1
+      - additions: 1719
+        deletions: 120
+        state: merged
+        dailyWork: true
+        filesChanged: 18
+        testFilesChanged: 8
+        commitCount: 6
+      - additions: 3605
+        deletions: 261
+        state: merged
+        dailyWork: true
+        filesChanged: 25
+        testFilesChanged: 9
+        commitCount: 11
+      - additions: 0
+        deletions: 0
+        state: merged
+      - additions: 0
+        deletions: 0
+        state: merged
+    reviewCount: 1
+    reviewCommentCount: 1
+    commitCount: 4
+    commitAdditions: 88282
+    commitDeletions: 72
+    commitStatsCount: 4
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 61.9
+  sessions: 4
+  sessionHours: 5.8
+  volumeHours: 61.9
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""

@@ -1,0 +1,1163 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-11-20
+  to: 2026-11-20
+stats:
+  totalCommits: 21
+  totalAdditions: 34798
+  totalDeletions: 1316
+  prsOpened: 1
+  prsMerged: 4
+  prsInProgress: 0
+  prsReviewed: 19
+  reviewComments: 19
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 96.7
+dailyCommits:
+  - date: 2026-11-20
+    count: 21
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 21
+    prsOpened: 1
+    prsMerged: 4
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests:
+  - title: Support selective production promotion with immutable app pins
+    body: Promote a single app, a group, or the full suite from immutable validated staging archives. Record each deployed
+      app and route on a protected manifest branch, and restore the exact previous composition after verifying its
+      sources. Mixed releases verify shared Hub, API, routing, and contract compatib...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/282
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - github-automation
+      - platform
+    additions: 16182
+    deletions: 543
+    changedFiles: 15
+    author: myriadas-clees
+    createdAt: 2026-11-20T20:02:39Z
+    updatedAt: 2026-11-21T03:53:56Z
+    closedAt: 2026-11-21T03:53:56Z
+    mergedAt: 2026-11-21T03:53:56Z
+    workCommits:
+      - &a1
+        sha: 209a3b53c3fd4e67749d88a5ec030c66fded865d
+        message: Support selective production promotion with immutable app pins
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/209a3b53c3fd4e67749d88a5ec030c66fded865d
+        authoredAt: 2026-11-20T20:02:12Z
+      - &a17
+        sha: dd94651607f4619ab803f3f0f322a187fa688495
+        message: Merge remote-tracking branch 'origin/main' into t3/production-promotion
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/dd94651607f4619ab803f3f0f322a187fa688495
+        authoredAt: 2026-11-20T22:59:35Z
+    workTimestamps:
+      - 2026-11-20T20:02:12Z
+      - 2026-11-20T22:59:35Z
+    workAdditions: 16182
+    workDeletions: 543
+    workFiles:
+      - .github/workflows/promote-release.yml
+      - bun.lock
+      - compass/README.md
+      - compass/bunfig.toml
+      - compass/functions/PORT-CONTRACT.md
+      - compass/functions/bunfig.toml
+      - compass/functions/local.settings.json.example
+      - compass/functions/package.json
+      - compass/functions/src/company-http.test.ts
+      - compass/functions/src/company-routes.test.ts
+      - compass/functions/src/compass-archive-files.ts
+      - compass/functions/src/compass-archive.test.ts
+      - compass/functions/src/compass-archive.ts
+      - compass/functions/src/compass-audit.test.ts
+      - compass/functions/src/compass-audit.ts
+      - compass/functions/src/compass-bounded-bytes.ts
+      - compass/functions/src/compass-chat-history.test.ts
+      - compass/functions/src/compass-chat-history.ts
+      - compass/functions/src/compass-claude-brief.ts
+      - compass/functions/src/compass-claude-credential-crypto.test.ts
+      - compass/functions/src/compass-claude-credential-crypto.ts
+      - compass/functions/src/compass-claude-credentials.test.ts
+      - compass/functions/src/compass-claude-credentials.ts
+      - compass/functions/src/compass-claude-files.test.ts
+      - compass/functions/src/compass-claude-files.ts
+      - compass/functions/src/compass-claude-integration.test.ts
+      - compass/functions/src/compass-claude-preferences.ts
+      - compass/functions/src/compass-consultation.test.ts
+      - compass/functions/src/compass-consultation.ts
+      - compass/functions/src/compass-conversations.test.ts
+      - compass/functions/src/compass-conversations.ts
+      - compass/functions/src/compass-copilot.ts
+      - compass/functions/src/compass-destruction-audit.test.ts
+      - compass/functions/src/compass-destruction-audit.ts
+      - compass/functions/src/compass-graph-diagnostics.ts
+      - compass/functions/src/compass-mapping-upgrade.test.ts
+      - compass/functions/src/compass-microsoft-deadline.test.ts
+      - compass/functions/src/compass-microsoft.test.ts
+      - compass/functions/src/compass-microsoft.ts
+      - compass/functions/src/compass-openai-credential-crypto.test.ts
+      - compass/functions/src/compass-openai-credential-crypto.ts
+      - compass/functions/src/compass-openai-credentials.test.ts
+      - compass/functions/src/compass-openai-credentials.ts
+      - compass/functions/src/compass-openai-integration.test.ts
+      - compass/functions/src/compass-openai-preferences.ts
+      - compass/functions/src/compass-openai.ts
+      - compass/functions/src/compass-outputs.test.ts
+      - compass/functions/src/compass-outputs.ts
+      - compass/functions/src/compass-scheduled-brief.ts
+      - compass/functions/src/compass-stack-port.test.ts
+      - compass/functions/src/compass-storage-preferences.test.ts
+      - compass/functions/src/compass-subagent.test.ts
+      - compass/functions/src/compass-subagent.ts
+      - compass/functions/src/index.ts
+      - compass/next.config.ts
+      - compass/package.json
+      - compass/src/app/ai-services.css
+      - compass/src/app/api/demo/company/me/route.ts
+      - compass/src/app/ask.css
+      - compass/src/app/globals.css
+      - compass/src/components/answer-markdown.tsx
+      - compass/src/components/ask-compass-workspace.dom.test.tsx
+      - compass/src/components/ask-compass-workspace.test.tsx
+      - compass/src/components/ask-compass-workspace.tsx
+      - compass/src/components/ask/ask-chat-picker.tsx
+      - compass/src/components/ask/ask-chat-rail.tsx
+      - compass/src/components/ask/ask-composer.tsx
+      - compass/src/components/ask/at-command-token.tsx
+      - compass/src/components/ask/composer-model-picker.tsx
+      - compass/src/components/brief-effort-confirm.tsx
+      - compass/src/components/claude-manage-dialog.tsx
+      - compass/src/components/compass-consent.fixture.tsx
+      - compass/src/components/compass-dashboard.tsx
+      - compass/src/components/compass-dom-globals.ts
+      - compass/src/components/compass-provider.tsx
+      - compass/src/components/compass-recovery.dom.test.ts
+      - compass/src/components/compass-recovery.fixture.tsx
+      - compass/src/components/compass-retention.fixture.tsx
+      - compass/src/components/compass-routes.tsx
+      - compass/src/components/compass-stability.dom.test.ts
+      - compass/src/components/compass-stability.fixture.tsx
+      - compass/src/components/copilot-consultation-card.test.tsx
+      - compass/src/components/copilot-consultation-card.tsx
+      - compass/src/components/generated-file-card.test.tsx
+      - compass/src/components/generated-file-card.tsx
+      - compass/src/components/openai-manage-dialog.tsx
+      - compass/src/components/provider-logos.tsx
+      - compass/src/components/settings-workspace.dom.test.tsx
+      - compass/src/components/settings-workspace.tsx
+      - compass/src/components/streaming-markdown.tsx
+      - compass/src/components/use-openai-account.ts
+      - compass/src/lib/ask-turns.ts
+      - compass/src/lib/at-commands.test.ts
+      - compass/src/lib/at-commands.ts
+      - compass/src/lib/chat-pdf.tsx
+      - compass/src/lib/claude-settings.test.ts
+      - compass/src/lib/claude-settings.ts
+      - compass/src/lib/microsoft-reauth.test.ts
+      - compass/src/lib/microsoft-reauth.ts
+      - compass/src/lib/openai-settings.test.ts
+      - compass/src/lib/openai-settings.ts
+      - compass/src/lib/progress-phase.ts
+      - compass/src/lib/swa-session.ts
+      - compass/src/public/integrations/SOURCES.md
+      - compass/test/compliance-preload.ts
+      - crm/package.json
+      - crm/src/app/globals.css
+      - crm/src/lib/insights.ts
+      - crm/tests/ui/insights.test.ts
+      - docs/authorization-roles.md
+      - docs/compliance-api.md
+      - docs/repository-operations.md
+      - docs/staging-and-testing.md
+      - e2e/tests/browser.spec.ts
+      - hub/app/globals.css
+      - hub/app/hub/compliance/page.tsx
+      - hub/components/HubLauncher.tsx
+      - hub/components/HubSettingsPage.tsx
+      - hub/components/admin/AdminPage.tsx
+      - hub/components/compliance/ComplianceEventDrawer.test.tsx
+      - hub/components/compliance/ComplianceEventDrawer.tsx
+      - hub/components/compliance/ComplianceEventsTable.tsx
+      - hub/components/compliance/ComplianceExportDialog.tsx
+      - hub/components/compliance/ComplianceExportJobs.test.tsx
+      - hub/components/compliance/ComplianceExportJobs.tsx
+      - hub/components/compliance/ComplianceFiltersForm.tsx
+      - hub/components/compliance/ComplianceLog.tsx
+      - hub/components/compliance/CompliancePage.tsx
+      - hub/components/compliance/ComplianceSummaryRow.tsx
+      - hub/functions/package.json
+      - hub/functions/src/compliance-export-jobs.test.ts
+      - hub/functions/src/compliance-export-jobs.ts
+      - hub/functions/src/compliance-export-request.ts
+      - hub/functions/src/compliance-export-timer.test.ts
+      - hub/functions/src/compliance-export-worker.ts
+      - hub/functions/src/compliance-export.test.ts
+      - hub/functions/src/compliance.test.ts
+      - hub/functions/src/compliance.ts
+      - hub/functions/src/index.ts
+      - hub/lib/apps.test.ts
+      - hub/lib/apps.ts
+      - hub/lib/auth.test.ts
+      - hub/lib/compliance-api.test.ts
+      - hub/lib/compliance-api.ts
+      - hub/lib/compliance-export-jobs.test.ts
+      - hub/lib/navigation.test.ts
+      - hub/lib/navigation.ts
+      - hub/staticwebapp.config.json
+      - package.json
+      - packages/audit/src/csv.test.ts
+      - packages/audit/src/csv.ts
+      - packages/audit/src/index.test.ts
+      - packages/audit/src/index.ts
+      - packages/auth/src/compliance.test.ts
+      - packages/auth/src/graph.test.ts
+      - packages/auth/src/graph.ts
+      - packages/auth/src/index.ts
+      - packages/brand/src/styles.css
+      - packages/contracts/src/access.ts
+      - packages/contracts/src/audit.ts
+      - packages/contracts/src/compliance.test.ts
+      - packages/contracts/src/index.ts
+      - packages/db/package.json
+      - packages/db/src/compliance-cosmos.test.ts
+      - packages/db/src/compliance-export-artifacts.ts
+      - packages/db/src/compliance-export-cosmos.test.ts
+      - packages/db/src/compliance-export.test.ts
+      - packages/db/src/compliance-export.ts
+      - packages/db/src/compliance.test.ts
+      - packages/db/src/compliance.ts
+      - packages/db/src/graph-audit.test.ts
+      - packages/db/src/graph.ts
+      - packages/ui/src/navigation/app-nav.tsx
+      - packages/ui/src/navigation/app-shell.test.tsx
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/navigation/mode-storage.ts
+      - packages/ui/src/shell-bootstrap.test.ts
+      - packages/ui/src/shell-bootstrap.ts
+      - packages/ui/src/user-menu.test.tsx
+      - packages/ui/src/user-menu.tsx
+      - proforma/src/app/globals.css
+      - scripts/affected-apps.ts
+      - scripts/compose-production-release.test.ts
+      - scripts/compose-production-release.ts
+      - scripts/deployment-safety.test.ts
+      - scripts/github/configure-repository.test.ts
+      - scripts/github/configure-repository.ts
+      - scripts/package-hub-release.sh
+      - scripts/prepare-production-manifest.sh
+      - scripts/production-manifest-history.test.ts
+      - scripts/tooling.test.ts
+      - scripts/verify-promotion-source.sh
+  - title: "feat(compass): port North Star workflows and archives"
+    body: >-
+      ## Why
+
+
+      Bring the North Star priorities into Compass to expand advisor workflows while preserving Compass’s existing
+      Microsoft 365 authorization and chat behavior.
+
+
+      ## What changed
+
+
+      - Add Claude model and effort selection, advisor preferences, and scheduled briefs.
+
+      - Generate Word, Excel, and PowerP...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - platform
+      - "app: compass"
+    additions: 0
+    deletions: 0
+    changedFiles: 83
+    author: myriadas-clees
+    createdAt: 2026-11-09T18:53:19Z
+    updatedAt: 2026-11-20T22:57:16Z
+    closedAt: 2026-11-20T22:57:15Z
+    mergedAt: 2026-11-20T22:57:15Z
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "feat(compass): add collapsible suite navigation and unify chat history"
+    body: >-
+      The suite sidebar previously reserved its full width throughout navigation, and Compass Ask added a second
+      navigation column for chat history.
+
+
+      This change adds a persistent 56px desktop rail with hover and keyboard preview, a stationary toolbar,
+      reduced-motion support, and a compact account footer....
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/279
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - "app: hub"
+      - "app: proforma"
+      - platform
+      - "app: compass"
+    additions: 15023
+    deletions: 312
+    changedFiles: 24
+    author: myriadas-clees
+    createdAt: 2026-11-17T22:13:01Z
+    updatedAt: 2026-11-20T22:57:20Z
+    closedAt: 2026-11-20T22:57:19Z
+    mergedAt: 2026-11-20T22:57:19Z
+    workCommits:
+      - &a2
+        sha: 9741edd1b0419d19a3c031acd03d6cb027e7517c
+        message: "feat(compass): open top-bar chat history on demand"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9741edd1b0419d19a3c031acd03d6cb027e7517c
+        authoredAt: 2026-11-20T20:04:26Z
+      - &a6
+        sha: 2e8417b2a97941c004524d92fb0f95f18112b85e
+        message: Merge validated compliance layer into sidebar feature stack
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2e8417b2a97941c004524d92fb0f95f18112b85e
+        authoredAt: 2026-11-20T20:14:00Z
+      - &a8
+        sha: 9903e29f928fa820ea651cf0b2bc0f9c4934bc86
+        message: Merge commit 'cfbf60bda46f54fcff8dda8382ea8ee71b6eae41' into feat/collapsible-sidebar
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9903e29f928fa820ea651cf0b2bc0f9c4934bc86
+        authoredAt: 2026-11-20T20:14:36Z
+      - &a12
+        sha: 705693fa5e2170de26dbfe922226f813d2e0d74b
+        message: Integrate compliance account-binding checks
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/705693fa5e2170de26dbfe922226f813d2e0d74b
+        authoredAt: 2026-11-20T20:30:08Z
+      - &a14
+        sha: f0b7d530fd3cc2bdbb1d58890c23d17c473e79bb
+        message: Integrate verified partial Graph deadline fix
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f0b7d530fd3cc2bdbb1d58890c23d17c473e79bb
+        authoredAt: 2026-11-20T20:33:39Z
+      - &a15
+        sha: 9fc3d5a50d4a7e248de38793932a1a296c2da60f
+        message: "Integrate validated post-audit account binding from #278"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9fc3d5a50d4a7e248de38793932a1a296c2da60f
+        authoredAt: 2026-11-20T22:42:19Z
+      - &a16
+        sha: 157fe5eaa5b87c249c0e7a4391c063bbac6c8b9e
+        message: Use the shared selected-row treatment in the Compass chat picker
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/157fe5eaa5b87c249c0e7a4391c063bbac6c8b9e
+        authoredAt: 2026-11-20T22:42:19Z
+    workTimestamps:
+      - 2026-11-20T20:04:26Z
+      - 2026-11-20T20:14:00Z
+      - 2026-11-20T20:14:36Z
+      - 2026-11-20T20:30:08Z
+      - 2026-11-20T20:33:39Z
+      - 2026-11-20T22:42:19Z
+      - 2026-11-20T22:42:19Z
+    workAdditions: 15023
+    workDeletions: 312
+    workFiles:
+      - bun.lock
+      - compass/README.md
+      - compass/bunfig.toml
+      - compass/functions/PORT-CONTRACT.md
+      - compass/functions/bunfig.toml
+      - compass/functions/local.settings.json.example
+      - compass/functions/package.json
+      - compass/functions/src/company-http.test.ts
+      - compass/functions/src/company-routes.test.ts
+      - compass/functions/src/compass-archive-files.ts
+      - compass/functions/src/compass-archive.test.ts
+      - compass/functions/src/compass-archive.ts
+      - compass/functions/src/compass-audit.test.ts
+      - compass/functions/src/compass-audit.ts
+      - compass/functions/src/compass-bounded-bytes.ts
+      - compass/functions/src/compass-chat-history.test.ts
+      - compass/functions/src/compass-chat-history.ts
+      - compass/functions/src/compass-claude-brief.ts
+      - compass/functions/src/compass-claude-credential-crypto.test.ts
+      - compass/functions/src/compass-claude-credential-crypto.ts
+      - compass/functions/src/compass-claude-credentials.test.ts
+      - compass/functions/src/compass-claude-credentials.ts
+      - compass/functions/src/compass-claude-files.test.ts
+      - compass/functions/src/compass-claude-files.ts
+      - compass/functions/src/compass-claude-integration.test.ts
+      - compass/functions/src/compass-claude-preferences.ts
+      - compass/functions/src/compass-consultation.test.ts
+      - compass/functions/src/compass-consultation.ts
+      - compass/functions/src/compass-conversations.test.ts
+      - compass/functions/src/compass-conversations.ts
+      - compass/functions/src/compass-copilot.ts
+      - compass/functions/src/compass-destruction-audit.test.ts
+      - compass/functions/src/compass-destruction-audit.ts
+      - compass/functions/src/compass-graph-diagnostics.ts
+      - compass/functions/src/compass-mapping-upgrade.test.ts
+      - compass/functions/src/compass-microsoft-deadline.test.ts
+      - compass/functions/src/compass-microsoft.test.ts
+      - compass/functions/src/compass-microsoft.ts
+      - compass/functions/src/compass-openai-credential-crypto.test.ts
+      - compass/functions/src/compass-openai-credential-crypto.ts
+      - compass/functions/src/compass-openai-credentials.test.ts
+      - compass/functions/src/compass-openai-credentials.ts
+      - compass/functions/src/compass-openai-integration.test.ts
+      - compass/functions/src/compass-openai-preferences.ts
+      - compass/functions/src/compass-openai.ts
+      - compass/functions/src/compass-outputs.test.ts
+      - compass/functions/src/compass-outputs.ts
+      - compass/functions/src/compass-scheduled-brief.ts
+      - compass/functions/src/compass-stack-port.test.ts
+      - compass/functions/src/compass-storage-preferences.test.ts
+      - compass/functions/src/compass-subagent.test.ts
+      - compass/functions/src/compass-subagent.ts
+      - compass/functions/src/index.ts
+      - compass/src/app/ai-services.css
+      - compass/src/app/ask.css
+      - compass/src/app/globals.css
+      - compass/src/components/answer-markdown.tsx
+      - compass/src/components/ask-compass-workspace.dom.test.tsx
+      - compass/src/components/ask-compass-workspace.test.tsx
+      - compass/src/components/ask-compass-workspace.tsx
+      - compass/src/components/ask/ask-chat-picker.tsx
+      - compass/src/components/ask/ask-chat-rail.tsx
+      - compass/src/components/ask/ask-composer.tsx
+      - compass/src/components/ask/at-command-token.tsx
+      - compass/src/components/ask/composer-model-picker.tsx
+      - compass/src/components/brief-effort-confirm.tsx
+      - compass/src/components/claude-manage-dialog.tsx
+      - compass/src/components/compass-consent.fixture.tsx
+      - compass/src/components/compass-dashboard.tsx
+      - compass/src/components/compass-dom-globals.ts
+      - compass/src/components/compass-provider.tsx
+      - compass/src/components/compass-recovery.dom.test.ts
+      - compass/src/components/compass-recovery.fixture.tsx
+      - compass/src/components/compass-retention.fixture.tsx
+      - compass/src/components/compass-routes.tsx
+      - compass/src/components/compass-stability.dom.test.ts
+      - compass/src/components/compass-stability.fixture.tsx
+      - compass/src/components/copilot-consultation-card.test.tsx
+      - compass/src/components/copilot-consultation-card.tsx
+      - compass/src/components/generated-file-card.test.tsx
+      - compass/src/components/generated-file-card.tsx
+      - compass/src/components/openai-manage-dialog.tsx
+      - compass/src/components/provider-logos.tsx
+      - compass/src/components/settings-workspace.dom.test.tsx
+      - compass/src/components/settings-workspace.tsx
+      - compass/src/components/streaming-markdown.tsx
+      - compass/src/components/use-openai-account.ts
+      - compass/src/lib/ask-turns.ts
+      - compass/src/lib/at-commands.test.ts
+      - compass/src/lib/at-commands.ts
+      - compass/src/lib/chat-pdf.tsx
+      - compass/src/lib/claude-settings.test.ts
+      - compass/src/lib/claude-settings.ts
+      - compass/src/lib/microsoft-reauth.test.ts
+      - compass/src/lib/microsoft-reauth.ts
+      - compass/src/lib/openai-settings.test.ts
+      - compass/src/lib/openai-settings.ts
+      - compass/src/lib/progress-phase.ts
+      - compass/src/public/integrations/SOURCES.md
+      - compass/test/compliance-preload.ts
+      - crm/package.json
+      - crm/src/lib/insights.ts
+      - crm/tests/ui/insights.test.ts
+      - docs/authorization-roles.md
+      - docs/compliance-api.md
+      - hub/app/hub/compliance/page.tsx
+      - hub/components/HubLauncher.tsx
+      - hub/components/HubSettingsPage.tsx
+      - hub/components/admin/AdminPage.tsx
+      - hub/components/compliance/ComplianceEventDrawer.test.tsx
+      - hub/components/compliance/ComplianceEventDrawer.tsx
+      - hub/components/compliance/ComplianceEventsTable.tsx
+      - hub/components/compliance/ComplianceExportDialog.tsx
+      - hub/components/compliance/ComplianceExportJobs.test.tsx
+      - hub/components/compliance/ComplianceExportJobs.tsx
+      - hub/components/compliance/ComplianceFiltersForm.tsx
+      - hub/components/compliance/ComplianceLog.tsx
+      - hub/components/compliance/CompliancePage.tsx
+      - hub/components/compliance/ComplianceSummaryRow.tsx
+      - hub/functions/package.json
+      - hub/functions/src/compliance-export-jobs.test.ts
+      - hub/functions/src/compliance-export-jobs.ts
+      - hub/functions/src/compliance-export-request.ts
+      - hub/functions/src/compliance-export-timer.test.ts
+      - hub/functions/src/compliance-export-worker.ts
+      - hub/functions/src/compliance-export.test.ts
+      - hub/functions/src/compliance.test.ts
+      - hub/functions/src/compliance.ts
+      - hub/functions/src/index.ts
+      - hub/lib/apps.test.ts
+      - hub/lib/apps.ts
+      - hub/lib/auth.test.ts
+      - hub/lib/compliance-api.test.ts
+      - hub/lib/compliance-api.ts
+      - hub/lib/compliance-export-jobs.test.ts
+      - hub/lib/navigation.test.ts
+      - hub/lib/navigation.ts
+      - hub/staticwebapp.config.json
+      - packages/audit/src/csv.test.ts
+      - packages/audit/src/csv.ts
+      - packages/audit/src/index.test.ts
+      - packages/audit/src/index.ts
+      - packages/auth/src/compliance.test.ts
+      - packages/auth/src/graph.test.ts
+      - packages/auth/src/graph.ts
+      - packages/auth/src/index.ts
+      - packages/contracts/src/access.ts
+      - packages/contracts/src/audit.ts
+      - packages/contracts/src/compliance.test.ts
+      - packages/contracts/src/index.ts
+      - packages/db/package.json
+      - packages/db/src/compliance-cosmos.test.ts
+      - packages/db/src/compliance-export-artifacts.ts
+      - packages/db/src/compliance-export-cosmos.test.ts
+      - packages/db/src/compliance-export.test.ts
+      - packages/db/src/compliance-export.ts
+      - packages/db/src/compliance.test.ts
+      - packages/db/src/compliance.ts
+      - packages/db/src/graph-audit.test.ts
+      - packages/db/src/graph.ts
+      - packages/ui/src/navigation/app-shell.tsx
+      - scripts/tooling.test.ts
+  - title: "feat(compliance): add suite compliance audit trail with Hub review and export"
+    body: >-
+      ## Why
+
+
+      Compliance officers need an audit trail of Compass activity that they can review and export, similar to the OpenAI
+      and Anthropic enterprise compliance APIs. This PR is stacked on #249: its Compass content archive (7-year minimum)
+      is the content store, and this feed is the searchable metadata...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/278
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - "app: hub"
+      - platform
+      - "app: compass"
+    additions: 3593
+    deletions: 461
+    changedFiles: 91
+    author: myriadas-clees
+    createdAt: 2026-11-16T21:42:23Z
+    updatedAt: 2026-11-20T22:57:18Z
+    closedAt: 2026-11-20T22:57:17Z
+    mergedAt: 2026-11-20T22:57:17Z
+    workCommits:
+      - &a3
+        sha: e329f7014ee2a5b9520832e429970ee58e5e1b28
+        message: "feat(compliance): add company-scoped officer workflows and durable exports"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e329f7014ee2a5b9520832e429970ee58e5e1b28
+        authoredAt: 2026-11-20T20:08:57Z
+      - &a4
+        sha: 7451ac959ba253094b73c9519d3552e6bc2ae3c7
+        message: Merge remote-tracking branch 'origin/feat/port-north-star-features' into clees/compliance-api
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7451ac959ba253094b73c9519d3552e6bc2ae3c7
+        authoredAt: 2026-11-20T20:08:57Z
+      - &a5
+        sha: 49f5e09e9983ba4217786a67baf8e840adf59208
+        message: "fix(compliance): discard uncheckpointed blocks after a lost claim"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/49f5e09e9983ba4217786a67baf8e840adf59208
+        authoredAt: 2026-11-20T20:11:09Z
+      - &a7
+        sha: cfbf60bda46f54fcff8dda8382ea8ee71b6eae41
+        message: "fix(hub): accept isolated export worker environment settings"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/cfbf60bda46f54fcff8dda8382ea8ee71b6eae41
+        authoredAt: 2026-11-20T20:14:00Z
+      - &a9
+        sha: 3f9f2a3a0060e8dfbec3ba9732130e805b1e0e05
+        message: "test(compass): allow the isolated fixture to finish within its timeout"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3f9f2a3a0060e8dfbec3ba9732130e805b1e0e05
+        authoredAt: 2026-11-20T20:20:36Z
+      - &a10
+        sha: 4fa884fda08f950350bfadbf0f4595f2c13e0c1f
+        message: "fix(compass): recheck Microsoft binding after file-list audit"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4fa884fda08f950350bfadbf0f4595f2c13e0c1f
+        authoredAt: 2026-11-20T20:25:35Z
+      - &a11
+        sha: 02dbcfc813847267b94b9fb2c847989d6718afe6
+        message: "fix(compass): verify partial Graph responses with a fresh storage deadline"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/02dbcfc813847267b94b9fb2c847989d6718afe6
+        authoredAt: 2026-11-20T20:29:25Z
+      - &a13
+        sha: 7d706bc99f1eb6a64212507457f3026a30133ab5
+        message: "fix(compass): revalidate bound account after auditing answer completion"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7d706bc99f1eb6a64212507457f3026a30133ab5
+        authoredAt: 2026-11-20T20:32:54Z
+    workTimestamps:
+      - 2026-11-20T20:08:57Z
+      - 2026-11-20T20:08:57Z
+      - 2026-11-20T20:11:09Z
+      - 2026-11-20T20:14:00Z
+      - 2026-11-20T20:20:36Z
+      - 2026-11-20T20:25:35Z
+      - 2026-11-20T20:29:25Z
+      - 2026-11-20T20:32:54Z
+    workAdditions: 3593
+    workDeletions: 461
+    workFiles:
+      - bun.lock
+      - compass/functions/src/compass-microsoft.test.ts
+      - compass/functions/src/compass-microsoft.ts
+      - compass/functions/src/compass-openai-integration.test.ts
+      - compass/functions/src/compass-stack-port.test.ts
+      - compass/src/components/compass-dashboard.tsx
+      - compass/src/components/compass-provider.tsx
+      - compass/src/components/compass-stability.dom.test.ts
+      - compass/src/components/compass-stability.fixture.tsx
+      - compass/test/compliance-preload.ts
+      - docs/compliance-api.md
+      - hub/components/compliance/ComplianceEventDrawer.test.tsx
+      - hub/components/compliance/ComplianceEventDrawer.tsx
+      - hub/components/compliance/ComplianceEventsTable.tsx
+      - hub/components/compliance/ComplianceExportDialog.tsx
+      - hub/components/compliance/ComplianceExportJobs.test.tsx
+      - hub/components/compliance/ComplianceExportJobs.tsx
+      - hub/components/compliance/ComplianceFiltersForm.tsx
+      - hub/components/compliance/ComplianceLog.tsx
+      - hub/components/compliance/CompliancePage.tsx
+      - hub/components/compliance/ComplianceSummaryRow.tsx
+      - hub/functions/src/compliance-export-jobs.test.ts
+      - hub/functions/src/compliance-export-jobs.ts
+      - hub/functions/src/compliance-export-request.ts
+      - hub/functions/src/compliance-export-timer.test.ts
+      - hub/functions/src/compliance-export-worker.ts
+      - hub/functions/src/compliance-export.test.ts
+      - hub/functions/src/compliance.test.ts
+      - hub/functions/src/compliance.ts
+      - hub/functions/src/index.ts
+      - hub/lib/compliance-api.test.ts
+      - hub/lib/compliance-api.ts
+      - hub/lib/compliance-export-jobs.test.ts
+      - packages/audit/src/csv.test.ts
+      - packages/audit/src/csv.ts
+      - packages/audit/src/index.test.ts
+      - packages/audit/src/index.ts
+      - packages/auth/src/compliance.test.ts
+      - packages/auth/src/index.ts
+      - packages/contracts/src/audit.ts
+      - packages/contracts/src/compliance.test.ts
+      - packages/db/package.json
+      - packages/db/src/compliance-export-artifacts.ts
+      - packages/db/src/compliance-export-cosmos.test.ts
+      - packages/db/src/compliance-export.test.ts
+      - packages/db/src/compliance-export.ts
+      - packages/db/src/compliance.test.ts
+      - packages/db/src/compliance.ts
+prsInProgress: []
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - Support selective production promotion with immutable app pins
+      - "feat(compass): open top-bar chat history on demand"
+      - "feat(compliance): add company-scoped officer workflows and durable exports"
+      - Merge remote-tracking branch 'origin/feat/port-north-star-features' into clees/compliance-api
+      - "fix(compliance): discard uncheckpointed blocks after a lost claim"
+      - Merge validated compliance layer into sidebar feature stack
+      - "fix(hub): accept isolated export worker environment settings"
+      - Merge commit 'cfbf60bda46f54fcff8dda8382ea8ee71b6eae41' into feat/collapsible-sidebar
+      - "test(compass): allow the isolated fixture to finish within its timeout"
+      - "fix(compass): recheck Microsoft binding after file-list audit"
+      - "fix(compass): verify partial Graph responses with a fresh storage deadline"
+      - Integrate compliance account-binding checks
+      - "fix(compass): revalidate bound account after auditing answer completion"
+      - Integrate verified partial Graph deadline fix
+      - "Integrate validated post-audit account binding from #278"
+      - Use the shared selected-row treatment in the Compass chat picker
+      - "feat(compass): port North Star workflows and archives (#249)"
+      - "feat(compass): add collapsible suite navigation and unify chat history (#279)"
+      - "feat(compliance): add suite compliance audit trail with Hub review and export (#278)"
+      - Merge remote-tracking branch 'origin/main' into t3/production-promotion
+      - Support selective production promotion with immutable app pins (#282)
+    commits:
+      - *a1
+      - *a2
+      - *a3
+      - *a4
+      - *a5
+      - *a6
+      - *a7
+      - *a8
+      - *a9
+      - *a10
+      - *a11
+      - *a12
+      - *a13
+      - *a14
+      - *a15
+      - *a16
+      - sha: c91e2f0012cc48f716097b2bf72bf388aaf694c8
+        message: "feat(compass): port North Star workflows and archives (#249)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c91e2f0012cc48f716097b2bf72bf388aaf694c8
+        authoredAt: 2026-11-20T22:57:13Z
+        additions: 7848
+        deletions: 156
+        filesChanged: 83
+      - sha: 6f42d7119803a3675d83f1a254d0eac7ca562b76
+        message: "feat(compass): add collapsible suite navigation and unify chat history (#279)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6f42d7119803a3675d83f1a254d0eac7ca562b76
+        authoredAt: 2026-11-20T22:57:14Z
+        additions: 1077
+        deletions: 194
+        filesChanged: 24
+      - sha: 8175c4620e41ee38705d638a0ab41d4dc72aed9a
+        message: "feat(compliance): add suite compliance audit trail with Hub review and export (#278)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8175c4620e41ee38705d638a0ab41d4dc72aed9a
+        authoredAt: 2026-11-20T22:57:14Z
+        additions: 6699
+        deletions: 117
+        filesChanged: 91
+      - *a17
+      - sha: 2ea96ee6457f0ce9eba0525ee7a8f03d8d0f911b
+        message: Support selective production promotion with immutable app pins (#282)
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2ea96ee6457f0ce9eba0525ee7a8f03d8d0f911b
+        authoredAt: 2026-11-21T03:53:55Z
+        additions: 570
+        deletions: 88
+        filesChanged: 15
+releases: []
+externalContributions: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 279
+    prTitle: "feat(compass): add collapsible suite navigation and unify chat history"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/279
+    state: commented
+    submittedAt: 2026-11-20T22:42:39Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 278
+    prTitle: "feat(compliance): add suite compliance audit trail with Hub review and export"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/278
+    state: commented
+    submittedAt: 2026-11-20T20:26:08Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 278
+    prTitle: "feat(compliance): add suite compliance audit trail with Hub review and export"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/278
+    state: commented
+    submittedAt: 2026-11-20T20:33:09Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prTitle: "feat(compass): port North Star workflows and archives"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    state: commented
+    submittedAt: 2026-11-20T19:59:49Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prTitle: "feat(compass): port North Star workflows and archives"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    state: commented
+    submittedAt: 2026-11-20T19:59:59Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prTitle: "feat(compass): port North Star workflows and archives"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    state: commented
+    submittedAt: 2026-11-20T20:00:04Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prTitle: "feat(compass): port North Star workflows and archives"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    state: commented
+    submittedAt: 2026-11-20T20:00:11Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prTitle: "feat(compass): port North Star workflows and archives"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    state: commented
+    submittedAt: 2026-11-20T20:00:17Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prTitle: "feat(compass): port North Star workflows and archives"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    state: commented
+    submittedAt: 2026-11-20T20:00:24Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prTitle: "feat(compass): port North Star workflows and archives"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    state: commented
+    submittedAt: 2026-11-20T20:00:31Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prTitle: "feat(compass): port North Star workflows and archives"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    state: commented
+    submittedAt: 2026-11-20T20:00:36Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prTitle: "feat(compass): port North Star workflows and archives"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    state: commented
+    submittedAt: 2026-11-20T20:00:40Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prTitle: "feat(compass): port North Star workflows and archives"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    state: commented
+    submittedAt: 2026-11-20T20:00:54Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prTitle: "feat(compass): port North Star workflows and archives"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    state: commented
+    submittedAt: 2026-11-20T20:01:00Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prTitle: "feat(compass): port North Star workflows and archives"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    state: commented
+    submittedAt: 2026-11-20T20:01:06Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prTitle: "feat(compass): port North Star workflows and archives"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    state: commented
+    submittedAt: 2026-11-20T20:01:11Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prTitle: "feat(compass): port North Star workflows and archives"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    state: commented
+    submittedAt: 2026-11-20T20:01:18Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prTitle: "feat(compass): port North Star workflows and archives"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    state: commented
+    submittedAt: 2026-11-20T20:01:23Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prTitle: "feat(compass): port North Star workflows and archives"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    state: commented
+    submittedAt: 2026-11-20T20:01:29Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 279
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/279
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/279#discussion_r4648546367
+    body: "[from Codex]: Fixed in 157fe5ea. Removed the picker’s leading stripe and duplicate font-weight rule. The selected
+      row inherits the shared neutral surface and medium weight. Verified the stripe is absent at 1280px and 390px with
+      a selected chat, and checked keyboard selection, rename focus restoratio..."
+    path: compass/src/app/ask.css
+    createdAt: 2026-11-20T22:42:39Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 278
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/278
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/278#discussion_r4647299530
+    body: "[from Codex]: Fixed in 4fa884fd. Rechecked the captured connection key and generation after the audit write.
+      Regression coverage exercises account replacement and disconnect during append: both return 401 without mail or
+      files. The unchanged-account case and Functions typecheck pass."
+    path: compass/functions/src/compass-microsoft.ts
+    createdAt: 2026-11-20T20:26:08Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 278
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/278
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/278#discussion_r4647371255
+    body: "[from Codex]: Fixed in 7d706bc9. All terminal JSON and SSE publication paths now verify the captured Microsoft
+      connection and generation after answer auditing, including provider and scheduled/cached brief paths. Before the
+      fix, the streamed disconnect and JSON account-replacement tests failed. Now ..."
+    path: compass/functions/src/compass-microsoft.ts
+    createdAt: 2026-11-20T20:33:09Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249#discussion_r4647059230
+    body: "[from Codex]: Verified on 1404ae07. resolveCopilotConversationId removes legacy synthetic Claude mappings before
+      Copilot reuse."
+    path: compass/functions/src/compass-microsoft.ts
+    createdAt: 2026-11-20T19:59:49Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249#discussion_r4647060676
+    body: "[from Codex]: Verified on 1404ae07. Interactive Claude chat receives the original timezone. The integration test
+      covers America/Los_Angeles."
+    path: compass/functions/src/compass-microsoft.ts
+    createdAt: 2026-11-20T19:59:58Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249#discussion_r4647061393
+    body: "[from Codex]: Verified on 1404ae07. GeneratedOutputStatus receives the human-readable atCommandById label."
+    path: compass/src/components/ask-compass-workspace.tsx
+    createdAt: 2026-11-20T20:00:04Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249#discussion_r4647062473
+    body: "[from Codex]: Verified on 1404ae07. OnOff radio groups reference their SettingsRow labels and model checkboxes
+      carry individual labels."
+    path: compass/src/components/claude-settings.tsx
+    createdAt: 2026-11-20T20:00:11Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249#discussion_r4647063356
+    body: "[from Codex]: Verified on 1404ae07. Saved-answer retries restore the original model (719cb38e)."
+    path: compass/src/components/compass-provider.tsx
+    createdAt: 2026-11-20T20:00:17Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249#discussion_r4647064528
+    body: "[from Codex]: Verified on 1404ae07. Intermediate consultation checkpoints carry pending: true."
+    path: compass/functions/src/compass-microsoft.ts
+    createdAt: 2026-11-20T20:00:24Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249#discussion_r4647065368
+    body: "[from Codex]: Verified on 1404ae07. openAiText coalesces streamed deltas before remote verification and retains
+      its final credential check."
+    path: compass/functions/src/compass-openai.ts
+    createdAt: 2026-11-20T20:00:31Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249#discussion_r4647065992
+    body: "[from Codex]: Verified on 1404ae07. 719cb38e coalesces deltas before remote verification; terminal verification
+      still runs."
+    path: compass/functions/src/compass-microsoft.ts
+    createdAt: 2026-11-20T20:00:36Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249#discussion_r4647066695
+    body: "[from Codex]: Verified on 1404ae07. 719cb38e removed the obsolete OpenAI routing statement."
+    path: compass/README.md
+    createdAt: 2026-11-20T20:00:40Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249#discussion_r4647068794
+    body: "[from Codex]: Verified on 1404ae07. The Claude credential parser handles string error and nested error.message."
+    path: compass/src/lib/claude-settings.ts
+    createdAt: 2026-11-20T20:00:54Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249#discussion_r4647069622
+    body: "[from Codex]: Verified on 1404ae07. The OpenAI credential parser handles string error and nested error.message."
+    path: compass/src/lib/openai-settings.ts
+    createdAt: 2026-11-20T20:01:00Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249#discussion_r4647070845
+    body: "[from Codex]: Verified on 1404ae07. f706db44 preserves the original connection namespace through archival and
+      final publication."
+    path: compass/functions/src/compass-microsoft.ts
+    createdAt: 2026-11-20T20:01:06Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249#discussion_r4647071908
+    body: "[from Codex]: Verified on 1404ae07. 1404ae07 opens provider-prepared briefs without Copilot consent; the
+      stability regression passed."
+    path: compass/src/components/compass-dashboard.tsx
+    createdAt: 2026-11-20T20:01:11Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249#discussion_r4647072858
+    body: "[from Codex]: Verified on 1404ae07. 1404ae07 restores saved briefs before provider-readiness gates; the stability
+      regression passed."
+    path: compass/src/components/compass-provider.tsx
+    createdAt: 2026-11-20T20:01:17Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249#discussion_r4647073648
+    body: "[from Codex]: Verified on 1404ae07. ccf027e8 handles asset imports in the isolated fixtures. All 67 stability
+      scenarios passed."
+    path: compass/src/components/compass-stability.dom.test.ts
+    createdAt: 2026-11-20T20:01:23Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 249
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249#discussion_r4647074658
+    body: "[from Codex]: Verified on 1404ae07. 6ff28f07 and subsequent fixes revalidate the original credential after
+      archival before publication."
+    path: compass/functions/src/compass-microsoft.ts
+    createdAt: 2026-11-20T20:01:29Z
+aiReviews:
+  codex:
+    prsReviewed: 2
+    comments: 3
+    reviews: 3
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 2
+  comments: 3
+  reviews: 3
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-11-20T20:02:12Z
+    - 2026-11-20T20:04:26Z
+    - 2026-11-20T20:08:57Z
+    - 2026-11-20T20:08:57Z
+    - 2026-11-20T20:11:09Z
+    - 2026-11-20T20:14:00Z
+    - 2026-11-20T20:14:00Z
+    - 2026-11-20T20:14:36Z
+    - 2026-11-20T20:20:36Z
+    - 2026-11-20T20:25:35Z
+    - 2026-11-20T20:29:25Z
+    - 2026-11-20T20:30:08Z
+    - 2026-11-20T20:32:54Z
+    - 2026-11-20T20:33:39Z
+    - 2026-11-20T22:42:19Z
+    - 2026-11-20T22:42:19Z
+    - 2026-11-20T22:57:13Z
+    - 2026-11-20T22:57:14Z
+    - 2026-11-20T22:57:14Z
+    - 2026-11-20T22:59:35Z
+    - 2026-11-21T03:53:55Z
+    - 2026-11-20T20:02:39Z
+    - 2026-11-21T03:53:56Z
+    - 2026-11-20T20:02:12Z
+    - 2026-11-20T22:59:35Z
+    - 2026-11-20T22:57:15Z
+    - 2026-11-20T22:57:19Z
+    - 2026-11-20T20:04:26Z
+    - 2026-11-20T20:14:00Z
+    - 2026-11-20T20:14:36Z
+    - 2026-11-20T20:30:08Z
+    - 2026-11-20T20:33:39Z
+    - 2026-11-20T22:42:19Z
+    - 2026-11-20T22:42:19Z
+    - 2026-11-20T22:57:17Z
+    - 2026-11-20T20:08:57Z
+    - 2026-11-20T20:08:57Z
+    - 2026-11-20T20:11:09Z
+    - 2026-11-20T20:14:00Z
+    - 2026-11-20T20:20:36Z
+    - 2026-11-20T20:25:35Z
+    - 2026-11-20T20:29:25Z
+    - 2026-11-20T20:32:54Z
+    - 2026-11-20T22:42:39Z
+    - 2026-11-20T20:26:08Z
+    - 2026-11-20T20:33:09Z
+    - 2026-11-20T19:59:49Z
+    - 2026-11-20T19:59:59Z
+    - 2026-11-20T20:00:04Z
+    - 2026-11-20T20:00:11Z
+    - 2026-11-20T20:00:17Z
+    - 2026-11-20T20:00:24Z
+    - 2026-11-20T20:00:31Z
+    - 2026-11-20T20:00:36Z
+    - 2026-11-20T20:00:40Z
+    - 2026-11-20T20:00:54Z
+    - 2026-11-20T20:01:00Z
+    - 2026-11-20T20:01:06Z
+    - 2026-11-20T20:01:11Z
+    - 2026-11-20T20:01:18Z
+    - 2026-11-20T20:01:23Z
+    - 2026-11-20T20:01:29Z
+    - 2026-11-20T22:42:39Z
+    - 2026-11-20T20:26:08Z
+    - 2026-11-20T20:33:09Z
+    - 2026-11-20T19:59:49Z
+    - 2026-11-20T19:59:58Z
+    - 2026-11-20T20:00:04Z
+    - 2026-11-20T20:00:11Z
+    - 2026-11-20T20:00:17Z
+    - 2026-11-20T20:00:24Z
+    - 2026-11-20T20:00:31Z
+    - 2026-11-20T20:00:36Z
+    - 2026-11-20T20:00:40Z
+    - 2026-11-20T20:00:54Z
+    - 2026-11-20T20:01:00Z
+    - 2026-11-20T20:01:06Z
+    - 2026-11-20T20:01:11Z
+    - 2026-11-20T20:01:17Z
+    - 2026-11-20T20:01:23Z
+    - 2026-11-20T20:01:29Z
+  volume:
+    pullRequests:
+      - additions: 16182
+        deletions: 543
+        state: merged
+        dailyWork: true
+        filesChanged: 192
+        testFilesChanged: 65
+        commitCount: 2
+      - additions: 15023
+        deletions: 312
+        state: merged
+        dailyWork: true
+        filesChanged: 162
+        testFilesChanged: 57
+        commitCount: 7
+      - additions: 3593
+        deletions: 461
+        state: merged
+        dailyWork: true
+        filesChanged: 48
+        testFilesChanged: 20
+        commitCount: 8
+      - additions: 0
+        deletions: 0
+        state: merged
+    reviewCount: 19
+    reviewCommentCount: 19
+    commitCount: 4
+    commitAdditions: 16194
+    commitDeletions: 555
+    commitStatsCount: 4
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 96.7
+  sessions: 3
+  sessionHours: 1.6
+  volumeHours: 96.7
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""

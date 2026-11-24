@@ -1,0 +1,1223 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-10-26
+  to: 2026-10-26
+stats:
+  totalCommits: 12
+  totalAdditions: 33631
+  totalDeletions: 5713
+  prsOpened: 3
+  prsMerged: 4
+  prsInProgress: 1
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 77.1
+dailyCommits:
+  - date: 2026-10-26
+    count: 12
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 12
+    prsOpened: 3
+    prsMerged: 4
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests:
+  - title: "fix(deploy): remove duplicate Hub route and validate SWA routes"
+    body: >-
+      ## Why
+
+
+      Production deployment
+      [40266280932](https://github.com/Myriad-Advisor-Solutions/myriadas-apps/actions/runs/40266280932/job/121390120678)
+      failed during Azure Static Web Apps upload because the Hub config contained two identical `/` route rules. Build
+      and artifact checks had accepted the inval...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/218
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - "app: hub"
+      - platform
+    additions: 13
+    deletions: 8
+    changedFiles: 3
+    author: myriadas-clees
+    createdAt: 2026-10-26T04:10:18Z
+    updatedAt: 2026-10-26T04:21:21Z
+    closedAt: 2026-10-26T04:21:21Z
+    mergedAt: 2026-10-26T04:21:21Z
+    workCommits:
+      - &a5
+        sha: 6c25abeb8a57a6f1513cebef8da8cf2ea664558f
+        message: "fix(deploy): reject duplicate SWA routes"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6c25abeb8a57a6f1513cebef8da8cf2ea664558f
+        authoredAt: 2026-10-26T04:10:05Z
+    workTimestamps:
+      - 2026-10-26T04:10:05Z
+    workAdditions: 13
+    workDeletions: 8
+    workFiles:
+      - hub/staticwebapp.config.json
+      - scripts/tooling.test.ts
+      - scripts/validate-artifacts.ts
+  - title: "fix(proforma): allow users to delete archived recruits"
+    body: >-
+      ## Why
+
+
+      Proforma users could not delete archived recruits because the API and command service required an admin role. This
+      prevented authorized users from completing recruit cleanup.
+
+
+      ## What changed
+
+
+      Allow regular Proforma users to delete recruits through the existing lifecycle flow. Company and sc...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/219
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - "app: proforma"
+    additions: 9
+    deletions: 17
+    changedFiles: 5
+    author: myriadas-clees
+    createdAt: 2026-10-26T18:35:56Z
+    updatedAt: 2026-10-26T19:48:58Z
+    closedAt: 2026-10-26T19:48:57Z
+    mergedAt: 2026-10-26T19:48:57Z
+    workCommits:
+      - &a6
+        sha: d8bc08f0e869219b6e50b3d896125c44da36609e
+        message: "fix(proforma): allow users to delete archived recruits"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d8bc08f0e869219b6e50b3d896125c44da36609e
+        authoredAt: 2026-10-26T18:35:43Z
+    workTimestamps:
+      - 2026-10-26T18:35:43Z
+    workAdditions: 9
+    workDeletions: 17
+    workFiles:
+      - platform/src/__tests__/runtime.test.ts
+      - platform/src/master-command.ts
+      - platform/src/user-api.ts
+      - proforma/src/lib/__tests__/scoped-e2e-lifecycle.test.ts
+      - proforma/src/lib/api/handlers.ts
+  - title: "build: migrate frontend apps from Next.js to Vite"
+    body: >-
+      ## Why
+
+
+      Move the frontend apps to a shared Vite and TanStack Router setup while retaining their static deployment model
+      and app-local Azure Functions.
+
+
+      ## What changed
+
+
+      - Migrated the frontend apps from Next.js to Vite and TanStack Router, including routing, development API
+      handlers, and static buil...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/221
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a1
+      - documentation
+      - github-automation
+      - "app: hub"
+      - "app: onboarding"
+      - "app: pto-tracker"
+      - "app: proforma"
+      - "app: excelerate"
+      - "app: valuation"
+      - platform
+      - "app: transition"
+      - "app: compass"
+    additions: 4272
+    deletions: 2051
+    changedFiles: 313
+    author: myriadas-clees
+    createdAt: 2026-10-26T20:35:47Z
+    updatedAt: 2026-10-26T20:40:42Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a2
+      - &a12
+        sha: e59f2ce4174cb529ea78ec32ec9cc2413e7ecc7c
+        message: "build: migrate frontend apps from Next.js to Vite"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e59f2ce4174cb529ea78ec32ec9cc2413e7ecc7c
+        authoredAt: 2026-10-26T20:35:35Z
+    workTimestamps: &a3
+      - 2026-10-26T20:35:35Z
+    workAdditions: 4272
+    workDeletions: 2051
+    workFiles: &a4
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/verify.yml
+      - .gitignore
+      - AGENTS.md
+      - README.md
+      - bun.lock
+      - compass/AGENTS.md
+      - compass/README.md
+      - compass/index.html
+      - compass/next-env.d.ts
+      - compass/next.config.ts
+      - compass/package.json
+      - compass/public/icon.svg
+      - compass/scripts/build-static.ts
+      - compass/src/app/api/compass/health/route.ts
+      - compass/src/app/layout.tsx
+      - compass/src/app/manifest.ts
+      - compass/src/app/root.tsx
+      - compass/src/components/compass-dashboard-lifecycle.fixture.ts
+      - compass/src/components/compass-fixture-app.tsx
+      - compass/src/components/compass-provider.tsx
+      - compass/src/components/microsoft-app-icon.tsx
+      - compass/src/components/settings-workspace.tsx
+      - compass/src/lib/navigation.ts
+      - compass/src/lib/swa-session.ts
+      - compass/src/main.tsx
+      - compass/src/router.test.ts
+      - compass/src/router.tsx
+      - compass/src/vite-env.d.ts
+      - compass/staticwebapp.config.json
+      - compass/tsconfig.json
+      - compass/vite.config.ts
+      - eslint.config.mjs
+      - excelerate/.env.example
+      - excelerate/AGENTS.md
+      - excelerate/README.md
+      - excelerate/index.html
+      - excelerate/next-env.d.ts
+      - excelerate/next.config.ts
+      - excelerate/package.json
+      - excelerate/public/icon.svg
+      - excelerate/scripts/build-static.ts
+      - excelerate/src/app/api/[...path]/route.ts
+      - excelerate/src/app/layout.tsx
+      - excelerate/src/app/manifest.ts
+      - excelerate/src/app/root.tsx
+      - excelerate/src/components/excelerate-client.tsx
+      - excelerate/src/components/excelerate-shell.tsx
+      - excelerate/src/lib/api/dev-handler.test.ts
+      - excelerate/src/lib/api/dev-handler.ts
+      - excelerate/src/main.tsx
+      - excelerate/src/router.test.tsx
+      - excelerate/src/router.tsx
+      - excelerate/src/vite-env.d.ts
+      - excelerate/staticwebapp.config.json
+      - excelerate/tsconfig.json
+      - excelerate/vite.config.ts
+      - excelerate/vitest.config.ts
+      - hub/AGENTS.md
+      - hub/README.md
+      - hub/app/403/page.tsx
+      - hub/app/error.tsx
+      - hub/app/hub/layout.tsx
+      - hub/app/hub/page.tsx
+      - hub/app/layout.tsx
+      - hub/app/login/layout.tsx
+      - hub/app/login/page.tsx
+      - hub/app/manifest.ts
+      - hub/app/not-found.tsx
+      - hub/app/page.tsx
+      - hub/app/root.tsx
+      - hub/components/HomeClient.tsx
+      - hub/components/HubAuthNotice.tsx
+      - hub/components/HubLauncher.tsx
+      - hub/components/HubSettingsPage.tsx
+      - hub/components/SiteHeader.tsx
+      - hub/components/admin/AdminPage.tsx
+      - hub/index.html
+      - hub/lib/local-dev.test.ts
+      - hub/lib/local-dev.ts
+      - hub/lib/metadata.test.ts
+      - hub/lib/metadata.ts
+      - hub/main.tsx
+      - hub/next-env.d.ts
+      - hub/next.config.ts
+      - hub/package.json
+      - hub/public/icon.svg
+      - hub/router.test.ts
+      - hub/router.tsx
+      - hub/scripts/build-static.ts
+      - hub/scripts/dev.ts
+      - hub/staticwebapp.config.json
+      - hub/tsconfig.json
+      - hub/vite-env.d.ts
+      - hub/vite.config.ts
+      - hub/vitest.config.ts
+      - onboarding/apps/dashboard/.env.example
+      - "onboarding/apps/dashboard/:memory:"
+      - onboarding/apps/dashboard/:memory:-shm
+      - onboarding/apps/dashboard/:memory:-wal
+      - onboarding/apps/dashboard/README.md
+      - onboarding/apps/dashboard/app/api/[...path]/route.ts
+      - onboarding/apps/dashboard/app/api/vm/[...path]/route.ts
+      - onboarding/apps/dashboard/app/approvals/page.tsx
+      - onboarding/apps/dashboard/app/blockers/page.tsx
+      - onboarding/apps/dashboard/app/documents/page.tsx
+      - onboarding/apps/dashboard/app/due-dates/page.tsx
+      - onboarding/apps/dashboard/app/layout.tsx
+      - onboarding/apps/dashboard/app/manifest.ts
+      - onboarding/apps/dashboard/app/owners/page.tsx
+      - onboarding/apps/dashboard/app/page.test.tsx
+      - onboarding/apps/dashboard/app/root.tsx
+      - onboarding/apps/dashboard/app/tasks/detail/task-detail-client.tsx
+      - onboarding/apps/dashboard/app/tasks/page.tsx
+      - onboarding/apps/dashboard/app/vendors/assessment/page.tsx
+      - onboarding/apps/dashboard/app/vendors/contract/page.tsx
+      - onboarding/apps/dashboard/app/vendors/intake/page.tsx
+      - onboarding/apps/dashboard/app/vendors/profile/page.tsx
+      - onboarding/apps/dashboard/app/workflows/page.tsx
+      - onboarding/apps/dashboard/components/client-selector.tsx
+      - onboarding/apps/dashboard/components/create-task-button.tsx
+      - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - onboarding/apps/dashboard/components/due-dates-tabs.tsx
+      - onboarding/apps/dashboard/components/employee-selector.tsx
+      - onboarding/apps/dashboard/components/filter-bar.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/saved-view-workbench.tsx
+      - onboarding/apps/dashboard/components/task-board.test.tsx
+      - onboarding/apps/dashboard/components/task-board.tsx
+      - onboarding/apps/dashboard/components/task-table.tsx
+      - onboarding/apps/dashboard/components/task-view-toggle.tsx
+      - onboarding/apps/dashboard/components/use-runtime-tasks.ts
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.test.tsx
+      - onboarding/apps/dashboard/components/workflow-overview.tsx
+      - onboarding/apps/dashboard/index.html
+      - onboarding/apps/dashboard/lib/api/client.test.ts
+      - onboarding/apps/dashboard/lib/api/client.ts
+      - onboarding/apps/dashboard/lib/api/dev-handler.test.ts
+      - onboarding/apps/dashboard/lib/api/dev-handler.ts
+      - onboarding/apps/dashboard/lib/client-env.ts
+      - onboarding/apps/dashboard/lib/navigation-hooks.test.tsx
+      - onboarding/apps/dashboard/lib/navigation-hooks.ts
+      - onboarding/apps/dashboard/lib/router-search.ts
+      - onboarding/apps/dashboard/main.tsx
+      - onboarding/apps/dashboard/next-env.d.ts
+      - onboarding/apps/dashboard/next.config.ts
+      - onboarding/apps/dashboard/package.json
+      - onboarding/apps/dashboard/public/icon.svg
+      - onboarding/apps/dashboard/router.test.tsx
+      - onboarding/apps/dashboard/router.tsx
+      - onboarding/apps/dashboard/scripts/build-static.ts
+      - onboarding/apps/dashboard/staticwebapp.config.json
+      - onboarding/apps/dashboard/tsconfig.json
+      - onboarding/apps/dashboard/vite-env.d.ts
+      - onboarding/apps/dashboard/vite.config.ts
+      - onboarding/apps/dashboard/vitest.config.ts
+      - package.json
+      - packages/ui/README.md
+      - packages/ui/package.json
+      - packages/ui/src/app-manifest.test.ts
+      - packages/ui/src/app-manifest.ts
+      - packages/ui/src/brand/myriad-logo.test.tsx
+      - packages/ui/src/brand/myriad-logo.tsx
+      - packages/ui/src/button.tsx
+      - packages/ui/src/company/context.test.ts
+      - packages/ui/src/company/context.test.tsx
+      - packages/ui/src/company/context.tsx
+      - packages/ui/src/images.d.ts
+      - packages/ui/src/navigation/app-nav.test.tsx
+      - packages/ui/src/navigation/app-nav.tsx
+      - packages/ui/src/navigation/app-shell.test.tsx
+      - packages/ui/src/navigation/index.ts
+      - packages/ui/src/navigation/router.test.tsx
+      - packages/ui/src/navigation/router.tsx
+      - proforma/.env.example
+      - proforma/AGENTS.md
+      - proforma/README.md
+      - proforma/eslint.config.mjs
+      - proforma/index.html
+      - proforma/next-env.d.ts
+      - proforma/next.config.ts
+      - proforma/package.json
+      - proforma/public/icon.svg
+      - proforma/scripts/build-static.ts
+      - proforma/src/app/api/[...path]/route.ts
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/manifest.ts
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-static-pages.tsx
+      - proforma/src/components/recruit-detail-scenario-view.tsx
+      - proforma/src/components/recruit-model-shell.tsx
+      - proforma/src/lib/__tests__/company-isolation.test.ts
+      - proforma/src/lib/__tests__/scoped-e2e.test.ts
+      - proforma/src/lib/api/dev-handler.test.ts
+      - proforma/src/lib/api/dev-handler.ts
+      - proforma/src/lib/recruit-routes.ts
+      - proforma/src/main.tsx
+      - proforma/src/router.test.ts
+      - proforma/src/router.tsx
+      - proforma/src/vite-env.d.ts
+      - proforma/staticwebapp.config.json
+      - proforma/tsconfig.json
+      - proforma/vite.config.ts
+      - pto-tracker/.env.example
+      - pto-tracker/.gitignore
+      - pto-tracker/AGENTS.md
+      - pto-tracker/Dockerfile
+      - pto-tracker/README.md
+      - pto-tracker/docs/architecture.md
+      - pto-tracker/docs/security-review.md
+      - pto-tracker/eslint.config.mjs
+      - pto-tracker/index.html
+      - pto-tracker/next.config.ts
+      - pto-tracker/package.json
+      - pto-tracker/public/icon.svg
+      - pto-tracker/scripts/build-static.ts
+      - pto-tracker/scripts/pto-api-response.ts
+      - pto-tracker/scripts/serverless-smoke.ts
+      - pto-tracker/scripts/vite-plugins.ts
+      - pto-tracker/src/app/admin/AdminClient.tsx
+      - pto-tracker/src/app/admin/StaffTemplateLinks.test.ts
+      - pto-tracker/src/app/admin/StaffTemplateLinks.tsx
+      - pto-tracker/src/app/api/[...path]/route.ts
+      - pto-tracker/src/app/layout.tsx
+      - pto-tracker/src/app/manifest.ts
+      - pto-tracker/src/main.tsx
+      - pto-tracker/src/router.tsx
+      - pto-tracker/src/vite-env.d.ts
+      - pto-tracker/tsconfig.json
+      - pto-tracker/vite.config.ts
+      - scripts/app-registry.ts
+      - scripts/artifact-fingerprints.ts
+      - scripts/build-static-export.ts
+      - scripts/build-unified-swa.ts
+      - scripts/static-swa-config.ts
+      - scripts/tooling.test.ts
+      - scripts/typecheck-ci.ts
+      - scripts/validate-artifacts.ts
+      - transition/.env.example
+      - transition/AGENTS.md
+      - transition/README.md
+      - transition/index.html
+      - transition/next-env.d.ts
+      - transition/next.config.ts
+      - transition/package.json
+      - transition/public/icon.svg
+      - transition/scripts/build-static.ts
+      - transition/src/app/api/[...path]/route.test.ts
+      - transition/src/app/layout.tsx
+      - transition/src/app/manifest.ts
+      - transition/src/app/root.test.ts
+      - transition/src/app/root.tsx
+      - transition/src/components/accounts/account-detail.tsx
+      - transition/src/components/accounts/accounts-page.tsx
+      - transition/src/components/dashboard/dashboard.tsx
+      - transition/src/components/data/data-page.test.ts
+      - transition/src/components/households/households-page.tsx
+      - transition/src/components/page-skeletons.tsx
+      - transition/src/components/tour/tour-layer.tsx
+      - transition/src/components/tour/tour-provider.tsx
+      - transition/src/components/transition-shell.tsx
+      - transition/src/components/workspace/shared.tsx
+      - transition/src/lib/account-search.test.ts
+      - transition/src/lib/account-status-preview.test.ts
+      - transition/src/lib/api/client.ts
+      - transition/src/lib/api/company-me-dev.test.ts
+      - transition/src/lib/api/dev-handler.test.ts
+      - transition/src/lib/api/dev-handler.ts
+      - transition/src/lib/clear-data.test.ts
+      - transition/src/lib/client-env.ts
+      - transition/src/lib/contact-enrichment.test.ts
+      - transition/src/lib/diagnostic-import.test.ts
+      - transition/src/lib/excel-transfer.test.ts
+      - transition/src/lib/hooks/use-read-prefetch.ts
+      - transition/src/lib/household-contacts.test.ts
+      - transition/src/lib/location.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/main.tsx
+      - transition/src/router.test.ts
+      - transition/src/router.tsx
+      - transition/src/vite-env.d.ts
+      - transition/staticwebapp.config.json
+      - transition/tsconfig.json
+      - transition/vite.config.ts
+      - valuation/.env.example
+      - valuation/AGENTS.md
+      - valuation/index.html
+      - valuation/next-env.d.ts
+      - valuation/next.config.ts
+      - valuation/package.json
+      - valuation/scripts/build-static.ts
+      - valuation/src/app/api/[...path]/route.ts
+      - valuation/src/app/cases/detail/case-detail-client.tsx
+      - valuation/src/app/cases/new/page.tsx
+      - valuation/src/app/error.tsx
+      - valuation/src/app/imports/page.tsx
+      - valuation/src/app/layout.tsx
+      - valuation/src/app/manifest.ts
+      - valuation/src/app/root.tsx
+  - title: "fix(proforma): align scenario and fee names and report calculations"
+    body: >-
+      ## Why
+
+
+      Proforma's scenario and fee names need to match the current terminology. Exported Excel reports also calculate the
+      Advisor Firm charge from advisor payout rather than eligible advisory revenue, so recalculation can produce a
+      different amount from the app.
+
+
+      ## What changed
+
+
+      - Rename the Bette...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/216
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - "app: proforma"
+      - platform
+    additions: 2257
+    deletions: 545
+    changedFiles: 29
+    author: myriadas-clees
+    createdAt: 2026-10-23T19:55:03Z
+    updatedAt: 2026-10-26T19:48:59Z
+    closedAt: 2026-10-26T19:48:59Z
+    mergedAt: 2026-10-26T19:48:59Z
+    workCommits:
+      - &a7
+        sha: 55aca535f26d9a7274674cd4c48951586f179430
+        message: "fix(proforma): align Trade PMR fees and Advisor Firm charges"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/55aca535f26d9a7274674cd4c48951586f179430
+        authoredAt: 2026-10-26T18:36:58Z
+      - &a9
+        sha: 5d7b2a8e3ffcaa62f150a3f78d0f12b077592f1b
+        message: "fix(proforma): calculate Advisor Firm fees per advisor"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5d7b2a8e3ffcaa62f150a3f78d0f12b077592f1b
+        authoredAt: 2026-10-26T18:55:49Z
+      - &a10
+        sha: f57aaf7fb71dd62d5b7017f7823c928040ef9878
+        message: Merge commit 'd8bc08f0e869219b6e50b3d896125c44da36609e' into HEAD
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f57aaf7fb71dd62d5b7017f7823c928040ef9878
+        authoredAt: 2026-10-26T19:33:51Z
+    workTimestamps:
+      - 2026-10-26T18:36:58Z
+      - 2026-10-26T18:55:49Z
+      - 2026-10-26T19:33:51Z
+    workAdditions: 2257
+    workDeletions: 545
+    workFiles:
+      - compass/src/app/layout.tsx
+      - compass/src/components/compass-provider.tsx
+      - compass/src/components/compass-shell.tsx
+      - compass/src/components/compass-stability.fixture.tsx
+      - compass/src/components/settings-workspace.tsx
+      - compass/src/lib/swa-session.ts
+      - compass/staticwebapp.config.json
+      - docs/authorization-roles.md
+      - excelerate/src/app/layout.tsx
+      - excelerate/src/app/settings/page.tsx
+      - hub/app/layout.tsx
+      - hub/components/HubSettingsPage.tsx
+      - hub/components/admin/TransferRunView.test.tsx
+      - hub/components/admin/TransferRunView.tsx
+      - hub/components/admin/TransfersPanel.test.tsx
+      - hub/components/admin/TransfersPanel.tsx
+      - hub/functions/src/company-transfer.test.ts
+      - hub/lib/admin-api.test.ts
+      - hub/lib/admin-api.ts
+      - hub/staticwebapp.config.json
+      - onboarding/apps/dashboard/app/globals.css
+      - onboarding/apps/dashboard/app/layout.tsx
+      - onboarding/apps/dashboard/app/settings/page.test.tsx
+      - onboarding/apps/dashboard/app/settings/page.tsx
+      - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - onboarding/apps/dashboard/lib/swa-session.test.ts
+      - onboarding/apps/dashboard/lib/swa-session.ts
+      - onboarding/apps/dashboard/staticwebapp.config.json
+      - packages/contracts/src/proforma-model/calculation.ts
+      - packages/db/src/bucket-transfer/index.test.ts
+      - packages/db/src/bucket-transfer/index.ts
+      - packages/ui/src/company/context.test.tsx
+      - packages/ui/src/company/context.tsx
+      - packages/ui/src/index.ts
+      - packages/ui/src/navigation/app-shell.test.tsx
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/settings/company-settings.test.tsx
+      - packages/ui/src/settings/company-settings.tsx
+      - packages/ui/src/settings/index.ts
+      - packages/ui/src/signed-out.tsx
+      - platform/src/__tests__/runtime.test.ts
+      - platform/src/master-command.ts
+      - platform/src/user-api.ts
+      - proforma/docs/client-reference-alignment.md
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/delete-recruit-form.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/delete-recruit-form.tsx
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/hybrid-fee-editor.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-settings-page.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/components/workbook-fee-table.tsx
+      - proforma/src/lib/__tests__/proforma-api-client.test.ts
+      - proforma/src/lib/__tests__/proforma-auth-routes.test.ts
+      - proforma/src/lib/__tests__/proforma-session-client.test.ts
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/scoped-e2e-lifecycle.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/proforma-auth-routes.ts
+      - proforma/src/lib/proforma-session-client.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - pto-tracker/src/app/layout.tsx
+      - pto-tracker/src/app/settings/page.tsx
+      - pto-tracker/src/components/PtoAppShell.tsx
+      - scripts/tooling.test.ts
+      - scripts/validate-artifacts.ts
+      - transition/AGENTS.md
+      - transition/README.md
+      - transition/src/app/globals.css
+      - transition/src/app/layout.tsx
+      - transition/src/components/accounts/account-detail.test.ts
+      - transition/src/components/accounts/account-detail.tsx
+      - transition/src/components/accounts/accounts-page.tsx
+      - transition/src/components/accounts/use-checklist-visibility.ts
+      - transition/src/components/bulk-status.tsx
+      - transition/src/components/dashboard/dashboard.tsx
+      - transition/src/components/households/household-overview.tsx
+      - transition/src/components/households/household-paperwork-ui.tsx
+      - transition/src/components/households/households-page.tsx
+      - transition/src/components/settings/settings-page.test.ts
+      - transition/src/components/settings/settings-page.tsx
+      - transition/src/components/transition-shell.tsx
+      - transition/src/components/ui/layout.tsx
+      - transition/src/components/workspace/shared.tsx
+      - transition/src/lib/account-status-preview.test.ts
+      - transition/src/lib/account-verification-persistence.test.ts
+      - transition/src/lib/api/azure-functions-demo.test.ts
+      - transition/src/lib/auth.test.ts
+      - transition/src/lib/auth.ts
+      - transition/src/lib/checklist-view.test.ts
+      - transition/src/lib/checklist-view.ts
+      - transition/src/lib/excel-backup.test.ts
+      - transition/src/lib/excel-backup.ts
+      - transition/src/lib/feature-owner.test.ts
+      - transition/src/lib/handlers.ts
+      - transition/src/lib/household-paperwork.test.ts
+      - transition/src/lib/household-paperwork.ts
+      - transition/src/lib/household-selection.test.ts
+      - transition/src/lib/household-selection.ts
+      - transition/src/lib/model.ts
+      - transition/src/lib/navigation-performance.test.ts
+      - transition/src/lib/paperwork-link-handlers.test.ts
+      - transition/src/lib/rep-codes.test.ts
+      - transition/src/lib/rep-codes.ts
+      - transition/src/lib/repository.test.ts
+      - transition/src/lib/repository.ts
+      - transition/src/lib/swa-session.test.ts
+      - transition/src/lib/swa-session.ts
+      - transition/src/lib/transfer-adapter.test.ts
+      - transition/src/lib/transfer-adapter.ts
+      - transition/src/lib/transition-workbook.test.ts
+      - transition/src/lib/undo.test.ts
+      - transition/src/lib/undo.ts
+      - transition/src/lib/workbook.ts
+      - transition/staticwebapp.config.json
+      - valuation/src/app/layout.tsx
+      - valuation/src/app/settings/page.tsx
+      - valuation/src/components/valuation-runtime-shell.tsx
+      - valuation/src/components/valuation-shell.tsx
+      - valuation/src/lib/api/client.ts
+      - valuation/src/lib/swa-session.test.ts
+      - valuation/src/lib/swa-session.ts
+      - valuation/staticwebapp.config.json
+  - title: "feat(compass): port todo progress and chat workflows"
+    body: >-
+      ## Why
+
+
+      Bring the Compass-relevant workflows from the PR stack into one change, improving Ask reliability and performance
+      while adding safer brief instructions and Microsoft To Do task creation.
+
+
+      ## What changed
+
+
+      - Improved Ask retries, conversation recovery, grounding, and response rendering; added...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/202
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - "app: proforma"
+      - platform
+      - "app: compass"
+    additions: 27080
+    deletions: 3092
+    changedFiles: 53
+    author: myriadas-clees
+    createdAt: 2026-10-21T14:36:39Z
+    updatedAt: 2026-10-26T19:49:00Z
+    closedAt: 2026-10-26T19:49:00Z
+    mergedAt: 2026-10-26T19:49:00Z
+    workCommits:
+      - &a8
+        sha: b0a0ad646aac76befdc7dabfe80e17149f87f195
+        message: "feat(platform): add scoped Cosmos data architecture"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/b0a0ad646aac76befdc7dabfe80e17149f87f195
+        authoredAt: 2026-10-26T18:53:47Z
+      - &a11
+        sha: 2fc2d43a43f0615e3d39fa3222641795ee1ecc6a
+        message: Merge commit 'f57aaf7fb71dd62d5b7017f7823c928040ef9878' into HEAD
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2fc2d43a43f0615e3d39fa3222641795ee1ecc6a
+        authoredAt: 2026-10-26T19:33:55Z
+    workTimestamps:
+      - 2026-10-26T18:53:47Z
+      - 2026-10-26T19:33:55Z
+    workAdditions: 27080
+    workDeletions: 3092
+    workFiles:
+      - .github/dependabot.yml
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/codeql.yml
+      - .github/workflows/platform-functions.yml
+      - .github/workflows/verify.yml
+      - PLAN.md
+      - README.md
+      - bun.lock
+      - compass/AGENTS.md
+      - compass/functions/package.json
+      - compass/functions/src/company-http.test.ts
+      - compass/functions/src/company-isolation.test.ts
+      - compass/functions/src/company-routes.test.ts
+      - compass/functions/src/compass-chat-history.ts
+      - compass/functions/src/compass-conversations.test.ts
+      - compass/functions/src/compass-conversations.ts
+      - compass/functions/src/compass-local-store.test.ts
+      - compass/functions/src/compass-microsoft.test.ts
+      - compass/functions/src/compass-microsoft.ts
+      - compass/functions/src/index.ts
+      - compass/functions/tsconfig.json
+      - compass/next.config.ts
+      - compass/package.json
+      - compass/src/app/layout.tsx
+      - compass/src/components/command-palette.tsx
+      - compass/src/components/compass-dashboard-lifecycle.fixture.ts
+      - compass/src/components/compass-dashboard.tsx
+      - compass/src/components/compass-provider.tsx
+      - compass/src/components/compass-shell.tsx
+      - compass/src/components/compass-stability.fixture.tsx
+      - compass/src/components/settings-workspace.tsx
+      - compass/src/components/summarize-peek.tsx
+      - compass/src/components/today/dates.ts
+      - compass/src/components/ui/layout.tsx
+      - compass/src/lib/ask-turns.ts
+      - compass/src/lib/background-briefs.ts
+      - compass/src/lib/chat-history.ts
+      - compass/src/lib/compass-api.test.ts
+      - compass/src/lib/compass-api.ts
+      - compass/src/lib/microsoft-data-cache.ts
+      - compass/src/lib/microsoft-reauth.ts
+      - compass/src/lib/resolved-mail.ts
+      - compass/src/lib/settings-preferences.ts
+      - compass/src/lib/swa-session.ts
+      - compass/src/lib/today-layout.ts
+      - compass/src/lib/todo-lists.ts
+      - compass/staticwebapp.config.json
+      - compass/tsconfig.json
+      - docs/authorization-roles.md
+      - docs/platform-cosmos-operations.md
+      - excelerate/AGENTS.md
+      - excelerate/functions/package.json
+      - excelerate/functions/src/index.ts
+      - excelerate/functions/tsconfig.json
+      - excelerate/next.config.ts
+      - excelerate/package.json
+      - excelerate/src/app/layout.tsx
+      - excelerate/src/app/settings/page.tsx
+      - excelerate/src/components/excelerate-client.tsx
+      - excelerate/src/lib/api/azure-functions-adapter.test.ts
+      - excelerate/src/lib/api/azure-functions-adapter.ts
+      - excelerate/src/lib/api/company-isolation.test.ts
+      - excelerate/tsconfig.json
+      - hub/AGENTS.md
+      - hub/app/hub/admin/page.tsx
+      - hub/app/layout.tsx
+      - hub/components/HubSettingsPage.tsx
+      - hub/components/admin/AdminPage.tsx
+      - hub/components/admin/CompaniesPanel.tsx
+      - hub/components/admin/CompanyDrawer.tsx
+      - hub/components/admin/DomainChipsInput.tsx
+      - hub/components/admin/TransferComposer.tsx
+      - hub/components/admin/TransferDryRunReport.tsx
+      - hub/components/admin/TransferRunView.test.tsx
+      - hub/components/admin/TransferRunView.tsx
+      - hub/components/admin/TransferRunsList.test.tsx
+      - hub/components/admin/TransferRunsList.tsx
+      - hub/components/admin/TransfersPanel.test.tsx
+      - hub/components/admin/TransfersPanel.tsx
+      - hub/functions/package.json
+      - hub/functions/src/company-admin.ts
+      - hub/functions/src/company-isolation.test.ts
+      - hub/functions/src/company-me.test.ts
+      - hub/functions/src/company-transfer.test.ts
+      - hub/functions/src/index.ts
+      - hub/functions/src/roles.test.ts
+      - hub/functions/src/roles.ts
+      - hub/lib/admin-api.test.ts
+      - hub/lib/admin-api.ts
+      - hub/next.config.ts
+      - hub/package.json
+      - hub/staticwebapp.config.json
+      - hub/tsconfig.json
+      - infra/azure/platform/serverless.bicep
+      - infra/azure/static-web-apps.bicep
+      - onboarding/AGENTS.md
+      - onboarding/README.md
+      - onboarding/apps/dashboard/.env.example
+      - onboarding/apps/dashboard/app/approvals/page.tsx
+      - onboarding/apps/dashboard/app/blockers/page.tsx
+      - onboarding/apps/dashboard/app/documents/page.tsx
+      - onboarding/apps/dashboard/app/globals.css
+      - onboarding/apps/dashboard/app/layout.tsx
+      - onboarding/apps/dashboard/app/owners/page.tsx
+      - onboarding/apps/dashboard/app/page.tsx
+      - onboarding/apps/dashboard/app/settings/page.test.tsx
+      - onboarding/apps/dashboard/app/settings/page.tsx
+      - onboarding/apps/dashboard/app/tasks/detail/task-detail-client.tsx
+      - onboarding/apps/dashboard/app/tasks/page.tsx
+      - onboarding/apps/dashboard/app/vendors/assessment/page.tsx
+      - onboarding/apps/dashboard/app/vendors/contract/page.tsx
+      - onboarding/apps/dashboard/app/vendors/intake/page.tsx
+      - onboarding/apps/dashboard/app/vendors/page.tsx
+      - onboarding/apps/dashboard/components/client-selector.tsx
+      - onboarding/apps/dashboard/components/client-workspace-empty-state.tsx
+      - onboarding/apps/dashboard/components/create-employee-form.tsx
+      - onboarding/apps/dashboard/components/create-task-button.tsx
+      - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - onboarding/apps/dashboard/components/document-picker.tsx
+      - onboarding/apps/dashboard/components/due-dates-tabs.tsx
+      - onboarding/apps/dashboard/components/employee-selector.tsx
+      - onboarding/apps/dashboard/components/filter-bar.tsx
+      - onboarding/apps/dashboard/components/global-command-search.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/index.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/record-activity.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/saved-view-workbench.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/task-record-panel.tsx
+      - onboarding/apps/dashboard/components/operations-workspace/universal-record-panel.tsx
+      - onboarding/apps/dashboard/components/task-board.tsx
+      - onboarding/apps/dashboard/components/task-detail-header.tsx
+      - onboarding/apps/dashboard/components/task-table.tsx
+      - onboarding/apps/dashboard/components/task-view-toggle.tsx
+      - onboarding/apps/dashboard/components/vendor-operations.tsx
+      - onboarding/apps/dashboard/components/vendor-workspace.tsx
+      - onboarding/apps/dashboard/components/vendor-workstreams-empty-state.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-360.navigation.test.ts
+      - onboarding/apps/dashboard/components/vm/vendor-360.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
+      - onboarding/apps/dashboard/components/vm/vendor-record-panel.tsx
+      - onboarding/apps/dashboard/components/workflow-overview.tsx
+      - onboarding/apps/dashboard/components/workstream-archive-settings.tsx
+      - onboarding/apps/dashboard/functions/package.json
+      - onboarding/apps/dashboard/functions/src/index.ts
+      - onboarding/apps/dashboard/functions/src/start-date-reconciliation.test.ts
+      - onboarding/apps/dashboard/functions/src/start-date-reconciliation.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/client.test.ts
+      - onboarding/apps/dashboard/lib/api/client.ts
+      - onboarding/apps/dashboard/lib/api/company-isolation.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/handlers.ts
+      - onboarding/apps/dashboard/lib/api/onboarding-vm.transfer-gate.test.ts
+      - onboarding/apps/dashboard/lib/api/onboarding.transfer-gate.test.ts
+      - onboarding/apps/dashboard/lib/api/operations-handlers.test.ts
+      - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
+      - onboarding/apps/dashboard/lib/api/vm-handlers.ts
+      - onboarding/apps/dashboard/lib/api/vm-transfer-adapter.test.ts
+      - onboarding/apps/dashboard/lib/api/vm-transfer-adapter.ts
+      - onboarding/apps/dashboard/lib/auth.test.ts
+      - onboarding/apps/dashboard/lib/auth.ts
+      - onboarding/apps/dashboard/lib/runtime-shell-path.test.ts
+      - onboarding/apps/dashboard/lib/runtime-shell-path.ts
+      - onboarding/apps/dashboard/lib/swa-session.test.ts
+      - onboarding/apps/dashboard/lib/swa-session.ts
+      - onboarding/apps/dashboard/lib/transfer-adapter.test.ts
+      - onboarding/apps/dashboard/lib/transfer-adapter.ts
+      - onboarding/apps/dashboard/next.config.ts
+      - onboarding/apps/dashboard/package.json
+      - onboarding/apps/dashboard/staticwebapp.config.json
+      - onboarding/apps/dashboard/tsconfig.json
+      - onboarding/apps/mcp-sharepoint/package.json
+      - onboarding/apps/mcp-sharepoint/src/index.ts
+      - onboarding/scripts/import-vendor-list.ts
+      - package.json
+      - packages/AGENTS.md
+      - packages/audit/package.json
+      - packages/auth/package.json
+      - packages/auth/src/access.test.ts
+      - packages/auth/src/access.ts
+      - packages/auth/src/company-me.test.ts
+      - packages/auth/src/company-me.ts
+      - packages/auth/src/company.test.ts
+      - packages/auth/src/company.ts
+      - packages/auth/src/index.ts
+      - packages/brand/package.json
+      - packages/contracts/package.json
+      - packages/contracts/src/access.ts
+      - packages/contracts/src/auth.ts
+      - packages/contracts/src/company.test.ts
+      - packages/contracts/src/company.ts
+      - packages/contracts/src/index.ts
+      - packages/contracts/src/master.ts
+      - packages/contracts/src/proforma-model/calculation.ts
+      - packages/contracts/src/proforma-model/contracts.test.ts
+      - packages/contracts/src/proforma-model/contracts.ts
+      - packages/contracts/src/proforma-model/dashboard-summary.ts
+      - packages/contracts/src/proforma-model/entity-state-costs.ts
+      - packages/contracts/src/proforma-model/id.ts
+      - packages/contracts/src/proforma-model/index.ts
+      - packages/contracts/src/proforma-model/new-recruit.ts
+      - packages/contracts/src/proforma-model/pipeline-metrics.ts
+      - packages/contracts/src/proforma-model/recruit-notes.ts
+      - packages/contracts/src/proforma-model/work-state-validation.ts
+      - packages/contracts/src/proforma.test.ts
+      - packages/contracts/src/proforma.ts
+      - packages/contracts/src/scoped.ts
+      - packages/db/package.json
+      - packages/db/src/bucket-path.test.ts
+      - packages/db/src/bucket-path.ts
+      - packages/db/src/bucket-transfer/index.test.ts
+      - packages/db/src/bucket-transfer/index.ts
+      - packages/db/src/bun-client.ts
+      - packages/db/src/company-bucket-tenant.test.ts
+      - packages/db/src/company-bucket-tenant.ts
+      - packages/db/src/company-bucket.ts
+      - packages/db/src/company-registry.test.ts
+      - packages/db/src/company-registry.ts
+      - packages/db/src/control-plane-store.ts
+      - packages/db/src/cosmos-queries.test.ts
+      - packages/db/src/cosmos-queries.ts
+      - packages/db/src/cosmos-store.ts
+      - packages/db/src/db-path.test.ts
+      - packages/db/src/db-path.ts
+      - packages/db/src/managed-cosmos-client.test.ts
+      - packages/db/src/managed-cosmos-client.ts
+      - packages/db/src/master-command-store.ts
+      - packages/db/src/node-client.ts
+      - packages/db/src/phase2-stores.test.ts
+      - packages/db/src/queries.ts
+      - packages/db/src/runtime.ts
+      - packages/db/src/scoped-projection-store.ts
+      - packages/sharepoint-mock/package.json
+      - packages/sharepoint-mock/src/index.test.ts
+      - packages/sharepoint-mock/src/index.ts
+      - packages/ui/package.json
+      - packages/ui/src/button.tsx
+      - packages/ui/src/company/client.test.ts
+      - packages/ui/src/company/client.ts
+      - packages/ui/src/company/components/company-access-denied.test.tsx
+      - packages/ui/src/company/components/company-access-denied.tsx
+      - packages/ui/src/company/components/company-badge.test.tsx
+      - packages/ui/src/company/components/company-badge.tsx
+      - packages/ui/src/company/components/company-switcher.test.tsx
+      - packages/ui/src/company/components/company-switcher.tsx
+      - packages/ui/src/company/components/element-tree.ts
+      - packages/ui/src/company/components/index.ts
+      - packages/ui/src/company/context.test.ts
+      - packages/ui/src/company/context.test.tsx
+      - packages/ui/src/company/context.tsx
+      - packages/ui/src/company/index.ts
+      - packages/ui/src/index.ts
+      - packages/ui/src/navigation/app-nav.tsx
+      - packages/ui/src/navigation/app-shell.test.tsx
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/navigation/mode-storage.ts
+      - packages/ui/src/navigation/preferences.tsx
+      - packages/ui/src/settings/company-settings.test.tsx
+      - packages/ui/src/settings/company-settings.tsx
+      - packages/ui/src/settings/index.ts
+      - packages/ui/src/shell-bootstrap.ts
+      - packages/ui/src/signed-out.tsx
+      - packages/workflow-templates/package.json
+      - platform/function-package.template.json
+      - platform/host.json
+      - platform/package.json
+      - platform/scripts/build-artifacts.ts
+      - platform/scripts/proforma-recruit-backfill.ts
+      - platform/src/__tests__/company-lock.test.ts
+      - platform/src/__tests__/proforma-recruit-backfill.test.ts
+      - platform/src/__tests__/runtime.test.ts
+      - platform/src/__tests__/user-api-routes.test.ts
+      - platform/src/admin-api.ts
+      - platform/src/cosmos.ts
+      - platform/src/master-command.ts
+      - platform/src/proforma-recruit-backfill.ts
+      - platform/src/projection-worker.ts
+      - platform/src/runtime.ts
+      - platform/src/schemas.ts
+      - platform/src/user-api.ts
+      - platform/tsconfig.json
+      - proforma/.env.example
+      - proforma/AGENTS.md
+      - proforma/docs/client-reference-alignment.md
+      - proforma/functions/package.json
+      - proforma/functions/src/index.ts
+      - proforma/functions/tsconfig.json
+      - proforma/next.config.ts
+      - proforma/package.json
+      - proforma/src/app/globals.css
+      - proforma/src/app/layout.tsx
+      - proforma/src/app/login/page.tsx
+      - proforma/src/components/__tests__/assumptions-tab.test.tsx
+      - proforma/src/components/__tests__/delete-recruit-form.test.tsx
+      - proforma/src/components/__tests__/new-recruit-wizard.test.tsx
+      - proforma/src/components/__tests__/proforma-workstation-client.test.tsx
+      - proforma/src/components/__tests__/scenario-model-tab.test.tsx
+      - proforma/src/components/assumptions-tab.tsx
+      - proforma/src/components/delete-recruit-form.tsx
+      - proforma/src/components/excel-sheet/__tests__/workstation-sheet-defs.test.ts
+      - proforma/src/components/excel-sheet/workstation-sheet-defs.tsx
+      - proforma/src/components/hybrid-fee-editor.tsx
+      - proforma/src/components/model-switcher.tsx
+      - proforma/src/components/new-recruit-wizard.tsx
+      - proforma/src/components/proforma-app-shell.tsx
+      - proforma/src/components/proforma-graphs.tsx
+      - proforma/src/components/proforma-workstation-client.tsx
+      - proforma/src/components/scenario-model-tab.tsx
+      - proforma/src/components/workbook-fee-table.tsx
+      - proforma/src/lib/__tests__/proforma-visibility.test.ts
+      - proforma/src/lib/__tests__/report-filenames.test.ts
+      - proforma/src/lib/__tests__/report-model.test.ts
+      - proforma/src/lib/__tests__/report.test.ts
+      - proforma/src/lib/__tests__/scoped-e2e-lifecycle.test.ts
+      - proforma/src/lib/__tests__/workbook-output.test.ts
+      - proforma/src/lib/__tests__/workstation.test.ts
+      - proforma/src/lib/api/handlers.ts
+      - proforma/src/lib/recruit-model-tabs.ts
+      - proforma/src/lib/report-filenames.ts
+      - proforma/src/lib/report/excel.ts
+      - proforma/src/lib/report/model.ts
+      - proforma/src/lib/setup-projection.ts
+      - proforma/src/lib/workbook-output.ts
+      - proforma/src/lib/workstation-sections.ts
+      - proforma/src/lib/workstation.ts
+prsInProgress:
+  - title: "build: migrate frontend apps from Next.js to Vite"
+    body: >-
+      ## Why
+
+
+      Move the frontend apps to a shared Vite and TanStack Router setup while retaining their static deployment model
+      and app-local Azure Functions.
+
+
+      ## What changed
+
+
+      - Migrated the frontend apps from Next.js to Vite and TanStack Router, including routing, development API
+      handlers, and static buil...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/221
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a1
+    additions: 4272
+    deletions: 2051
+    changedFiles: 313
+    author: myriadas-clees
+    createdAt: 2026-10-26T20:35:47Z
+    updatedAt: 2026-10-26T20:40:42Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 4272
+    workDeletions: 2051
+    workFiles: *a4
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "fix(deploy): reject duplicate SWA routes"
+      - "fix(deploy): reject duplicate SWA routes (#218)"
+      - "fix(proforma): allow users to delete archived recruits"
+      - "fix(proforma): align Trade PMR fees and Advisor Firm charges"
+      - "feat(platform): add scoped Cosmos data architecture"
+      - "fix(proforma): calculate Advisor Firm fees per advisor"
+      - Merge commit 'd8bc08f0e869219b6e50b3d896125c44da36609e' into HEAD
+      - Merge commit 'f57aaf7fb71dd62d5b7017f7823c928040ef9878' into HEAD
+      - "fix(proforma): allow users to delete archived recruits (#219)"
+      - "feat(compass): port todo progress and chat workflows (#202)"
+      - "fix(proforma): align scenario and fee names and report calculations (#216)"
+      - "build: migrate frontend apps from Next.js to Vite"
+    commits:
+      - *a5
+      - sha: 25b1ea0f04dc6c6d2c6e12547316e05f2d2c9e72
+        message: "fix(deploy): reject duplicate SWA routes (#218)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/25b1ea0f04dc6c6d2c6e12547316e05f2d2c9e72
+        authoredAt: 2026-10-26T04:21:20Z
+        additions: 13
+        deletions: 8
+        filesChanged: 3
+      - *a6
+      - *a7
+      - *a8
+      - *a9
+      - *a10
+      - *a11
+      - sha: 9e5b34f157eddbd431c6d346d13412ebf48be2ed
+        message: "fix(proforma): allow users to delete archived recruits (#219)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9e5b34f157eddbd431c6d346d13412ebf48be2ed
+        authoredAt: 2026-10-26T19:48:55Z
+        additions: 9
+        deletions: 17
+        filesChanged: 5
+      - sha: 0fb8b53dfc5346d2a412c6398b43518d3618bc16
+        message: "feat(compass): port todo progress and chat workflows (#202)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0fb8b53dfc5346d2a412c6398b43518d3618bc16
+        authoredAt: 2026-10-26T19:48:56Z
+        additions: 6471
+        deletions: 290
+        filesChanged: 53
+      - sha: 9cad82cece7965be7916bbb9af0155d9c4906725
+        message: "fix(proforma): align scenario and fee names and report calculations (#216)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9cad82cece7965be7916bbb9af0155d9c4906725
+        authoredAt: 2026-10-26T19:48:56Z
+        additions: 252
+        deletions: 147
+        filesChanged: 29
+      - *a12
+releases: []
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 1
+    comments: 0
+    reviews: 1
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 1
+  comments: 0
+  reviews: 1
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-10-26T04:10:05Z
+    - 2026-10-26T04:21:20Z
+    - 2026-10-26T18:35:43Z
+    - 2026-10-26T18:36:58Z
+    - 2026-10-26T18:53:47Z
+    - 2026-10-26T18:55:49Z
+    - 2026-10-26T19:33:51Z
+    - 2026-10-26T19:33:55Z
+    - 2026-10-26T19:48:55Z
+    - 2026-10-26T19:48:56Z
+    - 2026-10-26T19:48:56Z
+    - 2026-10-26T20:35:35Z
+    - 2026-10-26T04:10:18Z
+    - 2026-10-26T04:21:21Z
+    - 2026-10-26T04:10:05Z
+    - 2026-10-26T18:35:56Z
+    - 2026-10-26T19:48:57Z
+    - 2026-10-26T18:35:43Z
+    - 2026-10-26T20:35:47Z
+    - 2026-10-26T20:35:35Z
+    - 2026-10-26T19:48:59Z
+    - 2026-10-26T18:36:58Z
+    - 2026-10-26T18:55:49Z
+    - 2026-10-26T19:33:51Z
+    - 2026-10-26T19:49:00Z
+    - 2026-10-26T18:53:47Z
+    - 2026-10-26T19:33:55Z
+  volume:
+    pullRequests:
+      - additions: 13
+        deletions: 8
+        state: merged
+        dailyWork: true
+        filesChanged: 3
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 9
+        deletions: 17
+        state: merged
+        dailyWork: true
+        filesChanged: 5
+        testFilesChanged: 2
+        commitCount: 1
+      - additions: 4272
+        deletions: 2051
+        state: open
+        dailyWork: true
+        filesChanged: 300
+        testFilesChanged: 40
+        commitCount: 1
+      - additions: 2257
+        deletions: 545
+        state: merged
+        dailyWork: true
+        filesChanged: 141
+        testFilesChanged: 43
+        commitCount: 3
+      - additions: 27080
+        deletions: 3092
+        state: merged
+        dailyWork: true
+        filesChanged: 328
+        testFilesChanged: 73
+        commitCount: 2
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 4
+    commitAdditions: 6745
+    commitDeletions: 462
+    commitStatsCount: 4
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 77.1
+  sessions: 2
+  sessionHours: 2.5
+  volumeHours: 77.1
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""

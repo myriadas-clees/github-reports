@@ -1,0 +1,454 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-11-02
+  to: 2026-11-02
+stats:
+  totalCommits: 6
+  totalAdditions: 238
+  totalDeletions: 37
+  prsOpened: 2
+  prsMerged: 0
+  prsInProgress: 4
+  prsReviewed: 1
+  reviewComments: 1
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 23.4
+dailyCommits:
+  - date: 2026-11-02
+    count: 6
+repositories:
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 5
+    prsOpened: 1
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 1
+    prsOpened: 1
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+pullRequests:
+  - title: "fix(northstar): open To Do reliably after task creation"
+    body: >-
+      - Try the To Do desktop app after tasks are created, then open To Do on the web automatically if the app does not
+      take focus.
+
+      - Keep Northstar open and remove the user-managed web fallback control.
+
+      - Use the To Do home URL instead of a Graph list ID that can lead to “list not found.”
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/213
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a1 []
+    additions: 230
+    deletions: 26
+    changedFiles: 4
+    author: myriadas-clees
+    createdAt: 2026-11-02T19:39:33Z
+    updatedAt: 2026-11-02T19:49:18Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a2
+      - &a13
+        sha: d257643873a504d26bd9c37de6a78dcf224a9256
+        message: "fix(northstar): open To Do reliably after task creation"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/d257643873a504d26bd9c37de6a78dcf224a9256
+        authoredAt: 2026-11-02T19:39:26Z
+    workTimestamps: &a3
+      - 2026-11-02T19:39:26Z
+    workAdditions: 230
+    workDeletions: 26
+    workFiles: &a4
+      - northstar/components/command-cards.dom.test.tsx
+      - northstar/components/command-cards.tsx
+      - northstar/lib/todo-tasks.test.ts
+      - northstar/lib/todo-tasks.ts
+  - title: "fix(ci): remove scheduled verify workflow"
+    body: >-
+      ## Why
+
+
+      The weekly scheduled Verify run was unnecessary and caused unexpected failures on the default branch.
+
+
+      ## What changed
+
+
+      Removed the Monday schedule and its schedule-specific full-suite conditions. Pull request runs remain
+      impact-based, and manually dispatched runs still run the full suite. U...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/242
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a5
+      - github-automation
+      - platform
+    additions: 8
+    deletions: 11
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-11-02T16:05:33Z
+    updatedAt: 2026-11-02T16:08:09Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a6
+      - &a14
+        sha: 63d10adc2a2d0c97c256ba8d719285b58a9c8db1
+        message: "fix(ci): remove scheduled verify workflow"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/63d10adc2a2d0c97c256ba8d719285b58a9c8db1
+        authoredAt: 2026-11-02T16:05:26Z
+    workTimestamps: &a7
+      - 2026-11-02T16:05:26Z
+    workAdditions: 8
+    workDeletions: 11
+    workFiles: &a8
+      - .github/workflows/verify.yml
+      - scripts/tooling.test.ts
+prsInProgress:
+  - title: "fix(northstar): open To Do reliably after task creation"
+    body: >-
+      - Try the To Do desktop app after tasks are created, then open To Do on the web automatically if the app does not
+      take focus.
+
+      - Keep Northstar open and remove the user-managed web fallback control.
+
+      - Use the To Do home URL instead of a Graph list ID that can lead to “list not found.”
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/213
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: *a1
+    additions: 230
+    deletions: 26
+    changedFiles: 4
+    author: myriadas-clees
+    createdAt: 2026-11-02T19:39:33Z
+    updatedAt: 2026-11-02T19:49:18Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 230
+    workDeletions: 26
+    workFiles: *a4
+  - title: "fix(ci): remove scheduled verify workflow"
+    body: >-
+      ## Why
+
+
+      The weekly scheduled Verify run was unnecessary and caused unexpected failures on the default branch.
+
+
+      ## What changed
+
+
+      Removed the Monday schedule and its schedule-specific full-suite conditions. Pull request runs remain
+      impact-based, and manually dispatched runs still run the full suite. U...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/242
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a5
+    additions: 8
+    deletions: 11
+    changedFiles: 2
+    author: myriadas-clees
+    createdAt: 2026-11-02T16:05:33Z
+    updatedAt: 2026-11-02T16:08:09Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a6
+    workTimestamps: *a7
+    workAdditions: 8
+    workDeletions: 11
+    workFiles: *a8
+  - title: "feat(platform): staging, PR previews, agent testing, and release promotion"
+    body: >-
+      ## Why
+
+
+      Agents and reviewers need somewhere to exercise real builds before merge, without touching production. Testing has
+      gone straight from local to production. The PR previews ran inside the **production** Static Web App, where SWA
+      copies app settings into preview environments, so previews ran ag...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/237
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - documentation
+      - github-automation
+      - "app: hub"
+      - platform
+      - infrastructure
+      - "app: transition"
+    additions: 3987
+    deletions: 1863
+    changedFiles: 83
+    author: myriadas-clees
+    createdAt: 2026-10-30T19:43:25Z
+    updatedAt: 2026-11-02T19:23:08Z
+    closedAt: null
+    mergedAt: null
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "feat(northstar): add approved Copilot consultations and retries"
+    body: >-
+      - Add Claude-proposed Copilot questions that require approval before dispatch, with status and retry support.
+
+      - Show consultation progress and results in Ask, and preserve decisions and completed work through failures,
+      retries, and reconnects.
+
+      - Add separate chat and brief model defaults, and use th...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/210
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: []
+    additions: 3910
+    deletions: 366
+    changedFiles: 49
+    author: myriadas-clees
+    createdAt: 2026-11-01T01:51:36Z
+    updatedAt: 2026-11-03T14:12:30Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a9
+        sha: 884f626cf76f8b34bb36a6be2178721fd4d1b2c8
+        message: "fix(northstar): improve model picker labels and retry feedback"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/884f626cf76f8b34bb36a6be2178721fd4d1b2c8
+        authoredAt: 2026-11-02T14:21:01Z
+      - &a10
+        sha: ab4c4c5cf0d1f85a519accbd4f1a9fd13ab7f4b1
+        message: Merge main and finish Northstar consultation settings
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/ab4c4c5cf0d1f85a519accbd4f1a9fd13ab7f4b1
+        authoredAt: 2026-11-02T16:07:54Z
+      - &a11
+        sha: cf318222c9f5ca2771722981f6081510f466920e
+        message: "fix(northstar): include hash in lifecycle browser fixture"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/cf318222c9f5ca2771722981f6081510f466920e
+        authoredAt: 2026-11-02T16:19:43Z
+      - &a12
+        sha: c4511c853d4364640a35fa2c19a9b06ce765d815
+        message: "fix(northstar): clarify settings deep-link highlight"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c4511c853d4364640a35fa2c19a9b06ce765d815
+        authoredAt: 2026-11-02T16:29:32Z
+    workTimestamps:
+      - 2026-11-02T14:21:01Z
+      - 2026-11-02T16:07:54Z
+      - 2026-11-02T16:19:43Z
+      - 2026-11-02T16:29:32Z
+    workAdditions: 3443
+    workDeletions: 582
+    workFiles:
+      - .github/dependabot.yml
+      - .github/workflows/azure-static-web-apps.yml
+      - .github/workflows/issue-project-triage.yml
+      - .github/workflows/verify.yml
+      - README.md
+      - bun.lock
+      - hub/functions/package.json
+      - hub/functions/src/index.ts
+      - hub/functions/src/northstar-archive-files.ts
+      - hub/functions/src/northstar-archive-pdf.ts
+      - hub/functions/src/northstar-archive.test.ts
+      - hub/functions/src/northstar-archive.ts
+      - hub/functions/src/northstar-bounded-bytes.ts
+      - hub/functions/src/northstar-brief-journeys.test.ts
+      - hub/functions/src/northstar-chat-history.test.ts
+      - hub/functions/src/northstar-chat-history.ts
+      - hub/functions/src/northstar-claude-ask.test.ts
+      - hub/functions/src/northstar-claude-brief.test.ts
+      - hub/functions/src/northstar-claude-brief.ts
+      - hub/functions/src/northstar-claude-documents.test.ts
+      - hub/functions/src/northstar-claude-files.ts
+      - hub/functions/src/northstar-claude-preferences.ts
+      - hub/functions/src/northstar-conversations.test.ts
+      - hub/functions/src/northstar-conversations.ts
+      - hub/functions/src/northstar-cosmos-recovery.test.ts
+      - hub/functions/src/northstar-graph-diagnostics.test.ts
+      - hub/functions/src/northstar-graph-diagnostics.ts
+      - hub/functions/src/northstar-mapping-upgrade.test.ts
+      - hub/functions/src/northstar-microsoft.ts
+      - hub/functions/src/northstar-scheduled-brief.test.ts
+      - hub/functions/src/northstar-scheduled-brief.ts
+      - hub/functions/tsconfig.json
+      - hub/next.config.ts
+      - hub/package.json
+      - hub/tsconfig.json
+      - northstar/app/globals.css
+      - northstar/components/answer-markdown.test.tsx
+      - northstar/components/answer-markdown.tsx
+      - northstar/components/ask-northstar-workspace.dom.test.tsx
+      - northstar/components/ask-northstar-workspace.tsx
+      - northstar/components/claude-manage-dialog.tsx
+      - northstar/components/northstar-consent.dom.test.ts
+      - northstar/components/northstar-consent.fixture.tsx
+      - northstar/components/northstar-dashboard-instructions.fixture.tsx
+      - northstar/components/northstar-dashboard-lifecycle.fixture.ts
+      - northstar/components/northstar-dashboard.tsx
+      - northstar/components/northstar-recovery.dom.test.ts
+      - northstar/components/northstar-recovery.fixture.tsx
+      - northstar/components/northstar-retention.fixture.tsx
+      - northstar/components/settings-workspace.dom.test.tsx
+      - northstar/components/settings-workspace.tsx
+      - northstar/components/streaming-markdown.tsx
+      - northstar/components/summarize-peek.dom.test.tsx
+      - northstar/lib/chat-pdf.test.ts
+      - northstar/lib/chat-pdf.tsx
+      - northstar/lib/claude-settings.ts
+      - northstar/lib/files-model.test.ts
+      - northstar/lib/files-model.ts
+      - northstar/lib/settings-deeplink.test.ts
+      - northstar/lib/settings-deeplink.ts
+      - northstar/lib/settings-preferences.test.ts
+      - northstar/lib/settings-preferences.ts
+      - northstar/next.config.ts
+      - northstar/package.json
+      - northstar/tsconfig.json
+      - ofac/functions/package.json
+      - ofac/functions/tsconfig.json
+      - ofac/next.config.ts
+      - ofac/package.json
+      - ofac/tsconfig.json
+      - package.json
+      - packages/audit/package.json
+      - packages/auth/package.json
+      - packages/brand/package.json
+      - packages/contracts/package.json
+      - packages/db/package.json
+      - packages/ui/package.json
+      - pricing/functions/package.json
+      - pricing/functions/tsconfig.json
+      - pricing/next.config.ts
+      - pricing/package.json
+      - pricing/tsconfig.json
+      - scripts/copy-pdfkit-fonts.ts
+      - scripts/smoke-readiness.test.ts
+      - scripts/typecheck-ci.test.ts
+      - scripts/typecheck-ci.ts
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "fix(northstar): improve model picker labels and retry feedback"
+      - Merge main and finish Northstar consultation settings
+      - "fix(northstar): include hash in lifecycle browser fixture"
+      - "fix(northstar): clarify settings deep-link highlight"
+      - "fix(northstar): open To Do reliably after task creation"
+    commits:
+      - *a9
+      - *a10
+      - *a11
+      - *a12
+      - *a13
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "fix(ci): remove scheduled verify workflow"
+    commits:
+      - *a14
+releases: []
+externalContributions: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 210
+    prTitle: "feat(northstar): add approved Copilot consultations and retries"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/210
+    state: commented
+    submittedAt: 2026-11-02T16:32:58Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 210
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/210
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/210#discussion_r4444952720
+    body: "[from Codex]: Fixed in c4511c85. The highlight now uses `--color-3-transparent` and `--action`; row specificity
+      and reduced-motion overrides are preserved. Verified in desktop/mobile and light/dark browser checks."
+    path: northstar/app/globals.css
+    createdAt: 2026-11-02T16:32:57Z
+aiReviews:
+  codex:
+    prsReviewed: 1
+    comments: 1
+    reviews: 1
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 1
+  comments: 1
+  reviews: 1
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-11-02T14:21:01Z
+    - 2026-11-02T16:07:54Z
+    - 2026-11-02T16:19:43Z
+    - 2026-11-02T16:29:32Z
+    - 2026-11-02T19:39:26Z
+    - 2026-11-02T16:05:26Z
+    - 2026-11-02T19:39:33Z
+    - 2026-11-02T19:39:26Z
+    - 2026-11-02T16:05:33Z
+    - 2026-11-02T16:05:26Z
+    - 2026-11-02T16:32:58Z
+    - 2026-11-02T16:32:57Z
+  volume:
+    pullRequests:
+      - additions: 230
+        deletions: 26
+        state: open
+        dailyWork: true
+        filesChanged: 4
+        testFilesChanged: 2
+        commitCount: 1
+      - additions: 8
+        deletions: 11
+        state: open
+        dailyWork: true
+        filesChanged: 2
+        testFilesChanged: 1
+        commitCount: 1
+      - additions: 3443
+        deletions: 582
+        state: open
+        dailyWork: true
+        filesChanged: 86
+        testFilesChanged: 23
+        commitCount: 4
+    reviewCount: 1
+    reviewCommentCount: 1
+    commitCount: 0
+    commitAdditions: 0
+    commitDeletions: 0
+    commitStatsCount: 0
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.1"
+  hours: 23.4
+  sessions: 3
+  sessionHours: 1.5
+  volumeHours: 23.4
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
+    tracked, elapsed, or billed time.
+stakeholderSummary: ""
