@@ -22,7 +22,7 @@ stats:
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 23.3
+  estimatedHours: 19.7
 dailyCommits:
   - date: 2026-07-28
     count: 6
@@ -47,7 +47,8 @@ pullRequests:
       ## Why
 
 
-      Excelerate silently generated workbooks from hard-coded schemas when output templates were unavailable and copied unidentified uploads into raw tabs. That could produce output without confirming the source or output template.
+      Excelerate silently generated workbooks from hard-coded schemas when output templates were unavailable and copied
+      unidentified uploads into raw tabs. That could produce output without confirming the source or output template.
 
 
       ## What changed
@@ -148,7 +149,9 @@ pullRequests:
       Why
 
 
-      Navigation mode was stored under an app-specific key, so the user's sidebar or topbar choice reset when moving between apps. The shared shell also centered the complete sidebar/content row, leaving the sidebar floating away from the left edge on wide screens.
+      Navigation mode was stored under an app-specific key, so the user's sidebar or topbar choice reset when moving
+      between apps. The shared shell also centered the complete sidebar/content row, leaving the sidebar floating away
+      from the left edge on wide screens.
 
 
       What changed
@@ -222,7 +225,8 @@ pullRequests:
       ## Why
 
 
-      Browser-created screenings did not preserve the direct API request semantics. The UI flattened addresses and forced an individual type, causing valid OFAC matches to disappear or differ from direct API results.
+      Browser-created screenings did not preserve the direct API request semantics. The UI flattened addresses and
+      forced an individual type, causing valid OFAC matches to disappear or differ from direct API results.
 
 
       ## What changed
@@ -334,7 +338,8 @@ pullRequests:
       Why
 
 
-      The product deployment workflow compiled PTO Tracker in demo authentication mode, exposing local test personas in the production sign-in screen.
+      The product deployment workflow compiled PTO Tracker in demo authentication mode, exposing local test personas in
+      the production sign-in screen.
 
 
       What changed
@@ -376,7 +381,8 @@ prsInProgress:
       ## Why
 
 
-      Excelerate silently generated workbooks from hard-coded schemas when output templates were unavailable and copied unidentified uploads into raw tabs. That could produce output without confirming the source or output template.
+      Excelerate silently generated workbooks from hard-coded schemas when output templates were unavailable and copied
+      unidentified uploads into raw tabs. That could produce output without confirming the source or output template.
 
 
       ## What changed
@@ -454,7 +460,9 @@ prsInProgress:
       Why
 
 
-      Navigation mode was stored under an app-specific key, so the user's sidebar or topbar choice reset when moving between apps. The shared shell also centered the complete sidebar/content row, leaving the sidebar floating away from the left edge on wide screens.
+      Navigation mode was stored under an app-specific key, so the user's sidebar or topbar choice reset when moving
+      between apps. The shared shell also centered the complete sidebar/content row, leaving the sidebar floating away
+      from the left edge on wide screens.
 
 
       What changed
@@ -493,7 +501,8 @@ prsInProgress:
       ## Why
 
 
-      Browser-created screenings did not preserve the direct API request semantics. The UI flattened addresses and forced an individual type, causing valid OFAC matches to disappear or differ from direct API results.
+      Browser-created screenings did not preserve the direct API request semantics. The UI flattened addresses and
+      forced an individual type, causing valid OFAC matches to disappear or differ from direct API results.
 
 
       ## What changed
@@ -569,7 +578,8 @@ prsInProgress:
       Why
 
 
-      The product deployment workflow compiled PTO Tracker in demo authentication mode, exposing local test personas in the production sign-in screen.
+      The product deployment workflow compiled PTO Tracker in demo authentication mode, exposing local test personas in
+      the production sign-in screen.
 
 
       What changed
@@ -709,12 +719,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 23.3
+  version: "2.3"
+  hours: 19.7
   sessions: 1
   sessionHours: 4.7
   volumeHours: 23.3
+  compressedVolumeHours: 19.7
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

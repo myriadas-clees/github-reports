@@ -197,12 +197,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
+  version: "2.3"
   hours: 10.8
   sessions: 2
   sessionHours: 1.5
   volumeHours: 10.8
+  compressedVolumeHours: 10.8
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

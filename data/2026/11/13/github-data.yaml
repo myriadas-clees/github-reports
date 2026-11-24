@@ -22,7 +22,7 @@ stats:
   reviewComments: 2
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 157.6
+  estimatedHours: 58.4
 dailyCommits:
   - date: 2026-11-13
     count: 24
@@ -2207,13 +2207,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 157.6
+  version: "2.3"
+  hours: 58.4
   sessions: 3
   sessionHours: 2.9
-  volumeHours: 157.6
+  volumeHours: 161.6
+  compressedVolumeHours: 58.4
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not
-    tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

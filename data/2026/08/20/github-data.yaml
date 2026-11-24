@@ -22,7 +22,7 @@ stats:
   reviewComments: 5
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 52.7
+  estimatedHours: 31.9
 dailyCommits:
   - date: 2026-08-20
     count: 18
@@ -40,7 +40,8 @@ pullRequests:
       ## Problem
 
 
-      Product deployments required separate URL variables, and preview deployments exposed only Azure-generated hostnames.
+      Product deployments required separate URL variables, and preview deployments exposed only Azure-generated
+      hostnames.
 
 
       ## Solution
@@ -215,7 +216,9 @@ pullRequests:
       ## Why
 
 
-      The public Hub landing page treated every app as equally available and did not give Advisor Proforma a clear product story. The page needed a modern Myriad marketing experience that makes Proforma the flagship while setting accurate expectations for the rest of the suite.
+      The public Hub landing page treated every app as equally available and did not give Advisor Proforma a clear
+      product story. The page needed a modern Myriad marketing experience that makes Proforma the flagship while setting
+      accurate expectations for the rest of the suite.
 
 
       ## What changed
@@ -315,9 +318,11 @@ pullRequests:
       - hub/public/proforma-advisor.jpg
   - title: "feat(proforma): restyle intake and trim unused Platform fee lines"
     body: >-
-      - Stacks on #97 so FiNet 2026 pricing (Gateway packages, Cloud PC, Schedule A/B, advisory adjustment) stays the base layer.
+      - Stacks on #97 so FiNet 2026 pricing (Gateway packages, Cloud PC, Schedule A/B, advisory adjustment) stays the
+      base layer.
 
-      - Restyles New Recruit intake and groups Platform fees by cadence (Local Monthly, Local Annual, Annual, Monthly, One-Time).
+      - Restyles New Recruit intake and groups Platform fees by cadence (Local Monthly, Local Annual, Annual, Monthly,
+      One-Time).
 
       - Moves locations/domains to Firm and projection yea...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
@@ -593,9 +598,11 @@ prsInProgress:
       - proforma/src/lib/report/model.ts
   - title: "feat(proforma): restyle intake and trim unused Platform fee lines"
     body: >-
-      - Stacks on #97 so FiNet 2026 pricing (Gateway packages, Cloud PC, Schedule A/B, advisory adjustment) stays the base layer.
+      - Stacks on #97 so FiNet 2026 pricing (Gateway packages, Cloud PC, Schedule A/B, advisory adjustment) stays the
+      base layer.
 
-      - Restyles New Recruit intake and groups Platform fees by cadence (Local Monthly, Local Annual, Annual, Monthly, One-Time).
+      - Restyles New Recruit intake and groups Platform fees by cadence (Local Monthly, Local Annual, Annual, Monthly,
+      One-Time).
 
       - Moves locations/domains to Firm and projection yea...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
@@ -1077,7 +1084,9 @@ reviewComments:
     prNumber: 100
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/100
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/100#discussion_r3824836563
-    body: Fixed in eae7f28. Every public Proforma CTA now uses the SWA sign-in route with `post_login_redirect_uri=/proforma`, while local development still links directly to `/proforma`. Added auth helper coverage for both modes, and Hub typecheck, lint, tests, and the full serverless artifact build pass.
+    body: Fixed in eae7f28. Every public Proforma CTA now uses the SWA sign-in route with
+      `post_login_redirect_uri=/proforma`, while local development still links directly to `/proforma`. Added auth
+      helper coverage for both modes, and Hub typecheck, lint, tests, and the full serverless artifact build pass.
     path: hub/components/LandingPage.tsx
     createdAt: 2026-08-20T19:48:30Z
     prFiles:
@@ -1098,7 +1107,9 @@ reviewComments:
     prNumber: 100
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/100
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/100#discussion_r3824910812
-    body: Fixed in 8c9e2b0. The landing page now listens for the existing 1024px desktop breakpoint and closes the mobile menu when that query begins matching. Browser regression verification confirmed the 1023px-to-1024px transition changes the dialog count from 1 to 0, clears the body overflow lock, and res...
+    body: Fixed in 8c9e2b0. The landing page now listens for the existing 1024px desktop breakpoint and closes the mobile
+      menu when that query begins matching. Browser regression verification confirmed the 1023px-to-1024px transition
+      changes the dialog count from 1 to 0, clears the body overflow lock, and res...
     path: hub/app/globals.css
     createdAt: 2026-08-20T19:58:48Z
     prFiles:
@@ -1119,7 +1130,9 @@ reviewComments:
     prNumber: 100
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/100
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/100#discussion_r3825014328
-    body: Fixed in 07d08ee. The dialog is now its own vertical scroll container and uses safe centering, so it remains centered when content fits and starts safely when content overflows. At 667×320, browser verification measured a 606px scroll height inside the 320px menu, scrolled to 286px, brought the fina...
+    body: Fixed in 07d08ee. The dialog is now its own vertical scroll container and uses safe centering, so it remains
+      centered when content fits and starts safely when content overflows. At 667×320, browser verification measured a
+      606px scroll height inside the 320px menu, scrolled to 286px, brought the fina...
     path: hub/app/globals.css
     createdAt: 2026-08-20T20:14:31Z
     prFiles:
@@ -1140,7 +1153,8 @@ reviewComments:
     prNumber: 100
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/100
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/100#discussion_r3825066353
-    body: Fixed in f6f66b1 by adding a preview-only server layout with route-specific metadata. Static artifact readback confirms `/index.html` retains `Advisor Proforma
+    body: Fixed in f6f66b1 by adding a preview-only server layout with route-specific metadata. Static artifact readback
+      confirms `/index.html` retains `Advisor Proforma
     path: hub/app/layout.tsx
     createdAt: 2026-08-20T20:22:41Z
     prFiles:
@@ -1161,7 +1175,9 @@ reviewComments:
     prNumber: 100
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/100
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/100#discussion_r3825106354
-    body: "No change needed: the supported `bun run dev:hub` path sets `MYRIAD_LOCAL_DEV=true` in `hub/scripts/dev.ts`, which enables the registry-driven redirects in `hub/next.config.ts`. `hub/lib/local-dev.ts` maps `/proforma` to the registered Proforma port, and the existing local-dev test covers every prod..."
+    body: "No change needed: the supported `bun run dev:hub` path sets `MYRIAD_LOCAL_DEV=true` in `hub/scripts/dev.ts`,
+      which enables the registry-driven redirects in `hub/next.config.ts`. `hub/lib/local-dev.ts` maps `/proforma` to
+      the registered Proforma port, and the existing local-dev test covers every prod..."
     path: hub/lib/auth.ts
     createdAt: 2026-08-20T20:28:55Z
     prFiles:
@@ -1316,12 +1332,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 52.7
+  version: "2.3"
+  hours: 31.9
   sessions: 1
   sessionHours: 6
-  volumeHours: 52.7
+  volumeHours: 55.7
+  compressedVolumeHours: 31.9
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

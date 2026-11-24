@@ -22,7 +22,7 @@ stats:
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 25.3
+  estimatedHours: 23.9
 dailyCommits:
   - date: 2026-07-23
     count: 9
@@ -47,7 +47,9 @@ pullRequests:
       ## Why
 
 
-      PR #37 switched production to dedicated product Static Web Apps and Function Apps before those resources existed. Azure currently has only `myriadas-hub` and no Function Apps, so Hub links target product routes whose artifacts are no longer deployed.
+      PR #37 switched production to dedicated product Static Web Apps and Function Apps before those resources existed.
+      Azure currently has only `myriadas-hub` and no Function Apps, so Hub links target product routes whose artifacts
+      are no longer deployed.
 
 
       ## What changed
@@ -134,7 +136,8 @@ pullRequests:
       ## Why
 
 
-      Extensionless product URLs such as `/pto` fell through to the Hub 404 because static exports place each entrypoint at `<app>/index.html`.
+      Extensionless product URLs such as `/pto` fell through to the Hub 404 because static exports place each entrypoint
+      at `<app>/index.html`.
 
 
       ## What changed
@@ -188,7 +191,9 @@ pullRequests:
       ## Why
 
 
-      FiNet recruits follow a distinct pricing path and should not expose or apply non-FiNet business-mix and platform assumptions. The recruit workflow also needs consistent fee precision and review layouts so entered values match the pricing calculations.
+      FiNet recruits follow a distinct pricing path and should not expose or apply non-FiNet business-mix and platform
+      assumptions. The recruit workflow also needs consistent fee precision and review layouts so entered values match
+      the pricing calculations.
 
 
       ## What changed
@@ -276,7 +281,9 @@ prsInProgress:
       ## Why
 
 
-      FiNet recruits follow a distinct pricing path and should not expose or apply non-FiNet business-mix and platform assumptions. The recruit workflow also needs consistent fee precision and review layouts so entered values match the pricing calculations.
+      FiNet recruits follow a distinct pricing path and should not expose or apply non-FiNet business-mix and platform
+      assumptions. The recruit workflow also needs consistent fee precision and review layouts so entered values match
+      the pricing calculations.
 
 
       ## What changed
@@ -499,12 +506,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 25.3
+  version: "2.3"
+  hours: 23.9
   sessions: 2
   sessionHours: 2
-  volumeHours: 25.3
+  volumeHours: 31.7
+  compressedVolumeHours: 23.9
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

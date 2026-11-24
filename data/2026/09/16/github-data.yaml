@@ -22,7 +22,7 @@ stats:
   reviewComments: 3
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 37.4
+  estimatedHours: 28.7
 dailyCommits:
   - date: 2026-09-16
     count: 18
@@ -43,7 +43,9 @@ repositories:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
 pullRequests:
   - title: "fix(ci): package unified function artifacts"
-    body: The unified deployment fails on a cold artifact cache because the Functions artifact parent does not exist before per-app copies begin. Once that path is created, PTO packaging also resolves the app ID `pto` to the nonexistent `pto/functions/dist` instead of the registered `pto-tracker/functions/dis...
+    body: The unified deployment fails on a cold artifact cache because the Functions artifact parent does not exist before
+      per-app copies begin. Once that path is created, PTO packaging also resolves the app ID `pto` to the nonexistent
+      `pto/functions/dist` instead of the registered `pto-tracker/functions/dis...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/119
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: merged
@@ -73,7 +75,8 @@ pullRequests:
       - .github/workflows/azure-static-web-apps.yml
   - title: Keep Entra sign-in outside embedded app frames
     body: >-
-      Unauthenticated protected routes previously redirected an embedded app directly to Microsoft Entra ID. Entra refuses to render interactive sign-in inside an iframe, leaving the frame blocked.
+      Unauthenticated protected routes previously redirected an embedded app directly to Microsoft Entra ID. Entra
+      refuses to render interactive sign-in inside an iframe, leaving the frame blocked.
 
 
       This sends anonymous requests to a public local login page first. Its Microsoft sign-in action targets the ...
@@ -124,7 +127,8 @@ pullRequests:
       ## Why
 
 
-      Myriad has no native workspace for coordinating account transitions. Add a functional local prototype based on the Transition Tool references, with defaults created only by explicit seed commands.
+      Myriad has no native workspace for coordinating account transitions. Add a functional local prototype based on the
+      Transition Tool references, with defaults created only by explicit seed commands.
 
 
       ## What changed
@@ -271,7 +275,8 @@ pullRequests:
       - transition/vitest.config.ts
   - title: "fix(ui): restore readable contrast in light and dark themes"
     body: >-
-      - Make theme and layout pickers use Myriad red selected states and readable unselected text instead of pale pink on Cool Gray 4.
+      - Make theme and layout pickers use Myriad red selected states and readable unselected text instead of pale pink
+      on Cool Gray 4.
 
       - Keep Hub app-card pins and badges on a light chip so they stay visible on the pastel previews in dark mode.
 
@@ -414,7 +419,8 @@ pullRequests:
       ## Why
 
 
-      Myriad has no native workspace for coordinating account transitions. Add a functional prototype and synthetic Azure PR demo based on the Transition Tool references, with defaults created only by explicit seed commands.
+      Myriad has no native workspace for coordinating account transitions. Add a functional prototype and synthetic
+      Azure PR demo based on the Transition Tool references, with defaults created only by explicit seed commands.
 
 
       ## What changed
@@ -588,7 +594,8 @@ pullRequests:
 prsInProgress:
   - title: Keep Entra sign-in outside embedded app frames
     body: >-
-      Unauthenticated protected routes previously redirected an embedded app directly to Microsoft Entra ID. Entra refuses to render interactive sign-in inside an iframe, leaving the frame blocked.
+      Unauthenticated protected routes previously redirected an embedded app directly to Microsoft Entra ID. Entra
+      refuses to render interactive sign-in inside an iframe, leaving the frame blocked.
 
 
       This sends anonymous requests to a public local login page first. Its Microsoft sign-in action targets the ...
@@ -647,7 +654,8 @@ prsInProgress:
       ## Why
 
 
-      Myriad has no native workspace for coordinating account transitions. Add a functional prototype and synthetic Azure PR demo based on the Transition Tool references, with defaults created only by explicit seed commands.
+      Myriad has no native workspace for coordinating account transitions. Add a functional prototype and synthetic
+      Azure PR demo based on the Transition Tool references, with defaults created only by explicit seed commands.
 
 
       ## What changed
@@ -941,7 +949,9 @@ reviewComments:
     prNumber: 120
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/120
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/120#discussion_r4028706161
-    body: "`#66706f` is now an approved product color: Accessible muted gray on the shared palette (`MYRIAD_BRAND.tertiaryMuted`), used by `--tertiary-muted` for UI text. Cool Gray 4 (`#bbbdb7`) stays in the palette as `coolGray4` for decorative structure."
+    body: "`#66706f` is now an approved product color: Accessible muted gray on the shared palette
+      (`MYRIAD_BRAND.tertiaryMuted`), used by `--tertiary-muted` for UI text. Cool Gray 4 (`#bbbdb7`) stays in the
+      palette as `coolGray4` for decorative structure."
     path: packages/brand/src/styles.css
     createdAt: 2026-09-16T17:10:23Z
     prFiles:
@@ -971,7 +981,9 @@ reviewComments:
     prNumber: 120
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/120
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/120#discussion_r4028805259
-    body: Addressed in fc7bd90. The header `.text-tertiary` override was painting this menu white-on-white; the panel now uses `text-foreground` plus a header/sidebar reset so unselected layout/theme options and email stay readable in light mode.
+    body: Addressed in fc7bd90. The header `.text-tertiary` override was painting this menu white-on-white; the panel now
+      uses `text-foreground` plus a header/sidebar reset so unselected layout/theme options and email stay readable in
+      light mode.
     path: packages/ui/src/appearance-quick-settings.tsx
     createdAt: 2026-09-16T17:21:45Z
     prFiles:
@@ -1001,7 +1013,9 @@ reviewComments:
     prNumber: 120
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/120
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/120#discussion_r4028826136
-    body: "[from Codex]: Extended the header chrome override to `bg-surface` and `ui-button-secondary` so the return-to-hub control keeps a translucent dark-header treatment instead of a white chip with a white glyph. Included in 252b8b3."
+    body: "[from Codex]: Extended the header chrome override to `bg-surface` and `ui-button-secondary` so the return-to-hub
+      control keeps a translucent dark-header treatment instead of a white chip with a white glyph. Included in
+      252b8b3."
     path: packages/ui/src/button.tsx
     createdAt: 2026-09-16T17:24:16Z
     prFiles:
@@ -1140,12 +1154,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 37.4
+  version: "2.3"
+  hours: 28.7
   sessions: 1
   sessionHours: 3.8
-  volumeHours: 37.4
+  volumeHours: 42.7
+  compressedVolumeHours: 28.7
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

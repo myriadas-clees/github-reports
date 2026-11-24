@@ -22,7 +22,7 @@ stats:
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 50.1
+  estimatedHours: 33.4
 dailyCommits:
   - date: 2026-08-07
     count: 17
@@ -44,9 +44,11 @@ repositories:
 pullRequests:
   - title: "fix(hub): keep bun:sqlite out of managed SWA Functions bundle"
     body: >-
-      - Hub deploy after #75 reported success but every `/api/*/health` probe returned 404 because the managed Functions worker crashed on load.
+      - Hub deploy after #75 reported success but every `/api/*/health` probe returned 404 because the managed Functions
+      worker crashed on load.
 
-      - Cause: onboarding `managed-swa.js` embedded `import … from "bun:sqlite"` via the VM SQLite/`cli-client` graph; Azure Functions runs Node and cannot resolve `bu...
+      - Cause: onboarding `managed-swa.js` embedded `import … from "bun:sqlite"` via the VM SQLite/`cli-client` graph;
+      Azure Functions runs Node and cannot resolve `bu...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/77
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: merged
@@ -176,7 +178,8 @@ pullRequests:
       - valuation/AGENTS.md
   - title: "chore: trim stale documentation and dead artifact"
     body: >-
-      - trim superseded implementation planning from the vendor-management discovery record while retaining source provenance and architectural decisions
+      - trim superseded implementation planning from the vendor-management discovery record while retaining source
+      provenance and architectural decisions
 
       - correct the PTO documentation index now that the application is implemented
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/80
@@ -271,7 +274,8 @@ pullRequests:
       ## Why
 
 
-      Onboarding needs a complete vendor-management workflow for intake, due diligence, contract review, approvals, documents, lifecycle tracking, and follow-ups while preserving the existing client workstream experience.
+      Onboarding needs a complete vendor-management workflow for intake, due diligence, contract review, approvals,
+      documents, lifecycle tracking, and follow-ups while preserving the existing client workstream experience.
 
 
       ## What changed
@@ -414,9 +418,11 @@ pullRequests:
       - pto-tracker/AGENTS.md
   - title: Add scoped Codex subtree agents and AGENTS.md guidance
     body: >-
-      - Add `.codex/config.toml` with multi-agent support and subtree-scoped write permissions (`docs-write`, `hub-write`, `ofac-write`, `packages-write`, `pricing-write`, `scripts-write`)
+      - Add `.codex/config.toml` with multi-agent support and subtree-scoped write permissions (`docs-write`,
+      `hub-write`, `ofac-write`, `packages-write`, `pricing-write`, `scripts-write`)
 
-      - Define six scoped Codex agents in `.codex/agents/` for `docs/`, `hub/`, `ofac/`, `packages/`, `pricing/`, and `scri...
+      - Define six scoped Codex agents in `.codex/agents/` for `docs/`, `hub/`, `ofac/`, `packages/`, `pricing/`, and
+      `scri...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/108
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
@@ -457,7 +463,8 @@ pullRequests:
 prsInProgress:
   - title: "chore: trim stale documentation and dead artifact"
     body: >-
-      - trim superseded implementation planning from the vendor-management discovery record while retaining source provenance and architectural decisions
+      - trim superseded implementation planning from the vendor-management discovery record while retaining source
+      provenance and architectural decisions
 
       - correct the PTO documentation index now that the application is implemented
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/80
@@ -509,9 +516,11 @@ prsInProgress:
       - AGENTS.md
   - title: Add scoped Codex subtree agents and AGENTS.md guidance
     body: >-
-      - Add `.codex/config.toml` with multi-agent support and subtree-scoped write permissions (`docs-write`, `hub-write`, `ofac-write`, `packages-write`, `pricing-write`, `scripts-write`)
+      - Add `.codex/config.toml` with multi-agent support and subtree-scoped write permissions (`docs-write`,
+      `hub-write`, `ofac-write`, `packages-write`, `pricing-write`, `scripts-write`)
 
-      - Define six scoped Codex agents in `.codex/agents/` for `docs/`, `hub/`, `ofac/`, `packages/`, `pricing/`, and `scri...
+      - Define six scoped Codex agents in `.codex/agents/` for `docs/`, `hub/`, `ofac/`, `packages/`, `pricing/`, and
+      `scri...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/108
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: merged
@@ -837,12 +846,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 50.1
+  version: "2.3"
+  hours: 33.4
   sessions: 2
   sessionHours: 4.4
-  volumeHours: 50.1
+  volumeHours: 61.7
+  compressedVolumeHours: 33.4
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

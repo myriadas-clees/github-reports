@@ -22,7 +22,7 @@ stats:
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 29.6
+  estimatedHours: 24.6
 dailyCommits:
   - date: 2026-08-24
     count: 16
@@ -77,9 +77,11 @@ pullRequests:
       - proforma/src/lib/report/model.ts
   - title: "feat(proforma): restyle intake and trim unused Platform fee lines"
     body: >-
-      - Stacks on #97 so FiNet 2026 pricing (Gateway packages, Cloud PC, Schedule A/B, advisory adjustment) stays the base layer.
+      - Stacks on #97 so FiNet 2026 pricing (Gateway packages, Cloud PC, Schedule A/B, advisory adjustment) stays the
+      base layer.
 
-      - Restyles New Recruit intake and groups Platform fees by cadence (Local Monthly, Local Annual, Annual, Monthly, One-Time).
+      - Restyles New Recruit intake and groups Platform fees by cadence (Local Monthly, Local Annual, Annual, Monthly,
+      One-Time).
 
       - Moves locations/domains to Firm and projection yea...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
@@ -757,12 +759,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 29.6
+  version: "2.3"
+  hours: 24.6
   sessions: 2
   sessionHours: 5.4
-  volumeHours: 29.6
+  volumeHours: 33.1
+  compressedVolumeHours: 24.6
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

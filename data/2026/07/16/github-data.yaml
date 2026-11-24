@@ -22,7 +22,7 @@ stats:
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 30.9
+  estimatedHours: 25
 dailyCommits:
   - date: 2026-07-16
     count: 15
@@ -47,7 +47,8 @@ pullRequests:
       ## Why
 
 
-      Production Onboarding workspaces can be empty, but the current UI only tells users to run a local seed command. Signed-in users need a supported way to initialize the workspace.
+      Production Onboarding workspaces can be empty, but the current UI only tells users to run a local seed command.
+      Signed-in users need a supported way to initialize the workspace.
 
 
       ## What changed
@@ -99,7 +100,8 @@ pullRequests:
       ## Why
 
 
-      New issues need a repeatable path into isolated Codex implementation work without bypassing human review and merge control.
+      New issues need a repeatable path into isolated Codex implementation work without bypassing human review and merge
+      control.
 
 
       ## What changed
@@ -146,7 +148,8 @@ prsInProgress:
       ## Why
 
 
-      New issues need a repeatable path into isolated Codex implementation work without bypassing human review and merge control.
+      New issues need a repeatable path into isolated Codex implementation work without bypassing human review and merge
+      control.
 
 
       ## What changed
@@ -181,7 +184,8 @@ prsInProgress:
     body: >-
       - publish the completed FINET Pricing model work alongside shared product-platform consolidation
 
-      - move OFAC production authentication to Azure Static Web Apps with the intentional SWA Principal bridge into Azure Functions
+      - move OFAC production authentication to Azure Static Web Apps with the intentional SWA Principal bridge into
+      Azure Functions
 
       - add the first authenticated Functions identity endpoint and static-safe OFA...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/58
@@ -634,12 +638,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 30.9
+  version: "2.3"
+  hours: 25
   sessions: 2
   sessionHours: 4.2
-  volumeHours: 30.9
+  volumeHours: 33.9
+  compressedVolumeHours: 25
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

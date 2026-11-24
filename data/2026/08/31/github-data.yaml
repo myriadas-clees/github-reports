@@ -22,7 +22,7 @@ stats:
   reviewComments: 3
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 48
+  estimatedHours: 37.1
 dailyCommits:
   - date: 2026-08-31
     count: 24
@@ -47,7 +47,8 @@ pullRequests:
       ## Problem
 
 
-      The project registered six obsolete subtree specialists in addition to explorer and worker, increasing routing complexity and leaving reasoning and handoff behavior inconsistent with the intended explorer-first workflow.
+      The project registered six obsolete subtree specialists in addition to explorer and worker, increasing routing
+      complexity and leaving reasoning and handoff behavior inconsistent with the intended explorer-first workflow.
 
 
       ## Solution
@@ -105,7 +106,8 @@ pullRequests:
       ## Why
 
 
-      The Hub deployment workflow failed during workflow planning because job-level env referenced the unavailable runner context. No jobs were created, so the main-branch deployment did not run.
+      The Hub deployment workflow failed during workflow planning because job-level env referenced the unavailable
+      runner context. No jobs were created, so the main-branch deployment did not run.
 
 
       ## What changed
@@ -146,7 +148,8 @@ pullRequests:
       ## Problem
 
 
-      The spawned custom explorer role uses the read-only explorer permission profile but did not prohibit approval requests, leaving a gap in its enforced behavior.
+      The spawned custom explorer role uses the read-only explorer permission profile but did not prohibit approval
+      requests, leaving a gap in its enforced behavior.
 
 
       ## Solution
@@ -186,7 +189,8 @@ pullRequests:
       ## Why
 
 
-      The project-scoped Codex setup registered ten overlapping specialists, which made delegation more complex than necessary and duplicated permission profiles.
+      The project-scoped Codex setup registered ten overlapping specialists, which made delegation more complex than
+      necessary and duplicated permission profiles.
 
 
       ## What changed
@@ -300,7 +304,8 @@ pullRequests:
       ## Why
 
 
-      Authorization role values had no single naming contract, allowing values such as PTO's `HRAdmin` to drift from the repository's lowercase snake-case convention.
+      Authorization role values had no single naming contract, allowing values such as PTO's `HRAdmin` to drift from the
+      repository's lowercase snake-case convention.
 
 
       Stacked on #107 so the documentation describes the consolidated authorization model introduced there.
@@ -340,7 +345,9 @@ pullRequests:
       ## Why
 
 
-      The suite-wide `myriadas_user` role was promoted to application administrator or HR access in several products. This conflated platform access with privileged authorization and allowed platform-only users to perform protected mutations.
+      The suite-wide `myriadas_user` role was promoted to application administrator or HR access in several products.
+      This conflated platform access with privileged authorization and allowed platform-only users to perform protected
+      mutations.
 
 
       ## What changed
@@ -392,7 +399,8 @@ pullRequests:
       - valuation/staticwebapp.config.json
   - title: "refactor: centralize suite architecture"
     body: >-
-      Centralizes repeated suite behavior so navigation preferences, static exports, and product route declarations are maintained once instead of drifting across apps.
+      Centralizes repeated suite behavior so navigation preferences, static exports, and product route declarations are
+      maintained once instead of drifting across apps.
 
 
       - Share Top bar/Sidebar preference across suite products.
@@ -911,7 +919,8 @@ reviewComments:
     prNumber: 113
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/113
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/113#discussion_r3895757642
-    body: Fixed in c073488. The Sub-agents section now explicitly identifies `worker` as the matching implementation role for scoped issues, while preserving the requirement to change only that section.
+    body: Fixed in c073488. The Sub-agents section now explicitly identifies `worker` as the matching implementation role
+      for scoped issues, while preserving the requirement to change only that section.
     path: AGENTS.md
     createdAt: 2026-08-31T15:16:21Z
     prFiles:
@@ -934,7 +943,8 @@ reviewComments:
     prNumber: 105
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/105
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/105#discussion_r3895313598
-    body: Addressed in e7c0edf. The workflow now passes the dispatch input through PRODUCT_APPS and quotes the environment variable inside the shell command, so embedded shell syntax is treated as data and parseApps performs validation.
+    body: Addressed in e7c0edf. The workflow now passes the dispatch input through PRODUCT_APPS and quotes the environment
+      variable inside the shell command, so embedded shell syntax is treated as data and parseApps performs validation.
     path: .github/workflows/azure-static-web-apps-products.yml
     createdAt: 2026-08-31T14:22:05Z
     prFiles:
@@ -954,7 +964,8 @@ reviewComments:
     prNumber: 105
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/105
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/105#discussion_r3895481515
-    body: Addressed in d8af293. The stale-main check now runs only for push events; manual workflow_dispatch runs bypass that guard and proceed with their explicitly selected stage/production deployment.
+    body: Addressed in d8af293. The stale-main check now runs only for push events; manual workflow_dispatch runs bypass
+      that guard and proceed with their explicitly selected stage/production deployment.
     path: .github/workflows/azure-static-web-apps.yml
     createdAt: 2026-08-31T14:41:11Z
     prFiles:
@@ -1114,12 +1125,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 48
+  version: "2.3"
+  hours: 37.1
   sessions: 1
   sessionHours: 5.2
-  volumeHours: 48
+  volumeHours: 76.5
+  compressedVolumeHours: 37.1
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

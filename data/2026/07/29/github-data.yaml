@@ -22,7 +22,7 @@ stats:
   reviewComments: 1
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 84.5
+  estimatedHours: 48
 dailyCommits:
   - date: 2026-07-29
     count: 52
@@ -47,7 +47,8 @@ pullRequests:
       Why
 
 
-      Clearing a custom-expense label put a temporarily empty string into the validated pricing model. Render-time scenario calculations parsed that model and threw a ZodError before the user could type a replacement.
+      Clearing a custom-expense label put a temporarily empty string into the validated pricing model. Render-time
+      scenario calculations parsed that model and threw a ZodError before the user could type a replacement.
 
 
       What changed
@@ -108,7 +109,8 @@ pullRequests:
       ## Why
 
 
-      Pricing is the future baseline for advisor pricing workflows. The existing Proforma runtime no longer matches the source product or the monorepo's static frontend plus Azure Functions architecture.
+      Pricing is the future baseline for advisor pricing workflows. The existing Proforma runtime no longer matches the
+      source product or the monorepo's static frontend plus Azure Functions architecture.
 
 
       ## What changed
@@ -979,7 +981,9 @@ pullRequests:
       Why
 
 
-      FiNet scenario assumptions and payout outputs had drifted from the approved workbook, producing discrepancies in the pricing UI and generated reports. The assumptions and result presentation also duplicated values and left responsive table space unused.
+      FiNet scenario assumptions and payout outputs had drifted from the approved workbook, producing discrepancies in
+      the pricing UI and generated reports. The assumptions and result presentation also duplicated values and left
+      responsive table space unused.
 
 
       What changed
@@ -1328,7 +1332,8 @@ pullRequests:
       ## Why
 
 
-      Browser-created screenings did not preserve the direct API request semantics. The UI flattened addresses and forced an individual type, causing valid OFAC matches to disappear or differ from direct API results.
+      Browser-created screenings did not preserve the direct API request semantics. The UI flattened addresses and
+      forced an individual type, causing valid OFAC matches to disappear or differ from direct API results.
 
 
       ## What changed
@@ -1418,7 +1423,9 @@ pullRequests:
       Why
 
 
-      Navigation mode was stored under an app-specific key, so the user's sidebar or topbar choice reset when moving between apps. The shared shell also centered the complete sidebar/content row, leaving the sidebar floating away from the left edge on wide screens.
+      Navigation mode was stored under an app-specific key, so the user's sidebar or topbar choice reset when moving
+      between apps. The shared shell also centered the complete sidebar/content row, leaving the sidebar floating away
+      from the left edge on wide screens.
 
 
       What changed
@@ -1464,7 +1471,8 @@ pullRequests:
       Why
 
 
-      The active-workstream description omitted the role portion of the selected workstream, so it could continue to look like the previous workflow after switching.
+      The active-workstream description omitted the role portion of the selected workstream, so it could continue to
+      look like the previous workflow after switching.
 
 
       What changed
@@ -1502,7 +1510,8 @@ pullRequests:
       ## Why
 
 
-      Excelerate silently generated workbooks from hard-coded schemas when output templates were unavailable and copied unidentified uploads into raw tabs. That could produce output without confirming the source or output template.
+      Excelerate silently generated workbooks from hard-coded schemas when output templates were unavailable and copied
+      unidentified uploads into raw tabs. That could produce output without confirming the source or output template.
 
 
       ## What changed
@@ -1569,7 +1578,8 @@ pullRequests:
       Why
 
 
-      Weekly dependency update runs create more review churn than this repository needs. Grouping already limits PR count per run, so reducing the schedule is the narrowest fix.
+      Weekly dependency update runs create more review churn than this repository needs. Grouping already limits PR
+      count per run, so reducing the schedule is the narrowest fix.
 
 
       What changed
@@ -2196,7 +2206,8 @@ reviewComments:
     prNumber: 56
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/56
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/56#discussion_r3678444159
-    body: "Fixed in `ec89f2f`: the unified build job now selects the same preview/stage/production environment as deploy, so environment-scoped Entra secrets are available when production artifacts are built."
+    body: "Fixed in `ec89f2f`: the unified build job now selects the same preview/stage/production environment as deploy, so
+      environment-scoped Entra secrets are available when production artifacts are built."
     path: .github/workflows/azure-static-web-apps.yml
     createdAt: 2026-07-29T22:27:47Z
     prFiles:
@@ -2396,12 +2407,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 84.5
+  version: "2.3"
+  hours: 48
   sessions: 2
   sessionHours: 6.5
-  volumeHours: 84.5
+  volumeHours: 119.8
+  compressedVolumeHours: 48
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

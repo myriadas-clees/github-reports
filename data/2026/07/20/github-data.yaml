@@ -22,7 +22,7 @@ stats:
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 34.6
+  estimatedHours: 32.2
 dailyCommits:
   - date: 2026-07-20
     count: 10
@@ -47,13 +47,15 @@ pullRequests:
       ## Why
 
 
-      The monorepo needs one operating model for authentication, audit data, app metadata, verification, distributed-write recovery, and GitHub governance.
+      The monorepo needs one operating model for authentication, audit data, app metadata, verification,
+      distributed-write recovery, and GitHub governance.
 
 
       ## What changed
 
 
-      - Add shared authentication and audit contracts and implementations, preserving app-local role policy and persisted audit fo...
+      - Add shared authentication and audit contracts and implementations, preserving app-local role policy and
+      persisted audit fo...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/31
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: merged
@@ -191,7 +193,8 @@ pullRequests:
     body: >-
       - publish the completed FINET Pricing model work alongside shared product-platform consolidation
 
-      - move OFAC production authentication to Azure Static Web Apps with the intentional SWA Principal bridge into Azure Functions
+      - move OFAC production authentication to Azure Static Web Apps with the intentional SWA Principal bridge into
+      Azure Functions
 
       - add the first authenticated Functions identity endpoint and static-safe OFA...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/58
@@ -771,12 +774,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 34.6
+  version: "2.3"
+  hours: 32.2
   sessions: 2
   sessionHours: 1.6
-  volumeHours: 34.6
+  volumeHours: 56.6
+  compressedVolumeHours: 32.2
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

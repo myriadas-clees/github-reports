@@ -22,7 +22,7 @@ stats:
   reviewComments: 27
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 53.7
+  estimatedHours: 32.5
 dailyCommits:
   - date: 2026-08-21
     count: 47
@@ -40,7 +40,9 @@ pullRequests:
       ## Why
 
 
-      Friendly preview registration returned HTTP 503 because the production Hub could not verify its Static Web App hostname through the forwarded request host and DNS fallback. This prevented the registry from accepting PR preview URLs even after the preview deployment succeeded.
+      Friendly preview registration returned HTTP 503 because the production Hub could not verify its Static Web App
+      hostname through the forwarded request host and DNS fallback. This prevented the registry from accepting PR
+      preview URLs even after the preview deployment succeeded.
 
 
       ## What change...
@@ -81,7 +83,8 @@ pullRequests:
       ## Why
 
 
-      The production Hub deployment could not publish the friendly preview redirect because Azure Oryx attempted to rebuild the already-built Functions package and rejected Bun workspace:* dependencies.
+      The production Hub deployment could not publish the friendly preview redirect because Azure Oryx attempted to
+      rebuild the already-built Functions package and rejected Bun workspace:* dependencies.
 
 
       ## What changed
@@ -121,9 +124,11 @@ pullRequests:
 prsInProgress:
   - title: "feat(proforma): restyle intake and trim unused Platform fee lines"
     body: >-
-      - Stacks on #97 so FiNet 2026 pricing (Gateway packages, Cloud PC, Schedule A/B, advisory adjustment) stays the base layer.
+      - Stacks on #97 so FiNet 2026 pricing (Gateway packages, Cloud PC, Schedule A/B, advisory adjustment) stays the
+      base layer.
 
-      - Restyles New Recruit intake and groups Platform fees by cadence (Local Monthly, Local Annual, Annual, Monthly, One-Time).
+      - Restyles New Recruit intake and groups Platform fees by cadence (Local Monthly, Local Annual, Annual, Monthly,
+      One-Time).
 
       - Moves locations/domains to Firm and projection yea...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
@@ -308,7 +313,8 @@ prsInProgress:
           - proforma/src/lib/recruit-routes.ts
       - &a17
         sha: 8cba2e5661003e36c566937fd15033c3f582f69a
-        message: Align Proforma with solo intake and one economics model so derived locations, payout grid, per-person Cloud PC, and tax tables stay consistent, details AUM persists, and Budget $400 is not counted twice.
+        message: Align Proforma with solo intake and one economics model so derived locations, payout grid, per-person Cloud PC,
+          and tax tables stay consistent, details AUM persists, and Budget $400 is not counted twice.
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8cba2e5661003e36c566937fd15033c3f582f69a
         authoredAt: 2026-08-21T19:14:43Z
         files:
@@ -366,7 +372,8 @@ prsInProgress:
           - proforma/src/lib/calculation.ts
       - &a19
         sha: ae1f5dbfe62a0af48c739928d96ebea5289eb1b2
-        message: Keep Proforma readable at 2880 and 720-tall viewports so dashboard KPIs, intake fields, and wizard Continue stay on screen without hydration flicker.
+        message: Keep Proforma readable at 2880 and 720-tall viewports so dashboard KPIs, intake fields, and wizard Continue
+          stay on screen without hydration flicker.
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ae1f5dbfe62a0af48c739928d96ebea5289eb1b2
         authoredAt: 2026-08-21T20:00:07Z
         files:
@@ -1723,9 +1730,11 @@ commitMessages:
       - "fix(ci): deploy prebuilt SWA Functions without rebuilding (#101)"
       - "fix(hub): use configured SWA hostname for preview links"
       - "fix(hub): use configured SWA hostname for preview links (#102)"
-      - Align Proforma with solo intake and one economics model so derived locations, payout grid, per-person Cloud PC, and tax tables stay consistent, details AUM persists, and Budget $400 is not counted twice.
+      - Align Proforma with solo intake and one economics model so derived locations, payout grid, per-person Cloud PC,
+        and tax tables stay consistent, details AUM persists, and Budget $400 is not counted twice.
       - "fix(proforma): persist Details Save Model and satisfy isSolo typecheck"
-      - Keep Proforma readable at 2880 and 720-tall viewports so dashboard KPIs, intake fields, and wizard Continue stay on screen without hydration flicker.
+      - Keep Proforma readable at 2880 and 720-tall viewports so dashboard KPIs, intake fields, and wizard Continue stay
+        on screen without hydration flicker.
       - Fix Codex review defects on estimated AUM, scenario projections, and intake persistence.
       - Keep explicit multi-office location counts above derived state codes.
       - Fix follow-up Codex review on Details AUM seed, location edits, and annual workbook fees.
@@ -5175,7 +5184,8 @@ reviewComments:
     prNumber: 98
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3833371735
-    body: Fixed in 571c45b. Year-by-year projection now uses `proformaOptionsForScenarioSheet()` for the active tab instead of always WFCS.
+    body: Fixed in 571c45b. Year-by-year projection now uses `proformaOptionsForScenarioSheet()` for the active tab instead
+      of always WFCS.
     path: proforma/src/components/scenario-model-tab.tsx
     createdAt: 2026-08-21T20:14:34Z
     prFiles:
@@ -5423,7 +5433,8 @@ reviewComments:
     prNumber: 98
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3833372063
-    body: "Already fixed on this branch: Assumptions One-Time Fees use `setupCosts.oneTimeSetup` only, which already includes foreign one-time amounts. Confirmed in 571c45b; no extra add remains."
+    body: "Already fixed on this branch: Assumptions One-Time Fees use `setupCosts.oneTimeSetup` only, which already
+      includes foreign one-time amounts. Confirmed in 571c45b; no extra add remains."
     path: proforma/src/components/assumptions-tab.tsx
     createdAt: 2026-08-21T20:14:38Z
     prFiles:
@@ -5671,7 +5682,8 @@ reviewComments:
     prNumber: 98
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3833372429
-    body: Fixed in 571c45b. Details still hides generated note lines in the textarea, but save merges them back from the existing recruit notes.
+    body: Fixed in 571c45b. Details still hides generated note lines in the textarea, but save merges them back from the
+      existing recruit notes.
     path: proforma/src/components/recruit-form.tsx
     createdAt: 2026-08-21T20:14:41Z
     prFiles:
@@ -5795,7 +5807,8 @@ reviewComments:
     prNumber: 98
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3833372579
-    body: Fixed in 571c45b. Details Estimated AUM now scales every advisor’s AUM (and caps month-end AUM) so the saved total matches the entered value.
+    body: Fixed in 571c45b. Details Estimated AUM now scales every advisor’s AUM (and caps month-end AUM) so the saved total
+      matches the entered value.
     path: proforma/src/components/recruit-model-shell.tsx
     createdAt: 2026-08-21T20:14:43Z
     prFiles:
@@ -5919,7 +5932,8 @@ reviewComments:
     prNumber: 98
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3833372732
-    body: Fixed in 571c45b. Explicit `statePayroll` values including 0 are honored; table/global rates apply only when `statePayroll` is absent.
+    body: Fixed in 571c45b. Explicit `statePayroll` values including 0 are honored; table/global rates apply only when
+      `statePayroll` is absent.
     path: proforma/src/lib/setup-projection.ts
     createdAt: 2026-08-21T20:14:45Z
     prFiles:
@@ -6043,7 +6057,8 @@ reviewComments:
     prNumber: 98
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3833372893
-    body: Fixed in 571c45b. Firm membership No/Yes no longer wipes company, locations, or extra team; those stay in draft while solo only affects the live model and submitted firm name.
+    body: Fixed in 571c45b. Firm membership No/Yes no longer wipes company, locations, or extra team; those stay in draft
+      while solo only affects the live model and submitted firm name.
     path: proforma/src/components/new-recruit-wizard.tsx
     createdAt: 2026-08-21T20:14:47Z
     prFiles:
@@ -6167,7 +6182,8 @@ reviewComments:
     prNumber: 98
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3833373045
-    body: Fixed in 6805801. `derivedLocationCount()` now uses max(state codes, persisted locations), so multi-office counts in one state are kept.
+    body: Fixed in 6805801. `derivedLocationCount()` now uses max(state codes, persisted locations), so multi-office counts
+      in one state are kept.
     path: proforma/src/lib/entity-state-costs.ts
     createdAt: 2026-08-21T20:14:49Z
     prFiles:
@@ -6291,7 +6307,8 @@ reviewComments:
     prNumber: 98
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3833474957
-    body: "Legitimate defect. Fixed in 4586ac1: Details Estimated AUM now seeds from the sum of advisor AUM so an unrelated save no longer scales a 50+50 book to 25+25."
+    body: "Legitimate defect. Fixed in 4586ac1: Details Estimated AUM now seeds from the sum of advisor AUM so an unrelated
+      save no longer scales a 50+50 book to 25+25."
     path: proforma/src/components/recruit-model-shell.tsx
     createdAt: 2026-08-21T20:27:59Z
     prFiles:
@@ -6415,7 +6432,8 @@ reviewComments:
     prNumber: 98
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3833475275
-    body: "Legitimate defect from the previous max() floor. Fixed in 4586ac1: state add/remove uses extra offices (locations minus prior state count), so removing CA from TX+CA returns to 1 while TX with 3 offices still keeps the extras."
+    body: "Legitimate defect from the previous max() floor. Fixed in 4586ac1: state add/remove uses extra offices (locations
+      minus prior state count), so removing CA from TX+CA returns to 1 while TX with 3 offices still keeps the extras."
     path: proforma/src/components/new-recruit-wizard.tsx
     createdAt: 2026-08-21T20:28:02Z
     prFiles:
@@ -6539,7 +6557,8 @@ reviewComments:
     prNumber: 98
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3833475534
-    body: "Legitimate defect. Fixed in 4586ac1: annual custom workbook rows store the annual amount and derive monthly as H/12 (subtotals SUM the annual cells), so $100 stays $100 instead of $99.96."
+    body: "Legitimate defect. Fixed in 4586ac1: annual custom workbook rows store the annual amount and derive monthly as
+      H/12 (subtotals SUM the annual cells), so $100 stays $100 instead of $99.96."
     path: proforma/src/lib/report/excel.ts
     createdAt: 2026-08-21T20:28:03Z
     prFiles:
@@ -6663,7 +6682,8 @@ reviewComments:
     prNumber: 98
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3833532535
-    body: "Legitimate defect. Fixed in 255e35c: create submits `submittedAdvisors` (solo-normalized) and the wizard API applies `applySoloPracticeRoster` when `isSolo` is true, so extra firm team members are not persisted."
+    body: "Legitimate defect. Fixed in 255e35c: create submits `submittedAdvisors` (solo-normalized) and the wizard API
+      applies `applySoloPracticeRoster` when `isSolo` is true, so extra firm team members are not persisted."
     path: proforma/src/components/new-recruit-wizard.tsx
     createdAt: 2026-08-21T20:34:35Z
     prFiles:
@@ -6787,7 +6807,8 @@ reviewComments:
     prNumber: 98
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3834817375
-    body: Fixed in e0c098b. Both the create wizard and post-create assumptions editor now recalculate the derived location count when all foreign states are cleared.
+    body: Fixed in e0c098b. Both the create wizard and post-create assumptions editor now recalculate the derived location
+      count when all foreign states are cleared.
     path: proforma/src/components/new-recruit-wizard.tsx
     createdAt: 2026-08-22T02:13:53Z
     prFiles:
@@ -6911,7 +6932,8 @@ reviewComments:
     prNumber: 98
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3834817519
-    body: "This is no longer applicable to the current product flow: the solo-advisor intake path was removed per product direction, so users cannot enter this state transition. No compatibility behavior was changed."
+    body: "This is no longer applicable to the current product flow: the solo-advisor intake path was removed per product
+      direction, so users cannot enter this state transition. No compatibility behavior was changed."
     path: proforma/src/components/new-recruit-wizard.tsx
     createdAt: 2026-08-22T02:13:57Z
     prFiles:
@@ -7035,7 +7057,8 @@ reviewComments:
     prNumber: 98
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3834817612
-    body: Fixed in e0c098b. The legacy annualOther value is again shown as an editable Other annual costs row, so saved charges remain visible and correctable.
+    body: Fixed in e0c098b. The legacy annualOther value is again shown as an editable Other annual costs row, so saved
+      charges remain visible and correctable.
     path: proforma/src/components/assumptions-tab.tsx
     createdAt: 2026-08-22T02:14:00Z
     prFiles:
@@ -7159,7 +7182,8 @@ reviewComments:
     prNumber: 98
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3834817711
-    body: Fixed in df31cec. FiNet workbook formulas now source their revenue and AUM inputs directly from Inputs, so the export no longer depends on an omitted WFCS worksheet.
+    body: Fixed in df31cec. FiNet workbook formulas now source their revenue and AUM inputs directly from Inputs, so the
+      export no longer depends on an omitted WFCS worksheet.
     path: proforma/src/lib/report/excel.ts
     createdAt: 2026-08-22T02:14:03Z
     prFiles:
@@ -7283,7 +7307,9 @@ reviewComments:
     prNumber: 98
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3834817774
-    body: "The current behavior is intentional product direction: benefit pricing is standardized at $1,000/month for single coverage and $2,000/month for married coverage. Preserving arbitrary legacy monthly amounts would conflict with that requested rule."
+    body: "The current behavior is intentional product direction: benefit pricing is standardized at $1,000/month for single
+      coverage and $2,000/month for married coverage. Preserving arbitrary legacy monthly amounts would conflict with
+      that requested rule."
     path: proforma/src/lib/calculation.ts
     createdAt: 2026-08-22T02:14:05Z
     prFiles:
@@ -7407,7 +7433,8 @@ reviewComments:
     prNumber: 98
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3834817818
-    body: Fixed in e0c098b. Review AUM, total-account, and billing-account totals now exclude rows whose current role is Staff, matching the model that is created.
+    body: Fixed in e0c098b. Review AUM, total-account, and billing-account totals now exclude rows whose current role is
+      Staff, matching the model that is created.
     path: proforma/src/components/new-recruit-wizard.tsx
     createdAt: 2026-08-22T02:14:07Z
     prFiles:
@@ -7531,7 +7558,8 @@ reviewComments:
     prNumber: 98
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3834817884
-    body: Fixed in e0c098b. FiNet Excel uses base plus syndicate revenue for grid selection, while payout formulas apply the production-grid rate only to base revenue and 70% to syndicate revenue.
+    body: Fixed in e0c098b. FiNet Excel uses base plus syndicate revenue for grid selection, while payout formulas apply the
+      production-grid rate only to base revenue and 70% to syndicate revenue.
     path: proforma/src/lib/report/excel.ts
     createdAt: 2026-08-22T02:14:09Z
     prFiles:
@@ -7655,7 +7683,8 @@ reviewComments:
     prNumber: 98
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3834817979
-    body: Fixed in e0c098b. Legacy website expenses remain active for non-FiNet saved models. FiNet continues excluding that legacy row specifically to avoid duplicating its platform hosting charge.
+    body: Fixed in e0c098b. Legacy website expenses remain active for non-FiNet saved models. FiNet continues excluding that
+      legacy row specifically to avoid duplicating its platform hosting charge.
     path: proforma/src/lib/calculation.ts
     createdAt: 2026-08-22T02:14:10Z
     prFiles:
@@ -7779,7 +7808,8 @@ reviewComments:
     prNumber: 98
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3834818031
-    body: Fixed in e0c098b. Domestic recurring state-card fees are included in setup recurring totals and emitted as a visible, styled Budget detail row.
+    body: Fixed in e0c098b. Domestic recurring state-card fees are included in setup recurring totals and emitted as a
+      visible, styled Budget detail row.
     path: proforma/src/lib/report/excel.ts
     createdAt: 2026-08-22T02:14:12Z
     prFiles:
@@ -7903,7 +7933,8 @@ reviewComments:
     prNumber: 98
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3834818091
-    body: Fixed in e0c098b. Each Budget projection year now uses that year’s baselineNetFinal instead of repeating the current-period net.
+    body: Fixed in e0c098b. Each Budget projection year now uses that year’s baselineNetFinal instead of repeating the
+      current-period net.
     path: proforma/src/lib/report/excel.ts
     createdAt: 2026-08-22T02:14:14Z
     prFiles:
@@ -8027,7 +8058,8 @@ reviewComments:
     prNumber: 98
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3834818137
-    body: Fixed in e0c098b. The Inputs sheet now uses the effective maximum of the entities roster length and legacy entityCount, preserving compatibility models.
+    body: Fixed in e0c098b. The Inputs sheet now uses the effective maximum of the entities roster length and legacy
+      entityCount, preserving compatibility models.
     path: proforma/src/lib/report/excel.ts
     createdAt: 2026-08-22T02:14:16Z
     prFiles:
@@ -8151,7 +8183,8 @@ reviewComments:
     prNumber: 98
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3834818199
-    body: Fixed in e0c098b. The Rates sheet selects Schedule A or B from prior-quarter advisory AUM percentage and emits the matching progressive tiers and total formulas.
+    body: Fixed in e0c098b. The Rates sheet selects Schedule A or B from prior-quarter advisory AUM percentage and emits the
+      matching progressive tiers and total formulas.
     path: proforma/src/lib/report/excel.ts
     createdAt: 2026-08-22T02:14:18Z
     prFiles:
@@ -8275,7 +8308,8 @@ reviewComments:
     prNumber: 98
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3834818276
-    body: Fixed in e0c098b. Staff and financial sections now start after the complete advisor roster, so large advisor teams are not overwritten.
+    body: Fixed in e0c098b. Staff and financial sections now start after the complete advisor roster, so large advisor teams
+      are not overwritten.
     path: proforma/src/lib/report/excel.ts
     createdAt: 2026-08-22T02:14:20Z
     prFiles:
@@ -8399,7 +8433,8 @@ reviewComments:
     prNumber: 98
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/98#discussion_r3834818342
-    body: Fixed in 63a424b. The wizard preview now selects the FiNet production-grid tier from base plus syndicate revenue, excluding insurance and retirement just like the saved model.
+    body: Fixed in 63a424b. The wizard preview now selects the FiNet production-grid tier from base plus syndicate revenue,
+      excluding insurance and retirement just like the saved model.
     path: proforma/src/lib/calculation.ts
     createdAt: 2026-08-22T02:14:22Z
     prFiles:
@@ -8792,12 +8827,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 53.7
+  version: "2.3"
+  hours: 32.5
   sessions: 2
   sessionHours: 8.1
-  volumeHours: 53.7
+  volumeHours: 58.1
+  compressedVolumeHours: 32.5
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

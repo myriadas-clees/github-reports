@@ -22,7 +22,7 @@ stats:
   reviewComments: 11
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 57.7
+  estimatedHours: 33.2
 dailyCommits:
   - date: 2026-08-11
     count: 19
@@ -44,7 +44,8 @@ repositories:
 pullRequests:
   - title: Reduce redundant Codex agent token usage
     body: >-
-      - replace mandatory two-agent fan-out with one compact, read-only explorer and at most one scoped implementation specialist for normal work
+      - replace mandatory two-agent fan-out with one compact, read-only explorer and at most one scoped implementation
+      specialist for normal work
 
       - make root guidance concise and align scoped issue, commit/push/PR, CI, and review-comment workflows
 
@@ -95,7 +96,8 @@ pullRequests:
       - AGENTS.md
   - title: Reduce redundant Codex agent token usage
     body: >-
-      - replace mandatory two-agent fan-out with one compact, read-only explorer and at most one scoped implementation specialist for normal work
+      - replace mandatory two-agent fan-out with one compact, read-only explorer and at most one scoped implementation
+      specialist for normal work
 
       - make root guidance concise and align scoped issue, commit/push/PR, CI, and review-comment workflows
 
@@ -296,7 +298,8 @@ pullRequests:
       ## Why
 
 
-      The Proforma recruit intake needed a team-first workflow and clearer modeling for recruit types, owners, advisors, support staff, affiliations, and economics. Preview deployments also needed to include the managed Hub API.
+      The Proforma recruit intake needed a team-first workflow and clearer modeling for recruit types, owners, advisors,
+      support staff, affiliations, and economics. Preview deployments also needed to include the managed Hub API.
 
 
       ## What changed
@@ -370,9 +373,11 @@ pullRequests:
       - proforma/src/lib/workbook-output.ts
   - title: Streamline recruit editing and business mix UX in pricing
     body: >-
-      - Default local development role is now `admin` (`OHPWM_LOCAL_ROLE=admin` in env examples); set `OHPWM_LOCAL_ROLE=officer` to exercise officer visibility and holdco economics boundaries.
+      - Default local development role is now `admin` (`OHPWM_LOCAL_ROLE=admin` in env examples); set
+      `OHPWM_LOCAL_ROLE=officer` to exercise officer visibility and holdco economics boundaries.
 
-      - Recruit model header uses a single **Edit recruit** popover with focus management, `aria-controls`, and a **Mod...
+      - Recruit model header uses a single **Edit recruit** popover with focus management, `aria-controls`, and a
+      **Mod...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/111
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: merged
@@ -420,7 +425,8 @@ pullRequests:
 prsInProgress:
   - title: Reduce redundant Codex agent token usage
     body: >-
-      - replace mandatory two-agent fan-out with one compact, read-only explorer and at most one scoped implementation specialist for normal work
+      - replace mandatory two-agent fan-out with one compact, read-only explorer and at most one scoped implementation
+      specialist for normal work
 
       - make root guidance concise and align scoped issue, commit/push/PR, CI, and review-comment workflows
 
@@ -455,7 +461,8 @@ prsInProgress:
       - AGENTS.md
   - title: Reduce redundant Codex agent token usage
     body: >-
-      - replace mandatory two-agent fan-out with one compact, read-only explorer and at most one scoped implementation specialist for normal work
+      - replace mandatory two-agent fan-out with one compact, read-only explorer and at most one scoped implementation
+      specialist for normal work
 
       - make root guidance concise and align scoped issue, commit/push/PR, CI, and review-comment workflows
 
@@ -547,7 +554,8 @@ prsInProgress:
       ## Why
 
 
-      The Proforma recruit intake needed a team-first workflow and clearer modeling for recruit types, owners, advisors, support staff, affiliations, and economics. Preview deployments also needed to include the managed Hub API.
+      The Proforma recruit intake needed a team-first workflow and clearer modeling for recruit types, owners, advisors,
+      support staff, affiliations, and economics. Preview deployments also needed to include the managed Hub API.
 
 
       ## What changed
@@ -636,9 +644,11 @@ prsInProgress:
       Closes #38.
 
 
-      - Adds a Cosmos-backed atomic timer lease with conditional create, ETag-protected stale recovery, owner-safe finalization, and explicit TTL/expiry.
+      - Adds a Cosmos-backed atomic timer lease with conditional create, ETag-protected stale recovery, owner-safe
+      finalization, and explicit TTL/expiry.
 
-      - Routes both production timer and manual HTTP XML sync through the same durable Cosmos lease. A conflicting manual run is audited and reje...
+      - Routes both production timer and manual HTTP XML sync through the same durable Cosmos lease. A conflicting
+      manual run is audited and reje...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/89
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
@@ -672,7 +682,8 @@ prsInProgress:
     body: >-
       - migrate the OFAC production API surface to Azure Functions through transport-neutral handlers
 
-      - preserve SQLite-backed local development via documented local Next adapters while defaulting deployed Functions to Cosmos persistence
+      - preserve SQLite-backed local development via documented local Next adapters while defaulting deployed Functions
+      to Cosmos persistence
 
       - add search, audit, manual-sync, Function transport, static API-bas...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/85
@@ -774,7 +785,8 @@ prsInProgress:
       ## Why
 
 
-      Recruit intake still followed an advisor-first flow that did not match how teams are modeled in practice. Platform assumptions also carried legacy OHC and FiNet Wells/WFAFN fee inputs that are no longer part of the pricing model.
+      Recruit intake still followed an advisor-first flow that did not match how teams are modeled in practice. Platform
+      assumptions also carried legacy OHC and FiNet Wells/WFAFN fee inputs that are no longer part of the pricing model.
 
 
       ## What changed
@@ -1737,7 +1749,9 @@ reviewComments:
     prNumber: 90
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/90
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/90#discussion_r3763336981
-    body: Legitimate catch—fixed in d527aa6. `verify` covers typecheck, lint, and tests, while `build:serverless` also builds static output and Functions and validates composed artifacts. The repository-specific guidance now explicitly requires `bun run build:serverless` for static output, Azure Functions, or...
+    body: Legitimate catch—fixed in d527aa6. `verify` covers typecheck, lint, and tests, while `build:serverless` also
+      builds static output and Functions and validates composed artifacts. The repository-specific guidance now
+      explicitly requires `bun run build:serverless` for static output, Azure Functions, or...
     path: AGENTS.md
     createdAt: 2026-08-12T03:15:00Z
     prFiles:
@@ -1759,7 +1773,8 @@ reviewComments:
     prNumber: 84
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3760692399
-    body: Fixed in 370ba46. Syndicate, insurance, and retirement revenue now affect total revenue, gross payout, projections, report totals, and workbook totals, with focused calculation coverage.
+    body: Fixed in 370ba46. Syndicate, insurance, and retirement revenue now affect total revenue, gross payout,
+      projections, report totals, and workbook totals, with focused calculation coverage.
     path: proforma/src/lib/new-recruit.ts
     createdAt: 2026-08-11T18:33:41Z
     prFiles:
@@ -1828,7 +1843,8 @@ reviewComments:
     prNumber: 84
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3760692667
-    body: Fixed in 370ba46. Owner role and ownership percentage are structured Advisor fields, editable after creation, included in reporting, and no longer encoded as a zero-dollar expense.
+    body: Fixed in 370ba46. Owner role and ownership percentage are structured Advisor fields, editable after creation,
+      included in reporting, and no longer encoded as a zero-dollar expense.
     path: proforma/src/lib/new-recruit.ts
     createdAt: 2026-08-11T18:33:43Z
     prFiles:
@@ -1897,7 +1913,8 @@ reviewComments:
     prNumber: 84
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3760692918
-    body: Fixed in 370ba46. The registration footprint picker now synchronizes setup.registeredStateCount, so setup costs and review values update from the selected states.
+    body: Fixed in 370ba46. The registration footprint picker now synchronizes setup.registeredStateCount, so setup costs
+      and review values update from the selected states.
     path: proforma/src/components/new-recruit-wizard.tsx
     createdAt: 2026-08-11T18:33:45Z
     prFiles:
@@ -1966,7 +1983,8 @@ reviewComments:
     prNumber: 84
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3760693211
-    body: Fixed in 370ba46. Final submission now requires Company, displays a review warning, and keeps Create Recruit disabled until the company is present.
+    body: Fixed in 370ba46. Final submission now requires Company, displays a review warning, and keeps Create Recruit
+      disabled until the company is present.
     path: proforma/src/components/new-recruit-wizard.tsx
     createdAt: 2026-08-11T18:33:47Z
     prFiles:
@@ -2035,7 +2053,8 @@ reviewComments:
     prNumber: 84
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3760693458
-    body: Fixed in 370ba46. Every rendered recruit wizard panel now includes intake-panel, activating the intended shell, responsive, and dark-mode selectors throughout the flow.
+    body: Fixed in 370ba46. Every rendered recruit wizard panel now includes intake-panel, activating the intended shell,
+      responsive, and dark-mode selectors throughout the flow.
     path: proforma/src/app/globals.css
     createdAt: 2026-08-11T18:33:50Z
     prFiles:
@@ -2104,7 +2123,8 @@ reviewComments:
     prNumber: 84
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3760693837
-    body: Fixed in 370ba46. Changing a member to Staff clears advisor-only economics, and an all-staff team is now blocked so review and created-model economics remain consistent.
+    body: Fixed in 370ba46. Changing a member to Staff clears advisor-only economics, and an all-staff team is now blocked
+      so review and created-model economics remain consistent.
     path: proforma/src/components/new-recruit-wizard.tsx
     createdAt: 2026-08-11T18:33:53Z
     prFiles:
@@ -2242,7 +2262,9 @@ reviewComments:
     prNumber: 84
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3760694552
-    body: "Resolved as intentional product behavior. The required mapping is categorical: FiNet records Broker-dealer and RIA records Custodian. Collecting an institution name is intentionally out of scope, and tests cover both mappings."
+    body: "Resolved as intentional product behavior. The required mapping is categorical: FiNet records Broker-dealer and
+      RIA records Custodian. Collecting an institution name is intentionally out of scope, and tests cover both
+      mappings."
     path: proforma/src/components/new-recruit-wizard.tsx
     createdAt: 2026-08-11T18:33:59Z
     prFiles:
@@ -2311,7 +2333,8 @@ reviewComments:
     prNumber: 84
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3760694829
-    body: Fixed in 9de30e5. Benefits coverage is now structured advisor/support-staff data, editable after creation, and surfaced in reporting rather than stored as a zero-dollar expense.
+    body: Fixed in 9de30e5. Benefits coverage is now structured advisor/support-staff data, editable after creation, and
+      surfaced in reporting rather than stored as a zero-dollar expense.
     path: proforma/src/lib/new-recruit.ts
     createdAt: 2026-08-11T18:34:02Z
     prFiles:
@@ -2380,7 +2403,9 @@ reviewComments:
     prNumber: 84
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3760732221
-    body: Fixed in 7b22f9d. WFCS and Schwab waterfall formulas are now derived from the actual rendered row positions, so optional platform/local rows cannot create stale references or self-references. Focused row-alignment tests cover both sheets.
+    body: Fixed in 7b22f9d. WFCS and Schwab waterfall formulas are now derived from the actual rendered row positions, so
+      optional platform/local rows cannot create stale references or self-references. Focused row-alignment tests cover
+      both sheets.
     path: proforma/src/lib/workbook-output.ts
     createdAt: 2026-08-11T18:39:28Z
     prFiles:
@@ -2574,12 +2599,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 57.7
+  version: "2.3"
+  hours: 33.2
   sessions: 3
   sessionHours: 5.1
-  volumeHours: 57.7
+  volumeHours: 60.7
+  compressedVolumeHours: 33.2
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

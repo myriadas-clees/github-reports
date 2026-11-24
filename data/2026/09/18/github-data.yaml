@@ -22,7 +22,7 @@ stats:
   reviewComments: 5
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 69.9
+  estimatedHours: 37.7
 dailyCommits:
   - date: 2026-09-18
     count: 26
@@ -37,7 +37,8 @@ repositories:
 pullRequests:
   - title: "fix(ofac): restore the previous iframe sign-in design"
     body: >-
-      Restore the previous centered iframe sign-in card after the authentication fix changed its presentation. Reuse the existing page layout, hint styling, full-width navy button, and Microsoft icon.
+      Restore the previous centered iframe sign-in card after the authentication fix changed its presentation. Reuse the
+      existing page layout, hint styling, full-width navy button, and Microsoft icon.
 
 
       The relay, credential handling, access checks, and authenticated OFAC interface remain unchanged.
@@ -71,7 +72,9 @@ pullRequests:
     workFiles:
       - ofac/src/components/ofac-iframe-auth-boundary.tsx
   - title: "fix(ofac): preserve iframe credentials through the SWA proxy"
-    body: OFAC credential issuance succeeds after configuring the public UI origin, but the embedded `/api/ofac/me` check returns 401 despite the browser sending its signed credential. Azure SWA uses `Authorization` for backend authentication, so this header cannot reliably transport the application's iframe ...
+    body: OFAC credential issuance succeeds after configuring the public UI origin, but the embedded `/api/ofac/me` check
+      returns 401 despite the browser sending its signed credential. Azure SWA uses `Authorization` for backend
+      authentication, so this header cannot reliably transport the application's iframe ...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/129
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: merged
@@ -108,7 +111,9 @@ pullRequests:
       - ofac/src/lib/ofac-authorized-fetch.ts
   - title: "feat(auth): add iframe sign-in diagnostics"
     body: >-
-      The Invent iframe can keep waiting after Microsoft sign-in, but the current session probe reduces HTTP failures, anonymous sessions, missing roles, and timeouts to the same boolean. Add local browser-console diagnostics so the next deployed reproduction identifies which step fails.
+      The Invent iframe can keep waiting after Microsoft sign-in, but the current session probe reduces HTTP failures,
+      anonymous sessions, missing roles, and timeouts to the same boolean. Add local browser-console diagnostics so the
+      next deployed reproduction identifies which step fails.
 
 
       - Emit `[ohpwm:i...
@@ -148,7 +153,9 @@ pullRequests:
       - packages/auth/src/iframe-login.tsx
   - title: "fix(ofac): authenticate embedded sessions without SWA cookies"
     body: >-
-      Azure SWA's `SameSite=Strict` authentication cookie is excluded inside Invent, so completing Microsoft sign-in never authorizes the OFAC iframe. Keep the OFAC shell public and gate its children until server authorization succeeds.
+      Azure SWA's `SameSite=Strict` authentication cookie is excluded inside Invent, so completing Microsoft sign-in
+      never authorizes the OFAC iframe. Keep the OFAC shell public and gate its children until server authorization
+      succeeds.
 
 
       A same-origin relay tab exchanges an existing first-party SWA sessio...
@@ -253,7 +260,9 @@ pullRequests:
       - packages/auth/src/client.ts
   - title: "fix(auth): keep iframe permission action available"
     body: >-
-      An Invent iframe could remain unauthenticated after Microsoft sign-in while hiding the native session-access action. The component treated `hasStorageAccess()` as proof that the Azure session was usable and also required that check API to exist.
+      An Invent iframe could remain unauthenticated after Microsoft sign-in while hiding the native session-access
+      action. The component treated `hasStorageAccess()` as proof that the Azure session was usable and also required
+      that check API to exist.
 
 
       Offer **Continue in this workspace** whenever the emb...
@@ -288,7 +297,9 @@ pullRequests:
       - packages/auth/src/iframe-login-lifecycle.test.tsx
       - packages/auth/src/iframe-login.tsx
   - title: "fix(auth): enable cookie access inside embedded apps"
-    body: Cross-site embedded apps could finish Microsoft sign-in in another tab while the iframe kept polling without access to the Azure session cookie. The shared login component now detects missing cookie access and offers a native Storage Access request inside the iframe, then restores the original app r...
+    body: Cross-site embedded apps could finish Microsoft sign-in in another tab while the iframe kept polling without
+      access to the Azure session cookie. The shared login component now detects missing cookie access and offers a
+      native Storage Access request inside the iframe, then restores the original app r...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/125
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: merged
@@ -343,9 +354,11 @@ pullRequests:
       - packages/auth/src/iframe-login.tsx
   - title: "fix(ofac): Compact OFAC chrome in the Invent iframe"
     body: >-
-      - Detect when OFAC is running inside Invent/Hub and drop duplicate product chrome (logo, gold rule, dashboard hero, email label) that the parent workspace already provides.
+      - Detect when OFAC is running inside Invent/Hub and drop duplicate product chrome (logo, gold rule, dashboard
+      hero, email label) that the parent workspace already provides.
 
-      - Keep OFAC-only controls in the iframe: Dashboard / New Client / Screenings / Settings, search, account menu, metrics, and wor...
+      - Keep OFAC-only controls in the iframe: Dashboard / New Client / Screenings / Settings, search, account menu,
+      metrics, and wor...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/131
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: merged
@@ -848,7 +861,9 @@ reviewComments:
       Compact chrome is no longer applied to every iframe.
 
 
-      `ofacShellPresentation` now requires the parent origin to be listed in `NEXT_PUBLIC_OFAC_WORKSPACE_PARENT_ORIGINS`. Other trusted `OHPWM_IFRAME_PARENT_ORIGINS` keep the full OFAC shell, including brand, dashboard heading, and CTA.
+      `ofacShellPresentation` now requires the parent origin to be listed in
+      `NEXT_PUBLIC_OFAC_WORKSPACE_PARENT_ORIGINS`. Other trusted `OHPWM_IFRAME_PARENT_ORIGINS` keep the full OFAC shell,
+      including brand, dashboard heading, and CTA.
     path: ofac/src/lib/ofac-shell-presentation.ts
     createdAt: 2026-09-18T20:27:50Z
     prFiles:
@@ -872,10 +887,12 @@ reviewComments:
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/131
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/131#discussion_r4050486533
     body: >-
-      Reverted the extra origin list. Compact chrome is intentional for any iframe so OFAC can be embedded in multiple workspaces without registering each parent for layout.
+      Reverted the extra origin list. Compact chrome is intentional for any iframe so OFAC can be embedded in multiple
+      workspaces without registering each parent for layout.
 
 
-      Who may frame OFAC is still controlled by `OHPWM_IFRAME_PARENT_ORIGINS` / `frame-ancestors`. That list already supports multiple tr...
+      Who may frame OFAC is still controlled by `OHPWM_IFRAME_PARENT_ORIGINS` / `frame-ancestors`. That list already
+      supports multiple tr...
     path: ofac/src/lib/ofac-shell-presentation.ts
     createdAt: 2026-09-18T20:33:27Z
     prFiles:
@@ -898,7 +915,8 @@ reviewComments:
     prNumber: 131
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/131
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/131#discussion_r4051418808
-    body: "[from Codex]: Changed the preview iframe source to `./`, so the composed `/ofac/iframe-preview.html` stays within the OFAC base path. Included in commit `3021be8`."
+    body: "[from Codex]: Changed the preview iframe source to `./`, so the composed `/ofac/iframe-preview.html` stays within
+      the OFAC base path. Included in commit `3021be8`."
     path: ofac/public/iframe-preview.html
     createdAt: 2026-09-18T23:30:48Z
     prFiles:
@@ -921,7 +939,8 @@ reviewComments:
     prNumber: 131
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/131
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/131#discussion_r4051418917
-    body: "[from Codex]: Restored the one-column embedded header layout at widths of 720px and below, including safe nav and end-control placement. Included in commit `3021be8`."
+    body: "[from Codex]: Restored the one-column embedded header layout at widths of 720px and below, including safe nav and
+      end-control placement. Included in commit `3021be8`."
     path: ofac/src/app/globals.css
     createdAt: 2026-09-18T23:30:50Z
     prFiles:
@@ -944,7 +963,8 @@ reviewComments:
     prNumber: 131
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/131
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/131#discussion_r4051419003
-    body: "[from Codex]: Kept the dashboard `<h1>` in the accessibility tree using the existing screen-reader-only pattern while hiding the supporting description and CTA in embedded mode. Included in commit `3021be8`."
+    body: "[from Codex]: Kept the dashboard `<h1>` in the accessibility tree using the existing screen-reader-only pattern
+      while hiding the supporting description and CTA in embedded mode. Included in commit `3021be8`."
     path: ofac/src/app/globals.css
     createdAt: 2026-09-18T23:30:51Z
     prFiles:
@@ -1117,12 +1137,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 69.9
+  version: "2.3"
+  hours: 37.7
   sessions: 2
   sessionHours: 5.5
-  volumeHours: 69.9
+  volumeHours: 78.9
+  compressedVolumeHours: 37.7
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

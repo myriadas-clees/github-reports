@@ -22,7 +22,7 @@ stats:
   reviewComments: 4
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 31.1
+  estimatedHours: 28.7
 dailyCommits:
   - date: 2026-07-24
     count: 17
@@ -40,7 +40,8 @@ pullRequests:
       Why
 
 
-      Browser-level fetch failures exposed only “Failed to fetch,” leaving operators without the endpoint or configuration context needed to recover.
+      Browser-level fetch failures exposed only “Failed to fetch,” leaving operators without the endpoint or
+      configuration context needed to recover.
 
 
       What changed
@@ -83,7 +84,8 @@ pullRequests:
       Why
 
 
-      HR needs a starter file for bulk PTO setup and a faster path for adding one employee without preparing a spreadsheet.
+      HR needs a starter file for bulk PTO setup and a faster path for adding one employee without preparing a
+      spreadsheet.
 
 
       What changed
@@ -148,7 +150,8 @@ pullRequests:
       Why
 
 
-      The Pro Forma entity form stored only a registration-state count, so users could not identify or restore multiple selected states.
+      The Pro Forma entity form stored only a registration-state count, so users could not identify or restore multiple
+      selected states.
 
 
       What changed
@@ -220,7 +223,8 @@ pullRequests:
       ## Why
 
 
-      Client onboarding generated a browser-side client ID that conflicts with the production Cosmos tenant scope. The create request failed before the workspace could open.
+      Client onboarding generated a browser-side client ID that conflicts with the production Cosmos tenant scope. The
+      create request failed before the workspace could open.
 
 
       ## What changed
@@ -314,7 +318,8 @@ pullRequests:
       Why
 
 
-      Alpha workspaces generate a workstream and task set, but the supported UI had no safe cleanup lifecycle. Disposable test data therefore remained in active selectors after verification.
+      Alpha workspaces generate a workstream and task set, but the supported UI had no safe cleanup lifecycle.
+      Disposable test data therefore remained in active selectors after verification.
 
 
       What changed
@@ -370,7 +375,8 @@ prsInProgress:
       Why
 
 
-      Alpha workspaces generate a workstream and task set, but the supported UI had no safe cleanup lifecycle. Disposable test data therefore remained in active selectors after verification.
+      Alpha workspaces generate a workstream and task set, but the supported UI had no safe cleanup lifecycle.
+      Disposable test data therefore remained in active selectors after verification.
 
 
       What changed
@@ -569,7 +575,9 @@ reviewComments:
     prNumber: 46
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/46
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/46#discussion_r3647389745
-    body: Addressed. The create API now returns the server-resolved `clientId`, and the form includes both `client` and `employee` in the redirect. Added API coverage for the returned client context; typecheck, lint, and all 20 dashboard tests pass.
+    body: Addressed. The create API now returns the server-resolved `clientId`, and the form includes both `client` and
+      `employee` in the redirect. Added API coverage for the returned client context; typecheck, lint, and all 20
+      dashboard tests pass.
     path: onboarding/apps/dashboard/components/create-employee-form.tsx
     createdAt: 2026-07-24T18:27:56Z
     prFiles:
@@ -582,7 +590,9 @@ reviewComments:
     prNumber: 46
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/46
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/46#discussion_r3647427838
-    body: Addressed at the provider boundary. The form again proposes a unique client ID, SQLite retains it for distinct workspaces, Cosmos uses its configured tenant ID instead of rejecting the proposal, and the API redirect uses the server-resolved ID. Dashboard checks pass (20 tests); database typecheck an...
+    body: Addressed at the provider boundary. The form again proposes a unique client ID, SQLite retains it for distinct
+      workspaces, Cosmos uses its configured tenant ID instead of rejecting the proposal, and the API redirect uses the
+      server-resolved ID. Dashboard checks pass (20 tests); database typecheck an...
     path: onboarding/apps/dashboard/components/create-employee-form.tsx
     createdAt: 2026-07-24T18:35:34Z
     prFiles:
@@ -595,7 +605,9 @@ reviewComments:
     prNumber: 43
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/43
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/43#discussion_r3647376116
-    body: "Fixed in 7d7f4df. Modern form submissions now carry an explicit picker marker, so an empty selection saves `registeredStates: 0`; legacy submissions without the marker retain the prior numeric fallback. Added a focused regression test for clearing all states."
+    body: "Fixed in 7d7f4df. Modern form submissions now carry an explicit picker marker, so an empty selection saves
+      `registeredStates: 0`; legacy submissions without the marker retain the prior numeric fallback. Added a focused
+      regression test for clearing all states."
     path: proforma/src/lib/validation/scenario-form-values.ts
     createdAt: 2026-07-24T18:25:17Z
     prFiles:
@@ -609,7 +621,9 @@ reviewComments:
     prNumber: 43
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/43
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/43#discussion_r3647402705
-    body: "Fixed in 24d6935. The form now submits an explicit changed flag only after checkbox interaction: untouched legacy scenarios retain their numeric count, selected states derive the count, and an intentional clear saves zero. Focused tests cover both intentional clear and untouched legacy behavior."
+    body: "Fixed in 24d6935. The form now submits an explicit changed flag only after checkbox interaction: untouched legacy
+      scenarios retain their numeric count, selected states derive the count, and an intentional clear saves zero.
+      Focused tests cover both intentional clear and untouched legacy behavior."
     path: proforma/src/lib/validation/scenario-form-values.ts
     createdAt: 2026-07-24T18:30:31Z
     prFiles:
@@ -727,12 +741,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 31.1
+  version: "2.3"
+  hours: 28.7
   sessions: 2
   sessionHours: 1.2
-  volumeHours: 31.1
+  volumeHours: 42.8
+  compressedVolumeHours: 28.7
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

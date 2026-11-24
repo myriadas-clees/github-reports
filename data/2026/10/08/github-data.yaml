@@ -22,7 +22,7 @@ stats:
   reviewComments: 26
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 79.8
+  estimatedHours: 38.7
 dailyCommits:
   - date: 2026-10-08
     count: 37
@@ -50,7 +50,8 @@ pullRequests:
       ## Why
 
 
-      The app theme used Myriad reds for actions and focus treatments, which conflicts with the brand guidance that reserves red for accents.
+      The app theme used Myriad reds for actions and focus treatments, which conflicts with the brand guidance that
+      reserves red for accents.
 
 
       ## What changed
@@ -226,7 +227,8 @@ pullRequests:
       ## What changed
 
 
-      Route landing page sign-in links directly to Microsoft when Entra authentication is enabled. Send users with access to exactly one app straight to that app, and show a branded loading screen while authentica...
+      Route landing page sign-in links directly to Microsoft when Entra authentication is enabled. Send users with
+      access to exactly one app straight to that app, and show a branded loading screen while authentica...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/159
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: merged
@@ -324,7 +326,8 @@ pullRequests:
       ## What changed
 
 
-      Added a Registration column and filter to the account queue, and made registration a sortable field. Registration choices include values present in the...
+      Added a Registration column and filter to the account queue, and made registration a sortable field. Registration
+      choices include values present in the...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: open
@@ -501,7 +504,8 @@ pullRequests:
       ## What changed
 
 
-      Added a guided tour with role-specific steps, a welcome and completion flow, and a spotlight that follows page targets. Users can launch it ...
+      Added a guided tour with role-specific steps, a welcome and completion flow, and a spotlight that follows page
+      targets. Users can launch it ...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: open
@@ -772,7 +776,8 @@ prsInProgress:
       ## Why
 
 
-      The app theme used Myriad reds for actions and focus treatments, which conflicts with the brand guidance that reserves red for accents.
+      The app theme used Myriad reds for actions and focus treatments, which conflicts with the brand guidance that
+      reserves red for accents.
 
 
       ## What changed
@@ -845,7 +850,8 @@ prsInProgress:
       ## What changed
 
 
-      Added a Registration column and filter to the account queue, and made registration a sortable field. Registration choices include values present in the...
+      Added a Registration column and filter to the account queue, and made registration a sortable field. Registration
+      choices include values present in the...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: open
@@ -892,7 +898,8 @@ prsInProgress:
       ## What changed
 
 
-      Added a guided tour with role-specific steps, a welcome and completion flow, and a spotlight that follows page targets. Users can launch it ...
+      Added a guided tour with role-specific steps, a welcome and completion flow, and a spotlight that follows page
+      targets. Users can launch it ...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: open
@@ -945,7 +952,8 @@ prsInProgress:
 
       - `@email`, `@calendar`, `@todo`, and `@meeting` expand into task prompts and render fenced deliverables as cards.
 
-      - Settings stores Northstar, morning, end-of-day, and weekly brief instructions on this device. Copilot also rece...
+      - Settings stores Northstar, morning, end-of-day, and weekly brief instructions on this device. Copilot also
+      rece...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/138
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
@@ -987,7 +995,8 @@ prsInProgress:
     body: >-
       - Add an Azure AD role source that validates tenant claims and returns supported app roles.
 
-      - Configure the deployment workflow to inject group-managed authentication settings when `SWA_AUTH_TENANT_ID` is set.
+      - Configure the deployment workflow to inject group-managed authentication settings when `SWA_AUTH_TENANT_ID` is
+      set.
 
       - Document Entra group setup, activation, verification, and rollback.
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/152
@@ -1030,7 +1039,9 @@ prsInProgress:
       ## Problem
 
 
-      Proforma needs customer/workspace data isolation in Cosmos while authorized Myriad staff retain audited access to the complete master record set. The prior runtime also had scoped edit, version propagation, CORS, and idempotent retry gaps.
+      Proforma needs customer/workspace data isolation in Cosmos while authorized Myriad staff retain audited access to
+      the complete master record set. The prior runtime also had scoped edit, version propagation, CORS, and idempotent
+      retry gaps.
 
 
       ## Result
@@ -1444,7 +1455,8 @@ prsInProgress:
       - valuation/src/lib/transfer-adapter.ts
   - title: "chore(repo): remove stale content and Twenty submodule"
     body: >-
-      The PTO documentation still described an unimplemented scaffold and referenced missing import templates. This PR updates that guidance and removes the unused twenty checkout and submodule configuration.
+      The PTO documentation still described an unimplemented scaffold and referenced missing import templates. This PR
+      updates that guidance and removes the unused twenty checkout and submodule configuration.
 
 
       Documentation and absent retired submodule paths do not require deployment. Changes to the impac...
@@ -2599,7 +2611,8 @@ reviewComments:
     prNumber: 161
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/161
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/161#discussion_r4224349342
-    body: "Fixed in 20dfa6a: migrated error/blocked consumers to danger tokens (pto-tracker, valuation, transition, excelerate) and fixed on-primary/on-dark contrast (hub approach, proforma, onboarding, pto calendar)."
+    body: "Fixed in 20dfa6a: migrated error/blocked consumers to danger tokens (pto-tracker, valuation, transition,
+      excelerate) and fixed on-primary/on-dark contrast (hub approach, proforma, onboarding, pto calendar)."
     path: packages/brand/src/styles.css
     createdAt: 2026-10-08T21:31:55Z
     prFiles:
@@ -2639,7 +2652,8 @@ reviewComments:
     prNumber: 161
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/161
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/161#discussion_r4224412414
-    body: "Fixed in 2a7ed09: migrated the RecordCalendar badge and swept the repo for remaining primary fills (2 more fixed)."
+    body: "Fixed in 2a7ed09: migrated the RecordCalendar badge and swept the repo for remaining primary fills (2 more
+      fixed)."
     path: packages/brand/src/styles.css
     createdAt: 2026-10-08T21:39:53Z
     prFiles:
@@ -2679,7 +2693,9 @@ reviewComments:
     prNumber: 161
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/161
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/161#discussion_r4224475107
-    body: 'Fixed in f2bac72: Hub landing page accents (stats, trust and product icons, "future", hover top rule, carousel accent bar) now use --color-1 instead of the neutral --primary; large text and icons stay at least 3:1 in both themes.'
+    body: 'Fixed in f2bac72: Hub landing page accents (stats, trust and product icons, "future", hover top rule, carousel
+      accent bar) now use --color-1 instead of the neutral --primary; large text and icons stay at least 3:1 in both
+      themes.'
     path: packages/brand/src/styles.css
     createdAt: 2026-10-08T21:47:52Z
     prFiles:
@@ -2719,7 +2735,9 @@ reviewComments:
     prNumber: 161
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/161
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/161#discussion_r4224514405
-    body: "Fixed in 20dfa6a and 2a7ed09: vm-shared.tsx, LeaveCalendar.tsx, the Onboarding empty states and RecordCalendar badge now use text-primary-foreground, and Proforma's primary fills with inverse labels (wizard step, date grid, recruit toggle, formula toggle, expense remove, pipeline stage) use var(--ac..."
+    body: "Fixed in 20dfa6a and 2a7ed09: vm-shared.tsx, LeaveCalendar.tsx, the Onboarding empty states and RecordCalendar
+      badge now use text-primary-foreground, and Proforma's primary fills with inverse labels (wizard step, date grid,
+      recruit toggle, formula toggle, expense remove, pipeline stage) use var(--ac..."
     path: packages/brand/src/styles.css
     createdAt: 2026-10-08T21:53:06Z
     prFiles:
@@ -2781,7 +2799,9 @@ reviewComments:
     prNumber: 160
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160#discussion_r4224373094
-    body: "Fixed in c4d93ba: registration options are now encoded with a `value:` prefix and the no-filter choice uses an unprefixed `any`, so no stored registration can collide with it; URL params and remembered filters still hold the raw registration."
+    body: "Fixed in c4d93ba: registration options are now encoded with a `value:` prefix and the no-filter choice uses an
+      unprefixed `any`, so no stored registration can collide with it; URL params and remembered filters still hold the
+      raw registration."
     path: transition/src/components/accounts/accounts-page.tsx
     createdAt: 2026-10-08T21:35:05Z
     prFiles:
@@ -2803,7 +2823,9 @@ reviewComments:
     prNumber: 160
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160#discussion_r4224387654
-    body: Not changing this one. Since c4d93ba the option values are encoded, so selection is always unambiguous; only the display text could coincide, and only if a registration is literally named "All registrations". That matches the existing "All directions" pattern on Households, and any fixed label could...
+    body: Not changing this one. Since c4d93ba the option values are encoded, so selection is always unambiguous; only the
+      display text could coincide, and only if a registration is literally named "All registrations". That matches the
+      existing "All directions" pattern on Households, and any fixed label could...
     path: transition/src/components/accounts/accounts-page.tsx
     createdAt: 2026-10-08T21:36:55Z
     prFiles:
@@ -2825,7 +2847,8 @@ reviewComments:
     prNumber: 160
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160#discussion_r4224517501
-    body: "Resolved by the restack: this branch no longer changes the twenty gitlink (the submodule is removed by #156, which this stacks on)."
+    body: "Resolved by the restack: this branch no longer changes the twenty gitlink (the submodule is removed by #156,
+      which this stacks on)."
     path: twenty
     createdAt: 2026-10-08T21:53:31Z
     prFiles:
@@ -2869,7 +2892,8 @@ reviewComments:
     prNumber: 160
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160#discussion_r4224517951
-    body: 'Fixed in 16a9a9d and c4d93ba: the no-filter option is labeled "All registrations" and option values are encoded (value:<registration> vs any), so no stored registration can collide with it.'
+    body: 'Fixed in 16a9a9d and c4d93ba: the no-filter option is labeled "All registrations" and option values are encoded
+      (value:<registration> vs any), so no stored registration can collide with it.'
     path: transition/src/components/accounts/accounts-page.tsx
     createdAt: 2026-10-08T21:53:35Z
     prFiles:
@@ -2891,7 +2915,8 @@ reviewComments:
     prNumber: 158
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4224312205
-    body: 'Fixed in b28c219: the tour dialog now stays mounted as a focusable, aria-busy "Finding the next step…" card (with Skip tour and Escape) while a step loads, so the Tab and focusin trap never lapses.'
+    body: 'Fixed in b28c219: the tour dialog now stays mounted as a focusable, aria-busy "Finding the next step…" card (with
+      Skip tour and Escape) while a step loads, so the Tab and focusin trap never lapses.'
     path: transition/src/components/tour/tour-layer.tsx
     createdAt: 2026-10-08T21:27:42Z
     prFiles:
@@ -2927,7 +2952,8 @@ reviewComments:
     prNumber: 158
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4224371413
-    body: "Fixed in 85d4420: the tour now opens Households with an explicit direction=All address, which the page honors over the remembered filter without clearing it."
+    body: "Fixed in 85d4420: the tour now opens Households with an explicit direction=All address, which the page honors
+      over the remembered filter without clearing it."
     path: transition/src/lib/tour.ts
     createdAt: 2026-10-08T21:34:52Z
     prFiles:
@@ -2999,7 +3025,8 @@ reviewComments:
     prNumber: 158
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4224411360
-    body: "Fixed in cbd61ff: The household direction now falls back to the remembered filter when the URL override is removed."
+    body: "Fixed in cbd61ff: The household direction now falls back to the remembered filter when the URL override is
+      removed."
     path: transition/src/components/households/households-page.tsx
     createdAt: 2026-10-08T21:39:45Z
     prFiles:
@@ -3035,7 +3062,8 @@ reviewComments:
     prNumber: 158
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4224411559
-    body: "Fixed in cbd61ff: Tour navigation now pushes only the first page change (so Back returns to the starting page) and replaces the rest, so the tour adds one history entry."
+    body: "Fixed in cbd61ff: Tour navigation now pushes only the first page change (so Back returns to the starting page)
+      and replaces the rest, so the tour adds one history entry."
     path: transition/src/components/tour/tour-layer.tsx
     createdAt: 2026-10-08T21:39:47Z
     prFiles:
@@ -3071,7 +3099,8 @@ reviewComments:
     prNumber: 158
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4224508211
-    body: "Fixed in bf9e24a: ArrowRight and ArrowLeft now do nothing while the step is still loading, so follow steps can record their target before the tour advances."
+    body: "Fixed in bf9e24a: ArrowRight and ArrowLeft now do nothing while the step is still loading, so follow steps can
+      record their target before the tour advances."
     path: transition/src/components/tour/tour-layer.tsx
     createdAt: 2026-10-08T21:52:17Z
     prFiles:
@@ -3107,7 +3136,8 @@ reviewComments:
     prNumber: 158
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4224508382
-    body: "Fixed in bf9e24a: if browser history moves off a step's page after the tour has arrived there, the tour now ends instead of leaving a centred card over the wrong page."
+    body: "Fixed in bf9e24a: if browser history moves off a step's page after the tour has arrived there, the tour now ends
+      instead of leaving a centred card over the wrong page."
     path: transition/src/components/tour/tour-layer.tsx
     createdAt: 2026-10-08T21:52:19Z
     prFiles:
@@ -3143,7 +3173,8 @@ reviewComments:
     prNumber: 158
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4224517677
-    body: "Resolved by the restack: this branch no longer changes the twenty gitlink (the submodule is removed by #156, which this stack builds on)."
+    body: "Resolved by the restack: this branch no longer changes the twenty gitlink (the submodule is removed by #156,
+      which this stack builds on)."
     path: twenty
     createdAt: 2026-10-08T21:53:32Z
     prFiles:
@@ -3179,7 +3210,8 @@ reviewComments:
     prNumber: 158
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4224536633
-    body: "Fixed in f3372bd: the empty states for Households, Accounts, Exceptions and Home now carry the same data-tour anchors, so first-run steps settle immediately instead of waiting for the timeout."
+    body: "Fixed in f3372bd: the empty states for Households, Accounts, Exceptions and Home now carry the same data-tour
+      anchors, so first-run steps settle immediately instead of waiting for the timeout."
     path: transition/src/lib/tour.ts
     createdAt: 2026-10-08T21:56:10Z
     prFiles:
@@ -3215,7 +3247,8 @@ reviewComments:
     prNumber: 158
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4224536942
-    body: "Fixed in f3372bd: the previous focus is now captured in a layout effect ordered before the one that focuses the card, and restored on close (falling back to main content)."
+    body: "Fixed in f3372bd: the previous focus is now captured in a layout effect ordered before the one that focuses the
+      card, and restored on close (falling back to main content)."
     path: transition/src/components/tour/tour-layer.tsx
     createdAt: 2026-10-08T21:56:12Z
     prFiles:
@@ -3251,7 +3284,8 @@ reviewComments:
     prNumber: 158
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4224537141
-    body: "Fixed in f3372bd: the nav selector now matches both /households and /households/ (static export trailing slash, any base path), and no other tour selector end-anchors an href."
+    body: "Fixed in f3372bd: the nav selector now matches both /households and /households/ (static export trailing slash,
+      any base path), and no other tour selector end-anchors an href."
     path: transition/src/lib/tour.ts
     createdAt: 2026-10-08T21:56:13Z
     prFiles:
@@ -3287,7 +3321,8 @@ reviewComments:
     prNumber: 158
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4224537289
-    body: "Fixed in f3372bd: the element actually being scrolled to now gets a scroll-margin-top equal to the sticky header height plus padding, so ID and descendant targets clear the topbar."
+    body: "Fixed in f3372bd: the element actually being scrolled to now gets a scroll-margin-top equal to the sticky header
+      height plus padding, so ID and descendant targets clear the topbar."
     path: transition/src/components/tour/tour-layer.tsx
     createdAt: 2026-10-08T21:56:14Z
     prFiles:
@@ -3323,7 +3358,8 @@ reviewComments:
     prNumber: 158
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4224547792
-    body: "Follow-up in 0a285ce: the inset now measures the shell's sticky topbar wrapper ([data-shell-chrome='topbar']), since the inner <header> itself isn't sticky."
+    body: "Follow-up in 0a285ce: the inset now measures the shell's sticky topbar wrapper ([data-shell-chrome='topbar']),
+      since the inner <header> itself isn't sticky."
     path: transition/src/components/tour/tour-layer.tsx
     createdAt: 2026-10-08T21:57:42Z
     prFiles:
@@ -3395,7 +3431,8 @@ reviewComments:
     prNumber: 158
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4224561662
-    body: "Fixed in dfe3ccd: picking or clearing a direction now removes the direction param from the address (other params kept), so the remembered value wins on reload."
+    body: "Fixed in dfe3ccd: picking or clearing a direction now removes the direction param from the address (other params
+      kept), so the remembered value wins on reload."
     path: transition/src/components/households/households-page.tsx
     createdAt: 2026-10-08T21:59:28Z
     prFiles:
@@ -3431,7 +3468,8 @@ reviewComments:
     prNumber: 158
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158#discussion_r4224561868
-    body: "Fixed in dfe3ccd: a role change that alters the step set ends a running tour without marking it complete, and TourLayer renders nothing if the step is missing."
+    body: "Fixed in dfe3ccd: a role change that alters the step set ends a running tour without marking it complete, and
+      TourLayer renders nothing if the step is missing."
     path: transition/src/components/tour/tour-provider.tsx
     createdAt: 2026-10-08T21:59:30Z
     prFiles:
@@ -3666,12 +3704,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 79.8
+  version: "2.3"
+  hours: 38.7
   sessions: 3
   sessionHours: 4.8
-  volumeHours: 79.8
+  volumeHours: 82.8
+  compressedVolumeHours: 38.7
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

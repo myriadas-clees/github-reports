@@ -22,7 +22,7 @@ stats:
   reviewComments: 9
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 45.1
+  estimatedHours: 30.8
 dailyCommits:
   - date: 2026-09-21
     count: 21
@@ -44,9 +44,11 @@ repositories:
 pullRequests:
   - title: Show FiNet custom fees on pricing PDFs
     body: >-
-      - FiNet PDFs now include the current pricing table, so each custom fee shows up with its monthly and annual amount.
+      - FiNet PDFs now include the current pricing table, so each custom fee shows up with its monthly and annual
+      amount.
 
-      - PDF section titles no longer say Workbook. Local expenses are labeled as local expenses, and the payout step says “after payout rates.”
+      - PDF section titles no longer say Workbook. Local expenses are labeled as local expenses, and the payout step
+      says “after payout rates.”
 
       - A multi-advisor FiNet PDF includes each advi...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/133
@@ -78,9 +80,11 @@ pullRequests:
       - pricing/src/lib/report/pdf.tsx
   - title: Warn when pricing reports lag behind model changes
     body: >-
-      - Show a red hint in the scenario Reports section when the newest saved report no longer matches the pricing model.
+      - Show a red hint in the scenario Reports section when the newest saved report no longer matches the pricing
+      model.
 
-      - After a save, the hint asks whether to generate a new report. Unsaved edits tell the user to save first, because report generation uses the saved model.
+      - After a save, the hint asks whether to generate a new report. Unsaved edits tell the user to save first, because
+      report generation uses the saved model.
 
       - The hint goes away once a n...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/132
@@ -141,7 +145,8 @@ prsInProgress:
       ## Why
 
 
-      Myriad has no native workspace for coordinating account transitions. Add a functional prototype and synthetic Azure PR demo based on the Transition Tool references, with defaults created only by explicit seed commands.
+      Myriad has no native workspace for coordinating account transitions. Add a functional prototype and synthetic
+      Azure PR demo based on the Transition Tool references, with defaults created only by explicit seed commands.
 
 
       ## What changed
@@ -1279,7 +1284,8 @@ reviewComments:
     prNumber: 132
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/132
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/132#discussion_r4066223141
-    body: "[from Codex]: Unsaved edits now keep the save-first warning even when the draft matches the newest report. Generating still uses the saved model, so the hint stays until that model is saved. Included in c3e7ba4."
+    body: "[from Codex]: Unsaved edits now keep the save-first warning even when the draft matches the newest report.
+      Generating still uses the saved model, so the hint stays until that model is saved. Included in c3e7ba4."
     path: pricing/src/components/scenario-model-tab.tsx
     createdAt: 2026-09-21T20:39:13Z
     prFiles:
@@ -1292,7 +1298,8 @@ reviewComments:
     prNumber: 132
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/132
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/132#discussion_r4066278138
-    body: "[from Codex]: Report generation now ignores a second submit while the first request is still running, and the hint buttons disable until it finishes. Included in d49f440."
+    body: "[from Codex]: Report generation now ignores a second submit while the first request is still running, and the
+      hint buttons disable until it finishes. Included in d49f440."
     path: pricing/src/components/scenario-model-tab.tsx
     createdAt: 2026-09-21T20:46:42Z
     prFiles:
@@ -1305,7 +1312,8 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4063892948
-    body: Fixed in 40e628d. Read-only dashboard responses no longer expose owner filter values, and read-only owner filter requests are rejected server-side. Added coverage for both behaviors.
+    body: Fixed in 40e628d. Read-only dashboard responses no longer expose owner filter values, and read-only owner filter
+      requests are rejected server-side. Added coverage for both behaviors.
     path: transition/src/lib/handlers.ts
     createdAt: 2026-09-21T15:56:55Z
     prFiles:
@@ -1402,7 +1410,8 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4063894465
-    body: Fixed in 40e628d. Completed and Not Applicable now force 100% progress for both task creation and updates, even when a partial percentage is supplied. Added focused assertions.
+    body: Fixed in 40e628d. Completed and Not Applicable now force 100% progress for both task creation and updates, even
+      when a partial percentage is supplied. Added focused assertions.
     path: transition/src/lib/repository.ts
     createdAt: 2026-09-21T15:57:03Z
     prFiles:
@@ -1499,7 +1508,8 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4063895604
-    body: Fixed in 40e628d. Dashboard requests now use a monotonically increasing request ID and ignore stale responses and errors after filters change or the effect cleans up.
+    body: Fixed in 40e628d. Dashboard requests now use a monotonically increasing request ID and ignore stale responses and
+      errors after filters change or the effect cleans up.
     path: transition/src/components/transition-workspace.tsx
     createdAt: 2026-09-21T15:57:08Z
     prFiles:
@@ -1596,7 +1606,8 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4063981573
-    body: Fixed in bfdbbf3. Reopening a terminal task now resets omitted or unchanged 100% progress to 0%, while preserving a deliberately entered nonterminal percentage. Tests cover omitted, unchanged 100%, and explicit 40% reopen paths.
+    body: Fixed in bfdbbf3. Reopening a terminal task now resets omitted or unchanged 100% progress to 0%, while preserving
+      a deliberately entered nonterminal percentage. Tests cover omitted, unchanged 100%, and explicit 40% reopen paths.
     path: transition/src/lib/repository.ts
     createdAt: 2026-09-21T16:06:06Z
     prFiles:
@@ -1693,7 +1704,8 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4064188218
-    body: Fixed in 0c549fc. `Unspecified` is now part of the canonical transition direction set used by the handler, and the repository test verifies that filtering an unconfigured household succeeds and returns the matching household.
+    body: Fixed in 0c549fc. `Unspecified` is now part of the canonical transition direction set used by the handler, and the
+      repository test verifies that filtering an unconfigured household succeeds and returns the matching household.
     path: transition/src/lib/handlers.ts
     createdAt: 2026-09-21T16:26:30Z
     prFiles:
@@ -1790,7 +1802,8 @@ reviewComments:
     prNumber: 121
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121#discussion_r4062181504
-    body: "[from Codex]: Partial To Do list failures now keep the successful tasks and set `tasks.error`. The Microsoft To Do panel still shows the loaded items and notes that some lists could not be loaded. Included in ba7979e."
+    body: "[from Codex]: Partial To Do list failures now keep the successful tasks and set `tasks.error`. The Microsoft To
+      Do panel still shows the loaded items and notes that some lists could not be loaded. Included in ba7979e."
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-09-21T12:40:26Z
     prFiles:
@@ -1886,7 +1899,9 @@ reviewComments:
     prNumber: 121
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121#discussion_r4062273368
-    body: Fixed in b87bc4c. Resolved-mail storage is now scoped by the SWA user and an opaque hash of the connected Microsoft tenant/account. Legacy unscoped records are ignored, and focused tests cover account switching and missing identity.
+    body: Fixed in b87bc4c. Resolved-mail storage is now scoped by the SWA user and an opaque hash of the connected
+      Microsoft tenant/account. Legacy unscoped records are ignored, and focused tests cover account switching and
+      missing identity.
     path: northstar/lib/resolved-mail.ts
     createdAt: 2026-09-21T12:52:51Z
     prFiles:
@@ -2083,12 +2098,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 45.1
+  version: "2.3"
+  hours: 30.8
   sessions: 2
   sessionHours: 5.9
-  volumeHours: 45.1
+  volumeHours: 51
+  compressedVolumeHours: 30.8
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

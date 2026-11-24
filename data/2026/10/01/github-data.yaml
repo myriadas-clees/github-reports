@@ -22,7 +22,7 @@ stats:
   reviewComments: 19
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 95.4
+  estimatedHours: 48.4
 dailyCommits:
   - date: 2026-10-01
     count: 37
@@ -43,7 +43,9 @@ repositories:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
 pullRequests:
   - title: Fix Northstar scheduled brief recovery and bounded retries
-    body: Scheduled brief footer Retry and error Try again currently make no request because those chats contain no user message. Rate-limit backoff also consumes the single 45-second timer, Microsoft preflight 429 loses its retry guidance, and OAuth recovery resumes a scheduled brief as an ordinary Ask reque...
+    body: Scheduled brief footer Retry and error Try again currently make no request because those chats contain no user
+      message. Rate-limit backoff also consumes the single 45-second timer, Microsoft preflight 429 loses its retry
+      guidance, and OAuth recovery resumes a scheduled brief as an ordinary Ask reque...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/145
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: merged
@@ -106,7 +108,9 @@ pullRequests:
       - northstar/lib/ask-stream.ts
       - northstar/package.json
   - title: "fix(northstar): keep brief Retry working without TTL caching"
-    body: "Authenticated production Retry reaches `/api/northstar/ask` but returns an SSE error after `connecting`: `code: transient`, `retryAfterMs: null`, and “This request was superseded or could not be saved.” The observed request was HTTP 200 with correlation `f90a70c643c456e64409e00f` on deployed `49382c..."
+    body: "Authenticated production Retry reaches `/api/northstar/ask` but returns an SSE error after `connecting`: `code:
+      transient`, `retryAfterMs: null`, and “This request was superseded or could not be saved.” The observed request
+      was HTTP 200 with correlation `f90a70c643c456e64409e00f` on deployed `49382c..."
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/143
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
@@ -160,7 +164,9 @@ pullRequests:
       - hub/functions/src/northstar-cosmos-brief.test.ts
       - hub/functions/src/northstar-daily-flow.test.ts
   - title: "fix(northstar): preserve loaded state when returning to the app"
-    body: Returning to Northstar triggered a same-user auth check that cleared Microsoft data, set the connection to loading, replaced the dashboard with its skeleton, and fetched the data again. A headless baseline confirmed three extra data fetches across three foreground cycles while the document stayed lo...
+    body: Returning to Northstar triggered a same-user auth check that cleared Microsoft data, set the connection to
+      loading, replaced the dashboard with its skeleton, and fetched the data again. A headless baseline confirmed three
+      extra data fetches across three foreground cycles while the document stayed lo...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/144
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: merged
@@ -222,7 +228,9 @@ pullRequests:
       - northstar/components/northstar-dashboard-lifecycle.test.ts
       - northstar/components/northstar-dashboard.tsx
   - title: Preserve Northstar history until retention preferences load
-    body: Returning users can lose 45/75-day device history because Northstar initially reads and rewrites the cache using 30 days before their saved 60/90-day preference loads. The existing history read also cannot distinguish an absent preference from explicitly selected 30 days and can purge server history...
+    body: Returning users can lose 45/75-day device history because Northstar initially reads and rewrites the cache using
+      30 days before their saved 60/90-day preference loads. The existing history read also cannot distinguish an absent
+      preference from explicitly selected 30 days and can purge server history...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
@@ -340,7 +348,9 @@ pullRequests:
       ## Why
 
 
-      Transition navigation repeatedly reconstructs a full tenant SQLite database from Cosmos. At the reported workload size, unindexed household/account scans and loading full account details merely to calculate household checklist progress add substantial server CPU time to every navigation requ...
+      Transition navigation repeatedly reconstructs a full tenant SQLite database from Cosmos. At the reported workload
+      size, unindexed household/account scans and loading full account details merely to calculate household checklist
+      progress add substantial server CPU time to every navigation requ...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/131
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: open
@@ -381,7 +391,9 @@ pullRequests:
       ## Problem and behavior
 
 
-      Transition users need Excel source templates, a current database download, and imports through the app. Workbook inventory keeps both blank template downloads and adds administrator **Download database** and **Import Excel** controls.
+      Transition users need Excel source templates, a current database download, and imports through the app. Workbook
+      inventory keeps both blank template downloads and adds administrator **Download database** and **Import Excel**
+      controls.
 
 
       Administrators select the prepared Acco...
@@ -536,7 +548,9 @@ pullRequests:
       - transition/src/lib/workbook.ts
   - title: "fix(northstar): make scheduled briefs reliable and fresh"
     body: >-
-      Scheduled briefs could fail after a fresh login when concurrent Microsoft refreshes lost a storage compare-and-swap, while slow Copilot calls could exceed the hosting request window. Daily, weekly, and end-of-day briefs also had inconsistent generation and recovery paths.
+      Scheduled briefs could fail after a fresh login when concurrent Microsoft refreshes lost a storage
+      compare-and-swap, while slow Copilot calls could exceed the hosting request window. Daily, weekly, and end-of-day
+      briefs also had inconsistent generation and recovery paths.
 
 
       All three now use one sche...
@@ -571,7 +585,9 @@ pullRequests:
       - hub/functions/src/northstar-microsoft.test.ts
       - hub/functions/src/northstar-microsoft.ts
   - title: "chore(repo): Align ohcpwm text branding and preserve saved report branding"
-    body: This PR aligns app text, metadata, accessible names, and report attribution with `ohcpwm` / `Oxford Harriman Company & Private Wealth Management`. It also removes the obsolete Pricing Functions copy entries for the removed `logo_ohcpwm.png` and `logo_ohcpwm_white.png` assets, which caused Azure's ap...
+    body: This PR aligns app text, metadata, accessible names, and report attribution with `ohcpwm` / `Oxford Harriman
+      Company & Private Wealth Management`. It also removes the obsolete Pricing Functions copy entries for the removed
+      `logo_ohcpwm.png` and `logo_ohcpwm_white.png` assets, which caused Azure's ap...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/140
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: merged
@@ -601,7 +617,9 @@ pullRequests:
       - pricing/functions/package.json
 prsInProgress:
   - title: "fix(northstar): keep brief Retry working without TTL caching"
-    body: "Authenticated production Retry reaches `/api/northstar/ask` but returns an SSE error after `connecting`: `code: transient`, `retryAfterMs: null`, and “This request was superseded or could not be saved.” The observed request was HTTP 200 with correlation `f90a70c643c456e64409e00f` on deployed `49382c..."
+    body: "Authenticated production Retry reaches `/api/northstar/ask` but returns an SSE error after `connecting`: `code:
+      transient`, `retryAfterMs: null`, and “This request was superseded or could not be saved.” The observed request
+      was HTTP 200 with correlation `f90a70c643c456e64409e00f` on deployed `49382c..."
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/143
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
@@ -625,7 +643,9 @@ prsInProgress:
       - hub/functions/src/northstar-cosmos-brief.test.ts
       - hub/functions/src/northstar-daily-flow.test.ts
   - title: Preserve Northstar history until retention preferences load
-    body: Returning users can lose 45/75-day device history because Northstar initially reads and rewrites the cache using 30 days before their saved 60/90-day preference loads. The existing history read also cannot distinguish an absent preference from explicitly selected 30 days and can purge server history...
+    body: Returning users can lose 45/75-day device history because Northstar initially reads and rewrites the cache using
+      30 days before their saved 60/90-day preference loads. The existing history read also cannot distinguish an absent
+      preference from explicitly selected 30 days and can purge server history...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
@@ -660,7 +680,9 @@ prsInProgress:
       ## Why
 
 
-      Transition navigation repeatedly reconstructs a full tenant SQLite database from Cosmos. At the reported workload size, unindexed household/account scans and loading full account details merely to calculate household checklist progress add substantial server CPU time to every navigation requ...
+      Transition navigation repeatedly reconstructs a full tenant SQLite database from Cosmos. At the reported workload
+      size, unindexed household/account scans and loading full account details merely to calculate household checklist
+      progress add substantial server CPU time to every navigation requ...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/131
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: open
@@ -690,7 +712,8 @@ prsInProgress:
 
       - `@email`, `@calendar`, `@todo`, and `@meeting` expand into task prompts and render fenced deliverables as cards.
 
-      - Settings stores Northstar, morning, end-of-day, and weekly brief instructions on this device. Copilot also rece...
+      - Settings stores Northstar, morning, end-of-day, and weekly brief instructions on this device. Copilot also
+      rece...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/138
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
@@ -1390,7 +1413,9 @@ reviewComments:
     prNumber: 147
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147#discussion_r4159748797
-    body: Fixed in 6f44c0f. Unresolved retention now merges new completed chats into the same user cache without an age cutoff, preserving existing and unrecognized entries. Retention-dependent pruning and remote synchronization still wait. Actual DOM and cache regression tests prove the new answer survives r...
+    body: Fixed in 6f44c0f. Unresolved retention now merges new completed chats into the same user cache without an age
+      cutoff, preserving existing and unrecognized entries. Retention-dependent pruning and remote synchronization still
+      wait. Actual DOM and cache regression tests prove the new answer survives r...
     path: northstar/components/ask-northstar-workspace.tsx
     createdAt: 2026-10-01T19:46:30Z
     prFiles:
@@ -1409,7 +1434,9 @@ reviewComments:
     prNumber: 147
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147#discussion_r4159851816
-    body: Fixed in 1418875. Malformed JSON and non-array cache values now initialize an empty cache before persisting newly completed chats. Valid saved history still merges without age pruning while retention is unresolved. Two cache format cases and an actual React DOM reload case pass (21 focused tests tot...
+    body: Fixed in 1418875. Malformed JSON and non-array cache values now initialize an empty cache before persisting newly
+      completed chats. Valid saved history still merges without age pruning while retention is unresolved. Two cache
+      format cases and an actual React DOM reload case pass (21 focused tests tot...
     path: northstar/lib/chat-history.ts
     createdAt: 2026-10-01T19:57:34Z
     prFiles:
@@ -1428,7 +1455,9 @@ reviewComments:
     prNumber: 147
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147#discussion_r4159923265
-    body: Fixed in d3d78f2. A failed metadata lookup now shows Retry retention lookup, not Save retention to account. The retry performs only GET; missing preference still requires a successful retentionConfigured:false response before offering the save. Actual React DOM tests cover a fresh device default30 a...
+    body: Fixed in d3d78f2. A failed metadata lookup now shows Retry retention lookup, not Save retention to account. The
+      retry performs only GET; missing preference still requires a successful retentionConfigured:false response before
+      offering the save. Actual React DOM tests cover a fresh device default30 a...
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-10-01T20:04:53Z
     prFiles:
@@ -1447,7 +1476,9 @@ reviewComments:
     prNumber: 147
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147#discussion_r4160054210
-    body: Fixed in b9f7803. The unresolved cache merge now prefers incoming payloads on equal period timestamps while retaining cached-only turns. Tests cover daily/end-of-day/weekly stable message-ID ties, plus actual workspace regeneration -> reload retaining the regenerated answer with unchanged period tim...
+    body: Fixed in b9f7803. The unresolved cache merge now prefers incoming payloads on equal period timestamps while
+      retaining cached-only turns. Tests cover daily/end-of-day/weekly stable message-ID ties, plus actual workspace
+      regeneration -> reload retaining the regenerated answer with unchanged period tim...
     path: northstar/lib/chat-history.ts
     createdAt: 2026-10-01T20:18:57Z
     prFiles:
@@ -1466,7 +1497,9 @@ reviewComments:
     prNumber: 147
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147#discussion_r4160054425
-    body: Fixed in b9f7803. Storage events invalidate readiness for a pending or unconfirmed retention choice before applying it. Successful queued PUT records the accepted days and restores readiness; when no pending save remains, a changed value triggers a preference-only GET to verify account policy. Actua...
+    body: Fixed in b9f7803. Storage events invalidate readiness for a pending or unconfirmed retention choice before
+      applying it. Successful queued PUT records the accepted days and restores readiness; when no pending save remains,
+      a changed value triggers a preference-only GET to verify account policy. Actua...
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-10-01T20:18:59Z
     prFiles:
@@ -1485,7 +1518,9 @@ reviewComments:
     prNumber: 147
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147#discussion_r4160124796
-    body: "Fixed in the latest commit: storage-unavailable saves now use retentionSaveRef serialization and capture the current choice version. Superseded queued saves skip; in-flight older responses cannot mark readiness; the latest request runs only after the older request settles. Actual DOM scenario blocks..."
+    body: "Fixed in the latest commit: storage-unavailable saves now use retentionSaveRef serialization and capture the
+      current choice version. Superseded queued saves skip; in-flight older responses cannot mark readiness; the latest
+      request runs only after the older request settles. Actual DOM scenario blocks..."
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-10-01T20:26:30Z
     prFiles:
@@ -1504,7 +1539,9 @@ reviewComments:
     prNumber: 147
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147#discussion_r4160193583
-    body: Fixed in the latest commit. Unresolved retention now reads the same user cache without pruning or rewriting bytes and merges valid cached chats into the workspace; remote hydration and retention-dependent pruning still wait. Actual Dashboard tests open Ask then Chats before preference resolution and...
+    body: Fixed in the latest commit. Unresolved retention now reads the same user cache without pruning or rewriting bytes
+      and merges valid cached chats into the workspace; remote hydration and retention-dependent pruning still wait.
+      Actual Dashboard tests open Ask then Chats before preference resolution and...
     path: northstar/components/ask-northstar-workspace.tsx
     createdAt: 2026-10-01T20:34:12Z
     prFiles:
@@ -1523,7 +1560,9 @@ reviewComments:
     prNumber: 130
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/130
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/130#discussion_r4160070057
-    body: Fixed in `68dbeac13416db8817835c2fa986604eadb4b879`. Normal account writes and backup restore now share `parseDocumentReferences` in `document-references.ts` (maximum 20, label 200, URL 2048, required nonempty text, HTTP(S) only). Restore rejects values requiring trimming rather than silently changi...
+    body: Fixed in `68dbeac13416db8817835c2fa986604eadb4b879`. Normal account writes and backup restore now share
+      `parseDocumentReferences` in `document-references.ts` (maximum 20, label 200, URL 2048, required nonempty text,
+      HTTP(S) only). Restore rejects values requiring trimming rather than silently changi...
     path: transition/src/lib/excel-backup.ts
     createdAt: 2026-10-01T20:20:36Z
     prFiles:
@@ -1559,7 +1598,9 @@ reviewComments:
     prNumber: 130
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/130
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/130#discussion_r4160145859
-    body: "Fixed in `fc513b68454fb8985385c1850d629ea3927d7032`: track each random UUID-generation-owned staging ID before awaiting create, so a committed write with a lost response is included in unpublished cleanup. Existing manifest readback still preserves our published generation and skips cleanup if publi..."
+    body: "Fixed in `fc513b68454fb8985385c1850d629ea3927d7032`: track each random UUID-generation-owned staging ID before
+      awaiting create, so a committed write with a lost response is included in unpublished cleanup. Existing manifest
+      readback still preserves our published generation and skips cleanup if publi..."
     path: transition/src/lib/cosmos-repository.ts
     createdAt: 2026-10-01T20:28:59Z
     prFiles:
@@ -1595,7 +1636,9 @@ reviewComments:
     prNumber: 144
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/144
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/144#discussion_r4159761076
-    body: "Fixed in b182e68764e69dc4e7b55700f30a7bd7d9d4db3f: clearChangedConnection now clears cached data and previews for every verified key change, including null → key. The delayed legacy-account lifecycle regression failed before the one-line fix and passes afterward; a headless DOM case also confirms ol..."
+    body: "Fixed in b182e68764e69dc4e7b55700f30a7bd7d9d4db3f: clearChangedConnection now clears cached data and previews for
+      every verified key change, including null → key. The delayed legacy-account lifecycle regression failed before the
+      one-line fix and passes afterward; a headless DOM case also confirms ol..."
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-10-01T19:48:01Z
     prFiles:
@@ -1606,7 +1649,9 @@ reviewComments:
     prNumber: 144
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/144
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/144#discussion_r4159849053
-    body: Fixed in 1a60e1e30660ecfb1ce943a2cb9115d1b879a13a. Connection invalidation now considers both key and connected status, so a legacy connected null-key → disconnected null-key transition clears state and invalidates old data before passive effects. A successful in-app disconnect also bumps data owner...
+    body: Fixed in 1a60e1e30660ecfb1ce943a2cb9115d1b879a13a. Connection invalidation now considers both key and connected
+      status, so a legacy connected null-key → disconnected null-key transition clears state and invalidates old data
+      before passive effects. A successful in-app disconnect also bumps data owner...
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-10-01T19:57:16Z
     prFiles:
@@ -1617,7 +1662,9 @@ reviewComments:
     prNumber: 143
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/143
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/143#discussion_r4157809749
-    body: Addressed in ad508828a52e5d650bbdb914ee88a4ac96450f8d. Before TTL-unverified generation writes, explicit cleanup selects only the current user's expired mapping IDs/partition keys/ETags across continuation pages, then deletes with if-match. A concurrent renewal survives 412; already deleted records ...
+    body: Addressed in ad508828a52e5d650bbdb914ee88a4ac96450f8d. Before TTL-unverified generation writes, explicit cleanup
+      selects only the current user's expired mapping IDs/partition keys/ETags across continuation pages, then deletes
+      with if-match. A concurrent renewal survives 412; already deleted records ...
     path: hub/functions/src/northstar-conversations.ts
     createdAt: 2026-10-01T16:22:12Z
     prFiles:
@@ -1629,7 +1676,9 @@ reviewComments:
     prNumber: 143
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/143
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/143#discussion_r4158046643
-    body: "Addressed in 080876addfdff4b1f2e02f68a3803bd8ed0d7662: purge eligibility is stored expiry OR updatedAt at/before one cutoff derived from the current 30/60/90-day preference. This catches a failed 90-to-30/60 expiry rewrite. Tests cover stale future expiry, exact boundary, pagination, and conditional..."
+    body: "Addressed in 080876addfdff4b1f2e02f68a3803bd8ed0d7662: purge eligibility is stored expiry OR updatedAt at/before
+      one cutoff derived from the current 30/60/90-day preference. This catches a failed 90-to-30/60 expiry rewrite.
+      Tests cover stale future expiry, exact boundary, pagination, and conditional..."
     path: hub/functions/src/northstar-conversations.ts
     createdAt: 2026-10-01T16:47:01Z
     prFiles:
@@ -1641,7 +1690,9 @@ reviewComments:
     prNumber: 143
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/143
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/143#discussion_r4158046811
-    body: This remains unresolved and blocks merge readiness. Demand cleanup cannot guarantee physical deletion for inactive accounts when item TTL is unavailable. No independent sweep or infrastructure change has been authorized; the current managed Static Web Apps deployment supports HTTP triggers only. We ...
+    body: This remains unresolved and blocks merge readiness. Demand cleanup cannot guarantee physical deletion for inactive
+      accounts when item TTL is unavailable. No independent sweep or infrastructure change has been authorized; the
+      current managed Static Web Apps deployment supports HTTP triggers only. We ...
     path: hub/functions/src/northstar-conversations.ts
     createdAt: 2026-10-01T16:47:02Z
     prFiles:
@@ -1654,7 +1705,8 @@ reviewComments:
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141#discussion_r4155371855
     body: >-
-      Confirmed at b60c74ac: a public-handler regression seeded an account-only v2 mapping, then ordinary Ask refreshed the legacy connection and created a new Copilot conversation instead of continuing the saved context.
+      Confirmed at b60c74ac: a public-handler regression seeded an account-only v2 mapping, then ordinary Ask refreshed
+      the legacy connection and created a new Copilot conversation instead of continuing the saved context.
 
 
       Fixed in 5881e36e3eb32a54e7e968db63759e807e10c197. A first guarded refresh uses a r...
@@ -1684,7 +1736,9 @@ reviewComments:
     prNumber: 140
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/140
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/140#discussion_r4155937353
-    body: "Fixed in `23184f51e41b490281e98ca2572cc4120b377880`: removed only the two nonexistent logo copy entries. The original Pricing assets, FiNet logo, and workbook template remain. Local Pricing Functions build and full combined Azure packaging passed, including byte-for-byte checks of the original repor..."
+    body: "Fixed in `23184f51e41b490281e98ca2572cc4120b377880`: removed only the two nonexistent logo copy entries. The
+      original Pricing assets, FiNet logo, and workbook template remain. Local Pricing Functions build and full combined
+      Azure packaging passed, including byte-for-byte checks of the original repor..."
     path: pricing/functions/package.json
     createdAt: 2026-10-01T13:33:16Z
     prFiles:
@@ -1715,7 +1769,9 @@ reviewComments:
     prNumber: 140
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/140
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/140#discussion_r4155940458
-    body: "Already addressed in the current diff: `scripts/dev-pricing-api.ts:135` maps `snapshot.brandingVersion === 1` to version 1 and an absent marker to version 0, matching the Azure adapter. Rebase preserved this mapping. Full Pricing tests and the 38 focused report model/storage/rendering tests passed o..."
+    body: "Already addressed in the current diff: `scripts/dev-pricing-api.ts:135` maps `snapshot.brandingVersion === 1` to
+      version 1 and an absent marker to version 0, matching the Azure adapter. Rebase preserved this mapping. Full
+      Pricing tests and the 38 focused report model/storage/rendering tests passed o..."
     path: pricing/src/lib/report/model.ts
     createdAt: 2026-10-01T13:33:35Z
     prFiles:
@@ -1746,7 +1802,9 @@ reviewComments:
     prNumber: 140
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/140
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/140#discussion_r4155947621
-    body: "Already addressed in the current diff: `hub/components/hub-launcher.tsx:257` labels the home link `ohcpwm apps home`, and line 288 displays `ohcpwm`. Both changes survived the rebase. Hub typecheck, lint, and normal/static builds passed on `23184f5`."
+    body: "Already addressed in the current diff: `hub/components/hub-launcher.tsx:257` labels the home link `ohcpwm apps
+      home`, and line 288 displays `ohcpwm`. Both changes survived the rebase. Hub typecheck, lint, and normal/static
+      builds passed on `23184f5`."
     path: hub/app/layout.tsx
     createdAt: 2026-10-01T13:34:17Z
     prFiles:
@@ -1777,7 +1835,9 @@ reviewComments:
     prNumber: 140
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/140
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/140#discussion_r4155949831
-    body: Intentionally deferred under the approved scope. The repository branding guidance now requires existing artwork to remain unchanged until approved replacements are available, and this PR explicitly documents the resulting legacy visual-wordmark mismatch. The user deferred official favicons, and repl...
+    body: Intentionally deferred under the approved scope. The repository branding guidance now requires existing artwork to
+      remain unchanged until approved replacements are available, and this PR explicitly documents the resulting legacy
+      visual-wordmark mismatch. The user deferred official favicons, and repl...
     path: pricing/src/lib/report/model.ts
     createdAt: 2026-10-01T13:34:30Z
     prFiles:
@@ -2012,12 +2072,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 95.4
+  version: "2.3"
+  hours: 48.4
   sessions: 2
   sessionHours: 7.2
-  volumeHours: 95.4
+  volumeHours: 121.4
+  compressedVolumeHours: 48.4
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

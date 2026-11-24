@@ -22,7 +22,7 @@ stats:
   reviewComments: 34
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 67.9
+  estimatedHours: 35.7
 dailyCommits:
   - date: 2026-09-17
     count: 31
@@ -44,10 +44,12 @@ repositories:
 pullRequests:
   - title: Keep Entra sign-in outside embedded app frames
     body: >-
-      Unauthenticated protected routes redirected embedded apps directly to Microsoft Entra ID. Entra returns `X-Frame-Options: DENY` and `frame-ancestors 'none'`, leaving the iframe blank.
+      Unauthenticated protected routes redirected embedded apps directly to Microsoft Entra ID. Entra returns
+      `X-Frame-Options: DENY` and `frame-ancestors 'none'`, leaving the iframe blank.
 
 
-      Protected routes now rewrite unauthorized responses to a public local login page while retaining HTTP 401. The Micr...
+      Protected routes now rewrite unauthorized responses to a public local login page while retaining HTTP 401. The
+      Micr...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: merged
@@ -230,7 +232,9 @@ prsInProgress:
       ## Problem
 
 
-      Proforma needs customer/workspace data isolation in Cosmos while authorized Myriad staff retain audited access to the complete master record set. The prior runtime also had scoped edit, version propagation, CORS, and idempotent retry gaps.
+      Proforma needs customer/workspace data isolation in Cosmos while authorized Myriad staff retain audited access to
+      the complete master record set. The prior runtime also had scoped edit, version propagation, CORS, and idempotent
+      retry gaps.
 
 
       ## Result
@@ -313,7 +317,8 @@ prsInProgress:
       ## Why
 
 
-      Myriad has no native workspace for coordinating account transitions. Add a functional prototype and synthetic Azure PR demo based on the Transition Tool references, with defaults created only by explicit seed commands.
+      Myriad has no native workspace for coordinating account transitions. Add a functional prototype and synthetic
+      Azure PR demo based on the Transition Tool references, with defaults created only by explicit seed commands.
 
 
       ## What changed
@@ -3489,7 +3494,8 @@ reviewComments:
     prNumber: 124
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124#discussion_r4037499664
-    body: Fixed in 8317a45. The 401 override now rewrites to /login while preserving status 401, and the Pricing client handles that status before parsing the rewritten HTML. Added a regression test for the HTML 401 response.
+    body: Fixed in 8317a45. The 401 override now rewrites to /login while preserving status 401, and the Pricing client
+      handles that status before parsing the rewritten HTML. Added a regression test for the HTML 401 response.
     path: hub/staticwebapp.config.json
     createdAt: 2026-09-17T13:44:05Z
     prFiles:
@@ -3529,7 +3535,8 @@ reviewComments:
     prNumber: 124
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124#discussion_r4037886225
-    body: Fixed in 9596299. The production smoke now requires 401 for each protected page and verifies the rewritten body contains the Microsoft sign-in action. Updated the deployment docs to match the new-tab flow.
+    body: Fixed in 9596299. The production smoke now requires 401 for each protected page and verifies the rewritten body
+      contains the Microsoft sign-in action. Updated the deployment docs to match the new-tab flow.
     path: hub/staticwebapp.config.json
     createdAt: 2026-09-17T14:18:22Z
     prFiles:
@@ -3569,7 +3576,8 @@ reviewComments:
     prNumber: 124
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124#discussion_r4037949829
-    body: Fixed in 10451c6. Hub now allows anonymous access to /_next/* before the protected catch-all. The production smoke extracts a hydration script from the rewritten login page and requires that asset to return 200.
+    body: Fixed in 10451c6. Hub now allows anonymous access to /_next/* before the protected catch-all. The production smoke
+      extracts a hydration script from the rewritten login page and requires that asset to return 200.
     path: hub/staticwebapp.config.json
     createdAt: 2026-09-17T14:23:18Z
     prFiles:
@@ -3609,7 +3617,9 @@ reviewComments:
     prNumber: 124
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124#discussion_r4038059512
-    body: Fixed in 3e5335b. The iframe now waits for the role required by the requested app before closing the auth tab or restoring the embedded route. Pricing and OFAC pass their roles explicitly; Hub derives the role from the stored return path. Added matching-role and wrong-role coverage while preserving ...
+    body: Fixed in 3e5335b. The iframe now waits for the role required by the requested app before closing the auth tab or
+      restoring the embedded route. Pricing and OFAC pass their roles explicitly; Hub derives the role from the stored
+      return path. Added matching-role and wrong-role coverage while preserving ...
     path: packages/auth/src/iframe-login.tsx
     createdAt: 2026-09-17T14:33:29Z
     prFiles:
@@ -3649,7 +3659,8 @@ reviewComments:
     prNumber: 124
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124#discussion_r4038627334
-    body: Fixed in 5af8313. Each `/.auth/me` probe now aborts and times out, using the remaining overall poll window so a stalled request cannot block the five-minute login deadline.
+    body: Fixed in 5af8313. Each `/.auth/me` probe now aborts and times out, using the remaining overall poll window so a
+      stalled request cannot block the five-minute login deadline.
     path: packages/auth/src/iframe-login.tsx
     createdAt: 2026-09-17T15:26:22Z
     prFiles:
@@ -3689,7 +3700,8 @@ reviewComments:
     prNumber: 124
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124#discussion_r4038627528
-    body: Fixed in 5af8313. Ctrl/Cmd/Shift/Alt-clicks still let the browser open the Microsoft tab, and the embedded frame now starts the same session poll so it can restore the original route.
+    body: Fixed in 5af8313. Ctrl/Cmd/Shift/Alt-clicks still let the browser open the Microsoft tab, and the embedded frame
+      now starts the same session poll so it can restore the original route.
     path: packages/auth/src/iframe-login.tsx
     createdAt: 2026-09-17T15:26:23Z
     prFiles:
@@ -3729,7 +3741,8 @@ reviewComments:
     prNumber: 124
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124#discussion_r4038700663
-    body: Fixed in 5f04a0f. OFAC API 401s in SWA mode now store the current route and go to `/login` before parsing the rewritten HTML, matching Pricing. Local non-SWA 401 JSON bodies remain visible.
+    body: Fixed in 5f04a0f. OFAC API 401s in SWA mode now store the current route and go to `/login` before parsing the
+      rewritten HTML, matching Pricing. Local non-SWA 401 JSON bodies remain visible.
     path: hub/staticwebapp.config.json
     createdAt: 2026-09-17T15:33:56Z
     prFiles:
@@ -3769,7 +3782,8 @@ reviewComments:
     prNumber: 124
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124#discussion_r4040088904
-    body: Fixed in e76f7c2. Middle-click now uses `onAuxClick` and starts the same iframe recovery poll without suppressing the browser's new tab.
+    body: Fixed in e76f7c2. Middle-click now uses `onAuxClick` and starts the same iframe recovery poll without suppressing
+      the browser's new tab.
     path: packages/auth/src/iframe-login.tsx
     createdAt: 2026-09-17T18:18:59Z
     prFiles:
@@ -3809,7 +3823,9 @@ reviewComments:
     prNumber: 124
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124#discussion_r4040089059
-    body: Fixed in e76f7c2. Report previews and downloads now inspect the 401 before rendering or saving the file. In SWA mode they store the current route and go to `/login` instead of showing a generic load error or downloading the rewritten login HTML.
+    body: Fixed in e76f7c2. Report previews and downloads now inspect the 401 before rendering or saving the file. In SWA
+      mode they store the current route and go to `/login` instead of showing a generic load error or downloading the
+      rewritten login HTML.
     path: hub/staticwebapp.config.json
     createdAt: 2026-09-17T18:19:00Z
     prFiles:
@@ -3946,7 +3962,8 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4039345444
-    body: Fixed in fc21bcc. Transition is preview-only in the registry; production matrices, Hub launcher, static composition, routes, and unified Functions composition exclude it. Preview composition still includes it.
+    body: Fixed in fc21bcc. Transition is preview-only in the registry; production matrices, Hub launcher, static
+      composition, routes, and unified Functions composition exclude it. Preview composition still includes it.
     path: .github/workflows/azure-static-web-apps.yml
     createdAt: 2026-09-17T16:44:49Z
     prFiles:
@@ -4043,7 +4060,8 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4039345640
-    body: Fixed in fc21bcc. The audit now rejects any workbook missing a required operational sheet with a sanitized error, with focused coverage.
+    body: Fixed in fc21bcc. The audit now rejects any workbook missing a required operational sheet with a sanitized error,
+      with focused coverage.
     path: transition/scripts/audit-reference.py
     createdAt: 2026-09-17T16:44:50Z
     prFiles:
@@ -4140,7 +4158,8 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4039345806
-    body: Fixed in fc21bcc. Transition is now present in both issue forms, triage labels, repository configuration, project options, and triage tests.
+    body: Fixed in fc21bcc. Transition is now present in both issue forms, triage labels, repository configuration, project
+      options, and triage tests.
     path: scripts/app-registry.ts
     createdAt: 2026-09-17T16:44:52Z
     prFiles:
@@ -4237,7 +4256,8 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4039346004
-    body: Fixed in fc21bcc. Read-only account searches exclude legacy identifiers at the repository query boundary, with handler coverage proving writer-only identifier search.
+    body: Fixed in fc21bcc. Read-only account searches exclude legacy identifiers at the repository query boundary, with
+      handler coverage proving writer-only identifier search.
     path: transition/src/lib/repository.ts
     createdAt: 2026-09-17T16:44:54Z
     prFiles:
@@ -4334,7 +4354,8 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4039346212
-    body: Fixed in fc21bcc. My Accounts now compares assignee emails case-insensitively, with repository coverage for mixed casing.
+    body: Fixed in fc21bcc. My Accounts now compares assignee emails case-insensitively, with repository coverage for mixed
+      casing.
     path: transition/src/lib/repository.ts
     createdAt: 2026-09-17T16:44:55Z
     prFiles:
@@ -4528,7 +4549,8 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4039408348
-    body: Fixed in d5769fd. Unified composition now defaults an unset BUILD_ENVIRONMENT to preview, matching the Hub launcher and validator; production remains explicitly filtered.
+    body: Fixed in d5769fd. Unified composition now defaults an unset BUILD_ENVIRONMENT to preview, matching the Hub
+      launcher and validator; production remains explicitly filtered.
     path: scripts/build-unified-swa.ts
     createdAt: 2026-09-17T16:52:48Z
     prFiles:
@@ -4625,7 +4647,8 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4039463744
-    body: Fixed in abc01f1. Repository workflow actions now reject repeated reconciliation and confirmation without changing timestamps or adding duplicate audit events; direct API regression checks cover both cases.
+    body: Fixed in abc01f1. Repository workflow actions now reject repeated reconciliation and confirmation without changing
+      timestamps or adding duplicate audit events; direct API regression checks cover both cases.
     path: transition/src/lib/repository.ts
     createdAt: 2026-09-17T16:59:44Z
     prFiles:
@@ -4722,7 +4745,8 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4039526850
-    body: Fixed in 852c596. Artifact validation now defaults an unset environment to preview and uses production products for every non-preview environment, including stage.
+    body: Fixed in 852c596. Artifact validation now defaults an unset environment to preview and uses production products
+      for every non-preview environment, including stage.
     path: scripts/validate-artifacts.ts
     createdAt: 2026-09-17T17:07:33Z
     prFiles:
@@ -4819,7 +4843,8 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4039584629
-    body: Fixed in 7113454. The Hub launcher now defaults an unset environment to preview and exposes preview-only products only when the resolved environment is preview; stage and production both exclude Transition.
+    body: Fixed in 7113454. The Hub launcher now defaults an unset environment to preview and exposes preview-only products
+      only when the resolved environment is preview; stage and production both exclude Transition.
     path: hub/lib/apps.ts
     createdAt: 2026-09-17T17:14:20Z
     prFiles:
@@ -4916,7 +4941,8 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4039639668
-    body: Fixed in 31e8460. Route filtering now removes Transition routes for every non-preview environment, and an actual stage composition assertion confirms both routes and static files are absent.
+    body: Fixed in 31e8460. Route filtering now removes Transition routes for every non-preview environment, and an actual
+      stage composition assertion confirms both routes and static files are absent.
     path: scripts/build-unified-swa.ts
     createdAt: 2026-09-17T17:20:57Z
     prFiles:
@@ -5013,7 +5039,9 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4039732699
-    body: Fixed in db35fb8. The Functions build now defaults an unset BUILD_ENVIRONMENT to preview, matching unified composition and artifact validation. Added a tooling regression assertion; bun run test:tooling and the Transition Functions build pass.
+    body: Fixed in db35fb8. The Functions build now defaults an unset BUILD_ENVIRONMENT to preview, matching unified
+      composition and artifact validation. Added a tooling regression assertion; bun run test:tooling and the Transition
+      Functions build pass.
     path: transition/functions/scripts/build.ts
     createdAt: 2026-09-17T17:32:43Z
     prFiles:
@@ -5110,7 +5138,9 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4039807169
-    body: Fixed in 97b68f6. Contactless accounts now expose an Add contact form and POST /accounts/{id}/contacts route with validation, optimistic account version checks, persistence, and audit logging. Transition typecheck, lint, 14 tests, and Functions build pass.
+    body: Fixed in 97b68f6. Contactless accounts now expose an Add contact form and POST /accounts/{id}/contacts route with
+      validation, optimistic account version checks, persistence, and audit logging. Transition typecheck, lint, 14
+      tests, and Functions build pass.
     path: transition/src/components/transition-workspace.tsx
     createdAt: 2026-09-17T17:42:31Z
     prFiles:
@@ -5207,7 +5237,8 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4039871846
-    body: Fixed in a13be60. The local Next adapter now dispatches POST /accounts/{id}/contacts to contactCreate, with a focused route regression test.
+    body: Fixed in a13be60. The local Next adapter now dispatches POST /accounts/{id}/contacts to contactCreate, with a
+      focused route regression test.
     path: transition/src/app/api/[...path]/route.ts
     createdAt: 2026-09-17T17:50:52Z
     prFiles:
@@ -5304,7 +5335,8 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4039872847
-    body: Fixed in a13be60. Contact updates now validate a supplied email with required-text validation before the format check, and the repository handler test covers rejecting an empty email.
+    body: Fixed in a13be60. Contact updates now validate a supplied email with required-text validation before the format
+      check, and the repository handler test covers rejecting an empty email.
     path: transition/src/lib/handlers.ts
     createdAt: 2026-09-17T17:50:58Z
     prFiles:
@@ -5401,7 +5433,8 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4040021685
-    body: Fixed in 0a7d395. Unified child builds now receive the normalized BUILD_ENVIRONMENT, so an unset parent consistently produces preview composition and preview UI warnings. Added tooling coverage.
+    body: Fixed in 0a7d395. Unified child builds now receive the normalized BUILD_ENVIRONMENT, so an unset parent
+      consistently produces preview composition and preview UI warnings. Added tooling coverage.
     path: scripts/build-unified-swa.ts
     createdAt: 2026-09-17T18:10:18Z
     prFiles:
@@ -5498,7 +5531,9 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4040023010
-    body: Fixed in 0a7d395. Non-preview runs now filter Transition from static and Functions build lists, staging, and cache saves; build-unified-swa also filters preview-only selections. Tooling tests, a stage orchestration check, and build:serverless pass.
+    body: Fixed in 0a7d395. Non-preview runs now filter Transition from static and Functions build lists, staging, and cache
+      saves; build-unified-swa also filters preview-only selections. Tooling tests, a stage orchestration check, and
+      build:serverless pass.
     path: .github/workflows/azure-static-web-apps.yml
     createdAt: 2026-09-17T18:10:26Z
     prFiles:
@@ -5692,7 +5727,9 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4040105603
-    body: Fixed in 2d67c1c. New owner assignments are validated as email identities server-side and use type=email in the UI, keeping My accounts aligned with the authenticated email. Existing stored values remain readable; the direct API rejection is covered.
+    body: Fixed in 2d67c1c. New owner assignments are validated as email identities server-side and use type=email in the
+      UI, keeping My accounts aligned with the authenticated email. Existing stored values remain readable; the direct
+      API rejection is covered.
     path: transition/src/lib/handlers.ts
     createdAt: 2026-09-17T18:20:55Z
     prFiles:
@@ -5789,7 +5826,9 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4040190669
-    body: Fixed in e4d5c25. The static config now defaults an unset BUILD_ENVIRONMENT to preview, matching the standalone Functions builder and artifact validator. Added a tooling contract assertion. Validated with 15 tooling tests plus standalone static and Functions builds with BUILD_ENVIRONMENT unset.
+    body: Fixed in e4d5c25. The static config now defaults an unset BUILD_ENVIRONMENT to preview, matching the standalone
+      Functions builder and artifact validator. Added a tooling contract assertion. Validated with 15 tooling tests plus
+      standalone static and Functions builds with BUILD_ENVIRONMENT unset.
     path: transition/next.config.ts
     createdAt: 2026-09-17T18:30:19Z
     prFiles:
@@ -5886,7 +5925,8 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4041371574
-    body: Fixed in 86392e4. Household progress now uses completeAccounts / accountCount with a zero-account guard, matching the committed household contract. Removed the unused feature-total fields from the household response.
+    body: Fixed in 86392e4. Household progress now uses completeAccounts / accountCount with a zero-account guard, matching
+      the committed household contract. Removed the unused feature-total fields from the household response.
     path: transition/src/components/transition-workspace.tsx
     createdAt: 2026-09-17T20:56:13Z
     prFiles:
@@ -5983,7 +6023,9 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4041372815
-    body: Fixed in 86392e4. AUM descending is again the explicit handler and UI default, and remains available in the sort selector alongside Household, Account, and Account number. Added handler-level default-order and invalid-sort coverage.
+    body: Fixed in 86392e4. AUM descending is again the explicit handler and UI default, and remains available in the sort
+      selector alongside Household, Account, and Account number. Added handler-level default-order and invalid-sort
+      coverage.
     path: transition/src/lib/handlers.ts
     createdAt: 2026-09-17T20:56:24Z
     prFiles:
@@ -6080,7 +6122,9 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4041425184
-    body: Fixed in 482edb1. Task deletion audits now use the constant detail "Removed operational task" and no longer read or preserve the free-text task title. The removal test asserts the generic detail and verifies the title is absent.
+    body: Fixed in 482edb1. Task deletion audits now use the constant detail "Removed operational task" and no longer read
+      or preserve the free-text task title. The removal test asserts the generic detail and verifies the title is
+      absent.
     path: transition/src/lib/repository.ts
     createdAt: 2026-09-17T21:04:10Z
     prFiles:
@@ -6177,7 +6221,8 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4041478210
-    body: Fixed in 6633353. The submit handler now captures the form element synchronously and resets that stable reference after the note request succeeds. Transition tests, typecheck, and lint pass.
+    body: Fixed in 6633353. The submit handler now captures the form element synchronously and resets that stable reference
+      after the note request succeeds. Transition tests, typecheck, and lint pass.
     path: transition/src/components/transition-workspace.tsx
     createdAt: 2026-09-17T21:11:59Z
     prFiles:
@@ -6431,12 +6476,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 67.9
+  version: "2.3"
+  hours: 35.7
   sessions: 1
   sessionHours: 6
-  volumeHours: 67.9
+  volumeHours: 70.9
+  compressedVolumeHours: 35.7
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

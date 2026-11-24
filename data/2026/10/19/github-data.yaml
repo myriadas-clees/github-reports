@@ -22,7 +22,7 @@ stats:
   reviewComments: 136
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 325
+  estimatedHours: 103.5
 dailyCommits:
   - date: 2026-10-19
     count: 157
@@ -47,7 +47,9 @@ pullRequests:
       ## Why
 
 
-      Compass was treating Outlook-linked To Do items as user-created tasks and could surface bulk or low-priority messages as urgent. Overlapping calendar events were also difficult to distinguish, and partial Microsoft 365 refresh errors did not identify the affected sources.
+      Compass was treating Outlook-linked To Do items as user-created tasks and could surface bulk or low-priority
+      messages as urgent. Overlapping calendar events were also difficult to distinguish, and partial Microsoft 365
+      refresh errors did not identify the affected sources.
 
 
       ## What changed
@@ -154,13 +156,15 @@ pullRequests:
       ## Why
 
 
-      Port the Northstar advisor workflow capabilities into Compass so advisors can manage daily work and client conversations in one workspace.
+      Port the Northstar advisor workflow capabilities into Compass so advisors can manage daily work and client
+      conversations in one workspace.
 
 
       ## What changed
 
 
-      - Redesigned the Compass dashboard and Ask workspace, with command cards, conversation history, richer answer rendering, and contextual...
+      - Redesigned the Compass dashboard and Ask workspace, with command cards, conversation history, richer answer
+      rendering, and contextual...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/177
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: merged
@@ -179,7 +183,8 @@ pullRequests:
     workCommits:
       - &a6
         sha: 02982986ed55776504e3ad7921698374d61b39d6
-        message: "fix(compass): clear queued regenerations on account switch, keep summary context on retry, and tidy settings dialog layout"
+        message: "fix(compass): clear queued regenerations on account switch, keep summary context on retry, and tidy settings
+          dialog layout"
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/02982986ed55776504e3ad7921698374d61b39d6
         authoredAt: 2026-10-19T14:08:50Z
         files:
@@ -235,7 +240,8 @@ pullRequests:
       ## Why
 
 
-      Accounts imported from AIRE can store numeric registration codes, which are unclear in the UI and make registration sorting and filtering inconsistent with registration names.
+      Accounts imported from AIRE can store numeric registration codes, which are unclear in the UI and make
+      registration sorting and filtering inconsistent with registration names.
 
 
       ## What changed
@@ -973,7 +979,9 @@ pullRequests:
       ## Why
 
 
-      GitHub Actions minutes were going to pull request work that did not need it: three Verify jobs per push (each billed at least one minute), Hub preview change detection on PRs without `deploy-preview`, full 8-app rebuilds for documentation-only changes, and verification of draft PRs.
+      GitHub Actions minutes were going to pull request work that did not need it: three Verify jobs per push (each
+      billed at least one minute), Hub preview change detection on PRs without `deploy-preview`, full 8-app rebuilds for
+      documentation-only changes, and verification of draft PRs.
 
 
       ## What...
@@ -1033,7 +1041,9 @@ prsInProgress:
       ## Why
 
 
-      Compass was treating Outlook-linked To Do items as user-created tasks and could surface bulk or low-priority messages as urgent. Overlapping calendar events were also difficult to distinguish, and partial Microsoft 365 refresh errors did not identify the affected sources.
+      Compass was treating Outlook-linked To Do items as user-created tasks and could surface bulk or low-priority
+      messages as urgent. Overlapping calendar events were also difficult to distinguish, and partial Microsoft 365
+      refresh errors did not identify the affected sources.
 
 
       ## What changed
@@ -1079,9 +1089,11 @@ prsInProgress:
       - compass/src/lib/todo-tasks.ts
   - title: "fix(northstar): retry transient stream failures once"
     body: >-
-      - Retry a transient Microsoft 5xx (e.g. `UnknownError`) once in a fresh Copilot conversation, only before any answer text has streamed, so the transcript context is resent.
+      - Retry a transient Microsoft 5xx (e.g. `UnknownError`) once in a fresh Copilot conversation, only before any
+      answer text has streamed, so the transcript context is resent.
 
-      - The retry replaces only the failed provider conversation's mapping (conditional delete), so a newer mapping written by a conc...
+      - The retry replaces only the failed provider conversation's mapping (conditional delete), so a newer mapping
+      written by a conc...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/165
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
@@ -2357,7 +2369,8 @@ prsInProgress:
       ## What changed
 
 
-      - Added a Compliance app scaffold with shared navigation, placeholder pages, role mapping, and health and auth endpoints.
+      - Added a Compliance app scaffold with shared navigation, placeholder pages, role mapping, and health and auth
+      endpoints.
 
       - Documented the proposed product scope, architecture, ...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/166
@@ -2854,7 +2867,9 @@ prsInProgress:
       ## Problem
 
 
-      Proforma needed customer/workspace data isolation in Cosmos while authorized Myriad staff keep audited access to the complete record set. The same isolation was missing from every other Myriad app: each used one global tenant/client id from the environment, company URLs such as `/transit...
+      Proforma needed customer/workspace data isolation in Cosmos while authorized Myriad staff keep audited access to
+      the complete record set. The same isolation was missing from every other Myriad app: each used one global
+      tenant/client id from the environment, company URLs such as `/transit...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: open
@@ -5474,7 +5489,8 @@ commitMessages:
   - repo: Myriad-Advisor-Solutions/myriadas-apps
     messages:
       - "test(tooling): cover each affected-app ignore rule and the single verify job"
-      - "fix(compass): clear queued regenerations on account switch, keep summary context on retry, and tidy settings dialog layout"
+      - "fix(compass): clear queued regenerations on account switch, keep summary context on retry, and tidy settings
+        dialog layout"
       - "feat(pwa): per-app install identity and Hub install library"
       - "fix(transition): keep stored registration codes on untouched edit"
       - "test(compass): keep brief fixtures inside the retention window"
@@ -29391,7 +29407,9 @@ reviewComments:
     prNumber: 193
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/193
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/193#discussion_r4318561539
-    body: Addressed in 3ff02ff. `mailPriority` now reads `flag.flagStatus === "flagged"` before the Other/bulk suppression, so an explicitly flagged message is no longer zeroed and still reaches Needs attention and Ask grounding. Unflagged Other and bulk mail still score 0, and high importance alone does not ...
+    body: Addressed in 3ff02ff. `mailPriority` now reads `flag.flagStatus === "flagged"` before the Other/bulk suppression,
+      so an explicitly flagged message is no longer zeroed and still reaches Needs attention and Ask grounding.
+      Unflagged Other and bulk mail still score 0, and high importance alone does not ...
     path: compass/src/lib/mail-priority.ts
     createdAt: 2026-10-19T20:32:41Z
     prFiles:
@@ -29422,7 +29440,9 @@ reviewComments:
       Addressed on head `15f07838` (commits `4c28225b`, `15f07838`).
 
 
-      - The Northstar, OFAC, Pricing and fallback card tints and icon/badge colors in `hub/app/globals.css` now derive from existing theme tokens (`--navy`, `--gold`, `--success`, `--warning`, `--surface`, `--neutral-3/4`, `--tertiary`) via `...
+      - The Northstar, OFAC, Pricing and fallback card tints and icon/badge colors in `hub/app/globals.css` now derive
+      from existing theme tokens (`--navy`, `--gold`, `--success`, `--warning`, `--surface`, `--neutral-3/4`,
+      `--tertiary`) via `...
     path: hub/app/globals.css
     createdAt: 2026-10-19T14:10:04Z
     prFiles:
@@ -29441,7 +29461,8 @@ reviewComments:
       Verified on pushed head `5212b4a5`; no code change in this round, and I'm leaving this open on purpose.
 
 
-      The Hub app-card tones in `hub/app/globals.css` map `ofac` to `--success` (`.hub-app-card__preview--emerald`, lines 235-256 and 278-281) and `northstar` to `--warning` (`--gold` for the tint, `--...
+      The Hub app-card tones in `hub/app/globals.css` map `ofac` to `--success` (`.hub-app-card__preview--emerald`,
+      lines 235-256 and 278-281) and `northstar` to `--warning` (`--gold` for the tint, `--...
     path: hub/app/globals.css
     createdAt: 2026-10-19T21:12:23Z
     prFiles:
@@ -29460,7 +29481,8 @@ reviewComments:
       Verified on pushed head `5212b4a5`; no code change in this round, and I'm leaving this open on purpose.
 
 
-      The Hub app-card tones in `hub/app/globals.css` map `ofac` to `--success` (`.hub-app-card__preview--emerald`, lines 235-256 and 278-281) and `northstar` to `--warning` (`--gold` for the tint, `--...
+      The Hub app-card tones in `hub/app/globals.css` map `ofac` to `--success` (`.hub-app-card__preview--emerald`,
+      lines 235-256 and 278-281) and `northstar` to `--warning` (`--gold` for the tint, `--...
     path: hub/app/globals.css
     createdAt: 2026-10-19T21:12:25Z
     prFiles:
@@ -29475,70 +29497,90 @@ reviewComments:
     prNumber: 177
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/177
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/177#discussion_r4314879563
-    body: "Fixed on the pushed head (9714239; change in d1bc697). A saved custom brief prompt now reaches scheduled brief generation: the client sends customBriefPrompt:true with the prompt in question (compass/src/components/compass-provider.tsx), and askScheduledBrief passes it to scheduledBriefPrompt(snapsh..."
+    body: "Fixed on the pushed head (9714239; change in d1bc697). A saved custom brief prompt now reaches scheduled brief
+      generation: the client sends customBriefPrompt:true with the prompt in question
+      (compass/src/components/compass-provider.tsx), and askScheduledBrief passes it to scheduledBriefPrompt(snapsh..."
     path: compass/src/lib/background-briefs.ts
     createdAt: 2026-10-19T14:15:44Z
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 177
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/177
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/177#discussion_r4314880063
-    body: Fixed on the pushed head (9714239; change in d1bc697). The Today handoff now forwards end, location, attendees and the timed flag, and calendarDraftFrom/graphCalendarEvent keep them (compass/src/lib/outlook-calendar.ts, command-cards.tsx, compass-dashboard.tsx); the server forwards a bounded locatio...
+    body: Fixed on the pushed head (9714239; change in d1bc697). The Today handoff now forwards end, location, attendees and
+      the timed flag, and calendarDraftFrom/graphCalendarEvent keep them (compass/src/lib/outlook-calendar.ts,
+      command-cards.tsx, compass-dashboard.tsx); the server forwards a bounded locatio...
     path: compass/src/components/compass-dashboard.tsx
     createdAt: 2026-10-19T14:15:47Z
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 177
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/177
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/177#discussion_r4314880711
-    body: "Fixed on the pushed head (9714239; changes in d1bc697 and 0298298). A chat continued from a summary is marked seededFromSummary, and followUpContextFor sends the summary and summarized item with the first follow-up only; a failed first follow-up now resends the same context on retry. Tests: ask-comp..."
+    body: "Fixed on the pushed head (9714239; changes in d1bc697 and 0298298). A chat continued from a summary is marked
+      seededFromSummary, and followUpContextFor sends the summary and summarized item with the first follow-up only; a
+      failed first follow-up now resends the same context on retry. Tests: ask-comp..."
     path: compass/src/components/compass-provider.tsx
     createdAt: 2026-10-19T14:15:51Z
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 177
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/177
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/177#discussion_r4314881386
-    body: "The reported defect is fixed on the pushed head (9714239; change in d1bc697): picking a size on the grid now stores an explicit choice (chooseTodayWidgetSize / sizesChosen in compass/src/lib/today-layout.ts) that resolveTodayLayout honors, so a default Compact widget takes Half on the first pick. Te..."
+    body: "The reported defect is fixed on the pushed head (9714239; change in d1bc697): picking a size on the grid now
+      stores an explicit choice (chooseTodayWidgetSize / sizesChosen in compass/src/lib/today-layout.ts) that
+      resolveTodayLayout honors, so a default Compact widget takes Half on the first pick. Te..."
     path: compass/src/components/today/widget-grid.tsx
     createdAt: 2026-10-19T14:15:55Z
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 177
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/177
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/177#discussion_r4314881946
-    body: "Fixed on the pushed head (9714239; change in 7814c87). SummarizePeek takes the connection key the item was loaded under, pinned when the peek opens, and sends it as expectedConnectionKey; the server already rejects a mismatch with auth_required. Tests in summarize-peek.dom.test.tsx: the key is sent ..."
+    body: "Fixed on the pushed head (9714239; change in 7814c87). SummarizePeek takes the connection key the item was loaded
+      under, pinned when the peek opens, and sends it as expectedConnectionKey; the server already rejects a mismatch
+      with auth_required. Tests in summarize-peek.dom.test.tsx: the key is sent ..."
     path: compass/src/components/summarize-peek.tsx
     createdAt: 2026-10-19T14:15:58Z
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 177
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/177
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/177#discussion_r4314882402
-    body: "Fixed on the pushed head (9714239; change in 7814c87). summarize-item.ts now packs task and attendee lines whole within the budget and always keeps the omitted-count line and the END MICROSOFT ITEM marker; the final whole-reference slice is gone. Tests in summarize-item.test.ts: 'a To Do list longer..."
+    body: "Fixed on the pushed head (9714239; change in 7814c87). summarize-item.ts now packs task and attendee lines whole
+      within the budget and always keeps the omitted-count line and the END MICROSOFT ITEM marker; the final
+      whole-reference slice is gone. Tests in summarize-item.test.ts: 'a To Do list longer..."
     path: compass/src/lib/summarize-item.ts
     createdAt: 2026-10-19T14:16:00Z
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 177
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/177
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/177#discussion_r4314882888
-    body: "Fixed on the pushed head (9714239; change in bdca1bd). The dialog now calls moveCalendarDraftToDay / moveCalendarDraftToSlot (compass/src/lib/outlook-calendar.ts), which keep the draft's end - start length and fall back to one hour only when the end is missing or unusable. Tests: outlook-calendar.te..."
+    body: "Fixed on the pushed head (9714239; change in bdca1bd). The dialog now calls moveCalendarDraftToDay /
+      moveCalendarDraftToSlot (compass/src/lib/outlook-calendar.ts), which keep the draft's end - start length and fall
+      back to one hour only when the end is missing or unusable. Tests: outlook-calendar.te..."
     path: compass/src/components/command-cards.tsx
     createdAt: 2026-10-19T14:16:03Z
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 177
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/177
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/177#discussion_r4314883442
-    body: Fixed on the pushed head (9714239; changes in d0046e5 and 63b0340). Scheduled brief requests no longer send the browser's microsoftSnapshot (compass-provider.tsx), and the server also discards a browser-supplied snapshot for scheduled briefs and uses its own period-bounded one (compass-microsoft.ts)...
+    body: Fixed on the pushed head (9714239; changes in d0046e5 and 63b0340). Scheduled brief requests no longer send the
+      browser's microsoftSnapshot (compass-provider.tsx), and the server also discards a browser-supplied snapshot for
+      scheduled briefs and uses its own period-bounded one (compass-microsoft.ts)...
     path: compass/src/components/compass-provider.tsx
     createdAt: 2026-10-19T14:16:06Z
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 176
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/176
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/176#discussion_r4314838103
-    body: Verified on the pushed head `2b181818d5d1890424db4cbc891517aa324c73b7`. `listAccounts` normalizes the incoming registration filter with `registrationName`, and `accounts-page.tsx` maps the URL filter for the selected option. `registration-name.test.ts` covers filtering by source code or name and fil...
+    body: Verified on the pushed head `2b181818d5d1890424db4cbc891517aa324c73b7`. `listAccounts` normalizes the incoming
+      registration filter with `registrationName`, and `accounts-page.tsx` maps the URL filter for the selected option.
+      `registration-name.test.ts` covers filtering by source code or name and fil...
     path: transition/src/lib/repository.ts
     createdAt: 2026-10-19T14:12:09Z
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 168
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168#discussion_r4314802095
-    body: "Fixed in 59208326. `pendingBriefRegeneration` is now cleared (`setPendingBriefRegeneration([])`) in both places that reset account-scoped ask state: the Microsoft connection-change reset (`northstar-dashboard.tsx:1301`) and the account-owner reset in `setAccountUserId` (`:1457`). Those are the only ..."
+    body: "Fixed in 59208326. `pendingBriefRegeneration` is now cleared (`setPendingBriefRegeneration([])`) in both places
+      that reset account-scoped ask state: the Microsoft connection-change reset (`northstar-dashboard.tsx:1301`) and
+      the account-owner reset in `setAccountUserId` (`:1457`). Those are the only ..."
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-10-19T14:09:00Z
     prFiles:
@@ -29558,7 +29600,9 @@ reviewComments:
     prNumber: 168
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168#discussion_r4314802451
-    body: "Fixed in 59208326. The confirmation dialog now has three actions: Cancel (closes, keeps the draft, saves nothing), **Save without regenerating** (`saveInstructions(next, [])`, `settings-workspace.tsx:305`), and Save and regenerate. The new `settings-workspace.dom.test.tsx` asserts all three paths: S..."
+    body: "Fixed in 59208326. The confirmation dialog now has three actions: Cancel (closes, keeps the draft, saves
+      nothing), **Save without regenerating** (`saveInstructions(next, [])`, `settings-workspace.tsx:305`), and Save and
+      regenerate. The new `settings-workspace.dom.test.tsx` asserts all three paths: S..."
     path: northstar/components/settings-workspace.tsx
     createdAt: 2026-10-19T14:09:02Z
     prFiles:
@@ -29578,7 +29622,9 @@ reviewComments:
     prNumber: 168
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168#discussion_r4314876070
-    body: Fixed in e645d3dc. `SettingsWorkspace` now derives an account scope from the signed-in email, the Microsoft profile principal name, the connected state and the granted scope; when it changes, an effect clears `pendingRegeneration` (closing the dialog) and resets the instruction draft to the new acco...
+    body: Fixed in e645d3dc. `SettingsWorkspace` now derives an account scope from the signed-in email, the Microsoft
+      profile principal name, the connected state and the granted scope; when it changes, an effect clears
+      `pendingRegeneration` (closing the dialog) and resets the instruction draft to the new acco...
     path: northstar/components/settings-workspace.tsx
     createdAt: 2026-10-19T14:15:25Z
     prFiles:
@@ -29598,7 +29644,9 @@ reviewComments:
     prNumber: 168
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168#discussion_r4315413272
-    body: Verified on pushed head `0270e388`. The settings list now carries each saved brief's conversation id and the confirmation records those ids when it opens; "Save and regenerate" returns exactly those ids and the dashboard queues them unchanged. A dialog left open across midnight or the Monday rollove...
+    body: Verified on pushed head `0270e388`. The settings list now carries each saved brief's conversation id and the
+      confirmation records those ids when it opens; "Save and regenerate" returns exactly those ids and the dashboard
+      queues them unchanged. A dialog left open across midnight or the Monday rollove...
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-10-19T15:04:36Z
     prFiles:
@@ -29618,7 +29666,9 @@ reviewComments:
     prNumber: 168
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168#discussion_r4315733645
-    body: "Verified on pushed head `3c372745`. The silent drop is replaced by explicit invalidation: while the regenerate confirmation is open, if any listed brief's conversation id is no longer in the saved briefs (period rolled over), the confirmation closes and the typed draft is kept, so the advisor presse..."
+    body: "Verified on pushed head `3c372745`. The silent drop is replaced by explicit invalidation: while the regenerate
+      confirmation is open, if any listed brief's conversation id is no longer in the saved briefs (period rolled over),
+      the confirmation closes and the typed draft is kept, so the advisor presse..."
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-10-19T15:32:58Z
     prFiles:
@@ -29638,7 +29688,9 @@ reviewComments:
     prNumber: 168
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168#discussion_r4315733992
-    body: "Verified on pushed head `3c372745`. The reset now fires only on a change between established values: a different non-empty signed-in email, a different non-empty profile UPN, or connected to not connected. Values loading for the first time (empty/undefined/not yet connected to loaded) never discard ..."
+    body: "Verified on pushed head `3c372745`. The reset now fires only on a change between established values: a different
+      non-empty signed-in email, a different non-empty profile UPN, or connected to not connected. Values loading for
+      the first time (empty/undefined/not yet connected to loaded) never discard ..."
     path: northstar/components/settings-workspace.tsx
     createdAt: 2026-10-19T15:33:00Z
     prFiles:
@@ -29658,7 +29710,9 @@ reviewComments:
     prNumber: 168
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168#discussion_r4315734225
-    body: Verified on pushed head `3c372745`. `persistPreferences` now reports whether the write succeeded, and `saveInstructions` applies the values and queues regeneration only when it did. On a storage failure the existing alert shows, the typed draft stays, the confirmation stays open and `onInstructionsC...
+    body: Verified on pushed head `3c372745`. `persistPreferences` now reports whether the write succeeded, and
+      `saveInstructions` applies the values and queues regeneration only when it did. On a storage failure the existing
+      alert shows, the typed draft stays, the confirmation stays open and `onInstructionsC...
     path: northstar/components/settings-workspace.tsx
     createdAt: 2026-10-19T15:33:01Z
     prFiles:
@@ -29678,7 +29732,9 @@ reviewComments:
     prNumber: 168
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168#discussion_r4315817250
-    body: Verified on pushed head `b7f17178`. The Settings saved-brief list now counts a current-period brief that is answered in this session OR has a restorable retained answer for that exact conversation id in the loaded local/remote history (same `restorableBriefAnswer` lookup the scheduler uses; remote h...
+    body: Verified on pushed head `b7f17178`. The Settings saved-brief list now counts a current-period brief that is
+      answered in this session OR has a restorable retained answer for that exact conversation id in the loaded
+      local/remote history (same `restorableBriefAnswer` lookup the scheduler uses; remote h...
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-10-19T15:41:24Z
     prFiles:
@@ -29698,7 +29754,9 @@ reviewComments:
     prNumber: 168
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168#discussion_r4315817630
-    body: "Verified on pushed head `b7f17178`. Confirmed regenerations now merge into the pending queue (`mergePendingBriefRegeneration`: existing ids keep their place, new ids are appended, duplicates dropped) instead of replacing it, so a later save, including one with an empty list, cannot cancel a regenera..."
+    body: "Verified on pushed head `b7f17178`. Confirmed regenerations now merge into the pending queue
+      (`mergePendingBriefRegeneration`: existing ids keep their place, new ids are appended, duplicates dropped) instead
+      of replacing it, so a later save, including one with an empty list, cannot cancel a regenera..."
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-10-19T15:41:27Z
     prFiles:
@@ -29718,7 +29776,9 @@ reviewComments:
     prNumber: 168
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168#discussion_r4315903706
-    body: 'Verified on pushed head `8d8e428e`. A save that declines regeneration now also removes the briefs it affected from the pending queue: `onInstructionsChange` receives a `declined` list (all affected ids for "Save without regenerating", none for "Save and regenerate" or a direct save) and `mergePendin...'
+    body: 'Verified on pushed head `8d8e428e`. A save that declines regeneration now also removes the briefs it affected
+      from the pending queue: `onInstructionsChange` receives a `declined` list (all affected ids for "Save without
+      regenerating", none for "Save and regenerate" or a direct save) and `mergePendin...'
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-10-19T15:50:13Z
     prFiles:
@@ -29738,7 +29798,9 @@ reviewComments:
     prNumber: 168
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168#discussion_r4315953493
-    body: "Reviewed against pushed head `8d8e428e`; no code change, and here is why. A queued id whose period has rolled over cannot be regenerated: `askScheduledBrief` rejects any conversation id that is not the current period, so executing it is not possible, and the dashboard dequeues it instead of sending ..."
+    body: "Reviewed against pushed head `8d8e428e`; no code change, and here is why. A queued id whose period has rolled
+      over cannot be regenerated: `askScheduledBrief` rejects any conversation id that is not the current period, so
+      executing it is not possible, and the dashboard dequeues it instead of sending ..."
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-10-19T15:55:25Z
     prFiles:
@@ -29758,7 +29820,9 @@ reviewComments:
     prNumber: 168
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168#discussion_r4316130597
-    body: Verified on pushed head `a1dee473`. Local retained history is now read as soon as `briefHistoryOwner` identifies the account (reading is side-effect free and only decides whether the confirmation lists a brief); remote history still counts once it has loaded for this owner, and the scheduler keeps i...
+    body: Verified on pushed head `a1dee473`. Local retained history is now read as soon as `briefHistoryOwner` identifies
+      the account (reading is side-effect free and only decides whether the confirmation lists a brief); remote history
+      still counts once it has loaded for this owner, and the scheduler keeps i...
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-10-19T16:14:33Z
     prFiles:
@@ -29778,7 +29842,9 @@ reviewComments:
     prNumber: 168
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168#discussion_r4316157617
-    body: "Acknowledged on head `a1dee473`; not changed in this round. This is the other half of the retained-history question on the earlier thread: counting local history while remote loads (done) still cannot see a brief that exists only in synchronized history from another device. The only complete fix is ..."
+    body: "Acknowledged on head `a1dee473`; not changed in this round. This is the other half of the retained-history
+      question on the earlier thread: counting local history while remote loads (done) still cannot see a brief that
+      exists only in synchronized history from another device. The only complete fix is ..."
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-10-19T16:17:32Z
     prFiles:
@@ -29798,7 +29864,9 @@ reviewComments:
     prNumber: 168
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168#discussion_r4316279305
-    body: "Correction on pushed head `dfc1fcf7`: this change is reverted. `readLocalChatHistory` is not side-effect free: it prunes and rewrites the stored history using the retention days it is passed. Called during render with the default 30 days before the configured 60/90-day setting has loaded, it deleted..."
+    body: "Correction on pushed head `dfc1fcf7`: this change is reverted. `readLocalChatHistory` is not side-effect free: it
+      prunes and rewrites the stored history using the retention days it is passed. Called during render with the
+      default 30 days before the configured 60/90-day setting has loaded, it deleted..."
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-10-19T16:31:05Z
     prFiles:
@@ -29818,7 +29886,9 @@ reviewComments:
     prNumber: 168
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168#discussion_r4316322313
-    body: "Acknowledged on head `dfc1fcf7`; not changed in this round. This is a second case of the same gap as the remote-history thread: the save decision is made from briefs that are already answered, so a brief that is still generating when the advisor saves is not counted and then publishes with the old i..."
+    body: "Acknowledged on head `dfc1fcf7`; not changed in this round. This is a second case of the same gap as the
+      remote-history thread: the save decision is made from briefs that are already answered, so a brief that is still
+      generating when the advisor saves is not counted and then publishes with the old i..."
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-10-19T16:35:55Z
     prFiles:
@@ -29842,7 +29912,9 @@ reviewComments:
       Addressed on pushed head `fd233759`, taking the second option you suggested.
 
 
-      - Instruction saving now stays held while the retention lookup has failed: the block condition in `northstar-dashboard.tsx` (`instructionsSaveBlockedReason`) is `briefHistoryOwner && !remote`, with the failed case showing ...
+      - Instruction saving now stays held while the retention lookup has failed: the block condition in
+      `northstar-dashboard.tsx` (`instructionsSaveBlockedReason`) is `briefHistoryOwner && !remote`, with the failed
+      case showing ...
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-10-19T21:06:12Z
     prFiles:
@@ -29862,7 +29934,9 @@ reviewComments:
     prNumber: 168
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168#discussion_r4319145682
-    body: "Fixed on pushed head `4af7900a` (commit `c3f24fc5`): while the regeneration confirmation is open, `settings-workspace.tsx` recomputes the affected briefs from the current saved briefs; if the set grows (a brief finished under the old instructions) or a listed brief disappears, the confirmation close..."
+    body: "Fixed on pushed head `4af7900a` (commit `c3f24fc5`): while the regeneration confirmation is open,
+      `settings-workspace.tsx` recomputes the affected briefs from the current saved briefs; if the set grows (a brief
+      finished under the old instructions) or a listed brief disappears, the confirmation close..."
     path: northstar/components/settings-workspace.tsx
     createdAt: 2026-10-19T21:39:24Z
     prFiles:
@@ -29882,7 +29956,9 @@ reviewComments:
     prNumber: 168
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168#discussion_r4319145904
-    body: 'Fixed on pushed head `4af7900a` (commit `e725ce15`): both dialog save actions ("Save without regenerating", "Save and regenerate") are disabled while `instructionsSaveBlockedReason` is set, the handlers return early, and the dialog shows the reason. New test `a brief that starts generating while the...'
+    body: 'Fixed on pushed head `4af7900a` (commit `e725ce15`): both dialog save actions ("Save without regenerating", "Save
+      and regenerate") are disabled while `instructionsSaveBlockedReason` is set, the handlers return early, and the
+      dialog shows the reason. New test `a brief that starts generating while the...'
     path: northstar/components/settings-workspace.tsx
     createdAt: 2026-10-19T21:39:25Z
     prFiles:
@@ -29902,7 +29978,9 @@ reviewComments:
     prNumber: 168
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168#discussion_r4319146150
-    body: 'Fixed on pushed head `4af7900a` (commit `4af7900a`): `instructionsSaveBlockedReason` in `northstar-dashboard.tsx` now also holds the save while the signed-in user has no history owner yet (`microsoftConnection` loading, or connected without a connection key), showing "Loading your saved briefs…". Re...'
+    body: 'Fixed on pushed head `4af7900a` (commit `4af7900a`): `instructionsSaveBlockedReason` in `northstar-dashboard.tsx`
+      now also holds the save while the signed-in user has no history owner yet (`microsoftConnection` loading, or
+      connected without a connection key), showing "Loading your saved briefs…". Re...'
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-10-19T21:39:27Z
     prFiles:
@@ -29922,7 +30000,9 @@ reviewComments:
     prNumber: 175
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/175
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/175#discussion_r4314892695
-    body: Fixed in b80f6b8. `scripts/build-static-export.ts` now copies each product's own icon set (`hub/public/icons/apps/<appId>/`) into its standalone `out/icons/apps/<appId>/`, and the shared fallback icons into `out/icons/`, and the manifest icon URLs point at `/icons/apps/<appId>/icon-{192,512,maskable...
+    body: Fixed in b80f6b8. `scripts/build-static-export.ts` now copies each product's own icon set
+      (`hub/public/icons/apps/<appId>/`) into its standalone `out/icons/apps/<appId>/`, and the shared fallback icons
+      into `out/icons/`, and the manifest icon URLs point at `/icons/apps/<appId>/icon-{192,512,maskable...
     path: packages/ui/src/app-manifest.ts
     createdAt: 2026-10-19T14:16:58Z
     prFiles:
@@ -30011,7 +30091,9 @@ reviewComments:
     prNumber: 175
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/175
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/175#discussion_r4314893199
-    body: Fixed in b80f6b8. The standalone export step now injects anonymous (`anonymous`, `authenticated`) routes for `/manifest.webmanifest`, `<basePath>/manifest.webmanifest` and `/icons/*` ahead of the role-protected `/*` rule in each product's generated `out/staticwebapp.config.json`, adds the `.webmanif...
+    body: Fixed in b80f6b8. The standalone export step now injects anonymous (`anonymous`, `authenticated`) routes for
+      `/manifest.webmanifest`, `<basePath>/manifest.webmanifest` and `/icons/*` ahead of the role-protected `/*` rule in
+      each product's generated `out/staticwebapp.config.json`, adds the `.webmanif...
     path: hub/staticwebapp.config.json
     createdAt: 2026-10-19T14:17:00Z
     prFiles:
@@ -30100,7 +30182,9 @@ reviewComments:
     prNumber: 175
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/175
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/175#discussion_r4315354601
-    body: "Verified on pushed head `711f024` (`fix(pwa): derive manifest scope and start_url from the build base path`). The seven product manifests no longer pass a hard-coded `basePath`; `createAppManifest` now derives `id`/`scope`/`start_url` from the build's `NEXT_BASE_PATH`. Hub is built without `NEXT_BAS..."
+    body: "Verified on pushed head `711f024` (`fix(pwa): derive manifest scope and start_url from the build base path`). The
+      seven product manifests no longer pass a hard-coded `basePath`; `createAppManifest` now derives
+      `id`/`scope`/`start_url` from the build's `NEXT_BASE_PATH`. Hub is built without `NEXT_BAS..."
     path: compass/src/app/manifest.ts
     createdAt: 2026-10-19T14:59:00Z
     prFiles:
@@ -30189,7 +30273,9 @@ reviewComments:
     prNumber: 170
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/170
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/170#discussion_r4314869833
-    body: Confirmed and fixed on `35a84fb`. The push `paths-ignore` list in `azure-static-web-apps.yml` now mirrors every path this PR newly made ignorable in `scripts/affected-apps.ts` (`*.md`, `**/AGENTS.md`, `gui/**/*.md`, `.github/pr-screenshots/**`, `.github/dependabot.yml`, `.github/labeler.yml`, `.gith...
+    body: Confirmed and fixed on `35a84fb`. The push `paths-ignore` list in `azure-static-web-apps.yml` now mirrors every
+      path this PR newly made ignorable in `scripts/affected-apps.ts` (`*.md`, `**/AGENTS.md`, `gui/**/*.md`,
+      `.github/pr-screenshots/**`, `.github/dependabot.yml`, `.github/labeler.yml`, `.gith...
     path: .github/workflows/azure-static-web-apps.yml
     createdAt: 2026-10-19T14:14:50Z
     prFiles:
@@ -30205,7 +30291,9 @@ reviewComments:
     prNumber: 170
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/170
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/170#discussion_r4314870194
-    body: "Could not reproduce; this does not apply to pull requests. In PR mode `scripts/affected-apps.ts` diffs `merge-base(base, head)..head`, i.e. the whole PR, not just the newest commit. Reproduction in a scratch worktree: commit 1 changes a real source file, commit 2 changes only `GUI.md`; `--mode pr` r..."
+    body: "Could not reproduce; this does not apply to pull requests. In PR mode `scripts/affected-apps.ts` diffs
+      `merge-base(base, head)..head`, i.e. the whole PR, not just the newest commit. Reproduction in a scratch worktree:
+      commit 1 changes a real source file, commit 2 changes only `GUI.md`; `--mode pr` r..."
     path: scripts/affected-apps.ts
     createdAt: 2026-10-19T14:14:52Z
     prFiles:
@@ -30221,7 +30309,9 @@ reviewComments:
     prNumber: 167
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167#discussion_r4314807049
-    body: "Fixed in cb2b2ab9 and still true on 15b9536d: the periodic refresh now requests `calendar,mail,tasks,files` (`volatileMicrosoftSources` in northstar-dashboard.tsx), so every source the snapshot reports is refreshed together with its 'as of' time. Only contacts and profile, which are not part of the ..."
+    body: "Fixed in cb2b2ab9 and still true on 15b9536d: the periodic refresh now requests `calendar,mail,tasks,files`
+      (`volatileMicrosoftSources` in northstar-dashboard.tsx), so every source the snapshot reports is refreshed
+      together with its 'as of' time. Only contacts and profile, which are not part of the ..."
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-10-19T14:09:27Z
     prFiles:
@@ -30266,7 +30356,9 @@ reviewComments:
     prNumber: 167
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167#discussion_r4314807574
-    body: "Fixed in cb2b2ab9: `chooseAtCommand` skips `removeOtherAtCommands` when the chosen id is `web`, so `@web` combines with an existing output command (and choosing an output command afterwards keeps `@web`). DOM test 'choosing Web from the picker keeps an output command, and a later output command keep..."
+    body: "Fixed in cb2b2ab9: `chooseAtCommand` skips `removeOtherAtCommands` when the chosen id is `web`, so `@web`
+      combines with an existing output command (and choosing an output command afterwards keeps `@web`). DOM test
+      'choosing Web from the picker keeps an output command, and a later output command keep..."
     path: northstar/components/ask-northstar-workspace.tsx
     createdAt: 2026-10-19T14:09:30Z
     prFiles:
@@ -30311,7 +30403,9 @@ reviewComments:
     prNumber: 167
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167#discussion_r4314808094
-    body: "Fixed in cb2b2ab9: `none` is now trusted only after it has been the answer continuously for 45 s (`missingTurnGraceMs`) instead of four polls, and any `pending` reply restarts the wait. `lib/ask-turns.test.ts` covers both the grace period and a turn that appears late after a slow server setup; both ..."
+    body: "Fixed in cb2b2ab9: `none` is now trusted only after it has been the answer continuously for 45 s
+      (`missingTurnGraceMs`) instead of four polls, and any `pending` reply restarts the wait. `lib/ask-turns.test.ts`
+      covers both the grace period and a turn that appears late after a slow server setup; both ..."
     path: northstar/lib/ask-turns.ts
     createdAt: 2026-10-19T14:09:33Z
     prFiles:
@@ -30356,7 +30450,9 @@ reviewComments:
     prNumber: 167
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167#discussion_r4314808562
-    body: "Fixed in cb2b2ab9: the answer write and the marker delete now await the pending-marker promise (`turnMarker`) before running. Regression test 'a slow pending marker cannot overwrite the finished answer' makes the marker write slower than the answer; I confirmed it fails when the await is removed and..."
+    body: "Fixed in cb2b2ab9: the answer write and the marker delete now await the pending-marker promise (`turnMarker`)
+      before running. Regression test 'a slow pending marker cannot overwrite the finished answer' makes the marker
+      write slower than the answer; I confirmed it fails when the await is removed and..."
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-10-19T14:09:35Z
     prFiles:
@@ -30401,7 +30497,9 @@ reviewComments:
     prNumber: 167
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167#discussion_r4314808909
-    body: "Fixed in cb2b2ab9: when the browser's 120 s attempt times out the dashboard sends the explicit cancel (`sendTurnCancel`) before clearing the saved turn. The stability fixtures `ask-stop` and `ask-timeout` assert exactly one cancel with the matching conversationId and turnId (and none for a timed-out..."
+    body: "Fixed in cb2b2ab9: when the browser's 120 s attempt times out the dashboard sends the explicit cancel
+      (`sendTurnCancel`) before clearing the saved turn. The stability fixtures `ask-stop` and `ask-timeout` assert
+      exactly one cancel with the matching conversationId and turnId (and none for a timed-out..."
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-10-19T14:09:37Z
     prFiles:
@@ -30446,7 +30544,9 @@ reviewComments:
     prNumber: 167
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167#discussion_r4314809284
-    body: "Fixed in 6efdac6d: `turnRecoveryWindowMs` is now 120 s (browser attempt timeout) + 150 s (server detached budget) + 20 s margin = 290 s, used for both dropping stale saved turns and polling. Tests in `lib/ask-turns.test.ts` keep a 200 s old turn collectable, poll past the old 170 s window, and drop ..."
+    body: "Fixed in 6efdac6d: `turnRecoveryWindowMs` is now 120 s (browser attempt timeout) + 150 s (server detached budget)
+      + 20 s margin = 290 s, used for both dropping stale saved turns and polling. Tests in `lib/ask-turns.test.ts` keep
+      a 200 s old turn collectable, poll past the old 170 s window, and drop ..."
     path: northstar/lib/ask-turns.ts
     createdAt: 2026-10-19T14:09:39Z
     prFiles:
@@ -30491,7 +30591,9 @@ reviewComments:
     prNumber: 167
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167#discussion_r4314809816
-    body: "Fixed in 6efdac6d: the completed answer is now persisted for every detachable turn with a known target (`detachable && turnTarget`), after the final event is sent and after the marker write settles, regardless of whether delivery appeared to succeed. Test 'a disconnect after complete is enqueued sti..."
+    body: "Fixed in 6efdac6d: the completed answer is now persisted for every detachable turn with a known target
+      (`detachable && turnTarget`), after the final event is sent and after the marker write settles, regardless of
+      whether delivery appeared to succeed. Test 'a disconnect after complete is enqueued sti..."
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-10-19T14:09:42Z
     prFiles:
@@ -30536,7 +30638,9 @@ reviewComments:
     prNumber: 167
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167#discussion_r4314810232
-    body: "Fixed in 15b9536d: a `microsoftDataLiveRef` is false for cache-hydrated data and becomes true only when a live `/microsoft/data` read applies; `startAskRequest` skips the 'do not search Microsoft 365' snapshot note until then (the snapshot text is still sent with its own 'Snapshot taken' time). The ..."
+    body: "Fixed in 15b9536d: a `microsoftDataLiveRef` is false for cache-hydrated data and becomes true only when a live
+      `/microsoft/data` read applies; `startAskRequest` skips the 'do not search Microsoft 365' snapshot note until then
+      (the snapshot text is still sent with its own 'Snapshot taken' time). The ..."
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-10-19T14:09:44Z
     prFiles:
@@ -30581,7 +30685,9 @@ reviewComments:
     prNumber: 167
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167#discussion_r4314810747
-    body: "Fixed in 15b9536d: `mergeAskRequestsIntoChats` now counts a restored turn's question as already saved only when it directly precedes that turn's answer or is the unanswered last message, so an earlier identical question followed by its own answer no longer suppresses the new one. Test 'a restored re..."
+    body: "Fixed in 15b9536d: `mergeAskRequestsIntoChats` now counts a restored turn's question as already saved only when
+      it directly precedes that turn's answer or is the unanswered last message, so an earlier identical question
+      followed by its own answer no longer suppresses the new one. Test 'a restored re..."
     path: northstar/components/ask-northstar-workspace.tsx
     createdAt: 2026-10-19T14:09:48Z
     prFiles:
@@ -30626,7 +30732,9 @@ reviewComments:
     prNumber: 167
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167#discussion_r4315412993
-    body: Verified on pushed head `80a4d407`. Stop now also stores a cancel marker (`turn-cancel:` mapping for the conversation and turn) in the same durable store, in addition to aborting a local turn. A detached turn polls for its marker every 3 s, aborts its provider request when it finds one, and removes ...
+    body: Verified on pushed head `80a4d407`. Stop now also stores a cancel marker (`turn-cancel:` mapping for the
+      conversation and turn) in the same durable store, in addition to aborting a local turn. A detached turn polls for
+      its marker every 3 s, aborts its provider request when it finds one, and removes ...
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-10-19T15:04:34Z
     prFiles:
@@ -30671,7 +30779,9 @@ reviewComments:
     prNumber: 167
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167#discussion_r4315733365
-    body: Verified on pushed head `66ae3021`. The connection is now read only after the mapping lookup resolves (`resolveCopilotConversationId` awaits the mapping first and then issues a fresh `readConnection`), so an account switch landing during a slow mapping read is caught and the question is not sent. Th...
+    body: Verified on pushed head `66ae3021`. The connection is now read only after the mapping lookup resolves
+      (`resolveCopilotConversationId` awaits the mapping first and then issues a fresh `readConnection`), so an account
+      switch landing during a slow mapping read is caught and the question is not sent. Th...
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-10-19T15:32:56Z
     prFiles:
@@ -30716,7 +30826,9 @@ reviewComments:
     prNumber: 167
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167#discussion_r4315816875
-    body: Verified on pushed head `160b5926`. Before a detached turn stores its answer it now re-reads the Microsoft connection (fresh read right before the write, as `persist()` does) and skips the write when the connection changed or the read fails, logging `turn_result_skipped_connection_changed`. A discon...
+    body: Verified on pushed head `160b5926`. Before a detached turn stores its answer it now re-reads the Microsoft
+      connection (fresh read right before the write, as `persist()` does) and skips the write when the connection
+      changed or the read fails, logging `turn_result_skipped_connection_changed`. A discon...
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-10-19T15:41:22Z
     prFiles:
@@ -30761,7 +30873,9 @@ reviewComments:
     prNumber: 167
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167#discussion_r4315903494
-    body: Verified on pushed head `9cc0a13c`. `microsoftDataLiveRef` is now cleared when a whole /microsoft/data refresh fails (inside the current-request guard, before the abort check) and wherever the shown Microsoft data is dropped (not connected, changed connection, account switch, disconnect), and still ...
+    body: Verified on pushed head `9cc0a13c`. `microsoftDataLiveRef` is now cleared when a whole /microsoft/data refresh
+      fails (inside the current-request guard, before the abort check) and wherever the shown Microsoft data is dropped
+      (not connected, changed connection, account switch, disconnect), and still ...
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-10-19T15:50:12Z
     prFiles:
@@ -30806,7 +30920,9 @@ reviewComments:
     prNumber: 167
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167#discussion_r4315988334
-    body: Verified on pushed head `a7176b86`. Pending turns are now stored under their turn id, so two tabs on the same saved conversation no longer overwrite each other's recovery record; `clearPendingTurn(userId, conversationId, turnId)` removes only that turn (without a turn id it still removes every saved...
+    body: Verified on pushed head `a7176b86`. Pending turns are now stored under their turn id, so two tabs on the same
+      saved conversation no longer overwrite each other's recovery record; `clearPendingTurn(userId, conversationId,
+      turnId)` removes only that turn (without a turn id it still removes every saved...
     path: northstar/lib/ask-turns.ts
     createdAt: 2026-10-19T15:59:04Z
     prFiles:
@@ -30851,7 +30967,9 @@ reviewComments:
     prNumber: 167
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167#discussion_r4316050013
-    body: "Acknowledged and left as documented on head `a7176b86`; no code change. This is the limit stated in the previous reply on this thread: pending turns are now stored per turn id (so a second tab can no longer erase the first tab's record), but the dashboard keeps one request per conversation, so a rel..."
+    body: "Acknowledged and left as documented on head `a7176b86`; no code change. This is the limit stated in the previous
+      reply on this thread: pending turns are now stored per turn id (so a second tab can no longer erase the first
+      tab's record), but the dashboard keeps one request per conversation, so a rel..."
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-10-19T16:05:42Z
     prFiles:
@@ -30896,7 +31014,9 @@ reviewComments:
     prNumber: 167
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167#discussion_r4316130324
-    body: Verified on pushed head `73a9d455`. A failed detached-turn marker write now logs `turn_marker_save_failed` and clears `turnMarker`, so the next `markTurnPending()` call (made on every attempt of the retry loop) writes it again; the answer/delete ordering guarantee (`await turnMarker` before the answ...
+    body: Verified on pushed head `73a9d455`. A failed detached-turn marker write now logs `turn_marker_save_failed` and
+      clears `turnMarker`, so the next `markTurnPending()` call (made on every attempt of the retry loop) writes it
+      again; the answer/delete ordering guarantee (`await turnMarker` before the answ...
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-10-19T16:14:31Z
     prFiles:
@@ -30941,7 +31061,9 @@ reviewComments:
     prNumber: 167
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167#discussion_r4319141916
-    body: "Fixed on pushed head `786ae27d` (commit `0a1829b2`): when the pending-marker write fails during a detached stream, `markTurnPending` now schedules a bounded retry within the same attempt (1 s timer in `northstar-microsoft.ts`, stopped at turn end, never double-writes after a success). Regression tes..."
+    body: "Fixed on pushed head `786ae27d` (commit `0a1829b2`): when the pending-marker write fails during a detached
+      stream, `markTurnPending` now schedules a bounded retry within the same attempt (1 s timer in
+      `northstar-microsoft.ts`, stopped at turn end, never double-writes after a success). Regression tes..."
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-10-19T21:38:56Z
     prFiles:
@@ -30986,7 +31108,9 @@ reviewComments:
     prNumber: 167
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167#discussion_r4319142071
-    body: "Fixed on pushed head `786ae27d` (commits `0a1829b2`, `37dbbb1f`): the per-conversation recovery loop only stops on an aborted poll; a gone or interrupted older turn is cleared and the loop continues to the newer saved turn, after yielding so the workspace can merge the outcome into history. New fixt..."
+    body: "Fixed on pushed head `786ae27d` (commits `0a1829b2`, `37dbbb1f`): the per-conversation recovery loop only stops
+      on an aborted poll; a gone or interrupted older turn is cleared and the loop continues to the newer saved turn,
+      after yielding so the workspace can merge the outcome into history. New fixt..."
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-10-19T21:38:58Z
     prFiles:
@@ -31031,7 +31155,9 @@ reviewComments:
     prNumber: 167
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167#discussion_r4319142317
-    body: "Fixed on pushed head `786ae27d` (commit `0a1829b2`): each pending turn is now stored under its own key (`northstar.pending-turn:v2:<user>:<turnId>`), so two tabs saving at once touch different keys and cannot overwrite each other. Legacy v1 records are still read and pruned; clear semantics are unch..."
+    body: "Fixed on pushed head `786ae27d` (commit `0a1829b2`): each pending turn is now stored under its own key
+      (`northstar.pending-turn:v2:<user>:<turnId>`), so two tabs saving at once touch different keys and cannot
+      overwrite each other. Legacy v1 records are still read and pruned; clear semantics are unch..."
     path: northstar/lib/ask-turns.ts
     createdAt: 2026-10-19T21:39:00Z
     prFiles:
@@ -31076,7 +31202,9 @@ reviewComments:
     prNumber: 167
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167#discussion_r4319142618
-    body: "Fixed on pushed head `786ae27d` (commit `370f2532`, deadline corrected in `de5b7cf9`): the final detached result write is retried up to three times (250 ms, 750 ms backoff), re-checking the Microsoft connection before each attempt; Stop or the detach deadline ends the retries. Tests in `northstar-mi..."
+    body: "Fixed on pushed head `786ae27d` (commit `370f2532`, deadline corrected in `de5b7cf9`): the final detached result
+      write is retried up to three times (250 ms, 750 ms backoff), re-checking the Microsoft connection before each
+      attempt; Stop or the detach deadline ends the retries. Tests in `northstar-mi..."
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-10-19T21:39:01Z
     prFiles:
@@ -31121,7 +31249,9 @@ reviewComments:
     prNumber: 167
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167#discussion_r4319142816
-    body: "Fixed on pushed head `786ae27d` (commit `de5b7cf9`): the result-write retries no longer compare against the request start; the detach timer already aborts the turn at the detached budget, so the abort signal is the deadline. New test advances the clock 160 s after the browser leaves and still stores..."
+    body: "Fixed on pushed head `786ae27d` (commit `de5b7cf9`): the result-write retries no longer compare against the
+      request start; the detach timer already aborts the turn at the detached budget, so the abort signal is the
+      deadline. New test advances the clock 160 s after the browser leaves and still stores..."
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-10-19T21:39:03Z
     prFiles:
@@ -31166,7 +31296,9 @@ reviewComments:
     prNumber: 167
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167#discussion_r4319143034
-    body: "Addressed on pushed head `786ae27d` (commit `37dbbb1f`): the restore loop now yields before advancing for every outcome, not only a completed answer, so an interrupted older turn can merge into chat history before the newer turn replaces the request slot. Not covered: this batching case could not be..."
+    body: "Addressed on pushed head `786ae27d` (commit `37dbbb1f`): the restore loop now yields before advancing for every
+      outcome, not only a completed answer, so an interrupted older turn can merge into chat history before the newer
+      turn replaces the request slot. Not covered: this batching case could not be..."
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-10-19T21:39:04Z
     prFiles:
@@ -31211,7 +31343,9 @@ reviewComments:
     prNumber: 167
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167#discussion_r4319143284
-    body: "Fixed on pushed head `786ae27d` (commit `786ae27d`): a failed or stopped detached turn now retries deleting its pending marker up to three times (250 ms, 750 ms backoff) before giving up. New test fails the first delete and expects the result poll to read `none`; it fails on the previous code. CI `v..."
+    body: "Fixed on pushed head `786ae27d` (commit `786ae27d`): a failed or stopped detached turn now retries deleting its
+      pending marker up to three times (250 ms, 750 ms backoff) before giving up. New test fails the first delete and
+      expects the result poll to read `none`; it fails on the previous code. CI `v..."
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-10-19T21:39:06Z
     prFiles:
@@ -31256,7 +31390,9 @@ reviewComments:
     prNumber: 167
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167#discussion_r4319144956
-    body: Verified on pushed head `786ae27d`; no code change in this round. The restore queue and the transcript merge match a restored question by its text at the end of the chat (`ask-northstar-workspace.tsx`), so two queued turns with identical questions where the older one returns gone can attach the newe...
+    body: Verified on pushed head `786ae27d`; no code change in this round. The restore queue and the transcript merge match
+      a restored question by its text at the end of the chat (`ask-northstar-workspace.tsx`), so two queued turns with
+      identical questions where the older one returns gone can attach the newe...
     path: northstar/components/ask-northstar-workspace.tsx
     createdAt: 2026-10-19T21:39:19Z
     prFiles:
@@ -31301,7 +31437,9 @@ reviewComments:
     prNumber: 167
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167#discussion_r4319145176
-    body: Verified on pushed head `786ae27d`; no code change in this round. `cancelNorthstarAsk` writes one cancel marker, and a transient failure there leaves the original worker running a turn the browser has already abandoned and cleared. Retrying the marker write would narrow it, but the durable fix is a ...
+    body: Verified on pushed head `786ae27d`; no code change in this round. `cancelNorthstarAsk` writes one cancel marker,
+      and a transient failure there leaves the original worker running a turn the browser has already abandoned and
+      cleared. Retrying the marker write would narrow it, but the durable fix is a ...
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-10-19T21:39:21Z
     prFiles:
@@ -31346,7 +31484,9 @@ reviewComments:
     prNumber: 167
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167#discussion_r4319145441
-    body: 'Verified on pushed head `786ae27d`; no code change. A message that is only `@web` keeps its token on purpose: `expandAtCommands` returns it unchanged because an empty question would be rejected by the server, and `at-commands.test.ts` asserts `expandAtCommands("@web") === "@web"`. Rejecting a modifi...'
+    body: 'Verified on pushed head `786ae27d`; no code change. A message that is only `@web` keeps its token on purpose:
+      `expandAtCommands` returns it unchanged because an empty question would be rejected by the server, and
+      `at-commands.test.ts` asserts `expandAtCommands("@web") === "@web"`. Rejecting a modifi...'
     path: northstar/lib/at-commands.ts
     createdAt: 2026-10-19T21:39:22Z
     prFiles:
@@ -31391,7 +31531,9 @@ reviewComments:
     prNumber: 166
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/166
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/166#discussion_r4315010810
-    body: "Fixed on pushed head 332eebd: `complianceRole` in `compliance/src/lib/auth.ts` now maps `myriadas_user` to the ordinary `user` role (read_only still wins; compliance_admin/admin map to admin). Regression coverage is in `compliance/src/lib/auth.test.ts` (role matrix incl. `myriadas_user` -> `user`); ..."
+    body: "Fixed on pushed head 332eebd: `complianceRole` in `compliance/src/lib/auth.ts` now maps `myriadas_user` to the
+      ordinary `user` role (read_only still wins; compliance_admin/admin map to admin). Regression coverage is in
+      `compliance/src/lib/auth.test.ts` (role matrix incl. `myriadas_user` -> `user`); ..."
     path: compliance/src/lib/auth.ts
     createdAt: 2026-10-19T14:27:25Z
     prFiles:
@@ -31460,7 +31602,9 @@ reviewComments:
     prNumber: 166
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/166
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/166#discussion_r4315038568
-    body: Fixed on pushed head b1a915b. The post-deploy `Smoke Hub deployment` step now probes `/onboarding/` and `/api/proforma/me` with a new non-retrying `probe_unauthorized` helper, requires HTTP 401 (not 302), and checks both bodies contain the Hub sign-in page title (`<title>Sign in | Myriad</title>`, p...
+    body: Fixed on pushed head b1a915b. The post-deploy `Smoke Hub deployment` step now probes `/onboarding/` and
+      `/api/proforma/me` with a new non-retrying `probe_unauthorized` helper, requires HTTP 401 (not 302), and checks
+      both bodies contain the Hub sign-in page title (`<title>Sign in | Myriad</title>`, p...
     path: hub/staticwebapp.config.json
     createdAt: 2026-10-19T14:29:53Z
     prFiles:
@@ -31529,7 +31673,9 @@ reviewComments:
     prNumber: 166
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/166
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/166#discussion_r4315039149
-    body: "Fixed on pushed head b1a915b: `.github/workflows/azure-static-web-apps.yml` now includes Compliance in the artifact cache restore/save steps, fingerprint cases, the `Rebuild missing or affected artifacts` app loop and force list, `deployment_apps`, and Functions staging (`cp compliance/functions/dis..."
+    body: "Fixed on pushed head b1a915b: `.github/workflows/azure-static-web-apps.yml` now includes Compliance in the
+      artifact cache restore/save steps, fingerprint cases, the `Rebuild missing or affected artifacts` app loop and
+      force list, `deployment_apps`, and Functions staging (`cp compliance/functions/dis..."
     path: scripts/app-registry.ts
     createdAt: 2026-10-19T14:29:57Z
     prFiles:
@@ -31598,7 +31744,9 @@ reviewComments:
     prNumber: 166
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/166
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/166#discussion_r4315251444
-    body: "Fixed on pushed head d0ff234: `probe_unauthorized` in `.github/workflows/azure-static-web-apps.yml` now uses the same retry flags as the other smoke probes (`--retry 12 --retry-delay 10 --retry-all-errors`) and still has no `--fail`, so the expected HTTP 401 is a normal response (read via `--write-o..."
+    body: "Fixed on pushed head d0ff234: `probe_unauthorized` in `.github/workflows/azure-static-web-apps.yml` now uses the
+      same retry flags as the other smoke probes (`--retry 12 --retry-delay 10 --retry-all-errors`) and still has no
+      `--fail`, so the expected HTTP 401 is a normal response (read via `--write-o..."
     path: .github/workflows/azure-static-web-apps.yml
     createdAt: 2026-10-19T14:49:34Z
     prFiles:
@@ -31667,7 +31815,9 @@ reviewComments:
     prNumber: 166
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/166
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/166#discussion_r4314897014
-    body: Fixed in 9c4c5dc9 and still present on the current head. The card now records how many tasks are confirmed created for the current list text (`createdCount` in `TodoCommandCard`), the dashboard handler returns the confirmed count even on a partial result, and a retry sends only `requests.slice(creat...
+    body: Fixed in 9c4c5dc9 and still present on the current head. The card now records how many tasks are confirmed created
+      for the current list text (`createdCount` in `TodoCommandCard`), the dashboard handler returns the confirmed count
+      even on a partial result, and a retry sends only `requests.slice(creat...
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-10-19T14:17:22Z
     prFiles:
@@ -31704,7 +31854,9 @@ reviewComments:
     prNumber: 166
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/166
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/166#discussion_r4314897635
-    body: Fixed in 9964c563. The card now sends at most 25 open tasks per click (`TODO_CREATE_BATCH_SIZE`, matching the route's limit, which still enforces its own 25-task cap), then offers the existing `Add remaining to To Do` state for the next batch; it shows `Added to To Do` only when every open task is c...
+    body: Fixed in 9964c563. The card now sends at most 25 open tasks per click (`TODO_CREATE_BATCH_SIZE`, matching the
+      route's limit, which still enforces its own 25-task cap), then offers the existing `Add remaining to To Do` state
+      for the next batch; it shows `Added to To Do` only when every open task is c...
     path: northstar/components/command-cards.tsx
     createdAt: 2026-10-19T14:17:25Z
     prFiles:
@@ -31741,7 +31893,9 @@ reviewComments:
     prNumber: 166
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/166
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/166#discussion_r4314898204
-    body: "Fixed in 9964c563. `createMicrosoftTodoTasks` now treats only Graph 400/401/403/404/409/429 as definitive rejections. A transport error, an aborted request or a 5xx on a task post now replies 200 with the confirmed tasks and `unconfirmed: true`, for the first task as well as later ones, instead of t..."
+    body: "Fixed in 9964c563. `createMicrosoftTodoTasks` now treats only Graph 400/401/403/404/409/429 as definitive
+      rejections. A transport error, an aborted request or a 5xx on a task post now replies 200 with the confirmed tasks
+      and `unconfirmed: true`, for the first task as well as later ones, instead of t..."
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-10-19T14:17:29Z
     prFiles:
@@ -31778,7 +31932,9 @@ reviewComments:
     prNumber: 166
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/166
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/166#discussion_r4314973349
-    body: Fixed in 460b85e7. `createMicrosoftTodoTasks` now creates an `AbortSignal.timeout` deadline (25s by default, shorter than the dashboard's 30s; `NORTHSTAR_TODO_CREATE_DEADLINE_MS` overrides it), passes it to `graphPost`, and checks it before dispatching each task. A post still pending at the deadline...
+    body: Fixed in 460b85e7. `createMicrosoftTodoTasks` now creates an `AbortSignal.timeout` deadline (25s by default,
+      shorter than the dashboard's 30s; `NORTHSTAR_TODO_CREATE_DEADLINE_MS` overrides it), passes it to `graphPost`, and
+      checks it before dispatching each task. A post still pending at the deadline...
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-10-19T14:24:14Z
     prFiles:
@@ -31815,7 +31971,9 @@ reviewComments:
     prNumber: 166
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/166
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/166#discussion_r4315817871
-    body: Verified on pushed head `53caa4ea`. The route-wide creation deadline now starts at handler entry and its signal is passed through token acquisition and To Do list discovery; if it expires before any task POST, the route returns the existing 200 response with nothing created, and the dispatch loop st...
+    body: Verified on pushed head `53caa4ea`. The route-wide creation deadline now starts at handler entry and its signal is
+      passed through token acquisition and To Do list discovery; if it expires before any task POST, the route returns
+      the existing 200 response with nothing created, and the dispatch loop st...
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-10-19T15:41:28Z
     prFiles:
@@ -31852,7 +32010,9 @@ reviewComments:
     prNumber: 166
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/166
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/166#discussion_r4315988543
-    body: Verified on pushed head `ee0d4aa4`. `todoCreateDeadlineMs()` now returns `Math.min(configured, 25_000)` for a valid override (invalid or missing still falls back to 25 s), so the environment variable can only shorten the deadline and can never exceed the margin below the dashboard's 30 s timeout. Te...
+    body: Verified on pushed head `ee0d4aa4`. `todoCreateDeadlineMs()` now returns `Math.min(configured, 25_000)` for a
+      valid override (invalid or missing still falls back to 25 s), so the environment variable can only shorten the
+      deadline and can never exceed the margin below the dashboard's 30 s timeout. Te...
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-10-19T15:59:05Z
     prFiles:
@@ -31889,7 +32049,9 @@ reviewComments:
     prNumber: 166
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/166
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/166#discussion_r4316025548
-    body: 'Confirmed on head `ee0d4aa4`: after a partial success, editing any pending task changes the card text, which resets the confirmed count, so the next "Add remaining" would resubmit the already-created prefix. Not changed in this release round because the fix is a card-behavior choice that belongs wit...'
+    body: 'Confirmed on head `ee0d4aa4`: after a partial success, editing any pending task changes the card text, which
+      resets the confirmed count, so the next "Add remaining" would resubmit the already-created prefix. Not changed in
+      this release round because the fix is a card-behavior choice that belongs wit...'
     path: northstar/components/command-cards.tsx
     createdAt: 2026-10-19T16:03:04Z
     prFiles:
@@ -31930,7 +32092,9 @@ reviewComments:
       Fixed on pushed head `d31b538a` (commit `ba4096be`).
 
 
-      - The Edit button in `TodoCommandCard` (`northstar/components/command-cards.tsx`) is now `disabled` while `adding` is true, as well as in the partial and unconfirmed states (`disabled={!editable - New test `To Do editing is paused while a batch i...
+      - The Edit button in `TodoCommandCard` (`northstar/components/command-cards.tsx`) is now `disabled` while `adding`
+      is true, as well as in the partial and unconfirmed states (`disabled={!editable - New test `To Do editing is
+      paused while a batch i...
     path: northstar/components/command-cards.tsx
     createdAt: 2026-10-19T21:09:41Z
     prFiles:
@@ -31971,7 +32135,8 @@ reviewComments:
       Verified on pushed head `a77aa0a3`; no code change in this round, and this stays open as a product decision.
 
 
-      The finding is accurate and is the cost of the lock added in `ba4096be`/`764be61f`. After a partial add, `TodoCommandCard` pauses Edit so the confirmed prefix cannot be lost to an edit (whic...
+      The finding is accurate and is the cost of the lock added in `ba4096be`/`764be61f`. After a partial add,
+      `TodoCommandCard` pauses Edit so the confirmed prefix cannot be lost to an edit (whic...
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-10-19T21:22:12Z
     prFiles:
@@ -32008,7 +32173,9 @@ reviewComments:
     prNumber: 165
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/165
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/165#discussion_r4314804076
-    body: "Fixed in 38073bd7. The retry no longer resets: `resolveCopilotConversationId` is called with `resetConversation && attempt === 0` (northstar-microsoft.ts:1784). When the failed attempt reused a conversation, the mapping is deleted only via `deleteCopilotConversationMappingIfProvider` for that failed..."
+    body: "Fixed in 38073bd7. The retry no longer resets: `resolveCopilotConversationId` is called with `resetConversation
+      && attempt === 0` (northstar-microsoft.ts:1784). When the failed attempt reused a conversation, the mapping is
+      deleted only via `deleteCopilotConversationMappingIfProvider` for that failed..."
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-10-19T14:09:12Z
     prFiles:
@@ -32021,7 +32188,9 @@ reviewComments:
     prNumber: 165
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/165
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/165#discussion_r4314804565
-    body: Fixed in 38073bd7. The internal retry is now skipped, surfacing Microsoft's error, when `retryAfterMs` exceeds `streamingCopilotRetryAfterMaxMs` (5 s), and also when the request has run past `streamingCopilotRetryStartedWithinMs` (60 s) since `askNorthstar` started (northstar-microsoft.ts:1843-1844)...
+    body: Fixed in 38073bd7. The internal retry is now skipped, surfacing Microsoft's error, when `retryAfterMs` exceeds
+      `streamingCopilotRetryAfterMaxMs` (5 s), and also when the request has run past
+      `streamingCopilotRetryStartedWithinMs` (60 s) since `askNorthstar` started (northstar-microsoft.ts:1843-1844)...
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-10-19T14:09:14Z
     prFiles:
@@ -32034,7 +32203,9 @@ reviewComments:
     prNumber: 165
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/165
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/165#discussion_r4314887928
-    body: Fixed in 5bed22ee. After the cleanup of the failed attempt's mapping, the retry now reads the current mapping (`readCopilotMapping`, which also covers the legacy fallback); if it points at a provider conversation other than the one that failed, the original error is thrown and no retry runs (northst...
+    body: Fixed in 5bed22ee. After the cleanup of the failed attempt's mapping, the retry now reads the current mapping
+      (`readCopilotMapping`, which also covers the legacy fallback); if it points at a provider conversation other than
+      the one that failed, the original error is thrown and no retry runs (northst...
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-10-19T14:16:32Z
     prFiles:
@@ -32047,7 +32218,9 @@ reviewComments:
     prNumber: 165
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/165
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/165#discussion_r4314971248
-    body: "Fixed in 37430084. The supersession check now runs after the Retry-After delay (the long window) instead of before it: after `delay(...)`, the retry reads the current mapping and throws the original error if it points at a provider conversation other than the one that failed, so a reset landing duri..."
+    body: "Fixed in 37430084. The supersession check now runs after the Retry-After delay (the long window) instead of
+      before it: after `delay(...)`, the retry reads the current mapping and throws the original error if it points at a
+      provider conversation other than the one that failed, so a reset landing duri..."
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-10-19T14:24:05Z
     prFiles:
@@ -32060,7 +32233,9 @@ reviewComments:
     prNumber: 165
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/165
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/165#discussion_r4315050624
-    body: "Fixed in 39e328a0. The recheck now fails closed: `readCopilotMapping(...).catch(() => { throw error; })` surfaces the original provider error when the mapping cannot be read, instead of treating the failure as 'no mapping' and retrying unverified. This is a one-line change and has no dedicated test ..."
+    body: "Fixed in 39e328a0. The recheck now fails closed: `readCopilotMapping(...).catch(() => { throw error; })` surfaces
+      the original provider error when the mapping cannot be read, instead of treating the failure as 'no mapping' and
+      retrying unverified. This is a one-line change and has no dedicated test ..."
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-10-19T14:31:01Z
     prFiles:
@@ -32073,7 +32248,9 @@ reviewComments:
     prNumber: 165
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/165
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/165#discussion_r4315051057
-    body: Fixed in 39e328a0. `unusedConversation` is now assigned immediately after `resolveCopilotConversationId` returns and before `throwIfAborted()`, so a cancel while conversation creation is in flight still takes the outer catch's `discardUnusedConversation` path and removes the empty mapping; the next ...
+    body: Fixed in 39e328a0. `unusedConversation` is now assigned immediately after `resolveCopilotConversationId` returns
+      and before `throwIfAborted()`, so a cancel while conversation creation is in flight still takes the outer catch's
+      `discardUnusedConversation` path and removes the empty mapping; the next ...
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-10-19T14:31:03Z
     prFiles:
@@ -32086,7 +32263,9 @@ reviewComments:
     prNumber: 165
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/165
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/165#discussion_r4315412623
-    body: "Verified on pushed head `78d8cf07`. The post-delay check was replaced rather than moved: the retry now rejects any existing mapping it finds and stores its own with an atomic create-if-absent (SQLite `ON CONFLICT DO NOTHING`; Cosmos non-upsert POST, 409 = already claimed). A retry therefore only sen..."
+    body: "Verified on pushed head `78d8cf07`. The post-delay check was replaced rather than moved: the retry now rejects
+      any existing mapping it finds and stores its own with an atomic create-if-absent (SQLite `ON CONFLICT DO NOTHING`;
+      Cosmos non-upsert POST, 409 = already claimed). A retry therefore only sen..."
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-10-19T15:04:33Z
     prFiles:
@@ -32879,7 +33058,8 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4318308247
-    body: "Fixed: authorize() accepts the already-loaded memberships; a test asserts one listMemberships call per principal id per request. (e416da5)"
+    body: "Fixed: authorize() accepts the already-loaded memberships; a test asserts one listMemberships call per principal
+      id per request. (e416da5)"
     path: platform/src/user-api.ts
     createdAt: 2026-10-19T20:07:01Z
     prFiles:
@@ -33269,7 +33449,8 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4318308620
-    body: "Fixed: the Myriad fallback now applies only to admin/myriadas_data_reader; unmatched users are denied company_unassigned (tests include a configured 'myriad' entry). (e416da5)"
+    body: "Fixed: the Myriad fallback now applies only to admin/myriadas_data_reader; unmatched users are denied
+      company_unassigned (tests include a configured 'myriad' entry). (e416da5)"
     path: packages/auth/src/company.ts
     createdAt: 2026-10-19T20:07:04Z
     prFiles:
@@ -33659,7 +33840,8 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4318309081
-    body: "Fixed: both static build workflows now pass vars.MYRIAD_COMPANY_MAPPINGS (unset keeps legacy behavior); docs updated. (e416da5)"
+    body: "Fixed: both static build workflows now pass vars.MYRIAD_COMPANY_MAPPINGS (unset keeps legacy behavior); docs
+      updated. (e416da5)"
     path: scripts/company-routes.ts
     createdAt: 2026-10-19T20:07:07Z
     prFiles:
@@ -34049,7 +34231,8 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4318309435
-    body: "Fixed: PATCH responses are built from the authoritative master command result and version; a two-PATCH stale-projection test covers it. (e416da5)"
+    body: "Fixed: PATCH responses are built from the authoritative master command result and version; a two-PATCH
+      stale-projection test covers it. (e416da5)"
     path: platform/src/user-api.ts
     createdAt: 2026-10-19T20:07:09Z
     prFiles:
@@ -34439,7 +34622,9 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4318801706
-    body: "Fixed: MSAL storage keys are no longer company-suffixed (the sessionStorage proxy is removed), so the callback on the unscoped origin finds its transaction state; tests drive real msal-browser through a company-start sign-in. (fa739fa)"
+    body: "Fixed: MSAL storage keys are no longer company-suffixed (the sessionStorage proxy is removed), so the callback on
+      the unscoped origin finds its transaction state; tests drive real msal-browser through a company-start sign-in.
+      (fa739fa)"
     path: pto-tracker/src/components/AuthProvider.tsx
     createdAt: 2026-10-19T20:58:22Z
     prFiles:
@@ -34829,7 +35014,9 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4318802046
-    body: "Fixed: shared-container mode now uses `onboarding:<clientId>` for every bucket including myriad, with `partitionKey` written; dedicated containers unchanged. Also aligned PTO's shared/dedicated partitioning. (fa739fa)"
+    body: "Fixed: shared-container mode now uses `onboarding:<clientId>` for every bucket including myriad, with
+      `partitionKey` written; dedicated containers unchanged. Also aligned PTO's shared/dedicated partitioning.
+      (fa739fa)"
     path: packages/db/src/cosmos-queries.ts
     createdAt: 2026-10-19T20:58:24Z
     prFiles:
@@ -35219,7 +35406,8 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4318802416
-    body: "Fixed: bucketId is restricted to `^[a-z0-9][a-z0-9-]{0,62}$` and every local path comes from one shared SHA-256 helper with directory-containment checks; 'myriad' keeps its legacy path. (fa739fa)"
+    body: "Fixed: bucketId is restricted to `^[a-z0-9][a-z0-9-]{0,62}$` and every local path comes from one shared SHA-256
+      helper with directory-containment checks; 'myriad' keeps its legacy path. (fa739fa)"
     path: packages/db/src/db-path.ts
     createdAt: 2026-10-19T20:58:27Z
     prFiles:
@@ -35609,7 +35797,8 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4318802885
-    body: "Fixed: CompanyLink has an `unscoped` option and the PTO template links use it, so public files stay at the app root; other apps audited, none affected. (fa739fa)"
+    body: "Fixed: CompanyLink has an `unscoped` option and the PTO template links use it, so public files stay at the app
+      root; other apps audited, none affected. (fa739fa)"
     path: pto-tracker/src/app/admin/AdminClient.tsx
     createdAt: 2026-10-19T20:58:30Z
     prFiles:
@@ -35999,7 +36188,8 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4318966184
-    body: "Fixed: the scoped dispatcher now accepts the New Recruit wizard POST and routes it through the same allowlisted scoped create command (ETag/version returned, forged scope fields ignored); test added. (a8ac583)"
+    body: "Fixed: the scoped dispatcher now accepts the New Recruit wizard POST and routes it through the same allowlisted
+      scoped create command (ETag/version returned, forged scope fields ignored); test added. (a8ac583)"
     path: proforma/src/lib/api/handlers.ts
     createdAt: 2026-10-19T21:17:32Z
     prFiles:
@@ -36389,7 +36579,9 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4318966715
-    body: "Fixed: PATCH is forwarded to the master command when the projection hasn't caught up; the master store still enforces tenant and access-scope checks for unprojected records (cross-scope PATCH still denied; test added). (a8ac583)"
+    body: "Fixed: PATCH is forwarded to the master command when the projection hasn't caught up; the master store still
+      enforces tenant and access-scope checks for unprojected records (cross-scope PATCH still denied; test added).
+      (a8ac583)"
     path: platform/src/user-api.ts
     createdAt: 2026-10-19T21:17:36Z
     prFiles:
@@ -36779,7 +36971,9 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4318967193
-    body: "Fixed: the Compass connect URL carries `?company=<slug>` (hint only, authorized server-side with the verified principal), the bucket is bound into the signed OAuth state and re-validated on callback, and the return URL goes back to `/compass/<slug>/`; tests cover admin cross-company, acme→globex den..."
+    body: "Fixed: the Compass connect URL carries `?company=<slug>` (hint only, authorized server-side with the verified
+      principal), the bucket is bound into the signed OAuth state and re-validated on callback, and the return URL goes
+      back to `/compass/<slug>/`; tests cover admin cross-company, acme→globex den..."
     path: compass/functions/src/compass-microsoft.ts
     createdAt: 2026-10-19T21:17:39Z
     prFiles:
@@ -37169,7 +37363,8 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4319114826
-    body: "Fixed: the browser's reserved-route set now covers every top-level route, and a registry-wide guard test enumerates each app's real route directories so a new page can't be mistaken for a company slug again. (7c52a87)"
+    body: "Fixed: the browser's reserved-route set now covers every top-level route, and a registry-wide guard test
+      enumerates each app's real route directories so a new page can't be mistaken for a company slug again. (7c52a87)"
     path: packages/ui/src/company/client.ts
     createdAt: 2026-10-19T21:35:28Z
     prFiles:
@@ -37559,7 +37754,8 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4319115204
-    body: "Fixed: wizard creation (and every other recruit/model/report call) now builds its URL through the scoped URL helper; table-driven tests cover all 14 client functions. (7c52a87)"
+    body: "Fixed: wizard creation (and every other recruit/model/report call) now builds its URL through the scoped URL
+      helper; table-driven tests cover all 14 client functions. (7c52a87)"
     path: proforma/src/lib/proforma-api-client.ts
     createdAt: 2026-10-19T21:35:30Z
     prFiles:
@@ -37949,7 +38145,8 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4319115718
-    body: "Fixed: added the missing `[company]/data` wrapper, and a registry-wide guard now asserts every app's pages have matching company wrappers (no others were missing); synthetic build emits /transition/acme/data/. (7c52a87)"
+    body: "Fixed: added the missing `[company]/data` wrapper, and a registry-wide guard now asserts every app's pages have
+      matching company wrappers (no others were missing); synthetic build emits /transition/acme/data/. (7c52a87)"
     path: transition/src/app/[company]/layout.company.tsx
     createdAt: 2026-10-19T21:35:34Z
     prFiles:
@@ -38339,7 +38536,9 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4319275402
-    body: "Fixed: in entra-token mode the bearer token is validated and the verified identity selects the company bucket BEFORE the staff lookup (SWA headers are ignored in that mode); tests cover an acme-only employee, slug=globex denial, Myriad users and forged headers. (7678461)"
+    body: "Fixed: in entra-token mode the bearer token is validated and the verified identity selects the company bucket
+      BEFORE the staff lookup (SWA headers are ignored in that mode); tests cover an acme-only employee, slug=globex
+      denial, Myriad users and forged headers. (7678461)"
     path: pto-tracker/src/lib/api/azure-functions-adapter.ts
     createdAt: 2026-10-19T21:55:42Z
     prFiles:
@@ -38729,7 +38928,9 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4319275731
-    body: "Fixed: the company/me handler is now shared (@myriad/auth) and registered in every product Functions app; CompanyProvider uses each app's explicit API base (`/api/<app>/company/me`), Hub keeps `/api/company/me`; access behavior unchanged (generic denial, no company list for non-Myriad-wide users). (..."
+    body: "Fixed: the company/me handler is now shared (@myriad/auth) and registered in every product Functions app;
+      CompanyProvider uses each app's explicit API base (`/api/<app>/company/me`), Hub keeps `/api/company/me`; access
+      behavior unchanged (generic denial, no company list for non-Myriad-wide users). (..."
     path: packages/ui/src/company/context.tsx
     createdAt: 2026-10-19T21:55:45Z
     prFiles:
@@ -39119,7 +39320,9 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4319400065
-    body: "Fixed: scoped PATCH/POST responses are rebuilt through the scoped projection allowlist (master-only phone/email/notes are blanked); regression tests assert none of them appear and version/ETag stay authoritative. (18415dd)"
+    body: "Fixed: scoped PATCH/POST responses are rebuilt through the scoped projection allowlist (master-only
+      phone/email/notes are blanked); regression tests assert none of them appear and version/ETag stay authoritative.
+      (18415dd)"
     path: platform/src/user-api.ts
     createdAt: 2026-10-19T22:12:04Z
     prFiles:
@@ -39509,7 +39712,8 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4319400367
-    body: "Fixed: scoped recruit reports now return an authorization-checked empty list (404 for foreign/unauthorized records), so the detail page loads. (18415dd)"
+    body: "Fixed: scoped recruit reports now return an authorization-checked empty list (404 for foreign/unauthorized
+      records), so the detail page loads. (18415dd)"
     path: platform/src/user-api.ts
     createdAt: 2026-10-19T22:12:06Z
     prFiles:
@@ -39899,7 +40103,8 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4319400726
-    body: "Fixed: the diagnostic baseline path now comes from the same bucketed helper as the repository; legacy 'myriad' unchanged; tested against a real temp dir. (18415dd)"
+    body: "Fixed: the diagnostic baseline path now comes from the same bucketed helper as the repository; legacy 'myriad'
+      unchanged; tested against a real temp dir. (18415dd)"
     path: transition/src/lib/data.ts
     createdAt: 2026-10-19T22:12:08Z
     prFiles:
@@ -40289,7 +40494,9 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4319401071
-    body: "Fixed: download links carry `?company=<slug>` as a hint (only when on a company route) and the server authorizes it with resolveCompanyAccess for the verified principal; tests cover admin cross-company, acme→globex denial and no-query. (18415dd)"
+    body: "Fixed: download links carry `?company=<slug>` as a hint (only when on a company route) and the server authorizes
+      it with resolveCompanyAccess for the verified principal; tests cover admin cross-company, acme→globex denial and
+      no-query. (18415dd)"
     path: valuation/src/lib/api/azure-functions-adapter.ts
     createdAt: 2026-10-19T22:12:11Z
     prFiles:
@@ -40679,7 +40886,8 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4319401483
-    body: "Fixed: PDF/workbook/XLSX opens use the same validated `?company=` hint, authorized server-side; tests as above. (18415dd)"
+    body: "Fixed: PDF/workbook/XLSX opens use the same validated `?company=` hint, authorized server-side; tests as above.
+      (18415dd)"
     path: proforma/src/lib/api/handlers.ts
     createdAt: 2026-10-19T22:12:14Z
     prFiles:
@@ -41069,7 +41277,8 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4319525491
-    body: "Fixed: the dedicated platform User API now registers the wizard create route, mapped through the same allowlisted scoped create command, with a sanitized response and ETag. (7d6e0d0)"
+    body: "Fixed: the dedicated platform User API now registers the wizard create route, mapped through the same allowlisted
+      scoped create command, with a sanitized response and ETag. (7d6e0d0)"
     path: proforma/src/lib/proforma-api-client.ts
     createdAt: 2026-10-19T22:29:44Z
     prFiles:
@@ -41459,7 +41668,8 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4319525836
-    body: "Fixed: the platform User API serves GET /recruits/{id}/reports (authorization-checked empty list; 404 for foreign/unknown records). (7d6e0d0)"
+    body: "Fixed: the platform User API serves GET /recruits/{id}/reports (authorization-checked empty list; 404 for
+      foreign/unknown records). (7d6e0d0)"
     path: proforma/src/lib/proforma-api-client.ts
     createdAt: 2026-10-19T22:29:47Z
     prFiles:
@@ -42239,7 +42449,8 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4319526453
-    body: "Fixed: operationsCommand is classified as a company read, so read_only users can run navigation commands; real writes remain denied (tests). (7d6e0d0)"
+    body: "Fixed: operationsCommand is classified as a company read, so read_only users can run navigation commands; real
+      writes remain denied (tests). (7d6e0d0)"
     path: onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
     createdAt: 2026-10-19T22:29:52Z
     prFiles:
@@ -42629,7 +42840,9 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4319526836
-    body: "Fixed: the platform User API serves company/me (verified identity); the provider supports an explicit credentials option for cross-origin API bases. Note: deployment must list the Proforma origin in browserAllowedOrigins (no infra change made here). (7d6e0d0)"
+    body: "Fixed: the platform User API serves company/me (verified identity); the provider supports an explicit credentials
+      option for cross-origin API bases. Note: deployment must list the Proforma origin in browserAllowedOrigins (no
+      infra change made here). (7d6e0d0)"
     path: proforma/src/app/layout.tsx
     createdAt: 2026-10-19T22:29:56Z
     prFiles:
@@ -43019,7 +43232,9 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4319638599
-    body: "Fixed: recruit detail (and reports) fall back to a scope-authorized master read when the projection hasn't caught up, returned through the projection allowlist; foreign/unknown stay 404; tests cover create→immediate GET. (20d070d)"
+    body: "Fixed: recruit detail (and reports) fall back to a scope-authorized master read when the projection hasn't caught
+      up, returned through the projection allowlist; foreign/unknown stay 404; tests cover create→immediate GET.
+      (20d070d)"
     path: platform/src/user-api.ts
     createdAt: 2026-10-19T22:46:44Z
     prFiles:
@@ -43409,7 +43624,9 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4319638886
-    body: "Fixed: PTO `company/me` validates the bearer identity in entra-token mode (SWA headers ignored there), and CompanyProvider takes an injected fetcher so PTO sends the MSAL token; 401 shows an error state, not 'denied'. (20d070d)"
+    body: "Fixed: PTO `company/me` validates the bearer identity in entra-token mode (SWA headers ignored there), and
+      CompanyProvider takes an injected fetcher so PTO sends the MSAL token; 401 shows an error state, not 'denied'.
+      (20d070d)"
     path: pto-tracker/functions/src/index.ts
     createdAt: 2026-10-19T22:46:46Z
     prFiles:
@@ -43799,7 +44016,8 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4319639136
-    body: "Fixed: the vendor-360 post-create redirects use the company-aware href; I audited every app for similar raw base-path navigations and found no others. (20d070d)"
+    body: "Fixed: the vendor-360 post-create redirects use the company-aware href; I audited every app for similar raw
+      base-path navigations and found no others. (20d070d)"
     path: onboarding/apps/dashboard/components/vm/vendor-360.tsx
     createdAt: 2026-10-19T22:46:49Z
     prFiles:
@@ -44189,7 +44407,9 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4319687608
-    body: "Agreed the fallback can't work with the current identity grants. Granting the User API master-record read would widen its privileges, so I'm not changing RBAC here: the fallback is being removed in code (detail reads stay projection-only; the browser retains the authoritative create/PATCH result, an..."
+    body: "Agreed the fallback can't work with the current identity grants. Granting the User API master-record read would
+      widen its privileges, so I'm not changing RBAC here: the fallback is being removed in code (detail reads stay
+      projection-only; the browser retains the authoritative create/PATCH result, an..."
     path: infra/azure/platform/serverless.bicep
     createdAt: 2026-10-19T22:54:14Z
     prFiles:
@@ -44579,7 +44799,9 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4319687894
-    body: "Valid: the platform Function apps need MYRIAD_COMPANY_MAPPINGS (or the Cosmos registry) as a runtime setting. It's currently documented in docs/authorization-roles.md but not in infra/azure/platform/serverless.bicep; I haven't edited infra (hosting changes are outside this change's authorization). L..."
+    body: "Valid: the platform Function apps need MYRIAD_COMPANY_MAPPINGS (or the Cosmos registry) as a runtime setting.
+      It's currently documented in docs/authorization-roles.md but not in infra/azure/platform/serverless.bicep; I
+      haven't edited infra (hosting changes are outside this change's authorization). L..."
     path: infra/azure/platform/serverless.bicep
     createdAt: 2026-10-19T22:54:16Z
     prFiles:
@@ -44969,7 +45191,8 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4319736753
-    body: "Fixed: `useCompanyRouter` returns a memoized router and `href`/`switchHref` are stable across renders (identity changes only with slug/basePath); tests cover identity. (311b2bf)"
+    body: "Fixed: `useCompanyRouter` returns a memoized router and `href`/`switchHref` are stable across renders (identity
+      changes only with slug/basePath); tests cover identity. (311b2bf)"
     path: packages/ui/src/company/context.tsx
     createdAt: 2026-10-19T23:01:51Z
     prFiles:
@@ -45359,7 +45582,8 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4319736964
-    body: "Fixed: personal saved-view mutations are classified as company reads again so read_only users keep them; real vendor-data writes stay denied; allowlist audited. (311b2bf)"
+    body: "Fixed: personal saved-view mutations are classified as company reads again so read_only users keep them; real
+      vendor-data writes stay denied; allowlist audited. (311b2bf)"
     path: onboarding/apps/dashboard/lib/api/vm-azure-functions-adapter.ts
     createdAt: 2026-10-19T23:01:54Z
     prFiles:
@@ -45749,7 +45973,9 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4319825826
-    body: "Obsolete on the current head: the User API no longer calls MasterCommandStore.getScoped()/reads master records at all (detail reads are projection-only, the browser retains the create/PATCH result, and the reports route needs no master read), so no master-container RBAC is required. No infra change ..."
+    body: "Obsolete on the current head: the User API no longer calls MasterCommandStore.getScoped()/reads master records at
+      all (detail reads are projection-only, the browser retains the create/PATCH result, and the reports route needs no
+      master read), so no master-container RBAC is required. No infra change ..."
     path: infra/azure/platform/serverless.bicep
     createdAt: 2026-10-19T23:14:20Z
     prFiles:
@@ -46139,7 +46365,9 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4319826048
-    body: "Same gap as the thread above: the platform runtime reads MYRIAD_COMPANY_MAPPINGS (env) and the registry lives in app-records, which the platform identities cannot reach by design, so the platform apps need the mapping as an app setting at deploy time. I'm not editing infra/ in this change; left open..."
+    body: "Same gap as the thread above: the platform runtime reads MYRIAD_COMPANY_MAPPINGS (env) and the registry lives in
+      app-records, which the platform identities cannot reach by design, so the platform apps need the mapping as an app
+      setting at deploy time. I'm not editing infra/ in this change; left open..."
     path: infra/azure/platform/serverless.bicep
     createdAt: 2026-10-19T23:14:23Z
     prFiles:
@@ -46529,7 +46757,8 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4319911683
-    body: "Fixed: operation 'admin' now honors read_only like a write (a read-only admin can't create/modify companies or run transfers; registry GETs stay reads); tests across auth and hub. (30a225c)"
+    body: "Fixed: operation 'admin' now honors read_only like a write (a read-only admin can't create/modify companies or
+      run transfers; registry GETs stay reads); tests across auth and hub. (30a225c)"
     path: packages/auth/src/company.ts
     createdAt: 2026-10-19T23:27:59Z
     prFiles:
@@ -46919,7 +47148,9 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4319911979
-    body: "Fixed: the Proforma adapter fails closed with a `scoped_runtime_not_supported` plan blocker when the scoped platform runtime is configured (it can't read the platform master/scoped containers), so a transfer can't verify and permit cutover while scoped recruits stay behind; legacy mode unchanged; do..."
+    body: "Fixed: the Proforma adapter fails closed with a `scoped_runtime_not_supported` plan blocker when the scoped
+      platform runtime is configured (it can't read the platform master/scoped containers), so a transfer can't verify
+      and permit cutover while scoped recruits stay behind; legacy mode unchanged; do..."
     path: proforma/src/lib/transfer-adapter.ts
     createdAt: 2026-10-19T23:28:02Z
     prFiles:
@@ -47309,7 +47540,8 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4319912257
-    body: "Fixed: the platform User API serves GET dashboard from the caller's authorized scoped projections only, with the same response shape as the app-local handler (shape test); no master reads. (30a225c)"
+    body: "Fixed: the platform User API serves GET dashboard from the caller's authorized scoped projections only, with the
+      same response shape as the app-local handler (shape test); no master reads. (30a225c)"
     path: platform/src/user-api.ts
     createdAt: 2026-10-19T23:28:04Z
     prFiles:
@@ -48089,7 +48321,9 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4319986328
-    body: "Fixed: client id mapping is now symmetric for every source→target pair (any source bucket, including legacy-env Myriad ids); copy+verify+idempotent re-run tests cover myriad→company, company→company and company→myriad for Onboarding, and a company→company copy+verify test exists for each of the othe..."
+    body: "Fixed: client id mapping is now symmetric for every source→target pair (any source bucket, including legacy-env
+      Myriad ids); copy+verify+idempotent re-run tests cover myriad→company, company→company and company→myriad for
+      Onboarding, and a company→company copy+verify test exists for each of the othe..."
     path: onboarding/apps/dashboard/lib/transfer-adapter.ts
     createdAt: 2026-10-19T23:41:04Z
     prFiles:
@@ -48479,7 +48713,8 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4319986596
-    body: "Fixed: the retention cache is keyed by company slug or the legacy-compatible default key on every route, per access scope; tests cover the default route and cross-company/scope isolation. (6d707be)"
+    body: "Fixed: the retention cache is keyed by company slug or the legacy-compatible default key on every route, per
+      access scope; tests cover the default route and cross-company/scope isolation. (6d707be)"
     path: proforma/src/lib/proforma-api-client.ts
     createdAt: 2026-10-19T23:41:06Z
     prFiles:
@@ -48869,7 +49104,9 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4319986865
-    body: "Fixed: a projection read with an older version than the retained create/PATCH result no longer overwrites it (the retained recruit and version win until the projection catches up or the TTL passes); every PATCH refreshes the retained entry; tests cover PATCH→stale projection→next If-Match. (6d707be)"
+    body: "Fixed: a projection read with an older version than the retained create/PATCH result no longer overwrites it (the
+      retained recruit and version win until the projection catches up or the TTL passes); every PATCH refreshes the
+      retained entry; tests cover PATCH→stale projection→next If-Match. (6d707be)"
     path: proforma/src/lib/proforma-api-client.ts
     createdAt: 2026-10-19T23:41:09Z
     prFiles:
@@ -49259,7 +49496,9 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4320071543
-    body: "Fixed: Compass company operations are classified per route from the real route table (ask/complete/start/status etc. are personal read-class; disconnect/deletion/retention stay writes; unknown routes default to write; a test asserts every registered route is classified); data-reader non-GET and cros..."
+    body: "Fixed: Compass company operations are classified per route from the real route table (ask/complete/start/status
+      etc. are personal read-class; disconnect/deletion/retention stay writes; unknown routes default to write; a test
+      asserts every registered route is classified); data-reader non-GET and cros..."
     path: compass/functions/src/compass-microsoft.ts
     createdAt: 2026-10-19T23:55:52Z
     prFiles:
@@ -49649,7 +49888,8 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4320071782
-    body: "Fixed: control audit ids include the mutated entity (plus a discriminator) and keep the correlation id as a queryable field, so reused correlation ids no longer roll back valid mutations. (9bd40fa)"
+    body: "Fixed: control audit ids include the mutated entity (plus a discriminator) and keep the correlation id as a
+      queryable field, so reused correlation ids no longer roll back valid mutations. (9bd40fa)"
     path: packages/db/src/control-plane-store.ts
     createdAt: 2026-10-19T23:55:55Z
     prFiles:
@@ -50039,7 +50279,9 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4320072079
-    body: "Fixed: admin create/update derive a per-command idempotency key (explicit `idempotency-key` header, else a hash of correlation id + method + path + canonical body); correlation ids are only audit links; tests cover collisions and true retries. (9bd40fa)"
+    body: "Fixed: admin create/update derive a per-command idempotency key (explicit `idempotency-key` header, else a hash
+      of correlation id + method + path + canonical body); correlation ids are only audit links; tests cover collisions
+      and true retries. (9bd40fa)"
     path: platform/src/admin-api.ts
     createdAt: 2026-10-19T23:55:58Z
     prFiles:
@@ -50429,7 +50671,9 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4320180909
-    body: "Fixed: only the five client functions that map to real User API routes (list, get, create, wizard, PATCH) use the scoped base; model get/save, reports, archive/restore/delete/duplicate and report downloads stay on the legacy Proforma persistence base (new explicit `NEXT_PUBLIC_PROFORMA_LEGACY_API_BA..."
+    body: "Fixed: only the five client functions that map to real User API routes (list, get, create, wizard, PATCH) use the
+      scoped base; model get/save, reports, archive/restore/delete/duplicate and report downloads stay on the legacy
+      Proforma persistence base (new explicit `NEXT_PUBLIC_PROFORMA_LEGACY_API_BA..."
     path: proforma/src/lib/proforma-api-client.ts
     createdAt: 2026-10-20T00:14:44Z
     prFiles:
@@ -50819,7 +51063,9 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4320181222
-    body: "Fixed: the data-reader restriction now follows the route-operation map (read-class POSTs like ask/complete are allowed on the reader's own company; write-class and unknown routes stay denied; cross-company reads are audited). (aacb6b3)"
+    body: "Fixed: the data-reader restriction now follows the route-operation map (read-class POSTs like ask/complete are
+      allowed on the reader's own company; write-class and unknown routes stay denied; cross-company reads are audited).
+      (aacb6b3)"
     path: compass/functions/src/compass-microsoft.ts
     createdAt: 2026-10-20T00:14:47Z
     prFiles:
@@ -51209,7 +51455,9 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4320206978
-    body: "Confirmed: in scoped mode the wizard's advisors/platform/setup inputs are not persisted by the User API wizard route. This is a scoped-Proforma pilot parity gap rather than a regression: the scoped runtime (flag `NEXT_PUBLIC_PROFORMA_SCOPED_ENABLED`, default off; cutover is explicitly gated in this ..."
+    body: "Confirmed: in scoped mode the wizard's advisors/platform/setup inputs are not persisted by the User API wizard
+      route. This is a scoped-Proforma pilot parity gap rather than a regression: the scoped runtime (flag
+      `NEXT_PUBLIC_PROFORMA_SCOPED_ENABLED`, default off; cutover is explicitly gated in this ..."
     path: platform/src/user-api.ts
     createdAt: 2026-10-20T00:19:30Z
     prFiles:
@@ -51599,7 +51847,9 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4320207232
-    body: "Confirmed: recruits created only through the Platform API have no legacy row, so model saves and the other legacy-routed actions 404 for them (documented as a known pilot limit). This is a scoped-Proforma pilot parity gap rather than a regression: the scoped runtime (flag `NEXT_PUBLIC_PROFORMA_SCOPE..."
+    body: "Confirmed: recruits created only through the Platform API have no legacy row, so model saves and the other
+      legacy-routed actions 404 for them (documented as a known pilot limit). This is a scoped-Proforma pilot parity gap
+      rather than a regression: the scoped runtime (flag `NEXT_PUBLIC_PROFORMA_SCOPE..."
     path: proforma/src/lib/proforma-api-client.ts
     createdAt: 2026-10-20T00:19:33Z
     prFiles:
@@ -51989,7 +52239,9 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4320207442
-    body: "Confirmed: legacy-routed auxiliary reads authorize the company bucket only, not the selected access scope, for recruits that remain in legacy persistence. This is a scoped-Proforma pilot parity gap rather than a regression: the scoped runtime (flag `NEXT_PUBLIC_PROFORMA_SCOPED_ENABLED`, default off;..."
+    body: "Confirmed: legacy-routed auxiliary reads authorize the company bucket only, not the selected access scope, for
+      recruits that remain in legacy persistence. This is a scoped-Proforma pilot parity gap rather than a regression:
+      the scoped runtime (flag `NEXT_PUBLIC_PROFORMA_SCOPED_ENABLED`, default off;..."
     path: proforma/src/lib/proforma-api-client.ts
     createdAt: 2026-10-20T00:19:35Z
     prFiles:
@@ -52379,7 +52631,9 @@ reviewComments:
     prNumber: 118
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118#discussion_r4320254596
-    body: "Fixed: registry create/update and its audit document (and the transfer-flag updates across both buckets) are written in one transactional batch; an audit failure rolls the change back and an ETag mismatch writes nothing; tests cover each. (610a8e9)"
+    body: "Fixed: registry create/update and its audit document (and the transfer-flag updates across both buckets) are
+      written in one transactional batch; an audit failure rolls the change back and an ETag mismatch writes nothing;
+      tests cover each. (610a8e9)"
     path: packages/db/src/company-registry.ts
     createdAt: 2026-10-20T00:28:21Z
     prFiles:
@@ -53326,12 +53580,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 325
+  version: "2.3"
+  hours: 103.5
   sessions: 1
   sessionHours: 6
-  volumeHours: 325
+  volumeHours: 341.9
+  compressedVolumeHours: 103.5
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

@@ -22,7 +22,7 @@ stats:
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 42.5
+  estimatedHours: 28.6
 dailyCommits:
   - date: 2026-10-16
     count: 12
@@ -128,13 +128,15 @@ pullRequests:
       ## Why
 
 
-      Port the Northstar advisor workflow capabilities into Compass so advisors can manage daily work and client conversations in one workspace.
+      Port the Northstar advisor workflow capabilities into Compass so advisors can manage daily work and client
+      conversations in one workspace.
 
 
       ## What changed
 
 
-      - Redesigned the Compass dashboard and Ask workspace, with command cards, conversation history, richer answer rendering, and contextual...
+      - Redesigned the Compass dashboard and Ask workspace, with command cards, conversation history, richer answer
+      rendering, and contextual...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/177
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: open
@@ -514,13 +516,15 @@ prsInProgress:
       ## Why
 
 
-      Port the Northstar advisor workflow capabilities into Compass so advisors can manage daily work and client conversations in one workspace.
+      Port the Northstar advisor workflow capabilities into Compass so advisors can manage daily work and client
+      conversations in one workspace.
 
 
       ## What changed
 
 
-      - Redesigned the Compass dashboard and Ask workspace, with command cards, conversation history, richer answer rendering, and contextual...
+      - Redesigned the Compass dashboard and Ask workspace, with command cards, conversation history, richer answer
+      rendering, and contextual...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/177
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: open
@@ -647,7 +651,8 @@ prsInProgress:
       ## Why
 
 
-      Accounts imported from AIRE can store numeric registration codes, which are unclear in the UI and make registration sorting and filtering inconsistent with registration names.
+      Accounts imported from AIRE can store numeric registration codes, which are unclear in the UI and make
+      registration sorting and filtering inconsistent with registration names.
 
 
       ## What changed
@@ -686,7 +691,9 @@ prsInProgress:
       ## Why
 
 
-      GitHub Actions minutes were going to pull request work that did not need it: three Verify jobs per push (each billed at least one minute), Hub preview change detection on PRs without `deploy-preview`, full 8-app rebuilds for documentation-only changes, and verification of draft PRs.
+      GitHub Actions minutes were going to pull request work that did not need it: three Verify jobs per push (each
+      billed at least one minute), Hub preview change detection on PRs without `deploy-preview`, full 8-app rebuilds for
+      documentation-only changes, and verification of draft PRs.
 
 
       ## What...
@@ -851,12 +858,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 42.5
+  version: "2.3"
+  hours: 28.6
   sessions: 2
   sessionHours: 4
   volumeHours: 42.5
+  compressedVolumeHours: 28.6
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

@@ -22,7 +22,7 @@ stats:
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 69.7
+  estimatedHours: 39.9
 dailyCommits:
   - date: 2026-07-27
     count: 28
@@ -117,7 +117,8 @@ pullRequests:
       ## Why
 
 
-      Recent recruits overflowed narrower viewports, hiding financial columns and row actions. The assumptions editor also carried excess guidance and layout density that made pricing inputs harder to scan.
+      Recent recruits overflowed narrower viewports, hiding financial columns and row actions. The assumptions editor
+      also carried excess guidance and layout density that made pricing inputs harder to scan.
 
 
       ## What changed
@@ -197,7 +198,8 @@ pullRequests:
       ## Why
 
 
-      Calendar color administration belongs with other appearance controls, not in the staff calendar workflow. The saturated marker fills also competed with the restrained Myriad product palette.
+      Calendar color administration belongs with other appearance controls, not in the staff calendar workflow. The
+      saturated marker fills also competed with the restrained Myriad product palette.
 
 
       ## What changed
@@ -280,7 +282,8 @@ pullRequests:
       Why
 
 
-      Employee email is the canonical link between Microsoft sign-in and PTO records, but HR could not correct team-member identity details from the team view.
+      Employee email is the canonical link between Microsoft sign-in and PTO records, but HR could not correct
+      team-member identity details from the team view.
 
 
       What changed
@@ -348,7 +351,9 @@ pullRequests:
       ## Why
 
 
-      Product apps need distinct paths back to their own home and to the suite Hub. The shared shell did not link the Myriad mark to the product home or provide suite-level navigation, and the local supervisor's 60-second readiness deadline could expire during cold multi-app compilation.
+      Product apps need distinct paths back to their own home and to the suite Hub. The shared shell did not link the
+      Myriad mark to the product home or provide suite-level navigation, and the local supervisor's 60-second readiness
+      deadline could expire during cold multi-app compilation.
 
 
       ## What ...
@@ -407,7 +412,8 @@ pullRequests:
       ## Why
 
 
-      CSV-backed staff imports replaced the full staff list, which removed manually entered employees. Staff setup also required values the app can derive, and legacy Entra mode rendered no usable sign-in action.
+      CSV-backed staff imports replaced the full staff list, which removed manually entered employees. Staff setup also
+      required values the app can derive, and legacy Entra mode rendered no usable sign-in action.
 
 
       ## What changed
@@ -467,7 +473,8 @@ pullRequests:
       Why
 
 
-      Weekly dependency update runs create more review churn than this repository needs. Grouping already limits PR count per run, so reducing the schedule is the narrowest fix.
+      Weekly dependency update runs create more review churn than this repository needs. Grouping already limits PR
+      count per run, so reducing the schedule is the narrowest fix.
 
 
       What changed
@@ -508,7 +515,8 @@ pullRequests:
       Why
 
 
-      The active-workstream description omitted the role portion of the selected workstream, so it could continue to look like the previous workflow after switching.
+      The active-workstream description omitted the role portion of the selected workstream, so it could continue to
+      look like the previous workflow after switching.
 
 
       What changed
@@ -553,7 +561,9 @@ pullRequests:
       ## Why
 
 
-      FiNet recruits follow a distinct pricing path and should not expose or apply non-FiNet business-mix and platform assumptions. The recruit workflow also needs consistent fee precision and review layouts so entered values match the pricing calculations.
+      FiNet recruits follow a distinct pricing path and should not expose or apply non-FiNet business-mix and platform
+      assumptions. The recruit workflow also needs consistent fee precision and review layouts so entered values match
+      the pricing calculations.
 
 
       ## What changed
@@ -626,7 +636,8 @@ prsInProgress:
       Why
 
 
-      Weekly dependency update runs create more review churn than this repository needs. Grouping already limits PR count per run, so reducing the schedule is the narrowest fix.
+      Weekly dependency update runs create more review churn than this repository needs. Grouping already limits PR
+      count per run, so reducing the schedule is the narrowest fix.
 
 
       What changed
@@ -659,7 +670,8 @@ prsInProgress:
       Why
 
 
-      The active-workstream description omitted the role portion of the selected workstream, so it could continue to look like the previous workflow after switching.
+      The active-workstream description omitted the role portion of the selected workstream, so it could continue to
+      look like the previous workflow after switching.
 
 
       What changed
@@ -1104,12 +1116,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 69.7
+  version: "2.3"
+  hours: 39.9
   sessions: 2
   sessionHours: 4.4
-  volumeHours: 69.7
+  volumeHours: 87.7
+  compressedVolumeHours: 39.9
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

@@ -22,7 +22,7 @@ stats:
   reviewComments: 21
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 67.5
+  estimatedHours: 34.9
 dailyCommits:
   - date: 2026-10-05
     count: 55
@@ -57,7 +57,8 @@ prsInProgress:
     workCommits:
       - &a17
         sha: 8add7adc8d5664f3f085445eb4f1b11a07b13892
-        message: Merge remote-tracking branch 'refs/remotes/github/feat/transition-rep-assignments' into codex/pr146-parent-refresh
+        message: Merge remote-tracking branch 'refs/remotes/github/feat/transition-rep-assignments' into
+          codex/pr146-parent-refresh
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8add7adc8d5664f3f085445eb4f1b11a07b13892
         authoredAt: 2026-10-05T17:37:40Z
         files:
@@ -80,9 +81,11 @@ prsInProgress:
       - transition/src/lib/repository.ts
   - title: "feat(transition): add rep code assignment choices"
     body: >-
-      - Keep imported household rep codes distinct from assigned people, and display normalized codes while preserving source values.
+      - Keep imported household rep codes distinct from assigned people, and display normalized codes while preserving
+      source values.
 
-      - Add the supplied code-to-person suggestions and reusable person choices in account, reviewer, household coordinator, and follow-up assignments.
+      - Add the supplied code-to-person suggestions and reusable person choices in account, reviewer, household
+      coordinator, and follow-up assignments.
 
       - Preserve existing assign...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/144
@@ -145,7 +148,9 @@ prsInProgress:
       - transition/src/lib/repository.test.ts
       - transition/src/lib/repository.ts
   - title: "perf(transition): cache loaded sections for instant revisits"
-    body: Section navigation currently refetches data whenever a route remounts, producing visible delays even when the user recently viewed the same section. This change adds a verified-identity-scoped, memory-only cache for dashboard, household, account list, exception, and account detail reads. Fresh entri...
+    body: Section navigation currently refetches data whenever a route remounts, producing visible delays even when the user
+      recently viewed the same section. This change adds a verified-identity-scoped, memory-only cache for dashboard,
+      household, account list, exception, and account detail reads. Fresh entri...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: open
@@ -229,7 +234,9 @@ prsInProgress:
       - transition/src/lib/api/session-cache.ts
       - transition/src/lib/hooks/use-transition-read.ts
   - title: "feat(transition): add click-to-call contact links"
-    body: Add click-to-call actions for Transition contact phone numbers using validated standard `tel:` links. Preserve the stored/displayed number formatting, suppress call links for blank or invalid numbers, and label links for assistive technology. The UI explains that links use the device’s configured ca...
+    body: Add click-to-call actions for Transition contact phone numbers using validated standard `tel:` links. Preserve the
+      stored/displayed number formatting, suppress call links for blank or invalid numbers, and label links for
+      assistive technology. The UI explains that links use the device’s configured ca...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/143
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: open
@@ -349,7 +356,9 @@ prsInProgress:
       - transition/vitest.config.ts
   - title: "feat(transition): import CSV household contact details"
     body: >-
-      Populated Transition workspaces need a safe way to correct names and enrich household contact details from the retained CSV layouts. The existing Excel import initializes an empty workspace and is not used for these corrections.
+      Populated Transition workspaces need a safe way to correct names and enrich household contact details from the
+      retained CSV layouts. The existing Excel import initializes an empty workspace and is not used for these
+      corrections.
 
 
       This adds an administrator-only full-file CSV preview and confirmation...
@@ -867,7 +876,8 @@ commitMessages:
       - "fix(transition): reconcile safe cache refreshes"
       - Merge commit 'c2d266e6e33eccf8e097e6568f60cf84c10cb2c7' into HEAD
       - Merge remote-tracking branch 'origin/codex/transition-click-to-call' into stack-144
-      - Merge remote-tracking branch 'refs/remotes/github/feat/transition-rep-assignments' into codex/pr146-parent-refresh
+      - Merge remote-tracking branch 'refs/remotes/github/feat/transition-rep-assignments' into
+        codex/pr146-parent-refresh
       - "fix(transition): bound CSV cell materialization"
       - "feat(transition): preview confirmed CSV corrections"
       - "fix(transition): align account matching diagnostics"
@@ -1865,7 +1875,9 @@ reviewComments:
     prNumber: 143
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/143
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/143#discussion_r4190372358
-    body: Fixed in ee873a5. `contactPhoneHref` accepts recognized `x`, `ext.`, `extension`, and `;ext=` suffixes, validates the base and extension digits, and emits RFC 3966 `;ext=` while leaving the stored/displayed value unchanged. Synthetic tests cover `515-555-0123 x12`, other supported forms, leading-zer...
+    body: Fixed in ee873a5. `contactPhoneHref` accepts recognized `x`, `ext.`, `extension`, and `;ext=` suffixes, validates
+      the base and extension digits, and emits RFC 3966 `;ext=` while leaving the stored/displayed value unchanged.
+      Synthetic tests cover `515-555-0123 x12`, other supported forms, leading-zer...
     path: transition/src/lib/contact-phone.ts
     createdAt: 2026-10-06T00:43:53Z
     prFiles:
@@ -1880,7 +1892,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4186636928
-    body: Fixed in c2d266e. CSV parsing now enforces the 100-column and 50,000-data-row limits before appending fields or rows, preventing oversized shape inputs from being fully materialized. Synthetic oversized-column and oversized-row regressions pass with the focused 74-test suite, typecheck, and lint.
+    body: Fixed in c2d266e. CSV parsing now enforces the 100-column and 50,000-data-row limits before appending fields or
+      rows, preventing oversized shape inputs from being fully materialized. Synthetic oversized-column and
+      oversized-row regressions pass with the focused 74-test suite, typecheck, and lint.
     path: transition/src/lib/contact-enrichment.ts
     createdAt: 2026-10-05T17:04:44Z
     prFiles:
@@ -1924,7 +1938,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4186975735
-    body: Fixed in 8f40319. Parsing now retains only the required File1/File4 columns, enforces a shared cross-file materialized-cell budget, and preserves existing row accounting and field mapping. A synthetic 100-column regression verifies unused values are discarded without changing imported contact fields...
+    body: Fixed in 8f40319. Parsing now retains only the required File1/File4 columns, enforces a shared cross-file
+      materialized-cell budget, and preserves existing row accounting and field mapping. A synthetic 100-column
+      regression verifies unused values are discarded without changing imported contact fields...
     path: transition/src/lib/contact-enrichment.ts
     createdAt: 2026-10-05T17:42:58Z
     prFiles:
@@ -1968,7 +1984,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190193804
-    body: The approved correction flow permits one consistent nonblank incoming email or phone to update a uniquely resolved saved contact. The full-file preview shows the saved and proposed values, and the UI requires every review page plus one final confirmation before the atomic apply. Conflicting incoming...
+    body: The approved correction flow permits one consistent nonblank incoming email or phone to update a uniquely resolved
+      saved contact. The full-file preview shows the saved and proposed values, and the UI requires every review page
+      plus one final confirmation before the atomic apply. Conflicting incoming...
     path: transition/src/lib/contact-enrichment.ts
     createdAt: 2026-10-06T00:12:47Z
     prFiles:
@@ -2012,7 +2030,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190198777
-    body: "The contact-only contract was superseded by the approved scope: File1 ACCOUNTNAME may correct a uniquely identified saved account, while the optional File4 HOUSEHOLDNAME controls household names. Account and household names can differ. When both ACCOUNTID and LEGACYACCOUNTNUMBER are supplied they mu..."
+    body: "The contact-only contract was superseded by the approved scope: File1 ACCOUNTNAME may correct a uniquely
+      identified saved account, while the optional File4 HOUSEHOLDNAME controls household names. Account and household
+      names can differ. When both ACCOUNTID and LEGACYACCOUNTNUMBER are supplied they mu..."
     path: transition/src/lib/contact-enrichment.ts
     createdAt: 2026-10-06T00:13:41Z
     prFiles:
@@ -2056,7 +2076,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190215961
-    body: Fixed in 23a5c89. Both storage adapters run the same repository transaction against the apply-time household snapshot. It revalidates the unique household key and checks current contact names, email, and phone immediately before each create; a collision aborts the full transaction. The synthetic tes...
+    body: Fixed in 23a5c89. Both storage adapters run the same repository transaction against the apply-time household
+      snapshot. It revalidates the unique household key and checks current contact names, email, and phone immediately
+      before each create; a collision aborts the full transaction. The synthetic tes...
     path: transition/src/lib/contact-enrichment.ts
     createdAt: 2026-10-06T00:16:42Z
     prFiles:
@@ -2100,7 +2122,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190223670
-    body: Fixed in 23a5c89. The apply transaction reloads the current household/contact state and checks any proposed nonblank email or phone against every other person before writing. The synthetic `rechecks update email and phone signals inside the apply transaction` test creates a competing contact after p...
+    body: Fixed in 23a5c89. The apply transaction reloads the current household/contact state and checks any proposed
+      nonblank email or phone against every other person before writing. The synthetic `rechecks update email and phone
+      signals inside the apply transaction` test creates a competing contact after p...
     path: transition/src/lib/repository.ts
     createdAt: 2026-10-06T00:18:06Z
     prFiles:
@@ -2144,7 +2168,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190225284
-    body: Fixed in 23a5c89. The Cosmos writer measures the serialized full transactional operation array, including the manifest, and rejects it above 1,800,000 bytes before issuing the batch; it also rejects more than 99 stored aggregates rather than splitting the file. Synthetic tests verify oversized paylo...
+    body: Fixed in 23a5c89. The Cosmos writer measures the serialized full transactional operation array, including the
+      manifest, and rejects it above 1,800,000 bytes before issuing the batch; it also rejects more than 99 stored
+      aggregates rather than splitting the file. Synthetic tests verify oversized paylo...
     path: transition/src/lib/cosmos-repository.ts
     createdAt: 2026-10-06T00:18:23Z
     prFiles:
@@ -2188,7 +2214,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190237061
-    body: Fixed in 23a5c89. The parser rejects case-insensitive duplicate upload filenames before building row-accounting keys, so File1 and File4 cannot alias on `file:row`. The synthetic test `rejects colliding File1 and File4 display filenames before row accounting` verifies `Contacts.csv` and `contacts.CS...
+    body: Fixed in 23a5c89. The parser rejects case-insensitive duplicate upload filenames before building row-accounting
+      keys, so File1 and File4 cannot alias on `file:row`. The synthetic test `rejects colliding File1 and File4 display
+      filenames before row accounting` verifies `Contacts.csv` and `contacts.CS...
     path: transition/src/lib/contact-enrichment.ts
     createdAt: 2026-10-06T00:20:23Z
     prFiles:
@@ -2232,7 +2260,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190245362
-    body: Fixed in 23a5c89. Inside the apply transaction, the repository recomputes the household matches from the current advisor and legacy number and requires exactly one match with the same household ID before writing. The synthetic test `rejects persistence when the matched household key changed after pl...
+    body: Fixed in 23a5c89. Inside the apply transaction, the repository recomputes the household matches from the current
+      advisor and legacy number and requires exactly one match with the same household ID before writing. The synthetic
+      test `rejects persistence when the matched household key changed after pl...
     path: transition/src/lib/repository.ts
     createdAt: 2026-10-06T00:21:51Z
     prFiles:
@@ -2276,7 +2306,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190247775
-    body: Fixed in 23a5c89. `batchFailure` checks both a batch-level `response.code` and any failing per-operation status; 409/412 remains mapped to a conflict. The synthetic Cosmos test `rejects a failed Cosmos batch-level response` supplies a 412, verifies apply rejects, and confirms no proposed contacts we...
+    body: Fixed in 23a5c89. `batchFailure` checks both a batch-level `response.code` and any failing per-operation status;
+      409/412 remains mapped to a conflict. The synthetic Cosmos test `rejects a failed Cosmos batch-level response`
+      supplies a 412, verifies apply rejects, and confirms no proposed contacts we...
     path: transition/src/lib/cosmos-repository.ts
     createdAt: 2026-10-06T00:22:18Z
     prFiles:
@@ -2320,7 +2352,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190251650
-    body: Fixed in 23a5c89. Normalized-equivalent saved email values are not added to the update field set, and the planned change keeps `person.email` when email itself is unchanged. The synthetic test `preserves normalized-equivalent saved values during another field update` verifies a relationship change r...
+    body: Fixed in 23a5c89. Normalized-equivalent saved email values are not added to the update field set, and the planned
+      change keeps `person.email` when email itself is unchanged. The synthetic test `preserves normalized-equivalent
+      saved values during another field update` verifies a relationship change r...
     path: transition/src/lib/contact-enrichment.ts
     createdAt: 2026-10-06T00:22:57Z
     prFiles:
@@ -2364,7 +2398,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190255692
-    body: Fixed in 23a5c89. The transaction rechecks email and phone collisions only when that field is part of the proposed patch, so a pre-existing duplicate does not block an unrelated relationship-only update; newly supplied signals remain guarded. The synthetic test `allows relationship-only updates when...
+    body: Fixed in 23a5c89. The transaction rechecks email and phone collisions only when that field is part of the proposed
+      patch, so a pre-existing duplicate does not block an unrelated relationship-only update; newly supplied signals
+      remain guarded. The synthetic test `allows relationship-only updates when...
     path: transition/src/lib/repository.ts
     createdAt: 2026-10-06T00:23:40Z
     prFiles:
@@ -2408,7 +2444,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190259586
-    body: Fixed in 23a5c89. Saved primary/secondary contact roles are merged into the incoming relationship when File4 has no role evidence for that contact, including when File4 is omitted. The synthetic test `preserves saved File4 contact roles when the optional File4 file is omitted` verifies preview and a...
+    body: Fixed in 23a5c89. Saved primary/secondary contact roles are merged into the incoming relationship when File4 has
+      no role evidence for that contact, including when File4 is omitted. The synthetic test `preserves saved File4
+      contact roles when the optional File4 file is omitted` verifies preview and a...
     path: transition/src/lib/contact-enrichment.ts
     createdAt: 2026-10-06T00:24:21Z
     prFiles:
@@ -2452,7 +2490,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190261684
-    body: Fixed in 23a5c89. File4 role evidence is tracked per contact candidate, so a File4 row for another person does not erase this contact's saved relationship. The synthetic test `preserves saved File4 contact roles when File4 only identifies a different contact` verifies preview and apply (`contact-enr...
+    body: Fixed in 23a5c89. File4 role evidence is tracked per contact candidate, so a File4 row for another person does not
+      erase this contact's saved relationship. The synthetic test `preserves saved File4 contact roles when File4 only
+      identifies a different contact` verifies preview and apply (`contact-enr...
     path: transition/src/lib/contact-enrichment.ts
     createdAt: 2026-10-06T00:24:43Z
     prFiles:
@@ -2496,7 +2536,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190268871
-    body: "Addressed in 23a5c89 with an explicit bounded full-file envelope rather than a partial-import cap: one File1 and optional File4, each up to 50,000 data rows, 5 MiB, 100 columns, and 1,000,000 retained cells total, yielding at most 200,000 contact-role candidate slots before de-duplication. The synth..."
+    body: "Addressed in 23a5c89 with an explicit bounded full-file envelope rather than a partial-import cap: one File1 and
+      optional File4, each up to 50,000 data rows, 5 MiB, 100 columns, and 1,000,000 retained cells total, yielding at
+      most 200,000 contact-role candidate slots before de-duplication. The synth..."
     path: transition/src/lib/contact-enrichment.ts
     createdAt: 2026-10-06T00:25:58Z
     prFiles:
@@ -2540,7 +2582,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190273737
-    body: Fixed in 23a5c89. The README and contracts now say any unmatched row blocks the entire file; no rows are skipped or partially applied. The UI requires every changes/issues/value-review page and one confirmation for the full atomic apply. The synthetic test `blocks the entire import when any row is u...
+    body: Fixed in 23a5c89. The README and contracts now say any unmatched row blocks the entire file; no rows are skipped
+      or partially applied. The UI requires every changes/issues/value-review page and one confirmation for the full
+      atomic apply. The synthetic test `blocks the entire import when any row is u...
     path: docs/transition/contracts.md
     createdAt: 2026-10-06T00:26:49Z
     prFiles:
@@ -2584,7 +2628,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190613296
-    body: Addressed in 420aa8a. A transaction-local contact identity index is built once per household and updated after creates/updates, rather than rescanning all contacts per change. The synthetic repository test `indexes household contact identities once for a large create batch` performs 5,000 same-house...
+    body: Addressed in 420aa8a. A transaction-local contact identity index is built once per household and updated after
+      creates/updates, rather than rescanning all contacts per change. The synthetic repository test `indexes household
+      contact identities once for a large create batch` performs 5,000 same-house...
     path: transition/src/lib/repository.ts
     createdAt: 2026-10-06T01:23:24Z
     prFiles:
@@ -2628,7 +2674,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190616234
-    body: Fixed in 420aa8a. The manifest swap atomically creates a retirement record with `retiredAt`; cleanup uses that timestamp, not the source documents’ original `_ts`, for the one-hour grace. Synthetic tests create an old generation, verify it survives for the full grace after retirement, and let a read...
+    body: Fixed in 420aa8a. The manifest swap atomically creates a retirement record with `retiredAt`; cleanup uses that
+      timestamp, not the source documents’ original `_ts`, for the one-hour grace. Synthetic tests create an old
+      generation, verify it survives for the full grace after retirement, and let a read...
     path: transition/src/lib/cosmos-repository.ts
     createdAt: 2026-10-06T01:23:58Z
     prFiles:
@@ -2672,7 +2720,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190618109
-    body: Fixed in 420aa8a. After the manifest readback confirms the new snapshot is live, stale-generation cleanup is best-effort and its errors do not turn a committed correction into an apparent failure. The synthetic `returns committed correction success when retirement cleanup is throttled` test injects ...
+    body: Fixed in 420aa8a. After the manifest readback confirms the new snapshot is live, stale-generation cleanup is
+      best-effort and its errors do not turn a committed correction into an apparent failure. The synthetic `returns
+      committed correction success when retirement cleanup is throttled` test injects ...
     path: transition/src/lib/cosmos-repository.ts
     createdAt: 2026-10-06T01:24:20Z
     prFiles:
@@ -2716,7 +2766,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4190677382
-    body: Addressed in 9c02990e. The transaction now builds and reuses household-key and account-identity indexes instead of rescanning those tables per planned change. The regression `indexes household and account keys once across a repeated multi-household batch` covers 1,000 households and 4,000 repeated c...
+    body: Addressed in 9c02990e. The transaction now builds and reuses household-key and account-identity indexes instead of
+      rescanning those tables per planned change. The regression `indexes household and account keys once across a
+      repeated multi-household batch` covers 1,000 households and 4,000 repeated c...
     path: transition/src/lib/repository.ts
     createdAt: 2026-10-06T01:36:27Z
     prFiles:
@@ -2918,12 +2970,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 67.5
+  version: "2.3"
+  hours: 34.9
   sessions: 1
   sessionHours: 6
   volumeHours: 67.5
+  compressedVolumeHours: 34.9
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

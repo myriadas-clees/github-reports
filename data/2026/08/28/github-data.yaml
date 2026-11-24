@@ -22,7 +22,7 @@ stats:
   reviewComments: 8
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 38.9
+  estimatedHours: 30.2
 dailyCommits:
   - date: 2026-08-28
     count: 11
@@ -43,7 +43,14 @@ repositories:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
 pullRequests:
   - title: "fix(auth): preserve app-specific privilege boundaries"
-    body: "### Motivation\n\n- A recent change promoted the suite-wide `myriadas_user` role to application `admin`/`hr` in several apps, creating a privilege-escalation risk by conflating platform access with app-specific admin/HR elevation. \n- The change restores the intended least-privilege model where `myriad..."
+    body: >-
+      ### Motivation
+
+
+      - A recent change promoted the suite-wide `myriadas_user` role to application `admin`/`hr` in several apps,
+      creating a privilege-escalation risk by conflating platform access with app-specific admin/HR elevation. 
+
+      - The change restores the intended least-privilege model where `myriad...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/110
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: closed
@@ -90,7 +97,8 @@ pullRequests:
       ### Motivation
 
 
-      - Close an authorization gap that allowed any `pricing_user` officer to permanently delete a recruit (and cascade-delete its model and reports) because the same officer role can also archive recruits.
+      - Close an authorization gap that allowed any `pricing_user` officer to permanently delete a recruit (and
+      cascade-delete its model and reports) because the same officer role can also archive recruits.
 
 
       ### Description
@@ -130,7 +138,8 @@ pullRequests:
       ### Motivation
 
 
-      - Prevent platform-wide `myriadas_user` from granting privileged onboarding mutations by ensuring only `onboarding_admin` maps to the internal `admin` role.
+      - Prevent platform-wide `myriadas_user` from granting privileged onboarding mutations by ensuring only
+      `onboarding_admin` maps to the internal `admin` role.
 
 
       ### Description
@@ -169,7 +178,13 @@ pullRequests:
       - onboarding/apps/dashboard/lib/auth.test.ts
       - onboarding/apps/dashboard/lib/auth.ts
   - title: Prevent shared platform role from granting PTO HR access
-    body: "### Motivation\n- A recent change treated the suite-wide `myriadas_user` platform role as equivalent to the PTO HR application role, allowing platform-only principals to receive `role: \"hr\"` and perform privileged HR operations. \n- This PR restores the intended invariant that only the configured HR a..."
+    body: >-
+      ### Motivation
+
+      - A recent change treated the suite-wide `myriadas_user` platform role as equivalent to the PTO HR application
+      role, allowing platform-only principals to receive `role: "hr"` and perform privileged HR operations. 
+
+      - This PR restores the intended invariant that only the configured HR a...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/108
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: closed
@@ -206,7 +221,8 @@ pullRequests:
       ## Why
 
 
-      Authorization role values had no single naming contract, allowing values such as PTO's `HRAdmin` to drift from the repository's lowercase snake-case convention.
+      Authorization role values had no single naming contract, allowing values such as PTO's `HRAdmin` to drift from the
+      repository's lowercase snake-case convention.
 
 
       Stacked on #107 so the documentation describes the consolidated authorization model introduced there.
@@ -256,7 +272,9 @@ pullRequests:
       ## Why
 
 
-      The suite-wide `myriadas_user` role was promoted to application administrator or HR access in several products. This conflated platform access with privileged authorization and allowed platform-only users to perform protected mutations.
+      The suite-wide `myriadas_user` role was promoted to application administrator or HR access in several products.
+      This conflated platform access with privileged authorization and allowed platform-only users to perform protected
+      mutations.
 
 
       ## What changed
@@ -405,9 +423,11 @@ pullRequests:
       - packages/db/src/ofac.ts
   - title: "docs: publish #2/#37/#39 readiness runbooks"
     body: >-
-      - Add separate, evidence-backed readiness runbooks for #2 Cosmos production readiness, #37 Pricing monitoring, and #39 monday.com sync discovery.
+      - Add separate, evidence-backed readiness runbooks for #2 Cosmos production readiness, #37 Pricing monitoring, and
+      #39 monday.com sync discovery.
 
-      - Add the blank `APPLICATIONINSIGHTS_CONNECTION_STRING` setting name to the Pricing Functions example without committing a secret.
+      - Add the blank `APPLICATIONINSIGHTS_CONNECTION_STRING` setting name to the Pricing Functions example without
+      committing a secret.
 
       - Preserve the current ...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/86
@@ -437,7 +457,8 @@ pullRequests:
       ## What changed
 
 
-      - Added an end-to-end Advisor Pricing architecture document covering static pages, browser API/base URL behavior, Azure Functions, transport seams, auth, auditing, calculations, persistence, and PDF/XLSX report snapshots.
+      - Added an end-to-end Advisor Pricing architecture document covering static pages, browser API/base URL behavior,
+      Azure Functions, transport seams, auth, auditing, calculations, persistence, and PDF/XLSX report snapshots.
 
       - Added request/data-flow diagrams and documented local versu...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/84
@@ -466,7 +487,8 @@ prsInProgress:
       ### Motivation
 
 
-      - Close an authorization gap that allowed any `pricing_user` officer to permanently delete a recruit (and cascade-delete its model and reports) because the same officer role can also archive recruits.
+      - Close an authorization gap that allowed any `pricing_user` officer to permanently delete a recruit (and
+      cascade-delete its model and reports) because the same officer role can also archive recruits.
 
 
       ### Description
@@ -502,7 +524,8 @@ prsInProgress:
       ## Why
 
 
-      Authorization role values had no single naming contract, allowing values such as PTO's `HRAdmin` to drift from the repository's lowercase snake-case convention.
+      Authorization role values had no single naming contract, allowing values such as PTO's `HRAdmin` to drift from the
+      repository's lowercase snake-case convention.
 
 
       Stacked on #107 so the documentation describes the consolidated authorization model introduced there.
@@ -539,7 +562,9 @@ prsInProgress:
       ## Why
 
 
-      The suite-wide `myriadas_user` role was promoted to application administrator or HR access in several products. This conflated platform access with privileged authorization and allowed platform-only users to perform protected mutations.
+      The suite-wide `myriadas_user` role was promoted to application administrator or HR access in several products.
+      This conflated platform access with privileged authorization and allowed platform-only users to perform protected
+      mutations.
 
 
       ## What changed
@@ -788,7 +813,8 @@ reviewComments:
     prNumber: 111
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111#discussion_r3883177861
-    body: Addressed in 98c78a3. The schema now describes `myriadas_user` as ordinary non-administrator access and explicitly notes that product user or analyst permissions may include ordinary writes.
+    body: Addressed in 98c78a3. The schema now describes `myriadas_user` as ordinary non-administrator access and explicitly
+      notes that product user or analyst permissions may include ordinary writes.
     path: docs/authorization-roles.md
     createdAt: 2026-08-28T18:47:29Z
     prFiles:
@@ -800,7 +826,8 @@ reviewComments:
     prNumber: 111
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111#discussion_r3883177953
-    body: Addressed in dda26a1 on the stacked base PR. PTO token authentication now honors `admin` and `hr_admin`, retains temporary `HRAdmin` compatibility, and preserves `read_only` precedence with focused tests.
+    body: Addressed in dda26a1 on the stacked base PR. PTO token authentication now honors `admin` and `hr_admin`, retains
+      temporary `HRAdmin` compatibility, and preserves `read_only` precedence with focused tests.
     path: infra/azure/README.md
     createdAt: 2026-08-28T18:47:30Z
     prFiles:
@@ -812,7 +839,8 @@ reviewComments:
     prNumber: 111
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111#discussion_r3883210875
-    body: Addressed in 9da5f02. The schema and Azure guidance now distinguish suite route access from PTO API authorization and state the matching Staff-record requirement for non-administrators.
+    body: Addressed in 9da5f02. The schema and Azure guidance now distinguish suite route access from PTO API authorization
+      and state the matching Staff-record requirement for non-administrators.
     path: infra/azure/README.md
     createdAt: 2026-08-28T18:52:27Z
     prFiles:
@@ -824,7 +852,9 @@ reviewComments:
     prNumber: 111
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111#discussion_r3883243836
-    body: Addressed in 8d5e03d. The established Hub topology intentionally uses `myriadas_user` as the base platform grant, so the schema and Azure guidance now explicitly require pairing it with scoped Onboarding, PTO, and Valuation roles; the Proforma direct-role exception is also documented.
+    body: Addressed in 8d5e03d. The established Hub topology intentionally uses `myriadas_user` as the base platform grant,
+      so the schema and Azure guidance now explicitly require pairing it with scoped Onboarding, PTO, and Valuation
+      roles; the Proforma direct-role exception is also documented.
     path: infra/azure/README.md
     createdAt: 2026-08-28T18:57:45Z
     prFiles:
@@ -836,7 +866,8 @@ reviewComments:
     prNumber: 111
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111#discussion_r3883243926
-    body: Addressed in 8d5e03d. `read_only` is now defined as protecting business data while allowing app-scoped personal settings such as Onboarding saved views.
+    body: Addressed in 8d5e03d. `read_only` is now defined as protecting business data while allowing app-scoped personal
+      settings such as Onboarding saved views.
     path: docs/authorization-roles.md
     createdAt: 2026-08-28T18:57:46Z
     prFiles:
@@ -848,7 +879,8 @@ reviewComments:
     prNumber: 111
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111#discussion_r3883289575
-    body: Addressed in 5aa56bd. The Staff prerequisite now applies specifically to ordinary PTO access through `myriadas_user`; `admin`, `hr_admin`, and `read_only` exceptions are explicit.
+    body: Addressed in 5aa56bd. The Staff prerequisite now applies specifically to ordinary PTO access through
+      `myriadas_user`; `admin`, `hr_admin`, and `read_only` exceptions are explicit.
     path: docs/authorization-roles.md
     createdAt: 2026-08-28T19:04:09Z
     prFiles:
@@ -872,7 +904,8 @@ reviewComments:
     prNumber: 107
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/107
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/107#discussion_r3883178189
-    body: Addressed in dda26a1. Both PTO Entra providers now accept legacy `HRAdmin` during migration while `hr_admin` remains canonical, with regression coverage for both values.
+    body: Addressed in dda26a1. Both PTO Entra providers now accept legacy `HRAdmin` during migration while `hr_admin`
+      remains canonical, with regression coverage for both values.
     path: infra/azure/pto-tracker/main.bicep
     createdAt: 2026-08-28T18:47:32Z
     prFiles:
@@ -1018,12 +1051,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 38.9
+  version: "2.3"
+  hours: 30.2
   sessions: 2
   sessionHours: 2
-  volumeHours: 38.9
+  volumeHours: 48.9
+  compressedVolumeHours: 30.2
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

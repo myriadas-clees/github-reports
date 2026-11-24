@@ -22,7 +22,7 @@ stats:
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 37.7
+  estimatedHours: 28
 dailyCommits:
   - date: 2026-08-04
     count: 17
@@ -37,7 +37,8 @@ repositories:
 pullRequests:
   - title: "fix(pricing): focus executive dashboard metrics"
     body: >-
-      - Limits the executive dashboard to **Pipeline AUM**, **Top-line revenue**, and permissioned **Revenue to Holdco**.
+      - Limits the executive dashboard to **Pipeline AUM**, **Top-line revenue**, and permissioned **Revenue to
+      Holdco**.
 
       - Removes the unrequested **Average net payout** and **Proposed net vs Current FiNet** dashboard cards.
 
@@ -76,7 +77,8 @@ pullRequests:
 
       - Adds a bottom **Save Model** action to the recruit pricing view.
 
-      - Adds bottom **Review inputs** / **Review assumptions** actions so users can return to source data without scrolling back through the workflow.
+      - Adds bottom **Review inputs** / **Review assumptions** actions so users can return to source data without
+      scrolling back through the workflow.
 
       - Includes ...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/98
@@ -178,7 +180,8 @@ pullRequests:
       - pricing/src/lib/report/pdf.tsx
   - title: "fix(pricing): give payout details room to breathe"
     body: >-
-      - Reorganize the expanded recruit payout detail into a vertical proposed-payout calculation and a separate Current FiNet benchmark.
+      - Reorganize the expanded recruit payout detail into a vertical proposed-payout calculation and a separate Current
+      FiNet benchmark.
 
       - Preserve every financial figure while giving the primary Net Payout result and comparison room to scan.
 
@@ -285,7 +288,8 @@ pullRequests:
 prsInProgress:
   - title: "fix(pricing): focus executive dashboard metrics"
     body: >-
-      - Limits the executive dashboard to **Pipeline AUM**, **Top-line revenue**, and permissioned **Revenue to Holdco**.
+      - Limits the executive dashboard to **Pipeline AUM**, **Top-line revenue**, and permissioned **Revenue to
+      Holdco**.
 
       - Removes the unrequested **Average net payout** and **Proposed net vs Current FiNet** dashboard cards.
 
@@ -365,7 +369,8 @@ prsInProgress:
       - pricing/src/lib/workstation.ts
   - title: "fix(pricing): give payout details room to breathe"
     body: >-
-      - Reorganize the expanded recruit payout detail into a vertical proposed-payout calculation and a separate Current FiNet benchmark.
+      - Reorganize the expanded recruit payout detail into a vertical proposed-payout calculation and a separate Current
+      FiNet benchmark.
 
       - Preserve every financial figure while giving the primary Net Payout result and comparison room to scan.
 
@@ -641,12 +646,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 37.7
+  version: "2.3"
+  hours: 28
   sessions: 1
   sessionHours: 2.3
-  volumeHours: 37.7
+  volumeHours: 40
+  compressedVolumeHours: 28
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

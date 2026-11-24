@@ -22,7 +22,7 @@ stats:
   reviewComments: 3
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 84.1
+  estimatedHours: 39
 dailyCommits:
   - date: 2026-08-03
     count: 27
@@ -259,9 +259,11 @@ pullRequests:
       Closes #38.
 
 
-      - Adds a Cosmos-backed atomic timer lease with conditional create, ETag-protected stale recovery, owner-safe finalization, and explicit TTL/expiry.
+      - Adds a Cosmos-backed atomic timer lease with conditional create, ETag-protected stale recovery, owner-safe
+      finalization, and explicit TTL/expiry.
 
-      - Routes both production timer and manual HTTP XML sync through the same durable Cosmos lease. A conflicting manual run is audited and reje...
+      - Routes both production timer and manual HTTP XML sync through the same durable Cosmos lease. A conflicting
+      manual run is audited and reje...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/89
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
@@ -331,9 +333,11 @@ pullRequests:
       - ofac/src/lib/sync-runner.ts
   - title: "docs: publish #2/#37/#39 readiness runbooks"
     body: >-
-      - Add separate, evidence-backed readiness runbooks for #2 Cosmos production readiness, #37 Pricing monitoring, and #39 monday.com sync discovery.
+      - Add separate, evidence-backed readiness runbooks for #2 Cosmos production readiness, #37 Pricing monitoring, and
+      #39 monday.com sync discovery.
 
-      - Add the blank `APPLICATIONINSIGHTS_CONNECTION_STRING` setting name to the Pricing Functions example without committing a secret.
+      - Add the blank `APPLICATIONINSIGHTS_CONNECTION_STRING` setting name to the Pricing Functions example without
+      committing a secret.
 
       - Preserve the current ...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/86
@@ -382,7 +386,8 @@ pullRequests:
 
       - Enforce the confirmed 92% FINET payout for every product, including fixed insurance.
 
-      - Remove unclear “OHC Advantage” wording; rename the advisory-platform basis to “Wells Advisory Platform Fee”; present FIN...
+      - Remove unclear “OHC Advantage” wording; rename the advisory-platform basis to “Wells Advisory Platform Fee”;
+      present FIN...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/83
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
@@ -455,7 +460,8 @@ pullRequests:
       ## What changed
 
 
-      - Added an end-to-end Advisor Pricing architecture document covering static pages, browser API/base URL behavior, Azure Functions, transport seams, auth, auditing, calculations, persistence, and PDF/XLSX report snapshots.
+      - Added an end-to-end Advisor Pricing architecture document covering static pages, browser API/base URL behavior,
+      Azure Functions, transport seams, auth, auditing, calculations, persistence, and PDF/XLSX report snapshots.
 
       - Added request/data-flow diagrams and documented local versu...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/84
@@ -498,7 +504,8 @@ pullRequests:
     body: >-
       - migrate the OFAC production API surface to Azure Functions through transport-neutral handlers
 
-      - preserve SQLite-backed local development via documented local Next adapters while defaulting deployed Functions to Cosmos persistence
+      - preserve SQLite-backed local development via documented local Next adapters while defaulting deployed Functions
+      to Cosmos persistence
 
       - add search, audit, manual-sync, Function transport, static API-bas...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/85
@@ -943,9 +950,11 @@ prsInProgress:
       Closes #38.
 
 
-      - Adds a Cosmos-backed atomic timer lease with conditional create, ETag-protected stale recovery, owner-safe finalization, and explicit TTL/expiry.
+      - Adds a Cosmos-backed atomic timer lease with conditional create, ETag-protected stale recovery, owner-safe
+      finalization, and explicit TTL/expiry.
 
-      - Routes both production timer and manual HTTP XML sync through the same durable Cosmos lease. A conflicting manual run is audited and reje...
+      - Routes both production timer and manual HTTP XML sync through the same durable Cosmos lease. A conflicting
+      manual run is audited and reje...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/89
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
@@ -977,9 +986,11 @@ prsInProgress:
       - ofac/src/lib/sync-runner.ts
   - title: "docs: publish #2/#37/#39 readiness runbooks"
     body: >-
-      - Add separate, evidence-backed readiness runbooks for #2 Cosmos production readiness, #37 Pricing monitoring, and #39 monday.com sync discovery.
+      - Add separate, evidence-backed readiness runbooks for #2 Cosmos production readiness, #37 Pricing monitoring, and
+      #39 monday.com sync discovery.
 
-      - Add the blank `APPLICATIONINSIGHTS_CONNECTION_STRING` setting name to the Pricing Functions example without committing a secret.
+      - Add the blank `APPLICATIONINSIGHTS_CONNECTION_STRING` setting name to the Pricing Functions example without
+      committing a secret.
 
       - Preserve the current ...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/86
@@ -1010,7 +1021,8 @@ prsInProgress:
 
       - Enforce the confirmed 92% FINET payout for every product, including fixed insurance.
 
-      - Remove unclear “OHC Advantage” wording; rename the advisory-platform basis to “Wells Advisory Platform Fee”; present FIN...
+      - Remove unclear “OHC Advantage” wording; rename the advisory-platform basis to “Wells Advisory Platform Fee”;
+      present FIN...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/83
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: merged
@@ -1049,7 +1061,8 @@ prsInProgress:
       ## What changed
 
 
-      - Added an end-to-end Advisor Pricing architecture document covering static pages, browser API/base URL behavior, Azure Functions, transport seams, auth, auditing, calculations, persistence, and PDF/XLSX report snapshots.
+      - Added an end-to-end Advisor Pricing architecture document covering static pages, browser API/base URL behavior,
+      Azure Functions, transport seams, auth, auditing, calculations, persistence, and PDF/XLSX report snapshots.
 
       - Added request/data-flow diagrams and documented local versu...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/84
@@ -1076,7 +1089,8 @@ prsInProgress:
     body: >-
       - migrate the OFAC production API surface to Azure Functions through transport-neutral handlers
 
-      - preserve SQLite-backed local development via documented local Next adapters while defaulting deployed Functions to Cosmos persistence
+      - preserve SQLite-backed local development via documented local Next adapters while defaulting deployed Functions
+      to Cosmos persistence
 
       - add search, audit, manual-sync, Function transport, static API-bas...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/85
@@ -1366,7 +1380,8 @@ reviewComments:
     prNumber: 86
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/86
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/86#discussion_r3705507124
-    body: "Addressed in commit `73d7b7d`: the provisioning section now has separate serverless (`EnableServerless`, no throughput flags), manual (`--throughput`), and autoscale (`--max-throughput`) command branches."
+    body: "Addressed in commit `73d7b7d`: the provisioning section now has separate serverless (`EnableServerless`, no
+      throughput flags), manual (`--throughput`), and autoscale (`--max-throughput`) command branches."
     path: docs/issue-2-cosmos-production-readiness.md
     createdAt: 2026-08-03T15:46:50Z
     prFiles:
@@ -1378,7 +1393,9 @@ reviewComments:
     prNumber: 86
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/86
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/86#discussion_r3705507546
-    body: "Addressed in commit `73d7b7d`: existing-resource inspection now uses `az cosmosdb sql container throughput show`, records manual/autoscale values, and explicitly records serverless as having no dedicated container throughput offer."
+    body: "Addressed in commit `73d7b7d`: existing-resource inspection now uses `az cosmosdb sql container throughput show`,
+      records manual/autoscale values, and explicitly records serverless as having no dedicated container throughput
+      offer."
     path: docs/issue-2-cosmos-production-readiness.md
     createdAt: 2026-08-03T15:46:53Z
     prFiles:
@@ -1390,7 +1407,9 @@ reviewComments:
     prNumber: 86
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/86
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/86#discussion_r3705508077
-    body: "Addressed in commit `73d7b7d`: the executable smoke sequence now performs and asserts `DELETE` rejection before archive, asserts archive success, then asserts successful `DELETE` after archive. The matrix row matches that order."
+    body: "Addressed in commit `73d7b7d`: the executable smoke sequence now performs and asserts `DELETE` rejection before
+      archive, asserts archive success, then asserts successful `DELETE` after archive. The matrix row matches that
+      order."
     path: docs/issue-2-cosmos-production-readiness.md
     createdAt: 2026-08-03T15:46:57Z
     prFiles:
@@ -1576,12 +1595,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 84.1
+  version: "2.3"
+  hours: 39
   sessions: 1
   sessionHours: 3.6
   volumeHours: 84.1
+  compressedVolumeHours: 39
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

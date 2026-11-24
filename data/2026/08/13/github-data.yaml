@@ -22,7 +22,7 @@ stats:
   reviewComments: 2
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 27.9
+  estimatedHours: 23.5
 dailyCommits:
   - date: 2026-08-13
     count: 9
@@ -90,13 +90,15 @@ pullRequests:
       ## Why
 
 
-      Enable users assigned the `read_only` role to access operational applications while preventing them from modifying business data.
+      Enable users assigned the `read_only` role to access operational applications while preventing them from modifying
+      business data.
 
 
       ## What changed
 
 
-      - Added `read_only` role recognition across Excelerate, Hub, Onboarding, Proforma, PTO Tracker, and Valuation authentication flows.
+      - Added `read_only` role recognition across Excelerate, Hub, Onboarding, Proforma, PTO Tracker, and Valuation
+      authentication flows.
 
       - Updated St...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/91
@@ -281,7 +283,8 @@ prsInProgress:
       ## Why
 
 
-      Recruit intake still followed an advisor-first flow that did not match how teams are modeled in practice. Platform assumptions also carried legacy OHC and FiNet Wells/WFAFN fee inputs that are no longer part of the pricing model.
+      Recruit intake still followed an advisor-first flow that did not match how teams are modeled in practice. Platform
+      assumptions also carried legacy OHC and FiNet Wells/WFAFN fee inputs that are no longer part of the pricing model.
 
 
       ## What changed
@@ -496,7 +499,9 @@ reviewComments:
     prNumber: 115
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115#discussion_r3776827714
-    body: Fixed in 438afa5. Both adapters now build a dedicated preview model that retains the complete totalRows count but caps flattened evidence rows at 200 before XLSX generation. The renderer uses the full count in the summary and the bounded row set in the evidence sheet; regression coverage includes 20...
+    body: Fixed in 438afa5. Both adapters now build a dedicated preview model that retains the complete totalRows count but
+      caps flattened evidence rows at 200 before XLSX generation. The renderer uses the full count in the summary and
+      the bounded row set in the evidence sheet; regression coverage includes 20...
     path: ofac/functions/src/index.ts
     createdAt: 2026-08-13T15:43:38Z
     prFiles:
@@ -536,7 +541,9 @@ reviewComments:
     prNumber: 115
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115#discussion_r3776827841
-    body: Fixed in 438afa5. The viewer now fetches with credentials, verifies response.ok and the PDF MIME type, and only then creates an object URL for the iframe. Failed and authentication responses flow to the viewer error state; object URLs are revoked and in-flight requests are aborted on cleanup.
+    body: Fixed in 438afa5. The viewer now fetches with credentials, verifies response.ok and the PDF MIME type, and only
+      then creates an object URL for the iframe. Failed and authentication responses flow to the viewer error state;
+      object URLs are revoked and in-flight requests are aborted on cleanup.
     path: ofac/src/components/pdf-report-viewer.tsx
     createdAt: 2026-08-13T15:43:39Z
     prFiles:
@@ -652,12 +659,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 27.9
+  version: "2.3"
+  hours: 23.5
   sessions: 1
   sessionHours: 2
-  volumeHours: 27.9
+  volumeHours: 30.9
+  compressedVolumeHours: 23.5
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

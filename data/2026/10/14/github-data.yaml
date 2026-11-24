@@ -22,7 +22,7 @@ stats:
   reviewComments: 23
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 92.6
+  estimatedHours: 41.9
 dailyCommits:
   - date: 2026-10-14
     count: 104
@@ -39,7 +39,9 @@ pullRequests:
     body: >-
       ## Problem
 
-      `chat history cache > preserves daily brief metadata in the local history cache` writes a chat stamped `2026-09-14T12:00Z`, then reads it back with the 30-day retention window measured against the **real** clock. On 2026-10-14 that chat aged out, so `bun run --cwd northstar test` fails on...
+      `chat history cache > preserves daily brief metadata in the local history cache` writes a chat stamped
+      `2026-09-14T12:00Z`, then reads it back with the 30-day retention window measured against the **real** clock. On
+      2026-10-14 that chat aged out, so `bun run --cwd northstar test` fails on...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/161
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: closed
@@ -73,7 +75,9 @@ pullRequests:
 
       ## Why
 
-      Real exports had three problems. Status emoji printed as mojibake: "Overall health: =Ø On track". Paragraphs were nearly double-spaced. The PDF draft editor was a short box, smaller than the preview it edits. There was also no brand mark on the PDF.
+      Real exports had three problems. Status emoji printed as mojibake: "Overall health: =Ø On track". Paragraphs were
+      nearly double-spaced. The PDF draft editor was a short box, smaller than the preview it edits. There was also no
+      brand mark on the PDF.
 
 
       ## What
@@ -155,7 +159,9 @@ pullRequests:
       - northstar/lib/markdown-edit.test.ts
       - northstar/lib/markdown-edit.ts
   - title: "release: 2026-10-15: design system, Next 16, Northstar commands and PDF, Entra group access"
-    body: One combined release for Thursday 2026-10-15. It replaces the individually reviewed PRs listed below, which were closed unmerged on 2026-10-14. Each was merged in unchanged as a real merge commit, so their history and Codex review threads stay the record of what was already flagged and handled. **Pl...
+    body: One combined release for Thursday 2026-10-15. It replaces the individually reviewed PRs listed below, which were
+      closed unmerged on 2026-10-14. Each was merged in unchanged as a real merge commit, so their history and Codex
+      review threads stay the record of what was already flagged and handled. **Pl...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: merged
@@ -865,7 +871,8 @@ pullRequests:
           - northstar/components/summarize-peek.tsx
       - &a45
         sha: 5fb6157525548ad02065b58727b8c29542ec58fc
-        message: "fix(northstar): pause chat auto-follow when the reader scrolls up, floating jump pill, sticky card action rows"
+        message: "fix(northstar): pause chat auto-follow when the reader scrolls up, floating jump pill, sticky card action
+          rows"
         url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/5fb6157525548ad02065b58727b8c29542ec58fc
         authoredAt: 2026-10-14T16:06:31Z
         files:
@@ -2522,161 +2529,197 @@ reviewComments:
     prNumber: 163
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4271814211
-    body: "Fixed in d647c78d: the raw client-name anchors on the dashboard, screenings and search tables now use `ofacBrowserHref(screeningDetailHref(id))`, matching client-intake-form. The static build sets NEXT_PUBLIC_OFAC_BASE_PATH=/ofac in scripts/build-static-next.ts. Added a note at `screeningDetailHref`..."
+    body: "Fixed in d647c78d: the raw client-name anchors on the dashboard, screenings and search tables now use
+      `ofacBrowserHref(screeningDetailHref(id))`, matching client-intake-form. The static build sets
+      NEXT_PUBLIC_OFAC_BASE_PATH=/ofac in scripts/build-static-next.ts. Added a note at `screeningDetailHref`..."
     path: ofac/src/app/page.tsx
     createdAt: 2026-10-14T14:04:12Z
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 163
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4273024311
-    body: "Fixed in 30b66acb: chat sync now accepts calendar, todo and meeting draft edits alongside email and pdf, keeping every other check and size cap."
+    body: "Fixed in 30b66acb: chat sync now accepts calendar, todo and meeting draft edits alongside email and pdf, keeping
+      every other check and size cap."
     path: hub/functions/src/northstar-chat-history.ts
     createdAt: 2026-10-14T15:46:54Z
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 163
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4273024881
-    body: "Fixed in 2363652d: Copy, response PDF export and follow-up context now apply calendar, To Do and meeting card edits. Email and pdf keep their saved-edit indexes, so earlier saved drafts still resolve."
+    body: "Fixed in 2363652d: Copy, response PDF export and follow-up context now apply calendar, To Do and meeting card
+      edits. Email and pdf keep their saved-edit indexes, so earlier saved drafts still resolve."
     path: northstar/components/ask-northstar-workspace.tsx
     createdAt: 2026-10-14T15:46:56Z
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 163
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4273830134
-    body: "Fixed in b059b4b8: calendarDraftFrom treats a midnight start as all-day only when the end is also on a day boundary, so a 00:00 start with a 45-minute end stays timed. Regression test in lib/outlook-calendar.test.ts."
+    body: "Fixed in b059b4b8: calendarDraftFrom treats a midnight start as all-day only when the end is also on a day
+      boundary, so a 00:00 start with a 45-minute end stays timed. Regression test in lib/outlook-calendar.test.ts."
     path: northstar/components/command-cards.tsx
     createdAt: 2026-10-14T17:02:36Z
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 163
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4273906445
-    body: "Fixed in 4e3d7ec1: both chat writers (SQLite in northstar-conversations.ts and Cosmos) now merge the stored message's draftEdits with the incoming ones via a shared helper in northstar-draft-edits.ts, keyed by kind:index:source. The newest editedAt wins, ties go to incoming, and the incoming payload..."
+    body: "Fixed in 4e3d7ec1: both chat writers (SQLite in northstar-conversations.ts and Cosmos) now merge the stored
+      message's draftEdits with the incoming ones via a shared helper in northstar-draft-edits.ts, keyed by
+      kind:index:source. The newest editedAt wins, ties go to incoming, and the incoming payload..."
     path: hub/functions/src/northstar-chat-history.ts
     createdAt: 2026-10-14T17:10:22Z
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 163
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4274391279
-    body: "Fixed in a9ef1674: the Open in Outlook dialog now copies only the message body (the deeplink already prefills To/Cc/Subject/Body), and the copy is reworded to say the draft opens prefilled and to paste only if the body is empty. The countdown, Cancel/Open now, popup-blocked fallback and clipboard-fa..."
+    body: "Fixed in a9ef1674: the Open in Outlook dialog now copies only the message body (the deeplink already prefills
+      To/Cc/Subject/Body), and the copy is reworded to say the draft opens prefilled and to paste only if the body is
+      empty. The countdown, Cancel/Open now, popup-blocked fallback and clipboard-fa..."
     path: northstar/components/open-outlook-dialog.tsx
     createdAt: 2026-10-14T17:59:27Z
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 163
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4274391678
-    body: "Fixed in 4dcedbd5: calendar, To Do and meeting command cards now use the same per-fence completion check as the email/PDF branch, so Add to calendar, Open in Outlook/To Do, Edit and Copy stay disabled when that fence has no closing marker. Added a test with an unclosed calendar block in a completed ..."
+    body: "Fixed in 4dcedbd5: calendar, To Do and meeting command cards now use the same per-fence completion check as the
+      email/PDF branch, so Add to calendar, Open in Outlook/To Do, Edit and Copy stay disabled when that fence has no
+      closing marker. Added a test with an unclosed calendar block in a completed ..."
     path: northstar/components/answer-markdown.tsx
     createdAt: 2026-10-14T17:59:30Z
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 163
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4275562510
-    body: "Fixed in 60372ff8: the workspace now resets chats/active chat/hydration synchronously during render when the owner changes and guards saves by the owner the chats were loaded for. Remote GET/PUT send the connection key; the server rejects mismatches with 409 connection_changed and stores/reads chats..."
+    body: "Fixed in 60372ff8: the workspace now resets chats/active chat/hydration synchronously during render when the
+      owner changes and guards saves by the owner the chats were loaded for. Remote GET/PUT send the connection key; the
+      server rejects mismatches with 409 connection_changed and stores/reads chats..."
     path: northstar/components/ask-northstar-workspace.tsx
     createdAt: 2026-10-14T19:54:50Z
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 163
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4275658799
-    body: "Fixed in 87036ccc: edits and retries now send tombstones (removedMessages with timestamps) for the superseded turns. SQLite and Cosmos drop tombstoned ids instead of unioning them back, while a stale save still cannot wipe newer turns, and mergeChatHistories applies the same rule client-side. Tests ..."
+    body: "Fixed in 87036ccc: edits and retries now send tombstones (removedMessages with timestamps) for the superseded
+      turns. SQLite and Cosmos drop tombstoned ids instead of unioning them back, while a stale save still cannot wipe
+      newer turns, and mergeChatHistories applies the same rule client-side. Tests ..."
     path: northstar/components/ask-northstar-workspace.tsx
     createdAt: 2026-10-14T20:04:23Z
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 163
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4275659212
-    body: "Fixed in af877d6f: deleteCopilotConversationMappingIfProvider is one conditional operation (SQLite DELETE ... AND copilot_conversation_id = ?; Cosmos delete with If-Match on the read ETag plus a provider-id check, 404/412 are no-ops). discardUnusedConversation uses it, with race tests on both adapte..."
+    body: "Fixed in af877d6f: deleteCopilotConversationMappingIfProvider is one conditional operation (SQLite DELETE ... AND
+      copilot_conversation_id = ?; Cosmos delete with If-Match on the read ETag plus a provider-id check, 404/412 are
+      no-ops). discardUnusedConversation uses it, with race tests on both adapte..."
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-10-14T20:04:25Z
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 163
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4276176620
-    body: "[from Codex]: Luna fixed concurrent Cosmos metadata/message saves with conditional create/replace and bounded re-read/merge retries in f3b4a149. c2fa7f64 also handles a concurrently tombstoned message as an intentional no-op. Conflict and tombstone regressions and Functions typecheck passed; the rep..."
+    body: "[from Codex]: Luna fixed concurrent Cosmos metadata/message saves with conditional create/replace and bounded
+      re-read/merge retries in f3b4a149. c2fa7f64 also handles a concurrently tombstoned message as an intentional
+      no-op. Conflict and tombstone regressions and Functions typecheck passed; the rep..."
     path: hub/functions/src/northstar-conversations.ts
     createdAt: 2026-10-14T20:56:27Z
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 163
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4276177723
-    body: "[from Codex]: Luna fixed this in 18c1775c by validating local date/time components before formatting. Impossible dates/times remain unnormalized instead of silently shifting to another deadline. Focused tests and Northstar typecheck/lint passed. The commit is now pushed; fresh CI is running."
+    body: "[from Codex]: Luna fixed this in 18c1775c by validating local date/time components before formatting. Impossible
+      dates/times remain unnormalized instead of silently shifting to another deadline. Focused tests and Northstar
+      typecheck/lint passed. The commit is now pushed; fresh CI is running."
     path: northstar/lib/command-cards.ts
     createdAt: 2026-10-14T20:56:35Z
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 163
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4276274729
-    body: "[from Codex]: Fixed in aac17bcf. A deterministic create-only Cosmos claim assigns each legacy chat to one connection before copying it. A concurrent two-connection regression passes."
+    body: "[from Codex]: Fixed in aac17bcf. A deterministic create-only Cosmos claim assigns each legacy chat to one
+      connection before copying it. A concurrent two-connection regression passes."
     path: hub/functions/src/northstar-conversations.ts
     createdAt: 2026-10-14T21:07:30Z
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 163
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4276275938
-    body: "[from Codex]: Fixed in aac17bcf. Moving a timed calendar draft now preserves its existing duration. Tests cover 45-minute and 90-minute drafts moved across days and slots."
+    body: "[from Codex]: Fixed in aac17bcf. Moving a timed calendar draft now preserves its existing duration. Tests cover
+      45-minute and 90-minute drafts moved across days and slots."
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-10-14T21:07:39Z
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 163
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4276276822
-    body: "[from Codex]: Fixed in aac17bcf. Widget customization operations now use stored preferences instead of responsive display sizes. A standard-width regression verifies unrelated widget sizes remain preserved."
+    body: "[from Codex]: Fixed in aac17bcf. Widget customization operations now use stored preferences instead of responsive
+      display sizes. A standard-width regression verifies unrelated widget sizes remain preserved."
     path: northstar/components/today-widget-grid.tsx
     createdAt: 2026-10-14T21:07:45Z
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 163
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4276366876
-    body: "[from Codex]: Fixed in 6e34a064 and e62ba8ae. Calendar and meeting cards now carry location and valid invitees through the draft and the Graph-shaped browser request into the Functions handler. The handler validates addresses and preserves the 50-attendee limit. Focused card, draft, and Functions re..."
+    body: "[from Codex]: Fixed in 6e34a064 and e62ba8ae. Calendar and meeting cards now carry location and valid invitees
+      through the draft and the Graph-shaped browser request into the Functions handler. The handler validates addresses
+      and preserves the 50-attendee limit. Focused card, draft, and Functions re..."
     path: northstar/components/command-cards.tsx
     createdAt: 2026-10-14T21:17:57Z
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 163
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4276446878
-    body: "[from Codex]: Fixed in 4dbf3c59. Adoption creates scoped copies conditionally, preserves verified existing copies and message tombstones, and removes legacy documents only after safe copying. The delayed-adoption regression preserves a newer rename and deletion. All 21 conversation tests, Functions ..."
+    body: "[from Codex]: Fixed in 4dbf3c59. Adoption creates scoped copies conditionally, preserves verified existing copies
+      and message tombstones, and removes legacy documents only after safe copying. The delayed-adoption regression
+      preserves a newer rename and deletion. All 21 conversation tests, Functions ..."
     path: hub/functions/src/northstar-conversations.ts
     createdAt: 2026-10-14T21:26:45Z
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 163
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4276550509
-    body: "[from Codex]: Fixed in d16d6e6c. The meeting output contract now requests Duration, Location, and Attendees so scheduling details reach existing cards. Focused command tests passed."
+    body: "[from Codex]: Fixed in d16d6e6c. The meeting output contract now requests Duration, Location, and Attendees so
+      scheduling details reach existing cards. Focused command tests passed."
     path: northstar/lib/at-commands.ts
     createdAt: 2026-10-14T21:38:46Z
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 163
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4276551289
-    body: "[from Codex]: Fixed in d16d6e6c. Calendar cards pass known valid attendee emails into the Outlook draft deeplink. URL and card regressions passed."
+    body: "[from Codex]: Fixed in d16d6e6c. Calendar cards pass known valid attendee emails into the Outlook draft deeplink.
+      URL and card regressions passed."
     path: northstar/components/command-cards.tsx
     createdAt: 2026-10-14T21:38:52Z
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 163
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4276551993
-    body: "[from Codex]: Fixed in d16d6e6c. Pricing reads the authenticated user legacy settings and uses the existing theme migration helper, preserving any existing shared preference. Pricing regressions, typecheck, and lint passed."
+    body: "[from Codex]: Fixed in d16d6e6c. Pricing reads the authenticated user legacy settings and uses the existing theme
+      migration helper, preserving any existing shared preference. Pricing regressions, typecheck, and lint passed."
     path: pricing/src/app/layout.tsx
     createdAt: 2026-10-14T21:38:58Z
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 163
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4276631431
-    body: "[from Codex]: Fixed in fde90716. Explicit multi-day all-day ranges are preserved when created and moved, using calendar-day arithmetic across DST. DST tests, Northstar typecheck, and lint passed."
+    body: "[from Codex]: Fixed in fde90716. Explicit multi-day all-day ranges are preserved when created and moved, using
+      calendar-day arithmetic across DST. DST tests, Northstar typecheck, and lint passed."
     path: northstar/lib/outlook-calendar.ts
     createdAt: 2026-10-14T21:48:45Z
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 163
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163#discussion_r4276632337
-    body: "[from Codex]: Fixed in 68049115 without pruning deletion evidence. Sync and persisted merges retain all tombstones within a 256 KiB UTF-8 metadata ceiling instead of rejecting or truncating at 1,000 entries. SQLite and Cosmos regressions verify 1,001 deletions survive stale saves and oversized paylo..."
+    body: "[from Codex]: Fixed in 68049115 without pruning deletion evidence. Sync and persisted merges retain all
+      tombstones within a 256 KiB UTF-8 metadata ceiling instead of rejecting or truncating at 1,000 entries. SQLite and
+      Cosmos regressions verify 1,001 deletions survive stale saves and oversized paylo..."
     path: northstar/components/ask-northstar-workspace.tsx
     createdAt: 2026-10-14T21:48:51Z
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 157
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/157
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/157#discussion_r4271460544
-    body: "Deferred: whether exported PDFs should carry the answer's supporting sources is a product decision for the client (the UI shows them; the export intentionally contains the deliverable only for now). Tracked as a follow-up rather than changed in this PR."
+    body: "Deferred: whether exported PDFs should carry the answer's supporting sources is a product decision for the client
+      (the UI shows them; the export intentionally contains the deliverable only for now). Tracked as a follow-up rather
+      than changed in this PR."
     path: northstar/components/ask-northstar-workspace.tsx
     createdAt: 2026-10-14T13:34:13Z
 aiReviews:
@@ -3013,12 +3056,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 92.6
+  version: "2.3"
+  hours: 41.9
   sessions: 2
   sessionHours: 6.5
-  volumeHours: 92.6
+  volumeHours: 95.6
+  compressedVolumeHours: 41.9
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

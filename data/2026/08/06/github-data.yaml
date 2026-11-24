@@ -22,7 +22,7 @@ stats:
   reviewComments: 2
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 27.1
+  estimatedHours: 26.4
 dailyCommits:
   - date: 2026-08-06
     count: 9
@@ -134,7 +134,8 @@ pullRequests:
       - pricing/src/lib/new-recruit.ts
   - title: "feat: hub home, OFAC intake UX, and pricing architecture docs"
     body: >-
-      - Return-to-Hub Home button in shared `AppShell` (myriadas-style), with `NEXT_PUBLIC_HUB_URL` injected by local launchers and suite static builds
+      - Return-to-Hub Home button in shared `AppShell` (myriadas-style), with `NEXT_PUBLIC_HUB_URL` injected by local
+      launchers and suite static builds
 
       - OFAC intake defaults country to United States and auto-opens the new screening after create
 
@@ -402,7 +403,8 @@ reviewComments:
     prNumber: 107
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/107
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/107#discussion_r3731761288
-    body: Not actionable. The SVG viewBox matches the new wordmark’s ink bounds (wide mark). Comparing to the old 2111×490 PNG canvas is misleading; padding the viewBox would only add empty space, not enlarge the glyphs.
+    body: Not actionable. The SVG viewBox matches the new wordmark’s ink bounds (wide mark). Comparing to the old 2111×490
+      PNG canvas is misleading; padding the viewBox would only add empty space, not enlarge the glyphs.
     path: packages/brand/src/logo-paths.ts
     createdAt: 2026-08-06T20:39:08Z
     prFiles:
@@ -443,7 +445,8 @@ reviewComments:
     prNumber: 107
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/107
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/107#discussion_r3731761394
-    body: Not actionable. Source mark is navy Oxford/Harriman with a gold X accent; primary/accent path split matches that artwork.
+    body: Not actionable. Source mark is navy Oxford/Harriman with a gold X accent; primary/accent path split matches that
+      artwork.
     path: packages/ui/src/brand-logo.tsx
     createdAt: 2026-08-06T20:39:09Z
     prFiles:
@@ -556,12 +559,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 27.1
+  version: "2.3"
+  hours: 26.4
   sessions: 5
   sessionHours: 3.7
-  volumeHours: 27.1
+  volumeHours: 36.8
+  compressedVolumeHours: 26.4
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

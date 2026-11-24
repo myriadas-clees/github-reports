@@ -22,7 +22,7 @@ stats:
   reviewComments: 5
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 28
+  estimatedHours: 22.9
 dailyCommits:
   - date: 2026-09-14
     count: 10
@@ -813,7 +813,8 @@ reviewComments:
     prNumber: 123
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/123
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/123#discussion_r4005579243
-    body: Fixed in b99eb64. Development mode now permits both local apps and their stats when `/.auth/me` is unavailable; production retains role-based filtering and request gating.
+    body: Fixed in b99eb64. Development mode now permits both local apps and their stats when `/.auth/me` is unavailable;
+      production retains role-based filtering and request gating.
     path: hub/components/hub-launcher.tsx
     createdAt: 2026-09-14T13:19:41Z
     prFiles:
@@ -823,7 +824,9 @@ reviewComments:
     prNumber: 121
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121#discussion_r4007116634
-    body: "[from Codex]: Fixed in 57bd084. Stopped and errored turns now fork subsequent submissions into a fresh chat. Both composer and dashboard entry points enforce this. Tests and a local browser check confirm that the interrupted provider conversation is not reused."
+    body: "[from Codex]: Fixed in 57bd084. Stopped and errored turns now fork subsequent submissions into a fresh chat. Both
+      composer and dashboard entry points enforce this. Tests and a local browser check confirm that the interrupted
+      provider conversation is not reused."
     path: northstar/components/ask-northstar-workspace.tsx
     createdAt: 2026-09-14T16:07:00Z
     prFiles:
@@ -919,7 +922,8 @@ reviewComments:
     prNumber: 121
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121#discussion_r4007120080
-    body: "[from Codex]: Fixed in 57bd084. Invalidates the application user's stored Copilot mappings and cached briefs before saving a different Microsoft account. User isolation and paginated Cosmos deletion are tested."
+    body: "[from Codex]: Fixed in 57bd084. Invalidates the application user's stored Copilot mappings and cached briefs
+      before saving a different Microsoft account. User isolation and paginated Cosmos deletion are tested."
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-09-14T16:07:21Z
     prFiles:
@@ -1015,7 +1019,9 @@ reviewComments:
     prNumber: 121
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121#discussion_r4007120801
-    body: "[from Codex]: Fixed in 57bd084. Brief follow-ups copy the visible snapshot into a fresh UUID chat and send the snapshot as reference context for the new provider conversation. Browser validation confirms the shared cached conversation is not reused."
+    body: "[from Codex]: Fixed in 57bd084. Brief follow-ups copy the visible snapshot into a fresh UUID chat and send the
+      snapshot as reference context for the new provider conversation. Browser validation confirms the shared cached
+      conversation is not reused."
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-09-14T16:07:26Z
     prFiles:
@@ -1111,7 +1117,8 @@ reviewComments:
     prNumber: 121
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121#discussion_r4007121501
-    body: "[from Codex]: Fixed in 57bd084. End-of-day generation starts after 5 PM local time, with scheduling boundaries at 5 PM and midnight. Tests cover morning, evening, and rollover."
+    body: "[from Codex]: Fixed in 57bd084. End-of-day generation starts after 5 PM local time, with scheduling boundaries at
+      5 PM and midnight. Tests cover morning, evening, and rollover."
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-09-14T16:07:31Z
     prFiles:
@@ -1271,12 +1278,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 28
+  version: "2.3"
+  hours: 22.9
   sessions: 3
   sessionHours: 2.7
-  volumeHours: 28
+  volumeHours: 29.7
+  compressedVolumeHours: 22.9
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

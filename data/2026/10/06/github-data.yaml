@@ -22,7 +22,7 @@ stats:
   reviewComments: 36
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 132.9
+  estimatedHours: 56.4
 dailyCommits:
   - date: 2026-10-06
     count: 58
@@ -44,7 +44,9 @@ repositories:
 pullRequests:
   - title: "fix(northstar): recognize Microsoft consent errors wrapped in invalid_grant"
     body: >-
-      Microsoft can return a missing-consent failure as `invalid_grant` with `suberror=consent_required` or error code `65001`. Northstar classified that response as an expired session, exposing silent recovery that cannot satisfy consent.
+      Microsoft can return a missing-consent failure as `invalid_grant` with `suberror=consent_required` or error code
+      `65001`. Northstar classified that response as an expired session, exposing silent recovery that cannot satisfy
+      consent.
 
 
       Recognize these structured consent markers, return `403 consent_r...
@@ -85,7 +87,9 @@ pullRequests:
       - northstar/components/northstar-recovery.dom.test.ts
       - northstar/components/northstar-recovery.fixture.tsx
   - title: Stabilize Northstar entry and asynchronous recovery
-    body: Northstar entry and interaction could lose focus or remain stuck while session checks and Microsoft requests were loading. Source inspection and synthetic tests verified link remounts, shifting launch controls, session-probe races, unbounded reads, stale async completions, and missing retry/cancel r...
+    body: Northstar entry and interaction could lose focus or remain stuck while session checks and Microsoft requests were
+      loading. Source inspection and synthetic tests verified link remounts, shifting launch controls, session-probe
+      races, unbounded reads, stale async completions, and missing retry/cancel r...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/148
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: merged
@@ -178,7 +182,9 @@ pullRequests:
       - packages/auth/src/iframe-login.fixture.tsx
       - packages/auth/src/iframe-login.tsx
   - title: "fix(northstar): stop redundant user consent after tenant approval"
-    body: New Northstar users were forced through Microsoft consent because OAuth start treated an empty per-user connection record as evidence that consent was missing. `prompt=consent` can still block users after tenant-wide admin approval. Interactive connect and explicit scope upgrades now use account sel...
+    body: New Northstar users were forced through Microsoft consent because OAuth start treated an empty per-user connection
+      record as evidence that consent was missing. `prompt=consent` can still block users after tenant-wide admin
+      approval. Interactive connect and explicit scope upgrades now use account sel...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/149
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: merged
@@ -248,7 +254,9 @@ pullRequests:
       - northstar/components/northstar-stability.fixture.tsx
       - northstar/components/settings-workspace.tsx
   - title: "feat(transition): add censored offline CSV diagnostic review"
-    body: Administrators need to inspect contact-enrichment problems with an agent while keeping original client CSVs and saved records in their own trusted session. This adds a Settings flow for Accounts.csv and optional Households.csv that prepares censored structural evidence, lets the human inspect the co...
+    body: Administrators need to inspect contact-enrichment problems with an agent while keeping original client CSVs and
+      saved records in their own trusted session. This adds a Settings flow for Accounts.csv and optional Households.csv
+      that prepares censored structural evidence, lets the human inspect the co...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/148
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: open
@@ -362,7 +370,9 @@ pullRequests:
       - transition/src/lib/handlers.ts
   - title: "feat(transition): retain multiple contact methods per person"
     body: >-
-      Accounts CSV alternate email/phone columns belong to the same primary person. Scalar storage and secondary-owner assignment dropped legitimate methods or forced incorrect choices. This retains every distinct method for the verified person throughout storage, API, preview, and contact editors.
+      Accounts CSV alternate email/phone columns belong to the same primary person. Scalar storage and secondary-owner
+      assignment dropped legitimate methods or forced incorrect choices. This retains every distinct method for the
+      verified person throughout storage, API, preview, and contact editors.
 
 
       Sourc...
@@ -487,7 +497,8 @@ pullRequests:
           - transition/src/lib/contact-enrichment.ts
       - &a33
         sha: bd2e436af2b0fbb5713beed1b4be2f5ce192a5d0
-        message: Merge remote-tracking branch 'refs/remotes/parent/feat/transition-csv-contact-details' into feat/transition-multiple-contact-methods
+        message: Merge remote-tracking branch 'refs/remotes/parent/feat/transition-csv-contact-details' into
+          feat/transition-multiple-contact-methods
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/bd2e436af2b0fbb5713beed1b4be2f5ce192a5d0
         authoredAt: 2026-10-06T21:25:06Z
         files:
@@ -512,7 +523,8 @@ pullRequests:
           - transition/src/lib/contact-methods.ts
       - &a38
         sha: 1e053f67db78607d023cf1f376a781379a41e027
-        message: Merge remote-tracking branch 'refs/remotes/parent/feat/transition-csv-contact-details' into feat/transition-multiple-contact-methods
+        message: Merge remote-tracking branch 'refs/remotes/parent/feat/transition-csv-contact-details' into
+          feat/transition-multiple-contact-methods
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/1e053f67db78607d023cf1f376a781379a41e027
         authoredAt: 2026-10-06T21:46:27Z
         files:
@@ -761,7 +773,8 @@ pullRequests:
       ## What changed
 
 
-      Gives the Notes editor 12 rows, an 18rem minimum height, and vertical resizing. Required and due-date fields sit beside Notes on large screens and stack above it on smaller screens. Save behavior and the 2,000...
+      Gives the Notes editor 12 rows, an 18rem minimum height, and vertical resizing. Required and due-date fields sit
+      beside Notes on large screens and stack above it on smaller screens. Save behavior and the 2,000...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/146
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: merged
@@ -798,7 +811,8 @@ pullRequests:
       ## What changed
 
 
-      Displays household identifiers as rep codes, normalizes whitespace for matching and filters while preserving imported source values, and offers person choices and rep-ba...
+      Displays household identifiers as rep codes, normalizes whitespace for matching and filters while preserving
+      imported source values, and offers person choices and rep-ba...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/144
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: merged
@@ -828,7 +842,9 @@ pullRequests:
       - transition/src/lib/repository.ts
   - title: "feat(transition): import CSV household contact details"
     body: >-
-      Populated Transition workspaces need a safe way to correct names and enrich household contact details from the retained CSV layouts. The existing Excel import initializes an empty workspace and is not used for these corrections.
+      Populated Transition workspaces need a safe way to correct names and enrich household contact details from the
+      retained CSV layouts. The existing Excel import initializes an empty workspace and is not used for these
+      corrections.
 
 
       This adds an administrator-only full-file CSV preview and confirmation...
@@ -1010,7 +1026,9 @@ pullRequests:
       - transition/src/lib/repository.ts
 prsInProgress:
   - title: "feat(transition): add censored offline CSV diagnostic review"
-    body: Administrators need to inspect contact-enrichment problems with an agent while keeping original client CSVs and saved records in their own trusted session. This adds a Settings flow for Accounts.csv and optional Households.csv that prepares censored structural evidence, lets the human inspect the co...
+    body: Administrators need to inspect contact-enrichment problems with an agent while keeping original client CSVs and
+      saved records in their own trusted session. This adds a Settings flow for Accounts.csv and optional Households.csv
+      that prepares censored structural evidence, lets the human inspect the co...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/148
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: open
@@ -1056,7 +1074,9 @@ prsInProgress:
       - transition/src/lib/diagnostic-viewer.ts
       - transition/src/lib/handlers.ts
   - title: "perf(transition): cache loaded sections for instant revisits"
-    body: Section navigation currently refetches data whenever a route remounts, producing visible delays even when the user recently viewed the same section. This change adds a verified-identity-scoped, memory-only cache for dashboard, household, account list, exception, and account detail reads. Fresh entri...
+    body: Section navigation currently refetches data whenever a route remounts, producing visible delays even when the user
+      recently viewed the same section. This change adds a verified-identity-scoped, memory-only cache for dashboard,
+      household, account list, exception, and account detail reads. Fresh entri...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: open
@@ -1099,7 +1119,8 @@ prsInProgress:
           - transition/src/lib/hooks/use-transition-read.ts
       - &a32
         sha: c4356900df10b4703544ca54f843c312a1fbb698
-        message: Merge branch 'main' of https://github.com/Myriad-Advisor-Solutions/myriadas-apps into codex/transition-section-cache-main
+        message: Merge branch 'main' of https://github.com/Myriad-Advisor-Solutions/myriadas-apps into
+          codex/transition-section-cache-main
         url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c4356900df10b4703544ca54f843c312a1fbb698
         authoredAt: 2026-10-06T21:20:13Z
         files:
@@ -1139,7 +1160,9 @@ prsInProgress:
       - transition/src/lib/repository.test.ts
       - transition/src/lib/repository.ts
   - title: "feat(transition): add click-to-call contact links"
-    body: Add click-to-call actions for Transition contact phone numbers using validated standard `tel:` links. Preserve the stored/displayed number formatting, suppress call links for blank or invalid numbers, and label links for assistive technology. The UI explains that links use the device’s configured ca...
+    body: Add click-to-call actions for Transition contact phone numbers using validated standard `tel:` links. Preserve the
+      stored/displayed number formatting, suppress call links for blank or invalid numbers, and label links for
+      assistive technology. The UI explains that links use the device’s configured ca...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/143
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: open
@@ -1498,13 +1521,16 @@ commitMessages:
       - "feat(transition): add rep code assignment choices (#144)"
       - "fix(transition): support hash-style phone extensions"
       - "fix(transition): preserve phone extensions on contact edits"
-      - Merge branch 'main' of https://github.com/Myriad-Advisor-Solutions/myriadas-apps into codex/transition-section-cache-main
-      - Merge remote-tracking branch 'refs/remotes/parent/feat/transition-csv-contact-details' into feat/transition-multiple-contact-methods
+      - Merge branch 'main' of https://github.com/Myriad-Advisor-Solutions/myriadas-apps into
+        codex/transition-section-cache-main
+      - Merge remote-tracking branch 'refs/remotes/parent/feat/transition-csv-contact-details' into
+        feat/transition-multiple-contact-methods
       - "fix(transition): address diagnostic review feedback"
       - "fix(transition): bound value review and validate phone digits"
       - "fix(transition): address contact review feedback"
       - "fix(transition): improve diagnostic row provenance"
-      - Merge remote-tracking branch 'refs/remotes/parent/feat/transition-csv-contact-details' into feat/transition-multiple-contact-methods
+      - Merge remote-tracking branch 'refs/remotes/parent/feat/transition-csv-contact-details' into
+        feat/transition-multiple-contact-methods
       - "test(transition): assert imported phone base errors"
       - "fix(transition): paginate value review evidence"
       - "fix(transition): restore complete value review regression"
@@ -2981,7 +3007,9 @@ reviewComments:
     prNumber: 151
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/151
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/151#discussion_r4197953957
-    body: Actionable; fixed in 7b00f70. CONSENT-FLOW.md now documents the narrow invalid_grant exception for structured suberror=consent_required or error_codes containing 65001, precedence over session recovery, the 403 / consentRequired / reauthRequired contract, and preservation of the interactive callback...
+    body: Actionable; fixed in 7b00f70. CONSENT-FLOW.md now documents the narrow invalid_grant exception for structured
+      suberror=consent_required or error_codes containing 65001, precedence over session recovery, the 403 /
+      consentRequired / reauthRequired contract, and preservation of the interactive callback...
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-10-06T16:36:35Z
     prFiles:
@@ -2995,7 +3023,9 @@ reviewComments:
     prNumber: 148
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/148
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/148#discussion_r4200629038
-    body: Fixed in `69e41fa61ec177e3a3645b70b9afb12e03519b11`. Reset now clears the pending/working lock immediately and invalidates the old operation token; a stale finalizer can only release its own token. The regression test covers cancel, starting a new prepare, then settling the old request first while t...
+    body: Fixed in `69e41fa61ec177e3a3645b70b9afb12e03519b11`. Reset now clears the pending/working lock immediately and
+      invalidates the old operation token; a stale finalizer can only release its own token. The regression test covers
+      cancel, starting a new prepare, then settling the old request first while t...
     path: transition/src/components/diagnostic-import.tsx
     createdAt: 2026-10-06T21:30:13Z
     prFiles:
@@ -3029,7 +3059,9 @@ reviewComments:
     prNumber: 148
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/148
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/148#discussion_r4200630693
-    body: Fixed in `69e41fa61ec177e3a3645b70b9afb12e03519b11`. SQLite capture now serializes the read-only source within one read transaction, opens that snapshot as an in-memory disposable copy, migrates it, then exports. A synthetic legacy-schema test covers a missing `source_records` table and verifies sou...
+    body: Fixed in `69e41fa61ec177e3a3645b70b9afb12e03519b11`. SQLite capture now serializes the read-only source within one
+      read transaction, opens that snapshot as an in-memory disposable copy, migrates it, then exports. A synthetic
+      legacy-schema test covers a missing `source_records` table and verifies sou...
     path: transition/src/lib/diagnostic-baseline.ts
     createdAt: 2026-10-06T21:30:26Z
     prFiles:
@@ -3063,7 +3095,9 @@ reviewComments:
     prNumber: 148
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/148
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/148#discussion_r4200744216
-    body: Addressed in commit `de0764d`. Internal contact source rows now project to opaque diagnostic row IDs for name/role-only contact changes, including creates and relationship-only updates without method sources. They are excluded from ordinary preview output and preview hashing. Added synthetic regress...
+    body: Addressed in commit `de0764d`. Internal contact source rows now project to opaque diagnostic row IDs for
+      name/role-only contact changes, including creates and relationship-only updates without method sources. They are
+      excluded from ordinary preview output and preview hashing. Added synthetic regress...
     path: transition/src/lib/diagnostic-projection.ts
     createdAt: 2026-10-06T21:45:33Z
     prFiles:
@@ -3097,7 +3131,9 @@ reviewComments:
     prNumber: 148
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/148
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/148#discussion_r4200745108
-    body: Addressed in commit `de0764d`. Retained method provenance now matches on method kind and value identity, so a changed uploaded value at the same filename/row/field/label stays linked to the uploaded row. Added synthetic regression coverage for the retained and changed values. The Transition suite pa...
+    body: Addressed in commit `de0764d`. Retained method provenance now matches on method kind and value identity, so a
+      changed uploaded value at the same filename/row/field/label stays linked to the uploaded row. Added synthetic
+      regression coverage for the retained and changed values. The Transition suite pa...
     path: transition/src/lib/diagnostic-projection.ts
     createdAt: 2026-10-06T21:45:40Z
     prFiles:
@@ -3131,7 +3167,9 @@ reviewComments:
     prNumber: 148
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/148
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/148#discussion_r4196346069
-    body: "Actionable. Fixed in 2ec405b: dispatched Cosmos writes receive neither the caller's abort signal nor the default read deadline signal. The caller and queued read waiters still receive bounded errors, while the refresh lock remains held until the underlying write settles. Synthetic regressions model ..."
+    body: "Actionable. Fixed in 2ec405b: dispatched Cosmos writes receive neither the caller's abort signal nor the default
+      read deadline signal. The caller and queued read waiters still receive bounded errors, while the refresh lock
+      remains held until the underlying write settles. Synthetic regressions model ..."
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-10-06T14:12:53Z
     prFiles:
@@ -3166,7 +3204,9 @@ reviewComments:
     prNumber: 148
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/148
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/148#discussion_r4196347455
-    body: "Actionable. Fixed in 2ec405b: the session-recovery guard now uses the same development exemption as the existing connection and unauthorized-session paths. Production session and role requirements remain unchanged. A synthetic plain Next development fixture returns 404 from /.auth/me and verifies th..."
+    body: "Actionable. Fixed in 2ec405b: the session-recovery guard now uses the same development exemption as the existing
+      connection and unauthorized-session paths. Production session and role requirements remain unchanged. A synthetic
+      plain Next development fixture returns 404 from /.auth/me and verifies th..."
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-10-06T14:13:00Z
     prFiles:
@@ -3201,7 +3241,9 @@ reviewComments:
     prNumber: 148
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/148
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/148#discussion_r4196348337
-    body: "Actionable. Fixed in 2ec405b: known HTTP failures preserve their specific guidance and still reject for optimistic rollback, without falling into the uncertain-outcome handler or marking unrelated Microsoft data stale. A 403 retains the reconnect message; transport failures/timeouts retain manual re..."
+    body: "Actionable. Fixed in 2ec405b: known HTTP failures preserve their specific guidance and still reject for
+      optimistic rollback, without falling into the uncertain-outcome handler or marking unrelated Microsoft data stale.
+      A 403 retains the reconnect message; transport failures/timeouts retain manual re..."
     path: northstar/components/northstar-dashboard.tsx
     createdAt: 2026-10-06T14:13:05Z
     prFiles:
@@ -3236,7 +3278,9 @@ reviewComments:
     prNumber: 147
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/147
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/147#discussion_r4196651278
-    body: "Actionable; fixed in a51845135b2a9ba5ff2117f1c28f3a7330e72c36. Manual creates and edits now derive provenance from server-loaded methods matched by kind and approved normalized identity. Client records are ignored: retained equivalent methods keep their saved sources, while new or distinctly changed..."
+    body: "Actionable; fixed in a51845135b2a9ba5ff2117f1c28f3a7330e72c36. Manual creates and edits now derive provenance
+      from server-loaded methods matched by kind and approved normalized identity. Client records are ignored: retained
+      equivalent methods keep their saved sources, while new or distinctly changed..."
     path: transition/src/lib/handlers.ts
     createdAt: 2026-10-06T14:38:47Z
     prFiles:
@@ -3300,7 +3344,9 @@ reviewComments:
     prNumber: 147
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/147
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/147#discussion_r4201401817
-    body: Addressed at the current PR head (`8280cf3`). Both account edit and add handlers call `tryContactMethodFields`, which catches validation errors, reports them through the form error state, and returns before calling the API. Regression coverage is in `components/contact-methods.test.ts`.
+    body: Addressed at the current PR head (`8280cf3`). Both account edit and add handlers call `tryContactMethodFields`,
+      which catches validation errors, reports them through the form error state, and returns before calling the API.
+      Regression coverage is in `components/contact-methods.test.ts`.
     path: transition/src/components/transition-workspace.tsx
     createdAt: 2026-10-06T23:29:21Z
     prFiles:
@@ -3364,7 +3410,9 @@ reviewComments:
     prNumber: 147
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/147
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/147#discussion_r4201402240
-    body: Addressed at the current PR head (`8280cf3`). `isValidContactPhone` counts digits in the captured base number separately from extension digits, and regression cases for `1x123456` and `12 x 12345` are covered in `contact-methods.test.ts` and `contact-enrichment-phone.test.ts`.
+    body: Addressed at the current PR head (`8280cf3`). `isValidContactPhone` counts digits in the captured base number
+      separately from extension digits, and regression cases for `1x123456` and `12 x 12345` are covered in
+      `contact-methods.test.ts` and `contact-enrichment-phone.test.ts`.
     path: transition/src/lib/contact-methods.ts
     createdAt: 2026-10-06T23:29:27Z
     prFiles:
@@ -3428,7 +3476,9 @@ reviewComments:
     prNumber: 147
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/147
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/147#discussion_r4201402629
-    body: Addressed at the current PR head (`8280cf3`). `parseCsv` rejects any original column heading longer than 64 characters before copying headings into `sourceFields`; the size-limit regression is covered in `contact-enrichment.test.ts`.
+    body: Addressed at the current PR head (`8280cf3`). `parseCsv` rejects any original column heading longer than 64
+      characters before copying headings into `sourceFields`; the size-limit regression is covered in
+      `contact-enrichment.test.ts`.
     path: transition/src/lib/contact-enrichment.ts
     createdAt: 2026-10-06T23:29:31Z
     prFiles:
@@ -3492,7 +3542,9 @@ reviewComments:
     prNumber: 143
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/143
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/143#discussion_r4200495547
-    body: "Fixed in fac7939: `contactPhoneHref` now recognizes `#` as a stored extension separator and emits the extension digits as `;ext=`. Added coverage for `515-555-0123#12` and malformed hash suffixes; invalid phone values still produce no call link."
+    body: "Fixed in fac7939: `contactPhoneHref` now recognizes `#` as a stored extension separator and emits the extension
+      digits as `;ext=`. Added coverage for `515-555-0123#12` and malformed hash suffixes; invalid phone values still
+      produce no call link."
     path: transition/src/lib/contact-phone.ts
     createdAt: 2026-10-06T21:13:13Z
     prFiles:
@@ -3507,7 +3559,9 @@ reviewComments:
     prNumber: 142
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142#discussion_r4195669606
-    body: Addressed. `networkRequest` now routes data 401s through `deferTransitionAuthFailure`, tagged with the request session and verification-success count. A later successful `/auth/me` check suppresses this stale 401; covered by `ignores an older data request's auth failure after same-identity verificat...
+    body: Addressed. `networkRequest` now routes data 401s through `deferTransitionAuthFailure`, tagged with the request
+      session and verification-success count. A later successful `/auth/me` check suppresses this stale 401; covered by
+      `ignores an older data request's auth failure after same-identity verificat...
     path: transition/src/lib/api/client.ts
     createdAt: 2026-10-06T13:11:13Z
     prFiles:
@@ -3521,7 +3575,9 @@ reviewComments:
     prNumber: 142
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142#discussion_r4195672564
-    body: Addressed. Data 401s are deferred while an `/auth/me` verification ticket is pending, so they cannot invalidate the shell before that check settles. `keeps a session when requests return 401 before verification later succeeds` returns the data 401s first, then confirms that synthetic verification su...
+    body: Addressed. Data 401s are deferred while an `/auth/me` verification ticket is pending, so they cannot invalidate
+      the shell before that check settles. `keeps a session when requests return 401 before verification later succeeds`
+      returns the data 401s first, then confirms that synthetic verification su...
     path: transition/src/lib/api/client.ts
     createdAt: 2026-10-06T13:11:30Z
     prFiles:
@@ -3535,7 +3591,9 @@ reviewComments:
     prNumber: 142
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142#discussion_r4195675333
-    body: Addressed. When verification ends transiently, deferred data 401s are evaluated after pending checks settle; if no verification succeeded for that session, auth failure is applied. Covered by `defers 401s from requests started both before and during verification` with a transient outcome.
+    body: Addressed. When verification ends transiently, deferred data 401s are evaluated after pending checks settle; if no
+      verification succeeded for that session, auth failure is applied. Covered by `defers 401s from requests started
+      both before and during verification` with a transient outcome.
     path: transition/src/lib/api/client.ts
     createdAt: 2026-10-06T13:11:47Z
     prFiles:
@@ -3549,7 +3607,9 @@ reviewComments:
     prNumber: 142
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142#discussion_r4195678136
-    body: "Addressed. The shell accepts a successful, non-invalidated overlapping verification even after a newer check fails transiently, and clears the transient error when applying that success. Synthetic tests cover both completion orders: `retains an earlier successful verification when a newer overlap fa..."
+    body: "Addressed. The shell accepts a successful, non-invalidated overlapping verification even after a newer check
+      fails transiently, and clears the transient error when applying that success. Synthetic tests cover both
+      completion orders: `retains an earlier successful verification when a newer overlap fa..."
     path: transition/src/components/transition-shell.tsx
     createdAt: 2026-10-06T13:12:04Z
     prFiles:
@@ -3563,7 +3623,9 @@ reviewComments:
     prNumber: 142
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142#discussion_r4195680971
-    body: Addressed. Requests started during a pending verification use the same deferred 401 arbitration as earlier requests. `keeps a session when requests return 401 before verification later succeeds` includes a request started after verification begins and returning 401 before the synthetic `/auth/me` su...
+    body: Addressed. Requests started during a pending verification use the same deferred 401 arbitration as earlier
+      requests. `keeps a session when requests return 401 before verification later succeeds` includes a request started
+      after verification begins and returning 401 before the synthetic `/auth/me` su...
     path: transition/src/lib/api/client.ts
     createdAt: 2026-10-06T13:12:21Z
     prFiles:
@@ -3577,7 +3639,9 @@ reviewComments:
     prNumber: 142
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142#discussion_r4195851440
-    body: Addressed. A 403 is now treated as a local read invalidation, so the mounted hook drops previously cached data while preserving stale data for transient failures. Added synthetic coverage for the 403 classification; the Transition suite passes (152 tests), typecheck/lint/build pass, and exact-head C...
+    body: Addressed. A 403 is now treated as a local read invalidation, so the mounted hook drops previously cached data
+      while preserving stale data for transient failures. Added synthetic coverage for the 403 classification; the
+      Transition suite passes (152 tests), typecheck/lint/build pass, and exact-head C...
     path: transition/src/lib/hooks/use-transition-read.ts
     createdAt: 2026-10-06T13:28:55Z
     prFiles:
@@ -3591,7 +3655,9 @@ reviewComments:
     prNumber: 142
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142#discussion_r4195852689
-    body: Addressed. Queue status handlers now await the forced refresh, and queue controls stay disabled while it runs or when refresh leaves an error, preventing another edit with the stale version. Transition suite (152 tests), typecheck, lint, production build, and exact-head CI pass at `a419877718d40a193...
+    body: Addressed. Queue status handlers now await the forced refresh, and queue controls stay disabled while it runs or
+      when refresh leaves an error, preventing another edit with the stale version. Transition suite (152 tests),
+      typecheck, lint, production build, and exact-head CI pass at `a419877718d40a193...
     path: transition/src/lib/hooks/use-transition-read.ts
     createdAt: 2026-10-06T13:29:02Z
     prFiles:
@@ -3605,7 +3671,9 @@ reviewComments:
     prNumber: 142
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142#discussion_r4195853742
-    body: Addressed. Account version changes still clear stale save errors, but success notices now remain visible; each new write already clears the previous notice when it starts. Transition suite (152 tests), typecheck, lint, production build, and exact-head CI pass at `a419877718d40a193de2e31b37fe5bc931f9...
+    body: Addressed. Account version changes still clear stale save errors, but success notices now remain visible; each new
+      write already clears the previous notice when it starts. Transition suite (152 tests), typecheck, lint, production
+      build, and exact-head CI pass at `a419877718d40a193de2e31b37fe5bc931f9...
     path: transition/src/components/transition-workspace.tsx
     createdAt: 2026-10-06T13:29:09Z
     prFiles:
@@ -3619,7 +3687,9 @@ reviewComments:
     prNumber: 142
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142#discussion_r4195854774
-    body: Addressed. Household overview reads now preserve stale data only when the cached list is non-empty, so a successful refresh can replace a stale empty list and leave the false empty state. Added a synthetic policy assertion; Transition suite (152 tests), typecheck/lint/build and exact-head CI pass at...
+    body: Addressed. Household overview reads now preserve stale data only when the cached list is non-empty, so a
+      successful refresh can replace a stale empty list and leave the false empty state. Added a synthetic policy
+      assertion; Transition suite (152 tests), typecheck/lint/build and exact-head CI pass at...
     path: transition/src/components/transition-workspace.tsx
     createdAt: 2026-10-06T13:29:15Z
     prFiles:
@@ -3633,7 +3703,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4195621467
-    body: Fixed in `cc4e962`. CSV validation now accepts numeric `x`, `ext`/`ext.`, and `#` suffixes while keeping the extension literal in the existing single phone field. Synthetic CSV preview/apply regressions cover `x12`, `ext 12`, and `#12`; phone normalization and secondary-field ownership are unchanged...
+    body: Fixed in `cc4e962`. CSV validation now accepts numeric `x`, `ext`/`ext.`, and `#` suffixes while keeping the
+      extension literal in the existing single phone field. Synthetic CSV preview/apply regressions cover `x12`, `ext
+      12`, and `#12`; phone normalization and secondary-field ownership are unchanged...
     path: transition/src/components/contact-enrichment.tsx
     createdAt: 2026-10-06T13:06:26Z
     prFiles:
@@ -3677,7 +3749,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4195622383
-    body: Fixed in `cc4e962`. The apply handler now returns a zero-write success result when the validated plan produces an empty batch, and the Cosmos full-file path independently returns after confirming the workspace is initialized. It does not stage correction documents or advance the manifest. Regression...
+    body: Fixed in `cc4e962`. The apply handler now returns a zero-write success result when the validated plan produces an
+      empty batch, and the Cosmos full-file path independently returns after confirming the workspace is initialized. It
+      does not stage correction documents or advance the manifest. Regression...
     path: transition/src/lib/contact-enrichment.ts
     createdAt: 2026-10-06T13:06:32Z
     prFiles:
@@ -3721,7 +3795,8 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4195623248
-    body: Verified on the current PR head. Resolution selections are bounded at `maxRows * 8`, matching the supported File1 contact-role field envelope. The synthetic scale test that resolves and applies more than 50,000 groups passed.
+    body: Verified on the current PR head. Resolution selections are bounded at `maxRows * 8`, matching the supported File1
+      contact-role field envelope. The synthetic scale test that resolves and applies more than 50,000 groups passed.
     path: transition/src/lib/contact-enrichment.ts
     createdAt: 2026-10-06T13:06:37Z
     prFiles:
@@ -3765,7 +3840,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4195624298
-    body: Verified on the current PR head. Shared-signal resolution allows a new named contact to share an email or phone only when all saved names are covered and every saved contact matching that channel is included among the named sharers. A synthetic preview with an explicitly named saved contact and a di...
+    body: Verified on the current PR head. Shared-signal resolution allows a new named contact to share an email or phone
+      only when all saved names are covered and every saved contact matching that channel is included among the named
+      sharers. A synthetic preview with an explicitly named saved contact and a di...
     path: transition/src/lib/contact-enrichment.ts
     createdAt: 2026-10-06T13:06:43Z
     prFiles:
@@ -3809,7 +3886,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4195625223
-    body: "I did not add a manual choice for case-only name variants: that would conflict with the requirement for automatic equivalence and no unnecessary review decisions. Current matching groups them case-insensitively, then retains the first incoming display spelling, so repeated-row capitalization can sti..."
+    body: "I did not add a manual choice for case-only name variants: that would conflict with the requirement for automatic
+      equivalence and no unnecessary review decisions. Current matching groups them case-insensitively, then retains the
+      first incoming display spelling, so repeated-row capitalization can sti..."
     path: transition/src/lib/contact-enrichment.ts
     createdAt: 2026-10-06T13:06:49Z
     prFiles:
@@ -3853,7 +3932,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4195626433
-    body: Verified on the current PR head. Account numbers are indexed once globally and per household, and those indexes serve row matching and canonical-collision checks. The synthetic scale test for prebuilt account-number indexes passed.
+    body: Verified on the current PR head. Account numbers are indexed once globally and per household, and those indexes
+      serve row matching and canonical-collision checks. The synthetic scale test for prebuilt account-number indexes
+      passed.
     path: transition/src/lib/contact-enrichment.ts
     createdAt: 2026-10-06T13:06:57Z
     prFiles:
@@ -3897,7 +3978,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4195847963
-    body: Fixed in c9ec5829de641144c24b6c56f4abec534310e5e6. Cleanup now treats any manifest revision newer than the correction baseline as a winning write when the manifest does not reference this correction’s staged snapshot, including ordinary writes that retain the same snapshot ID. The synthetic race tes...
+    body: Fixed in c9ec5829de641144c24b6c56f4abec534310e5e6. Cleanup now treats any manifest revision newer than the
+      correction baseline as a winning write when the manifest does not reference this correction’s staged snapshot,
+      including ordinary writes that retain the same snapshot ID. The synthetic race tes...
     path: transition/src/lib/cosmos-repository.ts
     createdAt: 2026-10-06T13:28:36Z
     prFiles:
@@ -3941,7 +4024,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4195848872
-    body: Fixed in c9ec5829de641144c24b6c56f4abec534310e5e6. Contact names that differ only by case or whitespace now resolve as equivalent while keeping the saved display spelling. For a new contact, the importer picks a deterministic spelling from the incoming variants, independent of row order. Names with ...
+    body: Fixed in c9ec5829de641144c24b6c56f4abec534310e5e6. Contact names that differ only by case or whitespace now
+      resolve as equivalent while keeping the saved display spelling. For a new contact, the importer picks a
+      deterministic spelling from the incoming variants, independent of row order. Names with ...
     path: transition/src/lib/contact-enrichment.ts
     createdAt: 2026-10-06T13:28:41Z
     prFiles:
@@ -3985,7 +4070,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4196064474
-    body: Fixed in `746884c`. Name proposal sources are now indexed by incoming value as the proposal is built, so creating each conflict choice no longer rescans every source row. Added a synthetic 50,000-row case with 50,000 distinct account names and verified the source mapping. The full Transition suite p...
+    body: Fixed in `746884c`. Name proposal sources are now indexed by incoming value as the proposal is built, so creating
+      each conflict choice no longer rescans every source row. Added a synthetic 50,000-row case with 50,000 distinct
+      account names and verified the source mapping. The full Transition suite p...
     path: transition/src/lib/contact-enrichment.ts
     createdAt: 2026-10-06T13:48:48Z
     prFiles:
@@ -4029,7 +4116,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4196068750
-    body: Fixed in `039c33e`. The correction publisher now tracks a definite batch failure response separately and removes staged documents after a 429 even when the manifest remains at the original baseline. Ambiguous publication outcomes keep the existing safeguards. A synthetic 429 regression verifies that...
+    body: Fixed in `039c33e`. The correction publisher now tracks a definite batch failure response separately and removes
+      staged documents after a 429 even when the manifest remains at the original baseline. Ambiguous publication
+      outcomes keep the existing safeguards. A synthetic 429 regression verifies that...
     path: transition/src/lib/cosmos-repository.ts
     createdAt: 2026-10-06T13:49:11Z
     prFiles:
@@ -4073,7 +4162,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4200732225
-    body: Fixed in `93304aa`. Each value group now paginates both incoming values and their radio choices at 50 options per page, so a 50,000-option group renders only one page at a time. The synthetic 50,000-option regression asserts that only 50 radios and that page's source rows render. Transition tests pa...
+    body: Fixed in `93304aa`. Each value group now paginates both incoming values and their radio choices at 50 options per
+      page, so a 50,000-option group renders only one page at a time. The synthetic 50,000-option regression asserts
+      that only 50 radios and that page's source rows render. Transition tests pa...
     path: transition/src/components/contact-enrichment-value-review.tsx
     createdAt: 2026-10-06T21:43:55Z
     prFiles:
@@ -4117,7 +4208,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4200733691
-    body: Fixed in `93304aa`. Imported phones now require at least seven digits in the base number; extension digits do not count. Punctuation-only values create a blocking conflict and are excluded from the proposed change. Synthetic import/apply cases cover the rejected values. Transition tests pass 383/383...
+    body: Fixed in `93304aa`. Imported phones now require at least seven digits in the base number; extension digits do not
+      count. Punctuation-only values create a blocking conflict and are excluded from the proposed change. Synthetic
+      import/apply cases cover the rejected values. Transition tests pass 383/383...
     path: transition/src/lib/contact-enrichment.ts
     createdAt: 2026-10-06T21:44:07Z
     prFiles:
@@ -4161,7 +4254,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4200825607
-    body: "Fixed in `a3c3819584281d50d8ed314383e89afca1b06289`: source rows are now paged 10 at a time independently for each incoming option, while incoming values remain capped at 50 per page. Added a synthetic regression with 25,000 source rows; the value-review presentation suite passes (11 tests)."
+    body: "Fixed in `a3c3819584281d50d8ed314383e89afca1b06289`: source rows are now paged 10 at a time independently for
+      each incoming option, while incoming values remain capped at 50 per page. Added a synthetic regression with 25,000
+      source rows; the value-review presentation suite passes (11 tests)."
     path: transition/src/components/contact-enrichment-value-review.tsx
     createdAt: 2026-10-06T21:56:41Z
     prFiles:
@@ -4205,7 +4300,9 @@ reviewComments:
     prNumber: 141
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141#discussion_r4200826898
-    body: "Fixed in `a3c3819584281d50d8ed314383e89afca1b06289`: each multi-page value group records its inner pages, and the resolution page is marked reviewed only after every inner page for its groups has been opened. A fresh validated preview resets the value-page and reviewed-page state, and the confirmati..."
+    body: "Fixed in `a3c3819584281d50d8ed314383e89afca1b06289`: each multi-page value group records its inner pages, and the
+      resolution page is marked reviewed only after every inner page for its groups has been opened. A fresh validated
+      preview resets the value-page and reviewed-page state, and the confirmati..."
     path: transition/src/components/contact-enrichment.tsx
     createdAt: 2026-10-06T21:56:52Z
     prFiles:
@@ -4523,12 +4620,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 132.9
+  version: "2.3"
+  hours: 56.4
   sessions: 3
   sessionHours: 8.6
-  volumeHours: 132.9
+  volumeHours: 153.4
+  compressedVolumeHours: 56.4
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

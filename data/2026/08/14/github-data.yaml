@@ -22,7 +22,7 @@ stats:
   reviewComments: 16
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 38.5
+  estimatedHours: 27.3
 dailyCommits:
   - date: 2026-08-14
     count: 16
@@ -44,9 +44,11 @@ repositories:
 pullRequests:
   - title: "feat(onboarding): establish Twenty-inspired operations workspace"
     body: >-
-      - add the upstream Twenty repository as a pinned `twenty/` submodule for architecture and product-pattern reference
+      - add the upstream Twenty repository as a pinned `twenty/` submodule for architecture and product-pattern
+      reference
 
-      - preserve the current Myriad static Next export, Azure Functions boundary, server-owned authorization, and visual system
+      - preserve the current Myriad static Next export, Azure Functions boundary, server-owned authorization, and visual
+      system
 
       - turn onboarding into a broader operations workspace for clie...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
@@ -313,9 +315,11 @@ pullRequests:
 prsInProgress:
   - title: "feat(onboarding): establish Twenty-inspired operations workspace"
     body: >-
-      - add the upstream Twenty repository as a pinned `twenty/` submodule for architecture and product-pattern reference
+      - add the upstream Twenty repository as a pinned `twenty/` submodule for architecture and product-pattern
+      reference
 
-      - preserve the current Myriad static Next export, Azure Functions boundary, server-owned authorization, and visual system
+      - preserve the current Myriad static Next export, Azure Functions boundary, server-owned authorization, and visual
+      system
 
       - turn onboarding into a broader operations workspace for clie...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
@@ -456,7 +460,8 @@ prsInProgress:
       ## Why
 
 
-      Recruit intake still followed an advisor-first flow that did not match how teams are modeled in practice. Platform assumptions also carried legacy OHC and FiNet Wells/WFAFN fee inputs that are no longer part of the pricing model.
+      Recruit intake still followed an advisor-first flow that did not match how teams are modeled in practice. Platform
+      assumptions also carried legacy OHC and FiNet Wells/WFAFN fee inputs that are no longer part of the pricing model.
 
 
       ## What changed
@@ -1623,7 +1628,9 @@ reviewComments:
     prNumber: 93
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93#discussion_r3785266903
-    body: This concern was valid against the earlier submodule-only wording, but it no longer applies to the approved scope. The user explicitly requested adapting the relevant Twenty patterns into onboarding while preserving the existing serverless architecture and Myriad styling. The history also keeps the ...
+    body: This concern was valid against the earlier submodule-only wording, but it no longer applies to the approved scope.
+      The user explicitly requested adapting the relevant Twenty patterns into onboarding while preserving the existing
+      serverless architecture and Myriad styling. The history also keeps the ...
     path: onboarding/apps/dashboard/app/vendors/page.tsx
     createdAt: 2026-08-14T15:47:34Z
     prFiles:
@@ -1689,7 +1696,9 @@ reviewComments:
     prNumber: 93
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93#discussion_r3785309047
-    body: Fixed in `22a7563`. The portfolio now consumes the existing `/api/vm/summary` renewal reminders, which are already derived from `Active` / `Renewal Review` contracts using `noticeDeadline ?? expirationDate`. The preset receives vendor IDs for renewal reminders at 90 days or less, matching the establ...
+    body: Fixed in `22a7563`. The portfolio now consumes the existing `/api/vm/summary` renewal reminders, which are already
+      derived from `Active` / `Renewal Review` contracts using `noticeDeadline ?? expirationDate`. The preset receives
+      vendor IDs for renewal reminders at 90 days or less, matching the establ...
     path: onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
     createdAt: 2026-08-14T15:54:11Z
     prFiles:
@@ -1755,7 +1764,9 @@ reviewComments:
     prNumber: 93
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93#discussion_r3785529803
-    body: Fixed in `affdb08`. The command palette now uses the exact same context resolver as `AppShell`, so internal page links retain the active client/employee while any explicit result query values continue to win. Focused regression coverage verifies both page links and task/workstream result context.
+    body: Fixed in `affdb08`. The command palette now uses the exact same context resolver as `AppShell`, so internal page
+      links retain the active client/employee while any explicit result query values continue to win. Focused regression
+      coverage verifies both page links and task/workstream result context.
     path: onboarding/apps/dashboard/components/global-command-search.tsx
     createdAt: 2026-08-14T16:29:44Z
     prFiles:
@@ -1821,7 +1832,8 @@ reviewComments:
     prNumber: 93
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93#discussion_r3785529971
-    body: Fixed in `affdb08`. Custom workflow results now add `view=all`, while template workflow links keep their existing view behavior. A regression test covers the custom result URL.
+    body: Fixed in `affdb08`. Custom workflow results now add `view=all`, while template workflow links keep their existing
+      view behavior. A regression test covers the custom result URL.
     path: onboarding/apps/dashboard/components/global-command-search.tsx
     createdAt: 2026-08-14T16:29:46Z
     prFiles:
@@ -1887,7 +1899,9 @@ reviewComments:
     prNumber: 93
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93#discussion_r3785530128
-    body: Fixed in `affdb08`. Vendor 360 now treats `Verified` findings as terminal alongside `Closed` and `Risk Accepted`, matching the runtime rollup. The derivation test confirms the verified finding remains in history but is absent from active work.
+    body: Fixed in `affdb08`. Vendor 360 now treats `Verified` findings as terminal alongside `Closed` and `Risk Accepted`,
+      matching the runtime rollup. The derivation test confirms the verified finding remains in history but is absent
+      from active work.
     path: onboarding/apps/dashboard/components/vm/vendor-360.tsx
     createdAt: 2026-08-14T16:29:47Z
     prFiles:
@@ -1953,7 +1967,9 @@ reviewComments:
     prNumber: 93
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93#discussion_r3785583978
-    body: Fixed in `e32a755`. Opening the command dialog now starts one fresh vendor/document batch every time, so successful snapshots do not outlive later mutations and a failed batch retries on the next open. The effect cancels stale completions when the dialog closes, and focused coverage verifies aggrega...
+    body: Fixed in `e32a755`. Opening the command dialog now starts one fresh vendor/document batch every time, so
+      successful snapshots do not outlive later mutations and a failed batch retries on the next open. The effect
+      cancels stale completions when the dialog closes, and focused coverage verifies aggrega...
     path: onboarding/apps/dashboard/components/global-command-search.tsx
     createdAt: 2026-08-14T16:38:54Z
     prFiles:
@@ -2019,7 +2035,9 @@ reviewComments:
     prNumber: 93
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93#discussion_r3785584172
-    body: Fixed in `e32a755`. Activity audit loading now depends on the refreshed vendor version and update timestamp as well as the vendor ID/capability. Header status and archive mutations refresh detail, which now triggers an immediate audit refetch.
+    body: Fixed in `e32a755`. Activity audit loading now depends on the refreshed vendor version and update timestamp as
+      well as the vendor ID/capability. Header status and archive mutations refresh detail, which now triggers an
+      immediate audit refetch.
     path: onboarding/apps/dashboard/components/vm/vendor-360.tsx
     createdAt: 2026-08-14T16:38:56Z
     prFiles:
@@ -2085,7 +2103,8 @@ reviewComments:
     prNumber: 93
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93#discussion_r3785584322
-    body: Fixed in `e32a755`. Bulk completion now refreshes the vendor list and summary together, keeping metric cards, reminders, and portfolio rows consistent. The new portfolio refresh test verifies both refreshers run.
+    body: Fixed in `e32a755`. Bulk completion now refreshes the vendor list and summary together, keeping metric cards,
+      reminders, and portfolio rows consistent. The new portfolio refresh test verifies both refreshers run.
     path: onboarding/apps/dashboard/app/vendors/page.tsx
     createdAt: 2026-08-14T16:38:57Z
     prFiles:
@@ -2151,7 +2170,9 @@ reviewComments:
     prNumber: 93
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93#discussion_r3785636898
-    body: Fixed in `4f17fbe`. CSV cells now quote bare carriage returns as well as LF, commas, and quotes, while the existing leading-formula apostrophe neutralization is retained. Regression coverage includes both an ordinary CR value and a formula-prefixed CR value.
+    body: Fixed in `4f17fbe`. CSV cells now quote bare carriage returns as well as LF, commas, and quotes, while the
+      existing leading-formula apostrophe neutralization is retained. Regression coverage includes both an ordinary CR
+      value and a formula-prefixed CR value.
     path: onboarding/apps/dashboard/components/vm/vendor-record-list.tsx
     createdAt: 2026-08-14T16:47:24Z
     prFiles:
@@ -2217,7 +2238,9 @@ reviewComments:
     prNumber: 93
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/93#discussion_r3785681575
-    body: Fixed in `6eb26bb`. The seed now treats `Renewal Review` as the explicit allowed side path back to `Active` and applies the forward-path index guard only to ordinary activation states. The regression moves Beacon's seeded contract into Renewal Review, reruns the seed twice, and confirms it returns t...
+    body: Fixed in `6eb26bb`. The seed now treats `Renewal Review` as the explicit allowed side path back to `Active` and
+      applies the forward-path index guard only to ordinary activation states. The regression moves Beacon's seeded
+      contract into Renewal Review, reruns the seed twice, and confirms it returns t...
     path: packages/db/src/seed-vm-demo.ts
     createdAt: 2026-08-14T16:55:09Z
     prFiles:
@@ -2283,7 +2306,9 @@ reviewComments:
     prNumber: 84
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3784336356
-    body: "Verified current behavior: the /api/proforma/recruits/wizard handler calls validateWizardTeam(advisors) before buildNewRecruitInitialModel, so direct or replayed staff-only requests are rejected. Added a boundary comment documenting why transport repeats the UI invariant; no runtime behavior change."
+    body: "Verified current behavior: the /api/proforma/recruits/wizard handler calls validateWizardTeam(advisors) before
+      buildNewRecruitInitialModel, so direct or replayed staff-only requests are rejected. Added a boundary comment
+      documenting why transport repeats the UI invariant; no runtime behavior change."
     path: proforma/src/lib/new-recruit.ts
     createdAt: 2026-08-14T14:01:31Z
     prFiles:
@@ -2352,7 +2377,9 @@ reviewComments:
     prNumber: 84
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3784336520
-    body: Verified the assumptions editor keeps projection controls independent of the registration picker; registered-state costs are edited separately and validated on save. Added a comment clarifying that separation; no runtime behavior change.
+    body: Verified the assumptions editor keeps projection controls independent of the registration picker; registered-state
+      costs are edited separately and validated on save. Added a comment clarifying that separation; no runtime behavior
+      change.
     path: proforma/src/components/assumptions-tab.tsx
     createdAt: 2026-08-14T14:01:33Z
     prFiles:
@@ -2421,7 +2448,8 @@ reviewComments:
     prNumber: 84
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3784336710
-    body: Verified validateProformaModelEconomics checks every registered state for explicit one-time and annual overrides, and model saves use that validator. Added a shared fail-closed validation comment; no runtime behavior change.
+    body: Verified validateProformaModelEconomics checks every registered state for explicit one-time and annual overrides,
+      and model saves use that validator. Added a shared fail-closed validation comment; no runtime behavior change.
     path: proforma/src/components/assumptions-tab.tsx
     createdAt: 2026-08-14T14:01:34Z
     prFiles:
@@ -2490,7 +2518,8 @@ reviewComments:
     prNumber: 84
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3784336862
-    body: Verified the wizard POST builds the model and calls validateProformaModelEconomics before persistence, including foreign-registration override checks. Added a shared-validator comment; no runtime behavior change.
+    body: Verified the wizard POST builds the model and calls validateProformaModelEconomics before persistence, including
+      foreign-registration override checks. Added a shared-validator comment; no runtime behavior change.
     path: proforma/src/components/new-recruit-wizard.tsx
     createdAt: 2026-08-14T14:01:36Z
     prFiles:
@@ -2559,7 +2588,8 @@ reviewComments:
     prNumber: 84
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3784336997
-    body: Verified FiNet uses the manual finet.payoutPct when set or the production grid otherwise, while syndicate uses its entered syndicatePayoutPct. Added a comment documenting this intentional split; no runtime behavior change.
+    body: Verified FiNet uses the manual finet.payoutPct when set or the production grid otherwise, while syndicate uses its
+      entered syndicatePayoutPct. Added a comment documenting this intentional split; no runtime behavior change.
     path: proforma/src/lib/calculation.ts
     createdAt: 2026-08-14T14:01:37Z
     prFiles:
@@ -2628,7 +2658,8 @@ reviewComments:
     prNumber: 84
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/84#discussion_r3784337182
-    body: Verified Setup Budget derives its total from model.setup.costs.oneTimeSetup, covering domestic formation, foreign registration, workbook, ACAT, and other setup costs. Added a reconciliation comment; no runtime behavior change.
+    body: Verified Setup Budget derives its total from model.setup.costs.oneTimeSetup, covering domestic formation, foreign
+      registration, workbook, ACAT, and other setup costs. Added a reconciliation comment; no runtime behavior change.
     path: proforma/src/lib/report/excel.ts
     createdAt: 2026-08-14T14:01:39Z
     prFiles:
@@ -2806,12 +2837,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 38.5
+  version: "2.3"
+  hours: 27.3
   sessions: 1
   sessionHours: 6
   volumeHours: 38.5
+  compressedVolumeHours: 27.3
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

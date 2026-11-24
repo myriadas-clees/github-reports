@@ -22,7 +22,7 @@ stats:
   reviewComments: 6
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 93.2
+  estimatedHours: 44.7
 dailyCommits:
   - date: 2026-10-07
     count: 32
@@ -46,7 +46,8 @@ pullRequests:
     body: >-
       - Add an Azure AD role source that validates tenant claims and returns supported app roles.
 
-      - Configure the deployment workflow to inject group-managed authentication settings when `SWA_AUTH_TENANT_ID` is set.
+      - Configure the deployment workflow to inject group-managed authentication settings when `SWA_AUTH_TENANT_ID` is
+      set.
 
       - Document Entra group setup, activation, verification, and rollback.
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/152
@@ -100,7 +101,8 @@ pullRequests:
       ## Why
 
 
-      The PTO Tracker documentation still described an unimplemented scaffold, and the repository retained an unused `twenty` submodule and unused `@azure/identity` dependency in Valuation.
+      The PTO Tracker documentation still described an unimplemented scaffold, and the repository retained an unused
+      `twenty` submodule and unused `@azure/identity` dependency in Valuation.
 
 
       ## What changed
@@ -166,13 +168,15 @@ pullRequests:
       ## Why
 
 
-      The Transition dashboard waits for client-side data fetching after navigation, and long account and household lists are difficult to scan.
+      The Transition dashboard waits for client-side data fetching after navigation, and long account and household
+      lists are difficult to scan.
 
 
       ## What changed
 
 
-      Preloads Transition dashboard data during shell startup and reuses the cached session data when the dashboard loads. Adds paging for ac...
+      Preloads Transition dashboard data during shell startup and reuses the cached session data when the dashboard
+      loads. Adds paging for ac...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/157
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: merged
@@ -313,13 +317,15 @@ pullRequests:
       ## Why
 
 
-      The Hub landing page needed a clearer presentation of Myriad’s services, operational apps, and support for independent advisory firms.
+      The Hub landing page needed a clearer presentation of Myriad’s services, operational apps, and support for
+      independent advisory firms.
 
 
       ## What changed
 
 
-      - Reworked the landing page with updated content and sections for services, testimonials, stats, FAQs, and the Myriad approach.
+      - Reworked the landing page with updated content and sections for services, testimonials, stats, FAQs, and the
+      Myriad approach.
 
       - Added scr...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/155
@@ -404,7 +410,8 @@ pullRequests:
       ## Why
 
 
-      The Hub role source is deployed, but SWA still uses built-in authentication. Managed identity authentication needs native SWA configuration; enabling it now would drop invitation-based access before guest migration is complete.
+      The Hub role source is deployed, but SWA still uses built-in authentication. Managed identity authentication needs
+      native SWA configuration; enabling it now would drop invitation-based access before guest migration is complete.
 
 
       ## What changed
@@ -463,7 +470,8 @@ pullRequests:
       ## Why
 
 
-      Adding users to an Entra group does not populate the SWA roles required by Transition. The shared Hub needs a role source to translate Entra app-role assignments into existing application permissions.
+      Adding users to an Entra group does not populate the SWA roles required by Transition. The shared Hub needs a role
+      source to translate Entra app-role assignments into existing application permissions.
 
 
       ## What changed
@@ -506,7 +514,9 @@ pullRequests:
       - hub/functions/src/roles.ts
   - title: "feat(transition): production UI on the Myriad Advisor Solutions theme"
     body: >-
-      Applies the Graphical **Myriad Advisor Solutions** theme to the shared Myriad design system and rebuilds the Transition app for production use. This PR supersedes #142, #143, and #148; all three are ported here (details below), so those PRs can be closed.
+      Applies the Graphical **Myriad Advisor Solutions** theme to the shared Myriad design system and rebuilds the
+      Transition app for production use. This PR supersedes #142, #143, and #148; all three are ported here (details
+      below), so those PRs can be closed.
 
 
       ### Shared design system (`packages/brand`,...
@@ -1150,7 +1160,8 @@ prsInProgress:
     body: >-
       - Add an Azure AD role source that validates tenant claims and returns supported app roles.
 
-      - Configure the deployment workflow to inject group-managed authentication settings when `SWA_AUTH_TENANT_ID` is set.
+      - Configure the deployment workflow to inject group-managed authentication settings when `SWA_AUTH_TENANT_ID` is
+      set.
 
       - Document Entra group setup, activation, verification, and rollback.
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/152
@@ -1182,7 +1193,8 @@ prsInProgress:
       ## Why
 
 
-      The PTO Tracker documentation still described an unimplemented scaffold, and the repository retained an unused `twenty` submodule and unused `@azure/identity` dependency in Valuation.
+      The PTO Tracker documentation still described an unimplemented scaffold, and the repository retained an unused
+      `twenty` submodule and unused `@azure/identity` dependency in Valuation.
 
 
       ## What changed
@@ -2030,7 +2042,8 @@ reviewComments:
     prNumber: 157
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/157
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/157#discussion_r4211658723
-    body: "Fixed in 54b4ac5: the Household progress panel now takes the dashboard query as its pager reset key (same as the task panel), so filter changes return it to page 1."
+    body: "Fixed in 54b4ac5: the Household progress panel now takes the dashboard query as its pager reset key (same as the
+      task panel), so filter changes return it to page 1."
     path: transition/src/components/dashboard/dashboard.tsx
     createdAt: 2026-10-07T20:30:58Z
     prFiles:
@@ -2080,7 +2093,9 @@ reviewComments:
     prNumber: 157
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/157
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/157#discussion_r4211659139
-    body: "Not changed yet: this needs a decision before I touch it. The gitlink bump (0d66dd1 to 27a18ba) was committed in 555efab, and the instructions for this loop say not to commit the `twenty` submodule. Reverting the pointer would be a commit on that path, so I am holding it for confirmation."
+    body: "Not changed yet: this needs a decision before I touch it. The gitlink bump (0d66dd1 to 27a18ba) was committed in
+      555efab, and the instructions for this loop say not to commit the `twenty` submodule. Reverting the pointer would
+      be a commit on that path, so I am holding it for confirmation."
     path: twenty
     createdAt: 2026-10-07T20:31:01Z
     prFiles:
@@ -2130,7 +2145,8 @@ reviewComments:
     prNumber: 157
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/157
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/157#discussion_r4213066191
-    body: "Fixed in 4ae5c93: the twenty gitlink is restored to main's pointer (0d66dd1). Only that path changed. The submodule is removed by open PR #156, so this PR no longer touches it."
+    body: "Fixed in 4ae5c93: the twenty gitlink is restored to main's pointer (0d66dd1). Only that path changed. The
+      submodule is removed by open PR #156, so this PR no longer touches it."
     path: twenty
     createdAt: 2026-10-07T23:29:01Z
     prFiles:
@@ -2180,7 +2196,8 @@ reviewComments:
     prNumber: 157
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/157
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/157#discussion_r4213073598
-    body: "Benign, no change: the Home due-task badge is removed by an explicit design decision for this PR. The prefetch hook only warms the identity-scoped dashboard cache."
+    body: "Benign, no change: the Home due-task badge is removed by an explicit design decision for this PR. The prefetch
+      hook only warms the identity-scoped dashboard cache."
     path: transition/src/components/transition-shell.tsx
     createdAt: 2026-10-07T23:30:17Z
     prFiles:
@@ -2258,7 +2275,9 @@ reviewComments:
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/152
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/152#discussion_r4209221754
     body: >-
-      This is deliberate. The product owner asked for "Paperwork (legacy)" to be removed from the Status filter. Nobody is using the app yet, so there are few or no stored `Paperwork` accounts, and a filter option for a status that can no longer be chosen would mostly be noise during the changeover.
+      This is deliberate. The product owner asked for "Paperwork (legacy)" to be removed from the Status filter. Nobody
+      is using the app yet, so there are few or no stored `Paperwork` accounts, and a filter option for a status that
+      can no longer be chosen would mostly be noise during the changeover.
 
 
       Lega...
@@ -2623,12 +2642,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 93.2
+  version: "2.3"
+  hours: 44.7
   sessions: 5
   sessionHours: 9.4
-  volumeHours: 93.2
+  volumeHours: 106.7
+  compressedVolumeHours: 44.7
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

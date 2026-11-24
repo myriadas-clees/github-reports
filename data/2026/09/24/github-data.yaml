@@ -22,7 +22,7 @@ stats:
   reviewComments: 35
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 92.3
+  estimatedHours: 47.4
 dailyCommits:
   - date: 2026-09-24
     count: 43
@@ -48,7 +48,8 @@ pullRequests:
 
       - `@email`, `@calendar`, `@todo`, and `@meeting` expand into task prompts and render fenced deliverables as cards.
 
-      - Settings stores Northstar, morning, end-of-day, and weekly brief instructions on this device. Copilot also rece...
+      - Settings stores Northstar, morning, end-of-day, and weekly brief instructions on this device. Copilot also
+      rece...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/138
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
@@ -112,7 +113,8 @@ pullRequests:
     body: >-
       ## Problem
 
-      Northstar treats an Entra `unauthorized_client` / `AADSTS7000110` refresh-token failure as a generic token exchange error. The user cannot use the existing Microsoft reconnect and saved-question recovery path.
+      Northstar treats an Entra `unauthorized_client` / `AADSTS7000110` refresh-token failure as a generic token
+      exchange error. The user cannot use the existing Microsoft reconnect and saved-question recovery path.
 
 
       ## Cause and fix
@@ -473,7 +475,9 @@ pullRequests:
       - transition/staticwebapp.config.json
       - twenty
   - title: "feat(transition): add workbook imports and shared tenant workflows"
-    body: Add a Transition workspace for household and account operations, with Hub navigation, protected APIs, and Azure PR preview integration. Initialize applicable requirements from the supplied Business Mix account and positions workbooks and track progress through paperwork, custodian processing, and cl...
+    body: Add a Transition workspace for household and account operations, with Hub navigation, protected APIs, and Azure PR
+      preview integration. Initialize applicable requirements from the supplied Business Mix account and positions
+      workbooks and track progress through paperwork, custodian processing, and cl...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: merged
@@ -725,7 +729,8 @@ prsInProgress:
 
       - `@email`, `@calendar`, `@todo`, and `@meeting` expand into task prompts and render fenced deliverables as cards.
 
-      - Settings stores Northstar, morning, end-of-day, and weekly brief instructions on this device. Copilot also rece...
+      - Settings stores Northstar, morning, end-of-day, and weekly brief instructions on this device. Copilot also
+      rece...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/138
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
@@ -3275,7 +3280,8 @@ reviewComments:
     prNumber: 126
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4099890747
-    body: "[from Codex]: Added the supported vendor roles to Hub access, the launcher, and Onboarding page/API routes in commit 893c173."
+    body: "[from Codex]: Added the supported vendor roles to Hub access, the launcher, and Onboarding page/API routes in
+      commit 893c173."
     path: hub/staticwebapp.config.json
     createdAt: 2026-09-25T00:39:30Z
     prFiles:
@@ -3327,7 +3333,8 @@ reviewComments:
     prNumber: 126
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4099892230
-    body: "[from Codex]: Keyed the household edit form by household ID so switching records remounts the fields in commit 893c173."
+    body: "[from Codex]: Keyed the household edit form by household ID so switching records remounts the fields in commit
+      893c173."
     path: transition/src/components/transition-workspace.tsx
     createdAt: 2026-09-25T00:39:45Z
     prFiles:
@@ -3431,7 +3438,8 @@ reviewComments:
     prNumber: 126
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4099923102
-    body: "[from Codex]: Updated the remaining README and example-environment instructions to describe the empty Transition workspace in commit 63d989f."
+    body: "[from Codex]: Updated the remaining README and example-environment instructions to describe the empty Transition
+      workspace in commit 63d989f."
     path: package.json
     createdAt: 2026-09-25T00:46:26Z
     prFiles:
@@ -3483,7 +3491,8 @@ reviewComments:
     prNumber: 126
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4099971803
-    body: "[from Codex]: Fixed in 9fde0d4. Vendor routes now bootstrap against the vendor API and show only vendor navigation; client onboarding routes keep their existing authorization."
+    body: "[from Codex]: Fixed in 9fde0d4. Vendor routes now bootstrap against the vendor API and show only vendor
+      navigation; client onboarding routes keep their existing authorization."
     path: hub/lib/apps.ts
     createdAt: 2026-09-25T00:54:24Z
     prFiles:
@@ -3535,7 +3544,8 @@ reviewComments:
     prNumber: 126
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4099972415
-    body: "[from Codex]: Fixed in 9fde0d4. Azure guidance now documents direct scoped-role access and reserves myriadas_user for full-suite access."
+    body: "[from Codex]: Fixed in 9fde0d4. Azure guidance now documents direct scoped-role access and reserves myriadas_user
+      for full-suite access."
     path: docs/authorization-roles.md
     createdAt: 2026-09-25T00:54:31Z
     prFiles:
@@ -3587,7 +3597,8 @@ reviewComments:
     prNumber: 126
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100040228
-    body: "[from Codex]: Fixed in dfa2388. Hub opens vendor-only users at /onboarding/vendors, and direct visits to the Onboarding root redirect after successful vendor API authentication."
+    body: "[from Codex]: Fixed in dfa2388. Hub opens vendor-only users at /onboarding/vendors, and direct visits to the
+      Onboarding root redirect after successful vendor API authentication."
     path: onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
     createdAt: 2026-09-25T01:05:45Z
     prFiles:
@@ -3639,7 +3650,8 @@ reviewComments:
     prNumber: 126
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100041059
-    body: "[from Codex]: Fixed in dfa2388. New manual households use separate Cosmos documents with manifest IDs and incomplete-data checks; older manifest households remain readable."
+    body: "[from Codex]: Fixed in dfa2388. New manual households use separate Cosmos documents with manifest IDs and
+      incomplete-data checks; older manifest households remain readable."
     path: transition/src/lib/cosmos-repository.ts
     createdAt: 2026-09-25T01:05:53Z
     prFiles:
@@ -3743,7 +3755,8 @@ reviewComments:
     prNumber: 126
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100068867
-    body: "[from Codex]: Fixed in 6273cd0. Paperwork now counts as active household progress; the focused repository test covers this transition."
+    body: "[from Codex]: Fixed in 6273cd0. Paperwork now counts as active household progress; the focused repository test
+      covers this transition."
     path: transition/src/lib/repository.ts
     createdAt: 2026-09-25T01:11:14Z
     prFiles:
@@ -3795,7 +3808,8 @@ reviewComments:
     prNumber: 126
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100099129
-    body: "[from Codex]: Fixed in 2b55245. Blocked follow-up tasks now take precedence in household status, with a focused test."
+    body: "[from Codex]: Fixed in 2b55245. Blocked follow-up tasks now take precedence in household status, with a focused
+      test."
     path: transition/src/lib/repository.ts
     createdAt: 2026-09-25T01:17:20Z
     prFiles:
@@ -3847,7 +3861,8 @@ reviewComments:
     prNumber: 126
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100137458
-    body: "[from Codex]: Fixed in 7961ad6. The account form remounts when the selected household changes, clearing drafts from the previous household."
+    body: "[from Codex]: Fixed in 7961ad6. The account form remounts when the selected household changes, clearing drafts
+      from the previous household."
     path: transition/src/components/transition-workspace.tsx
     createdAt: 2026-09-25T01:24:38Z
     prFiles:
@@ -3899,7 +3914,8 @@ reviewComments:
     prNumber: 126
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100138162
-    body: "[from Codex]: Fixed in 7961ad6. Management and Households use a shared status derivation that includes account progress and exception states; focused tests cover both views."
+    body: "[from Codex]: Fixed in 7961ad6. Management and Households use a shared status derivation that includes account
+      progress and exception states; focused tests cover both views."
     path: transition/src/lib/repository.ts
     createdAt: 2026-09-25T01:24:48Z
     prFiles:
@@ -3951,7 +3967,8 @@ reviewComments:
     prNumber: 126
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100175964
-    body: "[from Codex]: Fixed in 3b55193. Household creation uses a stable request ID across retries and returns the existing household after an ambiguous committed write. A Cosmos retry test covers the case."
+    body: "[from Codex]: Fixed in 3b55193. Household creation uses a stable request ID across retries and returns the
+      existing household after an ambiguous committed write. A Cosmos retry test covers the case."
     path: transition/src/lib/cosmos-repository.ts
     createdAt: 2026-09-25T01:32:57Z
     prFiles:
@@ -4003,7 +4020,8 @@ reviewComments:
     prNumber: 126
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100176451
-    body: "[from Codex]: Fixed in 3b55193. Household completion requires all account tasks to be Completed or Not Applicable; both views use the shared rule."
+    body: "[from Codex]: Fixed in 3b55193. Household completion requires all account tasks to be Completed or Not
+      Applicable; both views use the shared rule."
     path: transition/src/lib/repository.ts
     createdAt: 2026-09-25T01:33:04Z
     prFiles:
@@ -4055,7 +4073,8 @@ reviewComments:
     prNumber: 126
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100212731
-    body: "[from Codex]: Fixed in b4028ec. Operational household inventory excludes inactive-only imports and includes empty manual households; a focused test covers both."
+    body: "[from Codex]: Fixed in b4028ec. Operational household inventory excludes inactive-only imports and includes empty
+      manual households; a focused test covers both."
     path: transition/src/lib/source-repository.ts
     createdAt: 2026-09-25T01:40:25Z
     prFiles:
@@ -4107,7 +4126,8 @@ reviewComments:
     prNumber: 126
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100213295
-    body: "[from Codex]: Fixed in b4028ec. Account creation carries a stable request ID, and retries return the existing account. A Cosmos test covers a committed write with a lost response."
+    body: "[from Codex]: Fixed in b4028ec. Account creation carries a stable request ID, and retries return the existing
+      account. A Cosmos test covers a committed write with a lost response."
     path: transition/src/lib/repository.ts
     createdAt: 2026-09-25T01:40:34Z
     prFiles:
@@ -4159,7 +4179,8 @@ reviewComments:
     prNumber: 126
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100238128
-    body: "[from Codex]: Fixed in 0b9c7ba. A retry reads a saved manual household document after an ambiguous create and publishes it; a focused test covers an orphaned document."
+    body: "[from Codex]: Fixed in 0b9c7ba. A retry reads a saved manual household document after an ambiguous create and
+      publishes it; a focused test covers an orphaned document."
     path: transition/src/lib/cosmos-repository.ts
     createdAt: 2026-09-25T01:46:37Z
     prFiles:
@@ -4211,7 +4232,8 @@ reviewComments:
     prNumber: 126
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100238780
-    body: "[from Codex]: Fixed in 0b9c7ba. Household blocker details now include blocked follow-up tasks and exception accounts, with focused assertions."
+    body: "[from Codex]: Fixed in 0b9c7ba. Household blocker details now include blocked follow-up tasks and exception
+      accounts, with focused assertions."
     path: transition/src/lib/repository.ts
     createdAt: 2026-09-25T01:46:47Z
     prFiles:
@@ -4263,7 +4285,8 @@ reviewComments:
     prNumber: 126
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100299580
-    body: "[from Codex]: Fixed in f3b2561. Account NIGO and exception states are counted separately only when no blocked checklist cause exists; dashboard and detail tests cover deduplication."
+    body: "[from Codex]: Fixed in f3b2561. Account NIGO and exception states are counted separately only when no blocked
+      checklist cause exists; dashboard and detail tests cover deduplication."
     path: transition/src/lib/repository.ts
     createdAt: 2026-09-25T01:59:51Z
     prFiles:
@@ -4419,7 +4442,8 @@ reviewComments:
     prNumber: 126
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100350634
-    body: "[from Codex]: Fixed in 16ec3df. Manual account Exception states remain independent blockers even when checklist exceptions exist; the full Transition suite covers both count and details."
+    body: "[from Codex]: Fixed in 16ec3df. Manual account Exception states remain independent blockers even when checklist
+      exceptions exist; the full Transition suite covers both count and details."
     path: transition/src/lib/repository.ts
     createdAt: 2026-09-25T02:08:40Z
     prFiles:
@@ -4471,7 +4495,8 @@ reviewComments:
     prNumber: 126
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100383026
-    body: "[from Codex]: Fixed in 331526a. The attention queue includes standalone account exceptions and unexplained NIGO states, with tests for both visibility and deduplication."
+    body: "[from Codex]: Fixed in 331526a. The attention queue includes standalone account exceptions and unexplained NIGO
+      states, with tests for both visibility and deduplication."
     path: transition/src/lib/repository.ts
     createdAt: 2026-09-25T02:15:58Z
     prFiles:
@@ -4523,7 +4548,8 @@ reviewComments:
     prNumber: 126
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100415398
-    body: "[from Codex]: Fixed in 72c8065. Removing the final contact link deletes its legacy contacts row in the same transaction; a reopen regression test verifies it stays removed."
+    body: "[from Codex]: Fixed in 72c8065. Removing the final contact link deletes its legacy contacts row in the same
+      transaction; a reopen regression test verifies it stays removed."
     path: transition/src/lib/repository.ts
     createdAt: 2026-09-25T02:23:26Z
     prFiles:
@@ -4575,7 +4601,8 @@ reviewComments:
     prNumber: 126
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100478897
-    body: "[from Codex]: Fixed in 11837ff. The dedicated PTO static shell admits anonymous visitors so MSAL can start sign-in; API routes remain role-gated."
+    body: "[from Codex]: Fixed in 11837ff. The dedicated PTO static shell admits anonymous visitors so MSAL can start
+      sign-in; API routes remain role-gated."
     path: pto-tracker/staticwebapp.config.json
     createdAt: 2026-09-25T02:34:41Z
     prFiles:
@@ -4627,7 +4654,8 @@ reviewComments:
     prNumber: 126
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100480088
-    body: "[from Codex]: Fixed in 11837ff. The dedicated PTO API edge admits legacy HRAdmin assignments during the documented migration."
+    body: "[from Codex]: Fixed in 11837ff. The dedicated PTO API edge admits legacy HRAdmin assignments during the
+      documented migration."
     path: pto-tracker/staticwebapp.config.json
     createdAt: 2026-09-25T02:34:50Z
     prFiles:
@@ -4679,7 +4707,8 @@ reviewComments:
     prNumber: 126
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126#discussion_r4100518451
-    body: "[from Codex]: Fixed in 3451f67. Legacy HRAdmin is admitted by the combined Hub launcher, Hub routes, PTO routes, and PTO API edge; focused tests cover the mapping."
+    body: "[from Codex]: Fixed in 3451f67. Legacy HRAdmin is admitted by the combined Hub launcher, Hub routes, PTO routes,
+      and PTO API edge; focused tests cover the mapping."
     path: hub/lib/apps.ts
     createdAt: 2026-09-25T02:40:35Z
     prFiles:
@@ -4731,7 +4760,8 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4094418689
-    body: "[from Codex]: Fixed in commit 5dda8f2. The importer now uses HH Details for household assignment, reports conflicts, and validates subfirms on malformed retained rows. Focused tests and typecheck passed."
+    body: "[from Codex]: Fixed in commit 5dda8f2. The importer now uses HH Details for household assignment, reports
+      conflicts, and validates subfirms on malformed retained rows. Focused tests and typecheck passed."
     path: transition/src/lib/workbook.ts
     createdAt: 2026-09-24T13:55:44Z
     prFiles:
@@ -4828,7 +4858,8 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4094419535
-    body: "[from Codex]: Fixed in commit 5dda8f2. The importer now uses HH Details for household assignment, reports conflicts, and validates subfirms on malformed retained rows. Focused tests and typecheck passed."
+    body: "[from Codex]: Fixed in commit 5dda8f2. The importer now uses HH Details for household assignment, reports
+      conflicts, and validates subfirms on malformed retained rows. Focused tests and typecheck passed."
     path: transition/src/lib/workbook.ts
     createdAt: 2026-09-24T13:55:48Z
     prFiles:
@@ -4925,7 +4956,8 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4094505125
-    body: "[from Codex]: Fixed in commit 0968b48. Workbook imports now create the six shared household checklist items for each household using the same catalog as the seed. Focused tests and typecheck passed."
+    body: "[from Codex]: Fixed in commit 0968b48. Workbook imports now create the six shared household checklist items for
+      each household using the same catalog as the seed. Focused tests and typecheck passed."
     path: transition/src/lib/workbook.ts
     createdAt: 2026-09-24T14:04:21Z
     prFiles:
@@ -5022,7 +5054,8 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4094562841
-    body: "[from Codex]: Fixed in commit d235298. HH Details now participates in subfirm validation, and account detail lookups use a subfirm-scoped key. Focused tests and typecheck passed."
+    body: "[from Codex]: Fixed in commit d235298. HH Details now participates in subfirm validation, and account detail
+      lookups use a subfirm-scoped key. Focused tests and typecheck passed."
     path: transition/src/lib/workbook.ts
     createdAt: 2026-09-24T14:10:06Z
     prFiles:
@@ -5119,7 +5152,8 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4094996926
-    body: Valid operational follow-up. Storage failures can return HTTP 400 through safely(). This does not alter saved data or block the transition workflow; deferring the error classification change so this PR can merge now.
+    body: Valid operational follow-up. Storage failures can return HTTP 400 through safely(). This does not alter saved data
+      or block the transition workflow; deferring the error classification change so this PR can merge now.
     path: transition/src/lib/handlers.ts
     createdAt: 2026-09-24T14:52:05Z
     prFiles:
@@ -5216,7 +5250,9 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4095061844
-    body: Valid preview seeding follow-up. The seed command checks some tables rather than the complete persisted-table list. It is an explicit synthetic-data command and is outside the workbook import path fixed here; deferring for a focused follow-up.
+    body: Valid preview seeding follow-up. The seed command checks some tables rather than the complete persisted-table
+      list. It is an explicit synthetic-data command and is outside the workbook import path fixed here; deferring for a
+      focused follow-up.
     path: transition/src/lib/seed.ts
     createdAt: 2026-09-24T14:58:27Z
     prFiles:
@@ -5313,7 +5349,8 @@ reviewComments:
     prNumber: 122
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122#discussion_r4095063468
-    body: Valid display follow-up. The Households list uses the stored status while the dashboard derives current status. This does not affect account workflow or stored progress; deferring the list alignment for a focused follow-up.
+    body: Valid display follow-up. The Households list uses the stored status while the dashboard derives current status.
+      This does not affect account workflow or stored progress; deferring the list alignment for a focused follow-up.
     path: transition/src/lib/repository.ts
     createdAt: 2026-09-24T14:58:36Z
     prFiles:
@@ -5630,12 +5667,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 92.3
+  version: "2.3"
+  hours: 47.4
   sessions: 2
   sessionHours: 7.2
-  volumeHours: 92.3
+  volumeHours: 117.5
+  compressedVolumeHours: 47.4
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

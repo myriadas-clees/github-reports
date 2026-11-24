@@ -22,7 +22,7 @@ stats:
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 27.4
+  estimatedHours: 21.7
 dailyCommits:
   - date: 2026-08-26
     count: 8
@@ -116,7 +116,8 @@ pullRequests:
       - scripts/workflow-matrix.ts
   - title: "refactor: centralize suite architecture"
     body: >-
-      Centralizes repeated suite behavior so navigation preferences, static exports, and product route declarations are maintained once instead of drifting across apps.
+      Centralizes repeated suite behavior so navigation preferences, static exports, and product route declarations are
+      maintained once instead of drifting across apps.
 
 
       - Share Top bar/Sidebar preference across suite products.
@@ -272,7 +273,8 @@ prsInProgress:
       - scripts/workflow-matrix.ts
   - title: "refactor: centralize suite architecture"
     body: >-
-      Centralizes repeated suite behavior so navigation preferences, static exports, and product route declarations are maintained once instead of drifting across apps.
+      Centralizes repeated suite behavior so navigation preferences, static exports, and product route declarations are
+      maintained once instead of drifting across apps.
 
 
       - Share Top bar/Sidebar preference across suite products.
@@ -372,7 +374,8 @@ prsInProgress:
       ## Why
 
 
-      Client and vendor onboarding did not have a dedicated contact directory or a way to add contacts without first creating a client workspace.
+      Client and vendor onboarding did not have a dedicated contact directory or a way to add contacts without first
+      creating a client workspace.
 
 
       ## What changed
@@ -581,12 +584,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 27.4
+  version: "2.3"
+  hours: 21.7
   sessions: 2
   sessionHours: 2.2
   volumeHours: 27.4
+  compressedVolumeHours: 21.7
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

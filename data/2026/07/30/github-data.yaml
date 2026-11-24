@@ -22,7 +22,7 @@ stats:
   reviewComments: 19
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 73.8
+  estimatedHours: 39.4
 dailyCommits:
   - date: 2026-07-30
     count: 27
@@ -40,13 +40,15 @@ pullRequests:
       Why
 
 
-      Issue #11 lacked an explicit production-target matrix and a safe redeploy/rollback procedure for the unified Hub Static Web App.
+      Issue #11 lacked an explicit production-target matrix and a safe redeploy/rollback procedure for the unified Hub
+      Static Web App.
 
 
       What changed
 
 
-      - Map Hub, Onboarding, PTO, Pricing/legacy Proforma, Excelerate, and Valuation routes to their static and Functions artifacts
+      - Map Hub, Onboarding, PTO, Pricing/legacy Proforma, Excelerate, and Valuation routes to their static and
+      Functions artifacts
 
       - List required repositor...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/69
@@ -81,7 +83,9 @@ pullRequests:
       ## Why
 
 
-      The managed-SWA deployment reaches Pricing Cosmos configuration but returns 503 because Pricing explicitly suppressed the shared client's existing `AZURE_COSMOS_KEY` fallback. Azure Static Web Apps managed Functions do not expose managed identity to application code, while the former Proform...
+      The managed-SWA deployment reaches Pricing Cosmos configuration but returns 503 because Pricing explicitly
+      suppressed the shared client's existing `AZURE_COSMOS_KEY` fallback. Azure Static Web Apps managed Functions do
+      not expose managed identity to application code, while the former Proform...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/68
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: merged
@@ -138,7 +142,9 @@ pullRequests:
       Why
 
 
-      The managed SWA deployment still has the established Proforma and Azure Cosmos app settings. After the Pricing migration, the managed API read only `PRICING_*` names, causing `/api/pricing/health` and signed-in Pricing requests to fail without unnecessary duplicate Azure configuration.
+      The managed SWA deployment still has the established Proforma and Azure Cosmos app settings. After the Pricing
+      migration, the managed API read only `PRICING_*` names, causing `/api/pricing/health` and signed-in Pricing
+      requests to fail without unnecessary duplicate Azure configuration.
 
 
       What ch...
@@ -219,7 +225,9 @@ pullRequests:
       Why
 
 
-      PR #64 replaced the established single-SWA upload with a separate linked Function App, OIDC login, and new infrastructure variables. Production still uses the existing Azure Static Web App, so that pipeline could not publish the Pricing migration.
+      PR #64 replaced the established single-SWA upload with a separate linked Function App, OIDC login, and new
+      infrastructure variables. Production still uses the existing Azure Static Web App, so that pipeline could not
+      publish the Pricing migration.
 
 
       What changed
@@ -449,7 +457,8 @@ prsInProgress:
       Why
 
 
-      The product deployment workflow compiled PTO Tracker in demo authentication mode, exposing local test personas in the production sign-in screen.
+      The product deployment workflow compiled PTO Tracker in demo authentication mode, exposing local test personas in
+      the production sign-in screen.
 
 
       What changed
@@ -502,7 +511,8 @@ prsInProgress:
       Why
 
 
-      Alpha workspaces generate a workstream and task set, but the supported UI had no safe cleanup lifecycle. Disposable test data therefore remained in active selectors after verification.
+      Alpha workspaces generate a workstream and task set, but the supported UI had no safe cleanup lifecycle.
+      Disposable test data therefore remained in active selectors after verification.
 
 
       What changed
@@ -580,7 +590,9 @@ prsInProgress:
       Why
 
 
-      Four app workflows had integrity gaps at their serverless boundaries: PTO cancellation and request policy were incomplete, Excelerate review receipts were replayable, Pricing report snapshots lacked input identity, and Valuation approvals lacked immutable provenance.
+      Four app workflows had integrity gaps at their serverless boundaries: PTO cancellation and request policy were
+      incomplete, Excelerate review receipts were replayable, Pricing report snapshots lacked input identity, and
+      Valuation approvals lacked immutable provenance.
 
 
       What changed
@@ -1215,7 +1227,10 @@ reviewComments:
     prNumber: 68
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/68
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/68#discussion_r3685210718
-    body: "Fixed in `3689a6b`: added the empty `AZURE_COSMOS_KEY` placeholder to `pricing/functions/local.settings.json.example`, matching `.env.example` without committing a value. Revalidated JSON parsing, focused Pricing config tests (6/6), tooling assertions (8/8), Functions typecheck, and Functions build."
+    body: "Fixed in `3689a6b`: added the empty `AZURE_COSMOS_KEY` placeholder to
+      `pricing/functions/local.settings.json.example`, matching `.env.example` without committing a value. Revalidated
+      JSON parsing, focused Pricing config tests (6/6), tooling assertions (8/8), Functions typecheck, and Functions
+      build."
     path: pricing/.env.example
     createdAt: 2026-07-30T18:20:21Z
     prFiles:
@@ -1231,7 +1246,9 @@ reviewComments:
     prNumber: 67
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/67
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/67#discussion_r3684901955
-    body: Fixed in `3324034`. Pricing now resolves `PRICING_COSMOS_SHARED_CONTAINER` from the existing `AZURE_COSMOS_SHARED_CONTAINER`; shared containers use the physical key `pricing:<tenantId>` for queries, reads, writes, and deletes, and persisted documents include `partitionKey`. Dedicated `/tenantId` con...
+    body: Fixed in `3324034`. Pricing now resolves `PRICING_COSMOS_SHARED_CONTAINER` from the existing
+      `AZURE_COSMOS_SHARED_CONTAINER`; shared containers use the physical key `pricing:<tenantId>` for queries, reads,
+      writes, and deletes, and persisted documents include `partitionKey`. Dedicated `/tenantId` con...
     path: pricing/src/lib/runtime-config.ts
     createdAt: 2026-07-30T17:33:14Z
     prFiles:
@@ -1250,7 +1267,9 @@ reviewComments:
     prNumber: 67
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/67
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/67#discussion_r3684976106
-    body: "Fixed in `2d3261b`. Legacy `AZURE_COSMOS_SHARED_CONTAINER` is now inherited only when `PRICING_COSMOS_CONTAINER` is also absent and the legacy container is selected. Explicit `PRICING_COSMOS_SHARED_CONTAINER` remains authoritative. Added focused regressions for both shapes: inherited shared containe..."
+    body: "Fixed in `2d3261b`. Legacy `AZURE_COSMOS_SHARED_CONTAINER` is now inherited only when `PRICING_COSMOS_CONTAINER`
+      is also absent and the legacy container is selected. Explicit `PRICING_COSMOS_SHARED_CONTAINER` remains
+      authoritative. Added focused regressions for both shapes: inherited shared containe..."
     path: pricing/src/lib/runtime-config.ts
     createdAt: 2026-07-30T17:44:40Z
     prFiles:
@@ -1269,7 +1288,8 @@ reviewComments:
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3682892873
-    body: "Fixed in `cf2a0eaecdd87cd4ebb7fcc2c5c489bd3281e4d7`: `close_preview` now binds to the `preview` environment, with a tooling regression assertion and YAML verification."
+    body: "Fixed in `cf2a0eaecdd87cd4ebb7fcc2c5c489bd3281e4d7`: `close_preview` now binds to the `preview` environment, with
+      a tooling regression assertion and YAML verification."
     path: .github/workflows/azure-static-web-apps.yml
     createdAt: 2026-07-30T13:05:10Z
     prFiles:
@@ -1290,7 +1310,9 @@ reviewComments:
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3682947642
-    body: Addressed in `54645f34bd66232864d63e1bc268c96be224ccfd` without broadening into new infrastructure. The plan/runbook now explicitly reconcile the existing managed-SWA app settings, system identity and Cosmos roles, built-in auth/routes, network reachability, operator-blocker recovery, and the curren...
+    body: Addressed in `54645f34bd66232864d63e1bc268c96be224ccfd` without broadening into new infrastructure. The
+      plan/runbook now explicitly reconcile the existing managed-SWA app settings, system identity and Cosmos roles,
+      built-in auth/routes, network reachability, operator-blocker recovery, and the curren...
     path: docs/azure-serverless-plan.md
     createdAt: 2026-07-30T13:12:58Z
     prFiles:
@@ -1311,7 +1333,9 @@ reviewComments:
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3683080907
-    body: "Addressed in `567ff4a7dbc1997b53452c276b0c8e0d665922bf`. Non-PR deploys now require `github.ref == 'refs/heads/main'`, while labeled pull requests still permit preview deploys. Added a focused tooling assertion for the exact condition. Verification: tooling tests 8/8, workflow YAML parse, and `bun r..."
+    body: "Addressed in `567ff4a7dbc1997b53452c276b0c8e0d665922bf`. Non-PR deploys now require `github.ref ==
+      'refs/heads/main'`, while labeled pull requests still permit preview deploys. Added a focused tooling assertion
+      for the exact condition. Verification: tooling tests 8/8, workflow YAML parse, and `bun r..."
     path: .github/workflows/azure-static-web-apps.yml
     createdAt: 2026-07-30T13:31:10Z
     prFiles:
@@ -1332,7 +1356,9 @@ reviewComments:
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3683187147
-    body: Addressed in `b9b25cc069a8df920ffec4090f4e98cbac7f8047`. The optional linked-Function documentation now requires an authorized operator to run the forged-principal direct-host probe manually after deployment and explicitly states that the managed-SWA artifact workflow does not run it. Repository sea...
+    body: Addressed in `b9b25cc069a8df920ffec4090f4e98cbac7f8047`. The optional linked-Function documentation now requires
+      an authorized operator to run the forged-principal direct-host probe manually after deployment and explicitly
+      states that the managed-SWA artifact workflow does not run it. Repository sea...
     path: infra/azure/README.md
     createdAt: 2026-07-30T13:45:40Z
     prFiles:
@@ -1353,7 +1379,9 @@ reviewComments:
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3683261045
-    body: Addressed in `9efcb2db2a1a9d8069417ce6e7b18f16cabfa662`. Both managed-SWA invariant lists now require `PTO_DATA_PROVIDER=cosmos`, `PTO_TENANT_ID`, and the shared `AZURE_COSMOS_ENDPOINT`, `AZURE_COSMOS_DATABASE`, `AZURE_COSMOS_CONTAINER`, and `AZURE_COSMOS_SHARED_CONTAINER=true` settings. The tooling...
+    body: Addressed in `9efcb2db2a1a9d8069417ce6e7b18f16cabfa662`. Both managed-SWA invariant lists now require
+      `PTO_DATA_PROVIDER=cosmos`, `PTO_TENANT_ID`, and the shared `AZURE_COSMOS_ENDPOINT`, `AZURE_COSMOS_DATABASE`,
+      `AZURE_COSMOS_CONTAINER`, and `AZURE_COSMOS_SHARED_CONTAINER=true` settings. The tooling...
     path: docs/deploy-asap.md
     createdAt: 2026-07-30T13:55:23Z
     prFiles:
@@ -1374,7 +1402,9 @@ reviewComments:
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3683460877
-    body: "Addressed in `57cc1cff9663e1c655de2cb3e41132fcd7433669`. Labeled PR previews are now frontend-only: the deploy action receives an empty `api_location` and does not download the Functions artifact on pull-request events. The architecture plan and tooling test guard that production API code and its da..."
+    body: "Addressed in `57cc1cff9663e1c655de2cb3e41132fcd7433669`. Labeled PR previews are now frontend-only: the deploy
+      action receives an empty `api_location` and does not download the Functions artifact on pull-request events. The
+      architecture plan and tooling test guard that production API code and its da..."
     path: .github/workflows/azure-static-web-apps.yml
     createdAt: 2026-07-30T14:19:24Z
     prFiles:
@@ -1395,7 +1425,9 @@ reviewComments:
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3683461531
-    body: Addressed in `57cc1cff9663e1c655de2cb3e41132fcd7433669`. Onboarding and PTO now build explicit HTTP-only variants for the managed SWA artifact. CI verifies those variants contain neither timer registration, while the standard app-local Function bundles still contain both timers for any separately au...
+    body: Addressed in `57cc1cff9663e1c655de2cb3e41132fcd7433669`. Onboarding and PTO now build explicit HTTP-only variants
+      for the managed SWA artifact. CI verifies those variants contain neither timer registration, while the standard
+      app-local Function bundles still contain both timers for any separately au...
     path: .github/workflows/azure-static-web-apps.yml
     createdAt: 2026-07-30T14:19:28Z
     prFiles:
@@ -1416,7 +1448,9 @@ reviewComments:
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3683462094
-    body: Addressed in `57cc1cff9663e1c655de2cb3e41132fcd7433669`. The runbook no longer claims the health/auth smoke validates every runtime invariant. It now states exactly what is checked and explicitly says PTO persistence, Cosmos roles, and network reachability require separate Azure validation.
+    body: Addressed in `57cc1cff9663e1c655de2cb3e41132fcd7433669`. The runbook no longer claims the health/auth smoke
+      validates every runtime invariant. It now states exactly what is checked and explicitly says PTO persistence,
+      Cosmos roles, and network reachability require separate Azure validation.
     path: docs/deploy-asap.md
     createdAt: 2026-07-30T14:19:33Z
     prFiles:
@@ -1437,7 +1471,10 @@ reviewComments:
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3683574484
-    body: Addressed in `5fa309e85f9b08db5676160c7851682c6b9b1481` without adding a scheduler or resource. After SWA authentication succeeds, every dashboard-data request now awaits the idempotent `reconcilePendingEmployeeStartDates()` recovery before serving the dashboard. Unauthenticated requests cannot trig...
+    body: Addressed in `5fa309e85f9b08db5676160c7851682c6b9b1481` without adding a scheduler or resource. After SWA
+      authentication succeeds, every dashboard-data request now awaits the idempotent
+      `reconcilePendingEmployeeStartDates()` recovery before serving the dashboard. Unauthenticated requests cannot
+      trig...
     path: .github/workflows/azure-static-web-apps.yml
     createdAt: 2026-07-30T14:33:55Z
     prFiles:
@@ -1458,7 +1495,9 @@ reviewComments:
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3683575057
-    body: Addressed in `5fa309e85f9b08db5676160c7851682c6b9b1481`. `docs/repository-operations.md` now documents that `deploy-preview` creates a frontend-only preview through the preview environment, never attaches the managed API/data identity, and is closed when the label is removed or the PR closes. Toolin...
+    body: Addressed in `5fa309e85f9b08db5676160c7851682c6b9b1481`. `docs/repository-operations.md` now documents that
+      `deploy-preview` creates a frontend-only preview through the preview environment, never attaches the managed
+      API/data identity, and is closed when the label is removed or the PR closes. Toolin...
     path: .github/workflows/azure-static-web-apps.yml
     createdAt: 2026-07-30T14:33:59Z
     prFiles:
@@ -1479,7 +1518,9 @@ reviewComments:
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3683717075
-    body: "Fixed in 8b5696273196d7fc926a785d9dc5563e9df676a6. PR previews now use a separate explicit static-only upload step with no `api_location` and `skip_api_build: true`; full deploys retain the literal unified Functions package."
+    body: "Fixed in 8b5696273196d7fc926a785d9dc5563e9df676a6. PR previews now use a separate explicit static-only upload
+      step with no `api_location` and `skip_api_build: true`; full deploys retain the literal unified Functions
+      package."
     path: .github/workflows/azure-static-web-apps.yml
     createdAt: 2026-07-30T14:51:37Z
     prFiles:
@@ -1500,7 +1541,8 @@ reviewComments:
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3683718007
-    body: Fixed in 8b5696273196d7fc926a785d9dc5563e9df676a6. `workflow_dispatch` now offers only `stage` and `production`, so a manual `preview` cannot publish the full backend to a preview environment.
+    body: Fixed in 8b5696273196d7fc926a785d9dc5563e9df676a6. `workflow_dispatch` now offers only `stage` and `production`,
+      so a manual `preview` cannot publish the full backend to a preview environment.
     path: .github/workflows/azure-static-web-apps.yml
     createdAt: 2026-07-30T14:51:43Z
     prFiles:
@@ -1521,7 +1563,8 @@ reviewComments:
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3683718670
-    body: Fixed in 8b5696273196d7fc926a785d9dc5563e9df676a6. Both deployment runbooks now list the required Onboarding and Valuation Cosmos/provider settings alongside Pricing and PTO, with focused regression coverage.
+    body: Fixed in 8b5696273196d7fc926a785d9dc5563e9df676a6. Both deployment runbooks now list the required Onboarding and
+      Valuation Cosmos/provider settings alongside Pricing and PTO, with focused regression coverage.
     path: docs/deploy-asap.md
     createdAt: 2026-07-30T14:51:48Z
     prFiles:
@@ -1542,7 +1585,9 @@ reviewComments:
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3684218476
-    body: Fixed in 409c135643b8cd314fcb648e01b504ca903018ac. Both managed-SWA recovery runbooks now require `AUTH_MODE=entra` with PTO's Cosmos settings, and the focused tooling assertion covers it. `bun run test:tooling` (8/8) and full `bun run verify` passed.
+    body: Fixed in 409c135643b8cd314fcb648e01b504ca903018ac. Both managed-SWA recovery runbooks now require
+      `AUTH_MODE=entra` with PTO's Cosmos settings, and the focused tooling assertion covers it. `bun run test:tooling`
+      (8/8) and full `bun run verify` passed.
     path: docs/deploy-asap.md
     createdAt: 2026-07-30T15:54:24Z
     prFiles:
@@ -1563,7 +1608,9 @@ reviewComments:
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3684332153
-    body: Fixed in f06322d8aa41a816051bc63071fa62e881099500. Authenticated dashboard reads now catch and log reconciliation failure before serving normal dashboard data. The focused adapter test proves a rejected recovery still returns 200; managed-SWA bundle inspection, Onboarding static build, and full `bun...
+    body: Fixed in f06322d8aa41a816051bc63071fa62e881099500. Authenticated dashboard reads now catch and log reconciliation
+      failure before serving normal dashboard data. The focused adapter test proves a rejected recovery still returns
+      200; managed-SWA bundle inspection, Onboarding static build, and full `bun...
     path: onboarding/apps/dashboard/lib/api/azure-functions-adapter.ts
     createdAt: 2026-07-30T16:09:07Z
     prFiles:
@@ -1584,7 +1631,9 @@ reviewComments:
     prNumber: 66
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/66#discussion_r3684426077
-    body: Fixed in 6335b2b8d9911746ffa939b535e53d784cd1acb0. The workflow now subscribes to `synchronize` and `reopened`, and both build/deploy require the existing `deploy-preview` label for those actions. The lifecycle doc and focused assertion cover head refresh; YAML parsing, tooling 8/8, and full `bun ru...
+    body: Fixed in 6335b2b8d9911746ffa939b535e53d784cd1acb0. The workflow now subscribes to `synchronize` and `reopened`,
+      and both build/deploy require the existing `deploy-preview` label for those actions. The lifecycle doc and focused
+      assertion cover head refresh; YAML parsing, tooling 8/8, and full `bun ru...
     path: .github/workflows/azure-static-web-apps.yml
     createdAt: 2026-07-30T16:22:37Z
     prFiles:
@@ -1780,12 +1829,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 73.8
+  version: "2.3"
+  hours: 39.4
   sessions: 2
   sessionHours: 6.2
-  volumeHours: 73.8
+  volumeHours: 85.7
+  compressedVolumeHours: 39.4
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

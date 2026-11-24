@@ -22,7 +22,7 @@ stats:
   reviewComments: 4
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 150.2
+  estimatedHours: 65
 dailyCommits:
   - date: 2026-10-12
     count: 88
@@ -44,7 +44,9 @@ repositories:
 pullRequests:
   - title: "test(northstar): keep persisted brief fixture inside the current period"
     body: >-
-      - `returns a persisted scheduled brief without generating it again` hardcoded the stored brief's `updatedAt` as `2026-09-12`. Once the weekly brief period moved past that date, the cached brief was correctly treated as stale. The test then fell through to generation and returned 503.
+      - `returns a persisted scheduled brief without generating it again` hardcoded the stored brief's `updatedAt` as
+      `2026-09-12`. Once the weekly brief period moved past that date, the cached brief was correctly treated as stale.
+      The test then fell through to generation and returned 503.
 
       - The fixture n...
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/154
@@ -163,7 +165,9 @@ pullRequests:
       - pricing/functions/package.json
       - pricing/package.json
   - title: "feat(northstar): [1/3] advisor context and brief preferences"
-    body: "Carries the advisor-context and Settings part of #138: Copilot receives a Northstar identity plus preferred name, urgent mail, open to-dos and upcoming meetings; Settings stores Northstar and morning/end-of-day/weekly brief instructions on this device; scheduled briefs use the custom prompts, reset ..."
+    body: "Carries the advisor-context and Settings part of #138: Copilot receives a Northstar identity plus preferred name,
+      urgent mail, open to-dos and upcoming meetings; Settings stores Northstar and morning/end-of-day/weekly brief
+      instructions on this device; scheduled briefs use the custom prompts, reset ..."
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/155
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
@@ -313,7 +317,8 @@ pullRequests:
       ## Why
 
 
-      Accounts imported from AIRE can store numeric registration codes, which are unclear in the UI and make registration sorting and filtering inconsistent with registration names.
+      Accounts imported from AIRE can store numeric registration codes, which are unclear in the UI and make
+      registration sorting and filtering inconsistent with registration names.
 
 
       ## What changed
@@ -486,13 +491,15 @@ pullRequests:
       ## Why
 
 
-      Microsoft OAuth callbacks can arrive without the initiating Static Web Apps session, preventing Compass from safely completing the connection.
+      Microsoft OAuth callbacks can arrive without the initiating Static Web Apps session, preventing Compass from
+      safely completing the connection.
 
 
       ## What changed
 
 
-      The callback now serves a static handoff page that posts the authorization result to a same-origin endpoint. The endpoint requires ...
+      The callback now serves a static handoff page that posts the authorization result to a same-origin endpoint. The
+      endpoint requires ...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/174
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: open
@@ -532,7 +539,9 @@ pullRequests:
       - compass/functions/src/compass-microsoft.ts
       - compass/functions/src/index.ts
   - title: "feat(northstar): [2/3] @ commands and deliverable cards"
-    body: "Carries the @ command part of #138: `@email`, `@calendar`, `@todo`, `@meeting` and `@pdf` expand into task prompts; composer picker and chips; fenced deliverables render as cards (email card with Outlook link and recipient suggestions; PDF draft preview with edit/copy); edited drafts are saved per m..."
+    body: "Carries the @ command part of #138: `@email`, `@calendar`, `@todo`, `@meeting` and `@pdf` expand into task
+      prompts; composer picker and chips; fenced deliverables render as cards (email card with Outlook link and
+      recipient suggestions; PDF draft preview with edit/copy); edited drafts are saved per m..."
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/156
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
@@ -766,7 +775,8 @@ pullRequests:
       ## Why
 
 
-      Compass needed a more flexible dashboard and a clearer Ask workspace for organizing widgets, chats, and sources. A fresh Microsoft connection also needed to enable Copilot with one authorization when the granted scopes allow it.
+      Compass needed a more flexible dashboard and a clearer Ask workspace for organizing widgets, chats, and sources. A
+      fresh Microsoft connection also needed to enable Copilot with one authorization when the granted scopes allow it.
 
 
       ## What changed
@@ -854,7 +864,9 @@ pullRequests:
       ## Why
 
 
-      `returns a persisted scheduled brief without generating it again` stores its brief with a fixed `updatedAt` of `2026-09-12T12:00:00.000Z`. Compass conversations expire after the default 30-day retention, so since 2026-10-12 12:00 UTC the brief is treated as expired, the handler tries to rege...
+      `returns a persisted scheduled brief without generating it again` stores its brief with a fixed `updatedAt` of
+      `2026-09-12T12:00:00.000Z`. Compass conversations expire after the default 30-day retention, so since 2026-10-12
+      12:00 UTC the brief is treated as expired, the handler tries to rege...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/171
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: open
@@ -887,7 +899,9 @@ pullRequests:
       ## What changes
 
 
-      - `azure-static-web-apps.yml`: Compass is built, cached, staged (`compass.js` in the Hub Functions bundle) and composed in every environment, like the other product apps. Removed the preview-only branches (the `without ... compass` filter, the preview-only `deployment_apps`, the `co...
+      - `azure-static-web-apps.yml`: Compass is built, cached, staged (`compass.js` in the Hub Functions bundle) and
+      composed in every environment, like the other product apps. Removed the preview-only branches (the `without ...
+      compass` filter, the preview-only `deployment_apps`, the `co...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/169
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: merged
@@ -952,7 +966,9 @@ pullRequests:
     body: >-
       ## What failed
 
-      Production deploy run 38207420318 (push to main for #164) failed in job "Deploy Hub Static Web App", step "Smoke Hub deployment". The deploy itself succeeded. The probe for `/api/health` returned 404 immediately after deploy while every other probe passed. `https://apps.pathtobiz.com/...
+      Production deploy run 38207420318 (push to main for #164) failed in job "Deploy Hub Static Web App", step "Smoke
+      Hub deployment". The deploy itself succeeded. The probe for `/api/health` returned 404 immediately after deploy
+      while every other probe passed. `https://apps.pathtobiz.com/...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/167
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: merged
@@ -981,7 +997,9 @@ pullRequests:
     workFiles:
       - .github/workflows/azure-static-web-apps.yml
   - title: "feat(northstar): [3/3] PDF export"
-    body: "Carries the PDF export part of #138: client-side PDF generation (`@react-pdf/renderer`, `northstar/lib/chat-pdf.tsx`) with bundled Noto fonts (`northstar/public/pdf-fonts`, ~34 MB, OFL license included), Export PDF for the open conversation, the latest response and `@pdf` draft cards, incomplete ans..."
+    body: "Carries the PDF export part of #138: client-side PDF generation (`@react-pdf/renderer`,
+      `northstar/lib/chat-pdf.tsx`) with bundled Noto fonts (`northstar/public/pdf-fonts`, ~34 MB, OFL license
+      included), Export PDF for the open conversation, the latest response and `@pdf` draft cards, incomplete ans..."
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/157
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
@@ -1263,7 +1281,9 @@ pullRequests:
       ## Why
 
 
-      GitHub Actions minutes were going to pull request work that did not need it: three Verify jobs per push (each billed at least one minute), Hub preview change detection on PRs without `deploy-preview`, full 8-app rebuilds for documentation-only changes, and verification of draft PRs.
+      GitHub Actions minutes were going to pull request work that did not need it: three Verify jobs per push (each
+      billed at least one minute), Hub preview change detection on PRs without `deploy-preview`, full 8-app rebuilds for
+      documentation-only changes, and verification of draft PRs.
 
 
       ## What...
@@ -1572,7 +1592,8 @@ pullRequests:
       ## Why
 
 
-      The app theme used Myriad reds for actions and focus treatments, which conflicts with the brand guidance that reserves red for accents.
+      The app theme used Myriad reds for actions and focus treatments, which conflicts with the brand guidance that
+      reserves red for accents.
 
 
       ## What changed
@@ -1641,7 +1662,9 @@ pullRequests:
       - valuation/src/app/imports/page.tsx
       - valuation/src/app/page.tsx
   - title: "feat(ui): shared settings page across apps"
-    body: Adds a shared Settings module to `@myriad/ui` and gives every app a Settings page built from it. Settings now carries everything from the account menu's quick settings (color theme, navigation layout), plus each app's own real preferences. The quick settings stay in the account menu; both surfaces s...
+    body: Adds a shared Settings module to `@myriad/ui` and gives every app a Settings page built from it. Settings now
+      carries everything from the account menu's quick settings (color theme, navigation layout), plus each app's own
+      real preferences. The quick settings stay in the account menu; both surfaces s...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/162
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: merged
@@ -1719,7 +1742,8 @@ pullRequests:
       ## What changed
 
 
-      Added a Registration column and filter to the account queue, and made registration a sortable field. Registration choices include values present in the...
+      Added a Registration column and filter to the account queue, and made registration a sortable field. Registration
+      choices include values present in the...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: merged
@@ -1767,7 +1791,8 @@ pullRequests:
       ## What changed
 
 
-      Added a guided tour with role-specific steps, a welcome and completion flow, and a spotlight that follows page targets. Users can launch it ...
+      Added a guided tour with role-specific steps, a welcome and completion flow, and a spotlight that follows page
+      targets. Users can launch it ...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: merged
@@ -1817,7 +1842,8 @@ pullRequests:
       - transition/src/lib/tour.ts
   - title: "chore(repo): remove stale content and Twenty submodule"
     body: >-
-      The PTO documentation still described an unimplemented scaffold and referenced missing import templates. This PR updates that guidance and removes the unused twenty checkout and submodule configuration.
+      The PTO documentation still described an unimplemented scaffold and referenced missing import templates. This PR
+      updates that guidance and removes the unused twenty checkout and submodule configuration.
 
 
       Documentation and absent retired submodule paths do not require deployment. Changes to the impac...
@@ -1887,7 +1913,9 @@ prsInProgress:
     workDeletions: 137
     workFiles: *a4
   - title: "feat(northstar): [1/3] advisor context and brief preferences"
-    body: "Carries the advisor-context and Settings part of #138: Copilot receives a Northstar identity plus preferred name, urgent mail, open to-dos and upcoming meetings; Settings stores Northstar and morning/end-of-day/weekly brief instructions on this device; scheduled briefs use the custom prompts, reset ..."
+    body: "Carries the advisor-context and Settings part of #138: Copilot receives a Northstar identity plus preferred name,
+      urgent mail, open to-dos and upcoming meetings; Settings stores Northstar and morning/end-of-day/weekly brief
+      instructions on this device; scheduled briefs use the custom prompts, reset ..."
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/155
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
@@ -1910,7 +1938,8 @@ prsInProgress:
       ## Why
 
 
-      Accounts imported from AIRE can store numeric registration codes, which are unclear in the UI and make registration sorting and filtering inconsistent with registration names.
+      Accounts imported from AIRE can store numeric registration codes, which are unclear in the UI and make
+      registration sorting and filtering inconsistent with registration names.
 
 
       ## What changed
@@ -2048,13 +2077,15 @@ prsInProgress:
       ## Why
 
 
-      Microsoft OAuth callbacks can arrive without the initiating Static Web Apps session, preventing Compass from safely completing the connection.
+      Microsoft OAuth callbacks can arrive without the initiating Static Web Apps session, preventing Compass from
+      safely completing the connection.
 
 
       ## What changed
 
 
-      The callback now serves a static handoff page that posts the authorization result to a same-origin endpoint. The endpoint requires ...
+      The callback now serves a static handoff page that posts the authorization result to a same-origin endpoint. The
+      endpoint requires ...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/174
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: open
@@ -2073,7 +2104,9 @@ prsInProgress:
     workDeletions: 124
     workFiles: *a20
   - title: "feat(northstar): [2/3] @ commands and deliverable cards"
-    body: "Carries the @ command part of #138: `@email`, `@calendar`, `@todo`, `@meeting` and `@pdf` expand into task prompts; composer picker and chips; fenced deliverables render as cards (email card with Outlook link and recipient suggestions; PDF draft preview with edit/copy); edited drafts are saved per m..."
+    body: "Carries the @ command part of #138: `@email`, `@calendar`, `@todo`, `@meeting` and `@pdf` expand into task
+      prompts; composer picker and chips; fenced deliverables render as cards (email card with Outlook link and
+      recipient suggestions; PDF draft preview with edit/copy); edited drafts are saved per m..."
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/156
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
@@ -2096,7 +2129,8 @@ prsInProgress:
       ## Why
 
 
-      Compass needed a more flexible dashboard and a clearer Ask workspace for organizing widgets, chats, and sources. A fresh Microsoft connection also needed to enable Copilot with one authorization when the granted scopes allow it.
+      Compass needed a more flexible dashboard and a clearer Ask workspace for organizing widgets, chats, and sources. A
+      fresh Microsoft connection also needed to enable Copilot with one authorization when the granted scopes allow it.
 
 
       ## What changed
@@ -2125,7 +2159,9 @@ prsInProgress:
       ## Why
 
 
-      `returns a persisted scheduled brief without generating it again` stores its brief with a fixed `updatedAt` of `2026-09-12T12:00:00.000Z`. Compass conversations expire after the default 30-day retention, so since 2026-10-12 12:00 UTC the brief is treated as expired, the handler tries to rege...
+      `returns a persisted scheduled brief without generating it again` stores its brief with a fixed `updatedAt` of
+      `2026-09-12T12:00:00.000Z`. Compass conversations expire after the default 30-day retention, so since 2026-10-12
+      12:00 UTC the brief is treated as expired, the handler tries to rege...
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/171
     repository: Myriad-Advisor-Solutions/myriadas-apps
     state: open
@@ -2144,7 +2180,9 @@ prsInProgress:
     workDeletions: 1
     workFiles: *a32
   - title: "feat(northstar): [3/3] PDF export"
-    body: "Carries the PDF export part of #138: client-side PDF generation (`@react-pdf/renderer`, `northstar/lib/chat-pdf.tsx`) with bundled Noto fonts (`northstar/public/pdf-fonts`, ~34 MB, OFL license included), Export PDF for the open conversation, the latest response and `@pdf` draft cards, incomplete ans..."
+    body: "Carries the PDF export part of #138: client-side PDF generation (`@react-pdf/renderer`,
+      `northstar/lib/chat-pdf.tsx`) with bundled Noto fonts (`northstar/public/pdf-fonts`, ~34 MB, OFL license
+      included), Export PDF for the open conversation, the latest response and `@pdf` draft cards, incomplete ans..."
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/157
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
     state: open
@@ -2167,7 +2205,9 @@ prsInProgress:
       ## Why
 
 
-      GitHub Actions minutes were going to pull request work that did not need it: three Verify jobs per push (each billed at least one minute), Hub preview change detection on PRs without `deploy-preview`, full 8-app rebuilds for documentation-only changes, and verification of draft PRs.
+      GitHub Actions minutes were going to pull request work that did not need it: three Verify jobs per push (each
+      billed at least one minute), Hub preview change detection on PRs without `deploy-preview`, full 8-app rebuilds for
+      documentation-only changes, and verification of draft PRs.
 
 
       ## What...
@@ -2201,7 +2241,8 @@ prsInProgress:
     body: >-
       - Add an Azure AD role source that validates tenant claims and returns supported app roles.
 
-      - Configure the deployment workflow to inject group-managed authentication settings when `SWA_AUTH_TENANT_ID` is set.
+      - Configure the deployment workflow to inject group-managed authentication settings when `SWA_AUTH_TENANT_ID` is
+      set.
 
       - Document Entra group setup, activation, verification, and rollback.
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/152
@@ -2270,7 +2311,8 @@ prsInProgress:
       ### Motivation
 
 
-      - Close an authorization gap that allowed any `pricing_user` officer to permanently delete a recruit (and cascade-delete its model and reports) because the same officer role can also archive recruits.
+      - Close an authorization gap that allowed any `pricing_user` officer to permanently delete a recruit (and
+      cascade-delete its model and reports) because the same officer role can also archive recruits.
 
 
       ### Description
@@ -3374,28 +3416,35 @@ reviewComments:
     prNumber: 157
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/157
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/157#discussion_r4251911883
-    body: Deferred (pending a product decision). Northstar is English/US-only, and whether the non-Latin PDF fonts ship at all is awaiting the client's decision. If they're removed, this path goes away; if they're kept, emphasis for those scripts will be handled with that change.
+    body: Deferred (pending a product decision). Northstar is English/US-only, and whether the non-Latin PDF fonts ship at
+      all is awaiting the client's decision. If they're removed, this path goes away; if they're kept, emphasis for
+      those scripts will be handled with that change.
     path: northstar/lib/chat-pdf.tsx
     createdAt: 2026-10-12T20:09:04Z
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 156
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/156
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/156#discussion_r4252245380
-    body: "Deferred (intended behavior). Commands are standalone tokens inserted from the @ picker, and the strict matcher is deliberate: it avoids false positives on email addresses, @mentions, and prose. `(@pdf)` staying plain text is acceptable; widening the punctuation set can be revisited if users report ..."
+    body: "Deferred (intended behavior). Commands are standalone tokens inserted from the @ picker, and the strict matcher
+      is deliberate: it avoids false positives on email addresses, @mentions, and prose. `(@pdf)` staying plain text is
+      acceptable; widening the punctuation set can be revisited if users report ..."
     path: northstar/lib/at-commands.ts
     createdAt: 2026-10-12T20:55:38Z
   - repository: Myriad-Advisor-Solutions/ohcpwm-apps
     prNumber: 155
     prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/155
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/155#discussion_r4251911640
-    body: Deferred (low risk). This cleanup is best-effort and only runs after a first turn fails. The worst case of the read-then-delete race is that an overlapping turn on the same conversation starts a fresh provider conversation and loses transcript context; no data is lost. Making it atomic (etag `if-mat...
+    body: Deferred (low risk). This cleanup is best-effort and only runs after a first turn fails. The worst case of the
+      read-then-delete race is that an overlapping turn on the same conversation starts a fresh provider conversation
+      and loses transcript context; no data is lost. Making it atomic (etag `if-mat...
     path: hub/functions/src/northstar-microsoft.ts
     createdAt: 2026-10-12T20:09:02Z
   - repository: Myriad-Advisor-Solutions/myriadas-apps
     prNumber: 169
     prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/169
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/169#discussion_r4244993865
-    body: "Fixed in ccfda4c: the Compass health endpoint now returns { status: \"ok\", app: \"compass\" } with status 200 and no config or database dependency, so the products workflow's \"app\" check passes."
+    body: "Fixed in ccfda4c: the Compass health endpoint now returns { status: \"ok\", app: \"compass\" } with status 200
+      and no config or database dependency, so the products workflow's \"app\" check passes."
     path: scripts/app-registry.ts
     createdAt: 2026-10-12T05:45:38Z
 aiReviews:
@@ -3740,12 +3789,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 150.2
+  version: "2.3"
+  hours: 65
   sessions: 2
   sessionHours: 6.5
-  volumeHours: 150.2
+  volumeHours: 187.8
+  compressedVolumeHours: 65
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""

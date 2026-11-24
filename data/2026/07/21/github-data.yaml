@@ -22,7 +22,7 @@ stats:
   reviewComments: 0
   issuesOpened: 0
   issuesClosed: 0
-  estimatedHours: 22.4
+  estimatedHours: 24
 dailyCommits:
   - date: 2026-07-21
     count: 13
@@ -47,7 +47,8 @@ pullRequests:
       Why
 
 
-      Advisor-name links used root-relative `/recruits/...` URLs. In the static `/pricing` deployment, those URLs left the pricing app and returned users to the hub.
+      Advisor-name links used root-relative `/recruits/...` URLs. In the static `/pricing` deployment, those URLs left
+      the pricing app and returned users to the hub.
 
 
       What changed
@@ -202,7 +203,9 @@ pullRequests:
       Why
 
 
-      Stateful product deployments need a consistent Azure Static Web Apps and Cosmos DB path. PTO still targeted Microsoft Lists, while the Hub deployment bundled product APIs into a shared runtime that could not use app-scoped Cosmos identities.
+      Stateful product deployments need a consistent Azure Static Web Apps and Cosmos DB path. PTO still targeted
+      Microsoft Lists, while the Hub deployment bundled product APIs into a shared runtime that could not use app-scoped
+      Cosmos identities.
 
 
       What changed
@@ -284,7 +287,8 @@ prsInProgress:
       Why
 
 
-      Advisor-name links used root-relative `/recruits/...` URLs. In the static `/pricing` deployment, those URLs left the pricing app and returned users to the hub.
+      Advisor-name links used root-relative `/recruits/...` URLs. In the static `/pricing` deployment, those URLs left
+      the pricing app and returned users to the hub.
 
 
       What changed
@@ -318,7 +322,9 @@ prsInProgress:
       Why
 
 
-      Stateful product deployments need a consistent Azure Static Web Apps and Cosmos DB path. PTO still targeted Microsoft Lists, while the Hub deployment bundled product APIs into a shared runtime that could not use app-scoped Cosmos identities.
+      Stateful product deployments need a consistent Azure Static Web Apps and Cosmos DB path. PTO still targeted
+      Microsoft Lists, while the Hub deployment bundled product APIs into a shared runtime that could not use app-scoped
+      Cosmos identities.
 
 
       What changed
@@ -574,12 +580,15 @@ hoursInputs:
     maxSessionHours: 6
     minimumHours: 8
 hoursEstimate:
-  version: "2.1"
-  hours: 22.4
+  version: "2.3"
+  hours: 24
   sessions: 1
   sessionHours: 3.9
-  volumeHours: 22.4
+  volumeHours: 32
+  compressedVolumeHours: 24
   gapMinutes: 90
   maxSessionHours: 6
-  note: Estimated conventional engineering effort based on delivered PR scope, reviews, commits, and GitHub activity. Not tracked, elapsed, or billed time.
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
 stakeholderSummary: ""
