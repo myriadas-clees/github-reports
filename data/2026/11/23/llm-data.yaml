@@ -1,0 +1,112 @@
+title: Nov 23
+subtitle: compass, northstar & pricing
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps and Myriad-Advisor-Solutions/ohcpwm-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 4 PRs
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 2 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 15 commits with +3,549 / −1,304 lines.
+    chips:
+      - label: Commits
+        value: "15"
+        color: green
+      - label: Additions
+        value: +3,549
+        color: green
+      - label: Deletions
+        value: −1,304
+        color: red
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 2 reviews, 3 comments, 2 PRs."
+    chips:
+      - label: Codex
+        value: 2 reviews · 3 comments · 2 PRs
+  - type: activity-pattern
+    heading: Manual effort estimate
+    body: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+      deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+      worked or measured time saved. Very busy days count with diminishing returns."
+    chips:
+      - label: Manual effort estimate
+        value: ~4.5 engineer-days
+highlights:
+  - type: pr
+    title: "fix(ui): preserve keyboard focus in menus and modals"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: integrated · +390 −80
+    body: >-
+      ## Why
+
+
+      An open modal could move focus back to its close button when its parent rerendered. The Hub landing menu also let
+      Tab escape when focus was on the header toggle.
+
+
+      ## What changed
+
+
+      Shared UI ow
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/292
+  - type: pr
+    title: "build(repo): replace ESLint with Oxlint"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: integrated · +0 −0
+    body: >-
+      ## Why
+
+
+      ESLint pulled in `typescript-eslint` through `eslint-config-next`, which caps TypeScript below 6.1 and is slow.
+      Oxlint enforces the same rules much faster.
+
+
+      ## What changed
+
+
+      - Root `.oxlintrc.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/287
+  - type: pr
+    title: "chore(compass): upgrade OpenUI react-lang to 1.1.1"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: integrated · +227 −521
+    body: >-
+      ## Why
+
+
+      Compass pinned `@openuidev/react-lang` 1.0.1; 1.1.1 is current and brings faster streaming parses and more robust
+      fence handling.
+
+
+      ## What changed
+
+
+      - Pin `@openuidev/react-lang` to 1.1.1 (lang
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/285
+  - type: pr
+    title: "feat(pricing): configure report sections and custom expenses"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +592 −363
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/230
+  - type: pr
+    title: "feat(northstar): build personalized News editions and local Ask"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +11381 −157
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/231
+ticker:
+  - label: INTEGRATED
+    text: '@myriadas-clees completed "fix(ui): preserve keyboard focus in menus and modals" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: INTEGRATED
+    text: '@myriadas-clees completed "build(repo): replace ESLint with Oxlint" in Myriad-Advisor-Solutions/myriadas-apps'
+  - label: INTEGRATED
+    text: '@myriadas-clees completed "chore(compass): upgrade OpenUI react-lang to 1.1.1" in
+      Myriad-Advisor-Solutions/myriadas-apps'

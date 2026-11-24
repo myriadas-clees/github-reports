@@ -1,0 +1,1273 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-11-23
+  to: 2026-11-23
+stats:
+  totalCommits: 15
+  totalAdditions: 3549
+  totalDeletions: 1304
+  prsOpened: 6
+  prsMerged: 3
+  prsInProgress: 7
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 34
+dailyCommits:
+  - date: 2026-11-23
+    count: 15
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 13
+    prsOpened: 4
+    prsMerged: 3
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 2
+    prsOpened: 2
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests:
+  - title: "feat(pricing): configure report sections and custom expenses"
+    body: >-
+      - Add configurable PDF sections, including separate default and custom local expenses, with the client proposal as
+      the default layout.
+
+      - For FiNet scenarios, the default Client proposal PDF includes Current FiNet pricing, Current FiNet Net Payout,
+      and Net Difference.
+
+      - Add custom FiNet local expense...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/230
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a1 []
+    additions: 592
+    deletions: 363
+    changedFiles: 23
+    author: myriadas-clees
+    createdAt: 2026-11-23T16:46:33Z
+    updatedAt: 2026-11-24T15:42:52Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a2
+      - &a32
+        sha: 6de020fa0421b28b37e07d0b73fdebd4747cadd9
+        message: "feat(pricing): configure report sections and custom expenses"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/6de020fa0421b28b37e07d0b73fdebd4747cadd9
+        authoredAt: 2026-11-23T16:46:24Z
+        additions: 592
+        deletions: 363
+        filesChanged: 23
+        files:
+          - docs/advisor-pricing-architecture.md
+          - packages/contracts/src/pricing.test.ts
+          - packages/contracts/src/pricing.ts
+          - pricing/AGENTS.md
+          - pricing/functions/src/index.ts
+          - pricing/next-env.d.ts
+          - pricing/src/components/__tests__/assumptions-tab.test.tsx
+          - pricing/src/components/__tests__/recruit-report-readiness.test.tsx
+          - pricing/src/components/__tests__/report-preview.test.tsx
+          - pricing/src/components/assumptions-tab.tsx
+          - pricing/src/components/report-preview.tsx
+          - pricing/src/lib/__tests__/calculation.test.ts
+          - pricing/src/lib/__tests__/report-storage.test.ts
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/calculation.ts
+          - pricing/src/lib/pricing-api-client.ts
+          - pricing/src/lib/report-storage.ts
+          - pricing/src/lib/report.ts
+          - pricing/src/lib/report/excel.ts
+          - pricing/src/lib/report/model.ts
+          - pricing/src/lib/report/pdf.tsx
+          - pricing/src/lib/workbook-output.ts
+          - scripts/dev-pricing-api.ts
+    workTimestamps: &a3
+      - 2026-11-23T16:46:24Z
+    workAdditions: 592
+    workDeletions: 363
+    workFiles: &a4
+      - docs/advisor-pricing-architecture.md
+      - packages/contracts/src/pricing.test.ts
+      - packages/contracts/src/pricing.ts
+      - pricing/AGENTS.md
+      - pricing/functions/src/index.ts
+      - pricing/next-env.d.ts
+      - pricing/src/components/__tests__/assumptions-tab.test.tsx
+      - pricing/src/components/__tests__/recruit-report-readiness.test.tsx
+      - pricing/src/components/__tests__/report-preview.test.tsx
+      - pricing/src/components/assumptions-tab.tsx
+      - pricing/src/components/report-preview.tsx
+      - pricing/src/lib/__tests__/calculation.test.ts
+      - pricing/src/lib/__tests__/report-storage.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/calculation.ts
+      - pricing/src/lib/pricing-api-client.ts
+      - pricing/src/lib/report-storage.ts
+      - pricing/src/lib/report.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - pricing/src/lib/workbook-output.ts
+      - scripts/dev-pricing-api.ts
+  - title: "feat(northstar): build personalized News editions and local Ask"
+    body: >-
+      - Add personalized Northstar News with topic onboarding, source-backed daily editions, saved stories, reader
+      controls, and advisor-specific preferences.
+
+      - Add News briefs and story context for Ask, plus selection tools, quick chat, and the optional local Ollama
+      provider.
+
+      - Document News and local mo...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/231
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a5 []
+    additions: 174
+    deletions: 25
+    changedFiles: 183
+    author: myriadas-clees
+    createdAt: 2026-11-23T16:46:33Z
+    updatedAt: 2026-11-23T16:51:50Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a6
+      - &a31
+        sha: e43e2c68322f7d3e6ca05675c546e5275b9c2311
+        message: "feat(northstar): ground local News briefs in source evidence"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e43e2c68322f7d3e6ca05675c546e5275b9c2311
+        authoredAt: 2026-11-23T16:46:20Z
+        additions: 174
+        deletions: 25
+        filesChanged: 90
+        files:
+          - artifacts/visual-qa/local-model/desktop-1-model-menu.png
+          - artifacts/visual-qa/local-model/desktop-2-local-loading.png
+          - artifacts/visual-qa/local-model/desktop-3-stopped.png
+          - artifacts/visual-qa/local-model/desktop-4-local-answer.png
+          - artifacts/visual-qa/local-model/mobile-390-local-answer.png
+          - artifacts/visual-qa/local-model/mobile-390-local-loading.png
+          - artifacts/visual-qa/local-model/mobile-390-local-stopped.png
+          - artifacts/visual-qa/local-model/mobile-390-quick-chat-local.png
+          - artifacts/visual-qa/news-interim/01-today-widget-light.png
+          - artifacts/visual-qa/news-interim/02-onboarding-welcome-light.png
+          - artifacts/visual-qa/news-interim/03-onboarding-topics-light.png
+          - artifacts/visual-qa/news-interim/04-onboarding-make-it-yours-light.png
+          - artifacts/visual-qa/news-interim/05-onboarding-rhythm-light.png
+          - artifacts/visual-qa/news-interim/06-news-page-light.png
+          - artifacts/visual-qa/news-interim/07-briefing-answer-light.png
+          - artifacts/visual-qa/news-interim/08-reader-selection-popover-light.png
+          - artifacts/visual-qa/news-interim/09-quick-chat-hover-light.png
+          - artifacts/visual-qa/news-interim/10-quick-chat-open-light.png
+          - artifacts/visual-qa/news-interim/11-news-page-dark.png
+          - artifacts/visual-qa/news-interim/12-news-page-phone-light.png
+          - artifacts/visual-qa/news-reader-prefs/01-aa-panel-sepia-serif-default-desktop-mock-save.png
+          - artifacts/visual-qa/news-reader-prefs/02-theme-light-desktop-live.png
+          - artifacts/visual-qa/news-reader-prefs/03-theme-sepia-desktop-live.png
+          - artifacts/visual-qa/news-reader-prefs/04-theme-gray-desktop-live.png
+          - artifacts/visual-qa/news-reader-prefs/05-theme-dark-desktop-live.png
+          - artifacts/visual-qa/news-reader-prefs/06-theme-auto-dark-app-desktop-live.png
+          - artifacts/visual-qa/news-reader-prefs/07-theme-auto-light-app-desktop-live.png
+          - artifacts/visual-qa/news-reader-prefs/08-theme-light-phone-live.png
+          - artifacts/visual-qa/news-reader-prefs/09-theme-sepia-phone-live.png
+          - artifacts/visual-qa/news-reader-prefs/10-theme-gray-phone-live.png
+          - artifacts/visual-qa/news-reader-prefs/11-theme-dark-phone-live.png
+          - artifacts/visual-qa/news-reader-prefs/12-theme-auto-light-app-phone-live.png
+          - artifacts/visual-qa/news-reader-prefs/13-aa-bottom-sheet-readable-plus2-relaxed-phone-mock-save.png
+          - artifacts/visual-qa/news-reader-prefs/14-focus-mode-phone-live.png
+          - artifacts/visual-qa/news-redesign/01-edition-phone-light-mock.png
+          - artifacts/visual-qa/news-redesign/02-edition-desktop-light-live.png
+          - artifacts/visual-qa/news-redesign/03-edition-return-desktop-light-mock.png
+          - artifacts/visual-qa/news-redesign/04-reader-phone-light-live.png
+          - artifacts/visual-qa/news-redesign/05-reader-desktop-light-live.png
+          - artifacts/visual-qa/news-redesign/06-edition-return-desktop-dark-mock.png
+          - artifacts/visual-qa/news-redesign/07-return-sections-desktop-dark-mock.png
+          - artifacts/visual-qa/news-redesign/08-reader-brief-desktop-dark-mock.png
+          - artifacts/visual-qa/news-redesign/09-practice-ask-quick-chat-desktop-dark-mock.png
+          - artifacts/visual-qa/news-redesign/10-today-widget-desktop-dark-mock.png
+          - artifacts/visual-qa/news-redesign/11-explore-phone-light-mock.png
+          - artifacts/visual-qa/news-redesign/12-selection-toolbar-phone-light-mock.png
+          - artifacts/visual-qa/news-redesign/13-onboarding-phone-light-live.png
+          - artifacts/visual-qa/news-rereview-3-fixes/01-local-only-notice-filtered-explore-phone-live.png
+          - artifacts/visual-qa/news-rereview-3/01-edition.png
+          - artifacts/visual-qa/news-rereview-3/02-appearance.png
+          - artifacts/visual-qa/news-rereview-3/03-return.png
+          - artifacts/visual-qa/news-rereview-3/04-local-answer.png
+          - artifacts/visual-qa/news-rereview-3/05-local-brief.png
+          - artifacts/visual-qa/news-rereview-fixes/01-briefing-neutral-quiet-phone-light-live.png
+          - artifacts/visual-qa/news-rereview-fixes/02-new-lead-status-phone-light-mock.png
+          - artifacts/visual-qa/news-rereview-fixes/03-reader-focus-back-phone-dark-mock.png
+          - artifacts/visual-qa/news-rereview-fixes/04-continue-in-ask-inert-desktop-dark-mock.png
+          - artifacts/visual-qa/news-rereview-fixes/05-cached-edition-desktop-light-mock.png
+          - artifacts/visual-qa/news-rereview-fixes/06-edition-unavailable-desktop-dark-mock.png
+          - artifacts/visual-qa/news-rereview/01-briefing.png
+          - artifacts/visual-qa/news-rereview/02-return.png
+          - artifacts/visual-qa/news-rereview/03-fed-reader.png
+          - artifacts/visual-qa/news-rereview/04-fed-source.png
+          - artifacts/visual-qa/news-rereview/05-reader-focus.png
+          - artifacts/visual-qa/news-review/01-reader-launcher-live-dark.png
+          - artifacts/visual-qa/news-review/02-selection-popover-phone-live-dark.png
+          - artifacts/visual-qa/news-ux-review/01-welcome.png
+          - artifacts/visual-qa/news-ux-review/02-topics.png
+          - artifacts/visual-qa/news-ux-review/03-rhythm.png
+          - artifacts/visual-qa/news-ux-review/04-feed-light.png
+          - artifacts/visual-qa/news-ux-review/05-feed-dark.png
+          - artifacts/visual-qa/news-ux-review/06-reader-desktop.png
+          - artifacts/visual-qa/news-ux-review/07-reader-selection-phone.png
+          - artifacts/visual-qa/news-ux-review/08-feed-phone-dark.png
+          - artifacts/visual-qa/news-ux-review/09-saved-phone-light.png
+          - artifacts/visual-qa/news-ux-review/10-quick-chat-phone.png
+          - artifacts/visual-qa/news-ux-review/11-today-widget.png
+          - artifacts/visual-qa/news-ux-review/12-ask-news.png
+          - artifacts/visual-qa/news-ux-review/13-return-phone-light.png
+          - artifacts/visual-qa/news-ux-review/14-retirement-topic.png
+          - artifacts/visual-qa/news-ux-review/15-story-list.png
+          - artifacts/visual-qa/news/01-reader-summary-launcher-light.png
+          - artifacts/visual-qa/news/02-reader-launcher-dark.png
+          - artifacts/visual-qa/news/03-reader-phone-light.png
+          - hub/functions/src/northstar-local-model.ts
+          - hub/functions/src/northstar-news-article.ts
+          - hub/functions/src/northstar-news-ask.ts
+          - hub/functions/src/northstar-news-brief.ts
+          - hub/functions/src/northstar-news-evidence.ts
+          - northstar/AGENTS.md
+    workTimestamps: &a7
+      - 2026-11-23T16:46:20Z
+    workAdditions: 174
+    workDeletions: 25
+    workFiles: &a8
+      - artifacts/visual-qa/local-model/desktop-1-model-menu.png
+      - artifacts/visual-qa/local-model/desktop-2-local-loading.png
+      - artifacts/visual-qa/local-model/desktop-3-stopped.png
+      - artifacts/visual-qa/local-model/desktop-4-local-answer.png
+      - artifacts/visual-qa/local-model/mobile-390-local-answer.png
+      - artifacts/visual-qa/local-model/mobile-390-local-loading.png
+      - artifacts/visual-qa/local-model/mobile-390-local-stopped.png
+      - artifacts/visual-qa/local-model/mobile-390-quick-chat-local.png
+      - artifacts/visual-qa/news-interim/01-today-widget-light.png
+      - artifacts/visual-qa/news-interim/02-onboarding-welcome-light.png
+      - artifacts/visual-qa/news-interim/03-onboarding-topics-light.png
+      - artifacts/visual-qa/news-interim/04-onboarding-make-it-yours-light.png
+      - artifacts/visual-qa/news-interim/05-onboarding-rhythm-light.png
+      - artifacts/visual-qa/news-interim/06-news-page-light.png
+      - artifacts/visual-qa/news-interim/07-briefing-answer-light.png
+      - artifacts/visual-qa/news-interim/08-reader-selection-popover-light.png
+      - artifacts/visual-qa/news-interim/09-quick-chat-hover-light.png
+      - artifacts/visual-qa/news-interim/10-quick-chat-open-light.png
+      - artifacts/visual-qa/news-interim/11-news-page-dark.png
+      - artifacts/visual-qa/news-interim/12-news-page-phone-light.png
+      - artifacts/visual-qa/news-reader-prefs/01-aa-panel-sepia-serif-default-desktop-mock-save.png
+      - artifacts/visual-qa/news-reader-prefs/02-theme-light-desktop-live.png
+      - artifacts/visual-qa/news-reader-prefs/03-theme-sepia-desktop-live.png
+      - artifacts/visual-qa/news-reader-prefs/04-theme-gray-desktop-live.png
+      - artifacts/visual-qa/news-reader-prefs/05-theme-dark-desktop-live.png
+      - artifacts/visual-qa/news-reader-prefs/06-theme-auto-dark-app-desktop-live.png
+      - artifacts/visual-qa/news-reader-prefs/07-theme-auto-light-app-desktop-live.png
+      - artifacts/visual-qa/news-reader-prefs/08-theme-light-phone-live.png
+      - artifacts/visual-qa/news-reader-prefs/09-theme-sepia-phone-live.png
+      - artifacts/visual-qa/news-reader-prefs/10-theme-gray-phone-live.png
+      - artifacts/visual-qa/news-reader-prefs/11-theme-dark-phone-live.png
+      - artifacts/visual-qa/news-reader-prefs/12-theme-auto-light-app-phone-live.png
+      - artifacts/visual-qa/news-reader-prefs/13-aa-bottom-sheet-readable-plus2-relaxed-phone-mock-save.png
+      - artifacts/visual-qa/news-reader-prefs/14-focus-mode-phone-live.png
+      - artifacts/visual-qa/news-redesign/01-edition-phone-light-mock.png
+      - artifacts/visual-qa/news-redesign/02-edition-desktop-light-live.png
+      - artifacts/visual-qa/news-redesign/03-edition-return-desktop-light-mock.png
+      - artifacts/visual-qa/news-redesign/04-reader-phone-light-live.png
+      - artifacts/visual-qa/news-redesign/05-reader-desktop-light-live.png
+      - artifacts/visual-qa/news-redesign/06-edition-return-desktop-dark-mock.png
+      - artifacts/visual-qa/news-redesign/07-return-sections-desktop-dark-mock.png
+      - artifacts/visual-qa/news-redesign/08-reader-brief-desktop-dark-mock.png
+      - artifacts/visual-qa/news-redesign/09-practice-ask-quick-chat-desktop-dark-mock.png
+      - artifacts/visual-qa/news-redesign/10-today-widget-desktop-dark-mock.png
+      - artifacts/visual-qa/news-redesign/11-explore-phone-light-mock.png
+      - artifacts/visual-qa/news-redesign/12-selection-toolbar-phone-light-mock.png
+      - artifacts/visual-qa/news-redesign/13-onboarding-phone-light-live.png
+      - artifacts/visual-qa/news-rereview-3-fixes/01-local-only-notice-filtered-explore-phone-live.png
+      - artifacts/visual-qa/news-rereview-3/01-edition.png
+      - artifacts/visual-qa/news-rereview-3/02-appearance.png
+      - artifacts/visual-qa/news-rereview-3/03-return.png
+      - artifacts/visual-qa/news-rereview-3/04-local-answer.png
+      - artifacts/visual-qa/news-rereview-3/05-local-brief.png
+      - artifacts/visual-qa/news-rereview-fixes/01-briefing-neutral-quiet-phone-light-live.png
+      - artifacts/visual-qa/news-rereview-fixes/02-new-lead-status-phone-light-mock.png
+      - artifacts/visual-qa/news-rereview-fixes/03-reader-focus-back-phone-dark-mock.png
+      - artifacts/visual-qa/news-rereview-fixes/04-continue-in-ask-inert-desktop-dark-mock.png
+      - artifacts/visual-qa/news-rereview-fixes/05-cached-edition-desktop-light-mock.png
+      - artifacts/visual-qa/news-rereview-fixes/06-edition-unavailable-desktop-dark-mock.png
+      - artifacts/visual-qa/news-rereview/01-briefing.png
+      - artifacts/visual-qa/news-rereview/02-return.png
+      - artifacts/visual-qa/news-rereview/03-fed-reader.png
+      - artifacts/visual-qa/news-rereview/04-fed-source.png
+      - artifacts/visual-qa/news-rereview/05-reader-focus.png
+      - artifacts/visual-qa/news-review/01-reader-launcher-live-dark.png
+      - artifacts/visual-qa/news-review/02-selection-popover-phone-live-dark.png
+      - artifacts/visual-qa/news-ux-review/01-welcome.png
+      - artifacts/visual-qa/news-ux-review/02-topics.png
+      - artifacts/visual-qa/news-ux-review/03-rhythm.png
+      - artifacts/visual-qa/news-ux-review/04-feed-light.png
+      - artifacts/visual-qa/news-ux-review/05-feed-dark.png
+      - artifacts/visual-qa/news-ux-review/06-reader-desktop.png
+      - artifacts/visual-qa/news-ux-review/07-reader-selection-phone.png
+      - artifacts/visual-qa/news-ux-review/08-feed-phone-dark.png
+      - artifacts/visual-qa/news-ux-review/09-saved-phone-light.png
+      - artifacts/visual-qa/news-ux-review/10-quick-chat-phone.png
+      - artifacts/visual-qa/news-ux-review/11-today-widget.png
+      - artifacts/visual-qa/news-ux-review/12-ask-news.png
+      - artifacts/visual-qa/news-ux-review/13-return-phone-light.png
+      - artifacts/visual-qa/news-ux-review/14-retirement-topic.png
+      - artifacts/visual-qa/news-ux-review/15-story-list.png
+      - artifacts/visual-qa/news/01-reader-summary-launcher-light.png
+      - artifacts/visual-qa/news/02-reader-launcher-dark.png
+      - artifacts/visual-qa/news/03-reader-phone-light.png
+      - hub/functions/src/northstar-local-model.ts
+      - hub/functions/src/northstar-news-article.ts
+      - hub/functions/src/northstar-news-ask.ts
+      - hub/functions/src/northstar-news-brief.ts
+      - hub/functions/src/northstar-news-evidence.ts
+      - northstar/AGENTS.md
+  - title: "feat(skills): add Myriad layout review guidance"
+    body: >-
+      ## Why
+
+
+      The suite’s UI guide explains how to align content, but agents lack a shared procedure for diagnosing clipped
+      labels, obscured actions, and reading-order problems.
+
+
+      ## What changed
+
+
+      Route layout reviews from `GUI.md` to a repo-local `better-layout` skill. The skill uses existing Myriad compo...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/293
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a9
+      - documentation
+    additions: 148
+    deletions: 0
+    changedFiles: 6
+    author: myriadas-clees
+    createdAt: 2026-11-23T16:52:05Z
+    updatedAt: 2026-11-23T17:04:01Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a10
+      - &a30
+        sha: 311e18cc8259232d7d7a512a9231c25c8c6c4310
+        message: "feat(skills): add Myriad layout review guidance"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/311e18cc8259232d7d7a512a9231c25c8c6c4310
+        authoredAt: 2026-11-23T16:51:51Z
+        additions: 148
+        deletions: 0
+        filesChanged: 6
+        files:
+          - .agents/skills/better-layout/LICENSE
+          - .agents/skills/better-layout/SKILL.md
+          - .agents/skills/better-layout/grouping-and-alignment.md
+          - .agents/skills/better-layout/reporting.md
+          - .agents/skills/better-layout/spacing-and-adaptivity.md
+          - GUI.md
+    workTimestamps: &a11
+      - 2026-11-23T16:51:51Z
+    workAdditions: 148
+    workDeletions: 0
+    workFiles: &a12
+      - .agents/skills/better-layout/LICENSE
+      - .agents/skills/better-layout/SKILL.md
+      - .agents/skills/better-layout/grouping-and-alignment.md
+      - .agents/skills/better-layout/reporting.md
+      - .agents/skills/better-layout/spacing-and-adaptivity.md
+      - GUI.md
+  - title: "fix(ui): preserve keyboard focus in menus and modals"
+    body: >-
+      ## Why
+
+
+      An open modal could move focus back to its close button when its parent rerendered. The Hub landing menu also let
+      Tab escape when focus was on the header toggle.
+
+
+      ## What changed
+
+
+      Shared UI owns focus trapping and restoration through `useFocusTrap`. The Hub menu and shared modal use it to
+      ke...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/292
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - "app: hub"
+      - platform
+    additions: 390
+    deletions: 80
+    changedFiles: 7
+    author: myriadas-clees
+    createdAt: 2026-11-23T16:48:44Z
+    updatedAt: 2026-11-23T19:09:50Z
+    closedAt: 2026-11-23T19:09:50Z
+    mergedAt: 2026-11-23T19:09:50Z
+    workCommits:
+      - &a29
+        sha: 27b4f59d924c52bb72442e98e144479397733663
+        message: "fix(ui): preserve keyboard focus in menus and modals"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/27b4f59d924c52bb72442e98e144479397733663
+        authoredAt: 2026-11-23T16:48:28Z
+        additions: 390
+        deletions: 80
+        filesChanged: 7
+        files:
+          - hub/components/LandingPage.test.tsx
+          - hub/components/LandingPage.tsx
+          - hub/vitest.config.ts
+          - packages/ui/src/index.ts
+          - packages/ui/src/modal.test.tsx
+          - packages/ui/src/modal.tsx
+          - packages/ui/src/use-focus-trap.ts
+    workTimestamps:
+      - 2026-11-23T16:48:28Z
+    workAdditions: 390
+    workDeletions: 80
+    workFiles:
+      - hub/components/LandingPage.test.tsx
+      - hub/components/LandingPage.tsx
+      - hub/vitest.config.ts
+      - packages/ui/src/index.ts
+      - packages/ui/src/modal.test.tsx
+      - packages/ui/src/modal.tsx
+      - packages/ui/src/use-focus-trap.ts
+  - title: "feat(compass): use Copilot titles for new Ask chats"
+    body: >-
+      ## Why
+
+
+      Compass Ask kept the first question as the chat title even when Copilot returned a more descriptive conversation
+      name.
+
+
+      ## What changed
+
+
+      Compass uses the matching Copilot conversation’s display name when the first turn completes. The history sidebar
+      preserves manual renames and keeps the exi...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/291
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a13
+      - "app: compass"
+    additions: 30
+    deletions: 2
+    changedFiles: 6
+    author: myriadas-clees
+    createdAt: 2026-11-23T16:46:38Z
+    updatedAt: 2026-11-23T16:58:45Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a14
+      - &a28
+        sha: 3b5f1e8345a9c540a5e3262340d5ab2ae0873de2
+        message: "feat(compass): apply Copilot titles to first-turn chats"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3b5f1e8345a9c540a5e3262340d5ab2ae0873de2
+        authoredAt: 2026-11-23T16:45:37Z
+        additions: 30
+        deletions: 2
+        filesChanged: 6
+        files:
+          - compass/functions/src/compass-copilot.test.ts
+          - compass/functions/src/compass-copilot.ts
+          - compass/functions/src/compass-microsoft.ts
+          - compass/src/components/ask-compass-workspace.dom.test.tsx
+          - compass/src/components/ask-compass-workspace.test.tsx
+          - compass/src/components/ask-compass-workspace.tsx
+    workTimestamps: &a15
+      - 2026-11-23T16:45:37Z
+    workAdditions: 30
+    workDeletions: 2
+    workFiles: &a16
+      - compass/functions/src/compass-copilot.test.ts
+      - compass/functions/src/compass-copilot.ts
+      - compass/functions/src/compass-microsoft.ts
+      - compass/src/components/ask-compass-workspace.dom.test.tsx
+      - compass/src/components/ask-compass-workspace.test.tsx
+      - compass/src/components/ask-compass-workspace.tsx
+  - title: "feat(compass): rich, colourful and animated OpenUI visuals"
+    body: >-
+      ## Why
+
+
+      Compass's OpenUI visuals were monochrome, limited to a few chart types and static, which made them little better
+      than simple charts.
+
+
+      ## What changed
+
+
+      Stacked on #286.
+
+
+      - **Brand / GUI:** chart palette tokens (categorical, sequential, diverging, highlight; light and dark) in
+      `packages/brand`...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/288
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a17
+      - documentation
+      - platform
+      - "app: compass"
+    additions: 1988
+    deletions: 313
+    changedFiles: 41
+    author: myriadas-clees
+    createdAt: 2026-11-23T05:32:47Z
+    updatedAt: 2026-11-23T16:41:59Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a18
+      - &a21
+        sha: f8177fb92df5ba5621a14aad24888b2237ab4ce9
+        message: "feat(compass): fit waterfall axes, steer Copilot to colour, motion and new displays"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f8177fb92df5ba5621a14aad24888b2237ab4ce9
+        authoredAt: 2026-11-23T05:06:18Z
+        additions: 26
+        deletions: 11
+        filesChanged: 7
+        files:
+          - compass/src/app/globals.css
+          - compass/src/components/answer-chart.tsx
+          - compass/src/components/answer-rich-visuals.test.tsx
+          - compass/src/lib/answer-openui-visual.ts
+          - compass/src/lib/answer-openui.test.ts
+          - compass/src/lib/answer-openui.ts
+          - compass/src/lib/at-commands.ts
+      - &a22
+        sha: 88fda646e35a7a5addeaca277188ec8f14655990
+        message: "feat(compass): validate bounded inputs and expressions, and colour for Relationship and Brief"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/88fda646e35a7a5addeaca277188ec8f14655990
+        authoredAt: 2026-11-23T06:02:36Z
+        additions: 514
+        deletions: 54
+        filesChanged: 9
+        files:
+          - compass/README.md
+          - compass/src/lib/answer-openui-advisor.ts
+          - compass/src/lib/answer-openui-chart.ts
+          - compass/src/lib/answer-openui-composition.ts
+          - compass/src/lib/answer-openui-interactive-fields.test.ts
+          - compass/src/lib/answer-openui-interactive.test.ts
+          - compass/src/lib/answer-openui-interactive.ts
+          - compass/src/lib/answer-openui-visual.ts
+          - compass/src/lib/compass-context.ts
+      - &a23
+        sha: e3481f5ba0af6254a672055ac1d34385d789127f
+        message: "feat(compass): interactive visuals with what-if inputs, direct manipulation, and visible data gaps"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e3481f5ba0af6254a672055ac1d34385d789127f
+        authoredAt: 2026-11-23T06:02:36Z
+        additions: 984
+        deletions: 170
+        filesChanged: 13
+        files:
+          - compass/src/app/globals.css
+          - compass/src/components/answer-advisor.test.tsx
+          - compass/src/components/answer-advisor.tsx
+          - compass/src/components/answer-chart.test.tsx
+          - compass/src/components/answer-chart.tsx
+          - compass/src/components/answer-interactive.test.tsx
+          - compass/src/components/answer-interactive.tsx
+          - compass/src/components/answer-motion.tsx
+          - compass/src/components/answer-openui.test.tsx
+          - compass/src/components/answer-openui.tsx
+          - compass/src/components/answer-plot-interaction.tsx
+          - compass/src/components/answer-rich-visuals.test.tsx
+          - compass/src/components/answer-visual.tsx
+      - &a24
+        sha: 6fc98c06362653d825443c2450bc3a1925404424
+        message: "fix(compass): tidy what-if figures, align visual tables and avoid a repeated what-if banner"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/6fc98c06362653d825443c2450bc3a1925404424
+        authoredAt: 2026-11-23T06:09:13Z
+        additions: 21
+        deletions: 6
+        filesChanged: 4
+        files:
+          - compass/src/app/globals.css
+          - compass/src/components/answer-chart.tsx
+          - compass/src/components/answer-interactive.test.tsx
+          - compass/src/components/answer-interactive.tsx
+      - &a25
+        sha: f9c91ad59bcf22525246c7f58bb644a5cb245797
+        message: "feat(compass): label every generated-visual control with an icon, add hints and visible state"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f9c91ad59bcf22525246c7f58bb644a5cb245797
+        authoredAt: 2026-11-23T14:22:57Z
+        additions: 231
+        deletions: 39
+        filesChanged: 9
+        files:
+          - compass/src/app/globals.css
+          - compass/src/components/answer-advisor.test.tsx
+          - compass/src/components/answer-advisor.tsx
+          - compass/src/components/answer-chart.test.tsx
+          - compass/src/components/answer-chart.tsx
+          - compass/src/components/answer-controls.test.tsx
+          - compass/src/components/answer-interactive.tsx
+          - compass/src/components/answer-plot-interaction.tsx
+          - compass/src/components/answer-visual.tsx
+      - &a27
+        sha: 1b2247ae5b6e0fd9dd68da5a3fc17f78e6867598
+        message: "feat(compass): attention-first brief visuals with default colour, status icons and two-column layout"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/1b2247ae5b6e0fd9dd68da5a3fc17f78e6867598
+        authoredAt: 2026-11-23T16:41:57Z
+        additions: 212
+        deletions: 33
+        filesChanged: 9
+        files:
+          - compass/src/app/globals.css
+          - compass/src/components/answer-chart.tsx
+          - compass/src/components/answer-openui.tsx
+          - compass/src/components/answer-visual.test.tsx
+          - compass/src/components/answer-visual.tsx
+          - compass/src/lib/answer-openui-chart.ts
+          - compass/src/lib/answer-openui-visual.test.ts
+          - compass/src/lib/answer-openui-visual.ts
+          - compass/src/lib/answer-openui.ts
+    workTimestamps: &a19
+      - 2026-11-23T05:06:18Z
+      - 2026-11-23T06:02:36Z
+      - 2026-11-23T06:02:36Z
+      - 2026-11-23T06:09:13Z
+      - 2026-11-23T14:22:57Z
+      - 2026-11-23T16:41:57Z
+    workAdditions: 1988
+    workDeletions: 313
+    workFiles: &a20
+      - compass/README.md
+      - compass/src/app/globals.css
+      - compass/src/components/answer-advisor.test.tsx
+      - compass/src/components/answer-advisor.tsx
+      - compass/src/components/answer-chart.test.tsx
+      - compass/src/components/answer-chart.tsx
+      - compass/src/components/answer-controls.test.tsx
+      - compass/src/components/answer-interactive.test.tsx
+      - compass/src/components/answer-interactive.tsx
+      - compass/src/components/answer-motion.tsx
+      - compass/src/components/answer-openui.test.tsx
+      - compass/src/components/answer-openui.tsx
+      - compass/src/components/answer-plot-interaction.tsx
+      - compass/src/components/answer-rich-visuals.test.tsx
+      - compass/src/components/answer-visual.test.tsx
+      - compass/src/components/answer-visual.tsx
+      - compass/src/lib/answer-openui-advisor.ts
+      - compass/src/lib/answer-openui-chart.ts
+      - compass/src/lib/answer-openui-composition.ts
+      - compass/src/lib/answer-openui-interactive-fields.test.ts
+      - compass/src/lib/answer-openui-interactive.test.ts
+      - compass/src/lib/answer-openui-interactive.ts
+      - compass/src/lib/answer-openui-visual.test.ts
+      - compass/src/lib/answer-openui-visual.ts
+      - compass/src/lib/answer-openui.test.ts
+      - compass/src/lib/answer-openui.ts
+      - compass/src/lib/at-commands.ts
+      - compass/src/lib/compass-context.ts
+  - title: "build(repo): replace ESLint with Oxlint"
+    body: >-
+      ## Why
+
+
+      ESLint pulled in `typescript-eslint` through `eslint-config-next`, which caps TypeScript below 6.1 and is slow.
+      Oxlint enforces the same rules much faster.
+
+
+      ## What changed
+
+
+      - Root `.oxlintrc.json` reproduces the resolved ESLint rule set (83 rules, same levels; the three disabled
+      react-hooks...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/287
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - github-automation
+      - "app: hub"
+      - "app: onboarding"
+      - "app: pto-tracker"
+      - "app: proforma"
+      - "app: excelerate"
+      - "app: valuation"
+      - platform
+      - "app: transition"
+      - "app: compass"
+    additions: 0
+    deletions: 0
+    changedFiles: 22
+    author: myriadas-clees
+    createdAt: 2026-11-23T04:28:50Z
+    updatedAt: 2026-11-23T16:16:20Z
+    closedAt: 2026-11-23T16:16:20Z
+    mergedAt: 2026-11-23T16:16:20Z
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "chore(compass): upgrade OpenUI react-lang to 1.1.1"
+    body: >-
+      ## Why
+
+
+      Compass pinned `@openuidev/react-lang` 1.0.1; 1.1.1 is current and brings faster streaming parses and more robust
+      fence handling.
+
+
+      ## What changed
+
+
+      - Pin `@openuidev/react-lang` to 1.1.1 (lang-core 1.1.1, devtools 0.3.1, observability 0.0.4 unchanged). Exact pin
+      kept because devtools suppres...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/285
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - platform
+      - "app: compass"
+    additions: 227
+    deletions: 521
+    changedFiles: 4
+    author: myriadas-clees
+    createdAt: 2026-11-23T04:28:46Z
+    updatedAt: 2026-11-23T16:36:29Z
+    closedAt: 2026-11-23T16:36:29Z
+    mergedAt: 2026-11-23T16:36:29Z
+    workCommits:
+      - &a26
+        sha: a2f04bb1f9d7302c993ff3bcbb7ee7b65e4419af
+        message: Merge branch 'main' into chore/update-openui
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a2f04bb1f9d7302c993ff3bcbb7ee7b65e4419af
+        authoredAt: 2026-11-23T16:20:53Z
+        additions: 227
+        deletions: 521
+        filesChanged: 22
+        files:
+          - .github/CODEOWNERS
+          - .github/labeler.yml
+          - .github/workflows/verify.yml
+          - .oxlintrc.json
+          - bun.lock
+          - compass/package.json
+          - compass/src/components/ask-compass-workspace.tsx
+          - crm/package.json
+          - eslint.config.mjs
+          - excelerate/package.json
+          - hub/package.json
+          - onboarding/apps/dashboard/package.json
+          - package.json
+          - platform/package.json
+          - proforma/eslint.config.mjs
+          - proforma/package.json
+          - pto-tracker/README.md
+          - pto-tracker/eslint.config.mjs
+          - pto-tracker/package.json
+          - scripts/affected-apps.ts
+          - transition/package.json
+          - valuation/package.json
+    workTimestamps:
+      - 2026-11-23T16:20:53Z
+    workAdditions: 227
+    workDeletions: 521
+    workFiles:
+      - .github/CODEOWNERS
+      - .github/labeler.yml
+      - .github/workflows/verify.yml
+      - .oxlintrc.json
+      - bun.lock
+      - compass/package.json
+      - compass/src/components/ask-compass-workspace.tsx
+      - crm/package.json
+      - eslint.config.mjs
+      - excelerate/package.json
+      - hub/package.json
+      - onboarding/apps/dashboard/package.json
+      - package.json
+      - platform/package.json
+      - proforma/eslint.config.mjs
+      - proforma/package.json
+      - pto-tracker/README.md
+      - pto-tracker/eslint.config.mjs
+      - pto-tracker/package.json
+      - scripts/affected-apps.ts
+      - transition/package.json
+      - valuation/package.json
+prsInProgress:
+  - title: "feat(pricing): configure report sections and custom expenses"
+    body: >-
+      - Add configurable PDF sections, including separate default and custom local expenses, with the client proposal as
+      the default layout.
+
+      - For FiNet scenarios, the default Client proposal PDF includes Current FiNet pricing, Current FiNet Net Payout,
+      and Net Difference.
+
+      - Add custom FiNet local expense...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/230
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: *a1
+    additions: 592
+    deletions: 363
+    changedFiles: 23
+    author: myriadas-clees
+    createdAt: 2026-11-23T16:46:33Z
+    updatedAt: 2026-11-24T15:42:52Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 592
+    workDeletions: 363
+    workFiles: *a4
+  - title: "feat(northstar): build personalized News editions and local Ask"
+    body: >-
+      - Add personalized Northstar News with topic onboarding, source-backed daily editions, saved stories, reader
+      controls, and advisor-specific preferences.
+
+      - Add News briefs and story context for Ask, plus selection tools, quick chat, and the optional local Ollama
+      provider.
+
+      - Document News and local mo...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/231
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: *a5
+    additions: 11381
+    deletions: 157
+    changedFiles: 183
+    author: myriadas-clees
+    createdAt: 2026-11-23T16:46:33Z
+    updatedAt: 2026-11-23T16:51:50Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a6
+    workTimestamps: *a7
+    workAdditions: 174
+    workDeletions: 25
+    workFiles: *a8
+  - title: "feat(skills): add Myriad layout review guidance"
+    body: >-
+      ## Why
+
+
+      The suite’s UI guide explains how to align content, but agents lack a shared procedure for diagnosing clipped
+      labels, obscured actions, and reading-order problems.
+
+
+      ## What changed
+
+
+      Route layout reviews from `GUI.md` to a repo-local `better-layout` skill. The skill uses existing Myriad compo...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/293
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a9
+    additions: 148
+    deletions: 0
+    changedFiles: 6
+    author: myriadas-clees
+    createdAt: 2026-11-23T16:52:05Z
+    updatedAt: 2026-11-23T17:04:01Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a10
+    workTimestamps: *a11
+    workAdditions: 148
+    workDeletions: 0
+    workFiles: *a12
+  - title: "feat(compass): use Copilot titles for new Ask chats"
+    body: >-
+      ## Why
+
+
+      Compass Ask kept the first question as the chat title even when Copilot returned a more descriptive conversation
+      name.
+
+
+      ## What changed
+
+
+      Compass uses the matching Copilot conversation’s display name when the first turn completes. The history sidebar
+      preserves manual renames and keeps the exi...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/291
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a13
+    additions: 30
+    deletions: 2
+    changedFiles: 6
+    author: myriadas-clees
+    createdAt: 2026-11-23T16:46:38Z
+    updatedAt: 2026-11-23T16:58:45Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a14
+    workTimestamps: *a15
+    workAdditions: 30
+    workDeletions: 2
+    workFiles: *a16
+  - title: "feat(compass): rich, colourful and animated OpenUI visuals"
+    body: >-
+      ## Why
+
+
+      Compass's OpenUI visuals were monochrome, limited to a few chart types and static, which made them little better
+      than simple charts.
+
+
+      ## What changed
+
+
+      Stacked on #286.
+
+
+      - **Brand / GUI:** chart palette tokens (categorical, sequential, diverging, highlight; light and dark) in
+      `packages/brand`...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/288
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a17
+    additions: 2844
+    deletions: 314
+    changedFiles: 41
+    author: myriadas-clees
+    createdAt: 2026-11-23T05:32:47Z
+    updatedAt: 2026-11-23T16:41:59Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a18
+    workTimestamps: *a19
+    workAdditions: 1988
+    workDeletions: 313
+    workFiles: *a20
+  - title: "feat(compass): add @visual command with auto-detection"
+    body: >-
+      ## Why
+
+
+      When users ask Compass Ask for a chart or visual, Copilot sometimes answers in plain text.
+
+
+      ## What changed
+
+
+      Stacked on #285.
+
+
+      - New `@visual` at-command in the existing registry: requires exactly one valid `openui` fence (Chart, Visual,
+      Scenario, Relationship or composed Brief) built only f...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/286
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - documentation
+      - "app: compass"
+    additions: 244
+    deletions: 29
+    changedFiles: 10
+    author: myriadas-clees
+    createdAt: 2026-11-23T04:28:48Z
+    updatedAt: 2026-11-23T16:15:11Z
+    closedAt: null
+    mergedAt: null
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "ci: auto-merge minor and patch Dependabot updates"
+    body: >-
+      ## Root cause
+
+      Every bun update was in one monthly `bun-workspace` group, so a single breaking major failed the whole PR. Since
+      July every grouped PR has failed CI (e.g. #283: TypeScript 5.9 to 7.0 breaks typescript-eslint,
+      `@tanstack/react-table` 8 to 9 breaks proforma typecheck, `motion` 13 to 14)....
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/284
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - documentation
+      - github-automation
+    additions: 61
+    deletions: 2
+    changedFiles: 3
+    author: myriadas-clees
+    createdAt: 2026-11-23T04:09:15Z
+    updatedAt: 2026-11-23T16:15:27Z
+    closedAt: null
+    mergedAt: null
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - "feat(compass): fit waterfall axes, steer Copilot to colour, motion and new displays"
+      - "feat(compass): validate bounded inputs and expressions, and colour for Relationship and Brief"
+      - "feat(compass): interactive visuals with what-if inputs, direct manipulation, and visible data gaps"
+      - "fix(compass): tidy what-if figures, align visual tables and avoid a repeated what-if banner"
+      - "feat(compass): label every generated-visual control with an icon, add hints and visible state"
+      - "build(repo): replace ESLint with Oxlint (#287)"
+      - Merge branch 'main' into chore/update-openui
+      - "chore(compass): upgrade OpenUI react-lang to 1.1.1 (#285)"
+      - "feat(compass): attention-first brief visuals with default colour, status icons and two-column layout"
+      - "feat(compass): apply Copilot titles to first-turn chats"
+      - "fix(ui): preserve keyboard focus in menus and modals"
+      - "feat(skills): add Myriad layout review guidance"
+      - "fix(ui): preserve keyboard focus in menus and modals (#292)"
+    commits:
+      - *a21
+      - *a22
+      - *a23
+      - *a24
+      - *a25
+      - sha: e26e9315377a1b09d74a52e3deb253bb4a5d51f8
+        message: "build(repo): replace ESLint with Oxlint (#287)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e26e9315377a1b09d74a52e3deb253bb4a5d51f8
+        authoredAt: 2026-11-23T16:16:19Z
+        additions: 227
+        deletions: 521
+        filesChanged: 22
+        files:
+          - .github/CODEOWNERS
+          - .github/labeler.yml
+          - .github/workflows/verify.yml
+          - .oxlintrc.json
+          - bun.lock
+          - compass/package.json
+          - compass/src/components/ask-compass-workspace.tsx
+          - crm/package.json
+          - eslint.config.mjs
+          - excelerate/package.json
+          - hub/package.json
+          - onboarding/apps/dashboard/package.json
+          - package.json
+          - platform/package.json
+          - proforma/eslint.config.mjs
+          - proforma/package.json
+          - pto-tracker/README.md
+          - pto-tracker/eslint.config.mjs
+          - pto-tracker/package.json
+          - scripts/affected-apps.ts
+          - transition/package.json
+          - valuation/package.json
+      - *a26
+      - sha: fb736052e322cd9459efd62492df5e42dc0e3bd2
+        message: "chore(compass): upgrade OpenUI react-lang to 1.1.1 (#285)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/fb736052e322cd9459efd62492df5e42dc0e3bd2
+        authoredAt: 2026-11-23T16:36:28Z
+        additions: 7
+        deletions: 7
+        filesChanged: 4
+        files:
+          - bun.lock
+          - compass/README.md
+          - compass/package.json
+          - compass/src/lib/openui-disable-devtools.ts
+      - *a27
+      - *a28
+      - *a29
+      - *a30
+      - sha: 025a67fcfa29f8a1dfaccd9f535507f681dffd44
+        message: "fix(ui): preserve keyboard focus in menus and modals (#292)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/025a67fcfa29f8a1dfaccd9f535507f681dffd44
+        authoredAt: 2026-11-23T19:09:49Z
+        additions: 390
+        deletions: 80
+        filesChanged: 7
+        files:
+          - hub/components/LandingPage.test.tsx
+          - hub/components/LandingPage.tsx
+          - hub/vitest.config.ts
+          - packages/ui/src/index.ts
+          - packages/ui/src/modal.test.tsx
+          - packages/ui/src/modal.tsx
+          - packages/ui/src/use-focus-trap.ts
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "feat(northstar): ground local News briefs in source evidence"
+      - "feat(pricing): configure report sections and custom expenses"
+    commits:
+      - *a31
+      - *a32
+releases:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    tag: staging-20261123T182901Z-fb73605
+    name: staging-20261123T182901Z-fb73605
+    body: |
+      Staging validation for [fb736052e322cd9459efd62492df5e42dc0e3bd2](https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/fb736052e322cd9459efd62492df5e42dc0e3bd2).
+
+      [Workflow run](https://github.com/Myriad-Advisor-Solutions/myriadas-apps/actions/runs/45238843272)
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/releases/tag/staging-20261123T182901Z-fb73605
+    publishedAt: 2026-11-23T18:37:06Z
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 2
+    comments: 3
+    reviews: 2
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 2
+  comments: 3
+  reviews: 2
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-11-23T05:06:18Z
+    - 2026-11-23T06:02:36Z
+    - 2026-11-23T06:02:36Z
+    - 2026-11-23T06:09:13Z
+    - 2026-11-23T14:22:57Z
+    - 2026-11-23T16:16:19Z
+    - 2026-11-23T16:20:53Z
+    - 2026-11-23T16:36:28Z
+    - 2026-11-23T16:41:57Z
+    - 2026-11-23T16:45:37Z
+    - 2026-11-23T16:48:28Z
+    - 2026-11-23T16:51:51Z
+    - 2026-11-23T19:09:49Z
+    - 2026-11-23T16:46:20Z
+    - 2026-11-23T16:46:24Z
+    - 2026-11-23T16:46:33Z
+    - 2026-11-23T16:46:24Z
+    - 2026-11-23T16:46:33Z
+    - 2026-11-23T16:46:20Z
+    - 2026-11-23T16:52:05Z
+    - 2026-11-23T16:51:51Z
+    - 2026-11-23T16:48:44Z
+    - 2026-11-23T19:09:50Z
+    - 2026-11-23T16:48:28Z
+    - 2026-11-23T16:46:38Z
+    - 2026-11-23T16:45:37Z
+    - 2026-11-23T05:32:47Z
+    - 2026-11-23T05:06:18Z
+    - 2026-11-23T06:02:36Z
+    - 2026-11-23T06:02:36Z
+    - 2026-11-23T06:09:13Z
+    - 2026-11-23T14:22:57Z
+    - 2026-11-23T16:41:57Z
+    - 2026-11-23T16:16:20Z
+    - 2026-11-23T16:36:29Z
+    - 2026-11-23T16:20:53Z
+  volume:
+    pullRequests:
+      - additions: 592
+        deletions: 363
+        state: open
+        dailyWork: true
+        filesChanged: 23
+        testFilesChanged: 7
+        commitCount: 1
+      - additions: 174
+        deletions: 25
+        state: open
+        dailyWork: true
+        filesChanged: 90
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 148
+        deletions: 0
+        state: open
+        dailyWork: true
+        filesChanged: 6
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 390
+        deletions: 80
+        state: merged
+        dailyWork: true
+        filesChanged: 7
+        testFilesChanged: 2
+        commitCount: 1
+      - additions: 30
+        deletions: 2
+        state: open
+        dailyWork: true
+        filesChanged: 6
+        testFilesChanged: 3
+        commitCount: 1
+      - additions: 227
+        deletions: 521
+        state: merged
+        dailyWork: true
+        filesChanged: 22
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 1988
+        deletions: 313
+        state: open
+        dailyWork: true
+        filesChanged: 28
+        testFilesChanged: 11
+        commitCount: 6
+      - additions: 0
+        deletions: 0
+        state: merged
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 3
+    commitAdditions: 624
+    commitDeletions: 608
+    commitStatsCount: 3
+    commitUnits:
+      - additions: 227
+        deletions: 521
+        commitCount: 1
+        hasStats: true
+        filesChanged: 22
+      - additions: 7
+        deletions: 7
+        commitCount: 1
+        hasStats: true
+        filesChanged: 4
+      - additions: 390
+        deletions: 80
+        commitCount: 1
+        hasStats: true
+        filesChanged: 7
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.3"
+  hours: 34
+  sessions: 4
+  sessionHours: 2.6
+  volumeHours: 64
+  compressedVolumeHours: 34
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
+stakeholderSummary: ""
