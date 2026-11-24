@@ -303,6 +303,14 @@ describe("classifyPullRequestsForRange", () => {
     expect(result.merged).toEqual([]);
   });
 
+  it("keeps a later PR's dated commits as direct work without reporting the PR itself", () => {
+    const commit = { sha: "later-pr-commit", message: "feat: start News", url: "https://github.com/org/app/commit/later-pr-commit", authoredAt: "2026-08-10T19:00:00Z" };
+    const later = pr({ createdAt: "2026-08-13T12:00:00Z", workCommits: [commit], workTimestamps: [commit.authoredAt] });
+    const result = classifyPullRequestsForRange([later], "alice", range);
+    expect(result).toEqual({ opened: [], merged: [], report: [], inProgress: [], workedOn: [], workedOnClosed: [] });
+    expect(countDirectCommits([{ repo: later.repository, messages: [commit.message], commits: [commit] }], result.workedOn)).toBe(1);
+  });
+
   it("classifies create and merge actions without double-counting a PR", () => {
     const sameDay = pr({ mergedAt: "2026-08-10T18:00:00Z", state: "merged" });
     const mergedToday = pr({

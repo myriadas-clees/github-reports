@@ -39,13 +39,18 @@ export type PRRef = {
   number: number;
 };
 
+// Backfills can recover dated branch commits from PRs opened the following week.
+// This bounds the extra PRs inspected when replaying older report dates.
+const backfillPrCutoff = (range: DateRange): Date =>
+  new Date(range.to.getTime() + 7 * 86_400_000);
+
 /** Search every repository visible to the token for PRs authored by the user. */
 export const searchAuthoredPRRefsForBackfill = async (
   token: string,
   username: string,
   range: DateRange,
 ): Promise<PRRef[]> => {
-  const cutoff = range.to.toISOString().slice(0, 10);
+  const cutoff = backfillPrCutoff(range).toISOString().slice(0, 19) + "Z";
   const query = encodeURIComponent(`is:pr author:${username} created:<=${cutoff}`);
   const refs: PRRef[] = [];
   let url: string | null = `https://api.github.com/search/issues?q=${query}&per_page=100`;
@@ -149,7 +154,15 @@ const fetchPRWork = async (
   let additions = 0;
   let deletions = 0;
   const files = new Set<string>();
+  const workCommits: CommitDetail[] = [];
   for (const commit of relevant) {
+    const workCommit: CommitDetail = {
+      sha: commit.sha,
+      message: commit.message,
+      url: commit.url,
+      authoredAt: commit.timestamp,
+    };
+    workCommits.push(workCommit);
     const response = await fetch(`https://api.github.com/repos/${ref.repo}/commits/${commit.sha}`, {
       headers: GITHUB_HEADERS(token),
     });
@@ -163,17 +176,17 @@ const fetchPRWork = async (
     };
     additions += detail.stats?.additions ?? 0;
     deletions += detail.stats?.deletions ?? 0;
-    detail.files?.forEach((file) => {
-      if (file.filename) files.add(file.filename);
-    });
+    workCommit.additions = detail.stats?.additions;
+    workCommit.deletions = detail.stats?.deletions;
+    if (detail.files) {
+      const filenames = detail.files.flatMap((file) => file.filename ? [file.filename] : []);
+      workCommit.filesChanged = detail.files.length;
+      if (!nextPageUrl(response) && detail.files.length < 3000) workCommit.files = filenames;
+      filenames.forEach((file) => files.add(file));
+    }
   }
   return {
-    commits: relevant.map((item) => ({
-      sha: item.sha,
-      message: item.message,
-      url: item.url,
-      authoredAt: item.timestamp,
-    })),
+    commits: workCommits,
     timestamps: relevant.map((item) => item.timestamp),
     additions,
     deletions,
@@ -181,7 +194,7 @@ const fetchPRWork = async (
   };
 };
 
-/** Enumerate authored PRs that already existed by a historical report day. */
+/** Enumerate authored PRs that may carry commits from a historical report day. */
 export const fetchAuthoredPRRefsForBackfill = async (
   token: string,
   username: string,
@@ -189,6 +202,7 @@ export const fetchAuthoredPRRefsForBackfill = async (
   range: DateRange,
 ): Promise<PRRef[]> => {
   const lower = username.toLowerCase();
+  const cutoff = backfillPrCutoff(range).getTime();
   const refs: PRRef[] = [];
   await runWithConcurrency(repos, async (repo) => {
     const pulls = await fetchPages<{
@@ -198,7 +212,7 @@ export const fetchAuthoredPRRefsForBackfill = async (
     }>(token, `https://api.github.com/repos/${repo}/pulls?state=all&sort=created&direction=desc&per_page=100`);
     pulls
       .filter((pr) => pr.user?.login.toLowerCase() === lower)
-      .filter((pr) => new Date(pr.created_at).getTime() <= range.to.getTime())
+      .filter((pr) => new Date(pr.created_at).getTime() <= cutoff)
       .forEach((pr) => refs.push({ repo, number: pr.number }));
   });
   return refs;

@@ -182,8 +182,11 @@ export const classifyPullRequestsForRange = (
   username: string,
   range: DateRange,
 ): DailyPullRequestActions => {
-  const authored = pullRequests.filter(
-    (pr) => pr.author.toLowerCase() === username.toLowerCase(),
+  // Dated commits on later PRs are collected separately as direct commit work.
+  // The PR itself did not exist during this report window.
+  const authored = pullRequests.filter((pr) =>
+    pr.author.toLowerCase() === username.toLowerCase() &&
+    !(pr.createdAt && new Date(pr.createdAt).getTime() > range.to.getTime()),
   );
   const opened = authored.filter((pr) => timestampInRange(pr.createdAt, range));
   const merged = authored.filter((pr) => timestampInRange(pr.mergedAt, range));

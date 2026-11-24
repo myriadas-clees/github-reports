@@ -129,6 +129,10 @@ describe("fetchPRsByRefs", () => {
       message: "feat: private branch work",
       url: "https://github.com/owner/repo/commit/alice-sha",
       authoredAt: "2026-04-01T12:00:00Z",
+      additions: 7,
+      deletions: 3,
+      filesChanged: 2,
+      files: ["src/app.ts", "src/app.test.ts"],
     }]);
     expect(result[0]).toMatchObject({
       workTimestamps: ["2026-04-01T12:00:00Z"],
@@ -153,11 +157,12 @@ describe("fetchPRsByRefs", () => {
     });
   });
 
-  it("enumerates authored PRs that existed by a backfill day", async () => {
+  it("includes PRs opened within a week of a backfill day to recover earlier branch commits", async () => {
     vi.spyOn(globalThis, "fetch").mockResolvedValue(new Response(JSON.stringify([
       { number: 1, created_at: "2026-04-01T00:00:00Z", user: { login: "Alice" } },
       { number: 2, created_at: "2026-04-03T00:00:00Z", user: { login: "alice" } },
       { number: 3, created_at: "2026-04-01T00:00:00Z", user: { login: "bob" } },
+      { number: 4, created_at: "2026-04-09T00:00:00Z", user: { login: "alice" } },
     ])));
     const refs = await fetchAuthoredPRRefsForBackfill(
       "token",
@@ -165,7 +170,7 @@ describe("fetchPRsByRefs", () => {
       ["owner/repo"],
       { from: new Date("2026-04-01T00:00:00Z"), to: new Date("2026-04-01T23:59:59Z") },
     );
-    expect(refs).toEqual([{ repo: "owner/repo", number: 1 }]);
+    expect(refs).toEqual([{ repo: "owner/repo", number: 1 }, { repo: "owner/repo", number: 2 }]);
   });
 
   it("deduplicates refs before fetching", async () => {
