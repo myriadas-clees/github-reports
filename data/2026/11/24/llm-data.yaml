@@ -1,0 +1,59 @@
+title: Nov 24
+subtitle: pto, desktop & prepare contributor
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps and Myriad-Advisor-Solutions/ohcpwm-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 3 PRs
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 1 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 12 commits with +18,562 / −1,681 lines.
+    chips:
+      - label: Commits
+        value: "12"
+        color: green
+      - label: Additions
+        value: +18,562
+        color: green
+      - label: Deletions
+        value: −1,681
+        color: red
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 4 reviews, 4 comments, 2 PRs."
+    chips:
+      - label: Codex
+        value: 4 reviews · 4 comments · 2 PRs
+  - type: activity-pattern
+    heading: Manual effort estimate
+    body: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+      deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+      worked or measured time saved. Very busy days count with diminishing returns."
+    chips:
+      - label: Manual effort estimate
+        value: ~4 engineer-days
+highlights:
+  - type: pr
+    title: "docs: prepare contributor guidance and remove private artifacts"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: in progress · +117 −672
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/233
+  - type: pr
+    title: "fix(pto): harden request workflows and add a local ADP simulator"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +633 −72
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/296
+  - type: pr
+    title: "feat(pto): cache read data and refine balance views"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +478 −460
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/295
+ticker: []

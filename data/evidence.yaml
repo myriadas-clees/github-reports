@@ -1,11 +1,17 @@
 version: "1.0"
-updatedAt: 2026-11-24T18:06:38.448Z
+updatedAt: 2026-11-25T17:32:43.541Z
 defaultBranches:
   Myriad-Advisor-Solutions/ohcpwm-apps: main
   Myriad-Advisor-Solutions/myriadas-apps: main
 deployments:
   Myriad-Advisor-Solutions/ohcpwm-apps: []
   Myriad-Advisor-Solutions/myriadas-apps: []
+scannedDeployments:
+  Myriad-Advisor-Solutions/ohcpwm-apps: {}
+  Myriad-Advisor-Solutions/myriadas-apps: {}
+deploymentsUnavailable:
+  Myriad-Advisor-Solutions/ohcpwm-apps: 2026-11-25T17:31:06.741Z
+  Myriad-Advisor-Solutions/myriadas-apps: 2026-11-25T17:31:06.741Z
 prs:
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/106:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/106
@@ -112,7 +118,7 @@ prs:
       - valuation/src/app/page.tsx
       - valuation/src/components/metric-card.tsx
       - valuation/src/components/valuation-shell.tsx
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/115
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -185,7 +191,7 @@ prs:
       - ofac/src/lib/report/model.ts
       - ofac/src/lib/report/pdf.tsx
       - packages/db/src/ofac.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/104:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/104
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -285,7 +291,7 @@ prs:
       - packages/ui/src/work-state-select.tsx
       - proforma/src/components/branded-select.tsx
       - proforma/src/components/work-state-select.tsx
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/105:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/105
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -334,7 +340,7 @@ prs:
       - scripts/build-unified-swa.ts
       - scripts/tooling.test.ts
       - scripts/workflow-matrix.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/118:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/118
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -361,7 +367,7 @@ prs:
       - pricing/src/components/recruit-archive-section.tsx
       - pricing/src/lib/__tests__/pricing-recruit-delete-route.test.ts
       - scripts/dev-pricing-api.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/110:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/110
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -384,7 +390,7 @@ prs:
       - pto-tracker/src/lib/auth/entra-provider.ts
       - valuation/src/lib/auth.test.ts
       - valuation/src/lib/auth.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/109:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/109
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -403,7 +409,7 @@ prs:
     files:
       - onboarding/apps/dashboard/lib/auth.test.ts
       - onboarding/apps/dashboard/lib/auth.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/108:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/108
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -422,7 +428,7 @@ prs:
     files:
       - pto-tracker/src/lib/auth/entra-provider.test.ts
       - pto-tracker/src/lib/auth/entra-provider.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/111
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -459,7 +465,7 @@ prs:
       - docs/production-readiness-progress.md
       - infra/azure/README.md
       - pto-tracker/docs/README.md
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/86:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/86
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -488,7 +494,7 @@ prs:
       - docs/issue-37-pricing-monitoring-readiness.md
       - docs/issue-39-monday-sync-discovery.md
       - pricing/functions/local.settings.json.example
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/107:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/107
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -526,7 +532,7 @@ prs:
       - valuation/src/lib/auth.test.ts
       - valuation/src/lib/auth.ts
       - valuation/staticwebapp.config.json
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/84:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/84
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -553,7 +559,7 @@ prs:
     files:
       - README.md
       - docs/advisor-pricing-architecture.md
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/119:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/119
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -581,7 +587,7 @@ prs:
       - .codex/agents/worker.toml
       - .codex/config.toml
       - AGENTS.md
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/114:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/114
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -599,7 +605,7 @@ prs:
     checks: null
     files:
       - .github/workflows/azure-static-web-apps.yml
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/120:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/120
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -617,7 +623,7 @@ prs:
     checks: null
     files:
       - .codex/agents/explorer.toml
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/113:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/113
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -653,7 +659,7 @@ prs:
       - .codex/agents/worker.toml
       - .codex/config.toml
       - AGENTS.md
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/115:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/115
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -671,7 +677,7 @@ prs:
     checks: null
     files:
       - .codex/agents/explorer.toml
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/123:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/123
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -694,7 +700,7 @@ prs:
     files:
       - hub/components/hub-launcher.tsx
       - hub/lib/apps.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/121
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -1115,7 +1121,7 @@ prs:
       - scripts/compose-static-suite.ts
       - scripts/dev-northstar.ts
       - scripts/dev.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/119:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/119
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -1133,7 +1139,7 @@ prs:
     checks: null
     files:
       - .github/workflows/azure-static-web-apps.yml
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/124
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -1210,7 +1216,7 @@ prs:
       - pricing/src/lib/__tests__/pricing-api-client.test.ts
       - pricing/src/lib/pricing-api-client.ts
       - pricing/staticwebapp.config.json
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/121:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/121
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -1286,7 +1292,7 @@ prs:
       - transition/staticwebapp.config.json
       - transition/tsconfig.json
       - transition/vitest.config.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/120:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/120
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -1337,7 +1343,7 @@ prs:
       - pto-tracker/src/app/icon.svg
       - pto-tracker/src/components/PtoAppShell.tsx
       - valuation/src/app/icon.svg
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/118
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -1932,7 +1938,7 @@ prs:
       - valuation/src/lib/persistence/repository.ts
       - valuation/src/lib/transfer-adapter.test.ts
       - valuation/src/lib/transfer-adapter.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/122
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -2170,7 +2176,7 @@ prs:
       - transition/staticwebapp.config.json
       - transition/tsconfig.json
       - transition/vitest.config.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/130:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/130
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -2188,7 +2194,7 @@ prs:
     checks: null
     files:
       - ofac/src/components/ofac-iframe-auth-boundary.tsx
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/129:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/129
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -2210,7 +2216,7 @@ prs:
       - ofac/functions/src/iframe-auth.ts
       - ofac/src/lib/__tests__/ofac-authorized-fetch.test.ts
       - ofac/src/lib/ofac-authorized-fetch.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/127:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/127
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -2232,7 +2238,7 @@ prs:
       - packages/auth/src/client.ts
       - packages/auth/src/iframe-login-lifecycle.test.tsx
       - packages/auth/src/iframe-login.tsx
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/128:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/128
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -2284,7 +2290,7 @@ prs:
       - ofac/staticwebapp.config.json
       - packages/auth/src/auth.test.ts
       - packages/auth/src/client.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/126:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/126
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -2304,7 +2310,7 @@ prs:
       - docs/deploy-asap.md
       - packages/auth/src/iframe-login-lifecycle.test.tsx
       - packages/auth/src/iframe-login.tsx
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/125:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/125
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -2335,7 +2341,7 @@ prs:
       - packages/auth/src/iframe-login-lifecycle.test.tsx
       - packages/auth/src/iframe-login.test.tsx
       - packages/auth/src/iframe-login.tsx
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/131:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/131
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -2387,7 +2393,7 @@ prs:
       - packages/ui/src/navigation/frame.ts
       - packages/ui/src/styles.css
       - packages/ui/src/user-menu.tsx
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/133:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/133
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -2408,7 +2414,7 @@ prs:
       - pricing/src/lib/__tests__/report.test.ts
       - pricing/src/lib/report/model.ts
       - pricing/src/lib/report/pdf.tsx
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/132:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/132
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -2438,7 +2444,7 @@ prs:
       - pricing/src/components/generate-report-form.tsx
       - pricing/src/components/recruit-model-shell.tsx
       - pricing/src/components/scenario-model-tab.tsx
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/137:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/137
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -2473,7 +2479,7 @@ prs:
       - packages/.codex
       - pricing/.codex
       - scripts/.codex
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/135:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/135
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -2496,7 +2502,7 @@ prs:
       - packages/auth/src/client.ts
       - packages/auth/src/iframe-login-lifecycle.test.tsx
       - packages/auth/src/iframe-login.tsx
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/123:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/123
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -2535,7 +2541,7 @@ prs:
       - scripts/.codex
       - twenty
       - valuation/.codex
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/136:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/136
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -2556,7 +2562,7 @@ prs:
       - hub/components/hub-launcher.tsx
       - packages/auth/src/auth.test.ts
       - packages/auth/src/client.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/139:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/139
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -2579,7 +2585,7 @@ prs:
     files:
       - hub/functions/src/northstar-microsoft.test.ts
       - hub/functions/src/northstar-microsoft.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/138:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/138
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -2706,7 +2712,7 @@ prs:
       - northstar/public/pdf-fonts/NotoSansDevanagari.woff
       - northstar/public/pdf-fonts/NotoSansHebrew.woff
       - northstar/public/pdf-fonts/OFL.txt
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/126
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -2835,7 +2841,7 @@ prs:
       - transition/src/lib/source-repository.ts
       - transition/staticwebapp.config.json
       - twenty
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/127:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/127
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -2866,7 +2872,7 @@ prs:
       - transition/src/lib/data.test.ts
       - transition/src/lib/data.ts
       - transition/src/lib/handlers.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/128:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/128
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -2888,7 +2894,7 @@ prs:
     checks: null
     files:
       - onboarding/apps/dashboard/components/task-actions-editor.tsx
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/140:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/140
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -2948,7 +2954,7 @@ prs:
       - pricing/src/lib/report/model.ts
       - pricing/src/lib/report/pdf.tsx
       - scripts/dev-pricing-api.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/145:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/145
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -2979,7 +2985,7 @@ prs:
       - northstar/lib/ask-stream.test.ts
       - northstar/lib/ask-stream.ts
       - northstar/package.json
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/141
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -3035,7 +3041,7 @@ prs:
       - northstar/lib/background-briefs.test.ts
       - northstar/lib/background-briefs.ts
       - northstar/lib/chat-history.test.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/143:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/143
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -3064,7 +3070,7 @@ prs:
       - hub/functions/src/northstar-conversations.ts
       - hub/functions/src/northstar-cosmos-brief.test.ts
       - hub/functions/src/northstar-daily-flow.test.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/144:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/144
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -3100,7 +3106,7 @@ prs:
       - northstar/components/northstar-dashboard-lifecycle.fixture.ts
       - northstar/components/northstar-dashboard-lifecycle.test.ts
       - northstar/components/northstar-dashboard.tsx
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/147
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -3152,7 +3158,7 @@ prs:
       - northstar/components/settings-workspace.tsx
       - northstar/lib/chat-history.test.ts
       - northstar/lib/chat-history.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/130:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/130
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -3217,7 +3223,7 @@ prs:
       - transition/src/lib/repository.ts
       - transition/src/lib/workbook.test.ts
       - transition/src/lib/workbook.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/131:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/131
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -3239,7 +3245,7 @@ prs:
       - transition/src/lib/repository.ts
       - transition/src/lib/snapshot.test.ts
       - transition/src/lib/snapshot.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/146:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/146
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -3261,7 +3267,7 @@ prs:
       - .github/pr-screenshots/transition-notes-before-desktop.png
       - .github/pr-screenshots/transition-notes-before-mobile.png
       - transition/src/components/transition-workspace.tsx
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/144:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/144
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -3293,7 +3299,7 @@ prs:
       - transition/src/lib/rep-codes.ts
       - transition/src/lib/repository.test.ts
       - transition/src/lib/repository.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/143:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/143
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -3325,7 +3331,7 @@ prs:
       - transition/src/components/transition-workspace.tsx
       - transition/src/lib/contact-phone.test.ts
       - transition/src/lib/contact-phone.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/141
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -3494,7 +3500,7 @@ prs:
       - transition/src/lib/repository.ts
       - transition/src/lib/workbook.ts
       - transition/vitest.config.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/140:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/140
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -3528,7 +3534,7 @@ prs:
       - transition/src/lib/repository.test.ts
       - transition/src/lib/repository.ts
       - transition/src/lib/workbook.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/138:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/138
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -3560,7 +3566,7 @@ prs:
       - transition/src/lib/household-contacts.test.ts
       - transition/src/lib/model.ts
       - transition/src/lib/repository.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/142
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -3643,7 +3649,7 @@ prs:
       - transition/src/lib/api/session-cache.test.ts
       - transition/src/lib/api/session-cache.ts
       - transition/src/lib/hooks/use-transition-read.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/139:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/139
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -3674,7 +3680,7 @@ prs:
       - transition/src/lib/repository.ts
       - transition/src/lib/rules.test.ts
       - transition/src/lib/workflow-view.test.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/132:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/132
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -3696,7 +3702,7 @@ prs:
       - transition/src/lib/api/client.ts
       - transition/src/lib/cosmos-repository.test.ts
       - transition/src/lib/cosmos-repository.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/133:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/133
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -3726,7 +3732,7 @@ prs:
       - transition/src/lib/household-contacts.test.ts
       - transition/src/lib/model.ts
       - transition/src/lib/repository.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/137:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/137
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -3764,7 +3770,7 @@ prs:
       - transition/src/lib/handlers.ts
       - transition/src/lib/household-contacts.test.ts
       - transition/src/lib/repository.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/151:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/151
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -3791,7 +3797,7 @@ prs:
       - northstar/CONSENT-FLOW.md
       - northstar/components/northstar-recovery.dom.test.ts
       - northstar/components/northstar-recovery.fixture.tsx
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/135:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/135
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -3822,7 +3828,7 @@ prs:
       - transition/src/lib/model.ts
       - transition/src/lib/repository.test.ts
       - transition/src/lib/repository.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/149:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/149
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -3848,7 +3854,7 @@ prs:
       - northstar/components/northstar-consent.fixture.tsx
       - northstar/components/northstar-dashboard.tsx
       - northstar/components/settings-workspace.tsx
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/148:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/148
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -3896,7 +3902,7 @@ prs:
       - packages/auth/src/iframe-login-lifecycle.test.tsx
       - packages/auth/src/iframe-login.fixture.tsx
       - packages/auth/src/iframe-login.tsx
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/148:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/148
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -3951,7 +3957,7 @@ prs:
       - transition/src/lib/diagnostic-viewer.test.ts
       - transition/src/lib/diagnostic-viewer.ts
       - transition/src/lib/handlers.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/147:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/147
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -4040,7 +4046,7 @@ prs:
       - transition/src/lib/snapshot.ts
       - transition/src/lib/workbook.test.ts
       - transition/src/lib/workbook.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/156:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/156
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -4079,7 +4085,7 @@ prs:
       - scripts/affected-apps.ts
       - scripts/tooling.test.ts
       - twenty
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/152:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/152
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -4122,7 +4128,7 @@ prs:
       - hub/functions/src/roles.test.ts
       - hub/functions/src/roles.ts
       - hub/functions/src/swa-auth-activation.test.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/157:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/157
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -4189,7 +4195,7 @@ prs:
       - transition/src/lib/repository.ts
       - valuation/src/app/layout.tsx
       - valuation/src/components/valuation-shell.tsx
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/155:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/155
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -4233,7 +4239,7 @@ prs:
       - scripts/artifact-fingerprints.ts
       - transition/src/app/icon.svg
       - transition/src/lib/contact-enrichment-scale-synthetic.test.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/154:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/154
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -4259,7 +4265,7 @@ prs:
       - hub/functions/src/roles.test.ts
       - hub/functions/src/roles.ts
       - scripts/tooling.test.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/153:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/153
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -4280,7 +4286,7 @@ prs:
       - hub/functions/src/index.ts
       - hub/functions/src/roles.test.ts
       - hub/functions/src/roles.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/161:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/161
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -4345,7 +4351,7 @@ prs:
       - valuation/src/app/cases/new/page.tsx
       - valuation/src/app/imports/page.tsx
       - valuation/src/app/page.tsx
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/159:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/159
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -4386,7 +4392,7 @@ prs:
       - hub/lib/auth.ts
       - hub/staticwebapp.config.json
       - twenty
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/152:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/152
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -4603,7 +4609,7 @@ prs:
       - transition/src/lib/workflow-view.ts
       - twenty
       - valuation/next.config.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/160
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -4654,7 +4660,7 @@ prs:
       - transition/src/lib/remembered-filters.ts
       - transition/src/lib/repository.test.ts
       - transition/src/lib/repository.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/158
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -4775,7 +4781,7 @@ prs:
       - transition/src/lib/tour-demo.ts
       - transition/src/lib/tour.test.ts
       - transition/src/lib/tour.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/165:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/165
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -4812,7 +4818,7 @@ prs:
       - scripts/swa-preview-auth.cjs
       - scripts/swa-preview-auth.test.ts
       - scripts/tooling.test.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/166:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/166
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -4928,7 +4934,7 @@ prs:
       - scripts/smoke-hub.sh
       - scripts/stage-hub-functions.sh
       - scripts/tooling.test.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/162:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/162
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -5001,7 +5007,7 @@ prs:
       - transition/src/components/settings/settings-page.tsx
       - valuation/src/app/settings/page.tsx
       - valuation/src/lib/navigation.test.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/154:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/154
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -5019,7 +5025,7 @@ prs:
     checks: null
     files:
       - hub/functions/src/northstar-microsoft.test.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/153:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/153
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -5055,7 +5061,7 @@ prs:
       - packages/ui/package.json
       - pricing/functions/package.json
       - pricing/package.json
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/155:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/155
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -5127,7 +5133,7 @@ prs:
       - northstar/lib/northstar-context.ts
       - northstar/lib/settings-preferences.test.ts
       - northstar/lib/settings-preferences.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/164
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -5423,7 +5429,7 @@ prs:
       - scripts/github/triage-issue.test.ts
       - scripts/github/triage-issue.ts
       - scripts/tooling.test.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/176:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/176
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -5453,7 +5459,7 @@ prs:
       - transition/src/lib/repository.ts
       - transition/src/lib/workbook.test.ts
       - transition/src/lib/workbook.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/175:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/175
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -5559,7 +5565,7 @@ prs:
       - valuation/src/app/layout.tsx
       - valuation/src/app/manifest.ts
       - valuation/src/app/settings/page.tsx
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/174:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/174
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -5582,7 +5588,7 @@ prs:
       - compass/functions/src/compass-microsoft.test.ts
       - compass/functions/src/compass-microsoft.ts
       - compass/functions/src/index.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/156:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/156
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -5654,7 +5660,7 @@ prs:
       - northstar/lib/draft-fences.ts
       - northstar/lib/email-draft.test.ts
       - northstar/lib/email-draft.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/173:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/173
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -5700,7 +5706,7 @@ prs:
       - packages/ui/src/settings/settings-layout.test.ts
       - packages/ui/src/settings/settings-layout.tsx
       - packages/ui/src/settings/settings-section.tsx
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/171:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/171
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -5718,7 +5724,7 @@ prs:
     checks: null
     files:
       - compass/functions/src/compass-microsoft.test.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/169:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/169
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -5747,7 +5753,7 @@ prs:
       - infra/azure/README.md
       - scripts/app-registry.ts
       - scripts/tooling.test.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/167:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/167
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -5765,7 +5771,7 @@ prs:
     checks: null
     files:
       - .github/workflows/azure-static-web-apps.yml
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/170:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/170
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -5830,7 +5836,7 @@ prs:
       - compass/src/lib/chat-history.test.ts
       - scripts/affected-apps.ts
       - scripts/tooling.test.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/157:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/157
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -5906,7 +5912,7 @@ prs:
       - northstar/public/pdf-fonts/NotoSansDevanagari.woff
       - northstar/public/pdf-fonts/NotoSansHebrew.woff
       - northstar/public/pdf-fonts/OFL.txt
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/161:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/161
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -5924,7 +5930,7 @@ prs:
     checks: null
     files:
       - northstar/lib/chat-history.test.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/159:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/159
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -6171,7 +6177,7 @@ prs:
       - pricing/src/lib/pricing-theme.ts
       - pricing/src/lib/pricing-user-settings.ts
       - scripts/dev-pricing-api.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/162:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/162
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -6201,7 +6207,7 @@ prs:
       - northstar/lib/chat-pdf.tsx
       - northstar/lib/markdown-edit.test.ts
       - northstar/lib/markdown-edit.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/166:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/166
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -6343,7 +6349,7 @@ prs:
       - northstar/lib/todo-create.ts
       - northstar/lib/todo-lists.test.ts
       - northstar/lib/todo-lists.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/165:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/165
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -6385,7 +6391,7 @@ prs:
       - hub/functions/src/northstar-microsoft.test.ts
       - hub/functions/src/northstar-microsoft.ts
       - hub/functions/src/northstar-retry-budget.test.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/167
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -6515,7 +6521,7 @@ prs:
       - northstar/lib/northstar-context.ts
       - northstar/lib/typing-reveal.test.ts
       - northstar/lib/typing-reveal.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/163
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -6872,7 +6878,7 @@ prs:
       - pricing/src/lib/pricing-theme.ts
       - pricing/src/lib/pricing-user-settings.ts
       - scripts/dev-pricing-api.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/169:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/169
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -6916,7 +6922,7 @@ prs:
       - hub/lib/apps.ts
       - hub/public/SOURCES.md
       - hub/public/claude.svg
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/168
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -7021,7 +7027,7 @@ prs:
       - northstar/components/settings-workspace.tsx
       - northstar/lib/background-briefs.test.ts
       - northstar/lib/background-briefs.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/193:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/193
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -7061,7 +7067,7 @@ prs:
       - compass/src/lib/microsoft-data.ts
       - compass/src/lib/todo-tasks.test.ts
       - compass/src/lib/todo-tasks.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/177:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/177
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -7206,7 +7212,7 @@ prs:
       - packages/ui/src/settings/settings-layout.test.ts
       - packages/ui/src/settings/settings-layout.tsx
       - packages/ui/src/settings/settings-section.tsx
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/198:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/198
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -7314,7 +7320,7 @@ prs:
       - valuation/next.config.ts
       - valuation/package.json
       - valuation/tsconfig.json
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/195:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/195
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -7363,7 +7369,7 @@ prs:
       - transition/src/lib/repository.test.ts
       - transition/src/lib/repository.ts
       - transition/src/lib/tour-demo.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/194:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/194
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -7428,7 +7434,7 @@ prs:
       - transition/src/lib/navigation.ts
       - transition/src/lib/repository.ts
       - transition/src/lib/synthetic-seed.test.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/196:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/196
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -7502,7 +7508,7 @@ prs:
       - transition/src/lib/tour.ts
       - transition/src/lib/transition-workbook.test.ts
       - transition/src/lib/transition-workbook.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/203:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/203
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -7522,7 +7528,7 @@ prs:
       - transition/src/lib/account-status-preview.test.ts
       - transition/src/lib/repository.test.ts
       - transition/src/lib/repository.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/202:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/202
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -7600,7 +7606,7 @@ prs:
       - compass/src/lib/todo-lists.ts
       - compass/src/lib/typing-reveal.test.ts
       - compass/src/lib/typing-reveal.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/199:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/199
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -7627,7 +7633,7 @@ prs:
       - transition/src/lib/excel-contact-enrichment.integration.test.ts
       - transition/src/lib/repository.ts
       - transition/src/lib/workbook.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/184:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/184
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -7662,7 +7668,7 @@ prs:
       - packages/ui/src/index.ts
       - packages/ui/src/navigation/app-shell.tsx
       - pricing/src/app/icon.svg
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/183:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/183
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -7700,7 +7706,7 @@ prs:
       - northstar/lib/calendly-connection.ts
       - northstar/public/integrations/SOURCES.md
       - northstar/public/integrations/calendly.svg
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/182:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/182
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -7720,7 +7726,7 @@ prs:
       - hub/functions/src/northstar-conversations.test.ts
       - northstar/lib/at-commands.test.ts
       - northstar/lib/at-commands.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/181:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/181
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -7807,7 +7813,7 @@ prs:
       - northstar/lib/request-deadline.ts
       - northstar/lib/settings-preferences.test.ts
       - northstar/lib/settings-preferences.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/180:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/180
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -7837,7 +7843,7 @@ prs:
       - northstar/components/open-outlook-dialog.dom.test.tsx
       - northstar/lib/draft-fences.test.ts
       - northstar/lib/draft-fences.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/179:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/179
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -7877,7 +7883,7 @@ prs:
       - scripts/smoke-readiness.test.ts
       - scripts/typecheck-ci.test.ts
       - scripts/typecheck-ci.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/178:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/178
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -7903,7 +7909,7 @@ prs:
       - hub/functions/src/northstar-microsoft.ts
       - hub/functions/src/northstar-scheduled-brief.test.ts
       - hub/functions/src/northstar-scheduled-brief.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/177:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/177
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -7940,7 +7946,7 @@ prs:
       - northstar/lib/todo-tasks.ts
       - northstar/lib/typing-reveal.test.ts
       - northstar/lib/typing-reveal.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/216:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/216
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -7986,7 +7992,7 @@ prs:
       - proforma/src/lib/workbook-output.ts
       - proforma/src/lib/workstation-sections.ts
       - proforma/src/lib/workstation.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/204:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/204
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -8013,7 +8019,7 @@ prs:
       - .github/workflows/issue-triage.yml
       - .github/workflows/labeler.yml
       - scripts/tooling.test.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/208:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/208
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -8037,7 +8043,7 @@ prs:
       - hub/lib/admin-api.ts
       - hub/staticwebapp.config.json
       - scripts/tooling.test.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/213:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/213
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -8059,7 +8065,7 @@ prs:
       - transition/src/lib/api/azure-functions-demo.test.ts
       - transition/src/lib/auth.test.ts
       - transition/src/lib/auth.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/217:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/217
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -8085,7 +8091,7 @@ prs:
       - transition/src/components/households/households-page.tsx
       - transition/src/components/transition-shell.tsx
       - transition/src/components/ui/layout.tsx
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/210:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/210
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -8108,7 +8114,7 @@ prs:
       - proforma/src/lib/__tests__/proforma-api-client.test.ts
       - proforma/src/lib/__tests__/scoped-e2e-lifecycle.test.ts
       - proforma/src/lib/proforma-api-client.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/211:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/211
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -8164,7 +8170,7 @@ prs:
       - transition/src/lib/undo.test.ts
       - transition/src/lib/undo.ts
       - transition/src/lib/workbook.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/212:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/212
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -8231,7 +8237,7 @@ prs:
       - valuation/src/lib/swa-session.test.ts
       - valuation/src/lib/swa-session.ts
       - valuation/staticwebapp.config.json
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/209:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/209
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -8303,7 +8309,7 @@ prs:
       - transition/src/lib/transfer-adapter.ts
       - valuation/src/app/layout.tsx
       - valuation/src/app/settings/page.tsx
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/218:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/218
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -8323,7 +8329,7 @@ prs:
       - hub/staticwebapp.config.json
       - scripts/tooling.test.ts
       - scripts/validate-artifacts.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/219:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/219
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -8345,7 +8351,7 @@ prs:
       - platform/src/user-api.ts
       - proforma/src/lib/__tests__/scoped-e2e-lifecycle.test.ts
       - proforma/src/lib/api/handlers.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/223:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/223
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -8364,7 +8370,7 @@ prs:
     files:
       - compass/functions/src/compass-microsoft.test.ts
       - compass/functions/src/compass-microsoft.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/222:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/222
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -8448,7 +8454,7 @@ prs:
       - compass/src/lib/draft-fences.test.ts
       - compass/src/lib/draft-fences.ts
       - compass/src/lib/openui-disable-devtools.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/198:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/198
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -8467,7 +8473,7 @@ prs:
     files:
       - hub/functions/src/northstar-claude-brief.test.ts
       - hub/functions/src/northstar-claude-brief.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/221:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/221
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -8804,7 +8810,7 @@ prs:
       - valuation/staticwebapp.config.json
       - valuation/tsconfig.json
       - valuation/vite.config.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/200:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/200
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -8834,7 +8840,7 @@ prs:
       - northstar/lib/at-commands.ts
       - northstar/lib/microsoft-reauth.ts
       - northstar/lib/progress-phase.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/199:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/199
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -8861,7 +8867,7 @@ prs:
       - northstar/components/northstar-dashboard.tsx
       - northstar/lib/background-briefs.test.ts
       - northstar/lib/background-briefs.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/197:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/197
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -8887,7 +8893,7 @@ prs:
       - northstar/components/northstar-recovery.fixture.tsx
       - northstar/lib/settings-preferences.test.ts
       - northstar/lib/settings-preferences.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/195:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/195
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -8906,7 +8912,7 @@ prs:
     files:
       - hub/functions/src/northstar-copilot.test.ts
       - hub/functions/src/northstar-copilot.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/194:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/194
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -8925,7 +8931,7 @@ prs:
     files:
       - northstar/components/ask-northstar-workspace.dom.test.tsx
       - northstar/components/ask-northstar-workspace.tsx
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/196:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/196
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -8951,7 +8957,7 @@ prs:
       - northstar/components/ask-northstar-workspace.test.tsx
       - northstar/components/ask-northstar-workspace.tsx
       - northstar/lib/background-briefs.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/193:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/193
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -8970,7 +8976,7 @@ prs:
     files:
       - hub/functions/src/northstar-copilot.test.ts
       - hub/functions/src/northstar-copilot.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/189:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/189
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -8992,7 +8998,7 @@ prs:
       - northstar/components/streaming-markdown.tsx
       - northstar/lib/typing-reveal.test.ts
       - northstar/lib/typing-reveal.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/192:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/192
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -9050,7 +9056,7 @@ prs:
       - northstar/lib/at-commands.test.ts
       - northstar/lib/at-commands.ts
       - northstar/lib/background-briefs.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/232:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/232
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -9069,7 +9075,7 @@ prs:
     files:
       - compass/src/lib/chat-pdf.test.ts
       - compass/src/lib/chat-pdf.tsx
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/190:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/190
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -9140,7 +9146,7 @@ prs:
       - northstar/lib/northstar-context.ts
       - northstar/lib/openui-disable-devtools.ts
       - northstar/package.json
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/188:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/188
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -9165,7 +9171,7 @@ prs:
       - northstar/components/ask-northstar-workspace.dom.test.tsx
       - northstar/components/command-cards.dom.test.tsx
       - northstar/components/command-cards.tsx
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/233:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/233
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -9203,7 +9209,7 @@ prs:
       - transition/src/lib/excel-transfer.ts
       - transition/src/lib/transition-workbook.test.ts
       - transition/src/lib/transition-workbook.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/234:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/234
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -9270,7 +9276,7 @@ prs:
       - compass/src/lib/today-layout.ts
       - compass/src/lib/widgets.test.ts
       - compass/src/lib/widgets.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/228:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/228
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -9290,7 +9296,7 @@ prs:
       - compass/src/components/ask-compass-workspace.dom.test.tsx
       - compass/src/components/ask-compass-workspace.tsx
       - compass/src/components/compass-provider.tsx
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/231:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/231
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -9526,7 +9532,7 @@ prs:
       - valuation/src/lib/form-edits.test.ts
       - valuation/src/lib/form-edits.ts
       - valuation/vitest.config.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/229:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/229
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -9546,7 +9552,7 @@ prs:
       - compass/src/components/ask-compass-workspace.dom.test.tsx
       - compass/src/lib/answer-openui.test.ts
       - compass/src/lib/answer-openui.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/227:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/227
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -9565,7 +9571,7 @@ prs:
     files:
       - compass/functions/src/compass-copilot.test.ts
       - compass/functions/src/compass-copilot.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/225:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/225
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -9587,7 +9593,7 @@ prs:
       - compass/src/components/streaming-markdown.tsx
       - compass/src/lib/typing-reveal.test.ts
       - compass/src/lib/typing-reveal.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/203:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/203
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -9607,7 +9613,7 @@ prs:
       - .github/workflows/azure-static-web-apps.yml
       - .github/workflows/verify.yml
       - scripts/smoke-readiness.test.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/204:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/204
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -9632,7 +9638,7 @@ prs:
       - northstar/lib/answer-openui.ts
       - northstar/lib/northstar-context.test.ts
       - northstar/lib/northstar-context.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/202:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/202
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -9668,7 +9674,7 @@ prs:
       - northstar/lib/ask-stream.ts
       - northstar/lib/background-briefs.test.ts
       - northstar/lib/background-briefs.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/238:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/238
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -9688,7 +9694,7 @@ prs:
       - .github/workflows/azure-static-web-apps.yml
       - hub/functions/package.json
       - proforma/functions/package.json
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/235:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/235
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -9724,7 +9730,7 @@ prs:
       - proforma/src/lib/new-recruit-workbook-lists.ts
       - proforma/src/lib/new-recruit-workbook-spec.ts
       - proforma/src/lib/new-recruit-workbook.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/237:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/237
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -9869,7 +9875,7 @@ prs:
       - transition/src/app/globals.css
       - transition/src/components/transition-shell.tsx
       - transition/src/lib/data.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/207:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/207
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -9892,7 +9898,7 @@ prs:
       - hub/functions/src/northstar-graph-diagnostics.ts
       - hub/functions/src/northstar-scheduled-brief.test.ts
       - hub/functions/src/northstar-scheduled-brief.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/208:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/208
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -9938,7 +9944,7 @@ prs:
       - northstar/lib/claude-settings.ts
       - northstar/lib/settings-preferences.test.ts
       - northstar/lib/settings-preferences.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/206:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/206
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -9978,7 +9984,7 @@ prs:
       - hub/functions/src/northstar-mapping-upgrade.test.ts
       - hub/functions/src/northstar-microsoft.ts
       - northstar/lib/chat-pdf.tsx
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/242:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/242
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -9997,7 +10003,7 @@ prs:
     files:
       - .github/workflows/verify.yml
       - scripts/tooling.test.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/213:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/213
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -10039,7 +10045,7 @@ prs:
       - northstar/lib/settings-preferences.ts
       - northstar/lib/todo-tasks.test.ts
       - northstar/lib/todo-tasks.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/210:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/210
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -10174,7 +10180,7 @@ prs:
       - packages/contracts/package.json
       - packages/contracts/src/northstar-consultation.ts
       - packages/contracts/src/northstar-drafts.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/214:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/214
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -10207,7 +10213,7 @@ prs:
       - hub/functions/local.settings.json.example
       - hub/functions/src/northstar-claude-ask.test.ts
       - hub/functions/src/northstar-claude-brief.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/244:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/244
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -10235,7 +10241,7 @@ prs:
       - scripts/app-command.ts
       - scripts/tooling.test.ts
       - scripts/typecheck-ci.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/243
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -10684,7 +10690,7 @@ prs:
       - scripts/swa-environment-config.ts
       - scripts/tooling.test.ts
       - skills-lock.json
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/215:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/215
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -10835,7 +10841,7 @@ prs:
       - pricing/src/lib/report/workbook-preview.ts
       - pricing/src/lib/reports.ts
       - scripts/dev-pricing-api.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/216:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/216
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -10944,7 +10950,7 @@ prs:
       - packages/contracts/src/northstar-drafts.ts
       - packages/ui/package.json
       - pricing/package.json
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/220:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/220
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -11004,7 +11010,7 @@ prs:
       - northstar/components/ask-northstar-workspace.tsx
       - northstar/lib/ask-stream.test.ts
       - northstar/lib/ask-stream.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/245:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/245
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -11022,7 +11028,7 @@ prs:
     checks: null
     files:
       - .github/CODEOWNERS
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/219:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/219
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -11080,7 +11086,7 @@ prs:
       - northstar/lib/ask-stream.ts
       - northstar/lib/progress-phase.test.ts
       - northstar/lib/progress-phase.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/252:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/252
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -11101,7 +11107,7 @@ prs:
       - docker/README.md
       - scripts/affected-apps.ts
       - scripts/tooling.test.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/251:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/251
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -11124,7 +11130,7 @@ prs:
     files:
       - scripts/swa-environment-config.test.ts
       - scripts/swa-environment-config.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/248:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/248
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -11150,7 +11156,7 @@ prs:
       - docs/staging-and-testing.md
       - scripts/github/configure-repository.test.ts
       - scripts/github/configure-repository.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/249
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -11282,7 +11288,7 @@ prs:
       - compass/src/lib/openai-settings.ts
       - compass/src/lib/progress-phase.ts
       - compass/src/public/integrations/SOURCES.md
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/250:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/250
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -11315,7 +11321,7 @@ prs:
       - scripts/swa-environment-config.test.ts
       - scripts/swa-environment-config.ts
       - scripts/tooling.test.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/257:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/257
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -11325,8 +11331,8 @@ prs:
     isDraft: false
     baseRef: main
     headRef: feat/compass-northstar-ui
-    headSha: 46ff0dc26d2e9916d34fce88790ce977142978a7
-    mergeCommitSha: null
+    headSha: da7cd9e520e31ec2b7d269261a1a01bbf0915b38
+    mergeCommitSha: a6126c1f801a7df0732bf47851318640f983fd5e
     createdAt: 2026-11-11T04:41:50Z
     mergedAt: null
     reviews:
@@ -11350,12 +11356,21 @@ prs:
         bot: true
         state: COMMENTED
         submittedAt: 2026-11-16T15:49:24Z
+      - reviewer: chatgpt-codex-connector[bot]
+        bot: true
+        state: COMMENTED
+        submittedAt: 2026-11-25T17:20:11Z
+      - reviewer: chatgpt-codex-connector[bot]
+        bot: true
+        state: COMMENTED
+        submittedAt: 2026-11-25T17:23:38Z
     checks: null
     files:
       - bun.lock
       - compass/AGENT-ACTIVATION-BRIEF.md
       - compass/AGENTS.md
       - compass/IMPLEMENTATION-NOTE.md
+      - compass/README.md
       - compass/functions/PORT-CONTRACT.md
       - compass/functions/src/advisor-agents-cosmos.fixture.ts
       - compass/functions/src/advisor-agents-cosmos.test.ts
@@ -11412,7 +11427,7 @@ prs:
       - compass/src/lib/navigation.ts
       - compass/src/lib/transition-households.test.ts
       - compass/src/lib/transition-households.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/254:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/254
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -11459,7 +11474,7 @@ prs:
       - scripts/staging-operator.ts
       - scripts/swa-environment-config.test.ts
       - scripts/swa-environment-config.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/265:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/265
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -11501,7 +11516,7 @@ prs:
       - scripts/deployment-safety.test.ts
       - scripts/github/release-notes.test.ts
       - scripts/github/release-notes.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/266:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/266
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -11541,7 +11556,7 @@ prs:
       - e2e/tests/api.spec.ts
       - e2e/tests/browser.spec.ts
       - infra/azure/staging/main.bicep
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/264:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/264
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -11563,7 +11578,7 @@ prs:
       - package.json
       - scripts/codex-security.test.ts
       - scripts/codex-security.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/262:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/262
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -11611,7 +11626,7 @@ prs:
       - scripts/tooling.test.ts
       - scripts/validate-artifacts.ts
       - scripts/workflow-matrix.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/259:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/259
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -11774,7 +11789,7 @@ prs:
       - valuation/src/lib/swa-session.ts
       - valuation/src/lib/transfer-adapter.test.ts
       - valuation/src/lib/transfer-adapter.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/260:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/260
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -11831,7 +11846,7 @@ prs:
       - transition/README.md
       - valuation/.codex
       - valuation/AGENTS.md
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/258:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/258
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -11921,7 +11936,7 @@ prs:
       - packages/db/package.json
       - packages/db/src/graph.ts
       - packages/db/src/task-row.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/263:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/263
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -11999,7 +12014,7 @@ prs:
       - hub/lib/app-preferences.test.ts
       - hub/lib/app-preferences.ts
       - hub/staticwebapp.config.json
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/223:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/223
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -12067,7 +12082,7 @@ prs:
       - scripts/staging-acceptance.test.ts
       - scripts/staging-acceptance.ts
       - scripts/stamp-release.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/269:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/269
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -12077,8 +12092,8 @@ prs:
     isDraft: false
     baseRef: main
     headRef: chore/evaluate-mobile-app
-    headSha: 7022923dc2b0c457e6fed55f1425bd3c1e6f9531
-    mergeCommitSha: null
+    headSha: 9bf36cd1ca9f044815d03bd280646ed37c692993
+    mergeCommitSha: 5ff5ba32f97b865f58a52ae644841260a5e79179
     createdAt: 2026-11-13T20:40:40Z
     mergedAt: null
     reviews:
@@ -12090,6 +12105,10 @@ prs:
         bot: true
         state: COMMENTED
         submittedAt: 2026-11-13T20:47:55Z
+      - reviewer: chatgpt-codex-connector[bot]
+        bot: true
+        state: COMMENTED
+        submittedAt: 2026-11-25T14:34:18Z
     checks: null
     files:
       - README.md
@@ -12136,7 +12155,7 @@ prs:
       - packages/brand/assets/myriad-m-mark-reverse.png
       - packages/brand/package.json
       - packages/brand/src/native.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/267:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/267
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -12264,7 +12283,7 @@ prs:
       - packages/ui/src/summary-metric.tsx
       - packages/ui/src/user-menu.tsx
       - packages/ui/src/utils.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/270:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/270
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -12303,7 +12322,7 @@ prs:
       - compass/src/lib/ask-stream.ts
       - compass/src/lib/ask-turns.test.ts
       - compass/src/lib/ask-turns.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/224:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/224
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -12314,7 +12333,7 @@ prs:
     baseRef: main
     headRef: feat/install-graphical-editor
     headSha: 03211b7852d532d722074ee1f8955a7e3cfa6374
-    mergeCommitSha: afe67bb7077db64759c93b6efbfb9f4153ee79c8
+    mergeCommitSha: 336f5cda221519d34fe6c9a3a0b51683406f9710
     createdAt: 2026-11-13T20:56:47Z
     mergedAt: null
     reviews:
@@ -12441,7 +12460,7 @@ prs:
       - pricing/src/components/pricing-settings-page-client.tsx
       - pricing/src/components/stepper-number-input.tsx
       - scripts/sync-graphical-theme.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/241:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/241
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -12475,7 +12494,7 @@ prs:
       - scripts/build-unified-swa.ts
       - scripts/smoke-swa.sh
       - scripts/tooling.test.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/268:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/268
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -12769,7 +12788,7 @@ prs:
       - scripts/company-selection.test.ts
       - scripts/stage-hub-functions.sh
       - scripts/tooling.test.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/275:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/275
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -12799,7 +12818,7 @@ prs:
       - scripts/app-registry.ts
       - scripts/build-unified-swa.ts
       - scripts/tooling.test.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/278:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/278
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -12915,7 +12934,7 @@ prs:
       - packages/db/src/graph-audit.test.ts
       - packages/db/src/graph.ts
       - scripts/tooling.test.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/279:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/279
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -12960,7 +12979,7 @@ prs:
       - packages/ui/src/user-menu.test.tsx
       - packages/ui/src/user-menu.tsx
       - proforma/src/app/globals.css
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/226:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/226
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -13009,7 +13028,7 @@ prs:
       - scripts/dev-pricing-api.ts
       - scripts/pricing-ui.md
       - scripts/pricing-ui.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/276:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/276
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -13268,7 +13287,7 @@ prs:
       - packages/local-model/package.json
       - packages/local-model/src/index.ts
       - packages/ui/src/select.tsx
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/228:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/228
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -13314,7 +13333,7 @@ prs:
       - pricing/src/lib/report.ts
       - pricing/src/lib/report/pdf.tsx
       - scripts/dev-pricing-api.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/229:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/229
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -13325,14 +13344,14 @@ prs:
     baseRef: main
     headRef: clees/agent-working-agreement
     headSha: d479ba18c285a3b6ffd39ad5543a5c31ae2a20a7
-    mergeCommitSha: 8d21d9b07ca0a8eff7667d1ceaa627f869576acd
+    mergeCommitSha: 7ab4207407b9c04aab29f1ec6b84a9a003ae68db
     createdAt: 2026-11-19T17:30:32Z
     mergedAt: null
     reviews: []
     checks: null
     files:
       - AGENTS.md
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/282:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/282
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -13364,7 +13383,7 @@ prs:
       - scripts/production-manifest-history.test.ts
       - scripts/tooling.test.ts
       - scripts/verify-promotion-source.sh
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/280:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/280
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -13374,8 +13393,8 @@ prs:
     isDraft: false
     baseRef: main
     headRef: clees/agent-working-agreement
-    headSha: 5f3c29991497a0921b141b573a2e4d47c804c368
-    mergeCommitSha: df7228a2466d3fb68aff0830f18cea9b2fb24d42
+    headSha: 13080c4d56a12f4e5d5df5803a441c1375ca1d37
+    mergeCommitSha: e9e5adcd57c8870187fccf2462d545e196932c51
     createdAt: 2026-11-19T17:30:34Z
     mergedAt: null
     reviews:
@@ -13399,7 +13418,7 @@ prs:
       - scripts/AGENTS.md
       - transition/AGENTS.md
       - valuation/AGENTS.md
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/230:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/230
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -13409,11 +13428,15 @@ prs:
     isDraft: false
     baseRef: main
     headRef: feat/pricing-pdf-export
-    headSha: 6de020fa0421b28b37e07d0b73fdebd4747cadd9
-    mergeCommitSha: abb76b4ccb0c6ce4072a1f2d5270bb9c4ef706b1
+    headSha: e0e9b4d773f42df256718e57dcc61f815b5578b0
+    mergeCommitSha: 2cd9bf3d6d1ae4a9c38d8ea6a6d3aa94266b6bfa
     createdAt: 2026-11-23T16:46:33Z
     mergedAt: null
-    reviews: []
+    reviews:
+      - reviewer: chatgpt-codex-connector[bot]
+        bot: true
+        state: COMMENTED
+        submittedAt: 2026-11-25T17:02:03Z
     checks: null
     files:
       - docs/advisor-pricing-architecture.md
@@ -13421,13 +13444,13 @@ prs:
       - packages/contracts/src/pricing.ts
       - pricing/AGENTS.md
       - pricing/functions/src/index.ts
-      - pricing/next-env.d.ts
       - pricing/src/components/__tests__/assumptions-tab.test.tsx
       - pricing/src/components/__tests__/recruit-report-readiness.test.tsx
       - pricing/src/components/__tests__/report-preview.test.tsx
       - pricing/src/components/assumptions-tab.tsx
       - pricing/src/components/report-preview.tsx
       - pricing/src/lib/__tests__/calculation.test.ts
+      - pricing/src/lib/__tests__/pricing-backend-routes.test.ts
       - pricing/src/lib/__tests__/report-storage.test.ts
       - pricing/src/lib/__tests__/report.test.ts
       - pricing/src/lib/calculation.ts
@@ -13439,7 +13462,7 @@ prs:
       - pricing/src/lib/report/pdf.tsx
       - pricing/src/lib/workbook-output.ts
       - scripts/dev-pricing-api.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/292:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/292
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -13463,20 +13486,20 @@ prs:
       - packages/ui/src/modal.test.tsx
       - packages/ui/src/modal.tsx
       - packages/ui/src/use-focus-trap.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/293:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/293
     repository: Myriad-Advisor-Solutions/myriadas-apps
     number: 293
     author: myriadas-clees
-    state: open
+    state: merged
     isDraft: false
     baseRef: main
     headRef: chore/evaluate-better-layout-skill
-    headSha: 311e18cc8259232d7d7a512a9231c25c8c6c4310
-    mergeCommitSha: 547ddc2050bae8acc58709ef33032dad2d0a66b8
+    headSha: 921adab4aff5b7ff7c96b9920e1ca3fd10d44e31
+    mergeCommitSha: 5be035d589a6c8b2efa34a15a531e148d5c4feb7
     createdAt: 2026-11-23T16:52:05Z
-    mergedAt: null
+    mergedAt: 2026-11-25T15:39:52Z
     reviews: []
     checks: null
     files:
@@ -13486,20 +13509,20 @@ prs:
       - .agents/skills/better-layout/reporting.md
       - .agents/skills/better-layout/spacing-and-adaptivity.md
       - GUI.md
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/291:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/291
     repository: Myriad-Advisor-Solutions/myriadas-apps
     number: 291
     author: myriadas-clees
-    state: open
+    state: merged
     isDraft: false
     baseRef: main
     headRef: t3/compass-ask-auto-titles
-    headSha: 3b5f1e8345a9c540a5e3262340d5ab2ae0873de2
-    mergeCommitSha: 696003b4cf4ea023b3d0469baa84551c3c343c37
+    headSha: bac40619151ac5468d3c7ae91c7c80f01c03b725
+    mergeCommitSha: 7a409ec2724c5d7c21b06b1b9e6060a61e5686ed
     createdAt: 2026-11-23T16:46:38Z
-    mergedAt: null
+    mergedAt: 2026-11-25T15:25:35Z
     reviews: []
     checks: null
     files:
@@ -13509,7 +13532,7 @@ prs:
       - compass/src/components/ask-compass-workspace.dom.test.tsx
       - compass/src/components/ask-compass-workspace.test.tsx
       - compass/src/components/ask-compass-workspace.tsx
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/231:
     url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/231
     repository: Myriad-Advisor-Solutions/ohcpwm-apps
@@ -13520,7 +13543,7 @@ prs:
     baseRef: main
     headRef: feat/compass-news-page
     headSha: e43e2c68322f7d3e6ca05675c546e5275b9c2311
-    mergeCommitSha: be34534d46a4b499c83f3146315b3833854d470a
+    mergeCommitSha: null
     createdAt: 2026-11-23T16:46:33Z
     mergedAt: null
     reviews:
@@ -13713,7 +13736,7 @@ prs:
       - northstar/lib/use-reader-preferences.ts
       - packages/contracts/package.json
       - packages/contracts/src/northstar-news.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/287:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/287
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -13752,7 +13775,7 @@ prs:
       - scripts/affected-apps.ts
       - transition/package.json
       - valuation/package.json
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/288:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/288
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -13810,7 +13833,7 @@ prs:
       - gui/custom-components.md
       - gui/foundations.md
       - packages/brand/src/styles.css
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/285:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/285
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -13831,7 +13854,7 @@ prs:
       - compass/README.md
       - compass/package.json
       - compass/src/lib/openui-disable-devtools.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/286:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/286
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -13862,7 +13885,7 @@ prs:
       - compass/src/lib/at-commands.ts
       - compass/src/lib/compass-context.test.ts
       - compass/src/lib/progress-phase.ts
-    fetchedAt: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
   https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/284:
     url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/284
     repository: Myriad-Advisor-Solutions/myriadas-apps
@@ -13873,7 +13896,7 @@ prs:
     baseRef: main
     headRef: fix/dependabot-auto-merge
     headSha: 02ab1551883d205a010cc518b031347802a460f0
-    mergeCommitSha: 7c590df984fb851c825449fdb7513bd218604e33
+    mergeCommitSha: 9a236aa528beeba5bc4eb2717ef92fe41957e118
     createdAt: 2026-11-23T04:09:15Z
     mergedAt: null
     reviews: []
@@ -13882,10 +13905,299 @@ prs:
       - .github/dependabot.yml
       - .github/workflows/dependabot-auto-merge.yml
       - docs/repository-operations.md
-    fetchedAt: 2026-11-24T18:04:43.893Z
-scannedDeployments:
-  Myriad-Advisor-Solutions/ohcpwm-apps: {}
-  Myriad-Advisor-Solutions/myriadas-apps: {}
-deploymentsUnavailable:
-  Myriad-Advisor-Solutions/ohcpwm-apps: 2026-11-24T18:04:43.893Z
-  Myriad-Advisor-Solutions/myriadas-apps: 2026-11-24T18:04:43.893Z
+    fetchedAt: 2026-11-25T17:31:06.741Z
+  https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/233:
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/233
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    number: 233
+    author: myriadas-clees
+    state: merged
+    isDraft: false
+    baseRef: main
+    headRef: chore/prepare-contributors
+    headSha: 2a1ec4d67d98bcfa4792eadd12cb89d7d93baec4
+    mergeCommitSha: c53ab53a5737ddfa6347e0bdf0403c5de0c547fb
+    createdAt: 2026-11-24T15:47:31Z
+    mergedAt: 2026-11-25T15:11:34Z
+    reviews: []
+    checks: null
+    files:
+      - .github/ISSUE_TEMPLATE/bug_report.yml
+      - .github/ISSUE_TEMPLATE/feature_request.yml
+      - .github/PULL_REQUEST_TEMPLATE.md
+      - .gitignore
+      - CONTRIBUTING.md
+      - README.md
+      - artifacts/visual-qa/admin-dashboard-desktop.png
+      - artifacts/visual-qa/dashboard-error-state.png
+      - artifacts/visual-qa/dashboard-loading-state.png
+      - artifacts/visual-qa/nonadmin-dashboard-desktop.png
+      - artifacts/visual-qa/nonadmin-dashboard-mobile-viewport.png
+      - artifacts/visual-qa/nonadmin-permission-new-recruit.png
+      - artifacts/visual-qa/recruits-empty-filter.png
+      - docs/deploy-asap.md
+      - docs/issue-2-cosmos-production-readiness.md
+      - docs/issue-37-pricing-monitoring-readiness.md
+      - docs/issue-39-monday-sync-discovery.md
+    fetchedAt: 2026-11-25T17:31:06.741Z
+  https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/296:
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/296
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    number: 296
+    author: myriadas-clees
+    state: merged
+    isDraft: false
+    baseRef: main
+    headRef: clees/pto-adp-workflow
+    headSha: e810a03fd7372a00a51b43f56430ffcadcd677e8
+    mergeCommitSha: 31cd0c6f7b194ac118b117461b99fe20bb3f8afa
+    createdAt: 2026-11-24T21:01:00Z
+    mergedAt: 2026-11-25T15:11:28Z
+    reviews: []
+    checks: null
+    files:
+      - pto-tracker/docs/README.md
+      - pto-tracker/docs/adp-integration-research.md
+      - pto-tracker/docs/adp-simulator.md
+      - pto-tracker/docs/workflow.md
+      - pto-tracker/scripts/adp-simulator.test.ts
+      - pto-tracker/scripts/adp-simulator.ts
+      - pto-tracker/src/lib/api/handlers.test.ts
+      - pto-tracker/src/lib/api/handlers.ts
+      - pto-tracker/src/lib/pto/request-validation.test.ts
+      - pto-tracker/src/lib/pto/request-validation.ts
+      - pto-tracker/src/lib/store/graph-lists-store.test.ts
+      - pto-tracker/src/lib/store/graph-lists-store.ts
+      - pto-tracker/src/lib/store/types.ts
+      - pto-tracker/src/lib/workflow/saga.test.ts
+      - pto-tracker/src/lib/workflow/saga.ts
+      - pto-tracker/src/lib/workflow/service.ts
+    fetchedAt: 2026-11-25T17:31:06.741Z
+  https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/295:
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/295
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    number: 295
+    author: myriadas-clees
+    state: open
+    isDraft: false
+    baseRef: main
+    headRef: docs/pto-import-format
+    headSha: 4b7c9812ff848c9bbb04486dbc8fa1acad69a0b0
+    mergeCommitSha: f8799af6b2954af5223b7b67a4c819984922ae05
+    createdAt: 2026-11-24T19:57:53Z
+    mergedAt: null
+    reviews:
+      - reviewer: chatgpt-codex-connector[bot]
+        bot: true
+        state: COMMENTED
+        submittedAt: 2026-11-24T21:01:18Z
+    checks: null
+    files:
+      - e2e/src/auth.ts
+      - e2e/tests/regression.spec.ts
+      - pto-tracker/public/pto-staff-template.xlsx
+      - pto-tracker/src/app/admin/AccrualPolicyPanel.tsx
+      - pto-tracker/src/app/admin/AdminClient.tsx
+      - pto-tracker/src/app/approvals/ApprovalsClient.tsx
+      - pto-tracker/src/app/calendar/CalendarClient.tsx
+      - pto-tracker/src/app/my/MyClient.tsx
+      - pto-tracker/src/app/my/dashboard-requests.test.ts
+      - pto-tracker/src/app/my/dashboard-requests.ts
+      - pto-tracker/src/app/my/requests/MyRequestsClient.tsx
+      - pto-tracker/src/app/settings/CalendarColorSettings.tsx
+      - pto-tracker/src/app/team/TeamClient.tsx
+      - pto-tracker/src/components/ApprovalPanel.tsx
+      - pto-tracker/src/components/BalanceCard.tsx
+      - pto-tracker/src/components/EmployeeCard.tsx
+      - pto-tracker/src/components/LeaveCalendar.tsx
+      - pto-tracker/src/components/RequestModal.tsx
+      - pto-tracker/src/lib/api/client.test.ts
+      - pto-tracker/src/lib/api/client.ts
+      - pto-tracker/src/lib/api/read-cache.ts
+      - pto-tracker/src/lib/api/use-pto-read.ts
+      - pto-tracker/src/lib/navigation.test.ts
+      - pto-tracker/src/lib/navigation.ts
+    fetchedAt: 2026-11-25T17:31:06.741Z
+  https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/294:
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/294
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    number: 294
+    author: myriadas-clees
+    state: open
+    isDraft: true
+    baseRef: main
+    headRef: feat/myriad-support-app
+    headSha: 701ae90bf66a985e475f433b11b7bc0b420fb632
+    mergeCommitSha: 04487acf7be0ed3db1977fdd79d5d0d384e836e1
+    createdAt: 2026-11-24T19:53:15Z
+    mergedAt: null
+    reviews:
+      - reviewer: chatgpt-codex-connector[bot]
+        bot: true
+        state: COMMENTED
+        submittedAt: 2026-11-24T20:01:26Z
+      - reviewer: chatgpt-codex-connector[bot]
+        bot: true
+        state: COMMENTED
+        submittedAt: 2026-11-24T20:28:30Z
+      - reviewer: chatgpt-codex-connector[bot]
+        bot: true
+        state: COMMENTED
+        submittedAt: 2026-11-24T20:56:40Z
+    checks: null
+    files:
+      - .github/workflows/verify.yml
+      - bun.lock
+      - package.json
+      - scripts/affected-apps.ts
+      - scripts/tooling.test.ts
+      - support/.gitignore
+      - support/README.md
+      - support/ZOHO_SETUP.md
+      - support/acceptance/README.md
+      - support/acceptance/cdp.ts
+      - support/acceptance/harness.ts
+      - support/acceptance/lib.ts
+      - support/acceptance/run.ts
+      - support/acceptance/stub-model.ts
+      - support/appearance.ts
+      - support/assets/Lora-OFL.txt
+      - support/assets/Roboto-OFL.txt
+      - support/assets/graphical-theme.css
+      - support/assets/logo-m-color.png
+      - support/assets/logo-m-white.png
+      - support/assets/lora-latin-normal.woff2
+      - support/assets/roboto-latin-normal.woff2
+      - support/assets/support-app-icon.icns
+      - support/assets/support-app-icon.ico
+      - support/assets/support-app-icon.png
+      - support/assets/support-app-icon.svg
+      - support/attachments.test.ts
+      - support/attachments.ts
+      - support/browser-bridge.ts
+      - support/browser-close-regression.test.ts
+      - support/browser-server.ts
+      - support/browser-sessions.ts
+      - support/build.ts
+      - support/bun.lock
+      - support/chat-history-browser.ts
+      - support/chat-history-store.ts
+      - support/chat-history.test.ts
+      - support/chat-history.ts
+      - support/compass-transport.ts
+      - support/conversation.test.ts
+      - support/dev-mode.test.ts
+      - support/dev-mode.ts
+      - support/developer-settings.ts
+      - support/dictation.test.ts
+      - support/dictation.ts
+      - support/draft.ts
+      - support/errors.ts
+      - support/flow.test.ts
+      - support/flow.ts
+      - support/functions/.gitignore
+      - support/functions/host.json
+      - support/functions/package.json
+      - support/functions/src/config.ts
+      - support/functions/src/handlers.ts
+      - support/functions/src/index.ts
+      - support/functions/src/store.test.ts
+      - support/functions/src/store.ts
+      - support/functions/src/submissions.test.ts
+      - support/functions/src/submissions.ts
+      - support/functions/src/zoho.ts
+      - support/functions/tsconfig.json
+      - support/generate-icons.py
+      - support/history.test.ts
+      - support/history.ts
+      - support/index.html
+      - support/inference-worker/CMakeLists.txt
+      - support/inference-worker/README.md
+      - support/inference-worker/session.ts
+      - support/inference-worker/transport.ts
+      - support/inference-worker/worker.cpp
+      - support/licenses/ollama-LICENSE
+      - support/main.ts
+      - support/model-context.ts
+      - support/model-readiness.ts
+      - support/model-setup.ts
+      - support/observation-context.ts
+      - support/onboarding-ui.ts
+      - support/onboarding.css
+      - support/onboarding.test.ts
+      - support/onboarding.ts
+      - support/package.json
+      - support/package.ts
+      - support/pii.ts
+      - support/preload-history.test.ts
+      - support/preload.ts
+      - support/renderer-integration.test.ts
+      - support/renderer.css
+      - support/renderer.ts
+      - support/restart-checkpoint.ts
+      - support/resume.ts
+      - support/runtime-discovery.test.ts
+      - support/runtime-errors.ts
+      - support/runtime-manager.ts
+      - support/runtime-manifest.json
+      - support/runtime-url.ts
+      - support/runtime.test.ts
+      - support/safety-guard.ts
+      - support/scenarios/README.md
+      - support/scenarios/browser-tickets.json
+      - support/scenarios/cases.json
+      - support/scenarios/conversation-plans.ts
+      - support/scenarios/conversation-qa.ts
+      - support/scenarios/expectations.json
+      - support/scenarios/harness.test.ts
+      - support/scenarios/harness.ts
+      - support/scenarios/inference-pipe-transport.test.ts
+      - support/scenarios/inference-pipe.test.mjs
+      - support/scenarios/replay.ts
+      - support/scenarios/seed-tickets.ts
+      - support/scenarios/ticket-matches.json
+      - support/scenarios/tickets.json
+      - support/scenarios/vision-dev/answer-key.json
+      - support/scenarios/vision-dev/dev-01.png
+      - support/scenarios/vision-dev/dev-02.png
+      - support/scenarios/vision-dev/dev-03.png
+      - support/scenarios/vision-dev/dev-04.png
+      - support/scenarios/vision-dev/dev-05.png
+      - support/scenarios/vision-dev/dev-06.png
+      - support/scenarios/vision-dev/dev-07.png
+      - support/scenarios/vision-dev/dev-08.png
+      - support/scenarios/vision-dev/dev-09.png
+      - support/scenarios/vision-dev/dev-10.png
+      - support/scenarios/vision-dev/dev-11.png
+      - support/scenarios/vision-dev/dev-12.png
+      - support/scenarios/vision-dev/dev-13.png
+      - support/scenarios/vision-dev/dev-14.png
+      - support/scenarios/vision-dev/prompts.json
+      - support/scenarios/windows-speech-smoke.ts
+      - support/session.ts
+      - support/settings.test.ts
+      - support/settings.ts
+      - support/skills/windows.json
+      - support/speech-engine.test.ts
+      - support/speech-engine.ts
+      - support/speech-licenses/LICENSE
+      - support/speech-licenses/NOTICE
+      - support/speech-manifest.json
+      - support/speech-stream.test.ts
+      - support/speech-worker.ts
+      - support/start.ts
+      - support/support-api.ts
+      - support/test-dom.ts
+      - support/theme.test.ts
+      - support/theme.ts
+      - support/ticket-fields.test.ts
+      - support/ticket-fields.ts
+      - support/ticket-match.ts
+      - support/ticket-store.ts
+      - support/ticket-workspace.ts
+      - support/tsconfig.json
+      - support/verify-gemma.ts
+      - support/vision.ts
+      - support/windows-zip.ts
+      - support/zoho-contract.ts
+    fetchedAt: 2026-11-25T17:31:06.741Z

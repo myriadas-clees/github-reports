@@ -1,0 +1,1005 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-11-24
+  to: 2026-11-24
+stats:
+  totalCommits: 12
+  totalAdditions: 18562
+  totalDeletions: 1681
+  prsOpened: 4
+  prsMerged: 0
+  prsInProgress: 4
+  prsReviewed: 0
+  reviewComments: 0
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 30
+dailyCommits:
+  - date: 2026-11-24
+    count: 12
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 11
+    prsOpened: 3
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 1
+    prsOpened: 1
+    prsMerged: 0
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests:
+  - title: "docs: prepare contributor guidance and remove private artifacts"
+    body: |-
+      - Add a contributor guide, pull request template, and privacy guidance for issues and pull requests.
+      - Update the README and deployment notes to reflect the current suite workflow and preview requirements.
+      - Ignore and remove private operational reports and visual QA screenshots from the current bra...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/233
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: &a1 []
+    additions: 117
+    deletions: 672
+    changedFiles: 17
+    author: myriadas-clees
+    createdAt: 2026-11-24T15:47:31Z
+    updatedAt: 2026-11-25T15:11:34Z
+    closedAt: 2026-11-25T15:11:34Z
+    mergedAt: 2026-11-25T15:11:34Z
+    workCommits: &a2
+      - &a28
+        sha: 2a1ec4d67d98bcfa4792eadd12cb89d7d93baec4
+        message: "docs: prepare contributor guidance and remove private artifacts"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2a1ec4d67d98bcfa4792eadd12cb89d7d93baec4
+        authoredAt: 2026-11-24T15:47:22Z
+        additions: 117
+        deletions: 672
+        filesChanged: 17
+        files:
+          - .github/ISSUE_TEMPLATE/bug_report.yml
+          - .github/ISSUE_TEMPLATE/feature_request.yml
+          - .github/PULL_REQUEST_TEMPLATE.md
+          - .gitignore
+          - CONTRIBUTING.md
+          - README.md
+          - artifacts/visual-qa/admin-dashboard-desktop.png
+          - artifacts/visual-qa/dashboard-error-state.png
+          - artifacts/visual-qa/dashboard-loading-state.png
+          - artifacts/visual-qa/nonadmin-dashboard-desktop.png
+          - artifacts/visual-qa/nonadmin-dashboard-mobile-viewport.png
+          - artifacts/visual-qa/nonadmin-permission-new-recruit.png
+          - artifacts/visual-qa/recruits-empty-filter.png
+          - docs/deploy-asap.md
+          - docs/issue-2-cosmos-production-readiness.md
+          - docs/issue-37-pricing-monitoring-readiness.md
+          - docs/issue-39-monday-sync-discovery.md
+    workTimestamps: &a3
+      - 2026-11-24T15:47:22Z
+    workAdditions: 117
+    workDeletions: 672
+    workFiles: &a4
+      - .github/ISSUE_TEMPLATE/bug_report.yml
+      - .github/ISSUE_TEMPLATE/feature_request.yml
+      - .github/PULL_REQUEST_TEMPLATE.md
+      - .gitignore
+      - CONTRIBUTING.md
+      - README.md
+      - artifacts/visual-qa/admin-dashboard-desktop.png
+      - artifacts/visual-qa/dashboard-error-state.png
+      - artifacts/visual-qa/dashboard-loading-state.png
+      - artifacts/visual-qa/nonadmin-dashboard-desktop.png
+      - artifacts/visual-qa/nonadmin-dashboard-mobile-viewport.png
+      - artifacts/visual-qa/nonadmin-permission-new-recruit.png
+      - artifacts/visual-qa/recruits-empty-filter.png
+      - docs/deploy-asap.md
+      - docs/issue-2-cosmos-production-readiness.md
+      - docs/issue-37-pricing-monitoring-readiness.md
+      - docs/issue-39-monday-sync-discovery.md
+  - title: "fix(pto): harden request workflows and add a local ADP simulator"
+    body: >-
+      ## Why
+
+
+      Duplicate submissions and concurrent approval decisions can leave PTO requests and balances out of sync. A
+      Microsoft Lists write can also succeed even when the app fails to receive a response, leaving the workflow unsure
+      whether to retry. ADP feasibility work needs a way to exercise those fa...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/296
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a5
+      - documentation
+      - "app: pto-tracker"
+    additions: 633
+    deletions: 72
+    changedFiles: 16
+    author: myriadas-clees
+    createdAt: 2026-11-24T21:01:00Z
+    updatedAt: 2026-11-25T15:11:28Z
+    closedAt: 2026-11-25T15:11:28Z
+    mergedAt: 2026-11-25T15:11:28Z
+    workCommits: &a6
+      - &a19
+        sha: e810a03fd7372a00a51b43f56430ffcadcd677e8
+        message: Recover PTO workflow hardening and ADP simulator
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e810a03fd7372a00a51b43f56430ffcadcd677e8
+        authoredAt: 2026-11-24T20:05:47Z
+        additions: 633
+        deletions: 72
+        filesChanged: 16
+        files:
+          - pto-tracker/docs/README.md
+          - pto-tracker/docs/adp-integration-research.md
+          - pto-tracker/docs/adp-simulator.md
+          - pto-tracker/docs/workflow.md
+          - pto-tracker/scripts/adp-simulator.test.ts
+          - pto-tracker/scripts/adp-simulator.ts
+          - pto-tracker/src/lib/api/handlers.test.ts
+          - pto-tracker/src/lib/api/handlers.ts
+          - pto-tracker/src/lib/pto/request-validation.test.ts
+          - pto-tracker/src/lib/pto/request-validation.ts
+          - pto-tracker/src/lib/store/graph-lists-store.test.ts
+          - pto-tracker/src/lib/store/graph-lists-store.ts
+          - pto-tracker/src/lib/store/types.ts
+          - pto-tracker/src/lib/workflow/saga.test.ts
+          - pto-tracker/src/lib/workflow/saga.ts
+          - pto-tracker/src/lib/workflow/service.ts
+    workTimestamps: &a7
+      - 2026-11-24T20:05:47Z
+    workAdditions: 633
+    workDeletions: 72
+    workFiles: &a8
+      - pto-tracker/docs/README.md
+      - pto-tracker/docs/adp-integration-research.md
+      - pto-tracker/docs/adp-simulator.md
+      - pto-tracker/docs/workflow.md
+      - pto-tracker/scripts/adp-simulator.test.ts
+      - pto-tracker/scripts/adp-simulator.ts
+      - pto-tracker/src/lib/api/handlers.test.ts
+      - pto-tracker/src/lib/api/handlers.ts
+      - pto-tracker/src/lib/pto/request-validation.test.ts
+      - pto-tracker/src/lib/pto/request-validation.ts
+      - pto-tracker/src/lib/store/graph-lists-store.test.ts
+      - pto-tracker/src/lib/store/graph-lists-store.ts
+      - pto-tracker/src/lib/store/types.ts
+      - pto-tracker/src/lib/workflow/saga.test.ts
+      - pto-tracker/src/lib/workflow/saga.ts
+      - pto-tracker/src/lib/workflow/service.ts
+  - title: "feat(pto): cache read data and refine balance views"
+    body: >-
+      ## Why
+
+
+      Revisiting PTO pages replayed loading states while data was fetched again, and the My PTO view gave the available
+      balance no clear emphasis. PTO company details also failed to load for HR users through the expected API route.
+
+
+      ## What changed
+
+
+      PTO read data is cached per signed-in user and s...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/295
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a9
+      - "app: pto-tracker"
+    additions: 510
+    deletions: 492
+    changedFiles: 24
+    author: myriadas-clees
+    createdAt: 2026-11-24T19:57:53Z
+    updatedAt: 2026-11-24T21:12:05Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a10
+      - &a18
+        sha: 98d0144d8228d95047d3ab9fa026aa543e1a7c96
+        message: "feat(pto): cache read data and refine balance views"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/98d0144d8228d95047d3ab9fa026aa543e1a7c96
+        authoredAt: 2026-11-24T19:57:42Z
+        additions: 294
+        deletions: 417
+        filesChanged: 21
+        files:
+          - e2e/src/auth.ts
+          - e2e/tests/regression.spec.ts
+          - pto-tracker/public/pto-staff-template.xlsx
+          - pto-tracker/src/app/admin/AccrualPolicyPanel.tsx
+          - pto-tracker/src/app/admin/AdminClient.tsx
+          - pto-tracker/src/app/approvals/ApprovalsClient.tsx
+          - pto-tracker/src/app/calendar/CalendarClient.tsx
+          - pto-tracker/src/app/my/MyClient.tsx
+          - pto-tracker/src/app/my/requests/MyRequestsClient.tsx
+          - pto-tracker/src/app/settings/CalendarColorSettings.tsx
+          - pto-tracker/src/app/team/TeamClient.tsx
+          - pto-tracker/src/components/ApprovalPanel.tsx
+          - pto-tracker/src/components/BalanceCard.tsx
+          - pto-tracker/src/components/EmployeeCard.tsx
+          - pto-tracker/src/components/LeaveCalendar.tsx
+          - pto-tracker/src/lib/api/client.test.ts
+          - pto-tracker/src/lib/api/client.ts
+          - pto-tracker/src/lib/api/read-cache.ts
+          - pto-tracker/src/lib/api/use-pto-read.ts
+          - pto-tracker/src/lib/navigation.test.ts
+          - pto-tracker/src/lib/navigation.ts
+      - &a23
+        sha: 4b7c9812ff848c9bbb04486dbc8fa1acad69a0b0
+        message: "feat(pto): add request dashboard and shared request modal"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/4b7c9812ff848c9bbb04486dbc8fa1acad69a0b0
+        authoredAt: 2026-11-24T20:58:32Z
+        additions: 216
+        deletions: 75
+        filesChanged: 6
+        files:
+          - pto-tracker/src/app/my/MyClient.tsx
+          - pto-tracker/src/app/my/dashboard-requests.test.ts
+          - pto-tracker/src/app/my/dashboard-requests.ts
+          - pto-tracker/src/app/my/requests/MyRequestsClient.tsx
+          - pto-tracker/src/components/BalanceCard.tsx
+          - pto-tracker/src/components/RequestModal.tsx
+    workTimestamps: &a11
+      - 2026-11-24T19:57:42Z
+      - 2026-11-24T20:58:32Z
+    workAdditions: 510
+    workDeletions: 492
+    workFiles: &a12
+      - e2e/src/auth.ts
+      - e2e/tests/regression.spec.ts
+      - pto-tracker/public/pto-staff-template.xlsx
+      - pto-tracker/src/app/admin/AccrualPolicyPanel.tsx
+      - pto-tracker/src/app/admin/AdminClient.tsx
+      - pto-tracker/src/app/approvals/ApprovalsClient.tsx
+      - pto-tracker/src/app/calendar/CalendarClient.tsx
+      - pto-tracker/src/app/my/MyClient.tsx
+      - pto-tracker/src/app/my/dashboard-requests.test.ts
+      - pto-tracker/src/app/my/dashboard-requests.ts
+      - pto-tracker/src/app/my/requests/MyRequestsClient.tsx
+      - pto-tracker/src/app/settings/CalendarColorSettings.tsx
+      - pto-tracker/src/app/team/TeamClient.tsx
+      - pto-tracker/src/components/ApprovalPanel.tsx
+      - pto-tracker/src/components/BalanceCard.tsx
+      - pto-tracker/src/components/EmployeeCard.tsx
+      - pto-tracker/src/components/LeaveCalendar.tsx
+      - pto-tracker/src/components/RequestModal.tsx
+      - pto-tracker/src/lib/api/client.test.ts
+      - pto-tracker/src/lib/api/client.ts
+      - pto-tracker/src/lib/api/read-cache.ts
+      - pto-tracker/src/lib/api/use-pto-read.ts
+      - pto-tracker/src/lib/navigation.test.ts
+      - pto-tracker/src/lib/navigation.ts
+  - title: "feat(desktop): add Myriad Support app"
+    body: >-
+      Adds Myriad Support, an Electron desktop app for guided IT troubleshooting and ticket review. The app uses local
+      Gemma inference and includes a browser pilot for testing the support workflow.
+
+
+      - Guides users through troubleshooting, collects consented device observations and accepts screenshots and ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/294
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a13
+      - documentation
+      - github-automation
+      - platform
+    additions: 17302
+    deletions: 445
+    changedFiles: 154
+    author: myriadas-clees
+    createdAt: 2026-11-24T19:53:15Z
+    updatedAt: 2026-11-25T17:15:41Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a14
+      - &a17
+        sha: 417380b6f2b18994609e612e519283835b57dd31
+        message: Add Myriad Support desktop app
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/417380b6f2b18994609e612e519283835b57dd31
+        authoredAt: 2026-11-24T19:57:35Z
+        additions: 15449
+        deletions: 1
+        filesChanged: 136
+        files:
+          - bun.lock
+          - package.json
+          - support/.gitignore
+          - support/README.md
+          - support/ZOHO_SETUP.md
+          - support/acceptance/README.md
+          - support/acceptance/cdp.ts
+          - support/acceptance/harness.ts
+          - support/acceptance/lib.ts
+          - support/acceptance/run.ts
+          - support/acceptance/stub-model.ts
+          - support/appearance.ts
+          - support/assets/Lora-OFL.txt
+          - support/assets/Roboto-OFL.txt
+          - support/assets/graphical-theme.css
+          - support/assets/logo-m-color.png
+          - support/assets/logo-m-white.png
+          - support/assets/lora-latin-normal.woff2
+          - support/assets/roboto-latin-normal.woff2
+          - support/assets/support-app-icon.icns
+          - support/assets/support-app-icon.ico
+          - support/assets/support-app-icon.png
+          - support/assets/support-app-icon.svg
+          - support/attachments.test.ts
+          - support/attachments.ts
+          - support/browser-bridge.ts
+          - support/browser-close-regression.test.ts
+          - support/browser-server.ts
+          - support/browser-sessions.ts
+          - support/build.ts
+          - support/bun.lock
+          - support/chat-history-browser.ts
+          - support/chat-history-store.ts
+          - support/chat-history.test.ts
+          - support/chat-history.ts
+          - support/compass-transport.ts
+          - support/conversation.test.ts
+          - support/dictation.test.ts
+          - support/dictation.ts
+          - support/draft.ts
+          - support/errors.ts
+          - support/flow.test.ts
+          - support/flow.ts
+          - support/functions/.gitignore
+          - support/functions/host.json
+          - support/functions/package.json
+          - support/functions/src/config.ts
+          - support/functions/src/handlers.ts
+          - support/functions/src/index.ts
+          - support/functions/src/store.test.ts
+          - support/functions/src/store.ts
+          - support/functions/src/submissions.test.ts
+          - support/functions/src/submissions.ts
+          - support/functions/src/zoho.ts
+          - support/functions/tsconfig.json
+          - support/generate-icons.py
+          - support/history.test.ts
+          - support/history.ts
+          - support/index.html
+          - support/licenses/ollama-LICENSE
+          - support/main.ts
+          - support/model-context.ts
+          - support/model-readiness.ts
+          - support/model-setup.ts
+          - support/observation-context.ts
+          - support/onboarding-ui.ts
+          - support/onboarding.css
+          - support/onboarding.test.ts
+          - support/onboarding.ts
+          - support/package.json
+          - support/package.ts
+          - support/pii.ts
+          - support/preload-history.test.ts
+          - support/preload.ts
+          - support/renderer-integration.test.ts
+          - support/renderer.css
+          - support/renderer.ts
+          - support/restart-checkpoint.ts
+          - support/resume.ts
+          - support/runtime-discovery.test.ts
+          - support/runtime-errors.ts
+          - support/runtime-manager.ts
+          - support/runtime-manifest.json
+          - support/runtime-url.ts
+          - support/runtime.test.ts
+          - support/safety-guard.ts
+          - support/scenarios/README.md
+          - support/scenarios/browser-tickets.json
+          - support/scenarios/cases.json
+          - support/scenarios/conversation-plans.ts
+          - support/scenarios/conversation-qa.ts
+          - support/scenarios/expectations.json
+          - support/scenarios/harness.test.ts
+          - support/scenarios/harness.ts
+          - support/scenarios/replay.ts
+          - support/scenarios/seed-tickets.ts
+          - support/scenarios/ticket-matches.json
+          - support/scenarios/tickets.json
+          - support/scenarios/vision-dev/answer-key.json
+          - support/scenarios/vision-dev/dev-01.png
+          - support/scenarios/vision-dev/dev-02.png
+          - support/scenarios/vision-dev/dev-03.png
+          - support/scenarios/vision-dev/dev-04.png
+          - support/scenarios/vision-dev/dev-05.png
+          - support/scenarios/vision-dev/dev-06.png
+          - support/scenarios/vision-dev/dev-07.png
+          - support/scenarios/vision-dev/dev-08.png
+          - support/scenarios/vision-dev/dev-09.png
+          - support/scenarios/vision-dev/dev-10.png
+          - support/scenarios/vision-dev/dev-11.png
+          - support/scenarios/vision-dev/dev-12.png
+          - support/scenarios/vision-dev/dev-13.png
+          - support/scenarios/vision-dev/dev-14.png
+          - support/scenarios/vision-dev/prompts.json
+          - support/session.ts
+          - support/settings.test.ts
+          - support/settings.ts
+          - support/skills/windows.json
+          - support/speech-engine.test.ts
+          - support/speech-engine.ts
+          - support/speech-licenses/LICENSE
+          - support/speech-licenses/NOTICE
+          - support/speech-manifest.json
+          - support/speech-worker.ts
+          - support/start.ts
+          - support/support-api.ts
+          - support/test-dom.ts
+          - support/theme.test.ts
+          - support/theme.ts
+          - support/ticket-match.ts
+          - support/ticket-store.ts
+          - support/ticket-workspace.ts
+          - support/tsconfig.json
+          - support/verify-gemma.ts
+          - support/vision.ts
+          - support/zoho-contract.ts
+      - &a20
+        sha: 3895f0bfa67c257b685911ad6131e19e7cd64144
+        message: Use the Windows account in Support profile confirmation
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3895f0bfa67c257b685911ad6131e19e7cd64144
+        authoredAt: 2026-11-24T20:25:17Z
+        additions: 60
+        deletions: 15
+        filesChanged: 8
+        files:
+          - support/README.md
+          - support/flow.test.ts
+          - support/flow.ts
+          - support/main.ts
+          - support/pii.ts
+          - support/runtime.test.ts
+          - support/session.ts
+          - support/support-api.ts
+      - &a21
+        sha: ad1fa87fbcb460f21422e70290828e75c14aec32
+        message: Improve Support handoff, model idle timeout, and Windows dictation
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ad1fa87fbcb460f21422e70290828e75c14aec32
+        authoredAt: 2026-11-24T20:48:05Z
+        additions: 176
+        deletions: 36
+        filesChanged: 17
+        files:
+          - support/README.md
+          - support/flow.ts
+          - support/index.html
+          - support/main.ts
+          - support/model-readiness.ts
+          - support/preload.ts
+          - support/renderer-integration.test.ts
+          - support/renderer.ts
+          - support/runtime-manager.ts
+          - support/runtime-url.ts
+          - support/runtime.test.ts
+          - support/session.ts
+          - support/speech-engine.test.ts
+          - support/speech-engine.ts
+          - support/speech-worker.ts
+          - support/support-api.ts
+          - support/vision.ts
+      - &a22
+        sha: 77d76f5f052f11afa8da1abe02dc8c4ffd106191
+        message: Add opt-in developer model workbench
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/77d76f5f052f11afa8da1abe02dc8c4ffd106191
+        authoredAt: 2026-11-24T20:53:31Z
+        additions: 226
+        deletions: 13
+        filesChanged: 11
+        files:
+          - support/README.md
+          - support/build.ts
+          - support/dev-workbench.css
+          - support/dev-workbench.html
+          - support/dev-workbench.ts
+          - support/main.ts
+          - support/package.json
+          - support/package.ts
+          - support/preload.ts
+          - support/start.ts
+          - support/support-api.ts
+      - &a24
+        sha: 331b7cf86483c3d2cc00d6c4dc893cd2142dbbc1
+        message: Integrate Support developer mode and scope web E2E
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/331b7cf86483c3d2cc00d6c4dc893cd2142dbbc1
+        authoredAt: 2026-11-24T21:24:24Z
+        additions: 651
+        deletions: 258
+        filesChanged: 23
+        files:
+          - .github/workflows/verify.yml
+          - scripts/affected-apps.ts
+          - scripts/tooling.test.ts
+          - support/README.md
+          - support/build.ts
+          - support/dev-mode.test.ts
+          - support/dev-mode.ts
+          - support/dev-workbench.css
+          - support/dev-workbench.html
+          - support/dev-workbench.ts
+          - support/developer-settings.ts
+          - support/draft.ts
+          - support/flow.ts
+          - support/main.ts
+          - support/model-setup.ts
+          - support/package.ts
+          - support/preload.ts
+          - support/renderer-integration.test.ts
+          - support/renderer.css
+          - support/renderer.ts
+          - support/session.ts
+          - support/settings.ts
+          - support/support-api.ts
+      - &a25
+        sha: e1164ba90de7222f8c544e56f7d2387abced8352
+        message: Create flat Windows ZIP packages for Myriad Support
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/e1164ba90de7222f8c544e56f7d2387abced8352
+        authoredAt: 2026-11-24T21:44:55Z
+        additions: 45
+        deletions: 1
+        filesChanged: 2
+        files:
+          - support/package.ts
+          - support/windows-zip.ts
+      - &a26
+        sha: df15fbd28c4698c17f4ce4f07ab9c2ec46756d5d
+        message: Accept pasted and dropped files and allow early screenshots
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/df15fbd28c4698c17f4ce4f07ab9c2ec46756d5d
+        authoredAt: 2026-11-24T21:44:55Z
+        additions: 124
+        deletions: 32
+        filesChanged: 12
+        files:
+          - support/README.md
+          - support/attachments.test.ts
+          - support/flow.test.ts
+          - support/flow.ts
+          - support/main.ts
+          - support/model-readiness.ts
+          - support/preload.ts
+          - support/renderer-integration.test.ts
+          - support/renderer.ts
+          - support/runtime.test.ts
+          - support/session.ts
+          - support/support-api.ts
+      - &a27
+        sha: 25fde3cac9651be4fb1d58122fa9c4e0b9993c81
+        message: Stream local dictation into the Support composer
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/25fde3cac9651be4fb1d58122fa9c4e0b9993c81
+        authoredAt: 2026-11-24T22:04:21Z
+        additions: 571
+        deletions: 89
+        filesChanged: 13
+        files:
+          - support/README.md
+          - support/dictation.test.ts
+          - support/dictation.ts
+          - support/index.html
+          - support/main.ts
+          - support/preload.ts
+          - support/renderer.css
+          - support/renderer.ts
+          - support/scenarios/windows-speech-smoke.ts
+          - support/speech-engine.ts
+          - support/speech-stream.test.ts
+          - support/speech-worker.ts
+          - support/support-api.ts
+    workTimestamps: &a15
+      - 2026-11-24T19:57:35Z
+      - 2026-11-24T20:25:17Z
+      - 2026-11-24T20:48:05Z
+      - 2026-11-24T20:53:31Z
+      - 2026-11-24T21:24:24Z
+      - 2026-11-24T21:44:55Z
+      - 2026-11-24T21:44:55Z
+      - 2026-11-24T22:04:21Z
+    workAdditions: 17302
+    workDeletions: 445
+    workFiles: &a16
+      - .github/workflows/verify.yml
+      - bun.lock
+      - package.json
+      - scripts/affected-apps.ts
+      - scripts/tooling.test.ts
+      - support/.gitignore
+      - support/README.md
+      - support/ZOHO_SETUP.md
+      - support/acceptance/README.md
+      - support/acceptance/cdp.ts
+      - support/acceptance/harness.ts
+      - support/acceptance/lib.ts
+      - support/acceptance/run.ts
+      - support/acceptance/stub-model.ts
+      - support/appearance.ts
+      - support/assets/Lora-OFL.txt
+      - support/assets/Roboto-OFL.txt
+      - support/assets/graphical-theme.css
+      - support/assets/logo-m-color.png
+      - support/assets/logo-m-white.png
+      - support/assets/lora-latin-normal.woff2
+      - support/assets/roboto-latin-normal.woff2
+      - support/assets/support-app-icon.icns
+      - support/assets/support-app-icon.ico
+      - support/assets/support-app-icon.png
+      - support/assets/support-app-icon.svg
+      - support/attachments.test.ts
+      - support/attachments.ts
+      - support/browser-bridge.ts
+      - support/browser-close-regression.test.ts
+      - support/browser-server.ts
+      - support/browser-sessions.ts
+      - support/build.ts
+      - support/bun.lock
+      - support/chat-history-browser.ts
+      - support/chat-history-store.ts
+      - support/chat-history.test.ts
+      - support/chat-history.ts
+      - support/compass-transport.ts
+      - support/conversation.test.ts
+      - support/dev-mode.test.ts
+      - support/dev-mode.ts
+      - support/dev-workbench.css
+      - support/dev-workbench.html
+      - support/dev-workbench.ts
+      - support/developer-settings.ts
+      - support/dictation.test.ts
+      - support/dictation.ts
+      - support/draft.ts
+      - support/errors.ts
+      - support/flow.test.ts
+      - support/flow.ts
+      - support/functions/.gitignore
+      - support/functions/host.json
+      - support/functions/package.json
+      - support/functions/src/config.ts
+      - support/functions/src/handlers.ts
+      - support/functions/src/index.ts
+      - support/functions/src/store.test.ts
+      - support/functions/src/store.ts
+      - support/functions/src/submissions.test.ts
+      - support/functions/src/submissions.ts
+      - support/functions/src/zoho.ts
+      - support/functions/tsconfig.json
+      - support/generate-icons.py
+      - support/history.test.ts
+      - support/history.ts
+      - support/index.html
+      - support/licenses/ollama-LICENSE
+      - support/main.ts
+      - support/model-context.ts
+      - support/model-readiness.ts
+      - support/model-setup.ts
+      - support/observation-context.ts
+      - support/onboarding-ui.ts
+      - support/onboarding.css
+      - support/onboarding.test.ts
+      - support/onboarding.ts
+      - support/package.json
+      - support/package.ts
+      - support/pii.ts
+      - support/preload-history.test.ts
+      - support/preload.ts
+      - support/renderer-integration.test.ts
+      - support/renderer.css
+      - support/renderer.ts
+      - support/restart-checkpoint.ts
+      - support/resume.ts
+      - support/runtime-discovery.test.ts
+      - support/runtime-errors.ts
+      - support/runtime-manager.ts
+      - support/runtime-manifest.json
+      - support/runtime-url.ts
+      - support/runtime.test.ts
+      - support/safety-guard.ts
+      - support/scenarios/README.md
+      - support/scenarios/browser-tickets.json
+      - support/scenarios/cases.json
+      - support/scenarios/conversation-plans.ts
+      - support/scenarios/conversation-qa.ts
+      - support/scenarios/expectations.json
+      - support/scenarios/harness.test.ts
+      - support/scenarios/harness.ts
+      - support/scenarios/replay.ts
+      - support/scenarios/seed-tickets.ts
+      - support/scenarios/ticket-matches.json
+      - support/scenarios/tickets.json
+      - support/scenarios/vision-dev/answer-key.json
+      - support/scenarios/vision-dev/dev-01.png
+      - support/scenarios/vision-dev/dev-02.png
+      - support/scenarios/vision-dev/dev-03.png
+      - support/scenarios/vision-dev/dev-04.png
+      - support/scenarios/vision-dev/dev-05.png
+      - support/scenarios/vision-dev/dev-06.png
+      - support/scenarios/vision-dev/dev-07.png
+      - support/scenarios/vision-dev/dev-08.png
+      - support/scenarios/vision-dev/dev-09.png
+      - support/scenarios/vision-dev/dev-10.png
+      - support/scenarios/vision-dev/dev-11.png
+      - support/scenarios/vision-dev/dev-12.png
+      - support/scenarios/vision-dev/dev-13.png
+      - support/scenarios/vision-dev/dev-14.png
+      - support/scenarios/vision-dev/prompts.json
+      - support/scenarios/windows-speech-smoke.ts
+      - support/session.ts
+      - support/settings.test.ts
+      - support/settings.ts
+      - support/skills/windows.json
+      - support/speech-engine.test.ts
+      - support/speech-engine.ts
+      - support/speech-licenses/LICENSE
+      - support/speech-licenses/NOTICE
+      - support/speech-manifest.json
+      - support/speech-stream.test.ts
+      - support/speech-worker.ts
+      - support/start.ts
+      - support/support-api.ts
+      - support/test-dom.ts
+      - support/theme.test.ts
+      - support/theme.ts
+      - support/ticket-match.ts
+      - support/ticket-store.ts
+      - support/ticket-workspace.ts
+      - support/tsconfig.json
+      - support/verify-gemma.ts
+      - support/vision.ts
+      - support/windows-zip.ts
+      - support/zoho-contract.ts
+prsInProgress:
+  - title: "docs: prepare contributor guidance and remove private artifacts"
+    body: |-
+      - Add a contributor guide, pull request template, and privacy guidance for issues and pull requests.
+      - Update the README and deployment notes to reflect the current suite workflow and preview requirements.
+      - Ignore and remove private operational reports and visual QA screenshots from the current bra...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/233
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: *a1
+    additions: 117
+    deletions: 672
+    changedFiles: 17
+    author: myriadas-clees
+    createdAt: 2026-11-24T15:47:31Z
+    updatedAt: 2026-11-25T15:11:34Z
+    closedAt: 2026-11-25T15:11:34Z
+    mergedAt: 2026-11-25T15:11:34Z
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 117
+    workDeletions: 672
+    workFiles: *a4
+  - title: "fix(pto): harden request workflows and add a local ADP simulator"
+    body: >-
+      ## Why
+
+
+      Duplicate submissions and concurrent approval decisions can leave PTO requests and balances out of sync. A
+      Microsoft Lists write can also succeed even when the app fails to receive a response, leaving the workflow unsure
+      whether to retry. ADP feasibility work needs a way to exercise those fa...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/296
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels: *a5
+    additions: 633
+    deletions: 72
+    changedFiles: 16
+    author: myriadas-clees
+    createdAt: 2026-11-24T21:01:00Z
+    updatedAt: 2026-11-25T15:11:28Z
+    closedAt: 2026-11-25T15:11:28Z
+    mergedAt: 2026-11-25T15:11:28Z
+    workCommits: *a6
+    workTimestamps: *a7
+    workAdditions: 633
+    workDeletions: 72
+    workFiles: *a8
+  - title: "feat(pto): cache read data and refine balance views"
+    body: >-
+      ## Why
+
+
+      Revisiting PTO pages replayed loading states while data was fetched again, and the My PTO view gave the available
+      balance no clear emphasis. PTO company details also failed to load for HR users through the expected API route.
+
+
+      ## What changed
+
+
+      PTO read data is cached per signed-in user and s...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/295
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a9
+    additions: 478
+    deletions: 460
+    changedFiles: 24
+    author: myriadas-clees
+    createdAt: 2026-11-24T19:57:53Z
+    updatedAt: 2026-11-24T21:12:05Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a10
+    workTimestamps: *a11
+    workAdditions: 510
+    workDeletions: 492
+    workFiles: *a12
+  - title: "feat(desktop): add Myriad Support app"
+    body: >-
+      Adds Myriad Support, an Electron desktop app for guided IT troubleshooting and ticket review. The app uses local
+      Gemma inference and includes a browser pilot for testing the support workflow.
+
+
+      - Guides users through troubleshooting, collects consented device observations and accepts screenshots and ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/294
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a13
+    additions: 18708
+    deletions: 2
+    changedFiles: 154
+    author: myriadas-clees
+    createdAt: 2026-11-24T19:53:15Z
+    updatedAt: 2026-11-25T17:15:41Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a14
+    workTimestamps: *a15
+    workAdditions: 17302
+    workDeletions: 445
+    workFiles: *a16
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - Add Myriad Support desktop app
+      - "feat(pto): cache read data and refine balance views"
+      - Recover PTO workflow hardening and ADP simulator
+      - Use the Windows account in Support profile confirmation
+      - Improve Support handoff, model idle timeout, and Windows dictation
+      - Add opt-in developer model workbench
+      - "feat(pto): add request dashboard and shared request modal"
+      - Integrate Support developer mode and scope web E2E
+      - Create flat Windows ZIP packages for Myriad Support
+      - Accept pasted and dropped files and allow early screenshots
+      - Stream local dictation into the Support composer
+    commits:
+      - *a17
+      - *a18
+      - *a19
+      - *a20
+      - *a21
+      - *a22
+      - *a23
+      - *a24
+      - *a25
+      - *a26
+      - *a27
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "docs: prepare contributor guidance and remove private artifacts"
+    commits:
+      - *a28
+releases:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    tag: staging-20261124T175645Z-025a67f
+    name: staging-20261124T175645Z-025a67f
+    body: |
+      Staging validation for [025a67fcfa29f8a1dfaccd9f535507f681dffd44](https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/025a67fcfa29f8a1dfaccd9f535507f681dffd44).
+
+      [Workflow run](https://github.com/Myriad-Advisor-Solutions/myriadas-apps/actions/runs/45454075849)
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/releases/tag/staging-20261124T175645Z-025a67f
+    publishedAt: 2026-11-24T18:04:40Z
+externalContributions: []
+codeReviews: []
+reviewComments: []
+aiReviews:
+  codex:
+    prsReviewed: 2
+    comments: 4
+    reviews: 4
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 2
+  comments: 4
+  reviews: 4
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-11-24T19:57:35Z
+    - 2026-11-24T19:57:42Z
+    - 2026-11-24T20:05:47Z
+    - 2026-11-24T20:25:17Z
+    - 2026-11-24T20:48:05Z
+    - 2026-11-24T20:53:31Z
+    - 2026-11-24T20:58:32Z
+    - 2026-11-24T21:24:24Z
+    - 2026-11-24T21:44:55Z
+    - 2026-11-24T21:44:55Z
+    - 2026-11-24T22:04:21Z
+    - 2026-11-24T15:47:22Z
+    - 2026-11-24T15:47:31Z
+    - 2026-11-24T15:47:22Z
+    - 2026-11-24T21:01:00Z
+    - 2026-11-24T20:05:47Z
+    - 2026-11-24T19:57:53Z
+    - 2026-11-24T19:57:42Z
+    - 2026-11-24T20:58:32Z
+    - 2026-11-24T19:53:15Z
+    - 2026-11-24T19:57:35Z
+    - 2026-11-24T20:25:17Z
+    - 2026-11-24T20:48:05Z
+    - 2026-11-24T20:53:31Z
+    - 2026-11-24T21:24:24Z
+    - 2026-11-24T21:44:55Z
+    - 2026-11-24T21:44:55Z
+    - 2026-11-24T22:04:21Z
+  volume:
+    pullRequests:
+      - additions: 117
+        deletions: 672
+        state: merged
+        dailyWork: true
+        filesChanged: 17
+        testFilesChanged: 0
+        commitCount: 1
+      - additions: 633
+        deletions: 72
+        state: merged
+        dailyWork: true
+        filesChanged: 16
+        testFilesChanged: 5
+        commitCount: 1
+      - additions: 510
+        deletions: 492
+        state: open
+        dailyWork: true
+        filesChanged: 24
+        testFilesChanged: 4
+        commitCount: 2
+      - additions: 17302
+        deletions: 445
+        state: open
+        dailyWork: true
+        filesChanged: 148
+        testFilesChanged: 21
+        commitCount: 8
+    reviewCount: 0
+    reviewCommentCount: 0
+    commitCount: 0
+    commitAdditions: 0
+    commitDeletions: 0
+    commitStatsCount: 0
+    commitUnits: []
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.3"
+  hours: 30
+  sessions: 2
+  sessionHours: 2.7
+  volumeHours: 47.9
+  compressedVolumeHours: 30
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
+stakeholderSummary: ""
