@@ -1,0 +1,120 @@
+title: Nov 25
+subtitle: compass, agents & hub
+overview: ""
+summaries:
+  - type: repo-summary
+    heading: Projects worked on
+    body: Activity spanned Myriad-Advisor-Solutions/myriadas-apps and Myriad-Advisor-Solutions/ohcpwm-apps.
+    chips:
+      - label: Myriad-Advisor-Solutions/myriadas-apps
+        value: 4 PRs
+      - label: Myriad-Advisor-Solutions/ohcpwm-apps
+        value: 0 PRs
+  - type: commit-summary
+    heading: Commits and line changes
+    body: 46 commits with +16,228 / −6,529 lines.
+    chips:
+      - label: Commits
+        value: "46"
+        color: green
+      - label: Additions
+        value: +16,228
+        color: green
+      - label: Deletions
+        value: −6,529
+        color: red
+  - type: review-summary
+    heading: Reviews
+    body: 3 reviews with 3 comments.
+    chips:
+      - label: Reviews
+        value: "3"
+      - label: Comments
+        value: "3"
+  - type: review-summary
+    heading: AI code reviews
+    body: "Codex/Cursor reviews done today (from GitHub PR data): Codex: 6 reviews, 8 comments, 4 PRs."
+    chips:
+      - label: Codex
+        value: 6 reviews · 8 comments · 4 PRs
+  - type: activity-pattern
+    heading: Manual effort estimate
+    body: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+      deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+      worked or measured time saved. Very busy days count with diminishing returns."
+    chips:
+      - label: Manual effort estimate
+        value: ~7 engineer-days
+highlights:
+  - type: pr
+    title: "docs: prepare contributor guidance and remove private artifacts"
+    repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    meta: integrated · +0 −0
+    body: |-
+      - Add a contributor guide, pull request template, and privacy guidance for issues and pull requests.
+      - Update the README and deployment notes to reflect the current suite workflow and preview requirem
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/233
+  - type: pr
+    title: "fix(pto): harden request workflows and add a local ADP simulator"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: integrated · +0 −0
+    body: >-
+      ## Why
+
+
+      Duplicate submissions and concurrent approval decisions can leave PTO requests and balances out of sync. A
+      Microsoft Lists write can also succeed even when the app fails to receive a response,
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/296
+  - type: pr
+    title: "feat(skills): add Myriad layout review guidance"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: integrated · +1287 −682
+    body: >-
+      ## Why
+
+
+      The suite’s UI guide explains how to align content, but agents lack a shared procedure for diagnosing clipped
+      labels, obscured actions, and reading-order problems.
+
+
+      ## What changed
+
+
+      Route layo
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/293
+  - type: pr
+    title: "feat(compass): use Copilot titles for new Ask chats"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: integrated · +1827 −768
+    body: >-
+      ## Why
+
+
+      Compass Ask kept the first question as the chat title even when Copilot returned a more descriptive conversation
+      name.
+
+
+      ## What changed
+
+
+      Compass uses the matching Copilot conversation’s displa
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/291
+  - type: pr
+    title: "feat(hub): centralize suite sign-in and session recovery"
+    repo: Myriad-Advisor-Solutions/myriadas-apps
+    meta: in progress · +1453 −1482
+    body: Still open at the end of the reporting window.
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/299
+ticker:
+  - label: INTEGRATED
+    text: '@myriadas-clees completed "docs: prepare contributor guidance and remove private artifacts" in
+      Myriad-Advisor-Solutions/ohcpwm-apps'
+  - label: INTEGRATED
+    text: '@myriadas-clees completed "fix(pto): harden request workflows and add a local ADP simulator" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: INTEGRATED
+    text: '@myriadas-clees completed "feat(skills): add Myriad layout review guidance" in
+      Myriad-Advisor-Solutions/myriadas-apps'
+  - label: INTEGRATED
+    text: '@myriadas-clees completed "feat(compass): use Copilot titles for new Ask chats" in
+      Myriad-Advisor-Solutions/myriadas-apps'

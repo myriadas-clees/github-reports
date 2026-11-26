@@ -1,0 +1,3410 @@
+username: myriadas-clees
+avatarUrl: https://avatars.githubusercontent.com/u/293971366?v=4
+profile:
+  name: Carleton "CJ" Lees
+  bio: ""
+  company: null
+  location: null
+  followers: 0
+  following: 0
+  publicRepos: 1
+dateRange:
+  from: 2026-11-25
+  to: 2026-11-25
+stats:
+  totalCommits: 46
+  totalAdditions: 16228
+  totalDeletions: 6529
+  prsOpened: 4
+  prsMerged: 4
+  prsInProgress: 10
+  prsReviewed: 3
+  reviewComments: 3
+  issuesOpened: 0
+  issuesClosed: 0
+  estimatedHours: 56.5
+dailyCommits:
+  - date: 2026-11-25
+    count: 46
+repositories:
+  - name: Myriad-Advisor-Solutions/myriadas-apps
+    commits: 40
+    prsOpened: 4
+    prsMerged: 3
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps
+  - name: Myriad-Advisor-Solutions/ohcpwm-apps
+    commits: 6
+    prsOpened: 0
+    prsMerged: 1
+    issuesOpened: 0
+    issuesClosed: 0
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps
+pullRequests:
+  - title: "feat(hub): centralize suite sign-in and session recovery"
+    body: >-
+      ## Why
+
+
+      App-specific sign-in and recovery could interrupt navigation and lose the intended destination. PTO also carried a
+      standalone Microsoft login and deployment path that nobody uses.
+
+
+      ## What changed
+
+
+      - Myriad Hub owns sign-in, account switching, and sign-out for composed apps. Its shared sign-...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/299
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a1
+      - documentation
+      - github-automation
+      - "app: hub"
+      - "app: onboarding"
+      - "app: pto-tracker"
+      - "app: proforma"
+      - "app: valuation"
+      - platform
+      - "app: transition"
+      - "app: compass"
+    additions: 1469
+    deletions: 1498
+    changedFiles: 84
+    author: myriadas-clees
+    createdAt: 2026-11-25T16:29:29Z
+    updatedAt: 2026-11-25T17:15:06Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a2
+      - &a26
+        sha: 0b34792a50d3146725c9e6899b3b7b3ef2c0a40b
+        message: Centralize suite sign-in and session recovery in Myriad Hub
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0b34792a50d3146725c9e6899b3b7b3ef2c0a40b
+        authoredAt: 2026-11-25T16:29:04Z
+        additions: 1395
+        deletions: 1479
+        filesChanged: 82
+        files:
+          - .github/workflows/azure-static-web-apps-products.yml
+          - bun.lock
+          - compass/src/components/compass-shell.tsx
+          - compass/src/lib/swa-session.ts
+          - crm/src/components/crm-shell.tsx
+          - docs/azure-serverless-plan.md
+          - hub/README.md
+          - hub/app/403/page.tsx
+          - hub/app/globals.css
+          - hub/app/layout.tsx
+          - hub/app/login/layout.tsx
+          - hub/app/login/page.tsx
+          - hub/components/HomeClient.tsx
+          - hub/components/HubAuthNotice.tsx
+          - hub/components/HubAuthProvider.tsx
+          - hub/components/HubEntry.tsx
+          - hub/components/HubLoadingScreen.tsx
+          - hub/components/HubSettingsPage.tsx
+          - hub/components/LandingPage.tsx
+          - hub/components/SignInRouting.test.tsx
+          - hub/components/SiteFooter.tsx
+          - hub/lib/app-entry.test.ts
+          - hub/lib/app-entry.ts
+          - hub/lib/auth.ts
+          - hub/lib/entry-app.test.ts
+          - hub/lib/entry-app.ts
+          - hub/staticwebapp.config.json
+          - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+          - onboarding/apps/dashboard/components/dashboard-shell.tsx
+          - packages/ui/src/browser/swa-session.test.ts
+          - packages/ui/src/browser/swa-session.ts
+          - packages/ui/src/button.tsx
+          - packages/ui/src/company/context.tsx
+          - packages/ui/src/signed-out.tsx
+          - proforma/src/lib/__tests__/proforma-auth-routes.test.ts
+          - proforma/src/lib/proforma-api-client.ts
+          - proforma/src/lib/proforma-auth-routes.ts
+          - pto-tracker/.env.example
+          - pto-tracker/Dockerfile
+          - pto-tracker/docs/architecture.md
+          - pto-tracker/docs/implementation-playbook.md
+          - pto-tracker/docs/microsoft-tenant-deployment.md
+          - pto-tracker/docs/security-review.md
+          - pto-tracker/docs/verification-plan.md
+          - pto-tracker/functions/local.settings.json.example
+          - pto-tracker/functions/src/index.ts
+          - pto-tracker/package.json
+          - pto-tracker/research/assumptions.md
+          - pto-tracker/src/components/AuthProvider.tsx
+          - pto-tracker/src/components/PtoAppShell.test.ts
+          - pto-tracker/src/components/PtoAppShell.tsx
+          - pto-tracker/src/components/PtoCompanyProvider.test.ts
+          - pto-tracker/src/components/PtoCompanyProvider.tsx
+          - pto-tracker/src/lib/api/azure-functions-adapter.test.ts
+          - pto-tracker/src/lib/api/azure-functions-adapter.ts
+          - pto-tracker/src/lib/api/client.test.ts
+          - pto-tracker/src/lib/api/client.ts
+          - pto-tracker/src/lib/api/handlers.test.ts
+          - pto-tracker/src/lib/api/handlers.ts
+          - pto-tracker/src/lib/auth/entra-provider.test.ts
+          - pto-tracker/src/lib/auth/entra-provider.ts
+          - pto-tracker/src/lib/auth/entra-token-provider.test.ts
+          - pto-tracker/src/lib/auth/entra-token-provider.ts
+          - pto-tracker/src/lib/auth/index.ts
+          - pto-tracker/src/lib/auth/msal-session-cache.test.ts
+          - pto-tracker/src/lib/auth/navigation.test.ts
+          - pto-tracker/src/lib/auth/navigation.ts
+          - pto-tracker/src/lib/auth/session.test.ts
+          - pto-tracker/src/lib/auth/session.ts
+          - pto-tracker/staticwebapp.config.json
+          - pto-tracker/teams/README.md
+          - pto-tracker/teams/manifest.template.json
+          - scripts/app-registry.ts
+          - scripts/build-static-export.ts
+          - scripts/swa-environment-config.test.ts
+          - scripts/swa-environment-config.ts
+          - scripts/tooling.test.ts
+          - scripts/validate-artifacts.ts
+          - scripts/workflow-matrix.ts
+          - transition/src/components/transition-shell.tsx
+          - valuation/src/components/valuation-runtime-shell.tsx
+          - valuation/src/components/valuation-shell.tsx
+      - &a28
+        sha: 0b856f637e6cca535185167ebb1b7fd30ecca317
+        message: "fix(auth): preserve standalone app session boundaries"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/0b856f637e6cca535185167ebb1b7fd30ecca317
+        authoredAt: 2026-11-25T16:40:58Z
+        additions: 30
+        deletions: 3
+        filesChanged: 5
+        files:
+          - .github/workflows/azure-static-web-apps-products.yml
+          - packages/ui/src/browser/swa-session.test.ts
+          - packages/ui/src/browser/swa-session.ts
+          - packages/ui/src/company/context.test.tsx
+          - packages/ui/src/company/context.tsx
+      - &a29
+        sha: 23ea1fc2c3aa5b0e9f7de86f1e7181e5d0a4bf45
+        message: "fix(auth): restore mounted app pages after sign-in"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/23ea1fc2c3aa5b0e9f7de86f1e7181e5d0a4bf45
+        authoredAt: 2026-11-25T16:44:36Z
+        additions: 38
+        deletions: 14
+        filesChanged: 6
+        files:
+          - crm/src/components/crm-shell.tsx
+          - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+          - packages/ui/src/browser/swa-session.test.ts
+          - packages/ui/src/browser/swa-session.ts
+          - transition/src/components/transition-shell.tsx
+          - valuation/src/components/valuation-runtime-shell.tsx
+      - &a34
+        sha: f1fdac5652807e56b1e0db7b1d90a7dc22bc20ab
+        message: "test(e2e): expect Hub sign-in for protected routes"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/f1fdac5652807e56b1e0db7b1d90a7dc22bc20ab
+        authoredAt: 2026-11-25T17:01:25Z
+        additions: 6
+        deletions: 2
+        filesChanged: 1
+        files:
+          - e2e/tests/api.spec.ts
+    workTimestamps: &a3
+      - 2026-11-25T16:29:04Z
+      - 2026-11-25T16:40:58Z
+      - 2026-11-25T16:44:36Z
+      - 2026-11-25T17:01:25Z
+    workAdditions: 1469
+    workDeletions: 1498
+    workFiles: &a4
+      - .github/workflows/azure-static-web-apps-products.yml
+      - bun.lock
+      - compass/src/components/compass-shell.tsx
+      - compass/src/lib/swa-session.ts
+      - crm/src/components/crm-shell.tsx
+      - docs/azure-serverless-plan.md
+      - e2e/tests/api.spec.ts
+      - hub/README.md
+      - hub/app/403/page.tsx
+      - hub/app/globals.css
+      - hub/app/layout.tsx
+      - hub/app/login/layout.tsx
+      - hub/app/login/page.tsx
+      - hub/components/HomeClient.tsx
+      - hub/components/HubAuthNotice.tsx
+      - hub/components/HubAuthProvider.tsx
+      - hub/components/HubEntry.tsx
+      - hub/components/HubLoadingScreen.tsx
+      - hub/components/HubSettingsPage.tsx
+      - hub/components/LandingPage.tsx
+      - hub/components/SignInRouting.test.tsx
+      - hub/components/SiteFooter.tsx
+      - hub/lib/app-entry.test.ts
+      - hub/lib/app-entry.ts
+      - hub/lib/auth.ts
+      - hub/lib/entry-app.test.ts
+      - hub/lib/entry-app.ts
+      - hub/staticwebapp.config.json
+      - onboarding/apps/dashboard/components/dashboard-runtime-shell.tsx
+      - onboarding/apps/dashboard/components/dashboard-shell.tsx
+      - packages/ui/src/browser/swa-session.test.ts
+      - packages/ui/src/browser/swa-session.ts
+      - packages/ui/src/button.tsx
+      - packages/ui/src/company/context.test.tsx
+      - packages/ui/src/company/context.tsx
+      - packages/ui/src/signed-out.tsx
+      - proforma/src/lib/__tests__/proforma-auth-routes.test.ts
+      - proforma/src/lib/proforma-api-client.ts
+      - proforma/src/lib/proforma-auth-routes.ts
+      - pto-tracker/.env.example
+      - pto-tracker/Dockerfile
+      - pto-tracker/docs/architecture.md
+      - pto-tracker/docs/implementation-playbook.md
+      - pto-tracker/docs/microsoft-tenant-deployment.md
+      - pto-tracker/docs/security-review.md
+      - pto-tracker/docs/verification-plan.md
+      - pto-tracker/functions/local.settings.json.example
+      - pto-tracker/functions/src/index.ts
+      - pto-tracker/package.json
+      - pto-tracker/research/assumptions.md
+      - pto-tracker/src/components/AuthProvider.tsx
+      - pto-tracker/src/components/PtoAppShell.test.ts
+      - pto-tracker/src/components/PtoAppShell.tsx
+      - pto-tracker/src/components/PtoCompanyProvider.test.ts
+      - pto-tracker/src/components/PtoCompanyProvider.tsx
+      - pto-tracker/src/lib/api/azure-functions-adapter.test.ts
+      - pto-tracker/src/lib/api/azure-functions-adapter.ts
+      - pto-tracker/src/lib/api/client.test.ts
+      - pto-tracker/src/lib/api/client.ts
+      - pto-tracker/src/lib/api/handlers.test.ts
+      - pto-tracker/src/lib/api/handlers.ts
+      - pto-tracker/src/lib/auth/entra-provider.test.ts
+      - pto-tracker/src/lib/auth/entra-provider.ts
+      - pto-tracker/src/lib/auth/entra-token-provider.test.ts
+      - pto-tracker/src/lib/auth/entra-token-provider.ts
+      - pto-tracker/src/lib/auth/index.ts
+      - pto-tracker/src/lib/auth/msal-session-cache.test.ts
+      - pto-tracker/src/lib/auth/navigation.test.ts
+      - pto-tracker/src/lib/auth/navigation.ts
+      - pto-tracker/src/lib/auth/session.test.ts
+      - pto-tracker/src/lib/auth/session.ts
+      - pto-tracker/staticwebapp.config.json
+      - pto-tracker/teams/README.md
+      - pto-tracker/teams/manifest.template.json
+      - scripts/app-registry.ts
+      - scripts/build-static-export.ts
+      - scripts/swa-environment-config.test.ts
+      - scripts/swa-environment-config.ts
+      - scripts/tooling.test.ts
+      - scripts/validate-artifacts.ts
+      - scripts/workflow-matrix.ts
+      - transition/src/components/transition-shell.tsx
+      - valuation/src/components/valuation-runtime-shell.tsx
+      - valuation/src/components/valuation-shell.tsx
+  - title: "feat(compass): add OpenAI office, web, and Copilot parity"
+    body: >-
+      ## Why
+
+
+      Compass limited document creation, web search, and Copilot consultations to Claude, preventing advisors from using
+      these capabilities with OpenAI models.
+
+
+      ## What changed
+
+
+      - Added OpenAI support in Compass Ask for creating Word, Excel, and PowerPoint files, public web search with
+      `@web`, and...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/298
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a5
+      - documentation
+      - "app: compass"
+    additions: 1920
+    deletions: 340
+    changedFiles: 256
+    author: myriadas-clees
+    createdAt: 2026-11-25T16:21:06Z
+    updatedAt: 2026-11-25T16:33:59Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a6
+      - sha: 31cd0c6f7b194ac118b117461b99fe20bb3f8afa
+        message: Recover PTO workflow hardening and ADP simulator (#296)
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/31cd0c6f7b194ac118b117461b99fe20bb3f8afa
+        authoredAt: 2026-11-25T15:11:27Z
+        additions: 633
+        deletions: 72
+        filesChanged: 16
+        files:
+          - pto-tracker/docs/README.md
+          - pto-tracker/docs/adp-integration-research.md
+          - pto-tracker/docs/adp-simulator.md
+          - pto-tracker/docs/workflow.md
+          - pto-tracker/scripts/adp-simulator.test.ts
+          - pto-tracker/scripts/adp-simulator.ts
+          - pto-tracker/src/lib/api/handlers.test.ts
+          - pto-tracker/src/lib/api/handlers.ts
+          - pto-tracker/src/lib/pto/request-validation.test.ts
+          - pto-tracker/src/lib/pto/request-validation.ts
+          - pto-tracker/src/lib/store/graph-lists-store.test.ts
+          - pto-tracker/src/lib/store/graph-lists-store.ts
+          - pto-tracker/src/lib/store/types.ts
+          - pto-tracker/src/lib/workflow/saga.test.ts
+          - pto-tracker/src/lib/workflow/saga.ts
+          - pto-tracker/src/lib/workflow/service.ts
+      - sha: 7a409ec2724c5d7c21b06b1b9e6060a61e5686ed
+        message: "feat(compass): apply Copilot titles to first-turn chats (#291)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7a409ec2724c5d7c21b06b1b9e6060a61e5686ed
+        authoredAt: 2026-11-25T15:25:34Z
+        additions: 30
+        deletions: 2
+        filesChanged: 6
+        files:
+          - compass/functions/src/compass-copilot.test.ts
+          - compass/functions/src/compass-copilot.ts
+          - compass/functions/src/compass-microsoft.ts
+          - compass/src/components/ask-compass-workspace.dom.test.tsx
+          - compass/src/components/ask-compass-workspace.test.tsx
+          - compass/src/components/ask-compass-workspace.tsx
+      - sha: 5be035d589a6c8b2efa34a15a531e148d5c4feb7
+        message: "feat(skills): add Myriad layout review guidance (#293)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5be035d589a6c8b2efa34a15a531e148d5c4feb7
+        authoredAt: 2026-11-25T15:39:51Z
+        additions: 148
+        deletions: 0
+        filesChanged: 6
+        files:
+          - .agents/skills/better-layout/LICENSE
+          - .agents/skills/better-layout/SKILL.md
+          - .agents/skills/better-layout/grouping-and-alignment.md
+          - .agents/skills/better-layout/reporting.md
+          - .agents/skills/better-layout/spacing-and-adaptivity.md
+          - GUI.md
+      - &a25
+        sha: ae0edd6682bff9853801d2235306d5d2443370db
+        message: "feat(compass): add OpenAI office, web, and Copilot parity"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/ae0edd6682bff9853801d2235306d5d2443370db
+        authoredAt: 2026-11-25T16:20:52Z
+        additions: 1109
+        deletions: 266
+        filesChanged: 29
+        files:
+          - compass/README.md
+          - compass/functions/src/compass-archive-files.ts
+          - compass/functions/src/compass-audit.ts
+          - compass/functions/src/compass-claude-brief.ts
+          - compass/functions/src/compass-claude-files.ts
+          - compass/functions/src/compass-consultation.ts
+          - compass/functions/src/compass-microsoft.ts
+          - compass/functions/src/compass-openai-integration.test.ts
+          - compass/functions/src/compass-openai-office.ts
+          - compass/functions/src/compass-openai-preferences.ts
+          - compass/functions/src/compass-openai.ts
+          - compass/functions/src/compass-subagent.test.ts
+          - compass/functions/src/compass-subagent.ts
+          - compass/src/components/ask-compass-workspace.dom.test.tsx
+          - compass/src/components/ask-compass-workspace.tsx
+          - compass/src/components/ask/ask-composer.tsx
+          - compass/src/components/compass-provider.tsx
+          - compass/src/components/compass-stability.dom.test.ts
+          - compass/src/components/compass-stability.fixture.tsx
+          - compass/src/components/copilot-consultation-card.test.tsx
+          - compass/src/components/copilot-consultation-card.tsx
+          - compass/src/components/openai-manage-dialog.tsx
+          - compass/src/components/settings-workspace.dom.test.tsx
+          - compass/src/components/settings-workspace.tsx
+          - compass/src/components/use-openai-account.ts
+          - compass/src/lib/at-commands.test.ts
+          - compass/src/lib/at-commands.ts
+          - compass/src/lib/openai-settings.test.ts
+          - compass/src/lib/openai-settings.ts
+    workTimestamps: &a7
+      - 2026-11-25T15:11:27Z
+      - 2026-11-25T15:25:34Z
+      - 2026-11-25T15:39:51Z
+      - 2026-11-25T16:20:52Z
+    workAdditions: 1920
+    workDeletions: 340
+    workFiles: &a8
+      - .agents/skills/better-layout/LICENSE
+      - .agents/skills/better-layout/SKILL.md
+      - .agents/skills/better-layout/grouping-and-alignment.md
+      - .agents/skills/better-layout/reporting.md
+      - .agents/skills/better-layout/spacing-and-adaptivity.md
+      - GUI.md
+      - compass/README.md
+      - compass/functions/src/compass-archive-files.ts
+      - compass/functions/src/compass-audit.ts
+      - compass/functions/src/compass-claude-brief.ts
+      - compass/functions/src/compass-claude-files.ts
+      - compass/functions/src/compass-consultation.ts
+      - compass/functions/src/compass-copilot.test.ts
+      - compass/functions/src/compass-copilot.ts
+      - compass/functions/src/compass-microsoft.ts
+      - compass/functions/src/compass-openai-integration.test.ts
+      - compass/functions/src/compass-openai-office.ts
+      - compass/functions/src/compass-openai-preferences.ts
+      - compass/functions/src/compass-openai.ts
+      - compass/functions/src/compass-subagent.test.ts
+      - compass/functions/src/compass-subagent.ts
+      - compass/src/components/ask-compass-workspace.dom.test.tsx
+      - compass/src/components/ask-compass-workspace.test.tsx
+      - compass/src/components/ask-compass-workspace.tsx
+      - compass/src/components/ask/ask-composer.tsx
+      - compass/src/components/compass-provider.tsx
+      - compass/src/components/compass-stability.dom.test.ts
+      - compass/src/components/compass-stability.fixture.tsx
+      - compass/src/components/copilot-consultation-card.test.tsx
+      - compass/src/components/copilot-consultation-card.tsx
+      - compass/src/components/openai-manage-dialog.tsx
+      - compass/src/components/settings-workspace.dom.test.tsx
+      - compass/src/components/settings-workspace.tsx
+      - compass/src/components/use-openai-account.ts
+      - compass/src/lib/at-commands.test.ts
+      - compass/src/lib/at-commands.ts
+      - compass/src/lib/openai-settings.test.ts
+      - compass/src/lib/openai-settings.ts
+      - pto-tracker/docs/README.md
+      - pto-tracker/docs/adp-integration-research.md
+      - pto-tracker/docs/adp-simulator.md
+      - pto-tracker/docs/workflow.md
+      - pto-tracker/scripts/adp-simulator.test.ts
+      - pto-tracker/scripts/adp-simulator.ts
+      - pto-tracker/src/lib/api/handlers.test.ts
+      - pto-tracker/src/lib/api/handlers.ts
+      - pto-tracker/src/lib/pto/request-validation.test.ts
+      - pto-tracker/src/lib/pto/request-validation.ts
+      - pto-tracker/src/lib/store/graph-lists-store.test.ts
+      - pto-tracker/src/lib/store/graph-lists-store.ts
+      - pto-tracker/src/lib/store/types.ts
+      - pto-tracker/src/lib/workflow/saga.test.ts
+      - pto-tracker/src/lib/workflow/saga.ts
+      - pto-tracker/src/lib/workflow/service.ts
+  - title: "chore(agents): add a PR formatting skill"
+    body: >-
+      ## Why
+
+
+      Pull request titles and descriptions can drift from the repository’s conventions when agents write or revise PR
+      metadata.
+
+
+      ## What changed
+
+
+      Add a `pr-format` skill that covers scoped titles, the repository PR template, and evidence-based testing notes.
+      Reference it from `pr-delivery` so the ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/297
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a9
+      - documentation
+    additions: 878
+    deletions: 118
+    changedFiles: 3
+    author: myriadas-clees
+    createdAt: 2026-11-25T14:35:28Z
+    updatedAt: 2026-11-25T17:22:27Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a10
+      - &a20
+        sha: 85d0c4e4665f01d70b344af77e440830f69a6d87
+        message: "chore(agents): add a PR formatting skill"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/85d0c4e4665f01d70b344af77e440830f69a6d87
+        authoredAt: 2026-11-25T14:35:08Z
+        additions: 20
+        deletions: 1
+        filesChanged: 2
+        files:
+          - .agents/skills/pr-delivery/SKILL.md
+          - .agents/skills/pr-format/SKILL.md
+      - &a21
+        sha: 48390b0420ffe2f53d4aa7e4c91cc9c3e6b394b5
+        message: "chore(agents): require PR formatting guidance"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/48390b0420ffe2f53d4aa7e4c91cc9c3e6b394b5
+        authoredAt: 2026-11-25T14:46:51Z
+        additions: 1
+        deletions: 0
+        filesChanged: 1
+        files:
+          - AGENTS.md
+      - &a38
+        sha: a5d3361d6add3fb1ad2d08e6b47f082bb276a714
+        message: "chore(agents): stack PR formatting on shared guidance"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a5d3361d6add3fb1ad2d08e6b47f082bb276a714
+        authoredAt: 2026-11-25T17:08:14Z
+        additions: 857
+        deletions: 117
+        filesChanged: 42
+        files:
+          - .agents/skills/better-layout/LICENSE
+          - .agents/skills/better-layout/SKILL.md
+          - .agents/skills/better-layout/grouping-and-alignment.md
+          - .agents/skills/better-layout/reporting.md
+          - .agents/skills/better-layout/spacing-and-adaptivity.md
+          - AGENTS.md
+          - GUI.md
+          - compass/AGENTS.md
+          - compass/functions/src/compass-copilot.test.ts
+          - compass/functions/src/compass-copilot.ts
+          - compass/functions/src/compass-microsoft.ts
+          - compass/src/components/ask-compass-workspace.dom.test.tsx
+          - compass/src/components/ask-compass-workspace.test.tsx
+          - compass/src/components/ask-compass-workspace.tsx
+          - crm/AGENTS.md
+          - docs/AGENTS.md
+          - excelerate/AGENTS.md
+          - hub/AGENTS.md
+          - infra/AGENTS.md
+          - onboarding/AGENTS.md
+          - packages/AGENTS.md
+          - proforma/AGENTS.md
+          - pto-tracker/AGENTS.md
+          - pto-tracker/docs/README.md
+          - pto-tracker/docs/adp-integration-research.md
+          - pto-tracker/docs/adp-simulator.md
+          - pto-tracker/docs/workflow.md
+          - pto-tracker/scripts/adp-simulator.test.ts
+          - pto-tracker/scripts/adp-simulator.ts
+          - pto-tracker/src/lib/api/handlers.test.ts
+          - pto-tracker/src/lib/api/handlers.ts
+          - pto-tracker/src/lib/pto/request-validation.test.ts
+          - pto-tracker/src/lib/pto/request-validation.ts
+          - pto-tracker/src/lib/store/graph-lists-store.test.ts
+          - pto-tracker/src/lib/store/graph-lists-store.ts
+          - pto-tracker/src/lib/store/types.ts
+          - pto-tracker/src/lib/workflow/saga.test.ts
+          - pto-tracker/src/lib/workflow/saga.ts
+          - pto-tracker/src/lib/workflow/service.ts
+          - scripts/AGENTS.md
+          - transition/AGENTS.md
+          - valuation/AGENTS.md
+    workTimestamps: &a11
+      - 2026-11-25T14:35:08Z
+      - 2026-11-25T14:46:51Z
+      - 2026-11-25T17:08:14Z
+    workAdditions: 878
+    workDeletions: 118
+    workFiles: &a12
+      - .agents/skills/better-layout/LICENSE
+      - .agents/skills/better-layout/SKILL.md
+      - .agents/skills/better-layout/grouping-and-alignment.md
+      - .agents/skills/better-layout/reporting.md
+      - .agents/skills/better-layout/spacing-and-adaptivity.md
+      - .agents/skills/pr-delivery/SKILL.md
+      - .agents/skills/pr-format/SKILL.md
+      - AGENTS.md
+      - GUI.md
+      - compass/AGENTS.md
+      - compass/functions/src/compass-copilot.test.ts
+      - compass/functions/src/compass-copilot.ts
+      - compass/functions/src/compass-microsoft.ts
+      - compass/src/components/ask-compass-workspace.dom.test.tsx
+      - compass/src/components/ask-compass-workspace.test.tsx
+      - compass/src/components/ask-compass-workspace.tsx
+      - crm/AGENTS.md
+      - docs/AGENTS.md
+      - excelerate/AGENTS.md
+      - hub/AGENTS.md
+      - infra/AGENTS.md
+      - onboarding/AGENTS.md
+      - packages/AGENTS.md
+      - proforma/AGENTS.md
+      - pto-tracker/AGENTS.md
+      - pto-tracker/docs/README.md
+      - pto-tracker/docs/adp-integration-research.md
+      - pto-tracker/docs/adp-simulator.md
+      - pto-tracker/docs/workflow.md
+      - pto-tracker/scripts/adp-simulator.test.ts
+      - pto-tracker/scripts/adp-simulator.ts
+      - pto-tracker/src/lib/api/handlers.test.ts
+      - pto-tracker/src/lib/api/handlers.ts
+      - pto-tracker/src/lib/pto/request-validation.test.ts
+      - pto-tracker/src/lib/pto/request-validation.ts
+      - pto-tracker/src/lib/store/graph-lists-store.test.ts
+      - pto-tracker/src/lib/store/graph-lists-store.ts
+      - pto-tracker/src/lib/store/types.ts
+      - pto-tracker/src/lib/workflow/saga.test.ts
+      - pto-tracker/src/lib/workflow/saga.ts
+      - pto-tracker/src/lib/workflow/service.ts
+      - scripts/AGENTS.md
+      - transition/AGENTS.md
+      - valuation/AGENTS.md
+  - title: "feat(compass): rich layouts for @meeting, @calendar, @todo, @widget, @pdf and Office files"
+    body: >-
+      Stacked on #288. Uses the bounded visual components for the other `@` commands. `@email` is unchanged.
+
+
+      ## What changes
+
+      - **@meeting:** decisions first, then agenda and follow-up progress, then optional grounded figures. Figures stay
+      out of the calendar event body.
+
+      - **@calendar:** the proposal agai...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/301
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: &a13
+      - documentation
+      - "app: compass"
+    additions: 8847
+    deletions: 3123
+    changedFiles: 59
+    author: myriadas-clees
+    createdAt: 2026-11-25T18:53:37Z
+    updatedAt: 2026-11-25T18:53:49Z
+    closedAt: null
+    mergedAt: null
+    workCommits: &a14
+      - &a35
+        sha: 301ab1894bf837d5e4f41d7b1011afd7093a1b4b
+        message: "feat(compass): draw visuals in PDF documents, previews and exports"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/301ab1894bf837d5e4f41d7b1011afd7093a1b4b
+        authoredAt: 2026-11-25T17:03:59Z
+        additions: 1587
+        deletions: 611
+        filesChanged: 22
+        files:
+          - compass/README.md
+          - compass/src/app/pdf-editor.css
+          - compass/src/components/answer-chart.tsx
+          - compass/src/components/answer-markdown.test.tsx
+          - compass/src/components/answer-markdown.tsx
+          - compass/src/components/answer-visual.tsx
+          - compass/src/components/pdf-draft-editor.test.tsx
+          - compass/src/lib/answer-chart.ts
+          - compass/src/lib/answer-openui-visual.ts
+          - compass/src/lib/answer-visual-style.ts
+          - compass/src/lib/at-commands.test.ts
+          - compass/src/lib/at-commands.ts
+          - compass/src/lib/chat-pdf-runs.tsx
+          - compass/src/lib/chat-pdf-visual-view.tsx
+          - compass/src/lib/chat-pdf-visual.ts
+          - compass/src/lib/chat-pdf.test.ts
+          - compass/src/lib/chat-pdf.tsx
+          - compass/src/lib/draft-fences.ts
+          - compass/src/lib/pdf-rich-markdown.test.ts
+          - compass/src/lib/pdf-rich-markdown.ts
+          - compass/src/lib/pdf-visual-fences.test.ts
+          - compass/src/lib/pdf-visual-fences.ts
+      - &a31
+        sha: 72fc7451ca362266fb7b50e927395593b23fa68f
+        message: "feat(compass): attention-first @meeting card with timed agenda, figures and follow-up progress"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/72fc7451ca362266fb7b50e927395593b23fa68f
+        authoredAt: 2026-11-25T16:54:17Z
+        additions: 488
+        deletions: 43
+        filesChanged: 12
+        files:
+          - compass/README.md
+          - compass/src/app/ask.css
+          - compass/src/components/answer-visual.tsx
+          - compass/src/components/command-cards.dom.test.tsx
+          - compass/src/components/command-cards.tsx
+          - compass/src/components/command-visuals.dom.test.tsx
+          - compass/src/components/command-visuals.tsx
+          - compass/src/lib/at-commands.test.ts
+          - compass/src/lib/at-commands.ts
+          - compass/src/lib/command-cards.ts
+          - compass/src/lib/command-visuals.test.ts
+          - compass/src/lib/command-visuals.ts
+      - &a33
+        sha: 72a37b49d1a9736bd89a74ea86847e2920146502
+        message: "feat(compass): show @calendar proposals against the loaded day with conflicts"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/72a37b49d1a9736bd89a74ea86847e2920146502
+        authoredAt: 2026-11-25T17:00:11Z
+        additions: 527
+        deletions: 21
+        filesChanged: 14
+        files:
+          - compass/README.md
+          - compass/src/app/ask.css
+          - compass/src/components/answer-visual.tsx
+          - compass/src/components/command-cards.tsx
+          - compass/src/components/command-visuals.dom.test.tsx
+          - compass/src/components/command-visuals.tsx
+          - compass/src/components/compass-dashboard-lifecycle.fixture.ts
+          - compass/src/components/compass-dashboard-lifecycle.test.ts
+          - compass/src/components/compass-provider.tsx
+          - compass/src/components/compass-routes.tsx
+          - compass/src/lib/at-commands.test.ts
+          - compass/src/lib/at-commands.ts
+          - compass/src/lib/calendar-day.test.ts
+          - compass/src/lib/calendar-day.ts
+      - &a36
+        sha: 5e4497dc1232cc4c1277e454b522da8361b8305d
+        message: "feat(compass): group @todo tasks by due date with progress and workload"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5e4497dc1232cc4c1277e454b522da8361b8305d
+        authoredAt: 2026-11-25T17:04:47Z
+        additions: 209
+        deletions: 68
+        filesChanged: 10
+        files:
+          - compass/README.md
+          - compass/src/app/ask.css
+          - compass/src/components/answer-visual.tsx
+          - compass/src/components/command-cards.tsx
+          - compass/src/components/command-visuals.dom.test.tsx
+          - compass/src/components/command-visuals.tsx
+          - compass/src/lib/at-commands.test.ts
+          - compass/src/lib/at-commands.ts
+          - compass/src/lib/command-visuals.test.ts
+          - compass/src/lib/command-visuals.ts
+      - &a39
+        sha: daa90a8aa66df525e74ec5d30a36f10ace3ff5c2
+        message: "feat(compass): preview an Office file's key figures beside its download"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/daa90a8aa66df525e74ec5d30a36f10ace3ff5c2
+        authoredAt: 2026-11-25T17:08:57Z
+        additions: 249
+        deletions: 7
+        filesChanged: 16
+        files:
+          - compass/README.md
+          - compass/functions/src/compass-outputs.test.ts
+          - compass/src/app/ai-services.css
+          - compass/src/components/answer-markdown.test.tsx
+          - compass/src/components/answer-markdown.tsx
+          - compass/src/components/ask-compass-workspace.dom.test.tsx
+          - compass/src/components/ask-compass-workspace.tsx
+          - compass/src/components/generated-file-card.test.tsx
+          - compass/src/components/generated-file-card.tsx
+          - compass/src/lib/at-commands.test.ts
+          - compass/src/lib/at-commands.ts
+          - compass/src/lib/chat-pdf.test.ts
+          - compass/src/lib/chat-pdf.tsx
+          - compass/src/lib/draft-fences.ts
+          - compass/src/lib/generated-file-preview.test.ts
+          - compass/src/lib/generated-file-preview.ts
+      - &a40
+        sha: 35fa08c23eda059d5688f5246ab88bdc49fc28e2
+        message: "feat(compass): draw widgets with the shared generated-visual components"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/35fa08c23eda059d5688f5246ab88bdc49fc28e2
+        authoredAt: 2026-11-25T17:12:41Z
+        additions: 611
+        deletions: 504
+        filesChanged: 11
+        files:
+          - compass/README.md
+          - compass/src/app/globals.css
+          - compass/src/components/answer-chart.tsx
+          - compass/src/components/answer-interactive.tsx
+          - compass/src/components/answer-visual.tsx
+          - compass/src/components/widget-card.test.tsx
+          - compass/src/components/widget-card.tsx
+          - compass/src/components/widget-view.tsx
+          - compass/src/lib/at-commands.ts
+          - compass/src/lib/widgets.test.ts
+          - compass/src/lib/widgets.ts
+      - &a41
+        sha: 486ef0db983c649b984f552b0f95680dcf1b92eb
+        message: Merge branch 'feat/compass-openui-meeting' into feat/compass-openui-outputs
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/486ef0db983c649b984f552b0f95680dcf1b92eb
+        authoredAt: 2026-11-25T17:13:37Z
+        additions: 1188
+        deletions: 96
+        filesChanged: 18
+        files:
+          - compass/README.md
+          - compass/src/app/ask.css
+          - compass/src/components/answer-visual.tsx
+          - compass/src/components/command-cards.dom.test.tsx
+          - compass/src/components/command-cards.tsx
+          - compass/src/components/command-visuals.dom.test.tsx
+          - compass/src/components/command-visuals.tsx
+          - compass/src/components/compass-dashboard-lifecycle.fixture.ts
+          - compass/src/components/compass-dashboard-lifecycle.test.ts
+          - compass/src/components/compass-provider.tsx
+          - compass/src/components/compass-routes.tsx
+          - compass/src/lib/at-commands.test.ts
+          - compass/src/lib/at-commands.ts
+          - compass/src/lib/calendar-day.test.ts
+          - compass/src/lib/calendar-day.ts
+          - compass/src/lib/command-cards.ts
+          - compass/src/lib/command-visuals.test.ts
+          - compass/src/lib/command-visuals.ts
+      - &a42
+        sha: 06384fce94bb65a353c770658362d988214efab9
+        message: Merge branch 'feat/compass-openui-widgets' into feat/compass-openui-outputs
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/06384fce94bb65a353c770658362d988214efab9
+        authoredAt: 2026-11-25T17:13:52Z
+        additions: 611
+        deletions: 504
+        filesChanged: 11
+        files:
+          - compass/README.md
+          - compass/src/app/globals.css
+          - compass/src/components/answer-chart.tsx
+          - compass/src/components/answer-interactive.tsx
+          - compass/src/components/answer-visual.tsx
+          - compass/src/components/widget-card.test.tsx
+          - compass/src/components/widget-card.tsx
+          - compass/src/components/widget-view.tsx
+          - compass/src/lib/at-commands.ts
+          - compass/src/lib/widgets.test.ts
+          - compass/src/lib/widgets.ts
+      - &a43
+        sha: c4df6bd2d050dbb4316587eca8f0e51764813ba5
+        message: Merge branch 'feat/compass-openui-documents' into feat/compass-openui-outputs
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c4df6bd2d050dbb4316587eca8f0e51764813ba5
+        authoredAt: 2026-11-25T17:13:58Z
+        additions: 1837
+        deletions: 617
+        filesChanged: 30
+        files:
+          - compass/README.md
+          - compass/functions/src/compass-outputs.test.ts
+          - compass/src/app/ai-services.css
+          - compass/src/app/pdf-editor.css
+          - compass/src/components/answer-chart.tsx
+          - compass/src/components/answer-markdown.test.tsx
+          - compass/src/components/answer-markdown.tsx
+          - compass/src/components/answer-visual.tsx
+          - compass/src/components/ask-compass-workspace.dom.test.tsx
+          - compass/src/components/ask-compass-workspace.tsx
+          - compass/src/components/generated-file-card.test.tsx
+          - compass/src/components/generated-file-card.tsx
+          - compass/src/components/pdf-draft-editor.test.tsx
+          - compass/src/lib/answer-chart.ts
+          - compass/src/lib/answer-openui-visual.ts
+          - compass/src/lib/answer-visual-style.ts
+          - compass/src/lib/at-commands.test.ts
+          - compass/src/lib/at-commands.ts
+          - compass/src/lib/chat-pdf-runs.tsx
+          - compass/src/lib/chat-pdf-visual-view.tsx
+          - compass/src/lib/chat-pdf-visual.ts
+          - compass/src/lib/chat-pdf.test.ts
+          - compass/src/lib/chat-pdf.tsx
+          - compass/src/lib/draft-fences.ts
+          - compass/src/lib/generated-file-preview.test.ts
+          - compass/src/lib/generated-file-preview.ts
+          - compass/src/lib/pdf-rich-markdown.test.ts
+          - compass/src/lib/pdf-rich-markdown.ts
+          - compass/src/lib/pdf-visual-fences.test.ts
+          - compass/src/lib/pdf-visual-fences.ts
+      - &a45
+        sha: 8ee2114a608ce854d226b515a96dd419c824367e
+        message: "fix(compass): keep open-ended events in the conflict check and bound unclosed PDF visuals"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/8ee2114a608ce854d226b515a96dd419c824367e
+        authoredAt: 2026-11-25T17:20:32Z
+        additions: 66
+        deletions: 8
+        filesChanged: 4
+        files:
+          - compass/src/lib/calendar-day.test.ts
+          - compass/src/lib/calendar-day.ts
+          - compass/src/lib/pdf-visual-fences.test.ts
+          - compass/src/lib/pdf-visual-fences.ts
+      - &a46
+        sha: a66ca7fa7d6703f7030211643a77403e59e6c8ef
+        message: "feat(compass): tighten and polish the new visual layouts"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/a66ca7fa7d6703f7030211643a77403e59e6c8ef
+        authoredAt: 2026-11-25T17:50:31Z
+        additions: 716
+        deletions: 310
+        filesChanged: 29
+        files:
+          - compass/README.md
+          - compass/src/app/ask.css
+          - compass/src/app/globals.css
+          - compass/src/components/answer-advisor.tsx
+          - compass/src/components/answer-chart.test.tsx
+          - compass/src/components/answer-chart.tsx
+          - compass/src/components/answer-interactive.test.tsx
+          - compass/src/components/answer-openui.tsx
+          - compass/src/components/answer-visual.test.tsx
+          - compass/src/components/answer-visual.tsx
+          - compass/src/components/ask-compass-workspace.dom.test.tsx
+          - compass/src/components/ask-compass-workspace.tsx
+          - compass/src/components/command-cards.dom.test.tsx
+          - compass/src/components/command-visuals.dom.test.tsx
+          - compass/src/components/command-visuals.tsx
+          - compass/src/components/compass-dashboard.tsx
+          - compass/src/components/widget-card.tsx
+          - compass/src/components/widget-view.tsx
+          - compass/src/lib/answer-chart.test.ts
+          - compass/src/lib/answer-chart.ts
+          - compass/src/lib/answer-openui-chart.ts
+          - compass/src/lib/answer-openui-visual.ts
+          - compass/src/lib/chat-pdf-visual-view.tsx
+          - compass/src/lib/chat-pdf-visual.ts
+          - compass/src/lib/chat-pdf.test.ts
+          - compass/src/lib/command-visuals.test.ts
+          - compass/src/lib/command-visuals.ts
+          - compass/src/lib/generated-file-preview.test.ts
+          - compass/src/lib/generated-file-preview.ts
+      - &a47
+        sha: af4f4435505fb16992cec054c1aee5610b7e91d1
+        message: Merge branch 'feat/compass-openui-meeting' into feat/compass-openui-outputs
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/af4f4435505fb16992cec054c1aee5610b7e91d1
+        authoredAt: 2026-11-25T17:50:59Z
+        additions: 716
+        deletions: 310
+        filesChanged: 29
+        files:
+          - compass/README.md
+          - compass/src/app/ask.css
+          - compass/src/app/globals.css
+          - compass/src/components/answer-advisor.tsx
+          - compass/src/components/answer-chart.test.tsx
+          - compass/src/components/answer-chart.tsx
+          - compass/src/components/answer-interactive.test.tsx
+          - compass/src/components/answer-openui.tsx
+          - compass/src/components/answer-visual.test.tsx
+          - compass/src/components/answer-visual.tsx
+          - compass/src/components/ask-compass-workspace.dom.test.tsx
+          - compass/src/components/ask-compass-workspace.tsx
+          - compass/src/components/command-cards.dom.test.tsx
+          - compass/src/components/command-visuals.dom.test.tsx
+          - compass/src/components/command-visuals.tsx
+          - compass/src/components/compass-dashboard.tsx
+          - compass/src/components/widget-card.tsx
+          - compass/src/components/widget-view.tsx
+          - compass/src/lib/answer-chart.test.ts
+          - compass/src/lib/answer-chart.ts
+          - compass/src/lib/answer-openui-chart.ts
+          - compass/src/lib/answer-openui-visual.ts
+          - compass/src/lib/chat-pdf-visual-view.tsx
+          - compass/src/lib/chat-pdf-visual.ts
+          - compass/src/lib/chat-pdf.test.ts
+          - compass/src/lib/command-visuals.test.ts
+          - compass/src/lib/command-visuals.ts
+          - compass/src/lib/generated-file-preview.test.ts
+          - compass/src/lib/generated-file-preview.ts
+      - &a50
+        sha: d262e6cb8c3eddf8bc5527db24a43796ce41f199
+        message: "fix(compass): round highlight rings, format pie values and keep card edges"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/d262e6cb8c3eddf8bc5527db24a43796ce41f199
+        authoredAt: 2026-11-25T18:42:18Z
+        additions: 21
+        deletions: 15
+        filesChanged: 4
+        files:
+          - compass/src/app/ask.css
+          - compass/src/app/globals.css
+          - compass/src/components/answer-chart.tsx
+          - compass/src/components/answer-visual.tsx
+      - &a51
+        sha: 5259793bb5bd6d098d92965a4e6a11493b4befe3
+        message: "fix(compass): draw grouped bars from a shared zero"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5259793bb5bd6d098d92965a4e6a11493b4befe3
+        authoredAt: 2026-11-25T18:48:44Z
+        additions: 21
+        deletions: 9
+        filesChanged: 3
+        files:
+          - compass/src/app/globals.css
+          - compass/src/components/answer-visual.test.tsx
+          - compass/src/components/answer-visual.tsx
+    workTimestamps: &a15
+      - 2026-11-25T17:03:59Z
+      - 2026-11-25T16:54:17Z
+      - 2026-11-25T17:00:11Z
+      - 2026-11-25T17:04:47Z
+      - 2026-11-25T17:08:57Z
+      - 2026-11-25T17:12:41Z
+      - 2026-11-25T17:13:37Z
+      - 2026-11-25T17:13:52Z
+      - 2026-11-25T17:13:58Z
+      - 2026-11-25T17:20:32Z
+      - 2026-11-25T17:50:31Z
+      - 2026-11-25T17:50:59Z
+      - 2026-11-25T18:42:18Z
+      - 2026-11-25T18:48:44Z
+    workAdditions: 8847
+    workDeletions: 3123
+    workFiles: &a16
+      - compass/README.md
+      - compass/functions/src/compass-outputs.test.ts
+      - compass/src/app/ai-services.css
+      - compass/src/app/ask.css
+      - compass/src/app/globals.css
+      - compass/src/app/pdf-editor.css
+      - compass/src/components/answer-advisor.tsx
+      - compass/src/components/answer-chart.test.tsx
+      - compass/src/components/answer-chart.tsx
+      - compass/src/components/answer-interactive.test.tsx
+      - compass/src/components/answer-interactive.tsx
+      - compass/src/components/answer-markdown.test.tsx
+      - compass/src/components/answer-markdown.tsx
+      - compass/src/components/answer-openui.tsx
+      - compass/src/components/answer-visual.test.tsx
+      - compass/src/components/answer-visual.tsx
+      - compass/src/components/ask-compass-workspace.dom.test.tsx
+      - compass/src/components/ask-compass-workspace.tsx
+      - compass/src/components/command-cards.dom.test.tsx
+      - compass/src/components/command-cards.tsx
+      - compass/src/components/command-visuals.dom.test.tsx
+      - compass/src/components/command-visuals.tsx
+      - compass/src/components/compass-dashboard-lifecycle.fixture.ts
+      - compass/src/components/compass-dashboard-lifecycle.test.ts
+      - compass/src/components/compass-dashboard.tsx
+      - compass/src/components/compass-provider.tsx
+      - compass/src/components/compass-routes.tsx
+      - compass/src/components/generated-file-card.test.tsx
+      - compass/src/components/generated-file-card.tsx
+      - compass/src/components/pdf-draft-editor.test.tsx
+      - compass/src/components/widget-card.test.tsx
+      - compass/src/components/widget-card.tsx
+      - compass/src/components/widget-view.tsx
+      - compass/src/lib/answer-chart.test.ts
+      - compass/src/lib/answer-chart.ts
+      - compass/src/lib/answer-openui-chart.ts
+      - compass/src/lib/answer-openui-visual.ts
+      - compass/src/lib/answer-visual-style.ts
+      - compass/src/lib/at-commands.test.ts
+      - compass/src/lib/at-commands.ts
+      - compass/src/lib/calendar-day.test.ts
+      - compass/src/lib/calendar-day.ts
+      - compass/src/lib/chat-pdf-runs.tsx
+      - compass/src/lib/chat-pdf-visual-view.tsx
+      - compass/src/lib/chat-pdf-visual.ts
+      - compass/src/lib/chat-pdf.test.ts
+      - compass/src/lib/chat-pdf.tsx
+      - compass/src/lib/command-cards.ts
+      - compass/src/lib/command-visuals.test.ts
+      - compass/src/lib/command-visuals.ts
+      - compass/src/lib/draft-fences.ts
+      - compass/src/lib/generated-file-preview.test.ts
+      - compass/src/lib/generated-file-preview.ts
+      - compass/src/lib/pdf-rich-markdown.test.ts
+      - compass/src/lib/pdf-rich-markdown.ts
+      - compass/src/lib/pdf-visual-fences.test.ts
+      - compass/src/lib/pdf-visual-fences.ts
+      - compass/src/lib/widgets.test.ts
+      - compass/src/lib/widgets.ts
+  - title: "docs: prepare contributor guidance and remove private artifacts"
+    body: |-
+      - Add a contributor guide, pull request template, and privacy guidance for issues and pull requests.
+      - Update the README and deployment notes to reflect the current suite workflow and preview requirements.
+      - Ignore and remove private operational reports and visual QA screenshots from the current bra...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/233
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: merged
+    labels: []
+    additions: 0
+    deletions: 0
+    changedFiles: 17
+    author: myriadas-clees
+    createdAt: 2026-11-24T15:47:31Z
+    updatedAt: 2026-11-25T15:11:34Z
+    closedAt: 2026-11-25T15:11:34Z
+    mergedAt: 2026-11-25T15:11:34Z
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "fix(pto): harden request workflows and add a local ADP simulator"
+    body: >-
+      ## Why
+
+
+      Duplicate submissions and concurrent approval decisions can leave PTO requests and balances out of sync. A
+      Microsoft Lists write can also succeed even when the app fails to receive a response, leaving the workflow unsure
+      whether to retry. ADP feasibility work needs a way to exercise those fa...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/296
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+      - "app: pto-tracker"
+    additions: 0
+    deletions: 0
+    changedFiles: 16
+    author: myriadas-clees
+    createdAt: 2026-11-24T21:01:00Z
+    updatedAt: 2026-11-25T15:11:28Z
+    closedAt: 2026-11-25T15:11:28Z
+    mergedAt: 2026-11-25T15:11:28Z
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "feat(skills): add Myriad layout review guidance"
+    body: >-
+      ## Why
+
+
+      The suite’s UI guide explains how to align content, but agents lack a shared procedure for diagnosing clipped
+      labels, obscured actions, and reading-order problems.
+
+
+      ## What changed
+
+
+      Route layout reviews from `GUI.md` to a repo-local `better-layout` skill. The skill uses existing Myriad compo...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/293
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - documentation
+    additions: 1287
+    deletions: 682
+    changedFiles: 6
+    author: myriadas-clees
+    createdAt: 2026-11-23T16:52:05Z
+    updatedAt: 2026-11-25T15:39:53Z
+    closedAt: 2026-11-25T15:39:52Z
+    mergedAt: 2026-11-25T15:39:52Z
+    workCommits:
+      - &a24
+        sha: 921adab4aff5b7ff7c96b9920e1ca3fd10d44e31
+        message: Merge branch 'main' into chore/evaluate-better-layout-skill
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/921adab4aff5b7ff7c96b9920e1ca3fd10d44e31
+        authoredAt: 2026-11-25T15:25:40Z
+        additions: 1287
+        deletions: 682
+        filesChanged: 52
+        files:
+          - .github/CODEOWNERS
+          - .github/labeler.yml
+          - .github/workflows/verify.yml
+          - .oxlintrc.json
+          - bun.lock
+          - compass/README.md
+          - compass/functions/src/compass-copilot.test.ts
+          - compass/functions/src/compass-copilot.ts
+          - compass/functions/src/compass-microsoft.ts
+          - compass/package.json
+          - compass/src/components/ask-compass-workspace.dom.test.tsx
+          - compass/src/components/ask-compass-workspace.test.tsx
+          - compass/src/components/ask-compass-workspace.tsx
+          - compass/src/lib/openui-disable-devtools.ts
+          - crm/package.json
+          - eslint.config.mjs
+          - excelerate/package.json
+          - hub/components/LandingPage.test.tsx
+          - hub/components/LandingPage.tsx
+          - hub/package.json
+          - hub/vitest.config.ts
+          - onboarding/apps/dashboard/package.json
+          - package.json
+          - packages/ui/src/index.ts
+          - packages/ui/src/modal.test.tsx
+          - packages/ui/src/modal.tsx
+          - packages/ui/src/use-focus-trap.ts
+          - platform/package.json
+          - proforma/eslint.config.mjs
+          - proforma/package.json
+          - pto-tracker/README.md
+          - pto-tracker/docs/README.md
+          - pto-tracker/docs/adp-integration-research.md
+          - pto-tracker/docs/adp-simulator.md
+          - pto-tracker/docs/workflow.md
+          - pto-tracker/eslint.config.mjs
+          - pto-tracker/package.json
+          - pto-tracker/scripts/adp-simulator.test.ts
+          - pto-tracker/scripts/adp-simulator.ts
+          - pto-tracker/src/lib/api/handlers.test.ts
+          - pto-tracker/src/lib/api/handlers.ts
+          - pto-tracker/src/lib/pto/request-validation.test.ts
+          - pto-tracker/src/lib/pto/request-validation.ts
+          - pto-tracker/src/lib/store/graph-lists-store.test.ts
+          - pto-tracker/src/lib/store/graph-lists-store.ts
+          - pto-tracker/src/lib/store/types.ts
+          - pto-tracker/src/lib/workflow/saga.test.ts
+          - pto-tracker/src/lib/workflow/saga.ts
+          - pto-tracker/src/lib/workflow/service.ts
+          - scripts/affected-apps.ts
+          - transition/package.json
+          - valuation/package.json
+    workTimestamps:
+      - 2026-11-25T15:25:40Z
+    workAdditions: 1287
+    workDeletions: 682
+    workFiles:
+      - .github/CODEOWNERS
+      - .github/labeler.yml
+      - .github/workflows/verify.yml
+      - .oxlintrc.json
+      - bun.lock
+      - compass/README.md
+      - compass/functions/src/compass-copilot.test.ts
+      - compass/functions/src/compass-copilot.ts
+      - compass/functions/src/compass-microsoft.ts
+      - compass/package.json
+      - compass/src/components/ask-compass-workspace.dom.test.tsx
+      - compass/src/components/ask-compass-workspace.test.tsx
+      - compass/src/components/ask-compass-workspace.tsx
+      - compass/src/lib/openui-disable-devtools.ts
+      - crm/package.json
+      - eslint.config.mjs
+      - excelerate/package.json
+      - hub/components/LandingPage.test.tsx
+      - hub/components/LandingPage.tsx
+      - hub/package.json
+      - hub/vitest.config.ts
+      - onboarding/apps/dashboard/package.json
+      - package.json
+      - packages/ui/src/index.ts
+      - packages/ui/src/modal.test.tsx
+      - packages/ui/src/modal.tsx
+      - packages/ui/src/use-focus-trap.ts
+      - platform/package.json
+      - proforma/eslint.config.mjs
+      - proforma/package.json
+      - pto-tracker/README.md
+      - pto-tracker/docs/README.md
+      - pto-tracker/docs/adp-integration-research.md
+      - pto-tracker/docs/adp-simulator.md
+      - pto-tracker/docs/workflow.md
+      - pto-tracker/eslint.config.mjs
+      - pto-tracker/package.json
+      - pto-tracker/scripts/adp-simulator.test.ts
+      - pto-tracker/scripts/adp-simulator.ts
+      - pto-tracker/src/lib/api/handlers.test.ts
+      - pto-tracker/src/lib/api/handlers.ts
+      - pto-tracker/src/lib/pto/request-validation.test.ts
+      - pto-tracker/src/lib/pto/request-validation.ts
+      - pto-tracker/src/lib/store/graph-lists-store.test.ts
+      - pto-tracker/src/lib/store/graph-lists-store.ts
+      - pto-tracker/src/lib/store/types.ts
+      - pto-tracker/src/lib/workflow/saga.test.ts
+      - pto-tracker/src/lib/workflow/saga.ts
+      - pto-tracker/src/lib/workflow/service.ts
+      - scripts/affected-apps.ts
+      - transition/package.json
+      - valuation/package.json
+  - title: "feat(compass): use Copilot titles for new Ask chats"
+    body: >-
+      ## Why
+
+
+      Compass Ask kept the first question as the chat title even when Copilot returned a more descriptive conversation
+      name.
+
+
+      ## What changed
+
+
+      Compass uses the matching Copilot conversation’s display name when the first turn completes. The history sidebar
+      preserves manual renames and keeps the exi...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/291
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: merged
+    labels:
+      - "app: compass"
+    additions: 1827
+    deletions: 768
+    changedFiles: 6
+    author: myriadas-clees
+    createdAt: 2026-11-23T16:46:38Z
+    updatedAt: 2026-11-25T15:25:36Z
+    closedAt: 2026-11-25T15:25:35Z
+    mergedAt: 2026-11-25T15:25:35Z
+    workCommits:
+      - &a22
+        sha: bac40619151ac5468d3c7ae91c7c80f01c03b725
+        message: Merge branch 'main' into t3/compass-ask-auto-titles
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/bac40619151ac5468d3c7ae91c7c80f01c03b725
+        authoredAt: 2026-11-25T15:11:56Z
+        additions: 1827
+        deletions: 768
+        filesChanged: 60
+        files:
+          - .github/CODEOWNERS
+          - .github/labeler.yml
+          - .github/workflows/promote-release.yml
+          - .github/workflows/verify.yml
+          - .oxlintrc.json
+          - bun.lock
+          - compass/README.md
+          - compass/package.json
+          - compass/src/components/ask-compass-workspace.tsx
+          - compass/src/lib/openui-disable-devtools.ts
+          - crm/package.json
+          - docs/repository-operations.md
+          - docs/staging-and-testing.md
+          - eslint.config.mjs
+          - excelerate/package.json
+          - hub/components/LandingPage.test.tsx
+          - hub/components/LandingPage.tsx
+          - hub/package.json
+          - hub/vitest.config.ts
+          - onboarding/apps/dashboard/package.json
+          - package.json
+          - packages/ui/src/index.ts
+          - packages/ui/src/modal.test.tsx
+          - packages/ui/src/modal.tsx
+          - packages/ui/src/use-focus-trap.ts
+          - platform/package.json
+          - proforma/eslint.config.mjs
+          - proforma/package.json
+          - pto-tracker/README.md
+          - pto-tracker/docs/README.md
+          - pto-tracker/docs/adp-integration-research.md
+          - pto-tracker/docs/adp-simulator.md
+          - pto-tracker/docs/workflow.md
+          - pto-tracker/eslint.config.mjs
+          - pto-tracker/package.json
+          - pto-tracker/scripts/adp-simulator.test.ts
+          - pto-tracker/scripts/adp-simulator.ts
+          - pto-tracker/src/lib/api/handlers.test.ts
+          - pto-tracker/src/lib/api/handlers.ts
+          - pto-tracker/src/lib/pto/request-validation.test.ts
+          - pto-tracker/src/lib/pto/request-validation.ts
+          - pto-tracker/src/lib/store/graph-lists-store.test.ts
+          - pto-tracker/src/lib/store/graph-lists-store.ts
+          - pto-tracker/src/lib/store/types.ts
+          - pto-tracker/src/lib/workflow/saga.test.ts
+          - pto-tracker/src/lib/workflow/saga.ts
+          - pto-tracker/src/lib/workflow/service.ts
+          - scripts/affected-apps.ts
+          - scripts/compose-production-release.test.ts
+          - scripts/compose-production-release.ts
+          - scripts/deployment-safety.test.ts
+          - scripts/github/configure-repository.test.ts
+          - scripts/github/configure-repository.ts
+          - scripts/package-hub-release.sh
+          - scripts/prepare-production-manifest.sh
+          - scripts/production-manifest-history.test.ts
+          - scripts/tooling.test.ts
+          - scripts/verify-promotion-source.sh
+          - transition/package.json
+          - valuation/package.json
+    workTimestamps:
+      - 2026-11-25T15:11:56Z
+    workAdditions: 1827
+    workDeletions: 768
+    workFiles:
+      - .github/CODEOWNERS
+      - .github/labeler.yml
+      - .github/workflows/promote-release.yml
+      - .github/workflows/verify.yml
+      - .oxlintrc.json
+      - bun.lock
+      - compass/README.md
+      - compass/package.json
+      - compass/src/components/ask-compass-workspace.tsx
+      - compass/src/lib/openui-disable-devtools.ts
+      - crm/package.json
+      - docs/repository-operations.md
+      - docs/staging-and-testing.md
+      - eslint.config.mjs
+      - excelerate/package.json
+      - hub/components/LandingPage.test.tsx
+      - hub/components/LandingPage.tsx
+      - hub/package.json
+      - hub/vitest.config.ts
+      - onboarding/apps/dashboard/package.json
+      - package.json
+      - packages/ui/src/index.ts
+      - packages/ui/src/modal.test.tsx
+      - packages/ui/src/modal.tsx
+      - packages/ui/src/use-focus-trap.ts
+      - platform/package.json
+      - proforma/eslint.config.mjs
+      - proforma/package.json
+      - pto-tracker/README.md
+      - pto-tracker/docs/README.md
+      - pto-tracker/docs/adp-integration-research.md
+      - pto-tracker/docs/adp-simulator.md
+      - pto-tracker/docs/workflow.md
+      - pto-tracker/eslint.config.mjs
+      - pto-tracker/package.json
+      - pto-tracker/scripts/adp-simulator.test.ts
+      - pto-tracker/scripts/adp-simulator.ts
+      - pto-tracker/src/lib/api/handlers.test.ts
+      - pto-tracker/src/lib/api/handlers.ts
+      - pto-tracker/src/lib/pto/request-validation.test.ts
+      - pto-tracker/src/lib/pto/request-validation.ts
+      - pto-tracker/src/lib/store/graph-lists-store.test.ts
+      - pto-tracker/src/lib/store/graph-lists-store.ts
+      - pto-tracker/src/lib/store/types.ts
+      - pto-tracker/src/lib/workflow/saga.test.ts
+      - pto-tracker/src/lib/workflow/saga.ts
+      - pto-tracker/src/lib/workflow/service.ts
+      - scripts/affected-apps.ts
+      - scripts/compose-production-release.test.ts
+      - scripts/compose-production-release.ts
+      - scripts/deployment-safety.test.ts
+      - scripts/github/configure-repository.test.ts
+      - scripts/github/configure-repository.ts
+      - scripts/package-hub-release.sh
+      - scripts/prepare-production-manifest.sh
+      - scripts/production-manifest-history.test.ts
+      - scripts/tooling.test.ts
+      - scripts/verify-promotion-source.sh
+      - transition/package.json
+      - valuation/package.json
+prsInProgress:
+  - title: "feat(hub): centralize suite sign-in and session recovery"
+    body: >-
+      ## Why
+
+
+      App-specific sign-in and recovery could interrupt navigation and lose the intended destination. PTO also carried a
+      standalone Microsoft login and deployment path that nobody uses.
+
+
+      ## What changed
+
+
+      - Myriad Hub owns sign-in, account switching, and sign-out for composed apps. Its shared sign-...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/299
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a1
+    additions: 1453
+    deletions: 1482
+    changedFiles: 84
+    author: myriadas-clees
+    createdAt: 2026-11-25T16:29:29Z
+    updatedAt: 2026-11-25T17:15:06Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a2
+    workTimestamps: *a3
+    workAdditions: 1469
+    workDeletions: 1498
+    workFiles: *a4
+  - title: "feat(compass): add OpenAI office, web, and Copilot parity"
+    body: >-
+      ## Why
+
+
+      Compass limited document creation, web search, and Copilot consultations to Claude, preventing advisors from using
+      these capabilities with OpenAI models.
+
+
+      ## What changed
+
+
+      - Added OpenAI support in Compass Ask for creating Word, Excel, and PowerPoint files, public web search with
+      `@web`, and...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/298
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a5
+    additions: 19601
+    deletions: 1378
+    changedFiles: 256
+    author: myriadas-clees
+    createdAt: 2026-11-25T16:21:06Z
+    updatedAt: 2026-11-25T16:33:59Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a6
+    workTimestamps: *a7
+    workAdditions: 1920
+    workDeletions: 340
+    workFiles: *a8
+  - title: "chore(agents): add a PR formatting skill"
+    body: >-
+      ## Why
+
+
+      Pull request titles and descriptions can drift from the repository’s conventions when agents write or revise PR
+      metadata.
+
+
+      ## What changed
+
+
+      Add a `pr-format` skill that covers scoped titles, the repository PR template, and evidence-based testing notes.
+      Reference it from `pr-delivery` so the ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/297
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a9
+    additions: 21
+    deletions: 1
+    changedFiles: 3
+    author: myriadas-clees
+    createdAt: 2026-11-25T14:35:28Z
+    updatedAt: 2026-11-25T17:22:27Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a10
+    workTimestamps: *a11
+    workAdditions: 878
+    workDeletions: 118
+    workFiles: *a12
+  - title: "feat(compass): rich layouts for @meeting, @calendar, @todo, @widget, @pdf and Office files"
+    body: >-
+      Stacked on #288. Uses the bounded visual components for the other `@` commands. `@email` is unchanged.
+
+
+      ## What changes
+
+      - **@meeting:** decisions first, then agenda and follow-up progress, then optional grounded figures. Figures stay
+      out of the calendar event body.
+
+      - **@calendar:** the proposal agai...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/301
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels: *a13
+    additions: 4206
+    deletions: 1305
+    changedFiles: 59
+    author: myriadas-clees
+    createdAt: 2026-11-25T18:53:37Z
+    updatedAt: 2026-11-25T18:53:49Z
+    closedAt: null
+    mergedAt: null
+    workCommits: *a14
+    workTimestamps: *a15
+    workAdditions: 8847
+    workDeletions: 3123
+    workFiles: *a16
+  - title: "feat(pricing): configure report sections and custom expenses"
+    body: >-
+      - Add configurable PDF sections, including separate default and custom local expenses, with the client proposal as
+      the default layout.
+
+      - For FiNet scenarios, the default Client proposal PDF includes Current FiNet pricing, Current FiNet Net Payout,
+      and Net Difference.
+
+      - Add custom FiNet local expense...
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/230
+    repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    state: open
+    labels: []
+    additions: 712
+    deletions: 380
+    changedFiles: 23
+    author: myriadas-clees
+    createdAt: 2026-11-23T16:46:33Z
+    updatedAt: 2026-11-25T17:33:51Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a54
+        sha: edf6679345afb27d8a683d975d5e4127d850b139
+        message: Merge remote-tracking branch 'origin/main' into feat/pricing-pdf-export
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/edf6679345afb27d8a683d975d5e4127d850b139
+        authoredAt: 2026-11-25T15:49:00Z
+        additions: 117
+        deletions: 672
+        filesChanged: 17
+        files:
+          - .github/ISSUE_TEMPLATE/bug_report.yml
+          - .github/ISSUE_TEMPLATE/feature_request.yml
+          - .github/PULL_REQUEST_TEMPLATE.md
+          - .gitignore
+          - CONTRIBUTING.md
+          - README.md
+          - artifacts/visual-qa/admin-dashboard-desktop.png
+          - artifacts/visual-qa/dashboard-error-state.png
+          - artifacts/visual-qa/dashboard-loading-state.png
+          - artifacts/visual-qa/nonadmin-dashboard-desktop.png
+          - artifacts/visual-qa/nonadmin-dashboard-mobile-viewport.png
+          - artifacts/visual-qa/nonadmin-permission-new-recruit.png
+          - artifacts/visual-qa/recruits-empty-filter.png
+          - docs/deploy-asap.md
+          - docs/issue-2-cosmos-production-readiness.md
+          - docs/issue-37-pricing-monitoring-readiness.md
+          - docs/issue-39-monday-sync-discovery.md
+      - &a55
+        sha: 3eb819774d9b349501597e253ca7b0e05b113ced
+        message: "fix(pricing): keep PDF expense tables within page bounds"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3eb819774d9b349501597e253ca7b0e05b113ced
+        authoredAt: 2026-11-25T16:58:33Z
+        additions: 93
+        deletions: 56
+        filesChanged: 5
+        files:
+          - pricing/next-env.d.ts
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/report/excel.ts
+          - pricing/src/lib/report/model.ts
+          - pricing/src/lib/report/pdf.tsx
+      - &a56
+        sha: 2d4d5f297d888dba0319ff0938c0190019fd2ddf
+        message: "fix(pricing): paginate PDF tables by rendered row height"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/2d4d5f297d888dba0319ff0938c0190019fd2ddf
+        authoredAt: 2026-11-25T17:17:36Z
+        additions: 62
+        deletions: 9
+        filesChanged: 4
+        files:
+          - pricing/functions/src/index.ts
+          - pricing/src/lib/__tests__/report.test.ts
+          - pricing/src/lib/report/pdf.tsx
+          - scripts/dev-pricing-api.ts
+      - &a57
+        sha: 3313f5997eb28b430344983f511e7acb127e426f
+        message: "fix(pricing): scope legacy zero rows to PDF downloads"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/3313f5997eb28b430344983f511e7acb127e426f
+        authoredAt: 2026-11-25T17:20:52Z
+        additions: 7
+        deletions: 2
+        filesChanged: 3
+        files:
+          - pricing/functions/src/index.ts
+          - pricing/src/lib/__tests__/pricing-backend-routes.test.ts
+          - scripts/dev-pricing-api.ts
+      - &a58
+        sha: e0e9b4d773f42df256718e57dcc61f815b5578b0
+        message: "fix(pricing): keep PDF continuation state outside render"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/e0e9b4d773f42df256718e57dcc61f815b5578b0
+        authoredAt: 2026-11-25T17:28:01Z
+        additions: 12
+        deletions: 4
+        filesChanged: 1
+        files:
+          - pricing/src/lib/report/pdf.tsx
+    workTimestamps:
+      - 2026-11-25T15:49:00Z
+      - 2026-11-25T16:58:33Z
+      - 2026-11-25T17:17:36Z
+      - 2026-11-25T17:20:52Z
+      - 2026-11-25T17:28:01Z
+    workAdditions: 291
+    workDeletions: 743
+    workFiles:
+      - .github/ISSUE_TEMPLATE/bug_report.yml
+      - .github/ISSUE_TEMPLATE/feature_request.yml
+      - .github/PULL_REQUEST_TEMPLATE.md
+      - .gitignore
+      - CONTRIBUTING.md
+      - README.md
+      - artifacts/visual-qa/admin-dashboard-desktop.png
+      - artifacts/visual-qa/dashboard-error-state.png
+      - artifacts/visual-qa/dashboard-loading-state.png
+      - artifacts/visual-qa/nonadmin-dashboard-desktop.png
+      - artifacts/visual-qa/nonadmin-dashboard-mobile-viewport.png
+      - artifacts/visual-qa/nonadmin-permission-new-recruit.png
+      - artifacts/visual-qa/recruits-empty-filter.png
+      - docs/deploy-asap.md
+      - docs/issue-2-cosmos-production-readiness.md
+      - docs/issue-37-pricing-monitoring-readiness.md
+      - docs/issue-39-monday-sync-discovery.md
+      - pricing/functions/src/index.ts
+      - pricing/next-env.d.ts
+      - pricing/src/lib/__tests__/pricing-backend-routes.test.ts
+      - pricing/src/lib/__tests__/report.test.ts
+      - pricing/src/lib/report/excel.ts
+      - pricing/src/lib/report/model.ts
+      - pricing/src/lib/report/pdf.tsx
+      - scripts/dev-pricing-api.ts
+  - title: "feat(compass): expand advisor agents, reusable skills, and AI providers"
+    body: >-
+      ## Why
+
+
+      Give Compass advisors a way to reuse instructions, run saved workflows, and choose the model and sources
+      appropriate to their work.
+
+
+      ## What changed
+
+
+      - **Agents.** Expands #257’s agent builder with tasks, instructions, optional Skills, provider and model
+      selection, sources, and output types....
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/276
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - documentation
+      - platform
+      - "app: compass"
+    additions: 18119
+    deletions: 739
+    changedFiles: 190
+    author: myriadas-clees
+    createdAt: 2026-11-16T15:33:35Z
+    updatedAt: 2026-11-25T16:17:38Z
+    closedAt: null
+    mergedAt: null
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "docs(repo): consolidate agent guidance across suite"
+    body: >-
+      ## Why
+
+
+      The root and nested agent instructions repeated general working principles, while app-specific guidance lacked
+      verified implementation details and scoped validation advice.
+
+
+      ## What changed
+
+
+      Added shared working, testing, and validation guidance to the root `AGENTS.md`. Updated the Compass, ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/280
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - documentation
+      - "app: hub"
+      - "app: onboarding"
+      - "app: pto-tracker"
+      - "app: proforma"
+      - "app: excelerate"
+      - "app: valuation"
+      - platform
+      - infrastructure
+      - "app: transition"
+      - "app: compass"
+    additions: 46
+    deletions: 43
+    changedFiles: 14
+    author: myriadas-clees
+    createdAt: 2026-11-19T17:30:34Z
+    updatedAt: 2026-11-25T17:08:55Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a27
+        sha: c0cf0bb4762ca7616e38944ee93a38e5a1203c99
+        message: "docs(repo): simplify app-specific agent guidance"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/c0cf0bb4762ca7616e38944ee93a38e5a1203c99
+        authoredAt: 2026-11-25T16:36:37Z
+        additions: 18
+        deletions: 18
+        filesChanged: 13
+        files:
+          - compass/AGENTS.md
+          - crm/AGENTS.md
+          - docs/AGENTS.md
+          - excelerate/AGENTS.md
+          - hub/AGENTS.md
+          - infra/AGENTS.md
+          - onboarding/AGENTS.md
+          - packages/AGENTS.md
+          - proforma/AGENTS.md
+          - pto-tracker/AGENTS.md
+          - scripts/AGENTS.md
+          - transition/AGENTS.md
+          - valuation/AGENTS.md
+      - &a32
+        sha: 13080c4d56a12f4e5d5df5803a441c1375ca1d37
+        message: Merge commit '5be035d589a6c8b2efa34a15a531e148d5c4feb7' into clees/agent-working-agreement
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/13080c4d56a12f4e5d5df5803a441c1375ca1d37
+        authoredAt: 2026-11-25T16:58:54Z
+        additions: 17607
+        deletions: 1215
+        filesChanged: 239
+        files:
+          - .agents/skills/better-layout/LICENSE
+          - .agents/skills/better-layout/SKILL.md
+          - .agents/skills/better-layout/grouping-and-alignment.md
+          - .agents/skills/better-layout/reporting.md
+          - .agents/skills/better-layout/spacing-and-adaptivity.md
+          - .github/CODEOWNERS
+          - .github/labeler.yml
+          - .github/workflows/promote-release.yml
+          - .github/workflows/verify.yml
+          - .oxlintrc.json
+          - GUI.md
+          - bun.lock
+          - compass/README.md
+          - compass/bunfig.toml
+          - compass/functions/PORT-CONTRACT.md
+          - compass/functions/bunfig.toml
+          - compass/functions/local.settings.json.example
+          - compass/functions/package.json
+          - compass/functions/src/company-http.test.ts
+          - compass/functions/src/company-routes.test.ts
+          - compass/functions/src/compass-archive-files.ts
+          - compass/functions/src/compass-archive.test.ts
+          - compass/functions/src/compass-archive.ts
+          - compass/functions/src/compass-audit.test.ts
+          - compass/functions/src/compass-audit.ts
+          - compass/functions/src/compass-bounded-bytes.ts
+          - compass/functions/src/compass-chat-history.test.ts
+          - compass/functions/src/compass-chat-history.ts
+          - compass/functions/src/compass-claude-brief.ts
+          - compass/functions/src/compass-claude-credential-crypto.test.ts
+          - compass/functions/src/compass-claude-credential-crypto.ts
+          - compass/functions/src/compass-claude-credentials.test.ts
+          - compass/functions/src/compass-claude-credentials.ts
+          - compass/functions/src/compass-claude-files.test.ts
+          - compass/functions/src/compass-claude-files.ts
+          - compass/functions/src/compass-claude-integration.test.ts
+          - compass/functions/src/compass-claude-preferences.ts
+          - compass/functions/src/compass-consultation.test.ts
+          - compass/functions/src/compass-consultation.ts
+          - compass/functions/src/compass-conversations.test.ts
+          - compass/functions/src/compass-conversations.ts
+          - compass/functions/src/compass-copilot.test.ts
+          - compass/functions/src/compass-copilot.ts
+          - compass/functions/src/compass-destruction-audit.test.ts
+          - compass/functions/src/compass-destruction-audit.ts
+          - compass/functions/src/compass-graph-diagnostics.ts
+          - compass/functions/src/compass-mapping-upgrade.test.ts
+          - compass/functions/src/compass-microsoft-deadline.test.ts
+          - compass/functions/src/compass-microsoft.test.ts
+          - compass/functions/src/compass-microsoft.ts
+          - compass/functions/src/compass-openai-credential-crypto.test.ts
+          - compass/functions/src/compass-openai-credential-crypto.ts
+          - compass/functions/src/compass-openai-credentials.test.ts
+          - compass/functions/src/compass-openai-credentials.ts
+          - compass/functions/src/compass-openai-integration.test.ts
+          - compass/functions/src/compass-openai-preferences.ts
+          - compass/functions/src/compass-openai.ts
+          - compass/functions/src/compass-outputs.test.ts
+          - compass/functions/src/compass-outputs.ts
+          - compass/functions/src/compass-scheduled-brief.ts
+          - compass/functions/src/compass-stack-port.test.ts
+          - compass/functions/src/compass-storage-preferences.test.ts
+          - compass/functions/src/compass-subagent.test.ts
+          - compass/functions/src/compass-subagent.ts
+          - compass/functions/src/index.ts
+          - compass/next.config.ts
+          - compass/package.json
+          - compass/src/app/ai-services.css
+          - compass/src/app/api/demo/company/me/route.ts
+          - compass/src/app/ask.css
+          - compass/src/app/globals.css
+          - compass/src/components/answer-markdown.tsx
+          - compass/src/components/ask-compass-workspace.dom.test.tsx
+          - compass/src/components/ask-compass-workspace.test.tsx
+          - compass/src/components/ask-compass-workspace.tsx
+          - compass/src/components/ask/ask-chat-picker.tsx
+          - compass/src/components/ask/ask-chat-rail.tsx
+          - compass/src/components/ask/ask-composer.tsx
+          - compass/src/components/ask/at-command-token.tsx
+          - compass/src/components/ask/composer-model-picker.tsx
+          - compass/src/components/brief-effort-confirm.tsx
+          - compass/src/components/claude-manage-dialog.tsx
+          - compass/src/components/compass-consent.fixture.tsx
+          - compass/src/components/compass-dashboard.tsx
+          - compass/src/components/compass-dom-globals.ts
+          - compass/src/components/compass-provider.tsx
+          - compass/src/components/compass-recovery.dom.test.ts
+          - compass/src/components/compass-recovery.fixture.tsx
+          - compass/src/components/compass-retention.fixture.tsx
+          - compass/src/components/compass-routes.tsx
+          - compass/src/components/compass-stability.dom.test.ts
+          - compass/src/components/compass-stability.fixture.tsx
+          - compass/src/components/copilot-consultation-card.test.tsx
+          - compass/src/components/copilot-consultation-card.tsx
+          - compass/src/components/generated-file-card.test.tsx
+          - compass/src/components/generated-file-card.tsx
+          - compass/src/components/openai-manage-dialog.tsx
+          - compass/src/components/provider-logos.tsx
+          - compass/src/components/settings-workspace.dom.test.tsx
+          - compass/src/components/settings-workspace.tsx
+          - compass/src/components/streaming-markdown.tsx
+          - compass/src/components/use-openai-account.ts
+          - compass/src/lib/ask-turns.ts
+          - compass/src/lib/at-commands.test.ts
+          - compass/src/lib/at-commands.ts
+          - compass/src/lib/chat-pdf.tsx
+          - compass/src/lib/claude-settings.test.ts
+          - compass/src/lib/claude-settings.ts
+          - compass/src/lib/microsoft-reauth.test.ts
+          - compass/src/lib/microsoft-reauth.ts
+          - compass/src/lib/openai-settings.test.ts
+          - compass/src/lib/openai-settings.ts
+          - compass/src/lib/openui-disable-devtools.ts
+          - compass/src/lib/progress-phase.ts
+          - compass/src/lib/swa-session.ts
+          - compass/src/public/integrations/SOURCES.md
+          - compass/test/compliance-preload.ts
+          - crm/package.json
+          - crm/src/app/globals.css
+          - crm/src/lib/insights.ts
+          - crm/tests/ui/insights.test.ts
+          - docs/authorization-roles.md
+          - docs/compliance-api.md
+          - docs/repository-operations.md
+          - docs/staging-and-testing.md
+          - e2e/tests/browser.spec.ts
+          - eslint.config.mjs
+          - excelerate/package.json
+          - hub/app/globals.css
+          - hub/app/hub/compliance/page.tsx
+          - hub/components/HubLauncher.tsx
+          - hub/components/HubSettingsPage.tsx
+          - hub/components/LandingPage.test.tsx
+          - hub/components/LandingPage.tsx
+          - hub/components/admin/AdminPage.tsx
+          - hub/components/compliance/ComplianceEventDrawer.test.tsx
+          - hub/components/compliance/ComplianceEventDrawer.tsx
+          - hub/components/compliance/ComplianceEventsTable.tsx
+          - hub/components/compliance/ComplianceExportDialog.tsx
+          - hub/components/compliance/ComplianceExportJobs.test.tsx
+          - hub/components/compliance/ComplianceExportJobs.tsx
+          - hub/components/compliance/ComplianceFiltersForm.tsx
+          - hub/components/compliance/ComplianceLog.tsx
+          - hub/components/compliance/CompliancePage.tsx
+          - hub/components/compliance/ComplianceSummaryRow.tsx
+          - hub/functions/package.json
+          - hub/functions/src/compliance-export-jobs.test.ts
+          - hub/functions/src/compliance-export-jobs.ts
+          - hub/functions/src/compliance-export-request.ts
+          - hub/functions/src/compliance-export-timer.test.ts
+          - hub/functions/src/compliance-export-worker.ts
+          - hub/functions/src/compliance-export.test.ts
+          - hub/functions/src/compliance.test.ts
+          - hub/functions/src/compliance.ts
+          - hub/functions/src/index.ts
+          - hub/lib/apps.test.ts
+          - hub/lib/apps.ts
+          - hub/lib/auth.test.ts
+          - hub/lib/compliance-api.test.ts
+          - hub/lib/compliance-api.ts
+          - hub/lib/compliance-export-jobs.test.ts
+          - hub/lib/navigation.test.ts
+          - hub/lib/navigation.ts
+          - hub/package.json
+          - hub/staticwebapp.config.json
+          - hub/vitest.config.ts
+          - onboarding/apps/dashboard/package.json
+          - package.json
+          - packages/audit/src/csv.test.ts
+          - packages/audit/src/csv.ts
+          - packages/audit/src/index.test.ts
+          - packages/audit/src/index.ts
+          - packages/auth/src/compliance.test.ts
+          - packages/auth/src/graph.test.ts
+          - packages/auth/src/graph.ts
+          - packages/auth/src/index.ts
+          - packages/brand/src/styles.css
+          - packages/contracts/src/access.ts
+          - packages/contracts/src/audit.ts
+          - packages/contracts/src/compliance.test.ts
+          - packages/contracts/src/index.ts
+          - packages/db/package.json
+          - packages/db/src/compliance-cosmos.test.ts
+          - packages/db/src/compliance-export-artifacts.ts
+          - packages/db/src/compliance-export-cosmos.test.ts
+          - packages/db/src/compliance-export.test.ts
+          - packages/db/src/compliance-export.ts
+          - packages/db/src/compliance.test.ts
+          - packages/db/src/compliance.ts
+          - packages/db/src/graph-audit.test.ts
+          - packages/db/src/graph.ts
+          - packages/ui/src/index.ts
+          - packages/ui/src/modal.test.tsx
+          - packages/ui/src/modal.tsx
+          - packages/ui/src/navigation/app-nav.tsx
+          - packages/ui/src/navigation/app-shell.test.tsx
+          - packages/ui/src/navigation/app-shell.tsx
+          - packages/ui/src/navigation/mode-storage.ts
+          - packages/ui/src/shell-bootstrap.test.ts
+          - packages/ui/src/shell-bootstrap.ts
+          - packages/ui/src/use-focus-trap.ts
+          - packages/ui/src/user-menu.test.tsx
+          - packages/ui/src/user-menu.tsx
+          - platform/package.json
+          - proforma/eslint.config.mjs
+          - proforma/package.json
+          - proforma/src/app/globals.css
+          - pto-tracker/README.md
+          - pto-tracker/docs/README.md
+          - pto-tracker/docs/adp-integration-research.md
+          - pto-tracker/docs/adp-simulator.md
+          - pto-tracker/docs/workflow.md
+          - pto-tracker/eslint.config.mjs
+          - pto-tracker/package.json
+          - pto-tracker/scripts/adp-simulator.test.ts
+          - pto-tracker/scripts/adp-simulator.ts
+          - pto-tracker/src/lib/api/handlers.test.ts
+          - pto-tracker/src/lib/api/handlers.ts
+          - pto-tracker/src/lib/pto/request-validation.test.ts
+          - pto-tracker/src/lib/pto/request-validation.ts
+          - pto-tracker/src/lib/store/graph-lists-store.test.ts
+          - pto-tracker/src/lib/store/graph-lists-store.ts
+          - pto-tracker/src/lib/store/types.ts
+          - pto-tracker/src/lib/workflow/saga.test.ts
+          - pto-tracker/src/lib/workflow/saga.ts
+          - pto-tracker/src/lib/workflow/service.ts
+          - scripts/affected-apps.ts
+          - scripts/compose-production-release.test.ts
+          - scripts/compose-production-release.ts
+          - scripts/deployment-safety.test.ts
+          - scripts/github/configure-repository.test.ts
+          - scripts/github/configure-repository.ts
+          - scripts/package-hub-release.sh
+          - scripts/prepare-production-manifest.sh
+          - scripts/production-manifest-history.test.ts
+          - scripts/tooling.test.ts
+          - scripts/verify-promotion-source.sh
+          - transition/package.json
+          - valuation/package.json
+    workTimestamps:
+      - 2026-11-25T16:36:37Z
+      - 2026-11-25T16:58:54Z
+    workAdditions: 17625
+    workDeletions: 1233
+    workFiles:
+      - .agents/skills/better-layout/LICENSE
+      - .agents/skills/better-layout/SKILL.md
+      - .agents/skills/better-layout/grouping-and-alignment.md
+      - .agents/skills/better-layout/reporting.md
+      - .agents/skills/better-layout/spacing-and-adaptivity.md
+      - .github/CODEOWNERS
+      - .github/labeler.yml
+      - .github/workflows/promote-release.yml
+      - .github/workflows/verify.yml
+      - .oxlintrc.json
+      - GUI.md
+      - bun.lock
+      - compass/AGENTS.md
+      - compass/README.md
+      - compass/bunfig.toml
+      - compass/functions/PORT-CONTRACT.md
+      - compass/functions/bunfig.toml
+      - compass/functions/local.settings.json.example
+      - compass/functions/package.json
+      - compass/functions/src/company-http.test.ts
+      - compass/functions/src/company-routes.test.ts
+      - compass/functions/src/compass-archive-files.ts
+      - compass/functions/src/compass-archive.test.ts
+      - compass/functions/src/compass-archive.ts
+      - compass/functions/src/compass-audit.test.ts
+      - compass/functions/src/compass-audit.ts
+      - compass/functions/src/compass-bounded-bytes.ts
+      - compass/functions/src/compass-chat-history.test.ts
+      - compass/functions/src/compass-chat-history.ts
+      - compass/functions/src/compass-claude-brief.ts
+      - compass/functions/src/compass-claude-credential-crypto.test.ts
+      - compass/functions/src/compass-claude-credential-crypto.ts
+      - compass/functions/src/compass-claude-credentials.test.ts
+      - compass/functions/src/compass-claude-credentials.ts
+      - compass/functions/src/compass-claude-files.test.ts
+      - compass/functions/src/compass-claude-files.ts
+      - compass/functions/src/compass-claude-integration.test.ts
+      - compass/functions/src/compass-claude-preferences.ts
+      - compass/functions/src/compass-consultation.test.ts
+      - compass/functions/src/compass-consultation.ts
+      - compass/functions/src/compass-conversations.test.ts
+      - compass/functions/src/compass-conversations.ts
+      - compass/functions/src/compass-copilot.test.ts
+      - compass/functions/src/compass-copilot.ts
+      - compass/functions/src/compass-destruction-audit.test.ts
+      - compass/functions/src/compass-destruction-audit.ts
+      - compass/functions/src/compass-graph-diagnostics.ts
+      - compass/functions/src/compass-mapping-upgrade.test.ts
+      - compass/functions/src/compass-microsoft-deadline.test.ts
+      - compass/functions/src/compass-microsoft.test.ts
+      - compass/functions/src/compass-microsoft.ts
+      - compass/functions/src/compass-openai-credential-crypto.test.ts
+      - compass/functions/src/compass-openai-credential-crypto.ts
+      - compass/functions/src/compass-openai-credentials.test.ts
+      - compass/functions/src/compass-openai-credentials.ts
+      - compass/functions/src/compass-openai-integration.test.ts
+      - compass/functions/src/compass-openai-preferences.ts
+      - compass/functions/src/compass-openai.ts
+      - compass/functions/src/compass-outputs.test.ts
+      - compass/functions/src/compass-outputs.ts
+      - compass/functions/src/compass-scheduled-brief.ts
+      - compass/functions/src/compass-stack-port.test.ts
+      - compass/functions/src/compass-storage-preferences.test.ts
+      - compass/functions/src/compass-subagent.test.ts
+      - compass/functions/src/compass-subagent.ts
+      - compass/functions/src/index.ts
+      - compass/next.config.ts
+      - compass/package.json
+      - compass/src/app/ai-services.css
+      - compass/src/app/api/demo/company/me/route.ts
+      - compass/src/app/ask.css
+      - compass/src/app/globals.css
+      - compass/src/components/answer-markdown.tsx
+      - compass/src/components/ask-compass-workspace.dom.test.tsx
+      - compass/src/components/ask-compass-workspace.test.tsx
+      - compass/src/components/ask-compass-workspace.tsx
+      - compass/src/components/ask/ask-chat-picker.tsx
+      - compass/src/components/ask/ask-chat-rail.tsx
+      - compass/src/components/ask/ask-composer.tsx
+      - compass/src/components/ask/at-command-token.tsx
+      - compass/src/components/ask/composer-model-picker.tsx
+      - compass/src/components/brief-effort-confirm.tsx
+      - compass/src/components/claude-manage-dialog.tsx
+      - compass/src/components/compass-consent.fixture.tsx
+      - compass/src/components/compass-dashboard.tsx
+      - compass/src/components/compass-dom-globals.ts
+      - compass/src/components/compass-provider.tsx
+      - compass/src/components/compass-recovery.dom.test.ts
+      - compass/src/components/compass-recovery.fixture.tsx
+      - compass/src/components/compass-retention.fixture.tsx
+      - compass/src/components/compass-routes.tsx
+      - compass/src/components/compass-stability.dom.test.ts
+      - compass/src/components/compass-stability.fixture.tsx
+      - compass/src/components/copilot-consultation-card.test.tsx
+      - compass/src/components/copilot-consultation-card.tsx
+      - compass/src/components/generated-file-card.test.tsx
+      - compass/src/components/generated-file-card.tsx
+      - compass/src/components/openai-manage-dialog.tsx
+      - compass/src/components/provider-logos.tsx
+      - compass/src/components/settings-workspace.dom.test.tsx
+      - compass/src/components/settings-workspace.tsx
+      - compass/src/components/streaming-markdown.tsx
+      - compass/src/components/use-openai-account.ts
+      - compass/src/lib/ask-turns.ts
+      - compass/src/lib/at-commands.test.ts
+      - compass/src/lib/at-commands.ts
+      - compass/src/lib/chat-pdf.tsx
+      - compass/src/lib/claude-settings.test.ts
+      - compass/src/lib/claude-settings.ts
+      - compass/src/lib/microsoft-reauth.test.ts
+      - compass/src/lib/microsoft-reauth.ts
+      - compass/src/lib/openai-settings.test.ts
+      - compass/src/lib/openai-settings.ts
+      - compass/src/lib/openui-disable-devtools.ts
+      - compass/src/lib/progress-phase.ts
+      - compass/src/lib/swa-session.ts
+      - compass/src/public/integrations/SOURCES.md
+      - compass/test/compliance-preload.ts
+      - crm/AGENTS.md
+      - crm/package.json
+      - crm/src/app/globals.css
+      - crm/src/lib/insights.ts
+      - crm/tests/ui/insights.test.ts
+      - docs/AGENTS.md
+      - docs/authorization-roles.md
+      - docs/compliance-api.md
+      - docs/repository-operations.md
+      - docs/staging-and-testing.md
+      - e2e/tests/browser.spec.ts
+      - eslint.config.mjs
+      - excelerate/AGENTS.md
+      - excelerate/package.json
+      - hub/AGENTS.md
+      - hub/app/globals.css
+      - hub/app/hub/compliance/page.tsx
+      - hub/components/HubLauncher.tsx
+      - hub/components/HubSettingsPage.tsx
+      - hub/components/LandingPage.test.tsx
+      - hub/components/LandingPage.tsx
+      - hub/components/admin/AdminPage.tsx
+      - hub/components/compliance/ComplianceEventDrawer.test.tsx
+      - hub/components/compliance/ComplianceEventDrawer.tsx
+      - hub/components/compliance/ComplianceEventsTable.tsx
+      - hub/components/compliance/ComplianceExportDialog.tsx
+      - hub/components/compliance/ComplianceExportJobs.test.tsx
+      - hub/components/compliance/ComplianceExportJobs.tsx
+      - hub/components/compliance/ComplianceFiltersForm.tsx
+      - hub/components/compliance/ComplianceLog.tsx
+      - hub/components/compliance/CompliancePage.tsx
+      - hub/components/compliance/ComplianceSummaryRow.tsx
+      - hub/functions/package.json
+      - hub/functions/src/compliance-export-jobs.test.ts
+      - hub/functions/src/compliance-export-jobs.ts
+      - hub/functions/src/compliance-export-request.ts
+      - hub/functions/src/compliance-export-timer.test.ts
+      - hub/functions/src/compliance-export-worker.ts
+      - hub/functions/src/compliance-export.test.ts
+      - hub/functions/src/compliance.test.ts
+      - hub/functions/src/compliance.ts
+      - hub/functions/src/index.ts
+      - hub/lib/apps.test.ts
+      - hub/lib/apps.ts
+      - hub/lib/auth.test.ts
+      - hub/lib/compliance-api.test.ts
+      - hub/lib/compliance-api.ts
+      - hub/lib/compliance-export-jobs.test.ts
+      - hub/lib/navigation.test.ts
+      - hub/lib/navigation.ts
+      - hub/package.json
+      - hub/staticwebapp.config.json
+      - hub/vitest.config.ts
+      - infra/AGENTS.md
+      - onboarding/AGENTS.md
+      - onboarding/apps/dashboard/package.json
+      - package.json
+      - packages/AGENTS.md
+      - packages/audit/src/csv.test.ts
+      - packages/audit/src/csv.ts
+      - packages/audit/src/index.test.ts
+      - packages/audit/src/index.ts
+      - packages/auth/src/compliance.test.ts
+      - packages/auth/src/graph.test.ts
+      - packages/auth/src/graph.ts
+      - packages/auth/src/index.ts
+      - packages/brand/src/styles.css
+      - packages/contracts/src/access.ts
+      - packages/contracts/src/audit.ts
+      - packages/contracts/src/compliance.test.ts
+      - packages/contracts/src/index.ts
+      - packages/db/package.json
+      - packages/db/src/compliance-cosmos.test.ts
+      - packages/db/src/compliance-export-artifacts.ts
+      - packages/db/src/compliance-export-cosmos.test.ts
+      - packages/db/src/compliance-export.test.ts
+      - packages/db/src/compliance-export.ts
+      - packages/db/src/compliance.test.ts
+      - packages/db/src/compliance.ts
+      - packages/db/src/graph-audit.test.ts
+      - packages/db/src/graph.ts
+      - packages/ui/src/index.ts
+      - packages/ui/src/modal.test.tsx
+      - packages/ui/src/modal.tsx
+      - packages/ui/src/navigation/app-nav.tsx
+      - packages/ui/src/navigation/app-shell.test.tsx
+      - packages/ui/src/navigation/app-shell.tsx
+      - packages/ui/src/navigation/mode-storage.ts
+      - packages/ui/src/shell-bootstrap.test.ts
+      - packages/ui/src/shell-bootstrap.ts
+      - packages/ui/src/use-focus-trap.ts
+      - packages/ui/src/user-menu.test.tsx
+      - packages/ui/src/user-menu.tsx
+      - platform/package.json
+      - proforma/AGENTS.md
+      - proforma/eslint.config.mjs
+      - proforma/package.json
+      - proforma/src/app/globals.css
+      - pto-tracker/AGENTS.md
+      - pto-tracker/README.md
+      - pto-tracker/docs/README.md
+      - pto-tracker/docs/adp-integration-research.md
+      - pto-tracker/docs/adp-simulator.md
+      - pto-tracker/docs/workflow.md
+      - pto-tracker/eslint.config.mjs
+      - pto-tracker/package.json
+      - pto-tracker/scripts/adp-simulator.test.ts
+      - pto-tracker/scripts/adp-simulator.ts
+      - pto-tracker/src/lib/api/handlers.test.ts
+      - pto-tracker/src/lib/api/handlers.ts
+      - pto-tracker/src/lib/pto/request-validation.test.ts
+      - pto-tracker/src/lib/pto/request-validation.ts
+      - pto-tracker/src/lib/store/graph-lists-store.test.ts
+      - pto-tracker/src/lib/store/graph-lists-store.ts
+      - pto-tracker/src/lib/store/types.ts
+      - pto-tracker/src/lib/workflow/saga.test.ts
+      - pto-tracker/src/lib/workflow/saga.ts
+      - pto-tracker/src/lib/workflow/service.ts
+      - scripts/AGENTS.md
+      - scripts/affected-apps.ts
+      - scripts/compose-production-release.test.ts
+      - scripts/compose-production-release.ts
+      - scripts/deployment-safety.test.ts
+      - scripts/github/configure-repository.test.ts
+      - scripts/github/configure-repository.ts
+      - scripts/package-hub-release.sh
+      - scripts/prepare-production-manifest.sh
+      - scripts/production-manifest-history.test.ts
+      - scripts/tooling.test.ts
+      - scripts/verify-promotion-source.sh
+      - transition/AGENTS.md
+      - transition/package.json
+      - valuation/AGENTS.md
+      - valuation/package.json
+  - title: "feat(compass): add native mobile app preview"
+    body: >-
+      ## Why
+
+
+      Compass is a strong fit for on-the-go advisor workflows, but it did not have a native mobile experience to
+      evaluate. This change adds a preview app for exploring those workflows on iOS and Android.
+
+
+      ## What changed
+
+
+      Added a Compass mobile preview with Today, Clients, client briefs, and Ask s...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/269
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - documentation
+      - platform
+      - "app: compass"
+    additions: 3322
+    deletions: 23
+    changedFiles: 44
+    author: myriadas-clees
+    createdAt: 2026-11-13T20:40:40Z
+    updatedAt: 2026-11-25T14:45:46Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a17
+        sha: 9bf36cd1ca9f044815d03bd280646ed37c692993
+        message: Merge remote-tracking branch 'origin/main' into deliver
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/9bf36cd1ca9f044815d03bd280646ed37c692993
+        authoredAt: 2026-11-25T14:30:52Z
+        additions: 24810
+        deletions: 2276
+        filesChanged: 300
+    workTimestamps:
+      - 2026-11-25T14:30:52Z
+    workAdditions: 24810
+    workDeletions: 2276
+    workFiles:
+      - .github/CODEOWNERS
+      - .github/actions/setup-bun/action.yml
+      - .github/labeler.yml
+      - .github/workflows/azure-static-web-apps-products.yml
+      - .github/workflows/codeql.yml
+      - .github/workflows/pr-e2e.yml
+      - .github/workflows/promote-release.yml
+      - .github/workflows/verify.yml
+      - .gitignore
+      - .oxlintrc.json
+      - GUI.md
+      - address-book/src/app/manifest.ts
+      - address-book/src/lib/addresses.ts
+      - address-book/src/lib/records.ts
+      - bun.lock
+      - compass/README.md
+      - compass/bunfig.toml
+      - compass/functions/PORT-CONTRACT.md
+      - compass/functions/bunfig.toml
+      - compass/functions/local.settings.json.example
+      - compass/functions/package.json
+      - compass/functions/src/company-http.test.ts
+      - compass/functions/src/company-routes.test.ts
+      - compass/functions/src/compass-archive-files.ts
+      - compass/functions/src/compass-archive.test.ts
+      - compass/functions/src/compass-archive.ts
+      - compass/functions/src/compass-audit.test.ts
+      - compass/functions/src/compass-audit.ts
+      - compass/functions/src/compass-bounded-bytes.ts
+      - compass/functions/src/compass-brief-journeys.test.ts
+      - compass/functions/src/compass-chat-history.test.ts
+      - compass/functions/src/compass-chat-history.ts
+      - compass/functions/src/compass-claude-brief.ts
+      - compass/functions/src/compass-claude-credential-crypto.test.ts
+      - compass/functions/src/compass-claude-credential-crypto.ts
+      - compass/functions/src/compass-claude-credentials.test.ts
+      - compass/functions/src/compass-claude-credentials.ts
+      - compass/functions/src/compass-claude-files.test.ts
+      - compass/functions/src/compass-claude-files.ts
+      - compass/functions/src/compass-claude-integration.test.ts
+      - compass/functions/src/compass-claude-preferences.ts
+      - compass/functions/src/compass-consultation.test.ts
+      - compass/functions/src/compass-consultation.ts
+      - compass/functions/src/compass-conversations.test.ts
+      - compass/functions/src/compass-conversations.ts
+      - compass/functions/src/compass-copilot.test.ts
+      - compass/functions/src/compass-copilot.ts
+      - compass/functions/src/compass-destruction-audit.test.ts
+      - compass/functions/src/compass-destruction-audit.ts
+      - compass/functions/src/compass-graph-diagnostics.ts
+      - compass/functions/src/compass-hub-graph.test.ts
+      - compass/functions/src/compass-mapping-upgrade.test.ts
+      - compass/functions/src/compass-microsoft-deadline.test.ts
+      - compass/functions/src/compass-microsoft.test.ts
+      - compass/functions/src/compass-microsoft.ts
+      - compass/functions/src/compass-openai-credential-crypto.test.ts
+      - compass/functions/src/compass-openai-credential-crypto.ts
+      - compass/functions/src/compass-openai-credentials.test.ts
+      - compass/functions/src/compass-openai-credentials.ts
+      - compass/functions/src/compass-openai-integration.test.ts
+      - compass/functions/src/compass-openai-preferences.ts
+      - compass/functions/src/compass-openai.ts
+      - compass/functions/src/compass-outputs.test.ts
+      - compass/functions/src/compass-outputs.ts
+      - compass/functions/src/compass-scheduled-brief.ts
+      - compass/functions/src/compass-stack-port.test.ts
+      - compass/functions/src/compass-storage-preferences.test.ts
+      - compass/functions/src/compass-subagent.test.ts
+      - compass/functions/src/compass-subagent.ts
+      - compass/functions/src/index.ts
+      - compass/next.config.ts
+      - compass/package.json
+      - compass/src/app/ai-services.css
+      - compass/src/app/api/demo/company/me/route.ts
+      - compass/src/app/ask.css
+      - compass/src/app/globals.css
+      - compass/src/components/answer-markdown.tsx
+      - compass/src/components/ask-compass-workspace.dom.test.tsx
+      - compass/src/components/ask-compass-workspace.test.tsx
+      - compass/src/components/ask-compass-workspace.tsx
+      - compass/src/components/ask/ask-chat-picker.tsx
+      - compass/src/components/ask/ask-chat-rail.tsx
+      - compass/src/components/ask/ask-composer.tsx
+      - compass/src/components/ask/at-command-token.tsx
+      - compass/src/components/ask/composer-model-picker.tsx
+      - compass/src/components/brief-effort-confirm.tsx
+      - compass/src/components/claude-manage-dialog.tsx
+      - compass/src/components/compass-consent.fixture.tsx
+      - compass/src/components/compass-dashboard.tsx
+      - compass/src/components/compass-dom-globals.ts
+      - compass/src/components/compass-provider.tsx
+      - compass/src/components/compass-recovery.dom.test.ts
+      - compass/src/components/compass-recovery.fixture.tsx
+      - compass/src/components/compass-retention.fixture.tsx
+      - compass/src/components/compass-routes.tsx
+      - compass/src/components/compass-stability.dom.test.ts
+      - compass/src/components/compass-stability.fixture.tsx
+      - compass/src/components/copilot-consultation-card.test.tsx
+      - compass/src/components/copilot-consultation-card.tsx
+      - compass/src/components/generated-file-card.test.tsx
+      - compass/src/components/generated-file-card.tsx
+      - compass/src/components/openai-manage-dialog.tsx
+      - compass/src/components/provider-logos.tsx
+      - compass/src/components/settings-workspace.dom.test.tsx
+      - compass/src/components/settings-workspace.tsx
+      - compass/src/components/streaming-markdown-speed.test.tsx
+      - compass/src/components/streaming-markdown.tsx
+      - compass/src/components/summarize-peek.dom.test.tsx
+      - compass/src/components/summarize-peek.tsx
+      - compass/src/components/use-openai-account.ts
+      - compass/src/lib/ask-stream.test.ts
+      - compass/src/lib/ask-stream.ts
+      - compass/src/lib/ask-turns.test.ts
+      - compass/src/lib/ask-turns.ts
+      - compass/src/lib/at-commands.test.ts
+      - compass/src/lib/at-commands.ts
+      - compass/src/lib/chat-pdf.tsx
+      - compass/src/lib/claude-settings.test.ts
+      - compass/src/lib/claude-settings.ts
+      - compass/src/lib/microsoft-reauth.test.ts
+      - compass/src/lib/microsoft-reauth.ts
+      - compass/src/lib/openai-settings.test.ts
+      - compass/src/lib/openai-settings.ts
+      - compass/src/lib/openui-disable-devtools.ts
+      - compass/src/lib/progress-phase.ts
+      - compass/src/lib/swa-session.ts
+      - compass/src/public/integrations/SOURCES.md
+      - compass/test/compliance-preload.ts
+      - crm/AGENTS.md
+      - crm/DESIGN.md
+      - crm/functions/host.json
+      - crm/functions/local.settings.json.example
+      - crm/functions/package.json
+      - crm/functions/scripts/build.ts
+      - crm/functions/src/index.ts
+      - crm/functions/tsconfig.json
+      - crm/next-env.d.ts
+      - crm/next.config.ts
+      - crm/package.json
+      - crm/postcss.config.mjs
+      - crm/scripts/build-static.ts
+      - crm/scripts/seed-dev-data.ts
+      - crm/scripts/seed-dev.ts
+      - crm/src/app/accounts/page.tsx
+      - crm/src/app/accounts/record/page.tsx
+      - crm/src/app/api/address-book/[...path]/route.ts
+      - crm/src/app/companies/page.tsx
+      - crm/src/app/companies/record/page.tsx
+      - crm/src/app/contacts/page.tsx
+      - crm/src/app/contacts/record/page.tsx
+      - crm/src/app/globals.css
+      - crm/src/app/households/page.tsx
+      - crm/src/app/households/record/page.tsx
+      - crm/src/app/icon.svg
+      - crm/src/app/layout.tsx
+      - crm/src/app/manifest.ts
+      - crm/src/app/page.tsx
+      - crm/src/app/products-services/page.tsx
+      - crm/src/app/products-services/record/page.tsx
+      - crm/src/app/settings/import/page.tsx
+      - crm/src/app/settings/page.tsx
+      - crm/src/app/tasks/page.tsx
+      - crm/src/app/tasks/templates/page.tsx
+      - crm/src/app/workflows/diagram/page.tsx
+      - crm/src/app/workflows/page.tsx
+      - crm/src/app/workflows/record/page.tsx
+      - crm/src/components/account-views.css
+      - crm/src/components/account-views.tsx
+      - crm/src/components/accounts.tsx
+      - crm/src/components/activity.css
+      - crm/src/components/activity.tsx
+      - crm/src/components/address-groups.css
+      - crm/src/components/address-groups.tsx
+      - crm/src/components/checklist-action.tsx
+      - crm/src/components/companies.tsx
+      - crm/src/components/contact-actions.tsx
+      - crm/src/components/contact-addresses.tsx
+      - crm/src/components/contact-methods.tsx
+      - crm/src/components/contact-relationship.css
+      - crm/src/components/contact-relationship.tsx
+      - crm/src/components/contact-views.css
+      - crm/src/components/contact-views.tsx
+      - crm/src/components/contact-workflows.tsx
+      - crm/src/components/contacts.tsx
+      - crm/src/components/crm-settings.tsx
+      - crm/src/components/crm-shell.tsx
+      - crm/src/components/csv-import-map.tsx
+      - crm/src/components/csv-import-review.tsx
+      - crm/src/components/csv-import.css
+      - crm/src/components/csv-import.tsx
+      - crm/src/components/editors.tsx
+      - crm/src/components/feedback.tsx
+      - crm/src/components/global-search.tsx
+      - crm/src/components/home.css
+      - crm/src/components/home.tsx
+      - crm/src/components/household-views.css
+      - crm/src/components/household-views.tsx
+      - crm/src/components/households.tsx
+      - crm/src/components/inbox.css
+      - crm/src/components/inbox.tsx
+      - crm/src/components/link-dialogs.tsx
+      - crm/src/components/list-page.tsx
+      - crm/src/components/motion.css
+      - crm/src/components/outreach-context.tsx
+      - crm/src/components/phone-nav.tsx
+      - crm/src/components/pickers.tsx
+      - crm/src/components/products-services.tsx
+      - crm/src/components/record-actions.css
+      - crm/src/components/record-parts.tsx
+      - crm/src/components/record-tasks.tsx
+      - crm/src/components/record-views.css
+      - crm/src/components/representative-fields.css
+      - crm/src/components/representative-fields.tsx
+      - crm/src/components/session.tsx
+      - crm/src/components/settings-page.tsx
+      - crm/src/components/task-assignee.tsx
+      - crm/src/components/task-board.tsx
+      - crm/src/components/task-calendar.css
+      - crm/src/components/task-calendar.tsx
+      - crm/src/components/task-checklist.css
+      - crm/src/components/task-checklist.tsx
+      - crm/src/components/task-drawer.css
+      - crm/src/components/task-drawer.tsx
+      - crm/src/components/task-extras.tsx
+      - crm/src/components/task-form.css
+      - crm/src/components/task-parts.tsx
+      - crm/src/components/task-priorities.tsx
+      - crm/src/components/task-templates.tsx
+      - crm/src/components/task-toolbar.css
+      - crm/src/components/task-toolbar.tsx
+      - crm/src/components/tasks.tsx
+      - crm/src/components/timeline.tsx
+      - crm/src/components/ui/action-button.css
+      - crm/src/components/ui/action-button.tsx
+      - crm/src/components/ui/copy-button.tsx
+      - crm/src/components/ui/discard-dialog.tsx
+      - crm/src/components/ui/disclosure.tsx
+      - crm/src/components/ui/fields.tsx
+      - crm/src/components/ui/index-rail.tsx
+      - crm/src/components/ui/inline-edit.tsx
+      - crm/src/components/ui/layout.tsx
+      - crm/src/components/ui/list-pager.tsx
+      - crm/src/components/ui/motion.tsx
+      - crm/src/components/ui/overflow-menu.tsx
+      - crm/src/components/ui/result-stage.tsx
+      - crm/src/components/ui/search-field.tsx
+      - crm/src/components/ui/select-field.tsx
+      - crm/src/components/ui/skeleton.tsx
+      - crm/src/components/ui/table-sort.tsx
+      - crm/src/components/ui/undo-toast.tsx
+      - crm/src/components/ui/unsaved-changes-guard.tsx
+      - crm/src/components/workflow-diagram.css
+      - crm/src/components/workflow-diagram.tsx
+      - crm/src/components/workflow-editing.tsx
+      - crm/src/components/workflow-workspace.tsx
+      - crm/src/components/workflows.tsx
+      - crm/src/lib/account-views.ts
+      - crm/src/lib/activity.ts
+      - crm/src/lib/address-groups.ts
+      - crm/src/lib/addresses.ts
+      - crm/src/lib/api-client.ts
+      - crm/src/lib/calendar.ts
+      - crm/src/lib/checklist-action.ts
+      - crm/src/lib/checklist.ts
+      - crm/src/lib/contact-views.ts
+      - crm/src/lib/contracts.ts
+      - crm/src/lib/download.ts
+      - crm/src/lib/draft-error.ts
+      - crm/src/lib/features.ts
+      - crm/src/lib/household-views.ts
+      - crm/src/lib/import-fields.ts
+      - crm/src/lib/import-flow.ts
+      - crm/src/lib/inbox-order.ts
+      - crm/src/lib/inbox.ts
+      - crm/src/lib/insights.ts
+      - crm/src/lib/links.ts
+      - crm/src/lib/lookup.ts
+      - crm/src/lib/money.ts
+      - crm/src/lib/motion.ts
+      - crm/src/lib/name-index.ts
+      - crm/src/lib/notes.ts
+      - crm/src/lib/opener.ts
+      - crm/src/lib/paged-state.ts
+      - crm/src/lib/palette.ts
+      - crm/src/lib/pending-saves.ts
+      - crm/src/lib/phone.ts
+      - crm/src/lib/rebase-draft.ts
+      - crm/src/lib/record-views.ts
+      - crm/src/lib/records.ts
+      - crm/src/lib/relationship-type.ts
+      - crm/src/lib/relationships.ts
+      - crm/src/lib/remembered.ts
+      - crm/src/lib/representative.ts
+      - crm/src/lib/server/crm-data.ts
+      - crm/src/lib/server/handlers.ts
+      - crm/src/lib/server/repository.ts
+      - crm/src/lib/server/validation.ts
+      - crm/src/lib/task-save-queue.ts
+      - crm/src/lib/task-subtypes.ts
+      - crm/src/lib/task-toolbar.ts
+  - title: "feat(compass): reorganize advisor workflows and add agents"
+    body: >-
+      ## Why
+
+
+      Compass needed clearer workflows for advisor work, along with a configurable foundation for running prospect
+      follow-up checks. Advisors also needed access to saved Transition household data for meeting preparation and
+      reviews.
+
+
+      ## What changed
+
+
+      - Split the advisor workspace into Clients, Pro...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/257
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - documentation
+      - github-automation
+      - platform
+      - "app: transition"
+      - "app: compass"
+    additions: 4043
+    deletions: 41
+    changedFiles: 65
+    author: myriadas-clees
+    createdAt: 2026-11-11T04:41:50Z
+    updatedAt: 2026-11-25T17:55:54Z
+    closedAt: null
+    mergedAt: null
+    workCommits: []
+    workTimestamps: []
+    workAdditions: 0
+    workDeletions: 0
+    workFiles: []
+  - title: "feat(desktop): add Myriad Support app"
+    body: >-
+      Adds Myriad Support, an Electron desktop app for guided IT troubleshooting and ticket review. The app uses local
+      Gemma inference and includes a browser pilot for testing the support workflow.
+
+
+      - Guides users through troubleshooting, collects consented device observations and accepts screenshots and ...
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/294
+    repository: Myriad-Advisor-Solutions/myriadas-apps
+    state: open
+    labels:
+      - documentation
+      - github-automation
+      - platform
+    additions: 20316
+    deletions: 2
+    changedFiles: 167
+    author: myriadas-clees
+    createdAt: 2026-11-24T19:53:15Z
+    updatedAt: 2026-11-25T20:15:48Z
+    closedAt: null
+    mergedAt: null
+    workCommits:
+      - &a18
+        sha: 7776ae5844f15dbf3efedbeb7cc86898241c7e40
+        message: Resolve Windows profile display names locally
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7776ae5844f15dbf3efedbeb7cc86898241c7e40
+        authoredAt: 2026-11-25T14:34:07Z
+        additions: 45
+        deletions: 8
+        filesChanged: 5
+        files:
+          - support/README.md
+          - support/flow.test.ts
+          - support/flow.ts
+          - support/runtime.test.ts
+          - support/session.ts
+      - &a19
+        sha: 61cf9fa6d5d20810af1928aaf7783c133dd1e26f
+        message: Prototype private Myriad inference over inherited pipes
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/61cf9fa6d5d20810af1928aaf7783c133dd1e26f
+        authoredAt: 2026-11-25T14:34:07Z
+        additions: 363
+        deletions: 0
+        filesChanged: 6
+        files:
+          - support/inference-worker/CMakeLists.txt
+          - support/inference-worker/README.md
+          - support/inference-worker/transport.ts
+          - support/inference-worker/worker.cpp
+          - support/scenarios/inference-pipe-transport.test.ts
+          - support/scenarios/inference-pipe.test.mjs
+      - &a23
+        sha: be9a795f9ee60343b1df2471a21a7246dd711cb9
+        message: Keep the private inference worker resident between turns
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/be9a795f9ee60343b1df2471a21a7246dd711cb9
+        authoredAt: 2026-11-25T15:16:45Z
+        additions: 247
+        deletions: 82
+        filesChanged: 9
+        files:
+          - support/inference-worker/CMakeLists.txt
+          - support/inference-worker/README.md
+          - support/inference-worker/session.ts
+          - support/inference-worker/transport.ts
+          - support/inference-worker/worker.cpp
+          - support/scenarios/inference-pipe-transport.test.ts
+          - support/scenarios/inference-pipe.test.mjs
+          - support/session.ts
+          - support/vision.ts
+      - &a30
+        sha: 3320b41a18efdad16ff25be5d1f9c9fd715abbe2
+        message: Improve Support attachments, dictation, and ticket review
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3320b41a18efdad16ff25be5d1f9c9fd715abbe2
+        authoredAt: 2026-11-25T16:52:47Z
+        additions: 1463
+        deletions: 287
+        filesChanged: 35
+        files:
+          - support/README.md
+          - support/attachments.test.ts
+          - support/attachments.ts
+          - support/browser-bridge.ts
+          - support/build.ts
+          - support/dev-mode.test.ts
+          - support/dev-mode.ts
+          - support/developer-settings.ts
+          - support/dictation.test.ts
+          - support/dictation.ts
+          - support/draft.ts
+          - support/flow.test.ts
+          - support/flow.ts
+          - support/index.html
+          - support/main.ts
+          - support/model-setup.ts
+          - support/preload.ts
+          - support/renderer-integration.test.ts
+          - support/renderer.css
+          - support/renderer.ts
+          - support/resume.ts
+          - support/runtime-manager.ts
+          - support/runtime.test.ts
+          - support/session.ts
+          - support/speech-engine.test.ts
+          - support/speech-engine.ts
+          - support/speech-stream.test.ts
+          - support/speech-worker.ts
+          - support/support-api.ts
+          - support/test-dom.ts
+          - support/ticket-fields.test.ts
+          - support/ticket-fields.ts
+          - support/ticket-store.ts
+          - support/verify-gemma.ts
+          - support/vision.ts
+      - &a37
+        sha: 78a0d73192ed9cbc24e122c1ed908e518b1e43aa
+        message: Offer to restore unsent drafts on startup
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/78a0d73192ed9cbc24e122c1ed908e518b1e43aa
+        authoredAt: 2026-11-25T17:06:07Z
+        additions: 89
+        deletions: 30
+        filesChanged: 3
+        files:
+          - support/renderer-integration.test.ts
+          - support/renderer.css
+          - support/renderer.ts
+      - &a44
+        sha: 701ae90bf66a985e475f433b11b7bc0b420fb632
+        message: Add composer context menu and refine chat footer
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/701ae90bf66a985e475f433b11b7bc0b420fb632
+        authoredAt: 2026-11-25T17:15:22Z
+        additions: 58
+        deletions: 9
+        filesChanged: 7
+        files:
+          - support/index.html
+          - support/main.ts
+          - support/preload.ts
+          - support/renderer-integration.test.ts
+          - support/renderer.css
+          - support/renderer.ts
+          - support/support-api.ts
+      - &a48
+        sha: 3a7ceb884167835037befa24eb226e64b01ae1a8
+        message: Align Support composer and Markdown with Compass
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/3a7ceb884167835037befa24eb226e64b01ae1a8
+        authoredAt: 2026-11-25T17:56:24Z
+        additions: 793
+        deletions: 49
+        filesChanged: 9
+        files:
+          - support/build.ts
+          - support/bun.lock
+          - support/licenses/markdown-LICENSES
+          - support/markdown.test.ts
+          - support/markdown.ts
+          - support/package.json
+          - support/renderer-integration.test.ts
+          - support/renderer.css
+          - support/renderer.ts
+      - &a49
+        sha: 491003106e364d02c0be1ddd1be035760a1adf17
+        message: Enable Gemma thinking and improve Support wait and model switching
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/491003106e364d02c0be1ddd1be035760a1adf17
+        authoredAt: 2026-11-25T18:32:35Z
+        additions: 289
+        deletions: 47
+        filesChanged: 14
+        files:
+          - support/README.md
+          - support/compass-transport.ts
+          - support/dev-mode.test.ts
+          - support/dev-mode.ts
+          - support/draft.ts
+          - support/flow.test.ts
+          - support/flow.ts
+          - support/main.ts
+          - support/renderer-integration.test.ts
+          - support/renderer.ts
+          - support/runtime-manager.ts
+          - support/runtime.test.ts
+          - support/session.ts
+          - support/vision.ts
+      - &a52
+        sha: 2dfc0ea1f9af8d1a58d105c25bba2c67fe3c49b1
+        message: Add isolated Windows d1 routing benchmark
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/2dfc0ea1f9af8d1a58d105c25bba2c67fe3c49b1
+        authoredAt: 2026-11-25T19:42:45Z
+        additions: 577
+        deletions: 0
+        filesChanged: 10
+        files:
+          - support/scenarios/d1-bench/README.md
+          - support/scenarios/d1-bench/bench.py
+          - support/scenarios/d1-bench/cases.json
+          - support/scenarios/d1-bench/compare.py
+          - support/scenarios/d1-bench/images/dev-09.png
+          - support/scenarios/d1-bench/images/dev-10.png
+          - support/scenarios/d1-bench/key.json
+          - support/scenarios/d1-bench/lock.example.json
+          - support/scenarios/d1-bench/test_bench.py
+          - support/scenarios/d1-bench/winmetrics.py
+      - &a53
+        sha: 703e5a53e0bb422bdb3063786e3d69733897425a
+        message: Constrain Gemma benchmark fallback labels
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/703e5a53e0bb422bdb3063786e3d69733897425a
+        authoredAt: 2026-11-25T20:15:28Z
+        additions: 56
+        deletions: 11
+        filesChanged: 4
+        files:
+          - support/scenarios/d1-bench/README.md
+          - support/scenarios/d1-bench/bench.py
+          - support/scenarios/d1-bench/compare.py
+          - support/scenarios/d1-bench/test_bench.py
+    workTimestamps:
+      - 2026-11-25T14:34:07Z
+      - 2026-11-25T14:34:07Z
+      - 2026-11-25T15:16:45Z
+      - 2026-11-25T16:52:47Z
+      - 2026-11-25T17:06:07Z
+      - 2026-11-25T17:15:22Z
+      - 2026-11-25T17:56:24Z
+      - 2026-11-25T18:32:35Z
+      - 2026-11-25T19:42:45Z
+      - 2026-11-25T20:15:28Z
+    workAdditions: 3980
+    workDeletions: 523
+    workFiles:
+      - support/README.md
+      - support/attachments.test.ts
+      - support/attachments.ts
+      - support/browser-bridge.ts
+      - support/build.ts
+      - support/bun.lock
+      - support/compass-transport.ts
+      - support/dev-mode.test.ts
+      - support/dev-mode.ts
+      - support/developer-settings.ts
+      - support/dictation.test.ts
+      - support/dictation.ts
+      - support/draft.ts
+      - support/flow.test.ts
+      - support/flow.ts
+      - support/index.html
+      - support/inference-worker/CMakeLists.txt
+      - support/inference-worker/README.md
+      - support/inference-worker/session.ts
+      - support/inference-worker/transport.ts
+      - support/inference-worker/worker.cpp
+      - support/licenses/markdown-LICENSES
+      - support/main.ts
+      - support/markdown.test.ts
+      - support/markdown.ts
+      - support/model-setup.ts
+      - support/package.json
+      - support/preload.ts
+      - support/renderer-integration.test.ts
+      - support/renderer.css
+      - support/renderer.ts
+      - support/resume.ts
+      - support/runtime-manager.ts
+      - support/runtime.test.ts
+      - support/scenarios/d1-bench/README.md
+      - support/scenarios/d1-bench/bench.py
+      - support/scenarios/d1-bench/cases.json
+      - support/scenarios/d1-bench/compare.py
+      - support/scenarios/d1-bench/images/dev-09.png
+      - support/scenarios/d1-bench/images/dev-10.png
+      - support/scenarios/d1-bench/key.json
+      - support/scenarios/d1-bench/lock.example.json
+      - support/scenarios/d1-bench/test_bench.py
+      - support/scenarios/d1-bench/winmetrics.py
+      - support/scenarios/inference-pipe-transport.test.ts
+      - support/scenarios/inference-pipe.test.mjs
+      - support/session.ts
+      - support/speech-engine.test.ts
+      - support/speech-engine.ts
+      - support/speech-stream.test.ts
+      - support/speech-worker.ts
+      - support/support-api.ts
+      - support/test-dom.ts
+      - support/ticket-fields.test.ts
+      - support/ticket-fields.ts
+      - support/ticket-store.ts
+      - support/verify-gemma.ts
+      - support/vision.ts
+issues: []
+events: []
+commitMessages:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    messages:
+      - Merge remote-tracking branch 'origin/main' into deliver
+      - Resolve Windows profile display names locally
+      - Prototype private Myriad inference over inherited pipes
+      - "chore(agents): add a PR formatting skill"
+      - "chore(agents): require PR formatting guidance"
+      - Recover PTO workflow hardening and ADP simulator (#296)
+      - Merge branch 'main' into t3/compass-ask-auto-titles
+      - Keep the private inference worker resident between turns
+      - "feat(compass): apply Copilot titles to first-turn chats (#291)"
+      - Merge branch 'main' into chore/evaluate-better-layout-skill
+      - "feat(skills): add Myriad layout review guidance (#293)"
+      - "feat(compass): add OpenAI office, web, and Copilot parity"
+      - Centralize suite sign-in and session recovery in Myriad Hub
+      - "docs(repo): simplify app-specific agent guidance"
+      - "fix(auth): preserve standalone app session boundaries"
+      - "fix(auth): restore mounted app pages after sign-in"
+      - Improve Support attachments, dictation, and ticket review
+      - "feat(compass): attention-first @meeting card with timed agenda, figures and follow-up progress"
+      - Merge commit '5be035d589a6c8b2efa34a15a531e148d5c4feb7' into clees/agent-working-agreement
+      - "feat(compass): show @calendar proposals against the loaded day with conflicts"
+      - "test(e2e): expect Hub sign-in for protected routes"
+      - "feat(compass): draw visuals in PDF documents, previews and exports"
+      - "feat(compass): group @todo tasks by due date with progress and workload"
+      - Offer to restore unsent drafts on startup
+      - "chore(agents): stack PR formatting on shared guidance"
+      - "feat(compass): preview an Office file's key figures beside its download"
+      - "feat(compass): draw widgets with the shared generated-visual components"
+      - Merge branch 'feat/compass-openui-meeting' into feat/compass-openui-outputs
+      - Merge branch 'feat/compass-openui-widgets' into feat/compass-openui-outputs
+      - Merge branch 'feat/compass-openui-documents' into feat/compass-openui-outputs
+      - Add composer context menu and refine chat footer
+      - "fix(compass): keep open-ended events in the conflict check and bound unclosed PDF visuals"
+      - "feat(compass): tighten and polish the new visual layouts"
+      - Merge branch 'feat/compass-openui-meeting' into feat/compass-openui-outputs
+      - Align Support composer and Markdown with Compass
+      - Enable Gemma thinking and improve Support wait and model switching
+      - "fix(compass): round highlight rings, format pie values and keep card edges"
+      - "fix(compass): draw grouped bars from a shared zero"
+      - Add isolated Windows d1 routing benchmark
+      - Constrain Gemma benchmark fallback labels
+    commits:
+      - *a17
+      - *a18
+      - *a19
+      - *a20
+      - *a21
+      - sha: 31cd0c6f7b194ac118b117461b99fe20bb3f8afa
+        message: Recover PTO workflow hardening and ADP simulator (#296)
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/31cd0c6f7b194ac118b117461b99fe20bb3f8afa
+        authoredAt: 2026-11-25T15:11:27Z
+        additions: 633
+        deletions: 72
+        filesChanged: 16
+        files:
+          - pto-tracker/docs/README.md
+          - pto-tracker/docs/adp-integration-research.md
+          - pto-tracker/docs/adp-simulator.md
+          - pto-tracker/docs/workflow.md
+          - pto-tracker/scripts/adp-simulator.test.ts
+          - pto-tracker/scripts/adp-simulator.ts
+          - pto-tracker/src/lib/api/handlers.test.ts
+          - pto-tracker/src/lib/api/handlers.ts
+          - pto-tracker/src/lib/pto/request-validation.test.ts
+          - pto-tracker/src/lib/pto/request-validation.ts
+          - pto-tracker/src/lib/store/graph-lists-store.test.ts
+          - pto-tracker/src/lib/store/graph-lists-store.ts
+          - pto-tracker/src/lib/store/types.ts
+          - pto-tracker/src/lib/workflow/saga.test.ts
+          - pto-tracker/src/lib/workflow/saga.ts
+          - pto-tracker/src/lib/workflow/service.ts
+      - *a22
+      - *a23
+      - sha: 7a409ec2724c5d7c21b06b1b9e6060a61e5686ed
+        message: "feat(compass): apply Copilot titles to first-turn chats (#291)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/7a409ec2724c5d7c21b06b1b9e6060a61e5686ed
+        authoredAt: 2026-11-25T15:25:34Z
+        additions: 30
+        deletions: 2
+        filesChanged: 6
+        files:
+          - compass/functions/src/compass-copilot.test.ts
+          - compass/functions/src/compass-copilot.ts
+          - compass/functions/src/compass-microsoft.ts
+          - compass/src/components/ask-compass-workspace.dom.test.tsx
+          - compass/src/components/ask-compass-workspace.test.tsx
+          - compass/src/components/ask-compass-workspace.tsx
+      - *a24
+      - sha: 5be035d589a6c8b2efa34a15a531e148d5c4feb7
+        message: "feat(skills): add Myriad layout review guidance (#293)"
+        url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5be035d589a6c8b2efa34a15a531e148d5c4feb7
+        authoredAt: 2026-11-25T15:39:51Z
+        additions: 148
+        deletions: 0
+        filesChanged: 6
+        files:
+          - .agents/skills/better-layout/LICENSE
+          - .agents/skills/better-layout/SKILL.md
+          - .agents/skills/better-layout/grouping-and-alignment.md
+          - .agents/skills/better-layout/reporting.md
+          - .agents/skills/better-layout/spacing-and-adaptivity.md
+          - GUI.md
+      - *a25
+      - *a26
+      - *a27
+      - *a28
+      - *a29
+      - *a30
+      - *a31
+      - *a32
+      - *a33
+      - *a34
+      - *a35
+      - *a36
+      - *a37
+      - *a38
+      - *a39
+      - *a40
+      - *a41
+      - *a42
+      - *a43
+      - *a44
+      - *a45
+      - *a46
+      - *a47
+      - *a48
+      - *a49
+      - *a50
+      - *a51
+      - *a52
+      - *a53
+  - repo: Myriad-Advisor-Solutions/ohcpwm-apps
+    messages:
+      - "docs: prepare contributor guidance and remove private artifacts (#233)"
+      - Merge remote-tracking branch 'origin/main' into feat/pricing-pdf-export
+      - "fix(pricing): keep PDF expense tables within page bounds"
+      - "fix(pricing): paginate PDF tables by rendered row height"
+      - "fix(pricing): scope legacy zero rows to PDF downloads"
+      - "fix(pricing): keep PDF continuation state outside render"
+    commits:
+      - sha: c53ab53a5737ddfa6347e0bdf0403c5de0c547fb
+        message: "docs: prepare contributor guidance and remove private artifacts (#233)"
+        url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/commit/c53ab53a5737ddfa6347e0bdf0403c5de0c547fb
+        authoredAt: 2026-11-25T15:11:33Z
+        additions: 117
+        deletions: 672
+        filesChanged: 17
+        files:
+          - .github/ISSUE_TEMPLATE/bug_report.yml
+          - .github/ISSUE_TEMPLATE/feature_request.yml
+          - .github/PULL_REQUEST_TEMPLATE.md
+          - .gitignore
+          - CONTRIBUTING.md
+          - README.md
+          - artifacts/visual-qa/admin-dashboard-desktop.png
+          - artifacts/visual-qa/dashboard-error-state.png
+          - artifacts/visual-qa/dashboard-loading-state.png
+          - artifacts/visual-qa/nonadmin-dashboard-desktop.png
+          - artifacts/visual-qa/nonadmin-dashboard-mobile-viewport.png
+          - artifacts/visual-qa/nonadmin-permission-new-recruit.png
+          - artifacts/visual-qa/recruits-empty-filter.png
+          - docs/deploy-asap.md
+          - docs/issue-2-cosmos-production-readiness.md
+          - docs/issue-37-pricing-monitoring-readiness.md
+          - docs/issue-39-monday-sync-discovery.md
+      - *a54
+      - *a55
+      - *a56
+      - *a57
+      - *a58
+releases:
+  - repo: Myriad-Advisor-Solutions/myriadas-apps
+    tag: staging-20261125T172512Z-5be035d
+    name: staging-20261125T172512Z-5be035d
+    body: |
+      Staging validation for [5be035d589a6c8b2efa34a15a531e148d5c4feb7](https://github.com/Myriad-Advisor-Solutions/myriadas-apps/commit/5be035d589a6c8b2efa34a15a531e148d5c4feb7).
+
+      [Workflow run](https://github.com/Myriad-Advisor-Solutions/myriadas-apps/actions/runs/45664531311)
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/releases/tag/staging-20261125T172512Z-5be035d
+    publishedAt: 2026-11-25T17:33:19Z
+externalContributions: []
+codeReviews:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 230
+    prTitle: "feat(pricing): configure report sections and custom expenses"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/230
+    state: commented
+    submittedAt: 2026-11-25T17:19:09Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 230
+    prTitle: "feat(pricing): configure report sections and custom expenses"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/230
+    state: commented
+    submittedAt: 2026-11-25T17:19:18Z
+    body: null
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 280
+    prTitle: "docs(repo): consolidate agent guidance across suite"
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/280
+    state: commented
+    submittedAt: 2026-11-25T16:59:31Z
+    body: null
+reviewComments:
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 230
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/230
+    prTitle: "feat(pricing): configure report sections and custom expenses"
+    prLabels: []
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/230#discussion_r4698369366
+    body: "[from Codex]: Fixed in `2d4d5f29`. Tables now paginate by rendered row height, with a continuation heading and a
+      regression test for 17 advisors with wrapping names."
+    path: pricing/src/lib/report/pdf.tsx
+    createdAt: 2026-11-25T17:19:09Z
+  - repository: Myriad-Advisor-Solutions/ohcpwm-apps
+    prNumber: 230
+    prUrl: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/230
+    prTitle: "feat(pricing): configure report sections and custom expenses"
+    prLabels: []
+    url: https://github.com/Myriad-Advisor-Solutions/ohcpwm-apps/pull/230#discussion_r4698371207
+    body: "[from Codex]: Fixed the zero-row regression in `2d4d5f29`. Both download handlers show zero rows when a saved
+      snapshot lacks the flag, and honor explicit settings on newer snapshots. PDFs are still regenerated with the
+      current renderer."
+    path: pricing/src/lib/report/pdf.tsx
+    createdAt: 2026-11-25T17:19:18Z
+  - repository: Myriad-Advisor-Solutions/myriadas-apps
+    prNumber: 280
+    prUrl: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/280
+    prTitle: "docs(repo): consolidate agent guidance across suite"
+    prLabels:
+      - documentation
+      - "app: hub"
+      - "app: onboarding"
+      - "app: pto-tracker"
+      - "app: proforma"
+      - "app: excelerate"
+      - "app: valuation"
+      - platform
+      - infrastructure
+      - "app: transition"
+      - "app: compass"
+    url: https://github.com/Myriad-Advisor-Solutions/myriadas-apps/pull/280#discussion_r4698124262
+    body: "[from Codex]: Addressed in `c0cf0bb4`. The cleanup removed the package dependency inventory and provider
+      configuration details across the nested guidance. `packages/AGENTS.md` now keeps the dependency direction, public
+      export and data-mutation boundaries, and scoped validation guidance. Manifests re..."
+    path: packages/AGENTS.md
+    createdAt: 2026-11-25T16:59:31Z
+aiReviews:
+  codex:
+    prsReviewed: 4
+    comments: 8
+    reviews: 6
+    fixed: 0
+  cursor:
+    prsReviewed: 0
+    comments: 0
+    reviews: 0
+    fixed: 0
+  prsReviewed: 4
+  comments: 8
+  reviews: 6
+  fixed: 0
+hoursInputs:
+  timestamps:
+    - 2026-11-25T14:30:52Z
+    - 2026-11-25T14:34:07Z
+    - 2026-11-25T14:34:07Z
+    - 2026-11-25T14:35:08Z
+    - 2026-11-25T14:46:51Z
+    - 2026-11-25T15:11:27Z
+    - 2026-11-25T15:11:56Z
+    - 2026-11-25T15:16:45Z
+    - 2026-11-25T15:25:34Z
+    - 2026-11-25T15:25:40Z
+    - 2026-11-25T15:39:51Z
+    - 2026-11-25T16:20:52Z
+    - 2026-11-25T16:29:04Z
+    - 2026-11-25T16:36:37Z
+    - 2026-11-25T16:40:58Z
+    - 2026-11-25T16:44:36Z
+    - 2026-11-25T16:52:47Z
+    - 2026-11-25T16:54:17Z
+    - 2026-11-25T16:58:54Z
+    - 2026-11-25T17:00:11Z
+    - 2026-11-25T17:01:25Z
+    - 2026-11-25T17:03:59Z
+    - 2026-11-25T17:04:47Z
+    - 2026-11-25T17:06:07Z
+    - 2026-11-25T17:08:14Z
+    - 2026-11-25T17:08:57Z
+    - 2026-11-25T17:12:41Z
+    - 2026-11-25T17:13:37Z
+    - 2026-11-25T17:13:52Z
+    - 2026-11-25T17:13:58Z
+    - 2026-11-25T17:15:22Z
+    - 2026-11-25T17:20:32Z
+    - 2026-11-25T17:50:31Z
+    - 2026-11-25T17:50:59Z
+    - 2026-11-25T17:56:24Z
+    - 2026-11-25T18:32:35Z
+    - 2026-11-25T18:42:18Z
+    - 2026-11-25T18:48:44Z
+    - 2026-11-25T19:42:45Z
+    - 2026-11-25T20:15:28Z
+    - 2026-11-25T15:11:33Z
+    - 2026-11-25T15:49:00Z
+    - 2026-11-25T16:58:33Z
+    - 2026-11-25T17:17:36Z
+    - 2026-11-25T17:20:52Z
+    - 2026-11-25T17:28:01Z
+    - 2026-11-25T16:29:29Z
+    - 2026-11-25T16:29:04Z
+    - 2026-11-25T16:40:58Z
+    - 2026-11-25T16:44:36Z
+    - 2026-11-25T17:01:25Z
+    - 2026-11-25T16:21:06Z
+    - 2026-11-25T15:11:27Z
+    - 2026-11-25T15:25:34Z
+    - 2026-11-25T15:39:51Z
+    - 2026-11-25T16:20:52Z
+    - 2026-11-25T14:35:28Z
+    - 2026-11-25T14:35:08Z
+    - 2026-11-25T14:46:51Z
+    - 2026-11-25T17:08:14Z
+    - 2026-11-25T18:53:37Z
+    - 2026-11-25T17:03:59Z
+    - 2026-11-25T16:54:17Z
+    - 2026-11-25T17:00:11Z
+    - 2026-11-25T17:04:47Z
+    - 2026-11-25T17:08:57Z
+    - 2026-11-25T17:12:41Z
+    - 2026-11-25T17:13:37Z
+    - 2026-11-25T17:13:52Z
+    - 2026-11-25T17:13:58Z
+    - 2026-11-25T17:20:32Z
+    - 2026-11-25T17:50:31Z
+    - 2026-11-25T17:50:59Z
+    - 2026-11-25T18:42:18Z
+    - 2026-11-25T18:48:44Z
+    - 2026-11-25T15:11:34Z
+    - 2026-11-25T15:11:28Z
+    - 2026-11-25T15:39:52Z
+    - 2026-11-25T15:25:40Z
+    - 2026-11-25T15:25:35Z
+    - 2026-11-25T15:11:56Z
+    - 2026-11-25T17:19:09Z
+    - 2026-11-25T17:19:18Z
+    - 2026-11-25T16:59:31Z
+    - 2026-11-25T17:19:09Z
+    - 2026-11-25T17:19:18Z
+    - 2026-11-25T16:59:31Z
+  volume:
+    pullRequests:
+      - additions: 1469
+        deletions: 1498
+        state: open
+        dailyWork: true
+        filesChanged: 84
+        testFilesChanged: 19
+        commitCount: 4
+      - additions: 1920
+        deletions: 340
+        state: open
+        dailyWork: true
+        filesChanged: 54
+        testFilesChanged: 15
+        commitCount: 4
+      - additions: 291
+        deletions: 743
+        state: open
+        dailyWork: true
+        filesChanged: 25
+        testFilesChanged: 2
+        commitCount: 5
+      - additions: 878
+        deletions: 118
+        state: open
+        dailyWork: true
+        filesChanged: 44
+        testFilesChanged: 8
+        commitCount: 3
+      - additions: 1287
+        deletions: 682
+        state: merged
+        dailyWork: true
+        filesChanged: 52
+        testFilesChanged: 10
+        commitCount: 1
+      - additions: 1827
+        deletions: 768
+        state: merged
+        dailyWork: true
+        filesChanged: 60
+        testFilesChanged: 12
+        commitCount: 1
+      - additions: 17625
+        deletions: 1233
+        state: open
+        dailyWork: true
+        filesChanged: 252
+        testFilesChanged: 73
+        commitCount: 2
+      - additions: 24810
+        deletions: 2276
+        state: open
+        dailyWork: true
+        filesChanged: 300
+        testFilesChanged: 41
+        commitCount: 1
+      - additions: 8847
+        deletions: 3123
+        state: open
+        dailyWork: true
+        filesChanged: 59
+        testFilesChanged: 21
+        commitCount: 14
+      - additions: 3980
+        deletions: 523
+        state: open
+        dailyWork: true
+        filesChanged: 58
+        testFilesChanged: 12
+        commitCount: 10
+      - additions: 0
+        deletions: 0
+        state: merged
+      - additions: 0
+        deletions: 0
+        state: merged
+    reviewCount: 3
+    reviewCommentCount: 3
+    commitCount: 1
+    commitAdditions: 117
+    commitDeletions: 672
+    commitStatsCount: 1
+    commitUnits:
+      - additions: 117
+        deletions: 672
+        commitCount: 1
+        hasStats: true
+        filesChanged: 17
+  options:
+    gapMinutes: 90
+    maxSessionHours: 6
+    minimumHours: 8
+hoursEstimate:
+  version: "2.3"
+  hours: 56.5
+  sessions: 1
+  sessionHours: 5.7
+  volumeHours: 154
+  compressedVolumeHours: 56.5
+  gapMinutes: 90
+  maxSessionHours: 6
+  note: "Estimated work delivered (manual engineering effort): a modeled estimate of the time one engineer would need to
+    deliver the same changes without AI assistance, based on PR scope, reviews, and commits. It is not actual hours
+    worked or measured time saved. Very busy days count with diminishing returns."
+stakeholderSummary: ""
